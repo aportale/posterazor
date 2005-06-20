@@ -1,0 +1,98 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0107 
+header_name {.h} 
+code_name {.cxx}
+decl {\#include "FL/Fl_GIF_Image.h"} {selected
+} 
+
+class PosteRazorDialogUI {open
+} {
+  Function {make_window()} {open
+  } {
+    Fl_Window {} {open
+      xywh {801 94 440 480} type Double resizable visible
+    } {
+      Fl_Group {} {open
+        xywh {10 444 420 25}
+      } {
+        Fl_Button {} {
+          label {Next @-2->}
+          callback {next();}
+          xywh {345 444 85 25}
+        }
+        Fl_Button {} {
+          label {@-2<- Back}
+          callback {prev();}
+          xywh {250 444 85 25}
+        }
+        Fl_Box {} {
+          xywh {225 444 15 25} resizable
+        }
+      }
+      Fl_Wizard m_wizard {
+        user_data this
+        xywh {10 9 420 425} box THIN_DOWN_BOX resizable
+      } {
+        Fl_Group {} {
+          xywh {10 9 420 425} hide
+        } {
+          Fl_Group {} {
+            xywh {20 69 400 355} box THIN_DOWN_BOX color 43 resizable
+          } {}
+          Fl_Group {} {
+            label {Input Image:} open
+            xywh {20 34 400 25} align 5
+          } {
+            Fl_Button {} {
+              label {...}
+              xywh {395 34 25 25}
+            }
+            Fl_Box {} {
+              xywh {20 34 375 25} box THIN_DOWN_BOX color 55 align 20 resizable
+              code0 {o->label("fgjgf");}
+            }
+          }
+        }
+        Fl_Group m_group {open
+          xywh {10 9 420 425} resizable
+          code0 {Fl_GIF_Image gif("c:\\\\image006.gif");}
+          code1 {o->image(gif);}
+        } {
+          Fl_Button {} {
+            label button
+            xywh {190 44 68 20}
+          }
+          Fl_Box {} {
+            label {sdf gsdfgsgfdf gfgg ssdfgsdfg}
+            image {d:/temp/fltk-1.1.x/src/up.xbm} xywh {195 125 115 75} box THIN_DOWN_BOX color 55 align 192
+          }
+          Fl_Round_Button {} {
+            xywh {175 120 140 85} type Radio down_box ROUND_DOWN_BOX
+          }
+          Fl_Box {} {
+            label {sdf gsdfgsgfdf gfgg ssdfgsdfg}
+            image {d:/temp/fltk-1.1.x/src/up.xbm} xywh {195 240 115 75} box THIN_DOWN_BOX color 55 align 192
+          }
+          Fl_Round_Button {} {
+            xywh {175 235 140 85} type Radio down_box ROUND_DOWN_BOX
+          }
+        }
+        Fl_Group {} {open
+          xywh {10 9 420 425} hide
+        } {}
+        Fl_Group {} {open
+          xywh {10 9 420 425} hide
+        } {}
+      }
+    }
+  }
+  decl {virtual void next(void) = 0;} {public
+  }
+  decl {virtual void prev(void) = 0;} {public
+  }
+  Function {show()} {open
+  } {
+    code {Fl_Double_Window *w = make_window();
+w->show();} {}
+  }
+} 
