@@ -1,5 +1,5 @@
 #ifndef DistanceUnits_h
-#define PaperFormats_h
+#define DistanceUnits_h
 
 class DistanceUnits
 {
