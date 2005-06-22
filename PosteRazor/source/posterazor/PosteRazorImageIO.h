@@ -10,4 +10,5 @@ public:
 	virtual int GetPixelWidth(void) = 0;
 	virtual int GetPixelHeight(void) = 0;
 };
+
 #endif

@@ -10,7 +10,6 @@ int main(int argc, char *argv[])
 	const char* name = PosteRazor::GetPaperFormatName(PosteRazor::ePaperFormatLegal);
 	enum PosteRazor::ePaperFormats format = PosteRazor::GetPaperFormatForName("Letter");
 
-	int buibui = PosteRazor::buibui;
 
 	delete prz;
 	return error;
