@@ -1,6 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 8.00
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PosteRazorDialog", "PosteRazorUI.vcproj", "{9033B105-F4B8-452E-9069-719F15FF1C19}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PosteRazorUI", "PosteRazorUI.vcproj", "{9033B105-F4B8-452E-9069-719F15FF1C19}"
 	ProjectSection(ProjectDependencies) = postProject
+		{A32B23B4-C8B1-4BA6-A0B7-AAF7EACCC371} = {A32B23B4-C8B1-4BA6-A0B7-AAF7EACCC371}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PosteRazor", "PosteRazor.vcproj", "{A32B23B4-C8B1-4BA6-A0B7-AAF7EACCC371}"

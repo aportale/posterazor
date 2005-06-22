@@ -1,7 +1,7 @@
 #ifndef PosteRazor_h
 #define PosteRazor_h
 
-#include "PaperFormats.h"
+#include "..\tools\PaperFormats.h"
 
 class PosteRazor: public PaperFormats
 {

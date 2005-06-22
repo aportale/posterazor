@@ -1,9 +1,26 @@
 #include "FreeImage.h"
 #include "PosteRazorImageIO.h"
+#include <stdio.h>
+
+class FreeImageInitializer
+{
+public:
+	FreeImageInitializer()
+	{
+		FreeImage_Initialise();
+	}
+
+	~FreeImageInitializer()
+	{
+		FreeImage_DeInitialise();
+	}
+};
+static FreeImageInitializer initializer;
 
 class PosteRazorImageIOImplementation: public PosteRazorImageIO
 {
 private:
+
 	FIBITMAP  *m_bitmap;
 
 	int       m_pixelWidth;
