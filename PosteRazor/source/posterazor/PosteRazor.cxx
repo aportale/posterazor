@@ -22,7 +22,7 @@ private:
 	float     m_posterHeight;
 
 	ePaperFormats m_paperFormat;
-	enum eDistanceUnit m_distanceUnit;
+	enum eDistanceUnits m_distanceUnit;
 	eBorderPositions m_borderPosition;
 	ePaperOrientations m_paperOrientation;
 
@@ -38,6 +38,7 @@ public:
 		m_posterHeight = 0.0;
 
 		m_borderPosition = eBorderPositionRightBottom;
+		m_distanceUnit = eDistanceUnitCentimeter;
 	}
 
 	~PosteRazorImplementation()
@@ -47,8 +48,17 @@ public:
 
 	PosteRazorImageIO *GetImageIO(void) {return m_imageIO;}
 
-	int GetPixelWidth(void) {return m_imageIO->GetPixelWidth();}
-	int GetPixelHeight(void) {return m_imageIO->GetPixelHeight();}
+	int GetInputImageWidthPixels(void) {return m_imageIO->GetWidthPixels();}
+	int GetInputImageHeightPixels(void) {return m_imageIO->GetHeightPixels();}
+
+	double GetInputImageHorizontalDpi(void) {return m_imageIO->GetHorizontalDotsPerDistanceUnit(eDistanceUnitInch);}
+	double GetInputImageVerticalDpi(void) {return m_imageIO->GetVerticalDotsPerDistanceUnit(eDistanceUnitInch);}
+
+	double GetInputImageWidth(void) {return m_imageIO->GetWidth(m_distanceUnit);}
+	double GetInputImageHeight(void) {return m_imageIO->GetHeight(m_distanceUnit);}
+
+	void SetDistanceUnit(enum eDistanceUnits unit) {m_distanceUnit = unit;}
+	enum eDistanceUnits GetDistanceUnit(void) {return m_distanceUnit;}
 
 	void SetPaperFormatAndBorders(enum ePaperFormats, enum ePaperOrientations, double borderTop, double borderRight, double borderBottom, double borderLeft)
 	{
