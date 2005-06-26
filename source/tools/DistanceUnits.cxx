@@ -5,13 +5,14 @@ typedef struct
 {
 	enum DistanceUnits::eDistanceUnits unit;
 	char *name;
-	double multipleOfCm;
+	double multipleOfCentimeter;
 } distanceUnits;
 
 static const distanceUnits g_distanceUnits[] =
 {
-	{DistanceUnits::eDistanceUnitCm, "cm", 1.0},
-	{DistanceUnits::eDistanceUnitMm, "mm", 0.1},
+	{DistanceUnits::eDistanceUnitMeter, "m", 100},
+	{DistanceUnits::eDistanceUnitMillimeter, "mm", 0.1},
+	{DistanceUnits::eDistanceUnitCentimeter, "cm", 1.0},
 	{DistanceUnits::eDistanceUnitInch, "inch", 2.54}
 };
 
@@ -47,7 +48,7 @@ const char* DistanceUnits::GetDistanceUnitName(enum eDistanceUnits unit)
 
 enum DistanceUnits::eDistanceUnits DistanceUnits::GetDistanceUnitForName(const char* name)
 {
-	enum eDistanceUnits distanceUnit = eDistanceUnitCm;
+	enum eDistanceUnits distanceUnit = eDistanceUnitCentimeter;
 
 	for (int i = 0; i < g_distanceUnitsCount; i++)
 	{
@@ -61,31 +62,29 @@ enum DistanceUnits::eDistanceUnits DistanceUnits::GetDistanceUnitForName(const c
 	return distanceUnit;
 }
 
-double CmToDistanceUnit(double cm, enum DistanceUnits::eDistanceUnits unit)
+double CentimeterToDistanceUnit(double cm, enum DistanceUnits::eDistanceUnits unit)
 {
-	if (unit == DistanceUnits::eDistanceUnitInch)
-		cm /= 2.54;
+	cm /= g_distanceUnits[DistanceUnits::GetDistanceUnitIndex(unit)].multipleOfCentimeter;
 	return cm;
 }
 
-double DistanceUnitToCm(double distance, enum DistanceUnits::eDistanceUnits unit)
+double DistanceUnitToCentimeter(double distance, enum DistanceUnits::eDistanceUnits unit)
 {
-	if (unit == DistanceUnits::eDistanceUnitInch)
-		distance *= 2.54;
+	distance *= g_distanceUnits[DistanceUnits::GetDistanceUnitIndex(unit)].multipleOfCentimeter;
 	return distance;
 }
 
-double DistanceUnits::ConvertBetweenDistancUnits(double distance, enum eDistanceUnits sourceUnit, enum eDistanceUnits targetUnit)
+double DistanceUnits::ConvertBetweenDistanceUnits(double distance, enum eDistanceUnits sourceUnit, enum eDistanceUnits targetUnit)
 {
 	double convertedDistance = distance;
 
 	if (sourceUnit != targetUnit)
 	{
-		if (sourceUnit != eDistanceUnitCm)
-			convertedDistance = DistanceUnitToCm(convertedDistance, sourceUnit);
+		if (sourceUnit != eDistanceUnitCentimeter)
+			convertedDistance = DistanceUnitToCentimeter(convertedDistance, sourceUnit);
 
-		if (targetUnit != eDistanceUnitCm)
-			convertedDistance = CmToDistanceUnit(convertedDistance, targetUnit);
+		if (targetUnit != eDistanceUnitCentimeter)
+			convertedDistance = CentimeterToDistanceUnit(convertedDistance, targetUnit);
 	}
 
 	return convertedDistance;
