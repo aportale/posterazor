@@ -8,7 +8,6 @@
 #include <FL/Fl_Button.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Wizard.H>
-#include <FL/Fl_Round_Button.H>
 
 class PosteRazorDialogUI {
 public:
@@ -22,6 +21,6 @@ public:
   Fl_Wizard *m_wizard;
   virtual void next(void) = 0;
   virtual void prev(void) = 0;
-  void show();
+  void show(int argc, char** argv);
 };
 #endif

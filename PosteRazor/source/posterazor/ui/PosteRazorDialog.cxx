@@ -19,7 +19,8 @@ void PosteRazorDialog::prev(void)
 int main (int argc, char **argv)
 {
 	PosteRazorDialog dialog;
-	dialog.show();
+	Fl::scheme("plastic");
+	dialog.show(argc, argv);
 	PosteRazor* prz = PosteRazor::CreatePosteRazor("c:\\IMG_0184.tif");
 
 	delete prz;

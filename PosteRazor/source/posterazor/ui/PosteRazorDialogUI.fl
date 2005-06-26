@@ -50,7 +50,7 @@ class PosteRazorDialogUI {open
             }
           }
         }
-        Fl_Group {} {open selected
+        Fl_Group {} {open
           xywh {10 9 420 425} resizable
         } {
           Fl_Button {} {
@@ -85,9 +85,9 @@ class PosteRazorDialogUI {open
   }
   decl {virtual void prev(void) = 0;} {public
   }
-  Function {show()} {open
+  Function {show(int argc, char** argv)} {open selected
   } {
     code {Fl_Double_Window *w = make_window();
-w->show();} {}
+w->show(argc, argv);} {}
   }
 } 
