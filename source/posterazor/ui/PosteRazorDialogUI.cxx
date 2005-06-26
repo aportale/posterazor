@@ -66,25 +66,15 @@ Fl_Double_Window* PosteRazorDialogUI::make_window() {
       }
       { Fl_Group* o = new Fl_Group(10, 9, 420, 425);
         new Fl_Button(190, 44, 68, 20, "button");
-        { Fl_Box* o = new Fl_Box(195, 125, 115, 75, "sdf gsdfgsgfdf gfgg ssdfgsdfg");
-          o->box(FL_THIN_DOWN_BOX);
-          o->color((Fl_Color)55);
-          o->image(image_up);
-          o->align(192);
-        }
-        { Fl_Round_Button* o = new Fl_Round_Button(175, 120, 140, 85);
+        { Fl_Button* o = new Fl_Button(35, 115, 135, 95, "buttondfg dfgdfg dfgdfg dfg");
           o->type(102);
-          o->down_box(FL_ROUND_DOWN_BOX);
-        }
-        { Fl_Box* o = new Fl_Box(195, 240, 115, 75, "sdf gsdfgsgfdf gfgg ssdfgsdfg");
-          o->box(FL_THIN_DOWN_BOX);
-          o->color((Fl_Color)55);
           o->image(image_up);
-          o->align(192);
+          o->align(FL_ALIGN_WRAP);
         }
-        { Fl_Round_Button* o = new Fl_Round_Button(175, 235, 140, 85);
+        { Fl_Button* o = new Fl_Button(180, 115, 135, 95, "buttondfg dfgdfg dfgdfg dfg");
           o->type(102);
-          o->down_box(FL_ROUND_DOWN_BOX);
+          o->image(image_up);
+          o->align(FL_ALIGN_WRAP);
         }
         o->end();
         Fl_Group::current()->resizable(o);
@@ -105,7 +95,7 @@ Fl_Double_Window* PosteRazorDialogUI::make_window() {
   return w;
 }
 
-void PosteRazorDialogUI::show() {
+void PosteRazorDialogUI::show(int argc, char** argv) {
   Fl_Double_Window *w = make_window();
-w->show();
+w->show(argc, argv);
 }
