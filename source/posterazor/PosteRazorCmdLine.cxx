@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 
 	// This is no real main program, yet. It is just testing the PosteRazor API.
 
-	PosteRazor* prz = PosteRazor::CreatePosteRazor("c:\\IMG_0184.tif");
+	PosteRazor* prz = PosteRazor::CreatePosteRazor("D:\\bureau.png");
 	int huhu1 = prz->GetInputImageWidthPixels();
 	int huhu2 = prz->GetInputImageHeightPixels();
 
@@ -17,9 +17,20 @@ int main(int argc, char *argv[])
 
 	double widthCm = prz->GetInputImageWidth();
 	double heightCm = prz->GetInputImageHeight();
-	prz->SetDistanceUnit(PosteRazor::eDistanceUnitInch);
 	double widthInch = prz->GetInputImageWidth();
 	double heightInch = prz->GetInputImageHeight();
+
+	prz->SetDistanceUnit(PosteRazor::eDistanceUnitCentimeter);
+	double posterWidth = prz->GetPosterWidth(PosteRazor::ePosterSizeModes::ePosterSizeModeAbsolute);
+	double posterHeight = prz->GetPosterHeight(PosteRazor::ePosterSizeModes::ePosterSizeModeAbsolute);
+        prz->SetPosterWidth(PosteRazor::ePosterSizeModes::ePosterSizeModeAbsolute, 8);
+	posterWidth = prz->GetPosterWidth(PosteRazor::ePosterSizeModes::ePosterSizeModeAbsolute);
+	posterHeight = prz->GetPosterHeight(PosteRazor::ePosterSizeModes::ePosterSizeModeAbsolute);
+	prz->SetPreserveAspectRatio(false);
+        prz->SetPosterWidth(PosteRazor::ePosterSizeModes::ePosterSizeModeAbsolute, 4);
+	posterWidth = prz->GetPosterWidth(PosteRazor::ePosterSizeModes::ePosterSizeModeAbsolute);
+	posterHeight = prz->GetPosterHeight(PosteRazor::ePosterSizeModes::ePosterSizeModeAbsolute);
+
 
 	const char* name = PosteRazor::GetPaperFormatName(PosteRazor::ePaperFormatLegal);
 	enum PosteRazor::ePaperFormats format = PosteRazor::GetPaperFormatForName("Letter");
