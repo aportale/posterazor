@@ -49,6 +49,11 @@ public:
 
 			m_horizontalDotsPerMeter = FreeImage_GetDotsPerMeterX(m_bitmap);
 			m_verticalDotsPerMeter = FreeImage_GetDotsPerMeterY(m_bitmap);
+
+			if (m_horizontalDotsPerMeter == 0)
+				m_horizontalDotsPerMeter = 2835; // 72 dpi
+			if (m_verticalDotsPerMeter == 0)
+				m_verticalDotsPerMeter = 2835;
 		}
 	}
 
@@ -87,5 +92,5 @@ PosteRazorImageIO* PosteRazorImageIO::CreatePosteRazorImageIO(const char* imgFil
 		impl = 0;
 	}
 
-	return (PosteRazorImageIO*)(new PosteRazorImageIOImplementation(imgFileName));
+	return (PosteRazorImageIO*)(impl);
 }
