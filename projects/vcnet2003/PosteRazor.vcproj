@@ -20,7 +20,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="D:\temp\FreeImage\Dist\;..\..\source\tools"
+				AdditionalIncludeDirectories="..\..\source\tools;..\..\thirdparty\FreeImage\Dist"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;FREEIMAGE_LIB"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -34,7 +34,7 @@
 			<Tool
 				Name="VCLibrarianTool"
 				AdditionalDependencies="FreeImage.lib"
-				AdditionalLibraryDirectories="D:\temp\FreeImage\Dist\"/>
+				AdditionalLibraryDirectories="..\..\thirdparty\FreeImage\Dist"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -62,7 +62,7 @@
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="D:\temp\FreeImage\Dist\;..\..\source\tools"
+				AdditionalIncludeDirectories="..\..\source\tools;..\..\thirdparty\FreeImage\Dist"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;FREEIMAGE_LIB"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -74,7 +74,7 @@
 			<Tool
 				Name="VCLibrarianTool"
 				AdditionalDependencies="FreeImage.lib"
-				AdditionalLibraryDirectories="D:\temp\FreeImage\Dist\"/>
+				AdditionalLibraryDirectories="..\..\thirdparty\FreeImage\Dist"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
