@@ -19,7 +19,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;D:\temp\fltk-1.1.x&quot;;..\..\source\posterazor"
+				AdditionalIncludeDirectories="..\..\source\posterazor;&quot;..\..\thirdparty\fltk-1.1&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -32,11 +32,11 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="fltkd.lib wsock32.lib comctl32.lib"
+				AdditionalDependencies="fltk.lib wsock32.lib comctl32.lib"
 				OutputFile="$(OutDir)/PosteRazorGUI.exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;D:\temp\fltk-1.1.x\lib&quot;"
-				IgnoreDefaultLibraryNames="libcd"
+				AdditionalLibraryDirectories="&quot;..\..\thirdparty\fltk-1.1\lib&quot;"
+				IgnoreDefaultLibraryNames="libc"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/PosteRazorUI.pdb"
 				SubSystem="1"
@@ -70,7 +70,7 @@
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;D:\temp\fltk-1.1.x&quot;;..\..\source\posterazor"
+				AdditionalIncludeDirectories="..\..\source\posterazor;&quot;..\..\thirdparty\fltk-1.1&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -84,7 +84,7 @@
 				AdditionalDependencies="fltk.lib wsock32.lib comctl32.lib"
 				OutputFile="$(OutDir)/PosteRazorUI.exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;D:\temp\fltk-1.1.x\lib&quot;"
+				AdditionalLibraryDirectories="&quot;..\..\thirdparty\fltk-1.1\lib&quot;"
 				IgnoreDefaultLibraryNames="libc"
 				GenerateDebugInformation="FALSE"
 				SubSystem="2"
