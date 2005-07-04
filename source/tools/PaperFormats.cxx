@@ -11,11 +11,11 @@ typedef struct
 
 static const paperFormats g_paperFormats[] =
 {
-	{PaperFormats::ePaperFormatA4, "DIN A4", 210, 297},
-	{PaperFormats::ePaperFormatA3, "DIN A3", 297, 420},
-	{PaperFormats::ePaperFormatLegal, "Legal", 216, 356},
-	{PaperFormats::ePaperFormatLetter, "Letter", 216, 279},
-	{PaperFormats::ePaperFormatTabloid, "Tabloid", 279, 432}
+	{PaperFormats::ePaperFormatA4, "DIN A4", 21.0, 29.7},
+	{PaperFormats::ePaperFormatA3, "DIN A3", 29.7, 42.0},
+	{PaperFormats::ePaperFormatLegal, "Legal", 21.6, 35.6},
+	{PaperFormats::ePaperFormatLetter, "Letter", 21.6, 27.9},
+	{PaperFormats::ePaperFormatTabloid, "Tabloid", 27.9, 43.2}
 };
 
 static const g_paperFormatsCount = sizeof(g_paperFormats)/sizeof(g_paperFormats[0]);
