@@ -7,7 +7,9 @@ class PosteRazorImageIO
 {
 public:
 	virtual ~PosteRazorImageIO() {};
-	static PosteRazorImageIO* CreatePosteRazorImageIO(const char* imgFileName);
+	static PosteRazorImageIO* CreatePosteRazorImageIO();
+
+	virtual bool LoadImage(const char *imageFileName) = 0;
 
 	virtual int GetWidthPixels(void) = 0;
 	virtual int GetHeightPixels(void) = 0;

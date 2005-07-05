@@ -22,7 +22,7 @@ class PosteRazorImageIOImplementation: public PosteRazorImageIO
 {
 private:
 
-	FIBITMAP  *m_bitmap;
+	FIBITMAP*    m_bitmap;
 
 	int          m_widthPixels;
 	int          m_heightPixels;
@@ -31,19 +31,44 @@ private:
 	unsigned int m_verticalDotsPerMeter;
 
 public:
-	PosteRazorImageIOImplementation(const char* imgFileName)
+	PosteRazorImageIOImplementation()
 	{
-		m_bitmap = FreeImage_Load(FreeImage_GetFileType(imgFileName, 0), imgFileName);
+		m_bitmap = NULL;
 
 		m_widthPixels = 0;
 		m_heightPixels = 0;
 
 		m_horizontalDotsPerMeter = 0;
 		m_verticalDotsPerMeter = 0;
+	}
 
+	~PosteRazorImageIOImplementation()
+	{
+		DisposeImage();
+	}
 
+	void DisposeImage()
+	{
 		if (m_bitmap)
 		{
+			FreeImage_Unload(m_bitmap);
+			m_bitmap = NULL;
+		}
+	}
+
+	bool LoadImage(const char *imageFileName)
+	{
+		bool result = false;
+
+		FIBITMAP* newImage = FreeImage_Load(FreeImage_GetFileType(imageFileName, 0), imageFileName);
+
+		if (newImage)
+		{
+			result = true;
+			DisposeImage();
+
+			m_bitmap = newImage;
+
 			m_widthPixels = FreeImage_GetWidth(m_bitmap);
 			m_heightPixels = FreeImage_GetHeight(m_bitmap);
 
@@ -55,12 +80,8 @@ public:
 			if (m_verticalDotsPerMeter == 0)
 				m_verticalDotsPerMeter = 2835;
 		}
-	}
 
-	~PosteRazorImageIOImplementation()
-	{
-		if (m_bitmap)
-			FreeImage_Unload(m_bitmap);
+		return result;
 	}
 
 	FIBITMAP *GetBitmap(void) {return m_bitmap;}
@@ -82,15 +103,7 @@ public:
 	double GetHeight(enum DistanceUnits::eDistanceUnits unit) {return GetHeightPixels() / GetHorizontalDotsPerDistanceUnit(unit);}
 };
 
-PosteRazorImageIO* PosteRazorImageIO::CreatePosteRazorImageIO(const char* imgFileName)
+PosteRazorImageIO* PosteRazorImageIO::CreatePosteRazorImageIO(void)
 {
-	PosteRazorImageIOImplementation *impl = new PosteRazorImageIOImplementation(imgFileName);
-
-	if (impl && !impl->GetBitmap())
-	{
-		delete impl;
-		impl = 0;
-	}
-
-	return (PosteRazorImageIO*)(impl);
+	return (PosteRazorImageIO*) new PosteRazorImageIOImplementation();
 }

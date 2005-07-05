@@ -4,7 +4,7 @@
 class PosteRazorImplementation: public PosteRazor
 {
 private:
-	PosteRazorImageIO *m_imageIO;
+	PosteRazorImageIO*     m_imageIO;
 
 	char                   m_fileName[1024];
 	char                   m_documentName[1024];
@@ -35,9 +35,9 @@ private:
 	bool                   m_lastEditedSizeWasWidth;
 
 public:
-	PosteRazorImplementation(const char* imgFileName)
+	PosteRazorImplementation()
 	{
-		m_imageIO = PosteRazorImageIO::CreatePosteRazorImageIO(imgFileName);
+		m_imageIO                      = PosteRazorImageIO::CreatePosteRazorImageIO();
 
 		m_posterSizeMode               = ePosterSizeModePages;
 		m_posterWidth                  = 2.0;
@@ -60,8 +60,6 @@ public:
 
 		m_distanceUnit                 = eDistanceUnitCentimeter;
 		m_lastEditedSizeWasWidth       = true;
-
-		CalculateAspectRatio();
 	}
 
 	~PosteRazorImplementation()
@@ -70,6 +68,16 @@ public:
 	}
 
 	PosteRazorImageIO *GetImageIO(void) {return m_imageIO;}
+
+	bool LoadInputImage(const char *imageFileName)
+	{
+		bool result = m_imageIO->LoadImage(imageFileName);
+
+		if (result)
+			CalculateAspectRatio();
+
+		return result;
+	}
 
 	int GetInputImageWidthPixels(void) {return m_imageIO->GetWidthPixels();}
 	int GetInputImageHeightPixels(void) {return m_imageIO->GetHeightPixels();}
@@ -243,15 +251,7 @@ public:
 	enum ePosterSizeModes GetPosterSizeMode(void) {return m_posterSizeMode;}
 };
 
-PosteRazor* PosteRazor::CreatePosteRazor(const char* imgFileName)
+PosteRazor* PosteRazor::CreatePosteRazor()
 {
-	PosteRazorImplementation *impl = new PosteRazorImplementation(imgFileName);
-
-	if (impl && !impl->GetImageIO())
-	{
-		delete impl;
-		impl = 0;
-	}
-
-	return (PosteRazor*)impl;
+	return (PosteRazor*)new PosteRazorImplementation();
 }

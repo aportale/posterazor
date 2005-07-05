@@ -22,7 +22,9 @@ public:
 	};
 
 	virtual ~PosteRazor() {};
-	static PosteRazor* CreatePosteRazor(const char* imgFileName);
+	static PosteRazor* CreatePosteRazor();
+
+	virtual bool LoadInputImage(const char *imageFileName) = 0;
 
 	virtual int GetInputImageWidthPixels(void) = 0;
 	virtual int GetInputImageHeightPixels(void) = 0;
