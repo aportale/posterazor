@@ -7,7 +7,7 @@ class PosteRazorDialogUI {open
   Function {make_window()} {open
   } {
     Fl_Window {} {open
-      xywh {801 94 440 480} type Double resizable visible
+      xywh {575 194 440 480} type Double resizable visible
     } {
       Fl_Group {} {open
         xywh {10 444 420 25}
@@ -27,14 +27,14 @@ class PosteRazorDialogUI {open
         }
       }
       Fl_Wizard m_wizard {
-        user_data this
+        user_data this open
         xywh {10 9 420 425} box THIN_DOWN_BOX resizable
       } {
-        Fl_Group {} {
-          xywh {10 9 420 425} hide
+        Fl_Group {} {open
+          xywh {10 9 420 425}
         } {
-          Fl_Group {} {
-            xywh {20 69 400 355} box THIN_DOWN_BOX color 43 resizable
+          Fl_Group m_previewImageGroup {open
+            xywh {20 69 400 355} box THIN_DOWN_BOX color 43 align 16 resizable
           } {}
           Fl_Group {} {
             label {Input Image:} open
@@ -42,6 +42,7 @@ class PosteRazorDialogUI {open
           } {
             Fl_Button {} {
               label {...}
+              callback {LoadInputImage();}
               xywh {395 34 25 25}
             }
             Fl_Box {} {
@@ -51,7 +52,7 @@ class PosteRazorDialogUI {open
           }
         }
         Fl_Group {} {open
-          xywh {10 9 420 425} resizable
+          xywh {10 9 420 425} hide resizable
         } {
           Fl_Button {} {
             label button
@@ -85,7 +86,11 @@ class PosteRazorDialogUI {open
   }
   decl {virtual void prev(void) = 0;} {public
   }
-  Function {show(int argc, char** argv)} {open selected
+  decl {virtual void LoadInputImage(void) = 0;} {public
+  }
+  decl {virtual void resize(int, int, int, int) = 0;} {selected public
+  }
+  Function {show(int argc, char** argv)} {open
   } {
     code {Fl_Double_Window *w = make_window();
 w->show(argc, argv);} {}

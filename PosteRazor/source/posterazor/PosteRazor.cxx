@@ -249,6 +249,8 @@ public:
 	}
 
 	enum ePosterSizeModes GetPosterSizeMode(void) {return m_posterSizeMode;}
+
+	void GetPreview(unsigned char* buffer, int pixelWidth, int pixelHeight) {m_imageIO->GetPreview(buffer, pixelWidth, pixelHeight);}
 };
 
 PosteRazor* PosteRazor::CreatePosteRazor()

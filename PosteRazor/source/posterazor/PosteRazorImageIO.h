@@ -19,6 +19,8 @@ public:
 
 	virtual double GetWidth(enum DistanceUnits::eDistanceUnits unit) = 0;
 	virtual double GetHeight(enum DistanceUnits::eDistanceUnits unit) = 0;
+
+	virtual void GetPreview(unsigned char* buffer, int pixelWidth, int pixelHeight) = 0;
 };
 
 #endif

@@ -16,6 +16,13 @@ void PosteRazorDialogUI::cb_2(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->user_data()))->cb_2_i(o,v);
 }
 
+void PosteRazorDialogUI::cb__i(Fl_Button*, void*) {
+  LoadInputImage();
+}
+void PosteRazorDialogUI::cb_(Fl_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb__i(o,v);
+}
+
 #include <FL/Fl_Bitmap.H>
 static unsigned char idata_up[] =
 "\0\0x\0\204\0\2\1""1\376y\200\375\200""1\200""1\200""1\200""1\200""1\200\1\
@@ -43,16 +50,18 @@ Fl_Double_Window* PosteRazorDialogUI::make_window() {
       o->box(FL_THIN_DOWN_BOX);
       o->user_data((void*)(this));
       { Fl_Group* o = new Fl_Group(10, 9, 420, 425);
-        o->hide();
-        { Fl_Group* o = new Fl_Group(20, 69, 400, 355);
+        { Fl_Group* o = m_previewImageGroup = new Fl_Group(20, 69, 400, 355);
           o->box(FL_THIN_DOWN_BOX);
           o->color((Fl_Color)43);
+          o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
           o->end();
           Fl_Group::current()->resizable(o);
         }
         { Fl_Group* o = new Fl_Group(20, 34, 400, 25, "Input Image:");
           o->align(FL_ALIGN_TOP_LEFT);
-          new Fl_Button(395, 34, 25, 25, "...");
+          { Fl_Button* o = new Fl_Button(395, 34, 25, 25, "...");
+            o->callback((Fl_Callback*)cb_);
+          }
           { Fl_Box* o = new Fl_Box(20, 34, 375, 25);
             o->box(FL_THIN_DOWN_BOX);
             o->color((Fl_Color)55);
@@ -65,16 +74,27 @@ Fl_Double_Window* PosteRazorDialogUI::make_window() {
         o->end();
       }
       { Fl_Group* o = new Fl_Group(10, 9, 420, 425);
+        o->hide();
         new Fl_Button(190, 44, 68, 20, "button");
-        { Fl_Button* o = new Fl_Button(35, 115, 135, 95, "buttondfg dfgdfg dfgdfg dfg");
-          o->type(102);
+        { Fl_Box* o = new Fl_Box(195, 125, 115, 75, "sdf gsdfgsgfdf gfgg ssdfgsdfg");
+          o->box(FL_THIN_DOWN_BOX);
+          o->color((Fl_Color)55);
           o->image(image_up);
-          o->align(FL_ALIGN_WRAP);
+          o->align(192);
         }
-        { Fl_Button* o = new Fl_Button(180, 115, 135, 95, "buttondfg dfgdfg dfgdfg dfg");
+        { Fl_Round_Button* o = new Fl_Round_Button(175, 120, 140, 85);
           o->type(102);
+          o->down_box(FL_ROUND_DOWN_BOX);
+        }
+        { Fl_Box* o = new Fl_Box(195, 240, 115, 75, "sdf gsdfgsgfdf gfgg ssdfgsdfg");
+          o->box(FL_THIN_DOWN_BOX);
+          o->color((Fl_Color)55);
           o->image(image_up);
-          o->align(FL_ALIGN_WRAP);
+          o->align(192);
+        }
+        { Fl_Round_Button* o = new Fl_Round_Button(175, 235, 140, 85);
+          o->type(102);
+          o->down_box(FL_ROUND_DOWN_BOX);
         }
         o->end();
         Fl_Group::current()->resizable(o);
