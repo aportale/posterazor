@@ -52,6 +52,8 @@ public:
 	virtual double GetPosterWidth(enum ePosterSizeModes mode) = 0;
 	virtual double GetPosterHeight(enum ePosterSizeModes mode) = 0;
 	virtual enum ePosterSizeModes GetPosterSizeMode(void) = 0;
+
+	virtual void GetPreview(unsigned char* buffer, int pixelWidth, int pixelHeight) = 0;
 };
 
 #endif

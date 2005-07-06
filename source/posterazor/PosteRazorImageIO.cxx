@@ -2,6 +2,7 @@
 #include "PosteRazorImageIO.h"
 #include "DistanceUnits.h"
 #include <stdio.h>
+#include <string.h>
 
 class FreeImageInitializer
 {
@@ -84,8 +85,6 @@ public:
 		return result;
 	}
 
-	FIBITMAP *GetBitmap(void) {return m_bitmap;}
-
 	int GetWidthPixels(void) {return m_widthPixels;}
 	int GetHeightPixels(void) {return m_heightPixels;}
 
@@ -101,6 +100,19 @@ public:
 
 	double GetWidth(enum DistanceUnits::eDistanceUnits unit) {return GetWidthPixels() / GetHorizontalDotsPerDistanceUnit(unit);}
 	double GetHeight(enum DistanceUnits::eDistanceUnits unit) {return GetHeightPixels() / GetHorizontalDotsPerDistanceUnit(unit);}
+
+	void GetPreview(unsigned char* buffer, int pixelWidth, int pixelHeight)
+	{
+		FIBITMAP* preview = FreeImage_Rescale(m_bitmap, pixelWidth, pixelHeight, FILTER_BILINEAR);
+
+		for (int i = 0; i < pixelHeight; i++)
+		{
+			memcpy(buffer + (i*pixelWidth*3), FreeImage_GetScanLine(preview, i), pixelWidth*3);
+		}
+
+		if (preview)
+			FreeImage_Unload(preview);
+	}
 };
 
 PosteRazorImageIO* PosteRazorImageIO::CreatePosteRazorImageIO(void)
