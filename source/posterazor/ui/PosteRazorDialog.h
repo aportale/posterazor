@@ -23,7 +23,6 @@ public:
 	void LoadInputImage(void);
 	void UpdatePreviewImage(void);
 
-	void resize(int x, int y, int w, int h);
 };
 
 #endif

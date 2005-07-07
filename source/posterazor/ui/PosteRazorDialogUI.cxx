@@ -3,7 +3,8 @@
 #include "PosteRazorDialogUI.h"
 
 void PosteRazorDialogUI::cb_Next_i(Fl_Button*, void*) {
-  next();
+  //next();
+UpdatePreviewImage();
 }
 void PosteRazorDialogUI::cb_Next(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->user_data()))->cb_Next_i(o,v);
@@ -53,7 +54,7 @@ Fl_Double_Window* PosteRazorDialogUI::make_window() {
         { Fl_Group* o = m_previewImageGroup = new Fl_Group(20, 69, 400, 355);
           o->box(FL_THIN_DOWN_BOX);
           o->color((Fl_Color)43);
-          o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
+          o->align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE);
           o->end();
           Fl_Group::current()->resizable(o);
         }
@@ -108,7 +109,6 @@ Fl_Double_Window* PosteRazorDialogUI::make_window() {
         o->end();
       }
       o->end();
-      Fl_Group::current()->resizable(o);
     }
     o->end();
   }

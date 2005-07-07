@@ -28,7 +28,7 @@ public:
   virtual void next(void) = 0;
   virtual void prev(void) = 0;
   virtual void LoadInputImage(void) = 0;
-  virtual void resize(int, int, int, int) = 0;
+  virtual void UpdatePreviewImage(void) = 0;
   void show(int argc, char** argv);
 };
 #endif
