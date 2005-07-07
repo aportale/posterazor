@@ -1,0 +1,15 @@
+0.62 -- 02/02/2005
+------------------
+
+	o Added Ian's mods to main.cxx to use getcwd() instead of fixed path
+
+	o Added #include/#define's to support getcwd() under Windows VS
+
+0.61 -- 01/26/2005
+------------------
+	o Applied Ian MacArthur's 01/26/2005 fixes,
+	  and Makefile.fltkconfig, including tab fixes and line 90 .obj -> .o fix.
+
+	o Enabled /Wall on Windows VS7.x, and fixed all problems related to Fl_Native*
+	  (mainly, ctor type value was being ignored)
+
