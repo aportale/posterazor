@@ -6,7 +6,7 @@ class PosteRazorDialogUI {open
 } {
   Function {make_window()} {open
   } {
-    Fl_Window {} {open selected
+    Fl_Window {} {open
       xywh {575 194 440 480} type Double visible
     } {
       Fl_Group {} {open
@@ -32,10 +32,10 @@ UpdatePreviewImage();}
         xywh {10 9 420 425} box THIN_DOWN_BOX
       } {
         Fl_Group {} {open
-          xywh {10 9 420 425}
+          xywh {10 9 420 425} color 50
         } {
-          Fl_Group m_previewImageGroup {open
-            xywh {20 69 400 355} box THIN_DOWN_BOX color 43 align 80 resizable
+          Fl_Group m_previewImageGroup {open selected
+            xywh {20 69 400 355} box THIN_DOWN_BOX color 47 selection_color 52 labelfont 1 labelsize 26 labelcolor 61 align 80 resizable
           } {}
           Fl_Group {} {
             label {Input Image:} open
@@ -46,9 +46,8 @@ UpdatePreviewImage();}
               callback {LoadInputImage();}
               xywh {395 34 25 25}
             }
-            Fl_Box {} {
+            Fl_Box m_inputFileNameLabel {
               xywh {20 34 375 25} box THIN_DOWN_BOX color 55 align 20 resizable
-              code0 {o->label("fgjgf");}
             }
           }
         }

@@ -126,23 +126,25 @@ public:
 
 			m_previewBitmap = FreeImage_Rescale(originalImage, pixelWidth, pixelHeight, FILTER_BILINEAR);
 
+			for (unsigned int row = 0; row < pixelHeight; row++)
+			{
+				unsigned char *pixelPtr = FreeImage_GetScanLine(m_previewBitmap, row);
+
+				for (unsigned int column = 0; column < pixelWidth; column++)
+				{
+					unsigned char temp = pixelPtr[0];
+					pixelPtr[0] = pixelPtr[2];
+					pixelPtr[2] = temp;
+					pixelPtr+=3;
+				}
+			}
+			
+
 			if (temp24BPPImage)
 				FreeImage_Unload(temp24BPPImage);
 		}
 
-		if (m_previewBitmap)
-		{
-			FreeImage_ConvertToRawBits(buffer, m_previewBitmap, pixelWidth*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
-			unsigned int pixelsCount = pixelWidth * pixelHeight;
-			unsigned char *pixelPtr = buffer;
-			for (unsigned int i = 0; i < pixelsCount; i++)
-			{
-				unsigned char temp = pixelPtr[0];
-				pixelPtr[0] = pixelPtr[2];
-				pixelPtr[2] = temp;
-				pixelPtr+=3;
-			}
-		}
+		FreeImage_ConvertToRawBits(buffer, m_previewBitmap, pixelWidth*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
 	}
 };
 
