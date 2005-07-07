@@ -25,7 +25,7 @@ void PosteRazorDialog::prev(void)
 
 void PosteRazorDialog::LoadInputImage(void)
 {
-	bool loaded = m_posteRazor->LoadInputImage("c:\\buibui.png");
+	bool loaded = m_posteRazor->LoadInputImage("D:\\Döner.gif");
 
 	if (loaded)
 		UpdatePreviewImage();
@@ -41,19 +41,19 @@ void PosteRazorDialog::DisposePreviewImage(void)
 
 void PosteRazorDialog::UpdatePreviewImage(void)
 {
-	m_previewImageData = new unsigned char[m_previewImageGroup->w() * m_previewImageGroup->h() * 3];
-		
-	m_posteRazor->GetPreview(m_previewImageData, m_previewImageGroup->w(),  m_previewImageGroup->h());
+	int previewImageWidth;
+	int previewImageHeight;
+	
+	m_posteRazor->GetPreviewSize(m_previewImageGroup->w() - 14, m_previewImageGroup->h() - 14, previewImageWidth, previewImageHeight);
 
-	m_previewImage = new Fl_RGB_Image(m_previewImageData, m_previewImageGroup->w(),  m_previewImageGroup->h());
+	m_previewImageData = new unsigned char[previewImageWidth * previewImageHeight * 3];
+		
+	m_posteRazor->GetPreview(m_previewImageData, previewImageWidth,  previewImageHeight);
+
+	m_previewImage = new Fl_RGB_Image(m_previewImageData, previewImageWidth,  previewImageHeight);
 	m_previewImageGroup->image(m_previewImage);
 
 	Fl::redraw();
-}
-
-void PosteRazorDialog::resize(int x, int y, int w, int h)
-{
-	int huhu = 1;
 }
 
 int main (int argc, char **argv)
