@@ -33,7 +33,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				AdditionalDependencies="FreeImage.lib"
+				AdditionalDependencies="FreeImaged.lib"
 				AdditionalLibraryDirectories="..\..\thirdparty\FreeImage\Dist"/>
 			<Tool
 				Name="VCMIDLTool"/>
