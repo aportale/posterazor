@@ -25,6 +25,7 @@ private:
   void cb__i(Fl_Button*, void*);
   static void cb_(Fl_Button*, void*);
 public:
+  Fl_Box *m_inputFileNameLabel;
   virtual void next(void) = 0;
   virtual void prev(void) = 0;
   virtual void LoadInputImage(void) = 0;

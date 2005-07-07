@@ -51,9 +51,14 @@ Fl_Double_Window* PosteRazorDialogUI::make_window() {
       o->box(FL_THIN_DOWN_BOX);
       o->user_data((void*)(this));
       { Fl_Group* o = new Fl_Group(10, 9, 420, 425);
+        o->color(FL_LIGHT1);
         { Fl_Group* o = m_previewImageGroup = new Fl_Group(20, 69, 400, 355);
           o->box(FL_THIN_DOWN_BOX);
-          o->color((Fl_Color)43);
+          o->color(FL_DARK1);
+          o->selection_color(FL_LIGHT2);
+          o->labelfont(1);
+          o->labelsize(26);
+          o->labelcolor((Fl_Color)61);
           o->align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE);
           o->end();
           Fl_Group::current()->resizable(o);
@@ -63,12 +68,11 @@ Fl_Double_Window* PosteRazorDialogUI::make_window() {
           { Fl_Button* o = new Fl_Button(395, 34, 25, 25, "...");
             o->callback((Fl_Callback*)cb_);
           }
-          { Fl_Box* o = new Fl_Box(20, 34, 375, 25);
+          { Fl_Box* o = m_inputFileNameLabel = new Fl_Box(20, 34, 375, 25);
             o->box(FL_THIN_DOWN_BOX);
             o->color((Fl_Color)55);
             o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
             Fl_Group::current()->resizable(o);
-            o->label("fgjgf");
           }
           o->end();
         }
