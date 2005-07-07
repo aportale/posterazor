@@ -1,4 +1,7 @@
 #include "PosteRazorDialog.h"
+#include <FL/Fl_Native_File_Chooser.H>
+#include <FL/filename.H>
+#include <FL/fl_ask.H>
 
 PosteRazorDialog::PosteRazorDialog(void)
 	:PosteRazorDialogUI()
@@ -25,25 +28,49 @@ void PosteRazorDialog::prev(void)
 
 void PosteRazorDialog::LoadInputImage(void)
 {
-	bool loaded = m_posteRazor->LoadInputImage("D:\\Döner.gif");
+	Fl_Native_File_Chooser chooser;
+	bool loaded = false;
+
+	if (chooser.show() == 0)
+	{
+		loaded = m_posteRazor->LoadInputImage(chooser.filename());
+		if (!loaded)
+			fl_message("The file '%s' could not be loaded.", fl_filename_name(chooser.filename()));
+	}
 
 	if (loaded)
+	{
+		m_previewImageGroup->image(NULL);
+		m_previewImageGroup->label("...please wait...");
+		Fl::wait();
+		m_inputFileNameLabel->copy_label(fl_filename_name(chooser.filename()));
 		UpdatePreviewImage();
+		m_previewImageGroup->label(NULL);
+		Fl::wait();
+	}
 }
 
 void PosteRazorDialog::DisposePreviewImage(void)
 {
 	if (m_previewImageData)
+	{
 		delete[] m_previewImageData;
+		m_previewImageData = NULL;
+	}
 	if (m_previewImage)
+	{
 		delete m_previewImage;
+		m_previewImage = NULL;
+	}
 }
 
 void PosteRazorDialog::UpdatePreviewImage(void)
 {
 	int previewImageWidth;
 	int previewImageHeight;
-	
+
+	DisposePreviewImage();
+
 	m_posteRazor->GetPreviewSize(m_previewImageGroup->w() - 14, m_previewImageGroup->h() - 14, previewImageWidth, previewImageHeight);
 
 	m_previewImageData = new unsigned char[previewImageWidth * previewImageHeight * 3];
