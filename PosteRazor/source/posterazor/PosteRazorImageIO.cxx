@@ -24,6 +24,7 @@ class PosteRazorImageIOImplementation: public PosteRazorImageIO
 private:
 
 	FIBITMAP*    m_bitmap;
+	FIBITMAP*    m_previewBitmap;
 
 	int          m_widthPixels;
 	int          m_heightPixels;
@@ -35,6 +36,7 @@ public:
 	PosteRazorImageIOImplementation()
 	{
 		m_bitmap = NULL;
+		m_previewBitmap = NULL;
 
 		m_widthPixels = 0;
 		m_heightPixels = 0;
@@ -54,6 +56,11 @@ public:
 		{
 			FreeImage_Unload(m_bitmap);
 			m_bitmap = NULL;
+		}
+		if (m_previewBitmap)
+		{
+			FreeImage_Unload(m_previewBitmap);
+			m_previewBitmap = NULL;
 		}
 	}
 
@@ -103,15 +110,39 @@ public:
 
 	void GetPreview(unsigned char* buffer, int pixelWidth, int pixelHeight)
 	{
-		FIBITMAP* preview = FreeImage_Rescale(m_bitmap, pixelWidth, pixelHeight, FILTER_BILINEAR);
-
-		for (int i = 0; i < pixelHeight; i++)
+		if (!m_previewBitmap || pixelWidth != FreeImage_GetWidth(m_previewBitmap) || pixelHeight != FreeImage_GetHeight(m_previewBitmap))
 		{
-			memcpy(buffer + (i*pixelWidth*3), FreeImage_GetScanLine(preview, i), pixelWidth*3);
+			FIBITMAP* originalImage = m_bitmap;
+			FIBITMAP* temp24BPPImage = NULL;
+
+			if (FreeImage_GetBPP(m_bitmap) != 24)
+			{
+				temp24BPPImage = FreeImage_ConvertTo24Bits(originalImage);
+				originalImage = temp24BPPImage;
+			}
+
+			if (m_previewBitmap)
+				FreeImage_Unload(m_previewBitmap);
+
+			m_previewBitmap = FreeImage_Rescale(originalImage, pixelWidth, pixelHeight, FILTER_BILINEAR);
+
+			if (temp24BPPImage)
+				FreeImage_Unload(temp24BPPImage);
 		}
 
-		if (preview)
-			FreeImage_Unload(preview);
+		if (m_previewBitmap)
+		{
+			FreeImage_ConvertToRawBits(buffer, m_previewBitmap, pixelWidth*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
+			unsigned int pixelsCount = pixelWidth * pixelHeight;
+			unsigned char *pixelPtr = buffer;
+			for (unsigned int i = 0; i < pixelsCount; i++)
+			{
+				unsigned char temp = pixelPtr[0];
+				pixelPtr[0] = pixelPtr[2];
+				pixelPtr[2] = temp;
+				pixelPtr+=3;
+			}
+		}
 	}
 };
 
