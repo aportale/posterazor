@@ -250,6 +250,20 @@ public:
 
 	enum ePosterSizeModes GetPosterSizeMode(void) {return m_posterSizeMode;}
 
+	void GetPreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight)
+	{
+		double aspectRatio = (double)GetInputImageWidthPixels() / (double)GetInputImageHeightPixels();
+
+		previewWidth = boxWidth;
+		previewHeight = (double)boxWidth / aspectRatio;
+
+                if (previewHeight > boxHeight)
+		{
+			previewWidth = (double)boxHeight * aspectRatio;
+			previewHeight = boxHeight;
+		}
+	}
+
 	void GetPreview(unsigned char* buffer, int pixelWidth, int pixelHeight) {m_imageIO->GetPreview(buffer, pixelWidth, pixelHeight);}
 };
 
