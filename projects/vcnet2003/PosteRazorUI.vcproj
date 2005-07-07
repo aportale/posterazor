@@ -19,7 +19,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\source\posterazor;&quot;..\..\thirdparty\fltk-1.1&quot;"
+				AdditionalIncludeDirectories="..\..\source\posterazor;&quot;..\..\thirdparty\fltk-1.1&quot;;..\..\thirdparty\Fl_Native_File_Chooser"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -32,11 +32,11 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="fltk.lib wsock32.lib comctl32.lib"
+				AdditionalDependencies="fltkd.lib wsock32.lib comctl32.lib"
 				OutputFile="$(OutDir)/PosteRazorGUI.exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;..\..\thirdparty\fltk-1.1\lib&quot;"
-				IgnoreDefaultLibraryNames="libc"
+				IgnoreDefaultLibraryNames="libcd"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/PosteRazorUI.pdb"
 				SubSystem="1"
@@ -70,7 +70,7 @@
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\source\posterazor;&quot;..\..\thirdparty\fltk-1.1&quot;"
+				AdditionalIncludeDirectories="..\..\source\posterazor;&quot;..\..\thirdparty\fltk-1.1&quot;;..\..\thirdparty\Fl_Native_File_Chooser"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -136,6 +136,13 @@
 			</File>
 			<File
 				RelativePath="..\..\source\posterazor\ui\PosteRazorDialogUI.h">
+			</File>
+		</Filter>
+		<Filter
+			Name="Fl_Native_File_Chooser"
+			Filter="">
+			<File
+				RelativePath="..\..\thirdparty\Fl_Native_File_Chooser\Fl_Native_File_Chooser.cxx">
 			</File>
 		</Filter>
 		<File
