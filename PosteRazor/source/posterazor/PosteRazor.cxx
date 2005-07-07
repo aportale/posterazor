@@ -254,8 +254,8 @@ public:
 	{
 		double aspectRatio = (double)GetInputImageWidthPixels() / (double)GetInputImageHeightPixels();
 
-		previewWidth = boxWidth;
-		previewHeight = (double)boxWidth / aspectRatio;
+		previewWidth = GetInputImageWidthPixels()<boxWidth?GetInputImageWidthPixels():boxWidth; //cheap min()
+		previewHeight = (double)previewWidth / aspectRatio;
 
                 if (previewHeight > boxHeight)
 		{
