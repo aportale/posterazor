@@ -29,13 +29,21 @@ void PosteRazorDialog::prev(void)
 void PosteRazorDialog::LoadInputImage(void)
 {
 	Fl_Native_File_Chooser chooser;
+	char errorMessage[1024] = "";
 	bool loaded = false;
+
+//	chooser.AddPattern();
 
 	if (chooser.show() == 0)
 	{
-		loaded = m_posteRazor->LoadInputImage(chooser.filename());
+		loaded = m_posteRazor->LoadInputImage(chooser.filename(), errorMessage, sizeof(errorMessage));
 		if (!loaded)
-			fl_message("The file '%s' could not be loaded.", fl_filename_name(chooser.filename()));
+		{
+			if (strlen(errorMessage) > 0)
+				fl_message(errorMessage);
+			else
+				fl_message("The file '%s' could not be loaded.", fl_filename_name(chooser.filename()));
+		}
 	}
 
 	if (loaded)

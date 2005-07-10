@@ -4,12 +4,20 @@
 #include <stdio.h>
 #include <string.h>
 
+static char FreeImageErrorMessage[1024];
+void FreeImageErrorHandler(FREE_IMAGE_FORMAT fif, const char *message)
+{
+	strncpy(FreeImageErrorMessage, message, sizeof(FreeImageErrorMessage));
+	FreeImageErrorMessage[sizeof(FreeImageErrorMessage)-1] = '\0';
+}
+
 class FreeImageInitializer
 {
 public:
 	FreeImageInitializer()
 	{
 		FreeImage_Initialise();
+		FreeImage_SetOutputMessage(FreeImageErrorHandler);
 	}
 
 	~FreeImageInitializer()
@@ -64,9 +72,11 @@ public:
 		}
 	}
 
-	bool LoadImage(const char *imageFileName)
+	bool LoadImage(const char *imageFileName, char *errorMessage, int errorMessageSize)
 	{
 		bool result = false;
+
+		strcpy(FreeImageErrorMessage, "");
 
 		FIBITMAP* newImage = FreeImage_Load(FreeImage_GetFileType(imageFileName, 0), imageFileName);
 
@@ -88,6 +98,9 @@ public:
 			if (m_verticalDotsPerMeter == 0)
 				m_verticalDotsPerMeter = 2835;
 		}
+
+		strncpy(errorMessage, FreeImageErrorMessage, errorMessageSize);
+		errorMessage[errorMessageSize-1] = '\0';
 
 		return result;
 	}
