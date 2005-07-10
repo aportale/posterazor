@@ -69,9 +69,9 @@ public:
 
 	PosteRazorImageIO *GetImageIO(void) {return m_imageIO;}
 
-	bool LoadInputImage(const char *imageFileName)
+	bool LoadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize)
 	{
-		bool result = m_imageIO->LoadImage(imageFileName);
+		bool result = m_imageIO->LoadImage(imageFileName, errorMessage, errorMessageSize);
 
 		if (result)
 			CalculateAspectRatio();
