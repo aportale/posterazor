@@ -78,6 +78,7 @@ public:
 
 		return result;
 	}
+	bool IsImageLoaded(void) {return m_imageIO->IsImageLoaded();}
 
 	int GetInputImageWidthPixels(void) {return m_imageIO->GetWidthPixels();}
 	int GetInputImageHeightPixels(void) {return m_imageIO->GetHeightPixels();}

@@ -10,6 +10,7 @@ public:
 	static PosteRazorImageIO* CreatePosteRazorImageIO();
 
 	virtual bool LoadImage(const char *imageFileName, char *errorMessage, int errorMessageSize) = 0;
+	virtual bool IsImageLoaded(void) = 0;
 
 	virtual int GetWidthPixels(void) = 0;
 	virtual int GetHeightPixels(void) = 0;
