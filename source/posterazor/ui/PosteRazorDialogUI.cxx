@@ -2,19 +2,18 @@
 
 #include "PosteRazorDialogUI.h"
 
-void PosteRazorDialogUI::cb_Next_i(Fl_Button*, void*) {
-  //next();
-UpdatePreviewImage();
+void PosteRazorDialogUI::cb_m_nextButton_i(Fl_Button*, void*) {
+  next();
 }
-void PosteRazorDialogUI::cb_Next(Fl_Button* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->user_data()))->cb_Next_i(o,v);
+void PosteRazorDialogUI::cb_m_nextButton(Fl_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->user_data()))->cb_m_nextButton_i(o,v);
 }
 
-void PosteRazorDialogUI::cb_2_i(Fl_Button*, void*) {
+void PosteRazorDialogUI::cb_m_prevButton_i(Fl_Button*, void*) {
   prev();
 }
-void PosteRazorDialogUI::cb_2(Fl_Button* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->user_data()))->cb_2_i(o,v);
+void PosteRazorDialogUI::cb_m_prevButton(Fl_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->user_data()))->cb_m_prevButton_i(o,v);
 }
 
 void PosteRazorDialogUI::cb__i(Fl_Button*, void*) {
@@ -24,51 +23,34 @@ void PosteRazorDialogUI::cb_(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb__i(o,v);
 }
 
-#include <FL/Fl_Bitmap.H>
-static unsigned char idata_up[] =
-"\0\0x\0\204\0\2\1""1\376y\200\375\200""1\200""1\200""1\200""1\200""1\200\1\
-\200\1\200\377\377\0\0";
-static Fl_Bitmap image_up(idata_up, 16, 16);
-
 Fl_Double_Window* PosteRazorDialogUI::make_window() {
   Fl_Double_Window* w;
-  { Fl_Double_Window* o = new Fl_Double_Window(440, 480);
+  { Fl_Double_Window* o = new Fl_Double_Window(620, 435);
     w = o;
     o->user_data((void*)(this));
-    { Fl_Group* o = new Fl_Group(10, 444, 420, 25);
-      { Fl_Button* o = new Fl_Button(345, 444, 85, 25, "Next @-2->");
-        o->callback((Fl_Callback*)cb_Next);
+    { Fl_Group* o = new Fl_Group(10, 400, 600, 25);
+      { Fl_Button* o = m_nextButton = new Fl_Button(525, 400, 85, 25, "Next @-2->");
+        o->callback((Fl_Callback*)cb_m_nextButton);
       }
-      { Fl_Button* o = new Fl_Button(250, 444, 85, 25, "@-2<- Back");
-        o->callback((Fl_Callback*)cb_2);
+      { Fl_Button* o = m_prevButton = new Fl_Button(430, 400, 85, 25, "@-2<- Back");
+        o->callback((Fl_Callback*)cb_m_prevButton);
       }
-      { Fl_Box* o = new Fl_Box(225, 444, 15, 25);
+      { Fl_Box* o = new Fl_Box(225, 400, 15, 25);
         Fl_Group::current()->resizable(o);
       }
       o->end();
     }
-    { Fl_Wizard* o = m_wizard = new Fl_Wizard(10, 9, 420, 425);
+    { Fl_Wizard* o = m_wizard = new Fl_Wizard(360, 10, 250, 380);
       o->box(FL_THIN_DOWN_BOX);
       o->user_data((void*)(this));
-      { Fl_Group* o = new Fl_Group(10, 9, 420, 425);
+      { Fl_Group* o = m_loadInputImageStep = new Fl_Group(360, 10, 250, 380);
         o->color(FL_LIGHT1);
-        { Fl_Group* o = m_previewImageGroup = new Fl_Group(20, 69, 400, 355);
-          o->box(FL_THIN_DOWN_BOX);
-          o->color(FL_DARK1);
-          o->selection_color(FL_LIGHT2);
-          o->labelfont(1);
-          o->labelsize(26);
-          o->labelcolor((Fl_Color)61);
-          o->align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE);
-          o->end();
-          Fl_Group::current()->resizable(o);
-        }
-        { Fl_Group* o = new Fl_Group(20, 34, 400, 25, "Input Image:");
+        { Fl_Group* o = new Fl_Group(370, 35, 230, 25, "Input Image:");
           o->align(FL_ALIGN_TOP_LEFT);
-          { Fl_Button* o = new Fl_Button(395, 34, 25, 25, "...");
+          { Fl_Button* o = new Fl_Button(575, 35, 25, 25, "...");
             o->callback((Fl_Callback*)cb_);
           }
-          { Fl_Box* o = m_inputFileNameLabel = new Fl_Box(20, 34, 375, 25);
+          { Fl_Box* o = m_inputFileNameLabel = new Fl_Box(370, 35, 205, 25);
             o->box(FL_THIN_DOWN_BOX);
             o->color((Fl_Color)55);
             o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
@@ -76,43 +58,31 @@ Fl_Double_Window* PosteRazorDialogUI::make_window() {
           }
           o->end();
         }
-        o->end();
-      }
-      { Fl_Group* o = new Fl_Group(10, 9, 420, 425);
-        o->hide();
-        new Fl_Button(190, 44, 68, 20, "button");
-        { Fl_Box* o = new Fl_Box(195, 125, 115, 75, "sdf gsdfgsgfdf gfgg ssdfgsdfg");
-          o->box(FL_THIN_DOWN_BOX);
-          o->color((Fl_Color)55);
-          o->image(image_up);
-          o->align(192);
-        }
-        { Fl_Round_Button* o = new Fl_Round_Button(175, 120, 140, 85);
-          o->type(102);
-          o->down_box(FL_ROUND_DOWN_BOX);
-        }
-        { Fl_Box* o = new Fl_Box(195, 240, 115, 75, "sdf gsdfgsgfdf gfgg ssdfgsdfg");
-          o->box(FL_THIN_DOWN_BOX);
-          o->color((Fl_Color)55);
-          o->image(image_up);
-          o->align(192);
-        }
-        { Fl_Round_Button* o = new Fl_Round_Button(175, 235, 140, 85);
-          o->type(102);
-          o->down_box(FL_ROUND_DOWN_BOX);
+        { Fl_Box* o = new Fl_Box(360, 380, 250, 10);
+          Fl_Group::current()->resizable(o);
         }
         o->end();
-        Fl_Group::current()->resizable(o);
       }
-      { Fl_Group* o = new Fl_Group(10, 9, 420, 425);
+      { Fl_Group* o = new Fl_Group(360, 10, 250, 380);
         o->hide();
         o->end();
       }
-      { Fl_Group* o = new Fl_Group(10, 9, 420, 425);
+      { Fl_Group* o = m_savePosterStep = new Fl_Group(370, 20, 250, 380);
         o->hide();
         o->end();
       }
       o->end();
+    }
+    { Fl_Group* o = m_previewImageGroup = new Fl_Group(10, 10, 345, 380);
+      o->box(FL_THIN_DOWN_BOX);
+      o->color((Fl_Color)34);
+      o->selection_color(FL_LIGHT2);
+      o->labelfont(1);
+      o->labelsize(26);
+      o->labelcolor((Fl_Color)61);
+      o->align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE);
+      o->end();
+      Fl_Group::current()->resizable(o);
     }
     o->end();
   }

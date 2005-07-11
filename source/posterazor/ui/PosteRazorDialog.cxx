@@ -9,6 +9,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 	m_previewImageData = 0;
 	m_previewImage = 0;
 	m_posteRazor = PosteRazor::CreatePosteRazor();
+//	UpdateNavigationButtons();
 }
 
 PosteRazorDialog::~PosteRazorDialog()
@@ -19,11 +20,27 @@ PosteRazorDialog::~PosteRazorDialog()
 void PosteRazorDialog::next(void)
 {
 	m_wizard->next();
+	UpdateNavigationButtons();
 }
 
 void PosteRazorDialog::prev(void)
 {
 	m_wizard->prev();
+	UpdateNavigationButtons();
+}
+
+void PosteRazorDialog::UpdateNavigationButtons(void)
+{
+	if (m_wizard->value() != m_loadInputImageStep)
+		m_prevButton->activate();
+	else
+		m_prevButton->deactivate();
+
+	if (m_posteRazor->IsImageLoaded()
+	    && m_wizard->value() != m_savePosterStep)
+		m_nextButton->activate();
+	else
+		m_nextButton->deactivate();
 }
 
 void PosteRazorDialog::LoadInputImage(void)
@@ -56,6 +73,8 @@ void PosteRazorDialog::LoadInputImage(void)
 		m_previewImageGroup->label(NULL);
 		Fl::wait();
 	}
+
+	UpdateNavigationButtons();
 }
 
 void PosteRazorDialog::DisposePreviewImage(void)
