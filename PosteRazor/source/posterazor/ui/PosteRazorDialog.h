@@ -19,10 +19,10 @@ public:
 
 	void next(void);
 	void prev(void);
+	void UpdateNavigationButtons(void);
 
 	void LoadInputImage(void);
 	void UpdatePreviewImage(void);
-
 };
 
 #endif
