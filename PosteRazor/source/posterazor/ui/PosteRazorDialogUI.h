@@ -9,9 +9,11 @@
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Wizard.H>
 
-class PosteRazorDialogUI {
+class PosteRazorDialogUI : public Fl_Double_Window {
+  void _PosteRazorDialogUI();
 public:
-  Fl_Double_Window* make_window();
+  PosteRazorDialogUI(int X, int Y, int W, int H, const char *L = 0);
+  PosteRazorDialogUI(int W, int H, const char *L = 0);
   Fl_Button *m_nextButton;
 private:
   void cb_m_nextButton_i(Fl_Button*, void*);
@@ -36,6 +38,5 @@ public:
   virtual void UpdateNavigationButtons(void) = 0;
   virtual void LoadInputImage(void) = 0;
   virtual void UpdatePreviewImage(void) = 0;
-  void show(int argc, char** argv);
 };
 #endif

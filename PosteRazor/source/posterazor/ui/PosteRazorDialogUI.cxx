@@ -22,74 +22,85 @@ void PosteRazorDialogUI::cb__i(Fl_Button*, void*) {
 void PosteRazorDialogUI::cb_(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb__i(o,v);
 }
+PosteRazorDialogUI::PosteRazorDialogUI(int X, int Y, int W, int H, const char *L)
+  : Fl_Double_Window(X, Y, W, H, L) {
+  _PosteRazorDialogUI();
+}
 
-Fl_Double_Window* PosteRazorDialogUI::make_window() {
-  Fl_Double_Window* w;
-  { Fl_Double_Window* o = new Fl_Double_Window(620, 435);
-    w = o;
-    o->user_data((void*)(this));
-    { Fl_Group* o = new Fl_Group(10, 400, 600, 25);
-      { Fl_Button* o = m_nextButton = new Fl_Button(525, 400, 85, 25, "Next @-2->");
-        o->callback((Fl_Callback*)cb_m_nextButton);
+PosteRazorDialogUI::PosteRazorDialogUI(int W, int H, const char *L)
+  : Fl_Double_Window(0, 0, W, H, L) {
+  clear_flag(16);
+  _PosteRazorDialogUI();
+}
+
+void PosteRazorDialogUI::_PosteRazorDialogUI() {
+  PosteRazorDialogUI *w = this;
+  PosteRazorDialogUI *o = this;
+o->box(FL_FLAT_BOX);
+o->color(FL_BACKGROUND_COLOR);
+o->selection_color(FL_BACKGROUND_COLOR);
+o->labeltype(FL_NORMAL_LABEL);
+o->labelfont(0);
+o->labelsize(14);
+o->labelcolor(FL_BLACK);
+o->user_data((void*)(this));
+o->align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE);
+o->when(FL_WHEN_RELEASE);
+{ Fl_Group* o = new Fl_Group(10, 400, 600, 25);
+  { Fl_Button* o = m_nextButton = new Fl_Button(525, 400, 85, 25, "Next @-2->");
+    o->callback((Fl_Callback*)cb_m_nextButton);
+  }
+  { Fl_Button* o = m_prevButton = new Fl_Button(430, 400, 85, 25, "@-2<- Back");
+    o->callback((Fl_Callback*)cb_m_prevButton);
+  }
+  { Fl_Box* o = new Fl_Box(225, 400, 15, 25);
+    Fl_Group::current()->resizable(o);
+  }
+  o->end();
+}
+{ Fl_Wizard* o = m_wizard = new Fl_Wizard(360, 10, 250, 380);
+  o->box(FL_THIN_DOWN_BOX);
+  o->user_data((void*)(this));
+  { Fl_Group* o = m_loadInputImageStep = new Fl_Group(360, 10, 250, 380);
+    o->color(FL_LIGHT1);
+    { Fl_Group* o = new Fl_Group(370, 35, 230, 25, "Input Image:");
+      o->align(FL_ALIGN_TOP_LEFT);
+      { Fl_Button* o = new Fl_Button(575, 35, 25, 25, "...");
+        o->callback((Fl_Callback*)cb_);
       }
-      { Fl_Button* o = m_prevButton = new Fl_Button(430, 400, 85, 25, "@-2<- Back");
-        o->callback((Fl_Callback*)cb_m_prevButton);
-      }
-      { Fl_Box* o = new Fl_Box(225, 400, 15, 25);
+      { Fl_Box* o = m_inputFileNameLabel = new Fl_Box(370, 35, 205, 25);
+        o->box(FL_THIN_DOWN_BOX);
+        o->color((Fl_Color)55);
+        o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         Fl_Group::current()->resizable(o);
       }
       o->end();
     }
-    { Fl_Wizard* o = m_wizard = new Fl_Wizard(360, 10, 250, 380);
-      o->box(FL_THIN_DOWN_BOX);
-      o->user_data((void*)(this));
-      { Fl_Group* o = m_loadInputImageStep = new Fl_Group(360, 10, 250, 380);
-        o->color(FL_LIGHT1);
-        { Fl_Group* o = new Fl_Group(370, 35, 230, 25, "Input Image:");
-          o->align(FL_ALIGN_TOP_LEFT);
-          { Fl_Button* o = new Fl_Button(575, 35, 25, 25, "...");
-            o->callback((Fl_Callback*)cb_);
-          }
-          { Fl_Box* o = m_inputFileNameLabel = new Fl_Box(370, 35, 205, 25);
-            o->box(FL_THIN_DOWN_BOX);
-            o->color((Fl_Color)55);
-            o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-            Fl_Group::current()->resizable(o);
-          }
-          o->end();
-        }
-        { Fl_Box* o = new Fl_Box(360, 380, 250, 10);
-          Fl_Group::current()->resizable(o);
-        }
-        o->end();
-      }
-      { Fl_Group* o = new Fl_Group(360, 10, 250, 380);
-        o->hide();
-        o->end();
-      }
-      { Fl_Group* o = m_savePosterStep = new Fl_Group(370, 20, 250, 380);
-        o->hide();
-        o->end();
-      }
-      o->end();
-    }
-    { Fl_Group* o = m_previewImageGroup = new Fl_Group(10, 10, 345, 380);
-      o->box(FL_THIN_DOWN_BOX);
-      o->color((Fl_Color)34);
-      o->selection_color(FL_LIGHT2);
-      o->labelfont(1);
-      o->labelsize(26);
-      o->labelcolor((Fl_Color)61);
-      o->align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE);
-      o->end();
+    { Fl_Box* o = new Fl_Box(360, 380, 250, 10);
       Fl_Group::current()->resizable(o);
     }
     o->end();
   }
-  return w;
+  { Fl_Group* o = new Fl_Group(360, 10, 250, 380);
+    o->hide();
+    o->end();
+  }
+  { Fl_Group* o = m_savePosterStep = new Fl_Group(360, 10, 250, 380);
+    o->hide();
+    o->end();
+  }
+  o->end();
 }
-
-void PosteRazorDialogUI::show(int argc, char** argv) {
-  Fl_Double_Window *w = make_window();
-w->show(argc, argv);
+{ Fl_Group* o = m_previewImageGroup = new Fl_Group(10, 10, 345, 380);
+  o->box(FL_THIN_DOWN_BOX);
+  o->color((Fl_Color)34);
+  o->selection_color(FL_LIGHT2);
+  o->labelfont(1);
+  o->labelsize(26);
+  o->labelcolor((Fl_Color)61);
+  o->align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE);
+  o->end();
+  Fl_Group::current()->resizable(o);
+}
+end();
 }
