@@ -4,12 +4,16 @@
 #include <FL/fl_ask.H>
 
 PosteRazorDialog::PosteRazorDialog(void)
-	:PosteRazorDialogUI()
+	:PosteRazorDialogUI(620, 435, "PosteRazor")
 {
 	m_previewImageData = 0;
 	m_previewImage = 0;
 	m_posteRazor = PosteRazor::CreatePosteRazor();
-//	UpdateNavigationButtons();
+	m_needPreviewImageUpdate = false;
+
+	Fl::add_idle(UpdatePreviewImage_cp, this);
+
+	UpdateNavigationButtons();
 }
 
 PosteRazorDialog::~PosteRazorDialog()
@@ -91,6 +95,16 @@ void PosteRazorDialog::DisposePreviewImage(void)
 	}
 }
 
+void PosteRazorDialog::UpdatePreviewImage_cp(void *ptr)
+{
+	PosteRazorDialog *dialog = (PosteRazorDialog*)ptr;
+	if (dialog->m_needPreviewImageUpdate)
+	{
+		dialog->UpdatePreviewImage();
+		dialog->m_needPreviewImageUpdate = false;
+	}
+}
+
 void PosteRazorDialog::UpdatePreviewImage(void)
 {
 	int previewImageWidth;
@@ -108,6 +122,15 @@ void PosteRazorDialog::UpdatePreviewImage(void)
 	m_previewImageGroup->image(m_previewImage);
 
 	Fl::redraw();
+}
+
+void PosteRazorDialog::resize(int x, int y, int w, int h)
+{
+	int old_w = this->w();
+	int old_h = this->h();
+	PosteRazorDialogUI::resize(x, y, w, h);
+	if ((old_w != this->w()) || (old_h != this->h()))
+		m_needPreviewImageUpdate = true;
 }
 
 int main (int argc, char **argv)

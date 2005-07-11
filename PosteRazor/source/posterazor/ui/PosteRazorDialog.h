@@ -11,11 +11,16 @@ private:
 	unsigned char *m_previewImageData;
 	Fl_RGB_Image  *m_previewImage;
 	PosteRazor    *m_posteRazor;
+	
+	bool          m_needPreviewImageUpdate;
 
 	void DisposePreviewImage(void);
+	static void UpdatePreviewImage_cp(void *ptr);
 public:
 	~PosteRazorDialog();
 	PosteRazorDialog();
+
+	void resize(int x, int y, int w, int h);
 
 	void next(void);
 	void prev(void);
