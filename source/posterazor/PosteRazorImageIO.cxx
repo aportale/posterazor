@@ -104,6 +104,7 @@ public:
 
 		return result;
 	}
+	bool IsImageLoaded(void) {return (m_bitmap != NULL);}
 
 	int GetWidthPixels(void) {return m_widthPixels;}
 	int GetHeightPixels(void) {return m_heightPixels;}
