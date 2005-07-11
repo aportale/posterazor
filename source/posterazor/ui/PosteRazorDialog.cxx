@@ -11,8 +11,6 @@ PosteRazorDialog::PosteRazorDialog(void)
 	m_posteRazor = PosteRazor::CreatePosteRazor();
 	m_needPreviewImageUpdate = false;
 
-	Fl::add_idle(UpdatePreviewImage_cp, this);
-
 	UpdateNavigationButtons();
 }
 
@@ -98,11 +96,7 @@ void PosteRazorDialog::DisposePreviewImage(void)
 void PosteRazorDialog::UpdatePreviewImage_cp(void *ptr)
 {
 	PosteRazorDialog *dialog = (PosteRazorDialog*)ptr;
-	if (dialog->m_needPreviewImageUpdate)
-	{
-		dialog->UpdatePreviewImage();
-		dialog->m_needPreviewImageUpdate = false;
-	}
+	dialog->UpdatePreviewImage();
 }
 
 void PosteRazorDialog::UpdatePreviewImage(void)
@@ -130,7 +124,11 @@ void PosteRazorDialog::resize(int x, int y, int w, int h)
 	int old_h = this->h();
 	PosteRazorDialogUI::resize(x, y, w, h);
 	if ((old_w != this->w()) || (old_h != this->h()))
-		m_needPreviewImageUpdate = true;
+	{
+		if (Fl::has_timeout(UpdatePreviewImage_cp, this))
+			Fl::remove_timeout(UpdatePreviewImage_cp, this);
+		Fl::add_timeout(0.05, UpdatePreviewImage_cp, this);
+	}
 }
 
 int main (int argc, char **argv)
