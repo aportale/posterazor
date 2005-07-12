@@ -45,9 +45,6 @@ public:
 	virtual bool GetUseCustomPrintablePageSize(void) = 0;
 	virtual void GetPrintablePageSize(double &width, double &height) = 0;
 	
-	virtual void SetPreserveAspectRatio(bool preserveIt) = 0;
-	virtual bool GetPreserveAspectRatio(void) = 0;
-
 	virtual void SetPosterWidth(enum ePosterSizeModes mode, double width) = 0;
 	virtual void SetPosterHeight(enum ePosterSizeModes mode, double height) = 0;
 	virtual double GetPosterWidth(enum ePosterSizeModes mode) = 0;
@@ -56,6 +53,9 @@ public:
 
 	virtual void GetInputImagePreviewSize(int bowWidth, int boxHeight, int &previewWidth, int &previewHeight) = 0;
 	virtual void GetInputImagePreview(unsigned char* buffer, int pixelWidth, int pixelHeight) = 0;
+
+//	virtual void GetPosterPreviewSize(int bowWidth, int boxHeight, int &previewWidth, int &previewHeight) = 0;
+//	virtual void GetPosterPreview(unsigned char* buffer, int pixelWidth, int pixelHeight) = 0;
 };
 
 #endif
