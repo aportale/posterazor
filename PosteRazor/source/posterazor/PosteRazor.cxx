@@ -20,7 +20,6 @@ private:
 	enum ePosterSizeModes  m_posterSizeMode;
 	double                 m_posterWidth;
 	double                 m_posterHeight;
-	bool                   m_preserveAspectRatio;
 
 	bool                   m_useCustomPrintablePageSize;
 	ePaperFormats          m_paperFormat;
@@ -42,7 +41,6 @@ public:
 		m_posterSizeMode               = ePosterSizeModePages;
 		m_posterWidth                  = 2.0;
 		m_posterHeight                 = 2.0;
-		m_preserveAspectRatio          = true;
 
                 m_useCustomPrintablePageSize   = false;
 		m_paperFormat                  = ePaperFormatA4;
@@ -142,16 +140,6 @@ public:
 			*target = *source;
 	}
 
-	void SetPreserveAspectRatio(bool preserveIt)
-	{
-		m_preserveAspectRatio = preserveIt;
-
-		if (m_preserveAspectRatio)
-			CalculateAspectRatio();
-	}
-
-	bool GetPreserveAspectRatio(void) {return m_preserveAspectRatio;}
-
 	void SetPosterWidthOrHeight(enum ePosterSizeModes mode, double widthOrHeight, bool width)
 	{
 		m_posterSizeMode = mode;
@@ -166,8 +154,7 @@ public:
 
 		m_lastEditedSizeWasWidth = width;
 
-		if (m_preserveAspectRatio)
-			CalculateAspectRatio();
+		CalculateAspectRatio();
 	}
 
 	void SetPosterWidth(enum ePosterSizeModes mode, double width)
