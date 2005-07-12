@@ -251,7 +251,7 @@ public:
 
 	enum ePosterSizeModes GetPosterSizeMode(void) {return m_posterSizeMode;}
 
-	void GetPreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight)
+	void GetInputImagePreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight)
 	{
 		double aspectRatio = (double)GetInputImageWidthPixels() / (double)GetInputImageHeightPixels();
 
@@ -265,7 +265,7 @@ public:
 		}
 	}
 
-	void GetPreview(unsigned char* buffer, int pixelWidth, int pixelHeight) {m_imageIO->GetPreview(buffer, pixelWidth, pixelHeight);}
+	void GetInputImagePreview(unsigned char* buffer, int pixelWidth, int pixelHeight) {m_imageIO->GetPreview(buffer, pixelWidth, pixelHeight);}
 };
 
 PosteRazor* PosteRazor::CreatePosteRazor()

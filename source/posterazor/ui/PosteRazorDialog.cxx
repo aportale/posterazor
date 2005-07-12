@@ -106,11 +106,11 @@ void PosteRazorDialog::UpdatePreviewImage(void)
 
 	DisposePreviewImage();
 
-	m_posteRazor->GetPreviewSize(m_previewImageGroup->w() - 14, m_previewImageGroup->h() - 14, previewImageWidth, previewImageHeight);
+	m_posteRazor->GetInputImagePreviewSize(m_previewImageGroup->w() - 14, m_previewImageGroup->h() - 14, previewImageWidth, previewImageHeight);
 
 	m_previewImageData = new unsigned char[previewImageWidth * previewImageHeight * 3];
 		
-	m_posteRazor->GetPreview(m_previewImageData, previewImageWidth,  previewImageHeight);
+	m_posteRazor->GetInputImagePreview(m_previewImageData, previewImageWidth,  previewImageHeight);
 
 	m_previewImage = new Fl_RGB_Image(m_previewImageData, previewImageWidth,  previewImageHeight);
 	m_previewImageGroup->image(m_previewImage);
