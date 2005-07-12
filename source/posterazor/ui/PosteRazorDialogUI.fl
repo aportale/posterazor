@@ -4,7 +4,8 @@ header_name {.h}
 code_name {.cxx}
 widget_class PosteRazorDialogUI {
   user_data this open selected
-  xywh {412 366 620 435} type Double hide resizable
+  xywh {176 353 620 435} type Double hide resizable
+  code0 {size_range(this->w(), this->h());}
   class Fl_Double_Window
 } {
   Fl_Group {} {open
@@ -32,8 +33,8 @@ widget_class PosteRazorDialogUI {
       xywh {360 10 250 380} color 50
     } {
       Fl_Group {} {
-        label {Input Image:}
-        xywh {370 35 230 25} align 5
+        label {Input Image}
+        xywh {370 35 230 25}
       } {
         Fl_Button {} {
           label {...}
@@ -44,8 +45,69 @@ widget_class PosteRazorDialogUI {
           xywh {370 35 205 25} box THIN_DOWN_BOX color 55 align 20 resizable
         }
       }
+      Fl_Group {} {
+        label {Image information} open
+        xywh {370 86 230 210} box THIN_DOWN_BOX color 45
+      } {}
       Fl_Box {} {
         xywh {360 380 250 10} resizable
+      }
+    }
+    Fl_Group m_posterSizeStep {open
+      xywh {360 10 250 380} hide
+    } {
+      Fl_Group {} {
+        label {Image width} open
+        xywh {370 35 230 75} box THIN_DOWN_BOX color 45 selection_color 54
+      } {
+        Fl_Value_Input m_posterAbsoluteWidthInput {
+          label {Width:}
+          xywh {450 45 90 24}
+          code0 {o->step(0.1);}
+          code1 {o->range(0, 999);}
+        }
+        Fl_Value_Input m_posterAbsoluteHeightInput {
+          label {Height:}
+          xywh {450 76 90 24} resizable
+          code0 {o->step(0.1);}
+          code1 {o->range(0, 999);}
+        }
+        Fl_Box m_posterAbsoluteWidthLabel {
+          label cm
+          xywh {540 45 50 25} align 20
+        }
+        Fl_Box m_posterAbsoluteHeightLabel {
+          label cm
+          xywh {540 75 50 25} align 20
+        }
+      }
+      Fl_Box {} {
+        xywh {360 380 250 10} resizable
+      }
+      Fl_Group {} {
+        label Pages open
+        xywh {370 135 230 75} box THIN_DOWN_BOX color 45 selection_color 54
+      } {
+        Fl_Value_Input m_posterPagesWidthInput {
+          label {Width:}
+          xywh {450 145 90 24}
+          code0 {o->step(0.1);}
+          code1 {o->range(0, 999);}
+        }
+        Fl_Value_Input m_posterPagesHeightInput {
+          label {Height:}
+          xywh {450 176 90 24} resizable
+          code0 {o->step(0.1);}
+          code1 {o->range(0, 999);}
+        }
+        Fl_Box m_posterPagesWidthLabel {
+          label pages
+          xywh {540 145 50 25} align 20
+        }
+        Fl_Box m_posterPagesHeightLabel {
+          label pages
+          xywh {540 175 50 25} align 20
+        }
       }
     }
     Fl_Group {} {open

@@ -8,6 +8,7 @@
 #include <FL/Fl_Button.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Wizard.H>
+#include <FL/Fl_Value_Input.H>
 
 class PosteRazorDialogUI : public Fl_Double_Window {
   void _PosteRazorDialogUI();
@@ -31,6 +32,15 @@ private:
   static void cb_(Fl_Button*, void*);
 public:
   Fl_Box *m_inputFileNameLabel;
+  Fl_Group *m_posterSizeStep;
+  Fl_Value_Input *m_posterAbsoluteWidthInput;
+  Fl_Value_Input *m_posterAbsoluteHeightInput;
+  Fl_Box *m_posterAbsoluteWidthLabel;
+  Fl_Box *m_posterAbsoluteHeightLabel;
+  Fl_Value_Input *m_posterPagesWidthInput;
+  Fl_Value_Input *m_posterPagesHeightInput;
+  Fl_Box *m_posterPagesWidthLabel;
+  Fl_Box *m_posterPagesHeightLabel;
   Fl_Group *m_savePosterStep;
   Fl_Group *m_previewImageGroup;
   virtual void next(void) = 0;
