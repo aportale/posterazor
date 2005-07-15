@@ -34,13 +34,35 @@ public:
   Fl_Box *m_inputFileNameLabel;
   Fl_Group *m_posterSizeStep;
   Fl_Value_Input *m_posterAbsoluteWidthInput;
+private:
+  void cb_m_posterAbsoluteWidthInput_i(Fl_Value_Input*, void*);
+  static void cb_m_posterAbsoluteWidthInput(Fl_Value_Input*, void*);
+public:
   Fl_Value_Input *m_posterAbsoluteHeightInput;
+private:
+  void cb_m_posterAbsoluteHeightInput_i(Fl_Value_Input*, void*);
+  static void cb_m_posterAbsoluteHeightInput(Fl_Value_Input*, void*);
+public:
   Fl_Box *m_posterAbsoluteWidthLabel;
   Fl_Box *m_posterAbsoluteHeightLabel;
   Fl_Value_Input *m_posterPagesWidthInput;
+private:
+  void cb_m_posterPagesWidthInput_i(Fl_Value_Input*, void*);
+  static void cb_m_posterPagesWidthInput(Fl_Value_Input*, void*);
+public:
   Fl_Value_Input *m_posterPagesHeightInput;
+private:
+  void cb_m_posterPagesHeightInput_i(Fl_Value_Input*, void*);
+  static void cb_m_posterPagesHeightInput(Fl_Value_Input*, void*);
+public:
   Fl_Box *m_posterPagesWidthLabel;
   Fl_Box *m_posterPagesHeightLabel;
+  Fl_Value_Input *m_posterPercentualSizeInput;
+private:
+  void cb_m_posterPercentualSizeInput_i(Fl_Value_Input*, void*);
+  static void cb_m_posterPercentualSizeInput(Fl_Value_Input*, void*);
+public:
+  Fl_Box *m_posterPercentualWidthLabel;
   Fl_Group *m_savePosterStep;
   Fl_Group *m_previewImageGroup;
   virtual void next(void) = 0;
@@ -48,5 +70,6 @@ public:
   virtual void UpdateNavigationButtons(void) = 0;
   virtual void LoadInputImage(void) = 0;
   virtual void UpdatePreviewImage(void) = 0;
+  virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;
 };
 #endif

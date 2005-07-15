@@ -73,6 +73,7 @@ void PosteRazorDialog::LoadInputImage(void)
 		m_inputFileNameLabel->copy_label(fl_filename_name(chooser.filename()));
 		UpdatePreviewImage();
 		m_previewImageGroup->label(NULL);
+		UpdatePosterSizeFields(NULL);
 		Fl::wait();
 	}
 
@@ -114,6 +115,50 @@ void PosteRazorDialog::UpdatePreviewImage(void)
 	m_previewImageGroup->image(m_previewImage);
 
 	Fl::redraw();
+}
+
+void PosteRazorDialog::UpdatePosterSizeFields(Fl_Valuator *sourceWidget)
+{
+	static const struct
+	{
+		Fl_Valuator* inputWidget;
+		bool width;
+		enum PosteRazor::ePosterSizeModes sizeMode;
+	}
+	sizeInputWidgets[] = 
+	{
+		{m_posterAbsoluteWidthInput, true, PosteRazor::ePosterSizeModeAbsolute},
+		{m_posterAbsoluteHeightInput, false, PosteRazor::ePosterSizeModeAbsolute},
+		{m_posterPagesWidthInput, true, PosteRazor::ePosterSizeModePages},
+		{m_posterPagesHeightInput, false, PosteRazor::ePosterSizeModePages},
+		{m_posterPercentualSizeInput, true, PosteRazor::ePosterSizeModePercentual}
+	};
+
+	int sizeInputWidgetsCount = sizeof(sizeInputWidgets)/sizeof(sizeInputWidgets[0]);
+
+	for (int i = 0; i < sizeInputWidgetsCount; i++)
+	{
+		if (sizeInputWidgets[i].inputWidget == sourceWidget)
+		{
+			if (sizeInputWidgets[i].width)
+				m_posteRazor->SetPosterWidth(sizeInputWidgets[i].sizeMode, sizeInputWidgets[i].inputWidget->value());
+			else
+				m_posteRazor->SetPosterHeight(sizeInputWidgets[i].sizeMode, sizeInputWidgets[i].inputWidget->value());
+		}
+	}
+
+	for (int i = 0; i < sizeInputWidgetsCount; i++)
+	{
+		if (sizeInputWidgets[i].inputWidget != sourceWidget)
+		{
+			sizeInputWidgets[i].inputWidget->value
+			(
+				sizeInputWidgets[i].width?
+				m_posteRazor->GetPosterWidth(sizeInputWidgets[i].sizeMode)
+				:m_posteRazor->GetPosterHeight(sizeInputWidgets[i].sizeMode)
+			);
+		}
+	}
 }
 
 void PosteRazorDialog::resize(int x, int y, int w, int h)
