@@ -28,6 +28,8 @@ public:
 
 	void LoadInputImage(void);
 	void UpdatePreviewImage(void);
+
+	void UpdatePosterSizeFields(Fl_Valuator *sourceWidget);
 };
 
 #endif
