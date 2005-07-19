@@ -49,8 +49,8 @@ public:
 		m_paperBorderRight             = 1.5;
 		m_paperBorderBottom            = 1.5;
 		m_paperBorderLeft              = 1.5;
-		m_customPrintablePageWidth     = 40;
-		m_customPrintablePageHeight    = 40;
+		m_customPrintablePageWidth     = 5;
+		m_customPrintablePageHeight    = 20;
 
 		m_borderPosition               = eBorderPositionRightBottom;
 		m_overlapWidth                 = 2.0;
@@ -122,6 +122,57 @@ public:
 		}
 	}
 
+	double ConvertBetweenAbsoluteAndPagesPosterDimension(double dimension, bool pagesToAbsolute, bool width)
+	{
+		double posterDimension = dimension;
+
+		double printablePageWidth, printablePageHeight;
+		GetPrintablePageSize(printablePageWidth, printablePageHeight);
+		double printablePageDimension = ConvertBetweenDistanceUnits(width?printablePageWidth:printablePageHeight, m_distanceUnit, eDistanceUnitCentimeter);
+		double overlapDimension = width?m_overlapWidth:m_overlapHeight;
+
+		if (pagesToAbsolute)
+		{
+			double posterDimensionAbsolute = 0;
+			if (posterDimension >= 1.0)
+			{
+				posterDimension -= 1.0;
+				posterDimensionAbsolute += printablePageDimension;
+			}
+			else
+			{
+				posterDimensionAbsolute = posterDimension * printablePageDimension;
+				posterDimension = 0;
+			}
+
+			if (posterDimension > 0)
+	                        posterDimensionAbsolute += (posterDimension * (printablePageDimension - overlapDimension));
+
+			posterDimension = posterDimensionAbsolute;
+		}
+		else
+		{
+			double posterDimensionPages = 0;
+			if (posterDimension >= printablePageDimension)
+			{
+				posterDimension -= printablePageDimension;
+				posterDimensionPages += 1.0;
+			}
+			else if (posterDimension < printablePageDimension)
+			{
+				posterDimensionPages = posterDimension / printablePageDimension;
+				posterDimension = 0;
+			}
+
+			if (posterDimension > 0)
+	                        posterDimensionPages += (posterDimension / (printablePageDimension - overlapDimension));
+
+			posterDimension = posterDimensionPages;
+		}
+
+		return posterDimension;
+	}
+
 	void CalculateAspectRatio()
 	{
 		double *source = m_lastEditedSizeWasWidth?&m_posterWidth:&m_posterHeight;
@@ -134,7 +185,16 @@ public:
 			
 			double aspectRatio = sourceReference/targetReference;
 
-			*target = *source / aspectRatio;
+			if (m_posterSizeMode != ePosterSizeModePages)
+			{
+				*target = *source / aspectRatio;
+			}
+			else
+			{
+				double sourceAbsolute = ConvertBetweenAbsoluteAndPagesPosterDimension(*source, true, m_lastEditedSizeWasWidth);
+				double targetAbsolute = sourceAbsolute/aspectRatio;
+				*target = ConvertBetweenAbsoluteAndPagesPosterDimension(targetAbsolute, false, !m_lastEditedSizeWasWidth);
+			}
 		}
 		else
 			*target = *source;
@@ -173,12 +233,6 @@ public:
 
 		if (m_posterSizeMode != mode) // anything to convert?
 		{
-			// These are needed for conversion from and to ePosterSizeModePages
-			double printablePageWidth, printablePageHeight;
-			GetPrintablePageSize(printablePageWidth, printablePageHeight);
-			double printablePageDimension = ConvertBetweenDistanceUnits(width?printablePageWidth:printablePageHeight, m_distanceUnit, eDistanceUnitCentimeter);
-			double overlapDimension = width?m_overlapWidth:m_overlapHeight;
-
 			// These are needed for conversion from and to ePosterSizeModePercentual
 			double inputImageDimension = width?GetInputImageWidth():GetInputImageHeight();
 			inputImageDimension = ConvertBetweenDistanceUnits(inputImageDimension, m_distanceUnit, eDistanceUnitCentimeter);
@@ -186,14 +240,7 @@ public:
 			// First convert to absolute size mode (cm)
 			if (m_posterSizeMode == ePosterSizeModePages)
 			{
-				double posterDimensionAbsolute = 0;
-				if (posterDimension > 1.0)
-				{
-					posterDimension -= 1.0;
-					posterDimensionAbsolute += printablePageDimension;
-				}
-                                posterDimensionAbsolute += (posterDimension * (printablePageDimension - overlapDimension));
-				posterDimension = posterDimensionAbsolute;
+				posterDimension = ConvertBetweenAbsoluteAndPagesPosterDimension(posterDimension, true, width);
 			}
 			else if (m_posterSizeMode == ePosterSizeModePercentual)
 			{
@@ -204,14 +251,7 @@ public:
 			// Then convert to the wanted size mode
 			if (mode == ePosterSizeModePages)
 			{
-				double posterDimensionPages = 0;
-				if (posterDimension > printablePageDimension)
-				{
-					posterDimension -= printablePageDimension;
-					posterDimensionPages += 1.0;
-				}
-                                posterDimensionPages += (posterDimension / (printablePageDimension - overlapDimension));
-				posterDimension = posterDimensionPages;
+				posterDimension = ConvertBetweenAbsoluteAndPagesPosterDimension(posterDimension, false, width);
 			}
 			else if (mode == ePosterSizeModePercentual)
 			{
