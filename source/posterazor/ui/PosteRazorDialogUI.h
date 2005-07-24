@@ -8,6 +8,8 @@
 #include <FL/Fl_Button.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Wizard.H>
+#include <FL/Fl_Round_Button.H>
+#include <FL/Fl_Choice.H>
 #include <FL/Fl_Value_Input.H>
 
 class PosteRazorDialogUI : public Fl_Double_Window {
@@ -32,6 +34,51 @@ private:
   static void cb_(Fl_Button*, void*);
 public:
   Fl_Box *m_inputFileNameLabel;
+  Fl_Group *m_pageSizeStep;
+  Fl_Round_Button *m_standardPageSizeRadioButton;
+private:
+  void cb_m_standardPageSizeRadioButton_i(Fl_Round_Button*, void*);
+  static void cb_m_standardPageSizeRadioButton(Fl_Round_Button*, void*);
+public:
+  Fl_Group *m_standardPageSizeGroup;
+  Fl_Value_Input *m_pageBorderTop;
+private:
+  void cb_m_pageBorderTop_i(Fl_Value_Input*, void*);
+  static void cb_m_pageBorderTop(Fl_Value_Input*, void*);
+public:
+  Fl_Value_Input *m_pageBorderRight;
+private:
+  void cb_m_pageBorderRight_i(Fl_Value_Input*, void*);
+  static void cb_m_pageBorderRight(Fl_Value_Input*, void*);
+public:
+  Fl_Value_Input *m_pageBorderBottom;
+private:
+  void cb_m_pageBorderBottom_i(Fl_Value_Input*, void*);
+  static void cb_m_pageBorderBottom(Fl_Value_Input*, void*);
+public:
+  Fl_Value_Input *m_pageBorderLeft;
+private:
+  void cb_m_pageBorderLeft_i(Fl_Value_Input*, void*);
+  static void cb_m_pageBorderLeft(Fl_Value_Input*, void*);
+public:
+  Fl_Round_Button *m_customPageSizeRadioButton;
+private:
+  void cb_m_customPageSizeRadioButton_i(Fl_Round_Button*, void*);
+  static void cb_m_customPageSizeRadioButton(Fl_Round_Button*, void*);
+public:
+  Fl_Group *m_customPageSizeGroup;
+  Fl_Value_Input *m_pageCustomWidthInput;
+private:
+  void cb_m_pageCustomWidthInput_i(Fl_Value_Input*, void*);
+  static void cb_m_pageCustomWidthInput(Fl_Value_Input*, void*);
+public:
+  Fl_Value_Input *m_pageCustomHeightInput;
+private:
+  void cb_m_pageCustomHeightInput_i(Fl_Value_Input*, void*);
+  static void cb_m_pageCustomHeightInput(Fl_Value_Input*, void*);
+public:
+  Fl_Box *m_pageCustomWidthLabel;
+  Fl_Box *m_pageCustomHeightLabel;
   Fl_Group *m_posterSizeStep;
   Fl_Value_Input *m_posterAbsoluteWidthInput;
 private:
@@ -70,6 +117,8 @@ public:
   virtual void UpdateNavigationButtons(void) = 0;
   virtual void LoadInputImage(void) = 0;
   virtual void UpdatePreviewImage(void) = 0;
+  virtual void SetPageSizeFields(void) = 0;
+  virtual void UpdatePageSizeFields(void) = 0;
   virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;
 };
 #endif
