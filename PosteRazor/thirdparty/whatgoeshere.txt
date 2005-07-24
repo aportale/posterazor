@@ -1,0 +1,43 @@
+PosteRazor needs FLTK and FreeImage which are not included in
+the PosteRazor source tree. The headers and libraries libraries
+need either to be installed on the system or in this folder.
+The Project files for Visual Studio .NET look into this folder
+for them.
+
+FLTK ("fltk-1.1")
+=================
+You can get it from http://www.fltk.org either by download or SVN.
+PosteRazor was developed with FLTK 1.1.7. But any following 1.1.x
+FLTK should do it, since the backwards compatibility is usually
+kept.
+
+Fltk 1.1.7+ needs to be be installed into a folder "fltk-1.1"
+below this folder. PosteRazor requires the "FL" subfolder with
+the headers and the "lib" subfolder with the built static
+libraries in it. The project files of PosteRazor have relative
+paths that expect those folders to be here.
+
+For Visual Studio .Net 2003:
+Open the solution "fltk-1.1\vcnet\fltk.sln and" compile the
+project "fltk" in Release configuration. The resulting binary is
+"lib\fltk.lib".
+
+FreeImage
+=========
+You can get it from http://freeimage.sourceforge.net/ either by
+download or CVS.
+
+FreeImage needs to be installed into a folder "FreeImage" below
+this folder. PosteRazor requires the "Dist" subfolder with the
+headers and built static libraries in it. The project files of
+PosteRazor have relative paths that expect those folders to be
+here.
+
+For Visual Studio .Net 2003:
+Open the solution "FreeImage\FreeImage.sln", set the
+"Properties->C/C++->Code Generation->Runtime Library" of the
+"FreeImageLib" project to "Multi-threaded DLL" in the release
+configuration. Do the same for the projects "LibJPEG", "LibMNG",
+"LibPNG", "LibTIFF" and "ZLib". Then compile the "FreeImageLib"
+project in release configuration. The result is a ca. 7mb big
+"FreeImage\Dist\FreeImage.lib".
