@@ -161,6 +161,25 @@ void PosteRazorDialog::UpdatePosterSizeFields(Fl_Valuator *sourceWidget)
 	}
 }
 
+void PosteRazorDialog::SetPageSizeFields(void)
+{
+
+}
+
+void PosteRazorDialog::UpdatePageSizeFields(void)
+{
+	if (m_standardPageSizeRadioButton->value())
+	{
+		m_standardPageSizeGroup->activate();
+		m_customPageSizeGroup->deactivate();
+	}
+	else
+	{
+		m_standardPageSizeGroup->deactivate();
+		m_customPageSizeGroup->activate();
+	}
+}
+
 void PosteRazorDialog::resize(int x, int y, int w, int h)
 {
 	int old_w = this->w();

@@ -1,5 +1,6 @@
 #include "PosteRazor.h"
 #include "PosteRazorImageIO.h"
+#include <string.h>
 
 class PosteRazorImplementation: public PosteRazor
 {
@@ -100,10 +101,26 @@ public:
 		m_paperBorderLeft = ConvertBetweenDistanceUnits(borderLeft, m_distanceUnit, eDistanceUnitCentimeter);
 	}
 
+	void GetPaperFormatAndBorders(enum ePaperFormats &format, enum ePaperOrientations &orientation, double &borderTop, double &borderRight, double &borderBottom, double &borderLeft)
+	{
+		format = m_paperFormat;
+		orientation = m_paperOrientation;
+		borderTop = ConvertBetweenDistanceUnits(m_paperBorderTop, eDistanceUnitCentimeter, m_distanceUnit);
+		borderRight= ConvertBetweenDistanceUnits(m_paperBorderRight, eDistanceUnitCentimeter, m_distanceUnit);
+		borderBottom = ConvertBetweenDistanceUnits(m_paperBorderBottom, eDistanceUnitCentimeter, m_distanceUnit);
+		borderLeft = ConvertBetweenDistanceUnits(m_paperBorderLeft, eDistanceUnitCentimeter, m_distanceUnit);
+	}
+
 	void SetCustomPrintablePageSize(double width, double height)
 	{
 		m_customPrintablePageWidth = ConvertBetweenDistanceUnits(width, m_distanceUnit, eDistanceUnitCentimeter);
 		m_customPrintablePageHeight = ConvertBetweenDistanceUnits(height, m_distanceUnit, eDistanceUnitCentimeter);
+	}
+
+	void GetCustomPrintablePageSize(double &width, double &height)
+	{
+		width = ConvertBetweenDistanceUnits(m_customPrintablePageWidth, eDistanceUnitCentimeter, m_distanceUnit);
+		height = ConvertBetweenDistanceUnits(m_customPrintablePageHeight, eDistanceUnitCentimeter, m_distanceUnit);
 	}
 
 	void SetUseCustomPrintablePageSize(bool useIt) {m_useCustomPrintablePageSize = useIt;}
@@ -278,11 +295,11 @@ public:
 
 	enum ePosterSizeModes GetPosterSizeMode(void) {return m_posterSizeMode;}
 
-	void GetInputImagePreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight)
+	void GetPreviewSize(double imageWidth, double imageHeight, int boxWidth, int boxHeight, int &previewWidth, int &previewHeight)
 	{
-		double aspectRatio = (double)GetInputImageWidthPixels() / (double)GetInputImageHeightPixels();
+		double aspectRatio = imageWidth / imageHeight;
 
-		previewWidth = GetInputImageWidthPixels()<boxWidth?GetInputImageWidthPixels():boxWidth; //cheap min()
+		previewWidth = imageWidth<boxWidth?imageHeight:boxWidth; //cheap min()
 		previewHeight = (double)previewWidth / aspectRatio;
 
                 if (previewHeight > boxHeight)
@@ -292,7 +309,37 @@ public:
 		}
 	}
 
+	void GetInputImagePreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight)
+	{
+		GetPreviewSize(GetInputImageWidthPixels(), GetInputImageHeightPixels(), boxWidth, boxHeight, previewWidth, previewHeight);
+	}
+
 	void GetInputImagePreview(unsigned char* buffer, int pixelWidth, int pixelHeight) {m_imageIO->GetPreview(buffer, pixelWidth, pixelHeight);}
+
+	virtual void GetPaperPreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight)
+	{
+		double paperWidth, paperHeight;
+
+		if (GetUseCustomPrintablePageSize())
+		{
+			GetPrintablePageSize(paperWidth, paperHeight);
+		}
+		else
+		{
+			enum ePaperFormats format;
+			enum ePaperOrientations orientation;
+			double dummy;
+			GetPaperFormatAndBorders(format, orientation, dummy, dummy, dummy, dummy);
+			GetPaperDimensions(format, orientation, m_distanceUnit, paperWidth, paperHeight);
+		}
+
+		GetPreviewSize(paperWidth, paperHeight, boxWidth, boxHeight, previewWidth, previewHeight);
+	}
+
+	virtual void GetPaperPreview(unsigned char* buffer, int pixelWidth, int pixelHeight, bool withOverlap)
+	{
+		memset(buffer, 128, pixelWidth*pixelHeight*3);
+	}
 };
 
 PosteRazor* PosteRazor::CreatePosteRazor()

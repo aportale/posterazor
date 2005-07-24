@@ -40,7 +40,9 @@ public:
 	virtual enum eDistanceUnits GetDistanceUnit(void) = 0;
 
 	virtual void SetPaperFormatAndBorders(enum ePaperFormats format, enum ePaperOrientations orientation, double borderTop, double borderRight, double borderBottom, double borderLeft) = 0;
+	virtual void GetPaperFormatAndBorders(enum ePaperFormats &format, enum ePaperOrientations &orientation, double &borderTop, double &borderRight, double &borderBottom, double &borderLeft) = 0;
 	virtual void SetCustomPrintablePageSize(double width, double height) = 0;
+	virtual void GetCustomPrintablePageSize(double &width, double &height) = 0;
 	virtual void SetUseCustomPrintablePageSize(bool useIt) = 0;
 	virtual bool GetUseCustomPrintablePageSize(void) = 0;
 	virtual void GetPrintablePageSize(double &width, double &height) = 0;
@@ -51,11 +53,14 @@ public:
 	virtual double GetPosterHeight(enum ePosterSizeModes mode) = 0;
 	virtual enum ePosterSizeModes GetPosterSizeMode(void) = 0;
 
-	virtual void GetInputImagePreviewSize(int bowWidth, int boxHeight, int &previewWidth, int &previewHeight) = 0;
+	virtual void GetInputImagePreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight) = 0;
 	virtual void GetInputImagePreview(unsigned char* buffer, int pixelWidth, int pixelHeight) = 0;
 
 //	virtual void GetPosterPreviewSize(int bowWidth, int boxHeight, int &previewWidth, int &previewHeight) = 0;
 //	virtual void GetPosterPreview(unsigned char* buffer, int pixelWidth, int pixelHeight) = 0;
+
+	virtual void GetPaperPreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight) = 0;
+	virtual void GetPaperPreview(unsigned char* buffer, int pixelWidth, int pixelHeight, bool withOverlap) = 0;
 };
 
 #endif

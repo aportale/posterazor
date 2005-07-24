@@ -29,6 +29,8 @@ public:
 	void LoadInputImage(void);
 	void UpdatePreviewImage(void);
 
+	void SetPageSizeFields(void);
+	void UpdatePageSizeFields(void);
 	void UpdatePosterSizeFields(Fl_Valuator *sourceWidget);
 };
 
