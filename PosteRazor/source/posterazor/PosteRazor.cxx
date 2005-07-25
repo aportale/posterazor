@@ -299,7 +299,7 @@ public:
 	{
 		double aspectRatio = imageWidth / imageHeight;
 
-		previewWidth = imageWidth<boxWidth?imageHeight:boxWidth; //cheap min()
+		previewWidth = imageWidth<boxWidth?imageWidth:boxWidth; //cheap min()
 		previewHeight = (double)previewWidth / aspectRatio;
 
                 if (previewHeight > boxHeight)
