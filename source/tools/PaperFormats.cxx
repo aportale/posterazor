@@ -25,6 +25,11 @@ int PaperFormats::GetPaperFormatsCount(void)
 	return g_paperFormatsCount;
 }
 
+enum PaperFormats::ePaperFormats PaperFormats::GetPaperFormatForIndex(int index)
+{
+	return g_paperFormats[index].format;
+}
+
 const int GetPaperFormatIndex(enum PaperFormats::ePaperFormats format)
 {
 	int index = 0;
@@ -56,7 +61,7 @@ enum PaperFormats::ePaperFormats PaperFormats::GetPaperFormatForName(const char*
 	{
 		if (0 == strcmp(name, g_paperFormats[i].name))
 		{
-			paperFormat = g_paperFormats[i].format;
+			paperFormat = GetPaperFormatForIndex(i);
 			break;
 		}
 	}

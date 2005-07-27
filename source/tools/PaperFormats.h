@@ -22,7 +22,7 @@ public:
 	};
 
 	static int GetPaperFormatsCount(void);
-
+	static enum PaperFormats::ePaperFormats GetPaperFormatForIndex(int index);
 	static const char* GetPaperFormatName(enum ePaperFormats format);
 	static enum ePaperFormats GetPaperFormatForName(const char* name);
 	static void GetPaperDimensions(enum ePaperFormats, enum ePaperOrientations, enum eDistanceUnits, double &width, double &height);
