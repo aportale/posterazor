@@ -53,30 +53,30 @@ widget_class PosteRazorDialogUI {
         xywh {360 380 250 10} resizable
       }
     }
-    Fl_Group m_pageSizeStep {
+    Fl_Group m_pageSizeStep {open
       xywh {360 10 250 380}
     } {
       Fl_Round_Button m_standardPageSizeRadioButton {
         label {Standard paper format}
-        callback {UpdatePageSizeFields();}
+        callback {SelectPageSizeGroup(false);}
         xywh {370 17 230 20} type Radio down_box ROUND_DOWN_BOX
       }
-      Fl_Group m_standardPageSizeGroup {
+      Fl_Group m_standardPageSizeGroup {open
         xywh {370 35 230 230} box THIN_DOWN_BOX color 45 selection_color 48 align 16
       } {
-        Fl_Choice {} {
-          label {Format:} open
+        Fl_Choice m_paperFormatChoice {
+          label {Format:} open selected
           xywh {450 45 140 25} down_box BORDER_BOX
         } {}
         Fl_Group {} {
           label {Orientation:}
           xywh {450 80 140 60} box THIN_DOWN_BOX color 43 align 4
         } {
-          Fl_Round_Button {} {
+          Fl_Round_Button m_pageOrientationPortraitRadioButton {
             label Portrait
             xywh {455 85 120 25} type Radio down_box ROUND_DOWN_BOX
           }
-          Fl_Round_Button {} {
+          Fl_Round_Button m_pageOrientationLandscapeRadioButton {
             label Landscape
             xywh {455 110 130 25} type Radio down_box ROUND_DOWN_BOX
           }
@@ -85,29 +85,25 @@ widget_class PosteRazorDialogUI {
           label {Borders:} open
           xywh {450 150 140 105} box THIN_DOWN_BOX color 43 align 4
         } {
-          Fl_Value_Input m_pageBorderTop {
-            callback {UpdatePosterSizeFields(m_posterAbsoluteWidthInput);}
+          Fl_Value_Input m_pageBorderTopInput {
             xywh {500 160 40 25} align 20
             code0 {o->step(0.1);}
             code1 {o->range(0, 999);}
             code2 {o->precision(3);}
           }
-          Fl_Value_Input m_pageBorderRight {
-            callback {UpdatePosterSizeFields(m_posterAbsoluteWidthInput);}
+          Fl_Value_Input m_pageBorderRightInput {
             xywh {540 190 40 25} align 16
             code0 {o->step(0.1);}
             code1 {o->range(0, 999);}
             code2 {o->precision(3);}
           }
-          Fl_Value_Input m_pageBorderBottom {
-            callback {UpdatePosterSizeFields(m_posterAbsoluteWidthInput);}
+          Fl_Value_Input m_pageBorderBottomInput {
             xywh {500 220 40 25} align 16
             code0 {o->step(0.1);}
             code1 {o->range(0, 999);}
             code2 {o->precision(3);}
           }
-          Fl_Value_Input m_pageBorderLeft {
-            callback {UpdatePosterSizeFields(m_posterAbsoluteWidthInput);}
+          Fl_Value_Input m_pageBorderLeftInput {
             xywh {460 190 40 25} align 16
             code0 {o->step(0.1);}
             code1 {o->range(0, 999);}
@@ -117,7 +113,7 @@ widget_class PosteRazorDialogUI {
       }
       Fl_Round_Button m_customPageSizeRadioButton {
         label {Custom paper format}
-        callback {UpdatePageSizeFields();} selected
+        callback {SelectPageSizeGroup(true);}
         xywh {370 272 230 20} type Radio down_box ROUND_DOWN_BOX
       }
       Fl_Group m_customPageSizeGroup {
@@ -256,7 +252,7 @@ widget_class PosteRazorDialogUI {
   }
   decl {virtual void SetPageSizeFields(void) = 0;} {public
   }
-  decl {virtual void UpdatePageSizeFields(void) = 0;} {public
+  decl {virtual void SelectPageSizeGroup(bool useCustomPrintablePageSize) = 0;} {public
   }
   decl {virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;} {public
   }
