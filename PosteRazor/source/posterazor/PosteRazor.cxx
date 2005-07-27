@@ -50,7 +50,7 @@ public:
 		m_paperBorderRight             = 1.5;
 		m_paperBorderBottom            = 1.5;
 		m_paperBorderLeft              = 1.5;
-		m_customPrintablePageWidth     = 5;
+		m_customPrintablePageWidth     = 20;
 		m_customPrintablePageHeight    = 20;
 
 		m_borderPosition               = eBorderPositionRightBottom;
@@ -91,25 +91,19 @@ public:
 	void SetDistanceUnit(enum eDistanceUnits unit) {m_distanceUnit = unit;}
 	enum eDistanceUnits GetDistanceUnit(void) {return m_distanceUnit;}
 
-	void SetPaperFormatAndBorders(enum ePaperFormats format, enum ePaperOrientations orientation, double borderTop, double borderRight, double borderBottom, double borderLeft)
-	{
-		m_paperFormat = format;
-		m_paperOrientation = orientation;
-		m_paperBorderTop = ConvertBetweenDistanceUnits(borderTop, m_distanceUnit, eDistanceUnitCentimeter);
-		m_paperBorderRight = ConvertBetweenDistanceUnits(borderRight, m_distanceUnit, eDistanceUnitCentimeter);
-		m_paperBorderBottom = ConvertBetweenDistanceUnits(borderBottom, m_distanceUnit, eDistanceUnitCentimeter);
-		m_paperBorderLeft = ConvertBetweenDistanceUnits(borderLeft, m_distanceUnit, eDistanceUnitCentimeter);
-	}
+	void SetPaperFormat(enum ePaperFormats format) {m_paperFormat = format;}
+	void SetPaperOrientation(enum ePaperOrientations orientation) {m_paperOrientation = orientation;}
+	void SetPaperBorderTop(double borderTop) {m_paperBorderTop = ConvertBetweenDistanceUnits(borderTop, m_distanceUnit, eDistanceUnitCentimeter);}
+	void SetPaperBorderRight(double borderRight) {m_paperBorderRight = ConvertBetweenDistanceUnits(borderRight, m_distanceUnit, eDistanceUnitCentimeter);}
+	void SetPaperBorderBottom(double borderBottom) {m_paperBorderBottom = ConvertBetweenDistanceUnits(borderBottom, m_distanceUnit, eDistanceUnitCentimeter);}
+	void SetPaperBorderLeft(double borderLeft) {m_paperBorderLeft = ConvertBetweenDistanceUnits(borderLeft, m_distanceUnit, eDistanceUnitCentimeter);}
 
-	void GetPaperFormatAndBorders(enum ePaperFormats &format, enum ePaperOrientations &orientation, double &borderTop, double &borderRight, double &borderBottom, double &borderLeft)
-	{
-		format = m_paperFormat;
-		orientation = m_paperOrientation;
-		borderTop = ConvertBetweenDistanceUnits(m_paperBorderTop, eDistanceUnitCentimeter, m_distanceUnit);
-		borderRight= ConvertBetweenDistanceUnits(m_paperBorderRight, eDistanceUnitCentimeter, m_distanceUnit);
-		borderBottom = ConvertBetweenDistanceUnits(m_paperBorderBottom, eDistanceUnitCentimeter, m_distanceUnit);
-		borderLeft = ConvertBetweenDistanceUnits(m_paperBorderLeft, eDistanceUnitCentimeter, m_distanceUnit);
-	}
+	enum ePaperFormats GetPaperFormat(void) {return m_paperFormat;}
+	enum ePaperOrientations GetPaperOrientation(void) {return m_paperOrientation;}
+	double GetPaperBorderTop(void) {return ConvertBetweenDistanceUnits(m_paperBorderTop, eDistanceUnitCentimeter, m_distanceUnit);}
+	double GetPaperBorderRight(void) {return ConvertBetweenDistanceUnits(m_paperBorderRight, eDistanceUnitCentimeter, m_distanceUnit);}
+	double GetPaperBorderBottom(void) {return ConvertBetweenDistanceUnits(m_paperBorderBottom, eDistanceUnitCentimeter, m_distanceUnit);}
+	double GetPaperBorderLeft(void) {return ConvertBetweenDistanceUnits(m_paperBorderLeft, eDistanceUnitCentimeter, m_distanceUnit);}
 
 	void SetCustomPrintablePageSize(double width, double height)
 	{
@@ -326,11 +320,7 @@ public:
 		}
 		else
 		{
-			enum ePaperFormats format;
-			enum ePaperOrientations orientation;
-			double dummy;
-			GetPaperFormatAndBorders(format, orientation, dummy, dummy, dummy, dummy);
-			GetPaperDimensions(format, orientation, m_distanceUnit, paperWidth, paperHeight);
+			GetPaperDimensions(GetPaperFormat(), GetPaperOrientation(), m_distanceUnit, paperWidth, paperHeight);
 		}
 
 		GetPreviewSize(paperWidth, paperHeight, boxWidth, boxHeight, previewWidth, previewHeight);

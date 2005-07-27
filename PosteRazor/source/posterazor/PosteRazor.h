@@ -39,8 +39,20 @@ public:
 	virtual void SetDistanceUnit(enum eDistanceUnits unit) = 0;
 	virtual enum eDistanceUnits GetDistanceUnit(void) = 0;
 
-	virtual void SetPaperFormatAndBorders(enum ePaperFormats format, enum ePaperOrientations orientation, double borderTop, double borderRight, double borderBottom, double borderLeft) = 0;
-	virtual void GetPaperFormatAndBorders(enum ePaperFormats &format, enum ePaperOrientations &orientation, double &borderTop, double &borderRight, double &borderBottom, double &borderLeft) = 0;
+	virtual void SetPaperFormat(enum ePaperFormats format) = 0;
+	virtual void SetPaperOrientation(enum ePaperOrientations orientation) = 0;
+	virtual void SetPaperBorderTop(double borderTop) = 0;
+	virtual void SetPaperBorderRight(double borderRight) = 0;
+	virtual void SetPaperBorderBottom(double borderBottom) = 0;
+	virtual void SetPaperBorderLeft(double borderLeft) = 0;
+
+	virtual enum ePaperFormats GetPaperFormat(void) = 0;
+	virtual enum ePaperOrientations GetPaperOrientation(void) = 0;
+	virtual double GetPaperBorderTop(void) = 0;
+	virtual double GetPaperBorderRight(void) = 0;
+	virtual double GetPaperBorderBottom(void) = 0;
+	virtual double GetPaperBorderLeft(void) = 0;
+
 	virtual void SetCustomPrintablePageSize(double width, double height) = 0;
 	virtual void GetCustomPrintablePageSize(double &width, double &height) = 0;
 	virtual void SetUseCustomPrintablePageSize(bool useIt) = 0;
