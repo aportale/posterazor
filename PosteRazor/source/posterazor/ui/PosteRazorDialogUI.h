@@ -41,26 +41,13 @@ private:
   static void cb_m_standardPageSizeRadioButton(Fl_Round_Button*, void*);
 public:
   Fl_Group *m_standardPageSizeGroup;
-  Fl_Value_Input *m_pageBorderTop;
-private:
-  void cb_m_pageBorderTop_i(Fl_Value_Input*, void*);
-  static void cb_m_pageBorderTop(Fl_Value_Input*, void*);
-public:
-  Fl_Value_Input *m_pageBorderRight;
-private:
-  void cb_m_pageBorderRight_i(Fl_Value_Input*, void*);
-  static void cb_m_pageBorderRight(Fl_Value_Input*, void*);
-public:
-  Fl_Value_Input *m_pageBorderBottom;
-private:
-  void cb_m_pageBorderBottom_i(Fl_Value_Input*, void*);
-  static void cb_m_pageBorderBottom(Fl_Value_Input*, void*);
-public:
-  Fl_Value_Input *m_pageBorderLeft;
-private:
-  void cb_m_pageBorderLeft_i(Fl_Value_Input*, void*);
-  static void cb_m_pageBorderLeft(Fl_Value_Input*, void*);
-public:
+  Fl_Choice *m_paperFormatChoice;
+  Fl_Round_Button *m_pageOrientationPortraitRadioButton;
+  Fl_Round_Button *m_pageOrientationLandscapeRadioButton;
+  Fl_Value_Input *m_pageBorderTopInput;
+  Fl_Value_Input *m_pageBorderRightInput;
+  Fl_Value_Input *m_pageBorderBottomInput;
+  Fl_Value_Input *m_pageBorderLeftInput;
   Fl_Round_Button *m_customPageSizeRadioButton;
 private:
   void cb_m_customPageSizeRadioButton_i(Fl_Round_Button*, void*);
@@ -118,7 +105,7 @@ public:
   virtual void LoadInputImage(void) = 0;
   virtual void UpdatePreviewImage(void) = 0;
   virtual void SetPageSizeFields(void) = 0;
-  virtual void UpdatePageSizeFields(void) = 0;
+  virtual void SelectPageSizeGroup(bool useCustomPrintablePageSize) = 0;
   virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;
 };
 #endif

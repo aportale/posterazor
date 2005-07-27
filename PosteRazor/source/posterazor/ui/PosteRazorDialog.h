@@ -2,6 +2,7 @@
 #define PosteRazorDialog_h
 
 #include <FL/Fl_Image.H>
+#include <FL/Fl_Menu_Item.H>
 #include "PosteRazor.h"
 #include "PosteRazorDialogUI.h"
 
@@ -13,6 +14,8 @@ private:
 	PosteRazor    *m_posteRazor;
 	
 	bool          m_needPreviewImageUpdate;
+
+	Fl_Menu_Item  *m_paperFormatMenuItems;
 
 	void DisposePreviewImage(void);
 	static void UpdatePreviewImage_cp(void *ptr);
@@ -30,8 +33,11 @@ public:
 	void UpdatePreviewImage(void);
 
 	void SetPageSizeFields(void);
-	void UpdatePageSizeFields(void);
+	void SelectPageSizeGroup(bool useCustomPrintablePageSize);
 	void UpdatePosterSizeFields(Fl_Valuator *sourceWidget);
+
+	void HandlePaperFormatChoice(void);
+	static void HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userData);
 };
 
 #endif
