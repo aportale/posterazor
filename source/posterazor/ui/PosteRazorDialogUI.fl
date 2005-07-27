@@ -65,7 +65,7 @@ widget_class PosteRazorDialogUI {
         xywh {370 35 230 230} box THIN_DOWN_BOX color 45 selection_color 48 align 16
       } {
         Fl_Choice m_paperFormatChoice {
-          label {Format:} open selected
+          label {Format:} open
           xywh {450 45 140 25} down_box BORDER_BOX
         } {}
         Fl_Group {} {
@@ -74,10 +74,10 @@ widget_class PosteRazorDialogUI {
         } {
           Fl_Round_Button m_pageOrientationPortraitRadioButton {
             label Portrait
-            xywh {455 85 120 25} type Radio down_box ROUND_DOWN_BOX
+            xywh {455 85 130 25} type Radio down_box ROUND_DOWN_BOX
           }
           Fl_Round_Button m_pageOrientationLandscapeRadioButton {
-            label Landscape
+            label Landscape selected
             xywh {455 110 130 25} type Radio down_box ROUND_DOWN_BOX
           }
         }

@@ -167,7 +167,7 @@ o->when(FL_WHEN_RELEASE);
         o->box(FL_THIN_DOWN_BOX);
         o->color((Fl_Color)43);
         o->align(FL_ALIGN_LEFT);
-        { Fl_Round_Button* o = m_pageOrientationPortraitRadioButton = new Fl_Round_Button(455, 85, 120, 25, "Portrait");
+        { Fl_Round_Button* o = m_pageOrientationPortraitRadioButton = new Fl_Round_Button(455, 85, 130, 25, "Portrait");
           o->type(102);
           o->down_box(FL_ROUND_DOWN_BOX);
         }
