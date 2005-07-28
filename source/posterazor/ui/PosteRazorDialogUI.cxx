@@ -109,29 +109,29 @@ o->labelcolor(FL_BLACK);
 o->user_data((void*)(this));
 o->align(FL_ALIGN_TOP);
 o->when(FL_WHEN_RELEASE);
-{ Fl_Group* o = new Fl_Group(10, 400, 600, 25);
-  { Fl_Button* o = m_nextButton = new Fl_Button(525, 400, 85, 25, "Next @-2->");
+{ Fl_Group* o = new Fl_Group(10, 420, 600, 25);
+  { Fl_Button* o = m_nextButton = new Fl_Button(525, 420, 85, 25, "Next @-2->");
     o->callback((Fl_Callback*)cb_m_nextButton);
   }
-  { Fl_Button* o = m_prevButton = new Fl_Button(430, 400, 85, 25, "@-2<- Back");
+  { Fl_Button* o = m_prevButton = new Fl_Button(430, 420, 85, 25, "@-2<- Back");
     o->callback((Fl_Callback*)cb_m_prevButton);
   }
-  { Fl_Box* o = new Fl_Box(225, 400, 15, 25);
+  { Fl_Box* o = new Fl_Box(225, 420, 15, 25);
     Fl_Group::current()->resizable(o);
   }
   o->end();
 }
-{ Fl_Wizard* o = m_wizard = new Fl_Wizard(360, 10, 250, 380);
+{ Fl_Wizard* o = m_wizard = new Fl_Wizard(360, 45, 250, 365);
   o->box(FL_THIN_DOWN_BOX);
   o->user_data((void*)(this));
-  { Fl_Group* o = m_loadInputImageStep = new Fl_Group(360, 10, 250, 380);
+  { Fl_Group* o = m_loadInputImageStep = new Fl_Group(360, 45, 250, 365);
     o->color(FL_LIGHT1);
     o->hide();
-    { Fl_Group* o = new Fl_Group(370, 35, 230, 25, "Input Image");
-      { Fl_Button* o = new Fl_Button(575, 35, 25, 25, "...");
+    { Fl_Group* o = new Fl_Group(370, 70, 230, 25, "Input Image");
+      { Fl_Button* o = new Fl_Button(575, 70, 25, 25, "...");
         o->callback((Fl_Callback*)cb_);
       }
-      { Fl_Box* o = m_inputFileNameLabel = new Fl_Box(370, 35, 205, 25);
+      { Fl_Box* o = m_inputFileNameLabel = new Fl_Box(370, 70, 205, 25);
         o->box(FL_THIN_DOWN_BOX);
         o->color((Fl_Color)55);
         o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
@@ -139,67 +139,67 @@ o->when(FL_WHEN_RELEASE);
       }
       o->end();
     }
-    { Fl_Group* o = new Fl_Group(370, 86, 230, 210, "Image information");
+    { Fl_Group* o = new Fl_Group(370, 121, 230, 210, "Image information");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       o->end();
     }
-    { Fl_Box* o = new Fl_Box(360, 380, 250, 10);
+    { Fl_Box* o = new Fl_Box(360, 415, 250, 10);
       Fl_Group::current()->resizable(o);
     }
     o->end();
   }
-  { Fl_Group* o = m_pageSizeStep = new Fl_Group(360, 10, 250, 380);
-    { Fl_Round_Button* o = m_standardPageSizeRadioButton = new Fl_Round_Button(370, 17, 230, 20, "Standard paper format");
+  { Fl_Group* o = m_pageSizeStep = new Fl_Group(360, 45, 250, 365);
+    { Fl_Round_Button* o = m_standardPageSizeRadioButton = new Fl_Round_Button(370, 52, 230, 20, "Standard paper format");
       o->type(102);
       o->down_box(FL_ROUND_DOWN_BOX);
       o->callback((Fl_Callback*)cb_m_standardPageSizeRadioButton);
     }
-    { Fl_Group* o = m_standardPageSizeGroup = new Fl_Group(370, 35, 230, 230);
+    { Fl_Group* o = m_standardPageSizeGroup = new Fl_Group(370, 70, 230, 230);
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       o->selection_color((Fl_Color)48);
       o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
-      { Fl_Choice* o = m_paperFormatChoice = new Fl_Choice(450, 45, 140, 25, "Format:");
+      { Fl_Choice* o = m_paperFormatChoice = new Fl_Choice(450, 80, 140, 25, "Format:");
         o->down_box(FL_BORDER_BOX);
       }
-      { Fl_Group* o = new Fl_Group(450, 80, 140, 60, "Orientation:");
+      { Fl_Group* o = new Fl_Group(450, 115, 140, 60, "Orientation:");
         o->box(FL_THIN_DOWN_BOX);
         o->color((Fl_Color)43);
         o->align(FL_ALIGN_LEFT);
-        { Fl_Round_Button* o = m_pageOrientationPortraitRadioButton = new Fl_Round_Button(455, 85, 130, 25, "Portrait");
+        { Fl_Round_Button* o = m_pageOrientationPortraitRadioButton = new Fl_Round_Button(455, 120, 130, 25, "Portrait");
           o->type(102);
           o->down_box(FL_ROUND_DOWN_BOX);
         }
-        { Fl_Round_Button* o = m_pageOrientationLandscapeRadioButton = new Fl_Round_Button(455, 110, 130, 25, "Landscape");
+        { Fl_Round_Button* o = m_pageOrientationLandscapeRadioButton = new Fl_Round_Button(455, 145, 130, 25, "Landscape");
           o->type(102);
           o->down_box(FL_ROUND_DOWN_BOX);
         }
         o->end();
       }
-      { Fl_Group* o = new Fl_Group(450, 150, 140, 105, "Borders:");
+      { Fl_Group* o = new Fl_Group(450, 185, 140, 105, "Borders:");
         o->box(FL_THIN_DOWN_BOX);
         o->color((Fl_Color)43);
         o->align(FL_ALIGN_LEFT);
-        { Fl_Value_Input* o = m_pageBorderTopInput = new Fl_Value_Input(500, 160, 40, 25);
+        { Fl_Value_Input* o = m_pageBorderTopInput = new Fl_Value_Input(500, 195, 40, 25);
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
           o->step(0.1);
           o->range(0, 999);
           o->precision(3);
         }
-        { Fl_Value_Input* o = m_pageBorderRightInput = new Fl_Value_Input(540, 190, 40, 25);
+        { Fl_Value_Input* o = m_pageBorderRightInput = new Fl_Value_Input(540, 225, 40, 25);
           o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
           o->step(0.1);
           o->range(0, 999);
           o->precision(3);
         }
-        { Fl_Value_Input* o = m_pageBorderBottomInput = new Fl_Value_Input(500, 220, 40, 25);
+        { Fl_Value_Input* o = m_pageBorderBottomInput = new Fl_Value_Input(500, 255, 40, 25);
           o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
           o->step(0.1);
           o->range(0, 999);
           o->precision(3);
         }
-        { Fl_Value_Input* o = m_pageBorderLeftInput = new Fl_Value_Input(460, 190, 40, 25);
+        { Fl_Value_Input* o = m_pageBorderLeftInput = new Fl_Value_Input(460, 225, 40, 25);
           o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
           o->step(0.1);
           o->range(0, 999);
@@ -209,125 +209,125 @@ o->when(FL_WHEN_RELEASE);
       }
       o->end();
     }
-    { Fl_Round_Button* o = m_customPageSizeRadioButton = new Fl_Round_Button(370, 272, 230, 20, "Custom paper format");
+    { Fl_Round_Button* o = m_customPageSizeRadioButton = new Fl_Round_Button(370, 307, 230, 20, "Custom paper format");
       o->type(102);
       o->down_box(FL_ROUND_DOWN_BOX);
       o->callback((Fl_Callback*)cb_m_customPageSizeRadioButton);
     }
-    { Fl_Group* o = m_customPageSizeGroup = new Fl_Group(370, 290, 230, 75);
+    { Fl_Group* o = m_customPageSizeGroup = new Fl_Group(370, 325, 230, 75);
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       o->selection_color(FL_LIGHT3);
       o->align(FL_ALIGN_TOP|FL_ALIGN_INSIDE);
-      { Fl_Value_Input* o = m_pageCustomWidthInput = new Fl_Value_Input(450, 300, 90, 25, "Width:");
+      { Fl_Value_Input* o = m_pageCustomWidthInput = new Fl_Value_Input(450, 335, 90, 25, "Width:");
         o->callback((Fl_Callback*)cb_m_pageCustomWidthInput);
         o->step(0.1);
         o->range(0, 999);
         o->precision(3);
       }
-      { Fl_Value_Input* o = m_pageCustomHeightInput = new Fl_Value_Input(450, 330, 90, 25, "Height:");
+      { Fl_Value_Input* o = m_pageCustomHeightInput = new Fl_Value_Input(450, 365, 90, 25, "Height:");
         o->callback((Fl_Callback*)cb_m_pageCustomHeightInput);
         Fl_Group::current()->resizable(o);
         o->step(0.1);
         o->range(0, 999);
         o->precision(3);
       }
-      { Fl_Box* o = m_pageCustomWidthLabel = new Fl_Box(540, 300, 50, 25, "cm");
+      { Fl_Box* o = m_pageCustomWidthLabel = new Fl_Box(540, 335, 50, 25, "cm");
         o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
       }
-      { Fl_Box* o = m_pageCustomHeightLabel = new Fl_Box(540, 330, 50, 25, "cm");
+      { Fl_Box* o = m_pageCustomHeightLabel = new Fl_Box(540, 365, 50, 25, "cm");
         o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
       }
       o->end();
     }
-    { Fl_Box* o = new Fl_Box(360, 380, 250, 10);
+    { Fl_Box* o = new Fl_Box(360, 400, 250, 10);
       Fl_Group::current()->resizable(o);
     }
     o->end();
   }
-  { Fl_Group* o = m_posterSizeStep = new Fl_Group(360, 10, 250, 380);
+  { Fl_Group* o = m_posterSizeStep = new Fl_Group(360, 45, 250, 365);
     o->hide();
-    { Fl_Group* o = new Fl_Group(370, 35, 230, 75, "Image size");
+    { Fl_Group* o = new Fl_Group(370, 70, 230, 75, "Image size");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       o->selection_color(FL_LIGHT3);
-      { Fl_Value_Input* o = m_posterAbsoluteWidthInput = new Fl_Value_Input(450, 45, 90, 25, "Width:");
+      { Fl_Value_Input* o = m_posterAbsoluteWidthInput = new Fl_Value_Input(450, 80, 90, 25, "Width:");
         o->callback((Fl_Callback*)cb_m_posterAbsoluteWidthInput);
         o->step(0.1);
         o->range(0, 999);
         o->precision(3);
       }
-      { Fl_Value_Input* o = m_posterAbsoluteHeightInput = new Fl_Value_Input(450, 75, 90, 25, "Height:");
+      { Fl_Value_Input* o = m_posterAbsoluteHeightInput = new Fl_Value_Input(450, 110, 90, 25, "Height:");
         o->callback((Fl_Callback*)cb_m_posterAbsoluteHeightInput);
         Fl_Group::current()->resizable(o);
         o->step(0.1);
         o->range(0, 999);
         o->precision(3);
       }
-      { Fl_Box* o = m_posterAbsoluteWidthLabel = new Fl_Box(540, 45, 50, 25, "cm");
+      { Fl_Box* o = m_posterAbsoluteWidthLabel = new Fl_Box(540, 80, 50, 25, "cm");
         o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
       }
-      { Fl_Box* o = m_posterAbsoluteHeightLabel = new Fl_Box(540, 75, 50, 25, "cm");
+      { Fl_Box* o = m_posterAbsoluteHeightLabel = new Fl_Box(540, 110, 50, 25, "cm");
         o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
       }
       o->end();
     }
-    { Fl_Group* o = new Fl_Group(370, 135, 230, 75, "Pages");
+    { Fl_Group* o = new Fl_Group(370, 170, 230, 75, "Pages");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       o->selection_color(FL_LIGHT3);
-      { Fl_Value_Input* o = m_posterPagesWidthInput = new Fl_Value_Input(450, 145, 90, 25, "Width:");
+      { Fl_Value_Input* o = m_posterPagesWidthInput = new Fl_Value_Input(450, 180, 90, 25, "Width:");
         o->callback((Fl_Callback*)cb_m_posterPagesWidthInput);
         o->step(0.1);
         o->range(0, 999);
         o->precision(3);
       }
-      { Fl_Value_Input* o = m_posterPagesHeightInput = new Fl_Value_Input(450, 175, 90, 25, "Height:");
+      { Fl_Value_Input* o = m_posterPagesHeightInput = new Fl_Value_Input(450, 210, 90, 25, "Height:");
         o->callback((Fl_Callback*)cb_m_posterPagesHeightInput);
         Fl_Group::current()->resizable(o);
         o->step(0.1);
         o->range(0, 999);
         o->precision(3);
       }
-      { Fl_Box* o = m_posterPagesWidthLabel = new Fl_Box(540, 145, 50, 25, "pages");
+      { Fl_Box* o = m_posterPagesWidthLabel = new Fl_Box(540, 180, 50, 25, "pages");
         o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
       }
-      { Fl_Box* o = m_posterPagesHeightLabel = new Fl_Box(540, 175, 50, 25, "pages");
+      { Fl_Box* o = m_posterPagesHeightLabel = new Fl_Box(540, 210, 50, 25, "pages");
         o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
       }
       o->end();
     }
-    { Fl_Group* o = new Fl_Group(370, 236, 230, 45, "Image size (%)");
+    { Fl_Group* o = new Fl_Group(370, 271, 230, 45, "Image size (%)");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       o->selection_color(FL_LIGHT3);
-      { Fl_Value_Input* o = m_posterPercentualSizeInput = new Fl_Value_Input(450, 245, 90, 25, "Size:");
+      { Fl_Value_Input* o = m_posterPercentualSizeInput = new Fl_Value_Input(450, 280, 90, 25, "Size:");
         o->callback((Fl_Callback*)cb_m_posterPercentualSizeInput);
         o->step(0.1);
         o->range(0, 999);
         o->precision(3);
       }
-      { Fl_Box* o = m_posterPercentualWidthLabel = new Fl_Box(540, 246, 50, 25, "%");
+      { Fl_Box* o = m_posterPercentualWidthLabel = new Fl_Box(540, 281, 50, 25, "%");
         o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
       }
       o->end();
     }
-    { Fl_Box* o = new Fl_Box(360, 380, 250, 10);
+    { Fl_Box* o = new Fl_Box(360, 415, 250, 10);
       Fl_Group::current()->resizable(o);
     }
     o->end();
   }
-  { Fl_Group* o = new Fl_Group(360, 10, 250, 380);
+  { Fl_Group* o = new Fl_Group(360, 45, 250, 365);
     o->hide();
     o->end();
   }
-  { Fl_Group* o = m_savePosterStep = new Fl_Group(360, 10, 250, 380);
+  { Fl_Group* o = m_savePosterStep = new Fl_Group(360, 45, 250, 365);
     o->hide();
     o->end();
   }
   o->end();
 }
-{ Fl_Group* o = m_previewImageGroup = new Fl_Group(10, 10, 345, 380);
+{ Fl_Group* o = m_previewImageGroup = new Fl_Group(10, 45, 345, 365);
   o->box(FL_THIN_DOWN_BOX);
   o->color((Fl_Color)34);
   o->selection_color(FL_LIGHT2);
@@ -337,6 +337,13 @@ o->when(FL_WHEN_RELEASE);
   o->align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE);
   o->end();
   Fl_Group::current()->resizable(o);
+}
+{ Fl_Box* o = new Fl_Box(10, 10, 600, 25, "Step 1 of 8: Load an image");
+  o->box(FL_THIN_UP_BOX);
+  o->color((Fl_Color)10);
+  o->labelfont(1);
+  o->labelsize(15);
+  o->labelcolor(FL_GRAY0);
 }
 size_range(this->w(), this->h());
 end();
