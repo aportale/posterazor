@@ -4,7 +4,7 @@
 #include <FL/fl_ask.H>
 
 PosteRazorDialog::PosteRazorDialog(void)
-	:PosteRazorDialogUI(620, 435, "PosteRazor")
+	:PosteRazorDialogUI(620, 455, "PosteRazor")
 {
 	m_previewImageData = 0;
 	m_previewImage = 0;
