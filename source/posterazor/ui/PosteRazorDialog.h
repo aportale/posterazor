@@ -38,6 +38,8 @@ public:
 
 	void HandlePaperFormatChoice(void);
 	static void HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userData);
+
+	void HandlePaperOrientationChangement(void);
 };
 
 #endif

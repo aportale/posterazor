@@ -44,6 +44,10 @@ public:
   Fl_Choice *m_paperFormatChoice;
   Fl_Round_Button *m_pageOrientationPortraitRadioButton;
   Fl_Round_Button *m_pageOrientationLandscapeRadioButton;
+private:
+  void cb_m_pageOrientationLandscapeRadioButton_i(Fl_Round_Button*, void*);
+  static void cb_m_pageOrientationLandscapeRadioButton(Fl_Round_Button*, void*);
+public:
   Fl_Value_Input *m_pageBorderTopInput;
   Fl_Value_Input *m_pageBorderRightInput;
   Fl_Value_Input *m_pageBorderBottomInput;
@@ -107,5 +111,6 @@ public:
   virtual void SetPageSizeFields(void) = 0;
   virtual void SelectPageSizeGroup(bool useCustomPrintablePageSize) = 0;
   virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;
+  virtual void HandlePaperOrientationChangement(void) = 0;
 };
 #endif
