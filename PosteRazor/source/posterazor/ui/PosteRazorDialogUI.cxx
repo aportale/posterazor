@@ -30,6 +30,13 @@ void PosteRazorDialogUI::cb_m_standardPageSizeRadioButton(Fl_Round_Button* o, vo
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->user_data()))->cb_m_standardPageSizeRadioButton_i(o,v);
 }
 
+void PosteRazorDialogUI::cb_m_pageOrientationLandscapeRadioButton_i(Fl_Round_Button*, void*) {
+  HandlePaperOrientationChangement();
+}
+void PosteRazorDialogUI::cb_m_pageOrientationLandscapeRadioButton(Fl_Round_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_pageOrientationLandscapeRadioButton_i(o,v);
+}
+
 void PosteRazorDialogUI::cb_m_customPageSizeRadioButton_i(Fl_Round_Button*, void*) {
   SelectPageSizeGroup(true);
 }
@@ -174,6 +181,7 @@ o->when(FL_WHEN_RELEASE);
         { Fl_Round_Button* o = m_pageOrientationLandscapeRadioButton = new Fl_Round_Button(455, 145, 130, 25, "Landscape");
           o->type(102);
           o->down_box(FL_ROUND_DOWN_BOX);
+          o->callback((Fl_Callback*)cb_m_pageOrientationLandscapeRadioButton);
         }
         o->end();
       }

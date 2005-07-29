@@ -37,6 +37,7 @@ PosteRazorDialog::~PosteRazorDialog()
 
 void PosteRazorDialog::next(void)
 {
+	UpdatePosterSizeFields(NULL);
 	m_wizard->next();
 	UpdateNavigationButtons();
 }
@@ -238,6 +239,11 @@ void PosteRazorDialog::HandlePaperFormatChoice(void)
 void PosteRazorDialog::HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userData)
 {
 	((PosteRazorDialog*)userData)->HandlePaperFormatChoice();
+}
+
+void PosteRazorDialog::HandlePaperOrientationChangement(void)
+{
+	m_posteRazor->SetPaperOrientation(m_pageOrientationLandscapeRadioButton->value() != 0?PosteRazor::ePaperOrientationLandscape:PosteRazor::ePaperOrientationPortrait);
 }
 
 int main (int argc, char **argv)

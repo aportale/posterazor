@@ -4,9 +4,9 @@ header_name {.h}
 code_name {.cxx}
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {504 144 620 455} type Double resizable
+  xywh {504 144 620 455} type Double hide resizable
   code0 {size_range(this->w(), this->h());}
-  class Fl_Double_Window visible
+  class Fl_Double_Window
 } {
   Fl_Group {} {open
     xywh {10 420 600 25}
@@ -74,10 +74,12 @@ widget_class PosteRazorDialogUI {
         } {
           Fl_Round_Button m_pageOrientationPortraitRadioButton {
             label Portrait
+            callback {HandlePaperOrientationChangement();} selected
             xywh {455 120 130 25} type Radio down_box ROUND_DOWN_BOX
           }
           Fl_Round_Button m_pageOrientationLandscapeRadioButton {
             label Landscape
+            callback {HandlePaperOrientationChangement();}
             xywh {455 145 130 25} type Radio down_box ROUND_DOWN_BOX
           }
         }
@@ -241,7 +243,7 @@ widget_class PosteRazorDialogUI {
     xywh {10 45 345 365} box THIN_DOWN_BOX color 34 selection_color 52 labelfont 1 labelsize 26 labelcolor 61 align 80 resizable
   } {}
   Fl_Box {} {
-    label {Step 1 of 8: Load an image} selected
+    label {Step 1 of 8: Load an image}
     xywh {10 10 600 25} box THIN_UP_BOX color 10 labelfont 1 labelsize 15 labelcolor 32
   }
   decl {virtual void next(void) = 0;} {public
@@ -259,5 +261,7 @@ widget_class PosteRazorDialogUI {
   decl {virtual void SelectPageSizeGroup(bool useCustomPrintablePageSize) = 0;} {public
   }
   decl {virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;} {public
+  }
+  decl {virtual void HandlePaperOrientationChangement(void) = 0;} {public
   }
 } 
