@@ -30,6 +30,13 @@ void PosteRazorDialogUI::cb_m_standardPageSizeRadioButton(Fl_Round_Button* o, vo
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->user_data()))->cb_m_standardPageSizeRadioButton_i(o,v);
 }
 
+void PosteRazorDialogUI::cb_m_pageOrientationPortraitRadioButton_i(Fl_Round_Button*, void*) {
+  HandlePaperOrientationChangement();
+}
+void PosteRazorDialogUI::cb_m_pageOrientationPortraitRadioButton(Fl_Round_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_pageOrientationPortraitRadioButton_i(o,v);
+}
+
 void PosteRazorDialogUI::cb_m_pageOrientationLandscapeRadioButton_i(Fl_Round_Button*, void*) {
   HandlePaperOrientationChangement();
 }
@@ -177,6 +184,7 @@ o->when(FL_WHEN_RELEASE);
         { Fl_Round_Button* o = m_pageOrientationPortraitRadioButton = new Fl_Round_Button(455, 120, 130, 25, "Portrait");
           o->type(102);
           o->down_box(FL_ROUND_DOWN_BOX);
+          o->callback((Fl_Callback*)cb_m_pageOrientationPortraitRadioButton);
         }
         { Fl_Round_Button* o = m_pageOrientationLandscapeRadioButton = new Fl_Round_Button(455, 145, 130, 25, "Landscape");
           o->type(102);
@@ -193,25 +201,25 @@ o->when(FL_WHEN_RELEASE);
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
           o->step(0.1);
           o->range(0, 999);
-          o->precision(3);
+          o->precision(2);
         }
         { Fl_Value_Input* o = m_pageBorderRightInput = new Fl_Value_Input(540, 225, 40, 25);
           o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
           o->step(0.1);
           o->range(0, 999);
-          o->precision(3);
+          o->precision(2);
         }
         { Fl_Value_Input* o = m_pageBorderBottomInput = new Fl_Value_Input(500, 255, 40, 25);
           o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
           o->step(0.1);
           o->range(0, 999);
-          o->precision(3);
+          o->precision(2);
         }
         { Fl_Value_Input* o = m_pageBorderLeftInput = new Fl_Value_Input(460, 225, 40, 25);
           o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
           o->step(0.1);
           o->range(0, 999);
-          o->precision(3);
+          o->precision(2);
         }
         o->end();
       }
@@ -231,14 +239,14 @@ o->when(FL_WHEN_RELEASE);
         o->callback((Fl_Callback*)cb_m_pageCustomWidthInput);
         o->step(0.1);
         o->range(0, 999);
-        o->precision(3);
+        o->precision(2);
       }
       { Fl_Value_Input* o = m_pageCustomHeightInput = new Fl_Value_Input(450, 365, 90, 25, "Height:");
         o->callback((Fl_Callback*)cb_m_pageCustomHeightInput);
         Fl_Group::current()->resizable(o);
         o->step(0.1);
         o->range(0, 999);
-        o->precision(3);
+        o->precision(2);
       }
       { Fl_Box* o = m_pageCustomWidthLabel = new Fl_Box(540, 335, 50, 25, "cm");
         o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
@@ -261,14 +269,14 @@ o->when(FL_WHEN_RELEASE);
       o->selection_color(FL_LIGHT3);
       { Fl_Value_Input* o = m_posterAbsoluteWidthInput = new Fl_Value_Input(450, 80, 90, 25, "Width:");
         o->callback((Fl_Callback*)cb_m_posterAbsoluteWidthInput);
-        o->step(0.1);
+        o->step(1);
         o->range(0, 999);
         o->precision(3);
       }
       { Fl_Value_Input* o = m_posterAbsoluteHeightInput = new Fl_Value_Input(450, 110, 90, 25, "Height:");
         o->callback((Fl_Callback*)cb_m_posterAbsoluteHeightInput);
         Fl_Group::current()->resizable(o);
-        o->step(0.1);
+        o->step(1);
         o->range(0, 999);
         o->precision(3);
       }

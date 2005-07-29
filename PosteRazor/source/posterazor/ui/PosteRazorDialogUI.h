@@ -43,6 +43,10 @@ public:
   Fl_Group *m_standardPageSizeGroup;
   Fl_Choice *m_paperFormatChoice;
   Fl_Round_Button *m_pageOrientationPortraitRadioButton;
+private:
+  void cb_m_pageOrientationPortraitRadioButton_i(Fl_Round_Button*, void*);
+  static void cb_m_pageOrientationPortraitRadioButton(Fl_Round_Button*, void*);
+public:
   Fl_Round_Button *m_pageOrientationLandscapeRadioButton;
 private:
   void cb_m_pageOrientationLandscapeRadioButton_i(Fl_Round_Button*, void*);

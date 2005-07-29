@@ -74,7 +74,7 @@ widget_class PosteRazorDialogUI {
         } {
           Fl_Round_Button m_pageOrientationPortraitRadioButton {
             label Portrait
-            callback {HandlePaperOrientationChangement();} selected
+            callback {HandlePaperOrientationChangement();}
             xywh {455 120 130 25} type Radio down_box ROUND_DOWN_BOX
           }
           Fl_Round_Button m_pageOrientationLandscapeRadioButton {
@@ -91,25 +91,25 @@ widget_class PosteRazorDialogUI {
             xywh {500 195 40 25} align 20
             code0 {o->step(0.1);}
             code1 {o->range(0, 999);}
-            code2 {o->precision(3);}
+            code2 {o->precision(2);}
           }
           Fl_Value_Input m_pageBorderRightInput {
             xywh {540 225 40 25} align 16
             code0 {o->step(0.1);}
             code1 {o->range(0, 999);}
-            code2 {o->precision(3);}
+            code2 {o->precision(2);}
           }
           Fl_Value_Input m_pageBorderBottomInput {
             xywh {500 255 40 25} align 16
             code0 {o->step(0.1);}
             code1 {o->range(0, 999);}
-            code2 {o->precision(3);}
+            code2 {o->precision(2);}
           }
           Fl_Value_Input m_pageBorderLeftInput {
             xywh {460 225 40 25} align 16
             code0 {o->step(0.1);}
             code1 {o->range(0, 999);}
-            code2 {o->precision(3);}
+            code2 {o->precision(2);}
           }
         }
       }
@@ -118,7 +118,7 @@ widget_class PosteRazorDialogUI {
         callback {SelectPageSizeGroup(true);}
         xywh {370 307 230 20} type Radio down_box ROUND_DOWN_BOX
       }
-      Fl_Group m_customPageSizeGroup {
+      Fl_Group m_customPageSizeGroup {open
         xywh {370 325 230 75} box THIN_DOWN_BOX color 45 selection_color 54 align 17
       } {
         Fl_Value_Input m_pageCustomWidthInput {
@@ -127,7 +127,7 @@ widget_class PosteRazorDialogUI {
           xywh {450 335 90 25}
           code0 {o->step(0.1);}
           code1 {o->range(0, 999);}
-          code2 {o->precision(3);}
+          code2 {o->precision(2);}
         }
         Fl_Value_Input m_pageCustomHeightInput {
           label {Height:}
@@ -135,7 +135,7 @@ widget_class PosteRazorDialogUI {
           xywh {450 365 90 25} resizable
           code0 {o->step(0.1);}
           code1 {o->range(0, 999);}
-          code2 {o->precision(3);}
+          code2 {o->precision(2);}
         }
         Fl_Box m_pageCustomWidthLabel {
           label cm
@@ -150,7 +150,7 @@ widget_class PosteRazorDialogUI {
         xywh {360 400 250 10} resizable
       }
     }
-    Fl_Group m_posterSizeStep {
+    Fl_Group m_posterSizeStep {open
       xywh {360 45 250 365} hide
     } {
       Fl_Group {} {
@@ -161,15 +161,15 @@ widget_class PosteRazorDialogUI {
           label {Width:}
           callback {UpdatePosterSizeFields(m_posterAbsoluteWidthInput);}
           xywh {450 80 90 25}
-          code0 {o->step(0.1);}
+          code0 {o->step(1);}
           code1 {o->range(0, 999);}
           code2 {o->precision(3);}
         }
         Fl_Value_Input m_posterAbsoluteHeightInput {
           label {Height:}
-          callback {UpdatePosterSizeFields(m_posterAbsoluteHeightInput);}
+          callback {UpdatePosterSizeFields(m_posterAbsoluteHeightInput);} selected
           xywh {450 110 90 25} resizable
-          code0 {o->step(0.1);}
+          code0 {o->step(1);}
           code1 {o->range(0, 999);}
           code2 {o->precision(3);}
         }
