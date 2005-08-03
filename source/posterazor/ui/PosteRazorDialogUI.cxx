@@ -65,6 +65,13 @@ void PosteRazorDialogUI::cb_m_pageCustomHeightInput(Fl_Value_Input* o, void* v) 
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_pageCustomHeightInput_i(o,v);
 }
 
+void PosteRazorDialogUI::cb_m_posterSizeAbsoluteRadioButton_i(Fl_Round_Button*, void*) {
+  UpdatePosterSizeGroupsState();
+}
+void PosteRazorDialogUI::cb_m_posterSizeAbsoluteRadioButton(Fl_Round_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->user_data()))->cb_m_posterSizeAbsoluteRadioButton_i(o,v);
+}
+
 void PosteRazorDialogUI::cb_m_posterAbsoluteWidthInput_i(Fl_Value_Input*, void*) {
   UpdatePosterSizeFields(m_posterAbsoluteWidthInput);
 }
@@ -79,6 +86,13 @@ void PosteRazorDialogUI::cb_m_posterAbsoluteHeightInput(Fl_Value_Input* o, void*
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_posterAbsoluteHeightInput_i(o,v);
 }
 
+void PosteRazorDialogUI::cb_m_posterSizeInPagesRadioButton_i(Fl_Round_Button*, void*) {
+  UpdatePosterSizeGroupsState();
+}
+void PosteRazorDialogUI::cb_m_posterSizeInPagesRadioButton(Fl_Round_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->user_data()))->cb_m_posterSizeInPagesRadioButton_i(o,v);
+}
+
 void PosteRazorDialogUI::cb_m_posterPagesWidthInput_i(Fl_Value_Input*, void*) {
   UpdatePosterSizeFields(m_posterPagesWidthInput);
 }
@@ -91,6 +105,13 @@ void PosteRazorDialogUI::cb_m_posterPagesHeightInput_i(Fl_Value_Input*, void*) {
 }
 void PosteRazorDialogUI::cb_m_posterPagesHeightInput(Fl_Value_Input* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_posterPagesHeightInput_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_posterSizePercentualRadioButton_i(Fl_Round_Button*, void*) {
+  UpdatePosterSizeGroupsState();
+}
+void PosteRazorDialogUI::cb_m_posterSizePercentualRadioButton(Fl_Round_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->user_data()))->cb_m_posterSizePercentualRadioButton_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_posterPercentualSizeInput_i(Fl_Value_Input*, void*) {
@@ -116,12 +137,12 @@ void PosteRazorDialogUI::_PosteRazorDialogUI() {
 o->box(FL_FLAT_BOX);
 o->color(FL_BACKGROUND_COLOR);
 o->selection_color(FL_BACKGROUND_COLOR);
-o->labeltype(FL_NO_LABEL);
+o->labeltype(FL_NORMAL_LABEL);
 o->labelfont(0);
 o->labelsize(14);
 o->labelcolor(FL_BLACK);
 o->user_data((void*)(this));
-o->align(FL_ALIGN_TOP);
+o->align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE);
 o->when(FL_WHEN_RELEASE);
 { Fl_Group* o = new Fl_Group(10, 420, 600, 25);
   { Fl_Button* o = m_nextButton = new Fl_Button(525, 420, 85, 25, "Next @-2->");
@@ -148,7 +169,7 @@ o->when(FL_WHEN_RELEASE);
       { Fl_Box* o = m_inputFileNameLabel = new Fl_Box(370, 70, 205, 25);
         o->box(FL_THIN_DOWN_BOX);
         o->color((Fl_Color)55);
-        o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
+        o->align(68|FL_ALIGN_INSIDE);
         Fl_Group::current()->resizable(o);
       }
       o->end();
@@ -158,12 +179,13 @@ o->when(FL_WHEN_RELEASE);
       o->color(FL_DARK2);
       o->end();
     }
-    { Fl_Box* o = new Fl_Box(360, 415, 250, 10);
+    { Fl_Box* o = new Fl_Box(360, 410, 250, 0);
       Fl_Group::current()->resizable(o);
     }
     o->end();
   }
   { Fl_Group* o = m_pageSizeStep = new Fl_Group(360, 45, 250, 365);
+    o->hide();
     { Fl_Round_Button* o = m_standardPageSizeRadioButton = new Fl_Round_Button(370, 52, 230, 20, "Standard paper format");
       o->type(102);
       o->down_box(FL_ROUND_DOWN_BOX);
@@ -262,11 +284,16 @@ o->when(FL_WHEN_RELEASE);
     o->end();
   }
   { Fl_Group* o = m_posterSizeStep = new Fl_Group(360, 45, 250, 365);
-    o->hide();
-    { Fl_Group* o = new Fl_Group(370, 70, 230, 75, "Image size");
+    { Fl_Round_Button* o = m_posterSizeAbsoluteRadioButton = new Fl_Round_Button(370, 52, 230, 20, "Absolute image size");
+      o->type(102);
+      o->down_box(FL_ROUND_DOWN_BOX);
+      o->callback((Fl_Callback*)cb_m_posterSizeAbsoluteRadioButton);
+    }
+    { Fl_Group* o = m_posterSizeAbsoluteGroup = new Fl_Group(370, 70, 230, 75);
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       o->selection_color(FL_LIGHT3);
+      o->align(FL_ALIGN_CENTER);
       { Fl_Value_Input* o = m_posterAbsoluteWidthInput = new Fl_Value_Input(450, 80, 90, 25, "Width:");
         o->callback((Fl_Callback*)cb_m_posterAbsoluteWidthInput);
         o->step(1);
@@ -288,7 +315,12 @@ o->when(FL_WHEN_RELEASE);
       }
       o->end();
     }
-    { Fl_Group* o = new Fl_Group(370, 170, 230, 75, "Pages");
+    { Fl_Round_Button* o = m_posterSizeInPagesRadioButton = new Fl_Round_Button(370, 152, 230, 20, "Size in pages");
+      o->type(102);
+      o->down_box(FL_ROUND_DOWN_BOX);
+      o->callback((Fl_Callback*)cb_m_posterSizeInPagesRadioButton);
+    }
+    { Fl_Group* o = m_posterSizeInPagesGroup = new Fl_Group(370, 170, 230, 75);
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       o->selection_color(FL_LIGHT3);
@@ -313,7 +345,12 @@ o->when(FL_WHEN_RELEASE);
       }
       o->end();
     }
-    { Fl_Group* o = new Fl_Group(370, 271, 230, 45, "Image size (%)");
+    { Fl_Round_Button* o = m_posterSizePercentualRadioButton = new Fl_Round_Button(370, 252, 230, 20, "Image size in percent");
+      o->type(102);
+      o->down_box(FL_ROUND_DOWN_BOX);
+      o->callback((Fl_Callback*)cb_m_posterSizePercentualRadioButton);
+    }
+    { Fl_Group* o = m_posterSizePercentualGroup = new Fl_Group(370, 270, 230, 45);
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       o->selection_color(FL_LIGHT3);
@@ -328,7 +365,7 @@ o->when(FL_WHEN_RELEASE);
       }
       o->end();
     }
-    { Fl_Box* o = new Fl_Box(360, 415, 250, 10);
+    { Fl_Box* o = new Fl_Box(360, 410, 250, 0);
       Fl_Group::current()->resizable(o);
     }
     o->end();

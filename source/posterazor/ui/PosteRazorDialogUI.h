@@ -75,6 +75,12 @@ public:
   Fl_Box *m_pageCustomWidthLabel;
   Fl_Box *m_pageCustomHeightLabel;
   Fl_Group *m_posterSizeStep;
+  Fl_Round_Button *m_posterSizeAbsoluteRadioButton;
+private:
+  void cb_m_posterSizeAbsoluteRadioButton_i(Fl_Round_Button*, void*);
+  static void cb_m_posterSizeAbsoluteRadioButton(Fl_Round_Button*, void*);
+public:
+  Fl_Group *m_posterSizeAbsoluteGroup;
   Fl_Value_Input *m_posterAbsoluteWidthInput;
 private:
   void cb_m_posterAbsoluteWidthInput_i(Fl_Value_Input*, void*);
@@ -87,6 +93,12 @@ private:
 public:
   Fl_Box *m_posterAbsoluteWidthLabel;
   Fl_Box *m_posterAbsoluteHeightLabel;
+  Fl_Round_Button *m_posterSizeInPagesRadioButton;
+private:
+  void cb_m_posterSizeInPagesRadioButton_i(Fl_Round_Button*, void*);
+  static void cb_m_posterSizeInPagesRadioButton(Fl_Round_Button*, void*);
+public:
+  Fl_Group *m_posterSizeInPagesGroup;
   Fl_Value_Input *m_posterPagesWidthInput;
 private:
   void cb_m_posterPagesWidthInput_i(Fl_Value_Input*, void*);
@@ -99,6 +111,12 @@ private:
 public:
   Fl_Box *m_posterPagesWidthLabel;
   Fl_Box *m_posterPagesHeightLabel;
+  Fl_Round_Button *m_posterSizePercentualRadioButton;
+private:
+  void cb_m_posterSizePercentualRadioButton_i(Fl_Round_Button*, void*);
+  static void cb_m_posterSizePercentualRadioButton(Fl_Round_Button*, void*);
+public:
+  Fl_Group *m_posterSizePercentualGroup;
   Fl_Value_Input *m_posterPercentualSizeInput;
 private:
   void cb_m_posterPercentualSizeInput_i(Fl_Value_Input*, void*);
@@ -116,5 +134,6 @@ public:
   virtual void SelectPageSizeGroup(bool useCustomPrintablePageSize) = 0;
   virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;
   virtual void HandlePaperOrientationChangement(void) = 0;
+  virtual void UpdatePosterSizeGroupsState(void) = 0;
 };
 #endif
