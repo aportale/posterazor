@@ -4,9 +4,9 @@ header_name {.h}
 code_name {.cxx}
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {504 144 620 455} type Double hide resizable
+  xywh {504 144 620 455} type Double resizable
   code0 {size_range(this->w(), this->h());}
-  class Fl_Double_Window
+  class Fl_Double_Window visible
 } {
   Fl_Group {} {open
     xywh {10 420 600 25}
@@ -29,7 +29,7 @@ widget_class PosteRazorDialogUI {
     user_data this open
     xywh {360 45 250 365} box THIN_DOWN_BOX
   } {
-    Fl_Group m_loadInputImageStep {
+    Fl_Group m_loadInputImageStep {open
       xywh {360 45 250 365} color 50 hide
     } {
       Fl_Group {} {
@@ -41,8 +41,8 @@ widget_class PosteRazorDialogUI {
           callback {LoadInputImage();}
           xywh {575 70 25 25}
         }
-        Fl_Box m_inputFileNameLabel {
-          xywh {370 70 205 25} box THIN_DOWN_BOX color 55 align 20 resizable
+        Fl_Box m_inputFileNameLabel {selected
+          xywh {370 70 205 25} box THIN_DOWN_BOX color 55 align 84 resizable
         }
       }
       Fl_Group {} {
@@ -50,11 +50,11 @@ widget_class PosteRazorDialogUI {
         xywh {370 121 230 210} box THIN_DOWN_BOX color 45
       } {}
       Fl_Box {} {
-        xywh {360 415 250 10} resizable
+        xywh {360 410 250 0} resizable
       }
     }
     Fl_Group m_pageSizeStep {
-      xywh {360 45 250 365}
+      xywh {360 45 250 365} hide
     } {
       Fl_Round_Button m_standardPageSizeRadioButton {
         label {Standard paper format}
@@ -151,11 +151,15 @@ widget_class PosteRazorDialogUI {
       }
     }
     Fl_Group m_posterSizeStep {open
-      xywh {360 45 250 365} hide
+      xywh {360 45 250 365}
     } {
-      Fl_Group {} {
-        label {Image size} open
-        xywh {370 70 230 75} box THIN_DOWN_BOX color 45 selection_color 54
+      Fl_Round_Button m_posterSizeAbsoluteRadioButton {
+        label {Absolute image size}
+        callback {UpdatePosterSizeGroupsState();}
+        xywh {370 52 230 20} type Radio down_box ROUND_DOWN_BOX
+      }
+      Fl_Group m_posterSizeAbsoluteGroup {open
+        xywh {370 70 230 75} box THIN_DOWN_BOX color 45 selection_color 54 align 0
       } {
         Fl_Value_Input m_posterAbsoluteWidthInput {
           label {Width:}
@@ -167,7 +171,7 @@ widget_class PosteRazorDialogUI {
         }
         Fl_Value_Input m_posterAbsoluteHeightInput {
           label {Height:}
-          callback {UpdatePosterSizeFields(m_posterAbsoluteHeightInput);} selected
+          callback {UpdatePosterSizeFields(m_posterAbsoluteHeightInput);}
           xywh {450 110 90 25} resizable
           code0 {o->step(1);}
           code1 {o->range(0, 999);}
@@ -182,8 +186,12 @@ widget_class PosteRazorDialogUI {
           xywh {540 110 50 25} align 20
         }
       }
-      Fl_Group {} {
-        label Pages open
+      Fl_Round_Button m_posterSizeInPagesRadioButton {
+        label {Size in pages}
+        callback {UpdatePosterSizeGroupsState();}
+        xywh {370 152 230 20} type Radio down_box ROUND_DOWN_BOX
+      }
+      Fl_Group m_posterSizeInPagesGroup {open
         xywh {370 170 230 75} box THIN_DOWN_BOX color 45 selection_color 54
       } {
         Fl_Value_Input m_posterPagesWidthInput {
@@ -211,9 +219,13 @@ widget_class PosteRazorDialogUI {
           xywh {540 210 50 25} align 20
         }
       }
-      Fl_Group {} {
-        label {Image size (%)} open
-        xywh {370 271 230 45} box THIN_DOWN_BOX color 45 selection_color 54
+      Fl_Round_Button m_posterSizePercentualRadioButton {
+        label {Image size in percent}
+        callback {UpdatePosterSizeGroupsState();}
+        xywh {370 252 230 20} type Radio down_box ROUND_DOWN_BOX
+      }
+      Fl_Group m_posterSizePercentualGroup {open
+        xywh {370 270 230 45} box THIN_DOWN_BOX color 45 selection_color 54
       } {
         Fl_Value_Input m_posterPercentualSizeInput {
           label {Size:}
@@ -229,7 +241,7 @@ widget_class PosteRazorDialogUI {
         }
       }
       Fl_Box {} {
-        xywh {360 415 250 10} resizable
+        xywh {360 410 250 0} resizable
       }
     }
     Fl_Group {} {
@@ -263,5 +275,7 @@ widget_class PosteRazorDialogUI {
   decl {virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;} {public
   }
   decl {virtual void HandlePaperOrientationChangement(void) = 0;} {public
+  }
+  decl {virtual void UpdatePosterSizeGroupsState(void) = 0;} {public
   }
 } 

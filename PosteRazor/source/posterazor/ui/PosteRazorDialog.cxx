@@ -23,6 +23,14 @@ PosteRazorDialog::PosteRazorDialog(void)
 	}
 	m_paperFormatChoice->menu(m_paperFormatMenuItems);
 
+	if (m_posteRazor->GetPosterSizeMode() == PosteRazor::ePosterSizeModeAbsolute)
+		m_posterSizeAbsoluteRadioButton->value(1);
+	else if (m_posteRazor->GetPosterSizeMode() == PosteRazor::ePosterSizeModePages)
+		m_posterSizeInPagesRadioButton->value(1);
+	else // if (m_posteRazor->GetPosterSizeMode() == PosteRazor::ePosterSizeModePercentual)
+		m_posterSizePercentualRadioButton->value(1);
+	UpdatePosterSizeGroupsState();
+
 	UpdateNavigationButtons();
 	SetPageSizeFields();
 }
@@ -204,16 +212,8 @@ void PosteRazorDialog::SelectPageSizeGroup(bool useCustomPrintablePageSize)
 {
 	m_posteRazor->SetUseCustomPrintablePageSize(useCustomPrintablePageSize);
 
-	if (m_standardPageSizeRadioButton->value())
-	{
-		m_standardPageSizeGroup->activate();
-		m_customPageSizeGroup->deactivate();
-	}
-	else
-	{
-		m_standardPageSizeGroup->deactivate();
-		m_customPageSizeGroup->activate();
-	}
+	m_standardPageSizeRadioButton->value() == 0?m_standardPageSizeGroup->deactivate():m_standardPageSizeGroup->activate();
+	m_customPageSizeRadioButton->value() == 0?m_customPageSizeGroup->deactivate():m_customPageSizeGroup->activate();
 }
 
 void PosteRazorDialog::resize(int x, int y, int w, int h)
@@ -244,6 +244,13 @@ void PosteRazorDialog::HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userD
 void PosteRazorDialog::HandlePaperOrientationChangement(void)
 {
 	m_posteRazor->SetPaperOrientation(m_pageOrientationLandscapeRadioButton->value() != 0?PosteRazor::ePaperOrientationLandscape:PosteRazor::ePaperOrientationPortrait);
+}
+
+void PosteRazorDialog::UpdatePosterSizeGroupsState(void)
+{
+	m_posterSizeAbsoluteRadioButton->value() == 0?m_posterSizeAbsoluteGroup->deactivate():m_posterSizeAbsoluteGroup->activate();
+	m_posterSizeInPagesRadioButton->value() == 0?m_posterSizeInPagesGroup->deactivate():m_posterSizeInPagesGroup->activate();
+	m_posterSizePercentualRadioButton->value() == 0?m_posterSizePercentualGroup->deactivate():m_posterSizePercentualGroup->activate();
 }
 
 int main (int argc, char **argv)
