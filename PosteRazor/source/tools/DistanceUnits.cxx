@@ -16,7 +16,7 @@ static const distanceUnits g_distanceUnits[] =
 	{DistanceUnits::eDistanceUnitInch, "inch", 2.54}
 };
 
-static const g_distanceUnitsCount = sizeof(g_distanceUnits)/sizeof(g_distanceUnits[0]);
+static const int g_distanceUnitsCount = sizeof(g_distanceUnits)/sizeof(g_distanceUnits[0]);
 
 int DistanceUnits::GetDistanceUnitsCount(void)
 {

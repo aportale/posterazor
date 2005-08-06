@@ -18,7 +18,7 @@ static const paperFormats g_paperFormats[] =
 	{PaperFormats::ePaperFormatTabloid, "Tabloid", 27.9, 43.2}
 };
 
-static const g_paperFormatsCount = sizeof(g_paperFormats)/sizeof(g_paperFormats[0]);
+static const int g_paperFormatsCount = sizeof(g_paperFormats)/sizeof(g_paperFormats[0]);
 
 int PaperFormats::GetPaperFormatsCount(void)
 {

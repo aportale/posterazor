@@ -43,7 +43,7 @@ public:
 		m_posterWidth                  = 2.0;
 		m_posterHeight                 = 2.0;
 
-                m_useCustomPrintablePageSize   = false;
+		m_useCustomPrintablePageSize   = false;
 		m_paperFormat                  = ePaperFormatA4;
 		m_paperOrientation             = ePaperOrientationPortrait;
 		m_paperBorderTop               = 1.5;
