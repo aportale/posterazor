@@ -141,6 +141,7 @@ public:
 			m_previewBitmap = FreeImage_Rescale(originalImage, pixelWidth, pixelHeight, FILTER_BILINEAR);
 
 
+#ifdef _WIN32
 			for (unsigned int row = 0; row < pixelHeight; row++)
 			{
 				unsigned char *pixelPtr = FreeImage_GetScanLine(m_previewBitmap, row);
@@ -153,7 +154,7 @@ public:
 					pixelPtr+=3;
 				}
 			}
-
+#endif
 			
 
 			if (temp24BPPImage)

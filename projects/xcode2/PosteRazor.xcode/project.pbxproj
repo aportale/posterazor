@@ -1,0 +1,530 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 39;
+	objects = {
+		195DF8CFFE9D517E11CA2CBB = {
+			children = (
+				82E5567008A56658001EEB51,
+			);
+			isa = PBXGroup;
+			name = Products;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+//190
+//191
+//192
+//193
+//194
+//200
+//201
+//202
+//203
+//204
+		20286C28FDCF999611CA2CEA = {
+			buildSettings = {
+			};
+			buildStyles = (
+				4A9504C5FFE6A39111CA0CBA,
+				4A9504C6FFE6A39111CA0CBA,
+			);
+			hasScannedForEncodings = 1;
+			isa = PBXProject;
+			mainGroup = 20286C29FDCF999611CA2CEA;
+			projectDirPath = "";
+			targets = (
+				8D0C4E890486CD37000505A6,
+			);
+		};
+		20286C29FDCF999611CA2CEA = {
+			children = (
+				8221C68908A567C100EB193B,
+				20286C2AFDCF999611CA2CEA,
+				20286C2CFDCF999611CA2CEA,
+				20286C32FDCF999611CA2CEA,
+				195DF8CFFE9D517E11CA2CBB,
+			);
+			isa = PBXGroup;
+			name = PosteRazor;
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		20286C2AFDCF999611CA2CEA = {
+			children = (
+				82814C4808A564A3006D2A26,
+				82814C5408A564A3006D2A26,
+				82814C3208A5647B006D2A26,
+			);
+			isa = PBXGroup;
+			name = Sources;
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		20286C2CFDCF999611CA2CEA = {
+			children = (
+				8D0C4E960486CD37000505A6,
+			);
+			isa = PBXGroup;
+			name = Resources;
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		20286C32FDCF999611CA2CEA = {
+			children = (
+				8221C68508A566FC00EB193B,
+				8221C68308A566EC00EB193B,
+				20286C33FDCF999611CA2CEA,
+				4A9504C8FFE6A3BC11CA0CBA,
+			);
+			isa = PBXGroup;
+			name = "External Frameworks and Libraries";
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		20286C33FDCF999611CA2CEA = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = Carbon.framework;
+			path = /System/Library/Frameworks/Carbon.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+//200
+//201
+//202
+//203
+//204
+//4A0
+//4A1
+//4A2
+//4A3
+//4A4
+		4A9504C5FFE6A39111CA0CBA = {
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = "../../thirdparty/fltk ../../thirdparty/FreeImage/Source ../../thirdparty/Fl_Native_File_Chooser";
+				PREBINDING = NO;
+				ZERO_LINK = NO;
+			};
+			isa = PBXBuildStyle;
+			name = Development;
+		};
+		4A9504C6FFE6A39111CA0CBA = {
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				HEADER_SEARCH_PATHS = "../../thirdparty/fltk ../../thirdparty/FreeImage/Source ../../thirdparty/Fl_Native_File_Chooser";
+				PREBINDING = NO;
+				ZERO_LINK = NO;
+			};
+			isa = PBXBuildStyle;
+			name = Deployment;
+		};
+		4A9504C8FFE6A3BC11CA0CBA = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = ApplicationServices.framework;
+			path = /System/Library/Frameworks/ApplicationServices.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+//4A0
+//4A1
+//4A2
+//4A3
+//4A4
+//820
+//821
+//822
+//823
+//824
+		8221C68308A566EC00EB193B = {
+			isa = PBXFileReference;
+			lastKnownFileType = archive.ar;
+			name = libfltk.a;
+			path = "../../thirdparty/fltk-1.1/lib/libfltk.a";
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		8221C68408A566EC00EB193B = {
+			fileRef = 8221C68308A566EC00EB193B;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8221C68508A566FC00EB193B = {
+			isa = PBXFileReference;
+			lastKnownFileType = archive.ar;
+			name = libfreeimage.a;
+			path = ../../thirdparty/FreeImage/libfreeimage.a;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		8221C68608A566FC00EB193B = {
+			fileRef = 8221C68508A566FC00EB193B;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8221C68808A5674300EB193B = {
+			fileRef = 8D0C4E960486CD37000505A6;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8221C68908A567C100EB193B = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = PosteRazor_Prefix.pch;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C2408A5642E006D2A26 = {
+			fileRef = 4A9504C8FFE6A3BC11CA0CBA;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82814C3208A5647B006D2A26 = {
+			children = (
+				82814C3608A5647B006D2A26,
+				82814C3B08A5647B006D2A26,
+			);
+			isa = PBXGroup;
+			name = Fl_Native_File_Chooser;
+			path = ../../thirdparty/Fl_Native_File_Chooser;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		82814C3608A5647B006D2A26 = {
+			children = (
+				82814C3708A5647B006D2A26,
+			);
+			isa = PBXGroup;
+			path = FL;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C3708A5647B006D2A26 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			path = Fl_Native_File_Chooser.H;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C3B08A5647B006D2A26 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = Fl_Native_File_Chooser.cxx;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C4308A5647B006D2A26 = {
+			fileRef = 82814C3B08A5647B006D2A26;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82814C4808A564A3006D2A26 = {
+			children = (
+				82814C4908A564A3006D2A26,
+				82814C4A08A564A3006D2A26,
+				82814C4B08A564A3006D2A26,
+				82814C4C08A564A3006D2A26,
+				82814C4D08A564A3006D2A26,
+				82814C4E08A564A3006D2A26,
+			);
+			isa = PBXGroup;
+			name = posterazor;
+			path = ../../source/posterazor;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		82814C4908A564A3006D2A26 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = PosteRazor.cxx;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C4A08A564A3006D2A26 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = PosteRazor.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C4B08A564A3006D2A26 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = PosteRazorCmdLine.cxx;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C4C08A564A3006D2A26 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = PosteRazorImageIO.cxx;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C4D08A564A3006D2A26 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = PosteRazorImageIO.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C4E08A564A3006D2A26 = {
+			children = (
+				82814C4F08A564A3006D2A26,
+				82814C5008A564A3006D2A26,
+				82814C5108A564A3006D2A26,
+				82814C5208A564A3006D2A26,
+				82814C5308A564A3006D2A26,
+			);
+			isa = PBXGroup;
+			path = ui;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C4F08A564A3006D2A26 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = PosteRazorDialog.cxx;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C5008A564A3006D2A26 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = PosteRazorDialog.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C5108A564A3006D2A26 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = PosteRazorDialogUI.cxx;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C5208A564A3006D2A26 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text;
+			path = PosteRazorDialogUI.fl;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C5308A564A3006D2A26 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = PosteRazorDialogUI.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C5408A564A3006D2A26 = {
+			children = (
+				82814C5508A564A3006D2A26,
+				82814C5608A564A3006D2A26,
+				82814C5708A564A3006D2A26,
+				82814C5808A564A3006D2A26,
+			);
+			isa = PBXGroup;
+			name = tools;
+			path = ../../source/tools;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		82814C5508A564A3006D2A26 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = DistanceUnits.cxx;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C5608A564A3006D2A26 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = DistanceUnits.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C5708A564A3006D2A26 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = PaperFormats.cxx;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C5808A564A3006D2A26 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = PaperFormats.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82814C5908A564A3006D2A26 = {
+			fileRef = 82814C4908A564A3006D2A26;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82814C5B08A564A3006D2A26 = {
+			fileRef = 82814C4C08A564A3006D2A26;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82814C5C08A564A3006D2A26 = {
+			fileRef = 82814C4F08A564A3006D2A26;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82814C5D08A564A3006D2A26 = {
+			fileRef = 82814C5108A564A3006D2A26;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82814C5F08A564A3006D2A26 = {
+			fileRef = 82814C5508A564A3006D2A26;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82814C6008A564A3006D2A26 = {
+			fileRef = 82814C5708A564A3006D2A26;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82E5567008A56658001EEB51 = {
+			explicitFileType = wrapper.application;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			path = PosteRazor.app;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+//820
+//821
+//822
+//823
+//824
+//8D0
+//8D1
+//8D2
+//8D3
+//8D4
+		8D0C4E890486CD37000505A6 = {
+			buildPhases = (
+				8D0C4E8C0486CD37000505A6,
+				8D0C4E8F0486CD37000505A6,
+				8D0C4E910486CD37000505A6,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PosteRazor_Prefix.pch;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = "/temp/PosteRazor/thirdparty/fltk-1.1/lib /temp/PosteRazor/thirdparty/FreeImage /temp/secure/PosteRazor/thirdparty/fltk-1.1/lib /temp/secure/PosteRazor/thirdparty/FreeImage";
+				PREBINDING = NO;
+				PRODUCT_NAME = PosteRazor;
+				WRAPPER_EXTENSION = app;
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = PosteRazor;
+			productInstallPath = "$(HOME)/Applications";
+			productName = PosteRazor;
+			productReference = 82E5567008A56658001EEB51;
+			productType = "com.apple.product-type.application";
+		};
+		8D0C4E8C0486CD37000505A6 = {
+			buildActionMask = 2147483647;
+			files = (
+				8221C68808A5674300EB193B,
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D0C4E8F0486CD37000505A6 = {
+			buildActionMask = 2147483647;
+			files = (
+				82814C4308A5647B006D2A26,
+				82814C5908A564A3006D2A26,
+				82814C5B08A564A3006D2A26,
+				82814C5C08A564A3006D2A26,
+				82814C5D08A564A3006D2A26,
+				82814C5F08A564A3006D2A26,
+				82814C6008A564A3006D2A26,
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D0C4E910486CD37000505A6 = {
+			buildActionMask = 2147483647;
+			files = (
+				8D0C4E920486CD37000505A6,
+				82814C2408A5642E006D2A26,
+				8221C68408A566EC00EB193B,
+				8221C68608A566FC00EB193B,
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D0C4E920486CD37000505A6 = {
+			fileRef = 20286C33FDCF999611CA2CEA;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8D0C4E960486CD37000505A6 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist;
+			path = Info.plist;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+	};
+	rootObject = 20286C28FDCF999611CA2CEA;
+}
