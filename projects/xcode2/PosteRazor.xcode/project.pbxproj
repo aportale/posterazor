@@ -351,6 +351,7 @@
 		};
 		82814C5408A564A3006D2A26 = {
 			children = (
+				82F681D508AAA31500D5DF2C,
 				82814C5508A564A3006D2A26,
 				82814C5608A564A3006D2A26,
 				82814C5708A564A3006D2A26,
@@ -438,6 +439,27 @@
 			refType = 3;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		82ED118508AABE9B00F6751C = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			isa = PBXShellScriptBuildPhase;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "strip $TARGET_BUILD_DIR/$TARGET_NAME.app/Contents/MacOS/PosteRazor";
+		};
+		82F681D508AAA31500D5DF2C = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = ColorTypes.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
 //820
 //821
 //822
@@ -453,6 +475,7 @@
 				8D0C4E8C0486CD37000505A6,
 				8D0C4E8F0486CD37000505A6,
 				8D0C4E910486CD37000505A6,
+				82ED118508AABE9B00F6751C,
 			);
 			buildRules = (
 			);
