@@ -34,6 +34,9 @@ private:
   static void cb_(Fl_Button*, void*);
 public:
   Fl_Box *m_inputFileNameLabel;
+  Fl_Group *m_imageInfoGroup;
+  Fl_Box *m_imageInfoValuesLabel;
+  Fl_Box *m_imageInfoKeysLabel;
   Fl_Group *m_pageSizeStep;
   Fl_Round_Button *m_standardPageSizeRadioButton;
 private:

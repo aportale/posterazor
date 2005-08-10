@@ -30,7 +30,7 @@ widget_class PosteRazorDialogUI {
     xywh {360 45 250 365} box THIN_DOWN_BOX
   } {
     Fl_Group m_loadInputImageStep {open
-      xywh {360 45 250 365} color 50 hide
+      xywh {360 45 250 365} color 50
     } {
       Fl_Group {} {
         label {Input Image}
@@ -41,14 +41,21 @@ widget_class PosteRazorDialogUI {
           callback {LoadInputImage();}
           xywh {575 70 25 25}
         }
-        Fl_Box m_inputFileNameLabel {selected
+        Fl_Box m_inputFileNameLabel {
           xywh {370 70 205 25} box THIN_DOWN_BOX color 55 align 84 resizable
         }
       }
-      Fl_Group {} {
-        label {Image information} open
-        xywh {370 121 230 210} box THIN_DOWN_BOX color 45
-      } {}
+      Fl_Group m_imageInfoGroup {
+        label {Image information} open selected
+        xywh {370 120 230 85} box THIN_DOWN_BOX color 45
+      } {
+        Fl_Box m_imageInfoValuesLabel {
+          xywh {480 130 115 65} align 21
+        }
+        Fl_Box m_imageInfoKeysLabel {
+          xywh {375 130 105 65} align 25
+        }
+      }
       Fl_Box {} {
         xywh {360 410 250 0} resizable
       }
@@ -151,7 +158,7 @@ widget_class PosteRazorDialogUI {
       }
     }
     Fl_Group m_posterSizeStep {open
-      xywh {360 45 250 365}
+      xywh {360 45 250 365} hide
     } {
       Fl_Round_Button m_posterSizeAbsoluteRadioButton {
         label {Absolute image size}

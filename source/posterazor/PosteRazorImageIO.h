@@ -2,8 +2,9 @@
 #define PosteRazorImageIO_h
 
 #include "DistanceUnits.h"
+#include "ColorTypes.h"
 
-class PosteRazorImageIO
+class PosteRazorImageIO: public ColorTypes
 {
 public:
 	virtual ~PosteRazorImageIO() {};
@@ -22,6 +23,9 @@ public:
 	virtual double GetHeight(enum DistanceUnits::eDistanceUnits unit) = 0;
 
 	virtual void GetPreview(unsigned char* buffer, int pixelWidth, int pixelHeight) = 0;
+	
+	virtual int GetBitsPerPixel(void) = 0;
+	virtual enum eColorTypes GetColorDataType(void) = 0;
 };
 
 #endif
