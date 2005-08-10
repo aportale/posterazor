@@ -88,8 +88,12 @@ public:
 	double GetInputImageWidth(void) {return m_imageIO->GetWidth(m_distanceUnit);}
 	double GetInputImageHeight(void) {return m_imageIO->GetHeight(m_distanceUnit);}
 
+	int GetInputImageBitsPerPixel(void) {return m_imageIO->GetBitsPerPixel();}
+	enum eColorTypes GetInputImageColorType(void) {return m_imageIO->GetColorDataType();}
+
 	void SetDistanceUnit(enum eDistanceUnits unit) {m_distanceUnit = unit;}
 	enum eDistanceUnits GetDistanceUnit(void) {return m_distanceUnit;}
+	const char* GetDistanceUnitName(void) {return DistanceUnits::GetDistanceUnitName(m_distanceUnit);}
 
 	void SetPaperFormat(enum ePaperFormats format) {m_paperFormat = format;}
 	void SetPaperOrientation(enum ePaperOrientations orientation) {m_paperOrientation = orientation;}
@@ -293,12 +297,12 @@ public:
 	{
 		double aspectRatio = imageWidth / imageHeight;
 
-		previewWidth = imageWidth<boxWidth?imageWidth:boxWidth; //cheap min()
-		previewHeight = (double)previewWidth / aspectRatio;
+		previewWidth = imageWidth<boxWidth?(int)imageWidth:boxWidth; //cheap min()
+		previewHeight = (int)((double)previewWidth / aspectRatio);
 
                 if (previewHeight > boxHeight)
 		{
-			previewWidth = (double)boxHeight * aspectRatio;
+			previewWidth = (int)((double)boxHeight * aspectRatio);
 			previewHeight = boxHeight;
 		}
 	}

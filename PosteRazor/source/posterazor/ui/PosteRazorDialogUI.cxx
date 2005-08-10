@@ -161,7 +161,6 @@ o->when(FL_WHEN_RELEASE);
   o->user_data((void*)(this));
   { Fl_Group* o = m_loadInputImageStep = new Fl_Group(360, 45, 250, 365);
     o->color(FL_LIGHT1);
-    o->hide();
     { Fl_Group* o = new Fl_Group(370, 70, 230, 25, "Input Image");
       { Fl_Button* o = new Fl_Button(575, 70, 25, 25, "...");
         o->callback((Fl_Callback*)cb_);
@@ -174,9 +173,15 @@ o->when(FL_WHEN_RELEASE);
       }
       o->end();
     }
-    { Fl_Group* o = new Fl_Group(370, 121, 230, 210, "Image information");
+    { Fl_Group* o = m_imageInfoGroup = new Fl_Group(370, 120, 230, 85, "Image information");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
+      { Fl_Box* o = m_imageInfoValuesLabel = new Fl_Box(480, 130, 115, 65);
+        o->align(FL_ALIGN_TOP_LEFT|FL_ALIGN_INSIDE);
+      }
+      { Fl_Box* o = m_imageInfoKeysLabel = new Fl_Box(375, 130, 105, 65);
+        o->align(FL_ALIGN_TOP_RIGHT|FL_ALIGN_INSIDE);
+      }
       o->end();
     }
     { Fl_Box* o = new Fl_Box(360, 410, 250, 0);
@@ -284,6 +289,7 @@ o->when(FL_WHEN_RELEASE);
     o->end();
   }
   { Fl_Group* o = m_posterSizeStep = new Fl_Group(360, 45, 250, 365);
+    o->hide();
     { Fl_Round_Button* o = m_posterSizeAbsoluteRadioButton = new Fl_Round_Button(370, 52, 230, 20, "Absolute image size");
       o->type(102);
       o->down_box(FL_ROUND_DOWN_BOX);

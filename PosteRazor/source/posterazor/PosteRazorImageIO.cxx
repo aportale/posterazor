@@ -163,6 +163,32 @@ public:
 
 		FreeImage_ConvertToRawBits(buffer, m_previewBitmap, pixelWidth*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
 	}
+	
+	int GetBitsPerPixel(void)
+	{
+		return FreeImage_GetBPP(m_bitmap);
+	}
+	
+	enum eColorTypes GetColorDataType(void)
+	{
+		enum eColorTypes colorDatatype = eColorTypeRGB;
+		FREE_IMAGE_COLOR_TYPE imageColorType = FreeImage_GetColorType(m_bitmap);
+		
+		if (imageColorType == FIC_MINISBLACK || imageColorType == FIC_MINISWHITE)
+		{
+			colorDatatype = GetBitsPerPixel()==1?eColorTypeMonochrome:eColorTypeGreyscale;
+		}
+		else
+		{
+			colorDatatype =
+				imageColorType==FIC_PALETTE?eColorTypePalette:
+				imageColorType==FIC_RGB?eColorTypeRGB:
+				imageColorType==FIC_RGBALPHA?eColorTypeRGBA:
+				/*imageColorType==FIC_CMYK?*/eColorTypeCMYK;
+		}
+		
+		return colorDatatype;
+	}
 };
 
 PosteRazorImageIO* PosteRazorImageIO::CreatePosteRazorImageIO(void)

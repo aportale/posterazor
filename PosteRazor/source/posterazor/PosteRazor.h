@@ -2,8 +2,9 @@
 #define PosteRazor_h
 
 #include "../tools/PaperFormats.h"
+#include "../tools/ColorTypes.h"
 
-class PosteRazor: public PaperFormats
+class PosteRazor: public PaperFormats, public ColorTypes
 {
 public:
 	typedef enum eBorderPositions
@@ -35,9 +36,13 @@ public:
 
 	virtual double GetInputImageWidth(void) = 0;
 	virtual double GetInputImageHeight(void) = 0;
+	
+	virtual int GetInputImageBitsPerPixel(void) = 0;
+	virtual enum eColorTypes GetInputImageColorType(void) = 0;
 
 	virtual void SetDistanceUnit(enum eDistanceUnits unit) = 0;
 	virtual enum eDistanceUnits GetDistanceUnit(void) = 0;
+	virtual const char* GetDistanceUnitName(void) = 0;
 
 	virtual void SetPaperFormat(enum ePaperFormats format) = 0;
 	virtual void SetPaperOrientation(enum ePaperOrientations orientation) = 0;

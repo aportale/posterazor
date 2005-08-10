@@ -31,6 +31,8 @@ PosteRazorDialog::PosteRazorDialog(void)
 		m_posterSizePercentualRadioButton->value(1);
 	UpdatePosterSizeGroupsState();
 
+	m_imageInfoGroup->deactivate();
+
 	UpdateNavigationButtons();
 	SetPageSizeFields();
 }
@@ -92,10 +94,12 @@ void PosteRazorDialog::LoadInputImage(void)
 
 	if (loaded)
 	{
+		UpdateImageInfoFields();
+		m_imageInfoGroup->activate();
+		m_inputFileNameLabel->copy_label(fl_filename_name(chooser.filename()));
 		m_previewImageGroup->image(NULL);
 		m_previewImageGroup->label("...please wait...");
 		Fl::wait();
-		m_inputFileNameLabel->copy_label(fl_filename_name(chooser.filename()));
 		UpdatePreviewImage();
 		m_previewImageGroup->label(NULL);
 		UpdatePosterSizeFields(NULL);
@@ -140,6 +144,37 @@ void PosteRazorDialog::UpdatePreviewImage(void)
 	m_previewImageGroup->image(m_previewImage);
 
 	Fl::redraw();
+}
+
+void PosteRazorDialog::UpdateImageInfoFields(void)
+{
+	char string[1024];
+	enum PosteRazor::eColorTypes colorType = m_posteRazor->GetInputImageColorType();
+
+	sprintf
+	(
+		string,
+		"Size (pixels):\nSize (%s):\nResolution:\nColor type:",
+		m_posteRazor->GetDistanceUnitName()
+	);
+	m_imageInfoKeysLabel->copy_label(string);
+
+	sprintf
+	(
+		string,
+		"%d x %d\n%.2f x %.2f\n%.1f dpi\n%s %dbpp",
+		m_posteRazor->GetInputImageWidthPixels(), m_posteRazor->GetInputImageHeightPixels(),
+		m_posteRazor->GetInputImageWidth(), m_posteRazor->GetInputImageHeight(),
+		m_posteRazor->GetInputImageVerticalDpi(),
+			colorType==PosteRazor::eColorTypeMonochrome?"Monochrome":
+			colorType==PosteRazor::eColorTypeGreyscale?"Greyscale":
+			colorType==PosteRazor::eColorTypePalette?"Palette":
+			colorType==PosteRazor::eColorTypeRGB?"RGB":
+			colorType==PosteRazor::eColorTypeRGBA?"RGBA":
+			/*colorType==eColorTypeCMYK?*/ "CMYK",
+		m_posteRazor->GetInputImageBitsPerPixel()
+	);
+	m_imageInfoValuesLabel->copy_label(string);
 }
 
 void PosteRazorDialog::UpdatePosterSizeFields(Fl_Valuator *sourceWidget)

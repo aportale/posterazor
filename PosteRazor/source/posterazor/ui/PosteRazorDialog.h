@@ -31,6 +31,7 @@ public:
 
 	void LoadInputImage(void);
 	void UpdatePreviewImage(void);
+	void UpdateImageInfoFields(void);
 
 	void SetPageSizeFields(void);
 	void SelectPageSizeGroup(bool useCustomPrintablePageSize);
