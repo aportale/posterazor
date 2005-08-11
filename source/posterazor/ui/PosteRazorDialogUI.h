@@ -56,9 +56,25 @@ private:
   static void cb_m_pageOrientationLandscapeRadioButton(Fl_Round_Button*, void*);
 public:
   Fl_Value_Input *m_pageBorderTopInput;
+private:
+  void cb_m_pageBorderTopInput_i(Fl_Value_Input*, void*);
+  static void cb_m_pageBorderTopInput(Fl_Value_Input*, void*);
+public:
   Fl_Value_Input *m_pageBorderRightInput;
+private:
+  void cb_m_pageBorderRightInput_i(Fl_Value_Input*, void*);
+  static void cb_m_pageBorderRightInput(Fl_Value_Input*, void*);
+public:
   Fl_Value_Input *m_pageBorderBottomInput;
+private:
+  void cb_m_pageBorderBottomInput_i(Fl_Value_Input*, void*);
+  static void cb_m_pageBorderBottomInput(Fl_Value_Input*, void*);
+public:
   Fl_Value_Input *m_pageBorderLeftInput;
+private:
+  void cb_m_pageBorderLeftInput_i(Fl_Value_Input*, void*);
+  static void cb_m_pageBorderLeftInput(Fl_Value_Input*, void*);
+public:
   Fl_Round_Button *m_customPageSizeRadioButton;
 private:
   void cb_m_customPageSizeRadioButton_i(Fl_Round_Button*, void*);
@@ -128,15 +144,17 @@ public:
   Fl_Box *m_posterPercentualWidthLabel;
   Fl_Group *m_savePosterStep;
   Fl_Group *m_previewImageGroup;
+  Fl_Box *m_stepInfoBox;
   virtual void next(void) = 0;
   virtual void prev(void) = 0;
   virtual void UpdateNavigationButtons(void) = 0;
-  virtual void LoadInputImage(void) = 0;
   virtual void UpdatePreviewImage(void) = 0;
-  virtual void SetPageSizeFields(void) = 0;
+  virtual void LoadInputImage(void) = 0;
   virtual void SelectPageSizeGroup(bool useCustomPrintablePageSize) = 0;
-  virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;
+  virtual void SetPageSizeFields(void) = 0;
   virtual void HandlePaperOrientationChangement(void) = 0;
+  virtual void HandlePageSizeInputFields(void) = 0;
   virtual void UpdatePosterSizeGroupsState(void) = 0;
+  virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;
 };
 #endif

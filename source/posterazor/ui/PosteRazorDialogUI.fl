@@ -29,8 +29,8 @@ widget_class PosteRazorDialogUI {
     user_data this open
     xywh {360 45 250 365} box THIN_DOWN_BOX
   } {
-    Fl_Group m_loadInputImageStep {open
-      xywh {360 45 250 365} color 50
+    Fl_Group m_loadInputImageStep {
+      xywh {360 45 250 365} color 50 hide
     } {
       Fl_Group {} {
         label {Input Image}
@@ -46,7 +46,7 @@ widget_class PosteRazorDialogUI {
         }
       }
       Fl_Group m_imageInfoGroup {
-        label {Image information} open selected
+        label {Image information} open
         xywh {370 120 230 85} box THIN_DOWN_BOX color 45
       } {
         Fl_Box m_imageInfoValuesLabel {
@@ -61,7 +61,7 @@ widget_class PosteRazorDialogUI {
       }
     }
     Fl_Group m_pageSizeStep {
-      xywh {360 45 250 365} hide
+      xywh {360 45 250 365}
     } {
       Fl_Round_Button m_standardPageSizeRadioButton {
         label {Standard paper format}
@@ -95,24 +95,28 @@ widget_class PosteRazorDialogUI {
           xywh {450 185 140 105} box THIN_DOWN_BOX color 43 align 4
         } {
           Fl_Value_Input m_pageBorderTopInput {
+            callback {HandlePageSizeInputFields();}
             xywh {500 195 40 25} align 20
             code0 {o->step(0.1);}
             code1 {o->range(0, 999);}
             code2 {o->precision(2);}
           }
           Fl_Value_Input m_pageBorderRightInput {
+            callback {HandlePageSizeInputFields();} selected
             xywh {540 225 40 25} align 16
             code0 {o->step(0.1);}
             code1 {o->range(0, 999);}
             code2 {o->precision(2);}
           }
           Fl_Value_Input m_pageBorderBottomInput {
+            callback {HandlePageSizeInputFields();}
             xywh {500 255 40 25} align 16
             code0 {o->step(0.1);}
             code1 {o->range(0, 999);}
             code2 {o->precision(2);}
           }
           Fl_Value_Input m_pageBorderLeftInput {
+            callback {HandlePageSizeInputFields();}
             xywh {460 225 40 25} align 16
             code0 {o->step(0.1);}
             code1 {o->range(0, 999);}
@@ -130,7 +134,7 @@ widget_class PosteRazorDialogUI {
       } {
         Fl_Value_Input m_pageCustomWidthInput {
           label {Width:}
-          callback {UpdatePosterSizeFields(m_posterAbsoluteWidthInput);}
+          callback {HandlePageSizeInputFields();}
           xywh {450 335 90 25}
           code0 {o->step(0.1);}
           code1 {o->range(0, 999);}
@@ -138,7 +142,7 @@ widget_class PosteRazorDialogUI {
         }
         Fl_Value_Input m_pageCustomHeightInput {
           label {Height:}
-          callback {UpdatePosterSizeFields(m_posterAbsoluteHeightInput);}
+          callback {HandlePageSizeInputFields();}
           xywh {450 365 90 25} resizable
           code0 {o->step(0.1);}
           code1 {o->range(0, 999);}
@@ -157,7 +161,7 @@ widget_class PosteRazorDialogUI {
         xywh {360 400 250 10} resizable
       }
     }
-    Fl_Group m_posterSizeStep {open
+    Fl_Group m_posterSizeStep {
       xywh {360 45 250 365} hide
     } {
       Fl_Round_Button m_posterSizeAbsoluteRadioButton {
@@ -261,7 +265,7 @@ widget_class PosteRazorDialogUI {
   Fl_Group m_previewImageGroup {open
     xywh {10 45 345 365} box THIN_DOWN_BOX color 34 selection_color 52 labelfont 1 labelsize 26 labelcolor 61 align 80 resizable
   } {}
-  Fl_Box {} {
+  Fl_Box m_stepInfoBox {
     label {Step 1 of 8: Load an image}
     xywh {10 10 600 25} box THIN_UP_BOX color 10 labelfont 1 labelsize 15 labelcolor 32
   }
@@ -271,18 +275,23 @@ widget_class PosteRazorDialogUI {
   }
   decl {virtual void UpdateNavigationButtons(void) = 0;} {public
   }
+  decl {virtual void UpdatePreviewImage(void) = 0;} {public
+  }
+  decl {// ****** Load input image step:} {}
   decl {virtual void LoadInputImage(void) = 0;} {public
   }
-  decl {virtual void UpdatePreviewImage(void) = 0;} {public
+  decl {// ****** Page size step:} {}
+  decl {virtual void SelectPageSizeGroup(bool useCustomPrintablePageSize) = 0;} {public
   }
   decl {virtual void SetPageSizeFields(void) = 0;} {public
   }
-  decl {virtual void SelectPageSizeGroup(bool useCustomPrintablePageSize) = 0;} {public
-  }
-  decl {virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;} {public
-  }
   decl {virtual void HandlePaperOrientationChangement(void) = 0;} {public
   }
+  decl {virtual void HandlePageSizeInputFields(void) = 0;} {public
+  }
+  decl {// ****** Poster size step:} {}
   decl {virtual void UpdatePosterSizeGroupsState(void) = 0;} {public
+  }
+  decl {virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;} {public
   }
 } 

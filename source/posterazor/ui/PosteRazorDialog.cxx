@@ -50,12 +50,14 @@ void PosteRazorDialog::next(void)
 	UpdatePosterSizeFields(NULL);
 	m_wizard->next();
 	UpdateNavigationButtons();
+	UpdatePreviewImage();
 }
 
 void PosteRazorDialog::prev(void)
 {
 	m_wizard->prev();
 	UpdateNavigationButtons();
+	UpdatePreviewImage();
 }
 
 void PosteRazorDialog::UpdateNavigationButtons(void)
@@ -133,14 +135,24 @@ void PosteRazorDialog::UpdatePreviewImage(void)
 {
 	int previewImageWidth;
 	int previewImageHeight;
+	int imagePreviewBoxWidth = m_previewImageGroup->w() - 14;
+	int imagePreviewBoxHeight = m_previewImageGroup->h() - 14;
 
 	DisposePreviewImage();
 
-	m_posteRazor->GetInputImagePreviewSize(m_previewImageGroup->w() - 14, m_previewImageGroup->h() - 14, previewImageWidth, previewImageHeight);
-	m_previewImageData = new unsigned char[previewImageWidth * previewImageHeight * 3];
-	m_posteRazor->GetInputImagePreview(m_previewImageData, previewImageWidth,  previewImageHeight);
+	if (m_wizard->value() == m_pageSizeStep)
+		m_posteRazor->GetPaperPreviewSize(imagePreviewBoxWidth, imagePreviewBoxHeight, previewImageWidth, previewImageHeight);
+	else
+		m_posteRazor->GetInputImagePreviewSize(imagePreviewBoxWidth, imagePreviewBoxHeight, previewImageWidth, previewImageHeight);
 
-	m_previewImage = new Fl_RGB_Image(m_previewImageData, previewImageWidth,  previewImageHeight);
+	m_previewImageData = new unsigned char[previewImageWidth * previewImageHeight * 3];
+
+	if (m_wizard->value() == m_pageSizeStep)
+		m_posteRazor->GetPaperPreview(m_previewImageData, previewImageWidth, previewImageHeight, false);
+	else
+		m_posteRazor->GetInputImagePreview(m_previewImageData, previewImageWidth, previewImageHeight);
+
+	m_previewImage = new Fl_RGB_Image(m_previewImageData, previewImageWidth, previewImageHeight);
 	m_previewImageGroup->image(m_previewImage);
 
 	Fl::redraw();
@@ -249,6 +261,7 @@ void PosteRazorDialog::SelectPageSizeGroup(bool useCustomPrintablePageSize)
 
 	m_standardPageSizeRadioButton->value() == 0?m_standardPageSizeGroup->deactivate():m_standardPageSizeGroup->activate();
 	m_customPageSizeRadioButton->value() == 0?m_customPageSizeGroup->deactivate():m_customPageSizeGroup->activate();
+	UpdatePreviewImage();
 }
 
 void PosteRazorDialog::resize(int x, int y, int w, int h)
@@ -269,6 +282,7 @@ void PosteRazorDialog::HandlePaperFormatChoice(void)
 	const char* paperFormatName = m_paperFormatMenuItems[m_paperFormatChoice->value()].label();
 	enum PosteRazor::ePaperFormats paperFormat = PosteRazor::GetPaperFormatForName(paperFormatName);
 	m_posteRazor->SetPaperFormat(paperFormat);
+	UpdatePreviewImage();
 }
 
 void PosteRazorDialog::HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userData)
@@ -279,6 +293,18 @@ void PosteRazorDialog::HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userD
 void PosteRazorDialog::HandlePaperOrientationChangement(void)
 {
 	m_posteRazor->SetPaperOrientation(m_pageOrientationLandscapeRadioButton->value() != 0?PosteRazor::ePaperOrientationLandscape:PosteRazor::ePaperOrientationPortrait);
+	UpdatePreviewImage();
+}
+
+void PosteRazorDialog::HandlePageSizeInputFields(void)
+{
+	m_posteRazor->SetPaperBorderTop(m_pageBorderTopInput->value());
+	m_posteRazor->SetPaperBorderRight(m_pageBorderRightInput->value());
+	m_posteRazor->SetPaperBorderBottom(m_pageBorderBottomInput->value());
+	m_posteRazor->SetPaperBorderLeft(m_pageBorderLeftInput->value());
+
+	m_posteRazor->SetCustomPrintablePageSize(m_pageCustomWidthInput->value(), m_pageCustomHeightInput->value());
+	UpdatePreviewImage();
 }
 
 void PosteRazorDialog::UpdatePosterSizeGroupsState(void)

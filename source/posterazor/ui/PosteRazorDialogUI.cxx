@@ -44,6 +44,34 @@ void PosteRazorDialogUI::cb_m_pageOrientationLandscapeRadioButton(Fl_Round_Butto
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_pageOrientationLandscapeRadioButton_i(o,v);
 }
 
+void PosteRazorDialogUI::cb_m_pageBorderTopInput_i(Fl_Value_Input*, void*) {
+  HandlePageSizeInputFields();
+}
+void PosteRazorDialogUI::cb_m_pageBorderTopInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_pageBorderTopInput_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_pageBorderRightInput_i(Fl_Value_Input*, void*) {
+  HandlePageSizeInputFields();
+}
+void PosteRazorDialogUI::cb_m_pageBorderRightInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_pageBorderRightInput_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_pageBorderBottomInput_i(Fl_Value_Input*, void*) {
+  HandlePageSizeInputFields();
+}
+void PosteRazorDialogUI::cb_m_pageBorderBottomInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_pageBorderBottomInput_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_pageBorderLeftInput_i(Fl_Value_Input*, void*) {
+  HandlePageSizeInputFields();
+}
+void PosteRazorDialogUI::cb_m_pageBorderLeftInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_pageBorderLeftInput_i(o,v);
+}
+
 void PosteRazorDialogUI::cb_m_customPageSizeRadioButton_i(Fl_Round_Button*, void*) {
   SelectPageSizeGroup(true);
 }
@@ -52,14 +80,14 @@ void PosteRazorDialogUI::cb_m_customPageSizeRadioButton(Fl_Round_Button* o, void
 }
 
 void PosteRazorDialogUI::cb_m_pageCustomWidthInput_i(Fl_Value_Input*, void*) {
-  UpdatePosterSizeFields(m_posterAbsoluteWidthInput);
+  HandlePageSizeInputFields();
 }
 void PosteRazorDialogUI::cb_m_pageCustomWidthInput(Fl_Value_Input* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_pageCustomWidthInput_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_pageCustomHeightInput_i(Fl_Value_Input*, void*) {
-  UpdatePosterSizeFields(m_posterAbsoluteHeightInput);
+  HandlePageSizeInputFields();
 }
 void PosteRazorDialogUI::cb_m_pageCustomHeightInput(Fl_Value_Input* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_pageCustomHeightInput_i(o,v);
@@ -161,6 +189,7 @@ o->when(FL_WHEN_RELEASE);
   o->user_data((void*)(this));
   { Fl_Group* o = m_loadInputImageStep = new Fl_Group(360, 45, 250, 365);
     o->color(FL_LIGHT1);
+    o->hide();
     { Fl_Group* o = new Fl_Group(370, 70, 230, 25, "Input Image");
       { Fl_Button* o = new Fl_Button(575, 70, 25, 25, "...");
         o->callback((Fl_Callback*)cb_);
@@ -190,7 +219,6 @@ o->when(FL_WHEN_RELEASE);
     o->end();
   }
   { Fl_Group* o = m_pageSizeStep = new Fl_Group(360, 45, 250, 365);
-    o->hide();
     { Fl_Round_Button* o = m_standardPageSizeRadioButton = new Fl_Round_Button(370, 52, 230, 20, "Standard paper format");
       o->type(102);
       o->down_box(FL_ROUND_DOWN_BOX);
@@ -225,24 +253,28 @@ o->when(FL_WHEN_RELEASE);
         o->color((Fl_Color)43);
         o->align(FL_ALIGN_LEFT);
         { Fl_Value_Input* o = m_pageBorderTopInput = new Fl_Value_Input(500, 195, 40, 25);
+          o->callback((Fl_Callback*)cb_m_pageBorderTopInput);
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
           o->step(0.1);
           o->range(0, 999);
           o->precision(2);
         }
         { Fl_Value_Input* o = m_pageBorderRightInput = new Fl_Value_Input(540, 225, 40, 25);
+          o->callback((Fl_Callback*)cb_m_pageBorderRightInput);
           o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
           o->step(0.1);
           o->range(0, 999);
           o->precision(2);
         }
         { Fl_Value_Input* o = m_pageBorderBottomInput = new Fl_Value_Input(500, 255, 40, 25);
+          o->callback((Fl_Callback*)cb_m_pageBorderBottomInput);
           o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
           o->step(0.1);
           o->range(0, 999);
           o->precision(2);
         }
         { Fl_Value_Input* o = m_pageBorderLeftInput = new Fl_Value_Input(460, 225, 40, 25);
+          o->callback((Fl_Callback*)cb_m_pageBorderLeftInput);
           o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
           o->step(0.1);
           o->range(0, 999);
@@ -397,13 +429,16 @@ o->when(FL_WHEN_RELEASE);
   o->end();
   Fl_Group::current()->resizable(o);
 }
-{ Fl_Box* o = new Fl_Box(10, 10, 600, 25, "Step 1 of 8: Load an image");
+{ Fl_Box* o = m_stepInfoBox = new Fl_Box(10, 10, 600, 25, "Step 1 of 8: Load an image");
   o->box(FL_THIN_UP_BOX);
   o->color((Fl_Color)10);
   o->labelfont(1);
   o->labelsize(15);
   o->labelcolor(FL_GRAY0);
 }
+// ****** Load input image step:
+// ****** Page size step:
+// ****** Poster size step:
 size_range(this->w(), this->h());
 end();
 }

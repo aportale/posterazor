@@ -129,7 +129,7 @@ public:
 		if (m_useCustomPrintablePageSize)
 		{
 			width = ConvertBetweenDistanceUnits(m_customPrintablePageWidth, eDistanceUnitCentimeter, m_distanceUnit);
-			height = ConvertBetweenDistanceUnits(m_customPrintablePageWidth, eDistanceUnitCentimeter, m_distanceUnit);
+			height = ConvertBetweenDistanceUnits(m_customPrintablePageHeight, eDistanceUnitCentimeter, m_distanceUnit);
 		}
 		else
 		{
@@ -293,9 +293,18 @@ public:
 
 	enum ePosterSizeModes GetPosterSizeMode(void) {return m_posterSizeMode;}
 
-	void GetPreviewSize(double imageWidth, double imageHeight, int boxWidth, int boxHeight, int &previewWidth, int &previewHeight)
+	void GetPreviewSize(double imageWidth, double imageHeight, int boxWidth, int boxHeight, int &previewWidth, int &previewHeight, bool enlargeToFit)
 	{
 		double aspectRatio = imageWidth / imageHeight;
+
+		if (enlargeToFit)
+		{
+			double widthFactor = imageWidth/(double)boxWidth;
+			double heightFactor = imageHeight/(double)boxHeight;
+			double factor = widthFactor<heightFactor?widthFactor:heightFactor;
+			imageWidth /= factor;
+			imageHeight /= factor;
+		}
 
 		previewWidth = imageWidth<boxWidth?(int)imageWidth:boxWidth; //cheap min()
 		previewHeight = (int)((double)previewWidth / aspectRatio);
@@ -309,7 +318,7 @@ public:
 
 	void GetInputImagePreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight)
 	{
-		GetPreviewSize(GetInputImageWidthPixels(), GetInputImageHeightPixels(), boxWidth, boxHeight, previewWidth, previewHeight);
+		GetPreviewSize(GetInputImageWidthPixels(), GetInputImageHeightPixels(), boxWidth, boxHeight, previewWidth, previewHeight, false);
 	}
 
 	void GetInputImagePreview(unsigned char* buffer, int pixelWidth, int pixelHeight) {m_imageIO->GetPreview(buffer, pixelWidth, pixelHeight);}
@@ -327,11 +336,14 @@ public:
 			GetPaperDimensions(GetPaperFormat(), GetPaperOrientation(), m_distanceUnit, paperWidth, paperHeight);
 		}
 
-		GetPreviewSize(paperWidth, paperHeight, boxWidth, boxHeight, previewWidth, previewHeight);
+		GetPreviewSize(paperWidth, paperHeight, boxWidth, boxHeight, previewWidth, previewHeight, true);
 	}
 
 	virtual void GetPaperPreview(unsigned char* buffer, int pixelWidth, int pixelHeight, bool withOverlap)
 	{
+		double printablePageWidth, printablePageHeight;
+		GetPrintablePageSize(printablePageWidth, printablePageHeight);
+//		double factor = (double)pixelWidth/
 		memset(buffer, 128, pixelWidth*pixelHeight*3);
 	}
 };
