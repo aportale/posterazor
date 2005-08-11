@@ -35,12 +35,12 @@ public:
 
 	void SetPageSizeFields(void);
 	void SelectPageSizeGroup(bool useCustomPrintablePageSize);
-	void UpdatePosterSizeFields(Fl_Valuator *sourceWidget);
-
 	void HandlePaperFormatChoice(void);
 	static void HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userData);
-
 	void HandlePaperOrientationChangement(void);
+	void HandlePageSizeInputFields(void);
+
+	void UpdatePosterSizeFields(Fl_Valuator *sourceWidget);
 	void UpdatePosterSizeGroupsState(void);
 };
 
