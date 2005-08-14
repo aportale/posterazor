@@ -4,11 +4,11 @@ header_name {.h}
 code_name {.cxx}
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {504 144 620 455} type Double resizable
+  xywh {506 327 620 455} type Double resizable
   code0 {size_range(this->w(), this->h());}
   class Fl_Double_Window visible
 } {
-  Fl_Group {} {open
+  Fl_Group {} {
     xywh {10 420 600 25}
   } {
     Fl_Button m_nextButton {
@@ -27,14 +27,14 @@ widget_class PosteRazorDialogUI {
   }
   Fl_Wizard m_wizard {
     user_data this open
-    xywh {360 45 250 365} box THIN_DOWN_BOX
+    xywh {315 45 295 365} box THIN_DOWN_BOX
   } {
     Fl_Group m_loadInputImageStep {
-      xywh {360 45 250 365} color 50 hide
+      xywh {315 45 295 365} color 50 hide
     } {
       Fl_Group {} {
         label {Input Image}
-        xywh {370 70 230 25}
+        xywh {325 70 275 25}
       } {
         Fl_Button {} {
           label {...}
@@ -42,64 +42,100 @@ widget_class PosteRazorDialogUI {
           xywh {575 70 25 25}
         }
         Fl_Box m_inputFileNameLabel {
-          xywh {370 70 205 25} box THIN_DOWN_BOX color 55 align 84 resizable
+          xywh {325 70 250 25} box THIN_DOWN_BOX color 55 align 84 resizable
         }
       }
       Fl_Group m_imageInfoGroup {
         label {Image information} open
-        xywh {370 120 230 85} box THIN_DOWN_BOX color 45
+        xywh {325 120 275 85} box THIN_DOWN_BOX color 45
       } {
         Fl_Box m_imageInfoValuesLabel {
-          xywh {480 130 115 65} align 21
+          xywh {460 130 135 65} align 21
         }
         Fl_Box m_imageInfoKeysLabel {
-          xywh {375 130 105 65} align 25
+          xywh {335 130 125 65} align 25
         }
       }
       Fl_Box {} {
-        xywh {360 410 250 0} resizable
+        xywh {315 410 295 0} resizable
       }
     }
-    Fl_Group m_paperSizeStep {open
-      xywh {360 45 250 365}
+    Fl_Group m_paperSizeStep {open selected
+      xywh {315 45 295 365}
     } {
       Fl_Tabs m_paperFormatTypeTabs {
-        label {Paper format:}
-        callback {HandlePaperSizeChangement();} open
-        xywh {370 70 230 140}
+        callback {HandlePaperSizeChangement();}
+        xywh {325 55 275 285} align 0
       } {
         Fl_Group m_paperFormatStandardGroup {
           label Standard open
-          xywh {370 95 230 115} box THIN_UP_BOX color 45 selection_color 54 align 0 hide
+          xywh {325 80 275 260} box THIN_UP_BOX color 45 selection_color 40 hide
         } {
           Fl_Choice m_paperFormatChoice {
             label {Format:} open
-            xywh {455 105 135 25} down_box BORDER_BOX
+            xywh {425 90 165 25} down_box BORDER_BOX
           } {}
           Fl_Group {} {
             label {Orientation:} open
-            xywh {455 140 135 60} box THIN_DOWN_BOX color 43 align 4
+            xywh {425 125 165 60} box THIN_DOWN_BOX color 43 align 4
           } {
             Fl_Round_Button m_paperOrientationPortraitRadioButton {
               label Portrait
               callback {HandlePaperSizeChangement();}
-              xywh {460 145 125 25} type Radio down_box ROUND_DOWN_BOX
+              xywh {460 130 125 25} type Radio down_box ROUND_DOWN_BOX
             }
             Fl_Round_Button m_paperOrientationLandscapeRadioButton {
               label Landscape
               callback {HandlePaperSizeChangement();}
-              xywh {460 170 125 25} type Radio down_box ROUND_DOWN_BOX
+              xywh {460 155 125 25} type Radio down_box ROUND_DOWN_BOX
+            }
+          }
+          Fl_Group {} {
+            label {Borders:} open
+            xywh {425 195 165 136} box THIN_DOWN_BOX color 43 align 4
+          } {
+            Fl_Value_Input m_paperBorderTopInput {
+              label Top
+              callback {HandlePaperSizeChangement();}
+              xywh {485 220 50 25} align 1
+              code0 {o->step(0.1);}
+              code1 {o->range(0, 999);}
+              code2 {o->precision(2);}
+            }
+            Fl_Value_Input m_paperBorderRightInput {
+              label Right
+              callback {HandlePaperSizeChangement();}
+              xywh {530 250 50 25} align 9
+              code0 {o->step(0.1);}
+              code1 {o->range(0, 999);}
+              code2 {o->precision(2);}
+            }
+            Fl_Value_Input m_paperBorderBottomInput {
+              label Bottom
+              callback {HandlePaperSizeChangement();}
+              xywh {485 280 50 25} align 2
+              code0 {o->step(0.1);}
+              code1 {o->range(0, 999);}
+              code2 {o->precision(2);}
+            }
+            Fl_Value_Input m_paperBorderLeftInput {
+              label Left
+              callback {HandlePaperSizeChangement();}
+              xywh {440 250 50 25} align 5
+              code0 {o->step(0.1);}
+              code1 {o->range(0, 999);}
+              code2 {o->precision(2);}
             }
           }
         }
         Fl_Group m_paperFormatCustomGroup {
           label Custom open
-          xywh {370 95 230 114} box THIN_UP_BOX color 45 selection_color 54
+          xywh {325 80 275 260} box THIN_UP_BOX color 45 selection_color 40
         } {
           Fl_Value_Input m_paperCustomWidthInput {
             label {Width:}
             callback {HandlePaperSizeChangement();}
-            xywh {455 120 85 25}
+            xywh {425 90 95 25}
             code0 {o->step(0.1);}
             code1 {o->range(0, 999);}
             code2 {o->precision(2);}
@@ -107,73 +143,40 @@ widget_class PosteRazorDialogUI {
           Fl_Value_Input m_paperCustomHeightInput {
             label {Height:}
             callback {HandlePaperSizeChangement();}
-            xywh {455 150 85 25} resizable
+            xywh {425 125 95 25} resizable
             code0 {o->step(0.1);}
             code1 {o->range(0, 999);}
             code2 {o->precision(2);}
           }
           Fl_Box m_paperCustomWidthLabel {
             label cm
-            xywh {540 120 50 25} align 20
+            xywh {520 90 50 25} align 20
           }
           Fl_Box m_paperCustomHeightLabel {
             label cm
-            xywh {540 150 50 25} align 20
+            xywh {520 125 50 25} align 20
           }
         }
       }
-      Fl_Group {} {
-        label {Borders:} open
-        xywh {370 235 230 125} box THIN_DOWN_BOX color 43
-      } {
-        Fl_Value_Input m_paperBorderTopInput {
-          callback {HandlePaperSizeChangement();}
-          xywh {460 245 50 25} align 20
-          code0 {o->step(0.1);}
-          code1 {o->range(0, 999);}
-          code2 {o->precision(2);}
-        }
-        Fl_Value_Input m_paperBorderRightInput {
-          callback {HandlePaperSizeChangement();}
-          xywh {520 285 50 25} align 16
-          code0 {o->step(0.1);}
-          code1 {o->range(0, 999);}
-          code2 {o->precision(2);}
-        }
-        Fl_Value_Input m_paperBorderBottomInput {
-          callback {HandlePaperSizeChangement();}
-          xywh {460 325 50 25} align 16
-          code0 {o->step(0.1);}
-          code1 {o->range(0, 999);}
-          code2 {o->precision(2);}
-        }
-        Fl_Value_Input m_paperBorderLeftInput {
-          callback {HandlePaperSizeChangement();}
-          xywh {400 285 50 25} align 16
-          code0 {o->step(0.1);}
-          code1 {o->range(0, 999);}
-          code2 {o->precision(2);}
-        }
-      }
       Fl_Box {} {
-        xywh {360 400 250 10} resizable
+        xywh {315 400 295 10} resizable
       }
     }
     Fl_Group m_posterSizeStep {
-      xywh {360 45 250 365} hide
+      xywh {315 45 295 365} hide
     } {
       Fl_Round_Button m_posterSizeAbsoluteRadioButton {
         label {Absolute image size}
         callback {UpdatePosterSizeGroupsState();}
-        xywh {370 52 230 20} type Radio down_box ROUND_DOWN_BOX
+        xywh {325 52 275 20} type Radio down_box ROUND_DOWN_BOX
       }
       Fl_Group m_posterSizeAbsoluteGroup {open
-        xywh {370 70 230 75} box THIN_DOWN_BOX color 45 selection_color 54 align 0
+        xywh {325 70 275 75} box THIN_DOWN_BOX color 45 selection_color 54 align 0
       } {
         Fl_Value_Input m_posterAbsoluteWidthInput {
           label {Width:}
           callback {UpdatePosterSizeFields(m_posterAbsoluteWidthInput);}
-          xywh {450 80 90 25}
+          xywh {430 80 90 25}
           code0 {o->step(1);}
           code1 {o->range(0, 999);}
           code2 {o->precision(3);}
@@ -181,32 +184,32 @@ widget_class PosteRazorDialogUI {
         Fl_Value_Input m_posterAbsoluteHeightInput {
           label {Height:}
           callback {UpdatePosterSizeFields(m_posterAbsoluteHeightInput);}
-          xywh {450 110 90 25} resizable
+          xywh {430 110 90 25} resizable
           code0 {o->step(1);}
           code1 {o->range(0, 999);}
           code2 {o->precision(3);}
         }
         Fl_Box m_posterAbsoluteWidthLabel {
           label cm
-          xywh {540 80 50 25} align 20
+          xywh {520 80 70 25} align 20
         }
         Fl_Box m_posterAbsoluteHeightLabel {
           label cm
-          xywh {540 110 50 25} align 20
+          xywh {520 110 70 25} align 20
         }
       }
       Fl_Round_Button m_posterSizeInPagesRadioButton {
         label {Size in pages}
         callback {UpdatePosterSizeGroupsState();}
-        xywh {370 152 230 20} type Radio down_box ROUND_DOWN_BOX
+        xywh {325 152 275 20} type Radio down_box ROUND_DOWN_BOX
       }
       Fl_Group m_posterSizeInPagesGroup {open
-        xywh {370 170 230 75} box THIN_DOWN_BOX color 45 selection_color 54
+        xywh {325 170 275 75} box THIN_DOWN_BOX color 45 selection_color 54
       } {
         Fl_Value_Input m_posterPagesWidthInput {
           label {Width:}
           callback {UpdatePosterSizeFields(m_posterPagesWidthInput);}
-          xywh {450 180 90 25}
+          xywh {430 180 90 25}
           code0 {o->step(0.1);}
           code1 {o->range(0, 999);}
           code2 {o->precision(3);}
@@ -214,58 +217,66 @@ widget_class PosteRazorDialogUI {
         Fl_Value_Input m_posterPagesHeightInput {
           label {Height:}
           callback {UpdatePosterSizeFields(m_posterPagesHeightInput);}
-          xywh {450 210 90 25} resizable
+          xywh {430 210 90 25} resizable
           code0 {o->step(0.1);}
           code1 {o->range(0, 999);}
           code2 {o->precision(3);}
         }
         Fl_Box m_posterPagesWidthLabel {
           label pages
-          xywh {540 180 50 25} align 20
+          xywh {520 180 70 25} align 20
         }
         Fl_Box m_posterPagesHeightLabel {
           label pages
-          xywh {540 210 50 25} align 20
+          xywh {520 210 70 25} align 20
         }
       }
       Fl_Round_Button m_posterSizePercentualRadioButton {
         label {Image size in percent}
         callback {UpdatePosterSizeGroupsState();}
-        xywh {370 252 230 20} type Radio down_box ROUND_DOWN_BOX
+        xywh {325 252 275 20} type Radio down_box ROUND_DOWN_BOX
       }
       Fl_Group m_posterSizePercentualGroup {open
-        xywh {370 270 230 45} box THIN_DOWN_BOX color 45 selection_color 54
+        xywh {325 270 275 45} box THIN_DOWN_BOX color 45 selection_color 54
       } {
         Fl_Value_Input m_posterPercentualSizeInput {
           label {Size:}
           callback {UpdatePosterSizeFields(m_posterPercentualSizeInput);}
-          xywh {450 280 90 25}
+          xywh {430 280 90 25}
           code0 {o->step(0.1);}
           code1 {o->range(0, 999);}
           code2 {o->precision(3);}
         }
         Fl_Box m_posterPercentualWidthLabel {
           label {%}
-          xywh {540 281 50 25} align 20
+          xywh {520 280 70 25} align 20
         }
       }
       Fl_Box {} {
-        xywh {360 410 250 0} resizable
+        xywh {315 410 295 0} resizable
       }
     }
     Fl_Group {} {
-      xywh {360 45 250 365} hide
+      xywh {315 45 295 365} hide
     } {}
     Fl_Group m_savePosterStep {open
-      xywh {360 45 250 365} hide
+      xywh {315 45 295 365} hide
     } {}
   }
-  Fl_Group m_previewImageGroup {open selected
-    xywh {10 45 345 365} box THIN_DOWN_BOX color 34 selection_color 52 labelfont 1 labelsize 26 labelcolor 61 align 80 resizable
+  Fl_Group m_previewImageGroup {
+    xywh {10 45 300 365} box THIN_DOWN_BOX color 34 selection_color 52 labelfont 1 labelsize 26 labelcolor 61 align 80 resizable
   } {}
-  Fl_Box m_stepInfoBox {
-    label {Step 1 of 8: Load an image}
-    xywh {10 10 600 25} box THIN_UP_BOX color 10 labelfont 1 labelsize 15 labelcolor 32
+  Fl_Group {} {
+    xywh {10 10 600 25}
+  } {
+    Fl_Box m_stepInfoBox {
+      label {Step 1 of 8: Load an image}
+      xywh {10 10 570 25} box THIN_UP_BOX color 10 labelfont 1 labelsize 15 labelcolor 32 resizable
+    }
+    Fl_Button {} {
+      label {?}
+      xywh {585 10 25 25} color 10 labelfont 1 labelsize 15
+    }
   }
   decl {virtual void next(void) = 0;} {public
   }
