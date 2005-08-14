@@ -70,7 +70,7 @@ widget_class PosteRazorDialogUI {
       } {
         Fl_Group m_paperFormatStandardGroup {
           label Standard open
-          xywh {370 95 230 115} color 45 selection_color 54 align 0
+          xywh {370 95 230 115} box THIN_UP_BOX color 45 selection_color 54 align 0 hide
         } {
           Fl_Choice m_paperFormatChoice {
             label {Format:} open
@@ -94,7 +94,7 @@ widget_class PosteRazorDialogUI {
         }
         Fl_Group m_paperFormatCustomGroup {
           label Custom open
-          xywh {370 110 230 75} color 45 selection_color 54 hide
+          xywh {370 95 230 114} box THIN_UP_BOX color 45 selection_color 54
         } {
           Fl_Value_Input m_paperCustomWidthInput {
             label {Width:}
@@ -260,7 +260,7 @@ widget_class PosteRazorDialogUI {
       xywh {360 45 250 365} hide
     } {}
   }
-  Fl_Group m_previewImageGroup {open
+  Fl_Group m_previewImageGroup {open selected
     xywh {10 45 345 365} box THIN_DOWN_BOX color 34 selection_color 52 labelfont 1 labelsize 26 labelcolor 61 align 80 resizable
   } {}
   Fl_Box m_stepInfoBox {
@@ -281,7 +281,7 @@ widget_class PosteRazorDialogUI {
   decl {// ****** Paper size step:} {}
   decl {virtual void SetPaperSizeFields(void) = 0;} {public
   }
-  decl {virtual void HandlePaperSizeChangement(void) = 0;} {selected public
+  decl {virtual void HandlePaperSizeChangement(void) = 0;} {public
   }
   decl {// ****** Poster size step:} {}
   decl {virtual void UpdatePosterSizeGroupsState(void) = 0;} {public
