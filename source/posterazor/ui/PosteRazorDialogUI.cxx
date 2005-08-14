@@ -23,74 +23,67 @@ void PosteRazorDialogUI::cb_(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb__i(o,v);
 }
 
-void PosteRazorDialogUI::cb_m_standardPageSizeRadioButton_i(Fl_Round_Button*, void*) {
-  SelectPageSizeGroup(false);
+void PosteRazorDialogUI::cb_m_paperFormatTypeTabs_i(Fl_Tabs*, void*) {
+  HandlePaperSizeChangement();
 }
-void PosteRazorDialogUI::cb_m_standardPageSizeRadioButton(Fl_Round_Button* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->user_data()))->cb_m_standardPageSizeRadioButton_i(o,v);
-}
-
-void PosteRazorDialogUI::cb_m_pageOrientationPortraitRadioButton_i(Fl_Round_Button*, void*) {
-  HandlePaperOrientationChangement();
-}
-void PosteRazorDialogUI::cb_m_pageOrientationPortraitRadioButton(Fl_Round_Button* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_pageOrientationPortraitRadioButton_i(o,v);
+void PosteRazorDialogUI::cb_m_paperFormatTypeTabs(Fl_Tabs* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->user_data()))->cb_m_paperFormatTypeTabs_i(o,v);
 }
 
-void PosteRazorDialogUI::cb_m_pageOrientationLandscapeRadioButton_i(Fl_Round_Button*, void*) {
-  HandlePaperOrientationChangement();
+void PosteRazorDialogUI::cb_m_paperOrientationPortraitRadioButton_i(Fl_Round_Button*, void*) {
+  HandlePaperSizeChangement();
 }
-void PosteRazorDialogUI::cb_m_pageOrientationLandscapeRadioButton(Fl_Round_Button* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_pageOrientationLandscapeRadioButton_i(o,v);
-}
-
-void PosteRazorDialogUI::cb_m_pageBorderTopInput_i(Fl_Value_Input*, void*) {
-  HandlePageSizeInputFields();
-}
-void PosteRazorDialogUI::cb_m_pageBorderTopInput(Fl_Value_Input* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_pageBorderTopInput_i(o,v);
+void PosteRazorDialogUI::cb_m_paperOrientationPortraitRadioButton(Fl_Round_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperOrientationPortraitRadioButton_i(o,v);
 }
 
-void PosteRazorDialogUI::cb_m_pageBorderRightInput_i(Fl_Value_Input*, void*) {
-  HandlePageSizeInputFields();
+void PosteRazorDialogUI::cb_m_paperOrientationLandscapeRadioButton_i(Fl_Round_Button*, void*) {
+  HandlePaperSizeChangement();
 }
-void PosteRazorDialogUI::cb_m_pageBorderRightInput(Fl_Value_Input* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_pageBorderRightInput_i(o,v);
-}
-
-void PosteRazorDialogUI::cb_m_pageBorderBottomInput_i(Fl_Value_Input*, void*) {
-  HandlePageSizeInputFields();
-}
-void PosteRazorDialogUI::cb_m_pageBorderBottomInput(Fl_Value_Input* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_pageBorderBottomInput_i(o,v);
+void PosteRazorDialogUI::cb_m_paperOrientationLandscapeRadioButton(Fl_Round_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperOrientationLandscapeRadioButton_i(o,v);
 }
 
-void PosteRazorDialogUI::cb_m_pageBorderLeftInput_i(Fl_Value_Input*, void*) {
-  HandlePageSizeInputFields();
+void PosteRazorDialogUI::cb_m_paperCustomWidthInput_i(Fl_Value_Input*, void*) {
+  HandlePaperSizeChangement();
 }
-void PosteRazorDialogUI::cb_m_pageBorderLeftInput(Fl_Value_Input* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_pageBorderLeftInput_i(o,v);
-}
-
-void PosteRazorDialogUI::cb_m_customPageSizeRadioButton_i(Fl_Round_Button*, void*) {
-  SelectPageSizeGroup(true);
-}
-void PosteRazorDialogUI::cb_m_customPageSizeRadioButton(Fl_Round_Button* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->user_data()))->cb_m_customPageSizeRadioButton_i(o,v);
+void PosteRazorDialogUI::cb_m_paperCustomWidthInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperCustomWidthInput_i(o,v);
 }
 
-void PosteRazorDialogUI::cb_m_pageCustomWidthInput_i(Fl_Value_Input*, void*) {
-  HandlePageSizeInputFields();
+void PosteRazorDialogUI::cb_m_paperCustomHeightInput_i(Fl_Value_Input*, void*) {
+  HandlePaperSizeChangement();
 }
-void PosteRazorDialogUI::cb_m_pageCustomWidthInput(Fl_Value_Input* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_pageCustomWidthInput_i(o,v);
+void PosteRazorDialogUI::cb_m_paperCustomHeightInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperCustomHeightInput_i(o,v);
 }
 
-void PosteRazorDialogUI::cb_m_pageCustomHeightInput_i(Fl_Value_Input*, void*) {
-  HandlePageSizeInputFields();
+void PosteRazorDialogUI::cb_m_paperBorderTopInput_i(Fl_Value_Input*, void*) {
+  HandlePaperSizeChangement();
 }
-void PosteRazorDialogUI::cb_m_pageCustomHeightInput(Fl_Value_Input* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_pageCustomHeightInput_i(o,v);
+void PosteRazorDialogUI::cb_m_paperBorderTopInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderTopInput_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_paperBorderRightInput_i(Fl_Value_Input*, void*) {
+  HandlePaperSizeChangement();
+}
+void PosteRazorDialogUI::cb_m_paperBorderRightInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderRightInput_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_paperBorderBottomInput_i(Fl_Value_Input*, void*) {
+  HandlePaperSizeChangement();
+}
+void PosteRazorDialogUI::cb_m_paperBorderBottomInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderBottomInput_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_paperBorderLeftInput_i(Fl_Value_Input*, void*) {
+  HandlePaperSizeChangement();
+}
+void PosteRazorDialogUI::cb_m_paperBorderLeftInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderLeftInput_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_posterSizeAbsoluteRadioButton_i(Fl_Round_Button*, void*) {
@@ -218,100 +211,91 @@ o->when(FL_WHEN_RELEASE);
     }
     o->end();
   }
-  { Fl_Group* o = m_pageSizeStep = new Fl_Group(360, 45, 250, 365);
-    { Fl_Round_Button* o = m_standardPageSizeRadioButton = new Fl_Round_Button(370, 52, 230, 20, "Standard paper format");
-      o->type(102);
-      o->down_box(FL_ROUND_DOWN_BOX);
-      o->callback((Fl_Callback*)cb_m_standardPageSizeRadioButton);
-    }
-    { Fl_Group* o = m_standardPageSizeGroup = new Fl_Group(370, 70, 230, 230);
-      o->box(FL_THIN_DOWN_BOX);
-      o->color(FL_DARK2);
-      o->selection_color((Fl_Color)48);
-      o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
-      { Fl_Choice* o = m_paperFormatChoice = new Fl_Choice(450, 80, 140, 25, "Format:");
-        o->down_box(FL_BORDER_BOX);
-      }
-      { Fl_Group* o = new Fl_Group(450, 115, 140, 60, "Orientation:");
-        o->box(FL_THIN_DOWN_BOX);
-        o->color((Fl_Color)43);
-        o->align(FL_ALIGN_LEFT);
-        { Fl_Round_Button* o = m_pageOrientationPortraitRadioButton = new Fl_Round_Button(455, 120, 130, 25, "Portrait");
-          o->type(102);
-          o->down_box(FL_ROUND_DOWN_BOX);
-          o->callback((Fl_Callback*)cb_m_pageOrientationPortraitRadioButton);
+  { Fl_Group* o = m_paperSizeStep = new Fl_Group(360, 45, 250, 365);
+    { Fl_Tabs* o = m_paperFormatTypeTabs = new Fl_Tabs(370, 70, 230, 140, "Paper format:");
+      o->callback((Fl_Callback*)cb_m_paperFormatTypeTabs);
+      { Fl_Group* o = m_paperFormatStandardGroup = new Fl_Group(370, 95, 230, 115, "Standard");
+        o->color(FL_DARK2);
+        o->selection_color(FL_LIGHT3);
+        o->align(FL_ALIGN_CENTER);
+        { Fl_Choice* o = m_paperFormatChoice = new Fl_Choice(455, 105, 135, 25, "Format:");
+          o->down_box(FL_BORDER_BOX);
         }
-        { Fl_Round_Button* o = m_pageOrientationLandscapeRadioButton = new Fl_Round_Button(455, 145, 130, 25, "Landscape");
-          o->type(102);
-          o->down_box(FL_ROUND_DOWN_BOX);
-          o->callback((Fl_Callback*)cb_m_pageOrientationLandscapeRadioButton);
+        { Fl_Group* o = new Fl_Group(455, 140, 135, 60, "Orientation:");
+          o->box(FL_THIN_DOWN_BOX);
+          o->color((Fl_Color)43);
+          o->align(FL_ALIGN_LEFT);
+          { Fl_Round_Button* o = m_paperOrientationPortraitRadioButton = new Fl_Round_Button(460, 145, 125, 25, "Portrait");
+            o->type(102);
+            o->down_box(FL_ROUND_DOWN_BOX);
+            o->callback((Fl_Callback*)cb_m_paperOrientationPortraitRadioButton);
+          }
+          { Fl_Round_Button* o = m_paperOrientationLandscapeRadioButton = new Fl_Round_Button(460, 170, 125, 25, "Landscape");
+            o->type(102);
+            o->down_box(FL_ROUND_DOWN_BOX);
+            o->callback((Fl_Callback*)cb_m_paperOrientationLandscapeRadioButton);
+          }
+          o->end();
         }
         o->end();
       }
-      { Fl_Group* o = new Fl_Group(450, 185, 140, 105, "Borders:");
-        o->box(FL_THIN_DOWN_BOX);
-        o->color((Fl_Color)43);
-        o->align(FL_ALIGN_LEFT);
-        { Fl_Value_Input* o = m_pageBorderTopInput = new Fl_Value_Input(500, 195, 40, 25);
-          o->callback((Fl_Callback*)cb_m_pageBorderTopInput);
+      { Fl_Group* o = m_paperFormatCustomGroup = new Fl_Group(370, 110, 230, 75, "Custom");
+        o->color(FL_DARK2);
+        o->selection_color(FL_LIGHT3);
+        o->hide();
+        { Fl_Value_Input* o = m_paperCustomWidthInput = new Fl_Value_Input(455, 120, 85, 25, "Width:");
+          o->callback((Fl_Callback*)cb_m_paperCustomWidthInput);
+          o->step(0.1);
+          o->range(0, 999);
+          o->precision(2);
+        }
+        { Fl_Value_Input* o = m_paperCustomHeightInput = new Fl_Value_Input(455, 150, 85, 25, "Height:");
+          o->callback((Fl_Callback*)cb_m_paperCustomHeightInput);
+          Fl_Group::current()->resizable(o);
+          o->step(0.1);
+          o->range(0, 999);
+          o->precision(2);
+        }
+        { Fl_Box* o = m_paperCustomWidthLabel = new Fl_Box(540, 120, 50, 25, "cm");
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-          o->step(0.1);
-          o->range(0, 999);
-          o->precision(2);
         }
-        { Fl_Value_Input* o = m_pageBorderRightInput = new Fl_Value_Input(540, 225, 40, 25);
-          o->callback((Fl_Callback*)cb_m_pageBorderRightInput);
-          o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
-          o->step(0.1);
-          o->range(0, 999);
-          o->precision(2);
-        }
-        { Fl_Value_Input* o = m_pageBorderBottomInput = new Fl_Value_Input(500, 255, 40, 25);
-          o->callback((Fl_Callback*)cb_m_pageBorderBottomInput);
-          o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
-          o->step(0.1);
-          o->range(0, 999);
-          o->precision(2);
-        }
-        { Fl_Value_Input* o = m_pageBorderLeftInput = new Fl_Value_Input(460, 225, 40, 25);
-          o->callback((Fl_Callback*)cb_m_pageBorderLeftInput);
-          o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
-          o->step(0.1);
-          o->range(0, 999);
-          o->precision(2);
+        { Fl_Box* o = m_paperCustomHeightLabel = new Fl_Box(540, 150, 50, 25, "cm");
+          o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         }
         o->end();
       }
       o->end();
     }
-    { Fl_Round_Button* o = m_customPageSizeRadioButton = new Fl_Round_Button(370, 307, 230, 20, "Custom paper format");
-      o->type(102);
-      o->down_box(FL_ROUND_DOWN_BOX);
-      o->callback((Fl_Callback*)cb_m_customPageSizeRadioButton);
-    }
-    { Fl_Group* o = m_customPageSizeGroup = new Fl_Group(370, 325, 230, 75);
+    { Fl_Group* o = new Fl_Group(370, 235, 230, 125, "Borders:");
       o->box(FL_THIN_DOWN_BOX);
-      o->color(FL_DARK2);
-      o->selection_color(FL_LIGHT3);
-      o->align(FL_ALIGN_TOP|FL_ALIGN_INSIDE);
-      { Fl_Value_Input* o = m_pageCustomWidthInput = new Fl_Value_Input(450, 335, 90, 25, "Width:");
-        o->callback((Fl_Callback*)cb_m_pageCustomWidthInput);
+      o->color((Fl_Color)43);
+      { Fl_Value_Input* o = m_paperBorderTopInput = new Fl_Value_Input(460, 245, 50, 25);
+        o->callback((Fl_Callback*)cb_m_paperBorderTopInput);
+        o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         o->step(0.1);
         o->range(0, 999);
         o->precision(2);
       }
-      { Fl_Value_Input* o = m_pageCustomHeightInput = new Fl_Value_Input(450, 365, 90, 25, "Height:");
-        o->callback((Fl_Callback*)cb_m_pageCustomHeightInput);
-        Fl_Group::current()->resizable(o);
+      { Fl_Value_Input* o = m_paperBorderRightInput = new Fl_Value_Input(520, 285, 50, 25);
+        o->callback((Fl_Callback*)cb_m_paperBorderRightInput);
+        o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
         o->step(0.1);
         o->range(0, 999);
         o->precision(2);
       }
-      { Fl_Box* o = m_pageCustomWidthLabel = new Fl_Box(540, 335, 50, 25, "cm");
-        o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
+      { Fl_Value_Input* o = m_paperBorderBottomInput = new Fl_Value_Input(460, 325, 50, 25);
+        o->callback((Fl_Callback*)cb_m_paperBorderBottomInput);
+        o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
+        o->step(0.1);
+        o->range(0, 999);
+        o->precision(2);
       }
-      { Fl_Box* o = m_pageCustomHeightLabel = new Fl_Box(540, 365, 50, 25, "cm");
-        o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
+      { Fl_Value_Input* o = m_paperBorderLeftInput = new Fl_Value_Input(400, 285, 50, 25);
+        o->callback((Fl_Callback*)cb_m_paperBorderLeftInput);
+        o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
+        o->step(0.1);
+        o->range(0, 999);
+        o->precision(2);
       }
       o->end();
     }
@@ -437,7 +421,7 @@ o->when(FL_WHEN_RELEASE);
   o->labelcolor(FL_GRAY0);
 }
 // ****** Load input image step:
-// ****** Page size step:
+// ****** Paper size step:
 // ****** Poster size step:
 size_range(this->w(), this->h());
 end();

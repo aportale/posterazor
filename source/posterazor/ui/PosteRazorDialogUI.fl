@@ -60,101 +60,99 @@ widget_class PosteRazorDialogUI {
         xywh {360 410 250 0} resizable
       }
     }
-    Fl_Group m_pageSizeStep {
+    Fl_Group m_paperSizeStep {open
       xywh {360 45 250 365}
     } {
-      Fl_Round_Button m_standardPageSizeRadioButton {
-        label {Standard paper format}
-        callback {SelectPageSizeGroup(false);}
-        xywh {370 52 230 20} type Radio down_box ROUND_DOWN_BOX
-      }
-      Fl_Group m_standardPageSizeGroup {open
-        xywh {370 70 230 230} box THIN_DOWN_BOX color 45 selection_color 48 align 16
+      Fl_Tabs m_paperFormatTypeTabs {
+        label {Paper format:}
+        callback {HandlePaperSizeChangement();} open
+        xywh {370 70 230 140}
       } {
-        Fl_Choice m_paperFormatChoice {
-          label {Format:} open
-          xywh {450 80 140 25} down_box BORDER_BOX
-        } {}
-        Fl_Group {} {
-          label {Orientation:}
-          xywh {450 115 140 60} box THIN_DOWN_BOX color 43 align 4
+        Fl_Group m_paperFormatStandardGroup {
+          label Standard open
+          xywh {370 95 230 115} color 45 selection_color 54 align 0
         } {
-          Fl_Round_Button m_pageOrientationPortraitRadioButton {
-            label Portrait
-            callback {HandlePaperOrientationChangement();}
-            xywh {455 120 130 25} type Radio down_box ROUND_DOWN_BOX
-          }
-          Fl_Round_Button m_pageOrientationLandscapeRadioButton {
-            label Landscape
-            callback {HandlePaperOrientationChangement();}
-            xywh {455 145 130 25} type Radio down_box ROUND_DOWN_BOX
+          Fl_Choice m_paperFormatChoice {
+            label {Format:} open
+            xywh {455 105 135 25} down_box BORDER_BOX
+          } {}
+          Fl_Group {} {
+            label {Orientation:} open
+            xywh {455 140 135 60} box THIN_DOWN_BOX color 43 align 4
+          } {
+            Fl_Round_Button m_paperOrientationPortraitRadioButton {
+              label Portrait
+              callback {HandlePaperSizeChangement();}
+              xywh {460 145 125 25} type Radio down_box ROUND_DOWN_BOX
+            }
+            Fl_Round_Button m_paperOrientationLandscapeRadioButton {
+              label Landscape
+              callback {HandlePaperSizeChangement();}
+              xywh {460 170 125 25} type Radio down_box ROUND_DOWN_BOX
+            }
           }
         }
-        Fl_Group {} {
-          label {Borders:} open
-          xywh {450 185 140 105} box THIN_DOWN_BOX color 43 align 4
+        Fl_Group m_paperFormatCustomGroup {
+          label Custom open
+          xywh {370 110 230 75} color 45 selection_color 54 hide
         } {
-          Fl_Value_Input m_pageBorderTopInput {
-            callback {HandlePageSizeInputFields();}
-            xywh {500 195 40 25} align 20
+          Fl_Value_Input m_paperCustomWidthInput {
+            label {Width:}
+            callback {HandlePaperSizeChangement();}
+            xywh {455 120 85 25}
             code0 {o->step(0.1);}
             code1 {o->range(0, 999);}
             code2 {o->precision(2);}
           }
-          Fl_Value_Input m_pageBorderRightInput {
-            callback {HandlePageSizeInputFields();} selected
-            xywh {540 225 40 25} align 16
+          Fl_Value_Input m_paperCustomHeightInput {
+            label {Height:}
+            callback {HandlePaperSizeChangement();}
+            xywh {455 150 85 25} resizable
             code0 {o->step(0.1);}
             code1 {o->range(0, 999);}
             code2 {o->precision(2);}
           }
-          Fl_Value_Input m_pageBorderBottomInput {
-            callback {HandlePageSizeInputFields();}
-            xywh {500 255 40 25} align 16
-            code0 {o->step(0.1);}
-            code1 {o->range(0, 999);}
-            code2 {o->precision(2);}
+          Fl_Box m_paperCustomWidthLabel {
+            label cm
+            xywh {540 120 50 25} align 20
           }
-          Fl_Value_Input m_pageBorderLeftInput {
-            callback {HandlePageSizeInputFields();}
-            xywh {460 225 40 25} align 16
-            code0 {o->step(0.1);}
-            code1 {o->range(0, 999);}
-            code2 {o->precision(2);}
+          Fl_Box m_paperCustomHeightLabel {
+            label cm
+            xywh {540 150 50 25} align 20
           }
         }
       }
-      Fl_Round_Button m_customPageSizeRadioButton {
-        label {Custom paper format}
-        callback {SelectPageSizeGroup(true);}
-        xywh {370 307 230 20} type Radio down_box ROUND_DOWN_BOX
-      }
-      Fl_Group m_customPageSizeGroup {open
-        xywh {370 325 230 75} box THIN_DOWN_BOX color 45 selection_color 54 align 17
+      Fl_Group {} {
+        label {Borders:} open
+        xywh {370 235 230 125} box THIN_DOWN_BOX color 43
       } {
-        Fl_Value_Input m_pageCustomWidthInput {
-          label {Width:}
-          callback {HandlePageSizeInputFields();}
-          xywh {450 335 90 25}
+        Fl_Value_Input m_paperBorderTopInput {
+          callback {HandlePaperSizeChangement();}
+          xywh {460 245 50 25} align 20
           code0 {o->step(0.1);}
           code1 {o->range(0, 999);}
           code2 {o->precision(2);}
         }
-        Fl_Value_Input m_pageCustomHeightInput {
-          label {Height:}
-          callback {HandlePageSizeInputFields();}
-          xywh {450 365 90 25} resizable
+        Fl_Value_Input m_paperBorderRightInput {
+          callback {HandlePaperSizeChangement();}
+          xywh {520 285 50 25} align 16
           code0 {o->step(0.1);}
           code1 {o->range(0, 999);}
           code2 {o->precision(2);}
         }
-        Fl_Box m_pageCustomWidthLabel {
-          label cm
-          xywh {540 335 50 25} align 20
+        Fl_Value_Input m_paperBorderBottomInput {
+          callback {HandlePaperSizeChangement();}
+          xywh {460 325 50 25} align 16
+          code0 {o->step(0.1);}
+          code1 {o->range(0, 999);}
+          code2 {o->precision(2);}
         }
-        Fl_Box m_pageCustomHeightLabel {
-          label cm
-          xywh {540 365 50 25} align 20
+        Fl_Value_Input m_paperBorderLeftInput {
+          callback {HandlePaperSizeChangement();}
+          xywh {400 285 50 25} align 16
+          code0 {o->step(0.1);}
+          code1 {o->range(0, 999);}
+          code2 {o->precision(2);}
         }
       }
       Fl_Box {} {
@@ -280,14 +278,10 @@ widget_class PosteRazorDialogUI {
   decl {// ****** Load input image step:} {}
   decl {virtual void LoadInputImage(void) = 0;} {public
   }
-  decl {// ****** Page size step:} {}
-  decl {virtual void SelectPageSizeGroup(bool useCustomPrintablePageSize) = 0;} {public
+  decl {// ****** Paper size step:} {}
+  decl {virtual void SetPaperSizeFields(void) = 0;} {public
   }
-  decl {virtual void SetPageSizeFields(void) = 0;} {public
-  }
-  decl {virtual void HandlePaperOrientationChangement(void) = 0;} {public
-  }
-  decl {virtual void HandlePageSizeInputFields(void) = 0;} {public
+  decl {virtual void HandlePaperSizeChangement(void) = 0;} {selected public
   }
   decl {// ****** Poster size step:} {}
   decl {virtual void UpdatePosterSizeGroupsState(void) = 0;} {public

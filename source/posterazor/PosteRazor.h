@@ -58,11 +58,11 @@ public:
 	virtual double GetPaperBorderBottom(void) = 0;
 	virtual double GetPaperBorderLeft(void) = 0;
 
-	virtual void SetCustomPrintablePageSize(double width, double height) = 0;
-	virtual void GetCustomPrintablePageSize(double &width, double &height) = 0;
-	virtual void SetUseCustomPrintablePageSize(bool useIt) = 0;
-	virtual bool GetUseCustomPrintablePageSize(void) = 0;
-	virtual void GetPrintablePageSize(double &width, double &height) = 0;
+	virtual void SetCustomPaperSize(double width, double height) = 0;
+	virtual void GetCustomPaperSize(double &width, double &height) = 0;
+	virtual void SetUseCustomPaperSize(bool useIt) = 0;
+	virtual bool GetUseCustomPaperSize(void) = 0;
+	virtual void GetPrintablePaperAreaSize(double &width, double &height) = 0;
 	
 	virtual void SetPosterWidth(enum ePosterSizeModes mode, double width) = 0;
 	virtual void SetPosterHeight(enum ePosterSizeModes mode, double height) = 0;

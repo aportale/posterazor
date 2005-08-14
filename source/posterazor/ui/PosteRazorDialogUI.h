@@ -8,8 +8,9 @@
 #include <FL/Fl_Button.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Wizard.H>
-#include <FL/Fl_Round_Button.H>
+#include <FL/Fl_Tabs.H>
 #include <FL/Fl_Choice.H>
+#include <FL/Fl_Round_Button.H>
 #include <FL/Fl_Value_Input.H>
 
 class PosteRazorDialogUI : public Fl_Double_Window {
@@ -37,62 +38,57 @@ public:
   Fl_Group *m_imageInfoGroup;
   Fl_Box *m_imageInfoValuesLabel;
   Fl_Box *m_imageInfoKeysLabel;
-  Fl_Group *m_pageSizeStep;
-  Fl_Round_Button *m_standardPageSizeRadioButton;
+  Fl_Group *m_paperSizeStep;
+  Fl_Tabs *m_paperFormatTypeTabs;
 private:
-  void cb_m_standardPageSizeRadioButton_i(Fl_Round_Button*, void*);
-  static void cb_m_standardPageSizeRadioButton(Fl_Round_Button*, void*);
+  void cb_m_paperFormatTypeTabs_i(Fl_Tabs*, void*);
+  static void cb_m_paperFormatTypeTabs(Fl_Tabs*, void*);
 public:
-  Fl_Group *m_standardPageSizeGroup;
+  Fl_Group *m_paperFormatStandardGroup;
   Fl_Choice *m_paperFormatChoice;
-  Fl_Round_Button *m_pageOrientationPortraitRadioButton;
+  Fl_Round_Button *m_paperOrientationPortraitRadioButton;
 private:
-  void cb_m_pageOrientationPortraitRadioButton_i(Fl_Round_Button*, void*);
-  static void cb_m_pageOrientationPortraitRadioButton(Fl_Round_Button*, void*);
+  void cb_m_paperOrientationPortraitRadioButton_i(Fl_Round_Button*, void*);
+  static void cb_m_paperOrientationPortraitRadioButton(Fl_Round_Button*, void*);
 public:
-  Fl_Round_Button *m_pageOrientationLandscapeRadioButton;
+  Fl_Round_Button *m_paperOrientationLandscapeRadioButton;
 private:
-  void cb_m_pageOrientationLandscapeRadioButton_i(Fl_Round_Button*, void*);
-  static void cb_m_pageOrientationLandscapeRadioButton(Fl_Round_Button*, void*);
+  void cb_m_paperOrientationLandscapeRadioButton_i(Fl_Round_Button*, void*);
+  static void cb_m_paperOrientationLandscapeRadioButton(Fl_Round_Button*, void*);
 public:
-  Fl_Value_Input *m_pageBorderTopInput;
+  Fl_Group *m_paperFormatCustomGroup;
+  Fl_Value_Input *m_paperCustomWidthInput;
 private:
-  void cb_m_pageBorderTopInput_i(Fl_Value_Input*, void*);
-  static void cb_m_pageBorderTopInput(Fl_Value_Input*, void*);
+  void cb_m_paperCustomWidthInput_i(Fl_Value_Input*, void*);
+  static void cb_m_paperCustomWidthInput(Fl_Value_Input*, void*);
 public:
-  Fl_Value_Input *m_pageBorderRightInput;
+  Fl_Value_Input *m_paperCustomHeightInput;
 private:
-  void cb_m_pageBorderRightInput_i(Fl_Value_Input*, void*);
-  static void cb_m_pageBorderRightInput(Fl_Value_Input*, void*);
+  void cb_m_paperCustomHeightInput_i(Fl_Value_Input*, void*);
+  static void cb_m_paperCustomHeightInput(Fl_Value_Input*, void*);
 public:
-  Fl_Value_Input *m_pageBorderBottomInput;
+  Fl_Box *m_paperCustomWidthLabel;
+  Fl_Box *m_paperCustomHeightLabel;
+  Fl_Value_Input *m_paperBorderTopInput;
 private:
-  void cb_m_pageBorderBottomInput_i(Fl_Value_Input*, void*);
-  static void cb_m_pageBorderBottomInput(Fl_Value_Input*, void*);
+  void cb_m_paperBorderTopInput_i(Fl_Value_Input*, void*);
+  static void cb_m_paperBorderTopInput(Fl_Value_Input*, void*);
 public:
-  Fl_Value_Input *m_pageBorderLeftInput;
+  Fl_Value_Input *m_paperBorderRightInput;
 private:
-  void cb_m_pageBorderLeftInput_i(Fl_Value_Input*, void*);
-  static void cb_m_pageBorderLeftInput(Fl_Value_Input*, void*);
+  void cb_m_paperBorderRightInput_i(Fl_Value_Input*, void*);
+  static void cb_m_paperBorderRightInput(Fl_Value_Input*, void*);
 public:
-  Fl_Round_Button *m_customPageSizeRadioButton;
+  Fl_Value_Input *m_paperBorderBottomInput;
 private:
-  void cb_m_customPageSizeRadioButton_i(Fl_Round_Button*, void*);
-  static void cb_m_customPageSizeRadioButton(Fl_Round_Button*, void*);
+  void cb_m_paperBorderBottomInput_i(Fl_Value_Input*, void*);
+  static void cb_m_paperBorderBottomInput(Fl_Value_Input*, void*);
 public:
-  Fl_Group *m_customPageSizeGroup;
-  Fl_Value_Input *m_pageCustomWidthInput;
+  Fl_Value_Input *m_paperBorderLeftInput;
 private:
-  void cb_m_pageCustomWidthInput_i(Fl_Value_Input*, void*);
-  static void cb_m_pageCustomWidthInput(Fl_Value_Input*, void*);
+  void cb_m_paperBorderLeftInput_i(Fl_Value_Input*, void*);
+  static void cb_m_paperBorderLeftInput(Fl_Value_Input*, void*);
 public:
-  Fl_Value_Input *m_pageCustomHeightInput;
-private:
-  void cb_m_pageCustomHeightInput_i(Fl_Value_Input*, void*);
-  static void cb_m_pageCustomHeightInput(Fl_Value_Input*, void*);
-public:
-  Fl_Box *m_pageCustomWidthLabel;
-  Fl_Box *m_pageCustomHeightLabel;
   Fl_Group *m_posterSizeStep;
   Fl_Round_Button *m_posterSizeAbsoluteRadioButton;
 private:
@@ -150,10 +146,8 @@ public:
   virtual void UpdateNavigationButtons(void) = 0;
   virtual void UpdatePreviewImage(void) = 0;
   virtual void LoadInputImage(void) = 0;
-  virtual void SelectPageSizeGroup(bool useCustomPrintablePageSize) = 0;
-  virtual void SetPageSizeFields(void) = 0;
-  virtual void HandlePaperOrientationChangement(void) = 0;
-  virtual void HandlePageSizeInputFields(void) = 0;
+  virtual void SetPaperSizeFields(void) = 0;
+  virtual void HandlePaperSizeChangement(void) = 0;
   virtual void UpdatePosterSizeGroupsState(void) = 0;
   virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;
 };
