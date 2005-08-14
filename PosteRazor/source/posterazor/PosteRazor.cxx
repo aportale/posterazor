@@ -22,15 +22,15 @@ private:
 	double                 m_posterWidth;
 	double                 m_posterHeight;
 
-	bool                   m_useCustomPrintablePageSize;
+	bool                   m_useCustomPaperSize;
 	ePaperFormats          m_paperFormat;
 	ePaperOrientations     m_paperOrientation;
 	double                 m_paperBorderTop;
 	double                 m_paperBorderRight;
 	double                 m_paperBorderBottom;
 	double                 m_paperBorderLeft;
-	double                 m_customPrintablePageWidth;
-	double                 m_customPrintablePageHeight;
+	double                 m_customPaperWidth;
+	double                 m_customPaperHeight;
 	eBorderPositions       m_borderPosition;
 	bool                   m_lastEditedSizeWasWidth;
 
@@ -43,15 +43,15 @@ public:
 		m_posterWidth                  = 2.0;
 		m_posterHeight                 = 2.0;
 
-		m_useCustomPrintablePageSize   = false;
+		m_useCustomPaperSize           = false;
 		m_paperFormat                  = ePaperFormatA4;
 		m_paperOrientation             = ePaperOrientationPortrait;
 		m_paperBorderTop               = 1.5;
 		m_paperBorderRight             = 1.5;
 		m_paperBorderBottom            = 1.5;
 		m_paperBorderLeft              = 1.5;
-		m_customPrintablePageWidth     = 20;
-		m_customPrintablePageHeight    = 20;
+		m_customPaperWidth             = 20;
+		m_customPaperHeight            = 20;
 
 		m_borderPosition               = eBorderPositionRightBottom;
 		m_overlapWidth                 = 2.0;
@@ -109,27 +109,27 @@ public:
 	double GetPaperBorderBottom(void) {return ConvertBetweenDistanceUnits(m_paperBorderBottom, eDistanceUnitCentimeter, m_distanceUnit);}
 	double GetPaperBorderLeft(void) {return ConvertBetweenDistanceUnits(m_paperBorderLeft, eDistanceUnitCentimeter, m_distanceUnit);}
 
-	void SetCustomPrintablePageSize(double width, double height)
+	void SetCustomPaperSize(double width, double height)
 	{
-		m_customPrintablePageWidth = ConvertBetweenDistanceUnits(width, m_distanceUnit, eDistanceUnitCentimeter);
-		m_customPrintablePageHeight = ConvertBetweenDistanceUnits(height, m_distanceUnit, eDistanceUnitCentimeter);
+		m_customPaperWidth = ConvertBetweenDistanceUnits(width, m_distanceUnit, eDistanceUnitCentimeter);
+		m_customPaperHeight = ConvertBetweenDistanceUnits(height, m_distanceUnit, eDistanceUnitCentimeter);
 	}
 
-	void GetCustomPrintablePageSize(double &width, double &height)
+	void GetCustomPaperSize(double &width, double &height)
 	{
-		width = ConvertBetweenDistanceUnits(m_customPrintablePageWidth, eDistanceUnitCentimeter, m_distanceUnit);
-		height = ConvertBetweenDistanceUnits(m_customPrintablePageHeight, eDistanceUnitCentimeter, m_distanceUnit);
+		width = ConvertBetweenDistanceUnits(m_customPaperWidth, eDistanceUnitCentimeter, m_distanceUnit);
+		height = ConvertBetweenDistanceUnits(m_customPaperHeight, eDistanceUnitCentimeter, m_distanceUnit);
 	}
 
-	void SetUseCustomPrintablePageSize(bool useIt) {m_useCustomPrintablePageSize = useIt;}
-	bool GetUseCustomPrintablePageSize(void) {return m_useCustomPrintablePageSize;}
+	void SetUseCustomPaperSize(bool useIt) {m_useCustomPaperSize = useIt;}
+	bool GetUseCustomPaperSize(void) {return m_useCustomPaperSize;}
 
-	void GetPrintablePageSize(double &width, double &height)
+	void GetPrintablePaperAreaSize(double &width, double &height)
 	{
-		if (m_useCustomPrintablePageSize)
+		if (m_useCustomPaperSize)
 		{
-			width = ConvertBetweenDistanceUnits(m_customPrintablePageWidth, eDistanceUnitCentimeter, m_distanceUnit);
-			height = ConvertBetweenDistanceUnits(m_customPrintablePageHeight, eDistanceUnitCentimeter, m_distanceUnit);
+			width = ConvertBetweenDistanceUnits(m_customPaperWidth, eDistanceUnitCentimeter, m_distanceUnit);
+			height = ConvertBetweenDistanceUnits(m_customPaperHeight, eDistanceUnitCentimeter, m_distanceUnit);
 		}
 		else
 		{
@@ -141,9 +141,9 @@ public:
 	{
 		double posterDimension = dimension;
 
-		double printablePageWidth, printablePageHeight;
-		GetPrintablePageSize(printablePageWidth, printablePageHeight);
-		double printablePageDimension = ConvertBetweenDistanceUnits(width?printablePageWidth:printablePageHeight, m_distanceUnit, eDistanceUnitCentimeter);
+		double printablePaperAreaWidth, printablePaperAreaHeight;
+		GetPrintablePaperAreaSize(printablePaperAreaWidth, printablePaperAreaHeight);
+		double printablePaperAreaDimension = ConvertBetweenDistanceUnits(width?printablePaperAreaWidth:printablePaperAreaHeight, m_distanceUnit, eDistanceUnitCentimeter);
 		double overlapDimension = width?m_overlapWidth:m_overlapHeight;
 
 		if (pagesToAbsolute)
@@ -152,35 +152,35 @@ public:
 			if (posterDimension >= 1.0)
 			{
 				posterDimension -= 1.0;
-				posterDimensionAbsolute += printablePageDimension;
+				posterDimensionAbsolute += printablePaperAreaDimension;
 			}
 			else
 			{
-				posterDimensionAbsolute = posterDimension * printablePageDimension;
+				posterDimensionAbsolute = posterDimension * printablePaperAreaDimension;
 				posterDimension = 0;
 			}
 
 			if (posterDimension > 0)
-	                        posterDimensionAbsolute += (posterDimension * (printablePageDimension - overlapDimension));
+	                        posterDimensionAbsolute += (posterDimension * (printablePaperAreaDimension - overlapDimension));
 
 			posterDimension = posterDimensionAbsolute;
 		}
 		else
 		{
 			double posterDimensionPages = 0;
-			if (posterDimension >= printablePageDimension)
+			if (posterDimension >= printablePaperAreaDimension)
 			{
-				posterDimension -= printablePageDimension;
+				posterDimension -= printablePaperAreaDimension;
 				posterDimensionPages += 1.0;
 			}
-			else if (posterDimension < printablePageDimension)
+			else if (posterDimension < printablePaperAreaDimension)
 			{
-				posterDimensionPages = posterDimension / printablePageDimension;
+				posterDimensionPages = posterDimension / printablePaperAreaDimension;
 				posterDimension = 0;
 			}
 
 			if (posterDimension > 0)
-	                        posterDimensionPages += (posterDimension / (printablePageDimension - overlapDimension));
+	                        posterDimensionPages += (posterDimension / (printablePaperAreaDimension - overlapDimension));
 
 			posterDimension = posterDimensionPages;
 		}
@@ -327,9 +327,9 @@ public:
 	{
 		double paperWidth, paperHeight;
 
-		if (GetUseCustomPrintablePageSize())
+		if (GetUseCustomPaperSize())
 		{
-			GetPrintablePageSize(paperWidth, paperHeight);
+			GetPrintablePaperAreaSize(paperWidth, paperHeight);
 		}
 		else
 		{
@@ -342,7 +342,7 @@ public:
 	virtual void GetPaperPreview(unsigned char* buffer, int pixelWidth, int pixelHeight, bool withOverlap)
 	{
 		double printablePageWidth, printablePageHeight;
-		GetPrintablePageSize(printablePageWidth, printablePageHeight);
+		GetPrintablePaperAreaSize(printablePageWidth, printablePageHeight);
 //		double factor = (double)pixelWidth/
 		memset(buffer, 128, pixelWidth*pixelHeight*3);
 	}

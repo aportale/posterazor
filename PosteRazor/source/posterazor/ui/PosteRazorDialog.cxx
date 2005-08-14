@@ -34,7 +34,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 	m_imageInfoGroup->deactivate();
 
 	UpdateNavigationButtons();
-	SetPageSizeFields();
+	SetPaperSizeFields();
 }
 
 PosteRazorDialog::~PosteRazorDialog()
@@ -140,14 +140,14 @@ void PosteRazorDialog::UpdatePreviewImage(void)
 
 	DisposePreviewImage();
 
-	if (m_wizard->value() == m_pageSizeStep)
+	if (m_wizard->value() == m_paperSizeStep)
 		m_posteRazor->GetPaperPreviewSize(imagePreviewBoxWidth, imagePreviewBoxHeight, previewImageWidth, previewImageHeight);
 	else
 		m_posteRazor->GetInputImagePreviewSize(imagePreviewBoxWidth, imagePreviewBoxHeight, previewImageWidth, previewImageHeight);
 
 	m_previewImageData = new unsigned char[previewImageWidth * previewImageHeight * 3];
 
-	if (m_wizard->value() == m_pageSizeStep)
+	if (m_wizard->value() == m_paperSizeStep)
 		m_posteRazor->GetPaperPreview(m_previewImageData, previewImageWidth, previewImageHeight, false);
 	else
 		m_posteRazor->GetInputImagePreview(m_previewImageData, previewImageWidth, previewImageHeight);
@@ -233,35 +233,24 @@ void PosteRazorDialog::UpdatePosterSizeFields(Fl_Valuator *sourceWidget)
 	}
 }
 
-void PosteRazorDialog::SetPageSizeFields(void)
+void PosteRazorDialog::SetPaperSizeFields(void)
 {
 	// standard paper format
-	m_pageOrientationPortraitRadioButton->value(m_posteRazor->GetPaperOrientation() == PosteRazor::ePaperOrientationPortrait);
-	m_pageOrientationLandscapeRadioButton->value(m_posteRazor->GetPaperOrientation() == PosteRazor::ePaperOrientationLandscape);
-	m_pageBorderTopInput->value(m_posteRazor->GetPaperBorderTop());
-	m_pageBorderRightInput->value(m_posteRazor->GetPaperBorderRight());
-	m_pageBorderBottomInput->value(m_posteRazor->GetPaperBorderBottom());
-	m_pageBorderLeftInput->value(m_posteRazor->GetPaperBorderLeft());
+	m_paperOrientationPortraitRadioButton->value(m_posteRazor->GetPaperOrientation() == PosteRazor::ePaperOrientationPortrait);
+	m_paperOrientationLandscapeRadioButton->value(m_posteRazor->GetPaperOrientation() == PosteRazor::ePaperOrientationLandscape);
+	m_paperBorderTopInput->value(m_posteRazor->GetPaperBorderTop());
+	m_paperBorderRightInput->value(m_posteRazor->GetPaperBorderRight());
+	m_paperBorderBottomInput->value(m_posteRazor->GetPaperBorderBottom());
+	m_paperBorderLeftInput->value(m_posteRazor->GetPaperBorderLeft());
 
 	// custom paper format
 	double customWidth, customHeight;
-	m_posteRazor->GetCustomPrintablePageSize(customWidth, customHeight);
-	m_pageCustomWidthInput->value(customWidth);
-	m_pageCustomHeightInput->value(customHeight);
+	m_posteRazor->GetCustomPaperSize(customWidth, customHeight);
+	m_paperCustomWidthInput->value(customWidth);
+	m_paperCustomHeightInput->value(customHeight);
 
 	// radio buttons
-	m_standardPageSizeRadioButton->value(!m_posteRazor->GetUseCustomPrintablePageSize());
-	m_customPageSizeRadioButton->value(m_posteRazor->GetUseCustomPrintablePageSize());
-	SelectPageSizeGroup(m_posteRazor->GetUseCustomPrintablePageSize());
-}
-
-void PosteRazorDialog::SelectPageSizeGroup(bool useCustomPrintablePageSize)
-{
-	m_posteRazor->SetUseCustomPrintablePageSize(useCustomPrintablePageSize);
-
-	m_standardPageSizeRadioButton->value() == 0?m_standardPageSizeGroup->deactivate():m_standardPageSizeGroup->activate();
-	m_customPageSizeRadioButton->value() == 0?m_customPageSizeGroup->deactivate():m_customPageSizeGroup->activate();
-	UpdatePreviewImage();
+	m_paperFormatTypeTabs->value(m_paperFormatCustomGroup);
 }
 
 void PosteRazorDialog::resize(int x, int y, int w, int h)
@@ -277,33 +266,32 @@ void PosteRazorDialog::resize(int x, int y, int w, int h)
 	}
 }
 
-void PosteRazorDialog::HandlePaperFormatChoice(void)
-{
-	const char* paperFormatName = m_paperFormatMenuItems[m_paperFormatChoice->value()].label();
-	enum PosteRazor::ePaperFormats paperFormat = PosteRazor::GetPaperFormatForName(paperFormatName);
-	m_posteRazor->SetPaperFormat(paperFormat);
-	UpdatePreviewImage();
-}
-
 void PosteRazorDialog::HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userData)
 {
-	((PosteRazorDialog*)userData)->HandlePaperFormatChoice();
+	((PosteRazorDialog*)userData)->HandlePaperSizeChangement();
 }
 
-void PosteRazorDialog::HandlePaperOrientationChangement(void)
+void PosteRazorDialog::HandlePaperSizeChangement(void)
 {
-	m_posteRazor->SetPaperOrientation(m_pageOrientationLandscapeRadioButton->value() != 0?PosteRazor::ePaperOrientationLandscape:PosteRazor::ePaperOrientationPortrait);
-	UpdatePreviewImage();
-}
+	m_posteRazor->SetUseCustomPaperSize(m_paperFormatTypeTabs->value() == m_paperFormatCustomGroup);
+	
+	if (!m_posteRazor->GetUseCustomPaperSize())
+	{
+		const char* paperFormatName = m_paperFormatMenuItems[m_paperFormatChoice->value()].label();
+		enum PosteRazor::ePaperFormats paperFormat = PosteRazor::GetPaperFormatForName(paperFormatName);
+		m_posteRazor->SetPaperFormat(paperFormat);
+		m_posteRazor->SetPaperOrientation(m_paperOrientationLandscapeRadioButton->value() != 0?PosteRazor::ePaperOrientationLandscape:PosteRazor::ePaperOrientationPortrait);
+	}
+	else
+	{
+		m_posteRazor->SetCustomPaperSize(m_paperCustomWidthInput->value(), m_paperCustomHeightInput->value());
+	}
 
-void PosteRazorDialog::HandlePageSizeInputFields(void)
-{
-	m_posteRazor->SetPaperBorderTop(m_pageBorderTopInput->value());
-	m_posteRazor->SetPaperBorderRight(m_pageBorderRightInput->value());
-	m_posteRazor->SetPaperBorderBottom(m_pageBorderBottomInput->value());
-	m_posteRazor->SetPaperBorderLeft(m_pageBorderLeftInput->value());
+	m_posteRazor->SetPaperBorderTop(m_paperBorderTopInput->value());
+	m_posteRazor->SetPaperBorderRight(m_paperBorderRightInput->value());
+	m_posteRazor->SetPaperBorderBottom(m_paperBorderBottomInput->value());
+	m_posteRazor->SetPaperBorderLeft(m_paperBorderLeftInput->value());
 
-	m_posteRazor->SetCustomPrintablePageSize(m_pageCustomWidthInput->value(), m_pageCustomHeightInput->value());
 	UpdatePreviewImage();
 }
 
