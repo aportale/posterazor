@@ -2,6 +2,9 @@
 #include "PosteRazorImageIO.h"
 #include <string.h>
 
+#define MIN(a, b) ((a)<=(b)?(a):(b))
+#define MAX(a, b) ((a)>(b)?(a):(b))
+
 class PosteRazorImplementation: public PosteRazor
 {
 private:
@@ -346,11 +349,11 @@ public:
 		GetPaperSize(paperWidth, paperHeight);
 		double factor = (double)pixelWidth/paperWidth;
 
-		int borderTop = (int)(m_paperBorderTop * factor);
-		int borderRight = (int)(m_paperBorderRight * factor);
-		int borderBottom = (int)(m_paperBorderBottom * factor);
-		int borderLeft = (int)(m_paperBorderLeft * factor);
-		int printableAreaPixelRows = pixelWidth - borderLeft - borderRight;
+		int borderTop = (int)(GetPaperBorderTop() * factor);
+		int borderRight = (int)(GetPaperBorderRight() * factor);
+		int borderBottom = (int)(GetPaperBorderBottom() * factor);
+		int borderLeft = (int)(GetPaperBorderLeft() * factor);
+		int printableAreaPixelRows = MAX(0, pixelWidth - borderLeft - borderRight);
 		int printableAreaPixelLines = pixelHeight - borderTop - borderBottom;
 
 		for (int row = borderTop; row < printableAreaPixelLines+borderTop; row++)
