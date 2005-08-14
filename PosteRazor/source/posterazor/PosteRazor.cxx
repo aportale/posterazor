@@ -124,17 +124,23 @@ public:
 	void SetUseCustomPaperSize(bool useIt) {m_useCustomPaperSize = useIt;}
 	bool GetUseCustomPaperSize(void) {return m_useCustomPaperSize;}
 
-	void GetPrintablePaperAreaSize(double &width, double &height)
+	void GetPaperSize(double &width, double &height)
 	{
-		if (m_useCustomPaperSize)
+		if (GetUseCustomPaperSize())
 		{
-			width = ConvertBetweenDistanceUnits(m_customPaperWidth, eDistanceUnitCentimeter, m_distanceUnit);
-			height = ConvertBetweenDistanceUnits(m_customPaperHeight, eDistanceUnitCentimeter, m_distanceUnit);
+			GetCustomPaperSize(width, height);
 		}
 		else
 		{
-			GetPrintableArea(m_paperFormat, m_paperOrientation, m_distanceUnit, m_paperBorderTop, m_paperBorderRight, m_paperBorderBottom, m_paperBorderLeft, width, height);
+			GetPaperDimensions(GetPaperFormat(), GetPaperOrientation(), m_distanceUnit, width, height);
 		}
+	}
+
+	void GetPrintablePaperAreaSize(double &width, double &height)
+	{
+		GetPaperSize(width, height);
+		width -= (GetPaperBorderLeft() + GetPaperBorderRight());
+		height -= (GetPaperBorderTop() + GetPaperBorderBottom());
 	}
 
 	double ConvertBetweenAbsoluteAndPagesPosterDimension(double dimension, bool pagesToAbsolute, bool width)
@@ -326,25 +332,31 @@ public:
 	virtual void GetPaperPreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight)
 	{
 		double paperWidth, paperHeight;
-
-		if (GetUseCustomPaperSize())
-		{
-			GetPrintablePaperAreaSize(paperWidth, paperHeight);
-		}
-		else
-		{
-			GetPaperDimensions(GetPaperFormat(), GetPaperOrientation(), m_distanceUnit, paperWidth, paperHeight);
-		}
-
+		GetPaperSize(paperWidth, paperHeight);
 		GetPreviewSize(paperWidth, paperHeight, boxWidth, boxHeight, previewWidth, previewHeight, true);
 	}
 
 	virtual void GetPaperPreview(unsigned char* buffer, int pixelWidth, int pixelHeight, bool withOverlap)
 	{
-		double printablePageWidth, printablePageHeight;
-		GetPrintablePaperAreaSize(printablePageWidth, printablePageHeight);
-//		double factor = (double)pixelWidth/
+		// drawing the whole paper sheet
 		memset(buffer, 128, pixelWidth*pixelHeight*3);
+
+		// drawing the printable area
+		double paperWidth, paperHeight;
+		GetPaperSize(paperWidth, paperHeight);
+		double factor = (double)pixelWidth/paperWidth;
+
+		int borderTop = (int)(m_paperBorderTop * factor);
+		int borderRight = (int)(m_paperBorderRight * factor);
+		int borderBottom = (int)(m_paperBorderBottom * factor);
+		int borderLeft = (int)(m_paperBorderLeft * factor);
+		int printableAreaPixelRows = pixelWidth - borderLeft - borderRight;
+		int printableAreaPixelLines = pixelHeight - borderTop - borderBottom;
+
+		for (int row = borderTop; row < printableAreaPixelLines+borderTop; row++)
+		{
+			memset(buffer+ (row*pixelWidth + borderLeft)*3, 200, printableAreaPixelRows*3);
+		}
 	}
 };
 

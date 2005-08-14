@@ -62,6 +62,7 @@ public:
 	virtual void GetCustomPaperSize(double &width, double &height) = 0;
 	virtual void SetUseCustomPaperSize(bool useIt) = 0;
 	virtual bool GetUseCustomPaperSize(void) = 0;
+	virtual void GetPaperSize(double &width, double &height) = 0;
 	virtual void GetPrintablePaperAreaSize(double &width, double &height) = 0;
 	
 	virtual void SetPosterWidth(enum ePosterSizeModes mode, double width) = 0;

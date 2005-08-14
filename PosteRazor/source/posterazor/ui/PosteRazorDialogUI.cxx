@@ -215,9 +215,11 @@ o->when(FL_WHEN_RELEASE);
     { Fl_Tabs* o = m_paperFormatTypeTabs = new Fl_Tabs(370, 70, 230, 140, "Paper format:");
       o->callback((Fl_Callback*)cb_m_paperFormatTypeTabs);
       { Fl_Group* o = m_paperFormatStandardGroup = new Fl_Group(370, 95, 230, 115, "Standard");
+        o->box(FL_THIN_UP_BOX);
         o->color(FL_DARK2);
         o->selection_color(FL_LIGHT3);
         o->align(FL_ALIGN_CENTER);
+        o->hide();
         { Fl_Choice* o = m_paperFormatChoice = new Fl_Choice(455, 105, 135, 25, "Format:");
           o->down_box(FL_BORDER_BOX);
         }
@@ -239,10 +241,10 @@ o->when(FL_WHEN_RELEASE);
         }
         o->end();
       }
-      { Fl_Group* o = m_paperFormatCustomGroup = new Fl_Group(370, 110, 230, 75, "Custom");
+      { Fl_Group* o = m_paperFormatCustomGroup = new Fl_Group(370, 95, 230, 114, "Custom");
+        o->box(FL_THIN_UP_BOX);
         o->color(FL_DARK2);
         o->selection_color(FL_LIGHT3);
-        o->hide();
         { Fl_Value_Input* o = m_paperCustomWidthInput = new Fl_Value_Input(455, 120, 85, 25, "Width:");
           o->callback((Fl_Callback*)cb_m_paperCustomWidthInput);
           o->step(0.1);
