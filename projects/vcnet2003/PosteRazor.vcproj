@@ -126,6 +126,9 @@
 				RelativePath="..\..\source\tools\DistanceUnits.h">
 			</File>
 			<File
+				RelativePath="..\..\source\tools\PaintCanvasInterface.h">
+			</File>
+			<File
 				RelativePath="..\..\source\tools\PaperFormats.h">
 			</File>
 			<File
