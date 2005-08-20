@@ -3,6 +3,7 @@
 #ifndef PosteRazorDialogUI_h
 #define PosteRazorDialogUI_h
 #include <FL/Fl.H>
+#include "Fl_Paint_Canvas.h"
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Group.H>
 #include <FL/Fl_Button.H>
@@ -139,12 +140,11 @@ private:
 public:
   Fl_Box *m_posterPercentualWidthLabel;
   Fl_Group *m_savePosterStep;
-  Fl_Group *m_previewImageGroup;
+  Fl_Paint_Canvas *m_previewPaintCanvas;
   Fl_Box *m_stepInfoBox;
   virtual void next(void) = 0;
   virtual void prev(void) = 0;
   virtual void UpdateNavigationButtons(void) = 0;
-  virtual void UpdatePreviewImage(void) = 0;
   virtual void LoadInputImage(void) = 0;
   virtual void SetPaperSizeFields(void) = 0;
   virtual void HandlePaperSizeChangement(void) = 0;

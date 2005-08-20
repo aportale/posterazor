@@ -36,7 +36,7 @@ private:
 	double                 m_customPaperHeight;
 	eBorderPositions       m_borderPosition;
 	bool                   m_lastEditedSizeWasWidth;
-
+	
 public:
 	PosteRazorImplementation()
 	{
@@ -330,8 +330,6 @@ public:
 		GetPreviewSize(GetInputImageWidthPixels(), GetInputImageHeightPixels(), boxWidth, boxHeight, previewWidth, previewHeight, false);
 	}
 
-	void GetInputImagePreview(unsigned char* buffer, int pixelWidth, int pixelHeight) {m_imageIO->GetPreview(buffer, pixelWidth, pixelHeight);}
-
 	virtual void GetPaperPreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight)
 	{
 		double paperWidth, paperHeight;
@@ -359,6 +357,46 @@ public:
 		for (int row = borderTop; row < printableAreaPixelLines+borderTop; row++)
 		{
 			memset(buffer+ (row*pixelWidth + borderLeft)*3, 200, printableAreaPixelRows*3);
+		}
+	}
+	
+	void GetImage(PaintCanvasInterface *paintCanvas)
+	{
+		unsigned char *rgbData;
+		int imageWidth;
+		int imageHeight;
+		
+		m_imageIO->GetImageAsRGB(rgbData, imageWidth, imageHeight);
+		paintCanvas->SetImage(rgbData, imageWidth, imageHeight);
+	}
+
+	void PaintOnCanvas(PaintCanvasInterface *paintCanvas, void* options = 0)
+	{
+		int canvasWidth, canvasHeight;
+		paintCanvas->GetSize(canvasWidth, canvasHeight);
+		int boxWidth, boxHeight;
+		int x_offset, y_offset;
+		
+		const char *state = (const char*)options;
+		
+		if (strcmp(state, "image") == 0)
+		{
+		}
+		else if (strcmp(state, "paper") == 0)
+		{
+			double paperWidth, paperHeight;
+			GetPaperSize(paperWidth, paperHeight);
+			GetPreviewSize(paperWidth, paperHeight, canvasWidth, canvasHeight, boxWidth, boxHeight, true);
+			x_offset = (canvasWidth - boxWidth) / 2;
+			y_offset = (canvasHeight - boxHeight) / 2;
+			double factor = (double)boxWidth/paperWidth;
+			int borderTop = (int)(GetPaperBorderTop() * factor);
+			int borderRight = (int)(GetPaperBorderRight() * factor);
+			int borderBottom = (int)(GetPaperBorderBottom() * factor);
+			int borderLeft = (int)(GetPaperBorderLeft() * factor);
+			
+			paintCanvas->DrawFilledRect(0 + x_offset, 0 + y_offset, boxWidth, boxHeight, 128, 128, 128);
+			paintCanvas->DrawFilledRect(0 + borderLeft + x_offset, 0 + borderTop + y_offset, boxWidth - borderLeft - borderRight, boxHeight - borderTop - borderBottom, 200, 200, 200);
 		}
 	}
 };

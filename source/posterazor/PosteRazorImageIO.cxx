@@ -32,7 +32,6 @@ class PosteRazorImageIOImplementation: public PosteRazorImageIO
 private:
 
 	FIBITMAP*    m_bitmap;
-	FIBITMAP*    m_previewBitmap;
 
 	int          m_widthPixels;
 	int          m_heightPixels;
@@ -44,7 +43,6 @@ public:
 	PosteRazorImageIOImplementation()
 	{
 		m_bitmap = NULL;
-		m_previewBitmap = NULL;
 
 		m_widthPixels = 0;
 		m_heightPixels = 0;
@@ -64,11 +62,6 @@ public:
 		{
 			FreeImage_Unload(m_bitmap);
 			m_bitmap = NULL;
-		}
-		if (m_previewBitmap)
-		{
-			FreeImage_Unload(m_previewBitmap);
-			m_previewBitmap = NULL;
 		}
 	}
 
@@ -122,46 +115,40 @@ public:
 	double GetWidth(enum DistanceUnits::eDistanceUnits unit) {return GetWidthPixels() / GetHorizontalDotsPerDistanceUnit(unit);}
 	double GetHeight(enum DistanceUnits::eDistanceUnits unit) {return GetHeightPixels() / GetHorizontalDotsPerDistanceUnit(unit);}
 
-	void GetPreview(unsigned char* buffer, int pixelWidth, int pixelHeight)
+	void GetImageAsRGB(unsigned char* buffer, int &widthPixels, int &heightPixels)
 	{
-		if (!m_previewBitmap || pixelWidth != FreeImage_GetWidth(m_previewBitmap) || pixelHeight != FreeImage_GetHeight(m_previewBitmap))
+		FIBITMAP* originalImage = m_bitmap;
+		FIBITMAP* temp24BPPImage = NULL;
+		
+		if (FreeImage_GetBPP(m_bitmap) != 24)
 		{
-			FIBITMAP* originalImage = m_bitmap;
-			FIBITMAP* temp24BPPImage = NULL;
+			temp24BPPImage = FreeImage_ConvertTo24Bits(originalImage);
+			originalImage = temp24BPPImage;
+		}
+		
+		unsigned long numberOfPixels = m_widthPixels * m_heightPixels;
 
-			if (FreeImage_GetBPP(m_bitmap) != 24)
-			{
-				temp24BPPImage = FreeImage_ConvertTo24Bits(originalImage);
-				originalImage = temp24BPPImage;
-			}
+		buffer = new unsigned char[numberOfPixels * 3];
+		FreeImage_ConvertToRawBits(buffer, originalImage, m_widthPixels*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, TRUE);
 
-			if (m_previewBitmap)
-				FreeImage_Unload(m_previewBitmap);
-
-			m_previewBitmap = FreeImage_Rescale(originalImage, pixelWidth, pixelHeight, FILTER_BILINEAR);
-
+		widthPixels = m_widthPixels;
+		heightPixels = m_heightPixels;
 
 #ifdef _WIN32
-			for (unsigned int row = 0; row < pixelHeight; row++)
-			{
-				unsigned char *pixelPtr = FreeImage_GetScanLine(m_previewBitmap, row);
+		for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++)
+		{
+			unsigned char *pixelPtr = buffer[numberOfPixels*3];
 
-				for (unsigned int column = 0; column < pixelWidth; column++)
-				{
-					unsigned char temp = pixelPtr[0];
-					pixelPtr[0] = pixelPtr[2];
-					pixelPtr[2] = temp;
-					pixelPtr+=3;
-				}
-			}
-#endif
-			
-
-			if (temp24BPPImage)
-				FreeImage_Unload(temp24BPPImage);
+			unsigned char temp = pixelPtr[0];
+			pixelPtr[0] = pixelPtr[2];
+			pixelPtr[2] = temp;
+			pixelPtr+=3;
 		}
+#endif
 
-		FreeImage_ConvertToRawBits(buffer, m_previewBitmap, pixelWidth*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
+		if (temp24BPPImage)
+			FreeImage_Unload(temp24BPPImage);
+
 	}
 	
 	int GetBitsPerPixel(void)

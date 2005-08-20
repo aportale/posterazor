@@ -2,9 +2,12 @@
 version 1.0107 
 header_name {.h} 
 code_name {.cxx}
+decl {\#include "Fl_Paint_Canvas.h"} {public
+} 
+
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {506 327 620 455} type Double resizable
+  xywh {468 270 620 455} type Double resizable
   code0 {size_range(this->w(), this->h());}
   class Fl_Double_Window visible
 } {
@@ -60,7 +63,7 @@ widget_class PosteRazorDialogUI {
         xywh {315 410 295 0} resizable
       }
     }
-    Fl_Group m_paperSizeStep {open selected
+    Fl_Group m_paperSizeStep {
       xywh {315 45 295 365}
     } {
       Fl_Tabs m_paperFormatTypeTabs {
@@ -263,9 +266,10 @@ widget_class PosteRazorDialogUI {
       xywh {315 45 295 365} hide
     } {}
   }
-  Fl_Group m_previewImageGroup {
-    xywh {10 45 300 365} box THIN_DOWN_BOX color 34 selection_color 52 labelfont 1 labelsize 26 labelcolor 61 align 80 resizable
-  } {}
+  Fl_Box m_previewPaintCanvas {selected
+    xywh {10 45 300 365} box THIN_DOWN_BOX color 35 resizable
+    class Fl_Paint_Canvas
+  }
   Fl_Group {} {
     xywh {10 10 600 25}
   } {
@@ -283,8 +287,6 @@ widget_class PosteRazorDialogUI {
   decl {virtual void prev(void) = 0;} {public
   }
   decl {virtual void UpdateNavigationButtons(void) = 0;} {public
-  }
-  decl {virtual void UpdatePreviewImage(void) = 0;} {public
   }
   decl {// ****** Load input image step:} {}
   decl {virtual void LoadInputImage(void) = 0;} {public
