@@ -158,12 +158,12 @@ void PosteRazorDialogUI::_PosteRazorDialogUI() {
 o->box(FL_FLAT_BOX);
 o->color(FL_BACKGROUND_COLOR);
 o->selection_color(FL_BACKGROUND_COLOR);
-o->labeltype(FL_NO_LABEL);
+o->labeltype(FL_NORMAL_LABEL);
 o->labelfont(0);
 o->labelsize(14);
 o->labelcolor(FL_BLACK);
 o->user_data((void*)(this));
-o->align(FL_ALIGN_TOP);
+o->align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE);
 o->when(FL_WHEN_RELEASE);
 { Fl_Group* o = new Fl_Group(10, 420, 600, 25);
   { Fl_Button* o = m_nextButton = new Fl_Button(525, 420, 85, 25, "Next @-2->");
@@ -405,15 +405,16 @@ o->when(FL_WHEN_RELEASE);
   }
   o->end();
 }
-{ Fl_Group* o = m_previewImageGroup = new Fl_Group(10, 45, 300, 365);
+{ Fl_Paint_Canvas* o = m_previewPaintCanvas = new Fl_Paint_Canvas(10, 45, 300, 365);
   o->box(FL_THIN_DOWN_BOX);
-  o->color((Fl_Color)34);
-  o->selection_color(FL_LIGHT2);
-  o->labelfont(1);
-  o->labelsize(26);
-  o->labelcolor((Fl_Color)61);
-  o->align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE);
-  o->end();
+  o->color((Fl_Color)35);
+  o->selection_color(FL_BACKGROUND_COLOR);
+  o->labeltype(FL_NORMAL_LABEL);
+  o->labelfont(0);
+  o->labelsize(14);
+  o->labelcolor(FL_BLACK);
+  o->align(FL_ALIGN_CENTER);
+  o->when(FL_WHEN_RELEASE);
   Fl_Group::current()->resizable(o);
 }
 { Fl_Group* o = new Fl_Group(10, 10, 600, 25);

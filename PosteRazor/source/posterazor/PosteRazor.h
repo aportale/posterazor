@@ -3,8 +3,9 @@
 
 #include "../tools/PaperFormats.h"
 #include "../tools/ColorTypes.h"
+#include "../tools/PaintCanvasInterface.h"
 
-class PosteRazor: public PaperFormats, public ColorTypes
+class PosteRazor: public PaperFormats, public ColorTypes, public PainterInterface
 {
 public:
 	typedef enum eBorderPositions
@@ -71,14 +72,8 @@ public:
 	virtual double GetPosterHeight(enum ePosterSizeModes mode) = 0;
 	virtual enum ePosterSizeModes GetPosterSizeMode(void) = 0;
 
-	virtual void GetInputImagePreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight) = 0;
-	virtual void GetInputImagePreview(unsigned char* buffer, int pixelWidth, int pixelHeight) = 0;
-
 //	virtual void GetPosterPreviewSize(int bowWidth, int boxHeight, int &previewWidth, int &previewHeight) = 0;
 //	virtual void GetPosterPreview(unsigned char* buffer, int pixelWidth, int pixelHeight) = 0;
-
-	virtual void GetPaperPreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight) = 0;
-	virtual void GetPaperPreview(unsigned char* buffer, int pixelWidth, int pixelHeight, bool withOverlap) = 0;
 };
 
 #endif

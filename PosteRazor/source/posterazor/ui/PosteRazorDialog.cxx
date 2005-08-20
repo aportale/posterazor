@@ -6,10 +6,7 @@
 PosteRazorDialog::PosteRazorDialog(void)
 	:PosteRazorDialogUI(620, 455, "PosteRazor")
 {
-	m_previewImageData = 0;
-	m_previewImage = 0;
 	m_posteRazor = PosteRazor::CreatePosteRazor();
-	m_needPreviewImageUpdate = false;
 
 	int paperFormatMenuItemsCount = PosteRazor::GetPaperFormatsCount()+1;
 	m_paperFormatMenuItems = new Fl_Menu_Item[paperFormatMenuItemsCount];
@@ -33,14 +30,15 @@ PosteRazorDialog::PosteRazorDialog(void)
 
 	m_imageInfoGroup->deactivate();
 
+	m_previewPaintCanvas->SetPainterInterface(m_posteRazor);
+
 	UpdateNavigationButtons();
+	UpdatePreviewState();
 	SetPaperSizeFields();
 }
 
 PosteRazorDialog::~PosteRazorDialog()
 {
-	DisposePreviewImage();
-
 	if (m_paperFormatMenuItems)
 		delete[] m_paperFormatMenuItems;
 }
@@ -50,14 +48,14 @@ void PosteRazorDialog::next(void)
 	UpdatePosterSizeFields(NULL);
 	m_wizard->next();
 	UpdateNavigationButtons();
-	UpdatePreviewImage();
+	UpdatePreviewState();
 }
 
 void PosteRazorDialog::prev(void)
 {
 	m_wizard->prev();
 	UpdateNavigationButtons();
-	UpdatePreviewImage();
+	UpdatePreviewState();
 }
 
 void PosteRazorDialog::UpdateNavigationButtons(void)
@@ -72,6 +70,17 @@ void PosteRazorDialog::UpdateNavigationButtons(void)
 		m_nextButton->activate();
 	else
 		m_nextButton->deactivate();
+}
+
+void PosteRazorDialog::UpdatePreviewState(void)
+{
+	m_previewPaintCanvas->SetState
+	(
+		m_wizard->value() == m_loadInputImageStep?"image"
+		:m_wizard->value() == m_paperSizeStep?"paper"
+		:"poster"
+	);
+	m_previewPaintCanvas->redraw();
 }
 
 void PosteRazorDialog::LoadInputImage(void)
@@ -99,63 +108,16 @@ void PosteRazorDialog::LoadInputImage(void)
 		UpdateImageInfoFields();
 		m_imageInfoGroup->activate();
 		m_inputFileNameLabel->copy_label(fl_filename_name(chooser.filename()));
-		m_previewImageGroup->image(NULL);
-		m_previewImageGroup->label("...please wait...");
+		m_previewPaintCanvas->label("...please wait...");
 		Fl::wait();
-		UpdatePreviewImage();
-		m_previewImageGroup->label(NULL);
+		m_previewPaintCanvas->RequestImage();
+		m_previewPaintCanvas->redraw();
+		m_previewPaintCanvas->label(NULL);
 		UpdatePosterSizeFields(NULL);
 		Fl::wait();
 	}
 
 	UpdateNavigationButtons();
-}
-
-void PosteRazorDialog::DisposePreviewImage(void)
-{
-	if (m_previewImageData)
-	{
-		delete[] m_previewImageData;
-		m_previewImageData = NULL;
-	}
-	if (m_previewImage)
-	{
-		delete m_previewImage;
-		m_previewImage = NULL;
-	}
-}
-
-void PosteRazorDialog::UpdatePreviewImage_cp(void *ptr)
-{
-	PosteRazorDialog *dialog = (PosteRazorDialog*)ptr;
-	dialog->UpdatePreviewImage();
-}
-
-void PosteRazorDialog::UpdatePreviewImage(void)
-{
-	int previewImageWidth;
-	int previewImageHeight;
-	int imagePreviewBoxWidth = m_previewImageGroup->w() - 14;
-	int imagePreviewBoxHeight = m_previewImageGroup->h() - 14;
-
-	DisposePreviewImage();
-
-	if (m_wizard->value() == m_paperSizeStep)
-		m_posteRazor->GetPaperPreviewSize(imagePreviewBoxWidth, imagePreviewBoxHeight, previewImageWidth, previewImageHeight);
-	else
-		m_posteRazor->GetInputImagePreviewSize(imagePreviewBoxWidth, imagePreviewBoxHeight, previewImageWidth, previewImageHeight);
-
-	m_previewImageData = new unsigned char[previewImageWidth * previewImageHeight * 3];
-
-	if (m_wizard->value() == m_paperSizeStep)
-		m_posteRazor->GetPaperPreview(m_previewImageData, previewImageWidth, previewImageHeight, false);
-	else
-		m_posteRazor->GetInputImagePreview(m_previewImageData, previewImageWidth, previewImageHeight);
-
-	m_previewImage = new Fl_RGB_Image(m_previewImageData, previewImageWidth, previewImageHeight);
-	m_previewImageGroup->image(m_previewImage);
-
-	Fl::redraw();
 }
 
 void PosteRazorDialog::UpdateImageInfoFields(void)
@@ -253,19 +215,6 @@ void PosteRazorDialog::SetPaperSizeFields(void)
 	m_paperFormatTypeTabs->value(m_paperFormatCustomGroup);
 }
 
-void PosteRazorDialog::resize(int x, int y, int w, int h)
-{
-	int old_w = this->w();
-	int old_h = this->h();
-	PosteRazorDialogUI::resize(x, y, w, h);
-	if ((old_w != this->w()) || (old_h != this->h()))
-	{
-		if (Fl::has_timeout(UpdatePreviewImage_cp, this))
-			Fl::remove_timeout(UpdatePreviewImage_cp, this);
-		Fl::add_timeout(0.05, UpdatePreviewImage_cp, this);
-	}
-}
-
 void PosteRazorDialog::HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userData)
 {
 	((PosteRazorDialog*)userData)->HandlePaperSizeChangement();
@@ -292,7 +241,7 @@ void PosteRazorDialog::HandlePaperSizeChangement(void)
 	m_posteRazor->SetPaperBorderBottom(m_paperBorderBottomInput->value());
 	m_posteRazor->SetPaperBorderLeft(m_paperBorderLeftInput->value());
 
-	UpdatePreviewImage();
+	m_previewPaintCanvas->redraw();
 }
 
 void PosteRazorDialog::UpdatePosterSizeGroupsState(void)

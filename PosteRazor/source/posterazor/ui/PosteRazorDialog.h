@@ -9,28 +9,20 @@
 class PosteRazorDialog : public PosteRazorDialogUI
 {
 private:
-	unsigned char *m_previewImageData;
-	Fl_RGB_Image  *m_previewImage;
 	PosteRazor    *m_posteRazor;
 	
-	bool          m_needPreviewImageUpdate;
-
 	Fl_Menu_Item  *m_paperFormatMenuItems;
 
-	void DisposePreviewImage(void);
-	static void UpdatePreviewImage_cp(void *ptr);
 public:
 	~PosteRazorDialog();
 	PosteRazorDialog();
 
-	void resize(int x, int y, int w, int h);
-
 	void next(void);
 	void prev(void);
 	void UpdateNavigationButtons(void);
+	void UpdatePreviewState(void);
 
 	void LoadInputImage(void);
-	void UpdatePreviewImage(void);
 	void UpdateImageInfoFields(void);
 
 	void SetPaperSizeFields(void);
