@@ -86,6 +86,34 @@ void PosteRazorDialogUI::cb_m_paperCustomHeightInput(Fl_Value_Input* o, void* v)
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperCustomHeightInput_i(o,v);
 }
 
+void PosteRazorDialogUI::cb_m_paperBorderCustomTopInput_i(Fl_Value_Input*, void*) {
+  HandlePaperSizeChangement();
+}
+void PosteRazorDialogUI::cb_m_paperBorderCustomTopInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderCustomTopInput_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_paperBorderCustomRightInput_i(Fl_Value_Input*, void*) {
+  HandlePaperSizeChangement();
+}
+void PosteRazorDialogUI::cb_m_paperBorderCustomRightInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderCustomRightInput_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_paperBorderCustomBottomInput_i(Fl_Value_Input*, void*) {
+  HandlePaperSizeChangement();
+}
+void PosteRazorDialogUI::cb_m_paperBorderCustomBottomInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderCustomBottomInput_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_paperBorderCustomLeftInput_i(Fl_Value_Input*, void*) {
+  HandlePaperSizeChangement();
+}
+void PosteRazorDialogUI::cb_m_paperBorderCustomLeftInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderCustomLeftInput_i(o,v);
+}
+
 void PosteRazorDialogUI::cb_m_posterSizeAbsoluteRadioButton_i(Fl_Round_Button*, void*) {
   UpdatePosterSizeGroupsState();
 }
@@ -297,6 +325,40 @@ o->when(FL_WHEN_RELEASE);
         }
         { Fl_Box* o = m_paperCustomHeightLabel = new Fl_Box(520, 125, 50, 25, "cm");
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
+        }
+        { Fl_Group* o = new Fl_Group(425, 195, 165, 135, "Borders:");
+          o->box(FL_THIN_DOWN_BOX);
+          o->color((Fl_Color)43);
+          o->align(FL_ALIGN_LEFT);
+          { Fl_Value_Input* o = m_paperBorderCustomTopInput = new Fl_Value_Input(485, 220, 50, 25, "Top");
+            o->maximum(999);
+            o->step(0.1);
+            o->callback((Fl_Callback*)cb_m_paperBorderCustomTopInput);
+            o->align(FL_ALIGN_TOP);
+            o->precision(2);
+          }
+          { Fl_Value_Input* o = m_paperBorderCustomRightInput = new Fl_Value_Input(530, 250, 50, 25, "Right");
+            o->maximum(999);
+            o->step(0.1);
+            o->callback((Fl_Callback*)cb_m_paperBorderCustomRightInput);
+            o->align(FL_ALIGN_TOP_RIGHT);
+            o->precision(2);
+          }
+          { Fl_Value_Input* o = m_paperBorderCustomBottomInput = new Fl_Value_Input(485, 280, 50, 25, "Bottom");
+            o->maximum(999);
+            o->step(0.1);
+            o->callback((Fl_Callback*)cb_m_paperBorderCustomBottomInput);
+            o->align(FL_ALIGN_BOTTOM);
+            o->precision(2);
+          }
+          { Fl_Value_Input* o = m_paperBorderCustomLeftInput = new Fl_Value_Input(440, 250, 50, 25, "Left");
+            o->maximum(999);
+            o->step(0.1);
+            o->callback((Fl_Callback*)cb_m_paperBorderCustomLeftInput);
+            o->align(FL_ALIGN_TOP_LEFT);
+            o->precision(2);
+          }
+          o->end();
         }
         o->end();
       }
