@@ -303,6 +303,8 @@
 				82814C5108A564A3006D2A26,
 				82814C5208A564A3006D2A26,
 				82814C5308A564A3006D2A26,
+				82F043D208B2A4BC00EED792,
+				82F043D308B2A4BC00EED792,
 			);
 			isa = PBXGroup;
 			path = ui;
@@ -351,6 +353,7 @@
 		};
 		82814C5408A564A3006D2A26 = {
 			children = (
+				82F043CC08B2A2F500EED792,
 				82F681D508AAA31500D5DF2C,
 				82814C5508A564A3006D2A26,
 				82814C5608A564A3006D2A26,
@@ -439,18 +442,35 @@
 			refType = 3;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		82ED118508AABE9B00F6751C = {
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			isa = PBXShellScriptBuildPhase;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "strip $TARGET_BUILD_DIR/$TARGET_NAME.app/Contents/MacOS/PosteRazor";
+		82F043CC08B2A2F500EED792 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = PaintCanvasInterface.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82F043D208B2A4BC00EED792 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = Fl_Paint_Canvas.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82F043D308B2A4BC00EED792 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = Fl_Paint_Canvas.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82F043D408B2A4BC00EED792 = {
+			fileRef = 82F043D308B2A4BC00EED792;
+			isa = PBXBuildFile;
+			settings = {
+			};
 		};
 		82F681D508AAA31500D5DF2C = {
 			fileEncoding = 30;
@@ -475,7 +495,6 @@
 				8D0C4E8C0486CD37000505A6,
 				8D0C4E8F0486CD37000505A6,
 				8D0C4E910486CD37000505A6,
-				82ED118508AABE9B00F6751C,
 			);
 			buildRules = (
 			);
@@ -519,6 +538,7 @@
 				82814C5D08A564A3006D2A26,
 				82814C5F08A564A3006D2A26,
 				82814C6008A564A3006D2A26,
+				82F043D408B2A4BC00EED792,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
