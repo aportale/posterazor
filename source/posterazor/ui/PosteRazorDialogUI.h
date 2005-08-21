@@ -90,6 +90,26 @@ private:
 public:
   Fl_Box *m_paperCustomWidthLabel;
   Fl_Box *m_paperCustomHeightLabel;
+  Fl_Value_Input *m_paperBorderCustomTopInput;
+private:
+  void cb_m_paperBorderCustomTopInput_i(Fl_Value_Input*, void*);
+  static void cb_m_paperBorderCustomTopInput(Fl_Value_Input*, void*);
+public:
+  Fl_Value_Input *m_paperBorderCustomRightInput;
+private:
+  void cb_m_paperBorderCustomRightInput_i(Fl_Value_Input*, void*);
+  static void cb_m_paperBorderCustomRightInput(Fl_Value_Input*, void*);
+public:
+  Fl_Value_Input *m_paperBorderCustomBottomInput;
+private:
+  void cb_m_paperBorderCustomBottomInput_i(Fl_Value_Input*, void*);
+  static void cb_m_paperBorderCustomBottomInput(Fl_Value_Input*, void*);
+public:
+  Fl_Value_Input *m_paperBorderCustomLeftInput;
+private:
+  void cb_m_paperBorderCustomLeftInput_i(Fl_Value_Input*, void*);
+  static void cb_m_paperBorderCustomLeftInput(Fl_Value_Input*, void*);
+public:
   Fl_Group *m_posterSizeStep;
   Fl_Round_Button *m_posterSizeAbsoluteRadioButton;
 private:

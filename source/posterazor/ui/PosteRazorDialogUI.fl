@@ -7,7 +7,7 @@ decl {\#include "Fl_Paint_Canvas.h"} {public
 
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {468 270 620 455} type Double resizable
+  xywh {400 270 620 455} type Double resizable
   code0 {size_range(this->w(), this->h());}
   class Fl_Double_Window visible
 } {
@@ -99,7 +99,7 @@ widget_class PosteRazorDialogUI {
           } {
             Fl_Value_Input m_paperBorderStandardTopInput {
               label Top
-              callback {HandlePaperSizeChangement();} selected
+              callback {HandlePaperSizeChangement();}
               xywh {485 220 50 25} align 1 maximum 999 step 0.1
               code0 {o->precision(2);}
             }
@@ -124,7 +124,7 @@ widget_class PosteRazorDialogUI {
           }
         }
         Fl_Group m_paperFormatCustomGroup {
-          label Custom open
+          label Custom open selected
           xywh {325 80 275 260} box THIN_UP_BOX color 45 selection_color 40 hide
         } {
           Fl_Value_Input m_paperCustomWidthInput {
@@ -150,6 +150,35 @@ widget_class PosteRazorDialogUI {
           Fl_Box m_paperCustomHeightLabel {
             label cm
             xywh {520 125 50 25} align 20
+          }
+          Fl_Group {} {
+            label {Borders:} open
+            xywh {425 195 165 135} box THIN_DOWN_BOX color 43 align 4
+          } {
+            Fl_Value_Input m_paperBorderCustomTopInput {
+              label Top
+              callback {HandlePaperSizeChangement();}
+              xywh {485 220 50 25} align 1 maximum 999 step 0.1
+              code0 {o->precision(2);}
+            }
+            Fl_Value_Input m_paperBorderCustomRightInput {
+              label Right
+              callback {HandlePaperSizeChangement();}
+              xywh {530 250 50 25} align 9 maximum 999 step 0.1
+              code0 {o->precision(2);}
+            }
+            Fl_Value_Input m_paperBorderCustomBottomInput {
+              label Bottom
+              callback {HandlePaperSizeChangement();}
+              xywh {485 280 50 25} align 2 maximum 999 step 0.1
+              code0 {o->precision(2);}
+            }
+            Fl_Value_Input m_paperBorderCustomLeftInput {
+              label Left
+              callback {HandlePaperSizeChangement();}
+              xywh {440 250 50 25} align 5 maximum 999 step 0.1
+              code0 {o->precision(2);}
+            }
           }
         }
       }
