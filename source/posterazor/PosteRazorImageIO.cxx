@@ -137,7 +137,7 @@ public:
 #ifdef _WIN32
 		for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++)
 		{
-			unsigned char *pixelPtr = buffer[numberOfPixels*3];
+			unsigned char *pixelPtr = &buffer[numberOfPixels*3];
 
 			unsigned char temp = pixelPtr[0];
 			pixelPtr[0] = pixelPtr[2];
