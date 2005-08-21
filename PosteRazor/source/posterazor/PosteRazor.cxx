@@ -362,25 +362,33 @@ public:
 	
 	void GetImage(PaintCanvasInterface *paintCanvas)
 	{
-		unsigned char *rgbData;
+		unsigned char *rgbData = NULL;
 		int imageWidth;
 		int imageHeight;
 		
-		m_imageIO->GetImageAsRGB(rgbData, imageWidth, imageHeight);
+		m_imageIO->GetImageAsRGB(&rgbData, imageWidth, imageHeight);
 		paintCanvas->SetImage(rgbData, imageWidth, imageHeight);
 	}
 
 	void PaintOnCanvas(PaintCanvasInterface *paintCanvas, void* options = 0)
 	{
-		int canvasWidth, canvasHeight;
+		int canvasWidth = 0, canvasHeight = 0;
 		paintCanvas->GetSize(canvasWidth, canvasHeight);
-		int boxWidth, boxHeight;
+		int boxWidth = 0, boxHeight = 0;
 		int x_offset, y_offset;
 		
 		const char *state = (const char*)options;
 		
 		if (strcmp(state, "image") == 0)
 		{
+			if (IsImageLoaded())
+			{
+				GetPreviewSize(GetInputImageWidthPixels(), GetInputImageHeightPixels(), canvasWidth, canvasHeight, boxWidth, boxHeight, false);
+				x_offset = (canvasWidth - boxWidth) / 2;
+				y_offset = (canvasHeight - boxHeight) / 2;
+
+				paintCanvas->DrawImage(0 + x_offset, 0 + y_offset, boxWidth, boxHeight);
+			}
 		}
 		else if (strcmp(state, "paper") == 0)
 		{

@@ -22,7 +22,7 @@ public:
 	virtual double GetWidth(enum DistanceUnits::eDistanceUnits unit) = 0;
 	virtual double GetHeight(enum DistanceUnits::eDistanceUnits unit) = 0;
 
-	virtual void GetImageAsRGB(unsigned char* buffer, int &widthPixels, int &heightPixels) = 0;
+	virtual void GetImageAsRGB(unsigned char **buffer, int &widthPixels, int &heightPixels) = 0;
 	
 	virtual int GetBitsPerPixel(void) = 0;
 	virtual enum eColorTypes GetColorDataType(void) = 0;
