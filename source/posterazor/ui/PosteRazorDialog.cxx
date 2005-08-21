@@ -111,7 +111,6 @@ void PosteRazorDialog::LoadInputImage(void)
 		m_previewPaintCanvas->RequestImage();
 		m_previewPaintCanvas->redraw();
 		UpdatePosterSizeFields(NULL);
-		Fl::wait();
 	}
 
 	UpdateNavigationButtons();
@@ -251,8 +250,8 @@ void PosteRazorDialog::UpdatePosterSizeGroupsState(void)
 int main (int argc, char **argv)
 {
 	PosteRazorDialog dialog;
-	Fl::scheme("plastic");
 	dialog.show(argc, argv);
+	Fl::scheme("plastic");
 
 	Fl::run();
 }
