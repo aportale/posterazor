@@ -115,7 +115,7 @@ public:
 	double GetWidth(enum DistanceUnits::eDistanceUnits unit) {return GetWidthPixels() / GetHorizontalDotsPerDistanceUnit(unit);}
 	double GetHeight(enum DistanceUnits::eDistanceUnits unit) {return GetHeightPixels() / GetHorizontalDotsPerDistanceUnit(unit);}
 
-	void GetImageAsRGB(unsigned char* buffer, int &widthPixels, int &heightPixels)
+	void GetImageAsRGB(unsigned char **buffer, int &widthPixels, int &heightPixels)
 	{
 		FIBITMAP* originalImage = m_bitmap;
 		FIBITMAP* temp24BPPImage = NULL;
@@ -128,8 +128,8 @@ public:
 		
 		unsigned long numberOfPixels = m_widthPixels * m_heightPixels;
 
-		buffer = new unsigned char[numberOfPixels * 3];
-		FreeImage_ConvertToRawBits(buffer, originalImage, m_widthPixels*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, TRUE);
+		*buffer = new unsigned char[numberOfPixels * 3];
+		FreeImage_ConvertToRawBits(*buffer, originalImage, m_widthPixels*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
 
 		widthPixels = m_widthPixels;
 		heightPixels = m_heightPixels;
@@ -137,7 +137,7 @@ public:
 #ifdef _WIN32
 		for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++)
 		{
-			unsigned char *pixelPtr = &buffer[numberOfPixels*3];
+			unsigned char *pixelPtr = *buffer + pixelIndex*3;
 
 			unsigned char temp = pixelPtr[0];
 			pixelPtr[0] = pixelPtr[2];

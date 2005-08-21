@@ -108,11 +108,8 @@ void PosteRazorDialog::LoadInputImage(void)
 		UpdateImageInfoFields();
 		m_imageInfoGroup->activate();
 		m_inputFileNameLabel->copy_label(fl_filename_name(chooser.filename()));
-		m_previewPaintCanvas->label("...please wait...");
-		Fl::wait();
 		m_previewPaintCanvas->RequestImage();
 		m_previewPaintCanvas->redraw();
-		m_previewPaintCanvas->label(NULL);
 		UpdatePosterSizeFields(NULL);
 		Fl::wait();
 	}

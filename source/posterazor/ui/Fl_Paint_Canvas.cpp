@@ -15,13 +15,13 @@ Fl_Paint_Canvas::Fl_Paint_Canvas(int width, int height, int x, int y)
 	:Fl_Box(width, height, x, y), PaintCanvasInterface()
 {
 	m_stateString[0] = '\0';
-	m_image = 0;
+	m_image = NULL;
+	m_scaledImage = NULL;
 }
 
 Fl_Paint_Canvas::~Fl_Paint_Canvas()
 {
-	if (m_image)
-		delete(m_image);
+	DisposeImage();
 }
 
 void Fl_Paint_Canvas::SetState(const char *state)
@@ -56,11 +56,37 @@ void Fl_Paint_Canvas::RequestImage(void)
 
 void Fl_Paint_Canvas::SetImage(const unsigned char* rgbData, int width, int height)
 {
-	if (m_image)
-		delete(m_image);
+	DisposeImage();
 	m_image = new Fl_RGB_Image(rgbData, width, height);
 }
 
-void Fl_Paint_Canvas::DrawImage(int x, int y, int width, int heigth)
+void Fl_Paint_Canvas::DisposeImage(void)
 {
+	if (m_image)
+	{
+		delete(m_image);
+		m_image = 0;
+	}
+	if (m_scaledImage)
+	{
+		delete(m_scaledImage);
+		m_scaledImage = NULL;
+	}
+}
+
+void Fl_Paint_Canvas::DrawImage(int x, int y, int width, int height)
+{
+	if (m_image)
+	{
+		if (m_scaledImage && width != m_scaledImage->w() && height != m_scaledImage->h())
+		{
+			delete m_scaledImage;
+			m_scaledImage = NULL;
+		}
+
+		if (!m_scaledImage)
+			m_scaledImage = m_image->copy(width, height);
+
+		m_scaledImage->draw(x + Fl_Box::x() + 5, y + Fl_Box::y() + 5);
+	}
 }

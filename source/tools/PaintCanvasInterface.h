@@ -27,7 +27,7 @@ public:
 	virtual void DrawFilledRect(int x, int y, int width, int heigth, unsigned char red, unsigned char green, unsigned char blue) = 0;
 	virtual void GetSize(int &width, int &height) = 0;
 	virtual void SetImage(const unsigned char* rgbData, int width, int height) = 0;
-	virtual void DrawImage(int x, int y, int width, int heigth) = 0;
+	virtual void DrawImage(int x, int y, int width, int height) = 0;
 };
 
 #endif PaintCanvasInterface_h

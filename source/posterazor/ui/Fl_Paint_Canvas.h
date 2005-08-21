@@ -10,6 +10,7 @@ class Fl_Paint_Canvas: public Fl_Box, public PaintCanvasInterface
 private:
 	char m_stateString[1024];
 	Fl_RGB_Image *m_image;
+	Fl_Image *m_scaledImage;
 	
 public:
 	Fl_Paint_Canvas(int width, int height, int x, int y);
@@ -23,7 +24,8 @@ public:
 
 	virtual void RequestImage(void);
 	virtual void SetImage(const unsigned char* rgbData, int width, int height);
-	virtual void DrawImage(int x, int y, int width, int heigth);
+	virtual void DisposeImage(void);
+	virtual void DrawImage(int x, int y, int width, int height);
 };
 
 #endif Fl_Paint_Canvas_h
