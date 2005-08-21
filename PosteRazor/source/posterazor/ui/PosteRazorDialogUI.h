@@ -57,25 +57,25 @@ private:
   void cb_m_paperOrientationLandscapeRadioButton_i(Fl_Round_Button*, void*);
   static void cb_m_paperOrientationLandscapeRadioButton(Fl_Round_Button*, void*);
 public:
-  Fl_Value_Input *m_paperBorderTopInput;
+  Fl_Value_Input *m_paperBorderStandardTopInput;
 private:
-  void cb_m_paperBorderTopInput_i(Fl_Value_Input*, void*);
-  static void cb_m_paperBorderTopInput(Fl_Value_Input*, void*);
+  void cb_m_paperBorderStandardTopInput_i(Fl_Value_Input*, void*);
+  static void cb_m_paperBorderStandardTopInput(Fl_Value_Input*, void*);
 public:
-  Fl_Value_Input *m_paperBorderRightInput;
+  Fl_Value_Input *m_paperBorderStandardRightInput;
 private:
-  void cb_m_paperBorderRightInput_i(Fl_Value_Input*, void*);
-  static void cb_m_paperBorderRightInput(Fl_Value_Input*, void*);
+  void cb_m_paperBorderStandardRightInput_i(Fl_Value_Input*, void*);
+  static void cb_m_paperBorderStandardRightInput(Fl_Value_Input*, void*);
 public:
-  Fl_Value_Input *m_paperBorderBottomInput;
+  Fl_Value_Input *m_paperBorderStandardBottomInput;
 private:
-  void cb_m_paperBorderBottomInput_i(Fl_Value_Input*, void*);
-  static void cb_m_paperBorderBottomInput(Fl_Value_Input*, void*);
+  void cb_m_paperBorderStandardBottomInput_i(Fl_Value_Input*, void*);
+  static void cb_m_paperBorderStandardBottomInput(Fl_Value_Input*, void*);
 public:
-  Fl_Value_Input *m_paperBorderLeftInput;
+  Fl_Value_Input *m_paperBorderStandardLeftInput;
 private:
-  void cb_m_paperBorderLeftInput_i(Fl_Value_Input*, void*);
-  static void cb_m_paperBorderLeftInput(Fl_Value_Input*, void*);
+  void cb_m_paperBorderStandardLeftInput_i(Fl_Value_Input*, void*);
+  static void cb_m_paperBorderStandardLeftInput(Fl_Value_Input*, void*);
 public:
   Fl_Group *m_paperFormatCustomGroup;
   Fl_Value_Input *m_paperCustomWidthInput;

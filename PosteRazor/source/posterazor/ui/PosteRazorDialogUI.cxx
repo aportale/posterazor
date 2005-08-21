@@ -44,32 +44,32 @@ void PosteRazorDialogUI::cb_m_paperOrientationLandscapeRadioButton(Fl_Round_Butt
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperOrientationLandscapeRadioButton_i(o,v);
 }
 
-void PosteRazorDialogUI::cb_m_paperBorderTopInput_i(Fl_Value_Input*, void*) {
+void PosteRazorDialogUI::cb_m_paperBorderStandardTopInput_i(Fl_Value_Input*, void*) {
   HandlePaperSizeChangement();
 }
-void PosteRazorDialogUI::cb_m_paperBorderTopInput(Fl_Value_Input* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderTopInput_i(o,v);
+void PosteRazorDialogUI::cb_m_paperBorderStandardTopInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderStandardTopInput_i(o,v);
 }
 
-void PosteRazorDialogUI::cb_m_paperBorderRightInput_i(Fl_Value_Input*, void*) {
+void PosteRazorDialogUI::cb_m_paperBorderStandardRightInput_i(Fl_Value_Input*, void*) {
   HandlePaperSizeChangement();
 }
-void PosteRazorDialogUI::cb_m_paperBorderRightInput(Fl_Value_Input* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderRightInput_i(o,v);
+void PosteRazorDialogUI::cb_m_paperBorderStandardRightInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderStandardRightInput_i(o,v);
 }
 
-void PosteRazorDialogUI::cb_m_paperBorderBottomInput_i(Fl_Value_Input*, void*) {
+void PosteRazorDialogUI::cb_m_paperBorderStandardBottomInput_i(Fl_Value_Input*, void*) {
   HandlePaperSizeChangement();
 }
-void PosteRazorDialogUI::cb_m_paperBorderBottomInput(Fl_Value_Input* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderBottomInput_i(o,v);
+void PosteRazorDialogUI::cb_m_paperBorderStandardBottomInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderStandardBottomInput_i(o,v);
 }
 
-void PosteRazorDialogUI::cb_m_paperBorderLeftInput_i(Fl_Value_Input*, void*) {
+void PosteRazorDialogUI::cb_m_paperBorderStandardLeftInput_i(Fl_Value_Input*, void*) {
   HandlePaperSizeChangement();
 }
-void PosteRazorDialogUI::cb_m_paperBorderLeftInput(Fl_Value_Input* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderLeftInput_i(o,v);
+void PosteRazorDialogUI::cb_m_paperBorderStandardLeftInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderStandardLeftInput_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_paperCustomWidthInput_i(Fl_Value_Input*, void*) {
@@ -219,7 +219,6 @@ o->when(FL_WHEN_RELEASE);
         o->box(FL_THIN_UP_BOX);
         o->color(FL_DARK2);
         o->selection_color((Fl_Color)40);
-        o->hide();
         { Fl_Choice* o = m_paperFormatChoice = new Fl_Choice(425, 90, 165, 25, "Format:");
           o->down_box(FL_BORDER_BOX);
         }
@@ -239,36 +238,36 @@ o->when(FL_WHEN_RELEASE);
           }
           o->end();
         }
-        { Fl_Group* o = new Fl_Group(425, 195, 165, 136, "Borders:");
+        { Fl_Group* o = new Fl_Group(425, 195, 165, 135, "Borders:");
           o->box(FL_THIN_DOWN_BOX);
           o->color((Fl_Color)43);
           o->align(FL_ALIGN_LEFT);
-          { Fl_Value_Input* o = m_paperBorderTopInput = new Fl_Value_Input(485, 220, 50, 25, "Top");
-            o->callback((Fl_Callback*)cb_m_paperBorderTopInput);
+          { Fl_Value_Input* o = m_paperBorderStandardTopInput = new Fl_Value_Input(485, 220, 50, 25, "Top");
+            o->maximum(999);
+            o->step(0.1);
+            o->callback((Fl_Callback*)cb_m_paperBorderStandardTopInput);
             o->align(FL_ALIGN_TOP);
-            o->step(0.1);
-            o->range(0, 999);
             o->precision(2);
           }
-          { Fl_Value_Input* o = m_paperBorderRightInput = new Fl_Value_Input(530, 250, 50, 25, "Right");
-            o->callback((Fl_Callback*)cb_m_paperBorderRightInput);
+          { Fl_Value_Input* o = m_paperBorderStandardRightInput = new Fl_Value_Input(530, 250, 50, 25, "Right");
+            o->maximum(999);
+            o->step(0.1);
+            o->callback((Fl_Callback*)cb_m_paperBorderStandardRightInput);
             o->align(FL_ALIGN_TOP_RIGHT);
-            o->step(0.1);
-            o->range(0, 999);
             o->precision(2);
           }
-          { Fl_Value_Input* o = m_paperBorderBottomInput = new Fl_Value_Input(485, 280, 50, 25, "Bottom");
-            o->callback((Fl_Callback*)cb_m_paperBorderBottomInput);
+          { Fl_Value_Input* o = m_paperBorderStandardBottomInput = new Fl_Value_Input(485, 280, 50, 25, "Bottom");
+            o->maximum(999);
+            o->step(0.1);
+            o->callback((Fl_Callback*)cb_m_paperBorderStandardBottomInput);
             o->align(FL_ALIGN_BOTTOM);
-            o->step(0.1);
-            o->range(0, 999);
             o->precision(2);
           }
-          { Fl_Value_Input* o = m_paperBorderLeftInput = new Fl_Value_Input(440, 250, 50, 25, "Left");
-            o->callback((Fl_Callback*)cb_m_paperBorderLeftInput);
-            o->align(FL_ALIGN_TOP_LEFT);
+          { Fl_Value_Input* o = m_paperBorderStandardLeftInput = new Fl_Value_Input(440, 250, 50, 25, "Left");
+            o->maximum(999);
             o->step(0.1);
-            o->range(0, 999);
+            o->callback((Fl_Callback*)cb_m_paperBorderStandardLeftInput);
+            o->align(FL_ALIGN_TOP_LEFT);
             o->precision(2);
           }
           o->end();
@@ -279,6 +278,7 @@ o->when(FL_WHEN_RELEASE);
         o->box(FL_THIN_UP_BOX);
         o->color(FL_DARK2);
         o->selection_color((Fl_Color)40);
+        o->hide();
         { Fl_Value_Input* o = m_paperCustomWidthInput = new Fl_Value_Input(425, 90, 95, 25, "Width:");
           o->callback((Fl_Callback*)cb_m_paperCustomWidthInput);
           o->step(0.1);
