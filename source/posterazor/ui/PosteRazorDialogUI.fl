@@ -63,16 +63,16 @@ widget_class PosteRazorDialogUI {
         xywh {315 410 295 0} resizable
       }
     }
-    Fl_Group m_paperSizeStep {
+    Fl_Group m_paperSizeStep {open
       xywh {315 45 295 365}
     } {
       Fl_Tabs m_paperFormatTypeTabs {
-        callback {HandlePaperSizeChangement();}
+        callback {HandlePaperSizeChangement();} open
         xywh {325 55 275 285} align 0
       } {
         Fl_Group m_paperFormatStandardGroup {
           label Standard open
-          xywh {325 80 275 260} box THIN_UP_BOX color 45 selection_color 40 hide
+          xywh {325 80 275 260} box THIN_UP_BOX color 45 selection_color 40
         } {
           Fl_Choice m_paperFormatChoice {
             label {Format:} open
@@ -95,45 +95,37 @@ widget_class PosteRazorDialogUI {
           }
           Fl_Group {} {
             label {Borders:} open
-            xywh {425 195 165 136} box THIN_DOWN_BOX color 43 align 4
+            xywh {425 195 165 135} box THIN_DOWN_BOX color 43 align 4
           } {
-            Fl_Value_Input m_paperBorderTopInput {
+            Fl_Value_Input m_paperBorderStandardTopInput {
               label Top
-              callback {HandlePaperSizeChangement();}
-              xywh {485 220 50 25} align 1
-              code0 {o->step(0.1);}
-              code1 {o->range(0, 999);}
-              code2 {o->precision(2);}
+              callback {HandlePaperSizeChangement();} selected
+              xywh {485 220 50 25} align 1 maximum 999 step 0.1
+              code0 {o->precision(2);}
             }
-            Fl_Value_Input m_paperBorderRightInput {
+            Fl_Value_Input m_paperBorderStandardRightInput {
               label Right
               callback {HandlePaperSizeChangement();}
-              xywh {530 250 50 25} align 9
-              code0 {o->step(0.1);}
-              code1 {o->range(0, 999);}
-              code2 {o->precision(2);}
+              xywh {530 250 50 25} align 9 maximum 999 step 0.1
+              code0 {o->precision(2);}
             }
-            Fl_Value_Input m_paperBorderBottomInput {
+            Fl_Value_Input m_paperBorderStandardBottomInput {
               label Bottom
               callback {HandlePaperSizeChangement();}
-              xywh {485 280 50 25} align 2
-              code0 {o->step(0.1);}
-              code1 {o->range(0, 999);}
-              code2 {o->precision(2);}
+              xywh {485 280 50 25} align 2 maximum 999 step 0.1
+              code0 {o->precision(2);}
             }
-            Fl_Value_Input m_paperBorderLeftInput {
+            Fl_Value_Input m_paperBorderStandardLeftInput {
               label Left
               callback {HandlePaperSizeChangement();}
-              xywh {440 250 50 25} align 5
-              code0 {o->step(0.1);}
-              code1 {o->range(0, 999);}
-              code2 {o->precision(2);}
+              xywh {440 250 50 25} align 5 maximum 999 step 0.1
+              code0 {o->precision(2);}
             }
           }
         }
         Fl_Group m_paperFormatCustomGroup {
           label Custom open
-          xywh {325 80 275 260} box THIN_UP_BOX color 45 selection_color 40
+          xywh {325 80 275 260} box THIN_UP_BOX color 45 selection_color 40 hide
         } {
           Fl_Value_Input m_paperCustomWidthInput {
             label {Width:}
@@ -266,7 +258,7 @@ widget_class PosteRazorDialogUI {
       xywh {315 45 295 365} hide
     } {}
   }
-  Fl_Box m_previewPaintCanvas {selected
+  Fl_Box m_previewPaintCanvas {
     xywh {10 45 300 365} box THIN_DOWN_BOX color 35 resizable
     class Fl_Paint_Canvas
   }
