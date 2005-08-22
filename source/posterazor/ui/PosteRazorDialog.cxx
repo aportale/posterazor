@@ -196,16 +196,20 @@ void PosteRazorDialog::SetPaperSizeFields(void)
 	// standard paper format
 	m_paperOrientationPortraitRadioButton->value(m_posteRazor->GetPaperOrientation() == PosteRazor::ePaperOrientationPortrait);
 	m_paperOrientationLandscapeRadioButton->value(m_posteRazor->GetPaperOrientation() == PosteRazor::ePaperOrientationLandscape);
-	m_paperBorderStandardTopInput->value(m_posteRazor->GetPaperBorderTop());
-	m_paperBorderStandardRightInput->value(m_posteRazor->GetPaperBorderRight());
-	m_paperBorderStandardBottomInput->value(m_posteRazor->GetPaperBorderBottom());
-	m_paperBorderStandardLeftInput->value(m_posteRazor->GetPaperBorderLeft());
+	m_paperBorderStandardTopInput->value(m_posteRazor->GetPaperBorderTop(false));
+	m_paperBorderStandardRightInput->value(m_posteRazor->GetPaperBorderRight(false));
+	m_paperBorderStandardBottomInput->value(m_posteRazor->GetPaperBorderBottom(false));
+	m_paperBorderStandardLeftInput->value(m_posteRazor->GetPaperBorderLeft(false));
 
 	// custom paper format
 	double customWidth, customHeight;
 	m_posteRazor->GetCustomPaperSize(customWidth, customHeight);
 	m_paperCustomWidthInput->value(customWidth);
 	m_paperCustomHeightInput->value(customHeight);
+	m_paperBorderCustomTopInput->value(m_posteRazor->GetPaperBorderTop(true));
+	m_paperBorderCustomRightInput->value(m_posteRazor->GetPaperBorderRight(true));
+	m_paperBorderCustomBottomInput->value(m_posteRazor->GetPaperBorderBottom(true));
+	m_paperBorderCustomLeftInput->value(m_posteRazor->GetPaperBorderLeft(true));
 
 	// radio buttons
 	m_paperFormatTypeTabs->value(m_paperFormatCustomGroup);
@@ -226,16 +230,19 @@ void PosteRazorDialog::HandlePaperSizeChangement(void)
 		enum PosteRazor::ePaperFormats paperFormat = PosteRazor::GetPaperFormatForName(paperFormatName);
 		m_posteRazor->SetPaperFormat(paperFormat);
 		m_posteRazor->SetPaperOrientation(m_paperOrientationLandscapeRadioButton->value() != 0?PosteRazor::ePaperOrientationLandscape:PosteRazor::ePaperOrientationPortrait);
+		m_posteRazor->SetPaperBorderTop(m_paperBorderStandardTopInput->value());
+		m_posteRazor->SetPaperBorderRight(m_paperBorderStandardRightInput->value());
+		m_posteRazor->SetPaperBorderBottom(m_paperBorderStandardBottomInput->value());
+		m_posteRazor->SetPaperBorderLeft(m_paperBorderStandardLeftInput->value());
 	}
 	else
 	{
 		m_posteRazor->SetCustomPaperSize(m_paperCustomWidthInput->value(), m_paperCustomHeightInput->value());
+		m_posteRazor->SetPaperBorderTop(m_paperBorderCustomTopInput->value());
+		m_posteRazor->SetPaperBorderRight(m_paperBorderCustomRightInput->value());
+		m_posteRazor->SetPaperBorderBottom(m_paperBorderCustomBottomInput->value());
+		m_posteRazor->SetPaperBorderLeft(m_paperBorderCustomLeftInput->value());
 	}
-
-	m_posteRazor->SetPaperBorderTop(m_paperBorderStandardTopInput->value());
-	m_posteRazor->SetPaperBorderRight(m_paperBorderStandardRightInput->value());
-	m_posteRazor->SetPaperBorderBottom(m_paperBorderStandardBottomInput->value());
-	m_posteRazor->SetPaperBorderLeft(m_paperBorderStandardLeftInput->value());
 
 	m_previewPaintCanvas->redraw();
 }
