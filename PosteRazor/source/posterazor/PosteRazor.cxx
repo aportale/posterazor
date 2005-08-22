@@ -28,10 +28,14 @@ private:
 	bool                   m_useCustomPaperSize;
 	ePaperFormats          m_paperFormat;
 	ePaperOrientations     m_paperOrientation;
-	double                 m_paperBorderTop;
-	double                 m_paperBorderRight;
-	double                 m_paperBorderBottom;
-	double                 m_paperBorderLeft;
+	double                 m_paperBorderStandardTop;
+	double                 m_paperBorderStandardRight;
+	double                 m_paperBorderStandardBottom;
+	double                 m_paperBorderStandardLeft;
+	double                 m_paperBorderCustomTop;
+	double                 m_paperBorderCustomRight;
+	double                 m_paperBorderCustomBottom;
+	double                 m_paperBorderCustomLeft;
 	double                 m_customPaperWidth;
 	double                 m_customPaperHeight;
 	eBorderPositions       m_borderPosition;
@@ -49,10 +53,14 @@ public:
 		m_useCustomPaperSize           = false;
 		m_paperFormat                  = ePaperFormatA4;
 		m_paperOrientation             = ePaperOrientationPortrait;
-		m_paperBorderTop               = 1.5;
-		m_paperBorderRight             = 1.5;
-		m_paperBorderBottom            = 1.5;
-		m_paperBorderLeft              = 1.5;
+		m_paperBorderStandardTop       = 1.5;
+		m_paperBorderStandardRight     = 1.5;
+		m_paperBorderStandardBottom    = 1.5;
+		m_paperBorderStandardLeft      = 1.5;
+		m_paperBorderCustomTop         = 1.5;
+		m_paperBorderCustomRight       = 1.5;
+		m_paperBorderCustomBottom      = 1.5;
+		m_paperBorderCustomLeft        = 1.5;
 		m_customPaperWidth             = 20;
 		m_customPaperHeight            = 20;
 
@@ -100,17 +108,25 @@ public:
 
 	void SetPaperFormat(enum ePaperFormats format) {m_paperFormat = format;}
 	void SetPaperOrientation(enum ePaperOrientations orientation) {m_paperOrientation = orientation;}
-	void SetPaperBorderTop(double borderTop) {m_paperBorderTop = ConvertBetweenDistanceUnits(borderTop, m_distanceUnit, eDistanceUnitCentimeter);}
-	void SetPaperBorderRight(double borderRight) {m_paperBorderRight = ConvertBetweenDistanceUnits(borderRight, m_distanceUnit, eDistanceUnitCentimeter);}
-	void SetPaperBorderBottom(double borderBottom) {m_paperBorderBottom = ConvertBetweenDistanceUnits(borderBottom, m_distanceUnit, eDistanceUnitCentimeter);}
-	void SetPaperBorderLeft(double borderLeft) {m_paperBorderLeft = ConvertBetweenDistanceUnits(borderLeft, m_distanceUnit, eDistanceUnitCentimeter);}
+	void SetPaperBorderTop(double border, bool customPaperSize) {(customPaperSize?m_paperBorderCustomTop:m_paperBorderStandardTop) = ConvertBetweenDistanceUnits(border, m_distanceUnit, eDistanceUnitCentimeter);}
+	void SetPaperBorderRight(double border, bool customPaperSize) {(customPaperSize?m_paperBorderCustomRight:m_paperBorderStandardRight) = ConvertBetweenDistanceUnits(border, m_distanceUnit, eDistanceUnitCentimeter);}
+	void SetPaperBorderBottom(double border, bool customPaperSize) {(customPaperSize?m_paperBorderCustomBottom:m_paperBorderStandardBottom) = ConvertBetweenDistanceUnits(border, m_distanceUnit, eDistanceUnitCentimeter);}
+	void SetPaperBorderLeft(double border, bool customPaperSize) {(customPaperSize?m_paperBorderCustomLeft:m_paperBorderStandardLeft) = ConvertBetweenDistanceUnits(border, m_distanceUnit, eDistanceUnitCentimeter);}
+	void SetPaperBorderTop(double border) {SetPaperBorderTop(border, GetUseCustomPaperSize());}
+	void SetPaperBorderRight(double border) {SetPaperBorderRight(border, GetUseCustomPaperSize());}
+	void SetPaperBorderBottom(double border) {SetPaperBorderBottom(border, GetUseCustomPaperSize());}
+	void SetPaperBorderLeft(double border) {SetPaperBorderLeft(border, GetUseCustomPaperSize());}
 
 	enum ePaperFormats GetPaperFormat(void) {return m_paperFormat;}
 	enum ePaperOrientations GetPaperOrientation(void) {return m_paperOrientation;}
-	double GetPaperBorderTop(void) {return ConvertBetweenDistanceUnits(m_paperBorderTop, eDistanceUnitCentimeter, m_distanceUnit);}
-	double GetPaperBorderRight(void) {return ConvertBetweenDistanceUnits(m_paperBorderRight, eDistanceUnitCentimeter, m_distanceUnit);}
-	double GetPaperBorderBottom(void) {return ConvertBetweenDistanceUnits(m_paperBorderBottom, eDistanceUnitCentimeter, m_distanceUnit);}
-	double GetPaperBorderLeft(void) {return ConvertBetweenDistanceUnits(m_paperBorderLeft, eDistanceUnitCentimeter, m_distanceUnit);}
+	double GetPaperBorderTop(bool customPaperSize) {return ConvertBetweenDistanceUnits(customPaperSize?m_paperBorderCustomTop:m_paperBorderStandardTop, eDistanceUnitCentimeter, m_distanceUnit);}
+	double GetPaperBorderRight(bool customPaperSize) {return ConvertBetweenDistanceUnits(customPaperSize?m_paperBorderCustomRight:m_paperBorderStandardRight, eDistanceUnitCentimeter, m_distanceUnit);}
+	double GetPaperBorderBottom(bool customPaperSize) {return ConvertBetweenDistanceUnits(customPaperSize?m_paperBorderCustomBottom:m_paperBorderStandardBottom, eDistanceUnitCentimeter, m_distanceUnit);}
+	double GetPaperBorderLeft(bool customPaperSize) {return ConvertBetweenDistanceUnits(customPaperSize?m_paperBorderCustomLeft:m_paperBorderStandardLeft, eDistanceUnitCentimeter, m_distanceUnit);}
+	double GetPaperBorderTop(void) {return GetPaperBorderTop(GetUseCustomPaperSize());}
+	double GetPaperBorderRight(void) {return GetPaperBorderRight(GetUseCustomPaperSize());}
+	double GetPaperBorderLeft(void) {return GetPaperBorderLeft(GetUseCustomPaperSize());}
+	double GetPaperBorderBottom(void) {return GetPaperBorderBottom(GetUseCustomPaperSize());}
 
 	void SetCustomPaperSize(double width, double height)
 	{

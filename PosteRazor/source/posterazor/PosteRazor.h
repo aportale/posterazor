@@ -47,13 +47,21 @@ public:
 
 	virtual void SetPaperFormat(enum ePaperFormats format) = 0;
 	virtual void SetPaperOrientation(enum ePaperOrientations orientation) = 0;
-	virtual void SetPaperBorderTop(double borderTop) = 0;
-	virtual void SetPaperBorderRight(double borderRight) = 0;
-	virtual void SetPaperBorderBottom(double borderBottom) = 0;
-	virtual void SetPaperBorderLeft(double borderLeft) = 0;
+	virtual void SetPaperBorderTop(double border, bool customPaperSize) = 0;
+	virtual void SetPaperBorderRight(double border, bool customPaperSize) = 0;
+	virtual void SetPaperBorderBottom(double border, bool customPaperSize) = 0;
+	virtual void SetPaperBorderLeft(double border, bool customPaperSize) = 0;
+	virtual void SetPaperBorderTop(double border) = 0;
+	virtual void SetPaperBorderRight(double border) = 0;
+	virtual void SetPaperBorderBottom(double border) = 0;
+	virtual void SetPaperBorderLeft(double border) = 0;
 
 	virtual enum ePaperFormats GetPaperFormat(void) = 0;
 	virtual enum ePaperOrientations GetPaperOrientation(void) = 0;
+	virtual double GetPaperBorderTop(bool customPaperSize) = 0;
+	virtual double GetPaperBorderRight(bool customPaperSize) = 0;
+	virtual double GetPaperBorderBottom(bool customPaperSize) = 0;
+	virtual double GetPaperBorderLeft(bool customPaperSize) = 0;
 	virtual double GetPaperBorderTop(void) = 0;
 	virtual double GetPaperBorderRight(void) = 0;
 	virtual double GetPaperBorderBottom(void) = 0;
