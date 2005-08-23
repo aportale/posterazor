@@ -11,6 +11,8 @@
 #include <FL/fl_draw.H>
 #include <string.h>
 
+#define BORDER 10
+
 Fl_Paint_Canvas::Fl_Paint_Canvas(int width, int height, int x, int y)
 	:Fl_Box(width, height, x, y), PaintCanvasInterface()
 {
@@ -39,13 +41,13 @@ void Fl_Paint_Canvas::draw()
 void Fl_Paint_Canvas::DrawFilledRect(int x, int y, int width, int height, unsigned char red, unsigned char green, unsigned char blue)
 {
 	fl_color(red, green, blue);
-	fl_rectf(x + Fl_Box::x() + 5, y + Fl_Box::y() + 5, width, height);
+	fl_rectf(x + Fl_Box::x() + BORDER, y + Fl_Box::y() + BORDER, width, height);
 }
 
 void Fl_Paint_Canvas::GetSize(int &width, int &height)
 {
-	width = w() - 10;
-	height = h() - 10;
+	width = w() - BORDER - BORDER;
+	height = h() - BORDER - BORDER;
 }
 
 void Fl_Paint_Canvas::RequestImage(void)
@@ -87,6 +89,6 @@ void Fl_Paint_Canvas::DrawImage(int x, int y, int width, int height)
 		if (!m_scaledImage)
 			m_scaledImage = m_image->copy(width, height);
 
-		m_scaledImage->draw(x + Fl_Box::x() + 5, y + Fl_Box::y() + 5);
+		m_scaledImage->draw(x + Fl_Box::x() + BORDER, y + Fl_Box::y() + BORDER);
 	}
 }
