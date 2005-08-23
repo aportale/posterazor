@@ -35,6 +35,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 	UpdateNavigationButtons();
 	UpdatePreviewState();
 	SetPaperSizeFields();
+	SetOverlappingFields();
 }
 
 PosteRazorDialog::~PosteRazorDialog()
@@ -78,6 +79,7 @@ void PosteRazorDialog::UpdatePreviewState(void)
 	(
 		m_wizard->value() == m_loadInputImageStep?"image"
 		:m_wizard->value() == m_paperSizeStep?"paper"
+		:m_wizard->value() == m_overlappingStep?"overlapping"
 		:"poster"
 	);
 	m_previewPaintCanvas->redraw();
@@ -211,8 +213,8 @@ void PosteRazorDialog::SetPaperSizeFields(void)
 	m_paperBorderCustomBottomInput->value(m_posteRazor->GetPaperBorderBottom(true));
 	m_paperBorderCustomLeftInput->value(m_posteRazor->GetPaperBorderLeft(true));
 
-	// radio buttons
-	m_paperFormatTypeTabs->value(m_paperFormatCustomGroup);
+	// select the active tab
+	m_paperFormatTypeTabs->value(m_posteRazor->GetUseCustomPaperSize()?m_paperFormatCustomGroup:m_paperFormatStandardGroup);
 }
 
 void PosteRazorDialog::HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userData)
@@ -243,6 +245,20 @@ void PosteRazorDialog::HandlePaperSizeChangement(void)
 		m_posteRazor->SetPaperBorderBottom(m_paperBorderCustomBottomInput->value());
 		m_posteRazor->SetPaperBorderLeft(m_paperBorderCustomLeftInput->value());
 	}
+
+	m_previewPaintCanvas->redraw();
+}
+
+void PosteRazorDialog::SetOverlappingFields(void)
+{
+	m_overlappingWidthInput->value(m_posteRazor->GetOverlappingWidth());
+	m_overlappingHeightInput->value(m_posteRazor->GetOverlappingHeight());
+}
+
+void PosteRazorDialog::HandleOverlappingChangement(void)
+{
+	m_posteRazor->SetOverlappingWidth(m_overlappingWidthInput->value());
+	m_posteRazor->SetOverlappingHeight(m_overlappingHeightInput->value());
 
 	m_previewPaintCanvas->redraw();
 }

@@ -18,8 +18,8 @@ private:
 	int                    m_sheetsColumns;
 	int                    m_sheetsRows;
 
-	float                  m_overlapWidth;
-	float                  m_overlapHeight;
+	float                  m_overlappingWidth;
+	float                  m_overlappingHeight;
 
 	enum ePosterSizeModes  m_posterSizeMode;
 	double                 m_posterWidth;
@@ -65,8 +65,8 @@ public:
 		m_customPaperHeight            = 20;
 
 		m_borderPosition               = eBorderPositionRightBottom;
-		m_overlapWidth                 = 2.0;
-		m_overlapHeight                = 2.0;
+		m_overlappingWidth             = 2.0;
+		m_overlappingHeight            = 2.0;
 
 		m_distanceUnit                 = eDistanceUnitCentimeter;
 		m_lastEditedSizeWasWidth       = true;
@@ -169,7 +169,7 @@ public:
 		double printablePaperAreaWidth, printablePaperAreaHeight;
 		GetPrintablePaperAreaSize(printablePaperAreaWidth, printablePaperAreaHeight);
 		double printablePaperAreaDimension = ConvertBetweenDistanceUnits(width?printablePaperAreaWidth:printablePaperAreaHeight, m_distanceUnit, eDistanceUnitCentimeter);
-		double overlapDimension = width?m_overlapWidth:m_overlapHeight;
+		double overlappingDimension = width?m_overlappingWidth:m_overlappingHeight;
 
 		if (pagesToAbsolute)
 		{
@@ -186,7 +186,7 @@ public:
 			}
 
 			if (posterDimension > 0)
-	                        posterDimensionAbsolute += (posterDimension * (printablePaperAreaDimension - overlapDimension));
+	                        posterDimensionAbsolute += (posterDimension * (printablePaperAreaDimension - overlappingDimension));
 
 			posterDimension = posterDimensionAbsolute;
 		}
@@ -205,7 +205,7 @@ public:
 			}
 
 			if (posterDimension > 0)
-	                        posterDimensionPages += (posterDimension / (printablePaperAreaDimension - overlapDimension));
+	                        posterDimensionPages += (posterDimension / (printablePaperAreaDimension - overlappingDimension));
 
 			posterDimension = posterDimensionPages;
 		}
@@ -256,6 +256,11 @@ public:
 
 		CalculateAspectRatio();
 	}
+
+	void SetOverlappingWidth(double width) {m_overlappingWidth = ConvertBetweenDistanceUnits(width, m_distanceUnit, eDistanceUnitCentimeter);}
+	void SetOverlappingHeight(double height) {m_overlappingHeight = ConvertBetweenDistanceUnits(height, m_distanceUnit, eDistanceUnitCentimeter);}
+	double GetOverlappingWidth(void) {return ConvertBetweenDistanceUnits(m_overlappingWidth, m_distanceUnit, eDistanceUnitCentimeter);}
+	double GetOverlappingHeight(void) {return ConvertBetweenDistanceUnits(m_overlappingHeight, m_distanceUnit, eDistanceUnitCentimeter);}
 
 	void SetPosterWidth(enum ePosterSizeModes mode, double width)
 	{
@@ -352,29 +357,6 @@ public:
 		GetPaperSize(paperWidth, paperHeight);
 		GetPreviewSize(paperWidth, paperHeight, boxWidth, boxHeight, previewWidth, previewHeight, true);
 	}
-
-	virtual void GetPaperPreview(unsigned char* buffer, int pixelWidth, int pixelHeight, bool withOverlap)
-	{
-		// drawing the whole paper sheet
-		memset(buffer, 128, pixelWidth*pixelHeight*3);
-
-		// drawing the printable area
-		double paperWidth, paperHeight;
-		GetPaperSize(paperWidth, paperHeight);
-		double factor = (double)pixelWidth/paperWidth;
-
-		int borderTop = (int)(GetPaperBorderTop() * factor);
-		int borderRight = (int)(GetPaperBorderRight() * factor);
-		int borderBottom = (int)(GetPaperBorderBottom() * factor);
-		int borderLeft = (int)(GetPaperBorderLeft() * factor);
-		int printableAreaPixelRows = MAX(0, pixelWidth - borderLeft - borderRight);
-		int printableAreaPixelLines = pixelHeight - borderTop - borderBottom;
-
-		for (int row = borderTop; row < printableAreaPixelLines+borderTop; row++)
-		{
-			memset(buffer+ (row*pixelWidth + borderLeft)*3, 200, printableAreaPixelRows*3);
-		}
-	}
 	
 	void GetImage(PaintCanvasInterface *paintCanvas)
 	{
@@ -406,7 +388,7 @@ public:
 				paintCanvas->DrawImage(0 + x_offset, 0 + y_offset, boxWidth, boxHeight);
 			}
 		}
-		else if (strcmp(state, "paper") == 0)
+		else if (strcmp(state, "paper") == 0 || strcmp(state, "overlapping") == 0)
 		{
 			double paperWidth, paperHeight;
 			GetPaperSize(paperWidth, paperHeight);
@@ -418,9 +400,22 @@ public:
 			int borderRight = (int)(GetPaperBorderRight() * factor);
 			int borderBottom = (int)(GetPaperBorderBottom() * factor);
 			int borderLeft = (int)(GetPaperBorderLeft() * factor);
+			int printableAreaWidth = boxWidth - borderLeft - borderRight;
+			int printableAreaHeight = boxHeight - borderTop - borderBottom;
 			
 			paintCanvas->DrawFilledRect(0 + x_offset, 0 + y_offset, boxWidth, boxHeight, 128, 128, 128);
-			paintCanvas->DrawFilledRect(0 + borderLeft + x_offset, 0 + borderTop + y_offset, boxWidth - borderLeft - borderRight, boxHeight - borderTop - borderBottom, 200, 200, 200);
+			paintCanvas->DrawFilledRect(0 + borderLeft + x_offset, 0 + borderTop + y_offset, printableAreaWidth, printableAreaHeight, 230, 230, 230);
+
+			if (strcmp(state, "overlapping") == 0)
+			{
+				int overlappingWidth = (int)(GetOverlappingWidth() * factor);
+				int overlappingHeight = (int)(GetOverlappingHeight() * factor);
+				int overlappingTop = boxHeight - borderBottom - overlappingHeight;
+				int overlappingLeft = boxWidth - borderRight - overlappingWidth;
+				
+				paintCanvas->DrawFilledRect(borderLeft + x_offset, overlappingTop + y_offset, printableAreaWidth, overlappingHeight, 255, 128, 128);
+				paintCanvas->DrawFilledRect(overlappingLeft + x_offset, borderTop + y_offset, overlappingWidth, printableAreaHeight, 255, 128, 128);
+			}
 		}
 	}
 };
