@@ -18,8 +18,8 @@ private:
 	int                    m_sheetsColumns;
 	int                    m_sheetsRows;
 
-	float                  m_overlappingWidth;
-	float                  m_overlappingHeight;
+	double                 m_overlappingWidth;
+	double                 m_overlappingHeight;
 
 	enum ePosterSizeModes  m_posterSizeMode;
 	double                 m_posterWidth;
