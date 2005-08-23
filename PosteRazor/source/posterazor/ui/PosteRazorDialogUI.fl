@@ -7,7 +7,7 @@ decl {\#include "Fl_Paint_Canvas.h"} {public
 
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {400 270 620 455} type Double resizable
+  xywh {549 407 620 455} type Double resizable
   code0 {size_range(this->w(), this->h());}
   class Fl_Double_Window visible
 } {
@@ -32,7 +32,7 @@ widget_class PosteRazorDialogUI {
     user_data this open
     xywh {315 45 295 365} box THIN_DOWN_BOX
   } {
-    Fl_Group m_loadInputImageStep {
+    Fl_Group m_loadInputImageStep {open
       xywh {315 45 295 365} color 50 hide
     } {
       Fl_Group {} {
@@ -49,7 +49,7 @@ widget_class PosteRazorDialogUI {
         }
       }
       Fl_Group m_imageInfoGroup {
-        label {Image information} open
+        label {Image information}
         xywh {325 120 275 85} box THIN_DOWN_BOX color 45
       } {
         Fl_Box m_imageInfoValuesLabel {
@@ -64,7 +64,7 @@ widget_class PosteRazorDialogUI {
       }
     }
     Fl_Group m_paperSizeStep {open
-      xywh {315 45 295 365}
+      xywh {315 45 295 365} hide
     } {
       Fl_Tabs m_paperFormatTypeTabs {
         callback {HandlePaperSizeChangement();} open
@@ -124,7 +124,7 @@ widget_class PosteRazorDialogUI {
           }
         }
         Fl_Group m_paperFormatCustomGroup {
-          label Custom open selected
+          label Custom open
           xywh {325 80 275 260} box THIN_UP_BOX color 45 selection_color 40 hide
         } {
           Fl_Value_Input m_paperCustomWidthInput {
@@ -184,6 +184,38 @@ widget_class PosteRazorDialogUI {
       }
       Fl_Box {} {
         xywh {315 400 295 10} resizable
+      }
+    }
+    Fl_Group m_overlappingStep {open
+      xywh {315 45 295 365}
+    } {
+      Fl_Group {} {
+        label {Overlapping size} open
+        xywh {325 70 275 75} box THIN_DOWN_BOX color 45 selection_color 54
+      } {
+        Fl_Value_Input m_overlappingWidthInput {
+          label {Width:}
+          callback {HandleOverlappingChangement();}
+          xywh {430 80 90 25} maximum 999 step 0.1
+          code0 {o->precision(2);}
+        }
+        Fl_Value_Input m_overlappingHeightInput {
+          label {Height:}
+          callback {HandleOverlappingChangement();} selected
+          xywh {430 110 90 25} maximum 999 step 0.1 resizable
+          code0 {o->precision(2);}
+        }
+        Fl_Box m_overlappingWidthLabel {
+          label cm
+          xywh {520 80 70 25} align 20
+        }
+        Fl_Box m_overlappingHeightLabel {
+          label cm
+          xywh {520 110 70 25} align 20
+        }
+      }
+      Fl_Box {} {
+        xywh {310 410 295 0} resizable
       }
     }
     Fl_Group m_posterSizeStep {
@@ -280,7 +312,7 @@ widget_class PosteRazorDialogUI {
         xywh {315 410 295 0} resizable
       }
     }
-    Fl_Group {} {
+    Fl_Group {} {open
       xywh {315 45 295 365} hide
     } {}
     Fl_Group m_savePosterStep {open
@@ -316,6 +348,11 @@ widget_class PosteRazorDialogUI {
   decl {virtual void SetPaperSizeFields(void) = 0;} {public
   }
   decl {virtual void HandlePaperSizeChangement(void) = 0;} {public
+  }
+  decl {// ****** Overlapping step:} {}
+  decl {virtual void SetOverlappingFields(void) = 0;} {public
+  }
+  decl {virtual void HandleOverlappingChangement(void) = 0;} {public
   }
   decl {// ****** Poster size step:} {}
   decl {virtual void UpdatePosterSizeGroupsState(void) = 0;} {public

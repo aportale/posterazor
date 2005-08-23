@@ -110,6 +110,19 @@ private:
   void cb_m_paperBorderCustomLeftInput_i(Fl_Value_Input*, void*);
   static void cb_m_paperBorderCustomLeftInput(Fl_Value_Input*, void*);
 public:
+  Fl_Group *m_overlappingStep;
+  Fl_Value_Input *m_overlappingWidthInput;
+private:
+  void cb_m_overlappingWidthInput_i(Fl_Value_Input*, void*);
+  static void cb_m_overlappingWidthInput(Fl_Value_Input*, void*);
+public:
+  Fl_Value_Input *m_overlappingHeightInput;
+private:
+  void cb_m_overlappingHeightInput_i(Fl_Value_Input*, void*);
+  static void cb_m_overlappingHeightInput(Fl_Value_Input*, void*);
+public:
+  Fl_Box *m_overlappingWidthLabel;
+  Fl_Box *m_overlappingHeightLabel;
   Fl_Group *m_posterSizeStep;
   Fl_Round_Button *m_posterSizeAbsoluteRadioButton;
 private:
@@ -168,6 +181,8 @@ public:
   virtual void LoadInputImage(void) = 0;
   virtual void SetPaperSizeFields(void) = 0;
   virtual void HandlePaperSizeChangement(void) = 0;
+  virtual void SetOverlappingFields(void) = 0;
+  virtual void HandleOverlappingChangement(void) = 0;
   virtual void UpdatePosterSizeGroupsState(void) = 0;
   virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;
 };

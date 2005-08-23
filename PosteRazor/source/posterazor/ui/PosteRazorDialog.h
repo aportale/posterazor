@@ -29,6 +29,9 @@ public:
 	static void HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userData);
 	void HandlePaperSizeChangement(void);
 
+	void SetOverlappingFields(void);
+	void HandleOverlappingChangement(void);
+
 	void UpdatePosterSizeFields(Fl_Valuator *sourceWidget);
 	void UpdatePosterSizeGroupsState(void);
 };

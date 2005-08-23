@@ -114,6 +114,20 @@ void PosteRazorDialogUI::cb_m_paperBorderCustomLeftInput(Fl_Value_Input* o, void
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderCustomLeftInput_i(o,v);
 }
 
+void PosteRazorDialogUI::cb_m_overlappingWidthInput_i(Fl_Value_Input*, void*) {
+  HandleOverlappingChangement();
+}
+void PosteRazorDialogUI::cb_m_overlappingWidthInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_overlappingWidthInput_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_overlappingHeightInput_i(Fl_Value_Input*, void*) {
+  HandleOverlappingChangement();
+}
+void PosteRazorDialogUI::cb_m_overlappingHeightInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_overlappingHeightInput_i(o,v);
+}
+
 void PosteRazorDialogUI::cb_m_posterSizeAbsoluteRadioButton_i(Fl_Round_Button*, void*) {
   UpdatePosterSizeGroupsState();
 }
@@ -240,6 +254,7 @@ o->when(FL_WHEN_RELEASE);
     o->end();
   }
   { Fl_Group* o = m_paperSizeStep = new Fl_Group(315, 45, 295, 365);
+    o->hide();
     { Fl_Tabs* o = m_paperFormatTypeTabs = new Fl_Tabs(325, 55, 275, 285);
       o->callback((Fl_Callback*)cb_m_paperFormatTypeTabs);
       o->align(FL_ALIGN_CENTER);
@@ -365,6 +380,37 @@ o->when(FL_WHEN_RELEASE);
       o->end();
     }
     { Fl_Box* o = new Fl_Box(315, 400, 295, 10);
+      Fl_Group::current()->resizable(o);
+    }
+    o->end();
+  }
+  { Fl_Group* o = m_overlappingStep = new Fl_Group(315, 45, 295, 365);
+    { Fl_Group* o = new Fl_Group(325, 70, 275, 75, "Overlapping size");
+      o->box(FL_THIN_DOWN_BOX);
+      o->color(FL_DARK2);
+      o->selection_color(FL_LIGHT3);
+      { Fl_Value_Input* o = m_overlappingWidthInput = new Fl_Value_Input(430, 80, 90, 25, "Width:");
+        o->maximum(999);
+        o->step(0.1);
+        o->callback((Fl_Callback*)cb_m_overlappingWidthInput);
+        o->precision(2);
+      }
+      { Fl_Value_Input* o = m_overlappingHeightInput = new Fl_Value_Input(430, 110, 90, 25, "Height:");
+        o->maximum(999);
+        o->step(0.1);
+        o->callback((Fl_Callback*)cb_m_overlappingHeightInput);
+        Fl_Group::current()->resizable(o);
+        o->precision(2);
+      }
+      { Fl_Box* o = m_overlappingWidthLabel = new Fl_Box(520, 80, 70, 25, "cm");
+        o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
+      }
+      { Fl_Box* o = m_overlappingHeightLabel = new Fl_Box(520, 110, 70, 25, "cm");
+        o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
+      }
+      o->end();
+    }
+    { Fl_Box* o = new Fl_Box(310, 410, 295, 0);
       Fl_Group::current()->resizable(o);
     }
     o->end();
@@ -497,6 +543,7 @@ o->when(FL_WHEN_RELEASE);
 }
 // ****** Load input image step:
 // ****** Paper size step:
+// ****** Overlapping step:
 // ****** Poster size step:
 size_range(this->w(), this->h());
 end();
