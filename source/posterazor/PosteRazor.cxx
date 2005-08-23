@@ -18,8 +18,10 @@ private:
 	int                    m_sheetsColumns;
 	int                    m_sheetsRows;
 
-	double                 m_overlappingWidth;
-	double                 m_overlappingHeight;
+	double                 m_overlappingStandardWidth;
+	double                 m_overlappingStandardHeight;
+	double                 m_overlappingCustomWidth;
+	double                 m_overlappingCustomHeight;
 
 	enum ePosterSizeModes  m_posterSizeMode;
 	double                 m_posterWidth;
@@ -65,8 +67,10 @@ public:
 		m_customPaperHeight            = 20;
 
 		m_borderPosition               = eBorderPositionRightBottom;
-		m_overlappingWidth             = 2.0;
-		m_overlappingHeight            = 2.0;
+		m_overlappingStandardWidth     = 2.0;
+		m_overlappingStandardHeight    = 2.0;
+		m_overlappingCustomWidth       = 2.0;
+		m_overlappingCustomHeight      = 2.0;
 
 		m_distanceUnit                 = eDistanceUnitCentimeter;
 		m_lastEditedSizeWasWidth       = true;
@@ -169,7 +173,7 @@ public:
 		double printablePaperAreaWidth, printablePaperAreaHeight;
 		GetPrintablePaperAreaSize(printablePaperAreaWidth, printablePaperAreaHeight);
 		double printablePaperAreaDimension = ConvertBetweenDistanceUnits(width?printablePaperAreaWidth:printablePaperAreaHeight, m_distanceUnit, eDistanceUnitCentimeter);
-		double overlappingDimension = width?m_overlappingWidth:m_overlappingHeight;
+		double overlappingDimension = width?GetOverlappingWidth():GetOverlappingHeight();
 
 		if (pagesToAbsolute)
 		{
@@ -257,10 +261,14 @@ public:
 		CalculateAspectRatio();
 	}
 
-	void SetOverlappingWidth(double width) {m_overlappingWidth = ConvertBetweenDistanceUnits(width, m_distanceUnit, eDistanceUnitCentimeter);}
-	void SetOverlappingHeight(double height) {m_overlappingHeight = ConvertBetweenDistanceUnits(height, m_distanceUnit, eDistanceUnitCentimeter);}
-	double GetOverlappingWidth(void) {return ConvertBetweenDistanceUnits(m_overlappingWidth, m_distanceUnit, eDistanceUnitCentimeter);}
-	double GetOverlappingHeight(void) {return ConvertBetweenDistanceUnits(m_overlappingHeight, m_distanceUnit, eDistanceUnitCentimeter);}
+	void SetOverlappingWidth(double width, bool customPaperSize) {(customPaperSize?m_overlappingCustomWidth:m_overlappingStandardWidth) = ConvertBetweenDistanceUnits(width, m_distanceUnit, eDistanceUnitCentimeter);}
+	void SetOverlappingHeight(double height, bool customPaperSize) {(customPaperSize?m_overlappingCustomHeight:m_overlappingStandardHeight) = ConvertBetweenDistanceUnits(height, m_distanceUnit, eDistanceUnitCentimeter);}
+	void SetOverlappingWidth(double width) {SetOverlappingWidth(width, GetUseCustomPaperSize());}
+	void SetOverlappingHeight(double height) {SetOverlappingHeight(height, GetUseCustomPaperSize());}
+	double GetOverlappingWidth(bool customPaperSize) {return ConvertBetweenDistanceUnits(customPaperSize?m_overlappingCustomWidth:m_overlappingStandardWidth, m_distanceUnit, eDistanceUnitCentimeter);}
+	double GetOverlappingHeight(bool customPaperSize) {return ConvertBetweenDistanceUnits(customPaperSize?m_overlappingCustomHeight:m_overlappingStandardHeight, m_distanceUnit, eDistanceUnitCentimeter);}
+	double GetOverlappingWidth(void) {return GetOverlappingWidth(GetUseCustomPaperSize());}
+	double GetOverlappingHeight(void) {return GetOverlappingHeight(GetUseCustomPaperSize());}
 
 	void SetPosterWidth(enum ePosterSizeModes mode, double width)
 	{

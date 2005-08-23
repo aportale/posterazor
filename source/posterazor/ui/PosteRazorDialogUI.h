@@ -57,26 +57,6 @@ private:
   void cb_m_paperOrientationLandscapeRadioButton_i(Fl_Round_Button*, void*);
   static void cb_m_paperOrientationLandscapeRadioButton(Fl_Round_Button*, void*);
 public:
-  Fl_Value_Input *m_paperBorderStandardTopInput;
-private:
-  void cb_m_paperBorderStandardTopInput_i(Fl_Value_Input*, void*);
-  static void cb_m_paperBorderStandardTopInput(Fl_Value_Input*, void*);
-public:
-  Fl_Value_Input *m_paperBorderStandardRightInput;
-private:
-  void cb_m_paperBorderStandardRightInput_i(Fl_Value_Input*, void*);
-  static void cb_m_paperBorderStandardRightInput(Fl_Value_Input*, void*);
-public:
-  Fl_Value_Input *m_paperBorderStandardBottomInput;
-private:
-  void cb_m_paperBorderStandardBottomInput_i(Fl_Value_Input*, void*);
-  static void cb_m_paperBorderStandardBottomInput(Fl_Value_Input*, void*);
-public:
-  Fl_Value_Input *m_paperBorderStandardLeftInput;
-private:
-  void cb_m_paperBorderStandardLeftInput_i(Fl_Value_Input*, void*);
-  static void cb_m_paperBorderStandardLeftInput(Fl_Value_Input*, void*);
-public:
   Fl_Group *m_paperFormatCustomGroup;
   Fl_Value_Input *m_paperCustomWidthInput;
 private:
@@ -90,25 +70,25 @@ private:
 public:
   Fl_Box *m_paperCustomWidthLabel;
   Fl_Box *m_paperCustomHeightLabel;
-  Fl_Value_Input *m_paperBorderCustomTopInput;
+  Fl_Value_Input *m_paperBorderTopInput;
 private:
-  void cb_m_paperBorderCustomTopInput_i(Fl_Value_Input*, void*);
-  static void cb_m_paperBorderCustomTopInput(Fl_Value_Input*, void*);
+  void cb_m_paperBorderTopInput_i(Fl_Value_Input*, void*);
+  static void cb_m_paperBorderTopInput(Fl_Value_Input*, void*);
 public:
-  Fl_Value_Input *m_paperBorderCustomRightInput;
+  Fl_Value_Input *m_paperBorderRightInput;
 private:
-  void cb_m_paperBorderCustomRightInput_i(Fl_Value_Input*, void*);
-  static void cb_m_paperBorderCustomRightInput(Fl_Value_Input*, void*);
+  void cb_m_paperBorderRightInput_i(Fl_Value_Input*, void*);
+  static void cb_m_paperBorderRightInput(Fl_Value_Input*, void*);
 public:
-  Fl_Value_Input *m_paperBorderCustomBottomInput;
+  Fl_Value_Input *m_paperBorderBottomInput;
 private:
-  void cb_m_paperBorderCustomBottomInput_i(Fl_Value_Input*, void*);
-  static void cb_m_paperBorderCustomBottomInput(Fl_Value_Input*, void*);
+  void cb_m_paperBorderBottomInput_i(Fl_Value_Input*, void*);
+  static void cb_m_paperBorderBottomInput(Fl_Value_Input*, void*);
 public:
-  Fl_Value_Input *m_paperBorderCustomLeftInput;
+  Fl_Value_Input *m_paperBorderLeftInput;
 private:
-  void cb_m_paperBorderCustomLeftInput_i(Fl_Value_Input*, void*);
-  static void cb_m_paperBorderCustomLeftInput(Fl_Value_Input*, void*);
+  void cb_m_paperBorderLeftInput_i(Fl_Value_Input*, void*);
+  static void cb_m_paperBorderLeftInput(Fl_Value_Input*, void*);
 public:
   Fl_Group *m_overlappingStep;
   Fl_Value_Input *m_overlappingWidthInput;
@@ -180,7 +160,7 @@ public:
   virtual void UpdateNavigationButtons(void) = 0;
   virtual void LoadInputImage(void) = 0;
   virtual void SetPaperSizeFields(void) = 0;
-  virtual void HandlePaperSizeChangement(void) = 0;
+  virtual void HandlePaperSizeChangement(Fl_Widget* sourceWidget) = 0;
   virtual void SetOverlappingFields(void) = 0;
   virtual void HandleOverlappingChangement(void) = 0;
   virtual void UpdatePosterSizeGroupsState(void) = 0;
