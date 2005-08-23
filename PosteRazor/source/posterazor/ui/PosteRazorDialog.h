@@ -27,7 +27,7 @@ public:
 
 	void SetPaperSizeFields(void);
 	static void HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userData);
-	void HandlePaperSizeChangement(void);
+	void HandlePaperSizeChangement(Fl_Widget *sourceWidget);
 
 	void SetOverlappingFields(void);
 	void HandleOverlappingChangement(void);

@@ -74,8 +74,12 @@ public:
 	virtual void GetPaperSize(double &width, double &height) = 0;
 	virtual void GetPrintablePaperAreaSize(double &width, double &height) = 0;
 
+	virtual void SetOverlappingWidth(double width, bool customPaperSize) = 0;
+	virtual void SetOverlappingHeight(double height, bool customPaperSize) = 0;
 	virtual void SetOverlappingWidth(double width) = 0;
 	virtual void SetOverlappingHeight(double height) = 0;
+	virtual double GetOverlappingWidth(bool customPaperSize) = 0;
+	virtual double GetOverlappingHeight(bool customPaperSize) = 0;
 	virtual double GetOverlappingWidth(void) = 0;
 	virtual double GetOverlappingHeight(void) = 0;
 	

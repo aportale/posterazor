@@ -24,94 +24,66 @@ void PosteRazorDialogUI::cb_(Fl_Button* o, void* v) {
 }
 
 void PosteRazorDialogUI::cb_m_paperFormatTypeTabs_i(Fl_Tabs*, void*) {
-  HandlePaperSizeChangement();
+  HandlePaperSizeChangement(m_paperFormatTypeTabs);
 }
 void PosteRazorDialogUI::cb_m_paperFormatTypeTabs(Fl_Tabs* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->user_data()))->cb_m_paperFormatTypeTabs_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_paperOrientationPortraitRadioButton_i(Fl_Round_Button*, void*) {
-  HandlePaperSizeChangement();
+  HandlePaperSizeChangement(m_paperOrientationPortraitRadioButton);
 }
 void PosteRazorDialogUI::cb_m_paperOrientationPortraitRadioButton(Fl_Round_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperOrientationPortraitRadioButton_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_paperOrientationLandscapeRadioButton_i(Fl_Round_Button*, void*) {
-  HandlePaperSizeChangement();
+  HandlePaperSizeChangement(m_paperOrientationLandscapeRadioButton);
 }
 void PosteRazorDialogUI::cb_m_paperOrientationLandscapeRadioButton(Fl_Round_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperOrientationLandscapeRadioButton_i(o,v);
 }
 
-void PosteRazorDialogUI::cb_m_paperBorderStandardTopInput_i(Fl_Value_Input*, void*) {
-  HandlePaperSizeChangement();
-}
-void PosteRazorDialogUI::cb_m_paperBorderStandardTopInput(Fl_Value_Input* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderStandardTopInput_i(o,v);
-}
-
-void PosteRazorDialogUI::cb_m_paperBorderStandardRightInput_i(Fl_Value_Input*, void*) {
-  HandlePaperSizeChangement();
-}
-void PosteRazorDialogUI::cb_m_paperBorderStandardRightInput(Fl_Value_Input* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderStandardRightInput_i(o,v);
-}
-
-void PosteRazorDialogUI::cb_m_paperBorderStandardBottomInput_i(Fl_Value_Input*, void*) {
-  HandlePaperSizeChangement();
-}
-void PosteRazorDialogUI::cb_m_paperBorderStandardBottomInput(Fl_Value_Input* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderStandardBottomInput_i(o,v);
-}
-
-void PosteRazorDialogUI::cb_m_paperBorderStandardLeftInput_i(Fl_Value_Input*, void*) {
-  HandlePaperSizeChangement();
-}
-void PosteRazorDialogUI::cb_m_paperBorderStandardLeftInput(Fl_Value_Input* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderStandardLeftInput_i(o,v);
-}
-
 void PosteRazorDialogUI::cb_m_paperCustomWidthInput_i(Fl_Value_Input*, void*) {
-  HandlePaperSizeChangement();
+  HandlePaperSizeChangement(m_paperCustomWidthInput);
 }
 void PosteRazorDialogUI::cb_m_paperCustomWidthInput(Fl_Value_Input* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperCustomWidthInput_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_paperCustomHeightInput_i(Fl_Value_Input*, void*) {
-  HandlePaperSizeChangement();
+  HandlePaperSizeChangement(m_paperCustomHeightInput);
 }
 void PosteRazorDialogUI::cb_m_paperCustomHeightInput(Fl_Value_Input* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperCustomHeightInput_i(o,v);
 }
 
-void PosteRazorDialogUI::cb_m_paperBorderCustomTopInput_i(Fl_Value_Input*, void*) {
-  HandlePaperSizeChangement();
+void PosteRazorDialogUI::cb_m_paperBorderTopInput_i(Fl_Value_Input*, void*) {
+  HandlePaperSizeChangement(m_paperBorderTopInput);
 }
-void PosteRazorDialogUI::cb_m_paperBorderCustomTopInput(Fl_Value_Input* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderCustomTopInput_i(o,v);
-}
-
-void PosteRazorDialogUI::cb_m_paperBorderCustomRightInput_i(Fl_Value_Input*, void*) {
-  HandlePaperSizeChangement();
-}
-void PosteRazorDialogUI::cb_m_paperBorderCustomRightInput(Fl_Value_Input* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderCustomRightInput_i(o,v);
+void PosteRazorDialogUI::cb_m_paperBorderTopInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderTopInput_i(o,v);
 }
 
-void PosteRazorDialogUI::cb_m_paperBorderCustomBottomInput_i(Fl_Value_Input*, void*) {
-  HandlePaperSizeChangement();
+void PosteRazorDialogUI::cb_m_paperBorderRightInput_i(Fl_Value_Input*, void*) {
+  HandlePaperSizeChangement(m_paperBorderRightInput);
 }
-void PosteRazorDialogUI::cb_m_paperBorderCustomBottomInput(Fl_Value_Input* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderCustomBottomInput_i(o,v);
+void PosteRazorDialogUI::cb_m_paperBorderRightInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderRightInput_i(o,v);
 }
 
-void PosteRazorDialogUI::cb_m_paperBorderCustomLeftInput_i(Fl_Value_Input*, void*) {
-  HandlePaperSizeChangement();
+void PosteRazorDialogUI::cb_m_paperBorderBottomInput_i(Fl_Value_Input*, void*) {
+  HandlePaperSizeChangement(m_paperBorderBottomInput);
 }
-void PosteRazorDialogUI::cb_m_paperBorderCustomLeftInput(Fl_Value_Input* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderCustomLeftInput_i(o,v);
+void PosteRazorDialogUI::cb_m_paperBorderBottomInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderBottomInput_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_paperBorderLeftInput_i(Fl_Value_Input*, void*) {
+  HandlePaperSizeChangement(m_paperBorderLeftInput);
+}
+void PosteRazorDialogUI::cb_m_paperBorderLeftInput(Fl_Value_Input* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_paperBorderLeftInput_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_overlappingWidthInput_i(Fl_Value_Input*, void*) {
@@ -254,13 +226,11 @@ o->when(FL_WHEN_RELEASE);
     o->end();
   }
   { Fl_Group* o = m_paperSizeStep = new Fl_Group(315, 45, 295, 365);
-    o->hide();
-    { Fl_Tabs* o = m_paperFormatTypeTabs = new Fl_Tabs(325, 55, 275, 285);
+    { Fl_Tabs* o = m_paperFormatTypeTabs = new Fl_Tabs(325, 55, 275, 140);
       o->callback((Fl_Callback*)cb_m_paperFormatTypeTabs);
       o->align(FL_ALIGN_CENTER);
-      { Fl_Group* o = m_paperFormatStandardGroup = new Fl_Group(325, 80, 275, 260, "Standard");
+      { Fl_Group* o = m_paperFormatStandardGroup = new Fl_Group(325, 80, 275, 115, "Standard");
         o->box(FL_THIN_UP_BOX);
-        o->color(FL_DARK2);
         o->selection_color((Fl_Color)40);
         { Fl_Choice* o = m_paperFormatChoice = new Fl_Choice(425, 90, 165, 25, "Format:");
           o->down_box(FL_BORDER_BOX);
@@ -281,99 +251,32 @@ o->when(FL_WHEN_RELEASE);
           }
           o->end();
         }
-        { Fl_Group* o = new Fl_Group(425, 195, 165, 135, "Borders:");
-          o->box(FL_THIN_DOWN_BOX);
-          o->color((Fl_Color)43);
-          o->align(FL_ALIGN_LEFT);
-          { Fl_Value_Input* o = m_paperBorderStandardTopInput = new Fl_Value_Input(485, 220, 50, 25, "Top");
-            o->maximum(999);
-            o->step(0.1);
-            o->callback((Fl_Callback*)cb_m_paperBorderStandardTopInput);
-            o->align(FL_ALIGN_TOP);
-            o->precision(2);
-          }
-          { Fl_Value_Input* o = m_paperBorderStandardRightInput = new Fl_Value_Input(530, 250, 50, 25, "Right");
-            o->maximum(999);
-            o->step(0.1);
-            o->callback((Fl_Callback*)cb_m_paperBorderStandardRightInput);
-            o->align(FL_ALIGN_TOP_RIGHT);
-            o->precision(2);
-          }
-          { Fl_Value_Input* o = m_paperBorderStandardBottomInput = new Fl_Value_Input(485, 280, 50, 25, "Bottom");
-            o->maximum(999);
-            o->step(0.1);
-            o->callback((Fl_Callback*)cb_m_paperBorderStandardBottomInput);
-            o->align(FL_ALIGN_BOTTOM);
-            o->precision(2);
-          }
-          { Fl_Value_Input* o = m_paperBorderStandardLeftInput = new Fl_Value_Input(440, 250, 50, 25, "Left");
-            o->maximum(999);
-            o->step(0.1);
-            o->callback((Fl_Callback*)cb_m_paperBorderStandardLeftInput);
-            o->align(FL_ALIGN_TOP_LEFT);
-            o->precision(2);
-          }
-          o->end();
-        }
         o->end();
       }
-      { Fl_Group* o = m_paperFormatCustomGroup = new Fl_Group(325, 80, 275, 260, "Custom");
+      { Fl_Group* o = m_paperFormatCustomGroup = new Fl_Group(325, 80, 275, 115, "Custom");
         o->box(FL_THIN_UP_BOX);
-        o->color(FL_DARK2);
         o->selection_color((Fl_Color)40);
         o->hide();
-        { Fl_Value_Input* o = m_paperCustomWidthInput = new Fl_Value_Input(425, 90, 95, 25, "Width:");
-          o->callback((Fl_Callback*)cb_m_paperCustomWidthInput);
+        { Fl_Value_Input* o = m_paperCustomWidthInput = new Fl_Value_Input(425, 107, 95, 25, "Width:");
+          o->maximum(999);
           o->step(0.1);
-          o->range(0, 999);
+          o->callback((Fl_Callback*)cb_m_paperCustomWidthInput);
           o->precision(2);
         }
-        { Fl_Value_Input* o = m_paperCustomHeightInput = new Fl_Value_Input(425, 125, 95, 25, "Height:");
+        { Fl_Value_Input* o = m_paperCustomHeightInput = new Fl_Value_Input(425, 142, 95, 25, "Height:");
+          o->maximum(999);
+          o->step(0.1);
           o->callback((Fl_Callback*)cb_m_paperCustomHeightInput);
           Fl_Group::current()->resizable(o);
           o->step(0.1);
           o->range(0, 999);
           o->precision(2);
         }
-        { Fl_Box* o = m_paperCustomWidthLabel = new Fl_Box(520, 90, 50, 25, "cm");
+        { Fl_Box* o = m_paperCustomWidthLabel = new Fl_Box(520, 107, 50, 25, "cm");
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         }
-        { Fl_Box* o = m_paperCustomHeightLabel = new Fl_Box(520, 125, 50, 25, "cm");
+        { Fl_Box* o = m_paperCustomHeightLabel = new Fl_Box(520, 142, 50, 25, "cm");
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-        }
-        { Fl_Group* o = new Fl_Group(425, 195, 165, 135, "Borders:");
-          o->box(FL_THIN_DOWN_BOX);
-          o->color((Fl_Color)43);
-          o->align(FL_ALIGN_LEFT);
-          { Fl_Value_Input* o = m_paperBorderCustomTopInput = new Fl_Value_Input(485, 220, 50, 25, "Top");
-            o->maximum(999);
-            o->step(0.1);
-            o->callback((Fl_Callback*)cb_m_paperBorderCustomTopInput);
-            o->align(FL_ALIGN_TOP);
-            o->precision(2);
-          }
-          { Fl_Value_Input* o = m_paperBorderCustomRightInput = new Fl_Value_Input(530, 250, 50, 25, "Right");
-            o->maximum(999);
-            o->step(0.1);
-            o->callback((Fl_Callback*)cb_m_paperBorderCustomRightInput);
-            o->align(FL_ALIGN_TOP_RIGHT);
-            o->precision(2);
-          }
-          { Fl_Value_Input* o = m_paperBorderCustomBottomInput = new Fl_Value_Input(485, 280, 50, 25, "Bottom");
-            o->maximum(999);
-            o->step(0.1);
-            o->callback((Fl_Callback*)cb_m_paperBorderCustomBottomInput);
-            o->align(FL_ALIGN_BOTTOM);
-            o->precision(2);
-          }
-          { Fl_Value_Input* o = m_paperBorderCustomLeftInput = new Fl_Value_Input(440, 250, 50, 25, "Left");
-            o->maximum(999);
-            o->step(0.1);
-            o->callback((Fl_Callback*)cb_m_paperBorderCustomLeftInput);
-            o->align(FL_ALIGN_TOP_LEFT);
-            o->precision(2);
-          }
-          o->end();
         }
         o->end();
       }
@@ -382,9 +285,43 @@ o->when(FL_WHEN_RELEASE);
     { Fl_Box* o = new Fl_Box(315, 400, 295, 10);
       Fl_Group::current()->resizable(o);
     }
+    { Fl_Group* o = new Fl_Group(325, 221, 275, 135, "Borders:");
+      o->box(FL_THIN_DOWN_BOX);
+      o->color((Fl_Color)43);
+      { Fl_Value_Input* o = m_paperBorderTopInput = new Fl_Value_Input(430, 245, 60, 25, "Top");
+        o->maximum(999);
+        o->step(0.1);
+        o->callback((Fl_Callback*)cb_m_paperBorderTopInput);
+        o->align(FL_ALIGN_TOP);
+        o->precision(2);
+      }
+      { Fl_Value_Input* o = m_paperBorderRightInput = new Fl_Value_Input(490, 275, 60, 25, "Right");
+        o->maximum(999);
+        o->step(0.1);
+        o->callback((Fl_Callback*)cb_m_paperBorderRightInput);
+        o->align(FL_ALIGN_TOP_RIGHT);
+        o->precision(2);
+      }
+      { Fl_Value_Input* o = m_paperBorderBottomInput = new Fl_Value_Input(430, 305, 60, 25, "Bottom");
+        o->maximum(999);
+        o->step(0.1);
+        o->callback((Fl_Callback*)cb_m_paperBorderBottomInput);
+        o->align(FL_ALIGN_BOTTOM);
+        o->precision(2);
+      }
+      { Fl_Value_Input* o = m_paperBorderLeftInput = new Fl_Value_Input(370, 276, 60, 25, "Left");
+        o->maximum(999);
+        o->step(0.1);
+        o->callback((Fl_Callback*)cb_m_paperBorderLeftInput);
+        o->align(FL_ALIGN_TOP_LEFT);
+        o->precision(2);
+      }
+      o->end();
+    }
     o->end();
   }
   { Fl_Group* o = m_overlappingStep = new Fl_Group(315, 45, 295, 365);
+    o->hide();
     { Fl_Group* o = new Fl_Group(325, 70, 275, 75, "Overlapping size");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
@@ -410,7 +347,7 @@ o->when(FL_WHEN_RELEASE);
       }
       o->end();
     }
-    { Fl_Box* o = new Fl_Box(310, 410, 295, 0);
+    { Fl_Box* o = new Fl_Box(315, 410, 290, 0);
       Fl_Group::current()->resizable(o);
     }
     o->end();
