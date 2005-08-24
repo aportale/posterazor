@@ -759,7 +759,7 @@ o->when(FL_WHEN_RELEASE);
     o->end();
   }
   { Fl_Group* o = m_overlappingStep = new Fl_Group(315, 45, 295, 365);
-    { Fl_Group* o = new Fl_Group(325, 70, 275, 80, "Overlapping size");
+    { Fl_Group* o = new Fl_Group(325, 70, 275, 75, "Overlapping size");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       o->selection_color(FL_LIGHT3);
@@ -769,7 +769,7 @@ o->when(FL_WHEN_RELEASE);
         o->callback((Fl_Callback*)cb_m_overlappingWidthInput);
         o->precision(2);
       }
-      { Fl_Value_Input* o = m_overlappingHeightInput = new Fl_Value_Input(430, 115, 90, 25, "Height:");
+      { Fl_Value_Input* o = m_overlappingHeightInput = new Fl_Value_Input(430, 110, 90, 25, "Height:");
         o->maximum(999);
         o->step(0.1);
         o->callback((Fl_Callback*)cb_m_overlappingHeightInput);
@@ -779,7 +779,7 @@ o->when(FL_WHEN_RELEASE);
       { Fl_Box* o = m_overlappingWidthLabel = new Fl_Box(520, 80, 70, 25, "cm");
         o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
       }
-      { Fl_Box* o = m_overlappingHeightLabel = new Fl_Box(520, 115, 70, 25, "cm");
+      { Fl_Box* o = m_overlappingHeightLabel = new Fl_Box(520, 110, 70, 25, "cm");
         o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
       }
       o->end();
@@ -787,49 +787,49 @@ o->when(FL_WHEN_RELEASE);
     { Fl_Box* o = new Fl_Box(315, 410, 290, 0);
       Fl_Group::current()->resizable(o);
     }
-    { Fl_Group* o = new Fl_Group(325, 175, 275, 170, "Overlapping position");
+    { Fl_Group* o = new Fl_Group(325, 170, 275, 165, "Overlapping position");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       o->selection_color(FL_LIGHT3);
-      { Fl_Round_Button* o = m_overlappingTopRightRadioButton = new Fl_Round_Button(465, 180, 130, 80);
+      { Fl_Round_Button* o = m_overlappingTopRightRadioButton = new Fl_Round_Button(465, 178, 128, 75);
         o->type(102);
         o->down_box(FL_ROUND_DOWN_BOX);
         o->callback((Fl_Callback*)cb_m_overlappingTopRightRadioButton);
       }
-      { Fl_Box* o = m_overlappingTopRightBox = new Fl_Box(485, 185, 105, 70, "Top right");
+      { Fl_Box* o = m_overlappingTopRightBox = new Fl_Box(485, 180, 105, 70, "Top right");
         o->box(FL_THIN_DOWN_BOX);
         o->color((Fl_Color)41);
         o->image(image_overlappingTopRight);
         o->align(FL_ALIGN_WRAP);
       }
-      { Fl_Round_Button* o = m_overlappingBottomRightRadioButton = new Fl_Round_Button(465, 260, 130, 80);
+      { Fl_Round_Button* o = m_overlappingBottomRightRadioButton = new Fl_Round_Button(465, 253, 128, 75);
         o->type(102);
         o->down_box(FL_ROUND_DOWN_BOX);
         o->callback((Fl_Callback*)cb_m_overlappingBottomRightRadioButton);
       }
-      { Fl_Box* o = m_overlappingBottomRightBox = new Fl_Box(485, 265, 105, 70, "Bottom right");
+      { Fl_Box* o = m_overlappingBottomRightBox = new Fl_Box(485, 255, 105, 70, "Bottom right");
         o->box(FL_THIN_DOWN_BOX);
         o->color((Fl_Color)42);
         o->image(image_overlappingBottomRight);
         o->align(FL_ALIGN_WRAP);
       }
-      { Fl_Round_Button* o = m_overlappingTopLeftRadioButton = new Fl_Round_Button(330, 180, 130, 80);
+      { Fl_Round_Button* o = m_overlappingTopLeftRadioButton = new Fl_Round_Button(330, 178, 128, 75);
         o->type(102);
         o->down_box(FL_ROUND_DOWN_BOX);
         o->callback((Fl_Callback*)cb_m_overlappingTopLeftRadioButton);
       }
-      { Fl_Box* o = m_overlappingTopLeftBox = new Fl_Box(350, 185, 105, 70, "Top left");
+      { Fl_Box* o = m_overlappingTopLeftBox = new Fl_Box(350, 180, 105, 70, "Top left");
         o->box(FL_THIN_DOWN_BOX);
         o->color((Fl_Color)41);
         o->image(image_overlappingTopLeft);
         o->align(FL_ALIGN_WRAP);
       }
-      { Fl_Round_Button* o = m_overlappingBottomLeftRadioButton = new Fl_Round_Button(330, 260, 130, 80);
+      { Fl_Round_Button* o = m_overlappingBottomLeftRadioButton = new Fl_Round_Button(330, 253, 128, 75);
         o->type(102);
         o->down_box(FL_ROUND_DOWN_BOX);
         o->callback((Fl_Callback*)cb_m_overlappingBottomLeftRadioButton);
       }
-      { Fl_Box* o = m_overlappingBottomLeftBox = new Fl_Box(350, 265, 105, 70, "Bottom left");
+      { Fl_Box* o = m_overlappingBottomLeftBox = new Fl_Box(350, 255, 105, 70, "Bottom left");
         o->box(FL_THIN_DOWN_BOX);
         o->color((Fl_Color)42);
         o->image(image_overlappingBottomLeft);
