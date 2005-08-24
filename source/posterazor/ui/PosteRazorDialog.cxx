@@ -36,6 +36,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 	UpdatePreviewState();
 	SetPaperSizeFields();
 	SetOverlappingFields();
+
 }
 
 PosteRazorDialog::~PosteRazorDialog()
@@ -254,12 +255,29 @@ void PosteRazorDialog::SetOverlappingFields(void)
 {
 	m_overlappingWidthInput->value(m_posteRazor->GetOverlappingWidth());
 	m_overlappingHeightInput->value(m_posteRazor->GetOverlappingHeight());
+
+	enum PosteRazor::eOverlappingPositions overlappingPosition = m_posteRazor->GetOverlappingPosition();
+
+	(
+		overlappingPosition == PosteRazor::eOverlappingPositionBottomRight?m_overlappingBottomRightRadioButton
+		:overlappingPosition == PosteRazor::eOverlappingPositionBottomLeft?m_overlappingBottomLeftRadioButton
+		:overlappingPosition == PosteRazor::eOverlappingPositionTopLeft?m_overlappingTopLeftRadioButton
+		:m_overlappingTopRightRadioButton
+	)->value(1);
 }
 
-void PosteRazorDialog::HandleOverlappingChangement(void)
+void PosteRazorDialog::HandleOverlappingChangement(Fl_Widget *sourceWidget)
 {
 	m_posteRazor->SetOverlappingWidth(m_overlappingWidthInput->value());
 	m_posteRazor->SetOverlappingHeight(m_overlappingHeightInput->value());
+
+	m_posteRazor->SetOverlappingPosition
+	(
+		m_overlappingBottomRightRadioButton->value()?PosteRazor::eOverlappingPositionBottomRight
+		:m_overlappingBottomLeftRadioButton->value()?PosteRazor::eOverlappingPositionBottomLeft
+		:m_overlappingTopLeftRadioButton->value()?PosteRazor::eOverlappingPositionTopLeft
+		:PosteRazor::eOverlappingPositionTopRight
+	);
 
 	m_previewPaintCanvas->redraw();
 }

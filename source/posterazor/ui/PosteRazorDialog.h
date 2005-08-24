@@ -30,7 +30,7 @@ public:
 	void HandlePaperSizeChangement(Fl_Widget *sourceWidget);
 
 	void SetOverlappingFields(void);
-	void HandleOverlappingChangement(void);
+	void HandleOverlappingChangement(Fl_Widget *sourceWidget);
 
 	void UpdatePosterSizeFields(Fl_Valuator *sourceWidget);
 	void UpdatePosterSizeGroupsState(void);
