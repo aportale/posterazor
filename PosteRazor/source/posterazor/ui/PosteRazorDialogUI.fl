@@ -64,15 +64,15 @@ widget_class PosteRazorDialogUI {
       }
     }
     Fl_Group m_paperSizeStep {open
-      xywh {315 45 295 365}
+      xywh {315 45 295 365} hide
     } {
       Fl_Tabs m_paperFormatTypeTabs {
         callback {HandlePaperSizeChangement(m_paperFormatTypeTabs);} open
         xywh {325 55 275 140} align 0
       } {
         Fl_Group m_paperFormatStandardGroup {
-          label Standard open
-          xywh {325 80 275 115} box THIN_UP_BOX selection_color 40
+          label Standard
+          xywh {325 80 275 115} box THIN_UP_BOX selection_color 40 hide
         } {
           Fl_Choice m_paperFormatChoice {
             label {Format:} open
@@ -96,7 +96,7 @@ widget_class PosteRazorDialogUI {
         }
         Fl_Group m_paperFormatCustomGroup {
           label Custom open
-          xywh {325 80 275 115} box THIN_UP_BOX selection_color 40 hide
+          xywh {325 80 275 115} box THIN_UP_BOX selection_color 40
         } {
           Fl_Value_Input m_paperCustomWidthInput {
             label {Width:}
@@ -127,11 +127,11 @@ widget_class PosteRazorDialogUI {
       }
       Fl_Group {} {
         label {Borders:} open
-        xywh {325 221 275 135} box THIN_DOWN_BOX color 43
+        xywh {325 220 275 135} box THIN_DOWN_BOX color 43
       } {
         Fl_Value_Input m_paperBorderTopInput {
           label Top
-          callback {HandlePaperSizeChangement(m_paperBorderTopInput);} selected
+          callback {HandlePaperSizeChangement(m_paperBorderTopInput);}
           xywh {430 245 60 25} align 1 maximum 999 step 0.1
           code0 {o->precision(2);}
         }
@@ -150,28 +150,28 @@ widget_class PosteRazorDialogUI {
         Fl_Value_Input m_paperBorderLeftInput {
           label Left
           callback {HandlePaperSizeChangement(m_paperBorderLeftInput);}
-          xywh {370 276 60 25} align 5 maximum 999 step 0.1
+          xywh {370 275 60 25} align 5 maximum 999 step 0.1
           code0 {o->precision(2);}
         }
       }
     }
     Fl_Group m_overlappingStep {open
-      xywh {315 45 295 365} hide
+      xywh {315 45 295 365}
     } {
       Fl_Group {} {
         label {Overlapping size} open
-        xywh {325 70 275 75} box THIN_DOWN_BOX color 45 selection_color 54
+        xywh {325 70 275 80} box THIN_DOWN_BOX color 45 selection_color 54
       } {
         Fl_Value_Input m_overlappingWidthInput {
           label {Width:}
-          callback {HandleOverlappingChangement();}
+          callback {HandleOverlappingChangement(m_overlappingWidthInput);}
           xywh {430 80 90 25} maximum 999 step 0.1
           code0 {o->precision(2);}
         }
         Fl_Value_Input m_overlappingHeightInput {
           label {Height:}
-          callback {HandleOverlappingChangement();}
-          xywh {430 110 90 25} maximum 999 step 0.1 resizable
+          callback {HandleOverlappingChangement(m_overlappingHeightInput);}
+          xywh {430 115 90 25} maximum 999 step 0.1 resizable
           code0 {o->precision(2);}
         }
         Fl_Box m_overlappingWidthLabel {
@@ -180,11 +180,48 @@ widget_class PosteRazorDialogUI {
         }
         Fl_Box m_overlappingHeightLabel {
           label cm
-          xywh {520 110 70 25} align 20
+          xywh {520 115 70 25} align 20
         }
       }
       Fl_Box {} {
         xywh {315 410 290 0} resizable
+      }
+      Fl_Group {} {
+        label {Overlapping position} open
+        xywh {325 175 275 170} box THIN_DOWN_BOX color 45 selection_color 54
+      } {
+        Fl_Round_Button m_overlappingTopRightRadioButton {
+          callback {HandleOverlappingChangement(m_overlappingTopRightRadioButton);} selected
+          xywh {465 180 130 80} type Radio down_box ROUND_DOWN_BOX
+        }
+        Fl_Box m_overlappingTopRightBox {
+          label {Top right}
+          image {images/overlappingTopRight.png} xywh {485 185 105 70} box THIN_DOWN_BOX color 41 align 128
+        }
+        Fl_Round_Button m_overlappingBottomRightRadioButton {
+          callback {HandleOverlappingChangement(m_overlappingBottomRightRadioButton);}
+          xywh {465 260 130 80} type Radio down_box ROUND_DOWN_BOX
+        }
+        Fl_Box m_overlappingBottomRightBox {
+          label {Bottom right}
+          image {images/overlappingBottomRight.png} xywh {485 265 105 70} box THIN_DOWN_BOX color 42 align 128
+        }
+        Fl_Round_Button m_overlappingTopLeftRadioButton {
+          callback {HandleOverlappingChangement(m_overlappingTopLeftRadioButton);}
+          xywh {330 180 130 80} type Radio down_box ROUND_DOWN_BOX
+        }
+        Fl_Box m_overlappingTopLeftBox {
+          label {Top left}
+          image {images/overlappingTopLeft.png} xywh {350 185 105 70} box THIN_DOWN_BOX color 41 align 128
+        }
+        Fl_Round_Button m_overlappingBottomLeftRadioButton {
+          callback {HandleOverlappingChangement(m_overlappingBottomLeftRadioButton);}
+          xywh {330 260 130 80} type Radio down_box ROUND_DOWN_BOX
+        }
+        Fl_Box m_overlappingBottomLeftBox {
+          label {Bottom left}
+          image {images/overlappingBottomLeft.png} xywh {350 265 105 70} box THIN_DOWN_BOX color 42 align 128
+        }
       }
     }
     Fl_Group m_posterSizeStep {
@@ -321,7 +358,7 @@ widget_class PosteRazorDialogUI {
   decl {// ****** Overlapping step:} {}
   decl {virtual void SetOverlappingFields(void) = 0;} {public
   }
-  decl {virtual void HandleOverlappingChangement(void) = 0;} {public
+  decl {virtual void HandleOverlappingChangement(Fl_Widget* sourceWidget) = 0;} {public
   }
   decl {// ****** Poster size step:} {}
   decl {virtual void UpdatePosterSizeGroupsState(void) = 0;} {public

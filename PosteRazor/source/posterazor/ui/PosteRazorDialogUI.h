@@ -103,6 +103,30 @@ private:
 public:
   Fl_Box *m_overlappingWidthLabel;
   Fl_Box *m_overlappingHeightLabel;
+  Fl_Round_Button *m_overlappingTopRightRadioButton;
+private:
+  void cb_m_overlappingTopRightRadioButton_i(Fl_Round_Button*, void*);
+  static void cb_m_overlappingTopRightRadioButton(Fl_Round_Button*, void*);
+public:
+  Fl_Box *m_overlappingTopRightBox;
+  Fl_Round_Button *m_overlappingBottomRightRadioButton;
+private:
+  void cb_m_overlappingBottomRightRadioButton_i(Fl_Round_Button*, void*);
+  static void cb_m_overlappingBottomRightRadioButton(Fl_Round_Button*, void*);
+public:
+  Fl_Box *m_overlappingBottomRightBox;
+  Fl_Round_Button *m_overlappingTopLeftRadioButton;
+private:
+  void cb_m_overlappingTopLeftRadioButton_i(Fl_Round_Button*, void*);
+  static void cb_m_overlappingTopLeftRadioButton(Fl_Round_Button*, void*);
+public:
+  Fl_Box *m_overlappingTopLeftBox;
+  Fl_Round_Button *m_overlappingBottomLeftRadioButton;
+private:
+  void cb_m_overlappingBottomLeftRadioButton_i(Fl_Round_Button*, void*);
+  static void cb_m_overlappingBottomLeftRadioButton(Fl_Round_Button*, void*);
+public:
+  Fl_Box *m_overlappingBottomLeftBox;
   Fl_Group *m_posterSizeStep;
   Fl_Round_Button *m_posterSizeAbsoluteRadioButton;
 private:
@@ -162,7 +186,7 @@ public:
   virtual void SetPaperSizeFields(void) = 0;
   virtual void HandlePaperSizeChangement(Fl_Widget* sourceWidget) = 0;
   virtual void SetOverlappingFields(void) = 0;
-  virtual void HandleOverlappingChangement(void) = 0;
+  virtual void HandleOverlappingChangement(Fl_Widget* sourceWidget) = 0;
   virtual void UpdatePosterSizeGroupsState(void) = 0;
   virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;
 };
