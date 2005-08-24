@@ -22,6 +22,7 @@ private:
 	double                 m_overlappingStandardHeight;
 	double                 m_overlappingCustomWidth;
 	double                 m_overlappingCustomHeight;
+	enum eOverlappingPositions m_overlappingPosition;
 
 	enum ePosterSizeModes  m_posterSizeMode;
 	double                 m_posterWidth;
@@ -40,7 +41,6 @@ private:
 	double                 m_paperBorderCustomLeft;
 	double                 m_customPaperWidth;
 	double                 m_customPaperHeight;
-	eBorderPositions       m_borderPosition;
 	bool                   m_lastEditedSizeWasWidth;
 	
 public:
@@ -66,11 +66,11 @@ public:
 		m_customPaperWidth             = 20;
 		m_customPaperHeight            = 20;
 
-		m_borderPosition               = eBorderPositionRightBottom;
 		m_overlappingStandardWidth     = 2.0;
 		m_overlappingStandardHeight    = 2.0;
 		m_overlappingCustomWidth       = 2.0;
 		m_overlappingCustomHeight      = 2.0;
+		m_overlappingPosition          = eOverlappingPositionBottomRight;
 
 		m_distanceUnit                 = eDistanceUnitCentimeter;
 		m_lastEditedSizeWasWidth       = true;
@@ -269,6 +269,8 @@ public:
 	double GetOverlappingHeight(bool customPaperSize) {return ConvertBetweenDistanceUnits(customPaperSize?m_overlappingCustomHeight:m_overlappingStandardHeight, m_distanceUnit, eDistanceUnitCentimeter);}
 	double GetOverlappingWidth(void) {return GetOverlappingWidth(GetUseCustomPaperSize());}
 	double GetOverlappingHeight(void) {return GetOverlappingHeight(GetUseCustomPaperSize());}
+	void SetOverlappingPosition(enum eOverlappingPositions position) {m_overlappingPosition = position;}
+	enum eOverlappingPositions GetOverlappingPosition(void) {return m_overlappingPosition;}
 
 	void SetPosterWidth(enum ePosterSizeModes mode, double width)
 	{
@@ -418,8 +420,15 @@ public:
 			{
 				int overlappingWidth = (int)(GetOverlappingWidth() * factor);
 				int overlappingHeight = (int)(GetOverlappingHeight() * factor);
-				int overlappingTop = boxHeight - borderBottom - overlappingHeight;
-				int overlappingLeft = boxWidth - borderRight - overlappingWidth;
+				enum eOverlappingPositions overlappingPosition = GetOverlappingPosition();
+				int overlappingTop =
+					(overlappingPosition == eOverlappingPositionTopLeft || overlappingPosition == eOverlappingPositionTopRight)?
+					borderTop
+					:boxHeight - borderBottom - overlappingHeight;
+				int overlappingLeft = 
+					(overlappingPosition == eOverlappingPositionTopLeft || overlappingPosition == eOverlappingPositionBottomLeft)?
+					borderLeft
+					:boxWidth - borderRight - overlappingWidth;
 				
 				paintCanvas->DrawFilledRect(borderLeft + x_offset, overlappingTop + y_offset, printableAreaWidth, overlappingHeight, 255, 128, 128);
 				paintCanvas->DrawFilledRect(overlappingLeft + x_offset, borderTop + y_offset, overlappingWidth, printableAreaHeight, 255, 128, 128);
