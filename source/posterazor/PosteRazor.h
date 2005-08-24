@@ -8,12 +8,12 @@
 class PosteRazor: public PaperFormats, public ColorTypes, public PainterInterface
 {
 public:
-	typedef enum eBorderPositions
+	typedef enum eOverlappingPositions
 	{
-		eBorderPositionTopRight,
-		eBorderPositionRightBottom,
-		eBorderPositionBottomLeft,
-		eBorderPositionLeftTop
+		eOverlappingPositionTopRight,
+		eOverlappingPositionBottomRight,
+		eOverlappingPositionBottomLeft,
+		eOverlappingPositionTopLeft
 	};
 
 	typedef enum ePosterSizeModes
@@ -82,6 +82,8 @@ public:
 	virtual double GetOverlappingHeight(bool customPaperSize) = 0;
 	virtual double GetOverlappingWidth(void) = 0;
 	virtual double GetOverlappingHeight(void) = 0;
+	virtual void SetOverlappingPosition(enum eOverlappingPositions position) = 0;
+	virtual enum eOverlappingPositions GetOverlappingPosition(void) = 0;
 	
 	virtual void SetPosterWidth(enum ePosterSizeModes mode, double width) = 0;
 	virtual void SetPosterHeight(enum ePosterSizeModes mode, double height) = 0;
