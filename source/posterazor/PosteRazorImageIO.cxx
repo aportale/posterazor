@@ -71,7 +71,7 @@ public:
 
 		strcpy(FreeImageErrorMessage, "");
 
-		FIBITMAP* newImage = FreeImage_Load(FreeImage_GetFileType(imageFileName, 0), imageFileName);
+		FIBITMAP* newImage = FreeImage_Load(FreeImage_GetFileType(imageFileName, 0), imageFileName, TIFF_CMYK);
 
 		if (newImage)
 		{
