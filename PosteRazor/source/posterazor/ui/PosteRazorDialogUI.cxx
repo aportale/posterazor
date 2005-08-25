@@ -16,11 +16,11 @@ void PosteRazorDialogUI::cb_m_prevButton(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->user_data()))->cb_m_prevButton_i(o,v);
 }
 
-void PosteRazorDialogUI::cb__i(Fl_Button*, void*) {
+void PosteRazorDialogUI::cb_fileopen_i(Fl_Button*, void*) {
   LoadInputImage();
 }
-void PosteRazorDialogUI::cb_(Fl_Button* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb__i(o,v);
+void PosteRazorDialogUI::cb_fileopen(Fl_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_fileopen_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_paperFormatTypeTabs_i(Fl_Tabs*, void*) {
@@ -633,10 +633,10 @@ o->when(FL_WHEN_RELEASE);
   o->user_data((void*)(this));
   { Fl_Group* o = m_loadInputImageStep = new Fl_Group(315, 45, 295, 365);
     o->color(FL_LIGHT1);
-    o->hide();
     { Fl_Group* o = new Fl_Group(325, 70, 275, 25, "Input Image");
-      { Fl_Button* o = new Fl_Button(575, 70, 25, 25, "...");
-        o->callback((Fl_Callback*)cb_);
+      { Fl_Button* o = new Fl_Button(575, 70, 25, 25, "@fileopen");
+        o->labelcolor((Fl_Color)40);
+        o->callback((Fl_Callback*)cb_fileopen);
       }
       { Fl_Box* o = m_inputFileNameLabel = new Fl_Box(325, 70, 250, 25);
         o->box(FL_THIN_DOWN_BOX);
@@ -759,6 +759,7 @@ o->when(FL_WHEN_RELEASE);
     o->end();
   }
   { Fl_Group* o = m_overlappingStep = new Fl_Group(315, 45, 295, 365);
+    o->hide();
     { Fl_Group* o = new Fl_Group(325, 70, 275, 75, "Overlapping size");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);

@@ -33,16 +33,16 @@ widget_class PosteRazorDialogUI {
     xywh {315 45 295 365} box THIN_DOWN_BOX
   } {
     Fl_Group m_loadInputImageStep {open
-      xywh {315 45 295 365} color 50 hide
+      xywh {315 45 295 365} color 50
     } {
       Fl_Group {} {
-        label {Input Image}
+        label {Input Image} open selected
         xywh {325 70 275 25}
       } {
         Fl_Button {} {
-          label {...}
+          label {@fileopen}
           callback {LoadInputImage();}
-          xywh {575 70 25 25}
+          xywh {575 70 25 25} labelcolor 40
         }
         Fl_Box m_inputFileNameLabel {
           xywh {325 70 250 25} box THIN_DOWN_BOX color 55 align 84 resizable
@@ -156,7 +156,7 @@ widget_class PosteRazorDialogUI {
       }
     }
     Fl_Group m_overlappingStep {open
-      xywh {315 45 295 365}
+      xywh {315 45 295 365} hide
     } {
       Fl_Group {} {
         label {Overlapping size} open
@@ -199,7 +199,7 @@ widget_class PosteRazorDialogUI {
           image {images/overlappingTopRight.png} xywh {485 180 105 70} box THIN_DOWN_BOX color 41 align 128
         }
         Fl_Round_Button m_overlappingBottomRightRadioButton {
-          callback {HandleOverlappingChangement(m_overlappingBottomRightRadioButton);} selected
+          callback {HandleOverlappingChangement(m_overlappingBottomRightRadioButton);}
           xywh {465 253 128 75} type Radio down_box ROUND_DOWN_BOX
         }
         Fl_Box m_overlappingBottomRightBox {
