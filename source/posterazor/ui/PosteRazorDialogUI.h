@@ -32,8 +32,8 @@ public:
   Fl_Wizard *m_wizard;
   Fl_Group *m_loadInputImageStep;
 private:
-  void cb__i(Fl_Button*, void*);
-  static void cb_(Fl_Button*, void*);
+  void cb_fileopen_i(Fl_Button*, void*);
+  static void cb_fileopen(Fl_Button*, void*);
 public:
   Fl_Box *m_inputFileNameLabel;
   Fl_Group *m_imageInfoGroup;
