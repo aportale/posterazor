@@ -633,7 +633,6 @@ o->when(FL_WHEN_RELEASE);
   o->user_data((void*)(this));
   { Fl_Group* o = m_loadInputImageStep = new Fl_Group(315, 45, 295, 365);
     o->color(FL_LIGHT1);
-    o->hide();
     { Fl_Group* o = new Fl_Group(325, 70, 275, 25, "Input Image");
       { Fl_Button* o = new Fl_Button(575, 70, 25, 25, "@fileopen");
         o->labelcolor((Fl_Color)40);
@@ -665,25 +664,24 @@ o->when(FL_WHEN_RELEASE);
   }
   { Fl_Group* o = m_paperSizeStep = new Fl_Group(315, 45, 295, 365);
     o->hide();
-    { Fl_Tabs* o = m_paperFormatTypeTabs = new Fl_Tabs(325, 55, 275, 140);
+    { Fl_Tabs* o = m_paperFormatTypeTabs = new Fl_Tabs(325, 70, 275, 140, "Paper size");
       o->callback((Fl_Callback*)cb_m_paperFormatTypeTabs);
-      o->align(FL_ALIGN_CENTER);
-      { Fl_Group* o = m_paperFormatStandardGroup = new Fl_Group(325, 80, 275, 115, "Standard");
+      { Fl_Group* o = m_paperFormatStandardGroup = new Fl_Group(325, 95, 275, 115, "Standard");
         o->box(FL_THIN_UP_BOX);
         o->selection_color((Fl_Color)40);
-        { Fl_Choice* o = m_paperFormatChoice = new Fl_Choice(425, 90, 165, 25, "Format:");
+        { Fl_Choice* o = m_paperFormatChoice = new Fl_Choice(425, 105, 165, 25, "Format:");
           o->down_box(FL_BORDER_BOX);
         }
-        { Fl_Group* o = new Fl_Group(425, 125, 165, 60, "Orientation:");
+        { Fl_Group* o = new Fl_Group(425, 140, 165, 60, "Orientation:");
           o->box(FL_THIN_DOWN_BOX);
           o->color((Fl_Color)43);
           o->align(FL_ALIGN_LEFT);
-          { Fl_Round_Button* o = m_paperOrientationPortraitRadioButton = new Fl_Round_Button(460, 130, 125, 25, "Portrait");
+          { Fl_Round_Button* o = m_paperOrientationPortraitRadioButton = new Fl_Round_Button(460, 145, 125, 25, "Portrait");
             o->type(102);
             o->down_box(FL_ROUND_DOWN_BOX);
             o->callback((Fl_Callback*)cb_m_paperOrientationPortraitRadioButton);
           }
-          { Fl_Round_Button* o = m_paperOrientationLandscapeRadioButton = new Fl_Round_Button(460, 155, 125, 25, "Landscape");
+          { Fl_Round_Button* o = m_paperOrientationLandscapeRadioButton = new Fl_Round_Button(460, 170, 125, 25, "Landscape");
             o->type(102);
             o->down_box(FL_ROUND_DOWN_BOX);
             o->callback((Fl_Callback*)cb_m_paperOrientationLandscapeRadioButton);
@@ -692,17 +690,17 @@ o->when(FL_WHEN_RELEASE);
         }
         o->end();
       }
-      { Fl_Group* o = m_paperFormatCustomGroup = new Fl_Group(325, 80, 275, 115, "Custom");
+      { Fl_Group* o = m_paperFormatCustomGroup = new Fl_Group(325, 95, 275, 115, "Custom");
         o->box(FL_THIN_UP_BOX);
         o->selection_color((Fl_Color)40);
         o->hide();
-        { Fl_Value_Input* o = m_paperCustomWidthInput = new Fl_Value_Input(425, 107, 95, 25, "Width:");
+        { Fl_Value_Input* o = m_paperCustomWidthInput = new Fl_Value_Input(425, 122, 95, 25, "Width:");
           o->maximum(999);
           o->step(0.1);
           o->callback((Fl_Callback*)cb_m_paperCustomWidthInput);
           o->precision(2);
         }
-        { Fl_Value_Input* o = m_paperCustomHeightInput = new Fl_Value_Input(425, 142, 95, 25, "Height:");
+        { Fl_Value_Input* o = m_paperCustomHeightInput = new Fl_Value_Input(425, 157, 95, 25, "Height:");
           o->maximum(999);
           o->step(0.1);
           o->callback((Fl_Callback*)cb_m_paperCustomHeightInput);
@@ -711,44 +709,41 @@ o->when(FL_WHEN_RELEASE);
           o->range(0, 999);
           o->precision(2);
         }
-        { Fl_Box* o = m_paperCustomWidthLabel = new Fl_Box(520, 107, 50, 25, "cm");
+        { Fl_Box* o = m_paperCustomWidthLabel = new Fl_Box(520, 122, 50, 25, "cm");
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         }
-        { Fl_Box* o = m_paperCustomHeightLabel = new Fl_Box(520, 142, 50, 25, "cm");
+        { Fl_Box* o = m_paperCustomHeightLabel = new Fl_Box(520, 157, 50, 25, "cm");
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         }
         o->end();
       }
       o->end();
     }
-    { Fl_Box* o = new Fl_Box(315, 400, 295, 10);
-      Fl_Group::current()->resizable(o);
-    }
-    { Fl_Group* o = new Fl_Group(325, 220, 275, 135, "Borders:");
+    { Fl_Group* o = new Fl_Group(325, 235, 275, 135, "Borders");
       o->box(FL_THIN_DOWN_BOX);
       o->color((Fl_Color)43);
-      { Fl_Value_Input* o = m_paperBorderTopInput = new Fl_Value_Input(430, 245, 60, 25, "Top");
+      { Fl_Value_Input* o = m_paperBorderTopInput = new Fl_Value_Input(430, 260, 60, 25, "Top");
         o->maximum(999);
         o->step(0.1);
         o->callback((Fl_Callback*)cb_m_paperBorderTopInput);
         o->align(FL_ALIGN_TOP);
         o->precision(2);
       }
-      { Fl_Value_Input* o = m_paperBorderRightInput = new Fl_Value_Input(490, 275, 60, 25, "Right");
+      { Fl_Value_Input* o = m_paperBorderRightInput = new Fl_Value_Input(490, 290, 60, 25, "Right");
         o->maximum(999);
         o->step(0.1);
         o->callback((Fl_Callback*)cb_m_paperBorderRightInput);
         o->align(FL_ALIGN_TOP_RIGHT);
         o->precision(2);
       }
-      { Fl_Value_Input* o = m_paperBorderBottomInput = new Fl_Value_Input(430, 305, 60, 25, "Bottom");
+      { Fl_Value_Input* o = m_paperBorderBottomInput = new Fl_Value_Input(430, 320, 60, 25, "Bottom");
         o->maximum(999);
         o->step(0.1);
         o->callback((Fl_Callback*)cb_m_paperBorderBottomInput);
         o->align(FL_ALIGN_BOTTOM);
         o->precision(2);
       }
-      { Fl_Value_Input* o = m_paperBorderLeftInput = new Fl_Value_Input(370, 275, 60, 25, "Left");
+      { Fl_Value_Input* o = m_paperBorderLeftInput = new Fl_Value_Input(370, 290, 60, 25, "Left");
         o->maximum(999);
         o->step(0.1);
         o->callback((Fl_Callback*)cb_m_paperBorderLeftInput);
@@ -756,6 +751,9 @@ o->when(FL_WHEN_RELEASE);
         o->precision(2);
       }
       o->end();
+    }
+    { Fl_Box* o = new Fl_Box(315, 400, 295, 10);
+      Fl_Group::current()->resizable(o);
     }
     o->end();
   }
@@ -842,11 +840,11 @@ o->when(FL_WHEN_RELEASE);
     o->end();
   }
   { Fl_Group* o = m_posterSizeStep = new Fl_Group(315, 45, 295, 365);
-    { Fl_Group* o = new Fl_Group(325, 70, 275, 250, "Image size:");
+    o->hide();
+    { Fl_Group* o = new Fl_Group(325, 70, 275, 250, "Image size");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       o->selection_color(FL_LIGHT3);
-      o->align(FL_ALIGN_TOP_LEFT);
       { Fl_Round_Button* o = m_posterSizeAbsoluteRadioButton = new Fl_Round_Button(335, 80, 260, 20, "Absolute image size");
         o->type(102);
         o->down_box(FL_ROUND_DOWN_BOX);
@@ -923,11 +921,10 @@ o->when(FL_WHEN_RELEASE);
       }
       o->end();
     }
-    { Fl_Group* o = new Fl_Group(325, 345, 275, 45, "Image alignment:");
+    { Fl_Group* o = new Fl_Group(325, 345, 275, 45, "Image alignment");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       o->selection_color(FL_DARK2);
-      o->align(FL_ALIGN_TOP_LEFT);
       { Fl_Choice* o = new Fl_Choice(335, 355, 123, 25);
         o->down_box(FL_BORDER_BOX);
         o->align(FL_ALIGN_CENTER);

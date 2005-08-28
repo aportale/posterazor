@@ -7,9 +7,9 @@ decl {\#include "Fl_Paint_Canvas.h"} {public
 
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {367 218 620 455} type Double hide resizable
+  xywh {367 218 620 455} type Double resizable
   code0 {size_range(this->w(), this->h());}
-  class Fl_Double_Window
+  class Fl_Double_Window visible
 } {
   Fl_Group {} {
     xywh {10 420 600 25}
@@ -32,8 +32,8 @@ widget_class PosteRazorDialogUI {
     user_data this open
     xywh {315 45 295 365} box THIN_DOWN_BOX
   } {
-    Fl_Group m_loadInputImageStep {open
-      xywh {315 45 295 365} color 50 hide
+    Fl_Group m_loadInputImageStep {selected
+      xywh {315 45 295 365} color 50
     } {
       Fl_Group {} {
         label {Input Image} open
@@ -41,7 +41,7 @@ widget_class PosteRazorDialogUI {
       } {
         Fl_Button {} {
           label {@fileopen}
-          callback {LoadInputImage(0);} selected
+          callback {LoadInputImage(0);}
           xywh {575 70 25 25} labelcolor 40
         }
         Fl_Box m_inputFileNameLabel {
@@ -67,92 +67,93 @@ widget_class PosteRazorDialogUI {
       xywh {315 45 295 365} hide
     } {
       Fl_Tabs m_paperFormatTypeTabs {
+        label {Paper size}
         callback {HandlePaperSizeChangement(m_paperFormatTypeTabs);}
-        xywh {325 55 275 140} align 0
+        xywh {325 70 275 140}
       } {
         Fl_Group m_paperFormatStandardGroup {
           label Standard
-          xywh {325 80 275 115} box THIN_UP_BOX selection_color 40
+          xywh {325 95 275 115} box THIN_UP_BOX selection_color 40
         } {
           Fl_Choice m_paperFormatChoice {
             label {Format:} open
-            xywh {425 90 165 25} down_box BORDER_BOX
+            xywh {425 105 165 25} down_box BORDER_BOX
           } {}
           Fl_Group {} {
             label {Orientation:} open
-            xywh {425 125 165 60} box THIN_DOWN_BOX color 43 align 4
+            xywh {425 140 165 60} box THIN_DOWN_BOX color 43 align 4
           } {
             Fl_Round_Button m_paperOrientationPortraitRadioButton {
               label Portrait
               callback {HandlePaperSizeChangement(m_paperOrientationPortraitRadioButton);}
-              xywh {460 130 125 25} type Radio down_box ROUND_DOWN_BOX
+              xywh {460 145 125 25} type Radio down_box ROUND_DOWN_BOX
             }
             Fl_Round_Button m_paperOrientationLandscapeRadioButton {
               label Landscape
               callback {HandlePaperSizeChangement(m_paperOrientationLandscapeRadioButton);}
-              xywh {460 155 125 25} type Radio down_box ROUND_DOWN_BOX
+              xywh {460 170 125 25} type Radio down_box ROUND_DOWN_BOX
             }
           }
         }
         Fl_Group m_paperFormatCustomGroup {
           label Custom
-          xywh {325 80 275 115} box THIN_UP_BOX selection_color 40 hide
+          xywh {325 95 275 115} box THIN_UP_BOX selection_color 40 hide
         } {
           Fl_Value_Input m_paperCustomWidthInput {
             label {Width:}
             callback {HandlePaperSizeChangement(m_paperCustomWidthInput);}
-            xywh {425 107 95 25} maximum 999 step 0.1
+            xywh {425 122 95 25} maximum 999 step 0.1
             code0 {o->precision(2);}
           }
           Fl_Value_Input m_paperCustomHeightInput {
             label {Height:}
             callback {HandlePaperSizeChangement(m_paperCustomHeightInput);}
-            xywh {425 142 95 25} maximum 999 step 0.1 resizable
+            xywh {425 157 95 25} maximum 999 step 0.1 resizable
             code0 {o->step(0.1);}
             code1 {o->range(0, 999);}
             code2 {o->precision(2);}
           }
           Fl_Box m_paperCustomWidthLabel {
             label cm
-            xywh {520 107 50 25} align 20
+            xywh {520 122 50 25} align 20
           }
           Fl_Box m_paperCustomHeightLabel {
             label cm
-            xywh {520 142 50 25} align 20
+            xywh {520 157 50 25} align 20
           }
         }
       }
-      Fl_Box {} {
-        xywh {315 400 295 10} resizable
-      }
       Fl_Group {} {
-        label {Borders:} open
-        xywh {325 220 275 135} box THIN_DOWN_BOX color 43
+        label Borders
+        xywh {325 235 275 135} box THIN_DOWN_BOX color 43
       } {
         Fl_Value_Input m_paperBorderTopInput {
           label Top
           callback {HandlePaperSizeChangement(m_paperBorderTopInput);}
-          xywh {430 245 60 25} align 1 maximum 999 step 0.1
+          xywh {430 260 60 25} align 1 maximum 999 step 0.1
           code0 {o->precision(2);}
         }
         Fl_Value_Input m_paperBorderRightInput {
           label Right
           callback {HandlePaperSizeChangement(m_paperBorderRightInput);}
-          xywh {490 275 60 25} align 9 maximum 999 step 0.1
+          xywh {490 290 60 25} align 9 maximum 999 step 0.1
           code0 {o->precision(2);}
         }
         Fl_Value_Input m_paperBorderBottomInput {
           label Bottom
           callback {HandlePaperSizeChangement(m_paperBorderBottomInput);}
-          xywh {430 305 60 25} align 2 maximum 999 step 0.1
+          xywh {430 320 60 25} align 2 maximum 999 step 0.1
           code0 {o->precision(2);}
         }
         Fl_Value_Input m_paperBorderLeftInput {
           label Left
           callback {HandlePaperSizeChangement(m_paperBorderLeftInput);}
-          xywh {370 275 60 25} align 5 maximum 999 step 0.1
+          xywh {370 290 60 25} align 5 maximum 999 step 0.1
           code0 {o->precision(2);}
         }
+      }
+      Fl_Box {} {
+        xywh {315 400 295 10} resizable
       }
     }
     Fl_Group m_overlappingStep {
@@ -224,12 +225,12 @@ widget_class PosteRazorDialogUI {
         }
       }
     }
-    Fl_Group m_posterSizeStep {open
-      xywh {315 45 295 365}
+    Fl_Group m_posterSizeStep {
+      xywh {315 45 295 365} hide
     } {
       Fl_Group {} {
-        label {Image size:} open
-        xywh {325 70 275 250} box THIN_DOWN_BOX color 45 selection_color 54 align 5
+        label {Image size} open
+        xywh {325 70 275 250} box THIN_DOWN_BOX color 45 selection_color 54
       } {
         Fl_Round_Button m_posterSizeAbsoluteRadioButton {
           label {Absolute image size}
@@ -310,8 +311,8 @@ widget_class PosteRazorDialogUI {
         }
       }
       Fl_Group {} {
-        label {Image alignment:} open
-        xywh {325 345 275 45} box THIN_DOWN_BOX color 45 selection_color 45 align 5
+        label {Image alignment} open
+        xywh {325 345 275 45} box THIN_DOWN_BOX color 45 selection_color 45
       } {
         Fl_Choice {} {open
           xywh {335 355 123 25} down_box BORDER_BOX align 0
