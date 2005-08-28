@@ -7,7 +7,7 @@ decl {\#include "Fl_Paint_Canvas.h"} {public
 
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {367 218 620 455} type Double resizable
+  xywh {335 79 620 455} type Double resizable
   code0 {size_range(this->w(), this->h());}
   class Fl_Double_Window visible
 } {
@@ -312,44 +312,38 @@ widget_class PosteRazorDialogUI {
       }
       Fl_Group {} {
         label {Image alignment} open
-        xywh {325 345 275 45} box THIN_DOWN_BOX color 45 selection_color 45
+        xywh {325 345 275 51} box THIN_DOWN_BOX color 45 selection_color 45
       } {
-        Fl_Choice {} {open
-          xywh {335 355 123 25} down_box BORDER_BOX align 0
+        Fl_Group {} {open
+          xywh {477 355 113 31}
         } {
-          MenuItem m_posterImageAlignmentTop {
-            label Top
-            callback {HandlePosterImageAlignment();}
-            xywh {0 0 34 24}
+          Fl_Button {} {
+            callback {HandlePosterImageAlignment();} selected
+            image {images/alignmentCenter.png} xywh {518 355 31 31} type Radio color 40 selection_color 55
           }
-          MenuItem m_posterImageAlignmentMiddle {
-            label Middle
-            callback {HandlePosterImageAlignment();}
-            xywh {10 10 34 24}
+          Fl_Button {} {
+            callback {HandlePosterImageAlignment();} selected
+            image {images/alignmentRight.png} xywh {559 355 31 31} type Radio color 40 selection_color 55
           }
-          MenuItem m_posterImageAlignmentBottom {
-            label Bottom
-            callback {HandlePosterImageAlignment();}
-            xywh {20 20 34 24}
+          Fl_Button {} {
+            callback {HandlePosterImageAlignment();} selected
+            image {images/alignmentLeft.png} xywh {477 355 31 31} type Radio color 40 selection_color 55
           }
         }
-        Fl_Choice {} {open
-          xywh {467 355 123 25} down_box BORDER_BOX align 0
+        Fl_Group {} {open
+          xywh {335 355 113 31}
         } {
-          MenuItem m_posterImageAlignmentLeft {
-            label Left
-            callback {HandlePosterImageAlignment();}
-            xywh {10 10 34 24}
+          Fl_Button {} {
+            callback {HandlePosterImageAlignment();} selected
+            image {images/alignmentTop.png} xywh {335 355 31 31} type Radio color 40 selection_color 55
           }
-          MenuItem m_posterImageAlignmentCenter {
-            label Center
-            callback {HandlePosterImageAlignment();}
-            xywh {20 20 34 24}
+          Fl_Button {} {
+            callback {HandlePosterImageAlignment();} selected
+            image {images/alignmentMiddle.png} xywh {376 355 31 31} type Radio color 40 selection_color 55
           }
-          MenuItem m_posterImageAlignmentRight {
-            label Right
-            callback {HandlePosterImageAlignment();}
-            xywh {30 30 34 24}
+          Fl_Button {} {
+            callback {HandlePosterImageAlignment();} selected
+            image {images/alignmentBottom.png} xywh {417 355 31 31} type Radio color 40 selection_color 55
           }
         }
       }
@@ -404,6 +398,6 @@ widget_class PosteRazorDialogUI {
   }
   decl {virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;} {public
   }
-  decl {virtual void HandlePosterImageAlignment(void) = 0;} {selected public
+  decl {virtual void HandlePosterImageAlignment(void) = 0;} {public
   }
 } 
