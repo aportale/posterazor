@@ -51,6 +51,7 @@ void PosteRazorDialog::next(void)
 	m_wizard->next();
 	UpdateNavigationButtons();
 	UpdatePreviewState();
+	UpdatePosterSizeFields(NULL);
 }
 
 void PosteRazorDialog::prev(void)
@@ -192,6 +193,8 @@ void PosteRazorDialog::UpdatePosterSizeFields(Fl_Valuator *sourceWidget)
 			);
 		}
 	}
+
+	m_previewPaintCanvas->redraw();
 }
 
 void PosteRazorDialog::SetPaperSizeFields(void)

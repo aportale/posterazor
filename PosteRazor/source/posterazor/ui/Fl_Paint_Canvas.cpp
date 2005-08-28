@@ -44,6 +44,12 @@ void Fl_Paint_Canvas::DrawFilledRect(int x, int y, int width, int height, unsign
 	fl_rectf(x + Fl_Box::x() + BORDER, y + Fl_Box::y() + BORDER, width, height);
 }
 
+void Fl_Paint_Canvas::DrawLine(int x1, int y1, int x2, int y2, unsigned char red, unsigned char green, unsigned char blue)
+{
+	fl_color(red, green, blue);
+	fl_line(x1 + Fl_Box::x() + BORDER, y1 + Fl_Box::y() + BORDER, x2 + Fl_Box::x() + BORDER, y2 + Fl_Box::y() + BORDER);
+}
+
 void Fl_Paint_Canvas::GetSize(int &width, int &height)
 {
 	width = w() - BORDER - BORDER;

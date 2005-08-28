@@ -20,6 +20,7 @@ public:
 		
 	virtual void draw();
 	virtual void DrawFilledRect(int x, int y, int width, int height, unsigned char red, unsigned char green, unsigned char blue);
+	virtual void DrawLine(int x1, int y1, int x2, int y2, unsigned char red, unsigned char green, unsigned char blue);
 	virtual void GetSize(int &width, int &height);
 
 	virtual void RequestImage(void);
