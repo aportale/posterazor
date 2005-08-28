@@ -34,6 +34,7 @@ public:
 
 	void UpdatePosterSizeFields(Fl_Valuator *sourceWidget);
 	void UpdatePosterSizeGroupsState(void);
+	void HandlePosterImageAlignment(void);
 };
 
 #endif

@@ -23,6 +23,20 @@ public:
 		ePosterSizeModePages
 	};
 
+	typedef enum eVerticalAlignments
+	{
+		eVerticalAlignmentTop,
+		eVerticalAlignmentMiddle,
+		eVerticalAlignmentBottom
+	};
+
+	typedef enum eHorizontalAlignments
+	{
+		eHorizontalAlignmentLeft,
+		eHorizontalAlignmentCenter,
+		eHorizontalAlignmentRight
+	};
+
 	virtual ~PosteRazor() {};
 	static PosteRazor* CreatePosteRazor();
 
@@ -78,6 +92,10 @@ public:
 	virtual double GetPosterWidth(enum ePosterSizeModes mode) = 0;
 	virtual double GetPosterHeight(enum ePosterSizeModes mode) = 0;
 	virtual enum ePosterSizeModes GetPosterSizeMode(void) = 0;
+	virtual void SetPosterHorizontalAlignment(enum eHorizontalAlignments alignment) = 0;
+	virtual void SetPosterVerticalAlignment(enum eVerticalAlignments alignment) = 0;
+	virtual enum eHorizontalAlignments GetPosterHorizontalAlignment(void) = 0;
+	virtual enum eVerticalAlignments GetPosterVerticalAlignment(void) = 0;
 };
 
 #endif

@@ -592,6 +592,68 @@ void PosteRazorDialogUI::cb_m_posterPercentualSizeInput_i(Fl_Value_Input*, void*
 void PosteRazorDialogUI::cb_m_posterPercentualSizeInput(Fl_Value_Input* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->user_data()))->cb_m_posterPercentualSizeInput_i(o,v);
 }
+
+void PosteRazorDialogUI::cb_m_posterImageAlignmentTop_i(Fl_Menu_*, void*) {
+  HandlePosterImageAlignment();
+}
+void PosteRazorDialogUI::cb_m_posterImageAlignmentTop(Fl_Menu_* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_posterImageAlignmentTop_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_posterImageAlignmentMiddle_i(Fl_Menu_*, void*) {
+  HandlePosterImageAlignment();
+}
+void PosteRazorDialogUI::cb_m_posterImageAlignmentMiddle(Fl_Menu_* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_posterImageAlignmentMiddle_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_posterImageAlignmentBottom_i(Fl_Menu_*, void*) {
+  HandlePosterImageAlignment();
+}
+void PosteRazorDialogUI::cb_m_posterImageAlignmentBottom(Fl_Menu_* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_posterImageAlignmentBottom_i(o,v);
+}
+
+Fl_Menu_Item PosteRazorDialogUI::menu_[] = {
+ {"Top", 0,  (Fl_Callback*)PosteRazorDialogUI::cb_m_posterImageAlignmentTop, 0, 0, FL_NORMAL_LABEL, 0, 14, 56},
+ {"Middle", 0,  (Fl_Callback*)PosteRazorDialogUI::cb_m_posterImageAlignmentMiddle, 0, 0, FL_NORMAL_LABEL, 0, 14, 56},
+ {"Bottom", 0,  (Fl_Callback*)PosteRazorDialogUI::cb_m_posterImageAlignmentBottom, 0, 0, FL_NORMAL_LABEL, 0, 14, 56},
+ {0,0,0,0,0,0,0,0,0}
+};
+Fl_Menu_Item* PosteRazorDialogUI::m_posterImageAlignmentTop = PosteRazorDialogUI::menu_ + 0;
+Fl_Menu_Item* PosteRazorDialogUI::m_posterImageAlignmentMiddle = PosteRazorDialogUI::menu_ + 1;
+Fl_Menu_Item* PosteRazorDialogUI::m_posterImageAlignmentBottom = PosteRazorDialogUI::menu_ + 2;
+
+void PosteRazorDialogUI::cb_m_posterImageAlignmentLeft_i(Fl_Menu_*, void*) {
+  HandlePosterImageAlignment();
+}
+void PosteRazorDialogUI::cb_m_posterImageAlignmentLeft(Fl_Menu_* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_posterImageAlignmentLeft_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_posterImageAlignmentCenter_i(Fl_Menu_*, void*) {
+  HandlePosterImageAlignment();
+}
+void PosteRazorDialogUI::cb_m_posterImageAlignmentCenter(Fl_Menu_* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_posterImageAlignmentCenter_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_posterImageAlignmentRight_i(Fl_Menu_*, void*) {
+  HandlePosterImageAlignment();
+}
+void PosteRazorDialogUI::cb_m_posterImageAlignmentRight(Fl_Menu_* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_m_posterImageAlignmentRight_i(o,v);
+}
+
+Fl_Menu_Item PosteRazorDialogUI::menu_1[] = {
+ {"Left", 0,  (Fl_Callback*)PosteRazorDialogUI::cb_m_posterImageAlignmentLeft, 0, 0, FL_NORMAL_LABEL, 0, 14, 56},
+ {"Center", 0,  (Fl_Callback*)PosteRazorDialogUI::cb_m_posterImageAlignmentCenter, 0, 0, FL_NORMAL_LABEL, 0, 14, 56},
+ {"Right", 0,  (Fl_Callback*)PosteRazorDialogUI::cb_m_posterImageAlignmentRight, 0, 0, FL_NORMAL_LABEL, 0, 14, 56},
+ {0,0,0,0,0,0,0,0,0}
+};
+Fl_Menu_Item* PosteRazorDialogUI::m_posterImageAlignmentLeft = PosteRazorDialogUI::menu_1 + 0;
+Fl_Menu_Item* PosteRazorDialogUI::m_posterImageAlignmentCenter = PosteRazorDialogUI::menu_1 + 1;
+Fl_Menu_Item* PosteRazorDialogUI::m_posterImageAlignmentRight = PosteRazorDialogUI::menu_1 + 2;
 PosteRazorDialogUI::PosteRazorDialogUI(int X, int Y, int W, int H, const char *L)
   : Fl_Double_Window(X, Y, W, H, L) {
   _PosteRazorDialogUI();
@@ -633,6 +695,7 @@ o->when(FL_WHEN_RELEASE);
   o->user_data((void*)(this));
   { Fl_Group* o = m_loadInputImageStep = new Fl_Group(315, 45, 295, 365);
     o->color(FL_LIGHT1);
+    o->hide();
     { Fl_Group* o = new Fl_Group(325, 70, 275, 25, "Input Image");
       { Fl_Button* o = new Fl_Button(575, 70, 25, 25, "@fileopen");
         o->labelcolor((Fl_Color)40);
@@ -840,7 +903,6 @@ o->when(FL_WHEN_RELEASE);
     o->end();
   }
   { Fl_Group* o = m_posterSizeStep = new Fl_Group(315, 45, 295, 365);
-    o->hide();
     { Fl_Group* o = new Fl_Group(325, 70, 275, 250, "Image size");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
@@ -928,10 +990,12 @@ o->when(FL_WHEN_RELEASE);
       { Fl_Choice* o = new Fl_Choice(335, 355, 123, 25);
         o->down_box(FL_BORDER_BOX);
         o->align(FL_ALIGN_CENTER);
+        o->menu(menu_);
       }
       { Fl_Choice* o = new Fl_Choice(467, 355, 123, 25);
         o->down_box(FL_BORDER_BOX);
         o->align(FL_ALIGN_CENTER);
+        o->menu(menu_1);
       }
       o->end();
     }

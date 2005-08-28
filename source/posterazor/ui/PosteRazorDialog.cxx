@@ -299,6 +299,11 @@ void PosteRazorDialog::UpdatePosterSizeGroupsState(void)
 	m_posterSizePercentualRadioButton->value() == 0?m_posterSizePercentualGroup->deactivate():m_posterSizePercentualGroup->activate();
 }
 
+void PosteRazorDialog::HandlePosterImageAlignment(void)
+{
+	int huhu = 1;
+}
+
 int main (int argc, char **argv)
 {
 	PosteRazorDialog dialog;
