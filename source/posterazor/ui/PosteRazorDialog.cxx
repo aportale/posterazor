@@ -303,7 +303,7 @@ int main (int argc, char **argv)
 {
 	PosteRazorDialog dialog;
 	dialog.show(argc, argv);
-	dialog.LoadInputImage("c:\\Dokumente und Einstellungen\\Besitzer\\Desktop\\pasteltulum5.png");
+	dialog.LoadInputImage("c:\\image.png");
 	Fl::scheme("plastic");
 
 	Fl::run();
