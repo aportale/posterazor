@@ -1,6 +1,7 @@
 #include "PosteRazor.h"
 #include "PosteRazorImageIO.h"
 #include <string.h>
+#include <math.h>
 
 #define MIN(a, b) ((a)<=(b)?(a):(b))
 #define MAX(a, b) ((a)>(b)?(a):(b))
@@ -405,33 +406,111 @@ public:
 			GetPreviewSize(paperWidth, paperHeight, canvasWidth, canvasHeight, boxWidth, boxHeight, true);
 			x_offset = (canvasWidth - boxWidth) / 2;
 			y_offset = (canvasHeight - boxHeight) / 2;
-			double factor = (double)boxWidth/paperWidth;
-			int borderTop = (int)(GetPaperBorderTop() * factor);
-			int borderRight = (int)(GetPaperBorderRight() * factor);
-			int borderBottom = (int)(GetPaperBorderBottom() * factor);
-			int borderLeft = (int)(GetPaperBorderLeft() * factor);
-			int printableAreaWidth = boxWidth - borderLeft - borderRight;
-			int printableAreaHeight = boxHeight - borderTop - borderBottom;
+			double distanceUnitToPixelfactor = (double)boxWidth/paperWidth;
+			double borderTop = GetPaperBorderTop() * distanceUnitToPixelfactor;
+			double borderRight = GetPaperBorderRight() * distanceUnitToPixelfactor;
+			double borderBottom = GetPaperBorderBottom() * distanceUnitToPixelfactor;
+			double borderLeft = GetPaperBorderLeft() * distanceUnitToPixelfactor;
+			double printableAreaWidth = boxWidth - borderLeft - borderRight;
+			double printableAreaHeight = boxHeight - borderTop - borderBottom;
 			
 			paintCanvas->DrawFilledRect(0 + x_offset, 0 + y_offset, boxWidth, boxHeight, 128, 128, 128);
 			paintCanvas->DrawFilledRect(0 + borderLeft + x_offset, 0 + borderTop + y_offset, printableAreaWidth, printableAreaHeight, 230, 230, 230);
 
 			if (strcmp(state, "overlapping") == 0)
 			{
-				int overlappingWidth = (int)(GetOverlappingWidth() * factor);
-				int overlappingHeight = (int)(GetOverlappingHeight() * factor);
+				double overlappingWidth = GetOverlappingWidth() * distanceUnitToPixelfactor;
+				double overlappingHeight = GetOverlappingHeight() * distanceUnitToPixelfactor;
 				enum eOverlappingPositions overlappingPosition = GetOverlappingPosition();
-				int overlappingTop =
+				double overlappingTop =
 					(overlappingPosition == eOverlappingPositionTopLeft || overlappingPosition == eOverlappingPositionTopRight)?
 					borderTop
 					:boxHeight - borderBottom - overlappingHeight;
-				int overlappingLeft = 
+				double overlappingLeft = 
 					(overlappingPosition == eOverlappingPositionTopLeft || overlappingPosition == eOverlappingPositionBottomLeft)?
 					borderLeft
 					:boxWidth - borderRight - overlappingWidth;
 				
 				paintCanvas->DrawFilledRect(borderLeft + x_offset, overlappingTop + y_offset, printableAreaWidth, overlappingHeight, 255, 128, 128);
 				paintCanvas->DrawFilledRect(overlappingLeft + x_offset, borderTop + y_offset, overlappingWidth, printableAreaHeight, 255, 128, 128);
+			}
+		}
+		else if (strcmp(state, "poster") == 0)
+		{
+			double pagePrintableAreaWidth, pagePrintableAreaHeight;
+			GetPrintablePaperAreaSize(pagePrintableAreaWidth, pagePrintableAreaHeight);
+			int pagesHorizontal = (int)ceil(GetPosterWidth(ePosterSizeModePages));
+			int pagesVertical = (int)ceil(GetPosterHeight(ePosterSizeModePages));
+			double posterWidth = pagesHorizontal*pagePrintableAreaWidth - (pagesHorizontal-1)*GetOverlappingWidth() + GetPaperBorderLeft() + GetPaperBorderRight();
+			double posterHeight = pagesVertical*pagePrintableAreaHeight - (pagesVertical-1)*GetOverlappingHeight() + GetPaperBorderTop() + GetPaperBorderBottom();
+			GetPreviewSize(posterWidth, posterHeight, canvasWidth, canvasHeight, boxWidth, boxHeight, true);
+			x_offset = (canvasWidth - boxWidth) / 2;
+			y_offset = (canvasHeight - boxHeight) / 2;
+			double distanceUnitToPixelfactor = (double)boxWidth/posterWidth;
+
+			double borderTop = GetPaperBorderTop() * distanceUnitToPixelfactor;
+			double borderRight = GetPaperBorderRight() * distanceUnitToPixelfactor;
+			double borderBottom = GetPaperBorderBottom() * distanceUnitToPixelfactor;
+			double borderLeft = GetPaperBorderLeft() * distanceUnitToPixelfactor;
+			double posterPrintableAreaWidth = boxWidth - borderLeft - borderRight;
+			double posterPrintableAreaHeight = boxHeight - borderTop - borderBottom;
+
+			paintCanvas->DrawFilledRect(x_offset, y_offset, boxWidth, boxHeight, 128, 128, 128);
+			paintCanvas->DrawFilledRect(borderLeft + x_offset, borderTop + y_offset, posterPrintableAreaWidth, posterPrintableAreaHeight, 230, 230, 230);
+
+			double imageWidth = GetPosterWidth(ePosterSizeModeAbsolute) * distanceUnitToPixelfactor;
+			double imageHeight = GetPosterHeight(ePosterSizeModeAbsolute) * distanceUnitToPixelfactor;
+
+			paintCanvas->DrawImage(borderLeft + x_offset, borderTop + y_offset, imageWidth, imageHeight);
+
+			double overlappingHeight = GetOverlappingHeight() * distanceUnitToPixelfactor;
+			double overlappingWidth = GetOverlappingWidth() * distanceUnitToPixelfactor;
+			pagePrintableAreaWidth *= distanceUnitToPixelfactor;
+			pagePrintableAreaHeight *= distanceUnitToPixelfactor;
+			enum eOverlappingPositions overlappingPosition = GetOverlappingPosition();
+
+			double lineYPosition = borderTop;
+			for (int pagesRow = 0; pagesRow < pagesVertical - 1; pagesRow++)
+			{
+				lineYPosition += pagePrintableAreaHeight;
+				if (
+					(
+						pagesRow < (pagesVertical - 1)
+						&& (overlappingPosition == eOverlappingPositionTopLeft
+						|| overlappingPosition == eOverlappingPositionTopRight)
+					)
+					||
+					(
+						pagesRow > 0 
+						&& (overlappingPosition == eOverlappingPositionBottomRight
+						|| overlappingPosition == eOverlappingPositionBottomLeft)
+					))
+				{
+					lineYPosition -= overlappingHeight;
+				}
+				paintCanvas->DrawLine(x_offset, lineYPosition + y_offset, boxWidth - 1 + x_offset, lineYPosition + y_offset, 255, 128, 128);
+			}
+
+			double lineXPosition = borderLeft;
+			for (int pagesColumn = 0; pagesColumn < pagesHorizontal - 1; pagesColumn++)
+			{
+				lineXPosition += pagePrintableAreaWidth;
+				if (
+					(
+						pagesColumn < (pagesHorizontal - 1)
+						&& (overlappingPosition == eOverlappingPositionTopLeft
+						|| overlappingPosition == eOverlappingPositionBottomLeft)
+					)
+					||
+					(
+						pagesColumn > 0 
+						&& (overlappingPosition == eOverlappingPositionTopRight
+						|| overlappingPosition == eOverlappingPositionBottomRight)
+					))
+				{
+					lineXPosition -= overlappingWidth;
+				}
+				paintCanvas->DrawLine(lineXPosition + x_offset, y_offset, lineXPosition + x_offset, boxHeight - 1 + y_offset, 255, 128, 128);
 			}
 		}
 	}

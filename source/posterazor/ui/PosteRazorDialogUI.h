@@ -139,12 +139,12 @@ private:
   void cb_m_posterAbsoluteWidthInput_i(Fl_Value_Input*, void*);
   static void cb_m_posterAbsoluteWidthInput(Fl_Value_Input*, void*);
 public:
+  Fl_Box *m_posterAbsoluteWidthLabel;
   Fl_Value_Input *m_posterAbsoluteHeightInput;
 private:
   void cb_m_posterAbsoluteHeightInput_i(Fl_Value_Input*, void*);
   static void cb_m_posterAbsoluteHeightInput(Fl_Value_Input*, void*);
 public:
-  Fl_Box *m_posterAbsoluteWidthLabel;
   Fl_Box *m_posterAbsoluteHeightLabel;
   Fl_Round_Button *m_posterSizeInPagesRadioButton;
 private:
@@ -157,12 +157,12 @@ private:
   void cb_m_posterPagesWidthInput_i(Fl_Value_Input*, void*);
   static void cb_m_posterPagesWidthInput(Fl_Value_Input*, void*);
 public:
+  Fl_Box *m_posterPagesWidthLabel;
   Fl_Value_Input *m_posterPagesHeightInput;
 private:
   void cb_m_posterPagesHeightInput_i(Fl_Value_Input*, void*);
   static void cb_m_posterPagesHeightInput(Fl_Value_Input*, void*);
 public:
-  Fl_Box *m_posterPagesWidthLabel;
   Fl_Box *m_posterPagesHeightLabel;
   Fl_Round_Button *m_posterSizePercentualRadioButton;
 private:
