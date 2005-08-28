@@ -176,37 +176,19 @@ private:
   static void cb_m_posterPercentualSizeInput(Fl_Value_Input*, void*);
 public:
   Fl_Box *m_posterPercentualWidthLabel;
-  static Fl_Menu_Item menu_[];
-  static Fl_Menu_Item *m_posterImageAlignmentTop;
 private:
-  void cb_m_posterImageAlignmentTop_i(Fl_Menu_*, void*);
-  static void cb_m_posterImageAlignmentTop(Fl_Menu_*, void*);
-public:
-  static Fl_Menu_Item *m_posterImageAlignmentMiddle;
-private:
-  void cb_m_posterImageAlignmentMiddle_i(Fl_Menu_*, void*);
-  static void cb_m_posterImageAlignmentMiddle(Fl_Menu_*, void*);
-public:
-  static Fl_Menu_Item *m_posterImageAlignmentBottom;
-private:
-  void cb_m_posterImageAlignmentBottom_i(Fl_Menu_*, void*);
-  static void cb_m_posterImageAlignmentBottom(Fl_Menu_*, void*);
-  static Fl_Menu_Item menu_1[];
-public:
-  static Fl_Menu_Item *m_posterImageAlignmentLeft;
-private:
-  void cb_m_posterImageAlignmentLeft_i(Fl_Menu_*, void*);
-  static void cb_m_posterImageAlignmentLeft(Fl_Menu_*, void*);
-public:
-  static Fl_Menu_Item *m_posterImageAlignmentCenter;
-private:
-  void cb_m_posterImageAlignmentCenter_i(Fl_Menu_*, void*);
-  static void cb_m_posterImageAlignmentCenter(Fl_Menu_*, void*);
-public:
-  static Fl_Menu_Item *m_posterImageAlignmentRight;
-private:
-  void cb_m_posterImageAlignmentRight_i(Fl_Menu_*, void*);
-  static void cb_m_posterImageAlignmentRight(Fl_Menu_*, void*);
+  void cb__i(Fl_Button*, void*);
+  static void cb_(Fl_Button*, void*);
+  void cb_1_i(Fl_Button*, void*);
+  static void cb_1(Fl_Button*, void*);
+  void cb_2_i(Fl_Button*, void*);
+  static void cb_2(Fl_Button*, void*);
+  void cb_3_i(Fl_Button*, void*);
+  static void cb_3(Fl_Button*, void*);
+  void cb_4_i(Fl_Button*, void*);
+  static void cb_4(Fl_Button*, void*);
+  void cb_5_i(Fl_Button*, void*);
+  static void cb_5(Fl_Button*, void*);
 public:
   Fl_Group *m_savePosterStep;
   Fl_Paint_Canvas *m_previewPaintCanvas;
