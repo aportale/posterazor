@@ -87,23 +87,30 @@ void PosteRazorDialog::UpdatePreviewState(void)
 	m_previewPaintCanvas->redraw();
 }
 
-void PosteRazorDialog::LoadInputImage(void)
+void PosteRazorDialog::LoadInputImage(const char *fileName)
 {
 	Fl_Native_File_Chooser chooser;
 	char errorMessage[1024] = "";
+	const char *loadFileName = fileName;
 	bool loaded = false;
 
 //	chooser.AddPattern();
 
-	if (chooser.show() == 0)
+	if (!loadFileName)
 	{
-		loaded = m_posteRazor->LoadInputImage(chooser.filename(), errorMessage, sizeof(errorMessage));
+		if (chooser.show() == 0)
+			loadFileName = chooser.filename();
+	}
+
+	if (loadFileName)
+	{
+		loaded = m_posteRazor->LoadInputImage(loadFileName, errorMessage, sizeof(errorMessage));
 		if (!loaded)
 		{
 			if (strlen(errorMessage) > 0)
 				fl_message(errorMessage);
 			else
-				fl_message("The file '%s' could not be loaded.", fl_filename_name(chooser.filename()));
+				fl_message("The file '%s' could not be loaded.", fl_filename_name(loadFileName));
 		}
 	}
 
@@ -111,7 +118,7 @@ void PosteRazorDialog::LoadInputImage(void)
 	{
 		UpdateImageInfoFields();
 		m_imageInfoGroup->activate();
-		m_inputFileNameLabel->copy_label(fl_filename_name(chooser.filename()));
+		m_inputFileNameLabel->copy_label(fl_filename_name(loadFileName));
 		m_previewPaintCanvas->RequestImage();
 		m_previewPaintCanvas->redraw();
 		UpdatePosterSizeFields(NULL);
@@ -296,6 +303,7 @@ int main (int argc, char **argv)
 {
 	PosteRazorDialog dialog;
 	dialog.show(argc, argv);
+	dialog.LoadInputImage("c:\\Dokumente und Einstellungen\\Besitzer\\Desktop\\pasteltulum5.png");
 	Fl::scheme("plastic");
 
 	Fl::run();

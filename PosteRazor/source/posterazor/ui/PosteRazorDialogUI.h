@@ -182,7 +182,7 @@ public:
   virtual void next(void) = 0;
   virtual void prev(void) = 0;
   virtual void UpdateNavigationButtons(void) = 0;
-  virtual void LoadInputImage(void) = 0;
+  virtual void LoadInputImage(const char *fileName) = 0;
   virtual void SetPaperSizeFields(void) = 0;
   virtual void HandlePaperSizeChangement(Fl_Widget* sourceWidget) = 0;
   virtual void SetOverlappingFields(void) = 0;

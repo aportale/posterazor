@@ -17,7 +17,7 @@ void PosteRazorDialogUI::cb_m_prevButton(Fl_Button* o, void* v) {
 }
 
 void PosteRazorDialogUI::cb_fileopen_i(Fl_Button*, void*) {
-  LoadInputImage();
+  LoadInputImage(0);
 }
 void PosteRazorDialogUI::cb_fileopen(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_fileopen_i(o,v);
