@@ -854,18 +854,20 @@ o->when(FL_WHEN_RELEASE);
       }
       { Fl_Group* o = m_posterSizeAbsoluteGroup = new Fl_Group(335, 105, 260, 55);
         { Fl_Value_Input* o = m_posterAbsoluteWidthInput = new Fl_Value_Input(430, 105, 90, 25, "Width:");
-          o->callback((Fl_Callback*)cb_m_posterAbsoluteWidthInput);
+          o->minimum(0.01);
+          o->maximum(999);
           o->step(1);
-          o->range(0, 999);
+          o->callback((Fl_Callback*)cb_m_posterAbsoluteWidthInput);
           o->precision(3);
         }
         { Fl_Box* o = m_posterAbsoluteWidthLabel = new Fl_Box(520, 105, 70, 25, "cm");
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         }
         { Fl_Value_Input* o = m_posterAbsoluteHeightInput = new Fl_Value_Input(430, 135, 90, 25, "Height:");
-          o->callback((Fl_Callback*)cb_m_posterAbsoluteHeightInput);
+          o->minimum(0.01);
+          o->maximum(999);
           o->step(1);
-          o->range(0, 999);
+          o->callback((Fl_Callback*)cb_m_posterAbsoluteHeightInput);
           o->precision(3);
         }
         { Fl_Box* o = m_posterAbsoluteHeightLabel = new Fl_Box(520, 135, 70, 25, "cm");
@@ -880,18 +882,20 @@ o->when(FL_WHEN_RELEASE);
       }
       { Fl_Group* o = m_posterSizeInPagesGroup = new Fl_Group(335, 195, 260, 55);
         { Fl_Value_Input* o = m_posterPagesWidthInput = new Fl_Value_Input(430, 195, 90, 25, "Width:");
-          o->callback((Fl_Callback*)cb_m_posterPagesWidthInput);
+          o->minimum(0.01);
+          o->maximum(999);
           o->step(0.1);
-          o->range(0, 999);
+          o->callback((Fl_Callback*)cb_m_posterPagesWidthInput);
           o->precision(3);
         }
         { Fl_Box* o = m_posterPagesWidthLabel = new Fl_Box(520, 195, 70, 25, "pages");
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         }
         { Fl_Value_Input* o = m_posterPagesHeightInput = new Fl_Value_Input(430, 225, 90, 25, "Height:");
-          o->callback((Fl_Callback*)cb_m_posterPagesHeightInput);
+          o->minimum(0.01);
+          o->maximum(999);
           o->step(0.1);
-          o->range(0, 999);
+          o->callback((Fl_Callback*)cb_m_posterPagesHeightInput);
           o->precision(3);
         }
         { Fl_Box* o = m_posterPagesHeightLabel = new Fl_Box(520, 225, 70, 25, "pages");
@@ -906,9 +910,10 @@ o->when(FL_WHEN_RELEASE);
       }
       { Fl_Group* o = m_posterSizePercentualGroup = new Fl_Group(335, 285, 260, 25);
         { Fl_Value_Input* o = m_posterPercentualSizeInput = new Fl_Value_Input(430, 285, 90, 25, "Size:");
-          o->callback((Fl_Callback*)cb_m_posterPercentualSizeInput);
+          o->minimum(0.01);
+          o->maximum(999);
           o->step(0.1);
-          o->range(0, 999);
+          o->callback((Fl_Callback*)cb_m_posterPercentualSizeInput);
           o->precision(3);
         }
         { Fl_Box* o = m_posterPercentualWidthLabel = new Fl_Box(520, 285, 70, 25, "%");
