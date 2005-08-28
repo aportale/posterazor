@@ -22,7 +22,7 @@ public:
 	void UpdateNavigationButtons(void);
 	void UpdatePreviewState(void);
 
-	void LoadInputImage(void);
+	void LoadInputImage(const char *fileName);
 	void UpdateImageInfoFields(void);
 
 	void SetPaperSizeFields(void);
