@@ -32,8 +32,8 @@ widget_class PosteRazorDialogUI {
     user_data this open
     xywh {315 45 295 365} box THIN_DOWN_BOX
   } {
-    Fl_Group m_loadInputImageStep {selected
-      xywh {315 45 295 365} color 50
+    Fl_Group m_loadInputImageStep {
+      xywh {315 45 295 365} color 50 hide
     } {
       Fl_Group {} {
         label {Input Image} open
@@ -225,11 +225,11 @@ widget_class PosteRazorDialogUI {
         }
       }
     }
-    Fl_Group m_posterSizeStep {
-      xywh {315 45 295 365} hide
+    Fl_Group m_posterSizeStep {open
+      xywh {315 45 295 365}
     } {
       Fl_Group {} {
-        label {Image size} open
+        label {Image size}
         xywh {325 70 275 250} box THIN_DOWN_BOX color 45 selection_color 54
       } {
         Fl_Round_Button m_posterSizeAbsoluteRadioButton {
@@ -316,10 +316,42 @@ widget_class PosteRazorDialogUI {
       } {
         Fl_Choice {} {open
           xywh {335 355 123 25} down_box BORDER_BOX align 0
-        } {}
+        } {
+          MenuItem m_posterImageAlignmentTop {
+            label Top
+            callback {HandlePosterImageAlignment();}
+            xywh {0 0 34 24}
+          }
+          MenuItem m_posterImageAlignmentMiddle {
+            label Middle
+            callback {HandlePosterImageAlignment();}
+            xywh {10 10 34 24}
+          }
+          MenuItem m_posterImageAlignmentBottom {
+            label Bottom
+            callback {HandlePosterImageAlignment();}
+            xywh {20 20 34 24}
+          }
+        }
         Fl_Choice {} {open
           xywh {467 355 123 25} down_box BORDER_BOX align 0
-        } {}
+        } {
+          MenuItem m_posterImageAlignmentLeft {
+            label Left
+            callback {HandlePosterImageAlignment();}
+            xywh {10 10 34 24}
+          }
+          MenuItem m_posterImageAlignmentCenter {
+            label Center
+            callback {HandlePosterImageAlignment();}
+            xywh {20 20 34 24}
+          }
+          MenuItem m_posterImageAlignmentRight {
+            label Right
+            callback {HandlePosterImageAlignment();}
+            xywh {30 30 34 24}
+          }
+        }
       }
       Fl_Box {} {
         xywh {315 410 295 0} resizable
@@ -371,5 +403,7 @@ widget_class PosteRazorDialogUI {
   decl {virtual void UpdatePosterSizeGroupsState(void) = 0;} {public
   }
   decl {virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;} {public
+  }
+  decl {virtual void HandlePosterImageAlignment(void) = 0;} {selected public
   }
 } 

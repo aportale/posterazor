@@ -26,6 +26,8 @@ private:
 	enum ePosterSizeModes  m_posterSizeMode;
 	double                 m_posterWidth;
 	double                 m_posterHeight;
+	enum eHorizontalAlignments m_posterHorizontalAlignment;
+	enum eVerticalAlignments m_posterVerticalAlignment;
 
 	bool                   m_useCustomPaperSize;
 	ePaperFormats          m_paperFormat;
@@ -46,6 +48,8 @@ public:
 		m_posterSizeMode               = ePosterSizeModePages;
 		m_posterWidth                  = 2.0;
 		m_posterHeight                 = 2.0;
+		m_posterHorizontalAlignment    = eHorizontalAlignmentLeft;
+		m_posterVerticalAlignment      = eVerticalAlignmentTop;
 
 		m_useCustomPaperSize           = false;
 		m_paperFormat                  = ePaperFormatA4;
@@ -309,6 +313,11 @@ public:
 	}
 
 	enum ePosterSizeModes GetPosterSizeMode(void) {return m_posterSizeMode;}
+
+	void SetPosterHorizontalAlignment(enum eHorizontalAlignments alignment) {m_posterHorizontalAlignment = alignment;}
+	void SetPosterVerticalAlignment(enum eVerticalAlignments alignment) {m_posterVerticalAlignment = alignment;}
+	enum eHorizontalAlignments GetPosterHorizontalAlignment(void) {return m_posterHorizontalAlignment;}
+	enum eVerticalAlignments GetPosterVerticalAlignment(void) {return m_posterVerticalAlignment;}
 
 	void GetPreviewSize(double imageWidth, double imageHeight, int boxWidth, int boxHeight, int &previewWidth, int &previewHeight, bool enlargeToFit)
 	{
