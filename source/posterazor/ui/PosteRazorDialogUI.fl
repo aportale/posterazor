@@ -7,11 +7,11 @@ decl {\#include "Fl_Paint_Canvas.h"} {public
 
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {570 213 620 455} type Double resizable
+  xywh {367 218 620 455} type Double hide resizable
   code0 {size_range(this->w(), this->h());}
-  class Fl_Double_Window visible
+  class Fl_Double_Window
 } {
-  Fl_Group {} {selected
+  Fl_Group {} {
     xywh {10 420 600 25}
   } {
     Fl_Button m_nextButton {
@@ -236,16 +236,14 @@ widget_class PosteRazorDialogUI {
           callback {UpdatePosterSizeGroupsState();}
           xywh {335 80 260 20} type Radio down_box ROUND_DOWN_BOX
         }
-        Fl_Group m_posterSizeAbsoluteGroup {
+        Fl_Group m_posterSizeAbsoluteGroup {open
           xywh {335 105 260 55}
         } {
           Fl_Value_Input m_posterAbsoluteWidthInput {
             label {Width:}
             callback {UpdatePosterSizeFields(m_posterAbsoluteWidthInput);}
-            xywh {430 105 90 25}
-            code0 {o->step(1);}
-            code1 {o->range(0, 999);}
-            code2 {o->precision(3);}
+            xywh {430 105 90 25} minimum 0.01 maximum 999 step 1
+            code0 {o->precision(3);}
           }
           Fl_Box m_posterAbsoluteWidthLabel {
             label cm
@@ -254,10 +252,8 @@ widget_class PosteRazorDialogUI {
           Fl_Value_Input m_posterAbsoluteHeightInput {
             label {Height:}
             callback {UpdatePosterSizeFields(m_posterAbsoluteHeightInput);}
-            xywh {430 135 90 25}
-            code0 {o->step(1);}
-            code1 {o->range(0, 999);}
-            code2 {o->precision(3);}
+            xywh {430 135 90 25} minimum 0.01 maximum 999 step 1
+            code0 {o->precision(3);}
           }
           Fl_Box m_posterAbsoluteHeightLabel {
             label cm
@@ -269,16 +265,14 @@ widget_class PosteRazorDialogUI {
           callback {UpdatePosterSizeGroupsState();}
           xywh {335 170 260 20} type Radio down_box ROUND_DOWN_BOX
         }
-        Fl_Group m_posterSizeInPagesGroup {
+        Fl_Group m_posterSizeInPagesGroup {open
           xywh {335 195 260 55}
         } {
           Fl_Value_Input m_posterPagesWidthInput {
             label {Width:}
             callback {UpdatePosterSizeFields(m_posterPagesWidthInput);}
-            xywh {430 195 90 25}
-            code0 {o->step(0.1);}
-            code1 {o->range(0, 999);}
-            code2 {o->precision(3);}
+            xywh {430 195 90 25} minimum 0.01 maximum 999 step 0.1
+            code0 {o->precision(3);}
           }
           Fl_Box m_posterPagesWidthLabel {
             label pages
@@ -287,10 +281,8 @@ widget_class PosteRazorDialogUI {
           Fl_Value_Input m_posterPagesHeightInput {
             label {Height:}
             callback {UpdatePosterSizeFields(m_posterPagesHeightInput);}
-            xywh {430 225 90 25}
-            code0 {o->step(0.1);}
-            code1 {o->range(0, 999);}
-            code2 {o->precision(3);}
+            xywh {430 225 90 25} minimum 0.01 maximum 999 step 0.1
+            code0 {o->precision(3);}
           }
           Fl_Box m_posterPagesHeightLabel {
             label pages
@@ -302,16 +294,14 @@ widget_class PosteRazorDialogUI {
           callback {UpdatePosterSizeGroupsState();}
           xywh {335 260 260 20} type Radio down_box ROUND_DOWN_BOX
         }
-        Fl_Group m_posterSizePercentualGroup {
+        Fl_Group m_posterSizePercentualGroup {open
           xywh {335 285 260 25}
         } {
           Fl_Value_Input m_posterPercentualSizeInput {
             label {Size:}
-            callback {UpdatePosterSizeFields(m_posterPercentualSizeInput);}
-            xywh {430 285 90 25}
-            code0 {o->step(0.1);}
-            code1 {o->range(0, 999);}
-            code2 {o->precision(3);}
+            callback {UpdatePosterSizeFields(m_posterPercentualSizeInput);} selected
+            xywh {430 285 90 25} minimum 0.01 maximum 999 step 0.1
+            code0 {o->precision(3);}
           }
           Fl_Box m_posterPercentualWidthLabel {
             label {%}
