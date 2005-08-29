@@ -1,5 +1,5 @@
 #include "PosteRazorDialog.h"
-#include <Fl_Native_File_Chooser.H>
+#include <Fl/Fl_Native_File_Chooser.H>
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
 
