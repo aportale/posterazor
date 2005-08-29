@@ -446,7 +446,18 @@ public:
 			double imageWidth = GetPosterWidth(ePosterSizeModeAbsolute) * distanceUnitToPixelfactor;
 			double imageHeight = GetPosterHeight(ePosterSizeModeAbsolute) * distanceUnitToPixelfactor;
 
-			paintCanvas->DrawImage(borderLeft + x_offset, borderTop + y_offset, imageWidth, imageHeight);
+			enum eVerticalAlignments verticalAlignment = GetPosterVerticalAlignment();
+			double imageVerticalOffset = 
+				verticalAlignment == eVerticalAlignmentTop?0
+				:verticalAlignment == eVerticalAlignmentMiddle?(posterPrintableAreaHeight - imageHeight) / 2
+				:(posterPrintableAreaHeight - imageHeight);
+			enum eHorizontalAlignments horizontalAlignment = GetPosterHorizontalAlignment();
+			double imageHorizontalOffset = 
+				horizontalAlignment == eHorizontalAlignmentLeft?0
+				:horizontalAlignment == eHorizontalAlignmentCenter?(posterPrintableAreaWidth - imageWidth) / 2
+				:(posterPrintableAreaWidth - imageWidth);
+
+			paintCanvas->DrawImage(borderLeft + imageHorizontalOffset + x_offset, borderTop + imageVerticalOffset + y_offset, imageWidth, imageHeight);
 
 			double overlappingHeight = GetOverlappingHeight() * distanceUnitToPixelfactor;
 			double overlappingWidth = GetOverlappingWidth() * distanceUnitToPixelfactor;
