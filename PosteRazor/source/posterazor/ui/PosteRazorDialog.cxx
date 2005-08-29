@@ -1,5 +1,5 @@
 #include "PosteRazorDialog.h"
-#include <FL/Fl_Native_File_Chooser.H>
+#include <Fl_Native_File_Chooser.H>
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
 
@@ -21,12 +21,13 @@ PosteRazorDialog::PosteRazorDialog(void)
 	m_paperFormatChoice->menu(m_paperFormatMenuItems);
 
 	if (m_posteRazor->GetPosterSizeMode() == PosteRazor::ePosterSizeModeAbsolute)
-		m_posterSizeAbsoluteRadioButton->value(1);
+		m_posterSizeAbsoluteRadioButton->setonly();
 	else if (m_posteRazor->GetPosterSizeMode() == PosteRazor::ePosterSizeModePages)
-		m_posterSizeInPagesRadioButton->value(1);
+		m_posterSizeInPagesRadioButton->setonly();
 	else // if (m_posteRazor->GetPosterSizeMode() == PosteRazor::ePosterSizeModePercentual)
-		m_posterSizePercentualRadioButton->value(1);
+		m_posterSizePercentualRadioButton->setonly();
 	UpdatePosterSizeGroupsState();
+	SetPosterImageAlignmentButtons();
 
 	m_imageInfoGroup->deactivate();
 
@@ -36,7 +37,6 @@ PosteRazorDialog::PosteRazorDialog(void)
 	UpdatePreviewState();
 	SetPaperSizeFields();
 	SetOverlappingFields();
-
 }
 
 PosteRazorDialog::~PosteRazorDialog()
@@ -273,7 +273,7 @@ void PosteRazorDialog::SetOverlappingFields(void)
 		:overlappingPosition == PosteRazor::eOverlappingPositionBottomLeft?m_overlappingBottomLeftRadioButton
 		:overlappingPosition == PosteRazor::eOverlappingPositionTopLeft?m_overlappingTopLeftRadioButton
 		:m_overlappingTopRightRadioButton
-	)->value(1);
+	)->setonly();
 }
 
 void PosteRazorDialog::HandleOverlappingChangement(Fl_Widget *sourceWidget)
@@ -299,16 +299,53 @@ void PosteRazorDialog::UpdatePosterSizeGroupsState(void)
 	m_posterSizePercentualRadioButton->value() == 0?m_posterSizePercentualGroup->deactivate():m_posterSizePercentualGroup->activate();
 }
 
+void PosteRazorDialog::SetPosterImageAlignmentButtons(void)
+{
+	enum PosteRazor::eVerticalAlignments verticalAlignment = m_posteRazor->GetPosterVerticalAlignment();
+	
+	(
+		verticalAlignment == PosteRazor::eVerticalAlignmentTop?m_posterAlignmentTopButton
+		:verticalAlignment == PosteRazor::eVerticalAlignmentMiddle?m_posterAlignmentMiddleButton
+		:m_posterAlignmentBottomButton 
+	)->setonly();
+	
+	enum PosteRazor::eHorizontalAlignments horizontalAlignment = m_posteRazor->GetPosterHorizontalAlignment();
+	
+	(
+		horizontalAlignment == PosteRazor::eHorizontalAlignmentLeft?m_posterAlignmentLeftButton
+		:horizontalAlignment == PosteRazor::eHorizontalAlignmentCenter?m_posterAlignmentCenterButton
+		:m_posterAlignmentRightButton 
+	)->setonly();
+}
+
 void PosteRazorDialog::HandlePosterImageAlignment(void)
 {
-	int huhu = 1;
+	m_posteRazor->SetPosterVerticalAlignment
+	(
+		m_posterAlignmentTopButton->value() == 1?PosteRazor::eVerticalAlignmentTop
+		:m_posterAlignmentMiddleButton->value() == 1?PosteRazor::eVerticalAlignmentMiddle
+		:PosteRazor::eVerticalAlignmentBottom
+	);
+	
+	m_posteRazor->SetPosterHorizontalAlignment
+	(
+		m_posterAlignmentLeftButton->value() == 1?PosteRazor::eHorizontalAlignmentLeft
+		:m_posterAlignmentCenterButton->value() == 1?PosteRazor::eHorizontalAlignmentCenter
+		:PosteRazor::eHorizontalAlignmentRight
+	);
+	
+	m_previewPaintCanvas->redraw();
 }
 
 int main (int argc, char **argv)
 {
 	PosteRazorDialog dialog;
 	dialog.show(argc, argv);
+#ifdef WIN32
 	dialog.LoadInputImage("c:\\image.png");
+#else
+	dialog.LoadInputImage("/temp/image.png");
+#endif
 	Fl::scheme("plastic");
 
 	Fl::run();

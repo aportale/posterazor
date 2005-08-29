@@ -7,7 +7,7 @@ decl {\#include "Fl_Paint_Canvas.h"} {public
 
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {335 79 620 455} type Double resizable
+  xywh {27 241 620 455} type Double resizable
   code0 {size_range(this->w(), this->h());}
   class Fl_Double_Window visible
 } {
@@ -315,35 +315,35 @@ widget_class PosteRazorDialogUI {
         xywh {325 345 275 51} box THIN_DOWN_BOX color 45 selection_color 45
       } {
         Fl_Group {} {open
-          xywh {477 355 113 31}
+          xywh {335 355 113 31}
         } {
-          Fl_Button {} {
-            callback {HandlePosterImageAlignment();} selected
-            image {images/alignmentCenter.png} xywh {518 355 31 31} type Radio color 40 selection_color 55
+          Fl_Button m_posterAlignmentTopButton {
+            callback {HandlePosterImageAlignment();}
+            image {images/alignmentTop.png} xywh {335 355 31 31} type Radio color 40 selection_color 55
           }
-          Fl_Button {} {
-            callback {HandlePosterImageAlignment();} selected
-            image {images/alignmentRight.png} xywh {559 355 31 31} type Radio color 40 selection_color 55
+          Fl_Button m_posterAlignmentMiddleButton {
+            callback {HandlePosterImageAlignment();}
+            image {images/alignmentMiddle.png} xywh {376 355 31 31} type Radio color 40 selection_color 55
           }
-          Fl_Button {} {
-            callback {HandlePosterImageAlignment();} selected
-            image {images/alignmentLeft.png} xywh {477 355 31 31} type Radio color 40 selection_color 55
+          Fl_Button m_posterAlignmentBottomButton {
+            callback {HandlePosterImageAlignment();}
+            image {images/alignmentBottom.png} xywh {417 355 31 31} type Radio color 40 selection_color 55
           }
         }
         Fl_Group {} {open
-          xywh {335 355 113 31}
+          xywh {477 355 113 31}
         } {
-          Fl_Button {} {
-            callback {HandlePosterImageAlignment();} selected
-            image {images/alignmentTop.png} xywh {335 355 31 31} type Radio color 40 selection_color 55
+          Fl_Button m_posterAlignmentLeftButton {
+            callback {HandlePosterImageAlignment();}
+            image {images/alignmentLeft.png} xywh {477 355 31 31} type Radio color 40 selection_color 55
           }
-          Fl_Button {} {
-            callback {HandlePosterImageAlignment();} selected
-            image {images/alignmentMiddle.png} xywh {376 355 31 31} type Radio color 40 selection_color 55
+          Fl_Button m_posterAlignmentCenterButton {
+            callback {HandlePosterImageAlignment();}
+            image {images/alignmentCenter.png} xywh {518 355 31 31} type Radio color 40 selection_color 55
           }
-          Fl_Button {} {
+          Fl_Button m_posterAlignmentRightButton {
             callback {HandlePosterImageAlignment();} selected
-            image {images/alignmentBottom.png} xywh {417 355 31 31} type Radio color 40 selection_color 55
+            image {images/alignmentRight.png} xywh {559 355 31 31} type Radio color 40 selection_color 55
           }
         }
       }
