@@ -1,5 +1,5 @@
 //
-// Fl_Native_File_Chooser.H -- FLTK native OS file chooser widget
+// Fl_Native_File_Chooser_DEFAULT.cxx -- FLTK native OS file chooser widget
 //
 // Copyright 2004 by Greg Ercolano.
 //
@@ -18,20 +18,9 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 // USA.
 //
+#include <FL/Fl_Native_File_Chooser.H>
 
-// OSX-SPECIFIC NATIVE BROWSER
-#ifdef __APPLE__ // Assume this is an OSX port
-
-#  include "Fl_Native_File_Chooser_MAC.H"
-
-#elif defined (__WIN32__) // Assume this is a win32 port
-
-#  include "Fl_Native_File_Chooser_WIN32.H"
-
-#else // Fall back to the FLTK native file chooser
-
-#  include "Fl_Native_File_Chooser_FLTK.H"
-
-#endif
-
-/* End of File */
+Fl_Native_File_Chooser::Fl_Native_File_Chooser()
+{
+    abort();
+}
