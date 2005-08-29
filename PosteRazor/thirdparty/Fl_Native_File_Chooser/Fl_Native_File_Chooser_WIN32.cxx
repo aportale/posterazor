@@ -287,7 +287,7 @@ int Fl_Native_File_Chooser::showdir() {
 
 #if defined(BIF_NONEWFOLDERBUTTON)					// Version 6.0
     if ( btype == BROWSE_DIRECTORY ) binf.ulFlags |= BIF_NONEWFOLDERBUTTON;
-    binf.ulFlags |= USENEWUI | BIF_SHAREABLE | BIF_RETURNONLYFSDIRS;
+    binf.ulFlags |= BIF_USENEWUI | BIF_SHAREABLE | BIF_RETURNONLYFSDIRS;
 #elif defined(BIF_USENEWUI)						// Version 5.0
     if ( btype == BROWSE_DIRECTORY ) binf.ulFlags |= BIF_EDITBOX;
     else if ( btype == BROWSE_SAVE_DIRECTORY ) binf.ulFlags |= BIF_USENEWUI;
