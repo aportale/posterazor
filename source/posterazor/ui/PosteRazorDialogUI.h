@@ -176,19 +176,35 @@ private:
   static void cb_m_posterPercentualSizeInput(Fl_Value_Input*, void*);
 public:
   Fl_Box *m_posterPercentualWidthLabel;
+  Fl_Button *m_posterAlignmentTopButton;
 private:
-  void cb__i(Fl_Button*, void*);
-  static void cb_(Fl_Button*, void*);
-  void cb_1_i(Fl_Button*, void*);
-  static void cb_1(Fl_Button*, void*);
-  void cb_2_i(Fl_Button*, void*);
-  static void cb_2(Fl_Button*, void*);
-  void cb_3_i(Fl_Button*, void*);
-  static void cb_3(Fl_Button*, void*);
-  void cb_4_i(Fl_Button*, void*);
-  static void cb_4(Fl_Button*, void*);
-  void cb_5_i(Fl_Button*, void*);
-  static void cb_5(Fl_Button*, void*);
+  void cb_m_posterAlignmentTopButton_i(Fl_Button*, void*);
+  static void cb_m_posterAlignmentTopButton(Fl_Button*, void*);
+public:
+  Fl_Button *m_posterAlignmentMiddleButton;
+private:
+  void cb_m_posterAlignmentMiddleButton_i(Fl_Button*, void*);
+  static void cb_m_posterAlignmentMiddleButton(Fl_Button*, void*);
+public:
+  Fl_Button *m_posterAlignmentBottomButton;
+private:
+  void cb_m_posterAlignmentBottomButton_i(Fl_Button*, void*);
+  static void cb_m_posterAlignmentBottomButton(Fl_Button*, void*);
+public:
+  Fl_Button *m_posterAlignmentLeftButton;
+private:
+  void cb_m_posterAlignmentLeftButton_i(Fl_Button*, void*);
+  static void cb_m_posterAlignmentLeftButton(Fl_Button*, void*);
+public:
+  Fl_Button *m_posterAlignmentCenterButton;
+private:
+  void cb_m_posterAlignmentCenterButton_i(Fl_Button*, void*);
+  static void cb_m_posterAlignmentCenterButton(Fl_Button*, void*);
+public:
+  Fl_Button *m_posterAlignmentRightButton;
+private:
+  void cb_m_posterAlignmentRightButton_i(Fl_Button*, void*);
+  static void cb_m_posterAlignmentRightButton(Fl_Button*, void*);
 public:
   Fl_Group *m_savePosterStep;
   Fl_Paint_Canvas *m_previewPaintCanvas;

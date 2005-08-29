@@ -201,45 +201,15 @@
 		};
 		82814C3208A5647B006D2A26 = {
 			children = (
-				82814C3608A5647B006D2A26,
-				82814C3B08A5647B006D2A26,
+				82D2733208C27E2600BB5154,
+				82D2733308C27E2600BB5154,
+				82D2733408C27E2600BB5154,
 			);
 			isa = PBXGroup;
 			name = Fl_Native_File_Chooser;
 			path = ../../thirdparty/Fl_Native_File_Chooser;
 			refType = 2;
 			sourceTree = SOURCE_ROOT;
-		};
-		82814C3608A5647B006D2A26 = {
-			children = (
-				82814C3708A5647B006D2A26,
-			);
-			isa = PBXGroup;
-			path = FL;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		82814C3708A5647B006D2A26 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.h;
-			path = Fl_Native_File_Chooser.H;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		82814C3B08A5647B006D2A26 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			path = Fl_Native_File_Chooser.cxx;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		82814C4308A5647B006D2A26 = {
-			fileRef = 82814C3B08A5647B006D2A26;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		82814C4808A564A3006D2A26 = {
 			children = (
@@ -434,6 +404,36 @@
 			settings = {
 			};
 		};
+		82D2733208C27E2600BB5154 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = Fl_Native_File_Chooser_MAC.cxx;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82D2733308C27E2600BB5154 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			path = Fl_Native_File_Chooser_MAC.H;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82D2733408C27E2600BB5154 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			path = Fl_Native_File_Chooser.H;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82D2733508C27E2600BB5154 = {
+			fileRef = 82D2733208C27E2600BB5154;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		82E5567008A56658001EEB51 = {
 			explicitFileType = wrapper.application;
 			includeInIndex = 0;
@@ -531,7 +531,6 @@
 		8D0C4E8F0486CD37000505A6 = {
 			buildActionMask = 2147483647;
 			files = (
-				82814C4308A5647B006D2A26,
 				82814C5908A564A3006D2A26,
 				82814C5B08A564A3006D2A26,
 				82814C5C08A564A3006D2A26,
@@ -539,6 +538,7 @@
 				82814C5F08A564A3006D2A26,
 				82814C6008A564A3006D2A26,
 				82F043D408B2A4BC00EED792,
+				82D2733508C27E2600BB5154,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
