@@ -269,10 +269,10 @@ void PosteRazorDialog::SetOverlappingFields(void)
 	enum PosteRazor::eOverlappingPositions overlappingPosition = m_posteRazor->GetOverlappingPosition();
 
 	(
-		overlappingPosition == PosteRazor::eOverlappingPositionBottomRight?m_overlappingBottomRightRadioButton
-		:overlappingPosition == PosteRazor::eOverlappingPositionBottomLeft?m_overlappingBottomLeftRadioButton
-		:overlappingPosition == PosteRazor::eOverlappingPositionTopLeft?m_overlappingTopLeftRadioButton
-		:m_overlappingTopRightRadioButton
+		overlappingPosition == PosteRazor::eOverlappingPositionBottomRight?m_overlappingPositionBottomRightButton
+		:overlappingPosition == PosteRazor::eOverlappingPositionBottomLeft?m_overlappingPositionBottomLeftButton
+		:overlappingPosition == PosteRazor::eOverlappingPositionTopLeft?m_overlappingPositionTopLeftButton
+		:m_overlappingPositionTopRightButton
 	)->setonly();
 }
 
@@ -283,9 +283,9 @@ void PosteRazorDialog::HandleOverlappingChangement(Fl_Widget *sourceWidget)
 
 	m_posteRazor->SetOverlappingPosition
 	(
-		m_overlappingBottomRightRadioButton->value()?PosteRazor::eOverlappingPositionBottomRight
-		:m_overlappingBottomLeftRadioButton->value()?PosteRazor::eOverlappingPositionBottomLeft
-		:m_overlappingTopLeftRadioButton->value()?PosteRazor::eOverlappingPositionTopLeft
+		m_overlappingPositionBottomRightButton->value()?PosteRazor::eOverlappingPositionBottomRight
+		:m_overlappingPositionBottomLeftButton->value()?PosteRazor::eOverlappingPositionBottomLeft
+		:m_overlappingPositionTopLeftButton->value()?PosteRazor::eOverlappingPositionTopLeft
 		:PosteRazor::eOverlappingPositionTopRight
 	);
 

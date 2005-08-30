@@ -103,30 +103,26 @@ private:
 public:
   Fl_Box *m_overlappingWidthLabel;
   Fl_Box *m_overlappingHeightLabel;
-  Fl_Round_Button *m_overlappingTopRightRadioButton;
+  Fl_Button *m_overlappingPositionTopLeftButton;
 private:
-  void cb_m_overlappingTopRightRadioButton_i(Fl_Round_Button*, void*);
-  static void cb_m_overlappingTopRightRadioButton(Fl_Round_Button*, void*);
+  void cb_m_overlappingPositionTopLeftButton_i(Fl_Button*, void*);
+  static void cb_m_overlappingPositionTopLeftButton(Fl_Button*, void*);
 public:
-  Fl_Box *m_overlappingTopRightBox;
-  Fl_Round_Button *m_overlappingBottomRightRadioButton;
+  Fl_Button *m_overlappingPositionTopRightButton;
 private:
-  void cb_m_overlappingBottomRightRadioButton_i(Fl_Round_Button*, void*);
-  static void cb_m_overlappingBottomRightRadioButton(Fl_Round_Button*, void*);
+  void cb_m_overlappingPositionTopRightButton_i(Fl_Button*, void*);
+  static void cb_m_overlappingPositionTopRightButton(Fl_Button*, void*);
 public:
-  Fl_Box *m_overlappingBottomRightBox;
-  Fl_Round_Button *m_overlappingTopLeftRadioButton;
+  Fl_Button *m_overlappingPositionBottomLeftButton;
 private:
-  void cb_m_overlappingTopLeftRadioButton_i(Fl_Round_Button*, void*);
-  static void cb_m_overlappingTopLeftRadioButton(Fl_Round_Button*, void*);
+  void cb_m_overlappingPositionBottomLeftButton_i(Fl_Button*, void*);
+  static void cb_m_overlappingPositionBottomLeftButton(Fl_Button*, void*);
 public:
-  Fl_Box *m_overlappingTopLeftBox;
-  Fl_Round_Button *m_overlappingBottomLeftRadioButton;
+  Fl_Button *m_overlappingPositionBottomRightButton;
 private:
-  void cb_m_overlappingBottomLeftRadioButton_i(Fl_Round_Button*, void*);
-  static void cb_m_overlappingBottomLeftRadioButton(Fl_Round_Button*, void*);
+  void cb_m_overlappingPositionBottomRightButton_i(Fl_Button*, void*);
+  static void cb_m_overlappingPositionBottomRightButton(Fl_Button*, void*);
 public:
-  Fl_Box *m_overlappingBottomLeftBox;
   Fl_Group *m_posterSizeStep;
   Fl_Round_Button *m_posterSizeAbsoluteRadioButton;
 private:
