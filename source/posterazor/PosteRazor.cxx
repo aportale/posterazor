@@ -5,6 +5,7 @@
 
 #define MIN(a, b) ((a)<=(b)?(a):(b))
 #define MAX(a, b) ((a)>(b)?(a):(b))
+#define MINMAX(a, min, max) (MIN((max), MAX((a), (min))))
 
 class PosteRazorImplementation: public PosteRazor
 {
@@ -46,7 +47,7 @@ public:
 		m_imageIO                      = PosteRazorImageIO::CreatePosteRazorImageIO();
 
 		m_posterSizeMode               = ePosterSizeModePages;
-		m_posterWidth                  = 2.0;
+		m_posterWidth                  = 1.3;//2.0;
 		m_posterHeight                 = 2.0;
 		m_posterHorizontalAlignment    = eHorizontalAlignmentLeft;
 		m_posterVerticalAlignment      = eVerticalAlignmentTop;
@@ -55,8 +56,8 @@ public:
 		m_paperFormat                  = ePaperFormatA4;
 		m_paperOrientation             = ePaperOrientationPortrait;
 		m_paperBorderTop               = 1.5;
-		m_paperBorderRight             = 1.5;
-		m_paperBorderBottom            = 1.5;
+		m_paperBorderRight             = 4;//1.5;
+		m_paperBorderBottom            = 10;//1.5;
 		m_paperBorderLeft              = 1.5;
 		m_customPaperWidth             = 20;
 		m_customPaperHeight            = 20;
@@ -447,17 +448,27 @@ public:
 			double imageHeight = GetPosterHeight(ePosterSizeModeAbsolute) * distanceUnitToPixelfactor;
 
 			enum eVerticalAlignments verticalAlignment = GetPosterVerticalAlignment();
-			double imageVerticalOffset = 
-				verticalAlignment == eVerticalAlignmentTop?0
-				:verticalAlignment == eVerticalAlignmentMiddle?(posterPrintableAreaHeight - imageHeight) / 2
-				:(posterPrintableAreaHeight - imageHeight);
 			enum eHorizontalAlignments horizontalAlignment = GetPosterHorizontalAlignment();
-			double imageHorizontalOffset = 
-				horizontalAlignment == eHorizontalAlignmentLeft?0
-				:horizontalAlignment == eHorizontalAlignmentCenter?(posterPrintableAreaWidth - imageWidth) / 2
-				:(posterPrintableAreaWidth - imageWidth);
 
-			paintCanvas->DrawImage(borderLeft + imageHorizontalOffset + x_offset, borderTop + imageVerticalOffset + y_offset, imageWidth, imageHeight);
+			paintCanvas->DrawImage
+			(
+				(
+					horizontalAlignment == eHorizontalAlignmentLeft?borderLeft
+					:horizontalAlignment == eHorizontalAlignmentCenter?
+						MINMAX((boxWidth - imageWidth) / 2, borderLeft, (int)borderLeft + (int)posterPrintableAreaWidth - (int)imageWidth)
+					:((int)borderLeft + (int)posterPrintableAreaWidth - (int)imageWidth)
+				)
+				+ x_offset,
+
+				(
+					verticalAlignment == eVerticalAlignmentTop?borderTop
+					:verticalAlignment == eVerticalAlignmentMiddle?
+						MINMAX((boxHeight - imageHeight) / 2, borderTop, (int)borderTop + (int)posterPrintableAreaHeight - (int)imageHeight)
+					:((int)borderTop + (int)posterPrintableAreaHeight - (int)imageHeight)
+					)
+				+ y_offset,
+				imageWidth, imageHeight
+			);
 
 			double overlappingHeight = GetOverlappingHeight() * distanceUnitToPixelfactor;
 			double overlappingWidth = GetOverlappingWidth() * distanceUnitToPixelfactor;
