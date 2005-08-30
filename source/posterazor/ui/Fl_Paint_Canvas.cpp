@@ -86,7 +86,7 @@ void Fl_Paint_Canvas::DrawImage(int x, int y, int width, int height)
 {
 	if (m_image)
 	{
-		if (m_scaledImage && width != m_scaledImage->w() && height != m_scaledImage->h())
+		if (m_scaledImage && (width != m_scaledImage->w() || height != m_scaledImage->h()))
 		{
 			delete m_scaledImage;
 			m_scaledImage = NULL;
