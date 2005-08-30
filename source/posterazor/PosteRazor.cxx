@@ -47,7 +47,7 @@ public:
 		m_imageIO                      = PosteRazorImageIO::CreatePosteRazorImageIO();
 
 		m_posterSizeMode               = ePosterSizeModePages;
-		m_posterWidth                  = 1.3;//2.0;
+		m_posterWidth                  = 2.0;
 		m_posterHeight                 = 2.0;
 		m_posterHorizontalAlignment    = eHorizontalAlignmentLeft;
 		m_posterVerticalAlignment      = eVerticalAlignmentTop;
@@ -56,8 +56,8 @@ public:
 		m_paperFormat                  = ePaperFormatA4;
 		m_paperOrientation             = ePaperOrientationPortrait;
 		m_paperBorderTop               = 1.5;
-		m_paperBorderRight             = 4;//1.5;
-		m_paperBorderBottom            = 10;//1.5;
+		m_paperBorderRight             = 1.5;
+		m_paperBorderBottom            = 1.5;
 		m_paperBorderLeft              = 1.5;
 		m_customPaperWidth             = 20;
 		m_customPaperHeight            = 20;
@@ -405,8 +405,8 @@ public:
 
 			if (strcmp(state, "overlapping") == 0)
 			{
-				double overlappingWidth = GetOverlappingWidth() * distanceUnitToPixelfactor;
-				double overlappingHeight = GetOverlappingHeight() * distanceUnitToPixelfactor;
+				int overlappingWidth = GetOverlappingWidth() * distanceUnitToPixelfactor;
+				int overlappingHeight = GetOverlappingHeight() * distanceUnitToPixelfactor;
 				enum eOverlappingPositions overlappingPosition = GetOverlappingPosition();
 				double overlappingTop =
 					(overlappingPosition == eOverlappingPositionTopLeft || overlappingPosition == eOverlappingPositionTopRight)?
