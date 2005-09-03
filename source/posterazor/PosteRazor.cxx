@@ -268,6 +268,10 @@ public:
 	{
 		double posterDimension = width?m_posterWidth:m_posterHeight;
 
+		// The Page size could have been changed in many different ways, before. Paper size/format/orientation/border, overlapping
+		if (m_posterSizeMode == ePosterSizeModePages)
+			CalculateAspectRatio();
+
 		if (m_posterSizeMode != mode) // anything to convert?
 		{
 			// These are needed for conversion from and to ePosterSizeModePercentual
