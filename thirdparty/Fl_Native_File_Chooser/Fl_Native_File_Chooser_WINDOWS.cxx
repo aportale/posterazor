@@ -26,7 +26,7 @@ Fl_Native_File_Chooser::Fl_Native_File_Chooser() {
 }
 
 // CTOR
-Fl_Native_File_Chooser::Fl_Native_File_Chooser(Fl_Native_File_Chooser::Type val) {
+Fl_Native_File_Chooser::Fl_Native_File_Chooser(enum Type val) {
     Ctor(val);
 }
 
@@ -359,7 +359,7 @@ int Fl_Native_File_Chooser::showdir() {
     // DIALOG TITLE
     binf.lpszTitle = _title ? _title : NULL;
     // FLAGS
-    binf.ulFlags |= BIF_SHAREABLE | BIF_USENEWUI;
+//    binf.ulFlags |= BIF_SHAREABLE | BIF_USENEWUI;
     // BUFFER
     char displayname[MAX_PATH];
     binf.pszDisplayName = displayname;

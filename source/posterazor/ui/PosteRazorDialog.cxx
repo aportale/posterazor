@@ -176,8 +176,9 @@ void PosteRazorDialog::UpdatePosterSizeFields(Fl_Valuator *sourceWidget)
 	};
 
 	int sizeInputWidgetsCount = sizeof(sizeInputWidgets)/sizeof(sizeInputWidgets[0]);
+	int i = 0;
 
-	for (int i = 0; i < sizeInputWidgetsCount; i++)
+	for (i = 0; i < sizeInputWidgetsCount; i++)
 	{
 		if (sizeInputWidgets[i].inputWidget == sourceWidget)
 		{
@@ -188,7 +189,7 @@ void PosteRazorDialog::UpdatePosterSizeFields(Fl_Valuator *sourceWidget)
 		}
 	}
 
-	for (int i = 0; i < sizeInputWidgetsCount; i++)
+	for (i = 0; i < sizeInputWidgetsCount; i++)
 	{
 		if (sizeInputWidgets[i].inputWidget != sourceWidget)
 		{
@@ -348,5 +349,5 @@ int main (int argc, char **argv)
 #endif
 	Fl::scheme("plastic");
 
-	Fl::run();
+	return Fl::run();
 }
