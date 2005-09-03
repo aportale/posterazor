@@ -12,8 +12,6 @@ public:
 		eDistanceUnitInch
 	};
 
-	static const int buibui = 5;
-
 	static int GetDistanceUnitsCount(void);
 
 	static double ConvertBetweenDistanceUnits(double distance, enum eDistanceUnits sourceUnit, enum eDistanceUnits targetUnit);
