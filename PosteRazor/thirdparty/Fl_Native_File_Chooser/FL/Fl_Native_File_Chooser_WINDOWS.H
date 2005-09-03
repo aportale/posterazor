@@ -69,7 +69,7 @@ private:
 
 public:
     Fl_Native_File_Chooser();
-    Fl_Native_File_Chooser(Fl_Native_File_Chooser::Type val);
+    Fl_Native_File_Chooser(enum Type val);
     ~Fl_Native_File_Chooser();
     void type(Fl_Native_File_Chooser::Type val);
     int show();
