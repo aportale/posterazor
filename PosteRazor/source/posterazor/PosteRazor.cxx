@@ -146,7 +146,7 @@ public:
 		double printablePaperAreaWidth, printablePaperAreaHeight;
 		GetPrintablePaperAreaSize(printablePaperAreaWidth, printablePaperAreaHeight);
 		double printablePaperAreaDimension = ConvertBetweenDistanceUnits(width?printablePaperAreaWidth:printablePaperAreaHeight, m_distanceUnit, eDistanceUnitCentimeter);
-		double overlappingDimension = width?GetOverlappingWidth():GetOverlappingHeight();
+		double overlappingDimension = ConvertBetweenDistanceUnits(width?GetOverlappingWidth():GetOverlappingHeight(), m_distanceUnit, eDistanceUnitCentimeter);
 
 		if (pagesToAbsolute)
 		{
