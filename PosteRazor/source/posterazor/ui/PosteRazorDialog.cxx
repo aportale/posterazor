@@ -212,10 +212,8 @@ void PosteRazorDialog::SetPaperSizeFields(void)
 	m_paperOrientationLandscapeRadioButton->value(m_posteRazor->GetPaperOrientation() == PosteRazor::ePaperOrientationLandscape);
 
 	// custom paper format
-	double customWidth, customHeight;
-	m_posteRazor->GetCustomPaperSize(customWidth, customHeight);
-	m_paperCustomWidthInput->value(customWidth);
-	m_paperCustomHeightInput->value(customHeight);
+	m_paperCustomWidthInput->value(m_posteRazor->GetCustomPaperWidth());
+	m_paperCustomHeightInput->value(m_posteRazor->GetCustomPaperHeight());
 
 	// paper borders
 	m_paperBorderTopInput->value(m_posteRazor->GetPaperBorderTop());
@@ -250,7 +248,8 @@ void PosteRazorDialog::HandlePaperSizeChangement(Fl_Widget *sourceWidget)
 	}
 	else
 	{
-		m_posteRazor->SetCustomPaperSize(m_paperCustomWidthInput->value(), m_paperCustomHeightInput->value());
+		m_posteRazor->SetCustomPaperWidth(m_paperCustomWidthInput->value());
+		m_posteRazor->SetCustomPaperHeight(m_paperCustomHeightInput->value());
 	}
 
 	if (sourceWidget == m_paperFormatTypeTabs) // Only needed to be done when switchen custom<->standard
