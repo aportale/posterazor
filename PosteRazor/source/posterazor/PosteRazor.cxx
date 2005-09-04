@@ -257,6 +257,14 @@ public:
 	double GetPosterDimension(enum ePosterSizeModes mode, bool width)
 	{
 		double posterDimension = (width==m_posterDimensionIsWidth)?m_posterDimension:CalculateOtherPosterDimension();
+		
+		posterDimension = MAX
+		(
+			(mode == ePosterSizeModeAbsolute)?0.001
+			:(mode == ePosterSizeModePages)?0.0001
+			:0.001
+			, posterDimension
+		);
 
 		if (m_posterSizeMode != mode) // anything to convert?
 		{

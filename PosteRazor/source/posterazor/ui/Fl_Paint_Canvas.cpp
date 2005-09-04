@@ -95,6 +95,7 @@ void Fl_Paint_Canvas::DrawImage(int x, int y, int width, int height)
 		if (!m_scaledImage)
 			m_scaledImage = m_image->copy(width, height);
 
-		m_scaledImage->draw(x + Fl_Box::x() + BORDER, y + Fl_Box::y() + BORDER);
+		if (m_scaledImage)
+			m_scaledImage->draw(x + Fl_Box::x() + BORDER, y + Fl_Box::y() + BORDER);
 	}
 }
