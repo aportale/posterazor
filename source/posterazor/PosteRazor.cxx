@@ -25,8 +25,8 @@ private:
 	enum eOverlappingPositions m_overlappingPosition;
 
 	enum ePosterSizeModes  m_posterSizeMode;
-	double                 m_posterWidth;
-	double                 m_posterHeight;
+	double                 m_posterDimension;
+	bool                   m_posterDimensionIsWidth;
 	enum eHorizontalAlignments m_posterHorizontalAlignment;
 	enum eVerticalAlignments m_posterVerticalAlignment;
 
@@ -39,7 +39,6 @@ private:
 	double                 m_paperBorderLeft;
 	double                 m_customPaperWidth;
 	double                 m_customPaperHeight;
-	bool                   m_lastEditedSizeWasWidth;
 	
 public:
 	PosteRazorImplementation()
@@ -47,8 +46,8 @@ public:
 		m_imageIO                      = PosteRazorImageIO::CreatePosteRazorImageIO();
 
 		m_posterSizeMode               = ePosterSizeModePages;
-		m_posterWidth                  = 2.0;
-		m_posterHeight                 = 2.0;
+		m_posterDimension              = 2.0;
+		m_posterDimensionIsWidth       = true;
 		m_posterHorizontalAlignment    = eHorizontalAlignmentLeft;
 		m_posterVerticalAlignment      = eVerticalAlignmentTop;
 
@@ -67,7 +66,6 @@ public:
 		m_overlappingPosition          = eOverlappingPositionBottomRight;
 
 		m_distanceUnit                 = eDistanceUnitCentimeter;
-		m_lastEditedSizeWasWidth       = true;
 	}
 
 	~PosteRazorImplementation()
@@ -79,12 +77,7 @@ public:
 
 	bool LoadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize)
 	{
-		bool result = m_imageIO->LoadImage(imageFileName, errorMessage, errorMessageSize);
-
-		if (result)
-			CalculateAspectRatio();
-
-		return result;
+		return m_imageIO->LoadImage(imageFileName, errorMessage, errorMessageSize);
 	}
 	bool IsImageLoaded(void) {return m_imageIO->IsImageLoaded();}
 
@@ -203,48 +196,45 @@ public:
 		return posterDimension;
 	}
 
-	void CalculateAspectRatio()
+	// Since m_posterDimension holds only height or width of the poster,
+	// here we calculate the other dimension considering the aspect ratio.
+	double CalculateOtherPosterDimension()
 	{
-		double *source = m_lastEditedSizeWasWidth?&m_posterWidth:&m_posterHeight;
-		double *target = m_lastEditedSizeWasWidth?&m_posterHeight:&m_posterWidth;
+		double otherDimension = 0;
 
 		if (m_posterSizeMode != ePosterSizeModePercentual)
 		{
-			double sourceReference = m_lastEditedSizeWasWidth?GetInputImageWidth():GetInputImageHeight();
-			double targetReference = m_lastEditedSizeWasWidth?GetInputImageHeight():GetInputImageWidth();
+			double sourceReference = m_posterDimensionIsWidth?GetInputImageWidth():GetInputImageHeight();
+			double targetReference = m_posterDimensionIsWidth?GetInputImageHeight():GetInputImageWidth();
 			
 			double aspectRatio = sourceReference/targetReference;
 
 			if (m_posterSizeMode != ePosterSizeModePages)
 			{
-				*target = *source / aspectRatio;
+				otherDimension = m_posterDimension / aspectRatio;
 			}
 			else
 			{
-				double sourceAbsolute = ConvertBetweenAbsoluteAndPagesPosterDimension(*source, true, m_lastEditedSizeWasWidth);
+				double sourceAbsolute = ConvertBetweenAbsoluteAndPagesPosterDimension(m_posterDimension, true, m_posterDimensionIsWidth);
 				double targetAbsolute = sourceAbsolute/aspectRatio;
-				*target = ConvertBetweenAbsoluteAndPagesPosterDimension(targetAbsolute, false, !m_lastEditedSizeWasWidth);
+				otherDimension = ConvertBetweenAbsoluteAndPagesPosterDimension(targetAbsolute, false, !m_posterDimensionIsWidth);
 			}
 		}
 		else
-			*target = *source;
+			otherDimension = m_posterDimension;
+
+		return otherDimension;
 	}
 
-	void SetPosterWidthOrHeight(enum ePosterSizeModes mode, double widthOrHeight, bool width)
+	void SetPosterDimension(enum ePosterSizeModes mode, double dimension, bool dimensionIsWidth)
 	{
 		m_posterSizeMode = mode;
 
 		if (m_posterSizeMode == ePosterSizeModeAbsolute)
-			widthOrHeight = ConvertBetweenDistanceUnits(widthOrHeight, m_distanceUnit, eDistanceUnitCentimeter);
+			dimension = ConvertBetweenDistanceUnits(dimension, m_distanceUnit, eDistanceUnitCentimeter);
 
-		if (width)
-			m_posterWidth = widthOrHeight;
-		else
-			m_posterHeight = widthOrHeight;
-
-		m_lastEditedSizeWasWidth = width;
-
-		CalculateAspectRatio();
+		m_posterDimension = dimension;
+		m_posterDimensionIsWidth = dimensionIsWidth;
 	}
 
 	void SetOverlappingWidth(double width) {m_overlappingWidth = ConvertBetweenDistanceUnits(width, m_distanceUnit, eDistanceUnitCentimeter);}
@@ -256,21 +246,17 @@ public:
 
 	void SetPosterWidth(enum ePosterSizeModes mode, double width)
 	{
-		SetPosterWidthOrHeight(mode, width, true);
+		SetPosterDimension(mode, width, true);
 	}
 
 	void SetPosterHeight(enum ePosterSizeModes mode, double height)
 	{
-		SetPosterWidthOrHeight(mode, height, false);
+		SetPosterDimension(mode, height, false);
 	}
 
 	double GetPosterDimension(enum ePosterSizeModes mode, bool width)
 	{
-		double posterDimension = width?m_posterWidth:m_posterHeight;
-
-		// The Page size could have been changed in many different ways, before. Paper size/format/orientation/border, overlapping
-		if (m_posterSizeMode == ePosterSizeModePages)
-			CalculateAspectRatio();
+		double posterDimension = (width==m_posterDimensionIsWidth)?m_posterDimension:CalculateOtherPosterDimension();
 
 		if (m_posterSizeMode != mode) // anything to convert?
 		{
