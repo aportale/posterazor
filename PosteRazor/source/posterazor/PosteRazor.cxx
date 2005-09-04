@@ -323,7 +323,7 @@ public:
 			imageHeight /= factor;
 		}
 
-		previewWidth = imageWidth<boxWidth?(int)imageWidth:boxWidth; //cheap min()
+		previewWidth = MIN((int)imageWidth, boxWidth);
 		previewHeight = (int)((double)previewWidth / aspectRatio);
 
                 if (previewHeight > boxHeight)
