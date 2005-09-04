@@ -12,13 +12,7 @@ class PosteRazorImplementation: public PosteRazor
 private:
 	PosteRazorImageIO*     m_imageIO;
 
-	char                   m_fileName[1024];
-	char                   m_documentName[1024];
-
 	enum eDistanceUnits    m_distanceUnit;
-
-	int                    m_sheetsColumns;
-	int                    m_sheetsRows;
 
 	double                 m_overlappingWidth;
 	double                 m_overlappingHeight;
@@ -61,8 +55,8 @@ public:
 		m_customPaperWidth             = 20;
 		m_customPaperHeight            = 20;
 
-		m_overlappingWidth             = 2.0;
-		m_overlappingHeight            = 2.0;
+		m_overlappingWidth             = 1.0;
+		m_overlappingHeight            = 1.0;
 		m_overlappingPosition          = eOverlappingPositionBottomRight;
 
 		m_distanceUnit                 = eDistanceUnitCentimeter;
@@ -239,8 +233,8 @@ public:
 
 	void SetOverlappingWidth(double width) {m_overlappingWidth = ConvertBetweenDistanceUnits(width, m_distanceUnit, eDistanceUnitCentimeter);}
 	void SetOverlappingHeight(double height) {m_overlappingHeight = ConvertBetweenDistanceUnits(height, m_distanceUnit, eDistanceUnitCentimeter);}
-	double GetOverlappingWidth(void) {return ConvertBetweenDistanceUnits(m_overlappingWidth, m_distanceUnit, eDistanceUnitCentimeter);}
-	double GetOverlappingHeight(void) {return ConvertBetweenDistanceUnits(m_overlappingHeight, m_distanceUnit, eDistanceUnitCentimeter);}
+	double GetOverlappingWidth(void) {return ConvertBetweenDistanceUnits(m_overlappingWidth, eDistanceUnitCentimeter, m_distanceUnit);}
+	double GetOverlappingHeight(void) {return ConvertBetweenDistanceUnits(m_overlappingHeight, eDistanceUnitCentimeter, m_distanceUnit);}
 	void SetOverlappingPosition(enum eOverlappingPositions position) {m_overlappingPosition = position;}
 	enum eOverlappingPositions GetOverlappingPosition(void) {return m_overlappingPosition;}
 
@@ -261,7 +255,7 @@ public:
 		posterDimension = MAX
 		(
 			(mode == ePosterSizeModeAbsolute)?0.001
-			:(mode == ePosterSizeModePages)?0.0001
+			:(mode == ePosterSizeModePages)?0.001
 			:0.001
 			, posterDimension
 		);

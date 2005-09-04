@@ -73,8 +73,8 @@ void PaperFormats::GetPaperDimensions(enum ePaperFormats format, enum ePaperOrie
 {
 	int paperFormatIndex = GetPaperFormatIndex(format);
 
-	width = ConvertBetweenDistanceUnits(g_paperFormats[paperFormatIndex].width, unit, eDistanceUnitCentimeter);
-	height = ConvertBetweenDistanceUnits(g_paperFormats[paperFormatIndex].height, unit, eDistanceUnitCentimeter);
+	width = ConvertBetweenDistanceUnits(g_paperFormats[paperFormatIndex].width, eDistanceUnitCentimeter, unit);
+	height = ConvertBetweenDistanceUnits(g_paperFormats[paperFormatIndex].height, eDistanceUnitCentimeter, unit);
 
 	if (orientation == ePaperOrientationLandscape)
 	{
