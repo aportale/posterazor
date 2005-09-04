@@ -113,7 +113,7 @@ public:
 	}
 
 	double GetWidth(enum DistanceUnits::eDistanceUnits unit) {return GetWidthPixels() / GetHorizontalDotsPerDistanceUnit(unit);}
-	double GetHeight(enum DistanceUnits::eDistanceUnits unit) {return GetHeightPixels() / GetHorizontalDotsPerDistanceUnit(unit);}
+	double GetHeight(enum DistanceUnits::eDistanceUnits unit) {return GetHeightPixels() / GetVerticalDotsPerDistanceUnit(unit);}
 
 	void GetImageAsRGB(unsigned char **buffer, int &widthPixels, int &heightPixels)
 	{
