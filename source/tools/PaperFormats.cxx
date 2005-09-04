@@ -69,24 +69,19 @@ enum PaperFormats::ePaperFormats PaperFormats::GetPaperFormatForName(const char*
 	return paperFormat;
 }
 
-void PaperFormats::GetPaperDimensions(enum ePaperFormats format, enum ePaperOrientations orientation, enum eDistanceUnits unit, double &width, double &height)
+double PaperFormats::GetPaperDimension(enum ePaperFormats format, enum ePaperOrientations orientation, enum eDistanceUnits unit, bool width)
 {
 	int paperFormatIndex = GetPaperFormatIndex(format);
-
-	width = ConvertBetweenDistanceUnits(g_paperFormats[paperFormatIndex].width, eDistanceUnitCentimeter, unit);
-	height = ConvertBetweenDistanceUnits(g_paperFormats[paperFormatIndex].height, eDistanceUnitCentimeter, unit);
-
-	if (orientation == ePaperOrientationLandscape)
-	{
-		double temp = width;
-		width = height;
-		height = temp;
-	}
+	double dimension = ((width && orientation == ePaperOrientationPortrait) || (!width && orientation == ePaperOrientationLandscape))?g_paperFormats[paperFormatIndex].width:g_paperFormats[paperFormatIndex].height;
+	return ConvertBetweenDistanceUnits(dimension, eDistanceUnitCentimeter, unit);
 }
 
-void PaperFormats::GetPrintableArea(enum ePaperFormats format, enum ePaperOrientations orientation, enum eDistanceUnits unit, double borderTop, double borderRight, double borderBottom, double borderLeft, double &width, double &height)
+double PaperFormats::GetPaperWidth(enum ePaperFormats format, enum ePaperOrientations orientation, enum eDistanceUnits unit)
 {
-	GetPaperDimensions(format, orientation, unit, width, height);
-	width -= (borderLeft + borderRight);
-	height -= (borderTop + borderBottom);
+	return GetPaperDimension(format, orientation, unit, true);
+}
+
+double PaperFormats::GetPaperHeight(enum ePaperFormats format, enum ePaperOrientations orientation, enum eDistanceUnits unit)
+{
+	return GetPaperDimension(format, orientation, unit, false);
 }

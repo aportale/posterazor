@@ -73,12 +73,16 @@ public:
 	virtual double GetPaperBorderBottom(void) = 0;
 	virtual double GetPaperBorderLeft(void) = 0;
 
-	virtual void SetCustomPaperSize(double width, double height) = 0;
-	virtual void GetCustomPaperSize(double &width, double &height) = 0;
+	virtual void SetCustomPaperWidth(double width) = 0;
+	virtual void SetCustomPaperHeight(double height) = 0;
+	virtual double GetCustomPaperWidth(void) = 0;
+	virtual double GetCustomPaperHeight(void) = 0;
 	virtual void SetUseCustomPaperSize(bool useIt) = 0;
 	virtual bool GetUseCustomPaperSize(void) = 0;
-	virtual void GetPaperSize(double &width, double &height) = 0;
-	virtual void GetPrintablePaperAreaSize(double &width, double &height) = 0;
+	virtual double GetPaperWidth(void) = 0;
+	virtual double GetPaperHeight(void) = 0;
+	virtual double GetPrintablePaperAreaWidth(void) = 0;
+	virtual double GetPrintablePaperAreaHeight(void) = 0;
 
 	virtual void SetOverlappingWidth(double width) = 0;
 	virtual void SetOverlappingHeight(double height) = 0;

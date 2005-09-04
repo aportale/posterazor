@@ -25,8 +25,10 @@ public:
 	static enum PaperFormats::ePaperFormats GetPaperFormatForIndex(int index);
 	static const char* GetPaperFormatName(enum ePaperFormats format);
 	static enum ePaperFormats GetPaperFormatForName(const char* name);
-	static void GetPaperDimensions(enum ePaperFormats, enum ePaperOrientations, enum eDistanceUnits, double &width, double &height);
-	static void GetPrintableArea(enum ePaperFormats, enum ePaperOrientations, enum eDistanceUnits, double borderTop, double borderRight, double borderBottom, double borderLeft, double &width, double &height);
+
+	static double GetPaperDimension(enum ePaperFormats format, enum ePaperOrientations orientation, enum eDistanceUnits unit, bool width);
+	static double GetPaperWidth(enum ePaperFormats format, enum ePaperOrientations orientation, enum eDistanceUnits unit);
+	static double GetPaperHeight(enum ePaperFormats format, enum ePaperOrientations orientation, enum eDistanceUnits unit);
 };
 
 #endif
