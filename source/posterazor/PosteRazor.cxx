@@ -100,16 +100,22 @@ public:
 
 	enum ePaperFormats GetPaperFormat(void) {return m_paperFormat;}
 	enum ePaperOrientations GetPaperOrientation(void) {return m_paperOrientation;}
-	double GetPaperBorderTop(void) {return ConvertBetweenDistanceUnits(m_paperBorderTop, eDistanceUnitCentimeter, m_distanceUnit);}
-	double GetPaperBorderRight(void) {return ConvertBetweenDistanceUnits(m_paperBorderRight, eDistanceUnitCentimeter, m_distanceUnit);}
-	double GetPaperBorderBottom(void) {return ConvertBetweenDistanceUnits(m_paperBorderBottom, eDistanceUnitCentimeter, m_distanceUnit);}
-	double GetPaperBorderLeft(void) {return ConvertBetweenDistanceUnits(m_paperBorderLeft, eDistanceUnitCentimeter, m_distanceUnit);}
+	double GetPaperBorderTop(void) {return MIN(GetMaximalHorizontalPaperBorder(), ConvertBetweenDistanceUnits(m_paperBorderTop, eDistanceUnitCentimeter, m_distanceUnit));}
+	double GetPaperBorderRight(void) {return MIN(GetMaximalVerticalPaperBorder(), ConvertBetweenDistanceUnits(m_paperBorderRight, eDistanceUnitCentimeter, m_distanceUnit));}
+	double GetPaperBorderBottom(void) {return MIN(GetMaximalHorizontalPaperBorder(), ConvertBetweenDistanceUnits(m_paperBorderBottom, eDistanceUnitCentimeter, m_distanceUnit));}
+	double GetPaperBorderLeft(void) {return MIN(GetMaximalVerticalPaperBorder(), ConvertBetweenDistanceUnits(m_paperBorderLeft, eDistanceUnitCentimeter, m_distanceUnit));}
+
+	double GetMaximalVerticalPaperBorder(void) {return GetPaperWidth() / 2.0 - ConvertBetweenDistanceUnits(1.0, eDistanceUnitCentimeter, m_distanceUnit);}
+	double GetMaximalHorizontalPaperBorder(void) {return GetPaperHeight() / 2.0 - ConvertBetweenDistanceUnits(1.0, eDistanceUnitCentimeter, m_distanceUnit);}
 
 	void SetCustomPaperWidth(double width) {m_customPaperWidth = ConvertBetweenDistanceUnits(width, m_distanceUnit, eDistanceUnitCentimeter);}
 	void SetCustomPaperHeight(double height) {m_customPaperHeight = ConvertBetweenDistanceUnits(height, m_distanceUnit, eDistanceUnitCentimeter);}
 
-	double GetCustomPaperWidth(void) {return ConvertBetweenDistanceUnits(m_customPaperWidth, eDistanceUnitCentimeter, m_distanceUnit);}
-	double GetCustomPaperHeight(void) {return ConvertBetweenDistanceUnits(m_customPaperHeight, eDistanceUnitCentimeter, m_distanceUnit);}
+	double GetCustomPaperWidth(void) {return MAX(GetCustomMinimalPaperWidth(), ConvertBetweenDistanceUnits(m_customPaperWidth, eDistanceUnitCentimeter, m_distanceUnit));}
+	double GetCustomPaperHeight(void) {return MAX(GetCustomMinimalPaperHeight(), ConvertBetweenDistanceUnits(m_customPaperHeight, eDistanceUnitCentimeter, m_distanceUnit));}
+
+	double GetCustomMinimalPaperWidth(void) {return ConvertBetweenDistanceUnits(4.0, eDistanceUnitCentimeter, m_distanceUnit);}
+	double GetCustomMinimalPaperHeight(void) {return ConvertBetweenDistanceUnits(4.0, eDistanceUnitCentimeter, m_distanceUnit);}
 
 	void SetUseCustomPaperSize(bool useIt) {m_useCustomPaperSize = useIt;}
 	bool GetUseCustomPaperSize(void) {return m_useCustomPaperSize;}
@@ -214,8 +220,10 @@ public:
 
 	void SetOverlappingWidth(double width) {m_overlappingWidth = ConvertBetweenDistanceUnits(width, m_distanceUnit, eDistanceUnitCentimeter);}
 	void SetOverlappingHeight(double height) {m_overlappingHeight = ConvertBetweenDistanceUnits(height, m_distanceUnit, eDistanceUnitCentimeter);}
-	double GetOverlappingWidth(void) {return ConvertBetweenDistanceUnits(m_overlappingWidth, eDistanceUnitCentimeter, m_distanceUnit);}
-	double GetOverlappingHeight(void) {return ConvertBetweenDistanceUnits(m_overlappingHeight, eDistanceUnitCentimeter, m_distanceUnit);}
+	double GetOverlappingWidth(void) {return MIN(GetMaximalOverLappingWidth(), ConvertBetweenDistanceUnits(m_overlappingWidth, eDistanceUnitCentimeter, m_distanceUnit));}
+	double GetOverlappingHeight(void) {return MIN(GetMaximalOverLappingHeight(), ConvertBetweenDistanceUnits(m_overlappingHeight, eDistanceUnitCentimeter, m_distanceUnit));}
+	double GetMaximalOverLappingWidth(void) {return GetPaperWidth() - GetPaperBorderLeft() - GetPaperBorderRight() - ConvertBetweenDistanceUnits(1.0, eDistanceUnitCentimeter, m_distanceUnit);}
+	double GetMaximalOverLappingHeight(void) {return GetPaperHeight() - GetPaperBorderTop() - GetPaperBorderBottom() - ConvertBetweenDistanceUnits(1.0, eDistanceUnitCentimeter, m_distanceUnit);}
 	void SetOverlappingPosition(enum eOverlappingPositions position) {m_overlappingPosition = position;}
 	enum eOverlappingPositions GetOverlappingPosition(void) {return m_overlappingPosition;}
 
