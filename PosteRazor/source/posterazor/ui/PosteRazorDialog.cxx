@@ -252,12 +252,6 @@ void PosteRazorDialog::HandlePaperSizeChangement(Fl_Widget *sourceWidget)
 		m_posteRazor->SetCustomPaperHeight(m_paperCustomHeightInput->value());
 	}
 
-	if (sourceWidget == m_paperFormatTypeTabs) // Only needed to be done when switchen custom<->standard
-	{
-		SetPaperSizeFields(); // Fill the current paper borders (custom or standard)
-		SetOverlappingFields(); // These are also exisit separately for custom and standard paper
-	}
-
 	m_previewPaintCanvas->redraw();
 }
 
