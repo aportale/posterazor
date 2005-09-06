@@ -5,32 +5,11 @@ code_name {.cxx}
 decl {\#include "Fl_Paint_Canvas.h"} {public
 } 
 
-widget_class PosteRazorDragDropGroup {open
-  xywh {950 477 115 100} type Double hide
-} {
-  Function {handle(int event)} {open return_type int
-  } {
-    code {switch (event)
-{
-case FL_DND_ENTER:
-case FL_DND_DRAG:
-case FL_DND_LEAVE:
-case FL_DND_RELEASE:
-	return 1;
-case FL_PASTE:
-	return parent()->handle(event);
-default:
-	return 0;
-};} {selected
-    }
-  }
-} 
-
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {479 144 620 455} type Double resizable
+  xywh {479 144 620 455} type Double hide resizable
   code0 {size_range(this->w(), this->h());}
-  class Fl_Double_Window visible
+  class Fl_Double_Window
 } {
   Fl_Group {} {
     xywh {10 420 600 25}
@@ -381,10 +360,6 @@ widget_class PosteRazorDialogUI {
       xywh {585 10 25 25} color 10 labelfont 1 labelsize 15
     }
   }
-  Fl_Group {} {open
-    xywh {0 0 620 455} labelfont 1
-    class PosteRazorDragDropGroup
-  } {}
   decl {virtual void next(void) = 0;} {public
   }
   decl {virtual void prev(void) = 0;} {public

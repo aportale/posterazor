@@ -4,14 +4,8 @@
 #define PosteRazorDialogUI_h
 #include <FL/Fl.H>
 #include "Fl_Paint_Canvas.h"
-#include <FL/Fl_Group.H>
-
-class PosteRazorDragDropGroup : public Fl_Group {
-public:
-  PosteRazorDragDropGroup(int X, int Y, int W, int H, const char *L = 0);
-  int handle(int event);
-};
 #include <FL/Fl_Double_Window.H>
+#include <FL/Fl_Group.H>
 #include <FL/Fl_Button.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Wizard.H>

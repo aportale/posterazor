@@ -16,6 +16,8 @@ int PosteRazorDragDropWidget::handle(int event)
 	case FL_DND_DRAG:
 	case FL_DND_LEAVE:
 	case FL_DND_RELEASE:
+		return 1;
+	case FL_PASTE:
 		return parent()->handle(event);
 	default:
 		return 0;
@@ -25,8 +27,9 @@ int PosteRazorDragDropWidget::handle(int event)
 PosteRazorDialog::PosteRazorDialog(void)
 	:PosteRazorDialogUI(620, 455, "PosteRazor")
 {
-//	m_dragDropWidget = new PosteRazorDragDropWidget(0, 0, w(), h());
-//	m_dragDropWidget->parent(this);
+	begin();
+	m_dragDropWidget = new PosteRazorDragDropWidget(0, 0, w(), h());
+	end();
 	m_posteRazor = PosteRazor::CreatePosteRazor();
 
 	int paperFormatMenuItemsCount = PosteRazor::GetPaperFormatsCount()+1;
