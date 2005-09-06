@@ -3,9 +3,30 @@
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
 
+PosteRazorDragDropWidget::PosteRazorDragDropWidget(int x, int y, int w, int h, const char *label)
+	:Fl_Box(FL_NO_BOX, x, y, w, h, label)
+{
+}
+
+int PosteRazorDragDropWidget::handle(int event)
+{
+	switch (event)
+	{
+	case FL_DND_ENTER:
+	case FL_DND_DRAG:
+	case FL_DND_LEAVE:
+	case FL_DND_RELEASE:
+		return parent()->handle(event);
+	default:
+		return 0;
+	};
+}
+
 PosteRazorDialog::PosteRazorDialog(void)
 	:PosteRazorDialogUI(620, 455, "PosteRazor")
 {
+//	m_dragDropWidget = new PosteRazorDragDropWidget(0, 0, w(), h());
+//	m_dragDropWidget->parent(this);
 	m_posteRazor = PosteRazor::CreatePosteRazor();
 
 	int paperFormatMenuItemsCount = PosteRazor::GetPaperFormatsCount()+1;
@@ -43,6 +64,18 @@ PosteRazorDialog::~PosteRazorDialog()
 {
 	if (m_paperFormatMenuItems)
 		delete[] m_paperFormatMenuItems;
+}
+
+int PosteRazorDialog::handle(int event)
+{
+	switch (event)
+	{
+	case FL_PASTE:
+		LoadInputImage(Fl::event_text());
+		return 1;
+	default:
+		return PosteRazorDialogUI::handle(event);
+	};
 }
 
 void PosteRazorDialog::next(void)

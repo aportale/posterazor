@@ -5,9 +5,30 @@ code_name {.cxx}
 decl {\#include "Fl_Paint_Canvas.h"} {public
 } 
 
+widget_class PosteRazorDragDropGroup {open
+  xywh {950 477 115 100} type Double hide
+} {
+  Function {handle(int event)} {open return_type int
+  } {
+    code {switch (event)
+{
+case FL_DND_ENTER:
+case FL_DND_DRAG:
+case FL_DND_LEAVE:
+case FL_DND_RELEASE:
+	return 1;
+case FL_PASTE:
+	return parent()->handle(event);
+default:
+	return 0;
+};} {selected
+    }
+  }
+} 
+
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {343 160 620 455} type Double resizable
+  xywh {479 144 620 455} type Double resizable
   code0 {size_range(this->w(), this->h());}
   class Fl_Double_Window visible
 } {
@@ -29,7 +50,7 @@ widget_class PosteRazorDialogUI {
     }
   }
   Fl_Wizard m_wizard {
-    user_data this open
+    user_data this
     xywh {315 45 295 365} box THIN_DOWN_BOX
   } {
     Fl_Group m_loadInputImageStep {
@@ -286,7 +307,7 @@ widget_class PosteRazorDialogUI {
         } {
           Fl_Value_Input m_posterPercentualSizeInput {
             label {Size:}
-            callback {UpdatePosterSizeFields(m_posterPercentualSizeInput);} selected
+            callback {UpdatePosterSizeFields(m_posterPercentualSizeInput);}
             xywh {430 285 90 25} maximum 9999 step 0.1
             code0 {o->precision(3);}
           }
@@ -360,6 +381,10 @@ widget_class PosteRazorDialogUI {
       xywh {585 10 25 25} color 10 labelfont 1 labelsize 15
     }
   }
+  Fl_Group {} {open
+    xywh {0 0 620 455} labelfont 1
+    class PosteRazorDragDropGroup
+  } {}
   decl {virtual void next(void) = 0;} {public
   }
   decl {virtual void prev(void) = 0;} {public

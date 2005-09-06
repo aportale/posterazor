@@ -6,16 +6,25 @@
 #include "PosteRazor.h"
 #include "PosteRazorDialogUI.h"
 
+class PosteRazorDragDropWidget : public Fl_Box
+{
+public:
+	PosteRazorDragDropWidget(int x, int y, int w, int h, const char *label = 0);
+	int handle(int event);
+};
+
 class PosteRazorDialog : public PosteRazorDialogUI
 {
 private:
 	PosteRazor    *m_posteRazor;
-	
+	PosteRazorDragDropWidget *m_dragDropWidget;
 	Fl_Menu_Item  *m_paperFormatMenuItems;
 
 public:
 	~PosteRazorDialog();
 	PosteRazorDialog();
+
+	int handle(int event);
 
 	void next(void);
 	void prev(void);
