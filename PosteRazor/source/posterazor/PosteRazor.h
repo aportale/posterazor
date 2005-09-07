@@ -3,9 +3,10 @@
 
 #include "../tools/PaperFormats.h"
 #include "../tools/ColorTypes.h"
+#include "../tools/ImageIOTypes.h"
 #include "../tools/PaintCanvasInterface.h"
 
-class PosteRazor: public PaperFormats, public ColorTypes, public PainterInterface
+class PosteRazor: public PaperFormats, public ColorTypes, public ImageIOTypes, public PainterInterface
 {
 public:
 	typedef enum eOverlappingPositions
@@ -100,6 +101,13 @@ public:
 	virtual void SetPosterVerticalAlignment(enum eVerticalAlignments alignment) = 0;
 	virtual enum eHorizontalAlignments GetPosterHorizontalAlignment(void) = 0;
 	virtual enum eVerticalAlignments GetPosterVerticalAlignment(void) = 0;
+
+	virtual void SetPosterOutputFormat(enum eImageFormats format) = 0;
+	virtual enum eImageFormats GetPosterOutputFormat(void) = 0;
+	virtual void SetPosterOutputLossy(bool lossy) = 0;
+	virtual bool GetPosterOutputLossy(void) = 0;
+	virtual void SetPosterOutputLossyQuality(double quality) = 0;
+	virtual double GetPosterOutputLossyQuality(void) = 0;
 };
 
 #endif

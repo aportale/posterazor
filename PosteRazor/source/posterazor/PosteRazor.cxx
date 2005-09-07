@@ -33,7 +33,11 @@ private:
 	double                 m_paperBorderLeft;
 	double                 m_customPaperWidth;
 	double                 m_customPaperHeight;
-	
+
+	enum eImageFormats     m_posterOutputFormat;
+	bool                   m_posterOutputLossy;
+	double                 m_posterOutputLossyQuality;
+
 public:
 	PosteRazorImplementation()
 	{
@@ -60,6 +64,10 @@ public:
 		m_overlappingPosition          = eOverlappingPositionBottomRight;
 
 		m_distanceUnit                 = eDistanceUnitCentimeter;
+
+		m_posterOutputFormat           = eImageFormatPDF;
+		m_posterOutputLossy            = false;
+		m_posterOutputLossyQuality     = 75.0;
 	}
 
 	~PosteRazorImplementation()
@@ -500,6 +508,13 @@ public:
 			}
 		}
 	}
+
+	void SetPosterOutputFormat(enum eImageFormats format) {m_posterOutputFormat = format;}
+	enum eImageFormats GetPosterOutputFormat(void) {return m_posterOutputFormat;}
+	void SetPosterOutputLossy(bool lossy) {m_posterOutputLossy = lossy;}
+	bool GetPosterOutputLossy(void)	{return m_posterOutputLossy;}
+	void SetPosterOutputLossyQuality(double quality) {m_posterOutputLossyQuality = quality;}
+	double GetPosterOutputLossyQuality(void) {return m_posterOutputLossyQuality;}
 };
 
 PosteRazor* PosteRazor::CreatePosteRazor()
