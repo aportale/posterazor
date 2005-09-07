@@ -24,11 +24,11 @@ public:
 	virtual ~PaintCanvasInterface() {}
 	
 	virtual void SetPainterInterface(PainterInterface *painter) {m_painter = painter;}
-	virtual void DrawFilledRect(int x, int y, int width, int heigth, unsigned char red, unsigned char green, unsigned char blue) = 0;
-	virtual void DrawLine(int x1, int y1, int x2, int y2, unsigned char red, unsigned char green, unsigned char blue) = 0;
-	virtual void GetSize(int &width, int &height) = 0;
-	virtual void SetImage(const unsigned char* rgbData, int width, int height) = 0;
-	virtual void DrawImage(int x, int y, int width, int height) = 0;
+	virtual void DrawFilledRect(double x, double y, double width, double heigth, unsigned char red, unsigned char green, unsigned char blue) = 0;
+	virtual void DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue) = 0;
+	virtual void GetSize(double &width, double &height) = 0;
+	virtual void SetImage(const unsigned char* rgbData, double width, double height) = 0;
+	virtual void DrawImage(double x, double y, double width, double height) = 0;
 };
 
 #endif PaintCanvasInterface_h
