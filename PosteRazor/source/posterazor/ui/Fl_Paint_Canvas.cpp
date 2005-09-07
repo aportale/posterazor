@@ -38,19 +38,19 @@ void Fl_Paint_Canvas::draw()
 	m_painter->PaintOnCanvas(this, m_stateString);
 }
 
-void Fl_Paint_Canvas::DrawFilledRect(int x, int y, int width, int height, unsigned char red, unsigned char green, unsigned char blue)
+void Fl_Paint_Canvas::DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue)
 {
 	fl_color(red, green, blue);
 	fl_rectf(x + Fl_Box::x() + BORDER, y + Fl_Box::y() + BORDER, width, height);
 }
 
-void Fl_Paint_Canvas::DrawLine(int x1, int y1, int x2, int y2, unsigned char red, unsigned char green, unsigned char blue)
+void Fl_Paint_Canvas::DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue)
 {
 	fl_color(red, green, blue);
 	fl_line(x1 + Fl_Box::x() + BORDER, y1 + Fl_Box::y() + BORDER, x2 + Fl_Box::x() + BORDER, y2 + Fl_Box::y() + BORDER);
 }
 
-void Fl_Paint_Canvas::GetSize(int &width, int &height)
+void Fl_Paint_Canvas::GetSize(double &width, double &height)
 {
 	width = w() - BORDER - BORDER;
 	height = h() - BORDER - BORDER;
@@ -62,7 +62,7 @@ void Fl_Paint_Canvas::RequestImage(void)
 		m_painter->GetImage(this);
 }
 
-void Fl_Paint_Canvas::SetImage(const unsigned char* rgbData, int width, int height)
+void Fl_Paint_Canvas::SetImage(const unsigned char* rgbData, double width, double height)
 {
 	DisposeImage();
 	m_image = new Fl_RGB_Image(rgbData, width, height);
@@ -82,7 +82,7 @@ void Fl_Paint_Canvas::DisposeImage(void)
 	}
 }
 
-void Fl_Paint_Canvas::DrawImage(int x, int y, int width, int height)
+void Fl_Paint_Canvas::DrawImage(double x, double y, double width, double height)
 {
 	if (m_image)
 	{

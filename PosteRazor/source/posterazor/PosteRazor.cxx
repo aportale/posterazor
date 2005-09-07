@@ -354,7 +354,7 @@ public:
 
 	void PaintOnCanvas(PaintCanvasInterface *paintCanvas, void* options = 0)
 	{
-		int canvasWidth = 0, canvasHeight = 0;
+		double canvasWidth = 0, canvasHeight = 0;
 		paintCanvas->GetSize(canvasWidth, canvasHeight);
 		int boxWidth = 0, boxHeight = 0;
 		int x_offset, y_offset;

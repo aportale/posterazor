@@ -19,14 +19,14 @@ public:
 	virtual void SetState(const char *state);
 		
 	virtual void draw();
-	virtual void DrawFilledRect(int x, int y, int width, int height, unsigned char red, unsigned char green, unsigned char blue);
-	virtual void DrawLine(int x1, int y1, int x2, int y2, unsigned char red, unsigned char green, unsigned char blue);
-	virtual void GetSize(int &width, int &height);
+	virtual void DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue);
+	virtual void DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue);
+	virtual void GetSize(double &width, double &height);
 
 	virtual void RequestImage(void);
-	virtual void SetImage(const unsigned char* rgbData, int width, int height);
+	virtual void SetImage(const unsigned char* rgbData, double width, double height);
 	virtual void DisposeImage(void);
-	virtual void DrawImage(int x, int y, int width, int height);
+	virtual void DrawImage(double x, double y, double width, double height);
 };
 
 #endif Fl_Paint_Canvas_h
