@@ -27,6 +27,67 @@ public:
 };
 static FreeImageInitializer initializer;
 
+class PosteRazorPDFOutput: public PaintCanvasInterface
+{
+private:
+	FILE *m_outputFile;
+	char *m_xref;
+	int m_pdfObjectCount;
+	int m_contentPagesCount;
+
+public:
+	PosteRazorPDFOutput()
+	{
+		m_outputFile = NULL;
+		m_pdfObjectCount = 0;
+	}
+
+	void AddOffsetToXref(void)
+	{
+		char xrefLine[25];
+		m_pdfObjectCount++;
+		sprintf(xrefLine, "%10d %5d n \012", ftell(m_outputFile), m_pdfObjectCount);
+	}
+
+	int StartSaving(const char* fileName, int pages)
+	{
+		int err = 0;
+		m_outputFile = fopen(fileName, "wb");
+		if (!m_outputFile)
+			err = 1;
+		if (!err)
+		{
+			m_contentPagesCount = pages;
+			m_xref = new char[m_contentPagesCount * 20 + 100];
+			sprintf(m_xref, "\nxref\n0 %d\n0000000000 65535 f \012", 7 + m_contentPagesCount*2);
+		}
+		return err;
+	}
+
+	int SaveImage(unsigned char *imageData, int widthPixels, int heightPixels, int bitPerPixel, bool greyscale, bool cmyk, bool lossy, double lossyQuality)
+	{
+		AddOffsetToXref();
+	}
+
+	int FinishSaving()
+	{
+		int err = 0;
+		err = fputs(m_xref, m_outputFile);
+		if (m_xref)
+			delete[] m_xref;
+		fclose(m_outputFile);
+		return err;
+	}
+
+	void DrawFilledRect(double x, double y, double width, double heigth, unsigned char red, unsigned char green, unsigned char blue) {}
+	void DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue) {}
+	void GetSize(double &width, double &height) {}
+	void SetImage(const unsigned char* rgbData, double width, double height) {}
+	void DrawImage(double x, double y, double width, double height)
+	{
+	}
+};
+
 class PosteRazorImageIOImplementation: public PosteRazorImageIO
 {
 private:
@@ -175,6 +236,20 @@ public:
 		}
 		
 		return colorDatatype;
+	}
+
+	int SavePoster(const char *fileName, enum ImageIOTypes::eImageFormats format, bool lossy, double lossyQuality, const PainterInterface *painter, int pagesCount)
+	{
+		int err = 0;
+
+		//unsigned char *imageData = new unsigned char[GetWidthPixels() * GetHeightPixels() * (GetBitsPerPixel()/8)];
+
+		PosteRazorPDFOutput pdfOutput;
+		pdfOutput.StartSaving(fileName, pagesCount);
+		//pdfOutput.SaveImage(
+		pdfOutput.FinishSaving();
+
+		return err;
 	}
 };
 

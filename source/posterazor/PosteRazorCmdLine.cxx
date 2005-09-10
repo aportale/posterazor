@@ -8,13 +8,11 @@ int main(int argc, char *argv[])
 
 	PosteRazor* prz = PosteRazor::CreatePosteRazor();
 	char errorMessage[1024];
-	bool loaded = prz->LoadInputImage("D:\\bureau.png", errorMessage, sizeof(errorMessage));
+	bool loaded = prz->LoadInputImage("c:\\image.png", errorMessage, sizeof(errorMessage));
 
 	if (loaded)
 	{
-		prz->SetPosterHeight(PosteRazor::ePosterSizeModePercentual, 100);
-		double inputImageHeight = prz->GetInputImageHeight();
-		double posterWidthPercentual = prz->GetPosterWidth(PosteRazor::ePosterSizeModePercentual);
+		prz->SavePoster("c:\\poster.pdf");
 	}
 
 	delete prz;

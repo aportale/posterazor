@@ -1161,7 +1161,7 @@ o->when(FL_WHEN_RELEASE);
       { Fl_Group* o = m_posterSizeInPagesGroup = new Fl_Group(335, 195, 260, 55);
         { Fl_Value_Input* o = m_posterPagesWidthInput = new Fl_Value_Input(430, 195, 90, 25, "Width:");
           o->maximum(9999);
-          o->step(0.1);
+          o->step(0.01);
           o->callback((Fl_Callback*)cb_m_posterPagesWidthInput);
           o->precision(3);
         }
@@ -1170,7 +1170,7 @@ o->when(FL_WHEN_RELEASE);
         }
         { Fl_Value_Input* o = m_posterPagesHeightInput = new Fl_Value_Input(430, 225, 90, 25, "Height:");
           o->maximum(9999);
-          o->step(0.1);
+          o->step(0.01);
           o->callback((Fl_Callback*)cb_m_posterPagesHeightInput);
           o->precision(3);
         }

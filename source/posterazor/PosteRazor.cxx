@@ -515,6 +515,12 @@ public:
 	bool GetPosterOutputLossy(void)	{return m_posterOutputLossy;}
 	void SetPosterOutputLossyQuality(double quality) {m_posterOutputLossyQuality = quality;}
 	double GetPosterOutputLossyQuality(void) {return m_posterOutputLossyQuality;}
+
+	int SavePoster(const char *fileName)
+	{
+		int pagesCount = (int)(ceil(GetPosterWidth(ePosterSizeModePages))) * (int)(ceil(GetPosterHeight(ePosterSizeModePages)));
+		return m_imageIO->SavePoster(fileName, GetPosterOutputFormat(), GetPosterOutputLossy(), GetPosterOutputLossyQuality(), this, pagesCount);
+	}
 };
 
 PosteRazor* PosteRazor::CreatePosteRazor()

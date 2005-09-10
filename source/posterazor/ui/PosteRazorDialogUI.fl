@@ -29,7 +29,7 @@ widget_class PosteRazorDialogUI {
     }
   }
   Fl_Wizard m_wizard {
-    user_data this
+    user_data this open
     xywh {315 45 295 365} box THIN_DOWN_BOX
   } {
     Fl_Group m_loadInputImageStep {
@@ -258,7 +258,7 @@ widget_class PosteRazorDialogUI {
           Fl_Value_Input m_posterPagesWidthInput {
             label {Width:}
             callback {UpdatePosterSizeFields(m_posterPagesWidthInput);}
-            xywh {430 195 90 25} maximum 9999 step 0.1
+            xywh {430 195 90 25} maximum 9999 step 0.01
             code0 {o->precision(3);}
           }
           Fl_Box m_posterPagesWidthLabel {
@@ -267,8 +267,8 @@ widget_class PosteRazorDialogUI {
           }
           Fl_Value_Input m_posterPagesHeightInput {
             label {Height:}
-            callback {UpdatePosterSizeFields(m_posterPagesHeightInput);}
-            xywh {430 225 90 25} maximum 9999 step 0.1
+            callback {UpdatePosterSizeFields(m_posterPagesHeightInput);} selected
+            xywh {430 225 90 25} maximum 9999 step 0.01
             code0 {o->precision(3);}
           }
           Fl_Box m_posterPagesHeightLabel {
