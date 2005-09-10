@@ -3,6 +3,8 @@
 
 #include "DistanceUnits.h"
 #include "ColorTypes.h"
+#include "PaintCanvasInterface.h"
+#include "ImageIOTypes.h"
 
 class PosteRazorImageIO: public ColorTypes
 {
@@ -26,6 +28,8 @@ public:
 	
 	virtual int GetBitsPerPixel(void) = 0;
 	virtual enum eColorTypes GetColorDataType(void) = 0;
+
+	virtual int SavePoster(const char *fileName, enum ImageIOTypes::eImageFormats format, bool lossy, double lossyQuality, const PainterInterface *painter, int pagesCount) = 0;
 };
 
 #endif

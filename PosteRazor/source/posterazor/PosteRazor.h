@@ -108,6 +108,8 @@ public:
 	virtual bool GetPosterOutputLossy(void) = 0;
 	virtual void SetPosterOutputLossyQuality(double quality) = 0;
 	virtual double GetPosterOutputLossyQuality(void) = 0;
+
+	virtual int SavePoster(const char *fileName) = 0;
 };
 
 #endif
