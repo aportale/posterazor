@@ -114,6 +114,9 @@
 			<File
 				RelativePath="..\..\source\posterazor\PosteRazorImageIO.cxx">
 			</File>
+			<File
+				RelativePath="..\..\source\posterazor\PosteRazorPDFOutput.cxx">
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -126,6 +129,9 @@
 				RelativePath="..\..\source\tools\DistanceUnits.h">
 			</File>
 			<File
+				RelativePath="..\..\source\tools\ImageIOTypes.h">
+			</File>
+			<File
 				RelativePath="..\..\source\tools\PaintCanvasInterface.h">
 			</File>
 			<File
@@ -136,6 +142,9 @@
 			</File>
 			<File
 				RelativePath="..\..\source\posterazor\PosteRazorImageIO.h">
+			</File>
+			<File
+				RelativePath="..\..\source\posterazor\PosteRazorPDFOutput.h">
 			</File>
 		</Filter>
 	</Files>
