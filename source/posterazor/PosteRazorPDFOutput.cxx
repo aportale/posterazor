@@ -277,6 +277,7 @@ Q
 		fprintf
 		(
 			m_outputFile,
+			"trailer" LINEFEED\
 			"<</Info 1 0 R" LINEFEED\
 			"/Root 2 0 R" LINEFEED\
 			"/Size %d" LINEFEED\
