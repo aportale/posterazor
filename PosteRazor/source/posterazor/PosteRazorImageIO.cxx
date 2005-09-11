@@ -205,6 +205,16 @@ public:
 		PosteRazorPDFOutput *pdfOutput = PosteRazorPDFOutput::CreatePosteRazorPDFOutput();
 		pdfOutput->StartSaving(fileName, pagesCount);
 		pdfOutput->SaveImage(imageData, GetWidthPixels(), GetHeightPixels(), GetBitsPerPixel(), GetColorDataType(), rgbPalette, FreeImage_GetColorsUsed(m_bitmap));
+
+		pdfOutput->StartPage();
+		pdfOutput->FinishPage();
+		pdfOutput->StartPage();
+		pdfOutput->FinishPage();
+		pdfOutput->StartPage();
+		pdfOutput->FinishPage();
+		pdfOutput->StartPage();
+		pdfOutput->FinishPage();
+
 		pdfOutput->FinishSaving();
 		delete pdfOutput;
 
