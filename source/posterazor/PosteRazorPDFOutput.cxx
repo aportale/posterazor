@@ -88,7 +88,7 @@ public:
 			for (int i = 0; i < pages; i++)
 			{
 				char kidStr[10];
-				sprintf(kidStr, "%s%d 0 R", i != 0?" ":"", i + (m_pdfObjectCount*2) + 2);
+				sprintf(kidStr, "%s%d 0 R", i != 0?" ":"", i*2 + (m_pdfObjectCount) + 2);
 				strcat(kidsStr, kidStr);
 			}
 			fprintf
@@ -104,6 +104,19 @@ public:
 				"endobj",
 				m_pdfObjectCount, 50.0, 50.0, m_pdfObjectCount + 1, kidsStr, pages
 			);
+
+			AddOffsetToXref();
+			fprintf
+			(
+				m_outputFile,
+				"\n%d 0 obj\n"\
+				"<</XObject %d 0 R\n"\
+				"/ProcSet [/PDF /Text /ImageC /ImageI /ImageB]\n"\
+				">>\n"\
+				"endobj",
+				m_pdfObjectCount, m_pdfObjectCount + 1
+			);
+
 		}
 		return err;
 	}
