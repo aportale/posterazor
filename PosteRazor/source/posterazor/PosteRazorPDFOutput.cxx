@@ -47,8 +47,8 @@ public:
 		m_objectResourcesID          = 0;
 		m_objectImageID              = 0;
 		m_pageContent[0]             = '\0';
-		m_mediaboxWidth              = 50.0;
-		m_mediaboxHeight             = 50.0;
+		m_mediaboxWidth              = 5000.0;
+		m_mediaboxHeight             = 5000.0;
 	}
 
 	void AddOffsetToXref(void)
@@ -120,7 +120,7 @@ endobj
 			"/BitsPerComponent %d" LINEFEED\
 			">>" LINEFEED\
 			"stream" LINEFEED,
-			m_pdfObjectCount, colorSpaceString, (int)GetImageBytesCount(widthPixels, heightPixels, bitPerPixel), widthPixels, heightPixels, bitPerPixel
+			m_pdfObjectCount, colorSpaceString, (int)GetImageBytesCount(widthPixels, heightPixels, bitPerPixel), widthPixels, heightPixels, bitPerPixel/3
 		);
 		fwrite(imageData, (int)GetImageBytesCount(widthPixels, heightPixels, bitPerPixel), 1, m_outputFile);
 		fprintf
