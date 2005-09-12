@@ -19,7 +19,7 @@ public:
 	virtual int StartPage(void) = 0;
 	virtual int FinishPage(void) = 0;
 
-	virtual int StartSaving(const char* fileName, int pages) = 0;
+	virtual int StartSaving(const char* fileName, int pages, double widthCm, double heightCm) = 0;
 	virtual int FinishSaving() = 0;
 };
 

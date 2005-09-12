@@ -197,9 +197,13 @@ Q
 		return err;
 	}
 
-	int StartSaving(const char* fileName, int pages)
+	int StartSaving(const char* fileName, int pages, double widthCm, double heightCm)
 	{
 		int err = 0;
+
+		m_mediaboxWidth = widthCm / 2.54 * 72;
+		m_mediaboxHeight = heightCm / 2.54 * 72;
+
 		m_outputFile = fopen(fileName, "wb");
 		if (!m_outputFile)
 			err = 1;

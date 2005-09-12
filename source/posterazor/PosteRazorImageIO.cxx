@@ -178,7 +178,7 @@ public:
 		return colorDatatype;
 	}
 
-	int SavePoster(const char *fileName, enum ImageIOTypes::eImageFormats format, bool lossy, double lossyQuality, const PainterInterface *painter, int pagesCount)
+	int SavePoster(const char *fileName, enum ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm)
 	{
 		int err = 0;
 
@@ -217,7 +217,7 @@ public:
 		}
 
 		PosteRazorPDFOutput *pdfOutput = PosteRazorPDFOutput::CreatePosteRazorPDFOutput();
-		pdfOutput->StartSaving(fileName, pagesCount);
+		pdfOutput->StartSaving(fileName, pagesCount, widthCm, heightCm);
 		pdfOutput->SaveImage(imageData, GetWidthPixels(), GetHeightPixels(), GetBitsPerPixel(), GetColorDataType(), rgbPalette, FreeImage_GetColorsUsed(m_bitmap));
 
 		pdfOutput->StartPage();
