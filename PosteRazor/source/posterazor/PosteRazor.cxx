@@ -35,8 +35,6 @@ private:
 	double                 m_customPaperHeight;
 
 	enum eImageFormats     m_posterOutputFormat;
-	bool                   m_posterOutputLossy;
-	double                 m_posterOutputLossyQuality;
 
 public:
 	PosteRazorImplementation()
@@ -66,8 +64,6 @@ public:
 		m_distanceUnit                 = eDistanceUnitCentimeter;
 
 		m_posterOutputFormat           = eImageFormatPDF;
-		m_posterOutputLossy            = false;
-		m_posterOutputLossyQuality     = 75.0;
 	}
 
 	~PosteRazorImplementation()
@@ -511,15 +507,11 @@ public:
 
 	void SetPosterOutputFormat(enum eImageFormats format) {m_posterOutputFormat = format;}
 	enum eImageFormats GetPosterOutputFormat(void) {return m_posterOutputFormat;}
-	void SetPosterOutputLossy(bool lossy) {m_posterOutputLossy = lossy;}
-	bool GetPosterOutputLossy(void)	{return m_posterOutputLossy;}
-	void SetPosterOutputLossyQuality(double quality) {m_posterOutputLossyQuality = quality;}
-	double GetPosterOutputLossyQuality(void) {return m_posterOutputLossyQuality;}
 
 	int SavePoster(const char *fileName)
 	{
 		int pagesCount = (int)(ceil(GetPosterWidth(ePosterSizeModePages))) * (int)(ceil(GetPosterHeight(ePosterSizeModePages)));
-		return m_imageIO->SavePoster(fileName, GetPosterOutputFormat(), GetPosterOutputLossy(), GetPosterOutputLossyQuality(), this, pagesCount);
+		return m_imageIO->SavePoster(fileName, GetPosterOutputFormat(), this, pagesCount, GetPrintablePaperAreaWidth(), GetPrintablePaperAreaHeight());
 	}
 };
 

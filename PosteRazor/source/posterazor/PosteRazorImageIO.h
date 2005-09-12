@@ -29,7 +29,7 @@ public:
 	virtual int GetBitsPerPixel(void) = 0;
 	virtual enum eColorTypes GetColorDataType(void) = 0;
 
-	virtual int SavePoster(const char *fileName, enum ImageIOTypes::eImageFormats format, bool lossy, double lossyQuality, const PainterInterface *painter, int pagesCount) = 0;
+	virtual int SavePoster(const char *fileName, enum ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) = 0;
 };
 
 #endif

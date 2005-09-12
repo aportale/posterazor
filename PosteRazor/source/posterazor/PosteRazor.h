@@ -104,10 +104,6 @@ public:
 
 	virtual void SetPosterOutputFormat(enum eImageFormats format) = 0;
 	virtual enum eImageFormats GetPosterOutputFormat(void) = 0;
-	virtual void SetPosterOutputLossy(bool lossy) = 0;
-	virtual bool GetPosterOutputLossy(void) = 0;
-	virtual void SetPosterOutputLossyQuality(double quality) = 0;
-	virtual double GetPosterOutputLossyQuality(void) = 0;
 
 	virtual int SavePoster(const char *fileName) = 0;
 };
