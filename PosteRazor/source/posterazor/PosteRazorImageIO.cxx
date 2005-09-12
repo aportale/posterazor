@@ -186,8 +186,22 @@ public:
 		unsigned char *imageData = new unsigned char[imageBytesCount];
 
 		unsigned int bytesPerLineCount = PosteRazorPDFOutput::GetImageBytesPerLineCount(GetWidthPixels(), GetBitsPerPixel());
+		unsigned long numberOfPixels = GetWidthPixels() * GetHeightPixels();
 
 		FreeImage_ConvertToRawBits(imageData, m_bitmap, bytesPerLineCount, GetBitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
+#ifdef _WIN32
+		if (GetBitsPerPixel() == 24)
+			for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++)
+			{
+				unsigned char *pixelPtr = imageData + pixelIndex*3;
+
+				unsigned char temp = pixelPtr[0];
+				pixelPtr[0] = pixelPtr[2];
+				pixelPtr[2] = temp;
+				pixelPtr+=3;
+			}
+#endif
+
 		RGBQUAD *palette = FreeImage_GetPalette(m_bitmap);
 		unsigned char rgbPalette[768];
 		if (palette) // Compacting the palette
