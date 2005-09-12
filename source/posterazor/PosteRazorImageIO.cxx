@@ -187,7 +187,7 @@ public:
 
 		unsigned int bytesPerLineCount = PosteRazorPDFOutput::GetImageBytesPerLineCount(GetWidthPixels(), GetBitsPerPixel());
 
-		FreeImage_ConvertToRawBits(imageData, m_bitmap, bytesPerLineCount, GetBitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, TRUE);
+		FreeImage_ConvertToRawBits(imageData, m_bitmap, bytesPerLineCount, GetBitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
 		RGBQUAD *palette = FreeImage_GetPalette(m_bitmap);
 		unsigned char rgbPalette[768];
 		if (palette) // Compacting the palette
