@@ -21,7 +21,7 @@ public:
 	virtual void draw();
 	virtual void DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue);
 	virtual void DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue);
-	virtual void GetSize(double &width, double &height);
+	virtual void GetSize(double &width, double &height) const;
 
 	virtual void RequestImage(void);
 	virtual void SetImage(const unsigned char* rgbData, double width, double height);
