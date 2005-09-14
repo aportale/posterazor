@@ -6,14 +6,14 @@ class PaintCanvasInterface;
 class PainterInterface
 {
 public:
-	virtual void PaintOnCanvas(PaintCanvasInterface *paintCanvas, void* options = 0) = 0;
-	virtual void GetImage(PaintCanvasInterface *paintCanvas) = 0;
+	virtual void PaintOnCanvas(PaintCanvasInterface *paintCanvas, void* options = 0) const = 0;
+	virtual void GetImage(PaintCanvasInterface *paintCanvas) const = 0;
 };
 
 class PaintCanvasInterface
 {
 protected:
-	PainterInterface *m_painter;
+	const PainterInterface *m_painter;
 
 public:
 	PaintCanvasInterface()
@@ -23,7 +23,7 @@ public:
 	
 	virtual ~PaintCanvasInterface() {}
 	
-	virtual void SetPainterInterface(PainterInterface *painter) {m_painter = painter;}
+	virtual void SetPainterInterface(const PainterInterface *painter) {m_painter = painter;}
 	virtual void DrawFilledRect(double x, double y, double width, double heigth, unsigned char red, unsigned char green, unsigned char blue) = 0;
 	virtual void DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue) = 0;
 	virtual void GetSize(double &width, double &height) = 0;

@@ -98,25 +98,25 @@ public:
 
 		return result;
 	}
-	bool IsImageLoaded(void) {return (m_bitmap != NULL);}
+	bool IsImageLoaded(void) const {return (m_bitmap != NULL);}
 
-	int GetWidthPixels(void) {return m_widthPixels;}
-	int GetHeightPixels(void) {return m_heightPixels;}
+	int GetWidthPixels(void) const {return m_widthPixels;}
+	int GetHeightPixels(void) const {return m_heightPixels;}
 
-	double GetHorizontalDotsPerDistanceUnit(enum DistanceUnits::eDistanceUnits unit)
+	double GetHorizontalDotsPerDistanceUnit(enum DistanceUnits::eDistanceUnits unit) const
 	{
 		return m_horizontalDotsPerMeter / DistanceUnits::ConvertBetweenDistanceUnits(1, DistanceUnits::eDistanceUnitMeter, unit);
 	}
 
-	double GetVerticalDotsPerDistanceUnit(enum DistanceUnits::eDistanceUnits unit)
+	double GetVerticalDotsPerDistanceUnit(enum DistanceUnits::eDistanceUnits unit) const
 	{
 		return m_verticalDotsPerMeter / DistanceUnits::ConvertBetweenDistanceUnits(1, DistanceUnits::eDistanceUnitMeter, unit);
 	}
 
-	double GetWidth(enum DistanceUnits::eDistanceUnits unit) {return GetWidthPixels() / GetHorizontalDotsPerDistanceUnit(unit);}
-	double GetHeight(enum DistanceUnits::eDistanceUnits unit) {return GetHeightPixels() / GetVerticalDotsPerDistanceUnit(unit);}
+	double GetWidth(enum DistanceUnits::eDistanceUnits unit) const {return GetWidthPixels() / GetHorizontalDotsPerDistanceUnit(unit);}
+	double GetHeight(enum DistanceUnits::eDistanceUnits unit) const {return GetHeightPixels() / GetVerticalDotsPerDistanceUnit(unit);}
 
-	void GetImageAsRGB(unsigned char **buffer, int &widthPixels, int &heightPixels)
+	void GetImageAsRGB(unsigned char **buffer, int &widthPixels, int &heightPixels) const
 	{
 		FIBITMAP* originalImage = m_bitmap;
 		FIBITMAP* temp24BPPImage = NULL;
@@ -152,12 +152,12 @@ public:
 
 	}
 	
-	int GetBitsPerPixel(void)
+	int GetBitsPerPixel(void) const
 	{
 		return FreeImage_GetBPP(m_bitmap);
 	}
 	
-	enum eColorTypes GetColorDataType(void)
+	enum eColorTypes GetColorDataType(void) const
 	{
 		enum eColorTypes colorDatatype = eColorTypeRGB;
 		FREE_IMAGE_COLOR_TYPE imageColorType = FreeImage_GetColorType(m_bitmap);
@@ -178,7 +178,7 @@ public:
 		return colorDatatype;
 	}
 
-	int SavePoster(const char *fileName, enum ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm)
+	int SavePoster(const char *fileName, enum ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const
 	{
 		int err = 0;
 
@@ -220,14 +220,14 @@ public:
 		pdfOutput->StartSaving(fileName, pagesCount, widthCm, heightCm);
 		pdfOutput->SaveImage(imageData, GetWidthPixels(), GetHeightPixels(), GetBitsPerPixel(), GetColorDataType(), rgbPalette, FreeImage_GetColorsUsed(m_bitmap));
 
-		pdfOutput->StartPage();
-		pdfOutput->FinishPage();
-		pdfOutput->StartPage();
-		pdfOutput->FinishPage();
-		pdfOutput->StartPage();
-		pdfOutput->FinishPage();
-		pdfOutput->StartPage();
-		pdfOutput->FinishPage();
+		for (int page = 0; page < pagesCount; page++)
+		{
+			char paintOptions[1024];
+			sprintf(paintOptions, "posterpage %d", page);
+			pdfOutput->StartPage();
+			painter->PaintOnCanvas(pdfOutput, paintOptions);
+			pdfOutput->FinishPage();
+		}
 
 		pdfOutput->FinishSaving();
 		delete pdfOutput;
