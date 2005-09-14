@@ -50,7 +50,7 @@ void Fl_Paint_Canvas::DrawLine(double x1, double y1, double x2, double y2, unsig
 	fl_line(x1 + Fl_Box::x() + BORDER, y1 + Fl_Box::y() + BORDER, x2 + Fl_Box::x() + BORDER, y2 + Fl_Box::y() + BORDER);
 }
 
-void Fl_Paint_Canvas::GetSize(double &width, double &height)
+void Fl_Paint_Canvas::GetSize(double &width, double &height) const
 {
 	width = w() - BORDER - BORDER;
 	height = h() - BORDER - BORDER;
