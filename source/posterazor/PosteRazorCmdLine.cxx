@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 
 	if (loaded)
 	{
-		prz->SetPosterWidth(PosteRazor::ePosterSizeModePages, 4);
+		prz->SetPosterWidth(PosteRazor::ePosterSizeModePages, 20);
 		prz->SavePoster("c:\\poster.pdf");
 	}
 

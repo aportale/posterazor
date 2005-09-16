@@ -515,7 +515,7 @@ public:
 			int rowsCount = (int)(ceil(GetPosterHeight(ePosterSizeModePages)));
 			int pagesCount = columsCount * rowsCount;
 			int column = page % columsCount;
-			int row = (int)(floor((double)page / (double)columsCount));
+			int row = rowsCount-((int)(floor((double)page / (double)columsCount)))-1;
 
 			double posterImageWidthCm = ConvertDistanceToCm(GetPosterWidth(ePosterSizeModeAbsolute));
 			double posterImageHeightCm = ConvertDistanceToCm(GetPosterHeight(ePosterSizeModeAbsolute));
@@ -533,8 +533,9 @@ public:
 			);
 			double imageOffsetFromTopPosterBorderCm = 
 			(
-				GetPosterVerticalAlignment() == eVerticalAlignmentBottom?posterTotalHeightCm-posterImageHeightCm
-				:GetPosterVerticalAlignment() == eVerticalAlignmentMiddle?posterTotalHeightCm-(posterImageHeightCm/2)
+				// Make coordinates negative, because of PDFs coordinate space. This is ugly.. TODO: Clean up, do that in the PDF output ;)
+				GetPosterVerticalAlignment() == eVerticalAlignmentTop?posterImageHeightCm - posterTotalHeightCm
+				:GetPosterVerticalAlignment() == eVerticalAlignmentMiddle?(posterImageHeightCm/2) - posterTotalHeightCm
 				:0.0
 			);
 			double pageOffsetToImageFromLeftCm = imageOffsetFromLeftPosterBorderCm + column * (printablePaperAreaWidthCm - overlappingWidthCm);
