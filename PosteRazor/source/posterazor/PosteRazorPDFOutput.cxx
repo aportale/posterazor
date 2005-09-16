@@ -230,7 +230,8 @@ endobj
 
 			AddOffsetToXref();
 			m_objectPagesID = m_pdfObjectCount;
-			char kidsStr[2048] = "";
+			char *kidsStr = new char[pages * 20];
+			kidsStr[0] = '\0';
 			for (int i = 0; i < pages; i++)
 			{
 				char kidStr[10];
@@ -250,7 +251,7 @@ endobj
 				"endobj",
 				m_pdfObjectCount, 50.0, 50.0, m_pdfObjectCount + 1, kidsStr, pages
 			);
-
+			delete[] kidsStr;
 		}
 		return err;
 	}
@@ -275,16 +276,7 @@ endobj
 			"%%%%EOF" LINEFEED,
 			m_pdfObjectCount + 1, startxref
 		);
-/*
-trailer
-<</Info 11 0 R
-/Root 10 0 R
-/Size 12
->>
-startxref
-1541
-%%EOF
-*/
+
 		if (m_xref)
 			delete[] m_xref;
 		fclose(m_outputFile);
