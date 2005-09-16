@@ -6,6 +6,7 @@
 #include "PosteRazorPDFOutput.h"
 
 #define LINEFEED "\012"
+#define CM2PT(cm) ((cm) / 2.54 * 72)
 
 unsigned int PosteRazorPDFOutput::GetImageBitsPerLineCount(int widthPixels, int bitPerPixel)
 {
@@ -163,23 +164,6 @@ endobj
 	{
 		int err = 0;
 	
-		sprintf
-		(
-			m_pageContent,
-			"0 w" LINEFEED\
-			"q 0 -0.1 595 842.1 re W* n" LINEFEED\
-			"q 254.5 0 0 227.7 62.2 568.1 cm" LINEFEED\
-			"  /Im1 Do Q" LINEFEED\
-			"Q "\
-		);
-/*
-0 w
-q 0 -0.1 595 842.1 re W* n
-q 254.5 0 0 227.7 62.2 568.1 cm
-  /Im4 Do Q
-Q 
-*/
-
 		AddOffsetToXref();
 		fprintf	
 		(
@@ -201,8 +185,8 @@ Q
 	{
 		int err = 0;
 
-		m_mediaboxWidth = widthCm / 2.54 * 72;
-		m_mediaboxHeight = heightCm / 2.54 * 72;
+		m_mediaboxWidth = CM2PT(widthCm);
+		m_mediaboxHeight = CM2PT(heightCm);
 
 		m_outputFile = fopen(fileName, "wb");
 		if (!m_outputFile)
@@ -210,7 +194,7 @@ Q
 		if (!err)
 		{
 			m_contentPagesCount = pages;
-			m_xref = new char[(m_contentPagesCount+10) * 20 + 100];
+			m_xref = new char[(m_contentPagesCount+15) * 50];
 			sprintf(m_xref, LINEFEED "xref" LINEFEED "0 %d" LINEFEED "0000000000 65535 f " LINEFEED, 7 + m_contentPagesCount*2);
 
 			fprintf(m_outputFile, "%%PDF-1.3" LINEFEED "%%‚„œ”");
@@ -313,6 +297,22 @@ startxref
 	void SetImage(const unsigned char* rgbData, double width, double height) {}
 	void DrawImage(double x, double y, double width, double height)
 	{
+		char imageCode[2048]="";
+
+		sprintf
+		(
+			imageCode,
+			"0 w" LINEFEED\
+			"q 0 0 %.4f %.4f re W* n" LINEFEED\
+			"q %.4f 0 0 %.4f %.4f %.4f cm" LINEFEED\
+			"  /Im1 Do Q" LINEFEED\
+			"Q "
+			,
+			m_mediaboxWidth, m_mediaboxHeight,
+			CM2PT(width), CM2PT(height), CM2PT(x), CM2PT(y)
+		);
+
+		strcat(m_pageContent, imageCode);
 	}
 };
 

@@ -74,6 +74,8 @@ public:
 
 	PosteRazorImageIO *GetImageIO(void) {return m_imageIO;}
 
+	double ConvertDistanceToCm(double distance) const {return ConvertBetweenDistanceUnits(distance, GetDistanceUnit(), eDistanceUnitCentimeter);}
+
 	bool LoadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize)
 	{
 		return m_imageIO->LoadImage(imageFileName, errorMessage, errorMessageSize);
@@ -508,6 +510,37 @@ public:
 		{
 			int page;
                         sscanf(state, "posterpage %d", &page);
+
+			int columsCount = (int)(ceil(GetPosterWidth(ePosterSizeModePages)));
+			int rowsCount = (int)(ceil(GetPosterHeight(ePosterSizeModePages)));
+			int pagesCount = columsCount * rowsCount;
+			int column = page % columsCount;
+			int row = (int)(floor((double)page / (double)columsCount));
+
+			double posterImageWidthCm = ConvertDistanceToCm(GetPosterWidth(ePosterSizeModeAbsolute));
+			double posterImageHeightCm = ConvertDistanceToCm(GetPosterHeight(ePosterSizeModeAbsolute));
+			double printablePaperAreaWidthCm = ConvertDistanceToCm(GetPrintablePaperAreaWidth());
+			double printablePaperAreaHeightCm = ConvertDistanceToCm(GetPrintablePaperAreaHeight());
+			double overlappingWidthCm = ConvertDistanceToCm(GetOverlappingWidth());
+			double overlappingHeightCm = ConvertDistanceToCm(GetOverlappingHeight());
+			double posterTotalWidthCm = columsCount * printablePaperAreaWidthCm - (columsCount - 1) * overlappingWidthCm;
+			double posterTotalHeightCm = rowsCount * printablePaperAreaHeightCm - (rowsCount - 1) * overlappingHeightCm;
+			double imageOffsetFromLeftPosterBorderCm = 
+			(
+				GetPosterHorizontalAlignment() == eHorizontalAlignmentRight?posterTotalWidthCm-posterImageWidthCm
+				:GetPosterHorizontalAlignment() == eHorizontalAlignmentCenter?posterTotalWidthCm-(posterImageWidthCm/2)
+				:0.0
+			);
+			double imageOffsetFromTopPosterBorderCm = 
+			(
+				GetPosterVerticalAlignment() == eVerticalAlignmentBottom?posterTotalHeightCm-posterImageHeightCm
+				:GetPosterVerticalAlignment() == eVerticalAlignmentMiddle?posterTotalHeightCm-(posterImageHeightCm/2)
+				:0.0
+			);
+			double pageOffsetToImageFromLeftCm = imageOffsetFromLeftPosterBorderCm + column * (printablePaperAreaWidthCm - overlappingWidthCm);
+			double pageOffsetToImageFromTopCm = imageOffsetFromTopPosterBorderCm + row * (printablePaperAreaHeightCm - overlappingHeightCm);
+			
+			paintCanvas->DrawImage(-pageOffsetToImageFromLeftCm, -pageOffsetToImageFromTopCm, posterImageWidthCm, posterImageHeightCm);
 		}
 	}
 
