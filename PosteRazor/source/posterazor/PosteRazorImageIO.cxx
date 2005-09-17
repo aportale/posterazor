@@ -217,19 +217,23 @@ public:
 		}
 
 		PosteRazorPDFOutput *pdfOutput = PosteRazorPDFOutput::CreatePosteRazorPDFOutput();
-		pdfOutput->StartSaving(fileName, pagesCount, widthCm, heightCm);
-		pdfOutput->SaveImage(imageData, GetWidthPixels(), GetHeightPixels(), GetBitsPerPixel(), GetColorDataType(), rgbPalette, FreeImage_GetColorsUsed(m_bitmap));
+		err = pdfOutput->StartSaving(fileName, pagesCount, widthCm, heightCm);
+		if (!err)
+			err = pdfOutput->SaveImage(imageData, GetWidthPixels(), GetHeightPixels(), GetBitsPerPixel(), GetColorDataType(), rgbPalette, FreeImage_GetColorsUsed(m_bitmap));
 
-		for (int page = 0; page < pagesCount; page++)
+		if (!err)
 		{
-			char paintOptions[1024];
-			sprintf(paintOptions, "posterpage %d", page);
-			pdfOutput->StartPage();
-			painter->PaintOnCanvas(pdfOutput, paintOptions);
-			pdfOutput->FinishPage();
+			for (int page = 0; page < pagesCount; page++)
+			{
+				char paintOptions[1024];
+				sprintf(paintOptions, "posterpage %d", page);
+				pdfOutput->StartPage();
+				painter->PaintOnCanvas(pdfOutput, paintOptions);
+				pdfOutput->FinishPage();
+			}
+			err = pdfOutput->FinishSaving();
 		}
 
-		pdfOutput->FinishSaving();
 		delete pdfOutput;
 
 		if (imageData)
