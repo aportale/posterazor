@@ -528,14 +528,14 @@ public:
 			double imageOffsetFromLeftPosterBorderCm = 
 			(
 				GetPosterHorizontalAlignment() == eHorizontalAlignmentRight?posterTotalWidthCm-posterImageWidthCm
-				:GetPosterHorizontalAlignment() == eHorizontalAlignmentCenter?posterTotalWidthCm-(posterImageWidthCm/2)
+				:GetPosterHorizontalAlignment() == eHorizontalAlignmentCenter?(posterImageWidthCm - posterTotalWidthCm)/2
 				:0.0
 			);
 			double imageOffsetFromTopPosterBorderCm = 
 			(
 				// Make coordinates negative, because of PDFs coordinate space. This is ugly.. TODO: Clean up, do that in the PDF output ;)
 				GetPosterVerticalAlignment() == eVerticalAlignmentTop?posterImageHeightCm - posterTotalHeightCm
-				:GetPosterVerticalAlignment() == eVerticalAlignmentMiddle?(posterImageHeightCm/2) - posterTotalHeightCm
+				:GetPosterVerticalAlignment() == eVerticalAlignmentMiddle?(posterImageHeightCm - posterTotalHeightCm)/2
 				:0.0
 			);
 			double pageOffsetToImageFromLeftCm = imageOffsetFromLeftPosterBorderCm + column * (printablePaperAreaWidthCm - overlappingWidthCm);
