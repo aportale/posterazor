@@ -301,7 +301,7 @@ endobj
 			"Q "
 			,
 			m_mediaboxWidth, m_mediaboxHeight,
-			CM2PT(width), CM2PT(height), CM2PT(x), CM2PT(y)
+			CM2PT(width), CM2PT(height), CM2PT(x), m_mediaboxHeight-CM2PT(y)-CM2PT(height)
 		);
 
 		strcat(m_pageContent, imageCode);

@@ -515,7 +515,7 @@ public:
 			int rowsCount = (int)(ceil(GetPosterHeight(ePosterSizeModePages)));
 			int pagesCount = columsCount * rowsCount;
 			int column = page % columsCount;
-			int row = rowsCount-((int)(floor((double)page / (double)columsCount)))-1;
+			int row = ((int)(floor((double)page / (double)columsCount)));
 
 			double posterImageWidthCm = ConvertDistanceToCm(GetPosterWidth(ePosterSizeModeAbsolute));
 			double posterImageHeightCm = ConvertDistanceToCm(GetPosterHeight(ePosterSizeModeAbsolute));
@@ -527,19 +527,18 @@ public:
 			double posterTotalHeightCm = rowsCount * printablePaperAreaHeightCm - (rowsCount - 1) * overlappingHeightCm;
 			double imageOffsetFromLeftPosterBorderCm = 
 			(
-				GetPosterHorizontalAlignment() == eHorizontalAlignmentRight?posterTotalWidthCm-posterImageWidthCm
-				:GetPosterHorizontalAlignment() == eHorizontalAlignmentCenter?(posterImageWidthCm - posterTotalWidthCm)/2
+				GetPosterHorizontalAlignment() == eHorizontalAlignmentRight?posterTotalWidthCm - posterImageWidthCm
+				:GetPosterHorizontalAlignment() == eHorizontalAlignmentCenter?(posterTotalWidthCm - posterImageWidthCm)/2
 				:0.0
 			);
 			double imageOffsetFromTopPosterBorderCm = 
 			(
-				// Make coordinates negative, because of PDFs coordinate space. This is ugly.. TODO: Clean up, do that in the PDF output ;)
-				GetPosterVerticalAlignment() == eVerticalAlignmentTop?posterImageHeightCm - posterTotalHeightCm
-				:GetPosterVerticalAlignment() == eVerticalAlignmentMiddle?(posterImageHeightCm - posterTotalHeightCm)/2
+				GetPosterVerticalAlignment() == eVerticalAlignmentBottom?posterTotalHeightCm - posterImageHeightCm
+				:GetPosterVerticalAlignment() == eVerticalAlignmentMiddle?(posterTotalHeightCm - posterImageHeightCm)/2
 				:0.0
 			);
-			double pageOffsetToImageFromLeftCm = imageOffsetFromLeftPosterBorderCm + column * (printablePaperAreaWidthCm - overlappingWidthCm);
-			double pageOffsetToImageFromTopCm = imageOffsetFromTopPosterBorderCm + row * (printablePaperAreaHeightCm - overlappingHeightCm);
+			double pageOffsetToImageFromLeftCm = column * (printablePaperAreaWidthCm - overlappingWidthCm) - imageOffsetFromLeftPosterBorderCm;
+			double pageOffsetToImageFromTopCm = row * (printablePaperAreaHeightCm - overlappingHeightCm) - imageOffsetFromTopPosterBorderCm;
 			
 			paintCanvas->DrawImage(-pageOffsetToImageFromLeftCm, -pageOffsetToImageFromTopCm, posterImageWidthCm, posterImageHeightCm);
 		}
