@@ -12,8 +12,11 @@ int main(int argc, char *argv[])
 
 	if (loaded)
 	{
-		prz->SetPosterWidth(PosteRazor::ePosterSizeModePages, 20);
-		prz->SavePoster("c:\\poster.pdf");
+		prz->SetPosterWidth(PosteRazor::ePosterSizeModePages, 2.5);
+		prz->SetPosterVerticalAlignment(PosteRazor::eVerticalAlignmentMiddle);
+		prz->SetPosterHorizontalAlignment(PosteRazor::eHorizontalAlignmentCenter);
+		int err = prz->SavePoster("c:\\poster.pdf");
+		int huhu= 1;
 	}
 
 	delete prz;
