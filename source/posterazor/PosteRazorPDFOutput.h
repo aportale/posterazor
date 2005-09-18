@@ -14,7 +14,8 @@ public:
 	static unsigned int GetImageBytesPerLineCount(int widthPixels, int bitPerPixel);
 	static unsigned int GetImageBytesCount(int widthPixels, int heightPixels, int bitPerPixel);
 
-	virtual int SaveImage(unsigned char *imageData, int widthPixels, int heightPixels, int bitPerPixel, enum ColorTypes::eColorTypes, unsigned char *rgbPalette, int paletteEntries) = 0;
+	virtual int SaveImage(unsigned char *imageData, int widthPixels, int heightPixels, int bitPerPixel, enum ColorTypes::eColorTypes colorType, unsigned char *rgbPalette, int paletteEntries) = 0;
+	virtual int SaveImage(const char *jpegFileName, int widthPixels, int heightPixels, enum ColorTypes::eColorTypes colorType) = 0;
 
 	virtual int StartPage(void) = 0;
 	virtual int FinishPage(void) = 0;

@@ -40,6 +40,8 @@ private:
 	unsigned int m_horizontalDotsPerMeter;
 	unsigned int m_verticalDotsPerMeter;
 
+	char         m_imageFileName[1024];
+
 public:
 	PosteRazorImageIOImplementation()
 	{
@@ -50,6 +52,8 @@ public:
 
 		m_horizontalDotsPerMeter = 0;
 		m_verticalDotsPerMeter = 0;
+
+		m_imageFileName[0] = '\0';
 	}
 
 	~PosteRazorImageIOImplementation()
@@ -91,6 +95,8 @@ public:
 				m_horizontalDotsPerMeter = 2835; // 72 dpi
 			if (m_verticalDotsPerMeter == 0)
 				m_verticalDotsPerMeter = 2835;
+
+			strcpy(m_imageFileName, imageFileName);
 		}
 
 		strncpy(errorMessage, FreeImageErrorMessage, errorMessageSize);
@@ -219,7 +225,12 @@ public:
 		PosteRazorPDFOutput *pdfOutput = PosteRazorPDFOutput::CreatePosteRazorPDFOutput();
 		err = pdfOutput->StartSaving(fileName, pagesCount, widthCm, heightCm);
 		if (!err)
-			err = pdfOutput->SaveImage(imageData, GetWidthPixels(), GetHeightPixels(), GetBitsPerPixel(), GetColorDataType(), rgbPalette, FreeImage_GetColorsUsed(m_bitmap));
+		{
+			if (FreeImage_GetFileType(m_imageFileName, 0) == FIF_JPEG)
+				err = pdfOutput->SaveImage(m_imageFileName, GetWidthPixels(), GetHeightPixels(), GetColorDataType());
+			else
+				err = pdfOutput->SaveImage(imageData, GetWidthPixels(), GetHeightPixels(), GetBitsPerPixel(), GetColorDataType(), rgbPalette, FreeImage_GetColorsUsed(m_bitmap));
+		}
 
 		if (!err)
 		{
