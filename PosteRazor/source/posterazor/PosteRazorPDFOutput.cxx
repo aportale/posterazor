@@ -7,6 +7,7 @@
 
 #define LINEFEED "\012"
 #define CM2PT(cm) ((cm) / 2.54 * 72)
+#define JPEGFILECOPYBUFFERSIZE 10000
 
 unsigned int PosteRazorPDFOutput::GetImageBitsPerLineCount(int widthPixels, int bitPerPixel)
 {
@@ -140,13 +141,13 @@ public:
 
 		unsigned char* buffer = NULL;
 		if (!err)
-			buffer = new unsigned char[10000];
+			buffer = new unsigned char[JPEGFILECOPYBUFFERSIZE];
                 if (!buffer)
                         err = 3;
 
 		while(!err && !feof(jpegFile))
 		{
-			int readBytes = fread(buffer, 1, 10000, jpegFile);
+			int readBytes = fread(buffer, 1, JPEGFILECOPYBUFFERSIZE, jpegFile);
 			if (!ferror(jpegFile))
 			{
 				fwrite(buffer, 1, readBytes, m_outputFile);
