@@ -60,24 +60,9 @@ public:
 		strcat(m_xref, xrefLine);
 	}
 
-	int SaveImage(unsigned char *imageData, int widthPixels, int heightPixels, int bitPerPixel, enum ColorTypes::eColorTypes colorType, unsigned char *rgbPalette, int paletteEntries)
+	int AddImageResourcesAndXObject()
 	{
 		int err = 0;
-/*
-5 0 obj
-<</ColorSpace [/Indexed /DeviceRGB 15 <000204c48284a44244fc0204eceadcfc4244c40204fc8284c442000000ff00ff000000ffff0000ff00ffffff00ffffff>]
-/Subtype /Image
-/Length 170
-/Width 19
-/Type /XObject
-/Height 17
-/BitsPerComponent 4
->>
-stream
-abcdefghijklmnopqrstuvwxyz1234abcdefghijklmnopqrstuvwxyz1234abcdefghijklmnopqrstuvwxyz1234abcdefghijklmnopqrstuvwxyz1234abcdefghijklmnopqrstuvwxyz1234abcdefghijklmnopqrst
-endstream
-endobj
-*/
 
 		AddOffsetToXref();
 		m_objectResourcesID = m_pdfObjectCount;
@@ -102,6 +87,115 @@ endobj
 			"endobj",
 			m_pdfObjectCount, m_pdfObjectCount + 1
 		);
+
+		return err;
+	}
+
+	int SaveImage(const char *jpegFileName, int widthPixels, int heightPixels, enum ColorTypes::eColorTypes colorType)
+	{
+		int err = 0;
+
+		err = AddImageResourcesAndXObject();
+
+		FILE *jpegFile = NULL;
+		if (!err)
+		{
+			jpegFile = fopen(jpegFileName, "rb");
+			if (!jpegFile)
+				err = 2;
+		}
+
+		int jpegFileSize = 0;
+		if (!err)
+		{
+			fseek(jpegFile, 0, SEEK_END);
+			jpegFileSize = ftell(jpegFile);
+			fseek(jpegFile, 0, SEEK_SET);
+			if (jpegFileSize == 0)
+				err = 6;
+		}
+
+		if (!err)
+		{
+			AddOffsetToXref();
+			fprintf
+			(
+				m_outputFile,
+				LINEFEED "%d 0 obj" LINEFEED\
+				"<</ColorSpace %s" LINEFEED\
+				"/Subtype /Image" LINEFEED\
+				"/Length %d" LINEFEED\
+				"/Width %d" LINEFEED\
+				"/Type /XObject" LINEFEED\
+				"/Height %d" LINEFEED\
+				"/BitsPerComponent 8" LINEFEED\
+				"/Filter /DCTDecode" LINEFEED\
+				">>" LINEFEED\
+				"stream" LINEFEED,
+				m_pdfObjectCount,
+				colorType==ColorTypes::eColorTypeCMYK?"/DeviceCMYK":"/DeviceRGB",
+				jpegFileSize, widthPixels, heightPixels
+			);
+		}
+
+		unsigned char* buffer = NULL;
+		if (!err)
+			buffer = new unsigned char[10000];
+                if (!buffer)
+                        err = 3;
+
+		while(!err && !feof(jpegFile))
+		{
+			int readBytes = fread(buffer, 1, 10000, jpegFile);
+			if (!ferror(jpegFile))
+			{
+				fwrite(buffer, 1, readBytes, m_outputFile);
+				if (ferror(m_outputFile))
+					err = 4;
+			}
+			else
+			{
+				err = 5;
+			}
+		}
+
+		if (!err)
+		{
+			fprintf
+			(
+				m_outputFile,
+				LINEFEED "endstream" LINEFEED\
+				"endobj"
+			);
+		}
+
+		if (buffer)
+			delete[] buffer;
+
+		fclose(jpegFile);
+
+		return err;
+	}
+
+	int SaveImage(unsigned char *imageData, int widthPixels, int heightPixels, int bitPerPixel, enum ColorTypes::eColorTypes colorType, unsigned char *rgbPalette, int paletteEntries)
+	{
+		int err = 0;
+/*
+5 0 obj
+<</ColorSpace [/Indexed /DeviceRGB 15 <000204c48284a44244fc0204eceadcfc4244c40204fc8284c442000000ff00ff000000ffff0000ff00ffffff00ffffff>]
+/Subtype /Image
+/Length 170
+/Width 19
+/Type /XObject
+/Height 17
+/BitsPerComponent 4
+>>
+stream
+abcdefghijklmnopqrstuvwxyz1234abcdefghijklmnopqrstuvwxyz1234abcdefghijklmnopqrstuvwxyz1234abcdefghijklmnopqrstuvwxyz1234abcdefghijklmnopqrstuvwxyz1234abcdefghijklmnopqrst
+endstream
+endobj
+*/
+		err = AddImageResourcesAndXObject();
 
 		char colorSpaceString[5000] = "";
 		if (colorType == ColorTypes::eColorTypeRGB)
