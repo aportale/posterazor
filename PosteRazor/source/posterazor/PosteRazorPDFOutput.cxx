@@ -198,6 +198,24 @@ endobj
 */
 		err = AddImageResourcesAndXObject();
 
+		unsigned int imageBytesCount = GetImageBytesCount(widthPixels, heightPixels, bitPerPixel);
+		unsigned int imageBytesCountCompressed = ((double)(ceil(imageBytesCount*1.01)))+12;
+		unsigned char *imageDataCompressed = NULL;
+
+		if (!err)
+		{
+			imageDataCompressed = new unsigned char[imageBytesCountCompressed];
+			if (!imageDataCompressed)
+				err = 1;
+		}
+
+		if (!err)
+		{
+			imageBytesCountCompressed = FreeImage_ZLibCompress(imageDataCompressed, imageBytesCountCompressed, imageData, imageBytesCount);
+			if (!imageBytesCountCompressed)
+				err = 2;
+		}
+
 		char colorSpaceString[5000] = "";
 		if (colorType == ColorTypes::eColorTypeRGB)
 			strcpy(colorSpaceString, "/DeviceRGB");
@@ -213,18 +231,23 @@ endobj
 			"/Width %d" LINEFEED\
 			"/Type /XObject" LINEFEED\
 			"/Height %d" LINEFEED\
+			"/Filter /FlateDecode" LINEFEED\
 			"/BitsPerComponent %d" LINEFEED\
 			">>" LINEFEED\
 			"stream" LINEFEED,
-			m_pdfObjectCount, colorSpaceString, (int)GetImageBytesCount(widthPixels, heightPixels, bitPerPixel), widthPixels, heightPixels, bitPerPixel/3
+			m_pdfObjectCount, colorSpaceString, (int)imageBytesCountCompressed, widthPixels, heightPixels, bitPerPixel/3
 		);
-		fwrite(imageData, (int)GetImageBytesCount(widthPixels, heightPixels, bitPerPixel), 1, m_outputFile);
+		fwrite(imageDataCompressed, (int)imageBytesCountCompressed, 1, m_outputFile);
 		fprintf
 		(
 			m_outputFile,
 			LINEFEED "endstream" LINEFEED\
 			"endobj"
-		);			
+		);
+		
+		if (imageDataCompressed)
+			delete[] imageDataCompressed;
+
 		return err;
 	}
 
