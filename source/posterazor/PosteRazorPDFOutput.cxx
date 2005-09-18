@@ -4,7 +4,7 @@
 #include <math.h>
 #include "PaintCanvasInterface.h"
 #include "PosteRazorPDFOutput.h"
-
+#include <time.h>
 #define LINEFEED "\012"
 #define CM2PT(cm) ((cm) / 2.54 * 72)
 #define JPEGFILECOPYBUFFERSIZE 10000
@@ -317,21 +317,25 @@ endobj
 
 			fprintf(m_outputFile, "%%PDF-1.3" LINEFEED "%%âãÏÓ");
 
+			time_t rawtime;
+			struct tm * timeinfo;
+			time(&rawtime);
+			timeinfo = gmtime(&rawtime);
+			char dateStr[1024];
+			sprintf(dateStr, "%.4d%.2d%.2d%.2d%.2d%.2d", timeinfo->tm_year+1900, timeinfo->tm_mon+1, timeinfo->tm_mday, timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
+
  			AddOffsetToXref();
 			fprintf
 			(
 				m_outputFile,
 				LINEFEED "%d 0 obj" LINEFEED\
-/*				"<</Creator (PosteRazor)" LINEFEED\ */
-/*				"/Producer (PosteRazor, posterazor.sourceforge.net)" LINEFEED\ */
-
-				"<</Creator <feff0044007200610077>" LINEFEED\
-				"/Producer <feff004f00700065006e004f00660066006900630065002e006f0072006700200031002e0039002e003100320032>" LINEFEED\
-				"/CreationDate (D:20050908001008+02'00')" LINEFEED\
-
+				"<</Creator (PosteRazor)" LINEFEED\
+				"/Producer (PosteRazor, posterazor.sourceforge.net)" LINEFEED\
+				"/CreationDate (D:%s)" LINEFEED\
 				">>" LINEFEED\
 				"endobj",
-				m_pdfObjectCount
+				m_pdfObjectCount,
+				dateStr
 			);
 
 			AddOffsetToXref();
