@@ -97,6 +97,14 @@ public:
 				m_verticalDotsPerMeter = 2835;
 
 			strcpy(m_imageFileName, imageFileName);
+
+			if (GetColorDataType() == eColorTypeRGBA) // We can't export alpha channels to PDF, anyway (yet)
+			{
+				RGBQUAD white = { 255, 255, 255, 0 };
+				FIBITMAP *Image24Bit = FreeImage_Composite(m_bitmap, FALSE, &white);
+				FreeImage_Unload(m_bitmap);
+				m_bitmap = Image24Bit;
+			}
 		}
 
 		strncpy(errorMessage, FreeImageErrorMessage, errorMessageSize);
