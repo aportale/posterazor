@@ -216,9 +216,9 @@ public:
 			for (int i = 0; i < count; i++)
 			{
 				int offset = i*3;
-				rgbPalette[offset] = palette[offset].rgbRed;
-				rgbPalette[offset + 1] = palette[offset].rgbGreen;
-				rgbPalette[offset + 2] = palette[offset].rgbBlue;
+				rgbPalette[offset] = palette[i].rgbRed;
+				rgbPalette[offset + 1] = palette[i].rgbGreen;
+				rgbPalette[offset + 2] = palette[i].rgbBlue;
 			}
 		}
 

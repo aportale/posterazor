@@ -16,7 +16,6 @@ unsigned int PosteRazorPDFOutput::GetImageBitsPerLineCount(int widthPixels, int 
 
 unsigned int PosteRazorPDFOutput::GetImageBytesPerLineCount(int widthPixels, int bitPerPixel)
 {
-
 	return (int)(ceil((double)GetImageBitsPerLineCount(widthPixels, bitPerPixel)/8.0f));
 }
 
@@ -181,21 +180,6 @@ public:
 	int SaveImage(unsigned char *imageData, int widthPixels, int heightPixels, int bitPerPixel, enum ColorTypes::eColorTypes colorType, unsigned char *rgbPalette, int paletteEntries)
 	{
 		int err = 0;
-/*
-5 0 obj
-<</ColorSpace [/Indexed /DeviceRGB 15 <000204c48284a44244fc0204eceadcfc4244c40204fc8284c442000000ff00ff000000ffff0000ff00ffffff00ffffff>]
-/Subtype /Image
-/Length 170
-/Width 19
-/Type /XObject
-/Height 17
-/BitsPerComponent 4
->>
-stream
-abcdefghijklmnopqrstuvwxyz1234abcdefghijklmnopqrstuvwxyz1234abcdefghijklmnopqrstuvwxyz1234abcdefghijklmnopqrstuvwxyz1234abcdefghijklmnopqrstuvwxyz1234abcdefghijklmnopqrst
-endstream
-endobj
-*/
 		err = AddImageResourcesAndXObject();
 
 		unsigned int imageBytesCount = GetImageBytesCount(widthPixels, heightPixels, bitPerPixel);
@@ -218,7 +202,33 @@ endobj
 
 		char colorSpaceString[5000] = "";
 		if (colorType == ColorTypes::eColorTypeRGB)
+		{
 			strcpy(colorSpaceString, "/DeviceRGB");
+		}
+		else if(colorType == ColorTypes::eColorTypeGreyscale)
+		{
+			strcpy(colorSpaceString, "/DeviceGray");
+		}
+/*		else if(colorType == ColorTypes::eColorTypeMonochrome)
+		{
+			sprintf(colorSpaceString, "/DeviceGray" LINEFEED "/BlackIs1 %s", rgbPalette[0]?"false":"true");
+		}
+*/
+		else if(colorType == ColorTypes::eColorTypeCMYK)
+		{
+			strcpy(colorSpaceString, "/DeviceCMYK");
+		}
+		else
+		{
+			sprintf(colorSpaceString, "[/Indexed /DeviceRGB %d <", paletteEntries-1); // -1, because PDF wants the highest index, not the number of entries
+			for (int i = 0; i < paletteEntries; i++)
+			{
+				char rgbHex[20];
+				sprintf(rgbHex, "%.2x%.2x%.2x", rgbPalette[i*3], rgbPalette[i*3 + 1], rgbPalette[i*3 + 2]);
+				strcat(colorSpaceString, rgbHex);
+			}
+			strcat(colorSpaceString, ">]");
+		}
 		AddOffsetToXref();
 		m_objectImageID = m_pdfObjectCount;
 		fprintf
@@ -235,7 +245,14 @@ endobj
 			"/BitsPerComponent %d" LINEFEED\
 			">>" LINEFEED\
 			"stream" LINEFEED,
-			m_pdfObjectCount, colorSpaceString, (int)imageBytesCountCompressed, widthPixels, heightPixels, bitPerPixel/3
+			m_pdfObjectCount, colorSpaceString, (int)imageBytesCountCompressed, widthPixels, heightPixels,
+			(
+				colorType == ColorTypes::eColorTypePalette?bitPerPixel
+				:colorType == ColorTypes::eColorTypeMonochrome?bitPerPixel
+				:colorType == ColorTypes::eColorTypeGreyscale?bitPerPixel
+				:colorType == ColorTypes::eColorTypeCMYK?(bitPerPixel/4)
+				:(bitPerPixel/3)
+			)
 		);
 		fwrite(imageDataCompressed, (int)imageBytesCountCompressed, 1, m_outputFile);
 		fprintf
@@ -330,7 +347,7 @@ endobj
 				m_outputFile,
 				LINEFEED "%d 0 obj" LINEFEED\
 				"<</Creator (PosteRazor)" LINEFEED\
-				"/Producer (PosteRazor, posterazor.sourceforge.net)" LINEFEED\
+				"/Producer (PosteRazor.SourceForge.net)" LINEFEED\
 				"/CreationDate (D:%s)" LINEFEED\
 				">>" LINEFEED\
 				"endobj",
