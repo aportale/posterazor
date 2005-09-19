@@ -138,6 +138,9 @@
 				RelativePath="..\..\source\tools\PaperFormats.h">
 			</File>
 			<File
+				RelativePath="..\..\source\tools\PersistentPreferencesInterface.h">
+			</File>
+			<File
 				RelativePath="..\..\source\posterazor\PosteRazor.h">
 			</File>
 			<File
