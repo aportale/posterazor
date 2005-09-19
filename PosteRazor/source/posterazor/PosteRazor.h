@@ -5,6 +5,7 @@
 #include "../tools/ColorTypes.h"
 #include "../tools/ImageIOTypes.h"
 #include "../tools/PaintCanvasInterface.h"
+#include "../tools/PersistentPreferencesInterface.h"
 
 class PosteRazor: public PaperFormats, public ColorTypes, public ImageIOTypes, public PainterInterface
 {
@@ -40,6 +41,9 @@ public:
 
 	virtual ~PosteRazor() {};
 	static PosteRazor* CreatePosteRazor();
+
+	virtual bool ReadPersistentPreferences(const PersistentPreferencesInterface *preferences) = 0;
+	virtual bool WritePersistentPreferences(PersistentPreferencesInterface *preferences) const = 0;
 
 	virtual bool LoadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize) = 0;
 	virtual bool IsImageLoaded(void) const = 0;
