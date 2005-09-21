@@ -16,11 +16,11 @@ void PosteRazorDialogUI::cb_m_prevButton(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()))->cb_m_prevButton_i(o,v);
 }
 
-void PosteRazorDialogUI::cb_fileopen_i(Fl_Button*, void*) {
+void PosteRazorDialogUI::cb_1fileopen_i(Fl_Button*, void*) {
   LoadInputImage(0);
 }
-void PosteRazorDialogUI::cb_fileopen(Fl_Button* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_fileopen_i(o,v);
+void PosteRazorDialogUI::cb_1fileopen(Fl_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_1fileopen_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_paperFormatTypeTabs_i(Fl_Tabs*, void*) {
@@ -893,11 +893,18 @@ static unsigned char idata_alignmentRight[] =
 \200\200\200\377\200\200\200\377\200\200\200\377\200\200\200\377";
 static Fl_RGB_Image image_alignmentRight(idata_alignmentRight, 19, 15, 4, 0);
 
-void PosteRazorDialogUI::cb_Save_i(Fl_Button*, void*) {
+void PosteRazorDialogUI::cb_14filesave_i(Fl_Button*, void*) {
   SavePoster();
 }
-void PosteRazorDialogUI::cb_Save(Fl_Button* o, void* v) {
-  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()))->cb_Save_i(o,v);
+void PosteRazorDialogUI::cb_14filesave(Fl_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_14filesave_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_setLaunchPDFApplicationCheckButton_i(Fl_Check_Button*, void*) {
+  SetLaunchPDFApplication();
+}
+void PosteRazorDialogUI::cb_m_setLaunchPDFApplicationCheckButton(Fl_Check_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_m_setLaunchPDFApplicationCheckButton_i(o,v);
 }
 PosteRazorDialogUI::PosteRazorDialogUI(int X, int Y, int W, int H, const char *L)
   : Fl_Double_Window(X, Y, W, H, L) {
@@ -944,9 +951,9 @@ o->when(FL_WHEN_RELEASE);
     o->color(FL_LIGHT1);
     o->hide();
     { Fl_Group* o = new Fl_Group(325, 70, 275, 25, "Input Image");
-      { Fl_Button* o = new Fl_Button(575, 70, 25, 25, "@fileopen");
-        o->labelcolor(FL_GRAY0);
-        o->callback((Fl_Callback*)cb_fileopen);
+      { Fl_Button* o = new Fl_Button(575, 70, 25, 25, "@+1fileopen");
+        o->labelcolor((Fl_Color)36);
+        o->callback((Fl_Callback*)cb_1fileopen);
       }
       { Fl_Box* o = m_inputFileNameLabel = new Fl_Box(325, 70, 250, 25);
         o->box(FL_THIN_DOWN_BOX);
@@ -1267,14 +1274,22 @@ o->when(FL_WHEN_RELEASE);
     }
     o->end();
   }
-  { Fl_Group* o = new Fl_Group(315, 45, 295, 365);
-    o->hide();
-    o->end();
-  }
   { Fl_Group* o = m_savePosterStep = new Fl_Group(315, 45, 295, 365);
-    { Fl_Button* o = new Fl_Button(325, 55, 275, 25, "Save the Poster @filesave");
-      o->labelcolor(FL_GRAY0);
-      o->callback((Fl_Callback*)cb_Save);
+    { Fl_Group* o = new Fl_Group(325, 70, 275, 75, "Save the Poster");
+      o->box(FL_THIN_DOWN_BOX);
+      o->color(FL_DARK2);
+      { Fl_Button* o = new Fl_Button(335, 80, 255, 25, "@+14filesave");
+        o->labelcolor((Fl_Color)36);
+        o->callback((Fl_Callback*)cb_14filesave);
+      }
+      { Fl_Check_Button* o = m_setLaunchPDFApplicationCheckButton = new Fl_Check_Button(335, 115, 255, 20, "Launch PDF application after saving");
+        o->down_box(FL_DOWN_BOX);
+        o->callback((Fl_Callback*)cb_m_setLaunchPDFApplicationCheckButton);
+      }
+      o->end();
+    }
+    { Fl_Box* o = new Fl_Box(315, 410, 295, 0);
+      Fl_Group::current()->resizable(o);
     }
     o->end();
   }

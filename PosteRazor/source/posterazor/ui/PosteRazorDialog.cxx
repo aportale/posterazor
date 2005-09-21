@@ -61,6 +61,8 @@ PosteRazorDialog::PosteRazorDialog(void)
 	UpdatePosterSizeGroupsState();
 	SetPosterImageAlignmentButtons();
 
+	m_setLaunchPDFApplicationCheckButton->value(m_posteRazor->GetLaunchPDFApplication()?1:0);
+
 	m_imageInfoGroup->deactivate();
 
 	m_previewPaintCanvas->SetPainterInterface(m_posteRazor);
@@ -380,9 +382,19 @@ void PosteRazorDialog::HandlePosterImageAlignment(void)
 
 void PosteRazorDialog::SavePoster(void)
 {
-	int huhu = 1;
+	Fl_Native_File_Chooser chooser(Fl_Native_File_Chooser::BROWSE_SAVE_FILE);
+	if (chooser.show() == 0)
+	{
+		int err = m_posteRazor->SavePoster(chooser.filename());
+		if (err)
+			fl_message("The file '%s' could not be saved.", fl_filename_name(chooser.filename()));
+	}
 }
 
+void PosteRazorDialog::SetLaunchPDFApplication(void)
+{
+	m_posteRazor->SetLaunchPDFApplication(m_setLaunchPDFApplicationCheckButton->value()==0?false:true);
+}
 
 int main (int argc, char **argv)
 {

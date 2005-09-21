@@ -13,6 +13,7 @@
 #include <FL/Fl_Choice.H>
 #include <FL/Fl_Round_Button.H>
 #include <FL/Fl_Value_Input.H>
+#include <FL/Fl_Check_Button.H>
 
 class PosteRazorDialogUI : public Fl_Double_Window {
   void _PosteRazorDialogUI();
@@ -32,8 +33,8 @@ public:
   Fl_Wizard *m_wizard;
   Fl_Group *m_loadInputImageStep;
 private:
-  void cb_fileopen_i(Fl_Button*, void*);
-  static void cb_fileopen(Fl_Button*, void*);
+  void cb_1fileopen_i(Fl_Button*, void*);
+  static void cb_1fileopen(Fl_Button*, void*);
 public:
   Fl_Box *m_inputFileNameLabel;
   Fl_Group *m_imageInfoGroup;
@@ -204,8 +205,13 @@ private:
 public:
   Fl_Group *m_savePosterStep;
 private:
-  void cb_Save_i(Fl_Button*, void*);
-  static void cb_Save(Fl_Button*, void*);
+  void cb_14filesave_i(Fl_Button*, void*);
+  static void cb_14filesave(Fl_Button*, void*);
+public:
+  Fl_Check_Button *m_setLaunchPDFApplicationCheckButton;
+private:
+  void cb_m_setLaunchPDFApplicationCheckButton_i(Fl_Check_Button*, void*);
+  static void cb_m_setLaunchPDFApplicationCheckButton(Fl_Check_Button*, void*);
 public:
   Fl_Paint_Canvas *m_previewPaintCanvas;
   Fl_Box *m_stepInfoBox;
@@ -221,5 +227,6 @@ public:
   virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;
   virtual void HandlePosterImageAlignment(void) = 0;
   virtual void SavePoster(void) = 0;
+  virtual void SetLaunchPDFApplication(void) = 0;
 };
 #endif

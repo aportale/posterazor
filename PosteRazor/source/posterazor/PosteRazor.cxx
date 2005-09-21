@@ -2,6 +2,7 @@
 #include "PosteRazorImageIO.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include <math.h>
 
 #define MIN(a, b) ((a)<=(b)?(a):(b))
@@ -27,6 +28,7 @@ const char preferencesKey_OverlappingHeight[] = "OverlappingHeight";
 const char preferencesKey_OverlappingPosition[] = "OverlappingPosition";
 const char preferencesKey_DistanceUnit[] = "DistanceUnit";
 const char preferencesKey_PosterOutputFormat[] = "PosterOutputFormat";
+const char preferencesKey_LaunchPDFApplication[] = "LaunchPDFApplication";
 
 class PosteRazorImplementation: public PosteRazor
 {
@@ -57,6 +59,8 @@ private:
 
 	enum eImageFormats     m_posterOutputFormat;
 
+	bool                   m_launchPDFApplication;
+
 public:
 	PosteRazorImplementation()
 	{
@@ -85,6 +89,8 @@ public:
 		m_distanceUnit                 = eDistanceUnitCentimeter;
 
 		m_posterOutputFormat           = eImageFormatPDF;
+
+		m_launchPDFApplication         = true;
 	}
 
 	~PosteRazorImplementation()
@@ -115,6 +121,7 @@ public:
 		m_overlappingPosition          = (eOverlappingPositions)preferences->GetInteger(preferencesKey_OverlappingPosition, (int)m_overlappingPosition);
 		m_distanceUnit                 = (eDistanceUnits)preferences->GetInteger(preferencesKey_DistanceUnit, (int)m_distanceUnit);
 		m_posterOutputFormat           = (eImageFormats)preferences->GetInteger(preferencesKey_PosterOutputFormat, (int)m_posterOutputFormat);
+		m_launchPDFApplication         = preferences->GetBoolean(preferencesKey_LaunchPDFApplication, m_launchPDFApplication);
 
 		return returnValue;
 	}
@@ -142,6 +149,7 @@ public:
 		preferences->SetInteger((int)m_overlappingPosition, preferencesKey_OverlappingPosition);
 		preferences->SetInteger((int)m_distanceUnit, preferencesKey_DistanceUnit);
 		preferences->SetInteger((int)m_posterOutputFormat, preferencesKey_PosterOutputFormat);
+		preferences->SetBoolean(m_launchPDFApplication, preferencesKey_LaunchPDFApplication);
 
 		return returnValue;
 	}
@@ -624,9 +632,16 @@ public:
 
 	int SavePoster(const char *fileName) const
 	{
+		int err = 0;
 		int pagesCount = (int)(ceil(GetPosterWidth(ePosterSizeModePages))) * (int)(ceil(GetPosterHeight(ePosterSizeModePages)));
-		return m_imageIO->SavePoster(fileName, GetPosterOutputFormat(), this, pagesCount, GetPrintablePaperAreaWidth(), GetPrintablePaperAreaHeight());
+		err = m_imageIO->SavePoster(fileName, GetPosterOutputFormat(), this, pagesCount, GetPrintablePaperAreaWidth(), GetPrintablePaperAreaHeight());
+		if (!err && GetLaunchPDFApplication())
+			system(fileName);
+		return err;
 	}
+
+	virtual void SetLaunchPDFApplication(bool launch) {m_launchPDFApplication = launch;}
+	virtual bool GetLaunchPDFApplication(void) const {return m_launchPDFApplication;}
 };
 
 PosteRazor* PosteRazor::CreatePosteRazor()
