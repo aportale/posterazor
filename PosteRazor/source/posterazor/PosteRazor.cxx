@@ -92,7 +92,7 @@ public:
 		delete m_imageIO;
 	}
 
-	virtual bool ReadPersistentPreferences(const PersistentPreferencesInterface *preferences)
+	virtual bool ReadPersistentPreferences(PersistentPreferencesInterface *preferences)
 	{
 		bool returnValue = true;
 		

@@ -9,10 +9,10 @@ public:
 	virtual void SetBoolean(bool value, const char *key) = 0;
 	virtual void SetString(const char *value, const char *key) = 0;
 	
-	virtual int GetInteger(const char *key, int defaultValue) const = 0;
-	virtual double GetDouble(const char *key, double defaultValue) const = 0;
-	virtual bool GetBoolean(const char *key, bool defaultValue) const = 0;
-	virtual const char *GetString(const char *key, const char *defaultValue) const = 0;
+	virtual int GetInteger(const char *key, int defaultValue) = 0;
+	virtual double GetDouble(const char *key, double defaultValue) = 0;
+	virtual bool GetBoolean(const char *key, bool defaultValue) = 0;
+	virtual const char *GetString(const char *key, const char *defaultValue) = 0;
 };
 
 #endif // PersistentPreferencesInterface_h
