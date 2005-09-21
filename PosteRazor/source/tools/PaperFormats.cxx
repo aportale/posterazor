@@ -9,6 +9,7 @@ typedef struct
 	double height;
 } paperFormats;
 
+// Needs to have the same order as the ePaperFormats enum!!!
 static const paperFormats g_paperFormats[] =
 {
 	{PaperFormats::ePaperFormatA4, "DIN A4", 21.0, 29.7},

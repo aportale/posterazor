@@ -7,8 +7,8 @@ public:
 	typedef enum eDistanceUnits
 	{
 		eDistanceUnitMeter,
-		eDistanceUnitCentimeter,
 		eDistanceUnitMillimeter,
+		eDistanceUnitCentimeter,
 		eDistanceUnitInch
 	};
 
@@ -18,6 +18,7 @@ public:
 	static int GetDistanceUnitIndex(enum eDistanceUnits unit);
 	static const char* GetDistanceUnitName(enum eDistanceUnits unit);
 	static enum eDistanceUnits GetDistanceUnitForName(const char* name);
+	static enum eDistanceUnits GetDistanceUnitForIndex(int index);
 };
 
 #endif
