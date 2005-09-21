@@ -4,6 +4,9 @@
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
 
+const char PreferencesVendor[] = "CasaPortale.de";
+const char PreferencesProduct[] = "PosteRazor";
+
 PosteRazorDragDropWidget::PosteRazorDragDropWidget(int x, int y, int w, int h, const char *label)
 	:Fl_Box(FL_NO_BOX, x, y, w, h, label)
 {
@@ -33,7 +36,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 	end();
 
 	m_posteRazor = PosteRazor::CreatePosteRazor();
-	Fl_Persistent_Preferences preferences("CasaPortale.de", "PosteRazor");
+	Fl_Persistent_Preferences preferences(PreferencesVendor, PreferencesProduct);
 	m_posteRazor->ReadPersistentPreferences(&preferences);
 
 	int paperFormatMenuItemsCount = PosteRazor::GetPaperFormatsCount()+1;
@@ -70,7 +73,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 
 PosteRazorDialog::~PosteRazorDialog()
 {
-	Fl_Persistent_Preferences preferences("CasaPortale.de", "PosteRazor");
+	Fl_Persistent_Preferences preferences(PreferencesVendor, PreferencesProduct);
 	m_posteRazor->WritePersistentPreferences(&preferences);
 
 	if (m_paperFormatMenuItems)
