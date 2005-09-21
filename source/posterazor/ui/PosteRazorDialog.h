@@ -47,6 +47,7 @@ public:
 	void HandlePosterImageAlignment(void);
 
 	void SavePoster(void);
+	void SetLaunchPDFApplication(void);
 };
 
 #endif

@@ -110,6 +110,8 @@ public:
 	virtual enum eImageFormats GetPosterOutputFormat(void) const = 0;
 
 	virtual int SavePoster(const char *fileName) const = 0;
+	virtual void SetLaunchPDFApplication(bool launch) = 0;
+	virtual bool GetLaunchPDFApplication(void) const = 0;
 };
 
 #endif
