@@ -203,6 +203,10 @@ private:
   static void cb_m_posterAlignmentRightButton(Fl_Button*, void*);
 public:
   Fl_Group *m_savePosterStep;
+private:
+  void cb_Save_i(Fl_Button*, void*);
+  static void cb_Save(Fl_Button*, void*);
+public:
   Fl_Paint_Canvas *m_previewPaintCanvas;
   Fl_Box *m_stepInfoBox;
   virtual void next(void) = 0;
@@ -216,5 +220,6 @@ public:
   virtual void UpdatePosterSizeGroupsState(void) = 0;
   virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;
   virtual void HandlePosterImageAlignment(void) = 0;
+  virtual void SavePoster(void) = 0;
 };
 #endif

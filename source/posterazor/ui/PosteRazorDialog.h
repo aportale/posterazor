@@ -45,6 +45,8 @@ public:
 	void UpdatePosterSizeGroupsState(void);
 	void SetPosterImageAlignmentButtons(void);
 	void HandlePosterImageAlignment(void);
+
+	void SavePoster(void);
 };
 
 #endif
