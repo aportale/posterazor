@@ -47,6 +47,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 		m_paperFormatMenuItems[i].user_data((void*)this);
 	}
 	m_paperFormatChoice->menu(m_paperFormatMenuItems);
+	m_paperFormatChoice->value((int)m_posteRazor->GetPaperFormat());
 
 	if (m_posteRazor->GetPosterSizeMode() == PosteRazor::ePosterSizeModeAbsolute)
 		m_posterSizeAbsoluteRadioButton->setonly();
