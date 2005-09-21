@@ -156,6 +156,12 @@
 			<File
 				RelativePath="..\..\thirdparty\Fl_Native_File_Chooser\Fl_Native_File_Chooser.cxx">
 			</File>
+			<File
+				RelativePath="..\..\thirdparty\Fl_Native_File_Chooser\Fl\Fl_Native_File_Chooser.H">
+			</File>
+			<File
+				RelativePath="..\..\thirdparty\Fl_Native_File_Chooser\Fl\Fl_Native_File_Chooser_WINDOWS.H">
+			</File>
 		</Filter>
 		<File
 			RelativePath="..\..\source\posterazor\ui\PosteRazorDialogUI.fl">
