@@ -19,6 +19,7 @@ private:
 	PosteRazor    *m_posteRazor;
 	PosteRazorDragDropWidget *m_dragDropWidget;
 	Fl_Menu_Item  *m_paperFormatMenuItems;
+	Fl_Menu_Item  *m_distanceUnitMenuItems;
 
 public:
 	~PosteRazorDialog();
@@ -26,6 +27,8 @@ public:
 
 	int handle(int event);
 
+	static void HandleDistanceUnitChoice_cb(Fl_Widget *widget, void *userData);
+	void HandleDistanceUnitChangement(Fl_Widget *sourceWidget);
 	void next(void);
 	void prev(void);
 	void UpdateNavigationButtons(void);
@@ -34,7 +37,7 @@ public:
 	void LoadInputImage(const char *fileName);
 	void UpdateImageInfoFields(void);
 
-	void SetPaperSizeFields(void);
+        void SetPaperSizeFields(void);
 	static void HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userData);
 	void HandlePaperSizeChangement(Fl_Widget *sourceWidget);
 

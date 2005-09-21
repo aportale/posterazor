@@ -930,7 +930,15 @@ o->labelcolor(FL_BLACK);
 o->user_data((void*)(this));
 o->align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE);
 o->when(FL_WHEN_RELEASE);
-{ Fl_Group* o = new Fl_Group(10, 420, 600, 25);
+{ Fl_Group* o = new Fl_Group(10, 420, 600, 26);
+  { Fl_Choice* o = m_distanceUnitChoice = new Fl_Choice(46, 420, 160, 25, "Units:");
+    o->down_box(FL_BORDER_BOX);
+    o->labelsize(12);
+    o->textsize(12);
+  }
+  { Fl_Box* o = new Fl_Box(294, 420, 15, 25);
+    Fl_Group::current()->resizable(o);
+  }
   { Fl_Button* o = m_nextButton = new Fl_Button(525, 420, 85, 25, "Next @-2->");
     o->labelcolor(FL_GRAY0);
     o->callback((Fl_Callback*)cb_m_nextButton);
@@ -938,9 +946,6 @@ o->when(FL_WHEN_RELEASE);
   { Fl_Button* o = m_prevButton = new Fl_Button(430, 420, 85, 25, "@-2<- Back");
     o->labelcolor(FL_GRAY0);
     o->callback((Fl_Callback*)cb_m_prevButton);
-  }
-  { Fl_Box* o = new Fl_Box(225, 420, 15, 25);
-    Fl_Group::current()->resizable(o);
   }
   o->end();
 }

@@ -8,6 +8,7 @@ typedef struct
 	double multipleOfCentimeter;
 } distanceUnits;
 
+// Needs to have the same order as the eDistanceUnits enum!!!
 static const distanceUnits g_distanceUnits[] =
 {
 	{DistanceUnits::eDistanceUnitMeter, "m", 100},
@@ -21,6 +22,11 @@ static const int g_distanceUnitsCount = sizeof(g_distanceUnits)/sizeof(g_distanc
 int DistanceUnits::GetDistanceUnitsCount(void)
 {
 	return g_distanceUnitsCount;
+}
+
+enum DistanceUnits::eDistanceUnits DistanceUnits::GetDistanceUnitForIndex(int index)
+{
+	return g_distanceUnits[index].unit;
 }
 
 int DistanceUnits::GetDistanceUnitIndex(enum eDistanceUnits unit)

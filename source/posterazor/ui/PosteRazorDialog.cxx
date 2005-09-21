@@ -36,8 +36,23 @@ PosteRazorDialog::PosteRazorDialog(void)
 	end();
 
 	m_posteRazor = PosteRazor::CreatePosteRazor();
+
 	Fl_Persistent_Preferences preferences(PreferencesVendor, PreferencesProduct);
 	m_posteRazor->ReadPersistentPreferences(&preferences);
+
+	int distanceUnitMenuItemsCount = PosteRazor::GetDistanceUnitsCount()+1;
+	m_distanceUnitMenuItems = new Fl_Menu_Item[distanceUnitMenuItemsCount];
+	memset(m_distanceUnitMenuItems, 0, sizeof(Fl_Menu_Item)*distanceUnitMenuItemsCount);
+	for (int i = 0; i < PosteRazor::GetDistanceUnitsCount(); i++)
+	{
+		const char* distanceUnitName = DistanceUnits::GetDistanceUnitName(PosteRazor::GetDistanceUnitForIndex(i));
+		m_distanceUnitMenuItems[i].label(distanceUnitName);
+		m_distanceUnitMenuItems[i].callback(HandleDistanceUnitChoice_cb);
+		m_distanceUnitMenuItems[i].user_data((void*)this);
+	}
+	m_distanceUnitChoice->menu(m_distanceUnitMenuItems);
+	enum PosteRazor::eDistanceUnits selectedDistanceUnit = m_posteRazor->GetDistanceUnit();
+	m_distanceUnitChoice->value(selectedDistanceUnit);
 
 	int paperFormatMenuItemsCount = PosteRazor::GetPaperFormatsCount()+1;
 	m_paperFormatMenuItems = new Fl_Menu_Item[paperFormatMenuItemsCount];
@@ -92,6 +107,18 @@ int PosteRazorDialog::handle(int event)
 	default:
 		return PosteRazorDialogUI::handle(event);
 	};
+}
+
+void PosteRazorDialog::HandleDistanceUnitChoice_cb(Fl_Widget *widget, void *userData)
+{
+	((PosteRazorDialog*)userData)->HandleDistanceUnitChangement(((PosteRazorDialog*)userData)->m_distanceUnitChoice);
+}
+
+void PosteRazorDialog::HandleDistanceUnitChangement(Fl_Widget *sourceWidget)
+{
+	const char* distanceUnitName = m_distanceUnitMenuItems[m_distanceUnitChoice->value()].label();
+	enum PosteRazor::eDistanceUnits distanceUnit = PosteRazor::GetDistanceUnitForName(distanceUnitName);
+	m_posteRazor->SetDistanceUnit(distanceUnit);
 }
 
 void PosteRazorDialog::next(void)

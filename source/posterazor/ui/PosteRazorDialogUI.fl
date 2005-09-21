@@ -6,14 +6,21 @@ decl {\#include "Fl_Paint_Canvas.h"} {public
 } 
 
 widget_class PosteRazorDialogUI {
-  user_data this open
+  user_data this open selected
   xywh {479 144 620 455} type Double resizable
   code0 {size_range(this->w(), this->h());}
   class Fl_Double_Window visible
 } {
-  Fl_Group {} {
-    xywh {10 420 600 25}
+  Fl_Group {} {open
+    xywh {10 420 600 26}
   } {
+    Fl_Choice m_distanceUnitChoice {
+      label {Units:} open
+      xywh {49 420 160 25} down_box BORDER_BOX
+    } {}
+    Fl_Box {} {
+      xywh {294 420 15 25} resizable
+    }
     Fl_Button m_nextButton {
       label {Next @-2->}
       callback {next();}
@@ -23,9 +30,6 @@ widget_class PosteRazorDialogUI {
       label {@-2<- Back}
       callback {prev();}
       xywh {430 420 85 25} labelcolor 32
-    }
-    Fl_Box {} {
-      xywh {225 420 15 25} resizable
     }
   }
   Fl_Wizard m_wizard {
@@ -351,7 +355,7 @@ widget_class PosteRazorDialogUI {
         }
         Fl_Check_Button m_setLaunchPDFApplicationCheckButton {
           label {Launch PDF application after saving}
-          callback {SetLaunchPDFApplication();} selected
+          callback {SetLaunchPDFApplication();}
           xywh {335 115 255 20} down_box DOWN_BOX
         }
       }

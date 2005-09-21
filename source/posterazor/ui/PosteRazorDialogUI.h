@@ -6,11 +6,11 @@
 #include "Fl_Paint_Canvas.h"
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Group.H>
-#include <FL/Fl_Button.H>
+#include <FL/Fl_Choice.H>
 #include <FL/Fl_Box.H>
+#include <FL/Fl_Button.H>
 #include <FL/Fl_Wizard.H>
 #include <FL/Fl_Tabs.H>
-#include <FL/Fl_Choice.H>
 #include <FL/Fl_Round_Button.H>
 #include <FL/Fl_Value_Input.H>
 #include <FL/Fl_Check_Button.H>
@@ -20,6 +20,7 @@ class PosteRazorDialogUI : public Fl_Double_Window {
 public:
   PosteRazorDialogUI(int X, int Y, int W, int H, const char *L = 0);
   PosteRazorDialogUI(int W, int H, const char *L = 0);
+  Fl_Choice *m_distanceUnitChoice;
   Fl_Button *m_nextButton;
 private:
   void cb_m_nextButton_i(Fl_Button*, void*);
