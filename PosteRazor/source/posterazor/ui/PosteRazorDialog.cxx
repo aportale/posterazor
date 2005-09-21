@@ -378,6 +378,12 @@ void PosteRazorDialog::HandlePosterImageAlignment(void)
 	m_previewPaintCanvas->redraw();
 }
 
+void PosteRazorDialog::SavePoster(void)
+{
+	int huhu = 1;
+}
+
+
 int main (int argc, char **argv)
 {
 	PosteRazorDialog dialog;
