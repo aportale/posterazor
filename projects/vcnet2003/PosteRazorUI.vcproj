@@ -124,6 +124,9 @@
 				RelativePath="..\..\source\posterazor\ui\Fl_Paint_Canvas.cpp">
 			</File>
 			<File
+				RelativePath="..\..\source\posterazor\ui\Fl_Persistent_Preferences.cxx">
+			</File>
+			<File
 				RelativePath="..\..\source\posterazor\ui\PosteRazorDialog.cxx">
 			</File>
 			<File
@@ -136,6 +139,9 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
 			<File
 				RelativePath="..\..\source\posterazor\ui\Fl_Paint_Canvas.h">
+			</File>
+			<File
+				RelativePath="..\..\source\posterazor\ui\Fl_Persistent_Preferences.h">
 			</File>
 			<File
 				RelativePath="..\..\source\posterazor\ui\PosteRazorDialog.h">

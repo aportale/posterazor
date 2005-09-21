@@ -1,4 +1,5 @@
 #include "PosteRazorDialog.h"
+#include "Fl_Persistent_Preferences.h"
 #include <Fl/Fl_Native_File_Chooser.H>
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
@@ -30,7 +31,10 @@ PosteRazorDialog::PosteRazorDialog(void)
 	begin();
 	m_dragDropWidget = new PosteRazorDragDropWidget(0, 0, w(), h());
 	end();
+
 	m_posteRazor = PosteRazor::CreatePosteRazor();
+	Fl_Persistent_Preferences preferences("CasaPortale.de", "PosteRazor");
+	m_posteRazor->ReadPersistentPreferences(&preferences);
 
 	int paperFormatMenuItemsCount = PosteRazor::GetPaperFormatsCount()+1;
 	m_paperFormatMenuItems = new Fl_Menu_Item[paperFormatMenuItemsCount];
@@ -65,6 +69,9 @@ PosteRazorDialog::PosteRazorDialog(void)
 
 PosteRazorDialog::~PosteRazorDialog()
 {
+	Fl_Persistent_Preferences preferences("CasaPortale.de", "PosteRazor");
+	m_posteRazor->WritePersistentPreferences(&preferences);
+
 	if (m_paperFormatMenuItems)
 		delete[] m_paperFormatMenuItems;
 }

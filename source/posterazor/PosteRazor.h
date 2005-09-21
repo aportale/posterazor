@@ -42,7 +42,7 @@ public:
 	virtual ~PosteRazor() {};
 	static PosteRazor* CreatePosteRazor();
 
-	virtual bool ReadPersistentPreferences(const PersistentPreferencesInterface *preferences) = 0;
+	virtual bool ReadPersistentPreferences(PersistentPreferencesInterface *preferences) = 0;
 	virtual bool WritePersistentPreferences(PersistentPreferencesInterface *preferences) const = 0;
 
 	virtual bool LoadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize) = 0;
