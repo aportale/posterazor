@@ -2,7 +2,11 @@
 #include "PosteRazorImageIO.h"
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
+#ifdef WIN32
+  #include <windows.h>
+#else
+  #include <stdlib.h>
+#endif
 #include <math.h>
 
 #define MIN(a, b) ((a)<=(b)?(a):(b))
@@ -161,7 +165,7 @@ public:
 
 	bool LoadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize)
 	{
-		return m_imageIO->LoadImage(imageFileName, errorMessage, errorMessageSize);
+		return m_imageIO->LoadInputImage(imageFileName, errorMessage, errorMessageSize);
 	}
 	bool IsImageLoaded(void) const {return m_imageIO->IsImageLoaded();}
 
@@ -636,7 +640,11 @@ public:
 		int pagesCount = (int)(ceil(GetPosterWidth(ePosterSizeModePages))) * (int)(ceil(GetPosterHeight(ePosterSizeModePages)));
 		err = m_imageIO->SavePoster(fileName, GetPosterOutputFormat(), this, pagesCount, ConvertDistanceToCm(GetPrintablePaperAreaWidth()), ConvertDistanceToCm(GetPrintablePaperAreaHeight()));
 		if (!err && GetLaunchPDFApplication())
-			system(fileName);
+#ifdef WIN32
+		ShellExecute(HWND_DESKTOP, "open", fileName, NULL, NULL, SW_SHOW);
+#else
+		system(fileName);
+#endif;
 		return err;
 	}
 
