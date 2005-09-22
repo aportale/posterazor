@@ -634,7 +634,7 @@ public:
 	{
 		int err = 0;
 		int pagesCount = (int)(ceil(GetPosterWidth(ePosterSizeModePages))) * (int)(ceil(GetPosterHeight(ePosterSizeModePages)));
-		err = m_imageIO->SavePoster(fileName, GetPosterOutputFormat(), this, pagesCount, GetPrintablePaperAreaWidth(), GetPrintablePaperAreaHeight());
+		err = m_imageIO->SavePoster(fileName, GetPosterOutputFormat(), this, pagesCount, ConvertDistanceToCm(GetPrintablePaperAreaWidth()), ConvertDistanceToCm(GetPrintablePaperAreaHeight()));
 		if (!err && GetLaunchPDFApplication())
 			system(fileName);
 		return err;
