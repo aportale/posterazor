@@ -70,7 +70,7 @@ public:
 		}
 	}
 
-	bool LoadImage(const char *imageFileName, char *errorMessage, int errorMessageSize)
+	bool LoadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize)
 	{
 		bool result = false;
 
