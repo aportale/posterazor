@@ -119,6 +119,10 @@ void PosteRazorDialog::HandleDistanceUnitChangement(Fl_Widget *sourceWidget)
 	const char* distanceUnitName = m_distanceUnitMenuItems[m_distanceUnitChoice->value()].label();
 	enum PosteRazor::eDistanceUnits distanceUnit = PosteRazor::GetDistanceUnitForName(distanceUnitName);
 	m_posteRazor->SetDistanceUnit(distanceUnit);
+	UpdateImageInfoFields();
+	UpdatePosterSizeFields(NULL);
+	SetPaperSizeFields();
+	SetOverlappingFields();
 }
 
 void PosteRazorDialog::next(void)
