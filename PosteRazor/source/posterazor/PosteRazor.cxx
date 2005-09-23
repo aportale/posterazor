@@ -610,20 +610,28 @@ public:
 			double printablePaperAreaHeightCm = ConvertDistanceToCm(GetPrintablePaperAreaHeight());
 			double overlappingWidthCm = ConvertDistanceToCm(GetOverlappingWidth());
 			double overlappingHeightCm = ConvertDistanceToCm(GetOverlappingHeight());
-			double posterTotalWidthCm = columsCount * printablePaperAreaWidthCm - (columsCount - 1) * overlappingWidthCm;
-			double posterTotalHeightCm = rowsCount * printablePaperAreaHeightCm - (rowsCount - 1) * overlappingHeightCm;
+			double printablePosterAreaWidthCm = columsCount * printablePaperAreaWidthCm - (columsCount - 1) * overlappingWidthCm;
+			double printablePosterAreaHeightCm = rowsCount * printablePaperAreaHeightCm - (rowsCount - 1) * overlappingHeightCm;
+			double borderTopCm = ConvertDistanceToCm(GetPaperBorderTop());
+			double borderRightCm = ConvertDistanceToCm(GetPaperBorderRight());
+			double borderBottomCm = ConvertDistanceToCm(GetPaperBorderBottom());
+			double borderLeftCm = ConvertDistanceToCm(GetPaperBorderLeft());
+			double posterTotalWidthCm = printablePosterAreaWidthCm + borderLeftCm + borderRightCm;
+			double posterTotalHeightCm = printablePosterAreaHeightCm + borderTopCm + borderBottomCm;
 			double imageOffsetFromLeftPosterBorderCm = 
 			(
-				GetPosterHorizontalAlignment() == eHorizontalAlignmentRight?posterTotalWidthCm - posterImageWidthCm
-				:GetPosterHorizontalAlignment() == eHorizontalAlignmentCenter?(posterTotalWidthCm - posterImageWidthCm)/2
-				:0.0
+				GetPosterHorizontalAlignment() == eHorizontalAlignmentRight?posterTotalWidthCm - posterImageWidthCm - borderLeftCm
+				:GetPosterHorizontalAlignment() == eHorizontalAlignmentCenter?(posterTotalWidthCm - posterImageWidthCm)/2 - borderLeftCm
+				:-borderLeftCm
 			);
+			imageOffsetFromLeftPosterBorderCm = MINMAX(imageOffsetFromLeftPosterBorderCm, 0.0, posterTotalWidthCm - posterImageWidthCm - borderLeftCm - borderRightCm);
 			double imageOffsetFromTopPosterBorderCm = 
 			(
-				GetPosterVerticalAlignment() == eVerticalAlignmentBottom?posterTotalHeightCm - posterImageHeightCm
-				:GetPosterVerticalAlignment() == eVerticalAlignmentMiddle?(posterTotalHeightCm - posterImageHeightCm)/2
-				:0.0
+				GetPosterVerticalAlignment() == eVerticalAlignmentBottom?posterTotalHeightCm - posterImageHeightCm - borderTopCm
+				:GetPosterVerticalAlignment() == eVerticalAlignmentMiddle?(posterTotalHeightCm - posterImageHeightCm)/2 - borderTopCm
+				:-borderTopCm
 			);
+			imageOffsetFromTopPosterBorderCm = MINMAX(imageOffsetFromTopPosterBorderCm, 0.0, posterTotalHeightCm - posterImageHeightCm - borderTopCm - borderBottomCm);
 			double pageOffsetToImageFromLeftCm = column * (printablePaperAreaWidthCm - overlappingWidthCm) - imageOffsetFromLeftPosterBorderCm;
 			double pageOffsetToImageFromTopCm = row * (printablePaperAreaHeightCm - overlappingHeightCm) - imageOffsetFromTopPosterBorderCm;
 			
