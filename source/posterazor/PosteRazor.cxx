@@ -205,11 +205,14 @@ public:
 	void SetCustomPaperWidth(double width) {m_customPaperWidth = ConvertDistanceToCm(width);}
 	void SetCustomPaperHeight(double height) {m_customPaperHeight = ConvertDistanceToCm(height);}
 
-	double GetCustomPaperWidth(void) const {return MAX(GetCustomMinimalPaperWidth(), ConvertCmToDistance(m_customPaperWidth));}
-	double GetCustomPaperHeight(void) const {return MAX(GetCustomMinimalPaperHeight(), ConvertCmToDistance(m_customPaperHeight));}
+	double GetCustomPaperWidth(void) const {return MINMAX(ConvertCmToDistance(m_customPaperWidth), GetCustomMinimalPaperWidth(), GetCustomMaximalPaperWidth());}
+	double GetCustomPaperHeight(void) const {return MINMAX(ConvertCmToDistance(m_customPaperHeight), GetCustomMinimalPaperHeight(), GetCustomMaximalPaperHeight());}
 
 	double GetCustomMinimalPaperWidth(void) const {return ConvertCmToDistance(4.0);}
 	double GetCustomMinimalPaperHeight(void) const {return ConvertCmToDistance(4.0);}
+
+	double GetCustomMaximalPaperWidth(void) const {return ConvertCmToDistance(500.0);} // Maximum of PDF page
+	double GetCustomMaximalPaperHeight(void) const {return ConvertCmToDistance(500.0);}
 
 	void SetUseCustomPaperSize(bool useIt) {m_useCustomPaperSize = useIt;}
 	bool GetUseCustomPaperSize(void) const {return m_useCustomPaperSize;}
