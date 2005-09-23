@@ -552,48 +552,18 @@ public:
 			pagePrintableAreaHeight *= distanceUnitToPixelfactor;
 			enum eOverlappingPositions overlappingPosition = GetOverlappingPosition();
 
-			double lineYPosition = borderTop;
+			double overlappingRectangleYPosition = borderTop;
 			for (int pagesRow = 0; pagesRow < pagesVertical - 1; pagesRow++)
 			{
-				lineYPosition += pagePrintableAreaHeight;
-				if (
-					(
-						pagesRow < (pagesVertical - 1)
-						&& (overlappingPosition == eOverlappingPositionBottomLeft
-						|| overlappingPosition == eOverlappingPositionBottomRight)
-					)
-					||
-					(
-						pagesRow > 0 
-						&& (overlappingPosition == eOverlappingPositionTopRight
-						|| overlappingPosition == eOverlappingPositionTopLeft)
-					))
-				{
-					lineYPosition -= overlappingHeight;
-				}
-				paintCanvas->DrawLine(x_offset, lineYPosition + y_offset, boxWidth - 1 + x_offset, lineYPosition + y_offset, 255, 128, 128);
+				overlappingRectangleYPosition += pagePrintableAreaHeight - overlappingHeight;
+				paintCanvas->DrawRect(x_offset, overlappingRectangleYPosition + y_offset, boxWidth, overlappingHeight, 255, 128, 128);
 			}
 
-			double lineXPosition = borderLeft;
+			double overlappingRectangleXPosition = borderLeft;
 			for (int pagesColumn = 0; pagesColumn < pagesHorizontal - 1; pagesColumn++)
 			{
-				lineXPosition += pagePrintableAreaWidth;
-				if (
-					(
-						pagesColumn < (pagesHorizontal - 1)
-						&& (overlappingPosition == eOverlappingPositionTopRight
-						|| overlappingPosition == eOverlappingPositionBottomRight)
-					)
-					||
-					(
-						pagesColumn > 0 
-						&& (overlappingPosition == eOverlappingPositionTopLeft
-						|| overlappingPosition == eOverlappingPositionBottomLeft)
-					))
-				{
-					lineXPosition -= overlappingWidth;
-				}
-				paintCanvas->DrawLine(lineXPosition + x_offset, y_offset, lineXPosition + x_offset, boxHeight - 1 + y_offset, 255, 128, 128);
+				overlappingRectangleXPosition += pagePrintableAreaWidth - overlappingWidth;
+				paintCanvas->DrawRect(overlappingRectangleXPosition + x_offset, y_offset, overlappingWidth, boxHeight, 255, 128, 128);
 			}
 		}
 		else if (strncmp(state, "posterpage", strlen("posterpage")) == 0)
