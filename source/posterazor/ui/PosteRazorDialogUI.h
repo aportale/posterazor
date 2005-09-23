@@ -70,8 +70,9 @@ private:
   void cb_m_paperCustomHeightInput_i(Fl_Value_Input*, void*);
   static void cb_m_paperCustomHeightInput(Fl_Value_Input*, void*);
 public:
-  Fl_Box *m_paperCustomWidthLabel;
-  Fl_Box *m_paperCustomHeightLabel;
+  Fl_Box *m_paperCustomWidthDimensionUnitLabel;
+  Fl_Box *m_paperCustomHeightDimensionUnitLabel;
+  Fl_Group *m_paperBordersGroup;
   Fl_Value_Input *m_paperBorderTopInput;
 private:
   void cb_m_paperBorderTopInput_i(Fl_Value_Input*, void*);
@@ -103,8 +104,8 @@ private:
   void cb_m_overlappingHeightInput_i(Fl_Value_Input*, void*);
   static void cb_m_overlappingHeightInput(Fl_Value_Input*, void*);
 public:
-  Fl_Box *m_overlappingWidthLabel;
-  Fl_Box *m_overlappingHeightLabel;
+  Fl_Box *m_overlappingWidthDimensionUnitLabel;
+  Fl_Box *m_overlappingHeightDimensionUnitLabel;
   Fl_Button *m_overlappingPositionTopLeftButton;
 private:
   void cb_m_overlappingPositionTopLeftButton_i(Fl_Button*, void*);
@@ -137,13 +138,13 @@ private:
   void cb_m_posterAbsoluteWidthInput_i(Fl_Value_Input*, void*);
   static void cb_m_posterAbsoluteWidthInput(Fl_Value_Input*, void*);
 public:
-  Fl_Box *m_posterAbsoluteWidthLabel;
+  Fl_Box *m_posterAbsoluteWidthDimensionUnitLabel;
   Fl_Value_Input *m_posterAbsoluteHeightInput;
 private:
   void cb_m_posterAbsoluteHeightInput_i(Fl_Value_Input*, void*);
   static void cb_m_posterAbsoluteHeightInput(Fl_Value_Input*, void*);
 public:
-  Fl_Box *m_posterAbsoluteHeightLabel;
+  Fl_Box *m_posterAbsoluteHeightDimensionUnitLabel;
   Fl_Round_Button *m_posterSizeInPagesRadioButton;
 private:
   void cb_m_posterSizeInPagesRadioButton_i(Fl_Round_Button*, void*);
