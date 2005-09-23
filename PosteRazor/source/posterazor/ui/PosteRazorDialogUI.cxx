@@ -931,10 +931,8 @@ o->user_data((void*)(this));
 o->align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE);
 o->when(FL_WHEN_RELEASE);
 { Fl_Group* o = new Fl_Group(10, 420, 600, 26);
-  { Fl_Choice* o = m_distanceUnitChoice = new Fl_Choice(46, 420, 160, 25, "Units:");
+  { Fl_Choice* o = m_distanceUnitChoice = new Fl_Choice(49, 420, 160, 25, "Units:");
     o->down_box(FL_BORDER_BOX);
-    o->labelsize(12);
-    o->textsize(12);
   }
   { Fl_Box* o = new Fl_Box(294, 420, 15, 25);
     Fl_Group::current()->resizable(o);
@@ -985,12 +983,12 @@ o->when(FL_WHEN_RELEASE);
     o->end();
   }
   { Fl_Group* o = m_paperSizeStep = new Fl_Group(315, 45, 295, 365);
-    o->hide();
     { Fl_Tabs* o = m_paperFormatTypeTabs = new Fl_Tabs(325, 70, 275, 140, "Paper size");
       o->callback((Fl_Callback*)cb_m_paperFormatTypeTabs);
       { Fl_Group* o = m_paperFormatStandardGroup = new Fl_Group(325, 95, 275, 115, "Standard");
         o->box(FL_THIN_UP_BOX);
         o->selection_color((Fl_Color)40);
+        o->hide();
         { Fl_Choice* o = m_paperFormatChoice = new Fl_Choice(425, 105, 165, 25, "Format:");
           o->down_box(FL_BORDER_BOX);
         }
@@ -1015,7 +1013,6 @@ o->when(FL_WHEN_RELEASE);
       { Fl_Group* o = m_paperFormatCustomGroup = new Fl_Group(325, 95, 275, 115, "Custom");
         o->box(FL_THIN_UP_BOX);
         o->selection_color((Fl_Color)40);
-        o->hide();
         { Fl_Value_Input* o = m_paperCustomWidthInput = new Fl_Value_Input(425, 122, 95, 25, "Width:");
           o->maximum(9999);
           o->step(0.1);
@@ -1029,17 +1026,17 @@ o->when(FL_WHEN_RELEASE);
           Fl_Group::current()->resizable(o);
           o->precision(2);
         }
-        { Fl_Box* o = m_paperCustomWidthLabel = new Fl_Box(520, 122, 50, 25, "cm");
+        { Fl_Box* o = m_paperCustomWidthDimensionUnitLabel = new Fl_Box(520, 122, 75, 25, "cm");
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         }
-        { Fl_Box* o = m_paperCustomHeightLabel = new Fl_Box(520, 157, 50, 25, "cm");
+        { Fl_Box* o = m_paperCustomHeightDimensionUnitLabel = new Fl_Box(520, 157, 75, 25, "cm");
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         }
         o->end();
       }
       o->end();
     }
-    { Fl_Group* o = new Fl_Group(325, 235, 275, 135, "Borders");
+    { Fl_Group* o = m_paperBordersGroup = new Fl_Group(325, 235, 275, 135, "Borders (cm)");
       o->box(FL_THIN_DOWN_BOX);
       o->color((Fl_Color)43);
       { Fl_Value_Input* o = m_paperBorderTopInput = new Fl_Value_Input(430, 260, 60, 25, "Top");
@@ -1096,10 +1093,10 @@ o->when(FL_WHEN_RELEASE);
         Fl_Group::current()->resizable(o);
         o->precision(2);
       }
-      { Fl_Box* o = m_overlappingWidthLabel = new Fl_Box(520, 80, 70, 25, "cm");
+      { Fl_Box* o = m_overlappingWidthDimensionUnitLabel = new Fl_Box(520, 80, 75, 25, "cm");
         o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
       }
-      { Fl_Box* o = m_overlappingHeightLabel = new Fl_Box(520, 110, 70, 25, "cm");
+      { Fl_Box* o = m_overlappingHeightDimensionUnitLabel = new Fl_Box(520, 110, 75, 25, "cm");
         o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
       }
       o->end();
@@ -1161,7 +1158,7 @@ o->when(FL_WHEN_RELEASE);
           o->callback((Fl_Callback*)cb_m_posterAbsoluteWidthInput);
           o->precision(3);
         }
-        { Fl_Box* o = m_posterAbsoluteWidthLabel = new Fl_Box(520, 105, 70, 25, "cm");
+        { Fl_Box* o = m_posterAbsoluteWidthDimensionUnitLabel = new Fl_Box(520, 105, 70, 25, "cm");
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         }
         { Fl_Value_Input* o = m_posterAbsoluteHeightInput = new Fl_Value_Input(430, 135, 90, 25, "Height:");
@@ -1170,7 +1167,7 @@ o->when(FL_WHEN_RELEASE);
           o->callback((Fl_Callback*)cb_m_posterAbsoluteHeightInput);
           o->precision(3);
         }
-        { Fl_Box* o = m_posterAbsoluteHeightLabel = new Fl_Box(520, 135, 70, 25, "cm");
+        { Fl_Box* o = m_posterAbsoluteHeightDimensionUnitLabel = new Fl_Box(520, 135, 70, 25, "cm");
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         }
         o->end();
@@ -1280,6 +1277,7 @@ o->when(FL_WHEN_RELEASE);
     o->end();
   }
   { Fl_Group* o = m_savePosterStep = new Fl_Group(315, 45, 295, 365);
+    o->hide();
     { Fl_Group* o = new Fl_Group(325, 70, 275, 75, "Save the Poster");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);

@@ -6,7 +6,7 @@ decl {\#include "Fl_Paint_Canvas.h"} {public
 } 
 
 widget_class PosteRazorDialogUI {
-  user_data this open selected
+  user_data this open
   xywh {479 144 620 455} type Double resizable
   code0 {size_range(this->w(), this->h());}
   class Fl_Double_Window visible
@@ -68,7 +68,7 @@ widget_class PosteRazorDialogUI {
       }
     }
     Fl_Group m_paperSizeStep {open
-      xywh {315 45 295 365} hide
+      xywh {315 45 295 365}
     } {
       Fl_Tabs m_paperFormatTypeTabs {
         label {Paper size}
@@ -77,7 +77,7 @@ widget_class PosteRazorDialogUI {
       } {
         Fl_Group m_paperFormatStandardGroup {
           label Standard open
-          xywh {325 95 275 115} box THIN_UP_BOX selection_color 40
+          xywh {325 95 275 115} box THIN_UP_BOX selection_color 40 hide
         } {
           Fl_Choice m_paperFormatChoice {
             label {Format:} open
@@ -101,7 +101,7 @@ widget_class PosteRazorDialogUI {
         }
         Fl_Group m_paperFormatCustomGroup {
           label Custom open
-          xywh {325 95 275 115} box THIN_UP_BOX selection_color 40 hide
+          xywh {325 95 275 115} box THIN_UP_BOX selection_color 40
         } {
           Fl_Value_Input m_paperCustomWidthInput {
             label {Width:}
@@ -115,18 +115,18 @@ widget_class PosteRazorDialogUI {
             xywh {425 157 95 25} maximum 9999 step 0.1 resizable
             code0 {o->precision(2);}
           }
-          Fl_Box m_paperCustomWidthLabel {
+          Fl_Box m_paperCustomWidthDimensionUnitLabel {
             label cm
-            xywh {520 122 50 25} align 20
+            xywh {520 122 75 25} align 20
           }
-          Fl_Box m_paperCustomHeightLabel {
+          Fl_Box m_paperCustomHeightDimensionUnitLabel {
             label cm
-            xywh {520 157 50 25} align 20
+            xywh {520 157 75 25} align 20
           }
         }
       }
-      Fl_Group {} {
-        label Borders open
+      Fl_Group m_paperBordersGroup {
+        label {Borders (cm)} open
         xywh {325 235 275 135} box THIN_DOWN_BOX color 43
       } {
         Fl_Value_Input m_paperBorderTopInput {
@@ -177,13 +177,13 @@ widget_class PosteRazorDialogUI {
           xywh {430 110 90 25} maximum 9999 step 0.1 resizable
           code0 {o->precision(2);}
         }
-        Fl_Box m_overlappingWidthLabel {
+        Fl_Box m_overlappingWidthDimensionUnitLabel {
           label cm
-          xywh {520 80 70 25} align 20
+          xywh {520 80 75 25} align 20
         }
-        Fl_Box m_overlappingHeightLabel {
+        Fl_Box m_overlappingHeightDimensionUnitLabel {
           label cm
-          xywh {520 110 70 25} align 20
+          xywh {520 110 75 25} align 20
         }
       }
       Fl_Box {} {
@@ -236,7 +236,7 @@ widget_class PosteRazorDialogUI {
             xywh {430 105 90 25} maximum 9999 step 1
             code0 {o->precision(3);}
           }
-          Fl_Box m_posterAbsoluteWidthLabel {
+          Fl_Box m_posterAbsoluteWidthDimensionUnitLabel {
             label cm
             xywh {520 105 70 25} align 20
           }
@@ -246,7 +246,7 @@ widget_class PosteRazorDialogUI {
             xywh {430 135 90 25} maximum 9999 step 1
             code0 {o->precision(3);}
           }
-          Fl_Box m_posterAbsoluteHeightLabel {
+          Fl_Box m_posterAbsoluteHeightDimensionUnitLabel {
             label cm
             xywh {520 135 70 25} align 20
           }
@@ -266,7 +266,7 @@ widget_class PosteRazorDialogUI {
             code0 {o->precision(3);}
           }
           Fl_Box m_posterPagesWidthLabel {
-            label pages
+            label pages selected
             xywh {520 195 70 25} align 20
           }
           Fl_Value_Input m_posterPagesHeightInput {
@@ -342,7 +342,7 @@ widget_class PosteRazorDialogUI {
       }
     }
     Fl_Group m_savePosterStep {open
-      xywh {315 45 295 365}
+      xywh {315 45 295 365} hide
     } {
       Fl_Group {} {
         label {Save the Poster} open

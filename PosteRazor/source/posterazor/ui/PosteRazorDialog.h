@@ -33,6 +33,7 @@ public:
 	void prev(void);
 	void UpdateNavigationButtons(void);
 	void UpdatePreviewState(void);
+	void UpdateDimensionUnitLabels(void);
 
 	void LoadInputImage(const char *fileName);
 	void UpdateImageInfoFields(void);

@@ -86,6 +86,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 	UpdatePreviewState();
 	SetPaperSizeFields();
 	SetOverlappingFields();
+	UpdateDimensionUnitLabels();
 }
 
 PosteRazorDialog::~PosteRazorDialog()
@@ -123,6 +124,7 @@ void PosteRazorDialog::HandleDistanceUnitChangement(Fl_Widget *sourceWidget)
 	UpdatePosterSizeFields(NULL);
 	SetPaperSizeFields();
 	SetOverlappingFields();
+	UpdateDimensionUnitLabels();
 }
 
 void PosteRazorDialog::next(void)
@@ -165,6 +167,19 @@ void PosteRazorDialog::UpdatePreviewState(void)
 		:"poster"
 	);
 	m_previewPaintCanvas->redraw();
+}
+
+void PosteRazorDialog::UpdateDimensionUnitLabels(void)
+{
+	m_paperCustomWidthDimensionUnitLabel->copy_label(m_posteRazor->GetDistanceUnitName());
+	m_paperCustomHeightDimensionUnitLabel->copy_label(m_posteRazor->GetDistanceUnitName());
+	m_overlappingWidthDimensionUnitLabel->copy_label(m_posteRazor->GetDistanceUnitName());
+	m_overlappingHeightDimensionUnitLabel->copy_label(m_posteRazor->GetDistanceUnitName());
+	m_posterAbsoluteWidthDimensionUnitLabel->copy_label(m_posteRazor->GetDistanceUnitName());
+	m_posterAbsoluteHeightDimensionUnitLabel->copy_label(m_posteRazor->GetDistanceUnitName());
+	char paperBordersGroupLabel[100];
+	sprintf(paperBordersGroupLabel, "Borders (%s)", m_posteRazor->GetDistanceUnitName());
+	m_paperBordersGroup->copy_label(paperBordersGroupLabel);
 }
 
 void PosteRazorDialog::LoadInputImage(const char *fileName)
