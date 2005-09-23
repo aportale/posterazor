@@ -46,8 +46,19 @@ void Fl_Paint_Canvas::DrawFilledRect(double x, double y, double width, double he
 
 void Fl_Paint_Canvas::DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue)
 {
-	fl_color(red, green, blue);
-	fl_rect(x + Fl_Box::x() + BORDER, y + Fl_Box::y() + BORDER, width, height);
+	if (height < 1)
+	{
+		DrawLine(x, y, x+width, y, red, green, blue);
+	}
+	else if (width < 1)
+	{
+		DrawLine(x, y, x, y+height, red, green, blue);
+	}
+	else
+	{
+		fl_color(red, green, blue);
+		fl_rect(x + Fl_Box::x() + BORDER, y + Fl_Box::y() + BORDER, width, height);
+	}
 }
 
 void Fl_Paint_Canvas::DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue)
