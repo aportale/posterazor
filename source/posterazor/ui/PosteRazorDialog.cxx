@@ -157,6 +157,13 @@ void PosteRazorDialog::UpdateNavigationButtons(void)
 		m_nextButton->deactivate();
 }
 
+void PosteRazorDialog::OpenHelpDialog(void)
+{
+	PosteRazorHelpDialog *help = new PosteRazorHelpDialog(500, 400, "PosteRazor Documentation");
+	help->set_modal();
+	help->show();
+}
+
 void PosteRazorDialog::UpdatePreviewState(void)
 {
 	m_previewPaintCanvas->SetState

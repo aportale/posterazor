@@ -906,6 +906,13 @@ void PosteRazorDialogUI::cb_m_setLaunchPDFApplicationCheckButton_i(Fl_Check_Butt
 void PosteRazorDialogUI::cb_m_setLaunchPDFApplicationCheckButton(Fl_Check_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_m_setLaunchPDFApplicationCheckButton_i(o,v);
 }
+
+void PosteRazorDialogUI::cb__i(Fl_Button*, void*) {
+  OpenHelpDialog();
+}
+void PosteRazorDialogUI::cb_(Fl_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()))->cb__i(o,v);
+}
 PosteRazorDialogUI::PosteRazorDialogUI(int X, int Y, int W, int H, const char *L)
   : Fl_Double_Window(X, Y, W, H, L) {
   _PosteRazorDialogUI();
@@ -1324,6 +1331,7 @@ o->when(FL_WHEN_RELEASE);
     o->labelfont(1);
     o->labelsize(15);
     o->labelcolor(FL_GRAY0);
+    o->callback((Fl_Callback*)cb_);
   }
   o->end();
 }
@@ -1333,5 +1341,44 @@ o->when(FL_WHEN_RELEASE);
 // ****** Poster size step:
 // ****** Save poster step:
 size_range(this->w(), this->h());
+end();
+}
+PosteRazorHelpDialog::PosteRazorHelpDialog(int X, int Y, int W, int H, const char *L)
+  : Fl_Double_Window(X, Y, W, H, L) {
+  _PosteRazorHelpDialog();
+}
+
+PosteRazorHelpDialog::PosteRazorHelpDialog(int W, int H, const char *L)
+  : Fl_Double_Window(0, 0, W, H, L) {
+  clear_flag(16);
+  _PosteRazorHelpDialog();
+}
+
+void PosteRazorHelpDialog::_PosteRazorHelpDialog() {
+  PosteRazorHelpDialog *w = this;
+  PosteRazorHelpDialog *o = this;
+o->box(FL_FLAT_BOX);
+o->color(FL_BACKGROUND_COLOR);
+o->selection_color(FL_BACKGROUND_COLOR);
+o->labeltype(FL_NORMAL_LABEL);
+o->labelfont(0);
+o->labelsize(14);
+o->labelcolor(FL_BLACK);
+o->user_data((void*)(this));
+o->align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE);
+o->when(FL_WHEN_RELEASE);
+{ Fl_Help_View* o = new Fl_Help_View(10, 10, 480, 345);
+  o->labelsize(8);
+  Fl_Group::current()->resizable(o);
+}
+{ Fl_Group* o = new Fl_Group(10, 115, 480, 275);
+  new Fl_Button(405, 365, 85, 25, "OK");
+  { Fl_Box* o = new Fl_Box(10, 115, 16, 25);
+    o->labelsize(8);
+    Fl_Group::current()->resizable(o);
+  }
+  o->end();
+}
+size_range(235, 150);
 end();
 }

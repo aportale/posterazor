@@ -266,7 +266,7 @@ widget_class PosteRazorDialogUI {
             code0 {o->precision(3);}
           }
           Fl_Box m_posterPagesWidthLabel {
-            label pages selected
+            label pages
             xywh {520 195 70 25} align 20
           }
           Fl_Value_Input m_posterPagesHeightInput {
@@ -377,6 +377,7 @@ widget_class PosteRazorDialogUI {
     }
     Fl_Button {} {
       label {?}
+      callback {OpenHelpDialog()}
       xywh {585 10 25 25} color 10 labelfont 1 labelsize 15 labelcolor 32
     }
   }
@@ -385,6 +386,8 @@ widget_class PosteRazorDialogUI {
   decl {virtual void prev(void) = 0;} {public
   }
   decl {virtual void UpdateNavigationButtons(void) = 0;} {public
+  }
+  decl {virtual void OpenHelpDialog(void) = 0;} {public
   }
   decl {// ****** Load input image step:} {}
   decl {virtual void LoadInputImage(const char *fileName) = 0;} {public
@@ -410,5 +413,27 @@ widget_class PosteRazorDialogUI {
   decl {virtual void SavePoster(void) = 0;} {public
   }
   decl {virtual void SetLaunchPDFApplication(void) = 0;} {public
+  }
+} 
+
+widget_class PosteRazorHelpDialog {
+  user_data this open selected
+  xywh {119 392 500 400} type Double resizable
+  code0 {size_range(235, 150);}
+  class Fl_Double_Window visible
+} {
+  Fl_Help_View {} {
+    xywh {10 10 480 345} labelsize 8 resizable
+  }
+  Fl_Group {} {open
+    xywh {10 115 480 275}
+  } {
+    Fl_Button {} {
+      label OK
+      xywh {405 365 85 25}
+    }
+    Fl_Box {} {
+      xywh {10 115 16 25} labelsize 8 resizable
+    }
   }
 } 

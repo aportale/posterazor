@@ -217,9 +217,14 @@ private:
 public:
   Fl_Paint_Canvas *m_previewPaintCanvas;
   Fl_Box *m_stepInfoBox;
+private:
+  void cb__i(Fl_Button*, void*);
+  static void cb_(Fl_Button*, void*);
+public:
   virtual void next(void) = 0;
   virtual void prev(void) = 0;
   virtual void UpdateNavigationButtons(void) = 0;
+  virtual void OpenHelpDialog(void) = 0;
   virtual void LoadInputImage(const char *fileName) = 0;
   virtual void SetPaperSizeFields(void) = 0;
   virtual void HandlePaperSizeChangement(Fl_Widget* sourceWidget) = 0;
@@ -230,5 +235,13 @@ public:
   virtual void HandlePosterImageAlignment(void) = 0;
   virtual void SavePoster(void) = 0;
   virtual void SetLaunchPDFApplication(void) = 0;
+};
+#include <FL/Fl_Help_View.H>
+
+class PosteRazorHelpDialog : public Fl_Double_Window {
+  void _PosteRazorHelpDialog();
+public:
+  PosteRazorHelpDialog(int X, int Y, int W, int H, const char *L = 0);
+  PosteRazorHelpDialog(int W, int H, const char *L = 0);
 };
 #endif
