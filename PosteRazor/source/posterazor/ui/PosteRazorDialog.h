@@ -32,6 +32,7 @@ public:
 	void next(void);
 	void prev(void);
 	void UpdateNavigationButtons(void);
+	void OpenHelpDialog(void);
 	void UpdatePreviewState(void);
 	void UpdateDimensionUnitLabels(void);
 
