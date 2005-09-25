@@ -82,7 +82,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="fltk.lib wsock32.lib comctl32.lib"
+				AdditionalDependencies="fltk.lib fltkimages.lib wsock32.lib comctl32.lib"
 				OutputFile="$(OutDir)/PosteRazorUI.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;..\..\thirdparty\fltk-1.1\lib&quot;"
@@ -149,6 +149,9 @@
 			</File>
 			<File
 				RelativePath="..\..\source\posterazor\ui\PosteRazorDialogUI.h">
+			</File>
+			<File
+				RelativePath="..\..\source\posterazor\ui\PosteRazorHelpText.h">
 			</File>
 		</Filter>
 		<Filter

@@ -7,9 +7,9 @@ decl {\#include "Fl_Paint_Canvas.h"} {public
 
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {479 144 620 455} type Double resizable
+  xywh {479 144 620 455} type Double hide resizable
   code0 {size_range(this->w(), this->h());}
-  class Fl_Double_Window visible
+  class Fl_Double_Window
 } {
   Fl_Group {} {open
     xywh {10 420 600 26}
@@ -416,13 +416,13 @@ widget_class PosteRazorDialogUI {
   }
 } 
 
-widget_class PosteRazorHelpDialog {
-  user_data this open selected
-  xywh {119 392 500 400} type Double resizable
+widget_class PosteRazorHelpDialogUI {
+  user_data this open
+  xywh {119 392 500 400} type Double hide resizable
   code0 {size_range(235, 150);}
-  class Fl_Double_Window visible
+  class Fl_Double_Window
 } {
-  Fl_Help_View {} {
+  Fl_Help_View m_help_view {
     xywh {10 10 480 345} labelsize 8 resizable
   }
   Fl_Group {} {open
@@ -430,10 +430,15 @@ widget_class PosteRazorHelpDialog {
   } {
     Fl_Button {} {
       label OK
+      callback {hide();} selected
       xywh {405 365 85 25}
     }
     Fl_Box {} {
       xywh {10 115 16 25} labelsize 8 resizable
     }
+  }
+  decl {virtual void SetHtmlContent(const char *content) = 0;} {public
+  }
+  decl {virtual void JumpToAnchor(const char *anchor) = 0;} {public
   }
 } 

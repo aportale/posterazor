@@ -238,10 +238,17 @@ public:
 };
 #include <FL/Fl_Help_View.H>
 
-class PosteRazorHelpDialog : public Fl_Double_Window {
-  void _PosteRazorHelpDialog();
+class PosteRazorHelpDialogUI : public Fl_Double_Window {
+  void _PosteRazorHelpDialogUI();
 public:
-  PosteRazorHelpDialog(int X, int Y, int W, int H, const char *L = 0);
-  PosteRazorHelpDialog(int W, int H, const char *L = 0);
+  PosteRazorHelpDialogUI(int X, int Y, int W, int H, const char *L = 0);
+  PosteRazorHelpDialogUI(int W, int H, const char *L = 0);
+  Fl_Help_View *m_help_view;
+private:
+  void cb_OK_i(Fl_Button*, void*);
+  static void cb_OK(Fl_Button*, void*);
+public:
+  virtual void SetHtmlContent(const char *content) = 0;
+  virtual void JumpToAnchor(const char *anchor) = 0;
 };
 #endif

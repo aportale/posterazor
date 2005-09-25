@@ -1,5 +1,6 @@
 #include "PosteRazorDialog.h"
 #include "Fl_Persistent_Preferences.h"
+#include "PosteRazorHelpText.h"
 #include <Fl/Fl_Native_File_Chooser.H>
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
@@ -27,6 +28,18 @@ int PosteRazorDragDropWidget::handle(int event)
 		return 0;
 	};
 }
+
+class PosteRazorHelpDialog: public PosteRazorHelpDialogUI
+{
+public:
+	PosteRazorHelpDialog(void)
+		:PosteRazorHelpDialogUI(500, 400, "PosteRazor Help")
+	{
+	}
+
+	void SetHtmlContent(const char *content) {m_help_view->value(content);}
+	void JumpToAnchor(const char *anchor) {	m_help_view->topline(anchor);}
+};
 
 PosteRazorDialog::PosteRazorDialog(void)
 	:PosteRazorDialogUI(620, 455, "PosteRazor")
@@ -159,7 +172,9 @@ void PosteRazorDialog::UpdateNavigationButtons(void)
 
 void PosteRazorDialog::OpenHelpDialog(void)
 {
-	PosteRazorHelpDialog *help = new PosteRazorHelpDialog(500, 400, "PosteRazor Documentation");
+	PosteRazorHelpDialog *help = new PosteRazorHelpDialog;
+	help->SetHtmlContent(posteRazorHelpText);
+	help->JumpToAnchor("bobo");
 	help->set_modal();
 	help->show();
 }
