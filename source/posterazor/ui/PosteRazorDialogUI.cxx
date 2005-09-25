@@ -1343,20 +1343,27 @@ o->when(FL_WHEN_RELEASE);
 size_range(this->w(), this->h());
 end();
 }
-PosteRazorHelpDialog::PosteRazorHelpDialog(int X, int Y, int W, int H, const char *L)
+
+void PosteRazorHelpDialogUI::cb_OK_i(Fl_Button*, void*) {
+  hide();
+}
+void PosteRazorHelpDialogUI::cb_OK(Fl_Button* o, void* v) {
+  ((PosteRazorHelpDialogUI*)(o->parent()->parent()))->cb_OK_i(o,v);
+}
+PosteRazorHelpDialogUI::PosteRazorHelpDialogUI(int X, int Y, int W, int H, const char *L)
   : Fl_Double_Window(X, Y, W, H, L) {
-  _PosteRazorHelpDialog();
+  _PosteRazorHelpDialogUI();
 }
 
-PosteRazorHelpDialog::PosteRazorHelpDialog(int W, int H, const char *L)
+PosteRazorHelpDialogUI::PosteRazorHelpDialogUI(int W, int H, const char *L)
   : Fl_Double_Window(0, 0, W, H, L) {
   clear_flag(16);
-  _PosteRazorHelpDialog();
+  _PosteRazorHelpDialogUI();
 }
 
-void PosteRazorHelpDialog::_PosteRazorHelpDialog() {
-  PosteRazorHelpDialog *w = this;
-  PosteRazorHelpDialog *o = this;
+void PosteRazorHelpDialogUI::_PosteRazorHelpDialogUI() {
+  PosteRazorHelpDialogUI *w = this;
+  PosteRazorHelpDialogUI *o = this;
 o->box(FL_FLAT_BOX);
 o->color(FL_BACKGROUND_COLOR);
 o->selection_color(FL_BACKGROUND_COLOR);
@@ -1367,12 +1374,14 @@ o->labelcolor(FL_BLACK);
 o->user_data((void*)(this));
 o->align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE);
 o->when(FL_WHEN_RELEASE);
-{ Fl_Help_View* o = new Fl_Help_View(10, 10, 480, 345);
+{ Fl_Help_View* o = m_help_view = new Fl_Help_View(10, 10, 480, 345);
   o->labelsize(8);
   Fl_Group::current()->resizable(o);
 }
 { Fl_Group* o = new Fl_Group(10, 115, 480, 275);
-  new Fl_Button(405, 365, 85, 25, "OK");
+  { Fl_Button* o = new Fl_Button(405, 365, 85, 25, "OK");
+    o->callback((Fl_Callback*)cb_OK);
+  }
   { Fl_Box* o = new Fl_Box(10, 115, 16, 25);
     o->labelsize(8);
     Fl_Group::current()->resizable(o);
