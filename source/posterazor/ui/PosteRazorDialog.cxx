@@ -100,6 +100,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 	SetPaperSizeFields();
 	SetOverlappingFields();
 	UpdateDimensionUnitLabels();
+	UpdateStepInfoBar();
 }
 
 PosteRazorDialog::~PosteRazorDialog()
@@ -147,6 +148,7 @@ void PosteRazorDialog::next(void)
 	UpdateNavigationButtons();
 	UpdatePreviewState();
 	UpdatePosterSizeFields(NULL);
+	UpdateStepInfoBar();
 }
 
 void PosteRazorDialog::prev(void)
@@ -154,6 +156,7 @@ void PosteRazorDialog::prev(void)
 	m_wizard->prev();
 	UpdateNavigationButtons();
 	UpdatePreviewState();
+	UpdateStepInfoBar();
 }
 
 void PosteRazorDialog::UpdateNavigationButtons(void)
@@ -173,10 +176,44 @@ void PosteRazorDialog::UpdateNavigationButtons(void)
 void PosteRazorDialog::OpenHelpDialog(void)
 {
 	PosteRazorHelpDialog *help = new PosteRazorHelpDialog;
+	char stepTopic[1024];
+	sprintf(stepTopic, POSTERAZORHELPANCHORMANUALSTEP "%.2d", GetCurrentWizardStepNumber() + 1);
+
 	help->SetHtmlContent(posteRazorHelpText);
-	help->JumpToAnchor("bobo");
+	help->JumpToAnchor(stepTopic);
 	help->set_modal();
 	help->show();
+}
+
+const char* PosteRazorDialog::GetCurrentWizardStepStepInfoString(void)
+{
+	return
+	(
+		m_wizard->value() == m_loadInputImageStep?POSTERAZORHELPSTEPTITLE01
+		:m_wizard->value() == m_paperSizeStep?POSTERAZORHELPSTEPTITLE02
+		:m_wizard->value() == m_overlappingStep?POSTERAZORHELPSTEPTITLE03
+		:m_wizard->value() == m_posterSizeStep?POSTERAZORHELPSTEPTITLE04
+		:POSTERAZORHELPSTEPTITLE05
+	);
+}
+
+int PosteRazorDialog::GetCurrentWizardStepNumber(void)
+{
+	return
+	(
+		m_wizard->value() == m_loadInputImageStep?0
+		:m_wizard->value() == m_paperSizeStep?1
+		:m_wizard->value() == m_overlappingStep?2
+		:m_wizard->value() == m_posterSizeStep?3
+		:4
+	);
+}
+
+void PosteRazorDialog::UpdateStepInfoBar(void)
+{
+	char helpTitleStr[1024];
+	sprintf(helpTitleStr, "  Step %d of 5: %s", GetCurrentWizardStepNumber() + 1, GetCurrentWizardStepStepInfoString());
+	m_stepInfoBox->copy_label(helpTitleStr);
 }
 
 void PosteRazorDialog::UpdatePreviewState(void)
