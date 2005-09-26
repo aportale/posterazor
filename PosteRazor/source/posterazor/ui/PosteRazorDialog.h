@@ -33,13 +33,16 @@ public:
 	void prev(void);
 	void UpdateNavigationButtons(void);
 	void OpenHelpDialog(void);
+	const char* GetCurrentWizardStepStepInfoString(void);
+	int GetCurrentWizardStepNumber(void);
+	void UpdateStepInfoBar(void);
 	void UpdatePreviewState(void);
 	void UpdateDimensionUnitLabels(void);
 
 	void LoadInputImage(const char *fileName);
 	void UpdateImageInfoFields(void);
 
-        void SetPaperSizeFields(void);
+	void SetPaperSizeFields(void);
 	static void HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userData);
 	void HandlePaperSizeChangement(Fl_Widget *sourceWidget);
 

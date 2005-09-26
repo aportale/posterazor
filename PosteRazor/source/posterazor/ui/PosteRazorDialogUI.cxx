@@ -939,16 +939,19 @@ o->align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE);
 o->when(FL_WHEN_RELEASE);
 { Fl_Group* o = new Fl_Group(10, 420, 600, 26);
   { Fl_Choice* o = m_distanceUnitChoice = new Fl_Choice(49, 420, 160, 25, "Units:");
+    o->tooltip("Choose the unit you want to work with");
     o->down_box(FL_BORDER_BOX);
   }
   { Fl_Box* o = new Fl_Box(294, 420, 15, 25);
     Fl_Group::current()->resizable(o);
   }
   { Fl_Button* o = m_nextButton = new Fl_Button(525, 420, 85, 25, "Next @-2->");
+    o->tooltip("Next step");
     o->labelcolor(FL_GRAY0);
     o->callback((Fl_Callback*)cb_m_nextButton);
   }
   { Fl_Button* o = m_prevButton = new Fl_Button(430, 420, 85, 25, "@-2<- Back");
+    o->tooltip("One step back");
     o->labelcolor(FL_GRAY0);
     o->callback((Fl_Callback*)cb_m_prevButton);
   }
@@ -1306,6 +1309,7 @@ o->when(FL_WHEN_RELEASE);
   o->end();
 }
 { Fl_Paint_Canvas* o = m_previewPaintCanvas = new Fl_Paint_Canvas(10, 45, 300, 365);
+  o->tooltip("Preview");
   o->box(FL_THIN_DOWN_BOX);
   o->color(FL_DARK2);
   o->selection_color(FL_BACKGROUND_COLOR);
@@ -1319,14 +1323,17 @@ o->when(FL_WHEN_RELEASE);
 }
 { Fl_Group* o = new Fl_Group(10, 10, 600, 25);
   { Fl_Box* o = m_stepInfoBox = new Fl_Box(10, 10, 570, 25, "Step 1 of 8: Load an image");
+    o->tooltip("The current step");
     o->box(FL_THIN_UP_BOX);
     o->color((Fl_Color)10);
     o->labelfont(1);
     o->labelsize(15);
     o->labelcolor(FL_GRAY0);
+    o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
     Fl_Group::current()->resizable(o);
   }
   { Fl_Button* o = new Fl_Button(585, 10, 25, 25, "?");
+    o->tooltip("Help text for the current step");
     o->color((Fl_Color)10);
     o->labelfont(1);
     o->labelsize(15);
@@ -1377,12 +1384,14 @@ o->when(FL_WHEN_RELEASE);
 { Fl_Help_View* o = m_help_view = new Fl_Help_View(10, 10, 480, 345);
   o->labelsize(8);
   Fl_Group::current()->resizable(o);
+  o->textsize(14);
+  o->textfont(FL_HELVETICA);
 }
-{ Fl_Group* o = new Fl_Group(10, 115, 480, 275);
-  { Fl_Button* o = new Fl_Button(405, 365, 85, 25, "OK");
+{ Fl_Group* o = new Fl_Group(10, 366, 480, 26);
+  { Fl_Button* o = new Fl_Button(405, 365, 85, 24, "OK");
     o->callback((Fl_Callback*)cb_OK);
   }
-  { Fl_Box* o = new Fl_Box(10, 115, 16, 25);
+  { Fl_Box* o = new Fl_Box(10, 367, 10, 25);
     o->labelsize(8);
     Fl_Group::current()->resizable(o);
   }

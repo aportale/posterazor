@@ -7,16 +7,16 @@ decl {\#include "Fl_Paint_Canvas.h"} {public
 
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {479 144 620 455} type Double hide resizable
+  xywh {479 144 620 455} type Double resizable
   code0 {size_range(this->w(), this->h());}
-  class Fl_Double_Window
+  class Fl_Double_Window visible
 } {
   Fl_Group {} {open
     xywh {10 420 600 26}
   } {
     Fl_Choice m_distanceUnitChoice {
       label {Units:} open
-      xywh {49 420 160 25} down_box BORDER_BOX
+      tooltip {Choose the unit you want to work with} xywh {49 420 160 25} down_box BORDER_BOX
     } {}
     Fl_Box {} {
       xywh {294 420 15 25} resizable
@@ -24,12 +24,12 @@ widget_class PosteRazorDialogUI {
     Fl_Button m_nextButton {
       label {Next @-2->}
       callback {next();}
-      xywh {525 420 85 25} labelcolor 32
+      tooltip {Next step} xywh {525 420 85 25} labelcolor 32
     }
     Fl_Button m_prevButton {
       label {@-2<- Back}
       callback {prev();}
-      xywh {430 420 85 25} labelcolor 32
+      tooltip {One step back} xywh {430 420 85 25} labelcolor 32
     }
   }
   Fl_Wizard m_wizard {
@@ -364,8 +364,8 @@ widget_class PosteRazorDialogUI {
       }
     }
   }
-  Fl_Box m_previewPaintCanvas {
-    xywh {10 45 300 365} box THIN_DOWN_BOX color 45 resizable
+  Fl_Box m_previewPaintCanvas {selected
+    tooltip Preview xywh {10 45 300 365} box THIN_DOWN_BOX color 45 resizable
     class Fl_Paint_Canvas
   }
   Fl_Group {} {
@@ -373,12 +373,12 @@ widget_class PosteRazorDialogUI {
   } {
     Fl_Box m_stepInfoBox {
       label {Step 1 of 8: Load an image}
-      xywh {10 10 570 25} box THIN_UP_BOX color 10 labelfont 1 labelsize 15 labelcolor 32 resizable
+      tooltip {The current step} xywh {10 10 570 25} box THIN_UP_BOX color 10 labelfont 1 labelsize 15 labelcolor 32 align 20 resizable
     }
     Fl_Button {} {
       label {?}
       callback {OpenHelpDialog()}
-      xywh {585 10 25 25} color 10 labelfont 1 labelsize 15 labelcolor 32
+      tooltip {Help text for the current step} xywh {585 10 25 25} color 10 labelfont 1 labelsize 15 labelcolor 32
     }
   }
   decl {virtual void next(void) = 0;} {public
@@ -418,23 +418,25 @@ widget_class PosteRazorDialogUI {
 
 widget_class PosteRazorHelpDialogUI {
   user_data this open
-  xywh {119 392 500 400} type Double hide resizable
+  xywh {119 392 500 400} type Double resizable
   code0 {size_range(235, 150);}
-  class Fl_Double_Window
+  class Fl_Double_Window visible
 } {
   Fl_Help_View m_help_view {
     xywh {10 10 480 345} labelsize 8 resizable
+    code0 {o->textsize(14);}
+    code1 {o->textfont(FL_HELVETICA);}
   }
   Fl_Group {} {open
-    xywh {10 115 480 275}
+    xywh {10 366 480 26}
   } {
     Fl_Button {} {
       label OK
-      callback {hide();} selected
-      xywh {405 365 85 25}
+      callback {hide();}
+      xywh {405 365 85 24}
     }
     Fl_Box {} {
-      xywh {10 115 16 25} labelsize 8 resizable
+      xywh {10 367 10 25} labelsize 8 resizable
     }
   }
   decl {virtual void SetHtmlContent(const char *content) = 0;} {public
