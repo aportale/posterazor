@@ -130,14 +130,48 @@ public:
 	double GetWidth(enum DistanceUnits::eDistanceUnits unit) const {return GetWidthPixels() / GetHorizontalDotsPerDistanceUnit(unit);}
 	double GetHeight(enum DistanceUnits::eDistanceUnits unit) const {return GetHeightPixels() / GetVerticalDotsPerDistanceUnit(unit);}
 
+#define MAX(a, b) ((a)>(b)?(a):(b))
+
 	void GetImageAsRGB(unsigned char **buffer, int &widthPixels, int &heightPixels) const
 	{
 		FIBITMAP* originalImage = m_bitmap;
 		FIBITMAP* temp24BPPImage = NULL;
 		
-		if (FreeImage_GetBPP(m_bitmap) != 24)
+		if (GetBitsPerPixel() != 24)
 		{
-			temp24BPPImage = FreeImage_ConvertTo24Bits(originalImage);
+			if (GetColorDataType() == eColorTypeCMYK)
+			{
+				temp24BPPImage = FreeImage_Allocate(GetWidthPixels(), GetHeightPixels(), 24);
+				unsigned int scanlinesCount = GetHeightPixels();
+				unsigned int columnsCount = GetWidthPixels();
+				for (int scanline = 0; scanline < scanlinesCount; scanline++)
+				{
+					BYTE *cmykBits = FreeImage_GetScanLine(m_bitmap, scanline);
+					BYTE *rgbBits = FreeImage_GetScanLine(temp24BPPImage, scanline);
+					for (int column = 0; column < columnsCount; column++)
+					{
+						unsigned int cmykColumn = column * 4;
+						unsigned int rgbColumn = column * 3;
+
+						BYTE cyan = cmykBits[cmykColumn];
+						BYTE magenta = cmykBits[cmykColumn + 1];
+						BYTE yellow = cmykBits[cmykColumn + 2];
+						BYTE black = cmykBits[cmykColumn + 3];
+
+						BYTE red = MAX(0, (255 - yellow/1.5 - black/1.5));
+						BYTE green = MAX(0, (255 - magenta/1.5 - black/1.5));
+						BYTE blue = MAX(0, (255 - cyan/1.5 - black/1.5));
+
+						rgbBits[rgbColumn] = red;
+						rgbBits[rgbColumn + 1] = green;
+						rgbBits[rgbColumn + 2] = blue;
+					}
+				}
+			}
+			else
+			{
+				temp24BPPImage = FreeImage_ConvertTo24Bits(originalImage);
+			}
 			originalImage = temp24BPPImage;
 		}
 		
