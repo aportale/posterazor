@@ -61,7 +61,7 @@ const static const char *posteRazorHelpText =
 
 		"<br><H3><A name=\"" POSTERAZORHELPANCHORMANUALSTEP01 "\">Step 1: " POSTERAZORHELPSTEPTITLE01 "</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
 		POSTERAZORHELPINDENTATION "Load an image by clicking the button with the open icon and selecting an image file, or by drag & dropping an image file on the PosteRazor. The drag & drop also works in the other steps.<br>" POSTERAZORHELPENDLINE \
-		"Many <a href=\"#" POSTERAZORHELPANCHORINPUTFILEFORMATS "\">file formats and image types</a> can be loaded. After loading the image, the most important informations are listed in the <b>Image informations field</b>." POSTERAZORHELPENDLINE \
+		"Many <a href=\"#" POSTERAZORHELPANCHORINPUTFILEFORMATS "\">file formats and image types</a> can be loaded. After loading the image, the most important informations are listed in the <b>Image informations</b> fields." POSTERAZORHELPENDLINE \
 
 		"<br><H3><A name=\"" POSTERAZORHELPANCHORMANUALSTEP02 "\">Step 2: " POSTERAZORHELPSTEPTITLE02 "</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
 		POSTERAZORHELPINDENTATION "Define the paper sheet size that you use in your printer. A standard paper sheet size can be selected from the <b>Format</b> chooser, along with the desired paper sheet <b>Orientation</b>. Alternatively, a custom paper sheet size can be define in the <b>Custom</b> tab. (Please write me an email, if you miss your standard paper size in the chooser)." POSTERAZORHELPENDLINE \
@@ -93,7 +93,7 @@ const static const char *posteRazorHelpText =
 		"<br><H3><A name=\"" POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES "\">Code from third parties</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
 		POSTERAZORHELPINDENTATION "<b>FLTK</b> was used for the user interface. It is a small (by size), fast, fun&easy to learn and very portable UI Toolkit. <b>www.fltk.org</b>" POSTERAZORHELPENDLINE \
 		POSTERAZORHELPINDENTATION "<b>FreeImage</b> was used for the image loading and handling. It makes image loading and handling really a no-brainer and is portable to the platforms, where the PosteRazor runs. <b>freeimage.sourceforge.net</b>" POSTERAZORHELPENDLINE \
-		POSTERAZORHELPINDENTATION "<b>Fl_Native_File_Chooser</b> was used for the file open and save dialog in the native system look and feel. <b>seriss.com/people/erco/fltk/Fl_Native_File_Chooser/</b> and <b>http://homepages.dordt.edu/~nthnlvnd/soft/Fl_Native_File_Chooser.html</b>" POSTERAZORHELPENDLINE \
+		POSTERAZORHELPINDENTATION "<b>Fl_Native_File_Chooser</b> was used for the file open and save dialog in the native system look and feel. <b>seriss.com/people/erco/fltk/Fl_Native_File_Chooser/</b> and <b>homepages.dordt.edu/~nthnlvnd/soft/</b>" POSTERAZORHELPENDLINE \
 		
 	"</BODY>" POSTERAZORHELPENDLINE \
 "</HTML>";

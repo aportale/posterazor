@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 
 	PosteRazor* prz = PosteRazor::CreatePosteRazor();
 	char errorMessage[1024];
-	bool loaded = prz->LoadInputImage("c:\\image.png", errorMessage, sizeof(errorMessage));
+	bool loaded = prz->LoadInputImage("c:\\image_cmyk.jpg", errorMessage, sizeof(errorMessage));
 
 	if (loaded)
 	{
