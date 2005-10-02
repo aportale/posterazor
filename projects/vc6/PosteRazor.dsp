@@ -99,6 +99,10 @@ SOURCE=..\..\source\posterazor\PosteRazor.cxx
 
 SOURCE=..\..\source\posterazor\PosteRazorImageIO.cxx
 # End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\PosteRazorPDFOutput.cxx
+# End Source File
 # End Group
 # Begin Group "Header Files"
 
@@ -126,6 +130,10 @@ SOURCE=..\..\source\posterazor\PosteRazor.h
 # Begin Source File
 
 SOURCE=..\..\source\posterazor\PosteRazorImageIO.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\PosteRazorPDFOutput.h
 # End Source File
 # End Group
 # Begin Source File
