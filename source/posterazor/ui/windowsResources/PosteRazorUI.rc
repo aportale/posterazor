@@ -50,21 +50,22 @@ VS_VERSION_INFO VERSIONINFO
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
-        BLOCK "040704b0"
+        BLOCK "00000000"
         BEGIN
-            VALUE "CompanyName", "Alessandro Portale <http://www.casaportale.de>"
-            VALUE "FileDescription", "PosteRazor - Make your own poster! <http://posterazor.sourceforge.net/>"
-            VALUE "FileVersion", "1, 0, 0, 0"
-            VALUE "InternalName", "PosteRazor"
+            VALUE "Comments", "PosteRazor - Make your own poster! posterazor.sourceforge.net"
+            VALUE "CompanyName", "Alessandro Portale www.casaportale.de"
+            VALUE "FileDescription", "PosteRazor"
+            VALUE "FileVersion", "1.0"
             VALUE "LegalCopyright", "Copyright (C) 2005 Alessandro Portale"
-            VALUE "OriginalFilename", "PosteRazor"
+            VALUE "LegalTrademarks", "Alessandro Portale"
+            VALUE "OriginalFilename", "PosteRazor.exe"
             VALUE "ProductName", "PosteRazor"
-            VALUE "ProductVersion", "1, 0, 0, 0"
+            VALUE "ProductVersion", "1.0"
         END
     END
     BLOCK "VarFileInfo"
     BEGIN
-        VALUE "Translation", 0x407, 1200
+        VALUE "Translation", 0x0, 0
     END
 END
 
@@ -89,7 +90,7 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
 1 TEXTINCLUDE 
 BEGIN
-    "resource.h\0"
+    "PosteRazorResource.h\0"
 END
 
 2 TEXTINCLUDE 
