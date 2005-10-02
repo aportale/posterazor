@@ -41,7 +41,7 @@ RSC=rc.exe
 # PROP Intermediate_Dir "Release"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /W3 /GX /O2 /I "..\..\source\posterazor" /I "..\..\thirdparty\fltk-1.1" /I "..\..\thirdparty\Fl_Native_File_Chooser" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "VC_EXTRA_LEAN" /D "WIN32_EXTRA_LEAN" /YX /FD /c
+# ADD CPP /nologo /W3 /GX /O2 /I "..\..\source\posterazor" /I "..\..\thirdparty\fltk-1.1" /I "..\..\thirdparty\Fl_Native_File_Chooser" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "VC_EXTRA_LEAN" /D "WIN32_EXTRA_LEAN" /FR /YX /FD /c
 # ADD BASE RSC /l 0x407 /d "NDEBUG"
 # ADD RSC /l 0x407 /d "NDEBUG"
 BSC32=bscmake.exe
@@ -91,11 +91,19 @@ SOURCE=..\..\source\posterazor\ui\Fl_Paint_Canvas.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\source\posterazor\ui\Fl_Persistent_Preferences.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\source\posterazor\ui\PosteRazorDialog.cxx
 # End Source File
 # Begin Source File
 
 SOURCE=..\..\source\posterazor\ui\PosteRazorDialogUI.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\ui\windowsResources\PosteRazorUI.rc
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -104,6 +112,10 @@ SOURCE=..\..\source\posterazor\ui\PosteRazorDialogUI.cxx
 # Begin Source File
 
 SOURCE=..\..\source\posterazor\ui\Fl_Paint_Canvas.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\ui\Fl_Persistent_Preferences.h
 # End Source File
 # Begin Source File
 
@@ -117,6 +129,10 @@ SOURCE=..\..\source\posterazor\ui\PosteRazorDialogUI.h
 # Begin Group "Resource Files"
 
 # PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\ui\windowsResources\PosteRazor.ico
+# End Source File
 # End Group
 # Begin Group "Fl_Native_File_Chooser"
 
