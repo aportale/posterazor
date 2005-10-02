@@ -27,7 +27,7 @@
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
 #ifdef WIN32
-  #include "resource.h"
+  #include "PosteRazorResource.h"
   #include <FL/x.H>
 #endif
 
