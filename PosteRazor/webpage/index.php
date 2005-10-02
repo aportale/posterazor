@@ -120,6 +120,7 @@
 				- <a href="#screenshots">Screenshots</a>
 				- <a href="http://sourceforge.net/project/showfiles.php?group_id=141842">Download</a>
 				- <a href="#thirdparty">Third&nbsp;party&nbsp;code</a>
+				- <a href="#license">License</a>
 			</div>
 
 			<hr />
@@ -209,6 +210,16 @@
 				</li>
 			</ul>
 			
+			<hr />
+			<h2><a name="license"></a>License</h2>
+			PosteRazor - Make your own poster!<br />
+			Copyright (C) 2005 by Alessandro Portale<br />
+			<a href="http://posterazor.sourceforge.net/">http://posterazor.sourceforge.net/</a><br />
+			<br />
+			PosteRazor is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by	the Free Software Foundation; either version 2 of the License, or (at your option) any later version.<br />
+			<br />
+			PosteRazor is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the <a href="http://www.gnu.org/copyleft/gpl.html">GNU General Public License</a> for more details.<br />
+			<br />
 		</div>
 	</body>
 </html>
