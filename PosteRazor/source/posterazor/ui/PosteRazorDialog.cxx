@@ -26,6 +26,10 @@
 #include <Fl/Fl_Native_File_Chooser.H>
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
+#ifdef WIN32
+  #include "resource.h"
+  #include <FL/x.H>
+#endif
 
 const char PreferencesVendor[] = "CasaPortale.de";
 const char PreferencesProduct[] = "PosteRazor";
@@ -539,6 +543,11 @@ void PosteRazorDialog::SetLaunchPDFApplication(void)
 int main (int argc, char **argv)
 {
 	PosteRazorDialog dialog;
+
+#ifdef WIN32
+	dialog.icon((char *)LoadIcon(fl_display, MAKEINTRESOURCE(POSTERAZOR_ICON)));
+#endif
+
 	dialog.show(argc, argv);
 #ifdef WIN32
 	dialog.LoadInputImage("c:\\image.png");

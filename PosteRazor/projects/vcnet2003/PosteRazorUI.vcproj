@@ -19,7 +19,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\source\posterazor;&quot;..\..\thirdparty\fltk-1.1&quot;;..\..\thirdparty\Fl_Native_File_Chooser"
+				AdditionalIncludeDirectories="..\..\source\posterazor;&quot;..\..\thirdparty\fltk-1.1&quot;;..\..\thirdparty\Fl_Native_File_Chooser;..\..\source\posterazor\ui\windowsResources"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="FALSE"
 				BasicRuntimeChecks="0"
@@ -71,7 +71,7 @@
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\source\posterazor;&quot;..\..\thirdparty\fltk-1.1&quot;;..\..\thirdparty\Fl_Native_File_Chooser"
+				AdditionalIncludeDirectories="..\..\source\posterazor;&quot;..\..\thirdparty\fltk-1.1&quot;;..\..\thirdparty\Fl_Native_File_Chooser;..\..\source\posterazor\ui\windowsResources"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -153,6 +153,9 @@
 			<File
 				RelativePath="..\..\source\posterazor\ui\PosteRazorHelpText.h">
 			</File>
+			<File
+				RelativePath="..\..\source\posterazor\ui\windowsResources\PosteRazorResource.h">
+			</File>
 		</Filter>
 		<Filter
 			Name="Fl_Native_File_Chooser"
@@ -168,7 +171,13 @@
 			</File>
 		</Filter>
 		<File
+			RelativePath="..\..\source\posterazor\ui\windowsResources\PosteRazor.ico">
+		</File>
+		<File
 			RelativePath="..\..\source\posterazor\ui\PosteRazorDialogUI.fl">
+		</File>
+		<File
+			RelativePath="..\..\source\posterazor\ui\windowsResources\PosteRazorUI.rc">
 		</File>
 	</Files>
 	<Globals>
