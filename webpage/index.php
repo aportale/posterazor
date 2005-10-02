@@ -136,7 +136,7 @@
 			<h2><a name="about"></a>About</h2>
 			The PosteRazor cuts a raster image into pieces which can afterwards be printed out and assembled to a poster.
 			<br /><div style="text-align: center; margin: 10px;"><img src="images/workflow.png" width="400" height="114" alt="PosteRazor workflow"/></div>
-			As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps. PosteRazor is available as a Windows and as an OSX version (it should also be compilable on Linux). It is an open source, GNU licensed project which is hosted on SourceForge.net. For feedback, bug reports feature requests, please use the <a href="http://sourceforge.net/projects/posterazor/">PosteRazor project page</a> or write a mail to <b>Alessandro&nbsp;&auml;t&nbsp;casaportale&nbsp;d&ocirc;t de</b>
+			As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps. PosteRazor is available as a Windows and as an OSX version (it should also be compilable on Linux). It is an open source, <a href="#license">GNU licensed</a> project which is hosted on SourceForge.net. For feedback, bug reports feature requests, please use the <a href="http://sourceforge.net/projects/posterazor/">PosteRazor project page</a> or write a mail to <b>Alessandro&nbsp;&auml;t&nbsp;casaportale&nbsp;d&ocirc;t de</b>
 			
 			<hr />
 			<h2><a name="features"></a>Features</h2>
