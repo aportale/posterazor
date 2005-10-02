@@ -1378,6 +1378,13 @@ void PosteRazorHelpDialogUI::cb_OK_i(Fl_Button*, void*) {
 void PosteRazorHelpDialogUI::cb_OK(Fl_Button* o, void* v) {
   ((PosteRazorHelpDialogUI*)(o->parent()->parent()))->cb_OK_i(o,v);
 }
+
+void PosteRazorHelpDialogUI::cb_m_homepageButton_i(Fl_Button*, void*) {
+  HandleHomepageButtonClick();
+}
+void PosteRazorHelpDialogUI::cb_m_homepageButton(Fl_Button* o, void* v) {
+  ((PosteRazorHelpDialogUI*)(o->parent()->parent()))->cb_m_homepageButton_i(o,v);
+}
 PosteRazorHelpDialogUI::PosteRazorHelpDialogUI(int X, int Y, int W, int H, const char *L)
   : Fl_Double_Window(X, Y, W, H, L) {
   _PosteRazorHelpDialogUI();
@@ -1408,16 +1415,23 @@ o->when(FL_WHEN_RELEASE);
   o->textsize(14);
   o->textfont(FL_HELVETICA);
 }
-{ Fl_Group* o = new Fl_Group(10, 366, 480, 26);
-  { Fl_Button* o = new Fl_Button(405, 365, 85, 24, "OK");
+{ Fl_Group* o = new Fl_Group(10, 365, 480, 25);
+  { Fl_Button* o = new Fl_Button(405, 365, 85, 25, "OK");
     o->callback((Fl_Callback*)cb_OK);
   }
-  { Fl_Box* o = new Fl_Box(10, 367, 10, 25);
+  { Fl_Button* o = m_homepageButton = new Fl_Button(10, 365, 190, 25, "Homepage");
+    o->callback((Fl_Callback*)cb_m_homepageButton);
+  }
+  { Fl_Box* o = new Fl_Box(333, 365, 10, 25);
     o->labelsize(8);
     Fl_Group::current()->resizable(o);
   }
   o->end();
 }
-size_range(235, 150);
+size_range(300, 150);
 end();
+}
+
+void PosteRazorHelpDialogUI::SetHomepageButtonLabel(const char *label) {
+  m_homepageButton->copy_label(label);
 }

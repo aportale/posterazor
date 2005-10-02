@@ -53,14 +53,27 @@ int PosteRazorDragDropWidget::handle(int event)
 
 class PosteRazorHelpDialog: public PosteRazorHelpDialogUI
 {
+	char m_homepageURL[2048];
 public:
-	PosteRazorHelpDialog(void)
+	PosteRazorHelpDialog(const char *homepageButtonLabel, const char *homepageURL)
 		:PosteRazorHelpDialogUI(500, 400, "PosteRazor Help")
 	{
+		SetHomepageButtonLabel(homepageButtonLabel);
+		strncpy(m_homepageURL, homepageURL, sizeof(m_homepageURL));
+		m_homepageURL[sizeof(m_homepageURL)-1] = '\0';
 	}
 
 	void SetHtmlContent(const char *content) {m_help_view->value(content);}
 	void JumpToAnchor(const char *anchor) {	m_help_view->topline(anchor);}
+
+	void HandleHomepageButtonClick(void)
+	{
+#ifdef WIN32
+		ShellExecute(HWND_DESKTOP, "open", m_homepageURL, NULL, NULL, SW_SHOW);
+#else
+		system(fileName);
+#endif;
+	}
 };
 
 PosteRazorDialog::PosteRazorDialog(void)
@@ -197,7 +210,7 @@ void PosteRazorDialog::UpdateNavigationButtons(void)
 
 void PosteRazorDialog::OpenHelpDialog(void)
 {
-	PosteRazorHelpDialog *help = new PosteRazorHelpDialog;
+	PosteRazorHelpDialog *help = new PosteRazorHelpDialog("PosteRazor homepage", "http://posterazor.sourceforge.net/");
 	char stepTopic[1024];
 	sprintf(stepTopic, POSTERAZORHELPANCHORMANUALSTEP "%.2d", GetCurrentWizardStepNumber() + 1);
 
