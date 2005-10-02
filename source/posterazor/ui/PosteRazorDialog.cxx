@@ -27,8 +27,9 @@
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
 #ifdef WIN32
-  #include "PosteRazorResource.h"
+  #include "windowsResources/PosteRazorResource.h"
   #include <FL/x.H>
+  #include <Shellapi.h>
 #endif
 
 const char PreferencesVendor[] = "CasaPortale.de";
@@ -83,6 +84,7 @@ public:
 PosteRazorDialog::PosteRazorDialog(void)
 	:PosteRazorDialogUI(620, 455, "PosteRazor")
 {
+	int i;
 	begin();
 	m_dragDropWidget = new PosteRazorDragDropWidget(0, 0, w(), h());
 	end();
@@ -95,7 +97,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 	int distanceUnitMenuItemsCount = PosteRazor::GetDistanceUnitsCount()+1;
 	m_distanceUnitMenuItems = new Fl_Menu_Item[distanceUnitMenuItemsCount];
 	memset(m_distanceUnitMenuItems, 0, sizeof(Fl_Menu_Item)*distanceUnitMenuItemsCount);
-	for (int i = 0; i < PosteRazor::GetDistanceUnitsCount(); i++)
+	for (i = 0; i < PosteRazor::GetDistanceUnitsCount(); i++)
 	{
 		const char* distanceUnitName = DistanceUnits::GetDistanceUnitName(PosteRazor::GetDistanceUnitForIndex(i));
 		m_distanceUnitMenuItems[i].label(distanceUnitName);
@@ -109,7 +111,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 	int paperFormatMenuItemsCount = PosteRazor::GetPaperFormatsCount()+1;
 	m_paperFormatMenuItems = new Fl_Menu_Item[paperFormatMenuItemsCount];
 	memset(m_paperFormatMenuItems, 0, sizeof(Fl_Menu_Item)*paperFormatMenuItemsCount);
-	for (int i = 0; i < PosteRazor::GetPaperFormatsCount(); i++)
+	for (i = 0; i < PosteRazor::GetPaperFormatsCount(); i++)
 	{
 		const char* paperFormatName = PosteRazor::GetPaperFormatName(PosteRazor::GetPaperFormatForIndex(i));
 		m_paperFormatMenuItems[i].label(paperFormatName);
