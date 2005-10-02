@@ -9,7 +9,9 @@ public:
 		eDistanceUnitMeter,
 		eDistanceUnitMillimeter,
 		eDistanceUnitCentimeter,
-		eDistanceUnitInch
+		eDistanceUnitInch,
+		eDistanceUnitFeet,
+		eDistanceUnitPoints
 	};
 
 	static int GetDistanceUnitsCount(void);

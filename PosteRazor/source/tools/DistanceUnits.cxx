@@ -14,7 +14,9 @@ static const distanceUnits g_distanceUnits[] =
 	{DistanceUnits::eDistanceUnitMeter, "m", 100},
 	{DistanceUnits::eDistanceUnitMillimeter, "mm", 0.1},
 	{DistanceUnits::eDistanceUnitCentimeter, "cm", 1.0},
-	{DistanceUnits::eDistanceUnitInch, "inch", 2.54}
+	{DistanceUnits::eDistanceUnitInch, "inch", 2.54},
+	{DistanceUnits::eDistanceUnitFeet, "feet", 2.54 * 12.0},
+	{DistanceUnits::eDistanceUnitPoints, "points", 2.54 / 72.0}
 };
 
 static const int g_distanceUnitsCount = sizeof(g_distanceUnits)/sizeof(g_distanceUnits[0]);
