@@ -133,7 +133,7 @@ public:
 				">>" LINEFEED\
 				"stream" LINEFEED,
 				m_pdfObjectCount,
-				colorType==ColorTypes::eColorTypeCMYK?"/DeviceCMYK":"/DeviceRGB",
+				colorType==ColorTypes::eColorTypeCMYK?"/DeviceCMYK":"/DeviceRGB ", // Leaving space after RGB for eventual manual patching to CMYK
 				jpegFileSize, widthPixels, heightPixels
 			);
 		}
