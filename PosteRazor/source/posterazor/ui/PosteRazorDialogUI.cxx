@@ -965,7 +965,7 @@ o->when(FL_WHEN_RELEASE);
     o->hide();
     { Fl_Group* o = new Fl_Group(325, 70, 275, 25, "Input Image");
       { Fl_Button* o = new Fl_Button(575, 70, 25, 25, "@+1fileopen");
-        o->labelcolor((Fl_Color)36);
+        o->labelcolor((Fl_Color)134);
         o->callback((Fl_Callback*)cb_1fileopen);
       }
       { Fl_Box* o = m_inputFileNameLabel = new Fl_Box(325, 70, 250, 25);
@@ -993,6 +993,7 @@ o->when(FL_WHEN_RELEASE);
     o->end();
   }
   { Fl_Group* o = m_paperSizeStep = new Fl_Group(315, 45, 295, 365);
+    o->hide();
     { Fl_Tabs* o = m_paperFormatTypeTabs = new Fl_Tabs(325, 70, 275, 140, "Paper size");
       o->callback((Fl_Callback*)cb_m_paperFormatTypeTabs);
       { Fl_Group* o = m_paperFormatStandardGroup = new Fl_Group(325, 95, 275, 115, "Standard");
@@ -1287,12 +1288,11 @@ o->when(FL_WHEN_RELEASE);
     o->end();
   }
   { Fl_Group* o = m_savePosterStep = new Fl_Group(315, 45, 295, 365);
-    o->hide();
     { Fl_Group* o = new Fl_Group(325, 70, 275, 75, "Save the Poster");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       { Fl_Button* o = new Fl_Button(335, 80, 255, 25, "@+14filesave");
-        o->labelcolor((Fl_Color)36);
+        o->labelcolor((Fl_Color)42);
         o->callback((Fl_Callback*)cb_14filesave);
       }
       { Fl_Check_Button* o = m_setLaunchPDFApplicationCheckButton = new Fl_Check_Button(335, 115, 255, 20, "Launch PDF application after saving");
