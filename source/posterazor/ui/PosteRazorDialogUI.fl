@@ -22,7 +22,7 @@ comment {/*
 	You should have received a copy of the GNU General Public License
 	along with PosteRazor; if not, write to the Free Software
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-*/} {selected in_source in_header
+*/} {in_source in_header
 } 
 
 decl {\#include "Fl_Paint_Canvas.h"} {public
@@ -30,9 +30,9 @@ decl {\#include "Fl_Paint_Canvas.h"} {public
 
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {479 144 620 455} type Double resizable
+  xywh {479 144 620 455} type Double hide resizable
   code0 {size_range(this->w(), this->h());}
-  class Fl_Double_Window visible
+  class Fl_Double_Window
 } {
   Fl_Group {} {open
     xywh {10 420 600 26}
@@ -441,8 +441,8 @@ widget_class PosteRazorDialogUI {
 
 widget_class PosteRazorHelpDialogUI {
   user_data this open
-  xywh {119 392 500 400} type Double resizable
-  code0 {size_range(235, 150);}
+  xywh {368 300 500 400} type Double resizable
+  code0 {size_range(300, 150);}
   class Fl_Double_Window visible
 } {
   Fl_Help_View m_help_view {
@@ -451,19 +451,30 @@ widget_class PosteRazorHelpDialogUI {
     code1 {o->textfont(FL_HELVETICA);}
   }
   Fl_Group {} {open
-    xywh {10 366 480 26}
+    xywh {10 365 480 25}
   } {
     Fl_Button {} {
       label OK
       callback {hide();}
-      xywh {405 365 85 24}
+      xywh {405 365 85 25}
+    }
+    Fl_Button m_homepageButton {
+      label Homepage
+      callback {HandleHomepageButtonClick();} selected
+      xywh {10 365 190 25}
     }
     Fl_Box {} {
-      xywh {10 367 10 25} labelsize 8 resizable
+      xywh {333 365 10 25} labelsize 8 resizable
     }
+  }
+  Function {SetHomepageButtonLabel(const char *label)} {open return_type void
+  } {
+    code {m_homepageButton->copy_label(label);} {}
+  }
+  decl {virtual void JumpToAnchor(const char *anchor) = 0;} {public
   }
   decl {virtual void SetHtmlContent(const char *content) = 0;} {public
   }
-  decl {virtual void JumpToAnchor(const char *anchor) = 0;} {public
+  decl {virtual void HandleHomepageButtonClick(void) = 0;} {public
   }
 } 

@@ -42,6 +42,7 @@
 #define POSTERAZORHELPANCHORABOUTPDFOUTPUT "aboutpdfoutput"
 #define POSTERAZORHELPANCHORWHYPDFOUTPUT "whypdfoutput"
 #define POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES "codefromthirdparties"
+#define POSTERAZORHELPANCHORLICENSE "license"
 
 #define POSTERAZORHELPLINKTOTOP "&nbsp;&nbsp;&nbsp;<A href=\"#" POSTERAZORHELPANCHORTOP "\">^</A>"
 
@@ -68,6 +69,7 @@ const static const char *posteRazorHelpText =
 			"<LI><B><A href=\"#" POSTERAZORHELPANCHORABOUTPDFOUTPUT "\">About the PDF output</A></B></LI>" POSTERAZORHELPENDLINE \
 			"<LI><B><A href=\"#" POSTERAZORHELPANCHORWHYPDFOUTPUT "\">Why a PDF output?</A></B></LI>" POSTERAZORHELPENDLINE \
 			"<LI><B><A href=\"#" POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES "\">Code from third parties</A></B></LI>" POSTERAZORHELPENDLINE \
+			"<LI><B><A href=\"#" POSTERAZORHELPANCHORLICENSE "\">License</A></B></LI>" POSTERAZORHELPENDLINE \
 		"</UL><HR>" POSTERAZORHELPENDLINE \
 
 		"<br><H3><A name=\"" POSTERAZORHELPANCHORABOUT "\">About</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
@@ -117,6 +119,13 @@ const static const char *posteRazorHelpText =
 		POSTERAZORHELPINDENTATION "<b>FreeImage</b> was used for the image loading and handling. It makes image loading and handling really a no-brainer and is portable to the platforms, where the PosteRazor runs. <b>freeimage.sourceforge.net</b>" POSTERAZORHELPENDLINE \
 		POSTERAZORHELPINDENTATION "<b>Fl_Native_File_Chooser</b> was used for the file open and save dialog in the native system look and feel. <b>seriss.com/people/erco/fltk/Fl_Native_File_Chooser/</b> and <b>homepages.dordt.edu/~nthnlvnd/soft/</b>" POSTERAZORHELPENDLINE \
 		
+		"<br><H3><A name=\"" POSTERAZORHELPANCHORLICENSE "\">License</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
+		"PosteRazor - Make your own poster!<br>" POSTERAZORHELPENDLINE \
+		"http://posterazor.sourceforge.net/<br>" POSTERAZORHELPENDLINE \
+		"Copyright (C) 2005 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+		"This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+		"This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+		"You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA." POSTERAZORHELPENDLINE \
 	"</BODY>" POSTERAZORHELPENDLINE \
 "</HTML>";
 

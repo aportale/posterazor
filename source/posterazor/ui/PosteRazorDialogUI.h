@@ -269,7 +269,14 @@ private:
   void cb_OK_i(Fl_Button*, void*);
   static void cb_OK(Fl_Button*, void*);
 public:
-  virtual void SetHtmlContent(const char *content) = 0;
+  Fl_Button *m_homepageButton;
+private:
+  void cb_m_homepageButton_i(Fl_Button*, void*);
+  static void cb_m_homepageButton(Fl_Button*, void*);
+public:
   virtual void JumpToAnchor(const char *anchor) = 0;
+  virtual void SetHtmlContent(const char *content) = 0;
+  virtual void HandleHomepageButtonClick(void) = 0;
+  void SetHomepageButtonLabel(const char *label);
 };
 #endif
