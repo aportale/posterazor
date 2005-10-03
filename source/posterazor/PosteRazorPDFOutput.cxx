@@ -205,7 +205,7 @@ public:
 		err = AddImageResourcesAndXObject();
 
 		unsigned int imageBytesCount = GetImageBytesCount(widthPixels, heightPixels, bitPerPixel);
-		unsigned int imageBytesCountCompressed = ((double)(ceil(imageBytesCount*1.01)))+12;
+		unsigned int imageBytesCountCompressed = (unsigned int)(ceil((double)imageBytesCount*1.05))+12;
 		unsigned char *imageDataCompressed = NULL;
 
 		if (!err)

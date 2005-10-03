@@ -166,11 +166,11 @@ public:
 				temp24BPPImage = FreeImage_Allocate(GetWidthPixels(), GetHeightPixels(), 24);
 				unsigned int scanlinesCount = GetHeightPixels();
 				unsigned int columnsCount = GetWidthPixels();
-				for (int scanline = 0; scanline < scanlinesCount; scanline++)
+				for (unsigned int scanline = 0; scanline < scanlinesCount; scanline++)
 				{
 					BYTE *cmykBits = FreeImage_GetScanLine(m_bitmap, scanline);
 					BYTE *rgbBits = FreeImage_GetScanLine(temp24BPPImage, scanline);
-					for (int column = 0; column < columnsCount; column++)
+					for (unsigned int column = 0; column < columnsCount; column++)
 					{
 						unsigned int cmykColumn = column * 4;
 						unsigned int rgbColumn = column * 3;
@@ -180,9 +180,9 @@ public:
 						BYTE yellow = cmykBits[cmykColumn + 2];
 						BYTE black = cmykBits[cmykColumn + 3];
 
-						BYTE red = MAX(0, (255 - yellow/1.5 - black/1.5));
-						BYTE green = MAX(0, (255 - magenta/1.5 - black/1.5));
-						BYTE blue = MAX(0, (255 - cyan/1.5 - black/1.5));
+						BYTE red = MAX(0, (255 - (unsigned char)((double)yellow/1.5) - (unsigned char)((double)black/1.5)));
+						BYTE green = MAX(0, (255 - (unsigned char)((double)magenta/1.5) - (unsigned char)((double)black/1.5)));
+						BYTE blue = MAX(0, (255 - (unsigned char)((double)cyan/1.5) - (unsigned char)((double)black/1.5)));
 
 						rgbBits[rgbColumn] = red;
 						rgbBits[rgbColumn + 1] = green;
