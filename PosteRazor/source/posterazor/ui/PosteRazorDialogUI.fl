@@ -441,7 +441,7 @@ widget_class PosteRazorDialogUI {
 
 widget_class PosteRazorHelpDialogUI {
   user_data this open
-  xywh {368 300 500 400} type Double resizable
+  xywh {106 228 500 400} type Double resizable
   code0 {size_range(300, 150);}
   class Fl_Double_Window visible
 } {
@@ -461,7 +461,7 @@ widget_class PosteRazorHelpDialogUI {
     Fl_Button m_homepageButton {
       label Homepage
       callback {HandleHomepageButtonClick();} selected
-      xywh {10 365 190 25}
+      xywh {10 365 185 25}
     }
     Fl_Box {} {
       xywh {333 365 10 25} labelsize 8 resizable
