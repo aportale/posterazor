@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>PosteRazor</string>
 	<key>CFBundleIconFile</key>
-	<string></string>
+	<string>PosteRazor</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.apple.myCarbonApp</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -20,5 +20,7 @@
 	<string>1.0</string>
 	<key>CSResourcesFileMapped</key>
 	<true/>
+	<key>CFBundleGetInfoString</key>
+	<string>PosteRazor 1.0, Copyright 2005 Alessandro Portale, GNU General Public License</string>
 </dict>
 </plist>
