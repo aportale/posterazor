@@ -91,6 +91,8 @@ PosteRazorDialog::PosteRazorDialog(void)
 	m_dragDropWidget = new PosteRazorDragDropWidget(0, 0, w(), h());
 	end();
 
+	m_wizard->value(m_loadInputImageStep);
+
 	m_posteRazor = PosteRazor::CreatePosteRazor();
 
 	Fl_Persistent_Preferences preferences(PreferencesVendor, PreferencesProduct);
@@ -555,11 +557,6 @@ int main (int argc, char **argv)
 #endif
 
 	dialog.show(argc, argv);
-#ifdef WIN32
-	dialog.LoadInputImage("c:\\image.png");
-#else
-//	dialog.LoadInputImage("/temp/image.png");
-#endif
 	Fl::scheme("plastic");
 
 	return Fl::run();
