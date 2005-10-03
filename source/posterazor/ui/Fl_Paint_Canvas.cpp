@@ -55,7 +55,7 @@ void Fl_Paint_Canvas::draw()
 void Fl_Paint_Canvas::DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue)
 {
 	fl_color(red, green, blue);
-	fl_rectf(x + Fl_Box::x() + BORDER, y + Fl_Box::y() + BORDER, width, height);
+	fl_rectf((int)(x + Fl_Box::x() + BORDER), (int)(y + Fl_Box::y() + BORDER), (int)width, (int)height);
 }
 
 void Fl_Paint_Canvas::DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue)
@@ -71,14 +71,14 @@ void Fl_Paint_Canvas::DrawRect(double x, double y, double width, double height, 
 	else
 	{
 		fl_color(red, green, blue);
-		fl_rect(x + Fl_Box::x() + BORDER, y + Fl_Box::y() + BORDER, width, height);
+		fl_rect((int)(x + Fl_Box::x() + BORDER), (int)(y + Fl_Box::y() + BORDER), (int)width, (int)height);
 	}
 }
 
 void Fl_Paint_Canvas::DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue)
 {
 	fl_color(red, green, blue);
-	fl_line(x1 + Fl_Box::x() + BORDER, y1 + Fl_Box::y() + BORDER, x2 + Fl_Box::x() + BORDER, y2 + Fl_Box::y() + BORDER);
+	fl_line((int)(x1 + Fl_Box::x() + BORDER), (int)(y1 + Fl_Box::y() + BORDER), (int)(x2 + Fl_Box::x() + BORDER), (int)(y2 + Fl_Box::y() + BORDER));
 }
 
 void Fl_Paint_Canvas::GetSize(double &width, double &height) const
@@ -97,8 +97,8 @@ void Fl_Paint_Canvas::SetImage(const unsigned char* rgbData, double width, doubl
 {
 	DisposeImage();
 	m_imageRGBData = new unsigned char[(int)width * (int)height * 3];
-	memcpy(m_imageRGBData, rgbData, width * height * 3);
-	m_image = new Fl_RGB_Image(m_imageRGBData, width, height);
+	memcpy(m_imageRGBData, rgbData, (int)width * (int)height * 3);
+	m_image = new Fl_RGB_Image(m_imageRGBData, (int)width, (int)height);
 }
 
 void Fl_Paint_Canvas::DisposeImage(void)
@@ -131,9 +131,9 @@ void Fl_Paint_Canvas::DrawImage(double x, double y, double width, double height)
 		}
 
 		if (!m_scaledImage)
-			m_scaledImage = m_image->copy(width, height);
+			m_scaledImage = m_image->copy((int)width, (int)height);
 
 		if (m_scaledImage)
-			m_scaledImage->draw(x + Fl_Box::x() + BORDER, y + Fl_Box::y() + BORDER);
+			m_scaledImage->draw((int)(x + Fl_Box::x() + BORDER), (int)(y + Fl_Box::y() + BORDER));
 	}
 }
