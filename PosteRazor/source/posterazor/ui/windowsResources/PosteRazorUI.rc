@@ -1,4 +1,4 @@
-//Microsoft Developer Studio generated resource script.
+// Microsoft Visual C++ generated resource script.
 //
 #include "PosteRazorResource.h"
 
@@ -28,9 +28,8 @@ LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-POSTERAZOR_ICON         ICON    DISCARDABLE     "PosteRazor.ico"
+POSTERAZOR_ICON         ICON                    "PosteRazor.ico"
 
-#ifndef _MAC
 /////////////////////////////////////////////////////////////////////////////
 //
 // Version
@@ -53,18 +52,15 @@ BEGIN
     BEGIN
         BLOCK "00000000"
         BEGIN
-            VALUE "Comments", "PosteRazor 1.0, Copyright 2005 Alessandro Portale, GNU General Public License\0"
-            VALUE "CompanyName", "Alessandro Portale www.casaportale.de\0"
-            VALUE "FileDescription", "PosteRazor\0"
-            VALUE "FileVersion", "1.0\0"
-            VALUE "InternalName", "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2005 Alessandro Portale\0"
-            VALUE "LegalTrademarks", "Alessandro Portale\0"
-            VALUE "OriginalFilename", "PosteRazor.exe\0"
-            VALUE "PrivateBuild", "\0"
-            VALUE "ProductName", "PosteRazor\0"
-            VALUE "ProductVersion", "1.0\0"
-            VALUE "SpecialBuild", "\0"
+            VALUE "Comments", "PosteRazor 1.0, Copyright 2005 Alessandro Portale, GNU General Public License"
+            VALUE "CompanyName", "Alessandro Portale www.casaportale.de"
+            VALUE "FileDescription", "PosteRazor"
+            VALUE "FileVersion", "1.0"
+            VALUE "LegalCopyright", "Copyright (C) 2005 Alessandro Portale"
+            VALUE "LegalTrademarks", "Alessandro Portale"
+            VALUE "OriginalFilename", "PosteRazor.exe"
+            VALUE "ProductName", "PosteRazor"
+            VALUE "ProductVersion", "1.0"
         END
     END
     BLOCK "VarFileInfo"
@@ -72,8 +68,6 @@ BEGIN
         VALUE "Translation", 0x0, 0
     END
 END
-
-#endif    // !_MAC
 
 #endif    // German (Germany) resources
 /////////////////////////////////////////////////////////////////////////////
@@ -94,18 +88,18 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE MOVEABLE PURE 
+1 TEXTINCLUDE 
 BEGIN
     "PosteRazorResource.h\0"
 END
 
-2 TEXTINCLUDE MOVEABLE PURE 
+2 TEXTINCLUDE 
 BEGIN
     "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE MOVEABLE PURE 
+3 TEXTINCLUDE 
 BEGIN
     "\r\n"
     "\0"
