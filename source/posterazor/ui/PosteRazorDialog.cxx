@@ -76,7 +76,9 @@ public:
 #ifdef WIN32
 		ShellExecute(HWND_DESKTOP, "open", m_homepageURL, NULL, NULL, SW_SHOW);
 #else
-		system(fileName);
+		char commandString[2048];
+		sprintf(commandString, "open %s", m_homepageURL);
+		system(commandString);
 #endif;
 	}
 };
@@ -528,7 +530,9 @@ void PosteRazorDialog::HandlePosterImageAlignment(void)
 
 void PosteRazorDialog::SavePoster(void)
 {
-	Fl_Native_File_Chooser chooser(Fl_Native_File_Chooser::BROWSE_SAVE_FILE);
+	Fl_Native_File_Chooser chooser;
+	chooser.type(Fl_Native_File_Chooser::BROWSE_SAVE_FILE);
+	
 	if (chooser.show() == 0)
 	{
 		int err = m_posteRazor->SavePoster(chooser.filename());
@@ -554,7 +558,7 @@ int main (int argc, char **argv)
 #ifdef WIN32
 	dialog.LoadInputImage("c:\\image.png");
 #else
-	dialog.LoadInputImage("/temp/image.png");
+//	dialog.LoadInputImage("/temp/image.png");
 #endif
 	Fl::scheme("plastic");
 

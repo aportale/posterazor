@@ -643,11 +643,15 @@ public:
 		int pagesCount = (int)(ceil(GetPosterWidth(ePosterSizeModePages))) * (int)(ceil(GetPosterHeight(ePosterSizeModePages)));
 		err = m_imageIO->SavePoster(fileName, GetPosterOutputFormat(), this, pagesCount, ConvertDistanceToCm(GetPrintablePaperAreaWidth()), ConvertDistanceToCm(GetPrintablePaperAreaHeight()));
 		if (!err && GetLaunchPDFApplication())
+		{
 #ifdef WIN32
-		ShellExecute(HWND_DESKTOP, "open", fileName, NULL, NULL, SW_SHOW);
+			ShellExecute(HWND_DESKTOP, "open", fileName, NULL, NULL, SW_SHOW);
 #else
-		system(fileName);
+			char commandStr[2048];
+			sprintf(commandStr, "open %s", fileName);
+			system(commandStr);
 #endif;
+		}
 		return err;
 	}
 

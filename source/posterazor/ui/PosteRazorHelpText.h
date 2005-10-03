@@ -49,7 +49,7 @@
 #define POSTERAZORHELPINDENTATION "<br>&nbsp;&nbsp;&nbsp;&nbsp;"
 #define POSTERAZORHELPENDLINE ""
 
-const static const char *posteRazorHelpText =
+static const char *posteRazorHelpText =
 "<HTML>" POSTERAZORHELPENDLINE \
 	"<BODY>" POSTERAZORHELPENDLINE \
 		"<A name=\"" POSTERAZORHELPANCHORTOP "\"><CENTER><H1>PosteRazor Help</H1></CENTER></A>" POSTERAZORHELPENDLINE \
@@ -131,4 +131,3 @@ const static const char *posteRazorHelpText =
 
 #endif
 
-//		POSTERAZORHELPINDENTATION "" POSTERAZORHELPENDLINE \

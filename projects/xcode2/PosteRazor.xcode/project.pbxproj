@@ -151,6 +151,51 @@
 //822
 //823
 //824
+		8218F42B08F0B364004D5501 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = PosteRazorPDFOutput.cxx;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8218F42C08F0B364004D5501 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = PosteRazorPDFOutput.h;
+			path = /temp/secure/PosteRazor/source/posterazor/PosteRazorPDFOutput.h;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		8218F42D08F0B364004D5501 = {
+			fileRef = 8218F42B08F0B364004D5501;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8218F42E08F0B384004D5501 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = Fl_Persistent_Preferences.cxx;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8218F42F08F0B384004D5501 = {
+			fileRef = 8218F42E08F0B384004D5501;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8218F44D08F0B72C004D5501 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = Fl_Persistent_Preferences.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
 		8221C68308A566EC00EB193B = {
 			isa = PBXFileReference;
 			lastKnownFileType = archive.ar;
@@ -243,6 +288,8 @@
 		};
 		82814C4808A564A3006D2A26 = {
 			children = (
+				8218F42B08F0B364004D5501,
+				8218F42C08F0B364004D5501,
 				82814C4908A564A3006D2A26,
 				82814C4A08A564A3006D2A26,
 				82814C4B08A564A3006D2A26,
@@ -298,6 +345,8 @@
 		};
 		82814C4E08A564A3006D2A26 = {
 			children = (
+				8218F42E08F0B384004D5501,
+				8218F44D08F0B72C004D5501,
 				82814C4F08A564A3006D2A26,
 				82814C5008A564A3006D2A26,
 				82814C5108A564A3006D2A26,
@@ -539,6 +588,8 @@
 				82814C5F08A564A3006D2A26,
 				82814C6008A564A3006D2A26,
 				82F043D408B2A4BC00EED792,
+				8218F42D08F0B364004D5501,
+				8218F42F08F0B384004D5501,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
