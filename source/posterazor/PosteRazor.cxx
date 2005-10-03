@@ -466,7 +466,7 @@ public:
 		double canvasWidth = 0, canvasHeight = 0;
 		paintCanvas->GetSize(canvasWidth, canvasHeight);
 		int boxWidth = 0, boxHeight = 0;
-		int x_offset, y_offset;
+		double x_offset, y_offset;
 		
 		const char *state = (const char*)options;
 		
@@ -474,7 +474,7 @@ public:
 		{
 			if (IsImageLoaded())
 			{
-				GetPreviewSize(GetInputImageWidthPixels(), GetInputImageHeightPixels(), canvasWidth, canvasHeight, boxWidth, boxHeight, false);
+				GetPreviewSize(GetInputImageWidthPixels(), GetInputImageHeightPixels(), (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, false);
 				x_offset = (canvasWidth - boxWidth) / 2;
 				y_offset = (canvasHeight - boxHeight) / 2;
 
@@ -485,7 +485,7 @@ public:
 		{
 			double paperWidth = GetPaperWidth();
 			double paperHeight = GetPaperHeight();
-			GetPreviewSize(paperWidth, paperHeight, canvasWidth, canvasHeight, boxWidth, boxHeight, true);
+			GetPreviewSize(paperWidth, paperHeight, (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, true);
 			x_offset = (canvasWidth - boxWidth) / 2;
 			y_offset = (canvasHeight - boxHeight) / 2;
 			double distanceUnitToPixelfactor = (double)boxWidth/paperWidth;
@@ -501,8 +501,8 @@ public:
 
 			if (strcmp(state, "overlapping") == 0)
 			{
-				int overlappingWidth = GetOverlappingWidth() * distanceUnitToPixelfactor;
-				int overlappingHeight = GetOverlappingHeight() * distanceUnitToPixelfactor;
+				double overlappingWidth = GetOverlappingWidth() * distanceUnitToPixelfactor;
+				double overlappingHeight = GetOverlappingHeight() * distanceUnitToPixelfactor;
 				enum eOverlappingPositions overlappingPosition = GetOverlappingPosition();
 				double overlappingTop =
 					(overlappingPosition == eOverlappingPositionTopLeft || overlappingPosition == eOverlappingPositionTopRight)?
@@ -525,7 +525,7 @@ public:
 			int pagesVertical = (int)ceil(GetPosterHeight(ePosterSizeModePages));
 			double posterWidth = pagesHorizontal*pagePrintableAreaWidth - (pagesHorizontal-1)*GetOverlappingWidth() + GetPaperBorderLeft() + GetPaperBorderRight();
 			double posterHeight = pagesVertical*pagePrintableAreaHeight - (pagesVertical-1)*GetOverlappingHeight() + GetPaperBorderTop() + GetPaperBorderBottom();
-			GetPreviewSize(posterWidth, posterHeight, canvasWidth, canvasHeight, boxWidth, boxHeight, true);
+			GetPreviewSize(posterWidth, posterHeight, (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, true);
 			x_offset = (canvasWidth - boxWidth) / 2;
 			y_offset = (canvasHeight - boxHeight) / 2;
 			double distanceUnitToPixelfactor = (double)boxWidth/posterWidth;
@@ -570,7 +570,6 @@ public:
 			double overlappingWidth = GetOverlappingWidth() * distanceUnitToPixelfactor;
 			pagePrintableAreaWidth *= distanceUnitToPixelfactor;
 			pagePrintableAreaHeight *= distanceUnitToPixelfactor;
-			enum eOverlappingPositions overlappingPosition = GetOverlappingPosition();
 
 			double overlappingRectangleYPosition = borderTop;
 			for (int pagesRow = 0; pagesRow < pagesVertical - 1; pagesRow++)
@@ -593,7 +592,6 @@ public:
 
 			int columsCount = (int)(ceil(GetPosterWidth(ePosterSizeModePages)));
 			int rowsCount = (int)(ceil(GetPosterHeight(ePosterSizeModePages)));
-			int pagesCount = columsCount * rowsCount;
 			int column = page % columsCount;
 			int row = ((int)(floor((double)page / (double)columsCount)));
 
