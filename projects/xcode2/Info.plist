@@ -20,6 +20,8 @@
 	<string>1.0</string>
 	<key>CSResourcesFileMapped</key>
 	<true/>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
 	<key>CFBundleGetInfoString</key>
 	<string>PosteRazor 1.0, Copyright 2005 Alessandro Portale, GNU General Public License</string>
 </dict>
