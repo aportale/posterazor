@@ -159,10 +159,7 @@
        inkscape:export-xdpi="61.000000"
        inkscape:export-ydpi="61.000000" />
     <g
-       id="g3653"
-       inkscape:export-filename="D:\temp\PosteRazor\webpage\images\logo.png"
-       inkscape:export-xdpi="53.970001"
-       inkscape:export-ydpi="53.970001">
+       id="g1334">
       <rect
          inkscape:export-ydpi="61.000000"
          inkscape:export-xdpi="61.000000"
@@ -206,5 +203,16 @@
            inkscape:export-ydpi="61.000000" />
       </g>
     </g>
+    <use
+       inkscape:export-filename="D:\temp\PosteRazor\source\posterazor\ui\OSXResources\icon_128_image.png"
+       inkscape:export-ydpi="61.070000"
+       inkscape:export-xdpi="61.070000"
+       height="1052.3622"
+       width="744.09448"
+       transform="translate(230.0000,18.41476)"
+       id="use1325"
+       xlink:href="#g2914"
+       y="0.00000000"
+       x="0.00000000" />
   </g>
 </svg>
