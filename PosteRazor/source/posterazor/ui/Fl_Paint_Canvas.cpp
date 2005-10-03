@@ -30,6 +30,7 @@ Fl_Paint_Canvas::Fl_Paint_Canvas(int width, int height, int x, int y)
 	:Fl_Box(width, height, x, y), PaintCanvasInterface()
 {
 	m_stateString[0] = '\0';
+	m_imageRGBData = NULL;
 	m_image = NULL;
 	m_scaledImage = NULL;
 }
@@ -95,7 +96,9 @@ void Fl_Paint_Canvas::RequestImage(void)
 void Fl_Paint_Canvas::SetImage(const unsigned char* rgbData, double width, double height)
 {
 	DisposeImage();
-	m_image = new Fl_RGB_Image(rgbData, width, height);
+	m_imageRGBData = new unsigned char[width * height * 3];
+	memcpy(m_imageRGBData, rgbData, width * height * 3);
+	m_image = new Fl_RGB_Image(m_imageRGBData, width, height);
 }
 
 void Fl_Paint_Canvas::DisposeImage(void)
@@ -103,12 +106,17 @@ void Fl_Paint_Canvas::DisposeImage(void)
 	if (m_image)
 	{
 		delete(m_image);
-		m_image = 0;
+		m_image = NULL;
 	}
 	if (m_scaledImage)
 	{
 		delete(m_scaledImage);
 		m_scaledImage = NULL;
+	}
+	if (m_imageRGBData)
+	{
+		delete[] m_imageRGBData;
+		m_imageRGBData = NULL;
 	}
 }
 

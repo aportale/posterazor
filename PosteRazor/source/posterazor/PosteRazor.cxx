@@ -455,12 +455,10 @@ public:
 	
 	void GetImage(PaintCanvasInterface *paintCanvas) const
 	{
-		unsigned char *rgbData = NULL;
-		int imageWidth;
-		int imageHeight;
-		
-		m_imageIO->GetImageAsRGB(&rgbData, imageWidth, imageHeight);
-		paintCanvas->SetImage(rgbData, imageWidth, imageHeight);
+		unsigned char *rgbData = new unsigned char[m_imageIO->GetWidthPixels() * m_imageIO->GetHeightPixels() * 3];
+		m_imageIO->GetImageAsRGB(rgbData);
+		paintCanvas->SetImage(rgbData, m_imageIO->GetWidthPixels(), m_imageIO->GetHeightPixels());
+		delete[] rgbData;
 	}
 
 	void PaintOnCanvas(PaintCanvasInterface *paintCanvas, void* options = 0) const
