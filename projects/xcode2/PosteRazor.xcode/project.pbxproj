@@ -67,7 +67,7 @@
 		};
 		20286C2CFDCF999611CA2CEA = {
 			children = (
-				8D0C4E960486CD37000505A6,
+				8239907208F175820038ED14,
 			);
 			isa = PBXGroup;
 			name = Resources;
@@ -224,12 +224,6 @@
 			settings = {
 			};
 		};
-		8221C68808A5674300EB193B = {
-			fileRef = 8D0C4E960486CD37000505A6;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		8221C68908A567C100EB193B = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
@@ -237,6 +231,20 @@
 			path = PosteRazor_Prefix.pch;
 			refType = 4;
 			sourceTree = "<group>";
+		};
+		8239907208F175820038ED14 = {
+			explicitFileType = image.icns;
+			isa = PBXFileReference;
+			name = PosteRazor.icns;
+			path = ../../source/posterazor/ui/OSXResources/PosteRazor.icns;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		8239907308F175820038ED14 = {
+			fileRef = 8239907208F175820038ED14;
+			isa = PBXBuildFile;
+			settings = {
+			};
 		};
 		82814C2408A5642E006D2A26 = {
 			fileRef = 4A9504C8FFE6A3BC11CA0CBA;
@@ -581,7 +589,7 @@
 		8D0C4E8C0486CD37000505A6 = {
 			buildActionMask = 2147483647;
 			files = (
-				8221C68808A5674300EB193B,
+				8239907308F175820038ED14,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -619,14 +627,6 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
-		};
-		8D0C4E960486CD37000505A6 = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			lastKnownFileType = text.plist;
-			path = Info.plist;
-			refType = 4;
-			sourceTree = "<group>";
 		};
 	};
 	rootObject = 20286C28FDCF999611CA2CEA;
