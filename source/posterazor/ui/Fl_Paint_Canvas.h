@@ -31,6 +31,7 @@ class Fl_Paint_Canvas: public Fl_Box, public PaintCanvasInterface
 {
 private:
 	char m_stateString[1024];
+	unsigned char *m_imageRGBData;
 	Fl_RGB_Image *m_image;
 	Fl_Image *m_scaledImage;
 	
