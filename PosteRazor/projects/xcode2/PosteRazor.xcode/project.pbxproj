@@ -345,6 +345,7 @@
 		};
 		82814C4E08A564A3006D2A26 = {
 			children = (
+				82C3A2DC08F13E4900E40AEE,
 				8218F42E08F0B384004D5501,
 				8218F44D08F0B72C004D5501,
 				82814C4F08A564A3006D2A26,
@@ -482,6 +483,14 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
+		};
+		82C3A2DC08F13E4900E40AEE = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = PosteRazorHelpText.h;
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		82E5567008A56658001EEB51 = {
 			explicitFileType = wrapper.application;
