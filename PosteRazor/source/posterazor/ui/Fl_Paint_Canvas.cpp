@@ -96,7 +96,7 @@ void Fl_Paint_Canvas::RequestImage(void)
 void Fl_Paint_Canvas::SetImage(const unsigned char* rgbData, double width, double height)
 {
 	DisposeImage();
-	m_imageRGBData = new unsigned char[width * height * 3];
+	m_imageRGBData = new unsigned char[(int)width * (int)height * 3];
 	memcpy(m_imageRGBData, rgbData, width * height * 3);
 	m_image = new Fl_RGB_Image(m_imageRGBData, width, height);
 }
