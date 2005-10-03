@@ -197,8 +197,6 @@ public:
 			originalImage = temp24BPPImage;
 		}
 		
-		unsigned long numberOfPixels = m_widthPixels * m_heightPixels;
-
 		FreeImage_ConvertToRawBits(buffer, originalImage, m_widthPixels*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
 
 #ifdef _WIN32
