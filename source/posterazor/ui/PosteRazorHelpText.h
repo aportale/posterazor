@@ -74,7 +74,7 @@ static const char *posteRazorHelpText =
 
 		"<br><H3><A name=\"" POSTERAZORHELPANCHORABOUT "\">About</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
 		POSTERAZORHELPINDENTATION "The PosteRazor cuts a raster image into pieces which can be printed on a printer and be put together to a poster. As an input image, raster files of <A href=\"#" POSTERAZORHELPANCHORMANUALSTEP01 "\">various</A> image file formats are supported. Instead of directly printing the poster, the PosteRazor produces a multi page PDF files which contains the poster tiles.<br>" POSTERAZORHELPENDLINE \
-		"It is an open source program which depends on <a href=\"#" POSTERAZORHELPANCHORINPUTFILEFORMATS "\">other open source projects</a>." POSTERAZORHELPENDLINE \
+		"It is an open source program which depends on <a href=\"#" POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES "\">other open source projects</a>." POSTERAZORHELPENDLINE \
 		"The PosteRazor is hostet on <b>posterazor.sourceforge.net</b>." POSTERAZORHELPENDLINE \
 
 		"<br><H3><A name=\"" POSTERAZORHELPANCHORMANUAL "\">Manual</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
