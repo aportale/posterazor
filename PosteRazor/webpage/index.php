@@ -147,7 +147,7 @@
 				</li>
 				<li>
 					<b>Image types.</b> The following image color types are handable:
-					<div class="fileformats">Monochrome, Grayscale, 4 Bit palette, 8 Bit palette, 24 Bit RGB, 48 Bit RGB (only via TIFF), 32 Bit CMYK (only via TIFF)</div>
+					<div class="fileformats">Monochrome, Grayscale, 4 Bit palette, 8 Bit palette, 24 Bit RGB, 48 Bit RGB <small>(only via TIFF and PNG)</small>, 32 Bit CMYK <small>(only via TIFF)</small></div>
 					32 Bit RGBA images can be loaded, but are transformed to 24 Bit RGB by "composing" them on a white background.
 				</li>
 				<li>
