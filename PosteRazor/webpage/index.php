@@ -136,7 +136,7 @@
 			<h2><a name="about"></a>About</h2>
 			The PosteRazor cuts a raster image into pieces which can afterwards be printed out and assembled to a poster.
 			<br /><div style="text-align: center; margin: 10px;"><img src="images/workflow.png" width="400" height="114" alt="PosteRazor workflow"/></div>
-			As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps. PosteRazor is available as a Windows and as an OSX version (it should also be compilable on Linux). It is an open source, <a href="#license">GNU licensed</a> project which is hosted on SourceForge.net. For feedback, bug reports feature requests, please use the <a href="http://sourceforge.net/projects/posterazor/">PosteRazor project page</a> or write a mail to <b>Alessandro&nbsp;&auml;t&nbsp;casaportale&nbsp;d&ocirc;t de</b>
+			As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps. PosteRazor is available as a Windows and as an OSX version (it should also be compilable on Linux). It is an open source, <a href="#license">GNU licensed</a> project which is hosted on SourceForge.net. For feedback, bug reports feature requests, please use the <a href="http://sourceforge.net/projects/posterazor/">PosteRazor project page</a>, write a mail to <b>Alessandro&nbsp;&auml;t&nbsp;casaportale&nbsp;d&ocirc;t de</b> or contact the author via <a href="http://www.casaportale.de/html/index.php?page=contact&amp;lang=english&amp;menu=on">mail form</a>.
 			
 			<hr />
 			<h2><a name="features"></a>Features</h2>
@@ -147,7 +147,8 @@
 				</li>
 				<li>
 					<b>Image types.</b> The following image color types are handable:
-					<div class="fileformats">Monochrome, Grayscale, 4 Bit palette, 8 Bit palette, 24 Bit RGB/A, 48 Bit RGB (only via TIFF), 32 Bit CMYK (only via TIFF)</div>
+					<div class="fileformats">Monochrome, Grayscale, 4 Bit palette, 8 Bit palette, 24 Bit RGB, 48 Bit RGB (only via TIFF), 32 Bit CMYK (only via TIFF)</div>
+					32 Bit RGBA images can be loaded, but are transformed to 24 Bit RGB by "composing" them on a white background.
 				</li>
 				<li>
 					<b>Dimension Units.</b> Because people around the world invented so many different dimension units, PosteRazor supports quite a few:
@@ -172,7 +173,7 @@
 					<b>Image tile overlapping.</b> For a bigger tolerance when cutting spare paper borders and for easier pasting, an overlapping width and height of an image tile over the next can be set.
 				</li>
 				<li>
-					<b>PDF output.</b> The PDF output is implemented with the maximum image quality and a good compression in mind. The source image is embedded once in the PDF document and referenced from every tile page. The image color types remain unchanged. As compression method, the PDF "FlateDecode filter" (zip) is used. If a Jpeg image is used as input it gets directly embedded into the document without recompression.
+					<b>PDF output.</b> The PDF output is implemented with the maximum image quality and a good compression in mind. A source image is embedded once in the PDF document and referenced from every tile page. Image color types remain unchanged. As compression method, the PDF "FlateDecode filter" (zip) is used. If a Jpeg image is used as input it gets directly embedded into the document without recompression. The PDF version is 1.4, so any acrobat readre version 4 and higher should be able to read the resulting document.
 				</li>
 			</ul>
 			<b>Missing features:</b> Cut lines/aids; Support of Jpeg-CMYK images; Support of 16 Bit Grayscale images; Embedding an ICC profile into the PDF if there is one embedded in the input image
