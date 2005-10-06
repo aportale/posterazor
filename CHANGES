@@ -1,0 +1,4 @@
+PosteRazor 1.1
+==============
+-   Fixed: Step 1, information fields are not updated when changing
+           the unit while still no Image is loaded.
