@@ -197,9 +197,11 @@ public:
 			originalImage = temp24BPPImage;
 		}
 		
-		FreeImage_ConvertToRawBits(buffer, originalImage, m_widthPixels*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
+		FreeImage_ConvertToRawBits(buffer, originalImage, GetWidthPixels()*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
 
 #ifdef _WIN32
+		unsigned int numberOfPixels = GetWidthPixels() * GetHeightPixels();
+
 		for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++)
 		{
 			unsigned char *pixelPtr = buffer + pixelIndex*3;
