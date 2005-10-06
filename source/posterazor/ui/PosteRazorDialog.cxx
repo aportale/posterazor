@@ -328,6 +328,9 @@ void PosteRazorDialog::LoadInputImage(const char *fileName)
 
 void PosteRazorDialog::UpdateImageInfoFields(void)
 {
+	if (!m_posteRazor->IsImageLoaded())
+		return;
+	
 	char string[1024];
 	enum PosteRazor::eColorTypes colorType = m_posteRazor->GetInputImageColorType();
 
