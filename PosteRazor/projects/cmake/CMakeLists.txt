@@ -34,8 +34,10 @@ SET_TARGET_PROPERTIES(PosteRazor PROPERTIES LINK_FLAGS "/nodefaultlib:LIBC")
 ADD_EXECUTABLE(PosteRazor POSTERAZOR_SRCS)
 
 TARGET_LINK_LIBRARIES(PosteRazor
-	fltk
-	FreeImage
+	debug fltkd
+	optimized fltk
+	debug FreeImaged
+	optimized FreeImage
 	wsock32
 	comctl32
 )
