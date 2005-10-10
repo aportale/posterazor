@@ -52,21 +52,21 @@ void Fl_Paint_Canvas::draw()
 	m_painter->PaintOnCanvas(this, m_stateString);
 }
 
-void Fl_Paint_Canvas::DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue)
+void Fl_Paint_Canvas::DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
 	fl_color(red, green, blue);
 	fl_rectf((int)(x + Fl_Box::x() + BORDER), (int)(y + Fl_Box::y() + BORDER), (int)width, (int)height);
 }
 
-void Fl_Paint_Canvas::DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue)
+void Fl_Paint_Canvas::DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
 	if (height < 1)
 	{
-		DrawLine(x, y, x+width, y, red, green, blue);
+		DrawLine(x, y, x+width, y, red, green, blue, alpha);
 	}
 	else if (width < 1)
 	{
-		DrawLine(x, y, x, y+height, red, green, blue);
+		DrawLine(x, y, x, y+height, red, green, blue, alpha);
 	}
 	else
 	{
@@ -75,7 +75,7 @@ void Fl_Paint_Canvas::DrawRect(double x, double y, double width, double height, 
 	}
 }
 
-void Fl_Paint_Canvas::DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue)
+void Fl_Paint_Canvas::DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
 	fl_color(red, green, blue);
 	fl_line((int)(x1 + Fl_Box::x() + BORDER), (int)(y1 + Fl_Box::y() + BORDER), (int)(x2 + Fl_Box::x() + BORDER), (int)(y2 + Fl_Box::y() + BORDER));

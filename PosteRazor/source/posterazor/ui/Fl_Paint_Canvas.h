@@ -42,9 +42,9 @@ public:
 	virtual void SetState(const char *state);
 		
 	virtual void draw();
-	virtual void DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue);
-	virtual void DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue);
-	virtual void DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue);
+	virtual void DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
+	virtual void DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
+	virtual void DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
 	virtual void GetSize(double &width, double &height) const;
 
 	virtual void RequestImage(void);
