@@ -168,7 +168,7 @@ public:
 
 		while(!err && !feof(jpegFile))
 		{
-			int readBytes = fread(buffer, 1, JPEGFILECOPYBUFFERSIZE, jpegFile);
+			size_t readBytes = fread(buffer, 1, JPEGFILECOPYBUFFERSIZE, jpegFile);
 			if (!ferror(jpegFile))
 			{
 				fwrite(buffer, 1, readBytes, m_outputFile);
