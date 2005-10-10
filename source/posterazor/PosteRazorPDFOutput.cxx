@@ -444,9 +444,9 @@ public:
 		return err;
 	}
 
-	void DrawFilledRect(double x, double y, double width, double heigth, unsigned char red, unsigned char green, unsigned char blue) {}
-	void DrawRect(double x, double y, double width, double heigth, unsigned char red, unsigned char green, unsigned char blue) {}
-	void DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue) {}
+	void DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
+	void DrawRect(double x, double y, double width, double heigth, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
+	void DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
 	void GetSize(double &width, double &height) const {}
 	void SetImage(const unsigned char* rgbData, double width, double height) {}
 	void DrawImage(double x, double y, double width, double height)
