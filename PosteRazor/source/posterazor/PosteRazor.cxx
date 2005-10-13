@@ -551,16 +551,16 @@ public:
 				(
 					horizontalAlignment == eHorizontalAlignmentLeft?borderLeft
 					:horizontalAlignment == eHorizontalAlignmentCenter?
-						MINMAX((boxWidth - imageWidth) / 2, borderLeft, (int)borderLeft + (int)posterPrintableAreaWidth - (int)imageWidth)
-					:((int)borderLeft + (int)posterPrintableAreaWidth - (int)imageWidth)
+						MINMAX(((double)boxWidth - imageWidth) / 2, borderLeft, borderLeft + posterPrintableAreaWidth - imageWidth)
+					:(borderLeft + posterPrintableAreaWidth - imageWidth)
 				)
 				+ x_offset,
 
 				(
 					verticalAlignment == eVerticalAlignmentTop?borderTop
 					:verticalAlignment == eVerticalAlignmentMiddle?
-						MINMAX((boxHeight - imageHeight) / 2, borderTop, (int)borderTop + (int)posterPrintableAreaHeight - (int)imageHeight)
-					:((int)borderTop + (int)posterPrintableAreaHeight - (int)imageHeight)
+						MINMAX(((double)boxHeight - imageHeight) / 2, borderTop, borderTop + posterPrintableAreaHeight - imageHeight)
+					:(borderTop + posterPrintableAreaHeight - imageHeight)
 					)
 				+ y_offset,
 				imageWidth, imageHeight
