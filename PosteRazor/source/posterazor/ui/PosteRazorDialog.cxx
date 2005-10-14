@@ -139,7 +139,10 @@ PosteRazorDialog::PosteRazorDialog(void)
 	m_imageInfoGroup->deactivate();
 
 	m_previewPaintCanvas->SetPainterInterface(m_posteRazor);
-
+/*	Fl::get_system_colors();
+	unsigned int backgroundColor = Fl::get_color(m_previewPaintCanvas->color());
+	m_previewPaintCanvas->SetBackgroundColor((backgroundColor >> 24) & 255, (backgroundColor >> 16) & 255, (backgroundColor >> 8) & 255);
+*/
 	UpdateNavigationButtons();
 	UpdatePreviewState();
 	SetPaperSizeFields();
@@ -318,6 +321,7 @@ void PosteRazorDialog::LoadInputImage(const char *fileName)
 		UpdateImageInfoFields();
 		m_imageInfoGroup->activate();
 		m_inputFileNameLabel->copy_label(fl_filename_name(loadFileName));
+		Fl::wait();
 		m_previewPaintCanvas->RequestImage();
 		m_previewPaintCanvas->redraw();
 		UpdatePosterSizeFields(NULL);
