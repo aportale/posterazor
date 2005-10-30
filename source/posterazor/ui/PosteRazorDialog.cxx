@@ -34,6 +34,7 @@
 
 const char PreferencesVendor[] = "CasaPortale.de";
 const char PreferencesProduct[] = "PosteRazor";
+const char preferencesKey_UseOpenGLForPreview[] = "UseOpenGLForPreview";
 
 PosteRazorDragDropWidget::PosteRazorDragDropWidget(int x, int y, int w, int h, const char *label)
 	:Fl_Box(FL_NO_BOX, x, y, w, h, label)
@@ -83,9 +84,87 @@ public:
 	}
 };
 
+class PosteRazorSettingsDialog: public PosteRazorSettingsDialogUI
+{
+	posteRazorSettings *m_settings;
+	posteRazorSettings m_settingsBackup;
+	SettingsChangementHandler *m_changementHandler;
+	Fl_Menu_Item  *m_distanceUnitMenuItems;
+
+public:
+	PosteRazorSettingsDialog()
+		:PosteRazorSettingsDialogUI(315, 400, "PosteRazor Settings")
+	{
+		int distanceUnitMenuItemsCount = PosteRazor::GetDistanceUnitsCount()+1;
+		m_distanceUnitMenuItems = new Fl_Menu_Item[distanceUnitMenuItemsCount];
+		memset(m_distanceUnitMenuItems, 0, sizeof(Fl_Menu_Item)*distanceUnitMenuItemsCount);
+		for (int i = 0; i < PosteRazor::GetDistanceUnitsCount(); i++)
+		{
+			const char* distanceUnitName = DistanceUnits::GetDistanceUnitName(PosteRazor::GetDistanceUnitForIndex(i));
+			m_distanceUnitMenuItems[i].label(distanceUnitName);
+			m_distanceUnitMenuItems[i].callback(HandleDistanceUnitChoice_cb);
+			m_distanceUnitMenuItems[i].user_data((void*)this);
+		}
+		m_distanceUnitChoice->menu(m_distanceUnitMenuItems);
+	}
+
+	~PosteRazorSettingsDialog()
+	{
+		if (m_distanceUnitMenuItems)
+			delete[] m_distanceUnitMenuItems;
+	}
+
+	void SetOptionsAndHandler(posteRazorSettings *settings, SettingsChangementHandler *changementHandler)
+	{
+		m_settings = settings;
+		m_settingsBackup = *m_settings;
+		m_changementHandler = changementHandler;
+
+		enum PosteRazor::eDistanceUnits selectedDistanceUnit = m_settings->distanceUnit;
+		m_distanceUnitChoice->value(selectedDistanceUnit);
+		m_useOpenGLCheckButton->value(m_settings->previewType == Fl_Paint_Canvas_Group::PaintCanvasTypeGL?1:0);
+	}
+
+	static void HandleDistanceUnitChoice_cb(Fl_Widget *widget, void *userData)
+	{
+		((PosteRazorSettingsDialog*)userData)->HandleDistanceUnitChangement(((PosteRazorSettingsDialog*)userData)->m_distanceUnitChoice);
+	}
+
+	void HandleDistanceUnitChangement(Fl_Widget *sourceWidget)
+	{
+		const char* distanceUnitName = m_distanceUnitMenuItems[m_distanceUnitChoice->value()].label();
+		m_settings->distanceUnit = PosteRazor::GetDistanceUnitForName(distanceUnitName);
+
+		if (m_changementHandler)
+			m_changementHandler->HandleOptionsChangement(m_settings);
+	}
+
+	void HandleUseOpenGLChangement(void)
+	{
+		m_settings->previewType = m_useOpenGLCheckButton->value()?Fl_Paint_Canvas_Group::PaintCanvasTypeGL:Fl_Paint_Canvas_Group::PaintCanvasTypeDraw;
+
+		if (m_changementHandler)
+			m_changementHandler->HandleOptionsChangement(m_settings);
+	}
+
+	void hide(void)
+	{
+		if (!m_okWasPressed && m_changementHandler)
+		{
+			*m_settings = m_settingsBackup;
+			m_changementHandler->HandleOptionsChangement(m_settings);
+		}
+
+		m_okWasPressed = false;
+		Fl_Window::hide();
+	}
+};
+
 PosteRazorDialog::PosteRazorDialog(void)
 	:PosteRazorDialogUI(620, 455, "PosteRazor")
 {
+	m_settingsDialog = NULL;
+
 	int i;
 	begin();
 	m_dragDropWidget = new PosteRazorDragDropWidget(0, 0, w(), h());
@@ -97,20 +176,8 @@ PosteRazorDialog::PosteRazorDialog(void)
 
 	Fl_Persistent_Preferences preferences(PreferencesVendor, PreferencesProduct);
 	m_posteRazor->ReadPersistentPreferences(&preferences);
-
-	int distanceUnitMenuItemsCount = PosteRazor::GetDistanceUnitsCount()+1;
-	m_distanceUnitMenuItems = new Fl_Menu_Item[distanceUnitMenuItemsCount];
-	memset(m_distanceUnitMenuItems, 0, sizeof(Fl_Menu_Item)*distanceUnitMenuItemsCount);
-	for (i = 0; i < PosteRazor::GetDistanceUnitsCount(); i++)
-	{
-		const char* distanceUnitName = DistanceUnits::GetDistanceUnitName(PosteRazor::GetDistanceUnitForIndex(i));
-		m_distanceUnitMenuItems[i].label(distanceUnitName);
-		m_distanceUnitMenuItems[i].callback(HandleDistanceUnitChoice_cb);
-		m_distanceUnitMenuItems[i].user_data((void*)this);
-	}
-	m_distanceUnitChoice->menu(m_distanceUnitMenuItems);
-	enum PosteRazor::eDistanceUnits selectedDistanceUnit = m_posteRazor->GetDistanceUnit();
-	m_distanceUnitChoice->value(selectedDistanceUnit);
+	Fl_Paint_Canvas_Group::ePaintCanvasTypes paintCanvasType =
+		preferences.GetBoolean(preferencesKey_UseOpenGLForPreview, true)?Fl_Paint_Canvas_Group::PaintCanvasTypeGL:Fl_Paint_Canvas_Group::PaintCanvasTypeDraw;
 
 	int paperFormatMenuItemsCount = PosteRazor::GetPaperFormatsCount()+1;
 	m_paperFormatMenuItems = new Fl_Menu_Item[paperFormatMenuItemsCount];
@@ -138,11 +205,9 @@ PosteRazorDialog::PosteRazorDialog(void)
 
 	m_imageInfoGroup->deactivate();
 
-	m_previewPaintCanvas->SetPainterInterface(m_posteRazor);
-/*	Fl::get_system_colors();
-	unsigned int backgroundColor = Fl::get_color(m_previewPaintCanvas->color());
-	m_previewPaintCanvas->SetBackgroundColor((backgroundColor >> 24) & 255, (backgroundColor >> 16) & 255, (backgroundColor >> 8) & 255);
-*/
+	m_paintCanvasGroup->SetPaintCanvasType(paintCanvasType);
+	m_paintCanvasGroup->SetPainterInterface(m_posteRazor);
+
 	UpdateNavigationButtons();
 	UpdatePreviewState();
 	SetPaperSizeFields();
@@ -155,9 +220,13 @@ PosteRazorDialog::~PosteRazorDialog()
 {
 	Fl_Persistent_Preferences preferences(PreferencesVendor, PreferencesProduct);
 	m_posteRazor->WritePersistentPreferences(&preferences);
+	preferences.SetBoolean(m_paintCanvasGroup->GetPaintCanvasType() == Fl_Paint_Canvas_Group::PaintCanvasTypeGL, preferencesKey_UseOpenGLForPreview);
 
 	if (m_paperFormatMenuItems)
 		delete[] m_paperFormatMenuItems;
+
+	if (m_settingsDialog)
+		delete m_settingsDialog;
 }
 
 int PosteRazorDialog::handle(int event)
@@ -172,21 +241,35 @@ int PosteRazorDialog::handle(int event)
 	};
 }
 
-void PosteRazorDialog::HandleDistanceUnitChoice_cb(Fl_Widget *widget, void *userData)
+void PosteRazorDialog::OpenSettingsDialog(void)
 {
-	((PosteRazorDialog*)userData)->HandleDistanceUnitChangement(((PosteRazorDialog*)userData)->m_distanceUnitChoice);
+	if (!m_settingsDialog)
+	{
+		m_settings.distanceUnit = m_posteRazor->GetDistanceUnit();
+		m_settings.previewType = m_paintCanvasGroup->GetPaintCanvasType();
+		m_settingsDialog = new PosteRazorSettingsDialog();
+		m_settingsDialog->set_modal();
+	}
+	m_settingsDialog->SetOptionsAndHandler(&m_settings, this);
+	m_settingsDialog->show();
 }
 
-void PosteRazorDialog::HandleDistanceUnitChangement(Fl_Widget *sourceWidget)
+void PosteRazorDialog::HandleOptionsChangement(posteRazorSettings *settings)
 {
-	const char* distanceUnitName = m_distanceUnitMenuItems[m_distanceUnitChoice->value()].label();
-	enum PosteRazor::eDistanceUnits distanceUnit = PosteRazor::GetDistanceUnitForName(distanceUnitName);
-	m_posteRazor->SetDistanceUnit(distanceUnit);
-	UpdateImageInfoFields();
-	UpdatePosterSizeFields(NULL);
-	SetPaperSizeFields();
-	SetOverlappingFields();
-	UpdateDimensionUnitLabels();
+	if (m_posteRazor->GetDistanceUnit() != settings->distanceUnit)
+	{
+		m_posteRazor->SetDistanceUnit(settings->distanceUnit);
+		UpdateImageInfoFields();
+		UpdatePosterSizeFields(NULL);
+		SetPaperSizeFields();
+		SetOverlappingFields();
+		UpdateDimensionUnitLabels();
+	}
+	if (m_paintCanvasGroup->GetPaintCanvasType() != settings->previewType)
+	{
+		m_paintCanvasGroup->SetPaintCanvasType(settings->previewType);
+		UpdatePreviewState();
+	}
 }
 
 void PosteRazorDialog::next(void)
@@ -266,14 +349,14 @@ void PosteRazorDialog::UpdateStepInfoBar(void)
 
 void PosteRazorDialog::UpdatePreviewState(void)
 {
-	m_previewPaintCanvas->SetState
+	m_paintCanvasGroup->SetState
 	(
 		m_wizard->value() == m_loadInputImageStep?"image"
 		:m_wizard->value() == m_paperSizeStep?"paper"
 		:m_wizard->value() == m_overlappingStep?"overlapping"
 		:"poster"
 	);
-	m_previewPaintCanvas->redraw();
+	m_paintCanvasGroup->redraw();
 }
 
 void PosteRazorDialog::UpdateDimensionUnitLabels(void)
@@ -321,9 +404,7 @@ void PosteRazorDialog::LoadInputImage(const char *fileName)
 		UpdateImageInfoFields();
 		m_imageInfoGroup->activate();
 		m_inputFileNameLabel->copy_label(fl_filename_name(loadFileName));
-		Fl::wait();
-		m_previewPaintCanvas->RequestImage();
-		m_previewPaintCanvas->redraw();
+		m_paintCanvasGroup->RequestImage();
 		UpdatePosterSizeFields(NULL);
 	}
 
@@ -408,7 +489,7 @@ void PosteRazorDialog::UpdatePosterSizeFields(Fl_Valuator *sourceWidget)
 		}
 	}
 
-	m_previewPaintCanvas->redraw();
+	m_paintCanvasGroup->redraw();
 }
 
 void PosteRazorDialog::SetPaperSizeFields(void)
@@ -458,7 +539,7 @@ void PosteRazorDialog::HandlePaperSizeChangement(Fl_Widget *sourceWidget)
 		m_posteRazor->SetCustomPaperHeight(m_paperCustomHeightInput->value());
 	}
 
-	m_previewPaintCanvas->redraw();
+	m_paintCanvasGroup->redraw();
 }
 
 void PosteRazorDialog::SetOverlappingFields(void)
@@ -489,7 +570,7 @@ void PosteRazorDialog::HandleOverlappingChangement(Fl_Widget *sourceWidget)
 		:PosteRazor::eOverlappingPositionTopRight
 	);
 
-	m_previewPaintCanvas->redraw();
+	m_paintCanvasGroup->redraw();
 }
 
 void PosteRazorDialog::UpdatePosterSizeGroupsState(void)
@@ -534,7 +615,7 @@ void PosteRazorDialog::HandlePosterImageAlignment(void)
 		:PosteRazor::eHorizontalAlignmentRight
 	);
 	
-	m_previewPaintCanvas->redraw();
+	m_paintCanvasGroup->redraw();
 }
 
 void PosteRazorDialog::SavePoster(void)
@@ -565,6 +646,7 @@ int main (int argc, char **argv)
 
 	dialog.show(argc, argv);
 	Fl::scheme("plastic");
+	dialog.LoadInputImage("c:\\image.png");
 
 	return Fl::run();
 }

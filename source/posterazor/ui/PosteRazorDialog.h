@@ -35,13 +35,26 @@ public:
 	int handle(int event);
 };
 
-class PosteRazorDialog : public PosteRazorDialogUI
+typedef struct
+{
+	enum PosteRazor::eDistanceUnits distanceUnit;
+	enum Fl_Paint_Canvas_Group::ePaintCanvasTypes previewType;
+} posteRazorSettings;
+
+class SettingsChangementHandler
+{
+public:
+	virtual void HandleOptionsChangement(posteRazorSettings *settings) = 0;
+};
+
+class PosteRazorDialog : public PosteRazorDialogUI, public SettingsChangementHandler
 {
 private:
 	PosteRazor    *m_posteRazor;
 	PosteRazorDragDropWidget *m_dragDropWidget;
 	Fl_Menu_Item  *m_paperFormatMenuItems;
-	Fl_Menu_Item  *m_distanceUnitMenuItems;
+	posteRazorSettings m_settings;
+	class PosteRazorSettingsDialog *m_settingsDialog;
 
 public:
 	~PosteRazorDialog();
@@ -49,8 +62,8 @@ public:
 
 	int handle(int event);
 
-	static void HandleDistanceUnitChoice_cb(Fl_Widget *widget, void *userData);
-	void HandleDistanceUnitChangement(Fl_Widget *sourceWidget);
+	void OpenSettingsDialog(void);
+	void HandleOptionsChangement(posteRazorSettings *settings);
 	void next(void);
 	void prev(void);
 	void UpdateNavigationButtons(void);
