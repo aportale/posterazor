@@ -23,37 +23,43 @@
 #ifndef Fl_Gl_Paint_Canvas_h
 #define Fl_Gl_Paint_Canvas_h
 
+#include <math.h>
+
 #include <FL/Fl_Gl_Window.H>
+#include <FL/gl.h>
 
 #include <FL/Fl_Image.H>
-#include "../../tools/PaintCanvasInterface.h"
+#include "Fl_Paint_Canvas_Base.h"
 
-class Fl_Gl_Paint_Canvas: public Fl_Gl_Window, public PaintCanvasInterface
+class Fl_Gl_Paint_Canvas: public Fl_Gl_Window, public Fl_Paint_Canvas_Base
 {
 private:
-	char m_stateString[1024];
-	unsigned char *m_imageRGBData;
-	Fl_RGB_Image *m_image;
-	unsigned char m_backgroundColor[3];
+	GLuint *m_texturesNames;
+	unsigned int m_imageWidth;
+	unsigned int m_imageHeight;
+	GLint m_texturesSize;
 	
 public:
-	Fl_Gl_Paint_Canvas(int width, int height, int x, int y);
+	Fl_Gl_Paint_Canvas(int x, int y, int width, int height);
 	~Fl_Gl_Paint_Canvas();
 
-	virtual void SetBackgroundColor(unsigned char red, unsigned char green, unsigned char blue);
-
-	virtual void SetState(const char *state);
-		
 	virtual void draw();
 	virtual void DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
 	virtual void DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
 	virtual void DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
 	virtual void GetSize(double &width, double &height) const;
 
-	virtual void RequestImage(void);
 	virtual void SetImage(const unsigned char* rgbData, double width, double height);
 	virtual void DisposeImage(void);
 	virtual void DrawImage(double x, double y, double width, double height);
+
+	virtual unsigned int GetTexturesColumnsCount(void) const                      {return (int)ceil((double)m_imageWidth / (double)m_texturesSize);}
+	virtual unsigned int GetTexturesRowsCount(void) const                         {return (int)ceil((double)m_imageHeight / (double)m_texturesSize);}
+	virtual unsigned int GetTexturesCount(void) const                             {return GetTexturesColumnsCount() * GetTexturesRowsCount();}
+	virtual unsigned int GetLastTexturesColumnPixelsColumns(void) const           {return m_imageWidth - (GetTexturesColumnsCount()-1)*m_texturesSize;}
+	virtual unsigned int GetLastTexturesRowPixelsRows(void) const                 {return m_imageHeight - (GetTexturesRowsCount()-1)*m_texturesSize;}
+	virtual unsigned int GetTexturesColumnPixelColumns(unsigned int column) const {return column < GetTexturesColumnsCount()-1?m_texturesSize:GetLastTexturesColumnPixelsColumns();}
+	virtual unsigned int GetTexturesRowPixelRows(unsigned int row) const          {return row < GetTexturesRowsCount()-1?m_texturesSize:GetLastTexturesRowPixelsRows();}
 };
 
 #endif Fl_Gl_Paint_Canvas_h

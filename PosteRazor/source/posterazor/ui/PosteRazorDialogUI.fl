@@ -25,24 +25,20 @@ comment {/*
 */} {in_source in_header
 } 
 
-decl {\#include "Fl_Paint_Canvas.h"} {public
+decl {\#include "Fl_Paint_Canvas_Group.h"} {public
 } 
 
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {479 144 620 455} type Double hide resizable
+  xywh {72 207 620 455} type Double hide resizable
   code0 {size_range(this->w(), this->h());}
   class Fl_Double_Window
 } {
   Fl_Group {} {open
-    xywh {10 420 600 26}
+    xywh {10 420 600 25}
   } {
-    Fl_Choice m_distanceUnitChoice {
-      label {Units:} open
-      tooltip {Choose the unit you want to work with} xywh {49 420 160 25} down_box BORDER_BOX
-    } {}
     Fl_Box {} {
-      xywh {294 420 15 25} resizable
+      xywh {295 420 15 25} resizable
     }
     Fl_Button m_nextButton {
       label {Next @-2->}
@@ -53,6 +49,11 @@ widget_class PosteRazorDialogUI {
       label {@-2<- Back}
       callback {prev();}
       tooltip {One step back} xywh {430 420 85 25} labelcolor 32
+    }
+    Fl_Button m_settingsButton {
+      label {Settings...}
+      callback {OpenSettingsDialog();} selected
+      tooltip {One step back} xywh {10 420 135 25} labelcolor 32
     }
   }
   Fl_Wizard m_wizard {
@@ -387,10 +388,10 @@ widget_class PosteRazorDialogUI {
       }
     }
   }
-  Fl_Box m_previewPaintCanvas {
-    tooltip Preview xywh {10 45 300 365} box THIN_DOWN_BOX color 45 resizable
-    class Fl_Paint_Canvas
-  }
+  Fl_Group m_paintCanvasGroup {open
+    xywh {10 45 300 365} box FLAT_BOX color 45 labelcolor 30 resizable
+    class Fl_Paint_Canvas_Group
+  } {}
   Fl_Group {} {
     xywh {10 10 600 25}
   } {
@@ -403,6 +404,8 @@ widget_class PosteRazorDialogUI {
       callback {OpenHelpDialog()}
       tooltip {Help text for the current step} xywh {585 10 25 25} color 10 labelfont 1 labelsize 15 labelcolor 32
     }
+  }
+  decl {virtual void OpenSettingsDialog(void) = 0;} {public
   }
   decl {virtual void next(void) = 0;} {public
   }
@@ -441,9 +444,9 @@ widget_class PosteRazorDialogUI {
 
 widget_class PosteRazorHelpDialogUI {
   user_data this open
-  xywh {106 228 500 400} type Double resizable
+  xywh {236 419 500 400} type Double hide resizable
   code0 {size_range(300, 150);}
-  class Fl_Double_Window visible
+  class Fl_Double_Window
 } {
   Fl_Help_View m_help_view {
     xywh {10 10 480 345} labelsize 8 resizable
@@ -460,7 +463,7 @@ widget_class PosteRazorHelpDialogUI {
     }
     Fl_Button m_homepageButton {
       label Homepage
-      callback {HandleHomepageButtonClick();} selected
+      callback {HandleHomepageButtonClick();}
       xywh {10 365 185 25}
     }
     Fl_Box {} {
@@ -476,5 +479,78 @@ widget_class PosteRazorHelpDialogUI {
   decl {virtual void SetHtmlContent(const char *content) = 0;} {public
   }
   decl {virtual void HandleHomepageButtonClick(void) = 0;} {public
+  }
+} 
+
+widget_class PosteRazorSettingsDialogUI {
+  label {PosteRazor settings}
+  user_data this open
+  xywh {36 289 315 400} type Double hide
+  code0 {m_okWasPressed = false;}
+  class Fl_Double_Window modal
+} {
+  decl {bool m_okWasPressed;} {public
+  }
+  Fl_Group {} {open
+    xywh {10 10 295 345} box THIN_DOWN_BOX labelsize 8
+  } {
+    Fl_Group {} {
+      label Units open
+      xywh {20 35 275 85} box THIN_DOWN_BOX color 45
+    } {
+      Fl_Choice m_distanceUnitChoice {open
+        tooltip {Choose the unit you want to work with} xywh {30 45 255 25} down_box BORDER_BOX align 20
+      } {}
+      Fl_Box {} {
+        label {Choose the distance unit you want to work with}
+        xywh {30 80 255 30} align 150
+      }
+    }
+    Fl_Group {} {
+      label {Preview with OpenGL} open
+      xywh {20 145 275 105} box THIN_DOWN_BOX color 45
+    } {
+      Fl_Check_Button m_useOpenGLCheckButton {
+        label {use OpenGL}
+        callback {HandleUseOpenGLChangement();}
+        xywh {30 154 255 20} down_box DOWN_BOX
+      }
+      Fl_Box {} {
+        label {OpenGL enables a smooth preview on modern systems. It could slow the preview down on old systems, though.}
+        xywh {30 179 255 60} align 150
+      }
+    }
+    Fl_Group {} {
+      label Language open
+      xywh {20 275 275 70} box THIN_DOWN_BOX color 45
+    } {
+      Fl_Choice m_languageChoice {open
+        tooltip {Choose the unit you want to work with} xywh {30 285 255 25} down_box BORDER_BOX align 20
+      } {}
+      Fl_Box {} {
+        label {Choose your language}
+        xywh {30 315 255 20} align 150
+      }
+    }
+  }
+  Fl_Group {} {open
+    xywh {10 365 296 25}
+  } {
+    Fl_Button {} {
+      label OK
+      callback {m_okWasPressed = true;
+hide();}
+      xywh {210 365 95 25}
+    }
+    Fl_Button {} {
+      label Cancel
+      callback {hide();}
+      xywh {105 365 95 25}
+    }
+    Fl_Box {} {
+      xywh {10 365 10 25} labelsize 8 resizable
+    }
+  }
+  decl {virtual void HandleUseOpenGLChangement(void) = 0;} {public
   }
 } 

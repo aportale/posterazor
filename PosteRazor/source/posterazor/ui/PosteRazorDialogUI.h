@@ -24,14 +24,14 @@
 #ifndef PosteRazorDialogUI_h
 #define PosteRazorDialogUI_h
 #include <FL/Fl.H>
-#include "Fl_Paint_Canvas.h"
+#include "Fl_Paint_Canvas_Group.h"
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Group.H>
-#include <FL/Fl_Choice.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Button.H>
 #include <FL/Fl_Wizard.H>
 #include <FL/Fl_Tabs.H>
+#include <FL/Fl_Choice.H>
 #include <FL/Fl_Round_Button.H>
 #include <FL/Fl_Value_Input.H>
 #include <FL/Fl_Check_Button.H>
@@ -41,7 +41,6 @@ class PosteRazorDialogUI : public Fl_Double_Window {
 public:
   PosteRazorDialogUI(int X, int Y, int W, int H, const char *L = 0);
   PosteRazorDialogUI(int W, int H, const char *L = 0);
-  Fl_Choice *m_distanceUnitChoice;
   Fl_Button *m_nextButton;
 private:
   void cb_m_nextButton_i(Fl_Button*, void*);
@@ -51,6 +50,11 @@ public:
 private:
   void cb_m_prevButton_i(Fl_Button*, void*);
   static void cb_m_prevButton(Fl_Button*, void*);
+public:
+  Fl_Button *m_settingsButton;
+private:
+  void cb_m_settingsButton_i(Fl_Button*, void*);
+  static void cb_m_settingsButton(Fl_Button*, void*);
 public:
   Fl_Wizard *m_wizard;
   Fl_Group *m_loadInputImageStep;
@@ -236,12 +240,13 @@ private:
   void cb_m_setLaunchPDFApplicationCheckButton_i(Fl_Check_Button*, void*);
   static void cb_m_setLaunchPDFApplicationCheckButton(Fl_Check_Button*, void*);
 public:
-  Fl_Paint_Canvas *m_previewPaintCanvas;
+  Fl_Paint_Canvas_Group *m_paintCanvasGroup;
   Fl_Box *m_stepInfoBox;
 private:
   void cb__i(Fl_Button*, void*);
   static void cb_(Fl_Button*, void*);
 public:
+  virtual void OpenSettingsDialog(void) = 0;
   virtual void next(void) = 0;
   virtual void prev(void) = 0;
   virtual void UpdateNavigationButtons(void) = 0;
@@ -278,5 +283,27 @@ public:
   virtual void SetHtmlContent(const char *content) = 0;
   virtual void HandleHomepageButtonClick(void) = 0;
   void SetHomepageButtonLabel(const char *label);
+};
+
+class PosteRazorSettingsDialogUI : public Fl_Double_Window {
+  void _PosteRazorSettingsDialogUI();
+public:
+  PosteRazorSettingsDialogUI(int X, int Y, int W, int H, const char *L = 0);
+  PosteRazorSettingsDialogUI(int W, int H, const char *L = 0);
+  bool m_okWasPressed;
+  Fl_Choice *m_distanceUnitChoice;
+  Fl_Check_Button *m_useOpenGLCheckButton;
+private:
+  void cb_m_useOpenGLCheckButton_i(Fl_Check_Button*, void*);
+  static void cb_m_useOpenGLCheckButton(Fl_Check_Button*, void*);
+public:
+  Fl_Choice *m_languageChoice;
+private:
+  void cb_OK1_i(Fl_Button*, void*);
+  static void cb_OK1(Fl_Button*, void*);
+  void cb_Cancel_i(Fl_Button*, void*);
+  static void cb_Cancel(Fl_Button*, void*);
+public:
+  virtual void HandleUseOpenGLChangement(void) = 0;
 };
 #endif

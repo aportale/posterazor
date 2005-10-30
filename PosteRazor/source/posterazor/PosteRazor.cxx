@@ -477,6 +477,14 @@ public:
 				GetPreviewSize(GetInputImageWidthPixels(), GetInputImageHeightPixels(), (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, false);
 				x_offset = (canvasWidth - boxWidth) / 2;
 				y_offset = (canvasHeight - boxHeight) / 2;
+				
+				// If the image is not downscaled, make sure that the coordinates are integers in order
+				// to prevent unneeded blurring (especially in OpenGL)
+				if (boxWidth >= GetInputImageWidthPixels() && boxHeight >= GetInputImageHeightPixels())
+				{
+					x_offset = floor(x_offset);
+					y_offset = floor(y_offset);
+				}			
 
 				paintCanvas->DrawImage(0 + x_offset, 0 + y_offset, boxWidth, boxHeight);
 			}
