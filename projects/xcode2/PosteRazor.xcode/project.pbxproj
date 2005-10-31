@@ -77,8 +77,11 @@
 		};
 		20286C32FDCF999611CA2CEA = {
 			children = (
-				8221C68508A566FC00EB193B,
 				8221C68308A566EC00EB193B,
+				821821E90916D2BA004580FC,
+				8221C68508A566FC00EB193B,
+				821821DB0916D2A2004580FC,
+				821821DC0916D2A2004580FC,
 				20286C33FDCF999611CA2CEA,
 				4A9504C8FFE6A3BC11CA0CBA,
 			);
@@ -126,7 +129,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				HEADER_SEARCH_PATHS = "../../thirdparty/fltk ../../thirdparty/FreeImage/Source ../../thirdparty/Fl_Native_File_Chooser";
+				HEADER_SEARCH_PATHS = "../../thirdparty/fltk-1.1 ../../thirdparty/FreeImage/Source ../../thirdparty/Fl_Native_File_Chooser";
 				PREBINDING = NO;
 				ZERO_LINK = NO;
 			};
@@ -151,6 +154,48 @@
 //822
 //823
 //824
+		821821DB0916D2A2004580FC = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = AGL.framework;
+			path = /System/Library/Frameworks/AGL.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		821821DC0916D2A2004580FC = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = OpenGL.framework;
+			path = /System/Library/Frameworks/OpenGL.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		821821DD0916D2A2004580FC = {
+			fileRef = 821821DB0916D2A2004580FC;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		821821DE0916D2A2004580FC = {
+			fileRef = 821821DC0916D2A2004580FC;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		821821E90916D2BA004580FC = {
+			isa = PBXFileReference;
+			lastKnownFileType = archive.ar;
+			name = libfltk_gl.a;
+			path = "../../thirdparty/fltk-1.1/lib/libfltk_gl.a";
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		821821EA0916D2BA004580FC = {
+			fileRef = 821821E90916D2BA004580FC;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		8218F42B08F0B364004D5501 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
@@ -353,6 +398,14 @@
 		};
 		82814C4E08A564A3006D2A26 = {
 			children = (
+				82CF36B70916CB3A00C7E45A,
+				82CF36B80916CB3A00C7E45A,
+				82CF36B90916CB3A00C7E45A,
+				82CF36BA0916CB3A00C7E45A,
+				82CF36BB0916CB3A00C7E45A,
+				82CF36BC0916CB3A00C7E45A,
+				82CF36BD0916CB3A00C7E45A,
+				82CF36BE0916CB3A00C7E45A,
 				82C3A2DC08F13E4900E40AEE,
 				8218F42E08F0B384004D5501,
 				8218F44D08F0B72C004D5501,
@@ -361,8 +414,6 @@
 				82814C5108A564A3006D2A26,
 				82814C5208A564A3006D2A26,
 				82814C5308A564A3006D2A26,
-				82F043D208B2A4BC00EED792,
-				82F043D308B2A4BC00EED792,
 			);
 			isa = PBXGroup;
 			path = ui;
@@ -500,6 +551,94 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
+		82CF36B70916CB3A00C7E45A = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = Fl_Draw_Paint_Canvas.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82CF36B80916CB3A00C7E45A = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = Fl_Draw_Paint_Canvas.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82CF36B90916CB3A00C7E45A = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = Fl_Gl_Paint_Canvas.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82CF36BA0916CB3A00C7E45A = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = Fl_Gl_Paint_Canvas.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82CF36BB0916CB3A00C7E45A = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = Fl_Paint_Canvas_Base.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82CF36BC0916CB3A00C7E45A = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = Fl_Paint_Canvas_Base.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82CF36BD0916CB3A00C7E45A = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = Fl_Paint_Canvas_Group.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82CF36BE0916CB3A00C7E45A = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = Fl_Paint_Canvas_Group.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82CF36BF0916CB3A00C7E45A = {
+			fileRef = 82CF36B70916CB3A00C7E45A;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82CF36C00916CB3A00C7E45A = {
+			fileRef = 82CF36B90916CB3A00C7E45A;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82CF36C10916CB3A00C7E45A = {
+			fileRef = 82CF36BB0916CB3A00C7E45A;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82CF36C20916CB3A00C7E45A = {
+			fileRef = 82CF36BD0916CB3A00C7E45A;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		82E5567008A56658001EEB51 = {
 			explicitFileType = wrapper.application;
 			includeInIndex = 0;
@@ -515,28 +654,6 @@
 			path = PaintCanvasInterface.h;
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		82F043D208B2A4BC00EED792 = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			path = Fl_Paint_Canvas.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		82F043D308B2A4BC00EED792 = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			path = Fl_Paint_Canvas.cpp;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		82F043D408B2A4BC00EED792 = {
-			fileRef = 82F043D308B2A4BC00EED792;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		82F681D508AAA31500D5DF2C = {
 			fileEncoding = 30;
@@ -572,7 +689,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = "/temp/PosteRazor/thirdparty/fltk-1.1/lib /temp/PosteRazor/thirdparty/FreeImage /temp/secure/PosteRazor/thirdparty/fltk-1.1/lib /temp/secure/PosteRazor/thirdparty/FreeImage";
+				LIBRARY_SEARCH_PATHS = "../../thirdparty/fltk-1.1/lib ../../thirdparty/FreeImage /temp/secure/PosteRazor/thirdparty/fltk-1.1/lib";
 				PREBINDING = NO;
 				PRODUCT_NAME = PosteRazor;
 				WRAPPER_EXTENSION = app;
@@ -604,9 +721,12 @@
 				82814C5D08A564A3006D2A26,
 				82814C5F08A564A3006D2A26,
 				82814C6008A564A3006D2A26,
-				82F043D408B2A4BC00EED792,
 				8218F42D08F0B364004D5501,
 				8218F42F08F0B384004D5501,
+				82CF36BF0916CB3A00C7E45A,
+				82CF36C00916CB3A00C7E45A,
+				82CF36C10916CB3A00C7E45A,
+				82CF36C20916CB3A00C7E45A,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -618,6 +738,9 @@
 				82814C2408A5642E006D2A26,
 				8221C68408A566EC00EB193B,
 				8221C68608A566FC00EB193B,
+				821821DD0916D2A2004580FC,
+				821821DE0916D2A2004580FC,
+				821821EA0916D2BA004580FC,
 			);
 			isa = PBXFrameworksBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
