@@ -20,39 +20,33 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "Fl_Paint_Canvas.h"
+#include "Fl_Draw_Paint_Canvas.h"
 #include <FL/fl_draw.H>
 #include <string.h>
 
-#define BORDER 10
+#define BORDER 9
 
-Fl_Paint_Canvas::Fl_Paint_Canvas(int width, int height, int x, int y)
-	:Fl_Box(width, height, x, y), PaintCanvasInterface()
+Fl_Draw_Paint_Canvas::Fl_Draw_Paint_Canvas(int x, int y, int width, int height)
+	:Fl_Box(x, y, width, height), Fl_Paint_Canvas_Base()
 {
-	m_stateString[0] = '\0';
 	m_imageRGBData = NULL;
 	m_image = NULL;
 	m_scaledImage = NULL;
 }
 
-Fl_Paint_Canvas::~Fl_Paint_Canvas()
+Fl_Draw_Paint_Canvas::~Fl_Draw_Paint_Canvas()
 {
 	DisposeImage();
 }
 
-void Fl_Paint_Canvas::SetState(const char *state)
-{
-	strncpy(m_stateString, state, sizeof(m_stateString));
-	m_stateString[sizeof(m_stateString)-1] = '\0';
-}
-
-void Fl_Paint_Canvas::draw()
+void Fl_Draw_Paint_Canvas::draw()
 {
 	Fl_Box::draw();
+	DrawFilledRect(-BORDER, -BORDER, w(), h(), m_backgroundColor[0], m_backgroundColor[1], m_backgroundColor[2], 255);
 	m_painter->PaintOnCanvas(this, m_stateString);
 }
 
-void Fl_Paint_Canvas::DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
+void Fl_Draw_Paint_Canvas::DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
 	if (alpha < 255)
 	{
@@ -65,7 +59,7 @@ void Fl_Paint_Canvas::DrawFilledRect(double x, double y, double width, double he
 	}
 }
 
-void Fl_Paint_Canvas::DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
+void Fl_Draw_Paint_Canvas::DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
 	if (height < 1)
 	{
@@ -82,33 +76,28 @@ void Fl_Paint_Canvas::DrawRect(double x, double y, double width, double height, 
 	}
 }
 
-void Fl_Paint_Canvas::DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
+void Fl_Draw_Paint_Canvas::DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
 	fl_color(red, green, blue);
 	fl_line((int)(x1 + Fl_Box::x() + BORDER), (int)(y1 + Fl_Box::y() + BORDER), (int)(x2 + Fl_Box::x() + BORDER), (int)(y2 + Fl_Box::y() + BORDER));
 }
 
-void Fl_Paint_Canvas::GetSize(double &width, double &height) const
+void Fl_Draw_Paint_Canvas::GetSize(double &width, double &height) const
 {
 	width = w() - BORDER - BORDER;
 	height = h() - BORDER - BORDER;
 }
 
-void Fl_Paint_Canvas::RequestImage(void)
-{
-	if (m_painter)
-		m_painter->GetImage(this);
-}
-
-void Fl_Paint_Canvas::SetImage(const unsigned char* rgbData, double width, double height)
+void Fl_Draw_Paint_Canvas::SetImage(const unsigned char* rgbData, double width, double height)
 {
 	DisposeImage();
 	m_imageRGBData = new unsigned char[(int)width * (int)height * 3];
 	memcpy(m_imageRGBData, rgbData, (int)width * (int)height * 3);
 	m_image = new Fl_RGB_Image(m_imageRGBData, (int)width, (int)height);
+	redraw();
 }
 
-void Fl_Paint_Canvas::DisposeImage(void)
+void Fl_Draw_Paint_Canvas::DisposeImage(void)
 {
 	if (m_image)
 	{
@@ -127,7 +116,7 @@ void Fl_Paint_Canvas::DisposeImage(void)
 	}
 }
 
-void Fl_Paint_Canvas::DrawImage(double x, double y, double width, double height)
+void Fl_Draw_Paint_Canvas::DrawImage(double x, double y, double width, double height)
 {
 	if (m_image)
 	{
