@@ -453,11 +453,14 @@ public:
 		GetPreviewSize(GetPaperWidth(), GetPaperHeight(), boxWidth, boxHeight, previewWidth, previewHeight, true);
 	}
 	
-	void GetImage(PaintCanvasInterface *paintCanvas) const
+	void GetImage(PaintCanvasInterface *paintCanvas, double maxWidth, double maxHeight) const
 	{
 		unsigned char *rgbData = new unsigned char[m_imageIO->GetWidthPixels() * m_imageIO->GetHeightPixels() * 3];
-		m_imageIO->GetImageAsRGB(rgbData);
-		paintCanvas->SetImage(rgbData, m_imageIO->GetWidthPixels(), m_imageIO->GetHeightPixels());
+		int imageWidth;
+		int imageHeight;
+		GetInputImagePreviewSize(maxWidth, maxHeight, imageWidth, imageHeight);
+		m_imageIO->GetImageAsRGB(rgbData, (double)imageWidth, (double)imageHeight);
+		paintCanvas->SetImage(rgbData, imageWidth, imageHeight);
 		delete[] rgbData;
 	}
 

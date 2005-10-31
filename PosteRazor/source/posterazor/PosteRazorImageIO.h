@@ -47,6 +47,7 @@ public:
 	virtual double GetHeight(enum DistanceUnits::eDistanceUnits unit) const = 0;
 
 	virtual void GetImageAsRGB(unsigned char *buffer) const = 0;
+	virtual void GetImageAsRGB(unsigned char *buffer, int width, int height) const = 0;
 	
 	virtual int GetBitsPerPixel(void) const = 0;
 	virtual enum eColorTypes GetColorDataType(void) const = 0;
