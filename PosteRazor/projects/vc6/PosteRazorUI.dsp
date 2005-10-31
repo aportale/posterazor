@@ -42,7 +42,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /W3 /GX /O2 /I "..\..\source\posterazor" /I "..\..\thirdparty\fltk-1.1" /I "..\..\thirdparty\Fl_Native_File_Chooser" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "VC_EXTRA_LEAN" /D "WIN32_EXTRA_LEAN" /FR /YX /FD /c
+# ADD CPP /nologo /W3 /GX /O2 /I "..\..\source\posterazor" /I "..\..\thirdparty\fltk-1.1" /I "..\..\thirdparty\Fl_Native_File_Chooser" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "VC_EXTRA_LEAN" /D "WIN32_EXTRA_LEAN" /D "OPENGL_PREVIEW" /FR /YX /FD /c
 # ADD BASE RSC /l 0x407 /d "NDEBUG"
 # ADD RSC /l 0x407 /d "NDEBUG"
 BSC32=bscmake.exe
@@ -50,7 +50,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /machine:I386
-# ADD LINK32 wsock32.lib comctl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386 /nodefaultlib:"LIBC.lib" /nodefaultlib:"LIBCMT.lib"
+# ADD LINK32 opengl32.lib wsock32.lib comctl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386 /nodefaultlib:"LIBC.lib" /nodefaultlib:"LIBCMT.lib"
 # SUBTRACT LINK32 /pdb:none /nodefaultlib
 
 !ELSEIF  "$(CFG)" == "PosteRazorUI - Win32 Debug"
@@ -67,7 +67,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /I "..\..\source\posterazor" /I "..\..\thirdparty\fltk-1.1" /I "..\..\thirdparty\Fl_Native_File_Chooser" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "VC_EXTRA_LEAN" /D "WIN32_EXTRA_LEAN" /FR /YX /FD /GZ /c
+# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /I "..\..\source\posterazor" /I "..\..\thirdparty\fltk-1.1" /I "..\..\thirdparty\Fl_Native_File_Chooser" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "VC_EXTRA_LEAN" /D "WIN32_EXTRA_LEAN" /D "OPENGL_PREVIEW" /FR /YX /FD /GZ /c
 # ADD BASE RSC /l 0x407 /d "_DEBUG"
 # ADD RSC /l 0x407 /d "_DEBUG"
 BSC32=bscmake.exe
@@ -75,7 +75,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 wsock32.lib comctl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /debug /machine:I386 /nodefaultlib:"LIBCD.lib" /nodefaultlib:"LIBCMTD.lib" /pdbtype:sept
+# ADD LINK32 opengl32.lib wsock32.lib comctl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /debug /machine:I386 /nodefaultlib:"LIBCD.lib" /nodefaultlib:"LIBCMTD.lib" /pdbtype:sept
 
 !ENDIF 
 
@@ -88,7 +88,19 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\Fl_Paint_Canvas.cpp
+SOURCE=..\..\source\posterazor\ui\Fl_Draw_Paint_Canvas.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\ui\Fl_Gl_Paint_Canvas.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\ui\Fl_Paint_Canvas_Base.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\ui\Fl_Paint_Canvas_Group.cpp
 # End Source File
 # Begin Source File
 
@@ -112,7 +124,19 @@ SOURCE=..\..\source\posterazor\ui\windowsResources\PosteRazorUI.rc
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\Fl_Paint_Canvas.h
+SOURCE=..\..\source\posterazor\ui\Fl_Draw_Paint_Canvas.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\ui\Fl_Gl_Paint_Canvas.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\ui\Fl_Paint_Canvas_Base.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\ui\Fl_Paint_Canvas_Group.h
 # End Source File
 # Begin Source File
 
@@ -165,6 +189,32 @@ SOURCE="..\..\thirdparty\fltk-1.1\lib\fltkd.lib"
 # PROP Exclude_From_Build 1
 
 !ELSEIF  "$(CFG)" == "PosteRazorUI - Win32 Debug"
+
+!ENDIF 
+
+# End Source File
+# Begin Source File
+
+SOURCE="..\..\thirdparty\fltk-1.1\lib\fltkgld.lib"
+
+!IF  "$(CFG)" == "PosteRazorUI - Win32 Release"
+
+# PROP Exclude_From_Build 1
+
+!ELSEIF  "$(CFG)" == "PosteRazorUI - Win32 Debug"
+
+!ENDIF 
+
+# End Source File
+# Begin Source File
+
+SOURCE="..\..\thirdparty\fltk-1.1\lib\fltkgl.lib"
+
+!IF  "$(CFG)" == "PosteRazorUI - Win32 Release"
+
+!ELSEIF  "$(CFG)" == "PosteRazorUI - Win32 Debug"
+
+# PROP Exclude_From_Build 1
 
 !ENDIF 
 
