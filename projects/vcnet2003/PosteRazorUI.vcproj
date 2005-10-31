@@ -20,7 +20,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\source\posterazor;&quot;..\..\thirdparty\fltk-1.1&quot;;..\..\thirdparty\Fl_Native_File_Chooser;..\..\source\posterazor\ui\windowsResources"
-				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;OPENGL_PREVIEW"
 				MinimalRebuild="FALSE"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
@@ -33,7 +33,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="fltkd.lib wsock32.lib comctl32.lib"
+				AdditionalDependencies="fltkd.lib fltkgld.lib wsock32.lib comctl32.lib glu32.lib opengl32.lib"
 				OutputFile="$(OutDir)/PosteRazorGUI.exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;..\..\thirdparty\fltk-1.1\lib&quot;"
@@ -72,7 +72,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="..\..\source\posterazor;&quot;..\..\thirdparty\fltk-1.1&quot;;..\..\thirdparty\Fl_Native_File_Chooser;..\..\source\posterazor\ui\windowsResources"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;OPENGL_PREVIEW"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -82,7 +82,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="fltk.lib fltkimages.lib wsock32.lib comctl32.lib"
+				AdditionalDependencies="fltk.lib fltkgl.lib wsock32.lib comctl32.lib glu32.lib opengl32.lib"
 				OutputFile="$(OutDir)/PosteRazorUI.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;..\..\thirdparty\fltk-1.1\lib&quot;"
@@ -122,7 +122,16 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
 			<File
-				RelativePath="..\..\source\posterazor\ui\Fl_Paint_Canvas.cpp">
+				RelativePath="..\..\source\posterazor\ui\Fl_Draw_Paint_Canvas.cpp">
+			</File>
+			<File
+				RelativePath="..\..\source\posterazor\ui\Fl_Gl_Paint_Canvas.cpp">
+			</File>
+			<File
+				RelativePath="..\..\source\posterazor\ui\Fl_Paint_Canvas_Base.cpp">
+			</File>
+			<File
+				RelativePath="..\..\source\posterazor\ui\Fl_Paint_Canvas_Group.cpp">
 			</File>
 			<File
 				RelativePath="..\..\source\posterazor\ui\Fl_Persistent_Preferences.cxx">
@@ -139,7 +148,16 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
 			<File
-				RelativePath="..\..\source\posterazor\ui\Fl_Paint_Canvas.h">
+				RelativePath="..\..\source\posterazor\ui\Fl_Draw_Paint_Canvas.h">
+			</File>
+			<File
+				RelativePath="..\..\source\posterazor\ui\Fl_Gl_Paint_Canvas.h">
+			</File>
+			<File
+				RelativePath="..\..\source\posterazor\ui\Fl_Paint_Canvas_Base.h">
+			</File>
+			<File
+				RelativePath="..\..\source\posterazor\ui\Fl_Paint_Canvas_Group.h">
 			</File>
 			<File
 				RelativePath="..\..\source\posterazor\ui\Fl_Persistent_Preferences.h">
