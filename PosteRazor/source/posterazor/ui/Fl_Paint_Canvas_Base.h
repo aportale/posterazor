@@ -32,6 +32,8 @@ class Fl_Paint_Canvas_Base: public PaintCanvasInterface
 protected:
 	char m_stateString[1024];
 	unsigned char m_backgroundColor[3];
+	double m_maxImageWidth;
+	double m_maxImageHeight;
 	
 public:
 	Fl_Paint_Canvas_Base();

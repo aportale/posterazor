@@ -29,6 +29,8 @@ Fl_Paint_Canvas_Base::Fl_Paint_Canvas_Base()
 {
 	m_stateString[0] = '\0';
 	m_backgroundColor[0] = m_backgroundColor[1] = m_backgroundColor[2] = 0;
+	m_maxImageWidth = 1024;
+	m_maxImageHeight = 1024;
 }
 
 void Fl_Paint_Canvas_Base::SetBackgroundColor(unsigned char red, unsigned char green, unsigned char blue)
@@ -47,5 +49,5 @@ void Fl_Paint_Canvas_Base::SetState(const char *state)
 void Fl_Paint_Canvas_Base::RequestImage(void)
 {
 	if (m_painter)
-		m_painter->GetImage(this);
+		m_painter->GetImage(this, m_maxImageWidth, m_maxImageHeight);
 }
