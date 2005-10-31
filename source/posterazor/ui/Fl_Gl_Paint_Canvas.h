@@ -38,12 +38,15 @@ private:
 	unsigned int m_imageWidth;
 	unsigned int m_imageHeight;
 	GLint m_texturesSize;
+	Fl_Widget *m_parentWidget;
 	
 public:
-	Fl_Gl_Paint_Canvas(int x, int y, int width, int height);
+	Fl_Gl_Paint_Canvas(int x, int y, int width, int height, Fl_Widget *parentWidget);
 	~Fl_Gl_Paint_Canvas();
 
 	virtual void draw();
+	virtual int handle(int event);
+
 	virtual void DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
 	virtual void DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
 	virtual void DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
