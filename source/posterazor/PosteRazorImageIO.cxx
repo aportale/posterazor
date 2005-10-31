@@ -264,10 +264,12 @@ public:
 		unsigned char *imageData = new unsigned char[imageBytesCount];
 
 		unsigned int bytesPerLineCount = PosteRazorPDFOutput::GetImageBytesPerLineCount(GetWidthPixels(), GetBitsPerPixel());
-		unsigned long numberOfPixels = GetWidthPixels() * GetHeightPixels();
 
 		FreeImage_ConvertToRawBits(imageData, m_bitmap, bytesPerLineCount, GetBitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
+
 #ifdef _WIN32
+		unsigned long numberOfPixels = GetWidthPixels() * GetHeightPixels();
+		
 		if (GetBitsPerPixel() == 24)
 			for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++)
 			{

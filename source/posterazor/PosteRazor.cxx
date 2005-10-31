@@ -458,8 +458,8 @@ public:
 		unsigned char *rgbData = new unsigned char[m_imageIO->GetWidthPixels() * m_imageIO->GetHeightPixels() * 3];
 		int imageWidth;
 		int imageHeight;
-		GetInputImagePreviewSize(maxWidth, maxHeight, imageWidth, imageHeight);
-		m_imageIO->GetImageAsRGB(rgbData, (double)imageWidth, (double)imageHeight);
+		GetInputImagePreviewSize((int)maxWidth, (int)maxHeight, imageWidth, imageHeight);
+		m_imageIO->GetImageAsRGB(rgbData, imageWidth, imageHeight);
 		paintCanvas->SetImage(rgbData, imageWidth, imageHeight);
 		delete[] rgbData;
 	}
