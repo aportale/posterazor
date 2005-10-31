@@ -32,7 +32,7 @@ Fl_Paint_Canvas_Group::Fl_Paint_Canvas_Group(int x, int y, int width, int height
 
 	begin();
 	m_drawPaintCanvas = new Fl_Draw_Paint_Canvas(x+1, y+1, width-2, height-2);
-	m_glPaintCanvas = new Fl_Gl_Paint_Canvas(x+1, y+1, width-2, height-2);
+	m_glPaintCanvas = new Fl_Gl_Paint_Canvas(x+1, y+1, width-2, height-2, this);
 	end();
 
 	Fl::get_system_colors();
@@ -100,25 +100,10 @@ void Fl_Paint_Canvas_Group::SetBackgroundColor(unsigned char red, unsigned char 
 	m_glPaintCanvas->SetBackgroundColor(red, green, blue);
 }
 
-void Fl_Paint_Canvas_Group::DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
-{
-	GetPaintCanvasBase()->DrawFilledRect(x, y, width, height, red, green, blue, alpha);
-}
-
-void Fl_Paint_Canvas_Group::DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
-{
-	GetPaintCanvasBase()->DrawRect(x, y, width, height, red, green, blue, alpha);
-}
-
-void Fl_Paint_Canvas_Group::DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
-{
-	GetPaintCanvasBase()->DrawLine(x1, y1, x2, y2, red, green, blue, alpha);
-}
-
-void Fl_Paint_Canvas_Group::GetSize(double &width, double &height) const
-{
-	GetPaintCanvasBase()->GetSize(width, height);
-}
+void Fl_Paint_Canvas_Group::DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
+void Fl_Paint_Canvas_Group::DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
+void Fl_Paint_Canvas_Group::DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
+void Fl_Paint_Canvas_Group::GetSize(double &width, double &height) const {}
 
 void Fl_Paint_Canvas_Group::SetImage(const unsigned char* rgbData, double width, double height)
 {
@@ -131,10 +116,7 @@ void Fl_Paint_Canvas_Group::SetImage(const unsigned char* rgbData, double width,
 	GetPaintCanvasBase()->SetImage(m_imageRGBData, m_imageWidth, m_imageHeight);
 }
 
-void Fl_Paint_Canvas_Group::DrawImage(double x, double y, double width, double height)
-{
-	GetPaintCanvasBase()->DrawImage(x, y, width, height);
-}
+void Fl_Paint_Canvas_Group::DrawImage(double x, double y, double width, double height) {}
 
 void Fl_Paint_Canvas_Group::SetState(const char *state)
 {
