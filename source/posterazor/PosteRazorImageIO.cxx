@@ -156,8 +156,14 @@ public:
 
 	void GetImageAsRGB(unsigned char *buffer) const
 	{
+		GetImageAsRGB(buffer, GetWidthPixels(), GetHeightPixels());
+	}
+
+	void GetImageAsRGB(unsigned char *buffer, int width, int height) const
+	{
 		FIBITMAP* originalImage = m_bitmap;
 		FIBITMAP* temp24BPPImage = NULL;
+		FIBITMAP* scaledImage = NULL;
 		
 		if (GetBitsPerPixel() != 24)
 		{
@@ -196,11 +202,17 @@ public:
 			}
 			originalImage = temp24BPPImage;
 		}
-		
-		FreeImage_ConvertToRawBits(buffer, originalImage, GetWidthPixels()*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
+
+		if (GetWidthPixels() != width || GetHeightPixels() != height)
+		{
+			scaledImage = FreeImage_Rescale(originalImage, width, height, FILTER_BOX);
+			originalImage = scaledImage;
+		}
+
+		FreeImage_ConvertToRawBits(buffer, originalImage, width*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
 
 #ifdef _WIN32
-		unsigned int numberOfPixels = GetWidthPixels() * GetHeightPixels();
+		unsigned int numberOfPixels = width * height;
 
 		for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++)
 		{

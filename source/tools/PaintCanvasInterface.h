@@ -29,7 +29,7 @@ class PainterInterface
 {
 public:
 	virtual void PaintOnCanvas(PaintCanvasInterface *paintCanvas, void* options = 0) const = 0;
-	virtual void GetImage(PaintCanvasInterface *paintCanvas) const = 0;
+	virtual void GetImage(PaintCanvasInterface *paintCanvas, double maxWidth, double maxHeight) const = 0;
 };
 
 class PaintCanvasInterface
