@@ -20,6 +20,7 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
+#include <string.h>
 #include <FL/Fl.H>
 #include "Fl_Paint_Canvas_Group.h"
 
