@@ -26,13 +26,14 @@
 #define BORDER 9.0
 #define MIN(a, b) ((a)<=(b)?(a):(b))
 
-Fl_Gl_Paint_Canvas::Fl_Gl_Paint_Canvas(int x, int y, int width, int height)
+Fl_Gl_Paint_Canvas::Fl_Gl_Paint_Canvas(int x, int y, int width, int height, Fl_Widget *parentWidget)
 	:Fl_Gl_Window(x, y, width, height), Fl_Paint_Canvas_Base()
 {
 	m_texturesNames = NULL;
 	m_imageWidth = 0;
 	m_imageHeight = 0;
 	m_texturesSize = 64;
+	m_parentWidget = parentWidget;
 }
 
 Fl_Gl_Paint_Canvas::~Fl_Gl_Paint_Canvas()
@@ -58,6 +59,27 @@ void Fl_Gl_Paint_Canvas::draw()
 	DrawFilledRect(-BORDER, -BORDER, w(), h(), m_backgroundColor[0], m_backgroundColor[1], m_backgroundColor[2], 255);
 
 	m_painter->PaintOnCanvas(this, m_stateString);
+}
+
+int Fl_Gl_Paint_Canvas::handle(int event)
+{
+	if (m_parentWidget)
+	{
+		switch (event)
+		{
+		case FL_DND_ENTER:
+		case FL_DND_DRAG:
+		case FL_DND_LEAVE:
+		case FL_DND_RELEASE:
+			return 1;
+		case FL_PASTE:
+			return m_parentWidget->parent()->handle(event);
+		default:
+			return Fl_Gl_Window::handle(event);
+		};
+	}
+	else
+		return Fl_Gl_Window::handle(event);
 }
 
 void Fl_Gl_Paint_Canvas::DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
