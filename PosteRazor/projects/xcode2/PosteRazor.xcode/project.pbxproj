@@ -116,7 +116,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				HEADER_SEARCH_PATHS = "../../thirdparty/fltk ../../thirdparty/FreeImage/Source ../../thirdparty/Fl_Native_File_Chooser";
+				HEADER_SEARCH_PATHS = "../../thirdparty/fltk-1.1 ../../thirdparty/FreeImage/Source ../../thirdparty/Fl_Native_File_Chooser";
 				PREBINDING = NO;
 				ZERO_LINK = NO;
 			};
