@@ -228,6 +228,8 @@ public:
 		if (temp24BPPImage)
 			FreeImage_Unload(temp24BPPImage);
 
+		if (scaledImage)
+			FreeImage_Unload(scaledImage);
 	}
 	
 	int GetBitsPerPixel(void) const
