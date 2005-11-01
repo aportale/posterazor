@@ -483,7 +483,7 @@ public:
 				
 				// If the image is not downscaled, make sure that the coordinates are integers in order
 				// to prevent unneeded blurring (especially in OpenGL)
-				if (boxWidth >= GetInputImageWidthPixels() && boxHeight >= GetInputImageHeightPixels())
+				if (canvasWidth >= GetInputImageWidthPixels() && canvasHeight >= GetInputImageHeightPixels())
 				{
 					x_offset = floor(x_offset);
 					y_offset = floor(y_offset);
