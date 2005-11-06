@@ -26,9 +26,10 @@
 #include <Fl/Fl_Native_File_Chooser.H>
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
+#include <FL/x.H>
+
 #ifdef WIN32
   #include "windowsResources/PosteRazorResource.h"
-  #include <FL/x.H>
   #include <Shellapi.h>
 #endif
 
@@ -644,14 +645,40 @@ void PosteRazorDialog::SetLaunchPDFApplication(void)
 	m_posteRazor->SetLaunchPDFApplication(m_setLaunchPDFApplicationCheckButton->value()==0?false:true);
 }
 
+#ifdef OSX
+static char OSX_droppedFilenameOnIcon[2048] = "";
+static PosteRazorDialog *OSX_posteRazorDialogPointer = NULL;
+
+static void	OSX_open_cb(const char* droppedFileName)
+{
+	if (OSX_posteRazorDialogPointer)
+	{
+		// File was dropped on the already running application
+		OSX_posteRazorDialogPointer->LoadInputImage(droppedFileName);
+	}
+	else
+	{
+		// File was dropped on an application icon, but PosteRazor was not yet running
+		if (strcmp(OSX_droppedFilenameOnIcon, "") == 0) // If more than one were dropped, use only the first one.
+		{
+			strncpy(OSX_droppedFilenameOnIcon, droppedFileName, sizeof(OSX_droppedFilenameOnIcon));
+			OSX_droppedFilenameOnIcon[sizeof(OSX_droppedFilenameOnIcon)-1] = '\0';
+		}
+	}
+}
+#endif
+
 int main (int argc, char **argv)
 {
-	PosteRazorDialog dialog;
+#ifdef OSX
+	fl_open_callback(OSX_open_cb);
+#endif
 
 #ifdef WIN32
 	dialog.icon((char *)LoadIcon(fl_display, MAKEINTRESOURCE(POSTERAZOR_ICON)));
 #endif
 
+	PosteRazorDialog dialog;
 	Fl::scheme("plastic");
 	Fl::get_system_colors();
 	dialog.show();
@@ -660,6 +687,11 @@ int main (int argc, char **argv)
 #ifndef OSX
 	if (argc == 2)
 		dialog.LoadInputImage(argv[1]);
+#else
+	if (strcmp(OSX_droppedFilenameOnIcon, "") != 0)
+		dialog.LoadInputImage(OSX_droppedFilenameOnIcon);
+
+	OSX_posteRazorDialogPointer = &dialog;
 #endif
 
 	return Fl::run();
