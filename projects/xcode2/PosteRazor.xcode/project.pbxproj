@@ -41,6 +41,9 @@
 		};
 		20286C29FDCF999611CA2CEA = {
 			children = (
+				82028CD7091E6F1500763263,
+				82028CD8091E6F1500763263,
+				82028CD9091E6F1500763263,
 				8221C68908A567C100EB193B,
 				20286C2AFDCF999611CA2CEA,
 				20286C2CFDCF999611CA2CEA,
@@ -154,6 +157,64 @@
 //822
 //823
 //824
+		82028CD5091E6E2E00763263 = {
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				82028CDB091E6F1500763263,
+				82028CDC091E6F1500763263,
+				82028CDA091E6F1500763263,
+			);
+			isa = PBXCopyFilesBuildPhase;
+			name = "Copy README, LICENSE, CHANGES";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82028CD7091E6F1500763263 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text;
+			name = CHANGES;
+			path = ../../CHANGES;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		82028CD8091E6F1500763263 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text;
+			name = LICENSE;
+			path = ../../LICENSE;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		82028CD9091E6F1500763263 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text;
+			name = README;
+			path = ../../README;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		82028CDA091E6F1500763263 = {
+			fileRef = 82028CD7091E6F1500763263;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82028CDB091E6F1500763263 = {
+			fileRef = 82028CD8091E6F1500763263;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82028CDC091E6F1500763263 = {
+			fileRef = 82028CD9091E6F1500763263;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		821821DB0916D2A2004580FC = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -678,6 +739,7 @@
 				8D0C4E8C0486CD37000505A6,
 				8D0C4E8F0486CD37000505A6,
 				8D0C4E910486CD37000505A6,
+				82028CD5091E6E2E00763263,
 			);
 			buildRules = (
 			);
