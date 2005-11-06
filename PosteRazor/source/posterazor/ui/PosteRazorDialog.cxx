@@ -164,6 +164,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 	:PosteRazorDialogUI(620, 455, "PosteRazor")
 {
 	m_settingsDialog = NULL;
+	m_helpDialog = NULL;
 
 	int i;
 	begin();
@@ -227,6 +228,9 @@ PosteRazorDialog::~PosteRazorDialog()
 
 	if (m_settingsDialog)
 		delete m_settingsDialog;
+
+	if (m_helpDialog)
+		delete m_helpDialog;
 }
 
 int PosteRazorDialog::handle(int event)
@@ -252,6 +256,22 @@ void PosteRazorDialog::OpenSettingsDialog(void)
 	}
 	m_settingsDialog->SetOptionsAndHandler(&m_settings, this);
 	m_settingsDialog->show();
+}
+
+void PosteRazorDialog::OpenHelpDialog(void)
+{
+	if (!m_helpDialog)
+	{
+		m_helpDialog = new PosteRazorHelpDialog("PosteRazor homepage", "http://posterazor.sourceforge.net/");
+		m_helpDialog->set_modal();
+	}
+
+	char stepTopic[1024];
+	sprintf(stepTopic, POSTERAZORHELPANCHORMANUALSTEP "%.2d", GetCurrentWizardStepNumber() + 1);
+
+	m_helpDialog->SetHtmlContent(posteRazorHelpText);
+	m_helpDialog->JumpToAnchor(stepTopic);
+	m_helpDialog->show();
 }
 
 void PosteRazorDialog::HandleOptionsChangement(posteRazorSettings *settings)
@@ -302,18 +322,6 @@ void PosteRazorDialog::UpdateNavigationButtons(void)
 		m_nextButton->activate();
 	else
 		m_nextButton->deactivate();
-}
-
-void PosteRazorDialog::OpenHelpDialog(void)
-{
-	PosteRazorHelpDialog *help = new PosteRazorHelpDialog("PosteRazor homepage", "http://posterazor.sourceforge.net/");
-	char stepTopic[1024];
-	sprintf(stepTopic, POSTERAZORHELPANCHORMANUALSTEP "%.2d", GetCurrentWizardStepNumber() + 1);
-
-	help->SetHtmlContent(posteRazorHelpText);
-	help->JumpToAnchor(stepTopic);
-	help->set_modal();
-	help->show();
 }
 
 const char* PosteRazorDialog::GetCurrentWizardStepStepInfoString(void)
@@ -646,7 +654,7 @@ int main (int argc, char **argv)
 
 	dialog.show(argc, argv);
 	Fl::scheme("plastic");
-	dialog.LoadInputImage("c:\\image.png");
+	dialog.LoadInputImage("c:\\image.gif");
 
 	return Fl::run();
 }
