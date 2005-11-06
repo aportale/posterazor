@@ -652,9 +652,13 @@ int main (int argc, char **argv)
 	dialog.icon((char *)LoadIcon(fl_display, MAKEINTRESOURCE(POSTERAZOR_ICON)));
 #endif
 
-	dialog.show(argc, argv);
 	Fl::scheme("plastic");
-	dialog.LoadInputImage("c:\\image.gif");
+	Fl::get_system_colors();
+	dialog.show();
+	Fl::wait();
+
+	if (argc == 2)
+		dialog.LoadInputImage(argv[1]);
 
 	return Fl::run();
 }
