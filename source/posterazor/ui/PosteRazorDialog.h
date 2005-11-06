@@ -55,6 +55,7 @@ private:
 	Fl_Menu_Item  *m_paperFormatMenuItems;
 	posteRazorSettings m_settings;
 	class PosteRazorSettingsDialog *m_settingsDialog;
+	class PosteRazorHelpDialogUI *m_helpDialog;
 
 public:
 	~PosteRazorDialog();
@@ -63,11 +64,11 @@ public:
 	int handle(int event);
 
 	void OpenSettingsDialog(void);
+	void OpenHelpDialog(void);
 	void HandleOptionsChangement(posteRazorSettings *settings);
 	void next(void);
 	void prev(void);
 	void UpdateNavigationButtons(void);
-	void OpenHelpDialog(void);
 	const char* GetCurrentWizardStepStepInfoString(void);
 	int GetCurrentWizardStepNumber(void);
 	void UpdateStepInfoBar(void);
