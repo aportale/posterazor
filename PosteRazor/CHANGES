@@ -4,7 +4,11 @@ PosteRazor 1.1
            the unit while still no Image is loaded.
 -   Fixed: Dropping of images on the PosteRazor caused a crash
            on OSX
+-   Fixed: Fixed a small memory leak that occurred when the help
+           dialog was opened more than once
 -   Added: The poster preview is (optionally) rendered using OpenGL
            PosteRazor can still be compiled and used without OpenGL
 -   Added: PosteRazor has a Settings dialog for setting Dimension
            units, Language and Usage of OpenGL
+-   Added: An input image can be specified by command line (or drag
+           and drop on the program icon). It is loaded at startup.
