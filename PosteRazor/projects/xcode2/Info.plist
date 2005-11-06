@@ -26,5 +26,14 @@
 	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright 2005 http://posterazor.sourceforge.net/</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>*</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
