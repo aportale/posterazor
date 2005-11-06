@@ -657,8 +657,10 @@ int main (int argc, char **argv)
 	dialog.show();
 	Fl::wait();
 
+#ifndef OSX
 	if (argc == 2)
 		dialog.LoadInputImage(argv[1]);
+#endif
 
 	return Fl::run();
 }
