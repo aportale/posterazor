@@ -12,3 +12,4 @@ PosteRazor 1.1
            units, Language and Usage of OpenGL
 -   Added: An input image can be specified by command line (or drag
            and drop on the program icon). It is loaded at startup.
+           Unfortunately, this still doesn't work on OSX.
