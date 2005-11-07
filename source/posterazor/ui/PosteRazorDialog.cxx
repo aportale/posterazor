@@ -674,15 +674,15 @@ int main (int argc, char **argv)
 	fl_open_callback(OSX_open_cb);
 #endif
 
-#ifdef WIN32
-	dialog.icon((char *)LoadIcon(fl_display, MAKEINTRESOURCE(POSTERAZOR_ICON)));
-#endif
-
 	PosteRazorDialog dialog;
 	Fl::scheme("plastic");
 	Fl::get_system_colors();
 	dialog.show();
 	Fl::wait();
+
+#ifdef WIN32
+	dialog.icon((char *)LoadIcon(fl_display, MAKEINTRESOURCE(POSTERAZOR_ICON)));
+#endif
 
 #ifndef OSX
 	if (argc == 2)
