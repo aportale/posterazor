@@ -675,14 +675,15 @@ int main (int argc, char **argv)
 #endif
 
 	PosteRazorDialog dialog;
-	Fl::scheme("plastic");
-	Fl::get_system_colors();
-	dialog.show();
-	Fl::wait();
 
 #ifdef WIN32
 	dialog.icon((char *)LoadIcon(fl_display, MAKEINTRESOURCE(POSTERAZOR_ICON)));
 #endif
+
+	Fl::scheme("plastic");
+	Fl::get_system_colors();
+	dialog.show();
+	Fl::wait();
 
 #ifndef OSX
 	if (argc == 2)
