@@ -58,9 +58,11 @@ private:
 public:
   Fl_Wizard *m_wizard;
   Fl_Group *m_loadInputImageStep;
+  Fl_Group *m_imageLoadGroup;
+  Fl_Button *m_imageLoadButton;
 private:
-  void cb_1fileopen_i(Fl_Button*, void*);
-  static void cb_1fileopen(Fl_Button*, void*);
+  void cb_m_imageLoadButton_i(Fl_Button*, void*);
+  static void cb_m_imageLoadButton(Fl_Button*, void*);
 public:
   Fl_Box *m_inputFileNameLabel;
   Fl_Group *m_imageInfoGroup;
@@ -231,6 +233,7 @@ private:
   static void cb_m_posterAlignmentRightButton(Fl_Button*, void*);
 public:
   Fl_Group *m_savePosterStep;
+  Fl_Group *m_savePosterGroup;
 private:
   void cb_14filesave_i(Fl_Button*, void*);
   static void cb_14filesave(Fl_Button*, void*);

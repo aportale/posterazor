@@ -22,11 +22,13 @@
 
 #include "PosteRazorDialog.h"
 #include "Fl_Persistent_Preferences.h"
-#include "PosteRazorHelpText.h"
 #include <Fl/Fl_Native_File_Chooser.H>
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
 #include <FL/x.H>
+#include "translations/Translations.h"
+#include "translations/PosteRazorHelpConstants.h"
+
 
 #ifdef WIN32
   #include "windowsResources/PosteRazorResource.h"
@@ -167,6 +169,9 @@ PosteRazorDialog::PosteRazorDialog(void)
 	m_settingsDialog = NULL;
 	m_helpDialog = NULL;
 
+	TRANSLATIONS->SelectLangue(Translations::eLanguageGerman);
+	UpdateLanguage();
+
 	int i;
 	begin();
 	m_dragDropWidget = new PosteRazorDragDropWidget(0, 0, w(), h());
@@ -270,7 +275,7 @@ void PosteRazorDialog::OpenHelpDialog(void)
 	char stepTopic[1024];
 	sprintf(stepTopic, POSTERAZORHELPANCHORMANUALSTEP "%.2d", GetCurrentWizardStepNumber() + 1);
 
-	m_helpDialog->SetHtmlContent(posteRazorHelpText);
+	m_helpDialog->SetHtmlContent(TRANSLATIONS->HelpHtml());
 	m_helpDialog->JumpToAnchor(stepTopic);
 	m_helpDialog->show();
 }
@@ -329,11 +334,11 @@ const char* PosteRazorDialog::GetCurrentWizardStepStepInfoString(void)
 {
 	return
 	(
-		m_wizard->value() == m_loadInputImageStep?POSTERAZORHELPSTEPTITLE01
-		:m_wizard->value() == m_paperSizeStep?POSTERAZORHELPSTEPTITLE02
-		:m_wizard->value() == m_overlappingStep?POSTERAZORHELPSTEPTITLE03
-		:m_wizard->value() == m_posterSizeStep?POSTERAZORHELPSTEPTITLE04
-		:POSTERAZORHELPSTEPTITLE05
+		m_wizard->value() == m_loadInputImageStep?TRANSLATIONS->StepTitle01()
+		:m_wizard->value() == m_paperSizeStep?TRANSLATIONS->StepTitle02()
+		:m_wizard->value() == m_overlappingStep?TRANSLATIONS->StepTitle03()
+		:m_wizard->value() == m_posterSizeStep?TRANSLATIONS->StepTitle04()
+		:TRANSLATIONS->StepTitle05()
 	);
 }
 
@@ -351,8 +356,10 @@ int PosteRazorDialog::GetCurrentWizardStepNumber(void)
 
 void PosteRazorDialog::UpdateStepInfoBar(void)
 {
+	char stepStr[1024];
+	sprintf(stepStr, TRANSLATIONS->StepXOfY(), GetCurrentWizardStepNumber() + 1, 5); 
 	char helpTitleStr[1024];
-	sprintf(helpTitleStr, "  Step %d of 5: %s", GetCurrentWizardStepNumber() + 1, GetCurrentWizardStepStepInfoString());
+	sprintf(helpTitleStr, "  %s: %s", stepStr, GetCurrentWizardStepStepInfoString());
 	m_stepInfoBox->copy_label(helpTitleStr);
 }
 
@@ -377,8 +384,15 @@ void PosteRazorDialog::UpdateDimensionUnitLabels(void)
 	m_posterAbsoluteWidthDimensionUnitLabel->copy_label(m_posteRazor->GetDistanceUnitName());
 	m_posterAbsoluteHeightDimensionUnitLabel->copy_label(m_posteRazor->GetDistanceUnitName());
 	char paperBordersGroupLabel[100];
-	sprintf(paperBordersGroupLabel, "Borders (%s)", m_posteRazor->GetDistanceUnitName());
+	sprintf(paperBordersGroupLabel, "%s (%s)", TRANSLATIONS->Borders(), m_posteRazor->GetDistanceUnitName());
 	m_paperBordersGroup->copy_label(paperBordersGroupLabel);
+}
+
+void PosteRazorDialog::UpdateLanguage(void)
+{
+	m_imageInfoGroup->copy_label(TRANSLATIONS->ImageInformations());
+	m_imageLoadGroup->copy_label(TRANSLATIONS->InputImage());
+	m_settingsButton->copy_label(TRANSLATIONS->Settings());
 }
 
 void PosteRazorDialog::LoadInputImage(const char *fileName)
