@@ -165,6 +165,12 @@
 				82028CDB091E6F1500763263,
 				82028CDC091E6F1500763263,
 				82028CDA091E6F1500763263,
+				82CA80DF09206EDE00986769,
+				82CA80E009206EDE00986769,
+				82CA80E109206EDE00986769,
+				82CA80E209206EDE00986769,
+				82CA80E309206EDE00986769,
+				82CA80E509206EDE00986769,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			name = "Copy README, LICENSE, CHANGES";
@@ -459,6 +465,7 @@
 		};
 		82814C4E08A564A3006D2A26 = {
 			children = (
+				82CA80D709206EDE00986769,
 				82CF36B70916CB3A00C7E45A,
 				82CF36B80916CB3A00C7E45A,
 				82CF36B90916CB3A00C7E45A,
@@ -467,7 +474,6 @@
 				82CF36BC0916CB3A00C7E45A,
 				82CF36BD0916CB3A00C7E45A,
 				82CF36BE0916CB3A00C7E45A,
-				82C3A2DC08F13E4900E40AEE,
 				8218F42E08F0B384004D5501,
 				8218F44D08F0B72C004D5501,
 				82814C4F08A564A3006D2A26,
@@ -604,13 +610,118 @@
 			settings = {
 			};
 		};
-		82C3A2DC08F13E4900E40AEE = {
+		82CA80D709206EDE00986769 = {
+			children = (
+				82CA80D809206EDE00986769,
+				82CA80D909206EDE00986769,
+				82CA80DA09206EDE00986769,
+				82CA80DB09206EDE00986769,
+				82CA80DC09206EDE00986769,
+				82CA80DD09206EDE00986769,
+				82CA80DE09206EDE00986769,
+			);
+			isa = PBXGroup;
+			path = translations;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82CA80D809206EDE00986769 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = PosteRazorHelpText.h;
+			path = PosteRazorHelpConstants.h;
 			refType = 4;
 			sourceTree = "<group>";
+		};
+		82CA80D909206EDE00986769 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = TranslationEnglish.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82CA80DA09206EDE00986769 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = TranslationGerman.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82CA80DB09206EDE00986769 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = TranslationInterface.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82CA80DC09206EDE00986769 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = TranslationItalian.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82CA80DD09206EDE00986769 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = Translations.cxx;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82CA80DE09206EDE00986769 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = Translations.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		82CA80DF09206EDE00986769 = {
+			fileRef = 82CA80D809206EDE00986769;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82CA80E009206EDE00986769 = {
+			fileRef = 82CA80D909206EDE00986769;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82CA80E109206EDE00986769 = {
+			fileRef = 82CA80DA09206EDE00986769;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82CA80E209206EDE00986769 = {
+			fileRef = 82CA80DB09206EDE00986769;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82CA80E309206EDE00986769 = {
+			fileRef = 82CA80DC09206EDE00986769;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82CA80E409206EDE00986769 = {
+			fileRef = 82CA80DD09206EDE00986769;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		82CA80E509206EDE00986769 = {
+			fileRef = 82CA80DE09206EDE00986769;
+			isa = PBXBuildFile;
+			settings = {
+			};
 		};
 		82CF36B70916CB3A00C7E45A = {
 			fileEncoding = 30;
@@ -789,6 +900,7 @@
 				82CF36C00916CB3A00C7E45A,
 				82CF36C10916CB3A00C7E45A,
 				82CF36C20916CB3A00C7E45A,
+				82CA80E409206EDE00986769,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
