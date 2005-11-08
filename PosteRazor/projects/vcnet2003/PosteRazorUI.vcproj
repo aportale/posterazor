@@ -142,6 +142,9 @@
 			<File
 				RelativePath="..\..\source\posterazor\ui\PosteRazorDialogUI.cxx">
 			</File>
+			<File
+				RelativePath="..\..\source\posterazor\ui\translations\Translations.cxx">
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -169,10 +172,25 @@
 				RelativePath="..\..\source\posterazor\ui\PosteRazorDialogUI.h">
 			</File>
 			<File
-				RelativePath="..\..\source\posterazor\ui\PosteRazorHelpText.h">
+				RelativePath="..\..\source\posterazor\ui\translations\PosteRazorHelpConstants.h">
 			</File>
 			<File
 				RelativePath="..\..\source\posterazor\ui\windowsResources\PosteRazorResource.h">
+			</File>
+			<File
+				RelativePath="..\..\source\posterazor\ui\translations\TranslationEnglish.h">
+			</File>
+			<File
+				RelativePath="..\..\source\posterazor\ui\translations\TranslationGerman.h">
+			</File>
+			<File
+				RelativePath="..\..\source\posterazor\ui\translations\TranslationInterface.h">
+			</File>
+			<File
+				RelativePath="..\..\source\posterazor\ui\translations\TranslationItalian.h">
+			</File>
+			<File
+				RelativePath="..\..\source\posterazor\ui\translations\Translations.h">
 			</File>
 		</Filter>
 		<Filter

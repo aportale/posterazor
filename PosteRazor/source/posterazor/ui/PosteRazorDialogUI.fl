@@ -30,9 +30,9 @@ decl {\#include "Fl_Paint_Canvas_Group.h"} {public
 
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {72 207 620 455} type Double hide resizable
+  xywh {348 195 620 455} type Double resizable
   code0 {size_range(this->w(), this->h());}
-  class Fl_Double_Window
+  class Fl_Double_Window visible
 } {
   Fl_Group {} {open
     xywh {10 420 600 25}
@@ -52,7 +52,7 @@ widget_class PosteRazorDialogUI {
     }
     Fl_Button m_settingsButton {
       label {Settings...}
-      callback {OpenSettingsDialog();} selected
+      callback {OpenSettingsDialog();}
       tooltip {One step back} xywh {10 420 135 25} labelcolor 32
     }
   }
@@ -61,23 +61,23 @@ widget_class PosteRazorDialogUI {
     xywh {315 45 295 365} box THIN_DOWN_BOX
   } {
     Fl_Group m_loadInputImageStep {open
-      xywh {315 45 295 365} color 50 hide
+      xywh {315 45 295 365} color 50
     } {
-      Fl_Group {} {
+      Fl_Group m_imageLoadGroup {
         label {Input Image} open
-        xywh {325 70 275 25}
+        xywh {325 69 275 25}
       } {
-        Fl_Button {} {
+        Fl_Button m_imageLoadButton {
           label {@+1fileopen}
           callback {LoadInputImage(0);}
-          xywh {575 70 25 25} labelcolor 134
+          xywh {575 69 25 25} labelcolor 134
         }
         Fl_Box m_inputFileNameLabel {
-          xywh {325 70 250 25} box THIN_DOWN_BOX color 55 align 84 resizable
+          xywh {325 69 250 25} box THIN_DOWN_BOX color 55 align 84 resizable
         }
       }
       Fl_Group m_imageInfoGroup {
-        label {Image information}
+        label {Image information} selected
         xywh {325 120 275 85} box THIN_DOWN_BOX color 45
       } {
         Fl_Box m_imageInfoValuesLabel {
@@ -366,9 +366,9 @@ widget_class PosteRazorDialogUI {
       }
     }
     Fl_Group m_savePosterStep {open
-      xywh {315 45 295 365}
+      xywh {315 45 295 365} hide
     } {
-      Fl_Group {} {
+      Fl_Group m_savePosterGroup {
         label {Save the Poster} open
         xywh {325 70 275 75} box THIN_DOWN_BOX color 45
       } {

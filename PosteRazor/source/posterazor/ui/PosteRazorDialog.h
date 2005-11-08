@@ -74,6 +74,7 @@ public:
 	void UpdateStepInfoBar(void);
 	void UpdatePreviewState(void);
 	void UpdateDimensionUnitLabels(void);
+	void UpdateLanguage(void);
 
 	void LoadInputImage(const char *fileName);
 	void UpdateImageInfoFields(void);
