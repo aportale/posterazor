@@ -642,7 +642,7 @@
 			sourceTree = "<group>";
 		};
 		82CA80DA09206EDE00986769 = {
-			fileEncoding = 30;
+			fileEncoding = 5;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
 			path = TranslationGerman.h;
@@ -658,7 +658,7 @@
 			sourceTree = "<group>";
 		};
 		82CA80DC09206EDE00986769 = {
-			fileEncoding = 30;
+			fileEncoding = 5;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
 			path = TranslationItalian.h;
