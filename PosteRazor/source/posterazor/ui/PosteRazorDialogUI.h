@@ -76,6 +76,7 @@ private:
 public:
   Fl_Group *m_paperFormatStandardGroup;
   Fl_Choice *m_paperFormatChoice;
+  Fl_Group *m_paperOrientationGroup;
   Fl_Round_Button *m_paperOrientationPortraitRadioButton;
 private:
   void cb_m_paperOrientationPortraitRadioButton_i(Fl_Round_Button*, void*);
@@ -121,6 +122,7 @@ private:
   static void cb_m_paperBorderLeftInput(Fl_Value_Input*, void*);
 public:
   Fl_Group *m_overlappingStep;
+  Fl_Group *m_overlappingSizeGroup;
   Fl_Value_Input *m_overlappingWidthInput;
 private:
   void cb_m_overlappingWidthInput_i(Fl_Value_Input*, void*);
@@ -133,6 +135,7 @@ private:
 public:
   Fl_Box *m_overlappingWidthDimensionUnitLabel;
   Fl_Box *m_overlappingHeightDimensionUnitLabel;
+  Fl_Group *m_overlappingPositionGroup;
   Fl_Button *m_overlappingPositionTopLeftButton;
 private:
   void cb_m_overlappingPositionTopLeftButton_i(Fl_Button*, void*);
@@ -154,6 +157,7 @@ private:
   static void cb_m_overlappingPositionBottomRightButton(Fl_Button*, void*);
 public:
   Fl_Group *m_posterSizeStep;
+  Fl_Group *m_posterSizeGroup;
   Fl_Round_Button *m_posterSizeAbsoluteRadioButton;
 private:
   void cb_m_posterSizeAbsoluteRadioButton_i(Fl_Round_Button*, void*);
@@ -202,6 +206,7 @@ private:
   static void cb_m_posterPercentualSizeInput(Fl_Value_Input*, void*);
 public:
   Fl_Box *m_posterPercentualWidthLabel;
+  Fl_Group *m_imageAlignmentGroup;
   Fl_Button *m_posterAlignmentTopButton;
 private:
   void cb_m_posterAlignmentTopButton_i(Fl_Button*, void*);
@@ -294,18 +299,27 @@ public:
   PosteRazorSettingsDialogUI(int X, int Y, int W, int H, const char *L = 0);
   PosteRazorSettingsDialogUI(int W, int H, const char *L = 0);
   bool m_okWasPressed;
+  Fl_Group *m_distanceUnitGroup;
   Fl_Choice *m_distanceUnitChoice;
+  Fl_Box *m_distanceUnitExplanationBox;
+  Fl_Group *m_useOpenGLGroup;
   Fl_Check_Button *m_useOpenGLCheckButton;
 private:
   void cb_m_useOpenGLCheckButton_i(Fl_Check_Button*, void*);
   static void cb_m_useOpenGLCheckButton(Fl_Check_Button*, void*);
 public:
-  Fl_Choice *m_languageChoice;
+  Fl_Box *m_useOpenGLExplanationBox;
+  Fl_Group *m_languageGroup;
+  Fl_Group *m_languageButtonsGroup;
+  Fl_Box *m_languageExplanationBox;
 private:
   void cb_OK1_i(Fl_Button*, void*);
   static void cb_OK1(Fl_Button*, void*);
-  void cb_Cancel_i(Fl_Button*, void*);
-  static void cb_Cancel(Fl_Button*, void*);
+public:
+  Fl_Button *m_cancelButton;
+private:
+  void cb_m_cancelButton_i(Fl_Button*, void*);
+  static void cb_m_cancelButton(Fl_Button*, void*);
 public:
   virtual void HandleUseOpenGLChangement(void) = 0;
 };

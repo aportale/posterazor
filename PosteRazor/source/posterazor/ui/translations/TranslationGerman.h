@@ -6,11 +6,18 @@
 class TranslationGerman: public TranslationInterface
 {
 public:
+	const char* LanguageName(void)                    {return "Deutsch";}
+
 	const char* Borders(void)                         {return "Ränder";}
+	const char* Custom(void)                          {return "Eigenes";}
+	const char* Height(void)                          {return "Höhe:";}
 	const char* ImageInformations(void)               {return "Bildinformationen";}
 	const char* InputImage(void)                      {return "Ausgangsbild";}
+	const char* PaperFormat(void)                     {return "Papierformat";}
 	const char* Settings(void)                        {return "Einstellungen...";}
+	const char* Standard(void)                        {return "Standard";}
 	const char* StepXOfY(void)                        {return "Schritt %d von %d";}
+	const char* Width(void)                           {return "Breite:";}
 
 
 #include "PosteRazorHelpConstants.h"
@@ -109,6 +116,34 @@ public:
 				"</BODY>" POSTERAZORHELPENDLINE \
 			"</HTML>";
 
+	}
+
+	const int FlagImageWidth(void)                    {return 18;}
+	const int FlagImageHeight(void)                   {return 9;}
+	const unsigned char *FlagImageRGBData(void)
+	{
+		static const unsigned char flagRGBData[] =
+		{
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,247,0,0,243,0,0,243,0,0,243,0,0,243,0,0,243,0,0,243,0,0,243,0,
+			0,243,0,0,243,0,0,243,0,0,243,0,0,243,0,0,243,0,0,243,0,0,243,0,0,243,0,0,247,
+			0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,
+			247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,
+			250,0,0,250,0,0,250,0,0,250,0,0,250,0,0,250,0,0,250,0,0,250,0,0,250,0,0,250,0,0,
+			250,0,0,250,0,0,250,0,0,250,0,0,250,0,0,250,0,0,247,0,0,254,227,1,253,226,1,253,
+			226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,
+			226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,254,227,1,254,
+			227,1,254,227,1,254,227,1,254,227,1,254,227,1,254,227,1,254,227,1,254,227,1,254,
+			227,1,254,227,1,254,227,1,254,227,1,254,227,1,254,227,1,254,227,1,254,227,1,254,
+			227,1,254,227,1,254,227,1,254,227,1,254,227,1,254,227,1,254,227,1,254,227,1,254,
+			227,1,254,227,1,254,227,1,254,227,1,254,227,1,254,227,1,254,227,1,254,227,1,254,
+			227,1,254,227,1,254,227,1,254,227,1
+		};
+
+		return flagRGBData;
 	}
 };
 

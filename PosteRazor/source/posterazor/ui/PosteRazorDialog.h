@@ -27,6 +27,7 @@
 #include <FL/Fl_Menu_Item.H>
 #include "PosteRazor.h"
 #include "PosteRazorDialogUI.h"
+#include "translations/Translations.h"
 
 class PosteRazorDragDropWidget : public Fl_Box
 {
@@ -39,6 +40,7 @@ typedef struct
 {
 	enum PosteRazor::eDistanceUnits distanceUnit;
 	enum Fl_Paint_Canvas_Group::ePaintCanvasTypes previewType;
+	enum Translations::eLanguages language;
 } posteRazorSettings;
 
 class SettingsChangementHandler
