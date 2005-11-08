@@ -26,7 +26,6 @@
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
 #include <FL/x.H>
-#include "translations/Translations.h"
 #include "translations/PosteRazorHelpConstants.h"
 
 
@@ -92,7 +91,10 @@ class PosteRazorSettingsDialog: public PosteRazorSettingsDialogUI
 	posteRazorSettings *m_settings;
 	posteRazorSettings m_settingsBackup;
 	SettingsChangementHandler *m_changementHandler;
-	Fl_Menu_Item  *m_distanceUnitMenuItems;
+	Fl_Menu_Item *m_distanceUnitMenuItems;
+	int m_languageButtonsCount;
+	Fl_Button **m_languageButtons;
+	Fl_RGB_Image **m_languageButtonImages;
 
 public:
 	PosteRazorSettingsDialog()
@@ -109,12 +111,52 @@ public:
 			m_distanceUnitMenuItems[i].user_data((void*)this);
 		}
 		m_distanceUnitChoice->menu(m_distanceUnitMenuItems);
+
+#define LANGUAGEBUTTONSSPACING 10
+		m_languageButtonsCount = TRANSLATIONS->GetLanguagesCount();
+		m_languageButtons = new Fl_Button*[m_languageButtonsCount];
+		m_languageButtonImages = new Fl_RGB_Image*[m_languageButtonsCount];
+		int languageButtonWidth = (m_languageButtonsGroup->w() + LANGUAGEBUTTONSSPACING) / m_languageButtonsCount - LANGUAGEBUTTONSSPACING;
+
+		m_languageButtonsGroup->begin();
+		for (int i = 0; i < m_languageButtonsCount; i++)
+		{
+			m_languageButtons[i] = new Fl_Button
+			(
+				m_languageButtonsGroup->x() + i * (languageButtonWidth+LANGUAGEBUTTONSSPACING),
+				m_languageButtonsGroup->y(),
+				languageButtonWidth,
+				m_languageButtonsGroup->h()
+			);
+
+			enum Translations::eLanguages language = TRANSLATIONS->GetLanguageForIndex(i);
+			TranslationInterface *translation = TRANSLATIONS->GetTranslationOfLanguage(language);
+			m_languageButtonImages[i] = new Fl_RGB_Image(translation->FlagImageRGBData(), translation->FlagImageWidth(), translation->FlagImageHeight());
+			m_languageButtons[i]->image(m_languageButtonImages[i]);
+			m_languageButtons[i]->tooltip(translation->LanguageName());
+			m_languageButtons[i]->type(FL_RADIO_BUTTON);
+			m_languageButtons[i]->color((Fl_Color)40);
+			m_languageButtons[i]->selection_color((Fl_Color)55);
+			m_languageButtons[i]->callback(HandleLanguageChoice_cb);
+			m_languageButtons[i]->user_data((void*)this);
+		}
+		m_languageButtonsGroup->end();
 	}
 
 	~PosteRazorSettingsDialog()
 	{
 		if (m_distanceUnitMenuItems)
 			delete[] m_distanceUnitMenuItems;
+
+		if (m_languageButtons)
+			delete[] m_languageButtons; // the actual buttons are deleted by FLTK
+
+		if (m_languageButtonImages)
+		{
+			for (int i = 0; i <m_languageButtonsCount; i++)
+				delete m_languageButtonImages[i];
+			delete[] m_languageButtonImages;
+		}
 	}
 
 	void SetOptionsAndHandler(posteRazorSettings *settings, SettingsChangementHandler *changementHandler)
@@ -126,6 +168,9 @@ public:
 		enum PosteRazor::eDistanceUnits selectedDistanceUnit = m_settings->distanceUnit;
 		m_distanceUnitChoice->value(selectedDistanceUnit);
 		m_useOpenGLCheckButton->value(m_settings->previewType == Fl_Paint_Canvas_Group::PaintCanvasTypeGL?1:0);
+
+		for (int i = 0; i < m_languageButtonsCount; i++)
+			m_languageButtons[i]->value((m_settings->language == TRANSLATIONS->GetLanguageForIndex(i))?1:0);
 	}
 
 	static void HandleDistanceUnitChoice_cb(Fl_Widget *widget, void *userData)
@@ -145,6 +190,26 @@ public:
 	void HandleUseOpenGLChangement(void)
 	{
 		m_settings->previewType = m_useOpenGLCheckButton->value()?Fl_Paint_Canvas_Group::PaintCanvasTypeGL:Fl_Paint_Canvas_Group::PaintCanvasTypeDraw;
+
+		if (m_changementHandler)
+			m_changementHandler->HandleOptionsChangement(m_settings);
+	}
+
+	static void HandleLanguageChoice_cb(Fl_Widget *widget, void *userData)
+	{
+		((PosteRazorSettingsDialog*)userData)->HandleLanguageChoice();
+	}
+
+	void HandleLanguageChoice(void)
+	{
+		for (int i = 0; i < m_languageButtonsCount; i++)
+		{
+			if (m_languageButtons[i]->value() != 0)
+			{
+				m_settings->language = TRANSLATIONS->GetLanguageForIndex(i);
+				break;
+			}
+		}
 
 		if (m_changementHandler)
 			m_changementHandler->HandleOptionsChangement(m_settings);
@@ -257,6 +322,7 @@ void PosteRazorDialog::OpenSettingsDialog(void)
 	{
 		m_settings.distanceUnit = m_posteRazor->GetDistanceUnit();
 		m_settings.previewType = m_paintCanvasGroup->GetPaintCanvasType();
+		m_settings.language = TRANSLATIONS->GetSelectedLanguage()!=Translations::eLanguageUndefined?TRANSLATIONS->GetSelectedLanguage():Translations::eLanguageEnglish;
 		m_settingsDialog = new PosteRazorSettingsDialog();
 		m_settingsDialog->set_modal();
 	}
@@ -295,6 +361,11 @@ void PosteRazorDialog::HandleOptionsChangement(posteRazorSettings *settings)
 	{
 		m_paintCanvasGroup->SetPaintCanvasType(settings->previewType);
 		UpdatePreviewState();
+	}
+	if (TRANSLATIONS->GetSelectedLanguage() != settings->language)
+	{
+		TRANSLATIONS->SelectLangue(settings->language);
+		UpdateLanguage();
 	}
 }
 
@@ -390,9 +461,24 @@ void PosteRazorDialog::UpdateDimensionUnitLabels(void)
 
 void PosteRazorDialog::UpdateLanguage(void)
 {
-	m_imageInfoGroup->copy_label(TRANSLATIONS->ImageInformations());
-	m_imageLoadGroup->copy_label(TRANSLATIONS->InputImage());
-	m_settingsButton->copy_label(TRANSLATIONS->Settings());
+	m_paperFormatTypeTabs->label(TRANSLATIONS->PaperFormat());
+	m_paperFormatCustomGroup->label(TRANSLATIONS->Custom());
+	m_paperFormatStandardGroup->label(TRANSLATIONS->Standard());
+	m_paperCustomHeightInput->label(TRANSLATIONS->Height());
+	m_paperCustomWidthInput->label(TRANSLATIONS->Width());
+	m_overlappingHeightInput->label(TRANSLATIONS->Height());
+	m_overlappingWidthInput->label(TRANSLATIONS->Width());
+	m_posterAbsoluteHeightInput->label(TRANSLATIONS->Height());
+	m_posterAbsoluteWidthInput->label(TRANSLATIONS->Width());
+	m_posterPagesHeightInput->label(TRANSLATIONS->Height());
+	m_posterPagesWidthInput->label(TRANSLATIONS->Width());
+	m_imageInfoGroup->label(TRANSLATIONS->ImageInformations());
+	m_imageLoadGroup->label(TRANSLATIONS->InputImage());
+	m_settingsButton->label(TRANSLATIONS->Settings());
+
+	UpdateStepInfoBar();
+
+	redraw();
 }
 
 void PosteRazorDialog::LoadInputImage(const char *fileName)

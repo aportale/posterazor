@@ -6,16 +6,23 @@
 class TranslationEnglish: public TranslationInterface
 {
 public:
+	const char* LanguageName(void)                    {return "English";}
+
 	const char* Borders(void)                         {return "Borders";}
-	const char* ImageInformations(void)               {return "Image Informations";}
-	const char* InputImage(void)                      {return "Input Image";}
+	const char* Custom(void)                          {return "Custom";}
+	const char* Height(void)                          {return "Height:";}
+	const char* ImageInformations(void)               {return "Image informations";}
+	const char* InputImage(void)                      {return "Input image";}
+	const char* PaperFormat(void)                     {return "Paper format";}
 	const char* Settings(void)                        {return "Settings...";}
+	const char* Standard(void)                        {return "Standard";}
 	const char* StepXOfY(void)                        {return "Step %d of %d";}
+	const char* Width(void)                           {return "Width:";}
 
 
 #include "PosteRazorHelpConstants.h"
 #define POSTERAZORHELPSTEPTITLE01 "Load an input image"
-#define POSTERAZORHELPSTEPTITLE02 "Define the printer paper size"
+#define POSTERAZORHELPSTEPTITLE02 "Define the printer paper format"
 #define POSTERAZORHELPSTEPTITLE03 "Define the image tile overlapping"
 #define POSTERAZORHELPSTEPTITLE04 "Define the final poster size"
 #define POSTERAZORHELPSTEPTITLE05 "Save the Poster"
@@ -106,6 +113,37 @@ public:
 				"</BODY>" POSTERAZORHELPENDLINE \
 			"</HTML>";
 
+	}
+
+	const int FlagImageWidth(void)                    {return 18;}
+	const int FlagImageHeight(void)                   {return 9;}
+	const unsigned char *FlagImageRGBData(void)
+	{
+		static const unsigned char flagRGBData[] =
+		{
+			0,0,153,0,0,153,0,0,153,0,0,153,0,0,153,0,0,153,0,0,153,0,0,153,255,0,0,
+			255,0,0,255,0,0,255,0,0,255,0,0,255,0,0,255,0,0,255,0,0,255,0,0,255,0,0,0,0,153,
+			255,255,255,0,0,153,255,255,255,0,0,153,255,255,255,0,0,153,0,0,153,255,255,255,
+			255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,232,232,255,81,
+			81,0,0,153,0,0,153,0,0,153,0,0,153,0,0,153,0,0,153,0,0,153,0,0,153,0,0,153,0,0,
+			153,255,0,0,255,0,0,255,0,0,255,0,0,255,0,0,255,0,0,255,255,255,255,255,255,255,
+			255,255,255,255,255,0,0,153,0,0,153,255,255,255,0,0,153,255,255,255,0,0,153,255,
+			255,255,0,0,153,255,255,255,255,255,255,255,232,232,255,81,81,255,0,0,255,0,0,
+			255,0,0,255,0,0,255,0,0,255,0,0,0,0,153,0,0,153,0,0,153,0,0,153,0,0,153,0,0,153,
+			0,0,153,0,0,153,255,0,0,255,0,0,255,0,0,255,0,0,255,0,0,255,0,0,255,0,0,255,0,
+			0,255,0,0,255,0,0,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,
+			255,255,255,221,202,202,255,81,81,255,0,0,255,0,0,255,255,255,255,255,255,255,
+			255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,0,0,255,
+			0,0,255,0,0,255,0,0,255,0,0,255,0,0,255,0,0,255,255,255,255,0,0,255,0,0,255,
+			255,255,255,255,255,255,0,0,255,0,0,255,0,0,0,0,153,0,0,153,0,0,153,255,255,255,
+			255,255,255,255,255,255,253,151,152,255,0,0,0,0,153,0,0,153,255,255,255,255,0,0,
+			255,0,0,255,255,255,0,0,153,255,255,255,255,255,255,255,0,0,255,0,0,255,0,0,0,0,
+			153,255,0,0,255,0,0,255,0,0,0,0,153,0,0,153,0,0,153,0,0,153,255,255,255,255,0,0,
+			255,0,0,255,255,255,0,0,153,0,0,153,0,0,153,255,255,255,255,255,255,255,0,0,255,
+			0,0
+		};
+
+		return flagRGBData;
 	}
 };
 

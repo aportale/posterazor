@@ -30,9 +30,9 @@ decl {\#include "Fl_Paint_Canvas_Group.h"} {public
 
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {348 195 620 455} type Double resizable
+  xywh {456 206 620 455} type Double hide resizable
   code0 {size_range(this->w(), this->h());}
-  class Fl_Double_Window visible
+  class Fl_Double_Window
 } {
   Fl_Group {} {open
     xywh {10 420 600 25}
@@ -61,7 +61,7 @@ widget_class PosteRazorDialogUI {
     xywh {315 45 295 365} box THIN_DOWN_BOX
   } {
     Fl_Group m_loadInputImageStep {open
-      xywh {315 45 295 365} color 50
+      xywh {315 45 295 365} color 50 hide
     } {
       Fl_Group m_imageLoadGroup {
         label {Input Image} open
@@ -77,7 +77,7 @@ widget_class PosteRazorDialogUI {
         }
       }
       Fl_Group m_imageInfoGroup {
-        label {Image information} selected
+        label {Image information}
         xywh {325 120 275 85} box THIN_DOWN_BOX color 45
       } {
         Fl_Box m_imageInfoValuesLabel {
@@ -92,7 +92,7 @@ widget_class PosteRazorDialogUI {
       }
     }
     Fl_Group m_paperSizeStep {open
-      xywh {315 45 295 365} hide
+      xywh {315 45 295 365}
     } {
       Fl_Tabs m_paperFormatTypeTabs {
         label {Paper size}
@@ -107,7 +107,7 @@ widget_class PosteRazorDialogUI {
             label {Format:} open
             xywh {425 105 165 25} down_box BORDER_BOX
           } {}
-          Fl_Group {} {
+          Fl_Group m_paperOrientationGroup {
             label {Orientation:} open
             xywh {425 140 165 60} box THIN_DOWN_BOX color 43 align 4
           } {
@@ -185,7 +185,7 @@ widget_class PosteRazorDialogUI {
     Fl_Group m_overlappingStep {open
       xywh {315 45 295 365} hide
     } {
-      Fl_Group {} {
+      Fl_Group m_overlappingSizeGroup {
         label {Overlapping size} open
         xywh {325 70 275 75} box THIN_DOWN_BOX color 45 selection_color 54
       } {
@@ -213,7 +213,7 @@ widget_class PosteRazorDialogUI {
       Fl_Box {} {
         xywh {315 410 290 0} resizable
       }
-      Fl_Group {} {
+      Fl_Group m_overlappingPositionGroup {
         label {Overlapping position} open
         xywh {325 170 275 190} box THIN_DOWN_BOX color 45 selection_color 54
       } {
@@ -242,7 +242,7 @@ widget_class PosteRazorDialogUI {
     Fl_Group m_posterSizeStep {open
       xywh {315 45 295 365} hide
     } {
-      Fl_Group {} {
+      Fl_Group m_posterSizeGroup {
         label {Image size} open
         xywh {325 70 275 250} box THIN_DOWN_BOX color 45 selection_color 54
       } {
@@ -324,7 +324,7 @@ widget_class PosteRazorDialogUI {
           }
         }
       }
-      Fl_Group {} {
+      Fl_Group m_imageAlignmentGroup {
         label {Image alignment} open
         xywh {325 345 275 51} box THIN_DOWN_BOX color 45 selection_color 45
       } {
@@ -485,28 +485,28 @@ widget_class PosteRazorHelpDialogUI {
 widget_class PosteRazorSettingsDialogUI {
   label {PosteRazor settings}
   user_data this open
-  xywh {36 289 315 400} type Double hide
+  xywh {36 289 315 400} type Double
   code0 {m_okWasPressed = false;}
-  class Fl_Double_Window modal
+  class Fl_Double_Window modal visible
 } {
   decl {bool m_okWasPressed;} {public
   }
   Fl_Group {} {open
     xywh {10 10 295 345} box THIN_DOWN_BOX labelsize 8
   } {
-    Fl_Group {} {
+    Fl_Group m_distanceUnitGroup {
       label Units open
       xywh {20 35 275 85} box THIN_DOWN_BOX color 45
     } {
       Fl_Choice m_distanceUnitChoice {open
         tooltip {Choose the unit you want to work with} xywh {30 45 255 25} down_box BORDER_BOX align 20
       } {}
-      Fl_Box {} {
+      Fl_Box m_distanceUnitExplanationBox {
         label {Choose the distance unit you want to work with}
         xywh {30 80 255 30} align 150
       }
     }
-    Fl_Group {} {
+    Fl_Group m_useOpenGLGroup {
       label {Preview with OpenGL} open
       xywh {20 145 275 105} box THIN_DOWN_BOX color 45
     } {
@@ -515,19 +515,19 @@ widget_class PosteRazorSettingsDialogUI {
         callback {HandleUseOpenGLChangement();}
         xywh {30 154 255 20} down_box DOWN_BOX
       }
-      Fl_Box {} {
+      Fl_Box m_useOpenGLExplanationBox {
         label {OpenGL enables a smooth preview on modern systems. It could slow the preview down on old systems, though.}
         xywh {30 179 255 60} align 150
       }
     }
-    Fl_Group {} {
+    Fl_Group m_languageGroup {
       label Language open
       xywh {20 275 275 70} box THIN_DOWN_BOX color 45
     } {
-      Fl_Choice m_languageChoice {open
-        tooltip {Choose the unit you want to work with} xywh {30 285 255 25} down_box BORDER_BOX align 20
+      Fl_Group m_languageButtonsGroup {open selected
+        xywh {30 285 255 25}
       } {}
-      Fl_Box {} {
+      Fl_Box m_languageExplanationBox {
         label {Choose your language}
         xywh {30 315 255 20} align 150
       }
@@ -542,7 +542,7 @@ widget_class PosteRazorSettingsDialogUI {
 hide();}
       xywh {210 365 95 25}
     }
-    Fl_Button {} {
+    Fl_Button m_cancelButton {
       label Cancel
       callback {hide();}
       xywh {105 365 95 25}

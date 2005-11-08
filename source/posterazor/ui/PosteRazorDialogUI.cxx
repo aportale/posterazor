@@ -965,6 +965,7 @@ o->when(FL_WHEN_RELEASE);
   o->user_data((void*)(this));
   { Fl_Group* o = m_loadInputImageStep = new Fl_Group(315, 45, 295, 365);
     o->color(FL_LIGHT1);
+    o->hide();
     { Fl_Group* o = m_imageLoadGroup = new Fl_Group(325, 69, 275, 25, "Input Image");
       { Fl_Button* o = m_imageLoadButton = new Fl_Button(575, 69, 25, 25, "@+1fileopen");
         o->labelcolor((Fl_Color)134);
@@ -995,7 +996,6 @@ o->when(FL_WHEN_RELEASE);
     o->end();
   }
   { Fl_Group* o = m_paperSizeStep = new Fl_Group(315, 45, 295, 365);
-    o->hide();
     { Fl_Tabs* o = m_paperFormatTypeTabs = new Fl_Tabs(325, 70, 275, 140, "Paper size");
       o->callback((Fl_Callback*)cb_m_paperFormatTypeTabs);
       { Fl_Group* o = m_paperFormatStandardGroup = new Fl_Group(325, 95, 275, 115, "Standard");
@@ -1005,7 +1005,7 @@ o->when(FL_WHEN_RELEASE);
         { Fl_Choice* o = m_paperFormatChoice = new Fl_Choice(425, 105, 165, 25, "Format:");
           o->down_box(FL_BORDER_BOX);
         }
-        { Fl_Group* o = new Fl_Group(425, 140, 165, 60, "Orientation:");
+        { Fl_Group* o = m_paperOrientationGroup = new Fl_Group(425, 140, 165, 60, "Orientation:");
           o->box(FL_THIN_DOWN_BOX);
           o->color((Fl_Color)43);
           o->align(FL_ALIGN_LEFT);
@@ -1089,7 +1089,7 @@ o->when(FL_WHEN_RELEASE);
   }
   { Fl_Group* o = m_overlappingStep = new Fl_Group(315, 45, 295, 365);
     o->hide();
-    { Fl_Group* o = new Fl_Group(325, 70, 275, 75, "Overlapping size");
+    { Fl_Group* o = m_overlappingSizeGroup = new Fl_Group(325, 70, 275, 75, "Overlapping size");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       o->selection_color(FL_LIGHT3);
@@ -1117,7 +1117,7 @@ o->when(FL_WHEN_RELEASE);
     { Fl_Box* o = new Fl_Box(315, 410, 290, 0);
       Fl_Group::current()->resizable(o);
     }
-    { Fl_Group* o = new Fl_Group(325, 170, 275, 190, "Overlapping position");
+    { Fl_Group* o = m_overlappingPositionGroup = new Fl_Group(325, 170, 275, 190, "Overlapping position");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       o->selection_color(FL_LIGHT3);
@@ -1155,7 +1155,7 @@ o->when(FL_WHEN_RELEASE);
   }
   { Fl_Group* o = m_posterSizeStep = new Fl_Group(315, 45, 295, 365);
     o->hide();
-    { Fl_Group* o = new Fl_Group(325, 70, 275, 250, "Image size");
+    { Fl_Group* o = m_posterSizeGroup = new Fl_Group(325, 70, 275, 250, "Image size");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       o->selection_color(FL_LIGHT3);
@@ -1230,7 +1230,7 @@ o->when(FL_WHEN_RELEASE);
       }
       o->end();
     }
-    { Fl_Group* o = new Fl_Group(325, 345, 275, 51, "Image alignment");
+    { Fl_Group* o = m_imageAlignmentGroup = new Fl_Group(325, 345, 275, 51, "Image alignment");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       o->selection_color(FL_DARK2);
@@ -1433,11 +1433,11 @@ void PosteRazorSettingsDialogUI::cb_OK1(Fl_Button* o, void* v) {
   ((PosteRazorSettingsDialogUI*)(o->parent()->parent()))->cb_OK1_i(o,v);
 }
 
-void PosteRazorSettingsDialogUI::cb_Cancel_i(Fl_Button*, void*) {
+void PosteRazorSettingsDialogUI::cb_m_cancelButton_i(Fl_Button*, void*) {
   hide();
 }
-void PosteRazorSettingsDialogUI::cb_Cancel(Fl_Button* o, void* v) {
-  ((PosteRazorSettingsDialogUI*)(o->parent()->parent()))->cb_Cancel_i(o,v);
+void PosteRazorSettingsDialogUI::cb_m_cancelButton(Fl_Button* o, void* v) {
+  ((PosteRazorSettingsDialogUI*)(o->parent()->parent()))->cb_m_cancelButton_i(o,v);
 }
 PosteRazorSettingsDialogUI::PosteRazorSettingsDialogUI(int X, int Y, int W, int H, const char *L)
   : Fl_Double_Window(X, Y, W, H, L) {
@@ -1466,7 +1466,7 @@ o->when(FL_WHEN_RELEASE);
 { Fl_Group* o = new Fl_Group(10, 10, 295, 345);
   o->box(FL_THIN_DOWN_BOX);
   o->labelsize(8);
-  { Fl_Group* o = new Fl_Group(20, 35, 275, 85, "Units");
+  { Fl_Group* o = m_distanceUnitGroup = new Fl_Group(20, 35, 275, 85, "Units");
     o->box(FL_THIN_DOWN_BOX);
     o->color(FL_DARK2);
     { Fl_Choice* o = m_distanceUnitChoice = new Fl_Choice(30, 45, 255, 25);
@@ -1474,33 +1474,31 @@ o->when(FL_WHEN_RELEASE);
       o->down_box(FL_BORDER_BOX);
       o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
     }
-    { Fl_Box* o = new Fl_Box(30, 80, 255, 30, "Choose the distance unit you want to work with");
+    { Fl_Box* o = m_distanceUnitExplanationBox = new Fl_Box(30, 80, 255, 30, "Choose the distance unit you want to work with");
       o->align(134|FL_ALIGN_INSIDE);
     }
     o->end();
   }
-  { Fl_Group* o = new Fl_Group(20, 145, 275, 105, "Preview with OpenGL");
+  { Fl_Group* o = m_useOpenGLGroup = new Fl_Group(20, 145, 275, 105, "Preview with OpenGL");
     o->box(FL_THIN_DOWN_BOX);
     o->color(FL_DARK2);
     { Fl_Check_Button* o = m_useOpenGLCheckButton = new Fl_Check_Button(30, 154, 255, 20, "use OpenGL");
       o->down_box(FL_DOWN_BOX);
       o->callback((Fl_Callback*)cb_m_useOpenGLCheckButton);
     }
-    { Fl_Box* o = new Fl_Box(30, 179, 255, 60, "OpenGL enables a smooth preview on modern systems. It could slow the preview \
+    { Fl_Box* o = m_useOpenGLExplanationBox = new Fl_Box(30, 179, 255, 60, "OpenGL enables a smooth preview on modern systems. It could slow the preview \
 down on old systems, though.");
       o->align(134|FL_ALIGN_INSIDE);
     }
     o->end();
   }
-  { Fl_Group* o = new Fl_Group(20, 275, 275, 70, "Language");
+  { Fl_Group* o = m_languageGroup = new Fl_Group(20, 275, 275, 70, "Language");
     o->box(FL_THIN_DOWN_BOX);
     o->color(FL_DARK2);
-    { Fl_Choice* o = m_languageChoice = new Fl_Choice(30, 285, 255, 25);
-      o->tooltip("Choose the unit you want to work with");
-      o->down_box(FL_BORDER_BOX);
-      o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
+    { Fl_Group* o = m_languageButtonsGroup = new Fl_Group(30, 285, 255, 25);
+      o->end();
     }
-    { Fl_Box* o = new Fl_Box(30, 315, 255, 20, "Choose your language");
+    { Fl_Box* o = m_languageExplanationBox = new Fl_Box(30, 315, 255, 20, "Choose your language");
       o->align(134|FL_ALIGN_INSIDE);
     }
     o->end();
@@ -1511,8 +1509,8 @@ down on old systems, though.");
   { Fl_Button* o = new Fl_Button(210, 365, 95, 25, "OK");
     o->callback((Fl_Callback*)cb_OK1);
   }
-  { Fl_Button* o = new Fl_Button(105, 365, 95, 25, "Cancel");
-    o->callback((Fl_Callback*)cb_Cancel);
+  { Fl_Button* o = m_cancelButton = new Fl_Button(105, 365, 95, 25, "Cancel");
+    o->callback((Fl_Callback*)cb_m_cancelButton);
   }
   { Fl_Box* o = new Fl_Box(10, 365, 10, 25);
     o->labelsize(8);

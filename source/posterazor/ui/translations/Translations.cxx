@@ -42,21 +42,39 @@ public:
 	void SelectLangue(enum eLanguages language)
 	{
 		m_language = language;
+		m_selectedTranslation = GetTranslationOfLanguage(m_language);
+	}
+
+	enum eLanguages GetSelectedLanguage(void)         {return m_language;}
+	int GetLanguagesCount(void)                       {return TranslationsMapItemsCount - 1;}
+	enum eLanguages GetLanguageForIndex(int index)    {return TranslationsMap[index + 1].language;}
+	TranslationInterface* GetTranslationOfLanguage(enum eLanguages language)
+	{
+		TranslationInterface* foundTranslation;
 		for (int i = 0; i < TranslationsMapItemsCount; i++)
 		{
 			if(TranslationsMap[i].language == language)
 			{
-				m_selectedTranslation = TranslationsMap[i].translation;
+				foundTranslation = TranslationsMap[i].translation;
 				break;
 			}
 		}
+		return foundTranslation;
 	}
 
+
+	const char* LanguageName(void)                    {return m_selectedTranslation->LanguageName();}
+
 	const char* Borders(void)                         {return m_selectedTranslation->Borders();}
+	const char* Custom(void)                          {return m_selectedTranslation->Custom();}
+	const char* Height(void)                          {return m_selectedTranslation->Height();}
 	const char* ImageInformations(void)               {return m_selectedTranslation->ImageInformations();}
 	const char* InputImage(void)                      {return m_selectedTranslation->InputImage();}
+	const char* PaperFormat(void)                     {return m_selectedTranslation->PaperFormat();}
 	const char* Settings(void)                        {return m_selectedTranslation->Settings();}
+	const char* Standard(void)                        {return m_selectedTranslation->Standard();}
 	const char* StepXOfY(void)                        {return m_selectedTranslation->StepXOfY();}
+	const char* Width(void)                           {return m_selectedTranslation->Width();}
 
 	const char* StepTitle01(void)                     {return m_selectedTranslation->StepTitle01();}
 	const char* StepTitle02(void)                     {return m_selectedTranslation->StepTitle02();}
@@ -64,6 +82,10 @@ public:
 	const char* StepTitle04(void)                     {return m_selectedTranslation->StepTitle04();}
 	const char* StepTitle05(void)                     {return m_selectedTranslation->StepTitle05();}
 	const char* HelpHtml(void)                        {return m_selectedTranslation->HelpHtml();}
+
+	const int FlagImageWidth(void)                    {return m_selectedTranslation->FlagImageWidth();}
+	const int FlagImageHeight(void)                   {return m_selectedTranslation->FlagImageHeight();}
+	const unsigned char* FlagImageRGBData(void)       {return m_selectedTranslation->FlagImageRGBData();}
 };
 
 Translations* Translations::Instance(void)
