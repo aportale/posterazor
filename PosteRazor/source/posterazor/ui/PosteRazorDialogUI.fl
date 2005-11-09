@@ -480,14 +480,16 @@ widget_class PosteRazorHelpDialogUI {
   }
   decl {virtual void HandleHomepageButtonClick(void) = 0;} {public
   }
+  decl {virtual void UpdateLanguage(void) = 0;} {selected public
+  }
 } 
 
 widget_class PosteRazorSettingsDialogUI {
   label {PosteRazor settings}
   user_data this open
-  xywh {36 289 315 400} type Double
+  xywh {36 289 315 400} type Double hide
   code0 {m_okWasPressed = false;}
-  class Fl_Double_Window modal visible
+  class Fl_Double_Window modal
 } {
   decl {bool m_okWasPressed;} {public
   }
@@ -524,7 +526,7 @@ widget_class PosteRazorSettingsDialogUI {
       label Language open
       xywh {20 275 275 70} box THIN_DOWN_BOX color 45
     } {
-      Fl_Group m_languageButtonsGroup {open selected
+      Fl_Group m_languageButtonsGroup {open
         xywh {30 285 255 25}
       } {}
       Fl_Box m_languageExplanationBox {

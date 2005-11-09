@@ -32,22 +32,40 @@ public:
 
 	const char* Borders(void)                         {return "Borders";}
 	const char* Bottom(void)                          {return "Bottom";}
+	const char* BottomLeft(void)                      {return "Bottom left";}
+	const char* BottomRight(void)                     {return "Bottom right";}
+	const char* Cancel(void)                          {return "Cancel";}
 	const char* Custom(void)                          {return "Custom";}
+	const char* FileCouldNotBeLoaded(void)            {return "The File \"%s\" could not be loaded.";}
 	const char* Format(void)                          {return "Format:";}
 	const char* Height(void)                          {return "Height:";}
+	const char* ImageAlignment(void)                  {return "Image alignment";}
 	const char* ImageInformations(void)               {return "Image informations";}
+	const char* ImageSize(void)                       {return "Image size";}
 	const char* InputImage(void)                      {return "Input image";}
 	const char* Landscape(void)                       {return "Landscape";}
+	const char* Language(void)                        {return "Language";}
+	const char* LanguageExplanation(void)             {return "Choose your language";}
 	const char* Left(void)                            {return "Left";}
 	const char* Orientation(void)                     {return "Orientation:";}
+	const char* OverlappingPosition(void)             {return "Overlapping position";}
+	const char* OverlappingSize(void)                 {return "Overlapping size";}
+	const char* Pages(void)                           {return "pages";}
 	const char* PaperFormat(void)                     {return "Paper format";}
 	const char* Portrait(void)                        {return "Portrait";}
+	const char* PosteRazorHelp(void)                  {return "PosteRazor Help";}
+	const char* PosteRazorSettings(void)              {return "PosteRazor Settings";}
+	const char* PreviewWithOpenGL(void)               {return "Preview with OpenGL";}
+	const char* PreviewWithOpenGLExplanation(void)    {return "OpenGL enables a smooth preview on modern systems. It could slow the preview down on old systems, though.";}
 	const char* Right(void)                           {return "Right";}
 	const char* Settings(void)                        {return "Settings...";}
 	const char* Standard(void)                        {return "Standard";}
 	const char* StepXOfY(void)                        {return "Step %d of %d";}
 	const char* Top(void)                             {return "Top";}
+	const char* TopLeft(void)                         {return "Top left";}
+	const char* TopRight(void)                        {return "Top right";}
 	const char* UnitOfLength(void)                    {return "Unit of Length";}
+	const char* UnitOfLengthExplanation(void)         {return "Choose the distance unit you want to work with";}
 	const char* Width(void)                           {return "Width:";}
 
 
