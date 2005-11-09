@@ -84,22 +84,40 @@ public:
 
 	const char* Borders(void)                         {return m_selectedTranslation->Borders();}
 	const char* Bottom(void)                          {return m_selectedTranslation->Bottom();}
+	const char* BottomLeft(void)                      {return m_selectedTranslation->BottomLeft();}
+	const char* BottomRight(void)                     {return m_selectedTranslation->BottomRight();}
+	const char* Cancel(void)                          {return m_selectedTranslation->Cancel();}
 	const char* Custom(void)                          {return m_selectedTranslation->Custom();}
+	const char* FileCouldNotBeLoaded(void)            {return m_selectedTranslation->FileCouldNotBeLoaded();}
 	const char* Format(void)                          {return m_selectedTranslation->Format();}
 	const char* Height(void)                          {return m_selectedTranslation->Height();}
+	const char* ImageAlignment(void)                  {return m_selectedTranslation->ImageAlignment();}
 	const char* ImageInformations(void)               {return m_selectedTranslation->ImageInformations();}
+	const char* ImageSize(void)                       {return m_selectedTranslation->ImageSize();}
 	const char* InputImage(void)                      {return m_selectedTranslation->InputImage();}
 	const char* Landscape(void)                       {return m_selectedTranslation->Landscape();}
+	const char* Language(void)                        {return m_selectedTranslation->Language();}
+	const char* LanguageExplanation(void)             {return m_selectedTranslation->LanguageExplanation();}
 	const char* Left(void)                            {return m_selectedTranslation->Left();}
 	const char* Orientation(void)                     {return m_selectedTranslation->Orientation();}
+	const char* OverlappingPosition(void)             {return m_selectedTranslation->OverlappingPosition();}
+	const char* OverlappingSize(void)                 {return m_selectedTranslation->OverlappingSize();}
+	const char* Pages(void)                           {return m_selectedTranslation->Pages();}
 	const char* PaperFormat(void)                     {return m_selectedTranslation->PaperFormat();}
 	const char* Portrait(void)                        {return m_selectedTranslation->Portrait();}
+	const char* PosteRazorHelp(void)                  {return m_selectedTranslation->PosteRazorHelp();}
+	const char* PosteRazorSettings(void)              {return m_selectedTranslation->PosteRazorSettings();}
+	const char* PreviewWithOpenGL(void)               {return m_selectedTranslation->PreviewWithOpenGL();}
+	const char* PreviewWithOpenGLExplanation(void)    {return m_selectedTranslation->PreviewWithOpenGLExplanation();}
 	const char* Right(void)                           {return m_selectedTranslation->Right();}
 	const char* Settings(void)                        {return m_selectedTranslation->Settings();}
 	const char* Standard(void)                        {return m_selectedTranslation->Standard();}
 	const char* StepXOfY(void)                        {return m_selectedTranslation->StepXOfY();}
 	const char* Top(void)                             {return m_selectedTranslation->Top();}
+	const char* TopLeft(void)                         {return m_selectedTranslation->TopLeft();}
+	const char* TopRight(void)                        {return m_selectedTranslation->TopRight();}
 	const char* UnitOfLength(void)                    {return m_selectedTranslation->UnitOfLength();}
+	const char* UnitOfLengthExplanation(void)         {return m_selectedTranslation->UnitOfLengthExplanation();}
 	const char* Width(void)                           {return m_selectedTranslation->Width();}
 
 	const char* StepTitle01(void)                     {return m_selectedTranslation->StepTitle01();}

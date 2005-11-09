@@ -84,6 +84,13 @@ public:
 		system(commandString);
 #endif;
 	}
+
+	void UpdateLanguage(void)
+	{
+		label(TRANSLATIONS->PosteRazorHelp());
+
+		redraw();
+	}
 };
 
 class PosteRazorSettingsDialog: public PosteRazorSettingsDialogUI
@@ -231,7 +238,15 @@ public:
 
 	void UpdateLanguage(void)
 	{
+		label(TRANSLATIONS->PosteRazorSettings());
 		m_distanceUnitGroup->label(TRANSLATIONS->UnitOfLength());
+		m_distanceUnitExplanationBox->label(TRANSLATIONS->UnitOfLengthExplanation());
+		m_useOpenGLGroup->label(TRANSLATIONS->PreviewWithOpenGL());
+		m_useOpenGLCheckButton->label(TRANSLATIONS->PreviewWithOpenGL());
+		m_useOpenGLExplanationBox->label(TRANSLATIONS->PreviewWithOpenGLExplanation());
+		m_languageGroup->label(TRANSLATIONS->Language());
+		m_languageExplanationBox->label(TRANSLATIONS->LanguageExplanation());
+		m_cancelButton->label(TRANSLATIONS->Cancel());
 
 		redraw();
 	}
@@ -484,10 +499,20 @@ void PosteRazorDialog::UpdateLanguage(void)
 	m_paperBorderLeftInput->label(TRANSLATIONS->Left());
 	m_overlappingHeightInput->label(TRANSLATIONS->Height());
 	m_overlappingWidthInput->label(TRANSLATIONS->Width());
+	m_overlappingPositionGroup->label(TRANSLATIONS->OverlappingPosition());
+	m_overlappingSizeGroup->label(TRANSLATIONS->OverlappingSize());
+	m_overlappingPositionBottomLeftButton->label(TRANSLATIONS->BottomLeft());
+	m_overlappingPositionBottomRightButton->label(TRANSLATIONS->BottomRight());
+	m_overlappingPositionTopLeftButton->label(TRANSLATIONS->TopLeft());
+	m_overlappingPositionTopRightButton->label(TRANSLATIONS->TopRight());
+	m_posterSizeGroup->label(TRANSLATIONS->ImageSize());
 	m_posterAbsoluteHeightInput->label(TRANSLATIONS->Height());
 	m_posterAbsoluteWidthInput->label(TRANSLATIONS->Width());
 	m_posterPagesHeightInput->label(TRANSLATIONS->Height());
+	m_posterPagesHeightLabel->label(TRANSLATIONS->Pages());
 	m_posterPagesWidthInput->label(TRANSLATIONS->Width());
+	m_posterPagesWidthLabel->label(TRANSLATIONS->Pages());
+	m_imageAlignmentGroup->label(TRANSLATIONS->ImageAlignment());
 	m_imageInfoGroup->label(TRANSLATIONS->ImageInformations());
 	m_imageLoadGroup->label(TRANSLATIONS->InputImage());
 	m_settingsButton->label(TRANSLATIONS->Settings());
@@ -497,6 +522,9 @@ void PosteRazorDialog::UpdateLanguage(void)
 
 	if (m_settingsDialog)
 		m_settingsDialog->UpdateLanguage();
+
+	if (m_helpDialog)
+		m_helpDialog->UpdateLanguage();
 
 	redraw();
 }
@@ -524,7 +552,7 @@ void PosteRazorDialog::LoadInputImage(const char *fileName)
 			if (strlen(errorMessage) > 0)
 				fl_message(errorMessage);
 			else
-				fl_message("The file '%s' could not be loaded.", fl_filename_name(loadFileName));
+				fl_message(TRANSLATIONS->FileCouldNotBeLoaded(), fl_filename_name(loadFileName));
 		}
 	}
 

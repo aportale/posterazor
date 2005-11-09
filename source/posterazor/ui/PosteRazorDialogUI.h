@@ -290,6 +290,7 @@ public:
   virtual void JumpToAnchor(const char *anchor) = 0;
   virtual void SetHtmlContent(const char *content) = 0;
   virtual void HandleHomepageButtonClick(void) = 0;
+  virtual void UpdateLanguage(void) = 0;
   void SetHomepageButtonLabel(const char *label);
 };
 

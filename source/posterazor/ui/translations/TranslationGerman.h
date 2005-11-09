@@ -32,22 +32,40 @@ public:
 
 	const char* Borders(void)                         {return "Ränder";}
 	const char* Bottom(void)                          {return "Unten";}
+	const char* BottomLeft(void)                      {return "Unten links";}
+	const char* BottomRight(void)                     {return "Unten rechts";}
+	const char* Cancel(void)                          {return "Abbruch";}
 	const char* Custom(void)                          {return "Eigenes";}
+	const char* FileCouldNotBeLoaded(void)            {return "Die Datei \"%s\" konnte nicht geladen werden.";}
 	const char* Format(void)                          {return "Format:";}
 	const char* Height(void)                          {return "Höhe:";}
+	const char* ImageAlignment(void)                  {return "Ausrichtung des Bildes";}
 	const char* ImageInformations(void)               {return "Bildinformationen";}
+	const char* ImageSize(void)                       {return "Bildgröße";}
 	const char* InputImage(void)                      {return "Ausgangsbild";}
 	const char* Landscape(void)                       {return "Querformat";}
+	const char* Language(void)                        {return "Sprache";}
+	const char* LanguageExplanation(void)             {return "Wählen Sie ihre Sprache";}
 	const char* Left(void)                            {return "Links";}
 	const char* Orientation(void)                     {return "Ausrichtung:";}
+	const char* OverlappingPosition(void)             {return "Überlappende Seiten";}
+	const char* OverlappingSize(void)                 {return "Maße der Überlappung";}
+	const char* Pages(void)                           {return "Seiten";}
 	const char* PaperFormat(void)                     {return "Papierformat";}
 	const char* Portrait(void)                        {return "Hochformat";}
+	const char* PosteRazorHelp(void)                  {return "PosteRazor Hilfe";}
+	const char* PosteRazorSettings(void)              {return "PosteRazor Einstellungen";}
+	const char* PreviewWithOpenGL(void)               {return "Vorschau mit OpenGL";}
+	const char* PreviewWithOpenGLExplanation(void)    {return "OpenGL ermöglicht eine bessere Vorschau. Auf alter Hardware könnte OpenGL jedoch langsamer sein.";}
 	const char* Right(void)                           {return "Rechts";}
 	const char* Settings(void)                        {return "Einstellungen...";}
 	const char* Standard(void)                        {return "Standard";}
 	const char* StepXOfY(void)                        {return "Schritt %d von %d";}
 	const char* Top(void)                             {return "Oben";}
+	const char* TopLeft(void)                         {return "Oben links";}
+	const char* TopRight(void)                        {return "Oben rechts";}
 	const char* UnitOfLength(void)                    {return "Längeneinheit";}
+	const char* UnitOfLengthExplanation(void)         {return "Wählen Sie die Längeneinheit, mit der Sie arbeiten möchten";}
 	const char* Width(void)                           {return "Breite:";}
 
 
@@ -92,7 +110,7 @@ public:
 
 					"<br><H3><A name=\"" POSTERAZORHELPANCHORABOUT "\">&Uuml;ber</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "The PosteRazor cuts a raster image into pieces which can be printed on a printer and be put together to a poster. As an input image, raster files of <A href=\"#" POSTERAZORHELPANCHORMANUALSTEP01 "\">various</A> image file formats are supported. Instead of directly printing the poster, the PosteRazor produces a multi page PDF files which contains the poster tiles.<br>" POSTERAZORHELPENDLINE \
-					"It is an open source program which depends on <a href=\"#" POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES "\">other open source projects</a>." POSTERAZORHELPENDLINE \
+					" is an open source program which depends on <a href=\"#" POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES "\">other open source projects</a>." POSTERAZORHELPENDLINE \
 					"The PosteRazor is hostet on <b>posterazor.sourceforge.net</b>." POSTERAZORHELPENDLINE \
 
 					"<br><H3><A name=\"" POSTERAZORHELPANCHORMANUAL "\">Manual</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
