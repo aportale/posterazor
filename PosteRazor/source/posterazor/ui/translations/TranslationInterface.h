@@ -1,3 +1,25 @@
+/*
+	PosteRazor - Make your own poster!
+	Copyright (C) 2005 by Alessandro Portale
+	http://posterazor.sourceforge.net/
+
+	This file is part of PosteRazor
+
+	PosteRazor is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	
+	PosteRazor is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with PosteRazor; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+*/
+
 #ifndef TranslationInterface_h
 #define TranslationInterface_h
 
@@ -7,14 +29,23 @@ public:
 	virtual const char* LanguageName(void) = 0;
 
 	virtual const char* Borders(void) = 0;
+	virtual const char* Bottom(void) = 0;
 	virtual const char* Custom(void) = 0;
+	virtual const char* Format(void) = 0;
 	virtual const char* Height(void) = 0;
 	virtual const char* ImageInformations(void) = 0;
 	virtual const char* InputImage(void) = 0;
+	virtual const char* Landscape(void) = 0;
+	virtual const char* Left(void) = 0;
+	virtual const char* Orientation(void) = 0;
 	virtual const char* PaperFormat(void) = 0;
+	virtual const char* Portrait(void) = 0;
+	virtual const char* Right(void) = 0;
 	virtual const char* Settings(void) = 0;
 	virtual const char* Standard(void) = 0;
 	virtual const char* StepXOfY(void) = 0;
+	virtual const char* Top(void) = 0;
+	virtual const char* UnitOfLength(void) = 0;
 	virtual const char* Width(void) = 0;
 
 	virtual const char* StepTitle01(void) = 0;

@@ -1,15 +1,32 @@
+/*
+	PosteRazor - Make your own poster!
+	Copyright (C) 2005 by Alessandro Portale
+	http://posterazor.sourceforge.net/
+
+	This file is part of PosteRazor
+
+	PosteRazor is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	
+	PosteRazor is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with PosteRazor; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+*/
+
 #include "Translations.h"
 
 #include "TranslationEnglish.h"
 #include "TranslationGerman.h"
-#include "TranslationItalian.h"
-#define LANGUAGESCOUNT 2
+//#include "TranslationItalian.h"
 
 Translations *Translations::m_instance = 0;
-
-static TranslationEnglish m_english;
-static TranslationGerman m_german;
-static TranslationItalian m_italian;
 
 typedef struct
 {
@@ -19,10 +36,10 @@ typedef struct
 
 static const TranslationSet TranslationsMap[] =
 {
-	{&m_english, Translations::eLanguageUndefined},
-	{&m_english, Translations::eLanguageEnglish},
-	{&m_german, Translations::eLanguageGerman},
-	{&m_italian, Translations::eLanguageItalian}
+	{&english, Translations::eLanguageUndefined}
+	,{&english, Translations::eLanguageEnglish}
+	,{&german, Translations::eLanguageGerman}
+//	,{&italian, Translations::eLanguageItalian} // My italian is too lousy, although it is my native language :/
 };
 
 static int TranslationsMapItemsCount = sizeof(TranslationsMap) / sizeof(TranslationSet);
@@ -66,14 +83,23 @@ public:
 	const char* LanguageName(void)                    {return m_selectedTranslation->LanguageName();}
 
 	const char* Borders(void)                         {return m_selectedTranslation->Borders();}
+	const char* Bottom(void)                          {return m_selectedTranslation->Bottom();}
 	const char* Custom(void)                          {return m_selectedTranslation->Custom();}
+	const char* Format(void)                          {return m_selectedTranslation->Format();}
 	const char* Height(void)                          {return m_selectedTranslation->Height();}
 	const char* ImageInformations(void)               {return m_selectedTranslation->ImageInformations();}
 	const char* InputImage(void)                      {return m_selectedTranslation->InputImage();}
+	const char* Landscape(void)                       {return m_selectedTranslation->Landscape();}
+	const char* Left(void)                            {return m_selectedTranslation->Left();}
+	const char* Orientation(void)                     {return m_selectedTranslation->Orientation();}
 	const char* PaperFormat(void)                     {return m_selectedTranslation->PaperFormat();}
+	const char* Portrait(void)                        {return m_selectedTranslation->Portrait();}
+	const char* Right(void)                           {return m_selectedTranslation->Right();}
 	const char* Settings(void)                        {return m_selectedTranslation->Settings();}
 	const char* Standard(void)                        {return m_selectedTranslation->Standard();}
 	const char* StepXOfY(void)                        {return m_selectedTranslation->StepXOfY();}
+	const char* Top(void)                             {return m_selectedTranslation->Top();}
+	const char* UnitOfLength(void)                    {return m_selectedTranslation->UnitOfLength();}
 	const char* Width(void)                           {return m_selectedTranslation->Width();}
 
 	const char* StepTitle01(void)                     {return m_selectedTranslation->StepTitle01();}
