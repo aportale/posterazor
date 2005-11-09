@@ -1,3 +1,25 @@
+/*
+	PosteRazor - Make your own poster!
+	Copyright (C) 2005 by Alessandro Portale
+	http://posterazor.sourceforge.net/
+
+	This file is part of PosteRazor
+
+	PosteRazor is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	
+	PosteRazor is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with PosteRazor; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+*/
+
 #ifndef TranslationItalian_h
 #define TranslationItalian_h
 
@@ -9,11 +31,15 @@ public:
 	const char* LanguageName(void)                    {return "Italiano";}
 
 	const char* Borders(void)                         {return "bubu";}
+	const char* Bottom(void)                          {return "Sotto";}
 	const char* Custom(void)                          {return "bubu";}
 	const char* Height(void)                          {return "Altezza:";}
 	const char* ImageInformations(void)               {return "Informazioni immagine";}
 	const char* InputImage(void)                      {return "Immagine d'origine";}
+	const char* Left(void)                            {return "Sinistra";}
 	const char* PaperFormat(void)                     {return "Formato carta";}
+	const char* Right(void)                           {return "Destra";}
+	const char* Top(void)                             {return "Sopra";}
 	const char* Settings(void)                        {return "Impostazioni...";}
 	const char* Standard(void)                        {return "Standard";}
 	const char* StepXOfY(void)                        {return "Passo %d su %d";}

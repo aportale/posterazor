@@ -141,6 +141,8 @@ public:
 			m_languageButtons[i]->user_data((void*)this);
 		}
 		m_languageButtonsGroup->end();
+
+		UpdateLanguage();
 	}
 
 	~PosteRazorSettingsDialog()
@@ -226,6 +228,13 @@ public:
 		m_okWasPressed = false;
 		Fl_Window::hide();
 	}
+
+	void UpdateLanguage(void)
+	{
+		m_distanceUnitGroup->label(TRANSLATIONS->UnitOfLength());
+
+		redraw();
+	}
 };
 
 PosteRazorDialog::PosteRazorDialog(void)
@@ -233,9 +242,6 @@ PosteRazorDialog::PosteRazorDialog(void)
 {
 	m_settingsDialog = NULL;
 	m_helpDialog = NULL;
-
-	TRANSLATIONS->SelectLangue(Translations::eLanguageGerman);
-	UpdateLanguage();
 
 	int i;
 	begin();
@@ -286,6 +292,8 @@ PosteRazorDialog::PosteRazorDialog(void)
 	SetOverlappingFields();
 	UpdateDimensionUnitLabels();
 	UpdateStepInfoBar();
+
+	UpdateLanguage();
 }
 
 PosteRazorDialog::~PosteRazorDialog()
@@ -448,12 +456,12 @@ void PosteRazorDialog::UpdatePreviewState(void)
 
 void PosteRazorDialog::UpdateDimensionUnitLabels(void)
 {
-	m_paperCustomWidthDimensionUnitLabel->copy_label(m_posteRazor->GetDistanceUnitName());
-	m_paperCustomHeightDimensionUnitLabel->copy_label(m_posteRazor->GetDistanceUnitName());
-	m_overlappingWidthDimensionUnitLabel->copy_label(m_posteRazor->GetDistanceUnitName());
-	m_overlappingHeightDimensionUnitLabel->copy_label(m_posteRazor->GetDistanceUnitName());
-	m_posterAbsoluteWidthDimensionUnitLabel->copy_label(m_posteRazor->GetDistanceUnitName());
-	m_posterAbsoluteHeightDimensionUnitLabel->copy_label(m_posteRazor->GetDistanceUnitName());
+	m_paperCustomWidthDimensionUnitLabel->label(m_posteRazor->GetDistanceUnitName());
+	m_paperCustomHeightDimensionUnitLabel->label(m_posteRazor->GetDistanceUnitName());
+	m_overlappingWidthDimensionUnitLabel->label(m_posteRazor->GetDistanceUnitName());
+	m_overlappingHeightDimensionUnitLabel->label(m_posteRazor->GetDistanceUnitName());
+	m_posterAbsoluteWidthDimensionUnitLabel->label(m_posteRazor->GetDistanceUnitName());
+	m_posterAbsoluteHeightDimensionUnitLabel->label(m_posteRazor->GetDistanceUnitName());
 	char paperBordersGroupLabel[100];
 	sprintf(paperBordersGroupLabel, "%s (%s)", TRANSLATIONS->Borders(), m_posteRazor->GetDistanceUnitName());
 	m_paperBordersGroup->copy_label(paperBordersGroupLabel);
@@ -464,8 +472,16 @@ void PosteRazorDialog::UpdateLanguage(void)
 	m_paperFormatTypeTabs->label(TRANSLATIONS->PaperFormat());
 	m_paperFormatCustomGroup->label(TRANSLATIONS->Custom());
 	m_paperFormatStandardGroup->label(TRANSLATIONS->Standard());
+	m_paperFormatChoice->label(TRANSLATIONS->Format());
+	m_paperOrientationGroup->label(TRANSLATIONS->Orientation());
+	m_paperOrientationLandscapeRadioButton->label(TRANSLATIONS->Landscape());
+	m_paperOrientationPortraitRadioButton->label(TRANSLATIONS->Portrait());
 	m_paperCustomHeightInput->label(TRANSLATIONS->Height());
 	m_paperCustomWidthInput->label(TRANSLATIONS->Width());
+	m_paperBorderTopInput->label(TRANSLATIONS->Top());
+	m_paperBorderRightInput->label(TRANSLATIONS->Right());
+	m_paperBorderBottomInput->label(TRANSLATIONS->Bottom());
+	m_paperBorderLeftInput->label(TRANSLATIONS->Left());
 	m_overlappingHeightInput->label(TRANSLATIONS->Height());
 	m_overlappingWidthInput->label(TRANSLATIONS->Width());
 	m_posterAbsoluteHeightInput->label(TRANSLATIONS->Height());
@@ -477,6 +493,10 @@ void PosteRazorDialog::UpdateLanguage(void)
 	m_settingsButton->label(TRANSLATIONS->Settings());
 
 	UpdateStepInfoBar();
+	UpdateDimensionUnitLabels();
+
+	if (m_settingsDialog)
+		m_settingsDialog->UpdateLanguage();
 
 	redraw();
 }

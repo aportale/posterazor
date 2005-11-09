@@ -1,3 +1,25 @@
+/*
+	PosteRazor - Make your own poster!
+	Copyright (C) 2005 by Alessandro Portale
+	http://posterazor.sourceforge.net/
+
+	This file is part of PosteRazor
+
+	PosteRazor is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	
+	PosteRazor is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with PosteRazor; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+*/
+
 #ifndef TranslationEnglish_h
 #define TranslationEnglish_h
 
@@ -9,14 +31,23 @@ public:
 	const char* LanguageName(void)                    {return "English";}
 
 	const char* Borders(void)                         {return "Borders";}
+	const char* Bottom(void)                          {return "Bottom";}
 	const char* Custom(void)                          {return "Custom";}
+	const char* Format(void)                          {return "Format:";}
 	const char* Height(void)                          {return "Height:";}
 	const char* ImageInformations(void)               {return "Image informations";}
 	const char* InputImage(void)                      {return "Input image";}
+	const char* Landscape(void)                       {return "Landscape";}
+	const char* Left(void)                            {return "Left";}
+	const char* Orientation(void)                     {return "Orientation:";}
 	const char* PaperFormat(void)                     {return "Paper format";}
+	const char* Portrait(void)                        {return "Portrait";}
+	const char* Right(void)                           {return "Right";}
 	const char* Settings(void)                        {return "Settings...";}
 	const char* Standard(void)                        {return "Standard";}
 	const char* StepXOfY(void)                        {return "Step %d of %d";}
+	const char* Top(void)                             {return "Top";}
+	const char* UnitOfLength(void)                    {return "Unit of Length";}
 	const char* Width(void)                           {return "Width:";}
 
 
@@ -146,5 +177,7 @@ public:
 		return flagRGBData;
 	}
 };
+
+static TranslationEnglish english;
 
 #endif
