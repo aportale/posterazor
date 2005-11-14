@@ -38,6 +38,7 @@ public:
 	const char* Custom(void)                          {return "Eigenes";}
 	const char* FileCouldNotBeLoaded(void)            {return "Die Datei \"%s\" konnte nicht geladen werden.";}
 	const char* Format(void)                          {return "Format:";}
+	const char* Grayscale(void)                       {return "Graustufen";}
 	const char* Height(void)                          {return "Höhe:";}
 	const char* ImageAlignment(void)                  {return "Ausrichtung des Bildes";}
 	const char* ImageInformations(void)               {return "Bildinformationen";}
@@ -47,10 +48,12 @@ public:
 	const char* Language(void)                        {return "Sprache";}
 	const char* LanguageExplanation(void)             {return "Wählen Sie ihre Sprache";}
 	const char* Left(void)                            {return "Links";}
+	const char* Monochrome(void)                      {return "Monochrom";}
 	const char* Orientation(void)                     {return "Ausrichtung:";}
 	const char* OverlappingPosition(void)             {return "Überlappende Seiten";}
 	const char* OverlappingSize(void)                 {return "Maße der Überlappung";}
 	const char* Pages(void)                           {return "Seiten";}
+	const char* Palette(void)                         {return "Palette";}
 	const char* PaperFormat(void)                     {return "Papierformat";}
 	const char* Portrait(void)                        {return "Hochformat";}
 	const char* PosteRazorHelp(void)                  {return "PosteRazor Hilfe";}

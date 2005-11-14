@@ -90,6 +90,7 @@ public:
 	const char* Custom(void)                          {return m_selectedTranslation->Custom();}
 	const char* FileCouldNotBeLoaded(void)            {return m_selectedTranslation->FileCouldNotBeLoaded();}
 	const char* Format(void)                          {return m_selectedTranslation->Format();}
+	const char* Grayscale(void)                       {return m_selectedTranslation->Grayscale();}
 	const char* Height(void)                          {return m_selectedTranslation->Height();}
 	const char* ImageAlignment(void)                  {return m_selectedTranslation->ImageAlignment();}
 	const char* ImageInformations(void)               {return m_selectedTranslation->ImageInformations();}
@@ -99,10 +100,12 @@ public:
 	const char* Language(void)                        {return m_selectedTranslation->Language();}
 	const char* LanguageExplanation(void)             {return m_selectedTranslation->LanguageExplanation();}
 	const char* Left(void)                            {return m_selectedTranslation->Left();}
+	const char* Monochrome(void)                      {return m_selectedTranslation->Monochrome();}
 	const char* Orientation(void)                     {return m_selectedTranslation->Orientation();}
 	const char* OverlappingPosition(void)             {return m_selectedTranslation->OverlappingPosition();}
 	const char* OverlappingSize(void)                 {return m_selectedTranslation->OverlappingSize();}
 	const char* Pages(void)                           {return m_selectedTranslation->Pages();}
+	const char* Palette(void)                         {return m_selectedTranslation->Palette();}
 	const char* PaperFormat(void)                     {return m_selectedTranslation->PaperFormat();}
 	const char* Portrait(void)                        {return m_selectedTranslation->Portrait();}
 	const char* PosteRazorHelp(void)                  {return m_selectedTranslation->PosteRazorHelp();}
