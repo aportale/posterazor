@@ -517,6 +517,7 @@ void PosteRazorDialog::UpdateLanguage(void)
 	m_imageLoadGroup->label(TRANSLATIONS->InputImage());
 	m_settingsButton->label(TRANSLATIONS->Settings());
 
+	UpdateImageInfoFields();
 	UpdateStepInfoBar();
 	UpdateDimensionUnitLabels();
 
@@ -591,9 +592,9 @@ void PosteRazorDialog::UpdateImageInfoFields(void)
 		m_posteRazor->GetInputImageWidthPixels(), m_posteRazor->GetInputImageHeightPixels(),
 		m_posteRazor->GetInputImageWidth(), m_posteRazor->GetInputImageHeight(),
 		m_posteRazor->GetInputImageVerticalDpi(),
-			colorType==PosteRazor::eColorTypeMonochrome?"Monochrome":
-			colorType==PosteRazor::eColorTypeGreyscale?"Greyscale":
-			colorType==PosteRazor::eColorTypePalette?"Palette":
+			colorType==PosteRazor::eColorTypeMonochrome?TRANSLATIONS->Monochrome():
+			colorType==PosteRazor::eColorTypeGreyscale?TRANSLATIONS->Grayscale():
+			colorType==PosteRazor::eColorTypePalette?TRANSLATIONS->Palette():
 			colorType==PosteRazor::eColorTypeRGB?"RGB":
 			colorType==PosteRazor::eColorTypeRGBA?"RGBA":
 			/*colorType==eColorTypeCMYK?*/ "CMYK",

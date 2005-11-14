@@ -36,6 +36,7 @@ public:
 	virtual const char* Custom(void) = 0;
 	virtual const char* FileCouldNotBeLoaded(void) = 0;
 	virtual const char* Format(void) = 0;
+	virtual const char* Grayscale(void) = 0;
 	virtual const char* Height(void) = 0;
 	virtual const char* ImageAlignment(void) = 0;
 	virtual const char* ImageInformations(void) = 0;
@@ -45,10 +46,12 @@ public:
 	virtual const char* Language(void) = 0;
 	virtual const char* LanguageExplanation(void) = 0;
 	virtual const char* Left(void) = 0;
+	virtual const char* Monochrome(void) = 0;
 	virtual const char* Orientation(void) = 0;
 	virtual const char* OverlappingSize(void) = 0;
 	virtual const char* OverlappingPosition(void) = 0;
 	virtual const char* Pages(void) = 0;
+	virtual const char* Palette(void) = 0;
 	virtual const char* PaperFormat(void) = 0;
 	virtual const char* Portrait(void) = 0;
 	virtual const char* PosteRazorHelp(void) = 0;
