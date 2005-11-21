@@ -28,11 +28,13 @@ class TranslationInterface
 public:
 	virtual const char* LanguageName(void) = 0;
 
+	virtual const char* Back(void) = 0;
 	virtual const char* Borders(void) = 0;
 	virtual const char* Bottom(void) = 0;
 	virtual const char* BottomLeft(void) = 0;
 	virtual const char* BottomRight(void) = 0;
 	virtual const char* Cancel(void) = 0;
+	virtual const char* ColorType(void) = 0;
 	virtual const char* Custom(void) = 0;
 	virtual const char* FileCouldNotBeLoaded(void) = 0;
 	virtual const char* Format(void) = 0;
@@ -47,6 +49,7 @@ public:
 	virtual const char* LanguageExplanation(void) = 0;
 	virtual const char* Left(void) = 0;
 	virtual const char* Monochrome(void) = 0;
+	virtual const char* Next(void) = 0;
 	virtual const char* Orientation(void) = 0;
 	virtual const char* OverlappingSize(void) = 0;
 	virtual const char* OverlappingPosition(void) = 0;
@@ -58,8 +61,11 @@ public:
 	virtual const char* PosteRazorSettings(void) = 0;
 	virtual const char* PreviewWithOpenGL(void) = 0;
 	virtual const char* PreviewWithOpenGLExplanation(void) = 0;
+	virtual const char* Resolution(void) = 0;
 	virtual const char* Right(void) = 0;
 	virtual const char* Settings(void) = 0;
+	virtual const char* SizeInPixels(void) = 0;
+	virtual const char* SizeInUnitOfLength(void) = 0;
 	virtual const char* Standard(void) = 0;
 	virtual const char* StepXOfY(void) = 0;
 	virtual const char* Top(void) = 0;

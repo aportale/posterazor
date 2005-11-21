@@ -30,11 +30,13 @@ class TranslationEnglish: public TranslationInterface
 public:
 	const char* LanguageName(void)                    {return "English";}
 
+	const char* Back(void)                            {return "Back";}
 	const char* Borders(void)                         {return "Borders";}
 	const char* Bottom(void)                          {return "Bottom";}
 	const char* BottomLeft(void)                      {return "Bottom left";}
 	const char* BottomRight(void)                     {return "Bottom right";}
 	const char* Cancel(void)                          {return "Cancel";}
+	const char* ColorType(void)                       {return "Color type:";}
 	const char* Custom(void)                          {return "Custom";}
 	const char* FileCouldNotBeLoaded(void)            {return "The File \"%s\" could not be loaded.";}
 	const char* Format(void)                          {return "Format:";}
@@ -49,6 +51,7 @@ public:
 	const char* LanguageExplanation(void)             {return "Choose your language";}
 	const char* Left(void)                            {return "Left";}
 	const char* Monochrome(void)                      {return "Monochrome";}
+	const char* Next(void)                            {return "Next";}
 	const char* Orientation(void)                     {return "Orientation:";}
 	const char* OverlappingPosition(void)             {return "Overlapping position";}
 	const char* OverlappingSize(void)                 {return "Overlapping size";}
@@ -60,8 +63,11 @@ public:
 	const char* PosteRazorSettings(void)              {return "PosteRazor Settings";}
 	const char* PreviewWithOpenGL(void)               {return "Preview with OpenGL";}
 	const char* PreviewWithOpenGLExplanation(void)    {return "OpenGL enables a smooth preview on modern systems. It could slow the preview down on old systems, though.";}
+	const char* Resolution(void)                      {return "Resolution:";}
 	const char* Right(void)                           {return "Right";}
 	const char* Settings(void)                        {return "Settings...";}
+	const char* SizeInPixels(void)                    {return "Size (in pixels):";}
+	const char* SizeInUnitOfLength(void)              {return "Size (in %s):";}
 	const char* Standard(void)                        {return "Standard";}
 	const char* StepXOfY(void)                        {return "Step %d of %d";}
 	const char* Top(void)                             {return "Top";}

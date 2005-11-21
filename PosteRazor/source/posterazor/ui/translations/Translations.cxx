@@ -82,11 +82,13 @@ public:
 
 	const char* LanguageName(void)                    {return m_selectedTranslation->LanguageName();}
 
+	const char* Back(void)                            {return m_selectedTranslation->Back();}
 	const char* Borders(void)                         {return m_selectedTranslation->Borders();}
 	const char* Bottom(void)                          {return m_selectedTranslation->Bottom();}
 	const char* BottomLeft(void)                      {return m_selectedTranslation->BottomLeft();}
 	const char* BottomRight(void)                     {return m_selectedTranslation->BottomRight();}
 	const char* Cancel(void)                          {return m_selectedTranslation->Cancel();}
+	const char* ColorType(void)                       {return m_selectedTranslation->ColorType();}
 	const char* Custom(void)                          {return m_selectedTranslation->Custom();}
 	const char* FileCouldNotBeLoaded(void)            {return m_selectedTranslation->FileCouldNotBeLoaded();}
 	const char* Format(void)                          {return m_selectedTranslation->Format();}
@@ -101,6 +103,7 @@ public:
 	const char* LanguageExplanation(void)             {return m_selectedTranslation->LanguageExplanation();}
 	const char* Left(void)                            {return m_selectedTranslation->Left();}
 	const char* Monochrome(void)                      {return m_selectedTranslation->Monochrome();}
+	const char* Next(void)                            {return m_selectedTranslation->Next();}
 	const char* Orientation(void)                     {return m_selectedTranslation->Orientation();}
 	const char* OverlappingPosition(void)             {return m_selectedTranslation->OverlappingPosition();}
 	const char* OverlappingSize(void)                 {return m_selectedTranslation->OverlappingSize();}
@@ -112,8 +115,11 @@ public:
 	const char* PosteRazorSettings(void)              {return m_selectedTranslation->PosteRazorSettings();}
 	const char* PreviewWithOpenGL(void)               {return m_selectedTranslation->PreviewWithOpenGL();}
 	const char* PreviewWithOpenGLExplanation(void)    {return m_selectedTranslation->PreviewWithOpenGLExplanation();}
+	const char* Resolution(void)                      {return m_selectedTranslation->Resolution();}
 	const char* Right(void)                           {return m_selectedTranslation->Right();}
 	const char* Settings(void)                        {return m_selectedTranslation->Settings();}
+	const char* SizeInPixels(void)                    {return m_selectedTranslation->SizeInPixels();}
+	const char* SizeInUnitOfLength(void)              {return m_selectedTranslation->SizeInUnitOfLength();}
 	const char* Standard(void)                        {return m_selectedTranslation->Standard();}
 	const char* StepXOfY(void)                        {return m_selectedTranslation->StepXOfY();}
 	const char* Top(void)                             {return m_selectedTranslation->Top();}
