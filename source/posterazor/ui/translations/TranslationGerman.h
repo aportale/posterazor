@@ -30,11 +30,13 @@ class TranslationGerman: public TranslationInterface
 public:
 	const char* LanguageName(void)                    {return "Deutsch";}
 
+	const char* Back(void)                            {return "Zurück";}
 	const char* Borders(void)                         {return "Ränder";}
 	const char* Bottom(void)                          {return "Unten";}
 	const char* BottomLeft(void)                      {return "Unten links";}
 	const char* BottomRight(void)                     {return "Unten rechts";}
 	const char* Cancel(void)                          {return "Abbruch";}
+	const char* ColorType(void)                       {return "Farbtyp:";}
 	const char* Custom(void)                          {return "Eigenes";}
 	const char* FileCouldNotBeLoaded(void)            {return "Die Datei \"%s\" konnte nicht geladen werden.";}
 	const char* Format(void)                          {return "Format:";}
@@ -49,6 +51,7 @@ public:
 	const char* LanguageExplanation(void)             {return "Wählen Sie ihre Sprache";}
 	const char* Left(void)                            {return "Links";}
 	const char* Monochrome(void)                      {return "Monochrom";}
+	const char* Next(void)                            {return "Weiter";}
 	const char* Orientation(void)                     {return "Ausrichtung:";}
 	const char* OverlappingPosition(void)             {return "Überlappende Seiten";}
 	const char* OverlappingSize(void)                 {return "Maße der Überlappung";}
@@ -60,8 +63,11 @@ public:
 	const char* PosteRazorSettings(void)              {return "PosteRazor Einstellungen";}
 	const char* PreviewWithOpenGL(void)               {return "Vorschau mit OpenGL";}
 	const char* PreviewWithOpenGLExplanation(void)    {return "OpenGL ermöglicht eine bessere Vorschau. Auf alter Hardware könnte OpenGL jedoch langsamer sein.";}
+	const char* Resolution(void)                      {return "Auflösung:";}
 	const char* Right(void)                           {return "Rechts";}
 	const char* Settings(void)                        {return "Einstellungen...";}
+	const char* SizeInPixels(void)                    {return "Größe (in Pixeln):";}
+	const char* SizeInUnitOfLength(void)              {return "Größe (in %s):";}
 	const char* Standard(void)                        {return "Standard";}
 	const char* StepXOfY(void)                        {return "Schritt %d von %d";}
 	const char* Top(void)                             {return "Oben";}

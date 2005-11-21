@@ -30,9 +30,9 @@ decl {\#include "Fl_Paint_Canvas_Group.h"} {public
 
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {456 206 620 455} type Double hide resizable
+  xywh {456 206 620 455} type Double resizable
   code0 {size_range(this->w(), this->h());}
-  class Fl_Double_Window
+  class Fl_Double_Window visible
 } {
   Fl_Group {} {open
     xywh {10 420 600 25}
@@ -42,13 +42,13 @@ widget_class PosteRazorDialogUI {
     }
     Fl_Button m_nextButton {
       label {Next @-2->}
-      callback {next();}
-      tooltip {Next step} xywh {525 420 85 25} labelcolor 32
+      callback {next();} selected
+      tooltip {Next step} xywh {515 420 95 25} labelcolor 32
     }
     Fl_Button m_prevButton {
       label {@-2<- Back}
       callback {prev();}
-      tooltip {One step back} xywh {430 420 85 25} labelcolor 32
+      tooltip {One step back} xywh {410 420 95 25} labelcolor 32
     }
     Fl_Button m_settingsButton {
       label {Settings...}
@@ -480,7 +480,7 @@ widget_class PosteRazorHelpDialogUI {
   }
   decl {virtual void HandleHomepageButtonClick(void) = 0;} {public
   }
-  decl {virtual void UpdateLanguage(void) = 0;} {selected public
+  decl {virtual void UpdateLanguage(void) = 0;} {public
   }
 } 
 

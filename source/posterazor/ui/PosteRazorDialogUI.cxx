@@ -943,12 +943,12 @@ o->when(FL_WHEN_RELEASE);
   { Fl_Box* o = new Fl_Box(295, 420, 15, 25);
     Fl_Group::current()->resizable(o);
   }
-  { Fl_Button* o = m_nextButton = new Fl_Button(525, 420, 85, 25, "Next @-2->");
+  { Fl_Button* o = m_nextButton = new Fl_Button(515, 420, 95, 25, "Next @-2->");
     o->tooltip("Next step");
     o->labelcolor(FL_GRAY0);
     o->callback((Fl_Callback*)cb_m_nextButton);
   }
-  { Fl_Button* o = m_prevButton = new Fl_Button(430, 420, 85, 25, "@-2<- Back");
+  { Fl_Button* o = m_prevButton = new Fl_Button(410, 420, 95, 25, "@-2<- Back");
     o->tooltip("One step back");
     o->labelcolor(FL_GRAY0);
     o->callback((Fl_Callback*)cb_m_prevButton);

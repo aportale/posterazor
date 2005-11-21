@@ -484,6 +484,12 @@ void PosteRazorDialog::UpdateDimensionUnitLabels(void)
 
 void PosteRazorDialog::UpdateLanguage(void)
 {
+	char tempStr[1024];
+
+	sprintf(tempStr, "%s @-2->", TRANSLATIONS->Next());
+	m_nextButton->copy_label(tempStr);
+	sprintf(tempStr, "@-2<- %s", TRANSLATIONS->Back());
+	m_prevButton->copy_label(tempStr);
 	m_paperFormatTypeTabs->label(TRANSLATIONS->PaperFormat());
 	m_paperFormatCustomGroup->label(TRANSLATIONS->Custom());
 	m_paperFormatStandardGroup->label(TRANSLATIONS->Standard());
@@ -573,15 +579,21 @@ void PosteRazorDialog::UpdateImageInfoFields(void)
 {
 	if (!m_posteRazor->IsImageLoaded())
 		return;
-	
+
+	char sizeInDimensionUnitString[100];
+	sprintf(sizeInDimensionUnitString, TRANSLATIONS->SizeInUnitOfLength(), m_posteRazor->GetDistanceUnitName());
+
 	char string[1024];
 	enum PosteRazor::eColorTypes colorType = m_posteRazor->GetInputImageColorType();
 
 	sprintf
 	(
 		string,
-		"Size (pixels):\nSize (%s):\nResolution:\nColor type:",
-		m_posteRazor->GetDistanceUnitName()
+		"%s\n%s\n%s\n%s",
+		TRANSLATIONS->SizeInPixels(),
+		sizeInDimensionUnitString,
+		TRANSLATIONS->Resolution(),
+		TRANSLATIONS->ColorType()
 	);
 	m_imageInfoKeysLabel->copy_label(string);
 
