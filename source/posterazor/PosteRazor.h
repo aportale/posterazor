@@ -82,9 +82,9 @@ public:
 	virtual int GetInputImageBitsPerPixel(void) const = 0;
 	virtual enum eColorTypes GetInputImageColorType(void) const = 0;
 
-	virtual void SetDistanceUnit(enum eDistanceUnits unit) = 0;
-	virtual enum eDistanceUnits GetDistanceUnit(void) const = 0;
-	virtual const char* GetDistanceUnitName(void) const = 0;
+	virtual void SetUnitOfLength(enum eUnitsOfLength unit) = 0;
+	virtual enum eUnitsOfLength GetUnitOfLength(void) const = 0;
+	virtual const char* GetUnitOfLengthName(void) const = 0;
 
 	virtual void SetPaperFormat(enum ePaperFormats format) = 0;
 	virtual void SetPaperOrientation(enum ePaperOrientations orientation) = 0;

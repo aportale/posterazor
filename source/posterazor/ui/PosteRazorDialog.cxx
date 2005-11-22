@@ -98,7 +98,7 @@ class PosteRazorSettingsDialog: public PosteRazorSettingsDialogUI
 	posteRazorSettings *m_settings;
 	posteRazorSettings m_settingsBackup;
 	SettingsChangementHandler *m_changementHandler;
-	Fl_Menu_Item *m_distanceUnitMenuItems;
+	Fl_Menu_Item *m_UnitOfLengthMenuItems;
 	int m_languageButtonsCount;
 	Fl_Button **m_languageButtons;
 	Fl_RGB_Image **m_languageButtonImages;
@@ -107,17 +107,17 @@ public:
 	PosteRazorSettingsDialog()
 		:PosteRazorSettingsDialogUI(315, 400, "PosteRazor Settings")
 	{
-		int distanceUnitMenuItemsCount = PosteRazor::GetDistanceUnitsCount()+1;
-		m_distanceUnitMenuItems = new Fl_Menu_Item[distanceUnitMenuItemsCount];
-		memset(m_distanceUnitMenuItems, 0, sizeof(Fl_Menu_Item)*distanceUnitMenuItemsCount);
-		for (int i = 0; i < PosteRazor::GetDistanceUnitsCount(); i++)
+		int UnitOfLengthMenuItemsCount = PosteRazor::GetUnitsOfLengthCount()+1;
+		m_UnitOfLengthMenuItems = new Fl_Menu_Item[UnitOfLengthMenuItemsCount];
+		memset(m_UnitOfLengthMenuItems, 0, sizeof(Fl_Menu_Item)*UnitOfLengthMenuItemsCount);
+		for (int i = 0; i < PosteRazor::GetUnitsOfLengthCount(); i++)
 		{
-			const char* distanceUnitName = DistanceUnits::GetDistanceUnitName(PosteRazor::GetDistanceUnitForIndex(i));
-			m_distanceUnitMenuItems[i].label(distanceUnitName);
-			m_distanceUnitMenuItems[i].callback(HandleDistanceUnitChoice_cb);
-			m_distanceUnitMenuItems[i].user_data((void*)this);
+			const char* UnitOfLengthName = UnitsOfLength::GetUnitOfLengthName(PosteRazor::GetUnitOfLengthForIndex(i));
+			m_UnitOfLengthMenuItems[i].label(UnitOfLengthName);
+			m_UnitOfLengthMenuItems[i].callback(HandleUnitOfLengthChoice_cb);
+			m_UnitOfLengthMenuItems[i].user_data((void*)this);
 		}
-		m_distanceUnitChoice->menu(m_distanceUnitMenuItems);
+		m_UnitOfLengthChoice->menu(m_UnitOfLengthMenuItems);
 
 #define LANGUAGEBUTTONSSPACING 10
 		m_languageButtonsCount = TRANSLATIONS->GetLanguagesCount();
@@ -154,8 +154,8 @@ public:
 
 	~PosteRazorSettingsDialog()
 	{
-		if (m_distanceUnitMenuItems)
-			delete[] m_distanceUnitMenuItems;
+		if (m_UnitOfLengthMenuItems)
+			delete[] m_UnitOfLengthMenuItems;
 
 		if (m_languageButtons)
 			delete[] m_languageButtons; // the actual buttons are deleted by FLTK
@@ -174,23 +174,23 @@ public:
 		m_settingsBackup = *m_settings;
 		m_changementHandler = changementHandler;
 
-		enum PosteRazor::eDistanceUnits selectedDistanceUnit = m_settings->distanceUnit;
-		m_distanceUnitChoice->value(selectedDistanceUnit);
+		enum PosteRazor::eUnitsOfLength selectedUnitOfLength = m_settings->UnitOfLength;
+		m_UnitOfLengthChoice->value(selectedUnitOfLength);
 		m_useOpenGLCheckButton->value(m_settings->previewType == Fl_Paint_Canvas_Group::PaintCanvasTypeGL?1:0);
 
 		for (int i = 0; i < m_languageButtonsCount; i++)
 			m_languageButtons[i]->value((m_settings->language == TRANSLATIONS->GetLanguageForIndex(i))?1:0);
 	}
 
-	static void HandleDistanceUnitChoice_cb(Fl_Widget *widget, void *userData)
+	static void HandleUnitOfLengthChoice_cb(Fl_Widget *widget, void *userData)
 	{
-		((PosteRazorSettingsDialog*)userData)->HandleDistanceUnitChangement(((PosteRazorSettingsDialog*)userData)->m_distanceUnitChoice);
+		((PosteRazorSettingsDialog*)userData)->HandleUnitOfLengthChangement(((PosteRazorSettingsDialog*)userData)->m_UnitOfLengthChoice);
 	}
 
-	void HandleDistanceUnitChangement(Fl_Widget *sourceWidget)
+	void HandleUnitOfLengthChangement(Fl_Widget *sourceWidget)
 	{
-		const char* distanceUnitName = m_distanceUnitMenuItems[m_distanceUnitChoice->value()].label();
-		m_settings->distanceUnit = PosteRazor::GetDistanceUnitForName(distanceUnitName);
+		const char* UnitOfLengthName = m_UnitOfLengthMenuItems[m_UnitOfLengthChoice->value()].label();
+		m_settings->UnitOfLength = PosteRazor::GetUnitOfLengthForName(UnitOfLengthName);
 
 		if (m_changementHandler)
 			m_changementHandler->HandleOptionsChangement(m_settings);
@@ -239,8 +239,8 @@ public:
 	void UpdateLanguage(void)
 	{
 		label(TRANSLATIONS->PosteRazorSettings());
-		m_distanceUnitGroup->label(TRANSLATIONS->UnitOfLength());
-		m_distanceUnitExplanationBox->label(TRANSLATIONS->UnitOfLengthExplanation());
+		m_UnitOfLengthGroup->label(TRANSLATIONS->UnitOfLength());
+		m_UnitOfLengthExplanationBox->label(TRANSLATIONS->UnitOfLengthExplanation());
 		m_useOpenGLGroup->label(TRANSLATIONS->PreviewWithOpenGL());
 		m_useOpenGLCheckButton->label(TRANSLATIONS->PreviewWithOpenGL());
 		m_useOpenGLExplanationBox->label(TRANSLATIONS->PreviewWithOpenGLExplanation());
@@ -343,7 +343,7 @@ void PosteRazorDialog::OpenSettingsDialog(void)
 {
 	if (!m_settingsDialog)
 	{
-		m_settings.distanceUnit = m_posteRazor->GetDistanceUnit();
+		m_settings.UnitOfLength = m_posteRazor->GetUnitOfLength();
 		m_settings.previewType = m_paintCanvasGroup->GetPaintCanvasType();
 		m_settings.language = TRANSLATIONS->GetSelectedLanguage()!=Translations::eLanguageUndefined?TRANSLATIONS->GetSelectedLanguage():Translations::eLanguageEnglish;
 		m_settingsDialog = new PosteRazorSettingsDialog();
@@ -371,9 +371,9 @@ void PosteRazorDialog::OpenHelpDialog(void)
 
 void PosteRazorDialog::HandleOptionsChangement(posteRazorSettings *settings)
 {
-	if (m_posteRazor->GetDistanceUnit() != settings->distanceUnit)
+	if (m_posteRazor->GetUnitOfLength() != settings->UnitOfLength)
 	{
-		m_posteRazor->SetDistanceUnit(settings->distanceUnit);
+		m_posteRazor->SetUnitOfLength(settings->UnitOfLength);
 		UpdateImageInfoFields();
 		UpdatePosterSizeFields(NULL);
 		SetPaperSizeFields();
@@ -471,14 +471,14 @@ void PosteRazorDialog::UpdatePreviewState(void)
 
 void PosteRazorDialog::UpdateDimensionUnitLabels(void)
 {
-	m_paperCustomWidthDimensionUnitLabel->label(m_posteRazor->GetDistanceUnitName());
-	m_paperCustomHeightDimensionUnitLabel->label(m_posteRazor->GetDistanceUnitName());
-	m_overlappingWidthDimensionUnitLabel->label(m_posteRazor->GetDistanceUnitName());
-	m_overlappingHeightDimensionUnitLabel->label(m_posteRazor->GetDistanceUnitName());
-	m_posterAbsoluteWidthDimensionUnitLabel->label(m_posteRazor->GetDistanceUnitName());
-	m_posterAbsoluteHeightDimensionUnitLabel->label(m_posteRazor->GetDistanceUnitName());
+	m_paperCustomWidthDimensionUnitLabel->label(m_posteRazor->GetUnitOfLengthName());
+	m_paperCustomHeightDimensionUnitLabel->label(m_posteRazor->GetUnitOfLengthName());
+	m_overlappingWidthDimensionUnitLabel->label(m_posteRazor->GetUnitOfLengthName());
+	m_overlappingHeightDimensionUnitLabel->label(m_posteRazor->GetUnitOfLengthName());
+	m_posterAbsoluteWidthDimensionUnitLabel->label(m_posteRazor->GetUnitOfLengthName());
+	m_posterAbsoluteHeightDimensionUnitLabel->label(m_posteRazor->GetUnitOfLengthName());
 	char paperBordersGroupLabel[100];
-	sprintf(paperBordersGroupLabel, "%s (%s)", TRANSLATIONS->Borders(), m_posteRazor->GetDistanceUnitName());
+	sprintf(paperBordersGroupLabel, "%s (%s)", TRANSLATIONS->Borders(), m_posteRazor->GetUnitOfLengthName());
 	m_paperBordersGroup->copy_label(paperBordersGroupLabel);
 }
 
@@ -581,7 +581,7 @@ void PosteRazorDialog::UpdateImageInfoFields(void)
 		return;
 
 	char sizeInDimensionUnitString[100];
-	sprintf(sizeInDimensionUnitString, TRANSLATIONS->SizeInUnitOfLength(), m_posteRazor->GetDistanceUnitName());
+	sprintf(sizeInDimensionUnitString, TRANSLATIONS->SizeInUnitOfLength(), m_posteRazor->GetUnitOfLengthName());
 
 	char string[1024];
 	enum PosteRazor::eColorTypes colorType = m_posteRazor->GetInputImageColorType();
