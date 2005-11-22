@@ -52,7 +52,7 @@ const char preferencesKey_CustomPaperHeight[] = "CustomPaperHeight";
 const char preferencesKey_OverlappingWidth[] = "OverlappingWidth";
 const char preferencesKey_OverlappingHeight[] = "OverlappingHeight";
 const char preferencesKey_OverlappingPosition[] = "OverlappingPosition";
-const char preferencesKey_DistanceUnit[] = "DistanceUnit";
+const char preferencesKey_UnitOfLength[] = "UnitOfLength";
 const char preferencesKey_PosterOutputFormat[] = "PosterOutputFormat";
 const char preferencesKey_LaunchPDFApplication[] = "LaunchPDFApplication";
 
@@ -61,7 +61,7 @@ class PosteRazorImplementation: public PosteRazor
 private:
 	PosteRazorImageIO*     m_imageIO;
 
-	enum eDistanceUnits    m_distanceUnit;
+	enum eUnitsOfLength    m_UnitOfLength;
 
 	double                 m_overlappingWidth;
 	double                 m_overlappingHeight;
@@ -112,7 +112,7 @@ public:
 		m_overlappingHeight            = 1.0;
 		m_overlappingPosition          = eOverlappingPositionBottomRight;
 
-		m_distanceUnit                 = eDistanceUnitCentimeter;
+		m_UnitOfLength                 = eUnitOfLengthCentimeter;
 
 		m_posterOutputFormat           = eImageFormatPDF;
 
@@ -145,7 +145,7 @@ public:
 		m_overlappingWidth             = preferences->GetDouble(preferencesKey_OverlappingWidth, m_overlappingWidth);
 		m_overlappingHeight            = preferences->GetDouble(preferencesKey_OverlappingHeight, m_overlappingHeight);
 		m_overlappingPosition          = (eOverlappingPositions)preferences->GetInteger(preferencesKey_OverlappingPosition, (int)m_overlappingPosition);
-		m_distanceUnit                 = (eDistanceUnits)preferences->GetInteger(preferencesKey_DistanceUnit, (int)m_distanceUnit);
+		m_UnitOfLength                 = (eUnitsOfLength)preferences->GetInteger(preferencesKey_UnitOfLength, (int)m_UnitOfLength);
 		m_posterOutputFormat           = (eImageFormats)preferences->GetInteger(preferencesKey_PosterOutputFormat, (int)m_posterOutputFormat);
 		m_launchPDFApplication         = preferences->GetBoolean(preferencesKey_LaunchPDFApplication, m_launchPDFApplication);
 
@@ -173,7 +173,7 @@ public:
 		preferences->SetDouble(m_overlappingWidth, preferencesKey_OverlappingWidth);
 		preferences->SetDouble(m_overlappingHeight, preferencesKey_OverlappingHeight);
 		preferences->SetInteger((int)m_overlappingPosition, preferencesKey_OverlappingPosition);
-		preferences->SetInteger((int)m_distanceUnit, preferencesKey_DistanceUnit);
+		preferences->SetInteger((int)m_UnitOfLength, preferencesKey_UnitOfLength);
 		preferences->SetInteger((int)m_posterOutputFormat, preferencesKey_PosterOutputFormat);
 		preferences->SetBoolean(m_launchPDFApplication, preferencesKey_LaunchPDFApplication);
 
@@ -182,8 +182,8 @@ public:
 
 	PosteRazorImageIO *GetImageIO(void) {return m_imageIO;}
 
-	double ConvertDistanceToCm(double distance) const {return ConvertBetweenDistanceUnits(distance, GetDistanceUnit(), eDistanceUnitCentimeter);}
-	double ConvertCmToDistance(double cm) const {return ConvertBetweenDistanceUnits(cm, eDistanceUnitCentimeter, GetDistanceUnit());}
+	double ConvertDistanceToCm(double distance) const {return ConvertBetweenUnitsOfLength(distance, GetUnitOfLength(), eUnitOfLengthCentimeter);}
+	double ConvertCmToDistance(double cm) const {return ConvertBetweenUnitsOfLength(cm, eUnitOfLengthCentimeter, GetUnitOfLength());}
 
 	bool LoadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize)
 	{
@@ -194,18 +194,18 @@ public:
 	int GetInputImageWidthPixels(void) const {return m_imageIO->GetWidthPixels();}
 	int GetInputImageHeightPixels(void) const {return m_imageIO->GetHeightPixels();}
 
-	double GetInputImageHorizontalDpi(void) const {return m_imageIO->GetHorizontalDotsPerDistanceUnit(eDistanceUnitInch);}
-	double GetInputImageVerticalDpi(void) const {return m_imageIO->GetVerticalDotsPerDistanceUnit(eDistanceUnitInch);}
+	double GetInputImageHorizontalDpi(void) const {return m_imageIO->GetHorizontalDotsPerUnitOfLength(eUnitOfLengthInch);}
+	double GetInputImageVerticalDpi(void) const {return m_imageIO->GetVerticalDotsPerUnitOfLength(eUnitOfLengthInch);}
 
-	double GetInputImageWidth(void) const {return m_imageIO->GetWidth(m_distanceUnit);}
-	double GetInputImageHeight(void) const {return m_imageIO->GetHeight(m_distanceUnit);}
+	double GetInputImageWidth(void) const {return m_imageIO->GetWidth(m_UnitOfLength);}
+	double GetInputImageHeight(void) const {return m_imageIO->GetHeight(m_UnitOfLength);}
 
 	int GetInputImageBitsPerPixel(void) const {return m_imageIO->GetBitsPerPixel();}
 	enum eColorTypes GetInputImageColorType(void) const {return m_imageIO->GetColorDataType();}
 
-	void SetDistanceUnit(enum eDistanceUnits unit) {m_distanceUnit = unit;}
-	enum eDistanceUnits GetDistanceUnit(void) const {return m_distanceUnit;}
-	const char* GetDistanceUnitName(void) const {return DistanceUnits::GetDistanceUnitName(m_distanceUnit);}
+	void SetUnitOfLength(enum eUnitsOfLength unit) {m_UnitOfLength = unit;}
+	enum eUnitsOfLength GetUnitOfLength(void) const {return m_UnitOfLength;}
+	const char* GetUnitOfLengthName(void) const {return UnitsOfLength::GetUnitOfLengthName(m_UnitOfLength);}
 
 	void SetPaperFormat(enum ePaperFormats format) {m_paperFormat = format;}
 	void SetPaperOrientation(enum ePaperOrientations orientation) {m_paperOrientation = orientation;}
@@ -239,8 +239,8 @@ public:
 	void SetUseCustomPaperSize(bool useIt) {m_useCustomPaperSize = useIt;}
 	bool GetUseCustomPaperSize(void) const {return m_useCustomPaperSize;}
 
-	double GetPaperWidth(void) const {return GetUseCustomPaperSize()?GetCustomPaperWidth():PaperFormats::GetPaperWidth(GetPaperFormat(), GetPaperOrientation(), m_distanceUnit);}
-	double GetPaperHeight(void) const {return GetUseCustomPaperSize()?GetCustomPaperHeight():PaperFormats::GetPaperHeight(GetPaperFormat(), GetPaperOrientation(), m_distanceUnit);}
+	double GetPaperWidth(void) const {return GetUseCustomPaperSize()?GetCustomPaperWidth():PaperFormats::GetPaperWidth(GetPaperFormat(), GetPaperOrientation(), m_UnitOfLength);}
+	double GetPaperHeight(void) const {return GetUseCustomPaperSize()?GetCustomPaperHeight():PaperFormats::GetPaperHeight(GetPaperFormat(), GetPaperOrientation(), m_UnitOfLength);}
 
 	double GetPrintablePaperAreaWidth(void) const {return GetPaperWidth() - GetPaperBorderLeft() - GetPaperBorderRight();}
 	double GetPrintablePaperAreaHeight(void) const {return GetPaperHeight() - GetPaperBorderTop() - GetPaperBorderBottom();}
@@ -499,11 +499,11 @@ public:
 			GetPreviewSize(paperWidth, paperHeight, (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, true);
 			x_offset = (canvasWidth - (double)boxWidth) / 2.0;
 			y_offset = (canvasHeight - (double)boxHeight) / 2.0;
-			double distanceUnitToPixelfactor = (double)boxWidth/paperWidth;
-			double borderTop = GetPaperBorderTop() * distanceUnitToPixelfactor;
-			double borderRight = GetPaperBorderRight() * distanceUnitToPixelfactor;
-			double borderBottom = GetPaperBorderBottom() * distanceUnitToPixelfactor;
-			double borderLeft = GetPaperBorderLeft() * distanceUnitToPixelfactor;
+			double UnitOfLengthToPixelfactor = (double)boxWidth/paperWidth;
+			double borderTop = GetPaperBorderTop() * UnitOfLengthToPixelfactor;
+			double borderRight = GetPaperBorderRight() * UnitOfLengthToPixelfactor;
+			double borderBottom = GetPaperBorderBottom() * UnitOfLengthToPixelfactor;
+			double borderLeft = GetPaperBorderLeft() * UnitOfLengthToPixelfactor;
 			double printableAreaWidth = boxWidth - borderLeft - borderRight;
 			double printableAreaHeight = boxHeight - borderTop - borderBottom;
 			
@@ -512,8 +512,8 @@ public:
 
 			if (strcmp(state, "overlapping") == 0)
 			{
-				double overlappingWidth = GetOverlappingWidth() * distanceUnitToPixelfactor;
-				double overlappingHeight = GetOverlappingHeight() * distanceUnitToPixelfactor;
+				double overlappingWidth = GetOverlappingWidth() * UnitOfLengthToPixelfactor;
+				double overlappingHeight = GetOverlappingHeight() * UnitOfLengthToPixelfactor;
 				enum eOverlappingPositions overlappingPosition = GetOverlappingPosition();
 				double overlappingTop =
 					(overlappingPosition == eOverlappingPositionTopLeft || overlappingPosition == eOverlappingPositionTopRight)?
@@ -539,20 +539,20 @@ public:
 			GetPreviewSize(posterWidth, posterHeight, (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, true);
 			x_offset = (canvasWidth - boxWidth) / 2;
 			y_offset = (canvasHeight - boxHeight) / 2;
-			double distanceUnitToPixelfactor = (double)boxWidth/posterWidth;
+			double UnitOfLengthToPixelfactor = (double)boxWidth/posterWidth;
 
-			double borderTop = GetPaperBorderTop() * distanceUnitToPixelfactor;
-			double borderRight = GetPaperBorderRight() * distanceUnitToPixelfactor;
-			double borderBottom = GetPaperBorderBottom() * distanceUnitToPixelfactor;
-			double borderLeft = GetPaperBorderLeft() * distanceUnitToPixelfactor;
+			double borderTop = GetPaperBorderTop() * UnitOfLengthToPixelfactor;
+			double borderRight = GetPaperBorderRight() * UnitOfLengthToPixelfactor;
+			double borderBottom = GetPaperBorderBottom() * UnitOfLengthToPixelfactor;
+			double borderLeft = GetPaperBorderLeft() * UnitOfLengthToPixelfactor;
 			double posterPrintableAreaWidth = boxWidth - borderLeft - borderRight;
 			double posterPrintableAreaHeight = boxHeight - borderTop - borderBottom;
 
 			paintCanvas->DrawFilledRect(x_offset, y_offset, boxWidth, boxHeight, 128, 128, 128, 255);
 			paintCanvas->DrawFilledRect(borderLeft + x_offset, borderTop + y_offset, posterPrintableAreaWidth, posterPrintableAreaHeight, 230, 230, 230, 255);
 
-			double imageWidth = GetPosterWidth(ePosterSizeModeAbsolute) * distanceUnitToPixelfactor;
-			double imageHeight = GetPosterHeight(ePosterSizeModeAbsolute) * distanceUnitToPixelfactor;
+			double imageWidth = GetPosterWidth(ePosterSizeModeAbsolute) * UnitOfLengthToPixelfactor;
+			double imageHeight = GetPosterHeight(ePosterSizeModeAbsolute) * UnitOfLengthToPixelfactor;
 
 			enum eVerticalAlignments verticalAlignment = GetPosterVerticalAlignment();
 			enum eHorizontalAlignments horizontalAlignment = GetPosterHorizontalAlignment();
@@ -577,10 +577,10 @@ public:
 				imageWidth, imageHeight
 			);
 
-			double overlappingHeight = GetOverlappingHeight() * distanceUnitToPixelfactor;
-			double overlappingWidth = GetOverlappingWidth() * distanceUnitToPixelfactor;
-			pagePrintableAreaWidth *= distanceUnitToPixelfactor;
-			pagePrintableAreaHeight *= distanceUnitToPixelfactor;
+			double overlappingHeight = GetOverlappingHeight() * UnitOfLengthToPixelfactor;
+			double overlappingWidth = GetOverlappingWidth() * UnitOfLengthToPixelfactor;
+			pagePrintableAreaWidth *= UnitOfLengthToPixelfactor;
+			pagePrintableAreaHeight *= UnitOfLengthToPixelfactor;
 
 			double overlappingRectangleYPosition = borderTop;
 			for (int pagesRow = 0; pagesRow < pagesVertical - 1; pagesRow++)

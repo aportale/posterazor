@@ -92,19 +92,19 @@ enum PaperFormats::ePaperFormats PaperFormats::GetPaperFormatForName(const char*
 	return paperFormat;
 }
 
-double PaperFormats::GetPaperDimension(enum ePaperFormats format, enum ePaperOrientations orientation, enum eDistanceUnits unit, bool width)
+double PaperFormats::GetPaperDimension(enum ePaperFormats format, enum ePaperOrientations orientation, enum eUnitsOfLength unit, bool width)
 {
 	int paperFormatIndex = GetPaperFormatIndex(format);
 	double dimension = ((width && orientation == ePaperOrientationPortrait) || (!width && orientation == ePaperOrientationLandscape))?g_paperFormats[paperFormatIndex].width:g_paperFormats[paperFormatIndex].height;
-	return ConvertBetweenDistanceUnits(dimension, eDistanceUnitCentimeter, unit);
+	return ConvertBetweenUnitsOfLength(dimension, eUnitOfLengthCentimeter, unit);
 }
 
-double PaperFormats::GetPaperWidth(enum ePaperFormats format, enum ePaperOrientations orientation, enum eDistanceUnits unit)
+double PaperFormats::GetPaperWidth(enum ePaperFormats format, enum ePaperOrientations orientation, enum eUnitsOfLength unit)
 {
 	return GetPaperDimension(format, orientation, unit, true);
 }
 
-double PaperFormats::GetPaperHeight(enum ePaperFormats format, enum ePaperOrientations orientation, enum eDistanceUnits unit)
+double PaperFormats::GetPaperHeight(enum ePaperFormats format, enum ePaperOrientations orientation, enum eUnitsOfLength unit)
 {
 	return GetPaperDimension(format, orientation, unit, false);
 }

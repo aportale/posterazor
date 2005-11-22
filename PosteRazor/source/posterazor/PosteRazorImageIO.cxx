@@ -23,7 +23,7 @@
 #include "FreeImage.h"
 #include "PosteRazorImageIO.h"
 #include "PosteRazorPDFOutput.h"
-#include "DistanceUnits.h"
+#include "UnitsOfLength.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -139,18 +139,18 @@ public:
 	int GetWidthPixels(void) const {return m_widthPixels;}
 	int GetHeightPixels(void) const {return m_heightPixels;}
 
-	double GetHorizontalDotsPerDistanceUnit(enum DistanceUnits::eDistanceUnits unit) const
+	double GetHorizontalDotsPerUnitOfLength(enum UnitsOfLength::eUnitsOfLength unit) const
 	{
-		return m_horizontalDotsPerMeter / DistanceUnits::ConvertBetweenDistanceUnits(1, DistanceUnits::eDistanceUnitMeter, unit);
+		return m_horizontalDotsPerMeter / UnitsOfLength::ConvertBetweenUnitsOfLength(1, UnitsOfLength::eUnitOfLengthMeter, unit);
 	}
 
-	double GetVerticalDotsPerDistanceUnit(enum DistanceUnits::eDistanceUnits unit) const
+	double GetVerticalDotsPerUnitOfLength(enum UnitsOfLength::eUnitsOfLength unit) const
 	{
-		return m_verticalDotsPerMeter / DistanceUnits::ConvertBetweenDistanceUnits(1, DistanceUnits::eDistanceUnitMeter, unit);
+		return m_verticalDotsPerMeter / UnitsOfLength::ConvertBetweenUnitsOfLength(1, UnitsOfLength::eUnitOfLengthMeter, unit);
 	}
 
-	double GetWidth(enum DistanceUnits::eDistanceUnits unit) const {return GetWidthPixels() / GetHorizontalDotsPerDistanceUnit(unit);}
-	double GetHeight(enum DistanceUnits::eDistanceUnits unit) const {return GetHeightPixels() / GetVerticalDotsPerDistanceUnit(unit);}
+	double GetWidth(enum UnitsOfLength::eUnitsOfLength unit) const {return GetWidthPixels() / GetHorizontalDotsPerUnitOfLength(unit);}
+	double GetHeight(enum UnitsOfLength::eUnitsOfLength unit) const {return GetHeightPixels() / GetVerticalDotsPerUnitOfLength(unit);}
 
 #define MAX(a, b) ((a)>(b)?(a):(b))
 

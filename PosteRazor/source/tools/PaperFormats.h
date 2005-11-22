@@ -23,9 +23,9 @@
 #ifndef PaperFormats_h
 #define PaperFormats_h
 
-#include "DistanceUnits.h"
+#include "UnitsOfLength.h"
 
-class PaperFormats: public DistanceUnits
+class PaperFormats: public UnitsOfLength
 {
 public:
 	typedef enum ePaperFormats
@@ -48,9 +48,9 @@ public:
 	static const char* GetPaperFormatName(enum ePaperFormats format);
 	static enum ePaperFormats GetPaperFormatForName(const char* name);
 
-	static double GetPaperDimension(enum ePaperFormats format, enum ePaperOrientations orientation, enum eDistanceUnits unit, bool width);
-	static double GetPaperWidth(enum ePaperFormats format, enum ePaperOrientations orientation, enum eDistanceUnits unit);
-	static double GetPaperHeight(enum ePaperFormats format, enum ePaperOrientations orientation, enum eDistanceUnits unit);
+	static double GetPaperDimension(enum ePaperFormats format, enum ePaperOrientations orientation, enum eUnitsOfLength unit, bool width);
+	static double GetPaperWidth(enum ePaperFormats format, enum ePaperOrientations orientation, enum eUnitsOfLength unit);
+	static double GetPaperHeight(enum ePaperFormats format, enum ePaperOrientations orientation, enum eUnitsOfLength unit);
 };
 
 #endif

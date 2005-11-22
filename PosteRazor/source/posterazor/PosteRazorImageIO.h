@@ -23,7 +23,7 @@
 #ifndef PosteRazorImageIO_h
 #define PosteRazorImageIO_h
 
-#include "DistanceUnits.h"
+#include "UnitsOfLength.h"
 #include "ColorTypes.h"
 #include "PaintCanvasInterface.h"
 #include "ImageIOTypes.h"
@@ -40,11 +40,11 @@ public:
 	virtual int GetWidthPixels(void) const = 0;
 	virtual int GetHeightPixels(void) const = 0;
 
-	virtual double GetHorizontalDotsPerDistanceUnit(enum DistanceUnits::eDistanceUnits unit) const = 0;
-	virtual double GetVerticalDotsPerDistanceUnit(enum DistanceUnits::eDistanceUnits unit) const = 0;
+	virtual double GetHorizontalDotsPerUnitOfLength(enum UnitsOfLength::eUnitsOfLength unit) const = 0;
+	virtual double GetVerticalDotsPerUnitOfLength(enum UnitsOfLength::eUnitsOfLength unit) const = 0;
 
-	virtual double GetWidth(enum DistanceUnits::eDistanceUnits unit) const = 0;
-	virtual double GetHeight(enum DistanceUnits::eDistanceUnits unit) const = 0;
+	virtual double GetWidth(enum UnitsOfLength::eUnitsOfLength unit) const = 0;
+	virtual double GetHeight(enum UnitsOfLength::eUnitsOfLength unit) const = 0;
 
 	virtual void GetImageAsRGB(unsigned char *buffer) const = 0;
 	virtual void GetImageAsRGB(unsigned char *buffer, int width, int height) const = 0;

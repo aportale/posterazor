@@ -1466,15 +1466,15 @@ o->when(FL_WHEN_RELEASE);
 { Fl_Group* o = new Fl_Group(10, 10, 295, 345);
   o->box(FL_THIN_DOWN_BOX);
   o->labelsize(8);
-  { Fl_Group* o = m_distanceUnitGroup = new Fl_Group(20, 35, 275, 85, "Units");
+  { Fl_Group* o = m_UnitOfLengthGroup = new Fl_Group(20, 35, 275, 85, "Units");
     o->box(FL_THIN_DOWN_BOX);
     o->color(FL_DARK2);
-    { Fl_Choice* o = m_distanceUnitChoice = new Fl_Choice(30, 45, 255, 25);
+    { Fl_Choice* o = m_UnitOfLengthChoice = new Fl_Choice(30, 45, 255, 25);
       o->tooltip("Choose the unit you want to work with");
       o->down_box(FL_BORDER_BOX);
       o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
     }
-    { Fl_Box* o = m_distanceUnitExplanationBox = new Fl_Box(30, 80, 255, 30, "Choose the distance unit you want to work with");
+    { Fl_Box* o = m_UnitOfLengthExplanationBox = new Fl_Box(30, 80, 255, 30, "Choose the distance unit you want to work with");
       o->align(134|FL_ALIGN_INSIDE);
     }
     o->end();

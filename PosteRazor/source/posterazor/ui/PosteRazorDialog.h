@@ -38,7 +38,7 @@ public:
 
 typedef struct
 {
-	enum PosteRazor::eDistanceUnits distanceUnit;
+	enum PosteRazor::eUnitsOfLength UnitOfLength;
 	enum Fl_Paint_Canvas_Group::ePaintCanvasTypes previewType;
 	enum Translations::eLanguages language;
 } posteRazorSettings;
