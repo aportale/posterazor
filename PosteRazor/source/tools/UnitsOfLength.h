@@ -20,29 +20,29 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef DistanceUnits_h
-#define DistanceUnits_h
+#ifndef UnitsOfLength_h
+#define UnitsOfLength_h
 
-class DistanceUnits
+class UnitsOfLength
 {
 public:
-	typedef enum eDistanceUnits
+	typedef enum eUnitsOfLength
 	{
-		eDistanceUnitMeter,
-		eDistanceUnitMillimeter,
-		eDistanceUnitCentimeter,
-		eDistanceUnitInch,
-		eDistanceUnitFeet,
-		eDistanceUnitPoints
+		eUnitOfLengthMeter,
+		eUnitOfLengthMillimeter,
+		eUnitOfLengthCentimeter,
+		eUnitOfLengthInch,
+		eUnitOfLengthFeet,
+		eUnitOfLengthPoints
 	};
 
-	static int GetDistanceUnitsCount(void);
+	static int GetUnitsOfLengthCount(void);
 
-	static double ConvertBetweenDistanceUnits(double distance, enum eDistanceUnits sourceUnit, enum eDistanceUnits targetUnit);
-	static int GetDistanceUnitIndex(enum eDistanceUnits unit);
-	static const char* GetDistanceUnitName(enum eDistanceUnits unit);
-	static enum eDistanceUnits GetDistanceUnitForName(const char* name);
-	static enum eDistanceUnits GetDistanceUnitForIndex(int index);
+	static double ConvertBetweenUnitsOfLength(double distance, enum eUnitsOfLength sourceUnit, enum eUnitsOfLength targetUnit);
+	static int GetUnitOfLengthIndex(enum eUnitsOfLength unit);
+	static const char* GetUnitOfLengthName(enum eUnitsOfLength unit);
+	static enum eUnitsOfLength GetUnitOfLengthForName(const char* name);
+	static enum eUnitsOfLength GetUnitOfLengthForIndex(int index);
 };
 
 #endif
