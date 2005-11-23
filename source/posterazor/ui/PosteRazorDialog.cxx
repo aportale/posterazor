@@ -555,7 +555,7 @@ void PosteRazorDialog::LoadInputImage(const char *fileName)
 	bool loaded = false;
 
 	chooser.title(TRANSLATIONS->LoadAnInputImage());
-	chooser.filter("*.pdf;*.tif");
+	chooser.filter("*.{jpg,png,tif,gif,psd,pcx,bmp,dds,cut,ico,iff,jbig,jng,jif,koa,lbm,pcd,mng,pbm,pgm,ppm,ras,tga,wbmp,xbm,xpm,tiff,jpeg}");
 
 	if (!loadFileName)
 	{
