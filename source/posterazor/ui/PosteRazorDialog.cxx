@@ -804,12 +804,18 @@ void PosteRazorDialog::SavePoster(void)
 {
 	Fl_Native_File_Chooser chooser;
 	chooser.type(Fl_Native_File_Chooser::BROWSE_SAVE_FILE);
-	
+	chooser.filter("*.pdf");
+
 	if (chooser.show() == 0)
 	{
-		int err = m_posteRazor->SavePoster(chooser.filename());
+		char saveFileName[1024];
+		strcpy(saveFileName, chooser.filename());
+		if (0 != stricmp(fl_filename_ext(chooser.filename()), ".pdf"))
+			strcat(saveFileName, ".pdf");
+
+		int err = m_posteRazor->SavePoster(saveFileName);
 		if (err)
-			fl_message("The file '%s' could not be saved.", fl_filename_name(chooser.filename()));
+			fl_message("The file '%s' could not be saved.", fl_filename_name(saveFileName));
 	}
 }
 
