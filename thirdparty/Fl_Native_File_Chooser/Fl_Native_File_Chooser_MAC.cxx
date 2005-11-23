@@ -288,7 +288,7 @@ Fl_Native_File_Chooser::~Fl_Native_File_Chooser() {
     _title = NULL;
     if ( _filter ) free(_filter);
     _filter = NULL;
-	if (ref) NavDialogDispose(ref);
+    NavDialogDispose(ref);
     if ( ftypes ) DisposeHandle((Handle)ftypes);
     clear_pathnames();
 }
@@ -377,10 +377,10 @@ int Fl_Native_File_Chooser::show() {
 	case BROWSE_SAVE_FILE:
 	    // Prompt user for filename to 'save as'
 	    if ((err = NavCreatePutFileDialog(
-			  &opts,			// options
-			  NULL,			// file types
-			  NULL,			// file creator
-			  event_handler,		// event handler
+			  &opts,		// options
+			  0,			// file types
+			  0,			// file creator
+			  event_handler,	// event handler
 			  (void*)this,		// callback data
 			  &ref)) != noErr ) {	// dialog ref
 		errmsg("NavCreatePutFileDialog: failed");

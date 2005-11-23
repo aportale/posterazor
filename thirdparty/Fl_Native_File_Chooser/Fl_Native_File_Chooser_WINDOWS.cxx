@@ -26,7 +26,7 @@ Fl_Native_File_Chooser::Fl_Native_File_Chooser() {
 }
 
 // CTOR
-Fl_Native_File_Chooser::Fl_Native_File_Chooser(enum Type val) {
+Fl_Native_File_Chooser::Fl_Native_File_Chooser(Fl_Native_File_Chooser::Type val) {
     Ctor(val);
 }
 
@@ -48,10 +48,9 @@ static void AddPattern(char* &wp, const char *name, const char *patt) {
     strcat(wp, patt); wp += strlen(wp)+1; *wp = 0;
 }
 
-#ifdef DEBUG
 // DUMP WINDOWS 'DOUBLENULL' STRING (DEBUG)
 static void DumpDoubleNull(char *wp, size_t len) {
-    for ( size_t t=0; t<len; t++ )
+    for ( int t=0; t<len; t++ )
     {
         if ( wp[t]==0 ) fprintf(stderr, "000");
         else            fprintf(stderr, "<%c>",wp[t]);
@@ -59,7 +58,6 @@ static void DumpDoubleNull(char *wp, size_t len) {
     }
     fprintf(stderr, "\n");
 }
-#endif /*DEBUG*/
 
 // CONVERT FLTK STYLE PATTERN MATCHES TO WINDOWS 'DOUBLENULL' PATTERN
 //    Caller must free() the returned value when done.
@@ -138,9 +136,7 @@ static char *fltk2win_filter(const char *flpat) {
     size_t len = (int)(wp - winpat) + 1;
     char *copy = (char*)malloc(len);
     memcpy(copy, winpat, len);
-#ifdef DEBUG
-    DumpDoubleNull(copy, len);
-#endif/*DEBUG*/
+    // DumpDoubleNull(copy, len);     				// debug
     return(copy);
 }
 
@@ -181,7 +177,7 @@ void Fl_Native_File_Chooser::add_pathname(const char *s) {
 }
 
 void Fl_Native_File_Chooser::Ctor(Fl_Native_File_Chooser::Type type) {
-    btype            = type;
+    btype            = BROWSE_FILE;
     memset((void*)&ofn, 0, sizeof(OPENFILENAME));
     ofn.lStructSize  = sizeof(OPENFILENAME);
     ofn.hwndOwner    = NULL;
@@ -327,11 +323,7 @@ int Fl_Native_File_Chooser::showfile() {
 		add_pathname(dirname); 
 		Win2Unix(_pathnames[_tpathnames-1]);
 	    }
-	    break;
 	}
-	case BROWSE_DIRECTORY:
-	case BROWSE_MULTI_DIRECTORY:
-	    abort();			// not here
     }
     return(0);
 }
@@ -347,7 +339,7 @@ int CALLBACK Fl_Native_File_Chooser::SetSelect_CB(HWND win, UINT msg, LPARAM par
 }
 // SHOW DIRECTORY BROWSER
 int Fl_Native_File_Chooser::showdir() {
-    static int oleinit = 0;
+    static oleinit = 0;
     if ( ! oleinit ) {
 	oleinit = 1;
 	OleInitialize(NULL);	// init needed by BIF_USENEWUI
@@ -359,7 +351,7 @@ int Fl_Native_File_Chooser::showdir() {
     // DIALOG TITLE
     binf.lpszTitle = _title ? _title : NULL;
     // FLAGS
-//    binf.ulFlags |= BIF_SHAREABLE | BIF_USENEWUI;
+    binf.ulFlags |= BIF_SHAREABLE | BIF_USENEWUI;
     // BUFFER
     char displayname[MAX_PATH];
     binf.pszDisplayName = displayname;

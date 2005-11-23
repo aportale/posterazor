@@ -19,6 +19,9 @@
 // USA.
 //
 
+#ifndef FL_NATIVE_FILE_CHOOSER_H
+#define FL_NATIVE_FILE_CHOOSER_H
+
 // Use Windows' chooser
 #ifdef _WIN32
 #include <FL/Fl_Native_File_Chooser_WINDOWS.H>
@@ -33,3 +36,5 @@
 #if ! defined(__APPLE__) && !defined(_WIN32)
 #include <FL/Fl_Native_File_Chooser_DEFAULT.H>
 #endif
+
+#endif /*FL_NATIVE_FILE_CHOOSER_H*/

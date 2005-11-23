@@ -34,30 +34,49 @@ public:
 
 private:
     Type btype;			// kind-of browser to show()
-    char  **_pathnames;		// array of pathnames
-    int   _tpathnames;		// total pathnames
-    char  *_preset_dirname;	// default pathname to use
-    char  *_title;		// title for window
-    char  *_filter;		// search filter
-    char  *_errmsg;		// error message
-    void errmsg(const char *msg) { }
-    void clear_pathnames() { }
-    void set_single_pathname(const char *s) { }
+    char **_pathnames;		// array of pathnames
+    int  _tpathnames;		// total pathnames
+    char *_preset_dirname;	// default pathname to use
+    char *_title;		// title for window
+    char *_filter;		// search filter
+    char *_errmsg;		// error message
+
+    void set_single_pathname(const char *s);
+
+    void errmsg(const char *msg);
+    void clear_pathnames();
+    void _ctor(Type type);
+
 
 public:
     Fl_Native_File_Chooser();
-    ~Fl_Native_File_Chooser() { }
-    // int add_file_type() { return(0); }
-    void type(Type val) { }
-    int show() { return(0); }
-    const char *errmsg() { return(0); }
-    const char* filename() const { return(0); }
-    const char* filename(int i) const { return(0); }
-    int total_filenames() const { return(0); }
-    void preset_dirname(const char *val) { }
-    const char* preset_dirname() { return(0); }
-    void title(const char *val) { }
-    const char* title() const { return(0); }
-    const char *filter() const { return(0); }
-    void filter(const char *val) { }
+    Fl_Native_File_Chooser(Type type);
+    ~Fl_Native_File_Chooser();
+
+    const char *errmsg() const;
+
+    int total_filenames() const { return(_tpathnames); }
+
+    // Type
+    void type(Type val);
+    Type type() const;
+
+    // Filename
+    const char* filename() const;
+    const char* filename(int i) const;
+
+    // Preset Directory
+    void preset_dirname(const char *val);
+    const char* preset_dirname() const;
+
+    // Title
+    void title(const char *val);
+    const char* title() const;
+
+    // Filter
+    const char *filter() const;
+    void filter(const char *val);
+
+    int show();
+
 };
