@@ -944,17 +944,14 @@ o->when(FL_WHEN_RELEASE);
     Fl_Group::current()->resizable(o);
   }
   { Fl_Button* o = m_nextButton = new Fl_Button(515, 420, 95, 25, "Next @-2->");
-    o->tooltip("Next step");
     o->labelcolor(FL_GRAY0);
     o->callback((Fl_Callback*)cb_m_nextButton);
   }
   { Fl_Button* o = m_prevButton = new Fl_Button(410, 420, 95, 25, "@-2<- Back");
-    o->tooltip("One step back");
     o->labelcolor(FL_GRAY0);
     o->callback((Fl_Callback*)cb_m_prevButton);
   }
   { Fl_Button* o = m_settingsButton = new Fl_Button(10, 420, 135, 25, "Settings...");
-    o->tooltip("One step back");
     o->labelcolor(FL_GRAY0);
     o->callback((Fl_Callback*)cb_m_settingsButton);
   }
@@ -1327,7 +1324,6 @@ o->when(FL_WHEN_RELEASE);
 }
 { Fl_Group* o = new Fl_Group(10, 10, 600, 25);
   { Fl_Box* o = m_stepInfoBox = new Fl_Box(10, 10, 570, 25, "Step 1 of 8: Load an image");
-    o->tooltip("The current step");
     o->box(FL_THIN_UP_BOX);
     o->color((Fl_Color)10);
     o->labelfont(1);
@@ -1337,7 +1333,6 @@ o->when(FL_WHEN_RELEASE);
     Fl_Group::current()->resizable(o);
   }
   { Fl_Button* o = new Fl_Button(585, 10, 25, 25, "?");
-    o->tooltip("Help text for the current step");
     o->color((Fl_Color)10);
     o->labelfont(1);
     o->labelsize(15);
@@ -1355,10 +1350,10 @@ size_range(this->w(), this->h());
 end();
 }
 
-void PosteRazorHelpDialogUI::cb_OK_i(Fl_Button*, void*) {
+void PosteRazorHelpDialogUI::cb_OK_i(Fl_Return_Button*, void*) {
   hide();
 }
-void PosteRazorHelpDialogUI::cb_OK(Fl_Button* o, void* v) {
+void PosteRazorHelpDialogUI::cb_OK(Fl_Return_Button* o, void* v) {
   ((PosteRazorHelpDialogUI*)(o->parent()->parent()))->cb_OK_i(o,v);
 }
 
@@ -1399,7 +1394,7 @@ o->when(FL_WHEN_RELEASE);
   o->textfont(FL_HELVETICA);
 }
 { Fl_Group* o = new Fl_Group(10, 365, 480, 25);
-  { Fl_Button* o = new Fl_Button(405, 365, 85, 25, "OK");
+  { Fl_Return_Button* o = new Fl_Return_Button(405, 365, 85, 25, "OK");
     o->callback((Fl_Callback*)cb_OK);
   }
   { Fl_Button* o = m_homepageButton = new Fl_Button(10, 365, 185, 25, "Homepage");
@@ -1416,7 +1411,7 @@ end();
 }
 
 void PosteRazorHelpDialogUI::SetHomepageButtonLabel(const char *label) {
-  m_homepageButton->copy_label(label);
+  m_homepageButton->label(label);
 }
 
 void PosteRazorSettingsDialogUI::cb_m_useOpenGLCheckButton_i(Fl_Check_Button*, void*) {
@@ -1426,11 +1421,11 @@ void PosteRazorSettingsDialogUI::cb_m_useOpenGLCheckButton(Fl_Check_Button* o, v
   ((PosteRazorSettingsDialogUI*)(o->parent()->parent()->parent()))->cb_m_useOpenGLCheckButton_i(o,v);
 }
 
-void PosteRazorSettingsDialogUI::cb_OK1_i(Fl_Button*, void*) {
+void PosteRazorSettingsDialogUI::cb_OK1_i(Fl_Return_Button*, void*) {
   m_okWasPressed = true;
 hide();
 }
-void PosteRazorSettingsDialogUI::cb_OK1(Fl_Button* o, void* v) {
+void PosteRazorSettingsDialogUI::cb_OK1(Fl_Return_Button* o, void* v) {
   ((PosteRazorSettingsDialogUI*)(o->parent()->parent()))->cb_OK1_i(o,v);
 }
 
@@ -1471,7 +1466,6 @@ o->when(FL_WHEN_RELEASE);
     o->box(FL_THIN_DOWN_BOX);
     o->color(FL_DARK2);
     { Fl_Choice* o = m_unitOfLengthChoice = new Fl_Choice(30, 45, 255, 25);
-      o->tooltip("Choose the unit you want to work with");
       o->down_box(FL_BORDER_BOX);
       o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
     }
@@ -1507,7 +1501,7 @@ down on old systems, though.");
   o->end();
 }
 { Fl_Group* o = new Fl_Group(10, 365, 296, 25);
-  { Fl_Button* o = new Fl_Button(210, 365, 95, 25, "OK");
+  { Fl_Return_Button* o = new Fl_Return_Button(210, 365, 95, 25, "OK");
     o->callback((Fl_Callback*)cb_OK1);
   }
   { Fl_Button* o = m_cancelButton = new Fl_Button(105, 365, 95, 25, "Cancel");
