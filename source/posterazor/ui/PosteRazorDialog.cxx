@@ -27,7 +27,7 @@
 #include <FL/fl_ask.H>
 #include <FL/x.H>
 #include "translations/PosteRazorHelpConstants.h"
-
+#include <string.h>
 
 #ifdef WIN32
   #include "windowsResources/PosteRazorResource.h"
@@ -810,7 +810,7 @@ void PosteRazorDialog::SavePoster(void)
 	{
 		char saveFileName[1024];
 		strcpy(saveFileName, chooser.filename());
-		if (0 != stricmp(fl_filename_ext(chooser.filename()), ".pdf"))
+		if (0 != strcasecmp(fl_filename_ext(chooser.filename()), ".pdf"))
 			strcat(saveFileName, ".pdf");
 
 		int err = m_posteRazor->SavePoster(saveFileName);
