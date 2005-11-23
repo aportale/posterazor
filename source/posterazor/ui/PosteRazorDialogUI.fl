@@ -43,17 +43,17 @@ widget_class PosteRazorDialogUI {
     Fl_Button m_nextButton {
       label {Next @-2->}
       callback {next();}
-      tooltip {Next step} xywh {515 420 95 25} labelcolor 32
+      xywh {515 420 95 25} labelcolor 32
     }
     Fl_Button m_prevButton {
       label {@-2<- Back}
       callback {prev();}
-      tooltip {One step back} xywh {410 420 95 25} labelcolor 32
+      xywh {410 420 95 25} labelcolor 32
     }
     Fl_Button m_settingsButton {
       label {Settings...}
       callback {OpenSettingsDialog();}
-      tooltip {One step back} xywh {10 420 135 25} labelcolor 32
+      xywh {10 420 135 25} labelcolor 32
     }
   }
   Fl_Wizard m_wizard {
@@ -397,12 +397,12 @@ widget_class PosteRazorDialogUI {
   } {
     Fl_Box m_stepInfoBox {
       label {Step 1 of 8: Load an image}
-      tooltip {The current step} xywh {10 10 570 25} box THIN_UP_BOX color 10 labelfont 1 labelsize 15 labelcolor 32 align 20 resizable
+      xywh {10 10 570 25} box THIN_UP_BOX color 10 labelfont 1 labelsize 15 labelcolor 32 align 20 resizable
     }
     Fl_Button {} {
       label {?}
       callback {OpenHelpDialog()}
-      tooltip {Help text for the current step} xywh {585 10 25 25} color 10 labelfont 1 labelsize 15 labelcolor 32
+      xywh {585 10 25 25} color 10 labelfont 1 labelsize 15 labelcolor 32
     }
   }
   decl {virtual void OpenSettingsDialog(void) = 0;} {public
@@ -456,7 +456,7 @@ widget_class PosteRazorHelpDialogUI {
   Fl_Group {} {open
     xywh {10 365 480 25}
   } {
-    Fl_Button {} {
+    Fl_Return_Button {} {
       label OK
       callback {hide();}
       xywh {405 365 85 25}
@@ -472,7 +472,7 @@ widget_class PosteRazorHelpDialogUI {
   }
   Function {SetHomepageButtonLabel(const char *label)} {open return_type void
   } {
-    code {m_homepageButton->copy_label(label);} {}
+    code {m_homepageButton->label(label);} {}
   }
   decl {virtual void JumpToAnchor(const char *anchor) = 0;} {public
   }
@@ -501,10 +501,10 @@ widget_class PosteRazorSettingsDialogUI {
       xywh {20 35 275 85} box THIN_DOWN_BOX color 45
     } {
       Fl_Choice m_unitOfLengthChoice {open
-        tooltip {Choose the unit you want to work with} xywh {30 45 255 25} down_box BORDER_BOX align 20
+        xywh {30 45 255 25} down_box BORDER_BOX align 20
       } {}
       Fl_Box m_unitOfLengthExplanationBox {
-        label {Choose the distance unit you want to work with} selected
+        label {Choose the distance unit you want to work with}
         xywh {30 80 255 30} align 150
       }
     }
@@ -538,10 +538,10 @@ widget_class PosteRazorSettingsDialogUI {
   Fl_Group {} {open
     xywh {10 365 296 25}
   } {
-    Fl_Button {} {
+    Fl_Return_Button {} {
       label OK
       callback {m_okWasPressed = true;
-hide();}
+hide();} selected
       xywh {210 365 95 25}
     }
     Fl_Button m_cancelButton {

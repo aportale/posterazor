@@ -52,6 +52,7 @@ public:
 	const char* LanguageExplanation(void)             {return "Wählen Sie ihre Sprache";}
 	const char* LaunchPDFApplication(void)            {return "PDF-Applikation nach Speicherung des Posters starten";}
 	const char* Left(void)                            {return "Links";}
+	const char* LoadAnInputImage(void)                {return StepTitle01();}
 	const char* Monochrome(void)                      {return "Monochrom";}
 	const char* Next(void)                            {return "Weiter";}
 	const char* Orientation(void)                     {return "Ausrichtung:";}
@@ -63,6 +64,7 @@ public:
 	const char* Portrait(void)                        {return "Hochformat";}
 	const char* PosteRazorHelp(void)                  {return "PosteRazor Hilfe";}
 	const char* PosteRazorSettings(void)              {return "PosteRazor Einstellungen";}
+	const char* PosteRazorWebSite(void)               {return "PosteRazor-Internetseite";}
 	const char* PreviewWithOpenGL(void)               {return "Vorschau mit OpenGL";}
 	const char* PreviewWithOpenGLExplanation(void)    {return "OpenGL ermöglicht eine bessere Vorschau. Auf alter Hardware könnte OpenGL jedoch langsamer sein.";}
 	const char* Resolution(void)                      {return "Auflösung:";}

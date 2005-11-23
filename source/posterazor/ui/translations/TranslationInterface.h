@@ -50,6 +50,7 @@ public:
 	virtual const char* LanguageExplanation(void) = 0;
 	virtual const char* LaunchPDFApplication(void) = 0;
 	virtual const char* Left(void) = 0;
+	virtual const char* LoadAnInputImage(void) = 0;
 	virtual const char* Monochrome(void) = 0;
 	virtual const char* Next(void) = 0;
 	virtual const char* Orientation(void) = 0;
@@ -61,6 +62,7 @@ public:
 	virtual const char* Portrait(void) = 0;
 	virtual const char* PosteRazorHelp(void) = 0;
 	virtual const char* PosteRazorSettings(void) = 0;
+	virtual const char* PosteRazorWebSite(void) = 0;
 	virtual const char* PreviewWithOpenGL(void) = 0;
 	virtual const char* PreviewWithOpenGLExplanation(void) = 0;
 	virtual const char* Resolution(void) = 0;

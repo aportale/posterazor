@@ -271,6 +271,7 @@ public:
   virtual void SetLaunchPDFApplication(void) = 0;
 };
 #include <FL/Fl_Help_View.H>
+#include <FL/Fl_Return_Button.H>
 
 class PosteRazorHelpDialogUI : public Fl_Double_Window {
   void _PosteRazorHelpDialogUI();
@@ -279,8 +280,8 @@ public:
   PosteRazorHelpDialogUI(int W, int H, const char *L = 0);
   Fl_Help_View *m_help_view;
 private:
-  void cb_OK_i(Fl_Button*, void*);
-  static void cb_OK(Fl_Button*, void*);
+  void cb_OK_i(Fl_Return_Button*, void*);
+  static void cb_OK(Fl_Return_Button*, void*);
 public:
   Fl_Button *m_homepageButton;
 private:
@@ -314,8 +315,8 @@ public:
   Fl_Group *m_languageButtonsGroup;
   Fl_Box *m_languageExplanationBox;
 private:
-  void cb_OK1_i(Fl_Button*, void*);
-  static void cb_OK1(Fl_Button*, void*);
+  void cb_OK1_i(Fl_Return_Button*, void*);
+  static void cb_OK1(Fl_Return_Button*, void*);
 public:
   Fl_Button *m_cancelButton;
 private:

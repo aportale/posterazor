@@ -104,6 +104,7 @@ public:
 	const char* LanguageExplanation(void)             {return m_selectedTranslation->LanguageExplanation();}
 	const char* LaunchPDFApplication(void)            {return m_selectedTranslation->LaunchPDFApplication();}
 	const char* Left(void)                            {return m_selectedTranslation->Left();}
+	const char* LoadAnInputImage(void)                {return m_selectedTranslation->LoadAnInputImage();}
 	const char* Monochrome(void)                      {return m_selectedTranslation->Monochrome();}
 	const char* Next(void)                            {return m_selectedTranslation->Next();}
 	const char* Orientation(void)                     {return m_selectedTranslation->Orientation();}
@@ -115,6 +116,7 @@ public:
 	const char* Portrait(void)                        {return m_selectedTranslation->Portrait();}
 	const char* PosteRazorHelp(void)                  {return m_selectedTranslation->PosteRazorHelp();}
 	const char* PosteRazorSettings(void)              {return m_selectedTranslation->PosteRazorSettings();}
+	const char* PosteRazorWebSite(void)               {return m_selectedTranslation->PosteRazorWebSite();}
 	const char* PreviewWithOpenGL(void)               {return m_selectedTranslation->PreviewWithOpenGL();}
 	const char* PreviewWithOpenGLExplanation(void)    {return m_selectedTranslation->PreviewWithOpenGLExplanation();}
 	const char* Resolution(void)                      {return m_selectedTranslation->Resolution();}

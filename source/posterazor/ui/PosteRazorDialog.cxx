@@ -88,7 +88,7 @@ public:
 	void UpdateLanguage(void)
 	{
 		label(TRANSLATIONS->PosteRazorHelp());
-
+		SetHomepageButtonLabel(TRANSLATIONS->PosteRazorWebSite());
 		redraw();
 	}
 };
@@ -357,7 +357,8 @@ void PosteRazorDialog::OpenHelpDialog(void)
 {
 	if (!m_helpDialog)
 	{
-		m_helpDialog = new PosteRazorHelpDialog("PosteRazor homepage", "http://posterazor.sourceforge.net/");
+		m_helpDialog = new PosteRazorHelpDialog("PosteRazor website", "http://posterazor.sourceforge.net/");
+		m_helpDialog->UpdateLanguage();
 		m_helpDialog->set_modal();
 	}
 
@@ -553,7 +554,8 @@ void PosteRazorDialog::LoadInputImage(const char *fileName)
 	const char *loadFileName = fileName;
 	bool loaded = false;
 
-//	chooser.AddPattern();
+	chooser.title(TRANSLATIONS->LoadAnInputImage());
+	chooser.filter("*.pdf;*.tif");
 
 	if (!loadFileName)
 	{

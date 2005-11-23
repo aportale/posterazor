@@ -52,6 +52,7 @@ public:
 	const char* LanguageExplanation(void)             {return "Choose your language";}
 	const char* LaunchPDFApplication(void)            {return "Launch PDF application after the poster is saved";}
 	const char* Left(void)                            {return "Left";}
+	const char* LoadAnInputImage(void)                {return StepTitle01();}
 	const char* Monochrome(void)                      {return "Monochrome";}
 	const char* Next(void)                            {return "Next";}
 	const char* Orientation(void)                     {return "Orientation:";}
@@ -61,8 +62,9 @@ public:
 	const char* PaperFormat(void)                     {return "Paper format";}
 	const char* Palette(void)                         {return "Palette";}
 	const char* Portrait(void)                        {return "Portrait";}
-	const char* PosteRazorHelp(void)                  {return "PosteRazor Help";}
-	const char* PosteRazorSettings(void)              {return "PosteRazor Settings";}
+	const char* PosteRazorHelp(void)                  {return "PosteRazor help";}
+	const char* PosteRazorSettings(void)              {return "PosteRazor settings";}
+	const char* PosteRazorWebSite(void)               {return "PosteRazor website";}
 	const char* PreviewWithOpenGL(void)               {return "Preview with OpenGL";}
 	const char* PreviewWithOpenGLExplanation(void)    {return "OpenGL enables a smooth preview on modern systems. It could slow the preview down on old systems, though.";}
 	const char* Resolution(void)                      {return "Resolution:";}
