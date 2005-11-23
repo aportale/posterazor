@@ -30,6 +30,7 @@ class TranslationGerman: public TranslationInterface
 public:
 	const char* LanguageName(void)                    {return "Deutsch";}
 
+	const char* AbsoluteSize(void)                    {return "Absolute Maße:";}
 	const char* Back(void)                            {return "Zurück";}
 	const char* Borders(void)                         {return "Ränder";}
 	const char* Bottom(void)                          {return "Unten";}
@@ -49,6 +50,7 @@ public:
 	const char* Landscape(void)                       {return "Querformat";}
 	const char* Language(void)                        {return "Sprache";}
 	const char* LanguageExplanation(void)             {return "Wählen Sie ihre Sprache";}
+	const char* LaunchPDFApplication(void)            {return "PDF-Applikation nach Speicherung des Posters starten";}
 	const char* Left(void)                            {return "Links";}
 	const char* Monochrome(void)                      {return "Monochrom";}
 	const char* Next(void)                            {return "Weiter";}
@@ -65,7 +67,11 @@ public:
 	const char* PreviewWithOpenGLExplanation(void)    {return "OpenGL ermöglicht eine bessere Vorschau. Auf alter Hardware könnte OpenGL jedoch langsamer sein.";}
 	const char* Resolution(void)                      {return "Auflösung:";}
 	const char* Right(void)                           {return "Rechts";}
+	const char* SaveThePoster(void)                   {return "Das Poster speichern";}
 	const char* Settings(void)                        {return "Einstellungen...";}
+	const char* Size(void)                            {return "Größe:";}
+	const char* SizeInPages(void)                     {return "Größe in Seiten:";}
+	const char* SizeInPercent(void)                   {return "Prozentuelle Größe:";}
 	const char* SizeInPixels(void)                    {return "Größe (in Pixeln):";}
 	const char* SizeInUnitOfLength(void)              {return "Größe (in %s):";}
 	const char* Standard(void)                        {return "Standard";}

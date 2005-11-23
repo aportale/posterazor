@@ -300,9 +300,9 @@ public:
   PosteRazorSettingsDialogUI(int X, int Y, int W, int H, const char *L = 0);
   PosteRazorSettingsDialogUI(int W, int H, const char *L = 0);
   bool m_okWasPressed;
-  Fl_Group *m_UnitOfLengthGroup;
-  Fl_Choice *m_UnitOfLengthChoice;
-  Fl_Box *m_UnitOfLengthExplanationBox;
+  Fl_Group *m_unitOfLengthGroup;
+  Fl_Choice *m_unitOfLengthChoice;
+  Fl_Box *m_unitOfLengthExplanationBox;
   Fl_Group *m_useOpenGLGroup;
   Fl_Check_Button *m_useOpenGLCheckButton;
 private:
