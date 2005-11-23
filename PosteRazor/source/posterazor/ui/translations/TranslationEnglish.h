@@ -30,6 +30,7 @@ class TranslationEnglish: public TranslationInterface
 public:
 	const char* LanguageName(void)                    {return "English";}
 
+	const char* AbsoluteSize(void)                    {return "Absolute size:";}
 	const char* Back(void)                            {return "Back";}
 	const char* Borders(void)                         {return "Borders";}
 	const char* Bottom(void)                          {return "Bottom";}
@@ -49,6 +50,7 @@ public:
 	const char* Landscape(void)                       {return "Landscape";}
 	const char* Language(void)                        {return "Language";}
 	const char* LanguageExplanation(void)             {return "Choose your language";}
+	const char* LaunchPDFApplication(void)            {return "Launch PDF application after the poster is saved";}
 	const char* Left(void)                            {return "Left";}
 	const char* Monochrome(void)                      {return "Monochrome";}
 	const char* Next(void)                            {return "Next";}
@@ -65,7 +67,11 @@ public:
 	const char* PreviewWithOpenGLExplanation(void)    {return "OpenGL enables a smooth preview on modern systems. It could slow the preview down on old systems, though.";}
 	const char* Resolution(void)                      {return "Resolution:";}
 	const char* Right(void)                           {return "Right";}
+	const char* SaveThePoster(void)                   {return "Save the poster";}
 	const char* Settings(void)                        {return "Settings...";}
+	const char* Size(void)                            {return "Size:";}
+	const char* SizeInPages(void)                     {return "Size in pages:";}
+	const char* SizeInPercent(void)                   {return "Size in percent:";}
 	const char* SizeInPixels(void)                    {return "Size (in pixels):";}
 	const char* SizeInUnitOfLength(void)              {return "Size (in %s):";}
 	const char* Standard(void)                        {return "Standard";}

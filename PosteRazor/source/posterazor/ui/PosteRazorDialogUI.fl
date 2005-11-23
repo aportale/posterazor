@@ -42,7 +42,7 @@ widget_class PosteRazorDialogUI {
     }
     Fl_Button m_nextButton {
       label {Next @-2->}
-      callback {next();} selected
+      callback {next();}
       tooltip {Next step} xywh {515 420 95 25} labelcolor 32
     }
     Fl_Button m_prevButton {
@@ -92,7 +92,7 @@ widget_class PosteRazorDialogUI {
       }
     }
     Fl_Group m_paperSizeStep {open
-      xywh {315 45 295 365}
+      xywh {315 45 295 365} hide
     } {
       Fl_Tabs m_paperFormatTypeTabs {
         label {Paper size}
@@ -366,11 +366,11 @@ widget_class PosteRazorDialogUI {
       }
     }
     Fl_Group m_savePosterStep {open
-      xywh {315 45 295 365} hide
+      xywh {315 45 295 365}
     } {
       Fl_Group m_savePosterGroup {
         label {Save the Poster} open
-        xywh {325 70 275 75} box THIN_DOWN_BOX color 45
+        xywh {325 70 275 85} box THIN_DOWN_BOX color 45
       } {
         Fl_Button {} {
           label {@+14filesave}
@@ -380,7 +380,7 @@ widget_class PosteRazorDialogUI {
         Fl_Check_Button m_setLaunchPDFApplicationCheckButton {
           label {Launch PDF application after saving}
           callback {SetLaunchPDFApplication();}
-          xywh {335 115 255 20} down_box DOWN_BOX
+          xywh {335 115 255 30} down_box DOWN_BOX align 148
         }
       }
       Fl_Box {} {
@@ -496,15 +496,15 @@ widget_class PosteRazorSettingsDialogUI {
   Fl_Group {} {open
     xywh {10 10 295 345} box THIN_DOWN_BOX labelsize 8
   } {
-    Fl_Group m_distanceUnitGroup {
+    Fl_Group m_unitOfLengthGroup {
       label Units open
       xywh {20 35 275 85} box THIN_DOWN_BOX color 45
     } {
-      Fl_Choice m_distanceUnitChoice {open
+      Fl_Choice m_unitOfLengthChoice {open
         tooltip {Choose the unit you want to work with} xywh {30 45 255 25} down_box BORDER_BOX align 20
       } {}
-      Fl_Box m_distanceUnitExplanationBox {
-        label {Choose the distance unit you want to work with}
+      Fl_Box m_unitOfLengthExplanationBox {
+        label {Choose the distance unit you want to work with} selected
         xywh {30 80 255 30} align 150
       }
     }

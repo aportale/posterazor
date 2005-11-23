@@ -28,6 +28,7 @@ class TranslationInterface
 public:
 	virtual const char* LanguageName(void) = 0;
 
+	virtual const char* AbsoluteSize(void) = 0;
 	virtual const char* Back(void) = 0;
 	virtual const char* Borders(void) = 0;
 	virtual const char* Bottom(void) = 0;
@@ -47,6 +48,7 @@ public:
 	virtual const char* Landscape(void) = 0;
 	virtual const char* Language(void) = 0;
 	virtual const char* LanguageExplanation(void) = 0;
+	virtual const char* LaunchPDFApplication(void) = 0;
 	virtual const char* Left(void) = 0;
 	virtual const char* Monochrome(void) = 0;
 	virtual const char* Next(void) = 0;
@@ -63,7 +65,11 @@ public:
 	virtual const char* PreviewWithOpenGLExplanation(void) = 0;
 	virtual const char* Resolution(void) = 0;
 	virtual const char* Right(void) = 0;
+	virtual const char* SaveThePoster(void) = 0;
 	virtual const char* Settings(void) = 0;
+	virtual const char* Size(void) = 0;
+	virtual const char* SizeInPages(void) = 0;
+	virtual const char* SizeInPercent(void) = 0;
 	virtual const char* SizeInPixels(void) = 0;
 	virtual const char* SizeInUnitOfLength(void) = 0;
 	virtual const char* Standard(void) = 0;

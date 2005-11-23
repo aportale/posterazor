@@ -996,6 +996,7 @@ o->when(FL_WHEN_RELEASE);
     o->end();
   }
   { Fl_Group* o = m_paperSizeStep = new Fl_Group(315, 45, 295, 365);
+    o->hide();
     { Fl_Tabs* o = m_paperFormatTypeTabs = new Fl_Tabs(325, 70, 275, 140, "Paper size");
       o->callback((Fl_Callback*)cb_m_paperFormatTypeTabs);
       { Fl_Group* o = m_paperFormatStandardGroup = new Fl_Group(325, 95, 275, 115, "Standard");
@@ -1290,17 +1291,17 @@ o->when(FL_WHEN_RELEASE);
     o->end();
   }
   { Fl_Group* o = m_savePosterStep = new Fl_Group(315, 45, 295, 365);
-    o->hide();
-    { Fl_Group* o = m_savePosterGroup = new Fl_Group(325, 70, 275, 75, "Save the Poster");
+    { Fl_Group* o = m_savePosterGroup = new Fl_Group(325, 70, 275, 85, "Save the Poster");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
       { Fl_Button* o = new Fl_Button(335, 80, 255, 25, "@+14filesave");
         o->labelcolor((Fl_Color)42);
         o->callback((Fl_Callback*)cb_14filesave);
       }
-      { Fl_Check_Button* o = m_setLaunchPDFApplicationCheckButton = new Fl_Check_Button(335, 115, 255, 20, "Launch PDF application after saving");
+      { Fl_Check_Button* o = m_setLaunchPDFApplicationCheckButton = new Fl_Check_Button(335, 115, 255, 30, "Launch PDF application after saving");
         o->down_box(FL_DOWN_BOX);
         o->callback((Fl_Callback*)cb_m_setLaunchPDFApplicationCheckButton);
+        o->align(132|FL_ALIGN_INSIDE);
       }
       o->end();
     }
@@ -1466,15 +1467,15 @@ o->when(FL_WHEN_RELEASE);
 { Fl_Group* o = new Fl_Group(10, 10, 295, 345);
   o->box(FL_THIN_DOWN_BOX);
   o->labelsize(8);
-  { Fl_Group* o = m_UnitOfLengthGroup = new Fl_Group(20, 35, 275, 85, "Units");
+  { Fl_Group* o = m_unitOfLengthGroup = new Fl_Group(20, 35, 275, 85, "Units");
     o->box(FL_THIN_DOWN_BOX);
     o->color(FL_DARK2);
-    { Fl_Choice* o = m_UnitOfLengthChoice = new Fl_Choice(30, 45, 255, 25);
+    { Fl_Choice* o = m_unitOfLengthChoice = new Fl_Choice(30, 45, 255, 25);
       o->tooltip("Choose the unit you want to work with");
       o->down_box(FL_BORDER_BOX);
       o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
     }
-    { Fl_Box* o = m_UnitOfLengthExplanationBox = new Fl_Box(30, 80, 255, 30, "Choose the distance unit you want to work with");
+    { Fl_Box* o = m_unitOfLengthExplanationBox = new Fl_Box(30, 80, 255, 30, "Choose the distance unit you want to work with");
       o->align(134|FL_ALIGN_INSIDE);
     }
     o->end();

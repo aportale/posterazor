@@ -82,6 +82,7 @@ public:
 
 	const char* LanguageName(void)                    {return m_selectedTranslation->LanguageName();}
 
+	const char* AbsoluteSize(void)                    {return m_selectedTranslation->AbsoluteSize();}
 	const char* Back(void)                            {return m_selectedTranslation->Back();}
 	const char* Borders(void)                         {return m_selectedTranslation->Borders();}
 	const char* Bottom(void)                          {return m_selectedTranslation->Bottom();}
@@ -101,6 +102,7 @@ public:
 	const char* Landscape(void)                       {return m_selectedTranslation->Landscape();}
 	const char* Language(void)                        {return m_selectedTranslation->Language();}
 	const char* LanguageExplanation(void)             {return m_selectedTranslation->LanguageExplanation();}
+	const char* LaunchPDFApplication(void)            {return m_selectedTranslation->LaunchPDFApplication();}
 	const char* Left(void)                            {return m_selectedTranslation->Left();}
 	const char* Monochrome(void)                      {return m_selectedTranslation->Monochrome();}
 	const char* Next(void)                            {return m_selectedTranslation->Next();}
@@ -117,7 +119,11 @@ public:
 	const char* PreviewWithOpenGLExplanation(void)    {return m_selectedTranslation->PreviewWithOpenGLExplanation();}
 	const char* Resolution(void)                      {return m_selectedTranslation->Resolution();}
 	const char* Right(void)                           {return m_selectedTranslation->Right();}
+	const char* SaveThePoster(void)                   {return m_selectedTranslation->SaveThePoster();}
 	const char* Settings(void)                        {return m_selectedTranslation->Settings();}
+	const char* Size(void)                            {return m_selectedTranslation->Size();}
+	const char* SizeInPages(void)                     {return m_selectedTranslation->SizeInPages();}
+	const char* SizeInPercent(void)                   {return m_selectedTranslation->SizeInPercent();}
 	const char* SizeInPixels(void)                    {return m_selectedTranslation->SizeInPixels();}
 	const char* SizeInUnitOfLength(void)              {return m_selectedTranslation->SizeInUnitOfLength();}
 	const char* Standard(void)                        {return m_selectedTranslation->Standard();}
