@@ -288,7 +288,7 @@ Fl_Native_File_Chooser::~Fl_Native_File_Chooser() {
     _title = NULL;
     if ( _filter ) free(_filter);
     _filter = NULL;
-	if ( ref ) NavDialogDispose(ref);
+    if ( ref ) NavDialogDispose(ref);
     if ( ftypes ) DisposeHandle((Handle)ftypes);
     clear_pathnames();
 }
