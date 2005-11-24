@@ -83,17 +83,17 @@ public:
 
 	void OpenURLInBrowser(const char* url)
 	{
-#ifdef WIN32
+#if defined (WIN32)
 		ShellExecute(HWND_DESKTOP, "open", url, NULL, NULL, SW_SHOW);
-#elif OSX
+#elif defined (OSX)
 		char commandString[2048];
 		sprintf(commandString, "open %s", url);
 		system(commandString);
-#elif __amigaos4__
+#elif defined (__amigaos4__)
 		char commandString[2048];
         sprintf(commandString, "ibrowse:ibrowse %s", url);
         system(commandString);
-#endif;
+#endif
 	}
 
 	static const char *LinkCallback(Fl_Widget *w, const char *uri)
