@@ -87,20 +87,20 @@ public:
 
 
 #include "PosteRazorHelpConstants.h"
-#define POSTERAZORHELPSTEPTITLE01 "Ein Ausgangsbild laden"
-#define POSTERAZORHELPSTEPTITLENOHTML02 "Druckerpapier-Maße definieren"
-#define POSTERAZORHELPSTEPTITLE02 "Druckerpapier-Ma&szlig;e definieren"
-#define POSTERAZORHELPSTEPTITLENOHTML03 "Überlappung der Bildabschnitte definieren"
-#define POSTERAZORHELPSTEPTITLE03 "&Uuml;berlappung der Bildabschnitte definieren"
-#define POSTERAZORHELPSTEPTITLENOHTML04 "Die finale Postergröße definieren"
-#define POSTERAZORHELPSTEPTITLE04 "Die finale Postergr&ouml;&szlig;e definieren"
-#define POSTERAZORHELPSTEPTITLE05 "Das Poster speichern"
+#define GERMAN_POSTERAZORHELPSTEPTITLE01 "Ein Ausgangsbild laden"
+#define GERMAN_POSTERAZORHELPSTEPTITLENOHTML02 "Druckerpapier-Maße definieren"
+#define GERMAN_POSTERAZORHELPSTEPTITLE02 "Druckerpapier-Ma&szlig;e definieren"
+#define GERMAN_POSTERAZORHELPSTEPTITLENOHTML03 "Überlappung der Bildabschnitte definieren"
+#define GERMAN_POSTERAZORHELPSTEPTITLE03 "&Uuml;berlappung der Bildabschnitte definieren"
+#define GERMAN_POSTERAZORHELPSTEPTITLENOHTML04 "Die finale Postergröße definieren"
+#define GERMAN_POSTERAZORHELPSTEPTITLE04 "Die finale Postergr&ouml;&szlig;e definieren"
+#define GERMAN_POSTERAZORHELPSTEPTITLE05 "Das Poster speichern"
 
-	const char* StepTitle01(void)                     {return POSTERAZORHELPSTEPTITLE01;};
-	const char* StepTitle02(void)                     {return POSTERAZORHELPSTEPTITLENOHTML02;};
-	const char* StepTitle03(void)                     {return POSTERAZORHELPSTEPTITLENOHTML03;};
-	const char* StepTitle04(void)                     {return POSTERAZORHELPSTEPTITLENOHTML04;};
-	const char* StepTitle05(void)                     {return POSTERAZORHELPSTEPTITLE05;};
+	const char* StepTitle01(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLE01;};
+	const char* StepTitle02(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML02;};
+	const char* StepTitle03(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML03;};
+	const char* StepTitle04(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML04;};
+	const char* StepTitle05(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLE05;};
 	const char* HelpHtml(void)
 	{
 		return	"<HTML>" POSTERAZORHELPENDLINE \
@@ -112,11 +112,11 @@ public:
 						"<LI><B><A href=\"#" POSTERAZORHELPANCHORABOUT "\">&Uuml;ber</A></B></LI>" POSTERAZORHELPENDLINE \
 						"<LI><B><A href=\"#" POSTERAZORHELPANCHORMANUAL "\">Bedienungsanleitung</A></B></LI>" POSTERAZORHELPENDLINE \
 						"<UL>" POSTERAZORHELPENDLINE \
-							"<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP01 "\">Schritt 1: " POSTERAZORHELPSTEPTITLE01 "</A></LI>" POSTERAZORHELPENDLINE \
-							"<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP02 "\">Schritt 2: " POSTERAZORHELPSTEPTITLE02 "</A></LI>" POSTERAZORHELPENDLINE \
-							"<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP03 "\">Schritt 3: " POSTERAZORHELPSTEPTITLE03 "</A></LI>" POSTERAZORHELPENDLINE \
-							"<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP04 "\">Schritt 4: " POSTERAZORHELPSTEPTITLE04 "</A></LI>" POSTERAZORHELPENDLINE \
-							"<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP05 "\">Schritt 5: " POSTERAZORHELPSTEPTITLE05 "</A></LI>" POSTERAZORHELPENDLINE \
+							"<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP01 "\">Schritt 1: " GERMAN_POSTERAZORHELPSTEPTITLE01 "</A></LI>" POSTERAZORHELPENDLINE \
+							"<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP02 "\">Schritt 2: " GERMAN_POSTERAZORHELPSTEPTITLE02 "</A></LI>" POSTERAZORHELPENDLINE \
+							"<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP03 "\">Schritt 3: " GERMAN_POSTERAZORHELPSTEPTITLE03 "</A></LI>" POSTERAZORHELPENDLINE \
+							"<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP04 "\">Schritt 4: " GERMAN_POSTERAZORHELPSTEPTITLE04 "</A></LI>" POSTERAZORHELPENDLINE \
+							"<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP05 "\">Schritt 5: " GERMAN_POSTERAZORHELPSTEPTITLE05 "</A></LI>" POSTERAZORHELPENDLINE \
 						"</UL>" POSTERAZORHELPENDLINE \
 						"<LI><B><A href=\"#" POSTERAZORHELPANCHORINPUTFILEFORMATS "\">Unterst&uuml;tzte Ausgangsbilder</A></B></LI>" POSTERAZORHELPENDLINE \
 						"<LI><B><A href=\"#" POSTERAZORHELPANCHORABOUTPDFOUTPUT "\">&Uuml;ber die generierten PDF-Dokumente</A></B></LI>" POSTERAZORHELPENDLINE \
@@ -125,7 +125,7 @@ public:
 						"<LI><B><A href=\"#" POSTERAZORHELPANCHORLICENSE "\">Lizenz</A></B></LI>" POSTERAZORHELPENDLINE \
 					"</UL><HR>" POSTERAZORHELPENDLINE \
 
-					"<br><H3><A name=\"" POSTERAZORHELPANCHORABOUT "\">&Uuml;ber</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
+					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORABOUT, "&Uuml;ber") \
 					POSTERAZORHELPINDENTATION "The PosteRazor cuts a raster image into pieces which can be printed on a printer and be put together to a poster. As an input image, raster files of <A href=\"#" POSTERAZORHELPANCHORMANUALSTEP01 "\">various</A> image file formats are supported. Instead of directly printing the poster, the PosteRazor produces a multi page PDF files which contains the poster tiles.<br>" POSTERAZORHELPENDLINE \
 					" is an open source program which depends on <a href=\"#" POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES "\">other open source projects</a>." POSTERAZORHELPENDLINE \
 					"The PosteRazor is hostet on <b>posterazor.sourceforge.net</b>." POSTERAZORHELPENDLINE \
@@ -136,26 +136,26 @@ public:
 					"Every input field for a dimension, etc. can as usual be modified with the keyboard but also by clicking on it and dragging the mouse to the left and right. The different mouse buttons in-/de-crease the values in different steps.<br>" POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "All entries and choices are remembered until the next usage of the PosteRazor." POSTERAZORHELPENDLINE \
 
-					"<br><H3><A name=\"" POSTERAZORHELPANCHORMANUALSTEP01 "\">Schritt 1: " POSTERAZORHELPSTEPTITLE01 "</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
+					"<br><H3><A name=\"" POSTERAZORHELPANCHORMANUALSTEP01 "\">Schritt 1: " GERMAN_POSTERAZORHELPSTEPTITLE01 "</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "Load an image by clicking the button with the open icon and selecting an image file, or by drag & dropping an image file on the PosteRazor. The drag & drop also works in the other steps.<br>" POSTERAZORHELPENDLINE \
 					"Many <a href=\"#" POSTERAZORHELPANCHORINPUTFILEFORMATS "\">file formats and image types</a> can be loaded. After loading the image, the most important informations are listed in the <b>Image informations</b> fields." POSTERAZORHELPENDLINE \
 
-					"<br><H3><A name=\"" POSTERAZORHELPANCHORMANUALSTEP02 "\">Schritt 2: " POSTERAZORHELPSTEPTITLE02 "</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
+					"<br><H3><A name=\"" POSTERAZORHELPANCHORMANUALSTEP02 "\">Schritt 2: " GERMAN_POSTERAZORHELPSTEPTITLE02 "</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "Define the paper sheet size that you use in your printer. A standard paper sheet size can be selected from the <b>Format</b> chooser, along with the desired paper sheet <b>Orientation</b>. Alternatively, a custom paper sheet size can be define in the <b>Custom</b> tab. (Please write me an email, if you miss your standard paper size in the chooser)." POSTERAZORHELPENDLINE \
 					"Paper borders are defined in the <b>Borders</b> fileds. Even if your printer does need no (or small) paper borders, some border might be needed to have enough area for gluing the final poster tiles together." POSTERAZORHELPENDLINE \
 
-					"<br><H3><A name=\"" POSTERAZORHELPANCHORMANUALSTEP03 "\">Schritt 3: " POSTERAZORHELPSTEPTITLE03 "</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
+					"<br><H3><A name=\"" POSTERAZORHELPANCHORMANUALSTEP03 "\">Schritt 3: " GERMAN_POSTERAZORHELPSTEPTITLE03 "</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "Image tile overlapping is needed to have some tolerance for cutting off the unneded borders from one side. Additionally, like the borders from the previous step, if gives more area for gluing together the final poster tiles." POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "The <b>Overlapping position</b> defines the borders that are intended to be overlapped by the neighbour tiles. The borders on the opposite sides are intended to be cut (except on the outermost tiles)." POSTERAZORHELPENDLINE \
 					
-					"<br><H3><A name=\"" POSTERAZORHELPANCHORMANUALSTEP04 "\">Schritt 4: " POSTERAZORHELPSTEPTITLE04 "</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
+					"<br><H3><A name=\"" POSTERAZORHELPANCHORMANUALSTEP04 "\">Schritt 4: " GERMAN_POSTERAZORHELPSTEPTITLE04 "</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "Define the final poster size, in one of the following three modes which can be selected by the corresponding radio buttons:<br>" POSTERAZORHELPENDLINE \
 					"<b>Absolute image size</b>: You want to have a specific size of your poster.<br>" POSTERAZORHELPENDLINE \
 					"<b>Size in Pages</b>: you want to use whole paper sheets and specify how many of them of them you want to use.<br>" POSTERAZORHELPENDLINE \
 					"<b>Image Size in percent</b>: your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to enlage the image by a certain factor.<br>" POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "The aspect ratio of width and height is always 1:1 and is automatically recalculated. In the preview area, you can see the overlapping areas which are surrounded by light red rectangles." POSTERAZORHELPENDLINE \
 
-					"<br><H3><A name=\"" POSTERAZORHELPANCHORMANUALSTEP05 "\">Schritt 5: " POSTERAZORHELPSTEPTITLE05 "</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
+					"<br><H3><A name=\"" POSTERAZORHELPANCHORMANUALSTEP05 "\">Schritt 5: " GERMAN_POSTERAZORHELPSTEPTITLE05 "</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "Save the poster by clicking the save button and specifying a destination file name. Check or uncheck the <b>PDF application after saving</b>, if the standard PDF handling application that is set in your operating system should be automatically started after the PDF file is saved." POSTERAZORHELPENDLINE \
 
 					"<br><H3><A name=\"" POSTERAZORHELPANCHORINPUTFILEFORMATS "\">Supported input image files</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE \
