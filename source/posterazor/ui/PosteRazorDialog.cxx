@@ -32,6 +32,11 @@
 #ifdef WIN32
   #include "windowsResources/PosteRazorResource.h"
   #include <Shellapi.h>
+  #define CASESENSITIVESTRCMP stricmp
+  #define CASESENSITIVESTRNCMP strnicmp
+#else
+  #define CASESENSITIVESTRCMP strcasecmp
+  #define CASESENSITIVESTRNCMP strncasecmp
 #endif
 
 const char PreferencesVendor[] = "CasaPortale.de";
@@ -69,20 +74,38 @@ public:
 		SetHomepageButtonLabel(homepageButtonLabel);
 		strncpy(m_homepageURL, homepageURL, sizeof(m_homepageURL));
 		m_homepageURL[sizeof(m_homepageURL)-1] = '\0';
+		m_help_view->link(LinkCallback);
 	}
 
 	void SetHtmlContent(const char *content) {m_help_view->value(content);}
-	void JumpToAnchor(const char *anchor) {	m_help_view->topline(anchor);}
+	void JumpToAnchor(const char *anchor) {m_help_view->topline(anchor);}
+	void HandleHomepageButtonClick(void) {OpenURLInBrowser(m_homepageURL);}
 
-	void HandleHomepageButtonClick(void)
+	void OpenURLInBrowser(const char* url)
 	{
 #ifdef WIN32
-		ShellExecute(HWND_DESKTOP, "open", m_homepageURL, NULL, NULL, SW_SHOW);
-#else
+		ShellExecute(HWND_DESKTOP, "open", url, NULL, NULL, SW_SHOW);
+#elif OSX
 		char commandString[2048];
-		sprintf(commandString, "open %s", m_homepageURL);
+		sprintf(commandString, "open %s", url);
 		system(commandString);
+#elif __amigaos4__
+		char commandString[2048];
+        sprintf(commandString, "ibrowse:ibrowse %s", url);
+        system(commandString);
 #endif;
+	}
+
+	static const char *LinkCallback(Fl_Widget *w, const char *uri)
+	{
+#define HTTPSCHEMESTART "http://"
+		if (0 == CASESENSITIVESTRNCMP(uri, HTTPSCHEMESTART, strlen(HTTPSCHEMESTART)))
+		{
+			((PosteRazorHelpDialog*)(w->parent()))->OpenURLInBrowser(uri);
+			return NULL;
+		}
+		else
+			return uri;
 	}
 
 	void UpdateLanguage(void)
@@ -810,12 +833,6 @@ void PosteRazorDialog::SavePoster(void)
 	{
 		char saveFileName[1024];
 		strcpy(saveFileName, chooser.filename());
-
-#ifdef WIN32
-  #define CASESENSITIVESTRCMP stricmp
-#else
-  #define CASESENSITIVESTRCMP strcasecmp
-#endif
 
 		if (0 != CASESENSITIVESTRCMP(fl_filename_ext(chooser.filename()), ".pdf"))
 			strcat(saveFileName, ".pdf");
