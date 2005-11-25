@@ -1,4 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+<?
+	define('EN', 'english');
+	define('DE', 'german');
+
+	$lang = $_GET['lang'] == DE?DE:EN;
+	
+	function text($englishString, $germanString)
+	{
+		global $lang;
+		echo $lang == EN?$englishString:$germanString;
+	}
+	
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <?
 	$textColor = "#330000";
@@ -9,7 +21,7 @@
 		<meta name="author" content="Alessandro Portale" />
 		<meta name="description" content="PosteRazor - Make your own poster!" />
 		<meta name="keywords" content="Poster, PosteRazor, Print, Fltk, Freeimage, PDF" />
-		<title>PosteRazor - Make your own poster!</title>
+		<title>PosteRazor - <? text('Make your own poster', 'Mach\' Dein eigenes Poster'); ?>!</title>
 		<style type="text/css">
 		/*<![CDATA[*/
 			h1
@@ -111,72 +123,74 @@
 		</div>
 		
 		<div class="mainpage">
-			<h1>PosteRazor<br /><sup>Make your own poster!</sup></h1>
+			<h1>PosteRazor<br /><sup><? text('Make your own poster!', 'Mach\' Dein eigenes Poster!'); ?></sup></h1>
 			<hr />
 			<div class="links">
-				<a href="#news">News</a>
-				- <a href="#about">About</a>
-				- <a href="#features">Features</a>
-				- <a href="#screenshots">Screenshots</a>
-				- <a href="http://sourceforge.net/project/showfiles.php?group_id=141842">Download</a>
-				- <a href="#thirdparty">Third&nbsp;party&nbsp;code</a>
-				- <a href="#license">License</a>
+				<a href="#news"><? text('News', 'Neuigkeiten'); ?></a>
+				- <a href="#about"><? text('About', '&Uuml;ber'); ?></a>
+				- <a href="#features"><? text('Features', 'Funktionen'); ?></a>
+				- <a href="#screenshots"><? text('Screenshots', 'Bildschirmfotos'); ?></a>
+				- <a href="http://sourceforge.net/project/showfiles.php?group_id=141842"><? text('Download', 'Herunterladen'); ?></a>
+				- <a href="#thirdparty"><? text('Third&nbsp;party&nbsp;code', 'Code&nbsp;von&nbsp;Drittanbietern'); ?></a>
+				- <a href="#license"><? text('License', 'Lizenz'); ?></a>
 			</div>
 
 			<hr />
-			<h2><a name="news"></a>News</h2>
+			<h2><a name="news"></a><? text('News', 'Neuigkeiten'); ?></h2>
 			<ul>
 				<li>
-					<b>October 3rd 2005:</b> Version 1.0
-					<br/>The first release of PosteRazor. Windows and OSX version.
+					<strong><? text('October 3rd 2005', '3. Oktober 2005'); ?>:</strong> Version 1.0
+					<br/><? text('The first release of PosteRazor. Windows and OSX version.', 'Die Ersteausgabe des PosteRazors. Windows- und OSX-version.'); ?>
 				</li>
 			</ul>
 
 			<hr />
-			<h2><a name="about"></a>About</h2>
-			The PosteRazor cuts a raster image into pieces which can afterwards be printed out and assembled to a poster.
+			<h2><a name="about"></a><? text('About', '&Uuml;ber'); ?></h2>
+			<? text('The PosteRazor cuts a raster image into pieces which can afterwards be printed out and assembled to a poster.', 'Der PosteRazor schneidet eine Rasterbild-datei in St&uuml;cke, die anschlie&szlig;end ausgedruckt und zu einem Poster zusammengef&uuml;gt werden k&ouml;nnen.'); ?>
 			<br /><div style="text-align: center; margin: 10px;"><img src="images/workflow.png" width="400" height="114" alt="PosteRazor workflow"/></div>
-			As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps. PosteRazor is available as a Windows and as an OSX version (it should also be compilable on Linux). It is an open source, <a href="#license">GNU licensed</a> project which is hosted on SourceForge.net. For feedback, bug reports feature requests, please use the <a href="http://sourceforge.net/projects/posterazor/">PosteRazor project page</a>, write a mail to <b>Alessandro&nbsp;&auml;t&nbsp;casaportale&nbsp;d&ocirc;t de</b> or contact the author via <a href="http://www.casaportale.de/html/index.php?page=contact&amp;lang=english&amp;menu=on">mail form</a>.
+			<? text('As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps. PosteRazor is available as a Windows and as an OSX version (it should also be compilable on Linux).', 'Als Ausgangsmaterial nimmt der PosteRazor eine Rasterbild-datei. Das Endprodukt ist ein Poster in Form eines mehrseitigen PDF-Dokuments. Eine einfach zu bedienende Benutzerschnittstelle im Assistenten-Stil begleitet durch f&uuml;nf Schritte. Der PosteRazor ist als Windows- und als OSX-Version erh&auml;ltlich (er sollte auch f&uuml;r Linux kompilierbar sein).'); ?>
+			<? text('It is an open source, ', 'Er ist ein quelloffenes, '); ?><a href="#license"><? text('GNU licensed', 'GNU-lizensiertes'); ?></a> <? text('project which is hosted on SourceForge.net.', 'Projekt, das auf SourceForge hinterlegt ist.'); ?>
+			<? text('For feedback, bug reports or feature requests, please use the', 'F&uuml;r Feedback, Fehlerberichte oder Erweiterungsw&uuml;nsche nutzen Sie bitte die '); ?> <a href="http://sourceforge.net/projects/posterazor/"><? text('PosteRazor project page', 'PosteRazor-Projektseite'); ?></a>, <? text('write a mail to', 'schreiben Sie eine Mail an'); ?> <strong>Alessandro&nbsp;&auml;t&nbsp;casaportale&nbsp;d&ocirc;t de</strong> <? text('or contact the author via', 'oder kontaktieren Sie den Autor via'); ?> <a href="http://www.casaportale.de/html/index.php?page=contact&amp;lang=<? text('english', 'german'); ?>&amp;menu=on"><? text('mail form', 'Mail-Formular'); ?></a>.
 			
 			<hr />
-			<h2><a name="features"></a>Features</h2>
+			<h2><a name="features"></a><? text('Features', 'Funktionen'); ?></h2>
 			<ul>
 				<li>
-					<b>Input image formats.</b> All image formats that <a href="http://freeimage.sourceforge.net/features.html">FreeImage</a> can read <i>should</i> be usabe as input for the PosteRazor:
-					<div class="fileformats">BMP, DDS files, Dr. Halo, GIF, ICO, IFF, JBIG, JNG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, MNG, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM</div>
+					<strong><? text('Input image formats', 'Ausgangs-Bildformate'); ?>.</strong> <? text('All image formats that', 'Alle Bildformate, die'); ?> <a href="http://freeimage.sourceforge.net/features.html">FreeImage</a> <? text('can read', 'lesen kann,'); ?> <i><? text('should', 'sollten'); ?></i> <? text('be usabe as input for the PosteRazor', 'als Ausgangsmaterial f&uuml;r den PosteRazor geeignet sein'); ?>:
+					<div class="fileformats">BMP, DDS, Dr. Halo, GIF, ICO, IFF, JBIG, JNG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, MNG, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM</div>
 				</li>
 				<li>
-					<b>Image types.</b> The following image color types are handable:
-					<div class="fileformats">Monochrome, Grayscale, 4 Bit palette, 8 Bit palette, 24 Bit RGB, 48 Bit RGB <small>(only via TIFF and PNG)</small>, 32 Bit CMYK <small>(only via TIFF)</small></div>
-					32 Bit RGBA images can be loaded, but are transformed to 24 Bit RGB by "composing" them on a white background.
+					<strong><? text('Image types', 'Farbtypen'); ?>.</strong> <? text('The following image color types are handable', 'Die folgenden Bildfarbtypen werden unterst&uuml;tzt'); ?>:
+					<div class="fileformats"><? text('Monochrome, Grayscale, 4 Bit palette, 8 Bit palette, 24 Bit RGB, 48 Bit RGB ', 'Monochrom, Graustufen, 4-Bit Palette, 8-Bit Palette, 24-Bit RGB, 48-Bit RGB '); ?><small>(<? text('only via TIFF and PNG', 'nur bei TIFF und PNG'); ?>)</small>, <? text('32 Bit CMYK', '32-Bit CMYK'); ?> <small>(<? text('only via', 'nur bei'); ?> TIFF)</small></div>
+					<? text('32 Bit RGBA images can be loaded, but are transformed to 24 Bit RGB by "merging" them with a white background.', '32-Bit RGBA-Bilder sind lesbar, werden allerdings nach 24-Bit RGB transformiert, indem sie auf einen wei&szlig;en Hintergrund "flachgerechnet" werden.'); ?>
 				</li>
 				<li>
-					<b>Dimension Units.</b> Because people around the world invented so many different dimension units, PosteRazor supports quite a few:
-					<div class="fileformats">m, mm, cm, inch, feet, points(72th inch)</div>
+					<strong><? text('Dimension Units', 'L&auml;ngeneinheiten'); ?>.</strong> <? text('Because people around the world invented so many different dimension units, PosteRazor supports quite a few', 'Weil die Menschen rund um den Erdball so viele verschiedene L&auml;ngeneinheiten erdacht haben, unterst&uuml;tzt der PosteRazor einige von ihnen'); ?>:
+					<div class="fileformats">m, mm, cm, inch, ft, pt<small>(72<? text('th', '-tel'); ?> inch)</small></div>
 				</li>
 				<li>
-					<b>Printer page layout.</b> The page size and orientation of the printer where the poster wil be printed can be set manually or selected one from the following list of predefined formats:
+					<strong><? text('Printer page layout', 'Druckerpapier-Ma&szlig;e'); ?>.</strong> The page size and orientation of the printer where the poster wil be printed can be set manually or selected one from the following list of predefined formats:
 					<div class="fileformats">DIN A4, DIN A3, Legal, Letter, Tabloid</div>
-					The size limit for one page is 5 meters (16.4 feet), which is the maximum that PDF allows.
+					<? text('The size limit for one page is 5 meters (16.4 feet), which is the maximum that PDF allows.', 'Die Gr&ouml;&szlig;enbegrezung einer einzelnen Seite liegt bei f&uuml;nf Metern. Dies ist die maximale von PDF unterstützte Gr&ouml;&szlig;e.'); ?>
 				</li>
 				<li>
-					<b>Poster size.</b> The size of the final poster can be set one of these three ways:
+					<strong>Poster size.</strong> The size of the final poster can be set one of these three ways:
 					<ul>
-						<li><b>Absolute image size</b>: You want to have a specific size of your poster.</li>
-						<li><b>Size in Pages</b>: you want to use whole paper sheets and specify how many of them of them you want to use.</li>
-						<li><b>Image Size in percent</b>: your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to enlage the image by a certain factor.</li>
+						<li><strong>Absolute image size</strong>: You want to have a specific size of your poster.</li>
+						<li><strong>Size in Pages</strong>: you want to use whole paper sheets and specify how many of them of them you want to use.</li>
+						<li><strong>Image Size in percent</strong>: your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to enlage the image by a certain factor.</li>
 					</ul>
 					The final size of the poster is theoretically unlimited. Let's say it this way: it is less limited that the ink of your printer ;)<br />
 					It is possible to select the alignment of the image on the total paper. This is useful if you want to keep the unused paper.
 				</li>
 				<li>
-					<b>Image tile overlapping.</b> For a bigger tolerance when cutting spare paper borders and for easier pasting, an overlapping width and height of an image tile over the next can be set.
+					<strong>Image tile overlapping.</strong> For a bigger tolerance when cutting spare paper borders and for easier pasting, an overlapping width and height of an image tile over the next can be set.
 				</li>
 				<li>
-					<b>PDF output.</b> The PDF output is implemented with the maximum image quality and a good compression in mind. A source image is embedded once in the PDF document and referenced from every tile page. Image color types remain unchanged. As compression method, the PDF "FlateDecode filter" (zip) is used. If a Jpeg image is used as input it gets directly embedded into the document without recompression. The PDF version is 1.4, so any acrobat readre version 4 and higher should be able to read the resulting document.
+					<strong>PDF output.</strong> The PDF output is implemented with the maximum image quality and a good compression in mind. A source image is embedded once in the PDF document and referenced from every tile page. Image color types remain unchanged. As compression method, the PDF "FlateDecode filter" (zip) is used. If a Jpeg image is used as input it gets directly embedded into the document without recompression. The PDF version is 1.4, so any acrobat readre version 4 and higher should be able to read the resulting document.
 				</li>
 			</ul>
-			<b>Missing features:</b> Cut lines/aids; Support of Jpeg-CMYK images; Support of 16 Bit Grayscale images; Embedding an ICC profile into the PDF if there is one embedded in the input image
+			<strong>Missing features:</strong> Cut lines/aids; Support of Jpeg-CMYK images; Support of 16 Bit Grayscale images; Embedding an ICC profile into the PDF if there is one embedded in the input image
 
 			<hr />
 			<h2><a name="screenshots"></a>Screenshots</h2>
@@ -201,13 +215,13 @@
 			PosteRazor uses third party Open Source libraries. Without those, it would have been painful and unmotivating to create the PosteRazor, and the feature set and portability would have been much smaller. The libraries are statically linked into the PosteRazor.
 			<ul>
 				<li>
-					<b>User interface:</b> For the user interface, <a href="http://fltk.org/">FLTK 1.1</a> is used. It is a <b>f</b>ast, <b>l</b>ight UI <b>t</b>ool<b>k</b>it. Highly portable, flexible, easy and fun to learn&amp;use.
+					<strong>User interface:</strong> For the user interface, <a href="http://fltk.org/">FLTK 1.1</a> is used. It is a <strong>f</strong>ast, <strong>l</strong>ight UI <strong>t</strong>ool<strong>k</strong>it. Highly portable, flexible, easy and fun to learn&amp;use.
 				</li>
 				<li>
-					<b>Image loading:</b> The images are loaded by <a href="http://freeimage.sourceforge.net/">FreeImage 3.8.0</a>. This is a portable library that makes image loading, handling and saving a no-brainer.
+					<strong>Image loading:</strong> The images are loaded by <a href="http://freeimage.sourceforge.net/">FreeImage 3.8.0</a>. This is a portable library that makes image loading, handling and saving a no-brainer.
 				</li>
 				<li>
-					<b>File chooser:</b> The file chooser of the PosteRazor have the platform specific look&amp;feel. Thanks to Fl_Native_File_Chooser: <a href="http://seriss.com/people/erco/fltk/Fl_Native_File_Chooser/">Variant 1</a> and <a href="http://homepages.dordt.edu/~nthnlvnd/soft/Fl_Native_File_Chooser.html">Variant 2</a>.
+					<strong>File chooser:</strong> The file chooser of the PosteRazor have the platform specific look&amp;feel. Thanks to Fl_Native_File_Chooser: <a href="http://seriss.com/people/erco/fltk/Fl_Native_File_Chooser/">Variant 1</a> and <a href="http://homepages.dordt.edu/~nthnlvnd/soft/Fl_Native_File_Chooser.html">Variant 2</a>.
 				</li>
 			</ul>
 			
