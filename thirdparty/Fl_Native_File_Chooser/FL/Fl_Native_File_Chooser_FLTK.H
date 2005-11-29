@@ -1,7 +1,8 @@
 //
 // Fl_Native_File_Chooser_DEFAULT.H -- FLTK native OS file chooser widget
 //
-// Copyright 2004 by Greg Ercolano.
+// Copyright 2005 by Nathan Vander Wilt.
+// March 2005 - wrapper around Fl_File_Chooser
 //
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Library General Public
@@ -19,64 +20,54 @@
 // USA.
 //
 
-// OSX-SPECIFIC NATIVE BROWSER
+// Use FLTK BROWSER
 #include <FL/Fl_File_Chooser.H>
+#include <string.h>
 
 class Fl_Native_File_Chooser {
 public:
     enum Type {
 	BROWSE_FILE = 0,
-        BROWSE_DIRECTORY,
+	BROWSE_DIRECTORY,
 	BROWSE_MULTI_FILE,
 	BROWSE_MULTI_DIRECTORY,
 	BROWSE_SAVE_FILE,
+	BROWSE_SAVE_DIRECTORY
     };
-
 private:
-    Type btype;			// kind-of browser to show()
-    char **_pathnames;		// array of pathnames
-    int  _tpathnames;		// total pathnames
-    char *_preset_dirname;	// default pathname to use
-    char *_title;		// title for window
-    char *_filter;		// search filter
-    char *_errmsg;		// error message
+    void Ctor(Type);
+    char *_filter;			// user supplied filter
+    char *_parsedfilt;			// parsed filter
+    int   _filtvalue;			// selected filter
+    char *_preset_file;
+    char *_prevvalue;			// Returned filename
+    char *_directory;
+    char *_errmsg;			// error message
+    Fl_File_Chooser *file_chooser;
 
-    void set_single_pathname(const char *s);
-
+    // Private methods
     void errmsg(const char *msg);
-    void clear_pathnames();
-    void _ctor(Type type);
-
-
+    int type_fl_file(Type);
+    void parse_filter();
+    void keeplocation();
 public:
-    Fl_Native_File_Chooser();
-    Fl_Native_File_Chooser(Type type);
+    Fl_Native_File_Chooser(Type t=BROWSE_FILE);
     ~Fl_Native_File_Chooser();
-
+    int count() const;
+    void directory(const char *val);
+    const char *directory() const;
     const char *errmsg() const;
-
-    int total_filenames() const { return(_tpathnames); }
-
-    // Type
-    void type(Type val);
-    Type type() const;
-
-    // Filename
-    const char* filename() const;
-    const char* filename(int i) const;
-
-    // Preset Directory
-    void preset_dirname(const char *val);
-    const char* preset_dirname() const;
-
-    // Title
-    void title(const char *val);
-    const char* title() const;
-
-    // Filter
+    const char *filename() const;
+    const char *filename(int i) const;
     const char *filter() const;
-    void filter(const char *val);
-
+    void filter(const char *);
+    void filter_value(int i);
+    int filter_value() const;
+    void preset_file(const char*);
+    const char* preset_file() const;
     int show();
-
+    void title(const char *);
+    const char* title() const;
+    void type(Type);
+    Type type() const;
 };

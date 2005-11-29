@@ -26,38 +26,51 @@
 #include <Carbon.h>
 #endif
 
+#include <FL/filename.H>
+#define MAXFILTERS	80
+
 class Fl_Native_File_Chooser {
 public:
     enum Type {
 	BROWSE_FILE = 0,
-        BROWSE_DIRECTORY,
+	BROWSE_DIRECTORY,
 	BROWSE_MULTI_FILE,
 	BROWSE_MULTI_DIRECTORY,
 	BROWSE_SAVE_FILE,
+	BROWSE_SAVE_DIRECTORY
     };
 
 private:
-    Type btype;			// kind-of browser to show()
-    int nftypes;		//
-    NavTypeListHandle ftypes;	// 
-    NavDialogCreationOptions opts; // file navigation options
-    NavDialogRef ref;		// file navigation reference
-    char  **_pathnames;		// array of pathnames
-    int   _tpathnames;		// total pathnames
-    char  *_preset_dirname;	// default pathname to use
-    char  *_title;		// title for window
-    char  *_filter;		// search filter
-    char  *_errmsg;		// error message
-    void errmsg(const char *msg);
-    void clear_pathnames();
-    void set_single_pathname(const char *s);
+    Type _btype;			// kind-of browser to show()
+    NavDialogCreationOptions _opts;	// file navigation options
+    NavDialogRef    _ref;		// file navigation reference
+    NavActionState  _keepstate;		// holds button permissions
+    NavMenuItemSpec _tempitem;   	// Popup menu selection
+    char       **_pathnames;		// array of pathnames
+    int          _tpathnames;		// total pathnames
+    char        *_directory;		// default pathname to use
+    char        *_title;		// title for window
+
+    char        *_filter;		// user-side search filter
+   					// eg."C Files\t*.{cxx,h,H}\nText Files\t*.txt"
+
+    char        *_filt_names;		// filter names (tab delimited)
+    					// eg. "C Files\tText Files"
+
+    char        *_filt_patt[MAXFILTERS];// array of filter patterns
+					// eg. _filt_patt[0]="*.{cxx,h}", _filt_patt[1]="*.txt"
+
+    int          _filt_total;		// number of filters parse_filter counted
+    int          _filt_value;		// index of the selected filter
+    char        *_errmsg;		// error message
+    char        *_preset_file;		// the 'save as' filename
 
     // PRIVATE CLASS TO HANDLE NAVIGATION DIALOG REPLY STRUCT
     //     Class-ified, mainly to ensure proper cleanup.
     //
     class NavReply {
-        int valid;
-	NavReplyRecord reply;
+        int _valid_reply;
+	NavReplyRecord _reply;
     public:
         NavReply();
 	~NavReply();
@@ -67,24 +80,44 @@ private:
 	int get_pathnames(char **&pathnames, int& tpathnames);
     };
 
+    // Private methods
+    void ctor(Type);
+    void errmsg(const char *msg);
+    void clear_pathnames();
+    void set_single_pathname(const char *s);
     int get_saveas_basename(NavDialogRef& ref);
     int get_pathnames(NavDialogRef& ref);
-    static void event_handler(NavEventCallbackMessage callBackSelector, 
-			      NavCBRecPtr cbparm, void *data);
+    static void event_handler(NavEventCallbackMessage callBackSelector, NavCBRecPtr cbparm, void *data);
+
+    void clear_filters();
+    void add_filter(const char *, const char *);
+    void parse_filter(const char *from);
+    static Boolean filter_proc_cb(AEDesc *, void *, void *, NavFilterModes);
+    Boolean filter_proc_cb2(AEDesc*, void*, void*, NavFilterModes);
+    int post();
+    
 public:
     Fl_Native_File_Chooser();
+    Fl_Native_File_Chooser(Fl_Native_File_Chooser::Type);
     ~Fl_Native_File_Chooser();
-    // int add_file_type(xyz);
-    void type(Type val);
-    int show();
-    const char *errmsg();
+
+    // Public methods
+    int count() const;
+    void directory(const char *);
+    const char* directory() const;
+    const char *errmsg() const;
     const char* filename() const;
     const char* filename(int i) const;
-    int total_filenames() const;
-    void preset_dirname(const char *val);
-    const char* preset_dirname();
-    void title(const char *val);
-    const char* title() const;
     const char *filter() const;
-    void filter(const char *val);
+    void filter(const char *);
+    void filter_value(int i) { _filt_value = i; }
+    int filter_value() { return(_filt_value); }
+    int filters() { return(_filt_total); }
+    void preset_file(const char*);
+    const char* preset_file();
+    int show();
+    void title(const char *);
+    const char* title() const;
+    void type(Type);
+    Type type() const;
 };

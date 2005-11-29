@@ -1,3 +1,32 @@
+# WARNING: Makefile automaticall derives version number from the first line
+#          of this file that starts with #.#.
+#
+
+0.81 -- 11/28/2005 linux version cleanup
+----------------------------------------
+        o Support documented filters
+	o free/strdup -> new/delete
+	o added #ifndef at top of FL/Fl_Native_File_Chooser.H to prevent recursion
+
+0.80 -- 11/27/2005 erco+nate: code merge, cleanup
+-------------------------------------------------
+	o Merge in Nathan's changes
+	o Updated docs for all changes noted here
+	o Rewrote mac's filter code to support old "*.a" and new "Desc1\t*.a\nDesc2\t*.b" syntax
+	o Changed Nathan's set_filter() -> filter_value() (consistent with FLTK's own chooser)
+	o Renamed test program to test-browser.cxx
+	o Code cleanup: variable + method naming, 80 column conformance, indents, strdup/malloc -> new
+	TODO: Linux version needs code cleanup (strdup -> new, etc)
+
+0.70 -- 08/04/05 erco: general cleanup
+--------------------------------------
+
+	o Implemented Linux.
+	  This was easy -- just use Fl_File_Chooser.
+
+	o Removed references to non-existant size() method from docs;
+	  the correct method name is total_filenames()
+
 0.62 -- 02/02/2005
 ------------------
 
