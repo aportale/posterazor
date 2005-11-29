@@ -110,6 +110,7 @@ public:
 	const char* Orientation(void)                     {return m_selectedTranslation->Orientation();}
 	const char* OverlappingPosition(void)             {return m_selectedTranslation->OverlappingPosition();}
 	const char* OverlappingSize(void)                 {return m_selectedTranslation->OverlappingSize();}
+	const char* OverwriteFile(void)                   {return m_selectedTranslation->OverwriteFile();}
 	const char* Pages(void)                           {return m_selectedTranslation->Pages();}
 	const char* Palette(void)                         {return m_selectedTranslation->Palette();}
 	const char* PaperFormat(void)                     {return m_selectedTranslation->PaperFormat();}
