@@ -56,6 +56,7 @@ public:
 	virtual const char* Orientation(void) = 0;
 	virtual const char* OverlappingSize(void) = 0;
 	virtual const char* OverlappingPosition(void) = 0;
+	virtual const char* OverwriteFile(void) = 0;
 	virtual const char* Pages(void) = 0;
 	virtual const char* Palette(void) = 0;
 	virtual const char* PaperFormat(void) = 0;

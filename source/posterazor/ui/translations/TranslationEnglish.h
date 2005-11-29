@@ -58,6 +58,7 @@ public:
 	const char* Orientation(void)                     {return "Orientation:";}
 	const char* OverlappingPosition(void)             {return "Overlapping position";}
 	const char* OverlappingSize(void)                 {return "Overlapping size";}
+	const char* OverwriteFile(void)                   {return "The file '%s' already exists.\nDo you want to overwrite it?";}
 	const char* Pages(void)                           {return "pages";}
 	const char* PaperFormat(void)                     {return "Paper format";}
 	const char* Palette(void)                         {return "Palette";}
