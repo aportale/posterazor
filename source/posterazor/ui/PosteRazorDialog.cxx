@@ -28,6 +28,7 @@
 #include <FL/x.H>
 #include "translations/PosteRazorHelpConstants.h"
 #include <string.h>
+#include <io.h>
 
 #ifdef WIN32
   #include "windowsResources/PosteRazorResource.h"
@@ -823,24 +824,46 @@ void PosteRazorDialog::HandlePosterImageAlignment(void)
 	m_paintCanvasGroup->redraw();
 }
 
+// dirty 
+static bool my_file_exists(const char* fileName)
+{
+	return (access(fileName, 0) == 0);
+}
+
 void PosteRazorDialog::SavePoster(void)
 {
 	Fl_Native_File_Chooser chooser;
 	chooser.type(Fl_Native_File_Chooser::BROWSE_SAVE_FILE);
-	chooser.filter("*.pdf");
+	chooser.filter("Adobe Acrobat (*.PDF)\t*.pdf");
 
-	if (chooser.show() == 0)
+	char saveFileName[1024] = "";
+	bool fileExistsAskUserForOverwrite = false;
+	do
 	{
-		char saveFileName[1024];
-		strcpy(saveFileName, chooser.filename());
+		if (fileExistsAskUserForOverwrite)
+			chooser.preset_file(fl_filename_name(saveFileName));
 
-		if (0 != CASESENSITIVESTRCMP(fl_filename_ext(chooser.filename()), ".pdf"))
-			strcat(saveFileName, ".pdf");
+		if (chooser.show() == 0)
+		{
+			strcpy(saveFileName, chooser.filename());
 
-		int err = m_posteRazor->SavePoster(saveFileName);
-		if (err)
-			fl_message("The file '%s' could not be saved.", fl_filename_name(saveFileName));
-	}
+			if (0 != CASESENSITIVESTRCMP(fl_filename_ext(chooser.filename()), ".pdf"))
+				strcat(saveFileName, ".pdf");
+
+			fileExistsAskUserForOverwrite = my_file_exists(saveFileName);
+			char overwriteQuestion[1024] = "";
+			sprintf(overwriteQuestion, TRANSLATIONS->OverwriteFile(), fl_filename_name(saveFileName));
+			if (!fileExistsAskUserForOverwrite || fl_ask(overwriteQuestion))
+			{
+				int err = m_posteRazor->SavePoster(saveFileName);
+				if (err)
+					fl_message("The file '%s' could not be saved.", fl_filename_name(saveFileName));
+				fileExistsAskUserForOverwrite = false;
+			}
+		}
+		else
+			break;
+	} while (fileExistsAskUserForOverwrite);
 }
 
 void PosteRazorDialog::SetLaunchPDFApplication(void)
