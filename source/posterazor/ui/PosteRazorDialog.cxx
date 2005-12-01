@@ -28,14 +28,15 @@
 #include <FL/x.H>
 #include "translations/PosteRazorHelpConstants.h"
 #include <string.h>
-#include <io.h>
 
 #ifdef WIN32
+  #include <io.h>
   #include "windowsResources/PosteRazorResource.h"
   #include <Shellapi.h>
   #define CASESENSITIVESTRCMP stricmp
   #define CASESENSITIVESTRNCMP strnicmp
 #else
+  #include <iostream>
   #define CASESENSITIVESTRCMP strcasecmp
   #define CASESENSITIVESTRNCMP strncasecmp
 #endif
@@ -573,7 +574,7 @@ void PosteRazorDialog::UpdateLanguage(void)
 
 void PosteRazorDialog::LoadInputImage(const char *fileName)
 {
-	Fl_Native_File_Chooser chooser;
+	Fl_Native_File_Chooser chooser(Fl_Native_File_Chooser::BROWSE_FILE);
 	char errorMessage[1024] = "";
 	const char *loadFileName = fileName;
 	bool loaded = false;
@@ -859,8 +860,7 @@ static bool my_file_exists(const char* fileName)
 
 void PosteRazorDialog::SavePoster(void)
 {
-	Fl_Native_File_Chooser chooser;
-	chooser.type(Fl_Native_File_Chooser::BROWSE_SAVE_FILE);
+	Fl_Native_File_Chooser chooser(Fl_Native_File_Chooser::BROWSE_SAVE_FILE);
 	chooser.filter("Adobe Acrobat (*.PDF)\t*.pdf");
 
 	char saveFileName[1024] = "";
