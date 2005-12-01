@@ -32,25 +32,6 @@
 #include <FL/Fl_Native_File_Chooser.H>
 #include "common.cxx"		// strnew/strfree/strapp/chrcat
 
-// Reference:
-//     Top Level: http://developer.apple.com/documentation/Carbon/Conceptual/ProvidingNavigationDialogs/nsx_concepts/chapter_2_section_2.html#//apple_ref/doc/uid/TP30001147-CH202-CHDEDCBD
-//     Functions: http://developer.apple.com/documentation/Carbon/Conceptual/ProvidingNavigationDialogs/nsx_tasks/chapter_3_section_3.html#//apple_ref/doc/uid/TP30001147-CH203-BEIGBDGD
-//     Nav Tasks: http://developer.apple.com/documentation/Carbon/Conceptual/ProvidingNavigationDialogs/nsx_tasks/chapter_3_section_1.html#//apple_ref/doc/uid/TP30001147-CH203-BABGIAGG
-//     Preload: http://groups.google.com/groups?q=NavCreateGetFileDialog+directory&hl=en&lr=&c2coff=1&selm=oster-A486E7.08390422102002%40newssvr21-ext.news.prodigy.com&rnum=1
-//              http://developer.apple.com/qa/qa2001/qa1151.html
-//     CFString: file:///Developer/Documentation/CoreFoundation/Reference/CFStringRef/index.html#//apple_ref/doc/uid/20001211
-//
-//     http://developer.apple.com/documentation/Carbon/Reference/Navigation_Services_Ref/index.html
-//     http://lists.apple.com/archives/carbon-dev/2005/Feb/msg01230.html
-//     http://www.mactech.com/macintosh-c/chap18-1.html
-//     http://developer.apple.com/documentation/Carbon/Reference/Navigation_Services_Ref/nav_serv_ref/chapter_1.4_section_2.html -block New Folder button
-//     http://developer.apple.com/documentation/Carbon/Reference/Navigation_Services_Ref/nav_serv_ref/chapter_1.4_section_9.html
-//     http://developer.apple.com/documentation/Carbon/Reference/Navigation_Services_Ref/nav_serv_ref/chapter_1.4_section_6.html
-//     http://lists.apple.com/archives/nav-serv-developers/2003/Apr/msg00003.html
-//     http://developer.apple.com/datatype/creatorcode.html
-//     http://developer.apple.com/documentation/Carbon/Conceptual/ProvidingNavigationDialogs/nsx_tasks/chapter_3_section_3.html
-//
-
 // TRY TO CONVERT AN AEDesc TO AN FSSpec
 //     As per Apple Technical Q&A QA1274
 //     eg: http://developer.apple.com/qa/qa2001/qa1274.html
@@ -117,7 +98,7 @@ int Fl_Native_File_Chooser::NavReply::get_reply(NavDialogRef& ref) {
 	NavDisposeReply(&_reply);	// dispose of previous
 	_valid_reply = 0;
     }
-    if ( NavDialogGetReply(ref, &_reply) != noErr ) {
+    if ( ref == NULL || NavDialogGetReply(ref, &_reply) != noErr ) {
 	return(-1);
     }
     _valid_reply = 1;
@@ -211,6 +192,10 @@ void Fl_Native_File_Chooser::set_single_pathname(const char *s) {
 //             0 if OK, filename() has filename chosen.
 //
 int Fl_Native_File_Chooser::get_saveas_basename(NavDialogRef& ref) {
+    if ( ref == NULL ) {
+        errmsg("get_saveas_basename: ref is NULL");
+	return(-1);
+    }
     NavReply reply;
     OSStatus err;
     if ((err = reply.get_reply(ref)) != noErr ) {
@@ -248,6 +233,10 @@ int Fl_Native_File_Chooser::get_saveas_basename(NavDialogRef& ref) {
 //          0 -- OK, pathnames()/filename() has pathname(s) chosen
 //
 int Fl_Native_File_Chooser::get_pathnames(NavDialogRef& ref) {
+    if ( ref == NULL ) {
+        errmsg("get_saveas_basename: ref is NULL");
+	return(-1);
+    }
     NavReply reply;
     OSStatus err;
     if ((err = reply.get_reply(ref)) != noErr ) { 
@@ -381,22 +370,10 @@ void Fl_Native_File_Chooser::event_handler(
 
 // CONSTRUCTOR
 Fl_Native_File_Chooser::Fl_Native_File_Chooser(Type val) {
-    ctor(val);
-}
-
-// CONSTRUCTOR
-Fl_Native_File_Chooser::Fl_Native_File_Chooser() {
-    ctor(BROWSE_FILE);
-}
-
-// PRIVATE CONSTRUCTOR METHOD
-//	For internal use only
-//
-void Fl_Native_File_Chooser::ctor(Type type) {
-    _btype          = type;
+    _btype          = val;
     NavGetDefaultDialogCreationOptions(&_opts);
-    memset(&_ref, 0, sizeof(_ref));
-    // _tempitem
+    _ref            = NULL;
+    memset(&_tempitem, 0, sizeof(_tempitem));
     _pathnames      = NULL;
     _tpathnames     = 0;
     _title          = NULL;
@@ -413,17 +390,21 @@ void Fl_Native_File_Chooser::ctor(Type type) {
 
 // DESTRUCTOR
 Fl_Native_File_Chooser::~Fl_Native_File_Chooser() {
-    _errmsg      = strfree(_errmsg);
-    _title       = strfree(_title);
-    _filter      = strfree(_filter);
-    //_filt_names             // managed by clear_filters()
-    //_filt_total             // managed by clear_filters()
-    //_filt_patt[i]           // managed by clear_filters()
-    _preset_file = strfree(_preset_file);
-
+    // _opts			// nothing to manage
+    if (_ref) { NavDialogDispose(_ref); _ref = NULL; }
+    // _keepstate		// nothing to manage
+    // _tempitem		// nothing to manage
     clear_pathnames();
+    _directory   = strfree(_directory);
+    _title       = strfree(_title);
+    _preset_file = strfree(_preset_file);
+    _filter      = strfree(_filter);
+    //_filt_names		// managed by clear_filters()
+    //_filt_patt[i]		// managed by clear_filters()
+    //_filt_total		// managed by clear_filters()
     clear_filters();
-    if (_ref) NavDialogDispose(_ref);
+    //_filt_value		// nothing to manage
+    _errmsg = strfree(_errmsg);
 }
 
 // SET THE TYPE OF BROWSER
@@ -448,12 +429,9 @@ int Fl_Native_File_Chooser::show() {
 
     // BROWSER TITLE
     CFStringRef cfs_title;
-    if ( _title ) {
-        cfs_title = CFStringCreateWithCStringNoCopy(
-				  NULL, _title, kCFStringEncodingASCII, NULL);
-    } else {
-        cfs_title = CFSTR("No Title");
-    }
+    cfs_title = CFStringCreateWithCString(NULL,
+    					  _title ? _title : "No Title",
+					  kCFStringEncodingASCII);
     _opts.windowTitle = cfs_title;
 
     _keepstate = kNavNormalState;
@@ -567,7 +545,8 @@ int Fl_Native_File_Chooser::post() {
 
     // SHOW THE DIALOG
     if ( ( err = NavDialogRun(_ref) ) != 0 ) {
-	char msg[80]; sprintf(msg, "NavDialogRun: failed (err=%d)", (int)err);
+	char msg[80];
+	sprintf(msg, "NavDialogRun: failed (err=%d)", (int)err);
 	errmsg(msg);
 	return(-1);
     }
@@ -587,7 +566,7 @@ int Fl_Native_File_Chooser::post() {
 
     // TOO MANY FILES CHOSEN?
     int ret = get_pathnames(_ref);
-    if (_btype == BROWSE_FILE && ret == 0 && _tpathnames != 1) {
+    if ( _btype == BROWSE_FILE && ret == 0 && _tpathnames != 1 ) {
 	char msg[80];
 	sprintf(msg, "Expected only one file to be chosen.. you chose %d.",
 	    (int)_tpathnames);
@@ -813,7 +792,6 @@ Boolean Fl_Native_File_Chooser::filter_proc_cb2(AEDesc *theItem,
         return(true);
     }
     FSSpecToPath(fsspec, pathname, sizeof(pathname)-1);
- 
     //fprintf(stderr,"%s\n",pathname);
 
     if ( fl_filename_isdir(pathname) ) return(true);
