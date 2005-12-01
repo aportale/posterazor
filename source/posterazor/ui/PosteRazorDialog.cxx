@@ -579,7 +579,34 @@ void PosteRazorDialog::LoadInputImage(const char *fileName)
 	bool loaded = false;
 
 	chooser.title(TRANSLATIONS->LoadAnInputImage());
-	chooser.filter("*.{jpg,png,tif,gif,psd,pcx,bmp,dds,cut,ico,iff,jbig,jng,jif,koa,lbm,pcd,mng,pbm,pgm,ppm,ras,tga,wbmp,xbm,xpm,tiff,jpeg}");
+	chooser.filter
+	(
+		"All image files\t*.{BMP,CUT,DDS,GIF,ICO,IFF,LBM,JNG,JPG,JPEG,JPE,JIF,KOA,MNG,PBM,PCD,PCX,PGM,PNG,PPM,PSD,RAS,TGA,TIF,TIFF,WBMP,XBM,XPM}\n"\
+		"Windows, OS/2 Bitmap (*.BMP)\t*.bmp\n"\
+		"Dr. Halo (*.CUT)\t*.CUT\n"\
+		"DirectDraw Surface (*.DDS)\t*.DDS\n"\
+		"Graphic Interchange Format (*.GIF)\t*.GIF\n"\
+		"Windows Icon (*.ICO)\t*.ICO\n"\
+		"Amiga IFF (*.IFF;*.LBM)\t*.{IFF,LBM}\n"\
+		"JBIG (*.JBIG)\t*.JBIG\n"\
+		"JPEG Network Graphics (*.JNG)\t*.JNG\n"\
+		"Independent JPEG Group (*.JPG;*.JPEG;*.JPE;*.JIF)\t*.{JPG,JIF,JPEG,JPE}\n"\
+		"Commodore 64 Koala (*.KOA)\t*.KOA\n"\
+		"Multiple Network Graphics (*.MNG)\t*.MNG\n"\
+		"Portable Bitmap (*.PBM)\t*.PBM\n"\
+		"Kodak PhotoCD (*.PCD)\t*.PCD\n"\
+		"PC Paintbrush Bitmap (*.PCX)\t*.PCX\n"\
+		"Portable Graymap (*.PGM)\t*.PGM\n"\
+		"Portable Network Graphics (*.PNG)\t*.PNG\n"\
+		"Portable Pixelmap (*.PPM)\t*.PPM\n"\
+		"Photoshop Document (*.PSD)\t*.PSD\n"\
+		"Sun Raster Graphic (*.RAS)\t*.RAS\n"\
+		"Targa (*.TGA)\t*.TGA\n"\
+		"Tagged Image File Format (*.TIF;*.TIFF)\t*.{TIF,TIFF}\n"\
+		"Wireless Bitmap (*.WBMP)\t*.WBMP\n"\
+		"X11 Bitmap (*.XBM)\t*.XBM\n"\
+		"X11 Pixmap (*.XPM)\t*.XPM"
+	);
 
 	if (!loadFileName)
 	{
