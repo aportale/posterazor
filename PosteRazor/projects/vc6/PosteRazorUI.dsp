@@ -118,6 +118,10 @@ SOURCE=..\..\source\posterazor\ui\PosteRazorDialogUI.cxx
 
 SOURCE=..\..\source\posterazor\ui\windowsResources\PosteRazorUI.rc
 # End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\ui\translations\Translations.cxx
+# End Source File
 # End Group
 # Begin Group "Header Files"
 
@@ -149,6 +153,30 @@ SOURCE=..\..\source\posterazor\ui\PosteRazorDialog.h
 # Begin Source File
 
 SOURCE=..\..\source\posterazor\ui\PosteRazorDialogUI.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\ui\translations\PosteRazorHelpConstants.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\ui\translations\TranslationEnglish.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\ui\translations\TranslationGerman.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\ui\translations\TranslationInterface.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\ui\translations\TranslationItalian.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\ui\translations\Translations.h
 # End Source File
 # End Group
 # Begin Group "Resource Files"
