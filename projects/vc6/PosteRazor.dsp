@@ -85,10 +85,6 @@ LIB32=link.exe -lib
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=..\..\source\tools\DistanceUnits.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=..\..\source\tools\PaperFormats.cxx
 # End Source File
 # Begin Source File
@@ -102,6 +98,10 @@ SOURCE=..\..\source\posterazor\PosteRazorImageIO.cxx
 # Begin Source File
 
 SOURCE=..\..\source\posterazor\PosteRazorPDFOutput.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\tools\UnitsOfLength.cxx
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -134,6 +134,10 @@ SOURCE=..\..\source\posterazor\PosteRazorImageIO.h
 # Begin Source File
 
 SOURCE=..\..\source\posterazor\PosteRazorPDFOutput.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\tools\UnitsOfLength.h
 # End Source File
 # End Group
 # Begin Source File
