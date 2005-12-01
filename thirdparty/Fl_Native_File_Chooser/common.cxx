@@ -12,7 +12,7 @@ static char *strnew(const char *val) {
 //    Value can be NULL
 //
 static char *strfree(const char *val) {
-    if ( val ) delete [] val;
+    if ( val ) delete [] (char *)val;
     return(NULL);
 }
 
