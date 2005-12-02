@@ -229,16 +229,16 @@
 			<hr />
 			<h2><a name="thirdparty"></a><? text('Third party code', 'Code von Drittanbietern'); ?></h2>
 			<? text('PosteRazor uses third party Open Source libraries. Without those, it would have been painful and unmotivating to create the PosteRazor, and the feature set and portability would have been much smaller. The libraries are statically linked into the PosteRazor.',
-			'Der PosteRazor nutzt quell'); ?>
+			'Der PosteRazor nutzt quelloffene Programmbibliotheken von Dritten. Ohne diese w&auml;re es schmerzvoll und unmotivierend gewesen, den PosteRazor zu erstellen. Au&szlig;erdem w&auml;ren Funktionsumfang und Portabilit&auml;t kleiner gewesen. Die Bibliotheken sind statisch in den PosteRazor eingebunden.'); ?>
 			<ul>
 				<li>
-					<strong>User interface:</strong> For the user interface, <a class="external" href="http://fltk.org/">FLTK 1.1</a> is used. It is a <strong>f</strong>ast, <strong>l</strong>ight UI <strong>t</strong>ool<strong>k</strong>it. Highly portable, flexible, easy and fun to learn&amp;use.
+					<strong><? text('User interface', 'Benutzeroberfl&auml;che'); ?>:</strong> <? text('For the user graphical user interface,', 'F&uuml;r die grafische Benutzeroberfl&auml;che wird'); ?> <a class="external" href="http://fltk.org/">FLTK 1.1</a> <? text('is used', 'eingesetzt'); ?>. <? text('It is a ', 'Es ist ein "schnelles, leichtes UI Toolkit" ('); ?><strong>f</strong>ast, <strong>l</strong>ight UI <strong>t</strong>ool<strong>k</strong>it<? text('. Highly portable, flexible, easy and fun to learn&amp;use.', '). Sehr portierbar, flexibel, einfach, und es macht Spass, es zu lernen und zu benutzen.'); ?>
 				</li>
 				<li>
-					<strong>Image loading:</strong> The images are loaded by <a class="external" href="http://freeimage.sourceforge.net/">FreeImage 3.8.0</a>. This is a portable library that makes image loading, handling and saving a no-brainer.
+					<strong><? text('Image loading', 'Bilder laden'); ?>:</strong> <? text('The images are loaded by', 'Die Bilder werden mittels'); ?> <a class="external" href="http://freeimage.sourceforge.net/">FreeImage 3.8.0</a><? text('. This is a portable library that makes image loading, handling and saving a no-brainer.', ' geladen. Dies ist eine portierbare Bibliothek, das das Laden, Manipulieren und Speichern von Bildern zu einem Kinderspiel macht.'); ?>
 				</li>
 				<li>
-					<strong>File chooser:</strong> The file chooser of the PosteRazor have the platform specific look&amp;feel. Thanks to Fl_Native_File_Chooser: <a class="external" href="http://seriss.com/people/erco/fltk/Fl_Native_File_Chooser/">Variant 1</a> and <a class="external" href="http://homepages.dordt.edu/~nthnlvnd/soft/Fl_Native_File_Chooser.html">Variant 2</a>.
+					<strong><? text('File chooser dilaog', 'Dateiauswahl-dialog'); ?>:</strong> The file chooser of the PosteRazor have the platform specific look&amp;feel. Thanks to Fl_Native_File_Chooser: <a class="external" href="http://seriss.com/people/erco/fltk/Fl_Native_File_Chooser/">Fl_Native_File_Chooser</a>.
 				</li>
 			</ul>
 
