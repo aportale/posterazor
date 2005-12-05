@@ -35,7 +35,6 @@ public:
 	BROWSE_SAVE_DIRECTORY
     };
 private:
-    void Ctor(Type);
     char *_filter;			// user supplied filter
     char *_parsedfilt;			// parsed filter
     int   _filtvalue;			// selected filter
@@ -44,6 +43,7 @@ private:
     char *_directory;
     char *_errmsg;			// error message
     Fl_File_Chooser *file_chooser;
+    static int _init;			// initializer flag
 
     // Private methods
     void errmsg(const char *msg);

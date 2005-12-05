@@ -210,11 +210,11 @@ void Fl_Native_File_Chooser::ClearOFN() {
     int temp;
     // Free any previously allocated lpstrFile before zeroing out _ofn
     if ( _ofn.lpstrFile ) 
-	{ _ofn.lpstrFile = strfree(_ofn.lpstrFile); }
+	{ _ofn.lpstrFile = strfree((char*)_ofn.lpstrFile); }
     if ( _ofn.lpstrInitialDir ) 
-	{ _ofn.lpstrInitialDir = strfree(_ofn.lpstrInitialDir); }
-    _ofn.lpstrFilter = NULL;  // (deleted elsewhere)
-    temp = _ofn.nFilterIndex;   // keep the filter_value
+	{ _ofn.lpstrInitialDir = (LPCSTR)strfree((char*)_ofn.lpstrInitialDir); }
+    _ofn.lpstrFilter = NULL;		// (deleted elsewhere)
+    temp = _ofn.nFilterIndex;		// keep the filter_value
     memset((void*)&_ofn, 0, sizeof(_ofn));
     _ofn.lStructSize = sizeof(OPENFILENAME);
     _ofn.nFilterIndex = temp;
