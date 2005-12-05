@@ -50,20 +50,21 @@ private:
     int          _tpathnames;		// total pathnames
     char        *_directory;		// default pathname to use
     char        *_title;		// title for window
+    char        *_preset_file;		// the 'save as' filename
 
-    char        *_filter;		// user-side search filter
-   					// eg."C Files\t*.{cxx,h,H}\nText Files\t*.txt"
+    char        *_filter;		// user-side search filter, eg:
+					// C Files\t*.[ch]\nText Files\t*.txt"
 
     char        *_filt_names;		// filter names (tab delimited)
     					// eg. "C Files\tText Files"
 
-    char        *_filt_patt[MAXFILTERS];// array of filter patterns
-					// eg. _filt_patt[0]="*.{cxx,h}", _filt_patt[1]="*.txt"
+    char        *_filt_patt[MAXFILTERS];// array of filter patterns, eg:
+					//     _filt_patt[0]="*.{cxx,h}"
+					//     _filt_patt[1]="*.txt"
 
-    int          _filt_total;		// number of filters parse_filter counted
+    int          _filt_total;		// parse_filter() # of filters loaded
     int          _filt_value;		// index of the selected filter
     char        *_errmsg;		// error message
-    char        *_preset_file;		// the 'save as' filename
 
     // PRIVATE CLASS TO HANDLE NAVIGATION DIALOG REPLY STRUCT
     //     Class-ified, mainly to ensure proper cleanup.
@@ -81,13 +82,13 @@ private:
     };
 
     // Private methods
-    void ctor(Type);
     void errmsg(const char *msg);
     void clear_pathnames();
     void set_single_pathname(const char *s);
     int get_saveas_basename(NavDialogRef& ref);
     int get_pathnames(NavDialogRef& ref);
-    static void event_handler(NavEventCallbackMessage callBackSelector, NavCBRecPtr cbparm, void *data);
+    static void event_handler(NavEventCallbackMessage callBackSelector, 
+    					     NavCBRecPtr cbparm, void *data);
 
     void clear_filters();
     void add_filter(const char *, const char *);
@@ -97,8 +98,7 @@ private:
     int post();
     
 public:
-    Fl_Native_File_Chooser();
-    Fl_Native_File_Chooser(Fl_Native_File_Chooser::Type);
+    Fl_Native_File_Chooser(Type val = BROWSE_FILE);
     ~Fl_Native_File_Chooser();
 
     // Public methods
@@ -120,4 +120,8 @@ public:
     const char* title() const;
     void type(Type);
     Type type() const;
+
+    // Platform specific methods
+    NavDialogOptionFlags mac_dialog_options() const;
+    void mac_dialog_options(NavDialogOptionFlags val);
 };

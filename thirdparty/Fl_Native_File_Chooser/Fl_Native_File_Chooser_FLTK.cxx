@@ -30,8 +30,15 @@
 #include <FL/Fl_Native_File_Chooser.H>
 #include "common.cxx"
 
+static int G_init = 0;				// 'first time' initialize flag
+
 // CTOR
 Fl_Native_File_Chooser::Fl_Native_File_Chooser(Type t) {
+    if ( G_init == 0 ) {
+        // Initialize when instanced for first time
+	Fl_File_Icon::load_system_icons();	// OK to call more than once
+	G_init = 1;				// eg. if app already called from main()
+    }
     _filter      = NULL;
     _parsedfilt  = NULL;
     _preset_file = NULL;

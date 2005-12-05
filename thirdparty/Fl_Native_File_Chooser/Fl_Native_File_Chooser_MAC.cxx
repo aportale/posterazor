@@ -372,6 +372,13 @@ void Fl_Native_File_Chooser::event_handler(
 Fl_Native_File_Chooser::Fl_Native_File_Chooser(Type val) {
     _btype          = val;
     NavGetDefaultDialogCreationOptions(&_opts);
+    //// "default" options (XXX: haven't tested, slows down browser opening?)
+    ////_opts.optionFlags |= kNavDefaultNavDlogOptions;
+    ////
+    //// allow previews (XXX: this doesn't seem to work?)
+    ////_opts.optionFlags |= kNavAllowPreviews;
+    ////
+    _opts.optionFlags |= kNavDontConfirmReplacement;	// no confirms for "save as"
     _ref            = NULL;
     memset(&_tempitem, 0, sizeof(_tempitem));
     _pathnames      = NULL;
@@ -792,7 +799,6 @@ Boolean Fl_Native_File_Chooser::filter_proc_cb2(AEDesc *theItem,
         return(true);
     }
     FSSpecToPath(fsspec, pathname, sizeof(pathname)-1);
-    //fprintf(stderr,"%s\n",pathname);
 
     if ( fl_filename_isdir(pathname) ) return(true);
     if ( fl_filename_match(pathname, _filt_patt[_filt_value]) ) return(true);
@@ -812,4 +818,14 @@ void Fl_Native_File_Chooser::preset_file(const char* val) {
 //
 const char* Fl_Native_File_Chooser::preset_file() {
     return(_preset_file);
+}
+
+// GET DIALOG OPTION FLAGS
+NavDialogOptionFlags Fl_Native_File_Chooser::mac_dialog_options() const {
+    return(_opts.optionFlags);
+}
+
+// SET DIALOG OPTION FLAGS
+void Fl_Native_File_Chooser::mac_dialog_options(NavDialogOptionFlags val) {
+    _opts.optionFlags = val;
 }
