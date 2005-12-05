@@ -22,7 +22,6 @@
 
 #include "PosteRazorDialog.h"
 #include "Fl_Persistent_Preferences.h"
-#include <Fl/Fl_Native_File_Chooser.H>
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
 #include <FL/x.H>
@@ -44,6 +43,8 @@
 const char PreferencesVendor[] = "CasaPortale.de";
 const char PreferencesProduct[] = "PosteRazor";
 const char preferencesKey_UseOpenGLForPreview[] = "UseOpenGLForPreview";
+const char preferencesKey_LoadImageDialogLastSelection[] = "LoadImageDialogLastSelection";
+const char preferencesKey_SavePosterDialogLastSelection[] = "SavePosterDialogLastSelection";
 
 PosteRazorDragDropWidget::PosteRazorDragDropWidget(int x, int y, int w, int h, const char *label)
 	:Fl_Box(FL_NO_BOX, x, y, w, h, label)
@@ -132,10 +133,11 @@ public:
 	PosteRazorSettingsDialog()
 		:PosteRazorSettingsDialogUI(315, 400, "PosteRazor Settings")
 	{
+		int i;
 		int UnitOfLengthMenuItemsCount = PosteRazor::GetUnitsOfLengthCount()+1;
 		m_unitOfLengthMenuItems = new Fl_Menu_Item[UnitOfLengthMenuItemsCount];
 		memset(m_unitOfLengthMenuItems, 0, sizeof(Fl_Menu_Item)*UnitOfLengthMenuItemsCount);
-		for (int i = 0; i < PosteRazor::GetUnitsOfLengthCount(); i++)
+		for (i = 0; i < PosteRazor::GetUnitsOfLengthCount(); i++)
 		{
 			const char* UnitOfLengthName = UnitsOfLength::GetUnitOfLengthName(PosteRazor::GetUnitOfLengthForIndex(i));
 			m_unitOfLengthMenuItems[i].label(UnitOfLengthName);
@@ -151,7 +153,7 @@ public:
 		int languageButtonWidth = (m_languageButtonsGroup->w() + LANGUAGEBUTTONSSPACING) / m_languageButtonsCount - LANGUAGEBUTTONSSPACING;
 
 		m_languageButtonsGroup->begin();
-		for (int i = 0; i < m_languageButtonsCount; i++)
+		for (i = 0; i < m_languageButtonsCount; i++)
 		{
 			m_languageButtons[i] = new Fl_Button
 			(
@@ -297,6 +299,41 @@ PosteRazorDialog::PosteRazorDialog(void)
 	Fl_Paint_Canvas_Group::ePaintCanvasTypes paintCanvasType =
 		preferences.GetBoolean(preferencesKey_UseOpenGLForPreview, true)?Fl_Paint_Canvas_Group::PaintCanvasTypeGL:Fl_Paint_Canvas_Group::PaintCanvasTypeDraw;
 
+	m_loadImageChooser = new Fl_Native_File_Chooser(Fl_Native_File_Chooser::BROWSE_FILE);
+	m_loadImageChooser->directory(preferences.GetString(preferencesKey_LoadImageDialogLastSelection, ""));
+	m_loadImageChooser->filter
+	(
+		"All image files\t*.{BMP,CUT,DDS,GIF,ICO,IFF,LBM,JNG,JPG,JPEG,JPE,JIF,KOA,MNG,PBM,PCD,PCX,PGM,PNG,PPM,PSD,RAS,TGA,TIF,TIFF,WBMP,XBM,XPM}\n"\
+		"Windows, OS/2 Bitmap (*.BMP)\t*.bmp\n"\
+		"Dr. Halo (*.CUT)\t*.CUT\n"\
+		"DirectDraw Surface (*.DDS)\t*.DDS\n"\
+		"Graphic Interchange Format (*.GIF)\t*.GIF\n"\
+		"Windows Icon (*.ICO)\t*.ICO\n"\
+		"Amiga IFF (*.IFF;*.LBM)\t*.{IFF,LBM}\n"\
+		"JBIG (*.JBIG)\t*.JBIG\n"\
+		"JPEG Network Graphics (*.JNG)\t*.JNG\n"\
+		"Independent JPEG Group (*.JPG;*.JPEG;*.JPE;*.JIF)\t*.{JPG,JIF,JPEG,JPE}\n"\
+		"Commodore 64 Koala (*.KOA)\t*.KOA\n"\
+		"Multiple Network Graphics (*.MNG)\t*.MNG\n"\
+		"Portable Bitmap (*.PBM)\t*.PBM\n"\
+		"Kodak PhotoCD (*.PCD)\t*.PCD\n"\
+		"PC Paintbrush Bitmap (*.PCX)\t*.PCX\n"\
+		"Portable Graymap (*.PGM)\t*.PGM\n"\
+		"Portable Network Graphics (*.PNG)\t*.PNG\n"\
+		"Portable Pixelmap (*.PPM)\t*.PPM\n"\
+		"Photoshop Document (*.PSD)\t*.PSD\n"\
+		"Sun Raster Graphic (*.RAS)\t*.RAS\n"\
+		"Targa (*.TGA)\t*.TGA\n"\
+		"Tagged Image File Format (*.TIF;*.TIFF)\t*.{TIF,TIFF}\n"\
+		"Wireless Bitmap (*.WBMP)\t*.WBMP\n"\
+		"X11 Bitmap (*.XBM)\t*.XBM\n"\
+		"X11 Pixmap (*.XPM)\t*.XPM"
+	);
+
+	m_savePosterChooser = new Fl_Native_File_Chooser(Fl_Native_File_Chooser::BROWSE_SAVE_FILE);
+	m_savePosterChooser->directory(preferences.GetString(preferencesKey_SavePosterDialogLastSelection, ""));
+	m_savePosterChooser->filter("Adobe Acrobat (*.PDF)\t*.pdf\nAdobe PAcrobat (*.PDF)\t*.pdfs");
+
 	int paperFormatMenuItemsCount = PosteRazor::GetPaperFormatsCount()+1;
 	m_paperFormatMenuItems = new Fl_Menu_Item[paperFormatMenuItemsCount];
 	memset(m_paperFormatMenuItems, 0, sizeof(Fl_Menu_Item)*paperFormatMenuItemsCount);
@@ -341,6 +378,12 @@ PosteRazorDialog::~PosteRazorDialog()
 	Fl_Persistent_Preferences preferences(PreferencesVendor, PreferencesProduct);
 	m_posteRazor->WritePersistentPreferences(&preferences);
 	preferences.SetBoolean(m_paintCanvasGroup->GetPaintCanvasType() == Fl_Paint_Canvas_Group::PaintCanvasTypeGL, preferencesKey_UseOpenGLForPreview);
+	preferences.SetString(m_loadImageChooser->filename(), preferencesKey_LoadImageDialogLastSelection);
+	if (0 != strcmp(m_savePosterChooser->filename(), "")) // Only store it, if the dialog was actually used
+		preferences.SetString(m_savePosterChooser->filename(), preferencesKey_SavePosterDialogLastSelection);
+
+	delete m_loadImageChooser;
+	delete m_savePosterChooser;
 
 	if (m_paperFormatMenuItems)
 		delete[] m_paperFormatMenuItems;
@@ -574,45 +617,16 @@ void PosteRazorDialog::UpdateLanguage(void)
 
 void PosteRazorDialog::LoadInputImage(const char *fileName)
 {
-	Fl_Native_File_Chooser chooser(Fl_Native_File_Chooser::BROWSE_FILE);
 	char errorMessage[1024] = "";
 	const char *loadFileName = fileName;
 	bool loaded = false;
 
-	chooser.title(TRANSLATIONS->LoadAnInputImage());
-	chooser.filter
-	(
-		"All image files\t*.{BMP,CUT,DDS,GIF,ICO,IFF,LBM,JNG,JPG,JPEG,JPE,JIF,KOA,MNG,PBM,PCD,PCX,PGM,PNG,PPM,PSD,RAS,TGA,TIF,TIFF,WBMP,XBM,XPM}\n"\
-		"Windows, OS/2 Bitmap (*.BMP)\t*.bmp\n"\
-		"Dr. Halo (*.CUT)\t*.CUT\n"\
-		"DirectDraw Surface (*.DDS)\t*.DDS\n"\
-		"Graphic Interchange Format (*.GIF)\t*.GIF\n"\
-		"Windows Icon (*.ICO)\t*.ICO\n"\
-		"Amiga IFF (*.IFF;*.LBM)\t*.{IFF,LBM}\n"\
-		"JBIG (*.JBIG)\t*.JBIG\n"\
-		"JPEG Network Graphics (*.JNG)\t*.JNG\n"\
-		"Independent JPEG Group (*.JPG;*.JPEG;*.JPE;*.JIF)\t*.{JPG,JIF,JPEG,JPE}\n"\
-		"Commodore 64 Koala (*.KOA)\t*.KOA\n"\
-		"Multiple Network Graphics (*.MNG)\t*.MNG\n"\
-		"Portable Bitmap (*.PBM)\t*.PBM\n"\
-		"Kodak PhotoCD (*.PCD)\t*.PCD\n"\
-		"PC Paintbrush Bitmap (*.PCX)\t*.PCX\n"\
-		"Portable Graymap (*.PGM)\t*.PGM\n"\
-		"Portable Network Graphics (*.PNG)\t*.PNG\n"\
-		"Portable Pixelmap (*.PPM)\t*.PPM\n"\
-		"Photoshop Document (*.PSD)\t*.PSD\n"\
-		"Sun Raster Graphic (*.RAS)\t*.RAS\n"\
-		"Targa (*.TGA)\t*.TGA\n"\
-		"Tagged Image File Format (*.TIF;*.TIFF)\t*.{TIF,TIFF}\n"\
-		"Wireless Bitmap (*.WBMP)\t*.WBMP\n"\
-		"X11 Bitmap (*.XBM)\t*.XBM\n"\
-		"X11 Pixmap (*.XPM)\t*.XPM"
-	);
+	m_loadImageChooser->title(TRANSLATIONS->LoadAnInputImage());
 
 	if (!loadFileName)
 	{
-		if (chooser.show() == 0)
-			loadFileName = chooser.filename();
+		if (m_loadImageChooser->show() == 0)
+			loadFileName = m_loadImageChooser->filename();
 	}
 
 	if (loadFileName)
@@ -860,21 +874,18 @@ static bool my_file_exists(const char* fileName)
 
 void PosteRazorDialog::SavePoster(void)
 {
-	Fl_Native_File_Chooser chooser(Fl_Native_File_Chooser::BROWSE_SAVE_FILE);
-	chooser.filter("Adobe Acrobat (*.PDF)\t*.pdf");
-
 	char saveFileName[1024] = "";
 	bool fileExistsAskUserForOverwrite = false;
 	do
 	{
 		if (fileExistsAskUserForOverwrite)
-			chooser.preset_file(fl_filename_name(saveFileName));
+			m_savePosterChooser->preset_file(fl_filename_name(saveFileName));
 
-		if (chooser.show() == 0)
+		if (m_savePosterChooser->show() == 0)
 		{
-			strcpy(saveFileName, chooser.filename());
+			strcpy(saveFileName, m_savePosterChooser->filename());
 
-			if (0 != CASESENSITIVESTRCMP(fl_filename_ext(chooser.filename()), ".pdf"))
+			if (0 != CASESENSITIVESTRCMP(fl_filename_ext(m_savePosterChooser->filename()), ".pdf"))
 				strcat(saveFileName, ".pdf");
 
 			fileExistsAskUserForOverwrite = my_file_exists(saveFileName);

@@ -25,6 +25,7 @@
 
 #include <FL/Fl_Image.H>
 #include <FL/Fl_Menu_Item.H>
+#include <FL/Fl_Native_File_Chooser.H>
 #include "PosteRazor.h"
 #include "PosteRazorDialogUI.h"
 #include "translations/Translations.h"
@@ -58,6 +59,8 @@ private:
 	posteRazorSettings m_settings;
 	class PosteRazorSettingsDialog *m_settingsDialog;
 	class PosteRazorHelpDialogUI *m_helpDialog;
+	Fl_Native_File_Chooser *m_loadImageChooser;
+	Fl_Native_File_Chooser *m_savePosterChooser;
 
 public:
 	~PosteRazorDialog();
