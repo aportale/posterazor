@@ -19,7 +19,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<meta name="author" content="Alessandro Portale" />
-		<meta name="description" content="PosteRazor - Make your own poster!" />
+		<meta name="description" content="PosteRazor - <? text('Make your own poster', 'Mach\' Dein eigenes Poster'); ?>!" />
 		<meta name="keywords" content="Poster, PosteRazor, Print, Fltk, Freeimage, PDF" />
 		<title>PosteRazor - <? text('Make your own poster', 'Mach\' Dein eigenes Poster'); ?>!</title>
 		<style type="text/css">
@@ -191,11 +191,11 @@
 					<strong><? text('Poster size', 'Gr&ouml;&szlig;e des Posters'); ?>.</strong> <? text('The size of the final poster can be set one of these three ways', 'Die Gr&ouml;&szlig;e des finalen Posters kann auf eine dieser drei Weisen definiert werden'); ?>:
 					<ul>
 						<li><strong><? text('Absolute image size', 'Absolute Bildma&szlig;e'); ?></strong>: <? text('You want to have a specific size of your poster', 'Genaue, spezifische Bildma&szlig;e werden angegeben'); ?>.</li>
-						<li><strong><? text('Size in Pages', 'Gr&ouml;&szlig;e in Seiten'); ?></strong>: <? text('You want to use whole paper sheets and specify how many of them of them you want to use', 'Die Druckb&oegen sollen komplett genutzt werden, und es wird angegeben, wieviele von ihnen f&uuml;r den Druck genutzt werden'); ?>.</li>
+						<li><strong><? text('Size in Pages', 'Gr&ouml;&szlig;e in Seiten'); ?></strong>: <? text('You want to use whole paper sheets and specify how many of them of them you want to use', 'Die Druckb&ouml;gen sollen komplett genutzt werden, und es wird angegeben, wieviele von ihnen f&uuml;r den Druck genutzt werden'); ?>.</li>
 						<li><strong><? text('Image Size in percent', 'Prozentuee Bildma&szlig;e'); ?></strong>: <? text('Your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to scale the image by a certain factor', 'Das Ausgangsbild hat bestimmte ma&szlig;e, die durch die Anzahl der Pixel und der Aufl&ouml;sung in dpi (\"dots per inch\") bestimmt sind. Das billd soll um einen bestimmten Faktor skaliert werden.'); ?>.</li>
 					</ul>
-					<? text('The final size of the poster is theoretically unlimited. Let\'s say it this way: it is less limited that the ink of your printer', 'Die finale Gr&ouml;&szlig;e des Posters ist theoretisch unbegrenzt. Anders gesagt: sie ist weniger begrenzt als die Druckertinte, die man zur Verf&uuml;gung hat'); ?> ;)<br />
-					<? text('It is possible to select the alignment of the image on the total paper. This is useful if you want to keep the unused paper.', 'Es ist m&ouml;glich, die Ausrichtung des Bildes auf dem gesamten Papier zu definieren. Dies ist n&uuml;tzlich, wenn die &auml;u&szlig;eren unbedruckten Papierr&auml;nder nach dem Zusammenkleben nicht abgeschnitten werden sollen.'); ?>
+					<p><? text('The final size of the poster is theoretically unlimited. Let\'s say it this way: it is less limited that the ink of your printer', 'Die finale Gr&ouml;&szlig;e des Posters ist theoretisch unbegrenzt. Anders gesagt: sie ist weniger begrenzt als die Druckertinte, die man zur Verf&uuml;gung hat'); ?> ;)</p>
+					<p><? text('It is possible to select the alignment of the image on the total paper. This is useful if you want to keep the unused paper.', 'Es ist m&ouml;glich, die Ausrichtung des Bildes auf dem gesamten Papier zu definieren. Dies ist n&uuml;tzlich, wenn die &auml;u&szlig;eren unbedruckten Papierr&auml;nder nach dem Zusammenkleben nicht abgeschnitten werden sollen.'); ?></p>
 				</li>
 				<li>
 					<strong><? text('Image tile overlapping', '&Uuml;berlappung der Bildabschnitte'); ?>.</strong> <? text('For a bigger tolerance when cutting spare paper borders and for easier pasting, an overlapping width and height of an image tile over the next can be set', 'Um eine gewisse Fehlertoleranz beim Schneiden und Zusammenf&uuml;gen der Bildabschnitte zu haben, kann die H&ouml;he und Breite einer &Uuml;berlappung eines Bildabschnitt &uuml;ber den n&auml;chsten definiert werden.'); ?>.
@@ -238,20 +238,20 @@
 					<strong><? text('Image loading', 'Bilder laden'); ?>:</strong> <? text('The images are loaded by', 'Die Bilder werden mittels'); ?> <a class="external" href="http://freeimage.sourceforge.net/">FreeImage 3.8.0</a><? text('. This is a portable library that makes image loading, handling and saving a no-brainer.', ' geladen. Dies ist eine portierbare Bibliothek, das das Laden, Manipulieren und Speichern von Bildern zu einem Kinderspiel macht.'); ?>
 				</li>
 				<li>
-					<strong><? text('File chooser dilaog', 'Dateiauswahl-dialog'); ?>:</strong> The file chooser of the PosteRazor have the platform specific look&amp;feel. Thanks to Fl_Native_File_Chooser: <a class="external" href="http://seriss.com/people/erco/fltk/Fl_Native_File_Chooser/">Fl_Native_File_Chooser</a>.
+					<strong><? text('File chooser dilaog', 'Dateiauswahl-dialog'); ?>:</strong> <? text('The file chooser of the PosteRazor have the platform specific look&amp;feel. Thanks to Fl_Native_File_Chooser:', 'Die Dateiauswahl-dialoge des PosteRazors verdanken ihr systemspezifisches "Look and Feel" dem'); ?> <a class="external" href="http://seriss.com/people/erco/fltk/Fl_Native_File_Chooser/">Fl_Native_File_Chooser</a>.
 				</li>
 			</ul>
 
 			<hr />
-			<h2><a name="license"></a>License</h2>
-			PosteRazor - Make your own poster!<br />
-			Copyright (C) 2005 by Alessandro Portale<br />
-			<a class="external" href="http://posterazor.sourceforge.net/">http://posterazor.sourceforge.net/</a><br />
-			<br />
-			PosteRazor is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by	the Free Software Foundation; either version 2 of the License, or (at your option) any later version.<br />
-			<br />
-			PosteRazor is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the <a class="external" href="http://www.gnu.org/copyleft/gpl.html">GNU General Public License</a> for more details.<br />
-			<br />
+			<h2><a name="license"></a><? text('License', 'Lizenz'); ?></h2>
+			<p>
+				PosteRazor - <? text('Make your own poster', 'Mach\' Dein eigenes Poster'); ?>!<br />
+				Copyright (C) 2005 by Alessandro Portale<br />
+				<a class="external" href="http://posterazor.sourceforge.net/<? text('', '?lang=german'); ?>">http://posterazor.sourceforge.net/</a>
+			</p>
+			<? text('', '<p><em>Der folgende Lizenztext ist in seiner englischen Originalfassung aufgef&uuml;hrt, da die <a class="external" href="http://www.gnu.de/gpl-ger.html">deutsche &Uuml;bersetzung</a> nicht offiziell oder im rechtlichen Sinne anerkannt ist.</em></p>'); ?>
+			<p>PosteRazor is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by	the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
+			<p>PosteRazor is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the <a class="external" href="http://www.gnu.org/copyleft/gpl.html">GNU General Public License</a> for more details.</p>
 		</div>
 	</body>
 </html>
