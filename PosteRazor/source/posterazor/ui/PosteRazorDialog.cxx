@@ -43,8 +43,8 @@
 const char PreferencesVendor[] = "CasaPortale.de";
 const char PreferencesProduct[] = "PosteRazor";
 const char preferencesKey_UseOpenGLForPreview[] = "UseOpenGLForPreview";
-const char preferencesKey_LoadImageDialogLastSelection[] = "LoadImageDialogLastSelection";
-const char preferencesKey_SavePosterDialogLastSelection[] = "SavePosterDialogLastSelection";
+const char preferencesKey_LoadImageDialogLastPath[] = "LoadImageDialogLastPath";
+const char preferencesKey_SavePosterDialogLastPath[] = "SavePosterDialogLastPath";
 
 PosteRazorDragDropWidget::PosteRazorDragDropWidget(int x, int y, int w, int h, const char *label)
 	:Fl_Box(FL_NO_BOX, x, y, w, h, label)
@@ -300,7 +300,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 		preferences.GetBoolean(preferencesKey_UseOpenGLForPreview, true)?Fl_Paint_Canvas_Group::PaintCanvasTypeGL:Fl_Paint_Canvas_Group::PaintCanvasTypeDraw;
 
 	m_loadImageChooser = new Fl_Native_File_Chooser(Fl_Native_File_Chooser::BROWSE_FILE);
-	m_loadImageChooser->directory(preferences.GetString(preferencesKey_LoadImageDialogLastSelection, ""));
+	m_loadImageChooser->directory(preferences.GetString(preferencesKey_LoadImageDialogLastPath, ""));
 	m_loadImageChooser->filter
 	(
 		"All image files\t*.{BMP,CUT,DDS,GIF,ICO,IFF,LBM,JNG,JPG,JPEG,JPE,JIF,KOA,MNG,PBM,PCD,PCX,PGM,PNG,PPM,PSD,RAS,TGA,TIF,TIFF,WBMP,XBM,XPM}\n"\
@@ -331,7 +331,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 	);
 
 	m_savePosterChooser = new Fl_Native_File_Chooser(Fl_Native_File_Chooser::BROWSE_SAVE_FILE);
-	m_savePosterChooser->directory(preferences.GetString(preferencesKey_SavePosterDialogLastSelection, ""));
+	m_savePosterChooser->directory(preferences.GetString(preferencesKey_SavePosterDialogLastPath, ""));
 	m_savePosterChooser->filter("Adobe Acrobat (*.PDF)\t*.pdf\nAdobe PAcrobat (*.PDF)\t*.pdfs");
 
 	int paperFormatMenuItemsCount = PosteRazor::GetPaperFormatsCount()+1;
@@ -373,14 +373,27 @@ PosteRazorDialog::PosteRazorDialog(void)
 	UpdateLanguage();
 }
 
+static const char* GetPathFromFileName(const char* fileName)
+{
+	char pathName[1024] = "";
+	
+	strncpy(pathName, fileName, sizeof(pathName));
+	pathName[sizeof(pathName) - 1] = '\0';
+	
+	pathName[strlen(pathName) - strlen(fl_filename_name(pathName))] = '\0';
+	
+	return pathName;
+}
+
 PosteRazorDialog::~PosteRazorDialog()
 {
 	Fl_Persistent_Preferences preferences(PreferencesVendor, PreferencesProduct);
 	m_posteRazor->WritePersistentPreferences(&preferences);
 	preferences.SetBoolean(m_paintCanvasGroup->GetPaintCanvasType() == Fl_Paint_Canvas_Group::PaintCanvasTypeGL, preferencesKey_UseOpenGLForPreview);
-	preferences.SetString(m_loadImageChooser->filename(), preferencesKey_LoadImageDialogLastSelection);
+	if (0 != strcmp(m_loadImageChooser->filename(), "")) // Only store it, if the dialog was actually used
+		preferences.SetString(GetPathFromFileName(m_loadImageChooser->filename()), preferencesKey_LoadImageDialogLastPath);
 	if (0 != strcmp(m_savePosterChooser->filename(), "")) // Only store it, if the dialog was actually used
-		preferences.SetString(m_savePosterChooser->filename(), preferencesKey_SavePosterDialogLastSelection);
+		preferences.SetString(GetPathFromFileName(m_savePosterChooser->filename()), preferencesKey_SavePosterDialogLastPath);
 
 	delete m_loadImageChooser;
 	delete m_savePosterChooser;
