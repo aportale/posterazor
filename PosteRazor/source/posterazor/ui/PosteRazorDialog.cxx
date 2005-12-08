@@ -43,8 +43,8 @@
 const char PreferencesVendor[] = "CasaPortale.de";
 const char PreferencesProduct[] = "PosteRazor";
 const char preferencesKey_UseOpenGLForPreview[] = "UseOpenGLForPreview";
-const char preferencesKey_LoadImageDialogLastPath[] = "LoadImageDialogLastPath";
-const char preferencesKey_SavePosterDialogLastPath[] = "SavePosterDialogLastPath";
+const char preferencesKey_LoadImageChooserLastPath[] = "LoadImageChooserLastPath";
+const char preferencesKey_SavePosterChooserLastPath[] = "SavePosterChooserLastPath";
 
 PosteRazorDragDropWidget::PosteRazorDragDropWidget(int x, int y, int w, int h, const char *label)
 	:Fl_Box(FL_NO_BOX, x, y, w, h, label)
@@ -300,7 +300,8 @@ PosteRazorDialog::PosteRazorDialog(void)
 		preferences.GetBoolean(preferencesKey_UseOpenGLForPreview, true)?Fl_Paint_Canvas_Group::PaintCanvasTypeGL:Fl_Paint_Canvas_Group::PaintCanvasTypeDraw;
 
 	m_loadImageChooser = new Fl_Native_File_Chooser(Fl_Native_File_Chooser::BROWSE_FILE);
-	m_loadImageChooser->directory(preferences.GetString(preferencesKey_LoadImageDialogLastPath, ""));
+	strncpy(m_loadImageChooserLastPath, preferences.GetString(preferencesKey_LoadImageChooserLastPath, ""), sizeof(m_loadImageChooserLastPath));
+	m_loadImageChooserLastPath[sizeof(m_loadImageChooserLastPath) - 1] = '\0';
 	m_loadImageChooser->filter
 	(
 		"All image files\t*.{BMP,CUT,DDS,GIF,ICO,IFF,LBM,JNG,JPG,JPEG,JPE,JIF,KOA,MNG,PBM,PCD,PCX,PGM,PNG,PPM,PSD,RAS,TGA,TIF,TIFF,WBMP,XBM,XPM}\n"\
@@ -331,7 +332,8 @@ PosteRazorDialog::PosteRazorDialog(void)
 	);
 
 	m_savePosterChooser = new Fl_Native_File_Chooser(Fl_Native_File_Chooser::BROWSE_SAVE_FILE);
-	m_savePosterChooser->directory(preferences.GetString(preferencesKey_SavePosterDialogLastPath, ""));
+	strncpy(m_savePosterChooserLastPath, preferences.GetString(preferencesKey_SavePosterChooserLastPath, ""), sizeof(m_savePosterChooserLastPath));
+	m_savePosterChooserLastPath[sizeof(m_savePosterChooserLastPath) - 1] = '\0';
 	m_savePosterChooser->filter("Adobe Acrobat (*.PDF)\t*.pdf\nAdobe PAcrobat (*.PDF)\t*.pdfs");
 
 	int paperFormatMenuItemsCount = PosteRazor::GetPaperFormatsCount()+1;
@@ -390,10 +392,8 @@ PosteRazorDialog::~PosteRazorDialog()
 	Fl_Persistent_Preferences preferences(PreferencesVendor, PreferencesProduct);
 	m_posteRazor->WritePersistentPreferences(&preferences);
 	preferences.SetBoolean(m_paintCanvasGroup->GetPaintCanvasType() == Fl_Paint_Canvas_Group::PaintCanvasTypeGL, preferencesKey_UseOpenGLForPreview);
-	if (0 != strcmp(m_loadImageChooser->filename(), "")) // Only store it, if the dialog was actually used
-		preferences.SetString(GetPathFromFileName(m_loadImageChooser->filename()), preferencesKey_LoadImageDialogLastPath);
-	if (0 != strcmp(m_savePosterChooser->filename(), "")) // Only store it, if the dialog was actually used
-		preferences.SetString(GetPathFromFileName(m_savePosterChooser->filename()), preferencesKey_SavePosterDialogLastPath);
+	preferences.SetString(m_loadImageChooserLastPath, preferencesKey_LoadImageChooserLastPath);
+	preferences.SetString(m_savePosterChooserLastPath, preferencesKey_SavePosterChooserLastPath);
 
 	delete m_loadImageChooser;
 	delete m_savePosterChooser;
@@ -638,8 +638,14 @@ void PosteRazorDialog::LoadInputImage(const char *fileName)
 
 	if (!loadFileName)
 	{
+		m_loadImageChooser->directory(m_loadImageChooserLastPath);
 		if (m_loadImageChooser->show() == 0)
+		{
 			loadFileName = m_loadImageChooser->filename();
+
+			strncpy(m_loadImageChooserLastPath, GetPathFromFileName(loadFileName), sizeof(m_loadImageChooserLastPath));
+			m_loadImageChooserLastPath[sizeof(m_loadImageChooserLastPath)-1] = '\0';
+		}
 	}
 
 	if (loadFileName)
@@ -894,9 +900,13 @@ void PosteRazorDialog::SavePoster(void)
 		if (fileExistsAskUserForOverwrite)
 			m_savePosterChooser->preset_file(fl_filename_name(saveFileName));
 
+		m_savePosterChooser->directory(m_savePosterChooserLastPath);
 		if (m_savePosterChooser->show() == 0)
 		{
 			strcpy(saveFileName, m_savePosterChooser->filename());
+
+			strncpy(m_savePosterChooserLastPath, GetPathFromFileName(saveFileName), sizeof(m_savePosterChooserLastPath));
+			m_savePosterChooserLastPath[sizeof(m_savePosterChooserLastPath) - 1] = '\0';
 
 			if (0 != CASESENSITIVESTRCMP(fl_filename_ext(m_savePosterChooser->filename()), ".pdf"))
 				strcat(saveFileName, ".pdf");
