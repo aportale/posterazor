@@ -120,7 +120,8 @@ public:
 
 			strcpy(m_imageFileName, imageFileName);
 
-			if (GetColorDataType() == eColorTypeRGBA) // We can't export alpha channels to PDF, anyway (yet)
+			if ((GetColorDataType() == eColorTypeRGB && GetBitsPerPixel() == 32) // Sometimes, there are strange .PSD images like this (FreeImage bug?)
+				|| (GetColorDataType() == eColorTypeRGBA)) // We can't export alpha channels to PDF, anyway (yet)
 			{
 				RGBQUAD white = { 255, 255, 255, 0 };
 				FIBITMAP *Image24Bit = FreeImage_Composite(m_bitmap, FALSE, &white);
