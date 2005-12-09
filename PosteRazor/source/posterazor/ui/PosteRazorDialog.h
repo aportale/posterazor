@@ -59,9 +59,7 @@ private:
 	posteRazorSettings              m_settings;
 	class PosteRazorSettingsDialog  *m_settingsDialog;
 	class PosteRazorHelpDialogUI    *m_helpDialog;
-	Fl_Native_File_Chooser          *m_loadImageChooser;
 	char                            m_loadImageChooserLastPath[1024];
-	Fl_Native_File_Chooser          *m_savePosterChooser;
 	char                            m_savePosterChooserLastPath[1024];
 
 public:

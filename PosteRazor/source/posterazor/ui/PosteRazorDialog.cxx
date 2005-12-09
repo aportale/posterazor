@@ -299,42 +299,10 @@ PosteRazorDialog::PosteRazorDialog(void)
 	Fl_Paint_Canvas_Group::ePaintCanvasTypes paintCanvasType =
 		preferences.GetBoolean(preferencesKey_UseOpenGLForPreview, true)?Fl_Paint_Canvas_Group::PaintCanvasTypeGL:Fl_Paint_Canvas_Group::PaintCanvasTypeDraw;
 
-	m_loadImageChooser = new Fl_Native_File_Chooser(Fl_Native_File_Chooser::BROWSE_FILE);
 	strncpy(m_loadImageChooserLastPath, preferences.GetString(preferencesKey_LoadImageChooserLastPath, ""), sizeof(m_loadImageChooserLastPath));
 	m_loadImageChooserLastPath[sizeof(m_loadImageChooserLastPath) - 1] = '\0';
-	m_loadImageChooser->filter
-	(
-		"All image files\t*.{BMP,CUT,DDS,GIF,ICO,IFF,LBM,JNG,JPG,JPEG,JPE,JIF,KOA,MNG,PBM,PCD,PCX,PGM,PNG,PPM,PSD,RAS,TGA,TIF,TIFF,WBMP,XBM,XPM}\n"\
-		"Windows, OS/2 Bitmap (*.BMP)\t*.bmp\n"\
-		"Dr. Halo (*.CUT)\t*.CUT\n"\
-		"DirectDraw Surface (*.DDS)\t*.DDS\n"\
-		"Graphic Interchange Format (*.GIF)\t*.GIF\n"\
-		"Windows Icon (*.ICO)\t*.ICO\n"\
-		"Amiga IFF (*.IFF;*.LBM)\t*.{IFF,LBM}\n"\
-		"JBIG (*.JBIG)\t*.JBIG\n"\
-		"JPEG Network Graphics (*.JNG)\t*.JNG\n"\
-		"Independent JPEG Group (*.JPG;*.JPEG;*.JPE;*.JIF)\t*.{JPG,JIF,JPEG,JPE}\n"\
-		"Commodore 64 Koala (*.KOA)\t*.KOA\n"\
-		"Multiple Network Graphics (*.MNG)\t*.MNG\n"\
-		"Portable Bitmap (*.PBM)\t*.PBM\n"\
-		"Kodak PhotoCD (*.PCD)\t*.PCD\n"\
-		"PC Paintbrush Bitmap (*.PCX)\t*.PCX\n"\
-		"Portable Graymap (*.PGM)\t*.PGM\n"\
-		"Portable Network Graphics (*.PNG)\t*.PNG\n"\
-		"Portable Pixelmap (*.PPM)\t*.PPM\n"\
-		"Photoshop Document (*.PSD)\t*.PSD\n"\
-		"Sun Raster Graphic (*.RAS)\t*.RAS\n"\
-		"Targa (*.TGA)\t*.TGA\n"\
-		"Tagged Image File Format (*.TIF;*.TIFF)\t*.{TIF,TIFF}\n"\
-		"Wireless Bitmap (*.WBMP)\t*.WBMP\n"\
-		"X11 Bitmap (*.XBM)\t*.XBM\n"\
-		"X11 Pixmap (*.XPM)\t*.XPM"
-	);
-
-	m_savePosterChooser = new Fl_Native_File_Chooser(Fl_Native_File_Chooser::BROWSE_SAVE_FILE);
 	strncpy(m_savePosterChooserLastPath, preferences.GetString(preferencesKey_SavePosterChooserLastPath, ""), sizeof(m_savePosterChooserLastPath));
 	m_savePosterChooserLastPath[sizeof(m_savePosterChooserLastPath) - 1] = '\0';
-	m_savePosterChooser->filter("Adobe Acrobat (*.PDF)\t*.pdf\nAdobe PAcrobat (*.PDF)\t*.pdfs");
 
 	int paperFormatMenuItemsCount = PosteRazor::GetPaperFormatsCount()+1;
 	m_paperFormatMenuItems = new Fl_Menu_Item[paperFormatMenuItemsCount];
@@ -394,9 +362,6 @@ PosteRazorDialog::~PosteRazorDialog()
 	preferences.SetBoolean(m_paintCanvasGroup->GetPaintCanvasType() == Fl_Paint_Canvas_Group::PaintCanvasTypeGL, preferencesKey_UseOpenGLForPreview);
 	preferences.SetString(m_loadImageChooserLastPath, preferencesKey_LoadImageChooserLastPath);
 	preferences.SetString(m_savePosterChooserLastPath, preferencesKey_SavePosterChooserLastPath);
-
-	delete m_loadImageChooser;
-	delete m_savePosterChooser;
 
 	if (m_paperFormatMenuItems)
 		delete[] m_paperFormatMenuItems;
@@ -634,14 +599,43 @@ void PosteRazorDialog::LoadInputImage(const char *fileName)
 	const char *loadFileName = fileName;
 	bool loaded = false;
 
-	m_loadImageChooser->title(TRANSLATIONS->LoadAnInputImage());
+	Fl_Native_File_Chooser loadImageChooser(Fl_Native_File_Chooser::BROWSE_FILE);
+	loadImageChooser.filter
+	(
+		"All image files\t*.{BMP,CUT,DDS,GIF,ICO,IFF,LBM,JNG,JPG,JPEG,JPE,JIF,KOA,MNG,PBM,PCD,PCX,PGM,PNG,PPM,PSD,RAS,TGA,TIF,TIFF,WBMP,XBM,XPM}\n"\
+		"Windows, OS/2 Bitmap (*.BMP)\t*.bmp\n"\
+		"Dr. Halo (*.CUT)\t*.CUT\n"\
+		"DirectDraw Surface (*.DDS)\t*.DDS\n"\
+		"Graphic Interchange Format (*.GIF)\t*.GIF\n"\
+		"Windows Icon (*.ICO)\t*.ICO\n"\
+		"Amiga IFF (*.IFF;*.LBM)\t*.{IFF,LBM}\n"\
+		"JBIG (*.JBIG)\t*.JBIG\n"\
+		"JPEG Network Graphics (*.JNG)\t*.JNG\n"\
+		"Independent JPEG Group (*.JPG;*.JPEG;*.JPE;*.JIF)\t*.{JPG,JIF,JPEG,JPE}\n"\
+		"Commodore 64 Koala (*.KOA)\t*.KOA\n"\
+		"Multiple Network Graphics (*.MNG)\t*.MNG\n"\
+		"Portable Bitmap (*.PBM)\t*.PBM\n"\
+		"Kodak PhotoCD (*.PCD)\t*.PCD\n"\
+		"PC Paintbrush Bitmap (*.PCX)\t*.PCX\n"\
+		"Portable Graymap (*.PGM)\t*.PGM\n"\
+		"Portable Network Graphics (*.PNG)\t*.PNG\n"\
+		"Portable Pixelmap (*.PPM)\t*.PPM\n"\
+		"Photoshop Document (*.PSD)\t*.PSD\n"\
+		"Sun Raster Graphic (*.RAS)\t*.RAS\n"\
+		"Targa (*.TGA)\t*.TGA\n"\
+		"Tagged Image File Format (*.TIF;*.TIFF)\t*.{TIF,TIFF}\n"\
+		"Wireless Bitmap (*.WBMP)\t*.WBMP\n"\
+		"X11 Bitmap (*.XBM)\t*.XBM\n"\
+		"X11 Pixmap (*.XPM)\t*.XPM"
+	);
+	loadImageChooser.title(TRANSLATIONS->LoadAnInputImage());
 
 	if (!loadFileName)
 	{
-		m_loadImageChooser->directory(m_loadImageChooserLastPath);
-		if (m_loadImageChooser->show() == 0)
+		loadImageChooser.directory(m_loadImageChooserLastPath);
+		if (loadImageChooser.show() == 0)
 		{
-			loadFileName = m_loadImageChooser->filename();
+			loadFileName = loadImageChooser.filename();
 
 			strncpy(m_loadImageChooserLastPath, GetPathFromFileName(loadFileName), sizeof(m_loadImageChooserLastPath));
 			m_loadImageChooserLastPath[sizeof(m_loadImageChooserLastPath)-1] = '\0';
@@ -895,20 +889,24 @@ void PosteRazorDialog::SavePoster(void)
 {
 	char saveFileName[1024] = "";
 	bool fileExistsAskUserForOverwrite = false;
+	
+	Fl_Native_File_Chooser savePosterChooser(Fl_Native_File_Chooser::BROWSE_SAVE_FILE);
+	savePosterChooser.filter("Adobe Acrobat (*.PDF)\t*.pdf\nAdobe PAcrobat (*.PDF)\t*.pdfs");
+
 	do
 	{
 		if (fileExistsAskUserForOverwrite)
-			m_savePosterChooser->preset_file(fl_filename_name(saveFileName));
+			savePosterChooser.preset_file(fl_filename_name(saveFileName));
 
-		m_savePosterChooser->directory(m_savePosterChooserLastPath);
-		if (m_savePosterChooser->show() == 0)
+		savePosterChooser.directory(m_savePosterChooserLastPath);
+		if (savePosterChooser.show() == 0)
 		{
-			strcpy(saveFileName, m_savePosterChooser->filename());
+			strcpy(saveFileName, savePosterChooser.filename());
 
 			strncpy(m_savePosterChooserLastPath, GetPathFromFileName(saveFileName), sizeof(m_savePosterChooserLastPath));
 			m_savePosterChooserLastPath[sizeof(m_savePosterChooserLastPath) - 1] = '\0';
 
-			if (0 != CASESENSITIVESTRCMP(fl_filename_ext(m_savePosterChooser->filename()), ".pdf"))
+			if (0 != CASESENSITIVESTRCMP(fl_filename_ext(savePosterChooser.filename()), ".pdf"))
 				strcat(saveFileName, ".pdf");
 
 			fileExistsAskUserForOverwrite = my_file_exists(saveFileName);
