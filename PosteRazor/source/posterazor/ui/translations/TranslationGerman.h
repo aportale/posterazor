@@ -71,6 +71,7 @@ public:
 	const char* Resolution(void)                      {return "Auflösung:";}
 	const char* Right(void)                           {return "Rechts";}
 	const char* SaveThePoster(void)                   {return "Das Poster speichern";}
+	const char* SaveThePosterAs(void)                 {return "Das Poster speichern unter";}
 	const char* Settings(void)                        {return "Einstellungen...";}
 	const char* Size(void)                            {return "Größe:";}
 	const char* SizeInPages(void)                     {return "Größe in Seiten:";}
