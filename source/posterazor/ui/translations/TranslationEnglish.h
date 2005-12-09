@@ -71,6 +71,7 @@ public:
 	const char* Resolution(void)                      {return "Resolution:";}
 	const char* Right(void)                           {return "Right";}
 	const char* SaveThePoster(void)                   {return "Save the poster";}
+	const char* SaveThePosterAs(void)                 {return "Save the poster as";}
 	const char* Settings(void)                        {return "Settings...";}
 	const char* Size(void)                            {return "Size:";}
 	const char* SizeInPages(void)                     {return "Size in pages:";}

@@ -69,6 +69,7 @@ public:
 	virtual const char* Resolution(void) = 0;
 	virtual const char* Right(void) = 0;
 	virtual const char* SaveThePoster(void) = 0;
+	virtual const char* SaveThePosterAs(void) = 0;
 	virtual const char* Settings(void) = 0;
 	virtual const char* Size(void) = 0;
 	virtual const char* SizeInPages(void) = 0;

@@ -892,6 +892,7 @@ void PosteRazorDialog::SavePoster(void)
 	
 	Fl_Native_File_Chooser savePosterChooser(Fl_Native_File_Chooser::BROWSE_SAVE_FILE);
 	savePosterChooser.filter("Adobe Acrobat (*.PDF)\t*.pdf\nAdobe PAcrobat (*.PDF)\t*.pdfs");
+	savePosterChooser.title(TRANSLATIONS->SaveThePosterAs());
 
 	do
 	{

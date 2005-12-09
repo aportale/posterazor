@@ -123,6 +123,7 @@ public:
 	const char* Resolution(void)                      {return m_selectedTranslation->Resolution();}
 	const char* Right(void)                           {return m_selectedTranslation->Right();}
 	const char* SaveThePoster(void)                   {return m_selectedTranslation->SaveThePoster();}
+	const char* SaveThePosterAs(void)                 {return m_selectedTranslation->SaveThePosterAs();}
 	const char* Settings(void)                        {return m_selectedTranslation->Settings();}
 	const char* Size(void)                            {return m_selectedTranslation->Size();}
 	const char* SizeInPages(void)                     {return m_selectedTranslation->SizeInPages();}
