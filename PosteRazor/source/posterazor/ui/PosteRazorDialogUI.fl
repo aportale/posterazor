@@ -487,9 +487,9 @@ widget_class PosteRazorHelpDialogUI {
 widget_class PosteRazorSettingsDialogUI {
   label {PosteRazor settings}
   user_data this open
-  xywh {36 289 315 400} type Double hide
+  xywh {623 383 315 400} type Double
   code0 {m_okWasPressed = false;}
-  class Fl_Double_Window modal
+  class Fl_Double_Window modal visible
 } {
   decl {bool m_okWasPressed;} {public
   }
@@ -500,8 +500,8 @@ widget_class PosteRazorSettingsDialogUI {
       label Units open
       xywh {20 35 275 85} box THIN_DOWN_BOX color 45
     } {
-      Fl_Choice m_unitOfLengthChoice {open
-        xywh {30 45 255 25} down_box BORDER_BOX align 20
+      Fl_Group m_unitOfLengthButtonsGroup {open selected
+        xywh {30 45 255 25}
       } {}
       Fl_Box m_unitOfLengthExplanationBox {
         label {Choose the distance unit you want to work with}
@@ -541,7 +541,7 @@ widget_class PosteRazorSettingsDialogUI {
     Fl_Return_Button {} {
       label OK
       callback {m_okWasPressed = true;
-hide();} selected
+hide();}
       xywh {210 365 95 25}
     }
     Fl_Button m_cancelButton {

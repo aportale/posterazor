@@ -36,9 +36,9 @@ static const UnitsOfLengthStruct g_UnitsOfLength[] =
 	{UnitsOfLength::eUnitOfLengthMeter, "m", 100},
 	{UnitsOfLength::eUnitOfLengthMillimeter, "mm", 0.1},
 	{UnitsOfLength::eUnitOfLengthCentimeter, "cm", 1.0},
-	{UnitsOfLength::eUnitOfLengthInch, "inch", 2.54},
-	{UnitsOfLength::eUnitOfLengthFeet, "feet", 2.54 * 12.0},
-	{UnitsOfLength::eUnitOfLengthPoints, "points", 2.54 / 72.0}
+	{UnitsOfLength::eUnitOfLengthInch, "in", 2.54},
+	{UnitsOfLength::eUnitOfLengthFeet, "ft", 2.54 * 12.0},
+	{UnitsOfLength::eUnitOfLengthPoints, "pt", 2.54 / 72.0}
 };
 
 static const int g_UnitsOfLengthCount = sizeof(g_UnitsOfLength)/sizeof(g_UnitsOfLength[0]);

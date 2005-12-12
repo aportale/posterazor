@@ -1465,9 +1465,8 @@ o->when(FL_WHEN_RELEASE);
   { Fl_Group* o = m_unitOfLengthGroup = new Fl_Group(20, 35, 275, 85, "Units");
     o->box(FL_THIN_DOWN_BOX);
     o->color(FL_DARK2);
-    { Fl_Choice* o = m_unitOfLengthChoice = new Fl_Choice(30, 45, 255, 25);
-      o->down_box(FL_BORDER_BOX);
-      o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
+    { Fl_Group* o = m_unitOfLengthButtonsGroup = new Fl_Group(30, 45, 255, 25);
+      o->end();
     }
     { Fl_Box* o = m_unitOfLengthExplanationBox = new Fl_Box(30, 80, 255, 30, "Choose the distance unit you want to work with");
       o->align(134|FL_ALIGN_INSIDE);
