@@ -124,7 +124,8 @@ class PosteRazorSettingsDialog: public PosteRazorSettingsDialogUI
 	posteRazorSettings *m_settings;
 	posteRazorSettings m_settingsBackup;
 	SettingsChangementHandler *m_changementHandler;
-	Fl_Menu_Item *m_unitOfLengthMenuItems;
+	int m_unitOfLengthButtonsCount;
+	Fl_Button **m_unitOfLengthButtons;
 	int m_languageButtonsCount;
 	Fl_Button **m_languageButtons;
 	Fl_RGB_Image **m_languageButtonImages;
@@ -133,31 +134,45 @@ public:
 	PosteRazorSettingsDialog()
 		:PosteRazorSettingsDialogUI(315, 400, "PosteRazor Settings")
 	{
+#define SETTINGCHOICEBUTTONSSPACING 10
+
 		int i;
-		int UnitOfLengthMenuItemsCount = PosteRazor::GetUnitsOfLengthCount()+1;
-		m_unitOfLengthMenuItems = new Fl_Menu_Item[UnitOfLengthMenuItemsCount];
-		memset(m_unitOfLengthMenuItems, 0, sizeof(Fl_Menu_Item)*UnitOfLengthMenuItemsCount);
-		for (i = 0; i < PosteRazor::GetUnitsOfLengthCount(); i++)
+		m_unitOfLengthButtonsCount = PosteRazor::GetUnitsOfLengthCount();
+		m_unitOfLengthButtons = new Fl_Button*[m_unitOfLengthButtonsCount];
+		int unitOfLengthButtonWidth = (m_unitOfLengthButtonsGroup->w() + SETTINGCHOICEBUTTONSSPACING) / m_unitOfLengthButtonsCount - SETTINGCHOICEBUTTONSSPACING;
+
+		m_unitOfLengthButtonsGroup->begin();
+		for (i = 0; i < m_unitOfLengthButtonsCount; i++)
 		{
 			const char* UnitOfLengthName = UnitsOfLength::GetUnitOfLengthName(PosteRazor::GetUnitOfLengthForIndex(i));
-			m_unitOfLengthMenuItems[i].label(UnitOfLengthName);
-			m_unitOfLengthMenuItems[i].callback(HandleUnitOfLengthChoice_cb);
-			m_unitOfLengthMenuItems[i].user_data((void*)this);
-		}
-		m_unitOfLengthChoice->menu(m_unitOfLengthMenuItems);
+			m_unitOfLengthButtons[i] = new Fl_Button
+			(
+				m_unitOfLengthButtonsGroup->x() + i * (unitOfLengthButtonWidth+SETTINGCHOICEBUTTONSSPACING),
+				m_unitOfLengthButtonsGroup->y(),
+				unitOfLengthButtonWidth,
+				m_unitOfLengthButtonsGroup->h(),
+				UnitOfLengthName
+			);
 
-#define LANGUAGEBUTTONSSPACING 10
+			m_unitOfLengthButtons[i]->type(FL_RADIO_BUTTON);
+			m_unitOfLengthButtons[i]->color((Fl_Color)40);
+			m_unitOfLengthButtons[i]->selection_color((Fl_Color)55);
+			m_unitOfLengthButtons[i]->callback(HandleUnitOfLengthChoice_cb);
+			m_unitOfLengthButtons[i]->user_data((void*)this);
+		}
+		m_unitOfLengthButtonsGroup->end();
+
 		m_languageButtonsCount = TRANSLATIONS->GetLanguagesCount();
 		m_languageButtons = new Fl_Button*[m_languageButtonsCount];
 		m_languageButtonImages = new Fl_RGB_Image*[m_languageButtonsCount];
-		int languageButtonWidth = (m_languageButtonsGroup->w() + LANGUAGEBUTTONSSPACING) / m_languageButtonsCount - LANGUAGEBUTTONSSPACING;
+		int languageButtonWidth = (m_languageButtonsGroup->w() + SETTINGCHOICEBUTTONSSPACING) / m_languageButtonsCount - SETTINGCHOICEBUTTONSSPACING;
 
 		m_languageButtonsGroup->begin();
 		for (i = 0; i < m_languageButtonsCount; i++)
 		{
 			m_languageButtons[i] = new Fl_Button
 			(
-				m_languageButtonsGroup->x() + i * (languageButtonWidth+LANGUAGEBUTTONSSPACING),
+				m_languageButtonsGroup->x() + i * (languageButtonWidth+SETTINGCHOICEBUTTONSSPACING),
 				m_languageButtonsGroup->y(),
 				languageButtonWidth,
 				m_languageButtonsGroup->h()
@@ -181,8 +196,8 @@ public:
 
 	~PosteRazorSettingsDialog()
 	{
-		if (m_unitOfLengthMenuItems)
-			delete[] m_unitOfLengthMenuItems;
+		if (m_unitOfLengthButtons)
+			delete[] m_unitOfLengthButtons;
 
 		if (m_languageButtons)
 			delete[] m_languageButtons; // the actual buttons are deleted by FLTK
@@ -197,27 +212,35 @@ public:
 
 	void SetOptionsAndHandler(posteRazorSettings *settings, SettingsChangementHandler *changementHandler)
 	{
+		int i;
 		m_settings = settings;
 		m_settingsBackup = *m_settings;
 		m_changementHandler = changementHandler;
 
-		enum PosteRazor::eUnitsOfLength selectedUnitOfLength = m_settings->UnitOfLength;
-		m_unitOfLengthChoice->value(selectedUnitOfLength);
+		for (i = 0; i < m_unitOfLengthButtonsCount; i++)
+			m_unitOfLengthButtons[i]->value(PosteRazor::GetUnitOfLengthForIndex(i) == m_settings->UnitOfLength?1:0);
+
 		m_useOpenGLCheckButton->value(m_settings->previewType == Fl_Paint_Canvas_Group::PaintCanvasTypeGL?1:0);
 
-		for (int i = 0; i < m_languageButtonsCount; i++)
+		for (i = 0; i < m_languageButtonsCount; i++)
 			m_languageButtons[i]->value((m_settings->language == TRANSLATIONS->GetLanguageForIndex(i))?1:0);
 	}
 
 	static void HandleUnitOfLengthChoice_cb(Fl_Widget *widget, void *userData)
 	{
-		((PosteRazorSettingsDialog*)userData)->HandleUnitOfLengthChangement(((PosteRazorSettingsDialog*)userData)->m_unitOfLengthChoice);
+		((PosteRazorSettingsDialog*)userData)->HandleUnitOfLengthChoice();
 	}
 
-	void HandleUnitOfLengthChangement(Fl_Widget *sourceWidget)
+	void HandleUnitOfLengthChoice(void)
 	{
-		const char* UnitOfLengthName = m_unitOfLengthMenuItems[m_unitOfLengthChoice->value()].label();
-		m_settings->UnitOfLength = PosteRazor::GetUnitOfLengthForName(UnitOfLengthName);
+		for (int i = 0; i < m_unitOfLengthButtonsCount; i++)
+		{
+			if (m_unitOfLengthButtons[i]->value() != 0)
+			{
+				m_settings->UnitOfLength = PosteRazor::GetUnitOfLengthForIndex(i);
+				break;
+			}
+		}
 
 		if (m_changementHandler)
 			m_changementHandler->HandleOptionsChangement(m_settings);
