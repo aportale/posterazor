@@ -687,6 +687,7 @@ void PosteRazorDialog::LoadInputImage(const char *fileName)
 	}
 
 	UpdateNavigationButtons();
+	Fl::flush(); // Needed for windows if image is loaded at startup
 }
 
 void PosteRazorDialog::UpdateImageInfoFields(void)
