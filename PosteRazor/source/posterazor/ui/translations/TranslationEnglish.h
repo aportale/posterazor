@@ -94,6 +94,7 @@ public:
 
 #define ENGLISH_POSTERAZORHELPABOUT                   "About"
 #define ENGLISH_POSTERAZORHELPMANUAL                  "Manual"
+#define ENGLISH_POSTERAZORHELPSETTINGS                "Settings"
 #define ENGLISH_POSTERAZORHELPSTEPTITLE01             "Load an input image"
 #define ENGLISH_POSTERAZORHELPSTEPTITLE02             "Define the printer paper format"
 #define ENGLISH_POSTERAZORHELPSTEPTITLE03             "Define the image tile overlapping"
@@ -119,6 +120,7 @@ public:
 					"<UL>" POSTERAZORHELPENDLINE \
 						"<LI><B><A href=\"#" POSTERAZORHELPANCHORABOUT "\">" ENGLISH_POSTERAZORHELPABOUT "</A></B></LI>" POSTERAZORHELPENDLINE \
 						"<LI><B><A href=\"#" POSTERAZORHELPANCHORMANUAL "\">" ENGLISH_POSTERAZORHELPMANUAL "</A></B></LI>" POSTERAZORHELPENDLINE \
+						"<LI><B><A href=\"#" POSTERAZORHELPANCHORSETTINGS "\">" ENGLISH_POSTERAZORHELPSETTINGS "</A></B></LI>" POSTERAZORHELPENDLINE \
 						"<UL>" POSTERAZORHELPENDLINE \
 							"<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP01 "\">" ENGLISH_POSTERAZORHELSTEP " 1: " ENGLISH_POSTERAZORHELPSTEPTITLE01 "</A></LI>" POSTERAZORHELPENDLINE \
 							"<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP02 "\">" ENGLISH_POSTERAZORHELSTEP " 2: " ENGLISH_POSTERAZORHELPSTEPTITLE02 "</A></LI>" POSTERAZORHELPENDLINE \
@@ -139,9 +141,17 @@ public:
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUAL, ENGLISH_POSTERAZORHELPMANUAL) \
 					POSTERAZORHELPINDENTATION "PosteRazor has its user interface organized in a \"Wizard\" fashion. All settings for the poster creation can be done in 5 Steps. The <b>Back</b> and <b>Next</b> buttons navigate through these steps.<br>" POSTERAZORHELPENDLINE \
-					"The <b>?</b> Button opens a help window with an explanation of the current step. Before working for the first time with the PosteRazor, please choose your the dimension which you intend to work with in the <b>Units</b> chooser on the lower left of the dialog.<br>" POSTERAZORHELPENDLINE \
+					"The <b>?</b> Button opens a help window with an explanation of the current step.<br>" POSTERAZORHELPENDLINE \
 					"Every input field for a dimension, etc. can as usual be modified with the keyboard but also by clicking on it and dragging the mouse to the left and right. The different mouse buttons in-/de-crease the values in different steps.<br>" POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "All entries and choices are remembered until the next usage of the PosteRazor." POSTERAZORHELPENDLINE \
+
+					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORSETTINGS, ENGLISH_POSTERAZORHELPSETTINGS) \
+					POSTERAZORHELPINDENTATION "By pressing the <b>Settings...</b> button on the lower left of the main dialog, the PosteRazor settings dialog is opened." POSTERAZORHELPENDLINE \
+					"<UL>" POSTERAZORHELPENDLINE \
+					"<LI><b>Dimension unit:</b> choose the unit of length that you a re used to work with. When a unit is changed, all predefined values and the values which You already defined are transformed to the new unit.</LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>Language:</b> choose your language. The PosteRazor does not need to be restarted when the language is changed.</LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>Preview with OpenGL:</b> choose, if the PosteRazor should use OpenGL for the image preview. Usually, on modern hardware OpenGL should be faster and give a more precise preview than the non-OpenGL preview. But if the PosteRazor seems to be slow and unresponsive, plese try if it works better with OpenGL switched off.</LI>" POSTERAZORHELPENDLINE \
+					"</UL>" POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP01, ENGLISH_POSTERAZORHELSTEP " 1: " ENGLISH_POSTERAZORHELPSTEPTITLE01) \
 					POSTERAZORHELPINDENTATION "Load an image by clicking the button with the open icon and selecting an image file, or by drag & dropping an image file on the PosteRazor. The drag & drop also works in the other steps.<br>" POSTERAZORHELPENDLINE \
@@ -157,9 +167,11 @@ public:
 					
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP04, ENGLISH_POSTERAZORHELSTEP " 4: " ENGLISH_POSTERAZORHELPSTEPTITLE04) \
 					POSTERAZORHELPINDENTATION "Define the final poster size, in one of the following three modes which can be selected by the corresponding radio buttons:<br>" POSTERAZORHELPENDLINE \
-					"<b>Absolute image size</b>: You want to have a specific size of your poster.<br>" POSTERAZORHELPENDLINE \
-					"<b>Size in Pages</b>: you want to use whole paper sheets and specify how many of them of them you want to use.<br>" POSTERAZORHELPENDLINE \
-					"<b>Image Size in percent</b>: your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to enlage the image by a certain factor.<br>" POSTERAZORHELPENDLINE \
+					"<UL>" POSTERAZORHELPENDLINE \
+					"<LI><b>Absolute image size</b>: You want to have a specific size of your poster.</LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>Size in Pages</b>: you want to use whole paper sheets and specify how many of them of them you want to use.</LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>Image Size in percent</b>: your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to enlage the image by a certain factor.</LI>" POSTERAZORHELPENDLINE \
+					"</UL>" POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "The aspect ratio of width and height is always 1:1 and is automatically recalculated. In the preview area, you can see the overlapping areas which are surrounded by light red rectangles." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP05, ENGLISH_POSTERAZORHELSTEP " 5: " ENGLISH_POSTERAZORHELPSTEPTITLE05) \
@@ -175,9 +187,11 @@ public:
 					POSTERAZORHELPINDENTATION "Why a PDF and not other raster formats as output? PDF gives the possibility to embed the whole image and virtually cut it, and not only between pixels but also with pixel fractions. Aditionally, it seems more practicable to print a multi page PDF file instead of multiple image files." POSTERAZORHELPENDLINE \
 					
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES, ENGLISH_POSTERAZORHELPCODEFROMTHIRDPARTIES) \
-					POSTERAZORHELPINDENTATION "<b>FLTK</b> was used for the user interface. It is a small (by size), fast, fun&easy to learn and very portable UI Toolkit. <b>www.fltk.org</b>" POSTERAZORHELPENDLINE \
-					POSTERAZORHELPINDENTATION "<b>FreeImage</b> was used for the image loading and handling. It makes image loading and handling really a no-brainer and is portable to the platforms, where the PosteRazor runs. <b>freeimage.sourceforge.net</b>" POSTERAZORHELPENDLINE \
-					POSTERAZORHELPINDENTATION "<b>Fl_Native_File_Chooser</b> was used for the file open and save dialog in the native system look and feel. <b>seriss.com/people/erco/fltk/Fl_Native_File_Chooser/</b> and <b>homepages.dordt.edu/~nthnlvnd/soft/</b>" POSTERAZORHELPENDLINE \
+					"<UL>" POSTERAZORHELPENDLINE \
+					"<LI><b>FLTK</b> was used for the user interface. It is a small (by size), fast, fun&easy to learn and very portable UI Toolkit. <a href=\"http://www.fltk.org/\">www.fltk.org</a></LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>FreeImage</b> was used for the image loading and handling. It makes image loading and handling really a no-brainer and is portable to the platforms, where the PosteRazor runs. <a href=\"http://freeimage.sourceforge.net/\">FreeImage website</a></LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>Fl_Native_File_Chooser</b> was used for the file open and save dialog in the native system look and feel. <a href=\"http://seriss.com/people/erco/fltk/Fl_Native_File_Chooser/>Fl_Native_File_Chooser website</a></LI>" POSTERAZORHELPENDLINE \
+					"</UL>" POSTERAZORHELPENDLINE \
 					
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORLICENSE, ENGLISH_POSTERAZORHELPLICENSE) \
 					"PosteRazor - Make your own poster!<br>" POSTERAZORHELPENDLINE \
