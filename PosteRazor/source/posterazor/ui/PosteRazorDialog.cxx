@@ -45,6 +45,7 @@ const char PreferencesProduct[] = "PosteRazor";
 const char preferencesKey_UseOpenGLForPreview[] = "UseOpenGLForPreview";
 const char preferencesKey_LoadImageChooserLastPath[] = "LoadImageChooserLastPath";
 const char preferencesKey_SavePosterChooserLastPath[] = "SavePosterChooserLastPath";
+const char preferencesKey_UILanguage[] = "UILanguage";
 
 PosteRazorDragDropWidget::PosteRazorDragDropWidget(int x, int y, int w, int h, const char *label)
 	:Fl_Box(FL_NO_BOX, x, y, w, h, label)
@@ -321,6 +322,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 	m_posteRazor->ReadPersistentPreferences(&preferences);
 	Fl_Paint_Canvas_Group::ePaintCanvasTypes paintCanvasType =
 		preferences.GetBoolean(preferencesKey_UseOpenGLForPreview, true)?Fl_Paint_Canvas_Group::PaintCanvasTypeGL:Fl_Paint_Canvas_Group::PaintCanvasTypeDraw;
+	TRANSLATIONS->SelectLangue((enum Translations::eLanguages)preferences.GetInteger(preferencesKey_UILanguage, Translations::eLanguageUndefined));
 
 	strncpy(m_loadImageChooserLastPath, preferences.GetString(preferencesKey_LoadImageChooserLastPath, ""), sizeof(m_loadImageChooserLastPath));
 	m_loadImageChooserLastPath[sizeof(m_loadImageChooserLastPath) - 1] = '\0';
@@ -385,6 +387,7 @@ PosteRazorDialog::~PosteRazorDialog()
 	preferences.SetBoolean(m_paintCanvasGroup->GetPaintCanvasType() == Fl_Paint_Canvas_Group::PaintCanvasTypeGL, preferencesKey_UseOpenGLForPreview);
 	preferences.SetString(m_loadImageChooserLastPath, preferencesKey_LoadImageChooserLastPath);
 	preferences.SetString(m_savePosterChooserLastPath, preferencesKey_SavePosterChooserLastPath);
+	preferences.SetInteger(TRANSLATIONS->GetSelectedLanguage(), preferencesKey_UILanguage);
 
 	if (m_paperFormatMenuItems)
 		delete[] m_paperFormatMenuItems;
