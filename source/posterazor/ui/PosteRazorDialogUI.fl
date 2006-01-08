@@ -51,9 +51,12 @@ widget_class PosteRazorDialogUI {
       xywh {410 420 95 25} labelcolor 32
     }
     Fl_Button m_settingsButton {
-      label {Settings...}
       callback {OpenSettingsDialog();}
-      xywh {10 420 135 25} labelcolor 32
+      image {images/settingsIcon.png} xywh {10 420 50 25} labelcolor 32 align 16
+    }
+    Fl_Box m_settingsButtonLabel {
+      label {Settings...}
+      xywh {60 420 175 25} align 20
     }
   }
   Fl_Wizard m_wizard {

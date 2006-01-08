@@ -601,7 +601,7 @@ void PosteRazorDialog::UpdateLanguage(void)
 	m_imageAlignmentGroup->label(TRANSLATIONS->ImageAlignment());
 	m_imageInfoGroup->label(TRANSLATIONS->ImageInformations());
 	m_imageLoadGroup->label(TRANSLATIONS->InputImage());
-	m_settingsButton->label(TRANSLATIONS->Settings());
+	m_settingsButtonLabel->label(TRANSLATIONS->Settings());
 
 	m_savePosterGroup->label(TRANSLATIONS->SaveThePoster());
 	m_setLaunchPDFApplicationCheckButton->label(TRANSLATIONS->LaunchPDFApplication());
