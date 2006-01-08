@@ -56,6 +56,7 @@ private:
   void cb_m_settingsButton_i(Fl_Button*, void*);
   static void cb_m_settingsButton(Fl_Button*, void*);
 public:
+  Fl_Box *m_settingsButtonLabel;
   Fl_Wizard *m_wizard;
   Fl_Group *m_loadInputImageStep;
   Fl_Group *m_imageLoadGroup;
