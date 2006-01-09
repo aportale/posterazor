@@ -51,12 +51,12 @@ widget_class PosteRazorDialogUI {
       xywh {410 420 95 25} labelcolor 32
     }
     Fl_Button m_settingsButton {
-      callback {OpenSettingsDialog();}
-      image {images/settingsIcon.png} xywh {10 420 50 25} labelcolor 32 align 16
+      label {Settings...}
+      callback {OpenSettingsDialog();} selected
+      xywh {10 420 135 25} labelcolor 32 align 16
     }
     Fl_Box m_settingsButtonLabel {
-      label {Settings...}
-      xywh {60 420 175 25} align 20
+      image {images/settingsIcon.png} xywh {145 420 40 25} align 20
     }
   }
   Fl_Wizard m_wizard {
@@ -490,7 +490,7 @@ widget_class PosteRazorHelpDialogUI {
 widget_class PosteRazorSettingsDialogUI {
   label {PosteRazor settings}
   user_data this open
-  xywh {623 383 315 400} type Double
+  xywh {451 759 315 400} type Double
   code0 {m_okWasPressed = false;}
   class Fl_Double_Window modal visible
 } {
@@ -503,7 +503,7 @@ widget_class PosteRazorSettingsDialogUI {
       label Units open
       xywh {20 35 275 85} box THIN_DOWN_BOX color 45
     } {
-      Fl_Group m_unitOfLengthButtonsGroup {open selected
+      Fl_Group m_unitOfLengthButtonsGroup {open
         xywh {30 45 255 25}
       } {}
       Fl_Box m_unitOfLengthExplanationBox {
