@@ -37,10 +37,10 @@ void PosteRazorDialogUI::cb_m_prevButton(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()))->cb_m_prevButton_i(o,v);
 }
 
-void PosteRazorDialogUI::cb_m_settingsButton_i(Fl_Button*, void*) {
+void PosteRazorDialogUI::cb_m_settingsButton_i(Fl_Image_Text_Button*, void*) {
   OpenSettingsDialog();
 }
-void PosteRazorDialogUI::cb_m_settingsButton(Fl_Button* o, void* v) {
+void PosteRazorDialogUI::cb_m_settingsButton(Fl_Image_Text_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()))->cb_m_settingsButton_i(o,v);
 }
 
@@ -1035,14 +1035,22 @@ o->when(FL_WHEN_RELEASE);
     o->labelcolor(FL_GRAY0);
     o->callback((Fl_Callback*)cb_m_prevButton);
   }
-  { Fl_Button* o = m_settingsButton = new Fl_Button(10, 420, 135, 25, "Settings...");
+  { Fl_Image_Text_Button* o = m_settingsButton = new Fl_Image_Text_Button(10, 420, 195, 25, "Settings...");
+    o->box(FL_UP_BOX);
+    o->color(FL_BACKGROUND_COLOR);
+    o->selection_color(FL_BACKGROUND_COLOR);
+    o->labeltype(FL_NORMAL_LABEL);
+    o->labelfont(0);
+    o->labelsize(14);
     o->labelcolor(FL_GRAY0);
     o->callback((Fl_Callback*)cb_m_settingsButton);
     o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
+    o->when(FL_WHEN_RELEASE);
   }
-  { Fl_Box* o = m_settingsButtonLabel = new Fl_Box(145, 420, 40, 25);
+  { Fl_Box* o = m_settingsButtonLabel = new Fl_Box(205, 420, 40, 25);
     o->image(image_settingsIcon);
     o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
+    o->hide();
   }
   o->end();
 }
