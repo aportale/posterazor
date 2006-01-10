@@ -25,6 +25,7 @@
 #define PosteRazorDialogUI_h
 #include <FL/Fl.H>
 #include "Fl_Paint_Canvas_Group.h"
+#include "Fl_Image_Text_Button.h"
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Group.H>
 #include <FL/Fl_Box.H>
@@ -51,10 +52,10 @@ private:
   void cb_m_prevButton_i(Fl_Button*, void*);
   static void cb_m_prevButton(Fl_Button*, void*);
 public:
-  Fl_Button *m_settingsButton;
+  Fl_Image_Text_Button *m_settingsButton;
 private:
-  void cb_m_settingsButton_i(Fl_Button*, void*);
-  static void cb_m_settingsButton(Fl_Button*, void*);
+  void cb_m_settingsButton_i(Fl_Image_Text_Button*, void*);
+  static void cb_m_settingsButton(Fl_Image_Text_Button*, void*);
 public:
   Fl_Box *m_settingsButtonLabel;
   Fl_Wizard *m_wizard;

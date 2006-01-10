@@ -358,6 +358,8 @@ PosteRazorDialog::PosteRazorDialog(void)
 	m_paintCanvasGroup->SetPaintCanvasType(paintCanvasType);
 	m_paintCanvasGroup->SetPainterInterface(m_posteRazor);
 
+	m_settingsButton->label_image(m_settingsButtonLabel->image());
+
 	UpdateNavigationButtons();
 	UpdatePreviewState();
 	SetPaperSizeFields();
