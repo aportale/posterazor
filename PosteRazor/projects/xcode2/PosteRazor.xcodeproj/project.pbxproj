@@ -15,6 +15,8 @@
 		821821EA0916D2BA004580FC /* libfltk_gl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 821821E90916D2BA004580FC /* libfltk_gl.a */; };
 		8221C68408A566EC00EB193B /* libfltk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8221C68308A566EC00EB193B /* libfltk.a */; };
 		8221C68608A566FC00EB193B /* libfreeimage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8221C68508A566FC00EB193B /* libfreeimage.a */; };
+		82729AC109733F68004A7EF2 /* Fl_Image_Text_Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82729ABF09733F67004A7EF2 /* Fl_Image_Text_Button.cpp */; };
+		82729AC209733F68004A7EF2 /* Fl_Image_Text_Button.h in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 82729AC009733F68004A7EF2 /* Fl_Image_Text_Button.h */; };
 		82814C2408A5642E006D2A26 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9504C8FFE6A3BC11CA0CBA /* ApplicationServices.framework */; };
 		82814C4308A5647B006D2A26 /* Fl_Native_File_Chooser.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82814C3B08A5647B006D2A26 /* Fl_Native_File_Chooser.cxx */; };
 		82814C6008A564A3006D2A26 /* PaperFormats.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82814C5708A564A3006D2A26 /* PaperFormats.cxx */; };
@@ -82,6 +84,7 @@
 				82028CDB091E6F1500763263 /* LICENSE in Copy README, LICENSE, CHANGES */,
 				82028CDC091E6F1500763263 /* README in Copy README, LICENSE, CHANGES */,
 				82028CDA091E6F1500763263 /* CHANGES in Copy README, LICENSE, CHANGES */,
+				82729AC209733F68004A7EF2 /* Fl_Image_Text_Button.h in Copy README, LICENSE, CHANGES */,
 			);
 			name = "Copy README, LICENSE, CHANGES";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +104,8 @@
 		8221C68508A566FC00EB193B /* libfreeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreeimage.a; path = ../../thirdparty/FreeImage/libfreeimage.a; sourceTree = SOURCE_ROOT; };
 		8221C68908A567C100EB193B /* PosteRazor_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazor_Prefix.pch; sourceTree = "<group>"; };
 		8239907208F175820038ED14 /* PosteRazor.icns */ = {isa = PBXFileReference; explicitFileType = image.icns; name = PosteRazor.icns; path = ../../source/posterazor/ui/OSXResources/PosteRazor.icns; sourceTree = SOURCE_ROOT; };
+		82729ABF09733F67004A7EF2 /* Fl_Image_Text_Button.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Image_Text_Button.cpp; sourceTree = "<group>"; };
+		82729AC009733F68004A7EF2 /* Fl_Image_Text_Button.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Image_Text_Button.h; sourceTree = "<group>"; };
 		82814C3708A5647B006D2A26 /* Fl_Native_File_Chooser.H */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Fl_Native_File_Chooser.H; sourceTree = "<group>"; };
 		82814C3B08A5647B006D2A26 /* Fl_Native_File_Chooser.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Native_File_Chooser.cxx; sourceTree = "<group>"; };
 		82814C5708A564A3006D2A26 /* PaperFormats.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PaperFormats.cxx; sourceTree = "<group>"; };
@@ -268,6 +273,8 @@
 		82F01D5F093FC18A0037F1BD /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				82729ABF09733F67004A7EF2 /* Fl_Image_Text_Button.cpp */,
+				82729AC009733F68004A7EF2 /* Fl_Image_Text_Button.h */,
 				82F01D60093FC18A0037F1BD /* Fl_Draw_Paint_Canvas.cpp */,
 				82F01D61093FC18A0037F1BD /* Fl_Draw_Paint_Canvas.h */,
 				82F01D62093FC18A0037F1BD /* Fl_Gl_Paint_Canvas.cpp */,
@@ -393,6 +400,7 @@
 				82F01DAB093FC18A0037F1BD /* PosteRazorDialog.cxx in Sources */,
 				82F01DAD093FC18A0037F1BD /* PosteRazorDialogUI.cxx in Sources */,
 				82F01DB6093FC18A0037F1BD /* Translations.cxx in Sources */,
+				82729AC109733F68004A7EF2 /* Fl_Image_Text_Button.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
