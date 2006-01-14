@@ -92,7 +92,7 @@ public:
 
 #define ENGLISH_POSTERAZORHELSTEP                     "Step"
 
-#define ENGLISH_POSTERAZORHELPABOUT                   "About"
+#define ENGLISH_POSTERAZORHELPABOUT                   "About the PosteRazor"
 #define ENGLISH_POSTERAZORHELPMANUAL                  "Manual"
 #define ENGLISH_POSTERAZORHELPSETTINGS                "Settings"
 #define ENGLISH_POSTERAZORHELPSTEPTITLE01             "Load an input image"
@@ -141,14 +141,14 @@ public:
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUAL, ENGLISH_POSTERAZORHELPMANUAL) \
 					POSTERAZORHELPINDENTATION "PosteRazor has its user interface organized in a \"Wizard\" fashion. All settings for the poster creation can be done in 5 Steps. The <b>Back</b> and <b>Next</b> buttons navigate through these steps.<br>" POSTERAZORHELPENDLINE \
-					"The <b>?</b> Button opens a help window with an explanation of the current step.<br>" POSTERAZORHELPENDLINE \
+					"The <b>?</b> button opens a help window with an explanation of the current step.<br>" POSTERAZORHELPENDLINE \
 					"Every input field for a dimension, etc. can as usual be modified with the keyboard but also by clicking on it and dragging the mouse to the left and right. The different mouse buttons in-/de-crease the values in different steps.<br>" POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "All entries and choices are remembered until the next usage of the PosteRazor." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORSETTINGS, ENGLISH_POSTERAZORHELPSETTINGS) \
 					POSTERAZORHELPINDENTATION "By pressing the <b>Settings...</b> button on the lower left of the main dialog, the PosteRazor settings dialog is opened." POSTERAZORHELPENDLINE \
 					"<UL>" POSTERAZORHELPENDLINE \
-					"<LI><b>Dimension unit:</b> choose the unit of length that you a re used to work with. When a unit is changed, all predefined values and the values which You already defined are transformed to the new unit.</LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>Unit of Length:</b> choose the unit of length that you a re used to work with. When a unit is changed, all predefined values and the values which You already defined are transformed to the new unit.</LI>" POSTERAZORHELPENDLINE \
 					"<LI><b>Language:</b> choose your language. The PosteRazor does not need to be restarted when the language is changed.</LI>" POSTERAZORHELPENDLINE \
 					"<LI><b>Preview with OpenGL:</b> choose, if the PosteRazor should use OpenGL for the image preview. Usually, on modern hardware OpenGL should be faster and give a more precise preview than the non-OpenGL preview. But if the PosteRazor seems to be slow and unresponsive, plese try if it works better with OpenGL switched off.</LI>" POSTERAZORHELPENDLINE \
 					"</UL>" POSTERAZORHELPENDLINE \
@@ -202,7 +202,6 @@ public:
 					"You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA." POSTERAZORHELPENDLINE \
 				"</BODY>" POSTERAZORHELPENDLINE \
 			"</HTML>";
-
 	}
 
 	const int FlagImageWidth(void)                    {return 20;}
