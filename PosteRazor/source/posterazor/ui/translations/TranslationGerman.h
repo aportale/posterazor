@@ -147,7 +147,7 @@ public:
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUAL, GERMAN_POSTERAZORHELPMANUAL) \
 					POSTERAZORHELPINDENTATION "Der PosteRazor hat eine Benutzerf&uuml;hrung im \"Assistenten\"-Stil. Alle Einstellungen f&uuml;r die Postererstellung werden in f&uuml;nf Schritten erledigt. Die <b>Weiter</b> und <b>Zur&uuml;ck</b>-Kn&ouml;pfe bl&auml;ttern durch diese Schritte.<br>" POSTERAZORHELPENDLINE \
 					"Der <b>?</b>-Knopf &ouml;ffnet ein Hilfefenster mit der Beschreibung des aktuellen Schrittes.<br>" POSTERAZORHELPENDLINE \
-					"Jedes Eingabefeld f&uuml;r z.B. eine Ma&szlig;angabe, kann wie &uuml;blich mit der Tastatur bearbeitet werden. Die Werte k&ouml;nnen aber auch mit der Maus modifiziert werden, indem auf ein Feld geklickt und die Maus hin &amp; her bewegt wird. Die verschiedenen Mauskn&ouml;pfe ver&auml;ndern die Werte in unterschiedlich gro&zslig;en Schritten.<br>" POSTERAZORHELPENDLINE \
+					"Jedes Eingabefeld f&uuml;r z.B. eine Ma&szlig;angabe, kann wie &uuml;blich mit der Tastatur bearbeitet werden. Die Werte k&ouml;nnen aber auch mit der Maus modifiziert werden, indem auf ein Feld geklickt und die Maus hin &amp; her bewegt wird. Die verschiedenen Mauskn&ouml;pfe ver&auml;ndern die Werte in unterschiedlich gro&szlig;en Schritten.<br>" POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "Der PosteRazor merkt sich jede Eingabe und Auswahl bis zur n&auml;chsten Benutzung des Programms." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORSETTINGS, GERMAN_POSTERAZORHELPSETTINGS) \
@@ -159,7 +159,7 @@ public:
 					"</UL>" POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP01, GERMAN_POSTERAZORHELSTEP " 1: " GERMAN_POSTERAZORHELPSTEPTITLE01) \
-					POSTERAZORHELPINDENTATION "Laden Sie ein Ausgangs-Bild, indem sie auf das \"Neu\"-Symbol clicken und eine Datei w&auml;hlen, oder indem Sie eine Datei auf den PosteRazor fallen lassen (Drag &amp; Drop). Die Drag &amp; Drop-Funktion des Ausgangsbildes ist in allen Assistenten-Schritten vorhanden.<br>" POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Laden Sie ein Ausgangs-Bild, indem sie auf das \"Neu\"-Symbol klicken und eine Datei w&auml;hlen, oder indem Sie eine Datei auf den PosteRazor fallen lassen (Drag &amp; Drop). Die Drag &amp; Drop-Funktion des Ausgangsbildes ist in allen Assistenten-Schritten vorhanden.<br>" POSTERAZORHELPENDLINE \
 					"Viele <a href=\"#" POSTERAZORHELPANCHORINPUTFILEFORMATS "\">Bildformate</a> k&ouml;nnen geladen werden. Nach dem Laden eines Bildes werden in dem Feld <b>Bildinformationen</b> die wichtigsten Angaben aufgelistet." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP02, GERMAN_POSTERAZORHELSTEP " 2: " GERMAN_POSTERAZORHELPSTEPTITLE02) \
@@ -177,31 +177,33 @@ public:
 					"<LI><b>Gr&ouml;&szlig;e in Seiten</b>: Sie wollen die Druckb&ouml;gen komplett nutzen und spezifizieren die Anzahl der B&ouml;gen.</LI>" POSTERAZORHELPENDLINE \
 					"<LI><b>Prozentuelle Gr&ouml;&szlig;e</b>: Ihr Ausgangsbild hat gewisse Ma&szlig;e, die von seiner Anzahl an Pixeln und der Aufl&ouml;sung (dpi, dots per Inch) bestimmt werden und sie wollen das Bild auf einen bestimmten Prozentsatz vergr&ouml;&szlig;ern.</LI>" POSTERAZORHELPENDLINE \
 					"</UL>" POSTERAZORHELPENDLINE \
-					POSTERAZORHELPINDENTATION "Das Seitenverh&auml;ltnis ist immer 1:1, bei der Editierung z.B. der Breite wird die H&ouml;he automatisch errechnet. In dem Vorschaubereich k&ouml;nnen Sie die &Uuml;berlappungen der Bildabschnitte als r&ouml;tlich markierte Balken sehen." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Das Seitenverh&auml;ltnis ist immer 1:1, bei der Editierung z.B. der Breite wird die H&ouml;he automatisch errechnet. In dem Vorschaubereich k&ouml;nnen Sie die &Uuml;berlappungen der Bildabschnitte als r&ouml;tlich markierte Balken sehen. " POSTERAZORHELPENDLINE \
+					"<b>Ausrichtung des Bildes</b> beschreibt die Ausrichtung des Bildes auf der gesamten Papierfl&auml;che des Poster. Diese Eindtellung ist nur dann sinnvoll, wenn das &uuml;berstehende Papier am Ende nicht abgeschnitten werden soll." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP05, GERMAN_POSTERAZORHELSTEP " 5: " GERMAN_POSTERAZORHELPSTEPTITLE05) \
-					POSTERAZORHELPINDENTATION "Save the poster by clicking the save button and specifying a destination file name. Check or uncheck the <b>PDF application after saving</b>, if the standard PDF handling application that is set in your operating system should be automatically started after the PDF file is saved." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Speichern Sie das Poster, indem Sie auf den \"Speichern\"-Knopf klicken und einen Dateinamen und -ort definieren. Aktivieren oder deaktivieren Sie <b>PDF-Applikation nach Speicherung des Posters starten</b>, je nach dem, ob das Poster nach dem Speichern automatisch mit dem Standard-PDF-Programm gestartet werden soll." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORINPUTFILEFORMATS, GERMAN_POSTERAZORHELPINPUTFILEFORMATS) \
-					POSTERAZORHELPINDENTATION "Most of the raster image formats which are supported by FreeImage are also supported by the PosteRazor:<br>" POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Die meisten der Raster-Bild-Formate, die von FreeImage unterst&uuml;tzt werden, k&ouml;nnen vom PosteRazor verarbeitet werden:<br>" POSTERAZORHELPENDLINE \
 					"<b>BMP, DDS files, Dr. Halo, GIF, ICO, IFF, JBIG, JNG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, MNG, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM.<br></b>" POSTERAZORHELPENDLINE \
-					"PosteRazor distinguishes and handles monochrome, greyscale, 4-bit palette, 8-bit palette, 24 bit RGB, and CMYK (only from TIF) images. RGB images with an alpha channel are automatically composed onto a white background." POSTERAZORHELPENDLINE \
+					"PosteRazor unterscheidet und behandelt Monochrom-, Graustufen-, 4-bit Paletten-, 8-bit Paletten-, 24 bit RGB-, and CMYK-Bilder (CMYK nur im TIF-Format). RGB-Bilder mit einem Alphakanal/Transparenzen werden automatisch auf einen wei&szlig;en Hintergrund reduziert." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORWHYPDFOUTPUT, GERMAN_POSTERAZORHELPWHYPDFOUTPUT) \
-					POSTERAZORHELPINDENTATION "Why a PDF output and not direct printing? First of all the developer of this program does not know (yet) how to \"send images to the printer\", on the different operating systems, which PosteRazor is aimed for. Also, PDF makes sense, if a poster is razored at home with all the needed time and the day after it is printed on the color laser printer in the office (after everyone else went home)." POSTERAZORHELPENDLINE \
-					POSTERAZORHELPINDENTATION "Why a PDF and not other raster formats as output? PDF gives the possibility to embed the whole image and virtually cut it, and not only between pixels but also with pixel fractions. Aditionally, it seems more practicable to print a multi page PDF file instead of multiple image files." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Warum PDF als Ausgabeformat, und nicht eine direkte ausgabe &uuml;ber einen Drucker? In erster Linie wei&szlig; der Entwickler dieses Programms (noch) nicht, wie man auf allen Betriebssystemen, auf denen der PosteRazor l&auml;uft, \"Bilder an den Drucker schickt\". Davon abgesehen ist PDF zum Beispiel sinnvoll, wenn ein Poster zu Hause vorbereited wurde, und es am n&auml;chsten Tag mit dem guten Drucker auf der Arbeit gedruckt werden soll (Nat&uuml;rlich erst, wenn Chef und Kollegen Feierabend haben)." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Warum PDF und nicht andere Raster-Bildformate? PDF bietet die M&ouml;glichkeit, ein ganzes Bild einzubetten und es virtuell zu zerschneiden. Das Zerschneiden ist nicht nur zwischen Pixeln sondern mitten durch Pixel hindurch m&ouml;glich. Au&szlig;erdem ist es praktischer, ein mehrseitiges PDF-Dokument statt mehrerer einzelnder Bilddateien zu drucken." POSTERAZORHELPENDLINE \
 					
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES, GERMAN_POSTERAZORHELPCODEFROMTHIRDPARTIES) \
 					"<UL>" POSTERAZORHELPENDLINE \
-					"<LI><b>FLTK</b> was used for the user interface. It is a small (by size), fast, fun&easy to learn and very portable UI Toolkit. <a href=\"http://www.fltk.org/\">www.fltk.org</a></LI>" POSTERAZORHELPENDLINE \
-					"<LI><b>FreeImage</b> was used for the image loading and handling. It makes image loading and handling really a no-brainer and is portable to the platforms, where the PosteRazor runs. <a href=\"http://freeimage.sourceforge.net/\">FreeImage website</a></LI>" POSTERAZORHELPENDLINE \
-					"<LI><b>Fl_Native_File_Chooser</b> was used for the file open and save dialog in the native system look and feel. <a href=\"http://seriss.com/people/erco/fltk/Fl_Native_File_Chooser/\">Fl_Native_File_Chooser website</a></LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>FLTK</b> wird f&uuml;r die grafische Benutzerschnittstelle eingesetzt. Es ist eine kleine (speicherplatzbezogen), schnelle, angenehm einfach zu erlernende UI-Bibliothek. <a href=\"http://www.fltk.org/\">www.fltk.org</a></LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>FreeImage</b> wird f&uuml;r das Laden und Bearbeiten von Bildern genutzt. Diese Bibliothek macht das Laden, bearbeiten und Speuchern zu einem Kinderspiel und es is auf alle Plattformen portierbar, auf denen PosteRazor l&auml;uft. <a href=\"http://freeimage.sourceforge.net/\">FreeImage website</a></LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>Fl_Native_File_Chooser</b> wird benutzt, um den Dateidialogen systemspezifisches Aussehen zu verleihen. <a href=\"http://seriss.com/people/erco/fltk/Fl_Native_File_Chooser/\">Internetseite von Fl_Native_File_Chooser</a></LI>" POSTERAZORHELPENDLINE \
 					"</UL>" POSTERAZORHELPENDLINE \
 					
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORLICENSE, GERMAN_POSTERAZORHELPLICENSE) \
-					"PosteRazor - Make your own poster!<br>" POSTERAZORHELPENDLINE \
-					"<a href=\"http://posterazor.sourceforge.net/\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
+					"PosteRazor - Mach' Dein eigenes Poster!<br>" POSTERAZORHELPENDLINE \
+					"<a href=\"http://posterazor.sourceforge.net/?lang=german\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
 					"Copyright (C) 2005 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+					"Der folgende Lizenztext ist in seiner englischen Originalfassung aufgef&uuml;hrt, da die <a href=\"http://www.gnu.de/gpl-ger.html\">deutsche &Uuml;bersetzung</a> nicht offiziell oder im rechtlichen Sinne anerkannt ist.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 					"This program is free software; you can redistribute it and/or modify it under the terms of the <a href=\"http://www.gnu.org/licenses/gpl.txt\">GNU General Public License</a> as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 					"This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 					"You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA." POSTERAZORHELPENDLINE \
