@@ -101,8 +101,8 @@
          id="image1338"
          height="110.12753"
          width="75.950027"
-         sodipodi:absref="D:\temp\PosteRazor\webpage\images\monalisa.png"
-         xlink:href="D:\temp\PosteRazor\webpage\images\monalisa.png"
+         sodipodi:absref="monalisa.png"
+         xlink:href="monalisa.png"
          x="564.07593"
          y="345.75000"
          transform="translate(-564.0759,-345.7500)" />
@@ -163,14 +163,14 @@
        y="321.06546" />
     <g
        id="g5334"
-       inkscape:export-filename="d:\temp\PosteRazor\webpage\images\workflow.png"
+       inkscape:export-filename="workflow.png"
        inkscape:export-xdpi="75.022018"
        inkscape:export-ydpi="75.022018">
       <image
          y="341.83118"
          x="350.28574"
-         xlink:href="D:\temp\PosteRazor\webpage\images\screenshots\step04.png"
-         sodipodi:absref="D:\temp\PosteRazor\webpage\images\screenshots\step04.png"
+         xlink:href="screenshots\step04.png"
+         sodipodi:absref="screenshots\step04.png"
          width="147.78661"
          height="113.42857"
          id="image1313" />
@@ -187,8 +187,8 @@
       <image
          y="345.13220"
          x="214.28351"
-         xlink:href="D:\temp\PosteRazor\webpage\images\monalisa.png"
-         sodipodi:absref="D:\temp\PosteRazor\webpage\images\monalisa.png"
+         xlink:href="monalisa.png"
+         sodipodi:absref="monalisa.png"
          width="75.950027"
          height="110.12753"
          id="image1327" />
