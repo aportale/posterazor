@@ -159,25 +159,25 @@ public:
 					"</UL>" POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP01, GERMAN_POSTERAZORHELSTEP " 1: " GERMAN_POSTERAZORHELPSTEPTITLE01) \
-					POSTERAZORHELPINDENTATION "Load an image by clicking the button with the open icon and selecting an image file, or by drag & dropping an image file on the PosteRazor. The drag & drop also works in the other steps.<br>" POSTERAZORHELPENDLINE \
-					"Many <a href=\"#" POSTERAZORHELPANCHORINPUTFILEFORMATS "\">file formats and image types</a> can be loaded. After loading the image, the most important informations are listed in the <b>Image informations</b> fields." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Laden Sie ein Ausgangs-Bild, indem sie auf das \"Neu\"-Symbol clicken und eine Datei w&auml;hlen, oder indem Sie eine Datei auf den PosteRazor fallen lassen (Drag &amp; Drop). Die Drag &amp; Drop-Funktion des Ausgangsbildes ist in allen Assistenten-Schritten vorhanden.<br>" POSTERAZORHELPENDLINE \
+					"Viele <a href=\"#" POSTERAZORHELPANCHORINPUTFILEFORMATS "\">Bildformate</a> k&ouml;nnen geladen werden. Nach dem Laden eines Bildes werden in dem Feld <b>Bildinformationen</b> die wichtigsten Angaben aufgelistet." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP02, GERMAN_POSTERAZORHELSTEP " 2: " GERMAN_POSTERAZORHELPSTEPTITLE02) \
-					POSTERAZORHELPINDENTATION "Define the paper sheet size that you use in your printer. A standard paper sheet size can be selected from the <b>Format</b> chooser, along with the desired paper sheet <b>Orientation</b>. Alternatively, a custom paper sheet size can be define in the <b>Custom</b> tab. (Please write me an email, if you miss your standard paper size in the chooser)." POSTERAZORHELPENDLINE \
-					"Paper borders are defined in the <b>Borders</b> fileds. Even if your printer does need no (or small) paper borders, some border might be needed to have enough area for gluing the final poster tiles together." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Definieren Sie, welches Papierma&szlig; Ihr Drucker unterst&uuml;tzt. Ein Standard-papierbogen-Format kann in der <b>Format</b>-Auswahl selektiert werden und ebenso die gew&ouml;nschte <b>Ausrichtung</b> der B&ouml;gen. Alternativ k&ouml;nnen in dem <b>Eigenes</b>-Reiter selbstdefinierte Bogenma&szlig;e angegeben werden. (Bitte schreiben Sie mir eine E-Mail, Falls Sie Ihr Standard-Format in der Auswahl vermissen)." POSTERAZORHELPENDLINE \
+					"Papierr&auml;nder k&ouml;nnen in den <b>R&auml;nder</b>-Feldern angegeben werden. Auch wenn Ihr Drucker randlos druckt, wird sp&auml;ter gegebenfalls etwas Rand als Klebefl&auml;che ben&ouml;tigt." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP03, GERMAN_POSTERAZORHELSTEP " 3: " GERMAN_POSTERAZORHELPSTEPTITLE03) \
-					POSTERAZORHELPINDENTATION "Image tile overlapping is needed to have some tolerance for cutting off the unneded borders from one side. Additionally, like the borders from the previous step, if gives more area for gluing together the final poster tiles." POSTERAZORHELPENDLINE \
-					POSTERAZORHELPINDENTATION "The <b>Overlapping position</b> defines the borders that are intended to be overlapped by the neighbour tiles. The borders on the opposite sides are intended to be cut (except on the outermost tiles)." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Eine &Uuml;berlappung der Bildabschnitte ist sehr hilfreich, da sie beim Schneiden der &uuml;berf&auml;lligen R&auml;nder und zusammenkleben der Teile eine gewisse Fehlertoleranz ins Spiel bringt. Zus&auml;tzlich bietet sie (ebenso wie die R&auml;nder des vorangegangenen Schrittes) mehr Klebefl&auml;che f&uuml;r die Bildteile." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Die Angabe <b>&Uuml;berlappende Seiten</b> beschreibt, welche Seitenr&auml;nder von den Nachbar-Bildabschnitten &Uuml;berlagert werden sollen. Die R&auml;nder auf den gegen&uuml;berliegenden Seiten sind zum Abschneiden gedacht (ausgenommen die auf den &auml;u&szlig;eren Bildabschnitten)." POSTERAZORHELPENDLINE \
 					
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP04, GERMAN_POSTERAZORHELSTEP " 4: " GERMAN_POSTERAZORHELPSTEPTITLE04) \
-					POSTERAZORHELPINDENTATION "Define the final poster size, in one of the following three modes which can be selected by the corresponding radio buttons:<br>" POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Beschreiben Sie auf eine der drei folgenden Weisen die Ma&szlig;e des finalen Posters: Die entsprechende Eingabe-Weise muss per Radio-Button aktiviert sein.<br>" POSTERAZORHELPENDLINE \
 					"<UL>" POSTERAZORHELPENDLINE \
-					"<LI><b>Absolute image size</b>: You want to have a specific size of your poster.</LI>" POSTERAZORHELPENDLINE \
-					"<LI><b>Size in Pages</b>: you want to use whole paper sheets and specify how many of them of them you want to use.</LI>" POSTERAZORHELPENDLINE \
-					"<LI><b>Image Size in percent</b>: your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to enlage the image by a certain factor.</LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>Absolute Ma&szlig;e</b>: Sie wollen, dass das Poster ganz bestimmte Ma&szlig;e hat.</LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>Gr&ouml;&szlig;e in Seiten</b>: Sie wollen die Druckb&ouml;gen komplett nutzen und spezifizieren die Anzahl der B&ouml;gen.</LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>Prozentuelle Gr&ouml;&szlig;e</b>: Ihr Ausgangsbild hat gewisse Ma&szlig;e, die von seiner Anzahl an Pixeln und der Aufl&ouml;sung (dpi, dots per Inch) bestimmt werden und sie wollen das Bild auf einen bestimmten Prozentsatz vergr&ouml;&szlig;ern.</LI>" POSTERAZORHELPENDLINE \
 					"</UL>" POSTERAZORHELPENDLINE \
-					POSTERAZORHELPINDENTATION "The aspect ratio of width and height is always 1:1 and is automatically recalculated. In the preview area, you can see the overlapping areas which are surrounded by light red rectangles." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Das Seitenverh&auml;ltnis ist immer 1:1, bei der Editierung z.B. der Breite wird die H&ouml;he automatisch errechnet. In dem Vorschaubereich k&ouml;nnen Sie die &Uuml;berlappungen der Bildabschnitte als r&ouml;tlich markierte Balken sehen." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP05, GERMAN_POSTERAZORHELSTEP " 5: " GERMAN_POSTERAZORHELPSTEPTITLE05) \
 					POSTERAZORHELPINDENTATION "Save the poster by clicking the save button and specifying a destination file name. Check or uncheck the <b>PDF application after saving</b>, if the standard PDF handling application that is set in your operating system should be automatically started after the PDF file is saved." POSTERAZORHELPENDLINE \
