@@ -1,0 +1,102 @@
+h1
+{
+	text-align : center;
+	font-size : 3em;
+}
+
+h2
+{
+	font-size : 2em;
+}
+
+h3
+{
+	font-size : 1.1em;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+hr
+{
+	border : 0;
+	color : #330000;
+	background-color : #330000;
+	height : 3px;
+}
+
+A	
+{
+	color : #330000;
+	background-color : #ffffee;
+}			
+
+A:Visited
+{
+	color : #330000;
+	background-color : #ffffee;
+}			
+
+A:Hover
+{
+	color : #cc0000;
+	background-color : #ffffee;
+}			
+
+A.external
+{
+	background: url(external.png) center right no-repeat;
+	padding-right: 13px;
+}
+
+img
+{
+	border : 0;
+}
+
+body
+{
+	font-family : Verdana,sans-serif;
+	font-size : 10pt;
+	background-color : #eeeeff;
+	margin : 10px;
+}
+
+td
+{
+	text-align : center;
+}
+
+table.center
+{
+	margin-left : auto;
+	margin-right : auto;
+}
+
+li
+{
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+#page
+{
+	padding : 0px 15px;
+	margin : 0 15%;
+	border : 1px solid #330000;
+	background : #ffffee url(images/logo.png) no-repeat; 
+	color : #330000;
+}
+
+#navigation
+{
+	text-align: center;
+}
+
+.fileformats
+{
+	margin-top: 3px;
+	margin-bottom: 3px;
+	padding: 5px 10px;
+	border: 1px solid #330000;
+	background-color: #ffffff;
+}

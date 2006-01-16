@@ -22,131 +22,29 @@
 		<meta name="description" content="PosteRazor - <? text('Make your own poster', 'Mach\' Dein eigenes Poster'); ?>!" />
 		<meta name="keywords" content="Poster, PosteRazor, Print, Fltk, Freeimage, PDF" />
 		<title>PosteRazor - <? text('Make your own poster', 'Mach\' Dein eigenes Poster'); ?>!</title>
-		<style type="text/css">
-		/*<![CDATA[*/
-			h1
-			{
-				text-align : center;
-				font-size : 3em;
-			}
-
-			h2
-			{
-				font-size : 2em;
-			}
-
-			h3
-			{
-				font-size : 1.1em;
-				margin-bottom: 0px;
-				padding-bottom: 0px;
-			}
-
-			hr
-			{
-				border : 0;
-				color : <? echo $textColor; ?>;
-				background-color : <? echo $textColor; ?>;
-				height : 3px;
-			}
-			
-			A	
-			{
-				color : <? echo $textColor; ?>;
-				background-color : <? echo $contentBackgroundColor; ?>;
-			}			
-
-			A:Visited
-			{
-				color : <? echo $textColor; ?>;
-				background-color : <? echo $contentBackgroundColor; ?>;
-			}			
-
-			A:Hover
-			{
-				color : #cc0000;
-				background-color : <? echo $contentBackgroundColor; ?>;
-			}			
-
-			A.external
-			{
-				background: url(external.png) center right no-repeat;
-				padding-right: 13px;
-			}
-			
-			img
-			{
-				border : 0;
-			}
-			
-			body
-			{
-				font-family : Verdana,sans-serif;
-				font-size : 10pt;
-				background-color : #eeeeff;
-				margin : 10px;
-			}
-
-			td
-			{
-				text-align : center;
-			}
-			
-			table.center
-			{
-				margin-left : auto;
-				margin-right : auto;
-			}
-
-			li
-			{
-				margin-top: 5px;
-				margin-bottom: 10px;
-			}
-			
-			.mainpage
-			{
-				padding : 0px 15px;
-				margin : 0 15%;
-				border : 1px solid <? echo $textColor; ?>;
-				background : <? echo $contentBackgroundColor; ?> url(images/logo.png) no-repeat; 
-				color : <? echo $textColor; ?>;
-			}
-			
-			.links
-			{
-				text-align: center;
-			}
-
-			.fileformats
-			{
-				margin-top: 3px;
-				margin-bottom: 3px;
-				padding: 5px 10px;
-				border: 1px solid <? echo $textColor; ?>;
-				background-color: #ffffff;
-			}
-		/*]]>*/
+		<style type="text/css" media="all">
+			@import "style.css";
 		</style>
 	</head>
 	<body>
 		<div style="float:left;" >
 			<p><a href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=141842&amp;type=1" width="88" height="31" alt="SourceForge.net Logo" /></a></p>
 			<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a></p>
-			<p><a href="http://posterazor.uptodown.com/"><img src="http://www.uptodown.com/imagenes/publicado.gif" alt="Programa Recomendado en UpToDown.com" height="42" width="115" /></a></p>
 		</div>
 		
-		<div class="mainpage">
+		<div id="page">
 			<h1>PosteRazor<br /><sup><? text('Make your own poster!', 'Mach\' Dein eigenes Poster!'); ?></sup></h1>
 			<hr />
-			<div class="links">
-				<a href="#news"><? text('News', 'Neuigkeiten'); ?></a>
-				- <a href="#about"><? text('About', '&Uuml;ber'); ?></a>
-				- <a href="#features"><? text('Features', 'Funktionen'); ?></a>
-				- <a href="#screenshots"><? text('Screenshots', 'Bildschirmfotos'); ?></a>
-				- <a class="external" href="http://sourceforge.net/project/showfiles.php?group_id=141842"><? text('Download', 'Herunterladen'); ?></a>
-				- <a href="#thirdparty"><? text('Third&nbsp;party&nbsp;code', 'Code&nbsp;von&nbsp;Drittanbietern'); ?></a>
-				- <a href="#license"><? text('License', 'Lizenz'); ?></a>
+			<div id="navigation">
+				<ul>
+					<li><a href="#news"><? text('News', 'Neuigkeiten'); ?></a></li>
+					<li><a href="#about"><? text('About', '&Uuml;ber'); ?></a></li>
+					<li><a href="#features"><? text('Features', 'Funktionen'); ?></a></li>
+					<li><a href="#screenshots"><? text('Screenshots', 'Bildschirmfotos'); ?></a></li>
+					<li><a class="external" href="http://sourceforge.net/project/showfiles.php?group_id=141842"><? text('Download', 'Herunterladen'); ?></a></li>
+					<li><a href="#thirdparty"><? text('Third&nbsp;party&nbsp;code', 'Code&nbsp;von&nbsp;Drittanbietern'); ?></a></li>
+					<li><a href="#license"><? text('License', 'Lizenz'); ?></a></li>
+				</ul>
 			</div>
 
 			<hr />
