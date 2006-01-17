@@ -38,7 +38,9 @@ body
 	font-size : 10pt;
 	margin: 0px;
 	padding: 0px;
-	background-color : #ff0000;
+	height: 100%;
+	background : url(contentbg.png) repeat-y;
+	background-position: center;
 }
 
 #page
@@ -47,15 +49,13 @@ body
 	margin: 0px;
 	margin-left: auto;
 	margin-right: auto;
-	width: 650px;
-	color : #330000;
+	width: 660px;
 	clear: all;
-	background-color : #00ff00;
 }
 
 #header
 {
-	background : #0000f0 url(images/logo.png) no-repeat;
+	background : url(images/logo.png) no-repeat;
 	padding: 10px;
 	margin: 0px;
 	height: 140px;
@@ -97,7 +97,7 @@ body
 	border-bottom: 1px solid;
 }
 
-#navigation a:link, #navigationlist a:visited
+#navigation a:link, #navigation a:visited
 {
 	color: #EEE;
 	text-decoration: none;
@@ -113,7 +113,6 @@ body
 {
 	float: right;
 	width: 450px;
-	background-color : #00f0f0;
 	padding: 10px;
 	margin: 0px;
 }
