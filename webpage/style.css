@@ -47,7 +47,7 @@ body
 	margin: 0px;
 	margin-left: auto;
 	margin-right: auto;
-	width: 760px;
+	width: 650px;
 	color : #330000;
 	clear: all;
 	background-color : #00ff00;
@@ -112,7 +112,7 @@ body
 #content
 {
 	float: right;
-	width: 560px;
+	width: 450px;
 	background-color : #00f0f0;
 	padding: 10px;
 	margin: 0px;
