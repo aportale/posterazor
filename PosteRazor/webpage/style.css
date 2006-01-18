@@ -1,10 +1,3 @@
-h3
-{
-	font-size : 1.1em;
-	margin-bottom: 0px;
-	padding-bottom: 0px;
-}
-
 A
 {
 	color : #330000;
@@ -39,8 +32,8 @@ body
 	margin: 0px;
 	padding: 0px;
 	height: 100%;
-	background : url(contentbg.png) repeat-y;
-	background-position: center;
+	background : #CCCC99 url(pageshadow.png) repeat-y;
+	background-position: center center;
 }
 
 #page
@@ -49,7 +42,7 @@ body
 	margin: 0px;
 	margin-left: auto;
 	margin-right: auto;
-	width: 660px;
+	width: 650px;
 	clear: all;
 }
 
