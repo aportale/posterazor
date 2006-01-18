@@ -1,11 +1,13 @@
 A
 {
 	color : #330000;
+	background-color : #FFFFCC;
 }			
 
 A:Visited
 {
 	color : #330000;
+	background-color : #FFFFCC;
 }			
 
 A:Hover, A.external:Hover
@@ -32,17 +34,15 @@ body
 	margin: 0px;
 	padding: 0px;
 	background : #CCCC99 url(pageshadow.png) repeat-y;
+	color : #330000;
 	background-position: center center;
 }
 
 #page
 {
 	padding : 0px;
-	margin: 0px;
-	margin-left: auto;
-	margin-right: auto;
+	margin: auto;
 	width: 650px;
-	clear: all;
 }
 
 #header
@@ -123,4 +123,5 @@ body
 	padding: 5px 10px;
 	border: 1px solid #330000;
 	background-color: #ffffff;
+	color : #330000;
 }
