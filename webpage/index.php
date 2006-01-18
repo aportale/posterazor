@@ -20,6 +20,12 @@
 			."&amp;lang=".($langParameter!=""?$langParameter:$lang);
 	}
 	
+	function conditionalSelectedClass($pageLink)
+	{
+		global $page;
+		return $page == $pageLink?" class=\"selected\"":"";
+	}
+	
 	function writeContent()
 	{
 		global $page;
@@ -29,7 +35,7 @@
 		{
 			case 'news':
 ?>
-				<h2><a name="news"></a><? text('News', 'Neuigkeiten'); ?></h2>
+				<h2><? text('News', 'Neuigkeiten'); ?></h2>
 				<ul>
 					<li>
 						<h3><? text('October 3rd 2005', '3. Oktober 2005'); ?>: Version 1.0</h3>
@@ -40,7 +46,7 @@
 			break;
 			case 'features':		
 ?>
-				<h2><a name="features"></a><? text('Features', 'Funktionen'); ?></h2>
+				<h2><? text('Features', 'Funktionen'); ?></h2>
 				<ul>
 					<li>
 						<strong><? text('Input image formats', 'Ausgangs-Bildformate'); ?>.</strong> <? text('All image formats that', 'Alle Bildformate, die'); ?> <a class="external" href="http://freeimage.sourceforge.net/features.html">FreeImage</a> <? text('can read', 'lesen kann,'); ?> <i><? text('should', 'sollten'); ?></i> <? text('be usabe as input for the PosteRazor', 'als Ausgangsmaterial f&uuml;r den PosteRazor geeignet sein'); ?>:
@@ -84,7 +90,7 @@
 			break;
 			case 'screenshots':		
 ?>
-				<h2><a name="screenshots"></a><? text('Screenshots', 'Bildschirmfotos'); ?></h2>
+				<h2><? text('Screenshots', 'Bildschirmfotos'); ?></h2>
 				<div style="align: center; " >
 				<table border="0" class="center" cellpadding="5">
 					<tr><td colspan="3"><? text('Click to enlarge', 'Auf das zu vergr&ouml;&szlig;ernde Bild klicken'); ?>:</td></tr>
@@ -104,7 +110,7 @@
 			break;
 			case 'thirdparty':		
 ?>
-				<h2><a name="thirdparty"></a><? text('Third party code', 'Code von Drittanbietern'); ?></h2>
+				<h2><? text('Third party code', 'Code von Drittanbietern'); ?></h2>
 				<? text('PosteRazor uses third party Open Source libraries. Without those, it would have been painful and unmotivating to create the PosteRazor, and the feature set and portability would have been much smaller. The libraries are statically linked into the PosteRazor.',
 				'Der PosteRazor nutzt quelloffene Programmbibliotheken von Dritten. Ohne diese w&auml;re es schmerzvoll und unmotivierend gewesen, den PosteRazor zu erstellen. Au&szlig;erdem w&auml;ren Funktionsumfang und Portabilit&auml;t kleiner gewesen. Die Bibliotheken sind statisch in den PosteRazor eingebunden.'); ?>
 				<ul>
@@ -122,7 +128,7 @@
 			break;
 			case 'license':		
 ?>
-				<h2><a name="license"></a><? text('License', 'Lizenz'); ?></h2>
+				<h2><? text('License', 'Lizenz'); ?></h2>
 				<p>
 					PosteRazor - <? text('Make your own poster', 'Mach\' Dein eigenes Poster'); ?>!<br />
 					Copyright (C) 2005 by Alessandro Portale<br />
@@ -135,7 +141,7 @@
 			break;
 			default:		
 ?>
-				<h2><a name="about"></a><? text('About', '&Uuml;ber'); ?></h2>
+				<h2><? text('About', '&Uuml;ber'); ?></h2>
 				<? text('The PosteRazor cuts a raster image into pieces which can afterwards be printed out and assembled to a poster.', 'Der PosteRazor schneidet eine Rasterbild-datei in St&uuml;cke, die anschlie&szlig;end ausgedruckt und zu einem Poster zusammengef&uuml;gt werden k&ouml;nnen.'); ?>
 				<br /><div style="text-align: center; margin: 10px;"><img src="images/workflow.png" width="400" height="114" alt="PosteRazor workflow"/></div>
 				<? text('As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps. PosteRazor is available as a Windows and as an OSX version (it should also be compilable on Linux).', 'Als Ausgangsmaterial nimmt der PosteRazor eine Rasterbild-datei. Das Endprodukt ist ein Poster in Form eines mehrseitigen PDF-Dokuments. Eine einfach zu bedienende Benutzerschnittstelle im Assistenten-Stil begleitet durch f&uuml;nf Schritte. Der PosteRazor ist als Windows- und als OSX-Version erh&auml;ltlich (er sollte auch f&uuml;r Linux kompilierbar sein).'); ?>
@@ -144,13 +150,15 @@
 <?
 		};		
 	}
-	
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\" ?>";	
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <?
 	$textColor = "#330000";
 	$contentBackgroundColor = "#ffffee";
-?><html xmlns="http://www.w3.org/1999/xhtml">
+?><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<meta name="author" content="Alessandro Portale" />
@@ -167,8 +175,8 @@
 				<div id="title">PosteRazor</div><div id="tagline"><? text('Make your own poster!', 'Mach\' Dein eigenes Poster!'); ?></div>
 			</div>
 			<div id="navigation">
-				<ul id="navigationlist"><li><a href="<?=linkParameters("news","")?>"><? text('News', 'Neuigkeiten'); ?></a></li><li><a href="<?=linkParameters("about","")?>"><? text('About', '&Uuml;ber'); ?></a></li><li><a href="<?=linkParameters("features","")?>"><? text('Features', 'Funktionen'); ?></a></li><li><a href="<?=linkParameters("screenshots","")?>"><? text('Screenshots', 'Bildschirmfotos'); ?></a></li><li><a class="external" href="http://sourceforge.net/project/showfiles.php?group_id=141842"><? text('Download', 'Herunterladen'); ?></a></li><li><a href="<?=linkParameters("thirdparty","")?>"><? text('Third&nbsp;party&nbsp;code', 'Code&nbsp;von&nbsp;Drittanbietern'); ?></a></li><li><a href="<?=linkParameters("license","")?>"><? text('License', 'Lizenz'); ?></a></li></ul>
-				<ul><li><a href="http://sourceforge.net"><img src="_http://sourceforge.net/sflogo.php?group_id=141842&amp;type=1" width="88" height="31" alt="SF.net Logo" /></a></li><li><a href="http://validator.w3.org/check?uri=referer"><img src="_http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML" height="31" width="88" /></a></li></ul>
+				<ul id="navigationlist"><li><a href="<?=linkParameters("news","")?>"<?=conditionalSelectedClass("news")?>><? text('News', 'Neuigkeiten'); ?></a></li><li><a href="<?=linkParameters("about","")?>"<?=conditionalSelectedClass("about")?>><? text('About', '&Uuml;ber'); ?></a></li><li><a href="<?=linkParameters("features","")?>"<?=conditionalSelectedClass("features")?>><? text('Features', 'Funktionen'); ?></a></li><li><a href="<?=linkParameters("screenshots","")?>"<?=conditionalSelectedClass("screenshots")?>><? text('Screenshots', 'Bildschirmfotos'); ?></a></li><li><a class="external" href="http://sourceforge.net/project/showfiles.php?group_id=141842"><? text('Download', 'Herunterladen'); ?></a></li><li><a href="<?=linkParameters("thirdparty","")?>"<?=conditionalSelectedClass("thirdparty")?>><? text('Third&nbsp;party&nbsp;code', 'Code&nbsp;von&nbsp;Dritten'); ?></a></li><li><a href="<?=linkParameters("license","")?>"<?=conditionalSelectedClass("license")?>><? text('License', 'Lizenz'); ?></a></li></ul>
+				<ul><li><a href="http://sourceforge.net"><img src="_http://sourceforge.net/sflogo.php?group_id=141842&amp;type=1" width="88" height="31" alt="SF.net Logo" /></a></li><li><a href="http://validator.w3.org/check?uri=referer"><img src="_http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML" height="31" width="88" /></a></li></ul>
 			</div>
 			<div id="content">
 <?=writeContent();
