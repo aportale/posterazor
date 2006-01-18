@@ -31,7 +31,6 @@ body
 	font-size : 10pt;
 	margin: 0px;
 	padding: 0px;
-	height: 100%;
 	background : #CCCC99 url(pageshadow.png) repeat-y;
 	background-position: center center;
 }
@@ -69,8 +68,7 @@ body
 #navigation
 {
 	float: left;
-	width: 170px;
-	background-color : #f0f000;
+	width: 130px;
 }
 
 #navigation ul
@@ -83,29 +81,32 @@ body
 
 #navigation a
 {
+	font-weight:bold;
+	color: #FFFFCC;
 	display: block;
-	padding: 5px;
+	padding: 4px 6px;
 	margin: 0px;
-	background-color: #036;
-	border-bottom: 1px solid;
-}
-
-#navigation a:link, #navigation a:visited
-{
-	color: #EEE;
+	background-color: #999966;
+	border-bottom: #FFFFCC 1px solid;
 	text-decoration: none;
 }
 
 #navigation a:hover
 {
-	background-color: #369;
-	color: #fff;
+	background-color: #666633;
+	color: #FFFFCC;
+}
+
+#navigation .selected
+{
+	color: #666633;
+	background-color: #FFFFCC;
 }
 
 #content
 {
 	float: right;
-	width: 450px;
+	width: 480px;
 	padding: 10px;
 	margin: 0px;
 }
