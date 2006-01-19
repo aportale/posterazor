@@ -108,6 +108,26 @@
 				</div>
 <?
 			break;
+			case 'download':		
+?>
+				<h2><? text('Download', 'Herunterladen'); ?></h2>
+				<div style="align: center; " >
+				<table border="0" class="center" cellpadding="5">
+					<tr><td colspan="3"><? text('Click to enlarge', 'Auf das zu vergr&ouml;&szlig;ernde Bild klicken'); ?>:</td></tr>
+					<tr>
+						<td><a href="images/screenshots/step01.png"><img src="images/screenshots/thumbnails/step01.png" width="100" height="76" alt="Step 1" /><br /><? text('Step', 'Schritt'); ?> 1</a></td>
+						<td><a href="images/screenshots/step02.png"><img src="images/screenshots/thumbnails/step02.png" width="100" height="76" alt="Step 2" /><br /><? text('Step', 'Schritt'); ?> 2</a></td>
+						<td><a href="images/screenshots/step03.png"><img src="images/screenshots/thumbnails/step03.png" width="100" height="76" alt="Step 3" /><br /><? text('Step', 'Schritt'); ?> 3</a></td>
+					</tr>
+					<tr>
+						<td><a href="images/screenshots/step04.png"><img src="images/screenshots/thumbnails/step04.png" width="100" height="76" alt="Step 4" /><br /><? text('Step', 'Schritt'); ?> 4</a></td>
+						<td><a href="images/screenshots/step05.png"><img src="images/screenshots/thumbnails/step05.png" width="100" height="76" alt="Step 5" /><br /><? text('Step', 'Schritt'); ?> 5</a></td>
+						<td><a href="images/screenshots/help.png"><img src="images/screenshots/thumbnails/help.png" width="100" height="72" alt="Help" /><br /><? text('Help', 'Hilfe'); ?></a></td>
+					</tr>
+				</table>
+				</div>
+<?
+			break;
 			case 'thirdparty':		
 ?>
 				<h2><? text('Third party code', 'Code von Drittanbietern'); ?></h2>
@@ -173,7 +193,7 @@
 				<div id="title">PosteRazor</div><div id="tagline"><? text('Make your own poster!', 'Mach\' Dein eigenes Poster!'); ?></div>
 			</div>
 			<div id="navigation">
-				<ul id="navigationlist"><li><a href="<?=linkParameters("news","")?>"<?=conditionalSelectedClass("news")?>><? text('News', 'Neuigkeiten'); ?></a></li><li><a href="<?=linkParameters("about","")?>"<?=conditionalSelectedClass("about")?>><? text('About', '&Uuml;ber'); ?></a></li><li><a href="<?=linkParameters("features","")?>"<?=conditionalSelectedClass("features")?>><? text('Features', 'Funktionen'); ?></a></li><li><a href="<?=linkParameters("screenshots","")?>"<?=conditionalSelectedClass("screenshots")?>><? text('Screenshots', 'Bildschirmfotos'); ?></a></li><li><a class="external" href="http://sourceforge.net/project/showfiles.php?group_id=141842"><? text('Download', 'Herunterladen'); ?></a></li><li><a href="<?=linkParameters("thirdparty","")?>"<?=conditionalSelectedClass("thirdparty")?>><? text('Third&nbsp;party&nbsp;code', 'Code&nbsp;von&nbsp;Dritten'); ?></a></li><li><a href="<?=linkParameters("license","")?>"<?=conditionalSelectedClass("license")?>><? text('License', 'Lizenz'); ?></a></li></ul>
+				<ul id="navigationlist"><li><a href="<?=linkParameters("news","")?>"<?=conditionalSelectedClass("news")?>><? text('News', 'Neuigkeiten'); ?></a></li><li><a href="<?=linkParameters("about","")?>"<?=conditionalSelectedClass("about")?>><? text('About', '&Uuml;ber'); ?></a></li><li><a href="<?=linkParameters("features","")?>"<?=conditionalSelectedClass("features")?>><? text('Features', 'Funktionen'); ?></a></li><li><a href="<?=linkParameters("screenshots","")?>"<?=conditionalSelectedClass("screenshots")?>><? text('Screenshots', 'Bildschirmfotos'); ?></a></li><li><a href="<?=linkParameters("download","")?>"<?=conditionalSelectedClass("download")?>><? text('Download', 'Herunterladen'); ?></a></li><li><a href="<?=linkParameters("thirdparty","")?>"<?=conditionalSelectedClass("thirdparty")?>><? text('Third&nbsp;party&nbsp;code', 'Code&nbsp;von&nbsp;Dritten'); ?></a></li><li><a href="<?=linkParameters("license","")?>"<?=conditionalSelectedClass("license")?>><? text('License', 'Lizenz'); ?></a></li></ul>
 				<ul><li><a href="http://sourceforge.net"><img src="_http://sourceforge.net/sflogo.php?group_id=141842&amp;type=1" width="88" height="31" alt="SF.net Logo" /></a></li><li><a href="http://validator.w3.org/check?uri=referer"><img src="_http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML" height="31" width="88" /></a></li></ul>
 			</div>
 			<div id="content">
