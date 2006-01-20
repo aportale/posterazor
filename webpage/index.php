@@ -3,8 +3,8 @@
 	define('DE', 'german');
 
 	$lang = $_GET['lang'] == DE?DE:EN;
-	$page = strtolower($_GET['page']);	
-
+	$page = isset($_GET['page'])?strtolower($_GET['page']):"about";
+	
 	function text($englishString, $germanString)
 	{
 		global $lang;
@@ -187,6 +187,7 @@
 		<div id="page">
 			<div id="header">
 				<div id="title">PosteRazor</div><div id="tagline"><? text('Make your own poster!', 'Mach\' Dein eigenes Poster!'); ?></div>
+				<a href="<?=linkParameters("","english")?>"><img src="flagEnglish<? text('_selected', ''); ?>.png" width="26" height="17" alt="English" /></a><a href="<?=linkParameters("","german")?>"><img src="flagGerman<? text('', '_selected'); ?>.png" width="26" height="17" alt="Deutsch" /></a>
 			</div>
 			<div id="navigation">
 				<ul id="navigationlist"><li><a href="<?=linkParameters("news","")?>"<?=conditionalSelectedClass("news")?>><? text('News', 'Neuigkeiten'); ?></a></li><li><a href="<?=linkParameters("about","")?>"<?=conditionalSelectedClass("about")?>><? text('About', '&Uuml;ber'); ?></a></li><li><a href="<?=linkParameters("features","")?>"<?=conditionalSelectedClass("features")?>><? text('Features', 'Funktionen'); ?></a></li><li><a href="<?=linkParameters("screenshots","")?>"<?=conditionalSelectedClass("screenshots")?>><? text('Screenshots', 'Bildschirmfotos'); ?></a></li><li><a href="<?=linkParameters("download","")?>"<?=conditionalSelectedClass("download")?>><? text('Download', 'Herunterladen'); ?></a></li><li><a href="<?=linkParameters("thirdparty","")?>"<?=conditionalSelectedClass("thirdparty")?>><? text('Third&nbsp;party&nbsp;code', 'Code&nbsp;von&nbsp;Dritten'); ?></a></li><li><a href="<?=linkParameters("license","")?>"<?=conditionalSelectedClass("license")?>><? text('License', 'Lizenz'); ?></a></li></ul>
@@ -195,9 +196,9 @@
 			<div id="content">
 <?=writeContent();
 ?>
-			</div><!-- end "content"-->
+			</div>
 			<div id="footer">
-			</div><!-- end "footer"-->
+			</div>
 		</div>
 	</body>
 </html>
