@@ -41,6 +41,7 @@ body
 	background : #CCCC99 url(pageshadow.png) repeat-y;
 	color : #330000;
 	background-position: center center;
+	_border-left: #BEBE8F 1px solid; /* IE hack */
 }
 
 #page
