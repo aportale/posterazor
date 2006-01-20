@@ -191,7 +191,7 @@
 			</div>
 			<div id="navigation">
 				<ul id="navigationlist"><li><a href="<?=linkParameters("news","")?>"<?=conditionalSelectedClass("news")?>><? text('News', 'Neuigkeiten'); ?></a></li><li><a href="<?=linkParameters("about","")?>"<?=conditionalSelectedClass("about")?>><? text('About', '&Uuml;ber'); ?></a></li><li><a href="<?=linkParameters("features","")?>"<?=conditionalSelectedClass("features")?>><? text('Features', 'Funktionen'); ?></a></li><li><a href="<?=linkParameters("screenshots","")?>"<?=conditionalSelectedClass("screenshots")?>><? text('Screenshots', 'Bildschirmfotos'); ?></a></li><li><a href="<?=linkParameters("download","")?>"<?=conditionalSelectedClass("download")?>><? text('Download', 'Herunterladen'); ?></a></li><li><a href="<?=linkParameters("thirdparty","")?>"<?=conditionalSelectedClass("thirdparty")?>><? text('Third&nbsp;party&nbsp;code', 'Code&nbsp;von&nbsp;Dritten'); ?></a></li><li><a href="<?=linkParameters("license","")?>"<?=conditionalSelectedClass("license")?>><? text('License', 'Lizenz'); ?></a></li></ul>
-				<ul><li><a href="http://sourceforge.net"><img src="_http://sourceforge.net/sflogo.php?group_id=141842&amp;type=1" width="88" height="31" alt="SF.net Logo" /></a></li><li><a href="http://validator.w3.org/check?uri=referer"><img src="_http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML" height="31" width="88" /></a></li></ul>
+				<a href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=141842&amp;type=1" width="88" height="31" alt="SF.net Logo" /></a>
 			</div>
 			<div id="content">
 <?=writeContent();

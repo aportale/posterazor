@@ -100,13 +100,13 @@ body
 	text-decoration: none;
 }
 
-#navigation a:hover
+#navigationlist a:hover
 {
 	color: #FFFFCC;
 	background : #666633 url(menuarrows_hover.png) right center no-repeat;
 }
 
-#navigation .selected
+#navigationlist .selected
 {
 	color: #666633;
 	background : #FFFFCC url(menuarrows_selected.png) right center no-repeat;
