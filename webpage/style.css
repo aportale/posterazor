@@ -55,7 +55,7 @@ body
 	background : url(header.jpg) left top no-repeat;
 	padding: 30px 40px 0px 0px;
 	margin: 0px;
-	height: 130px;
+	height: 135px;
 	text-align: right;
 }
 
@@ -67,6 +67,7 @@ body
 
 #tagline
 {
+	margin-top: -8px;
 	font-size : 22px;
 	font-weight: bold;
 }
@@ -113,8 +114,19 @@ body
 #content
 {
 	float: right;
-	width: 480px;
-	padding: 0px 10px 0px 0px;
+	width: 475px;
+	padding: 0px 20px 0px 0px;
+	margin: 0px;
+}
+
+#content li
+{
+	margin: 17px 0px 0px 0px;
+}
+
+#content ul
+{
+	padding: 0px 0px 0px 30px;
 	margin: 0px;
 }
 

@@ -85,7 +85,7 @@
 						'Der PosteRazor wurde so konzipiert, dass die resultierende PDF-Datei die bestm&ouml;gliche Bildqualit&auml;t bei m&ouml;glichst kleiner Dateigr&ouml;ße hat. Das Bild wird nur einmal in das PDF-Dokument eingebettet und auf den verscheidenen Seiten jeweils referenziert. Als kompressionsmethode wird der PDF-&uuml;bliche "FlateDecode-filter" (zip) benutzt. Wenn das Ausgangsformat ein Jpeg-Bild ist, wird es ohne erneute Komprimierung direkt eingebettet. Die PDF-version ist 1.4, sodass jeder Acrobat Reader ab Version 4 in der Lage sein sollte, das Dokument zu &ouml;ffnen.'); ?>
 					</li>
 				</ul>
-				<strong><? text('Missing features', 'Fehlende Funktionen'); ?>:</strong> <? text('Cut lines/aids; Support of Jpeg-CMYK images; Support of 16 Bit Grayscale images; Embedding an ICC profile into the PDF if there is one embedded in the input image', 'Schnittlinen -hilfen; Unterst&uuml;tzung von CMYK-Jpeg; Unterst&uuml;tzung von 16-Bit-Graustufen-Bildern; ICC-Profile, die in einem Ausgangsbild eingebettet sein können im PDF einbetten.'); ?>
+				<p><strong><? text('Missing features', 'Fehlende Funktionen'); ?>:</strong> <? text('Cut lines/aids; Support of Jpeg-CMYK images; Support of 16 Bit Grayscale images; Embedding an ICC profile into the PDF if there is one embedded in the input image', 'Schnittlinen -hilfen; Unterst&uuml;tzung von CMYK-Jpeg; Unterst&uuml;tzung von 16-Bit-Graustufen-Bildern; ICC-Profile, die in einem Ausgangsbild eingebettet sein können im PDF einbetten.'); ?></p>
 <?
 			break;
 			case 'screenshots':		
@@ -111,21 +111,17 @@
 			case 'download':		
 ?>
 				<h2><? text('Download', 'Herunterladen'); ?></h2>
-				<div style="align: center; " >
-				<table border="0" class="center" cellpadding="5">
-					<tr><td colspan="3"><? text('Click to enlarge', 'Auf das zu vergr&ouml;&szlig;ernde Bild klicken'); ?>:</td></tr>
-					<tr>
-						<td><a href="images/screenshots/step01.png"><img src="images/screenshots/thumbnails/step01.png" width="100" height="76" alt="Step 1" /><br /><? text('Step', 'Schritt'); ?> 1</a></td>
-						<td><a href="images/screenshots/step02.png"><img src="images/screenshots/thumbnails/step02.png" width="100" height="76" alt="Step 2" /><br /><? text('Step', 'Schritt'); ?> 2</a></td>
-						<td><a href="images/screenshots/step03.png"><img src="images/screenshots/thumbnails/step03.png" width="100" height="76" alt="Step 3" /><br /><? text('Step', 'Schritt'); ?> 3</a></td>
-					</tr>
-					<tr>
-						<td><a href="images/screenshots/step04.png"><img src="images/screenshots/thumbnails/step04.png" width="100" height="76" alt="Step 4" /><br /><? text('Step', 'Schritt'); ?> 4</a></td>
-						<td><a href="images/screenshots/step05.png"><img src="images/screenshots/thumbnails/step05.png" width="100" height="76" alt="Step 5" /><br /><? text('Step', 'Schritt'); ?> 5</a></td>
-						<td><a href="images/screenshots/help.png"><img src="images/screenshots/thumbnails/help.png" width="100" height="72" alt="Help" /><br /><? text('Help', 'Hilfe'); ?></a></td>
-					</tr>
-				</table>
-				</div>
+				<p><? text('The following PosteRazor download links lead to sites with lists of download locations. There, please click on a "Download" link next to a location that is geographically next to Your place.', 'Die folgenden PosteRazor-Download-Verweise f&uuml;hren auf Seiten mit mehreren m&ouml;glichen Downloadservern. Bitte klicken Sie Dort auf einen "Download"-Verweis, der Ihnen geographisch am n&auml;chsten ist.'); ?></p>
+				<ul>
+					<li>
+						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.0-Win32.zip?download"><strong><? text('Windows version', 'Windows-version'); ?></strong> (385 KB)</a><br />
+						<? text('After downloading the ZIP archive, extract the contained PosteRazor.exe to a place of Your choice and start it. If You use a Windows version below XP, You probably need an installed <a class="external" href="http://www.7-zip.org/">Unzip tool</a>.', 'Nach dem Herunterladen des ZIP-Archivs, k&ouml;nnen Sie das enthaltene PosteRazor.exe in ein Verzeichnis Ihrer Wahl entpacken und starten. Falls sie eine Windows-version unterhalb von XP nutzen, ben&ouml;tigen Sie evenuell ein installiertes <a class="external" href="http://www.7-zip.org/">Unzip-Programm</a>.'); ?>
+					</li>
+					<li>
+						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.0-OSX.dmg?download"><strong><? text('OSX version', 'OSX-version'); ?></strong> (485 KB)</a><br />
+						<? text('After downloading the OSX disk image, double click to mount it if it doesn\'t mount automatically. You can start the contained PosteRazor application directly by double clicking it or drag it into a location of Your choice.', 'Nach dem Herunterladen des OSX-Diskimages k&ouml;nnen Sie es, falls dies nicht automatisch geschieht, per Doppelclick mounten. Danach kann die enthaltene PosteRazor-Applikation entweder direkt gestartet werden oder in einen Ordner Ihrer Wahl kopiert werden.'); ?><br />
+					</li>
+				</ul>
 <?
 			break;
 			case 'thirdparty':		
