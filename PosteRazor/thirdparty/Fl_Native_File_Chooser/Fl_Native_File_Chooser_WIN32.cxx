@@ -111,8 +111,9 @@ static void dnullcat(char*&wp, const char *string, int n = -1 ) {
 }
 
 // CTOR
-Fl_Native_File_Chooser::Fl_Native_File_Chooser(Type val) {
+Fl_Native_File_Chooser::Fl_Native_File_Chooser(int val) {
     _btype           = val;
+    _options         = NO_OPTIONS;
     memset((void*)&_ofn, 0, sizeof(OPENFILENAME));
     _ofn.lStructSize = sizeof(OPENFILENAME);
     _ofn.hwndOwner   = NULL;
@@ -146,13 +147,23 @@ Fl_Native_File_Chooser::~Fl_Native_File_Chooser() {
 }
 
 // SET TYPE OF BROWSER
-void Fl_Native_File_Chooser::type(Type val) {
+void Fl_Native_File_Chooser::type(int val) {
     _btype = val;
 }
 
 // GET TYPE OF BROWSER
-Fl_Native_File_Chooser::Type Fl_Native_File_Chooser::type() const {
+int Fl_Native_File_Chooser::type() const {
     return( _btype );
+}
+
+// SET OPTIONS
+void Fl_Native_File_Chooser::options(int val) {
+    _options = val;
+}
+
+// GET OPTIONS
+int Fl_Native_File_Chooser::options() const {
+    return(_options);
 }
 
 // PRIVATE: SET ERROR MESSAGE
@@ -213,6 +224,8 @@ void Fl_Native_File_Chooser::ClearOFN() {
 	{ _ofn.lpstrFile = strfree((char*)_ofn.lpstrFile); }
     if ( _ofn.lpstrInitialDir ) 
 	{ _ofn.lpstrInitialDir = (LPCSTR)strfree((char*)_ofn.lpstrInitialDir); }
+    if ( _ofn.lpstrFile ) 
+	{ _ofn.lpstrFile = strfree(_ofn.lpstrFile); }
     _ofn.lpstrFilter = NULL;		// (deleted elsewhere)
     temp = _ofn.nFilterIndex;		// keep the filter_value
     memset((void*)&_ofn, 0, sizeof(_ofn));
@@ -245,7 +258,7 @@ void Fl_Native_File_Chooser::Unix2Win(char *s) {
 int Fl_Native_File_Chooser::showfile() {
     ClearOFN();
     clear_pathnames();
-    size_t fsize = 1024;
+    size_t fsize = 2048;
     _ofn.Flags |= OFN_NOVALIDATE;	// prevent disabling of front slashes
     _ofn.Flags |= OFN_HIDEREADONLY;	// hide goofy readonly flag
     // USE NEW BROWSER
@@ -257,7 +270,7 @@ int Fl_Native_File_Chooser::showfile() {
 	case BROWSE_DIRECTORY:
 	case BROWSE_MULTI_DIRECTORY:
 	case BROWSE_SAVE_DIRECTORY:
-	    abort();			// not here
+	    abort();			// never happens: handled by showdir()
 	case BROWSE_FILE:
 	    fsize = 65536;		// XXX: there must be a better way
 	    break;
@@ -273,24 +286,42 @@ int Fl_Native_File_Chooser::showfile() {
     _ofn.lpstrFile    = new char[fsize];
     _ofn.nMaxFile     = fsize-1;
     _ofn.lpstrFile[0] = '\0';
-    if (_preset_file) sprintf(_ofn.lpstrFile, "%.*s", _ofn.nMaxFile, _preset_file);
+    if (_preset_file) {
+        sprintf(_ofn.lpstrFile, "%.*s", _ofn.nMaxFile, _preset_file);
+    }
     // PARENT WINDOW
     _ofn.hwndOwner = GetForegroundWindow();
     // DIALOG TITLE
     _ofn.lpstrTitle = _title ? _title : NULL;
     // FILTER
     _ofn.lpstrFilter = _parsedfilt ? _parsedfilt : NULL;
-    // PRESET DIR
-    if ( _directory ) {
-	_ofn.lpstrInitialDir = strnew(_directory);
-	Unix2Win((char*)_ofn.lpstrInitialDir);
+    // PRESET FILE
+    //     If set, supercedes _directory. See KB Q86920 for details
+    //
+    if ( _preset_file ) {
+        int len = strlen(_preset_file);
+        char *strfile = new char[MAX_PATH];	// as per KB 222003 >8(
+	strcpy(strfile, _preset_file);
+	strfile[len+0] = '\0';			// (multiselect needs dnull)
+	strfile[len+1] = '\0';
+	Unix2Win(strfile);
+	_ofn.lpstrFile = strfile;
+	_ofn.nMaxFile = MAX_PATH;		// as per KB 222003 >8(
+    } else {
+	// PRESET DIR
+	//     XXX: See KB Q86920 for doc bug:
+	//     http://support.microsoft.com/default.aspx?scid=kb;en-us;86920
+	//
+	if ( _directory ) {
+	    _ofn.lpstrInitialDir = strnew(_directory);
+	    Unix2Win((char*)_ofn.lpstrInitialDir);
+	}
     }
+    // OPEN THE DIALOG WINDOW
     int err;
     if ( _btype == BROWSE_SAVE_FILE ) {
-	// OPEN DIALOG
 	err = GetSaveFileName(&_ofn);
     } else {
-	// OPEN DIALOG
 	err = GetOpenFileName(&_ofn);
     }
     if ( err == 0 ) {
@@ -317,12 +348,13 @@ int Fl_Native_File_Chooser::showfile() {
 	    const char *dirname = _ofn.lpstrFile;
 	    int dirlen = strlen(dirname);
 	    if ( dirlen > 0 ) {
-		char pathname[1024];
+		char pathname[2048];
 
 		// WALK STRING SEARCHING FOR 'DOUBLE-NULL'
 		//     eg. "/dir/name\0foo1\0foo2\0foo3\0\0"
 		//
-		for ( const char *s = _ofn.lpstrFile + dirlen + 1; *s; s+= (strlen(s)+1)) {
+		for ( const char *s = _ofn.lpstrFile + dirlen + 1; 
+						      *s; s+= (strlen(s)+1)) {
 		    strcpy(pathname, dirname);
 		    strcat(pathname, "\\");
 		    strcat(pathname, s);
@@ -331,12 +363,11 @@ int Fl_Native_File_Chooser::showfile() {
 		}
 	    }
 	    // XXX
-	    //    Work around problem where someone pastes a forward-slash pathname
-	    //    into the file browser. For some reason, the new "Explorer" interface
-	    //    doesn't grok forward slashes, passing them back as a 'filename'..!
+	    //    Work around problem where pasted forward-slash pathname
+	    //    into the file browser causes new "Explorer" interface
+	    //    not to grok forward slashes, passing back as a 'filename'..!
 	    //
-	    if ( _tpathnames == 0 )
-	    {
+	    if ( _tpathnames == 0 ) {
 		add_pathname(dirname); 
 		Win2Unix(_pathnames[_tpathnames-1]);
 	    }
@@ -361,11 +392,16 @@ int CALLBACK Fl_Native_File_Chooser::Dir_CB(HWND win, UINT msg, LPARAM param, LP
 	    break;
 	case BFFM_SELCHANGED:
 	    TCHAR path[MAX_PATH];
-	    if ( SHGetPathFromIDList((ITEMIDLIST*)param, path) ) ::SendMessage(win, BFFM_ENABLEOK, 0, 1);
-	    else ::SendMessage(win, BFFM_ENABLEOK, 0, 0);		//disable ok button if not a path
+	    if ( SHGetPathFromIDList((ITEMIDLIST*)param, path) ) {
+	        ::SendMessage(win, BFFM_ENABLEOK, 0, 1);
+	    } else {
+		//disable ok button if not a path
+	        ::SendMessage(win, BFFM_ENABLEOK, 0, 0);
+	    }
 	    break;
 	case BFFM_VALIDATEFAILED:
-	    // we could pop up an annoying message here. also needs set ulFlags |=  BIF_VALIDATE
+	    // we could pop up an annoying message here. 
+	    // also needs set ulFlags |=  BIF_VALIDATE
 	    break;
 	default:
 	    break;
@@ -389,16 +425,16 @@ int Fl_Native_File_Chooser::showdir() {
     //( what if _WIN32_IE doesn't match system? does the program not run? )
     // TBD: match all 3 types of directories
 
-#if defined(BIF_NONEWFOLDERBUTTON)					// Version 6.0
+#if defined(BIF_NONEWFOLDERBUTTON)				// Version 6.0
     if ( _btype == BROWSE_DIRECTORY ) _binf.ulFlags |= BIF_NONEWFOLDERBUTTON;
     _binf.ulFlags |= BIF_USENEWUI | BIF_SHAREABLE | BIF_RETURNONLYFSDIRS;
-#elif defined(BIF_USENEWUI)						// Version 5.0
+#elif defined(BIF_USENEWUI)					// Version 5.0
     if ( _btype == BROWSE_DIRECTORY ) _binf.ulFlags |= BIF_EDITBOX;
     else if ( _btype == BROWSE_SAVE_DIRECTORY ) _binf.ulFlags |= BIF_USENEWUI;
     _binf.ulFlags |= BIF_SHAREABLE | BIF_RETURNONLYFSDIRS;
-#elif defined(BIF_EDITBOX)						// Version 4.71
+#elif defined(BIF_EDITBOX)					// Version 4.71
     _binf.ulFlags |= BIF_RETURNONLYFSDIRS | BIF_EDITBOX;
-#else									// Version Old
+#else								// Version Old
     _binf.ulFlags |= BIF_RETURNONLYFSDIRS;
 #endif
 
@@ -437,7 +473,9 @@ int Fl_Native_File_Chooser::showdir() {
 //   -1 - failed; errmsg() has reason
 //
 int Fl_Native_File_Chooser::show() {
-    if ( _btype == BROWSE_DIRECTORY || _btype == BROWSE_MULTI_DIRECTORY || _btype == BROWSE_SAVE_DIRECTORY )
+    if ( _btype == BROWSE_DIRECTORY || 
+         _btype == BROWSE_MULTI_DIRECTORY || 
+	 _btype == BROWSE_SAVE_DIRECTORY )
 	return(showdir());
     else
 	return(showfile());
@@ -527,15 +565,15 @@ void Fl_Native_File_Chooser::clear_filters() {
 
 // ADD A FILTER
 void Fl_Native_File_Chooser::add_filter(
-	       const char *name_in,	// name of filter (optional: can be null)
-	       const char *winfilter	// windows style filter (eg. "*.cxx;*.h")
-	      ) {
+	   const char *name_in,	    // name of filter (optional: can be null)
+	   const char *winfilter    // windows style filter (eg. "*.cxx;*.h")
+	  ) {
     // No name? Make one..
-    char name[80];
+    char name[1024];
     if ( !name_in || name_in[0] == '\0' ) {
-	sprintf(name, "%.70s Files", winfilter);
+	sprintf(name, "%.*s Files", sizeof(name)-10, winfilter);
     } else {
-        sprintf(name, "%.79s", name_in);
+        sprintf(name, "%.*s", sizeof(name)-10, name_in);
     }
     dnullcat(_parsedfilt, name);
     dnullcat(_parsedfilt, winfilter);
@@ -572,9 +610,9 @@ void Fl_Native_File_Chooser::parse_filter(const char *in) {
     int has_name = strchr(in, '\t') ? 1 : 0;
     const char *savein = in;
 
-    char mode = has_name ? 'n' : 'w';		// parse mode: n=name, w=wildcard
+    char mode = has_name ? 'n' : 'w';	// parse mode: n=name, w=wildcard
     int nwildcards = 0;
-    char wildcards[MAXFILTERS][80];		// parsed wildcards (can be several)
+    char wildcards[MAXFILTERS][1024];	// parsed wildcards (can be several)
     char wildprefix[512] = "";
     char name[512] = "";
 
@@ -595,7 +633,8 @@ void Fl_Native_File_Chooser::parse_filter(const char *in) {
 	    case ',':
 	    case '|':
 	        if ( mode == LCURLY_CHR ) {
-		    strcat(wildcards[nwildcards++], wildprefix);	// create new wildcard, copy in prefix
+		    // create new wildcard, copy in prefix
+		    strcat(wildcards[nwildcards++], wildprefix);
 		    continue;
 		} else {
 		    goto regchar;
@@ -605,7 +644,8 @@ void Fl_Native_File_Chooser::parse_filter(const char *in) {
 	    // FINISHED PARSING A NAME?
 	    case '\t':
 	        if ( mode != 'n' ) goto regchar;
-		mode = 'w';					// finish parsing name? switch to wildcard mode
+		// finish parsing name? switch to wildcard mode
+		mode = 'w';
 		break;
 
 	    // ESCAPE NEXT CHAR
@@ -623,7 +663,7 @@ void Fl_Native_File_Chooser::parse_filter(const char *in) {
 		        strcpy(wildcards[nwildcards++], wildprefix);
 		    }
 		    // Append wildcards in Microsoft's "*.one;*.two" format
-		    char comp[1024] = "";
+		    char comp[4096] = "";
 		    for ( t=0; t<nwildcards; t++ ) {
 			if ( t != 0 ) strcat(comp, ";");
 			strcat(comp, wildcards[t]);
@@ -650,7 +690,8 @@ void Fl_Native_File_Chooser::parse_filter(const char *in) {
 	    case LCURLY_CHR:
 	        mode = *in;
 		if ( *in == LCURLY_CHR ) {
-		    strcat(wildcards[nwildcards++], wildprefix);	// create new wildcard
+		    // create new wildcard
+		    strcat(wildcards[nwildcards++], wildprefix);
 		}
 		continue;
 
@@ -665,13 +706,18 @@ void Fl_Native_File_Chooser::parse_filter(const char *in) {
 	    regchar:		// handle regular char
                 switch ( mode ) {
 	            case LBRACKET_CHR: 
-		        ++nwildcards;					// create new wildcard
-			strcpy(wildcards[nwildcards-1], wildprefix);	// copy in prefix
-			chrcat(wildcards[nwildcards-1], *in);		// append search char
+			// create new wildcard
+		        ++nwildcards;
+			// copy in prefix
+			strcpy(wildcards[nwildcards-1], wildprefix);
+			// append search char
+			chrcat(wildcards[nwildcards-1], *in);
 			continue;
 
 	            case LCURLY_CHR:
-		        if ( nwildcards > 0 ) chrcat(wildcards[nwildcards-1], *in);
+		        if ( nwildcards > 0 ) {
+			    chrcat(wildcards[nwildcards-1], *in);
+			}
 			continue;
 
 	            case 'n':

@@ -11,8 +11,8 @@ static char *strnew(const char *val) {
 // FREE STRING CREATED WITH strnew(), NULLS OUT STRING
 //    Value can be NULL
 //
-static char *strfree(const char *val) {
-    if ( val ) delete [] (char *)val;
+static char *strfree(char *val) {
+    if ( val ) delete [] val;
     return(NULL);
 }
 
