@@ -53,6 +53,7 @@ public:
 	virtual int GetLanguagesCount(void) = 0;
 	virtual enum eLanguages GetLanguageForIndex(int index) = 0;
 	virtual TranslationInterface* GetTranslationOfLanguage(enum eLanguages language) = 0;
+	virtual enum eLanguages GetSystemLanguage(void) = 0;
 };
 
 #endif

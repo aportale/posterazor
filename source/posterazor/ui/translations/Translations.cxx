@@ -25,6 +25,9 @@
 #include "TranslationEnglish.h"
 #include "TranslationGerman.h"
 //#include "TranslationItalian.h"
+#ifdef WIN32
+#include <Windows.h>
+#endif
 
 Translations *Translations::m_instance = 0;
 
@@ -77,6 +80,22 @@ public:
 			}
 		}
 		return foundTranslation;
+	}
+
+	enum eLanguages GetSystemLanguage(void)
+	{
+		enum eLanguages systemLanguage = eLanguageUndefined;
+#if defined (WIN32)
+		LANGID langID = GetSystemDefaultLangID();
+		WORD primaryLangID = PRIMARYLANGID(langID);
+		systemLanguage =
+			(primaryLangID == LANG_ENGLISH)?eLanguageEnglish:
+			(primaryLangID == LANG_GERMAN)?eLanguageGerman:
+//			(primaryLangID == LANG_ITALIAN)?eLanguageItalian:
+			eLanguageUndefined;
+#elif defined (OSX)
+#endif
+		return systemLanguage;
 	}
 
 
