@@ -145,3 +145,11 @@ body
 	background-color: #ffffff;
 	color : #330000;
 }
+
+#screenshotthumbs a
+{
+	float: left;
+	text-align: center;
+	padding: 5px;
+	margin: 10px;
+}
