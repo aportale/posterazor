@@ -322,7 +322,11 @@ PosteRazorDialog::PosteRazorDialog(void)
 	m_posteRazor->ReadPersistentPreferences(&preferences);
 	Fl_Paint_Canvas_Group::ePaintCanvasTypes paintCanvasType =
 		preferences.GetBoolean(preferencesKey_UseOpenGLForPreview, true)?Fl_Paint_Canvas_Group::PaintCanvasTypeGL:Fl_Paint_Canvas_Group::PaintCanvasTypeDraw;
-	TRANSLATIONS->SelectLangue((enum Translations::eLanguages)preferences.GetInteger(preferencesKey_UILanguage, Translations::eLanguageUndefined));
+	enum Translations::eLanguages language = (enum Translations::eLanguages)preferences.GetInteger(preferencesKey_UILanguage, Translations::eLanguageUndefined);
+	m_UILanguageIsUndefined = language == Translations::eLanguageUndefined;
+	if (m_UILanguageIsUndefined)
+		language = TRANSLATIONS->GetSystemLanguage();
+	TRANSLATIONS->SelectLangue(language);
 
 	strncpy(m_loadImageChooserLastPath, preferences.GetString(preferencesKey_LoadImageChooserLastPath, ""), sizeof(m_loadImageChooserLastPath));
 	m_loadImageChooserLastPath[sizeof(m_loadImageChooserLastPath) - 1] = '\0';
@@ -389,6 +393,8 @@ PosteRazorDialog::~PosteRazorDialog()
 	preferences.SetBoolean(m_paintCanvasGroup->GetPaintCanvasType() == Fl_Paint_Canvas_Group::PaintCanvasTypeGL, preferencesKey_UseOpenGLForPreview);
 	preferences.SetString(m_loadImageChooserLastPath, preferencesKey_LoadImageChooserLastPath);
 	preferences.SetString(m_savePosterChooserLastPath, preferencesKey_SavePosterChooserLastPath);
+	if (m_UILanguageIsUndefined)
+		TRANSLATIONS->SelectLangue(Translations::eLanguageUndefined);
 	preferences.SetInteger(TRANSLATIONS->GetSelectedLanguage(), preferencesKey_UILanguage);
 
 	if (m_paperFormatMenuItems)
@@ -463,6 +469,7 @@ void PosteRazorDialog::HandleOptionsChangement(posteRazorSettings *settings)
 	if (TRANSLATIONS->GetSelectedLanguage() != settings->language)
 	{
 		TRANSLATIONS->SelectLangue(settings->language);
+		m_UILanguageIsUndefined = false;
 		UpdateLanguage();
 	}
 }

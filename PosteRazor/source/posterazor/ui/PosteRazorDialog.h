@@ -61,6 +61,7 @@ private:
 	class PosteRazorHelpDialogUI    *m_helpDialog;
 	char                            m_loadImageChooserLastPath[1024];
 	char                            m_savePosterChooserLastPath[1024];
+	bool                            m_UILanguageIsUndefined;
 
 public:
 	~PosteRazorDialog();
