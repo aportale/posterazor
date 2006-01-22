@@ -67,7 +67,7 @@ void Fl_Paint_Canvas_Group::SetPaintCanvasType(enum ePaintCanvasTypes type)
 	}
 
 	GetPaintCanvasWidget()->show();
-	Fl::wait();
+	Fl::wait(0.0); // 0.0 is needed for OSX!
 	if (m_imageRGBData)
 		GetPaintCanvasBase()->SetImage(m_imageRGBData, m_imageWidth, m_imageHeight);
 }
