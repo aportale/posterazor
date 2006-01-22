@@ -18,6 +18,9 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 // USA.
 //
+//      10        20        30        40        50        60        70
+//       |         |         |         |         |         |         |
+// 4567890123456789012345678901234567890123456789012345678901234567890123456789
 
 // OSX-SPECIFIC NATIVE BROWSER
 #ifdef __APPLE_CC__
@@ -39,32 +42,42 @@ public:
 	BROWSE_SAVE_FILE,
 	BROWSE_SAVE_DIRECTORY
     };
-
-private:
-    Type _btype;			// kind-of browser to show()
+    enum Option {
+        NO_OPTIONS     = 0x0000,	// no options enabled
+	SAVEAS_CONFIRM = 0x0001,	// Show native 'Save As' overwrite
+					// confirm dialog (if supported)
+	NEW_FOLDER     = 0x0002,	// Show 'New Folder' icon
+					// (if supported)
+	PREVIEW        = 0x0004,	// enable preview mode
+    };
+protected:
     NavDialogCreationOptions _opts;	// file navigation options
+private:
+    int             _btype;		// kind-of browser to show()
+    int             _options;		// general options
     NavDialogRef    _ref;		// file navigation reference
     NavActionState  _keepstate;		// holds button permissions
     NavMenuItemSpec _tempitem;   	// Popup menu selection
-    char       **_pathnames;		// array of pathnames
-    int          _tpathnames;		// total pathnames
-    char        *_directory;		// default pathname to use
-    char        *_title;		// title for window
-    char        *_preset_file;		// the 'save as' filename
+    char          **_pathnames;		// array of pathnames
+    int             _tpathnames;	// total pathnames
+    char           *_directory;		// default pathname to use
+    char           *_title;		// title for window
+    char           *_preset_file;	// the 'save as' filename
 
-    char        *_filter;		// user-side search filter, eg:
+    char           *_filter;		// user-side search filter, eg:
 					// C Files\t*.[ch]\nText Files\t*.txt"
 
-    char        *_filt_names;		// filter names (tab delimited)
+    char           *_filt_names;	// filter names (tab delimited)
     					// eg. "C Files\tText Files"
 
-    char        *_filt_patt[MAXFILTERS];// array of filter patterns, eg:
+    char           *_filt_patt[MAXFILTERS];
+                                        // array of filter patterns, eg:
 					//     _filt_patt[0]="*.{cxx,h}"
 					//     _filt_patt[1]="*.txt"
 
-    int          _filt_total;		// parse_filter() # of filters loaded
-    int          _filt_value;		// index of the selected filter
-    char        *_errmsg;		// error message
+    int             _filt_total;	// parse_filter() # of filters loaded
+    int             _filt_value;	// index of the selected filter
+    char           *_errmsg;		// error message
 
     // PRIVATE CLASS TO HANDLE NAVIGATION DIALOG REPLY STRUCT
     //     Class-ified, mainly to ensure proper cleanup.
@@ -98,30 +111,28 @@ private:
     int post();
     
 public:
-    Fl_Native_File_Chooser(Type val = BROWSE_FILE);
+    Fl_Native_File_Chooser(int val = BROWSE_FILE);
     ~Fl_Native_File_Chooser();
 
     // Public methods
+    void type(int);
+    int type() const;
+    void options(int);
+    int options() const;
     int count() const;
+    const char *filename() const;
+    const char *filename(int i) const;
     void directory(const char *);
-    const char* directory() const;
-    const char *errmsg() const;
-    const char* filename() const;
-    const char* filename(int i) const;
+    const char *directory() const;
+    void title(const char *);
+    const char *title() const;
     const char *filter() const;
     void filter(const char *);
     void filter_value(int i) { _filt_value = i; }
     int filter_value() { return(_filt_value); }
     int filters() { return(_filt_total); }
-    void preset_file(const char*);
-    const char* preset_file();
+    void preset_file(const char *);
+    const char *preset_file();
+    const char *errmsg() const;
     int show();
-    void title(const char *);
-    const char* title() const;
-    void type(Type);
-    Type type() const;
-
-    // Platform specific methods
-    NavDialogOptionFlags mac_dialog_options() const;
-    void mac_dialog_options(NavDialogOptionFlags val);
 };

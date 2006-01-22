@@ -33,12 +33,13 @@
 static int G_init = 0;				// 'first time' initialize flag
 
 // CTOR
-Fl_Native_File_Chooser::Fl_Native_File_Chooser(Type t) {
+Fl_Native_File_Chooser::Fl_Native_File_Chooser(int val) {
     if ( G_init == 0 ) {
         // Initialize when instanced for first time
 	Fl_File_Icon::load_system_icons();	// OK to call more than once
 	G_init = 1;				// eg. if app already called from main()
     }
+    _options     = NO_OPTIONS;
     _filter      = NULL;
     _parsedfilt  = NULL;
     _preset_file = NULL;
@@ -46,7 +47,8 @@ Fl_Native_File_Chooser::Fl_Native_File_Chooser(Type t) {
     _directory   = NULL;
     _errmsg      = NULL;
     file_chooser = new Fl_File_Chooser(NULL, NULL, 0, NULL);
-    type(t);
+    type(val);		// do this after file_chooser created
+    _nfilters    = 0;
 }
 
 // DTOR
@@ -67,7 +69,7 @@ void Fl_Native_File_Chooser::errmsg(const char *msg) {
 }
 
 // PRIVATE: translate Native types to Fl_File_Chooser types
-int Fl_Native_File_Chooser::type_fl_file(Type val) {
+int Fl_Native_File_Chooser::type_fl_file(int val) {
     switch (val) {
         case BROWSE_FILE:
             return(Fl_File_Chooser::SINGLE);
@@ -86,8 +88,18 @@ int Fl_Native_File_Chooser::type_fl_file(Type val) {
     }
 }
 
-void Fl_Native_File_Chooser::type(Type val) {
+void Fl_Native_File_Chooser::type(int val) {
     file_chooser->type(type_fl_file(val));
+}
+
+// SET OPTIONS
+void Fl_Native_File_Chooser::options(int val) {
+    _options = val;
+}
+
+// GET OPTIONS
+int Fl_Native_File_Chooser::options() const {
+    return(_options);
 }
 
 // Show chooser, blocks until done.
@@ -101,21 +113,34 @@ int Fl_Native_File_Chooser::show() {
     if ( _parsedfilt ) {
         file_chooser->filter(_parsedfilt);
     }
+
     // FILTER VALUE
     //     Set this /after/ setting the filter
     //
     file_chooser->filter_value(_filtvalue);
+
     // DIRECTORY
     if ( _directory && _directory[0] ) {
         file_chooser->directory(_directory);
     } else {
         file_chooser->directory(_prevvalue);
     }
+
     // PRESET FILE
     if ( _preset_file ) {
         file_chooser->value(_preset_file);
     }
-    file_chooser->preview(0);
+
+    // OPTIONS: PREVIEW
+    file_chooser->preview( (options() & PREVIEW) ? 1 : 0);
+
+    // OPTIONS: NEW FOLDER
+    if ( options() & NEW_FOLDER )
+        file_chooser->type(file_chooser->type() |  Fl_File_Chooser::CREATE);	// on
+    else
+        file_chooser->type(file_chooser->type() & ~Fl_File_Chooser::CREATE);	// off
+
+    // SHOW
     file_chooser->show();
 
     while ( file_chooser->shown() ) {
@@ -127,6 +152,7 @@ int Fl_Native_File_Chooser::show() {
 	_prevvalue = strnew(file_chooser->value());
 	_filtvalue = file_chooser->filter_value();	// update filter value
     }
+
     if ( file_chooser->count() ) return(0);
     else return(1);
 }
@@ -218,14 +244,15 @@ const char *Fl_Native_File_Chooser::directory() const {
 //
 void Fl_Native_File_Chooser::parse_filter() {
     _parsedfilt = strfree(_parsedfilt);	// clear previous parsed filter (if any)
+    _nfilters = 0;
     char *in = _filter;
     if ( !in ) return;
 
     int has_name = strchr(in, '\t') ? 1 : 0;
 
     char mode = has_name ? 'n' : 'w';	// parse mode: n=title, w=wildcard
-    char wildcard[80] = "";		// parsed wildcard
-    char name[80] = "";
+    char wildcard[1024] = "";		// parsed wildcard
+    char name[1024] = "";
 
     // Parse filter user specified
     for ( ; 1; in++ ) {
@@ -254,9 +281,10 @@ void Fl_Native_File_Chooser::parse_filter() {
 		// APPEND NEW FILTER TO LIST
 		if ( wildcard[0] ) {
 		    // OUT: "name(wild)\tname(wild)"
-		    char comp[1024];
-		    sprintf(comp, "%s%.80s(%.80s)", ((_parsedfilt)?"\t":""), name, wildcard);
+		    char comp[2048];
+		    sprintf(comp, "%s%.511s(%.511s)", ((_parsedfilt)?"\t":""), name, wildcard);
 		    _parsedfilt = strapp(_parsedfilt, comp);
+		    _nfilters++;
 		    //DEBUG printf("DEBUG: PARSED FILT NOW <%s>\n", _parsedfilt);
 		}
 		// RESET

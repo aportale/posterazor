@@ -159,7 +159,7 @@ int Fl_Native_File_Chooser::NavReply::get_pathnames(char **&pathnames,
 	    pathnames[index-1] = strnew("");
 	    continue;
 	}
-	char s[512];
+	char s[4096];
 	FSSpecToPath(fsspec, s, sizeof(s)-1);
 	pathnames[index-1] = strnew(s);
 	AEDisposeDesc(&desc);
@@ -263,24 +263,22 @@ void Fl_Native_File_Chooser::event_handler(
     Fl_Native_File_Chooser *nfb = (Fl_Native_File_Chooser*)data;
     switch (callBackSelector) {
 	case kNavCBStart:
-	    if ( nfb->directory() ) {
+	    if ( nfb->directory() || nfb->preset_file() ) {
+	        const char *pathname = nfb->directory() ? nfb->directory() : nfb->preset_file();
 		FSSpec spec;
-		if ( ( err = PathToFSSpec(nfb->directory(), spec) ) != noErr ) {
+		if ( ( err = PathToFSSpec(pathname, spec) ) != noErr ) {
 		    fprintf(stderr, "PathToFSSpec(%s) failed: err=%d\n",
-		        nfb->directory(), (int)err);
+		        pathname, (int)err);
                     break;
 		}
 		AEDesc desc;
 		if ((err = AECreateDesc(typeFSS,
-					&spec,
-					sizeof(FSSpec),
-					&desc)) != noErr) {
+					&spec, sizeof(FSSpec), &desc)) != noErr) {
 		    fprintf(stderr, "AECreateDesc() failed: err=%d\n",
 		        (int)err);
 		}
 		if ((err = NavCustomControl(cbparm->context,
-					    kNavCtlSetLocation,
-					    &desc)) != noErr) {
+					    kNavCtlSetLocation, &desc)) != noErr) {
 		    fprintf(stderr, "NavCustomControl() failed: err=%d\n",
 		        (int)err);
 		}
@@ -369,16 +367,11 @@ void Fl_Native_File_Chooser::event_handler(
 }
 
 // CONSTRUCTOR
-Fl_Native_File_Chooser::Fl_Native_File_Chooser(Type val) {
+Fl_Native_File_Chooser::Fl_Native_File_Chooser(int val) {
     _btype          = val;
     NavGetDefaultDialogCreationOptions(&_opts);
-    //// "default" options (XXX: haven't tested, slows down browser opening?)
-    ////_opts.optionFlags |= kNavDefaultNavDlogOptions;
-    ////
-    //// allow previews (XXX: this doesn't seem to work?)
-    ////_opts.optionFlags |= kNavAllowPreviews;
-    ////
     _opts.optionFlags |= kNavDontConfirmReplacement;	// no confirms for "save as"
+    _options        = NO_OPTIONS;
     _ref            = NULL;
     memset(&_tempitem, 0, sizeof(_tempitem));
     _pathnames      = NULL;
@@ -399,6 +392,7 @@ Fl_Native_File_Chooser::Fl_Native_File_Chooser(Type val) {
 Fl_Native_File_Chooser::~Fl_Native_File_Chooser() {
     // _opts			// nothing to manage
     if (_ref) { NavDialogDispose(_ref); _ref = NULL; }
+    // _options			// nothing to manage
     // _keepstate		// nothing to manage
     // _tempitem		// nothing to manage
     clear_pathnames();
@@ -415,13 +409,23 @@ Fl_Native_File_Chooser::~Fl_Native_File_Chooser() {
 }
 
 // SET THE TYPE OF BROWSER
-void Fl_Native_File_Chooser::type(Type val) {
+void Fl_Native_File_Chooser::type(int val) {
     _btype = val;
 }
 
 // GET TYPE OF BROWSER
-Fl_Native_File_Chooser::Type Fl_Native_File_Chooser::type() const {
+int Fl_Native_File_Chooser::type() const {
     return(_btype);
+}
+
+// SET OPTIONS
+void Fl_Native_File_Chooser::options(int val) {
+    _options = val;
+}
+
+// GET OPTIONS
+int Fl_Native_File_Chooser::options() const {
+    return(_options);
 }
 
 // SHOW THE BROWSER WINDOW
@@ -464,6 +468,13 @@ int Fl_Native_File_Chooser::show() {
 	    _opts.popupExtension = NULL;
 	    _opts.optionFlags |= kNavAllFilesInPopup;
 	}
+    }
+
+    // HANDLE OPTIONS WE SUPPORT
+    if ( _options & SAVEAS_CONFIRM ) {
+        _opts.optionFlags &= ~kNavDontConfirmReplacement;	// enables confirm
+    } else {
+        _opts.optionFlags |= kNavDontConfirmReplacement;	// disables confirm
     }
 
     // POST BROWSER
@@ -704,8 +715,8 @@ void Fl_Native_File_Chooser::parse_filter(const char *in) {
     int has_name = strchr(in, '\t') ? 1 : 0;
 
     char mode = has_name ? 'n' : 'w';	// parse mode: n=title, w=wildcard
-    char wildcard[80] = "";		// parsed wildcard
-    char name[80] = "";
+    char wildcard[1024] = "";		// parsed wildcard
+    char name[1024] = "";
 
     // Parse filter user specified
     for ( ; 1; in++ ) {
@@ -734,7 +745,7 @@ void Fl_Native_File_Chooser::parse_filter(const char *in) {
 		//     If user didn't specify a name, make one
 		//
 		if ( name[0] == '\0' ) {
-		    sprintf(name, "%.70s Files", wildcard);
+		    sprintf(name, "%.*s Files", (int)sizeof(name)-10, wildcard);
 		}
 		// APPEND NEW FILTER TO LIST
 		if ( wildcard[0] ) {
@@ -820,12 +831,3 @@ const char* Fl_Native_File_Chooser::preset_file() {
     return(_preset_file);
 }
 
-// GET DIALOG OPTION FLAGS
-NavDialogOptionFlags Fl_Native_File_Chooser::mac_dialog_options() const {
-    return(_opts.optionFlags);
-}
-
-// SET DIALOG OPTION FLAGS
-void Fl_Native_File_Chooser::mac_dialog_options(NavDialogOptionFlags val) {
-    _opts.optionFlags = val;
-}

@@ -41,9 +41,17 @@ public:
 	BROWSE_SAVE_FILE,
 	BROWSE_SAVE_DIRECTORY
     };
-
+    enum Option {
+        NO_OPTIONS     = 0x0000,	// no options enabled
+	SAVEAS_CONFIRM = 0x0001,	// Show native 'Save As' overwrite
+					// confirm dialog (if supported)
+	NEW_FOLDER     = 0x0002,	// Show 'New Folder' icon
+					// (if supported)
+	PREVIEW        = 0x0004,	// enable preview mode
+    };
 private:
-    Type _btype;		// kind-of browser to show()
+    int  _btype;		// kind-of browser to show()
+    int  _options;		// general options
     OPENFILENAME _ofn;		// GetOpenFileName() & GetSaveFileName() struct
     BROWSEINFO   _binf;		// SHBrowseForFolder() struct
     char  **_pathnames;		// array of pathnames
@@ -63,7 +71,6 @@ private:
     void set_single_pathname(const char *s);
     void add_pathname(const char *s);
 
-    void Ctor(Type type);
     void FreePIDL(ITEMIDLIST *pidl);
     void ClearOFN();
     void ClearBINF();
@@ -73,31 +80,35 @@ private:
     static int CALLBACK Dir_CB(HWND win, UINT msg, LPARAM param, LPARAM data);
     int showdir();
 
-    void parse_filter(const char*);
+    void parse_filter(const char *);
     void clear_filters();
-    void add_filter(const char*, const char*);
+    void add_filter(const char *, const char *);
 
 public:
-    Fl_Native_File_Chooser(Type val = BROWSE_FILE);
+    Fl_Native_File_Chooser(int val = BROWSE_FILE);
     ~Fl_Native_File_Chooser();
-    void type(Type val);
-    Type type() const;
-    int show();
-    const char *errmsg() const;
-    const char* filename() const;
-    const char* filename(int i) const;
+
+    // Public methods
+    void type(int val);
+    int type() const;
+    void options(int);
+    int options() const;
     int count() const;
+    const char *filename() const;
+    const char *filename(int i) const;
     void directory(const char *val);
-    const char* directory() const;
+    const char *directory() const;
     void title(const char *val);
-    const char* title() const;
+    const char *title() const;
     const char *filter() const;
     void filter(const char *val);
     int filters() const { return _nfilters; }
-    void preset_file(const char*);
-    const char* preset_file() const;
     void filter_value(int i);
     int filter_value() const;
+    void preset_file(const char *);
+    const char *preset_file() const;
+    const char *errmsg() const;
+    int show();
 };
 
 #endif /*_FL_NATIVE_FILE_BROWSER_H*/

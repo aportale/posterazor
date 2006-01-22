@@ -34,7 +34,16 @@ public:
 	BROWSE_SAVE_FILE,
 	BROWSE_SAVE_DIRECTORY
     };
+    enum Option {
+        NO_OPTIONS     = 0x0000,	// no options enabled
+	SAVEAS_CONFIRM = 0x0001,	// Show native 'Save As' overwrite
+					// confirm dialog (if supported)
+	NEW_FOLDER     = 0x0002,	// Show 'New Folder' icon
+					// (if supported)
+	PREVIEW        = 0x0004,	// enable preview mode
+    };
 private:
+    int   _options;			// general options
     char *_filter;			// user supplied filter
     char *_parsedfilt;			// parsed filter
     int   _filtvalue;			// selected filter
@@ -43,31 +52,37 @@ private:
     char *_directory;
     char *_errmsg;			// error message
     Fl_File_Chooser *file_chooser;
-    static int _init;			// initializer flag
+    int _nfilters;
 
     // Private methods
     void errmsg(const char *msg);
-    int type_fl_file(Type);
+    int type_fl_file(int);
     void parse_filter();
     void keeplocation();
+
 public:
-    Fl_Native_File_Chooser(Type t=BROWSE_FILE);
+    Fl_Native_File_Chooser(int val=BROWSE_FILE);
     ~Fl_Native_File_Chooser();
+
+    // Public methods
+    void type(int);
+    int type() const;
+    void options(int);
+    int options() const;
     int count() const;
-    void directory(const char *val);
-    const char *directory() const;
-    const char *errmsg() const;
     const char *filename() const;
     const char *filename(int i) const;
+    void directory(const char *val);
+    const char *directory() const;
+    void title(const char *);
+    const char* title() const;
     const char *filter() const;
     void filter(const char *);
+    int filters() const { return(_nfilters); }
     void filter_value(int i);
     int filter_value() const;
     void preset_file(const char*);
     const char* preset_file() const;
+    const char *errmsg() const;
     int show();
-    void title(const char *);
-    const char* title() const;
-    void type(Type);
-    Type type() const;
 };
