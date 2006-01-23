@@ -29,6 +29,7 @@ public:
 	virtual const char* LanguageName(void) = 0;
 
 	virtual const char* AbsoluteSize(void) = 0;
+	virtual const char* AllImageFormats(void) = 0;
 	virtual const char* Back(void) = 0;
 	virtual const char* Borders(void) = 0;
 	virtual const char* Bottom(void) = 0;

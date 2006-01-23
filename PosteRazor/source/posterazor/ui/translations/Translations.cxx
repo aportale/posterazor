@@ -102,6 +102,7 @@ public:
 	const char* LanguageName(void)                    {return m_selectedTranslation->LanguageName();}
 
 	const char* AbsoluteSize(void)                    {return m_selectedTranslation->AbsoluteSize();}
+	const char* AllImageFormats(void)                 {return m_selectedTranslation->AllImageFormats();}
 	const char* Back(void)                            {return m_selectedTranslation->Back();}
 	const char* Borders(void)                         {return m_selectedTranslation->Borders();}
 	const char* Bottom(void)                          {return m_selectedTranslation->Bottom();}
