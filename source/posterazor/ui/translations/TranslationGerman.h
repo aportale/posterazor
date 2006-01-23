@@ -31,6 +31,7 @@ public:
 	const char* LanguageName(void)                    {return "Deutsch";}
 
 	const char* AbsoluteSize(void)                    {return "Absolute Maße:";}
+	const char* AllImageFormats(void)                 {return "Alle Bildformate";}
 	const char* Back(void)                            {return "Zurück";}
 	const char* Borders(void)                         {return "Ränder";}
 	const char* Bottom(void)                          {return "Unten";}
