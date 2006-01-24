@@ -180,7 +180,7 @@ void Fl_Gl_Paint_Canvas::SetImage(const unsigned char *rgbData, double width, do
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, 0x812F);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, 0x812F);
 			GLfloat color[4];
-			color[0] = color[1] = color[2] = 1; color[4] = 0;
+			color[0] = color[1] = color[2] = 1; color[3] = 0;
 			glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, color);
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_texturesSize, m_texturesSize, 0, GL_RGB, GL_UNSIGNED_BYTE, textureRgbData);
 		}
