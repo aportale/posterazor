@@ -376,7 +376,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 
 static const char* GetPathFromFileName(const char* fileName)
 {
-	char pathName[1024] = "";
+	static char pathName[1024] = "";
 	
 	strncpy(pathName, fileName, sizeof(pathName));
 	pathName[sizeof(pathName) - 1] = '\0';
