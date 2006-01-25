@@ -323,6 +323,7 @@
 				8D0C4E8F0486CD37000505A6 /* Sources */,
 				8D0C4E910486CD37000505A6 /* Frameworks */,
 				82028CD5091E6E2E00763263 /* Copy README, LICENSE, CHANGES */,
+				82018DB20988389F0043F63C /* Generate language resources */,
 			);
 			buildRules = (
 			);
@@ -382,6 +383,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		82018DB20988389F0043F63C /* Generate language resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate language resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "RESOURCESFOLDER=$BUILT_PRODUCTS_DIR/$TARGET_NAME.app/Contents/Resources/\n\nENGLISH=$RESOURCESFOLDER/English.lproj\nGERMAN=$RESOURCESFOLDER/German.lproj\n\nfor LANGUAGE in $ENGLISH $GERMAN\ndo\n\tif [ ! -d $LANGUAGE ]\n\tthen\tmkdir $LANGUAGE\n\tfi\ndone\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D0C4E8F0486CD37000505A6 /* Sources */ = {
