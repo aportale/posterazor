@@ -25,8 +25,10 @@
 #include "TranslationEnglish.h"
 #include "TranslationGerman.h"
 //#include "TranslationItalian.h"
-#ifdef WIN32
+#if defined (WIN32)
 #include <Windows.h>
+#elif defined (OSX)
+#include <CoreFoundation/CoreFoundation.h>
 #endif
 
 Translations *Translations::m_instance = 0;
@@ -94,6 +96,15 @@ public:
 //			(primaryLangID == LANG_ITALIAN)?eLanguageItalian:
 			eLanguageUndefined;
 #elif defined (OSX)
+		CFBundleRef mainBundle = CFBundleGetMainBundle();
+		CFArrayRef locArray = CFBundleCopyBundleLocalizations(mainBundle);
+		CFArrayRef preferredLanguages = CFBundleCopyPreferredLocalizationsFromArray(locArray);
+		CFStringRef language = (CFStringRef)CFArrayGetValueAtIndex(preferredLanguages, 0);
+		systemLanguage =
+			(CFStringCompare(language, CFSTR("English"), 0) == kCFCompareEqualTo)?eLanguageEnglish:
+			(CFStringCompare(language, CFSTR("German"), 0) == kCFCompareEqualTo)?eLanguageGerman:
+//			(CFStringCompare(language, CFSTR("Italian"), 0) == kCFCompareEqualTo)?eLanguageItalian:
+			eLanguageUndefined;
 #endif
 		return systemLanguage;
 	}
