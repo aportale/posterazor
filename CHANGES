@@ -17,7 +17,7 @@ PosteRazor 1.1
 -   Added: The poster preview is (optionally) rendered using OpenGL
            PosteRazor can still be compiled and used without OpenGL
 -   Added: PosteRazor is now multilingual (English, German)
-           The language is set automatically (on Windows)
+           The language is set automatically
 -   Added: PosteRazor has a settings dialog for setting units of
            lenth, UI language and usage of OpenGL
 -   Added: An input image can be specified by command line (or drag
