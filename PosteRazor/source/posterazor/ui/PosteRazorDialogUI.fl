@@ -59,7 +59,7 @@ widget_class PosteRazorDialogUI {
       xywh {10 420 195 25} labelcolor 32 align 16
       class Fl_Image_Text_Button
     }
-    Fl_Box m_settingsButtonLabel {selected
+    Fl_Box m_settingsButtonLabel {
       image {images/settingsIcon.png} xywh {205 420 40 25} align 20 hide
     }
   }
@@ -494,7 +494,7 @@ widget_class PosteRazorHelpDialogUI {
 widget_class PosteRazorSettingsDialogUI {
   label {PosteRazor settings}
   user_data this open
-  xywh {451 620 315 400} type Double
+  xywh {451 567 315 400} type Double
   code0 {m_okWasPressed = false;}
   class Fl_Double_Window modal visible
 } {
@@ -561,5 +561,14 @@ hide();}
     }
   }
   decl {virtual void HandleUseOpenGLChangement(void) = 0;} {public
+  }
+  Function {show_modal(void)} {open return_type bool
+  } {
+    code {m_okWasPressed = true;
+show();
+while(visible())
+	Fl::wait();
+return m_okWasPressed;} {selected
+    }
   }
 } 

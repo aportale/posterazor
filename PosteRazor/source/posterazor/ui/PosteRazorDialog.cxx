@@ -123,7 +123,6 @@ public:
 class PosteRazorSettingsDialog: public PosteRazorSettingsDialogUI
 {
 	posteRazorSettings *m_settings;
-	posteRazorSettings m_settingsBackup;
 	SettingsChangementHandler *m_changementHandler;
 	int m_unitOfLengthButtonsCount;
 	Fl_Button **m_unitOfLengthButtons;
@@ -215,7 +214,6 @@ public:
 	{
 		int i;
 		m_settings = settings;
-		m_settingsBackup = *m_settings;
 		m_changementHandler = changementHandler;
 
 		for (i = 0; i < m_unitOfLengthButtonsCount; i++)
@@ -275,18 +273,6 @@ public:
 			m_changementHandler->HandleOptionsChangement(m_settings);
 	}
 
-	void hide(void)
-	{
-		if (!m_okWasPressed && m_changementHandler)
-		{
-			*m_settings = m_settingsBackup;
-			m_changementHandler->HandleOptionsChangement(m_settings);
-		}
-
-		m_okWasPressed = false;
-		Fl_Window::hide();
-	}
-
 	void UpdateLanguage(void)
 	{
 		label(TRANSLATIONS->PosteRazorSettings());
@@ -300,6 +286,12 @@ public:
 		m_cancelButton->label(TRANSLATIONS->Cancel());
 
 		redraw();
+	}
+	
+	void show(void)
+	{
+		m_okWasPressed = false;
+		PosteRazorSettingsDialogUI::show();
 	}
 };
 
@@ -429,8 +421,16 @@ void PosteRazorDialog::OpenSettingsDialog(void)
 		m_settingsDialog = new PosteRazorSettingsDialog();
 		m_settingsDialog->set_modal();
 	}
+	
 	m_settingsDialog->SetOptionsAndHandler(&m_settings, this);
-	m_settingsDialog->show();
+	
+	posteRazorSettings settingsbackup = m_settings;
+	bool languageIsUndefinedBackup = m_UILanguageIsUndefined;
+	if (!m_settingsDialog->show_modal())
+	{
+		HandleOptionsChangement(&settingsbackup);
+		m_UILanguageIsUndefined = languageIsUndefinedBackup;
+	}
 }
 
 void PosteRazorDialog::OpenHelpDialog(void)

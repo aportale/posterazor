@@ -326,5 +326,6 @@ private:
   static void cb_m_cancelButton(Fl_Button*, void*);
 public:
   virtual void HandleUseOpenGLChangement(void) = 0;
+  bool show_modal(void);
 };
 #endif
