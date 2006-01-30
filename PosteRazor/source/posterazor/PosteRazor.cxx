@@ -655,7 +655,7 @@ public:
 			ShellExecute(HWND_DESKTOP, "open", fileName, NULL, NULL, SW_SHOW);
 #else
 			char commandStr[2048];
-			sprintf(commandStr, "open %s", fileName);
+			sprintf(commandStr, "open \"%s\"", fileName);
 			system(commandStr);
 #endif;
 		}
