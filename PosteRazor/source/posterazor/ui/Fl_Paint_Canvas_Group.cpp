@@ -33,7 +33,9 @@ Fl_Paint_Canvas_Group::Fl_Paint_Canvas_Group(int x, int y, int width, int height
 
 	begin();
 	m_drawPaintCanvas = new Fl_Draw_Paint_Canvas(x+1, y+1, width-2, height-2);
+#ifndef NO_OPENGL_PREVIEW
 	m_glPaintCanvas = new Fl_Gl_Paint_Canvas(x+1, y+1, width-2, height-2, this);
+#endif
 	end();
 
 	Fl::get_system_colors();
@@ -42,17 +44,24 @@ Fl_Paint_Canvas_Group::Fl_Paint_Canvas_Group(int x, int y, int width, int height
 	
 	resizable(m_drawPaintCanvas);
 
+#ifndef NO_OPENGL_PREVIEW
 	SetPaintCanvasType(PaintCanvasTypeGL);
+#else
+	SetPaintCanvasType(PaintCanvasTypeDraw);
+#endif
 }
 
 void Fl_Paint_Canvas_Group::redraw(void)
 {
 	Fl_Group::redraw();
+#ifndef NO_OPENGL_PREVIEW
 	m_glPaintCanvas->redraw();
+#endif
 }
 
 void Fl_Paint_Canvas_Group::SetPaintCanvasType(enum ePaintCanvasTypes type)
 {
+#ifndef NO_OPENGL_PREVIEW
 	m_paintCanvasType = type;
 
 	if (GetPaintCanvasType()==PaintCanvasTypeDraw)
@@ -70,35 +79,48 @@ void Fl_Paint_Canvas_Group::SetPaintCanvasType(enum ePaintCanvasTypes type)
 	Fl::wait(0.0); // 0.0 is needed for OSX!
 	if (m_imageRGBData)
 		GetPaintCanvasBase()->SetImage(m_imageRGBData, m_imageWidth, m_imageHeight);
+#endif
 }
 
 Fl_Paint_Canvas_Base *Fl_Paint_Canvas_Group::GetPaintCanvasBase(void) const
 {
+#ifndef NO_OPENGL_PREVIEW
 	if (GetPaintCanvasType()==PaintCanvasTypeDraw)
 		return dynamic_cast<Fl_Paint_Canvas_Base*>(m_drawPaintCanvas);
 	else
 		return dynamic_cast<Fl_Paint_Canvas_Base*>(m_glPaintCanvas);
+#else
+	return m_drawPaintCanvas;
+#endif
 }
 
 Fl_Widget *Fl_Paint_Canvas_Group::GetPaintCanvasWidget(void) const
 {
+#ifndef NO_OPENGL_PREVIEW
 	if (GetPaintCanvasType()==PaintCanvasTypeDraw)
 		return dynamic_cast<Fl_Widget*>(m_drawPaintCanvas);
 	else
 		return dynamic_cast<Fl_Widget*>(m_glPaintCanvas);
+#else
+	return m_drawPaintCanvas;
+#endif
 }
 
 void Fl_Paint_Canvas_Group::SetPainterInterface(const PainterInterface *painter)
 {
 	PaintCanvasInterface::SetPainterInterface(painter);
 	m_drawPaintCanvas->SetPainterInterface(m_painter);
+#ifndef NO_OPENGL_PREVIEW
 	m_glPaintCanvas->SetPainterInterface(m_painter);
+#endif
 }
 
 void Fl_Paint_Canvas_Group::SetBackgroundColor(unsigned char red, unsigned char green, unsigned char blue)
 {
 	m_drawPaintCanvas->SetBackgroundColor(red, green, blue);
+#ifndef NO_OPENGL_PREVIEW
 	m_glPaintCanvas->SetBackgroundColor(red, green, blue);
+#endif
 }
 
 void Fl_Paint_Canvas_Group::DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
@@ -123,13 +145,17 @@ void Fl_Paint_Canvas_Group::SetState(const char *state)
 {
 	Fl_Paint_Canvas_Base::SetState(state);
 	m_drawPaintCanvas->SetState(m_stateString);
+#ifndef NO_OPENGL_PREVIEW
 	m_glPaintCanvas->SetState(m_stateString);
+#endif
 }
 
 void Fl_Paint_Canvas_Group::DisposeImage(void)
 {
 	m_drawPaintCanvas->DisposeImage();
+#ifndef NO_OPENGL_PREVIEW
 	m_glPaintCanvas->DisposeImage();
+#endif
 
 	if (m_imageRGBData)
 	{
