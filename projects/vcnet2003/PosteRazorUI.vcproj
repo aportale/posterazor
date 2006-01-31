@@ -72,7 +72,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="..\..\source\posterazor;&quot;..\..\thirdparty\fltk-1.1&quot;;..\..\thirdparty\Fl_Native_File_Chooser;..\..\source\posterazor\ui\windowsResources"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;OPENGL_PREVIEW"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
