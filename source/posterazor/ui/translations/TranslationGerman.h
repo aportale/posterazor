@@ -1,6 +1,6 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005 by Alessandro Portale
+	Copyright (C) 2005-2006 by Alessandro Portale
 	http://posterazor.sourceforge.net/
 
 	This file is part of PosteRazor
@@ -203,7 +203,7 @@ public:
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORLICENSE, GERMAN_POSTERAZORHELPLICENSE) \
 					"PosteRazor - Mach' Dein eigenes Poster!<br>" POSTERAZORHELPENDLINE \
 					"<a href=\"http://posterazor.sourceforge.net/?lang=german\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
-					"Copyright (C) 2005 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+					"Copyright (C) 2005-2006 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 					"Der folgende Lizenztext ist in seiner englischen Originalfassung aufgef&uuml;hrt, da die <a href=\"http://www.gnu.de/gpl-ger.html\">deutsche &Uuml;bersetzung</a> nicht offiziell oder im rechtlichen Sinne anerkannt ist.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 					"This program is free software; you can redistribute it and/or modify it under the terms of the <a href=\"http://www.gnu.org/licenses/gpl.txt\">GNU General Public License</a> as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 					"This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
