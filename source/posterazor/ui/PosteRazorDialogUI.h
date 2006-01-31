@@ -1,6 +1,6 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005-2006 by Alessandro Portale
+	Copyright (C) 2005 by Alessandro Portale
 	http://posterazor.sourceforge.net/
 
 	This file is part of PosteRazor
@@ -303,6 +303,7 @@ public:
   PosteRazorSettingsDialogUI(int X, int Y, int W, int H, const char *L = 0);
   PosteRazorSettingsDialogUI(int W, int H, const char *L = 0);
   bool m_okWasPressed;
+  Fl_Group *m_backgroudGroup;
   Fl_Group *m_unitOfLengthGroup;
   Fl_Group *m_unitOfLengthButtonsGroup;
   Fl_Box *m_unitOfLengthExplanationBox;
@@ -316,9 +317,11 @@ public:
   Fl_Group *m_languageGroup;
   Fl_Group *m_languageButtonsGroup;
   Fl_Box *m_languageExplanationBox;
+  Fl_Group *m_confirmButtonsGroup;
+  Fl_Return_Button *m_okButton;
 private:
-  void cb_OK1_i(Fl_Return_Button*, void*);
-  static void cb_OK1(Fl_Return_Button*, void*);
+  void cb_m_okButton_i(Fl_Return_Button*, void*);
+  static void cb_m_okButton(Fl_Return_Button*, void*);
 public:
   Fl_Button *m_cancelButton;
 private:
