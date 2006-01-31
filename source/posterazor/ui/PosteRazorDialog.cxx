@@ -191,6 +191,17 @@ public:
 		}
 		m_languageButtonsGroup->end();
 
+#ifdef NO_OPENGL_PREVIEW
+		// Hide OpenGL preview option and shrink dialog
+		int moveUpDistance = m_languageGroup->y() - m_useOpenGLGroup->y();
+		m_useOpenGLGroup->hide();
+		m_languageGroup->position(m_languageGroup->x(), m_languageGroup->y() - moveUpDistance);
+		m_confirmButtonsGroup->position(m_confirmButtonsGroup->x(), m_confirmButtonsGroup->y() - moveUpDistance);
+		m_backgroudGroup->resizable(NULL);
+		m_backgroudGroup->size(m_backgroudGroup->w(), m_backgroudGroup->h() - moveUpDistance);
+		size(w(), h() - moveUpDistance);
+#endif
+
 		UpdateLanguage();
 	}
 
@@ -472,6 +483,7 @@ void PosteRazorDialog::HandleOptionsChangement(posteRazorSettings *settings)
 		m_UILanguageIsUndefined = false;
 		UpdateLanguage();
 	}
+	m_settings = *settings;
 }
 
 void PosteRazorDialog::next(void)

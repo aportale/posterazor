@@ -24,7 +24,9 @@
 #define Fl_Paint_Canvas_Group_h
 
 #include <FL/Fl_Group.H>
-#include "Fl_Gl_Paint_Canvas.h"
+#ifndef NO_OPENGL_PREVIEW
+  #include "Fl_Gl_Paint_Canvas.h"
+#endif
 #include "Fl_Draw_Paint_Canvas.h"
 
 class Fl_Paint_Canvas_Group: public Fl_Group, public Fl_Paint_Canvas_Base
@@ -66,7 +68,9 @@ public:
 protected:
 	enum ePaintCanvasTypes m_paintCanvasType;
 	Fl_Draw_Paint_Canvas *m_drawPaintCanvas;
+#ifndef NO_OPENGL_PREVIEW
 	Fl_Gl_Paint_Canvas *m_glPaintCanvas;
+#endif
 };
 
 #endif Fl_Paint_Canvas_Group_h
