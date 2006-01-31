@@ -500,7 +500,7 @@ widget_class PosteRazorSettingsDialogUI {
 } {
   decl {bool m_okWasPressed;} {public
   }
-  Fl_Group {} {open
+  Fl_Group m_backgroudGroup {open
     xywh {10 10 295 345} box THIN_DOWN_BOX labelsize 8
   } {
     Fl_Group m_unitOfLengthGroup {
@@ -542,10 +542,10 @@ widget_class PosteRazorSettingsDialogUI {
       }
     }
   }
-  Fl_Group {} {open
+  Fl_Group m_confirmButtonsGroup {open selected
     xywh {10 365 296 25}
   } {
-    Fl_Return_Button {} {
+    Fl_Return_Button m_okButton {
       label OK
       callback {m_okWasPressed = true;
 hide();}
@@ -568,7 +568,6 @@ hide();}
 show();
 while(visible())
 	Fl::wait();
-return m_okWasPressed;} {selected
-    }
+return m_okWasPressed;} {}
   }
 } 
