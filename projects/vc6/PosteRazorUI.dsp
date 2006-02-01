@@ -96,6 +96,10 @@ SOURCE=..\..\source\posterazor\ui\Fl_Gl_Paint_Canvas.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\source\posterazor\ui\Fl_Image_Text_Button.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\source\posterazor\ui\Fl_Paint_Canvas_Base.cpp
 # End Source File
 # Begin Source File
@@ -133,6 +137,10 @@ SOURCE=..\..\source\posterazor\ui\Fl_Draw_Paint_Canvas.h
 # Begin Source File
 
 SOURCE=..\..\source\posterazor\ui\Fl_Gl_Paint_Canvas.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\ui\Fl_Image_Text_Button.h
 # End Source File
 # Begin Source File
 
