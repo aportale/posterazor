@@ -205,6 +205,10 @@ SOURCE=..\..\thirdparty\Fl_Native_File_Chooser\Fl_Native_File_Chooser.cxx
 # End Group
 # Begin Source File
 
+SOURCE=..\..\source\posterazor\ui\PosteRazorDialogUI.fl
+# End Source File
+# Begin Source File
+
 SOURCE="..\..\thirdparty\fltk-1.1\lib\fltk.lib"
 
 !IF  "$(CFG)" == "PosteRazorUI - Win32 Release"
