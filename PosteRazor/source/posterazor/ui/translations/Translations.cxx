@@ -72,7 +72,7 @@ public:
 	enum eLanguages GetLanguageForIndex(int index)    {return TranslationsMap[index + 1].language;}
 	TranslationInterface* GetTranslationOfLanguage(enum eLanguages language)
 	{
-		TranslationInterface* foundTranslation;
+		TranslationInterface* foundTranslation = NULL;
 		for (int i = 0; i < TranslationsMapItemsCount; i++)
 		{
 			if(TranslationsMap[i].language == language)
@@ -81,6 +81,8 @@ public:
 				break;
 			}
 		}
+		if (!foundTranslation)
+			foundTranslation = TranslationsMap[0].translation;
 		return foundTranslation;
 	}
 
