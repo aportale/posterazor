@@ -307,7 +307,7 @@ public:
 };
 
 PosteRazorDialog::PosteRazorDialog(void)
-	:PosteRazorDialogUI(620, 455, "PosteRazor")
+	:PosteRazorDialogUI(620, 455, "PosteRazor 1.1")
 {
 	m_settingsDialog = NULL;
 	m_helpDialog = NULL;
