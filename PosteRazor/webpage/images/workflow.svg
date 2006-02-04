@@ -14,7 +14,7 @@
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.42.2"
-   sodipodi:docbase="d:\temp\PosteRazor\webpage\images"
+   sodipodi:docbase="D:\temp\PosteRazor\webpage\images"
    sodipodi:docname="workflow.svg">
   <defs
      id="defs4">
@@ -155,7 +155,7 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="opacity:1.0000000;fill:#ffffee;fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:0.00000000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       style="opacity:1.0000000;fill:#ffffcc;fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:0.00000000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
        id="rect5330"
        width="524.51184"
        height="176.16492"
@@ -169,8 +169,8 @@
       <image
          y="341.83118"
          x="350.28574"
-         xlink:href="screenshots\step04.png"
-         sodipodi:absref="screenshots\step04.png"
+         xlink:href="..\screenshot_english_step04.png"
+         sodipodi:absref="..\screenshot_english_step04.png"
          width="147.78661"
          height="113.42857"
          id="image1313" />
