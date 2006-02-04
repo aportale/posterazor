@@ -227,22 +227,22 @@ widget_class PosteRazorDialogUI {
         Fl_Button m_overlappingPositionTopLeftButton {
           label {Top left}
           callback {HandleOverlappingChangement(m_overlappingPositionTopLeftButton);}
-          image {images/overlappingTopLeft.png} xywh {335 180 120 80} type Radio color 40 selection_color 55
+          image {images/overlappingTopLeft.png} xywh {335 180 120 80} type Radio color 47 selection_color 55
         }
         Fl_Button m_overlappingPositionTopRightButton {
           label {Top right}
           callback {HandleOverlappingChangement(m_overlappingPositionTopRightButton);}
-          image {images/overlappingTopRight.png} xywh {470 180 120 80} type Radio color 40 selection_color 55
+          image {images/overlappingTopRight.png} xywh {470 180 120 80} type Radio color 47 selection_color 55
         }
         Fl_Button m_overlappingPositionBottomLeftButton {
           label {Bottom left}
           callback {HandleOverlappingChangement(m_overlappingPositionBottomLeftButton);}
-          image {images/overlappingBottomLeft.png} xywh {335 270 120 80} type Radio color 40 selection_color 55
+          image {images/overlappingBottomLeft.png} xywh {335 270 120 80} type Radio color 47 selection_color 55
         }
         Fl_Button m_overlappingPositionBottomRightButton {
           label {Bottom right}
           callback {HandleOverlappingChangement(m_overlappingPositionBottomRightButton);}
-          image {images/overlappingBottomRight.png} xywh {470 270 120 80} type Radio color 40 selection_color 55
+          image {images/overlappingBottomRight.png} xywh {470 270 120 80} type Radio color 47 selection_color 55
         }
       }
     }
@@ -340,15 +340,15 @@ widget_class PosteRazorDialogUI {
         } {
           Fl_Button m_posterAlignmentTopButton {
             callback {HandlePosterImageAlignment();}
-            image {images/alignmentTop.png} xywh {335 355 31 31} type Radio color 40 selection_color 55
+            image {images/alignmentTop.png} xywh {335 355 31 31} type Radio color 47 selection_color 55
           }
           Fl_Button m_posterAlignmentMiddleButton {
             callback {HandlePosterImageAlignment();}
-            image {images/alignmentMiddle.png} xywh {376 355 31 31} type Radio color 40 selection_color 55
+            image {images/alignmentMiddle.png} xywh {376 355 31 31} type Radio color 47 selection_color 55
           }
           Fl_Button m_posterAlignmentBottomButton {
             callback {HandlePosterImageAlignment();}
-            image {images/alignmentBottom.png} xywh {417 355 31 31} type Radio color 40 selection_color 55
+            image {images/alignmentBottom.png} xywh {417 355 31 31} type Radio color 47 selection_color 55
           }
         }
         Fl_Group {} {open
@@ -356,15 +356,15 @@ widget_class PosteRazorDialogUI {
         } {
           Fl_Button m_posterAlignmentLeftButton {
             callback {HandlePosterImageAlignment();}
-            image {images/alignmentLeft.png} xywh {477 355 31 31} type Radio color 40 selection_color 55
+            image {images/alignmentLeft.png} xywh {477 355 31 31} type Radio color 47 selection_color 55
           }
           Fl_Button m_posterAlignmentCenterButton {
             callback {HandlePosterImageAlignment();}
-            image {images/alignmentCenter.png} xywh {518 355 31 31} type Radio color 40 selection_color 55
+            image {images/alignmentCenter.png} xywh {518 355 31 31} type Radio color 47 selection_color 55
           }
           Fl_Button m_posterAlignmentRightButton {
             callback {HandlePosterImageAlignment();}
-            image {images/alignmentRight.png} xywh {559 355 31 31} type Radio color 40 selection_color 55
+            image {images/alignmentRight.png} xywh {559 355 31 31} type Radio color 47 selection_color 55
           }
         }
       }

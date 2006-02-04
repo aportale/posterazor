@@ -155,7 +155,7 @@ public:
 			);
 
 			m_unitOfLengthButtons[i]->type(FL_RADIO_BUTTON);
-			m_unitOfLengthButtons[i]->color((Fl_Color)40);
+			m_unitOfLengthButtons[i]->color((Fl_Color)47);
 			m_unitOfLengthButtons[i]->selection_color((Fl_Color)55);
 			m_unitOfLengthButtons[i]->callback(HandleUnitOfLengthChoice_cb);
 			m_unitOfLengthButtons[i]->user_data((void*)this);
@@ -184,7 +184,7 @@ public:
 			m_languageButtons[i]->image(m_languageButtonImages[i]);
 			m_languageButtons[i]->tooltip(translation->LanguageName());
 			m_languageButtons[i]->type(FL_RADIO_BUTTON);
-			m_languageButtons[i]->color((Fl_Color)40);
+			m_languageButtons[i]->color((Fl_Color)47);
 			m_languageButtons[i]->selection_color((Fl_Color)55);
 			m_languageButtons[i]->callback(HandleLanguageChoice_cb);
 			m_languageButtons[i]->user_data((void*)this);
