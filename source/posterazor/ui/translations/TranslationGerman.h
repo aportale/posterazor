@@ -120,9 +120,9 @@ public:
 	{
 		return	"<HTML>" POSTERAZORHELPENDLINE \
 				"<BODY>" POSTERAZORHELPENDLINE \
-					"<A name=\"" POSTERAZORHELPANCHORTOP "\"><CENTER><H1>PosteRazor Help</H1></CENTER></A>" POSTERAZORHELPENDLINE \
+					"<A name=\"" POSTERAZORHELPANCHORTOP "\"><CENTER><H1>PosteRazor 1.1 Hilfe</H1></CENTER></A>" POSTERAZORHELPENDLINE \
 
-					"<H3>Contents</H3>" POSTERAZORHELPENDLINE \
+					"<H3>Inhaltsverzeichnis</H3>" POSTERAZORHELPENDLINE \
 					"<UL>" POSTERAZORHELPENDLINE \
 						"<LI><B><A href=\"#" POSTERAZORHELPANCHORABOUT "\">" GERMAN_POSTERAZORHELPABOUT "</A></B></LI>" POSTERAZORHELPENDLINE \
 						"<LI><B><A href=\"#" POSTERAZORHELPANCHORMANUAL "\">" GERMAN_POSTERAZORHELPMANUAL "</A></B></LI>" POSTERAZORHELPENDLINE \
@@ -142,7 +142,7 @@ public:
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORABOUT, GERMAN_POSTERAZORHELPABOUT) \
 					POSTERAZORHELPINDENTATION "Der PosteRazor schneidet ein Rasterbild in St&uuml;cke, die auf einem Drucker ausgedruckt und zu einem Poster zusammengef&uuml;gt werden k&ouml;nnen. Als Ausgangsbilder werden Dateien in <A href=\"#" POSTERAZORHELPANCHORMANUALSTEP01 "\">vielen</A> Formaten unterst&uuml;tzt. Anstatt das Bild direkt zu drucken, generiert der PosteRazor ein mehrseitiges PDF-Dokument welches die Bildteile enth&auml;lt.<br>" POSTERAZORHELPENDLINE \
-					"Es ist ein Open-Source-Programm, das von <a href=\"#" POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES "\">Open-Source-Projekten</a> abh&auml;ngt." POSTERAZORHELPENDLINE \
+					"Es ist ein Open-Source-Programm, das seinerseits von <a href=\"#" POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES "\">Open-Source-Projekten</a> abh&auml;ngt. " POSTERAZORHELPENDLINE \
 					"Der PosteRazor ist unter <b>posterazor.sourceforge.net</b> zu finden." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUAL, GERMAN_POSTERAZORHELPMANUAL) \
@@ -164,11 +164,11 @@ public:
 					"Viele <a href=\"#" POSTERAZORHELPANCHORINPUTFILEFORMATS "\">Bildformate</a> k&ouml;nnen geladen werden. Nach dem Laden eines Bildes werden in dem Feld <b>Bildinformationen</b> die wichtigsten Angaben aufgelistet." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP02, GERMAN_POSTERAZORHELSTEP " 2: " GERMAN_POSTERAZORHELPSTEPTITLE02) \
-					POSTERAZORHELPINDENTATION "Definieren Sie, welches Papierma&szlig; Ihr Drucker unterst&uuml;tzt. Ein Standard-papierbogen-Format kann in der <b>Format</b>-Auswahl selektiert werden und ebenso die gew&ouml;nschte <b>Ausrichtung</b> der B&ouml;gen. Alternativ k&ouml;nnen in dem <b>Eigenes</b>-Reiter selbstdefinierte Bogenma&szlig;e angegeben werden. (Bitte schreiben Sie mir eine E-Mail, Falls Sie Ihr Standard-Format in der Auswahl vermissen)." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Definieren Sie, welches Papierma&szlig; Ihr Drucker unterst&uuml;tzt. Ein Standard-papierbogen-Format kann in der <b>Format</b>-Auswahl selektiert werden und ebenso die gew&ouml;nschte <b>Ausrichtung</b> der B&ouml;gen. Alternativ k&ouml;nnen in dem <b>Eigenes</b>-Reiter selbstdefinierte Bogenma&szlig;e angegeben werden. (Bitte schreiben Sie mir eine E-Mail, Falls Sie Ihr Standard-Format in der Auswahl vermissen). " POSTERAZORHELPENDLINE \
 					"Papierr&auml;nder k&ouml;nnen in den <b>R&auml;nder</b>-Feldern angegeben werden. Auch wenn Ihr Drucker randlos druckt, wird sp&auml;ter gegebenfalls etwas Rand als Klebefl&auml;che ben&ouml;tigt." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP03, GERMAN_POSTERAZORHELSTEP " 3: " GERMAN_POSTERAZORHELPSTEPTITLE03) \
-					POSTERAZORHELPINDENTATION "Eine &Uuml;berlappung der Bildabschnitte ist sehr hilfreich, da sie beim Schneiden der &uuml;berf&auml;lligen R&auml;nder und zusammenkleben der Teile eine gewisse Fehlertoleranz ins Spiel bringt. Zus&auml;tzlich bietet sie (ebenso wie die R&auml;nder des vorangegangenen Schrittes) mehr Klebefl&auml;che f&uuml;r die Bildteile." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Eine &Uuml;berlappung der Bildabschnitte ist sehr hilfreich, da sie beim Schneiden der &uuml;berf&auml;lligen R&auml;nder und zusammenkleben der Teile eine gewisse Fehlertoleranz ins Spiel bringt. Zus&auml;tzlich bietet sie (ebenso wie die R&auml;nder des vorangegangenen Schrittes) mehr Klebefl&auml;che f&uuml;r die Bildteile. " POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "Die Angabe <b>&Uuml;berlappende Seiten</b> beschreibt, welche Seitenr&auml;nder von den Nachbar-Bildabschnitten &Uuml;berlagert werden sollen. Die R&auml;nder auf den gegen&uuml;berliegenden Seiten sind zum Abschneiden gedacht (ausgenommen die auf den &auml;u&szlig;eren Bildabschnitten)." POSTERAZORHELPENDLINE \
 					
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP04, GERMAN_POSTERAZORHELSTEP " 4: " GERMAN_POSTERAZORHELPSTEPTITLE04) \
