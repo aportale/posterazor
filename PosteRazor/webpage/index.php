@@ -92,12 +92,12 @@
 ?>
 				<h2><? text('Screenshots', 'Bildschirmfotos'); ?></h2>
 				<div id="screenshotthumbs">
-					<a href="images/screenshots/step01.png"><img src="images/screenshots/thumbnails/step01.png" width="100" height="76" alt="Step 1" /><br /><? text('Step', 'Schritt'); ?> 1</a>
-					<a href="images/screenshots/step02.png"><img src="images/screenshots/thumbnails/step02.png" width="100" height="76" alt="Step 2" /><br /><? text('Step', 'Schritt'); ?> 2</a>
-					<a href="images/screenshots/step03.png"><img src="images/screenshots/thumbnails/step03.png" width="100" height="76" alt="Step 3" /><br /><? text('Step', 'Schritt'); ?> 3</a>
-					<a href="images/screenshots/step04.png"><img src="images/screenshots/thumbnails/step04.png" width="100" height="76" alt="Step 4" /><br /><? text('Step', 'Schritt'); ?> 4</a>
-					<a href="images/screenshots/step05.png"><img src="images/screenshots/thumbnails/step05.png" width="100" height="76" alt="Step 5" /><br /><? text('Step', 'Schritt'); ?> 5</a>
-					<a href="images/screenshots/help.png"><img src="images/screenshots/thumbnails/help.png" width="100" height="72" alt="Help" /><br /><? text('Help', 'Hilfe'); ?></a>
+					<a href="screenshot_<?=$lang?>_step01.png"><img src="screenshotthumb_step01.png" width="120" height="92" alt="Step 1" /><br /><? text('Step', 'Schritt'); ?> 1</a>
+					<a href="screenshot_<?=$lang?>_step02.png"><img src="screenshotthumb_step02.png" width="120" height="92" alt="Step 2" /><br /><? text('Step', 'Schritt'); ?> 2</a>
+					<a href="screenshot_<?=$lang?>_step03.png"><img src="screenshotthumb_step03.png" width="120" height="92" alt="Step 3" /><br /><? text('Step', 'Schritt'); ?> 3</a>
+					<a href="screenshot_<?=$lang?>_step04.png"><img src="screenshotthumb_step04.png" width="120" height="92" alt="Step 4" /><br /><? text('Step', 'Schritt'); ?> 4</a>
+					<a href="screenshot_<?=$lang?>_step05.png"><img src="screenshotthumb_step05.png" width="120" height="92" alt="Step 5" /><br /><? text('Step', 'Schritt'); ?> 5</a>
+					<a href="screenshot_<?=$lang?>_help_settings.png"><img src="screenshotthumb_help_settings.png" width="120" height="90" alt="Help" /><br /><? text('Help, settings', 'Hilfe, Einstellungen'); ?></a>
 				</div>
 <?
 			break;
@@ -127,7 +127,7 @@
 						<strong><? text('User interface', 'Benutzeroberfl&auml;che'); ?>:</strong> <? text('For the user graphical user interface,', 'F&uuml;r die grafische Benutzeroberfl&auml;che wird'); ?> <a class="external" href="http://fltk.org/">FLTK 1.1</a> <? text('is used', 'eingesetzt'); ?>. <? text('It is a ', 'Es ist ein "schnelles, leichtes UI Toolkit" ('); ?><strong>f</strong>ast, <strong>l</strong>ight UI <strong>t</strong>ool<strong>k</strong>it<? text('. Highly portable, flexible, easy and fun to learn&amp;use.', '). Sehr portierbar, flexibel, einfach, und es macht Spass, es zu lernen und zu benutzen.'); ?>
 					</li>
 					<li>
-						<strong><? text('Image loading', 'Bilder laden'); ?>:</strong> <? text('The images are loaded by', 'Die Bilder werden mittels'); ?> <a class="external" href="http://freeimage.sourceforge.net/">FreeImage 3.8.0</a><? text('. This is a portable library that makes image loading, handling and saving a no-brainer.', ' geladen. Dies ist eine portierbare Bibliothek, das das Laden, Manipulieren und Speichern von Bildern zu einem Kinderspiel macht.'); ?>
+						<strong><? text('Image loading', 'Bilder laden'); ?>:</strong> <? text('The images are loaded by', 'Die Bilder werden mittels'); ?> <a class="external" href="http://freeimage.sourceforge.net/">FreeImage 3.8.0</a><? text('. This is a portable library that makes image loading, handling and saving a no-brainer.', ' geladen. Dies ist eine portierbare Bibliothek, die das Laden, Manipulieren und Speichern von Bildern zu einem Kinderspiel macht.'); ?>
 					</li>
 					<li>
 						<strong><? text('File chooser dilaog', 'Dateiauswahl-dialog'); ?>:</strong> <? text('The file chooser of the PosteRazor have the platform specific look&amp;feel. Thanks to Fl_Native_File_Chooser:', 'Die Dateiauswahl-dialoge des PosteRazors verdanken ihr systemspezifisches "Look and Feel" dem'); ?> <a class="external" href="http://seriss.com/people/erco/fltk/Fl_Native_File_Chooser/">Fl_Native_File_Chooser</a>.
@@ -152,7 +152,7 @@
 ?>
 				<h2><? text('About', '&Uuml;ber'); ?></h2>
 				<? text('The PosteRazor cuts a raster image into pieces which can afterwards be printed out and assembled to a poster.', 'Der PosteRazor schneidet eine Rasterbild-datei in St&uuml;cke, die anschlie&szlig;end ausgedruckt und zu einem Poster zusammengef&uuml;gt werden k&ouml;nnen.'); ?>
-				<br /><div style="text-align: center; margin: 10px;"><img src="images/workflow.png" width="400" height="114" alt="PosteRazor workflow"/></div>
+				<br /><div style="text-align: center; margin: 10px;"><img src="workflow_<?=$lang?>.png" width="378" height="108" alt="PosteRazor workflow"/></div>
 				<? text('As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps. PosteRazor is available as a Windows and as an OSX version (it should also be compilable on Linux).', 'Als Ausgangsmaterial nimmt der PosteRazor eine Rasterbild-datei. Das Endprodukt ist ein Poster in Form eines mehrseitigen PDF-Dokuments. Eine einfach zu bedienende Benutzerschnittstelle im Assistenten-Stil begleitet durch f&uuml;nf Schritte. Der PosteRazor ist als Windows- und als OSX-Version erh&auml;ltlich (er sollte auch f&uuml;r Linux kompilierbar sein).'); ?>
 				<? text('It is an open source, ', 'Er ist ein quelloffenes, '); ?><a href="<?=linkParameters("license","")?>"><? text('GNU licensed', 'GNU-lizensiertes'); ?></a> <? text('project which is hosted on SourceForge.net.', 'Projekt, das auf SourceForge hinterlegt ist.'); ?>
 				<? text('For feedback, bug reports or feature requests, please use the', 'F&uuml;r Feedback, Fehlerberichte oder Erweiterungsw&uuml;nsche nutzen Sie bitte die '); ?> <a class="external" href="http://sourceforge.net/projects/posterazor/"><? text('PosteRazor project page', 'PosteRazor-Projektseite'); ?></a>, <? text('write a mail to', 'schreiben Sie eine Mail an'); ?> <strong>Alessandro&nbsp;&auml;t&nbsp;casaportale&nbsp;d&ocirc;t de</strong> <? text('or contact the author via', 'oder kontaktieren Sie den Autor via'); ?> <a class="external" href="http://www.casaportale.de/html/index.php?page=contact&amp;lang=<? text('english', 'german'); ?>&amp;menu=on"><? text('mail form', 'Mail-Formular'); ?></a>.
