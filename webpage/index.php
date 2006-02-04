@@ -104,7 +104,7 @@
 			case 'download':		
 ?>
 				<h2><? text('Download', 'Herunterladen'); ?></h2>
-				<p><? text('The following PosteRazor download links lead to sites with lists of download locations. There, please click on a "Download" link next to a location that is geographically next to Your place.', 'Die folgenden PosteRazor-Download-Verweise f&uuml;hren auf Seiten mit mehreren m&ouml;glichen Downloadservern. Bitte klicken Sie Dort auf einen "Download"-Verweis, der Ihnen geographisch am n&auml;chsten ist.'); ?></p>
+				<p><? text('The following PosteRazor download links lead to sites with lists of download locations. There, please click on a "Download" link next to a location that is geographically next to Your place.', 'Die folgenden PosteRazor-Download-Verweise f&uuml;hren auf Seiten mit mehreren m&ouml;glichen Downloadservern. Bitte klicken Sie Dort auf einen "Download"-Verweis, der Ihnen geografisch am n&auml;chsten ist.'); ?></p>
 				<ul>
 					<li>
 						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.0-Win32.zip?download"><strong><? text('Windows version', 'Windows-version'); ?></strong> (385 KB)</a><br />
