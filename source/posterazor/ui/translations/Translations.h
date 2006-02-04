@@ -40,10 +40,10 @@ public:
 
 	enum eLanguages
 	{
-		eLanguageUndefined,
-		eLanguageEnglish,
-		eLanguageGerman,
-		eLanguageItalian
+		eLanguageUndefined
+		,eLanguageEnglish
+		,eLanguageGerman
+//		,eLanguageItalian
 	};
 
 	static Translations* Instance(void);
