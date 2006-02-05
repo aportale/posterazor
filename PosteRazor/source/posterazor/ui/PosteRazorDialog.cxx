@@ -91,12 +91,8 @@ public:
 		ShellExecute(HWND_DESKTOP, "open", url, NULL, NULL, SW_SHOW);
 #elif defined (OSX)
 		char commandString[2048];
-		sprintf(commandString, "open %s", url);
+		sprintf(commandString, "open \"%s\"", url);
 		system(commandString);
-#elif defined (__amigaos4__)
-		char commandString[2048];
-        sprintf(commandString, "ibrowse:ibrowse %s", url);
-        system(commandString);
 #endif
 	}
 
