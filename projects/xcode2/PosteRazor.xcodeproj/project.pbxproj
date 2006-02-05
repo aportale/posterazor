@@ -16,7 +16,6 @@
 		8221C68408A566EC00EB193B /* libfltk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8221C68308A566EC00EB193B /* libfltk.a */; };
 		8221C68608A566FC00EB193B /* libfreeimage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8221C68508A566FC00EB193B /* libfreeimage.a */; };
 		82729AC109733F68004A7EF2 /* Fl_Image_Text_Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82729ABF09733F67004A7EF2 /* Fl_Image_Text_Button.cpp */; };
-		82729AC209733F68004A7EF2 /* Fl_Image_Text_Button.h in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 82729AC009733F68004A7EF2 /* Fl_Image_Text_Button.h */; };
 		82814C2408A5642E006D2A26 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9504C8FFE6A3BC11CA0CBA /* ApplicationServices.framework */; };
 		82814C4308A5647B006D2A26 /* Fl_Native_File_Chooser.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82814C3B08A5647B006D2A26 /* Fl_Native_File_Chooser.cxx */; };
 		82814C6008A564A3006D2A26 /* PaperFormats.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82814C5708A564A3006D2A26 /* PaperFormats.cxx */; };
@@ -84,7 +83,6 @@
 				82028CDB091E6F1500763263 /* LICENSE in Copy README, LICENSE, CHANGES */,
 				82028CDC091E6F1500763263 /* README in Copy README, LICENSE, CHANGES */,
 				82028CDA091E6F1500763263 /* CHANGES in Copy README, LICENSE, CHANGES */,
-				82729AC209733F68004A7EF2 /* Fl_Image_Text_Button.h in Copy README, LICENSE, CHANGES */,
 			);
 			name = "Copy README, LICENSE, CHANGES";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,7 +336,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"../../thirdparty/fltk-1.1/lib",
 					../../thirdparty/FreeImage,
-					"/temp/secure/PosteRazor/thirdparty/fltk-1.1/lib",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = PosteRazor;
@@ -449,7 +446,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"../../thirdparty/fltk-1.1/lib",
 					../../thirdparty/FreeImage,
-					"/temp/secure/PosteRazor/thirdparty/fltk-1.1/lib",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = PosteRazor;
@@ -479,7 +475,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"../../thirdparty/fltk-1.1/lib",
 					../../thirdparty/FreeImage,
-					"/temp/secure/PosteRazor/thirdparty/fltk-1.1/lib",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = PosteRazor;
@@ -501,7 +496,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"../../thirdparty/fltk-1.1/lib",
 					../../thirdparty/FreeImage,
-					"/temp/secure/PosteRazor/thirdparty/fltk-1.1/lib",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = PosteRazor;
