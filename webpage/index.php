@@ -107,12 +107,16 @@
 				<p><? text('The following PosteRazor download links lead to sites with lists of download locations. There, please click on a "Download" link next to a location that is geographically next to Your place.', 'Die folgenden PosteRazor-Download-Verweise f&uuml;hren auf Seiten mit mehreren m&ouml;glichen Downloadservern. Bitte klicken Sie Dort auf einen "Download"-Verweis, der Ihnen geografisch am n&auml;chsten ist.'); ?></p>
 				<ul>
 					<li>
-						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.0-Win32.zip?download"><strong><? text('Windows version', 'Windows-version'); ?></strong> (385 KB)</a><br />
+						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.1-Win32.zip?download"><strong><? text('Windows version', 'Windows-version'); ?></strong> (404 KB)</a><br />
 						<? text('After downloading the ZIP archive, extract the contained PosteRazor.exe to a place of Your choice and start it. If You use a Windows version below XP, You probably need an installed <a class="external" href="http://www.7-zip.org/">Unzip tool</a>.', 'Nach dem Herunterladen des ZIP-Archivs, k&ouml;nnen Sie das enthaltene PosteRazor.exe in ein Verzeichnis Ihrer Wahl entpacken und starten. Falls sie eine Windows-version unterhalb von XP nutzen, ben&ouml;tigen Sie evenuell ein installiertes <a class="external" href="http://www.7-zip.org/">Unzip-Programm</a>.'); ?>
 					</li>
 					<li>
-						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.0-OSX.dmg?download"><strong><? text('OSX version', 'OSX-version'); ?></strong> (485 KB)</a><br />
+						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.1-OSX.dmg?download"><strong><? text('OSX version', 'OSX-version'); ?></strong> (658 KB)</a><br />
 						<? text('After downloading the OSX disk image, double click to mount it if it doesn\'t mount automatically. You can start the contained PosteRazor application directly by double clicking it or drag it into a location of Your choice.', 'Nach dem Herunterladen des OSX-Diskimages k&ouml;nnen Sie es, falls dies nicht automatisch geschieht, per Doppelclick mounten. Danach kann die enthaltene PosteRazor-Applikation entweder direkt gestartet werden oder in einen Ordner Ihrer Wahl kopiert werden.'); ?><br />
+					</li>
+					<li>
+						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.1-Source.zip?download"><strong><? text('Source', 'Quelltext'); ?></strong> (189 KB)</a><br />
+						<? text('The source archive includes only project files for VC6, VS 2003 .Net, XCode 2.2 and an unfinished CMake file. FLTK and FreeImage are not included. In order to compile without OpenGL, the preprocessor symbol <em>NO_OPENGL_PREVIEW</em> can be defined.', 'Das Quelltext-archiv enth&auml;lt nur Projekte f&uuml;r VC6, VS 2003 .Net, XCode 2.2 und eine unvollst&auml;ndige CMake-Datei. FLTK und FreeImage sind nicht enthalten. Um ohne OpenGL zu kompilieren, kann das Pr&auml;prozessorsymbol <em>NO_OPENGL_PREVIEW</em> definiert werden.'); ?><br />
 					</li>
 				</ul>
 <?
@@ -185,6 +189,7 @@
 			<div id="navigation">
 				<ul id="navigationlist"><li><a href="<?=linkParameters("news","")?>"<?=conditionalSelectedClass("news")?>><? text('News', 'Neuigkeiten'); ?></a></li><li><a href="<?=linkParameters("about","")?>"<?=conditionalSelectedClass("about")?>><? text('About', '&Uuml;ber'); ?></a></li><li><a href="<?=linkParameters("features","")?>"<?=conditionalSelectedClass("features")?>><? text('Features', 'Funktionen'); ?></a></li><li><a href="<?=linkParameters("screenshots","")?>"<?=conditionalSelectedClass("screenshots")?>><? text('Screenshots', 'Bildschirmfotos'); ?></a></li><li><a href="<?=linkParameters("download","")?>"<?=conditionalSelectedClass("download")?>><? text('Download', 'Herunterladen'); ?></a></li><li><a href="<?=linkParameters("thirdparty","")?>"<?=conditionalSelectedClass("thirdparty")?>><? text('Third&nbsp;party&nbsp;code', 'Code&nbsp;von&nbsp;Dritten'); ?></a></li><li><a href="<?=linkParameters("license","")?>"<?=conditionalSelectedClass("license")?>><? text('License', 'Lizenz'); ?></a></li></ul>
 				<a class="external" href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=141842&amp;type=1" width="88" height="31" alt="SF.net Logo" /></a>
+				<a class="external" href="http://sourceforge.net/projects/posterazor/"><? text('SF project page', 'SF Projekt-Seite'); ?></a>
 			</div>
 			<div id="content">
 <?=writeContent();
