@@ -102,11 +102,21 @@ public:
 		CFArrayRef locArray = CFBundleCopyBundleLocalizations(mainBundle);
 		CFArrayRef preferredLanguages = CFBundleCopyPreferredLocalizationsFromArray(locArray);
 		CFStringRef language = (CFStringRef)CFArrayGetValueAtIndex(preferredLanguages, 0);
+
+		CFStringRef languageEnglish = CFSTR("English");
+		CFStringRef languageGerman = CFSTR("German");
+//		CFStringRef languageItalian = CFSTR("Italian");
 		systemLanguage =
-			(CFStringCompare(language, CFSTR("English"), 0) == kCFCompareEqualTo)?eLanguageEnglish:
-			(CFStringCompare(language, CFSTR("German"), 0) == kCFCompareEqualTo)?eLanguageGerman:
-//			(CFStringCompare(language, CFSTR("Italian"), 0) == kCFCompareEqualTo)?eLanguageItalian:
+			(CFStringCompare(language, languageEnglish, 0) == kCFCompareEqualTo)?eLanguageEnglish:
+			(CFStringCompare(language, languageGerman, 0) == kCFCompareEqualTo)?eLanguageGerman:
+//			(CFStringCompare(language, languageItalian, 0) == kCFCompareEqualTo)?eLanguageItalian:
 			eLanguageUndefined;
+		CFRelease(languageEnglish);
+		CFRelease(languageGerman);
+//		CFRelease(languageItalian);
+
+		CFRelease(preferredLanguages);
+		CFRelease(locArray);
 #endif
 		return systemLanguage;
 	}
