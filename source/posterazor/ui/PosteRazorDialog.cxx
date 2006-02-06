@@ -639,15 +639,18 @@ void PosteRazorDialog::UpdateLanguage(void)
 void PosteRazorDialog::LoadInputImage(const char *fileName)
 {
 	char errorMessage[1024] = "";
-	char filterString[1024] = "";
 	const char *loadFileName = fileName;
 	bool loaded = false;
 
+	Fl_Native_File_Chooser loadImageChooser(Fl_Native_File_Chooser::BROWSE_FILE);
+#ifndef OSX
+// filter stuff is still crashy os OSX
+	char filterString[1024] = "";
 	sprintf
 	(
 		filterString,
 		"%s\t*.{BMP,CUT,DDS,GIF,ICO,IFF,LBM,JNG,JPG,JPEG,JPE,JIF,KOA,MNG,PBM,PCD,PCX,PGM,PNG,PPM,PSD,RAS,TGA,TIF,TIFF,WBMP,XBM,XPM}\n"\
-		"Windows, OS/2 Bitmap (*.BMP)\t*.bmp\n"\
+		"Windows, OS/2 Bitmap (*.BMP)\t*.BMP\n"\
 		"Dr. Halo (*.CUT)\t*.CUT\n"\
 		"DirectDraw Surface (*.DDS)\t*.DDS\n"\
 		"Graphic Interchange Format (*.GIF)\t*.GIF\n"\
@@ -673,9 +676,8 @@ void PosteRazorDialog::LoadInputImage(const char *fileName)
 		"X11 Pixmap (*.XPM)\t*.XPM",
 		TRANSLATIONS->AllImageFormats()
 	);
-
-	Fl_Native_File_Chooser loadImageChooser(Fl_Native_File_Chooser::BROWSE_FILE);
 	loadImageChooser.filter(filterString);
+#endif
 	loadImageChooser.title(TRANSLATIONS->LoadAnInputImage());
 
 	if (!loadFileName)
@@ -940,7 +942,10 @@ void PosteRazorDialog::SavePoster(void)
 	bool fileExistsAskUserForOverwrite = false;
 	
 	Fl_Native_File_Chooser savePosterChooser(Fl_Native_File_Chooser::BROWSE_SAVE_FILE);
+#ifndef OSX
+// filter stuff is still crashy os OSX
 	savePosterChooser.filter("Portable Document Format (*.PDF)\t*.pdf");
+#endif
 	savePosterChooser.title(TRANSLATIONS->SaveThePosterAs());
 
 	do
