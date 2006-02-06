@@ -108,8 +108,6 @@
 		82814C3B08A5647B006D2A26 /* Fl_Native_File_Chooser.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Native_File_Chooser.cxx; sourceTree = "<group>"; };
 		82814C5708A564A3006D2A26 /* PaperFormats.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PaperFormats.cxx; sourceTree = "<group>"; };
 		82814C5808A564A3006D2A26 /* PaperFormats.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PaperFormats.h; sourceTree = "<group>"; };
-		82A78EBF0983F84600D54B44 /* Fl_Native_File_Chooser_MAC.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Native_File_Chooser_MAC.cxx; sourceTree = "<group>"; };
-		82A78EC00983F85D00D54B44 /* Fl_Native_File_Chooser_MAC.H */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Fl_Native_File_Chooser_MAC.H; sourceTree = "<group>"; };
 		82C2673C09351ED800E94922 /* ImageIOTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ImageIOTypes.h; sourceTree = "<group>"; };
 		82C2673D09351ED800E94922 /* PersistentPreferencesInterface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PersistentPreferencesInterface.h; sourceTree = "<group>"; };
 		82C2673E09351ED800E94922 /* UnitsOfLength.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UnitsOfLength.cxx; sourceTree = "<group>"; };
@@ -225,7 +223,6 @@
 			children = (
 				82814C3608A5647B006D2A26 /* FL */,
 				82814C3B08A5647B006D2A26 /* Fl_Native_File_Chooser.cxx */,
-				82A78EBF0983F84600D54B44 /* Fl_Native_File_Chooser_MAC.cxx */,
 			);
 			name = Fl_Native_File_Chooser;
 			path = ../../thirdparty/Fl_Native_File_Chooser;
@@ -235,7 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				82814C3708A5647B006D2A26 /* Fl_Native_File_Chooser.H */,
-				82A78EC00983F85D00D54B44 /* Fl_Native_File_Chooser_MAC.H */,
 			);
 			path = FL;
 			sourceTree = "<group>";
