@@ -1,0 +1,1 @@
+strip build/Deployment/PosteRazor.app/Contents/MacOS/PosteRazor
