@@ -59,11 +59,11 @@
 				<h2><? text('Features', 'Funktionen'); ?></h2>
 				<ul>
 					<li>
-						<strong><? text('Input image formats', 'Ausgangs-Bildformate'); ?>.</strong> <? text('All image formats that', 'Alle Bildformate, die'); ?> <a class="external" href="http://freeimage.sourceforge.net/features.html">FreeImage</a> <? text('can read', 'lesen kann,'); ?> <i><? text('should', 'sollten'); ?></i> <? text('be usabe as input for the PosteRazor', 'als Ausgangsmaterial f&uuml;r den PosteRazor geeignet sein'); ?>:
+						<strong><? text('Input image formats', 'Ausgangs-Bildformate'); ?>.</strong> <? text('All image formats that', 'Alle Bildformate, die'); ?> <a class="external" href="http://freeimage.sourceforge.net/features.html">FreeImage</a> <? text('can read', 'lesen kann,'); ?> <i><? text('should', 'sollten'); ?></i> <? text('be usable as input for the PosteRazor', 'als Ausgangsmaterial f&uuml;r den PosteRazor geeignet sein'); ?>:
 						<div class="fileformats">BMP, DDS, Dr. Halo, GIF, ICO, IFF, JBIG, JNG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, MNG, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM</div>
 					</li>
 					<li>
-						<strong><? text('Image types', 'Farbtypen'); ?>.</strong> <? text('The following image color types are handable', 'Die folgenden Bildfarbtypen werden unterst&uuml;tzt'); ?>:
+						<strong><? text('Image types', 'Farbtypen'); ?>.</strong> <? text('PosteRazor can handle the following image color types', 'Die folgenden Bildfarbtypen werden unterst&uuml;tzt'); ?>:
 						<div class="fileformats"><? text('Monochrome, Grayscale, 4 Bit palette, 8 Bit palette, 24 Bit RGB, 48 Bit RGB ', 'Monochrom, Graustufen, 4-Bit Palette, 8-Bit Palette, 24-Bit RGB, 48-Bit RGB '); ?><small>(<? text('only via TIFF and PNG', 'nur bei TIFF und PNG'); ?>)</small>, <? text('32 Bit CMYK', '32-Bit CMYK'); ?> <small>(<? text('only via', 'nur bei'); ?> TIFF)</small></div>
 						<? text('32 Bit RGBA images can be loaded, but are transformed to 24 Bit RGB by "merging" them with a white background.', '32-Bit RGBA-Bilder sind lesbar, werden allerdings nach 24-Bit RGB transformiert, indem sie auf einen wei&szlig;en Hintergrund "flachgerechnet" werden.'); ?>
 					</li>
