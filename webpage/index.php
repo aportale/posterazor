@@ -38,6 +38,16 @@
 				<h2><? text('News', 'Neuigkeiten'); ?></h2>
 				<ul>
 					<li>
+						<h3><? text('February 7th 2006', '7. Februar 2006'); ?>: Version 1.1</h3>
+						<p><? text('A few bugfixes and improved usability, no significant new functional features.', 'Einige behobene Fehler und grö&szlig;ere Bedienerfreundlichkeit, keine relevanten neuen Funktionen.'); ?></p>
+						<ul>
+							<li><? text('The ".pdf" file extension is automatically appended when a poster is saved.', 'Die Datei-Endung ".pdf" wird bei der Speicherung eines Posters automatisch angeh&auml;ngt.'); ?></li>
+							<li><? text('The user interface is multilingual. English and German are choosable at present.', 'Die Benutzeroberfl&auml;che ist mehrsprachig. Derzeit sind deutsch und englisch ausw&auml;hlbar.'); ?></li>
+							<li><? text('The Poster preview is (optionally) done via OpenGL.', 'Die Vorschau des Posters wird (optional) per OpenGL dargestellt.'); ?></li>
+						</ul>
+						<p><a class="external" href="http://cvs.sourceforge.net/viewcvs.py/posterazor/PosteRazor/CHANGES?view=markup"><? text('Full list of changements', 'Vollst&auml;ndige Liste der &Auml;nderungen (auf englisch)'); ?></a></p>
+					</li>
+					<li>
 						<h3><? text('October 3rd 2005', '3. Oktober 2005'); ?>: Version 1.0</h3>
 						<p><? text('The first release of PosteRazor. Windows and OSX version.', 'Die Erstausgabe des PosteRazors. Windows- und OSX-version.'); ?></p>
 					</li>
@@ -105,13 +115,14 @@
 ?>
 				<h2><? text('Download', 'Herunterladen'); ?></h2>
 				<p><? text('The following PosteRazor download links lead to sites with lists of download locations. There, please click on a "Download" link next to a location that is geographically next to Your place.', 'Die folgenden PosteRazor-Download-Verweise f&uuml;hren auf Seiten mit mehreren m&ouml;glichen Downloadservern. Bitte klicken Sie Dort auf einen "Download"-Verweis, der Ihnen geografisch am n&auml;chsten ist.'); ?></p>
+				<p><? text('For <strong>direct linking to the downloads</strong> from another site, please use exactly the following links, only these are guaranteed to be valid in the future.', '<strong>Direktes Verlinken auf die Downloads</strong> von anderen Seiten aus bitte mit den unten aufgef&uuml;hrten Links. Nur diese werden mit gro&szlig;er Sicherheit auch in Zukunft g&uuml;ltig sein.'); ?></p>
 				<ul>
 					<li>
 						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.1-Win32.zip?download"><strong><? text('Windows version', 'Windows-version'); ?></strong> (404 KB)</a><br />
 						<? text('After downloading the ZIP archive, extract the contained PosteRazor.exe to a place of Your choice and start it. If You use a Windows version below XP, You probably need an installed <a class="external" href="http://www.7-zip.org/">Unzip tool</a>.', 'Nach dem Herunterladen des ZIP-Archivs, k&ouml;nnen Sie das enthaltene PosteRazor.exe in ein Verzeichnis Ihrer Wahl entpacken und starten. Falls sie eine Windows-version unterhalb von XP nutzen, ben&ouml;tigen Sie evenuell ein installiertes <a class="external" href="http://www.7-zip.org/">Unzip-Programm</a>.'); ?>
 					</li>
 					<li>
-						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.1-OSX.dmg?download"><strong><? text('OSX version', 'OSX-version'); ?></strong> (658 KB)</a><br />
+						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.1-OSX.dmg?download"><strong><? text('OSX version', 'OSX-version'); ?></strong> (668 KB)</a><br />
 						<? text('After downloading the OSX disk image, double click to mount it if it doesn\'t mount automatically. You can start the contained PosteRazor application directly by double clicking it or drag it into a location of Your choice.', 'Nach dem Herunterladen des OSX-Diskimages k&ouml;nnen Sie es, falls dies nicht automatisch geschieht, per Doppelclick mounten. Danach kann die enthaltene PosteRazor-Applikation entweder direkt gestartet werden oder in einen Ordner Ihrer Wahl kopiert werden.'); ?><br />
 					</li>
 					<li>
