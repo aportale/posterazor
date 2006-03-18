@@ -137,6 +137,11 @@ body
 	clear: both;
 }
 
+#awards
+{
+	padding: 25px 0px 0px 0px;
+}
+
 .fileformats
 {
 	margin-top: 3px;
