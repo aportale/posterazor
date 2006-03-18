@@ -75,7 +75,7 @@
 	</Program_Info>
 	<Program_Descriptions>
 		<English>
-			<Keywords>Print poster pdf</Keywords>
+			<Keywords>Print, poster, pdf</Keywords>
 			<Char_Desc_45 />
 			<Char_Desc_80>Make your own poster!</Char_Desc_80>
 			<Char_Desc_250 />
@@ -84,7 +84,7 @@
 As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps.</Char_Desc_2000>
 		</English>
 		<German>
-			<Keywords>Poster drucken pdf</Keywords>
+			<Keywords>Poster, drucken, pdf</Keywords>
 			<Char_Desc_45 />
 			<Char_Desc_80>Mach' Dein eigenes Poster!</Char_Desc_80>
 			<Char_Desc_250 />
