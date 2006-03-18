@@ -200,6 +200,7 @@
 					<a href="http://digg.com/software/PosteRazor,_A_better_Rasterbator_app">[digg.com]</a>
 					<a href="http://os4depot.net/index.php?function=showfile&amp;file=utility/print/posterazor.lha">[os4depot.net]</a>
 					<a href="http://www.genbeta.com/archivos/2005/10/12-generate-tu-poster-a-partir-de.php">[genbeta.com]</a>
+					<a href="http://www.allapp.com/PosteRazor_softinfo_27697.html">[allapp.com]</a>
 					<a href="http://www.programas-gratis.net/php/programa2.php?id_programa=4140">[programas-gratis.net]</a>
 					<a href="http://alltompc.fpgroup.se/nyheter/?id=31781">[fpgroup.se]</a>
 					<a href="http://download.excite.it/scheda.php?id=271282">[excite.it]</a>
