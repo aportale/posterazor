@@ -175,7 +175,7 @@
 					<a href="http://freshmeat.net/projects/posterazor/"><img src="freshmeat.gif" width="88" height="31" alt="FreshMeat" /></a>
 					<a href="http://mac.softpedia.com/get/DTP-Prepress/PosteRazor.shtml"><img src="softpedia_pick_award_s.gif" width="75" height="40" alt="Softpedia Pick" /></a>
 					<a href="http://www.topshareware.com"><img src="http://www.topshareware.com/images/logo/topshareware_8831.gif" width="88" height="31" alt="Free Downloads" /></a>
-					<a href="http://winload.de/download/50466/Grafik,Desktop/Bildbearbeitung/PosteRazor-1.1.html"><img src="http://winload.de/banner/80/winload_statisch_80x30_1_1.gif" width="80" height="30" alt="winload.de" /></a>
+					<a href="http://winload.de/download/50466/Grafik,Desktop/Bildbearbeitung/PosteRazor-1.1.html"><img src="http://winload.de/banner/80/winload_statisch_80x30_1_1.gif" width="88" height="30" alt="winload.de" /></a>
 					<a href="http://www.foto-freeware.de/posterazor.php"><img src="http://www.foto-freeware.de/pic/button_88x31.gif" width="88" height="31" alt="foto-freeware.de" /></a>
 					<a href="http://www.freeware.de/software/Programm_PosteRazor_23998.html"><img src="http://media.upload.de/27/46/47/149.gif" width="80" height="30" alt="freeware.de" /></a>
 					<a href="http://www.brothersoft.com/graphics_design/misc_graphics/posterazor_45842.html"><img src="http://www.brothersoft.com/images/LinktoUs/006.gif" width="88" height="31" alt="5/5 stars BrotherSoft" /></a>
@@ -188,20 +188,23 @@
 					<a href="http://www.macwelt.de/news/fav/336478/index.html">[macwelt.de]</a>
 					<a href="http://www.freewarefiles.com/program_3_33_18358.html">[freewarefiles.com]</a>
 					<a href="http://www.freeware-guide.com/dir/mmedia/imagedit2.html">[freeware-guide.com]</a>
-					<a href="http://www.infoweek.ch/downloads/dl_single.cfm?dl_id=1056&sid=0">[infoweek.ch]</a>
+					<a href="http://www.infoweek.ch/downloads/dl_single.cfm?dl_id=1056&amp;sid=0">[infoweek.ch]</a>
+					<a href="http://www.erfahrungswert.de/download/grafik1.htm#PosteRazor">[erfahrungswert.de]</a>
 					<a href="http://downloads.tomorrow.msn.de/beschreibung.php?programm_id=50466">[tomorrow.msn.de]</a>
 					<a href="http://www.heise.de/software/default.shtml?prg=32759&amp;T=posterazor">[heise.de]</a>
 					<a href="http://www.download.bg/index.php?cls=program&amp;mtd=view&amp;id=33887">[download.bg]</a>
-					<a href="http://descargas.terra.es/informacion_extendida.phtml?n_id=45043&plat=1">[terra.es]</a>
+					<a href="http://descargas.terra.es/informacion_extendida.phtml?n_id=45043&amp;plat=1">[terra.es]</a>
+					<a href="http://www.arcor.de/content/pcgames/downloads/grafik/34726539.html">[arcor.de]</a>
 					<a href="http://www.solofreeware.net/descargar-software-PosteRazor.html">[solofreeware.net]</a>
 					<a href="http://www.files-library.com/files/PosteRazor-Make-your-own-poster.html">[files-library.com]</a>
 					<a href="http://digg.com/software/PosteRazor,_A_better_Rasterbator_app">[digg.com]</a>
-					<a href="http://os4depot.net/index.php?function=showfile&file=utility/print/posterazor.lha">[os4depot.net]</a>
+					<a href="http://os4depot.net/index.php?function=showfile&amp;file=utility/print/posterazor.lha">[os4depot.net]</a>
 					<a href="http://www.genbeta.com/archivos/2005/10/12-generate-tu-poster-a-partir-de.php">[genbeta.com]</a>
 					<a href="http://www.programas-gratis.net/php/programa2.php?id_programa=4140">[programas-gratis.net]</a>
 					<a href="http://alltompc.fpgroup.se/nyheter/?id=31781">[fpgroup.se]</a>
 					<a href="http://download.excite.it/scheda.php?id=271282">[excite.it]</a>
-					<a href="http://www.filehungry.com/english/product/windows_software/multimedia_&_graphics/graphic_conversion_tools/posterazor">[filehungry.com]</a>
+					<a href="http://www.filehungry.com/english/product/windows_software/multimedia_&amp;_graphics/graphic_conversion_tools/posterazor">[filehungry.com]</a>
+					<a href="http://www.foto-digital.com.mx/2005/10/20/posterazor/">[foto-digital.com.mx]</a>
 				</div>
 <?
 		};		
