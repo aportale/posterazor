@@ -177,10 +177,11 @@
 							<a href="http://www.freeware.de/software/Programm_PosteRazor_23998.html"><img src="http://media.upload.de/27/46/47/149.gif" width="80" height="30" alt="freeware.de" /></a>
 							<a href="http://www.shareware.de/software/Programm_PosteRazor_23998.html"><img src="http://media.upload.de/27/46/48/118.gif" width="80" height="30" alt="shareware.de" /></a>
 							<a href="http://www.brothersoft.com/graphics_design/misc_graphics/posterazor_45842.html"><img src="http://www.brothersoft.com/images/LinktoUs/006.gif" width="88" height="31" alt="5/5 stars BrotherSoft" /></a>
-							<a href="http://posterazor.uptodown.com/"><img src="http://imagenes.uptodown.com/imagenes/masvotado.gif" width="115" height="42" alt="uptodown mas votado" /></a>
 							<a href="http://www.topshareware.com/PosteRazor-download-42692.htm"><img src="http://www.topshareware.com/images/logo/topshareware_8831.gif" width="88" height="31" alt="Free Downloads" /></a>
 							<a href="http://www.winsoftware.de/posterazor,69,27769.htm"><img src="http://www.winsoftware.de/winsoftwarebutton.jpg" width="88" height="31" alt="Eingetragen bei Winsoftware.de" /></a>
 							<a href="http://www.freewarefiles.com/program_3_33_18358.html"><img src="marketing_freewarefiles.gif" width="88" height="31" alt="freewarefiles.com" /></a>
+							<a href="http://www.softforall.com/Multimedia/Illustration/PosteRazor07040048.htm"><img src="marketing_softforall.jpg" width="100" height="40" alt="softforall.com" /></a>
+							<a href="http://posterazor.uptodown.com/"><img src="http://imagenes.uptodown.com/imagenes/masvotado.gif" width="115" height="42" alt="uptodown mas votado" /></a>
 						</p>
 						<p>
 							<a href="http://www.wintotal.de/softw/?id=3107">[wintotal.de]</a>
@@ -188,7 +189,6 @@
 							<a href="http://www.digitazero.org/?p=29">[digitazero.org]</a>
 							<a href="http://www.macupdate.com/info.php/id/20738">[macupdate.com]</a>
 							<a href="http://www.macwelt.de/news/fav/336478/index.html">[macwelt.de]</a>
-							<a href="http://www.softforall.com/Multimedia/Illustration/PosteRazor07040048.htm">[softforall.com	]</a>
 							<a href="http://www.freeware-guide.com/dir/mmedia/imagedit2.html">[freeware-guide.com]</a>
 							<a href="http://www.infoweek.ch/downloads/dl_single.cfm?dl_id=1056&amp;sid=0">[infoweek.ch]</a>
 							<a href="http://www.erfahrungswert.de/download/grafik1.htm#PosteRazor">[erfahrungswert.de]</a>
