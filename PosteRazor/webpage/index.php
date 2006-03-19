@@ -172,6 +172,7 @@
 				<? text('It is an open source, ', 'Er ist ein quelloffenes, '); ?><a href="<?=linkParameters("license","")?>"><? text('GNU licensed', 'GNU-lizensiertes'); ?></a> <? text('project which is hosted on SourceForge.net.', 'Projekt, das auf SourceForge hinterlegt ist.'); ?>
 				<? text('For feedback, bug reports or feature requests, please use the', 'F&uuml;r Feedback, Fehlerberichte oder Erweiterungsw&uuml;nsche nutzen Sie bitte die '); ?> <a class="external" href="http://sourceforge.net/projects/posterazor/"><? text('PosteRazor project page', 'PosteRazor-Projektseite'); ?></a>, <? text('write a mail to', 'schreiben Sie eine Mail an'); ?> <strong>Alessandro&nbsp;&auml;t&nbsp;casaportale&nbsp;d&ocirc;t de</strong> <? text('or contact the author via', 'oder kontaktieren Sie den Autor via'); ?> <a class="external" href="http://www.casaportale.de/html/index.php?page=contact&amp;lang=<? text('english', 'german'); ?>&amp;menu=on"><? text('mail form', 'Mail-Formular'); ?></a>.
 				<div id="awards">
+					<h2><? text('Marketing', 'Marketing'); ?>:</h2>
 					<a href="http://freshmeat.net/projects/posterazor/"><img src="freshmeat.gif" width="88" height="31" alt="FreshMeat" /></a>
 					<a href="http://mac.softpedia.com/get/DTP-Prepress/PosteRazor.shtml"><img src="softpedia_pick_award_s.gif" width="75" height="40" alt="Softpedia Pick" /></a>
 					<a href="http://winload.de/download/50466/Grafik,Desktop/Bildbearbeitung/PosteRazor-1.1.html"><img src="http://winload.de/banner/80/winload_statisch_80x30_1_1.gif" width="88" height="30" alt="winload.de" /></a>
