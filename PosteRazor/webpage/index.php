@@ -182,6 +182,7 @@
 					<a href="http://www.brothersoft.com/graphics_design/misc_graphics/posterazor_45842.html"><img src="http://www.brothersoft.com/images/LinktoUs/006.gif" width="88" height="31" alt="5/5 stars BrotherSoft" /></a>
 					<a href="http://posterazor.uptodown.com/"><img src="http://imagenes.uptodown.com/imagenes/masvotado.gif" width="115" height="42" alt="uptodown mas votado" /></a>
 					<a href="http://www.topshareware.com/PosteRazor-download-42692.htm"><img src="http://www.topshareware.com/images/logo/topshareware_8831.gif" width="88" height="31" alt="Free Downloads" /></a>
+					<a href="http://www.winsoftware.de/posterazor,69,27769.htm"><img src="http://www.winsoftware.de/winsoftwarebutton.jpg" width="88" height="31" alt="Eingetragen bei Winsoftware.de" /></a>
 					<br/>
 					<a href="http://www.wintotal.de/softw/?id=3107">[wintotal.de]</a>
 					<a href="http://www.versiontracker.com/dyn/moreinfo/macosx/29212">[versiontracker.com]</a>
