@@ -163,6 +163,59 @@
 				<p>PosteRazor is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the <a class="external" href="http://www.gnu.org/copyleft/gpl.html">GNU General Public License</a> for more details.</p>
 <?
 			break;
+			case 'marketing':		
+?>
+				<h2><? text('Marketing', 'Marketing'); ?></h2>
+				<ul>
+					<li>
+						<strong><? text('PosteRazor on the Internet', 'PosteRazor im Internet'); ?></strong>
+						<p>
+							<a href="http://freshmeat.net/projects/posterazor/"><img src="freshmeat.gif" width="88" height="31" alt="FreshMeat" /></a>
+							<a href="http://mac.softpedia.com/get/DTP-Prepress/PosteRazor.shtml"><img src="softpedia_pick_award_s.gif" width="75" height="40" alt="Softpedia Pick" /></a>
+							<a href="http://winload.de/download/50466/Grafik,Desktop/Bildbearbeitung/PosteRazor-1.1.html"><img src="http://winload.de/banner/80/winload_statisch_80x30_1_1.gif" width="88" height="30" alt="winload.de" /></a>
+							<a href="http://www.foto-freeware.de/posterazor.php"><img src="http://www.foto-freeware.de/pic/button_88x31.gif" width="88" height="31" alt="foto-freeware.de" /></a>
+							<a href="http://www.freeware.de/software/Programm_PosteRazor_23998.html"><img src="http://media.upload.de/27/46/47/149.gif" width="80" height="30" alt="freeware.de" /></a>
+							<a href="http://www.shareware.de/software/Programm_PosteRazor_23998.html"><img src="http://media.upload.de/27/46/48/118.gif" width="80" height="30" alt="shareware.de" /></a>
+							<a href="http://www.brothersoft.com/graphics_design/misc_graphics/posterazor_45842.html"><img src="http://www.brothersoft.com/images/LinktoUs/006.gif" width="88" height="31" alt="5/5 stars BrotherSoft" /></a>
+							<a href="http://posterazor.uptodown.com/"><img src="http://imagenes.uptodown.com/imagenes/masvotado.gif" width="115" height="42" alt="uptodown mas votado" /></a>
+							<a href="http://www.topshareware.com/PosteRazor-download-42692.htm"><img src="http://www.topshareware.com/images/logo/topshareware_8831.gif" width="88" height="31" alt="Free Downloads" /></a>
+							<a href="http://www.winsoftware.de/posterazor,69,27769.htm"><img src="http://www.winsoftware.de/winsoftwarebutton.jpg" width="88" height="31" alt="Eingetragen bei Winsoftware.de" /></a>
+							<br/>
+							<a href="http://www.wintotal.de/softw/?id=3107">[wintotal.de]</a>
+							<a href="http://www.versiontracker.com/dyn/moreinfo/macosx/29212">[versiontracker.com]</a>
+							<a href="http://www.digitazero.org/?p=29">[digitazero.org]</a>
+							<a href="http://www.macupdate.com/info.php/id/20738">[macupdate.com]</a>
+							<a href="http://www.macwelt.de/news/fav/336478/index.html">[macwelt.de]</a>
+							<a href="http://www.freewarefiles.com/program_3_33_18358.html">[freewarefiles.com]</a>
+							<a href="http://www.softforall.com/Multimedia/Illustration/PosteRazor07040048.htm">[softforall.com	]</a>
+							<a href="http://www.freeware-guide.com/dir/mmedia/imagedit2.html">[freeware-guide.com]</a>
+							<a href="http://www.infoweek.ch/downloads/dl_single.cfm?dl_id=1056&amp;sid=0">[infoweek.ch]</a>
+							<a href="http://www.erfahrungswert.de/download/grafik1.htm#PosteRazor">[erfahrungswert.de]</a>
+							<a href="http://downloads.tomorrow.msn.de/beschreibung.php?programm_id=50466">[tomorrow.msn.de]</a>
+							<a href="http://www.heise.de/software/default.shtml?prg=32759&amp;T=posterazor">[heise.de]</a>
+							<a href="http://www.addict3d.org/index.php?page=downloadfile&amp;ID=4714">[addict3d.org]</a>
+							<a href="http://www.download.bg/index.php?cls=program&amp;mtd=view&amp;id=33887">[download.bg]</a>
+							<a href="http://descargas.terra.es/informacion_extendida.phtml?n_id=45043&amp;plat=1">[terra.es]</a>
+							<a href="http://www.arcor.de/content/pcgames/downloads/grafik/34726539.html">[arcor.de]</a>
+							<a href="http://www.sofotex.com/PosteRazor-download_L38851.html">[sofotex.com]</a>
+							<a href="http://www.solofreeware.net/descargar-software-PosteRazor.html">[solofreeware.net]</a>
+							<a href="http://mac.egoism.jp/nu/item/2901/catid/1">[egoism.jp]</a>
+							<a href="http://www.files-library.com/files/PosteRazor-Make-your-own-poster.html">[files-library.com]</a>
+							<a href="http://digg.com/software/PosteRazor,_A_better_Rasterbator_app">[digg.com]</a>
+							<a href="http://os4depot.net/index.php?function=showfile&amp;file=utility/print/posterazor.lha">[os4depot.net]</a>
+							<a href="http://www.genbeta.com/archivos/2005/10/12-generate-tu-poster-a-partir-de.php">[genbeta.com]</a>
+							<a href="http://www.allapp.com/PosteRazor_softinfo_27697.html">[allapp.com]</a>
+							<a href="http://www.programas-gratis.net/php/programa2.php?id_programa=4140">[programas-gratis.net]</a>
+							<a href="http://alltompc.fpgroup.se/nyheter/?id=31781">[fpgroup.se]</a>
+							<a href="http://download.excite.it/scheda.php?id=271282">[excite.it]</a>
+							<a href="http://www.filehungry.com/english/product/windows_software/multimedia_&amp;_graphics/graphic_conversion_tools/posterazor">[filehungry.com]</a>
+							<a href="http://www.foto-digital.com.mx/2005/10/20/posterazor/">[foto-digital.com.mx]</a>
+							<a href="http://www.fltk.org/links.php?V272">[fltk.org]</a>
+						</p>
+					</li>
+				</ul>
+<?
+			break;
 			default:		
 ?>
 				<h2><? text('About', '&Uuml;ber'); ?></h2>
@@ -171,50 +224,6 @@
 				<? text('As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps. PosteRazor is available as a Windows and as an OSX version (it should also be compilable on Linux).', 'Als Ausgangsmaterial nimmt der PosteRazor eine Rasterbild-datei. Das Endprodukt ist ein Poster in Form eines mehrseitigen PDF-Dokuments. Eine einfach zu bedienende Benutzerschnittstelle im Assistenten-Stil begleitet durch f&uuml;nf Schritte. Der PosteRazor ist als Windows- und als OSX-Version erh&auml;ltlich (er sollte auch f&uuml;r Linux kompilierbar sein).'); ?>
 				<? text('It is an open source, ', 'Er ist ein quelloffenes, '); ?><a href="<?=linkParameters("license","")?>"><? text('GNU licensed', 'GNU-lizensiertes'); ?></a> <? text('project which is hosted on SourceForge.net.', 'Projekt, das auf SourceForge hinterlegt ist.'); ?>
 				<? text('For feedback, bug reports or feature requests, please use the', 'F&uuml;r Feedback, Fehlerberichte oder Erweiterungsw&uuml;nsche nutzen Sie bitte die '); ?> <a class="external" href="http://sourceforge.net/projects/posterazor/"><? text('PosteRazor project page', 'PosteRazor-Projektseite'); ?></a>, <? text('write a mail to', 'schreiben Sie eine Mail an'); ?> <strong>Alessandro&nbsp;&auml;t&nbsp;casaportale&nbsp;d&ocirc;t de</strong> <? text('or contact the author via', 'oder kontaktieren Sie den Autor via'); ?> <a class="external" href="http://www.casaportale.de/html/index.php?page=contact&amp;lang=<? text('english', 'german'); ?>&amp;menu=on"><? text('mail form', 'Mail-Formular'); ?></a>.
-				<div id="awards">
-					<h2><? text('Marketing', 'Marketing'); ?>:</h2>
-					<a href="http://freshmeat.net/projects/posterazor/"><img src="freshmeat.gif" width="88" height="31" alt="FreshMeat" /></a>
-					<a href="http://mac.softpedia.com/get/DTP-Prepress/PosteRazor.shtml"><img src="softpedia_pick_award_s.gif" width="75" height="40" alt="Softpedia Pick" /></a>
-					<a href="http://winload.de/download/50466/Grafik,Desktop/Bildbearbeitung/PosteRazor-1.1.html"><img src="http://winload.de/banner/80/winload_statisch_80x30_1_1.gif" width="88" height="30" alt="winload.de" /></a>
-					<a href="http://www.foto-freeware.de/posterazor.php"><img src="http://www.foto-freeware.de/pic/button_88x31.gif" width="88" height="31" alt="foto-freeware.de" /></a>
-					<a href="http://www.freeware.de/software/Programm_PosteRazor_23998.html"><img src="http://media.upload.de/27/46/47/149.gif" width="80" height="30" alt="freeware.de" /></a>
-					<a href="http://www.shareware.de/software/Programm_PosteRazor_23998.html"><img src="http://media.upload.de/27/46/48/118.gif" width="80" height="30" alt="shareware.de" /></a>
-					<a href="http://www.brothersoft.com/graphics_design/misc_graphics/posterazor_45842.html"><img src="http://www.brothersoft.com/images/LinktoUs/006.gif" width="88" height="31" alt="5/5 stars BrotherSoft" /></a>
-					<a href="http://posterazor.uptodown.com/"><img src="http://imagenes.uptodown.com/imagenes/masvotado.gif" width="115" height="42" alt="uptodown mas votado" /></a>
-					<a href="http://www.topshareware.com/PosteRazor-download-42692.htm"><img src="http://www.topshareware.com/images/logo/topshareware_8831.gif" width="88" height="31" alt="Free Downloads" /></a>
-					<a href="http://www.winsoftware.de/posterazor,69,27769.htm"><img src="http://www.winsoftware.de/winsoftwarebutton.jpg" width="88" height="31" alt="Eingetragen bei Winsoftware.de" /></a>
-					<br/>
-					<a href="http://www.wintotal.de/softw/?id=3107">[wintotal.de]</a>
-					<a href="http://www.versiontracker.com/dyn/moreinfo/macosx/29212">[versiontracker.com]</a>
-					<a href="http://www.digitazero.org/?p=29">[digitazero.org]</a>
-					<a href="http://www.macupdate.com/info.php/id/20738">[macupdate.com]</a>
-					<a href="http://www.macwelt.de/news/fav/336478/index.html">[macwelt.de]</a>
-					<a href="http://www.freewarefiles.com/program_3_33_18358.html">[freewarefiles.com]</a>
-					<a href="http://www.softforall.com/Multimedia/Illustration/PosteRazor07040048.htm">[softforall.com	]</a>
-					<a href="http://www.freeware-guide.com/dir/mmedia/imagedit2.html">[freeware-guide.com]</a>
-					<a href="http://www.infoweek.ch/downloads/dl_single.cfm?dl_id=1056&amp;sid=0">[infoweek.ch]</a>
-					<a href="http://www.erfahrungswert.de/download/grafik1.htm#PosteRazor">[erfahrungswert.de]</a>
-					<a href="http://downloads.tomorrow.msn.de/beschreibung.php?programm_id=50466">[tomorrow.msn.de]</a>
-					<a href="http://www.heise.de/software/default.shtml?prg=32759&amp;T=posterazor">[heise.de]</a>
-					<a href="http://www.addict3d.org/index.php?page=downloadfile&ID=4714">[addict3d.org]</a>
-					<a href="http://www.download.bg/index.php?cls=program&amp;mtd=view&amp;id=33887">[download.bg]</a>
-					<a href="http://descargas.terra.es/informacion_extendida.phtml?n_id=45043&amp;plat=1">[terra.es]</a>
-					<a href="http://www.arcor.de/content/pcgames/downloads/grafik/34726539.html">[arcor.de]</a>
-					<a href="http://www.sofotex.com/PosteRazor-download_L38851.html">[sofotex.com]</a>
-					<a href="http://www.solofreeware.net/descargar-software-PosteRazor.html">[solofreeware.net]</a>
-					<a href="http://mac.egoism.jp/nu/item/2901/catid/1">[egoism.jp]</a>
-					<a href="http://www.files-library.com/files/PosteRazor-Make-your-own-poster.html">[files-library.com]</a>
-					<a href="http://digg.com/software/PosteRazor,_A_better_Rasterbator_app">[digg.com]</a>
-					<a href="http://os4depot.net/index.php?function=showfile&amp;file=utility/print/posterazor.lha">[os4depot.net]</a>
-					<a href="http://www.genbeta.com/archivos/2005/10/12-generate-tu-poster-a-partir-de.php">[genbeta.com]</a>
-					<a href="http://www.allapp.com/PosteRazor_softinfo_27697.html">[allapp.com]</a>
-					<a href="http://www.programas-gratis.net/php/programa2.php?id_programa=4140">[programas-gratis.net]</a>
-					<a href="http://alltompc.fpgroup.se/nyheter/?id=31781">[fpgroup.se]</a>
-					<a href="http://download.excite.it/scheda.php?id=271282">[excite.it]</a>
-					<a href="http://www.filehungry.com/english/product/windows_software/multimedia_&amp;_graphics/graphic_conversion_tools/posterazor">[filehungry.com]</a>
-					<a href="http://www.foto-digital.com.mx/2005/10/20/posterazor/">[foto-digital.com.mx]</a>
-					<a href="http://www.fltk.org/links.php?V272">[fltk.org]</a>
-				</div>
 <?
 		};		
 	}
@@ -242,7 +251,7 @@
 				<a href="<?=linkParameters("","english")?>"><img src="flagEnglish<? text('_selected', ''); ?>.png" width="26" height="17" alt="English" /></a><a href="<?=linkParameters("","german")?>"><img src="flagGerman<? text('', '_selected'); ?>.png" width="26" height="17" alt="Deutsch" /></a>
 			</div>
 			<div id="navigation">
-				<ul id="navigationlist"><li><a href="<?=linkParameters("news","")?>"<?=conditionalSelectedClass("news")?>><? text('News', 'Neuigkeiten'); ?></a></li><li><a href="<?=linkParameters("about","")?>"<?=conditionalSelectedClass("about")?>><? text('About', '&Uuml;ber'); ?></a></li><li><a href="<?=linkParameters("features","")?>"<?=conditionalSelectedClass("features")?>><? text('Features', 'Funktionen'); ?></a></li><li><a href="<?=linkParameters("screenshots","")?>"<?=conditionalSelectedClass("screenshots")?>><? text('Screenshots', 'Bildschirmfotos'); ?></a></li><li><a href="<?=linkParameters("download","")?>"<?=conditionalSelectedClass("download")?>><? text('Download', 'Herunterladen'); ?></a></li><li><a href="<?=linkParameters("thirdparty","")?>"<?=conditionalSelectedClass("thirdparty")?>><? text('Third&nbsp;party&nbsp;code', 'Code&nbsp;von&nbsp;Dritten'); ?></a></li><li><a href="<?=linkParameters("license","")?>"<?=conditionalSelectedClass("license")?>><? text('License', 'Lizenz'); ?></a></li></ul>
+				<ul id="navigationlist"><li><a href="<?=linkParameters("news","")?>"<?=conditionalSelectedClass("news")?>><? text('News', 'Neuigkeiten'); ?></a></li><li><a href="<?=linkParameters("about","")?>"<?=conditionalSelectedClass("about")?>><? text('About', '&Uuml;ber'); ?></a></li><li><a href="<?=linkParameters("features","")?>"<?=conditionalSelectedClass("features")?>><? text('Features', 'Funktionen'); ?></a></li><li><a href="<?=linkParameters("screenshots","")?>"<?=conditionalSelectedClass("screenshots")?>><? text('Screenshots', 'Bildschirmfotos'); ?></a></li><li><a href="<?=linkParameters("download","")?>"<?=conditionalSelectedClass("download")?>><? text('Download', 'Herunterladen'); ?></a></li><li><a href="<?=linkParameters("thirdparty","")?>"<?=conditionalSelectedClass("thirdparty")?>><? text('Third&nbsp;party&nbsp;code', 'Code&nbsp;von&nbsp;Dritten'); ?></a></li><li><a href="<?=linkParameters("license","")?>"<?=conditionalSelectedClass("license")?>><? text('License', 'Lizenz'); ?></a></li><li><a href="<?=linkParameters("marketing","")?>"<?=conditionalSelectedClass("marketing")?>><? text('Marketing', 'Marketing'); ?></a></li></ul>
 				<a class="external" href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=141842&amp;type=1" width="88" height="31" alt="SF.net Logo" /></a>
 				<a class="external" href="http://sourceforge.net/projects/posterazor/"><? text('SF project page', 'SF Projekt-Seite'); ?></a>
 			</div>
