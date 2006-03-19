@@ -219,7 +219,7 @@
 					<li>
 						<strong><? text('Similar programs', '&Auml;hnliche Programme'); ?></strong>
 						<p>
-							<? text('Do You miss a feature in the PosteRazor? Try the programs from this alphabetically sorted list:', 'Vermissen Sie eine Funktion beim PosteRazor? Testen Sie die Programme in dieser alphapetisch sortierten Liste:'); ?>
+							<? text('Do You miss a feature in the PosteRazor? Try out the programs from this alphabetically sorted list:', 'Vermissen Sie eine Funktion beim PosteRazor? Testen Sie die Programme in dieser alphapetisch sortierten Liste:'); ?>
 						</p>
 						<p>
 							<a href="http://www.intemove.com/">[Ace Poster]</a>
