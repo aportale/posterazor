@@ -200,6 +200,7 @@
 					<a href="http://www.arcor.de/content/pcgames/downloads/grafik/34726539.html">[arcor.de]</a>
 					<a href="http://www.sofotex.com/PosteRazor-download_L38851.html">[sofotex.com]</a>
 					<a href="http://www.solofreeware.net/descargar-software-PosteRazor.html">[solofreeware.net]</a>
+					<a href="http://mac.egoism.jp/nu/item/2901/catid/1">[egoism.jp]</a>
 					<a href="http://www.files-library.com/files/PosteRazor-Make-your-own-poster.html">[files-library.com]</a>
 					<a href="http://digg.com/software/PosteRazor,_A_better_Rasterbator_app">[digg.com]</a>
 					<a href="http://os4depot.net/index.php?function=showfile&amp;file=utility/print/posterazor.lha">[os4depot.net]</a>
