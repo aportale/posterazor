@@ -191,6 +191,7 @@
 							<a href="http://www.freeware-guide.com/dir/mmedia/imagedit2.html">[freeware-guide.com]</a>
 							<a href="http://www.infoweek.ch/downloads/dl_single.cfm?dl_id=1056&amp;sid=0">[infoweek.ch]</a>
 							<a href="http://www.erfahrungswert.de/download/grafik1.htm#PosteRazor">[erfahrungswert.de]</a>
+							<a href="http://www.freewareplanet.net/imagetool.php##posterazor">[freewareplanet.net]</a>
 							<a href="http://downloads.tomorrow.msn.de/beschreibung.php?programm_id=50466">[tomorrow.msn.de]</a>
 							<a href="http://www.heise.de/software/default.shtml?prg=32759&amp;T=posterazor">[heise.de]</a>
 							<a href="http://www.addict3d.org/index.php?page=downloadfile&amp;ID=4714">[addict3d.org]</a>
@@ -211,6 +212,7 @@
 							<a href="http://www.filehungry.com/english/product/windows_software/multimedia_&amp;_graphics/graphic_conversion_tools/posterazor">[filehungry.com]</a>
 							<a href="http://www.foto-digital.com.mx/2005/10/20/posterazor/">[foto-digital.com.mx]</a>
 							<a href="http://www.fltk.org/links.php?V272">[fltk.org]</a>
+							<a href="http://simplex.blogtotal.es/post/542/2270">[blogtotal.es]</a>
 						</p>
 					</li>
 				</ul>
