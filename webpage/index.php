@@ -181,7 +181,8 @@
 							<a href="http://www.topshareware.com/PosteRazor-download-42692.htm"><img src="http://www.topshareware.com/images/logo/topshareware_8831.gif" width="88" height="31" alt="Free Downloads" /></a>
 							<a href="http://www.winsoftware.de/posterazor,69,27769.htm"><img src="http://www.winsoftware.de/winsoftwarebutton.jpg" width="88" height="31" alt="Eingetragen bei Winsoftware.de" /></a>
 							<a href="http://www.freewarefiles.com/program_3_33_18358.html"><img src="marketing_freewarefiles.gif" width="88" height="31" alt="freewarefiles.com" /></a>
-							<br/>
+						</p>
+						<p>
 							<a href="http://www.wintotal.de/softw/?id=3107">[wintotal.de]</a>
 							<a href="http://www.versiontracker.com/dyn/moreinfo/macosx/29212">[versiontracker.com]</a>
 							<a href="http://www.digitazero.org/?p=29">[digitazero.org]</a>
