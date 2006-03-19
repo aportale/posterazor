@@ -196,6 +196,7 @@
 					<a href="http://www.erfahrungswert.de/download/grafik1.htm#PosteRazor">[erfahrungswert.de]</a>
 					<a href="http://downloads.tomorrow.msn.de/beschreibung.php?programm_id=50466">[tomorrow.msn.de]</a>
 					<a href="http://www.heise.de/software/default.shtml?prg=32759&amp;T=posterazor">[heise.de]</a>
+					<a href="http://www.addict3d.org/index.php?page=downloadfile&ID=4714">[addict3d.org]</a>
 					<a href="http://www.download.bg/index.php?cls=program&amp;mtd=view&amp;id=33887">[download.bg]</a>
 					<a href="http://descargas.terra.es/informacion_extendida.phtml?n_id=45043&amp;plat=1">[terra.es]</a>
 					<a href="http://www.arcor.de/content/pcgames/downloads/grafik/34726539.html">[arcor.de]</a>
