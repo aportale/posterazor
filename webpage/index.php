@@ -177,6 +177,7 @@
 					<a href="http://winload.de/download/50466/Grafik,Desktop/Bildbearbeitung/PosteRazor-1.1.html"><img src="http://winload.de/banner/80/winload_statisch_80x30_1_1.gif" width="88" height="30" alt="winload.de" /></a>
 					<a href="http://www.foto-freeware.de/posterazor.php"><img src="http://www.foto-freeware.de/pic/button_88x31.gif" width="88" height="31" alt="foto-freeware.de" /></a>
 					<a href="http://www.freeware.de/software/Programm_PosteRazor_23998.html"><img src="http://media.upload.de/27/46/47/149.gif" width="80" height="30" alt="freeware.de" /></a>
+					<a href="http://www.shareware.de/software/Programm_PosteRazor_23998.html"><img src="http://media.upload.de/27/46/48/118.gif" width="80" height="30" alt="shareware.de" /></a>
 					<a href="http://www.brothersoft.com/graphics_design/misc_graphics/posterazor_45842.html"><img src="http://www.brothersoft.com/images/LinktoUs/006.gif" width="88" height="31" alt="5/5 stars BrotherSoft" /></a>
 					<a href="http://posterazor.uptodown.com/"><img src="http://imagenes.uptodown.com/imagenes/masvotado.gif" width="115" height="42" alt="uptodown mas votado" /></a>
 					<a href="http://www.topshareware.com/PosteRazor-download-42692.htm"><img src="http://www.topshareware.com/images/logo/topshareware_8831.gif" width="88" height="31" alt="Free Downloads" /></a>
@@ -187,7 +188,7 @@
 					<a href="http://www.macupdate.com/info.php/id/20738">[macupdate.com]</a>
 					<a href="http://www.macwelt.de/news/fav/336478/index.html">[macwelt.de]</a>
 					<a href="http://www.freewarefiles.com/program_3_33_18358.html">[freewarefiles.com]</a>
-					<a href="http://www.softforall.com/Multimedia/Illustration/PosteRazor07040048.htm">[softforall.com]</a>
+					<a href="http://www.softforall.com/Multimedia/Illustration/PosteRazor07040048.htm">[softforall.com	]</a>
 					<a href="http://www.freeware-guide.com/dir/mmedia/imagedit2.html">[freeware-guide.com]</a>
 					<a href="http://www.infoweek.ch/downloads/dl_single.cfm?dl_id=1056&amp;sid=0">[infoweek.ch]</a>
 					<a href="http://www.erfahrungswert.de/download/grafik1.htm#PosteRazor">[erfahrungswert.de]</a>
