@@ -241,7 +241,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<meta name="author" content="Alessandro Portale" />
 		<meta name="description" content="PosteRazor - <? text('Make your own poster', 'Mach\' Dein eigenes Poster'); ?>!" />
-		<meta name="keywords" content="poster, posterazor, print, fltk, freeimage, pdf, application, tool, app" />
+		<meta name="keywords" content="poster, posterazor, print, fltk, freeimage, pdf, application, tool, app, free, create, freeware" />
 		<title>PosteRazor - <? text('Make your own poster', 'Mach\' Dein eigenes Poster'); ?>!</title>
 		<style type="text/css" media="all">
 			@import "style.css";
