@@ -155,7 +155,7 @@
 				<h2><? text('License', 'Lizenz'); ?></h2>
 				<p>
 					PosteRazor - <? text('Make your own poster', 'Mach\' Dein eigenes Poster'); ?>!<br />
-					Copyright (C) 2005 by Alessandro Portale<br />
+					Copyright (C) 2005-2006 by Alessandro Portale<br />
 					<a class="external" href="http://posterazor.sourceforge.net/<? text('', '?lang=german'); ?>">http://posterazor.sourceforge.net/</a>
 				</p>
 				<? text('', '<p><em>Der folgende Lizenztext ist in seiner englischen Originalfassung aufgef&uuml;hrt, da die <a class="external" href="http://www.gnu.de/gpl-ger.html">deutsche &Uuml;bersetzung</a> nicht offiziell oder im rechtlichen Sinne anerkannt ist.</em></p>'); ?>
