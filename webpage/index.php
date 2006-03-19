@@ -216,6 +216,31 @@
 							<a href="http://simplex.blogtotal.es/post/542/2270">[blogtotal.es]</a>
 						</p>
 					</li>
+					<li>
+						<strong><? text('Similar programs', '&Auml;hnliche Programme'); ?></strong>
+						<p>
+							<? text('Do You miss a feature in the PosteRazor? Try the programs from this alphabetically sorted list:', 'Vermissen Sie eine Funktion beim PosteRazor? Testen Sie die Programme in dieser alphapetisch sortierten Liste:'); ?>
+						</p>
+						<p>
+							<a href="http://www.intemove.com/">[Ace Poster]</a>
+							<a href="http://www.waltereckel.de/">[BookPrint]</a>
+							<a href="http://www.srs1software.com/">[Digital Camera Poster Creator]</a>
+							<a href="http://www.grafik-software.de/">[PicMaster]</a>
+							<a href="http://www.postersw.com/">[Poster]</a>
+							<a href="http://www.posterbuddy.com/">[Poster Buddy]</a>
+							<a href="http://www.luxordevelopment.ch/posterprint/">[Poster Print]</a>
+							<a href="http://www.cadkas.de/downengprint1.php">[Poster Printery]</a>
+							<a href="http://www.posteriza.com/">[Posteriza]</a>
+							<a href="http://grandutils.com/PosterPrint/">[PosterPrint]</a>
+							<a href="http://www.bear.co.jp/en/PrintExpander.htm">[PrintExpander]</a>
+							<a href="http://usefulsoft.com/printghost/">[PrintGhost]</a>
+							<a href="http://www.ronyasoft.com/products/proposter/">[ProPoster]</a>
+							<a href="http://arje.net/rasterbator">[Rasterbator Desktop]</a>
+							<a href="http://homokaasu.org/rasterbator/">[Rasterbator Web]</a>
+							<a href="http://www.keseling.de/pdr.htm">[SKS Poster-Drucker]</a>
+							<a href="http://www.mindcad.com/tiler.php">[Tiler]</a>
+						</p>
+					</li>
 				</ul>
 <?
 			break;
