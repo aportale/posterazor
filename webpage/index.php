@@ -214,6 +214,7 @@
 							<a href="http://www.foto-digital.com.mx/2005/10/20/posterazor/">[foto-digital.com.mx]</a>
 							<a href="http://www.fltk.org/links.php?V272">[fltk.org]</a>
 							<a href="http://simplex.blogtotal.es/post/542/2270">[blogtotal.es]</a>
+							<a href="http://www.libellules.ch/dotclear/index.php?2006/03/18/864-posterazor">[libellules.ch]</a>
 						</p>
 					</li>
 					<li>
