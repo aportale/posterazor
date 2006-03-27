@@ -241,6 +241,7 @@
 							<a href="http://homokaasu.org/rasterbator/">[Rasterbator Web]</a>
 							<a href="http://www.keseling.de/pdr.htm">[SKS Poster-Drucker]</a>
 							<a href="http://www.mindcad.com/tiler.php">[Tiler]</a>
+							<a href="http://www.oreware.com/viewprogram.php?prog=9">[Wall Photo Maker]</a>
 						</p>
 					</li>
 				</ul>
