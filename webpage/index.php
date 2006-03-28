@@ -180,6 +180,7 @@
 							<a href="http://www.topshareware.com/PosteRazor-download-42692.htm"><img src="http://www.topshareware.com/images/logo/topshareware_8831.gif" width="88" height="31" alt="Free Downloads" /></a>
 							<a href="http://www.winsoftware.de/posterazor,69,27769.htm"><img src="http://www.winsoftware.de/winsoftwarebutton.jpg" width="88" height="31" alt="Eingetragen bei Winsoftware.de" /></a>
 							<a href="http://www.freewarefiles.com/program_3_33_18358.html"><img src="marketing_freewarefiles.gif" width="88" height="31" alt="freewarefiles.com" /></a>
+							<a href="http://www.shareware4u.de/detail_templ.php?ProgrammID=13609"><img src="http://www.shareware4u.de/grafik/small01.gif" width="88" height="31" alt="Shareware 4U" /></a>
 							<a href="http://www.softforall.com/Multimedia/Illustration/PosteRazor07040048.htm"><img src="marketing_softforall.jpg" width="100" height="40" alt="softforall.com" /></a>
 							<a href="http://posterazor.uptodown.com/"><img src="http://imagenes.uptodown.com/imagenes/masvotado.gif" width="115" height="42" alt="uptodown mas votado" /></a>
 						</p>
