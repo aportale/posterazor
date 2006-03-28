@@ -17,15 +17,15 @@
 		<Contact_Info>
 			<Author_First_Name>Alessandro</Author_First_Name>
 			<Author_Last_Name>Portale</Author_Last_Name>
-			<Author_Email>Alessandro ät CasaPortale dôt de</Author_Email>
+			<Author_Email>Alessandro@CasaPortale.de</Author_Email>
 			<Contact_First_Name>Alessandro</Contact_First_Name>
 			<Contact_Last_Name>Portale</Contact_Last_Name>
-			<Contact_Email>Alessandro ät CasaPortale dôt de</Contact_Email>
+			<Contact_Email>Alessandro@CasaPortale.de</Contact_Email>
 		</Contact_Info>
 		<Support_Info>
-			<Sales_Email />
-			<Support_Email />
-			<General_Email />
+			<Sales_Email>Alessandro@CasaPortale.de</Sales_Email>
+			<Support_Email>Alessandro@CasaPortale.de</Support_Email>
+			<General_Email>Alessandro@CasaPortale.de</General_Email>
 			<Sales_Phone />
 			<Support_Phone />
 			<General_Phone />
@@ -96,14 +96,14 @@ Als Ausgangsmaterial nimmt der PosteRazor eine Rasterbild-datei. Das Endprodukt 
 	<Web_Info>
 		<Application_URLs>
 			<Application_Info_URL>http://posterazor.sourceforge.net/</Application_Info_URL>
-			<Application_Order_URL />
+			<Application_Order_URL>http://posterazor.sourceforge.net/</Application_Order_URL>
 			<Application_Screenshot_URL>http://posterazor.sourceforge.net/screenshot_english_step04.png</Application_Screenshot_URL>
-			<Application_Icon_URL />
+			<Application_Icon_URL>http://posterazor.sourceforge.net/PosteRazorLogo32.png</Application_Icon_URL>
 			<Application_XML_File_URL>http://posterazor.sourceforge.net/pad_file.xml</Application_XML_File_URL>
 		</Application_URLs>
 		<Download_URLs>
 			<Primary_Download_URL>http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.1-Win32.zip?download</Primary_Download_URL>
-			<Secondary_Download_URL />
+			<Secondary_Download_URL>http://www.casaportale.de/lagerraum/PosteRazor-1.1-Win32.zip</Secondary_Download_URL>
 			<Additional_Download_URL_1 />
 			<Additional_Download_URL_2 />
 		</Download_URLs>
@@ -132,10 +132,10 @@ PosteRazor is distributed in the hope that it will be useful, but WITHOUT ANY WA
 	<DeuPAD>
 		<DeuPAD_Extension_Version>2.00</DeuPAD_Extension_Version>
 		<DeuPAD_Extension_Info>For information on the DeuPAD Extensions please go to http://www.deupad.org</DeuPAD_Extension_Info>
-		<SAVE_Member>N</SAVE_Member>
-		<SAVE_Member_Number />
+		<SAVE_Member>Y</SAVE_Member>
+		<SAVE_Member_Number>ALP</SAVE_Member_Number>
 		<Company_Unique_ID />
-		<Save_Prog_Num />
+		<Save_Prog_Num>PTR</Save_Prog_Num>
 		<Program_Unique_ID />
 		<Program_Cost_EUR>0.00</Program_Cost_EUR>
 		<Program_Categories_German />
@@ -144,4 +144,78 @@ PosteRazor is distributed in the hope that it will be useful, but WITHOUT ANY WA
 		<EULA_German />
 		<Program_Change_Info_German />
 	</DeuPAD>
+	<Affiliates>
+		<Affiliates_FORM>Y</Affiliates_FORM>
+		<Affiliates_VERSION>1.0</Affiliates_VERSION>
+		<Affiliates_URL>http://www.asp-shareware.org/pad/extensions/Affiliates.htm</Affiliates_URL>
+		<Affiliates_Information_Page />
+		<Affiliates_BMTMicro_Order_Page />
+		<Affiliates_BMTMicro_Vendor_ID />
+		<Affiliates_BMTMicro_Product_ID />
+		<Affiliates_BMTMicro_Maximum_Commission_Rate />
+		<Affiliates_DigiBuy_Order_Page />
+		<Affiliates_DigiBuy_Vendor_ID />
+		<Affiliates_DigiBuy_Product_ID />
+		<Affiliates_DigiBuy_Maximum_Commission_Rate />
+		<Affiliates_DigitalCandle_Order_Page />
+		<Affiliates_DigitalCandle_Vendor_ID />
+		<Affiliates_DigitalCandle_Product_ID />
+		<Affiliates_DigitalCandle_Maximum_Commission_Rate />
+		<Affiliates_Emetrix_Order_Page />
+		<Affiliates_Emetrix_Vendor_ID />
+		<Affiliates_Emetrix_Product_ID />
+		<Affiliates_Emetrix_Maximum_Commission_Rate />
+		<Affiliates_eSellerate_Order_Page />
+		<Affiliates_eSellerate_Vendor_ID />
+		<Affiliates_eSellerate_Product_ID />
+		<Affiliates_eSellerate_Maximum_Commission_Rate />
+		<Affiliates_Kagi_Order_Page />
+		<Affiliates_Kagi_Vendor_ID />
+		<Affiliates_Kagi_Product_ID />
+		<Affiliates_Kagi_Maximum_Commission_Rate />
+		<Affiliates_NorthStarSol_Order_Page />
+		<Affiliates_NorthStarSol_Vendor_ID />
+		<Affiliates_NorthStarSol_Product_ID />
+		<Affiliates_NorthStarSol_Maximum_Commission_Rate />
+		<Affiliates_Order1_Order_Page />
+		<Affiliates_Order1_Vendor_ID />
+		<Affiliates_Order1_Product_ID />
+		<Affiliates_Order1_Maximum_Commission_Rate />
+		<Affiliates_Osolis_Order_Page />
+		<Affiliates_Osolis_Vendor_ID />
+		<Affiliates_Osolis_Product_ID />
+		<Affiliates_Osolis_Maximum_Commission_Rate />
+		<Affiliates_Regnet_Order_Page />
+		<Affiliates_Regnet_Vendor_ID />
+		<Affiliates_Regnet_Product_ID />
+		<Affiliates_Regnet_Maximum_Commission_Rate />
+		<Affiliates_Regnow_Order_Page />
+		<Affiliates_Regnow_Vendor_ID />
+		<Affiliates_Regnow_Product_ID />
+		<Affiliates_Regnow_Maximum_Commission_Rate />
+		<Affiliates_Regsoft_Order_Page />
+		<Affiliates_Regsoft_Vendor_ID />
+		<Affiliates_Regsoft_Product_ID />
+		<Affiliates_Regsoft_Maximum_Commission_Rate />
+		<Affiliates_ShareIt_Order_Page />
+		<Affiliates_ShareIt_Vendor_ID />
+		<Affiliates_ShareIt_Product_ID />
+		<Affiliates_ShareIt_Maximum_Commission_Rate />
+		<Affiliates_SWReg_Order_Page />
+		<Affiliates_SWReg_Vendor_ID />
+		<Affiliates_SWReg_Product_ID />
+		<Affiliates_SWReg_Maximum_Commission_Rate />
+		<Affiliates_V-Share_Order_Page />
+		<Affiliates_V-Share_Vendor_ID />
+		<Affiliates_V-Share_Product_ID />
+		<Affiliates_V-Share_Maximum_Commission_Rate />
+		<Affiliates_VFree_Order_Page />
+		<Affiliates_VFree_Vendor_ID />
+		<Affiliates_VFree_Product_ID />
+		<Affiliates_VFree_Maximum_Commission_Rate />
+		<Affiliates_Yaskifo_Order_Page />
+		<Affiliates_Yaskifo_Vendor_ID />
+		<Affiliates_Yaskifo_Product_ID />
+		<Affiliates_Yaskifo_Maximum_Commission_Rate />
+	</Affiliates>
 </XML_DIZ_INFO>
