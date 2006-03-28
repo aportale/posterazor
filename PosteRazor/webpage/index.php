@@ -208,6 +208,8 @@
 							<a href="http://digg.com/software/PosteRazor,_A_better_Rasterbator_app">[digg.com]</a>
 							<a href="http://os4depot.net/index.php?function=showfile&amp;file=utility/print/posterazor.lha">[os4depot.net]</a>
 							<a href="http://www.genbeta.com/archivos/2005/10/12-generate-tu-poster-a-partir-de.php">[genbeta.com]</a>
+							<a href="http://www.maxxdownload.com/PosteRazor.html">[maxxdownload.com]</a>
+							<a href="http://www.go2download.com/Multimedia/Illustration/PosteRazor07040048.htm">[go2download.com]</a>
 							<a href="http://www.allapp.com/PosteRazor_softinfo_27697.html">[allapp.com]</a>
 							<a href="http://www.softsland.com/PosteRazor.html">[softsland.com]</a>
 							<a href="http://www.shareware-list.com/download-584-34337.html">[shareware-list.com]</a>
