@@ -102,7 +102,7 @@ Als Ausgangsmaterial nimmt der PosteRazor eine Rasterbild-datei. Das Endprodukt 
 			<Application_XML_File_URL>http://posterazor.sourceforge.net/pad_file.xml</Application_XML_File_URL>
 		</Application_URLs>
 		<Download_URLs>
-			<Primary_Download_URL>http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.1-Win32.zip?download</Primary_Download_URL>
+			<Primary_Download_URL>http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.1-Win32.zip?download.zip</Primary_Download_URL>
 			<Secondary_Download_URL>http://www.casaportale.de/lagerraum/PosteRazor-1.1-Win32.zip</Secondary_Download_URL>
 			<Additional_Download_URL_1 />
 			<Additional_Download_URL_2 />
