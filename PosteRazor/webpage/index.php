@@ -182,10 +182,12 @@
 							<a href="http://www.freewarefiles.com/program_3_33_18358.html"><img src="marketing_freewarefiles.gif" width="88" height="31" alt="freewarefiles.com" /></a>
 							<a href="http://www.shareware4u.de/detail_templ.php?ProgrammID=13609"><img src="http://www.shareware4u.de/grafik/small01.gif" width="88" height="31" alt="Shareware 4U" /></a>
 							<a href="http://www.loady.de/download-information/15682-PosteRazor.html"><img src="http://www.loady.de/banner/banner_88_ani.gif" width="88" height="31" alt="Loady" /></a>
+							<a href="http://www.top-download.de/index.php?content=files&amp;fid=4992"><img src="http://www.top-download.de/grafik/2/button_neu_ani.gif" width="88" height="31" alt="top-download.de" /></a>
 							<a href="http://www.softforall.com/Multimedia/Illustration/PosteRazor07040048.htm"><img src="marketing_softforall.jpg" width="100" height="40" alt="softforall.com" /></a>
 							<a href="http://posterazor.uptodown.com/"><img src="http://imagenes.uptodown.com/imagenes/masvotado.gif" width="115" height="42" alt="uptodown mas votado" /></a>
 						</p>
 						<p>
+							<a href="http://www.opensource-cd.de/grafik3.htm#posterazor">[opensource-cd.de]</a>
 							<a href="http://www.wintotal.de/softw/?id=3107">[wintotal.de]</a>
 							<a href="http://www.versiontracker.com/dyn/moreinfo/macosx/29212">[versiontracker.com]</a>
 							<a href="http://www.digitazero.org/?p=29">[digitazero.org]</a>
@@ -201,6 +203,7 @@
 							<a href="http://www.addict3d.org/index.php?page=downloadfile&amp;ID=4714">[addict3d.org]</a>
 							<a href="http://www.download.bg/index.php?cls=program&amp;mtd=view&amp;id=33887">[download.bg]</a>
 							<a href="http://descargas.terra.es/informacion_extendida.phtml?n_id=45043&amp;plat=1">[terra.es]</a>
+							<a href="http://www.download3000.com/download_13707.html">[download3000.com]</a>
 							<a href="http://www.sofotex.com/PosteRazor-download_L38851.html">[sofotex.com]</a>
 							<a href="http://www.solofreeware.net/descargar-software-PosteRazor.html">[solofreeware.net]</a>
 							<a href="http://mac.egoism.jp/nu/item/2901/catid/1">[egoism.jp]</a>
