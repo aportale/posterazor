@@ -10,6 +10,7 @@
 		82028CDA091E6F1500763263 /* CHANGES in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 82028CD7091E6F1500763263 /* CHANGES */; };
 		82028CDB091E6F1500763263 /* LICENSE in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 82028CD8091E6F1500763263 /* LICENSE */; };
 		82028CDC091E6F1500763263 /* README in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 82028CD9091E6F1500763263 /* README */; };
+		8214BC3C09FF9A0500B67807 /* TranslationPolish.h in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 8214BC3B09FF9A0500B67807 /* TranslationPolish.h */; };
 		821821DD0916D2A2004580FC /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 821821DB0916D2A2004580FC /* AGL.framework */; };
 		821821DE0916D2A2004580FC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 821821DC0916D2A2004580FC /* OpenGL.framework */; };
 		821821EA0916D2BA004580FC /* libfltk_gl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 821821E90916D2BA004580FC /* libfltk_gl.a */; };
@@ -83,6 +84,7 @@
 				82028CDB091E6F1500763263 /* LICENSE in Copy README, LICENSE, CHANGES */,
 				82028CDC091E6F1500763263 /* README in Copy README, LICENSE, CHANGES */,
 				82028CDA091E6F1500763263 /* CHANGES in Copy README, LICENSE, CHANGES */,
+				8214BC3C09FF9A0500B67807 /* TranslationPolish.h in Copy README, LICENSE, CHANGES */,
 			);
 			name = "Copy README, LICENSE, CHANGES";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +97,7 @@
 		82028CD7091E6F1500763263 /* CHANGES */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = CHANGES; path = ../../CHANGES; sourceTree = SOURCE_ROOT; };
 		82028CD8091E6F1500763263 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = LICENSE; path = ../../LICENSE; sourceTree = SOURCE_ROOT; };
 		82028CD9091E6F1500763263 /* README */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = README; path = ../../README; sourceTree = SOURCE_ROOT; };
+		8214BC3B09FF9A0500B67807 /* TranslationPolish.h */ = {isa = PBXFileReference; fileEncoding = 9; lastKnownFileType = sourcecode.c.h; path = TranslationPolish.h; sourceTree = "<group>"; };
 		821821DB0916D2A2004580FC /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		821821DC0916D2A2004580FC /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		821821E90916D2BA004580FC /* libfltk_gl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfltk_gl.a; path = "../../thirdparty/fltk-1.1/lib/libfltk_gl.a"; sourceTree = SOURCE_ROOT; };
@@ -295,6 +298,7 @@
 		82F01D7F093FC18A0037F1BD /* translations */ = {
 			isa = PBXGroup;
 			children = (
+				8214BC3B09FF9A0500B67807 /* TranslationPolish.h */,
 				82F01D80093FC18A0037F1BD /* PosteRazorHelpConstants.h */,
 				82F01D81093FC18A0037F1BD /* TranslationEnglish.h */,
 				82F01D83093FC18A0037F1BD /* TranslationGerman.h */,
@@ -502,6 +506,7 @@
 		82ACC091093FC12D00200A0E /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SEPARATE_STRIP = YES;
 			};
 			name = Development;
 		};
@@ -510,6 +515,7 @@
 			buildSettings = {
 				DEAD_CODE_STRIPPING = YES;
 				ONLY_LINK_ESSENTIAL_SYMBOLS = YES;
+				SEPARATE_STRIP = YES;
 			};
 			name = Deployment;
 		};
