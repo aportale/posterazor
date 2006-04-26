@@ -24,6 +24,7 @@
 
 #include "TranslationEnglish.h"
 #include "TranslationGerman.h"
+#include "TranslationPolish.h"
 //#include "TranslationItalian.h"
 #if defined (WIN32)
 #include <Windows.h>
@@ -44,6 +45,7 @@ static const TranslationSet TranslationsMap[] =
 	{&english, Translations::eLanguageUndefined}
 	,{&english, Translations::eLanguageEnglish}
 	,{&german, Translations::eLanguageGerman}
+	,{&polish, Translations::eLanguagePolish}
 //	,{&italian, Translations::eLanguageItalian} // My italian is too lousy, although it is my native language :/
 };
 
