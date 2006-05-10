@@ -172,6 +172,10 @@ SOURCE=..\..\source\posterazor\ui\translations\TranslationEnglish.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\source\posterazor\ui\translations\TranslationFrench.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\source\posterazor\ui\translations\TranslationGerman.h
 # End Source File
 # Begin Source File
