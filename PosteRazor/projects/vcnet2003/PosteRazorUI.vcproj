@@ -187,6 +187,9 @@
 				RelativePath="..\..\source\posterazor\ui\translations\TranslationEnglish.h">
 			</File>
 			<File
+				RelativePath="..\..\source\posterazor\ui\translations\TranslationFrench.h">
+			</File>
+			<File
 				RelativePath="..\..\source\posterazor\ui\translations\TranslationGerman.h">
 			</File>
 			<File
