@@ -43,6 +43,7 @@ public:
 		eLanguageUndefined
 		,eLanguageEnglish
 		,eLanguageGerman
+		,eLanguageFrench
 		,eLanguagePolish
 //		,eLanguageItalian
 	};
