@@ -24,6 +24,7 @@
 
 #include "TranslationEnglish.h"
 #include "TranslationGerman.h"
+#include "TranslationFrench.h"
 #include "TranslationPolish.h"
 //#include "TranslationItalian.h"
 #if defined (WIN32)
@@ -45,6 +46,7 @@ static const TranslationSet TranslationsMap[] =
 	{&english, Translations::eLanguageUndefined}
 	,{&english, Translations::eLanguageEnglish}
 	,{&german, Translations::eLanguageGerman}
+	,{&french, Translations::eLanguageFrench}
 	,{&polish, Translations::eLanguagePolish}
 //	,{&italian, Translations::eLanguageItalian} // My italian is too lousy, although it is my native language :/
 };
@@ -97,6 +99,7 @@ public:
 		systemLanguage =
 			(primaryLangID == LANG_ENGLISH)?eLanguageEnglish:
 			(primaryLangID == LANG_GERMAN)?eLanguageGerman:
+			(primaryLangID == LANG_FRENCH)?eLanguageFrench:
 //			(primaryLangID == LANG_ITALIAN)?eLanguageItalian:
 			eLanguageUndefined;
 #elif defined (OSX)
@@ -107,14 +110,17 @@ public:
 
 		CFStringRef languageEnglish = CFSTR("English");
 		CFStringRef languageGerman = CFSTR("German");
+		CFStringRef languageFrench = CFSTR("French");
 //		CFStringRef languageItalian = CFSTR("Italian");
 		systemLanguage =
 			(CFStringCompare(language, languageEnglish, 0) == kCFCompareEqualTo)?eLanguageEnglish:
 			(CFStringCompare(language, languageGerman, 0) == kCFCompareEqualTo)?eLanguageGerman:
+			(CFStringCompare(language, languageFrench, 0) == kCFCompareEqualTo)?eLanguageFrench:
 //			(CFStringCompare(language, languageItalian, 0) == kCFCompareEqualTo)?eLanguageItalian:
 			eLanguageUndefined;
 		CFRelease(languageEnglish);
 		CFRelease(languageGerman);
+		CFRelease(languageFrench);
 //		CFRelease(languageItalian);
 
 		CFRelease(preferredLanguages);
