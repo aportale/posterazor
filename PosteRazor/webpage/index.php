@@ -190,6 +190,7 @@
 							<a href="http://www.opensource-cd.de/grafik3.htm#posterazor">[opensource-cd.de]</a>
 							<a href="http://www.wintotal.de/softw/?id=3107">[wintotal.de]</a>
 							<a href="http://www.versiontracker.com/dyn/moreinfo/macosx/29212">[versiontracker.com]</a>
+							<a href="http://www.aspo-marketingportal.de/cc_seite.php?id=850">[aspo-marketingportal.de]</a>
 							<a href="http://www.digitazero.org/?p=29">[digitazero.org]</a>
 							<a href="http://www.macupdate.com/info.php/id/20738">[macupdate.com]</a>
 							<a href="http://www.macwelt.de/news/fav/336478/index.html">[macwelt.de]</a>
