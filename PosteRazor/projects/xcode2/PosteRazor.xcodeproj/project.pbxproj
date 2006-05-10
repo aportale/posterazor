@@ -21,6 +21,7 @@
 		82814C4308A5647B006D2A26 /* Fl_Native_File_Chooser.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82814C3B08A5647B006D2A26 /* Fl_Native_File_Chooser.cxx */; };
 		82814C6008A564A3006D2A26 /* PaperFormats.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82814C5708A564A3006D2A26 /* PaperFormats.cxx */; };
 		82C2674209351ED800E94922 /* UnitsOfLength.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82C2673E09351ED800E94922 /* UnitsOfLength.cxx */; };
+		82C4FB8F0A129EDA00DAB52D /* TranslationFrench.h in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 82C4FB8E0A129EDA00DAB52D /* TranslationFrench.h */; };
 		82ED6224093FCA800032F854 /* PosteRazor.icns in Resources */ = {isa = PBXBuildFile; fileRef = 8239907208F175820038ED14 /* PosteRazor.icns */; };
 		82F01D8C093FC18A0037F1BD /* PosteRazor.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D58093FC18A0037F1BD /* PosteRazor.cxx */; };
 		82F01D8F093FC18A0037F1BD /* PosteRazorImageIO.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D5B093FC18A0037F1BD /* PosteRazorImageIO.cxx */; };
@@ -85,6 +86,7 @@
 				82028CDC091E6F1500763263 /* README in Copy README, LICENSE, CHANGES */,
 				82028CDA091E6F1500763263 /* CHANGES in Copy README, LICENSE, CHANGES */,
 				8214BC3C09FF9A0500B67807 /* TranslationPolish.h in Copy README, LICENSE, CHANGES */,
+				82C4FB8F0A129EDA00DAB52D /* TranslationFrench.h in Copy README, LICENSE, CHANGES */,
 			);
 			name = "Copy README, LICENSE, CHANGES";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,6 +117,7 @@
 		82C2673D09351ED800E94922 /* PersistentPreferencesInterface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PersistentPreferencesInterface.h; sourceTree = "<group>"; };
 		82C2673E09351ED800E94922 /* UnitsOfLength.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UnitsOfLength.cxx; sourceTree = "<group>"; };
 		82C2673F09351ED800E94922 /* UnitsOfLength.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UnitsOfLength.h; sourceTree = "<group>"; };
+		82C4FB8E0A129EDA00DAB52D /* TranslationFrench.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationFrench.h; sourceTree = "<group>"; };
 		82E5567008A56658001EEB51 /* PosteRazor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosteRazor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82F01D58093FC18A0037F1BD /* PosteRazor.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazor.cxx; sourceTree = "<group>"; };
 		82F01D59093FC18A0037F1BD /* PosteRazor.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazor.h; sourceTree = "<group>"; };
@@ -298,6 +301,7 @@
 		82F01D7F093FC18A0037F1BD /* translations */ = {
 			isa = PBXGroup;
 			children = (
+				82C4FB8E0A129EDA00DAB52D /* TranslationFrench.h */,
 				8214BC3B09FF9A0500B67807 /* TranslationPolish.h */,
 				82F01D80093FC18A0037F1BD /* PosteRazorHelpConstants.h */,
 				82F01D81093FC18A0037F1BD /* TranslationEnglish.h */,
@@ -394,7 +398,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "RESOURCESFOLDER=$BUILT_PRODUCTS_DIR/$TARGET_NAME.app/Contents/Resources/\n\nENGLISH=$RESOURCESFOLDER/English.lproj\nGERMAN=$RESOURCESFOLDER/German.lproj\n\nfor LANGUAGE in $ENGLISH $GERMAN\ndo\n\tif [ ! -d $LANGUAGE ]\n\tthen\tmkdir $LANGUAGE\n\tfi\ndone\n";
+			shellScript = "RESOURCESFOLDER=$BUILT_PRODUCTS_DIR/$TARGET_NAME.app/Contents/Resources/\n\nENGLISH=$RESOURCESFOLDER/English.lproj\nGERMAN=$RESOURCESFOLDER/German.lproj\nFRENCH=$RESOURCESFOLDER/French.lproj\n\nfor LANGUAGE in $ENGLISH $GERMAN $FRENCH\ndo\n\tif [ ! -d $LANGUAGE ]\n\tthen\tmkdir $LANGUAGE\n\tfi\ndone\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
