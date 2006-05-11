@@ -198,10 +198,13 @@ public:
 					"</UL>" POSTERAZORHELPENDLINE \
 					
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORLICENSE, FRENCH_POSTERAZORHELPLICENSE) \
-					"PosteRazor – Cr&eacute;ez vos propres posters !<br>" POSTERAZORHELPENDLINE \
+					"PosteRazor - Cr&eacute;ez vos propres posters !<br>" POSTERAZORHELPENDLINE \
 					"<a href=\"http://posterazor.sourceforge.net/\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
-					"Copyright (C) 2005-2006 par Alessandro Portale<br>" POSTERAZORHELPENDLINE \
-					"Traduction Fran&ccedil;aise par Martin Loyer.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+					"Copyright (C) 2005-2006 par Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+
+					"<b>Traduction Fran&ccedil;aise par Martin Loyer (traduction@loyer.name).</b><br>" POSTERAZORHELPENDLINE \
+					"<b>Traduction Polonaise par Grzegorz Wacikowski.</b><br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+
 					"La licence GNU GPL est pour le moment en Anglais, tant que la Free Software Foundation n'aura pas valid&eacute; la licence en langue Fran&ccedil;aise.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 					"This program is free software; you can redistribute it and/or modify it under the terms of the <a href=\"http://www.gnu.org/licenses/gpl.txt\">GNU General Public License</a> as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 					"This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
