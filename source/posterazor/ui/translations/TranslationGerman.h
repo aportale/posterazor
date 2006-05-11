@@ -205,7 +205,7 @@ public:
 					"<a href=\"http://posterazor.sourceforge.net/?lang=german\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
 					"Copyright (C) 2005-2006 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
-					"<b>Franz&ouml;sische &Uuml;bersetzung von Martin Loyer (traduction@loyer.name).</b><br>" POSTERAZORHELPENDLINE \
+					"<b>Franz&ouml;sische &Uuml;bersetzung von Martin Loyer (traduction<b></b>@<b></b>loyer<b></b>.<b></b>name).</b><br>" POSTERAZORHELPENDLINE \
 					"<b>Polnische &Uuml;bersetzung von Grzegorz Wacikowski.</b><br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
 					"Der folgende Lizenztext ist in seiner englischen Originalfassung aufgef&uuml;hrt, da die <a href=\"http://www.gnu.de/gpl-ger.html\">deutsche &Uuml;bersetzung</a> nicht offiziell oder im rechtlichen Sinne anerkannt ist.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \

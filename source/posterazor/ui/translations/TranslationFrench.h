@@ -202,7 +202,7 @@ public:
 					"<a href=\"http://posterazor.sourceforge.net/\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
 					"Copyright (C) 2005-2006 par Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
-					"<b>Traduction Fran&ccedil;aise par Martin Loyer (traduction@loyer.name).</b><br>" POSTERAZORHELPENDLINE \
+					"<b>Traduction Fran&ccedil;aise par Martin Loyer (traduction<b></b>@<b></b>loyer<b></b>.<b></b>name).</b><br>" POSTERAZORHELPENDLINE \
 					"<b>Traduction Polonaise par Grzegorz Wacikowski.</b><br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
 					"La licence GNU GPL est pour le moment en Anglais, tant que la Free Software Foundation n'aura pas valid&eacute; la licence en langue Fran&ccedil;aise.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
