@@ -200,7 +200,7 @@ public:
 					"<a href=\"http://posterazor.sourceforge.net/\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
 					"Copyright (C) 2005-2006 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
-					"<b>French translation by Martin Loyer (traduction@loyer.name).</b><br>" POSTERAZORHELPENDLINE \
+					"<b>French translation by Martin Loyer (traduction<b></b>@<b></b>loyer<b></b>.<b></b>name).</b><br>" POSTERAZORHELPENDLINE \
 					"<b>Polish translation by Grzegorz Wacikowski.</b><br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
 					"This program is free software; you can redistribute it and/or modify it under the terms of the <a href=\"http://www.gnu.org/licenses/gpl.txt\">GNU General Public License</a> as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \

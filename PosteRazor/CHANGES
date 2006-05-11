@@ -1,3 +1,8 @@
+PosteRazor 1.2
+==============
+-   Added: French translation by Martin Loyer <traduction _at_ loyer _dot_ name>
+-   Added: Polish translation by Grzegorz Wacikowski
+
 PosteRazor 1.1
 ==============
 -   Fixed: Step 1, information fields are not updated when changing

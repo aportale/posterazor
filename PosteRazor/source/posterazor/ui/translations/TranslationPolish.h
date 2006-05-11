@@ -203,7 +203,7 @@ public:
 					"Copyright (C) 2005-2006 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
 					"<b>Polskie tlumaczenie: Grzegorz Wacikowski.</b><br>" POSTERAZORHELPENDLINE \
-					"<b>Francuskie tlumaczenie: Martin Loyer (traduction@loyer.name).</b><br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+					"<b>Francuskie tlumaczenie: Martin Loyer (traduction<b></b>@<b></b>loyer<b></b>.<b></b>name).</b><br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
 					"Ten program jest darmowy; mo¿esz go rozprowadzaæ i/lub modyfikowaæ go stosuj¹c siê do warunk&oacute;w na <a href=\"http://www.gnu.org/licenses/gpl.txt\">GNU General Public License</a> opublikowana przed Free Software Foundation; r&oacute;wniez wersja 2 licencji lub ka¿da nastêpna.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 					"Ten program jest rozprowadzany w nadziei, ¿e bêdzie przydatny,  jednak BEZ ¯ADNEJ GWARANCJI. Zobacz wiêcej detali GNU General Public License.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
