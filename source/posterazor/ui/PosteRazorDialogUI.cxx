@@ -664,11 +664,39 @@ void PosteRazorDialogUI::cb_m_posterPagesWidthInput(Fl_Input* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_posterPagesWidthInput_i(o,v);
 }
 
+void PosteRazorDialogUI::cb_m_posterPagesWidthIncreaseRadioButton_i(Fl_Repeat_Button*, void*) {
+  HandlePosterSizeSpinnerEvent(m_posterPagesWidthIncreaseRadioButton);
+}
+void PosteRazorDialogUI::cb_m_posterPagesWidthIncreaseRadioButton(Fl_Repeat_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_posterPagesWidthIncreaseRadioButton_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_posterPagesWidthDecreaseRadioButton_i(Fl_Repeat_Button*, void*) {
+  HandlePosterSizeSpinnerEvent(m_posterPagesWidthDecreaseRadioButton);
+}
+void PosteRazorDialogUI::cb_m_posterPagesWidthDecreaseRadioButton(Fl_Repeat_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_posterPagesWidthDecreaseRadioButton_i(o,v);
+}
+
 void PosteRazorDialogUI::cb_m_posterPagesHeightInput_i(Fl_Input*, void*) {
   UpdatePosterSizeFields(m_posterPagesHeightInput);
 }
 void PosteRazorDialogUI::cb_m_posterPagesHeightInput(Fl_Input* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_posterPagesHeightInput_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_posterPagesHeightIncreaseRadioButton_i(Fl_Repeat_Button*, void*) {
+  HandlePosterSizeSpinnerEvent(m_posterPagesHeightIncreaseRadioButton);
+}
+void PosteRazorDialogUI::cb_m_posterPagesHeightIncreaseRadioButton(Fl_Repeat_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_posterPagesHeightIncreaseRadioButton_i(o,v);
+}
+
+void PosteRazorDialogUI::cb_m_posterPagesHeightDecreaseRadioButton_i(Fl_Repeat_Button*, void*) {
+  HandlePosterSizeSpinnerEvent(m_posterPagesHeightDecreaseRadioButton);
+}
+void PosteRazorDialogUI::cb_m_posterPagesHeightDecreaseRadioButton(Fl_Repeat_Button* o, void* v) {
+  ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_posterPagesHeightDecreaseRadioButton_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_posterSizePercentualRadioButton_i(Fl_Round_Button*, void*) {
@@ -1168,6 +1196,7 @@ o->when(FL_WHEN_RELEASE);
     o->end();
   }
   { Fl_Group* o = m_paperSizeStep = new Fl_Group(315, 45, 295, 365);
+    o->hide();
     { Fl_Tabs* o = m_paperFormatTypeTabs = new Fl_Tabs(325, 70, 275, 140, "Paper size");
       o->callback((Fl_Callback*)cb_m_paperFormatTypeTabs);
       { Fl_Group* o = m_paperFormatStandardGroup = new Fl_Group(325, 95, 275, 115, "Standard");
@@ -1316,7 +1345,6 @@ o->when(FL_WHEN_RELEASE);
     o->end();
   }
   { Fl_Group* o = m_posterSizeStep = new Fl_Group(315, 45, 295, 365);
-    o->hide();
     { Fl_Group* o = m_posterSizeGroup = new Fl_Group(325, 70, 275, 250, "Image size");
       o->box(FL_THIN_DOWN_BOX);
       o->color(FL_DARK2);
@@ -1351,18 +1379,42 @@ o->when(FL_WHEN_RELEASE);
         o->callback((Fl_Callback*)cb_m_posterSizeInPagesRadioButton);
       }
       { Fl_Group* o = m_posterSizeInPagesGroup = new Fl_Group(335, 195, 260, 55);
-        { Fl_Input* o = m_posterPagesWidthInput = new Fl_Input(430, 195, 90, 25, "Width:");
+        { Fl_Input* o = m_posterPagesWidthInput = new Fl_Input(430, 195, 75, 25, "Width:");
           o->type(1);
           o->callback((Fl_Callback*)cb_m_posterPagesWidthInput);
           o->when(FL_WHEN_CHANGED);
         }
+        { Fl_Repeat_Button* o = m_posterPagesWidthIncreaseRadioButton = new Fl_Repeat_Button(505, 195, 15, 12, "+");
+          o->box(FL_THIN_UP_BOX);
+          o->labelfont(5);
+          o->labelsize(11);
+          o->callback((Fl_Callback*)cb_m_posterPagesWidthIncreaseRadioButton);
+        }
+        { Fl_Repeat_Button* o = m_posterPagesWidthDecreaseRadioButton = new Fl_Repeat_Button(505, 208, 15, 12, "-");
+          o->box(FL_THIN_UP_BOX);
+          o->labelfont(5);
+          o->labelsize(11);
+          o->callback((Fl_Callback*)cb_m_posterPagesWidthDecreaseRadioButton);
+        }
         { Fl_Box* o = m_posterPagesWidthLabel = new Fl_Box(520, 195, 70, 25, "pages");
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         }
-        { Fl_Input* o = m_posterPagesHeightInput = new Fl_Input(430, 225, 90, 25, "Height:");
+        { Fl_Input* o = m_posterPagesHeightInput = new Fl_Input(430, 225, 75, 25, "Height:");
           o->type(1);
           o->callback((Fl_Callback*)cb_m_posterPagesHeightInput);
           o->when(FL_WHEN_CHANGED);
+        }
+        { Fl_Repeat_Button* o = m_posterPagesHeightIncreaseRadioButton = new Fl_Repeat_Button(505, 225, 15, 12, "+");
+          o->box(FL_THIN_UP_BOX);
+          o->labelfont(5);
+          o->labelsize(11);
+          o->callback((Fl_Callback*)cb_m_posterPagesHeightIncreaseRadioButton);
+        }
+        { Fl_Repeat_Button* o = m_posterPagesHeightDecreaseRadioButton = new Fl_Repeat_Button(505, 238, 15, 12, "-");
+          o->box(FL_THIN_UP_BOX);
+          o->labelfont(5);
+          o->labelsize(11);
+          o->callback((Fl_Callback*)cb_m_posterPagesHeightDecreaseRadioButton);
         }
         { Fl_Box* o = m_posterPagesHeightLabel = new Fl_Box(520, 225, 70, 25, "pages");
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);

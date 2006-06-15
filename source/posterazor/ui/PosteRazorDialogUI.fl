@@ -33,7 +33,7 @@ decl {\#include "Fl_Image_Text_Button.h"} {public
 
 widget_class PosteRazorDialogUI {
   user_data this open
-  xywh {485 101 620 455} type Double resizable
+  xywh {488 103 620 455} type Double resizable
   code0 {size_range(this->w(), this->h());}
   class Fl_Double_Window visible
 } {
@@ -99,7 +99,7 @@ widget_class PosteRazorDialogUI {
       }
     }
     Fl_Group m_paperSizeStep {open
-      xywh {315 45 295 365}
+      xywh {315 45 295 365} hide
     } {
       Fl_Tabs m_paperFormatTypeTabs {
         label {Paper size}
@@ -160,7 +160,7 @@ widget_class PosteRazorDialogUI {
       } {
         Fl_Input m_paperBorderTopInput {
           label Top
-          callback {HandlePaperSizeChangement(m_paperBorderTopInput);} selected
+          callback {HandlePaperSizeChangement(m_paperBorderTopInput);}
           xywh {430 260 60 25} type Float align 1 when 1
         }
         Fl_Input m_paperBorderRightInput {
@@ -239,7 +239,7 @@ widget_class PosteRazorDialogUI {
       }
     }
     Fl_Group m_posterSizeStep {open
-      xywh {315 45 295 365} hide
+      xywh {315 45 295 365}
     } {
       Fl_Group m_posterSizeGroup {
         label {Image size} open
@@ -283,7 +283,17 @@ widget_class PosteRazorDialogUI {
           Fl_Input m_posterPagesWidthInput {
             label {Width:}
             callback {UpdatePosterSizeFields(m_posterPagesWidthInput);}
-            xywh {430 195 90 25} type Float when 1
+            xywh {430 195 75 25} type Float when 1
+          }
+          Fl_Repeat_Button m_posterPagesWidthIncreaseRadioButton {
+            label {+}
+            callback {HandlePosterSizeSpinnerEvent(m_posterPagesWidthIncreaseRadioButton);}
+            xywh {505 195 15 12} box THIN_UP_BOX labelfont 5 labelsize 11
+          }
+          Fl_Repeat_Button m_posterPagesWidthDecreaseRadioButton {
+            label {-}
+            callback {HandlePosterSizeSpinnerEvent(m_posterPagesWidthDecreaseRadioButton);}
+            xywh {505 208 15 12} box THIN_UP_BOX labelfont 5 labelsize 11
           }
           Fl_Box m_posterPagesWidthLabel {
             label pages
@@ -292,7 +302,17 @@ widget_class PosteRazorDialogUI {
           Fl_Input m_posterPagesHeightInput {
             label {Height:}
             callback {UpdatePosterSizeFields(m_posterPagesHeightInput);}
-            xywh {430 225 90 25} type Float when 1
+            xywh {430 225 75 25} type Float when 1
+          }
+          Fl_Repeat_Button m_posterPagesHeightIncreaseRadioButton {
+            label {+}
+            callback {HandlePosterSizeSpinnerEvent(m_posterPagesHeightIncreaseRadioButton);}
+            xywh {505 225 15 12} box THIN_UP_BOX labelfont 5 labelsize 11
+          }
+          Fl_Repeat_Button m_posterPagesHeightDecreaseRadioButton {
+            label {-}
+            callback {HandlePosterSizeSpinnerEvent(m_posterPagesHeightDecreaseRadioButton);} selected
+            xywh {505 238 15 12} box THIN_UP_BOX labelfont 5 labelsize 11
           }
           Fl_Box m_posterPagesHeightLabel {
             label pages
@@ -426,6 +446,8 @@ widget_class PosteRazorDialogUI {
   decl {virtual void UpdatePosterSizeGroupsState(void) = 0;} {public
   }
   decl {virtual void UpdatePosterSizeFields(Fl_Widget* sourceWidget) = 0;} {public
+  }
+  decl {virtual void HandlePosterSizeSpinnerEvent(Fl_Widget* sourceWidget) = 0;} {public
   }
   decl {virtual void HandlePosterImageAlignment(void) = 0;} {public
   }

@@ -50,7 +50,7 @@ const char preferencesKey_UILanguage[] = "UILanguage";
 static const char* quickNDirtyFloatToString(float value)
 {
 	static char valueString[200];
-	sprintf(valueString, "%.2f", value);
+	sprintf(valueString, "%g", value);
 	return valueString;
 }
 
@@ -811,7 +811,44 @@ void PosteRazorDialog::UpdatePosterSizeFields(Fl_Widget *sourceWidget)
 		}
 	}
 
+	static const struct
+	{
+		Fl_Input* inputWidget;
+		Fl_Repeat_Button* increaseButton;
+		Fl_Repeat_Button* decreaseButton;
+	}
+	inputWidgetSpinButtons[] = 
+	{
+		{m_posterPagesWidthInput, m_posterPagesWidthIncreaseRadioButton, m_posterPagesWidthDecreaseRadioButton},
+		{m_posterPagesHeightInput, m_posterPagesHeightIncreaseRadioButton, m_posterPagesHeightDecreaseRadioButton}
+	};	
+	int inputWidgetSpinButtonsCount = sizeof(inputWidgetSpinButtons)/sizeof(inputWidgetSpinButtons[0]);
+
+	for (i = 0; i < inputWidgetSpinButtonsCount; i++)
+	{
+		float inputValue = atof(inputWidgetSpinButtons[i].inputWidget->value());
+		
+		if (inputValue - 1.0 <= 0.0)
+			inputWidgetSpinButtons[i].decreaseButton->deactivate();
+		else
+			inputWidgetSpinButtons[i].decreaseButton->activate();
+	}
+
 	m_paintCanvasGroup->redraw();
+}
+
+void PosteRazorDialog::HandlePosterSizeSpinnerEvent(Fl_Widget* sourceWidget)
+{
+	float increaseValue =
+		(sourceWidget == m_posterPagesWidthIncreaseRadioButton || sourceWidget == m_posterPagesHeightIncreaseRadioButton)?.5:-.500001;
+		
+	Fl_Input *flInput =
+		(sourceWidget == m_posterPagesWidthIncreaseRadioButton || sourceWidget == m_posterPagesWidthDecreaseRadioButton)?m_posterPagesWidthInput:m_posterPagesHeightInput;
+		
+	float inputValue = round(atof(flInput->value()) + increaseValue);
+	flInput->value(quickNDirtyFloatToString(inputValue));
+	
+	UpdatePosterSizeFields(flInput);
 }
 
 void PosteRazorDialog::SetPaperSizeFields(void)
