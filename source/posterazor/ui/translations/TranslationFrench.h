@@ -61,13 +61,20 @@ public:
 	const char* Orientation(void)                     {return "Orientation :";}
 	const char* OverlappingPosition(void)             {return "Position du recouvrement";}
 	const char* OverlappingSize(void)                 {return "Taille du recouvrement";}
-	const char* OverwriteFile(void)                   {return "Le fichier '%s' existe déjà.\n Voulez-vous le remplacer ?";}
+	const char* OverwriteFile(void)                   {return "Le fichier '%s' existe déjà.\nVoulez-vous le remplacer ?";}
 	const char* Pages(void)                           {return "pages";}
 	const char* PaperFormat(void)                     {return "Format de papier";}
 	const char* Palette(void)                         {return "Palette";}
 	const char* Portrait(void)                        {return "Portrait";}
 	const char* PosteRazorHelp(void)                  {return "Aide de PosteRazor";}
-	const char* PosteRazorSettings(void)              {return "Réglages de PosteRazor";}
+	const char* PosteRazorSettings(void)              {return 
+#ifndef WIN32
+// This seems to be the only problematic string on OSX. It is used for a window title.
+														"R\x8Eglages de PosteRazor"
+#else
+														"Réglages de PosteRazor"
+#endif
+	                                                  ;}
 	const char* PosteRazorWebSite(void)               {return "Siteweb de PosteRazor";}
 	const char* PreviewWithOpenGL(void)               {return "Prévisualisation OpenGL";}
 	const char* PreviewWithOpenGLExplanation(void)    {return "OpenGL permet un rendu plus net. Mais il peut ralentir la prévisualisation sur les machines moins récente.";}
@@ -184,10 +191,10 @@ public:
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORINPUTFILEFORMATS, FRENCH_POSTERAZORHELPINPUTFILEFORMATS) \
 					POSTERAZORHELPINDENTATION "La plupart des formats d'images support&eacute;s par FreeImage sont support&eacute;s par PosteRazor. Les formats suivants sont g&eacute;r&eacute;s :<br>" POSTERAZORHELPENDLINE \
 					"<b>BMP, DDS files, Dr. Halo, GIF, ICO, IFF, JBIG, JNG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, MNG, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM.<br></b>" POSTERAZORHELPENDLINE \
-					"PosteRazor g&egrave;re les formats monochrome, niveaux de gris, RVB et CMJN (uniquement TIFF) au format 4,8 et 24 bits. La couche alpha des images RVB est transform&eacute;e en fond blanc." POSTERAZORHELPENDLINE \
+					"PosteRazor g&egrave;re les formats monochrome, niveaux de gris, RVB et CMJN (uniquement TIFF) au format 4, 8 et 24 bits. La couche alpha des images RVB est transform&eacute;e en fond blanc." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORWHYPDFOUTPUT, FRENCH_POSTERAZORHELPWHYPDFOUTPUT) \
-					POSTERAZORHELPINDENTATION "Pourquoi utiliser le PDF, alors qu'il serait possible d'imprimer directement ?  Tout d'abord, PosteRazor a &eacute;t&eacute; cr&eacute;&eacute; pour fonctionner sur de multiples syst&egrave;mes, qui utilisent tous des moyens diff&eacute;rents pour imprimer. L'auteur de l'application ne les conna&icirc;t pas tous. Ensuite, le PDF est utile quand on souhaite composer soigneusement son poster, pour enfin l'imprimer sans risque ailleurs (chez l'imprimeur, au travail, chez un ami…)." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Pourquoi utiliser le PDF, alors qu'il serait possible d'imprimer directement ?  Tout d'abord, PosteRazor a &eacute;t&eacute; cr&eacute;&eacute; pour fonctionner sur de multiples syst&egrave;mes, qui utilisent tous des moyens diff&eacute;rents pour imprimer. L'auteur de l'application ne les conna&icirc;t pas tous. Ensuite, le PDF est utile quand on souhaite composer soigneusement son poster, pour enfin l'imprimer sans risque ailleurs (chez l'imprimeur, au travail, chez un ami...)." POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "Pourquoi utiliser le format PDF et non pas un format d'image ? Le PDF permet d'int&eacute;grer directement toute l'image et de la couper virtuellement. Le PDF g&egrave;re aussi directement les recouvrements. Enfin, il est plus pratique d'imprimer un PDF, que d'imprimer s&eacute;par&eacute;ment les diff&eacute;rentes images !" POSTERAZORHELPENDLINE \
 					
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES, FRENCH_POSTERAZORHELPCODEFROMTHIRDPARTIES) \
