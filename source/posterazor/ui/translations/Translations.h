@@ -44,7 +44,9 @@ public:
 		,eLanguageEnglish
 		,eLanguageGerman
 		,eLanguageFrench
+#ifdef WIN32
 		,eLanguagePolish
+#endif
 //		,eLanguageItalian
 	};
 

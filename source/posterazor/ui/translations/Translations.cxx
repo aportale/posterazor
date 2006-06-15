@@ -25,7 +25,9 @@
 #include "TranslationEnglish.h"
 #include "TranslationGerman.h"
 #include "TranslationFrench.h"
+#ifdef WIN32
 #include "TranslationPolish.h"
+#endif
 //#include "TranslationItalian.h"
 #if defined (WIN32)
 #include <Windows.h>
@@ -47,7 +49,9 @@ static const TranslationSet TranslationsMap[] =
 	,{&english, Translations::eLanguageEnglish}
 	,{&german, Translations::eLanguageGerman}
 	,{&french, Translations::eLanguageFrench}
+#ifdef WIN32
 	,{&polish, Translations::eLanguagePolish}
+#endif
 //	,{&italian, Translations::eLanguageItalian} // My italian is too lousy, although it is my native language :/
 };
 
@@ -100,6 +104,7 @@ public:
 			(primaryLangID == LANG_ENGLISH)?eLanguageEnglish:
 			(primaryLangID == LANG_GERMAN)?eLanguageGerman:
 			(primaryLangID == LANG_FRENCH)?eLanguageFrench:
+			(primaryLangID == LANG_POLISH)?eLanguagePolish:
 //			(primaryLangID == LANG_ITALIAN)?eLanguageItalian:
 			eLanguageUndefined;
 #elif defined (OSX)
