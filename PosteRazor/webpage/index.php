@@ -198,6 +198,7 @@
 							<a href="http://www.infoweek.ch/downloads/dl_single.cfm?dl_id=1056&amp;sid=0">[infoweek.ch]</a>
 							<a href="http://www.erfahrungswert.de/download/grafik1.htm#PosteRazor">[erfahrungswert.de]</a>
 							<a href="http://www.clubic.com/telecharger-fiche19446-posterazor.html">[clubic.com]</a>
+							<a href="http://programas.elrellano.com/?p=2590">[elrellano.com]</a>
 							<a href="http://www.infos-du-net.com/telecharger/PosteRazor-(Mac).html">[infos-du-net.com]</a>
 							<a href="http://www.freewareplanet.net/imagetool.php##posterazor">[freewareplanet.net]</a>
 							<a href="http://downloads.tomorrow.msn.de/beschreibung.php?programm_id=50466">[tomorrow.msn.de]</a>
