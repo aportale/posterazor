@@ -94,7 +94,6 @@ public:
 #define GERMAN_POSTERAZORHELSTEP                      "Schritt"
 
 #define GERMAN_POSTERAZORHELPABOUT                    "&Uuml;ber den PosteRazor"
-#define GERMAN_POSTERAZORHELPABOUTNOHTML              "Über"
 #define GERMAN_POSTERAZORHELPMANUAL                   "Bedienungsanleitung"
 #define GERMAN_POSTERAZORHELPSETTINGS                 "Einstellungen"
 #define GERMAN_POSTERAZORHELPSTEPTITLE01			  "Ein Ausgangsbild laden"
@@ -106,7 +105,6 @@ public:
 #define GERMAN_POSTERAZORHELPSTEPTITLE04              "Die finale Postergr&ouml;&szlig;e definieren"
 #define GERMAN_POSTERAZORHELPSTEPTITLE05              "Das Poster speichern"
 #define GERMAN_POSTERAZORHELPINPUTFILEFORMATS         "Unterst&uuml;tzte Ausgangs-Bildformate"
-#define GERMAN_POSTERAZORHELPINPUTFILEFORMATSNOHTML   "Unterstützte Ausgangs-Bildformate"
 #define GERMAN_POSTERAZORHELPWHYPDFOUTPUT             "Warum PDF als Ausgabeformat?"
 #define GERMAN_POSTERAZORHELPCODEFROMTHIRDPARTIES     "Code von Drittanbietern"
 #define GERMAN_POSTERAZORHELPLICENSE                  "Lizenz"
