@@ -92,7 +92,7 @@ public:
 	void SetOverlappingFields(void);
 	void HandleOverlappingChangement(Fl_Widget *sourceWidget);
 
-	void UpdatePosterSizeFields(Fl_Valuator *sourceWidget);
+	void UpdatePosterSizeFields(Fl_Widget *sourceWidget);
 	void UpdatePosterSizeGroupsState(void);
 	void SetPosterImageAlignmentButtons(void);
 	void HandlePosterImageAlignment(void);

@@ -99,7 +99,7 @@ widget_class PosteRazorDialogUI {
       }
     }
     Fl_Group m_paperSizeStep {open
-      xywh {315 45 295 365} hide
+      xywh {315 45 295 365}
     } {
       Fl_Tabs m_paperFormatTypeTabs {
         label {Paper size}
@@ -134,17 +134,15 @@ widget_class PosteRazorDialogUI {
           label Custom open
           xywh {325 95 275 115} box THIN_UP_BOX selection_color 40
         } {
-          Fl_Value_Input m_paperCustomWidthInput {
+          Fl_Input m_paperCustomWidthInput {
             label {Width:}
             callback {HandlePaperSizeChangement(m_paperCustomWidthInput);}
-            xywh {425 122 95 25} maximum 9999 step 0.1
-            code0 {o->precision(2);}
+            xywh {425 122 95 25} type Float when 1
           }
-          Fl_Value_Input m_paperCustomHeightInput {
+          Fl_Input m_paperCustomHeightInput {
             label {Height:}
             callback {HandlePaperSizeChangement(m_paperCustomHeightInput);}
-            xywh {425 157 95 25} maximum 9999 step 0.1 resizable
-            code0 {o->precision(2);}
+            xywh {425 157 95 25} type Float when 1
           }
           Fl_Box m_paperCustomWidthDimensionUnitLabel {
             label cm
@@ -160,29 +158,25 @@ widget_class PosteRazorDialogUI {
         label {Borders (cm)} open
         xywh {325 235 275 135} box THIN_DOWN_BOX color 43
       } {
-        Fl_Value_Input m_paperBorderTopInput {
+        Fl_Input m_paperBorderTopInput {
           label Top
-          callback {HandlePaperSizeChangement(m_paperBorderTopInput);}
-          xywh {430 260 60 25} align 1 maximum 9999 step 0.1
-          code0 {o->precision(2);}
+          callback {HandlePaperSizeChangement(m_paperBorderTopInput);} selected
+          xywh {430 260 60 25} type Float align 1 when 1
         }
-        Fl_Value_Input m_paperBorderRightInput {
+        Fl_Input m_paperBorderRightInput {
           label Right
           callback {HandlePaperSizeChangement(m_paperBorderRightInput);}
-          xywh {490 290 60 25} align 9 maximum 9999 step 0.1
-          code0 {o->precision(2);}
+          xywh {490 290 60 25} type Float align 9 when 1
         }
-        Fl_Value_Input m_paperBorderBottomInput {
+        Fl_Input m_paperBorderBottomInput {
           label Bottom
           callback {HandlePaperSizeChangement(m_paperBorderBottomInput);}
-          xywh {430 320 60 25} align 2 maximum 9999 step 0.1
-          code0 {o->precision(2);}
+          xywh {430 320 60 25} type Float align 2 when 1
         }
-        Fl_Value_Input m_paperBorderLeftInput {
+        Fl_Input m_paperBorderLeftInput {
           label Left
           callback {HandlePaperSizeChangement(m_paperBorderLeftInput);}
-          xywh {370 290 60 25} align 5 maximum 9999 step 0.1
-          code0 {o->precision(2);}
+          xywh {370 290 60 25} type Float align 5 when 1
         }
       }
       Fl_Box {} {
@@ -196,17 +190,15 @@ widget_class PosteRazorDialogUI {
         label {Overlapping size} open
         xywh {325 70 275 75} box THIN_DOWN_BOX color 45 selection_color 54
       } {
-        Fl_Value_Input m_overlappingWidthInput {
+        Fl_Input m_overlappingWidthInput {
           label {Width:}
           callback {HandleOverlappingChangement(m_overlappingWidthInput);}
-          xywh {430 80 90 25} maximum 9999 step 0.1
-          code0 {o->precision(2);}
+          xywh {430 80 90 25} type Float when 1
         }
-        Fl_Value_Input m_overlappingHeightInput {
+        Fl_Input m_overlappingHeightInput {
           label {Height:}
           callback {HandleOverlappingChangement(m_overlappingHeightInput);}
-          xywh {430 110 90 25} maximum 9999 step 0.1 resizable
-          code0 {o->precision(2);}
+          xywh {430 110 90 25} type Float when 1
         }
         Fl_Box m_overlappingWidthDimensionUnitLabel {
           label cm
@@ -261,21 +253,19 @@ widget_class PosteRazorDialogUI {
         Fl_Group m_posterSizeAbsoluteGroup {open
           xywh {335 105 260 55}
         } {
-          Fl_Value_Input m_posterAbsoluteWidthInput {
+          Fl_Input m_posterAbsoluteWidthInput {
             label {Width:}
             callback {UpdatePosterSizeFields(m_posterAbsoluteWidthInput);}
-            xywh {430 105 90 25} maximum 9999 step 1
-            code0 {o->precision(3);}
+            xywh {430 105 90 25} type Float when 1
           }
           Fl_Box m_posterAbsoluteWidthDimensionUnitLabel {
             label cm
             xywh {520 105 70 25} align 20
           }
-          Fl_Value_Input m_posterAbsoluteHeightInput {
+          Fl_Input m_posterAbsoluteHeightInput {
             label {Height:}
             callback {UpdatePosterSizeFields(m_posterAbsoluteHeightInput);}
-            xywh {430 135 90 25} maximum 9999 step 1
-            code0 {o->precision(3);}
+            xywh {430 135 90 25} type Float when 1
           }
           Fl_Box m_posterAbsoluteHeightDimensionUnitLabel {
             label cm
@@ -290,21 +280,19 @@ widget_class PosteRazorDialogUI {
         Fl_Group m_posterSizeInPagesGroup {open
           xywh {335 195 260 55}
         } {
-          Fl_Value_Input m_posterPagesWidthInput {
+          Fl_Input m_posterPagesWidthInput {
             label {Width:}
             callback {UpdatePosterSizeFields(m_posterPagesWidthInput);}
-            xywh {430 195 90 25} maximum 9999 step 0.01
-            code0 {o->precision(3);}
+            xywh {430 195 90 25} type Float when 1
           }
           Fl_Box m_posterPagesWidthLabel {
             label pages
             xywh {520 195 70 25} align 20
           }
-          Fl_Value_Input m_posterPagesHeightInput {
+          Fl_Input m_posterPagesHeightInput {
             label {Height:}
             callback {UpdatePosterSizeFields(m_posterPagesHeightInput);}
-            xywh {430 225 90 25} maximum 9999 step 0.01
-            code0 {o->precision(3);}
+            xywh {430 225 90 25} type Float when 1
           }
           Fl_Box m_posterPagesHeightLabel {
             label pages
@@ -319,11 +307,10 @@ widget_class PosteRazorDialogUI {
         Fl_Group m_posterSizePercentualGroup {open
           xywh {335 285 260 25}
         } {
-          Fl_Value_Input m_posterPercentualSizeInput {
+          Fl_Input m_posterPercentualSizeInput {
             label {Size:}
             callback {UpdatePosterSizeFields(m_posterPercentualSizeInput);}
-            xywh {430 285 90 25} maximum 9999 step 0.1
-            code0 {o->precision(3);}
+            xywh {430 285 90 25} type Float when 1
           }
           Fl_Box m_posterPercentualWidthLabel {
             label {%}
@@ -373,7 +360,7 @@ widget_class PosteRazorDialogUI {
       }
     }
     Fl_Group m_savePosterStep {open
-      xywh {315 45 295 365}
+      xywh {315 45 295 365} hide
     } {
       Fl_Group m_savePosterGroup {
         label {Save the Poster} open
@@ -438,7 +425,7 @@ widget_class PosteRazorDialogUI {
   decl {// ****** Poster size step:} {}
   decl {virtual void UpdatePosterSizeGroupsState(void) = 0;} {public
   }
-  decl {virtual void UpdatePosterSizeFields(Fl_Valuator* sourceWidget) = 0;} {public
+  decl {virtual void UpdatePosterSizeFields(Fl_Widget* sourceWidget) = 0;} {public
   }
   decl {virtual void HandlePosterImageAlignment(void) = 0;} {public
   }
@@ -494,7 +481,7 @@ widget_class PosteRazorHelpDialogUI {
 widget_class PosteRazorSettingsDialogUI {
   label {PosteRazor settings}
   user_data this open
-  xywh {451 567 315 400} type Double
+  xywh {451 556 315 400} type Double
   code0 {m_okWasPressed = false;}
   class Fl_Double_Window modal visible
 } {
@@ -542,7 +529,7 @@ widget_class PosteRazorSettingsDialogUI {
       }
     }
   }
-  Fl_Group m_confirmButtonsGroup {open selected
+  Fl_Group m_confirmButtonsGroup {open
     xywh {10 365 296 25}
   } {
     Fl_Return_Button m_okButton {
