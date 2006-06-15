@@ -27,41 +27,87 @@
 
 #include "TranslationInterface.h"
 
+#define CHAR_Acedilla       "•"
+#define CHAR_HTML_Acedilla  "•"
+#define CHAR_acedilla       "π"
+#define CHAR_HTML_acedilla  "&#185;"
+
+#define CHAR_Cacute         "∆"
+#define CHAR_HTML_Cacute    "∆"
+#define CHAR_cacute         "Ê"
+#define CHAR_HTML_cacute    "Ê"
+
+#define CHAR_Ecedilla       " "
+#define CHAR_HTML_Ecedilla  " "
+#define CHAR_ecedilla       "Í"
+#define CHAR_HTML_ecedilla  "&#234;"
+
+#define CHAR_Laccent        "£"
+#define CHAR_HTML_Laccent   "£"
+#define CHAR_laccent        "≥"
+#define CHAR_HTML_laccent   "&#179;"
+
+#define CHAR_Nacute         "—"
+#define CHAR_HTML_Nacute    "—"
+#define CHAR_nacute         "Ò"
+#define CHAR_HTML_nacute    "Ò"
+
+#define CHAR_Oacute         "”"
+#define CHAR_HTML_Oacute    "&Oacute;"
+#define CHAR_oacute         "Û"
+#define CHAR_HTML_oacute    "&oacute;"
+
+#define CHAR_Sacute         "å"
+#define CHAR_HTML_Sacute    "å"
+#define CHAR_sacute         "ú"
+#define CHAR_HTML_sacute    "ú"
+
+#define CHAR_Zacute         "è"
+#define CHAR_HTML_Zacute    "è"
+#define CHAR_zacute         "ü"
+#define CHAR_HTML_zacute    "ü"
+
+#define CHAR_Zdot           "Ø"
+#define CHAR_HTML_Zdot      "Ø"
+#define CHAR_zdot           "ø"
+#define CHAR_HTML_zdot      "ø"
+
+
 class TranslationPolish: public TranslationInterface
 {
 public:
 	const char* LanguageName(void)                    {return "Polski";}
 
-	const char* AbsoluteSize(void)                    {return "Rozmiar ca≥kowity:";}
+	const char* AbsoluteSize(void)                    {return "Rozmiar ca"CHAR_laccent"kowity:";}
 	const char* AllImageFormats(void)                 {return "Wszystkie formaty";}
-	const char* Back(void)                            {return "WrÛc";}
+	const char* Back(void)                            {return "Wr"CHAR_oacute"c";}
 	const char* Borders(void)                         {return "Marginesy";}
-	const char* Bottom(void)                          {return "DÛ≥";}
-	const char* BottomLeft(void)                      {return "DÛ≥ z lewej";}
-	const char* BottomRight(void)                     {return "DÛ≥ z prawej";}
+	const char* Bottom(void)                          {return "D"CHAR_oacute""CHAR_laccent;}
+	const char* BottomLeft(void)                      {return "D"CHAR_oacute""CHAR_laccent" z lewej";}
+	const char* BottomRight(void)                     {return "D"CHAR_oacute""CHAR_laccent" z prawej";}
 	const char* Cancel(void)                          {return "Anuluj";}
 	const char* ColorType(void)                       {return "Typ koloru:";}
-	const char* Custom(void)                          {return "W≥asny";}   
-	const char* FileCouldNotBeLoaded(void)            {return "Nie moøna otworzyÊ pliku \"%s\"";}
+	const char* Custom(void)                          {return "W"CHAR_laccent"asny";}   
+	const char* FileCouldNotBeLoaded(void)            {return "Nie mo"CHAR_zdot"na otworzy"CHAR_cacute" pliku \"%s\"";}
 	const char* Format(void)                          {return "Format:";}
-	const char* Grayscale(void)                       {return "Skala szaroúci";}
-	const char* Height(void)                          {return "WysokoúÊ:";}
+	const char* Grayscale(void)                       {return "Skala szaro"CHAR_sacute"ci";}
+	const char* Height(void)                          {return "Wysoko"CHAR_sacute""CHAR_cacute":";}
 	const char* ImageAlignment(void)                  {return "Ustawienia obrazu";}
 	const char* ImageInformations(void)               {return "Informacje o obrazie";}
 	const char* ImageSize(void)                       {return "Rozmiar obrazu";}
-	const char* InputImage(void)                      {return "Obraz wejúciowy";}
+	const char* InputImage(void)                      {return "Obraz wej"CHAR_sacute"ciowy";}
 	const char* Landscape(void)                       {return "Poziomo";}
-	const char* Language(void)                        {return "JÍzyk";}
-	const char* LanguageExplanation(void)             {return "Wybierz jÍzyk";}
-	const char* LaunchPDFApplication(void)            {return "Uruchom przegladarkÍ PDF po zapisaniu plakatu";}
+	const char* Language(void)                        {return "J"CHAR_ecedilla"zyk";}
+	const char* LanguageExplanation(void)             {return "Wybierz j"CHAR_ecedilla"zyk";}
+	const char* LaunchPDFApplication(void)            {return "Uruchom przegladark"CHAR_ecedilla" PDF po zapisaniu plakatu";}
 	const char* Left(void)                            {return "Lewa";}
 	const char* LoadAnInputImage(void)                {return StepTitle01();}
 	const char* Monochrome(void)                      {return "Monochromatyczny";}
 	const char* Next(void)                            {return "Dalej";}
-	const char* Orientation(void)                     {return "Po≥oøenie:";}
-	const char* OverlappingPosition(void)             {return "Miejsce zazÍbienia";}
-	const char* OverlappingSize(void)                 {return "SzerokoúÊ zazÍbienia";}
-	const char* OverwriteFile(void)                   {return "Plik '%s' juø instnieje.\nCzy chcesz go nadpisaÊ?";}
+	const char* Orientation(void)                     {return "Po"CHAR_laccent"o"CHAR_zdot"enie:";}
+	const char* OverlappingPosition(void)             {return "Miejsce zaz"CHAR_ecedilla"bienia";}
+	const char* OverlappingSize(void)                 {return "Szeroko"CHAR_sacute""CHAR_cacute" zaz"CHAR_ecedilla"bienia";}
+	const char* OverwriteFile(void)                   {return "Plik '%s' ju"CHAR_zdot" instnieje.\nCzy chcesz go nadpisa"CHAR_cacute"?";}
 	const char* Pages(void)                           {return "strony";}
 	const char* PaperFormat(void)                     {return "Rozmiar papieru";}
 	const char* Palette(void)                         {return "Paleta";}
@@ -69,9 +115,9 @@ public:
 	const char* PosteRazorHelp(void)                  {return "PosteRazor pomoc";}
 	const char* PosteRazorSettings(void)              {return "PosteRazor ustawienia";}
 	const char* PosteRazorWebSite(void)               {return "PosteRazor strona www";}
-	const char* PreviewWithOpenGL(void)               {return "Podglπd z OpenGL";}
-	const char* PreviewWithOpenGLExplanation(void)    {return "OpenGL umoøliwia p≥ynny podglπd na nowoczesnych komputerach. Moøe wyd≥uøyÊ proces podglπdu na starszych maszynach.";}
-	const char* Resolution(void)                      {return "RozdzielczoúÊ:";}
+	const char* PreviewWithOpenGL(void)               {return "Podgl"CHAR_acedilla"d z OpenGL";}
+	const char* PreviewWithOpenGLExplanation(void)    {return "OpenGL umo"CHAR_zdot"liwia p"CHAR_laccent"ynny podgl"CHAR_acedilla"d na nowoczesnych komputerach. Mo"CHAR_zdot"e wyd"CHAR_laccent"u"CHAR_zdot"y"CHAR_cacute" proces podgl"CHAR_acedilla"du na starszych maszynach.";}
+	const char* Resolution(void)                      {return "Rozdzielczo"CHAR_sacute""CHAR_cacute":";}
 	const char* Right(void)                           {return "Prawa";}
 	const char* SaveThePoster(void)                   {return "Zapisz plakat";}
 	const char* SaveThePosterAs(void)                 {return "Zapisz plakat jako";}
@@ -83,12 +129,12 @@ public:
 	const char* SizeInUnitOfLength(void)              {return "Rozmiar (w %s):";}
 	const char* Standard(void)                        {return "Standard";}
 	const char* StepXOfY(void)                        {return "Krok %d z %d";}
-	const char* Top(void)                             {return "GÛra";}
-	const char* TopLeft(void)                         {return "GÛra z lewej";}
-	const char* TopRight(void)                        {return "GÛra z prawej";}
-	const char* UnitOfLength(void)                    {return "Jednostka d≥ugoúci";}
-	const char* UnitOfLengthExplanation(void)         {return "Wybierz miarÍ d≥ugoúci, ktÛej chcesz uøywaÊ";}
-	const char* Width(void)                           {return "SzerokoúÊ:";}
+	const char* Top(void)                             {return "G"CHAR_oacute"ra";}
+	const char* TopLeft(void)                         {return "G"CHAR_oacute"ra z lewej";}
+	const char* TopRight(void)                        {return "G"CHAR_oacute"ra z prawej";}
+	const char* UnitOfLength(void)                    {return "Jednostka d"CHAR_laccent"ugo"CHAR_sacute"ci";}
+	const char* UnitOfLengthExplanation(void)         {return "Wybierz miar"CHAR_ecedilla" d"CHAR_laccent"ugo"CHAR_sacute"ci, kt"CHAR_oacute"ej chcesz u"CHAR_zdot"ywa"CHAR_cacute"";}
+	const char* Width(void)                           {return "Szeroko"CHAR_sacute""CHAR_cacute":";}
 
 
 #include "PosteRazorHelpConstants.h"
@@ -98,20 +144,23 @@ public:
 #define POLISH_POSTERAZORHELPABOUT                   "O programie PosteRazor"
 #define POLISH_POSTERAZORHELPMANUAL                  "Manual"
 #define POLISH_POSTERAZORHELPSETTINGS                "Ustawienia"
-#define POLISH_POSTERAZORHELPSTEPTITLE01             "Za≥aduj obraz"
+#define POLISH_POSTERAZORHELPSTEPTITLE01             "Za"CHAR_HTML_laccent"aduj obraz"
+#define POLISH_POSTERAZORHELPSTEPTITLENOHTML01       "Za"CHAR_laccent"aduj obraz"
 #define POLISH_POSTERAZORHELPSTEPTITLE02             "Ustawienie formatu papieru drukarki"
-#define POLISH_POSTERAZORHELPSTEPTITLE03             "Definiowanie zazÍbiania siÍ"
-#define POLISH_POSTERAZORHELPSTEPTITLE04             "Ustawienie koÒcowego rozmiaru plakatu"
+#define POLISH_POSTERAZORHELPSTEPTITLE03             "Definiowanie zaz"CHAR_HTML_ecedilla"biania si"CHAR_HTML_ecedilla""
+#define POLISH_POSTERAZORHELPSTEPTITLENOHTML03       "Definiowanie zaz"CHAR_ecedilla"biania si"CHAR_ecedilla""
+#define POLISH_POSTERAZORHELPSTEPTITLE04             "Ustawienie ko"CHAR_HTML_nacute"cowego rozmiaru plakatu"
+#define POLISH_POSTERAZORHELPSTEPTITLENOHTML04       "Ustawienie ko"CHAR_nacute"cowego rozmiaru plakatu"
 #define POLISH_POSTERAZORHELPSTEPTITLE05             "Zapisz plakat"
-#define POLISH_POSTERAZORHELPINPUTFILEFORMATS        "Wspierane pliki wejúciowe"
-#define POLISH_POSTERAZORHELPWHYPDFOUTPUT            "Dlaczego na wyjúciu plik PDF?"
+#define POLISH_POSTERAZORHELPINPUTFILEFORMATS        "Wspierane pliki wej"CHAR_HTML_sacute"ciowe"
+#define POLISH_POSTERAZORHELPWHYPDFOUTPUT            "Dlaczego na wyj"CHAR_HTML_sacute"ciu plik PDF?"
 #define POLISH_POSTERAZORHELPCODEFROMTHIRDPARTIES    "Dodatkowy kod"
 #define POLISH_POSTERAZORHELPLICENSE                 "Licencja"
 
-	const char* StepTitle01(void)                     {return POLISH_POSTERAZORHELPSTEPTITLE01;}
+	const char* StepTitle01(void)                     {return POLISH_POSTERAZORHELPSTEPTITLENOHTML01;}
 	const char* StepTitle02(void)                     {return POLISH_POSTERAZORHELPSTEPTITLE02;}
-	const char* StepTitle03(void)                     {return POLISH_POSTERAZORHELPSTEPTITLE03;}
-	const char* StepTitle04(void)                     {return POLISH_POSTERAZORHELPSTEPTITLE04;}
+	const char* StepTitle03(void)                     {return POLISH_POSTERAZORHELPSTEPTITLENOHTML03;}
+	const char* StepTitle04(void)                     {return POLISH_POSTERAZORHELPSTEPTITLENOHTML04;}
 	const char* StepTitle05(void)                     {return POLISH_POSTERAZORHELPSTEPTITLE05;}
 	const char* HelpHtml(void)
 	{
@@ -138,76 +187,77 @@ public:
 					"</UL><HR>" POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORABOUT, POLISH_POSTERAZORHELPABOUT) \
-					POSTERAZORHELPINDENTATION "The PosteRazor rozcina obraz rastrowy na kawa≥ki, kt&oacute;re mogπ zostaÊ wydrukowane, a nastÍpnie po≥πczone w plakat. Jako plik wejúciowy, plik rastrowy sposr&oacute;d <A href=\"#" POSTERAZORHELPANCHORMANUALSTEP01 "\">various</A> plik&oacute;w graficznych o wspieranych formatach. Zamiast bezpoúrednio drukowaÊ plakat, the PosteRazor tworzy wielostronicowy plik PDF, kt&oacute;ry zawiera kawalki plakatu.<br>" POSTERAZORHELPENDLINE \
-					"Jest to oprogramowanie typu Open Source i zalezy od <a href=\"#" POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES "\">innych projekt&oacute;w tego typu</a>. " POSTERAZORHELPENDLINE \
-					"The PosteRazor moøna znaleüÊ na <b>posterazor.sourceforge.net</b>." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "The PosteRazor rozcina obraz rastrowy na kawa"CHAR_HTML_laccent"ki, kt"CHAR_HTML_oacute"re mog"CHAR_HTML_acedilla" zosta"CHAR_HTML_cacute" wydrukowane, a nast"CHAR_HTML_ecedilla"pnie po"CHAR_HTML_laccent""CHAR_HTML_acedilla"czone w plakat. Jako plik wej"CHAR_HTML_sacute"ciowy, plik rastrowy sposr"CHAR_HTML_oacute"d <A href=\"#" POSTERAZORHELPANCHORMANUALSTEP01 "\">various</A> plik"CHAR_HTML_oacute"w graficznych o wspieranych formatach. Zamiast bezpo"CHAR_HTML_sacute"rednio drukowa"CHAR_HTML_cacute" plakat, the PosteRazor tworzy wielostronicowy plik PDF, kt"CHAR_HTML_oacute"ry zawiera kawalki plakatu.<br>" POSTERAZORHELPENDLINE \
+					"Jest to oprogramowanie typu Open Source i zalezy od <a href=\"#" POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES "\">innych projekt"CHAR_HTML_oacute"w tego typu</a>. " POSTERAZORHELPENDLINE \
+					"The PosteRazor mo"CHAR_HTML_zdot"na znale"CHAR_HTML_zacute""CHAR_HTML_cacute" na <b>posterazor.sourceforge.net</b>." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUAL, POLISH_POSTERAZORHELPMANUAL) \
-					POSTERAZORHELPINDENTATION "PosteRazor posiada interfejs uøytkownika zbudowanu w oparciu o \"Wizard\". Wszelkie ustawienia plakatu tworzone sπ w 5 krokach. Przyciski <b>Cofnij</b> i <b>Dalej</b> prowadzπ przez wizarda.<br>" POSTERAZORHELPENDLINE \
-					"Przycisk <b>?</b> otwiera okno pomocy z wyjaúnieniem danego kroku.<br>" POSTERAZORHELPENDLINE \
-					"Wszystkie pola wejúciowe, np. rozmiar, itd mogπ byÊ, jak zwykle, modyfikowany przy pomocy klawiatury oraz klikajπc i przeciπgajπc myszka w lewo lub w prawo. R&oacute;øne przyciski myszy powiÍkszajπ/pomniejszajπ wartoúÊ w r&oacute;ønych krokach.<br>" POSTERAZORHELPENDLINE \
-					POSTERAZORHELPINDENTATION "Wszystkie wejúcia i wybory sπ pamiÍtane do nastÍpnego uøycia PosteRazor." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "PosteRazor posiada interfejs u"CHAR_HTML_zdot"ytkownika zbudowanu w oparciu o \"Wizard\". Wszelkie ustawienia plakatu tworzone s"CHAR_HTML_acedilla" w 5 krokach. Przyciski <b>Cofnij</b> i <b>Dalej</b> prowadz"CHAR_HTML_acedilla" przez wizarda.<br>" POSTERAZORHELPENDLINE \
+					"Przycisk <b>?</b> otwiera okno pomocy z wyja"CHAR_HTML_sacute"nieniem danego kroku.<br>" POSTERAZORHELPENDLINE \
+					"Wszystkie pola wej"CHAR_HTML_sacute"ciowe, np. rozmiar, itd mog"CHAR_HTML_acedilla" by"CHAR_HTML_cacute", jak zwykle, modyfikowany przy pomocy klawiatury oraz klikaj"CHAR_HTML_acedilla"c i przeci"CHAR_HTML_acedilla"gaj"CHAR_HTML_acedilla"c myszka w lewo lub w prawo. R"CHAR_HTML_oacute""CHAR_HTML_zdot"ne przyciski myszy powi"CHAR_HTML_ecedilla"kszaj"CHAR_HTML_acedilla"/pomniejszaj"CHAR_HTML_acedilla" warto"CHAR_HTML_sacute""CHAR_HTML_cacute" w r"CHAR_HTML_oacute""CHAR_HTML_zdot"nych krokach.<br>" POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Wszystkie wej"CHAR_HTML_sacute"cia i wybory s"CHAR_HTML_acedilla" pami"CHAR_HTML_ecedilla"tane do nast"CHAR_HTML_ecedilla"pnego u"CHAR_HTML_zdot"ycia PosteRazor." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORSETTINGS, POLISH_POSTERAZORHELPSETTINGS) \
-					POSTERAZORHELPINDENTATION "Naciskajπc przycisk <b>Ustawienia...</b> po lewej z do≥u w menu g≥&oacute;wnym, otwierane sπ ustawienia PosteRazor." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Naciskaj"CHAR_HTML_acedilla"c przycisk <b>Ustawienia...</b> po lewej z do"CHAR_HTML_laccent"u w menu g"CHAR_HTML_laccent""CHAR_HTML_oacute"wnym, otwierane s"CHAR_HTML_acedilla" ustawienia PosteRazor." POSTERAZORHELPENDLINE \
 					"<UL>" POSTERAZORHELPENDLINE \
-					"<LI><b>Jednostka miary:</b> wybierz jednostkÍ miary, kt&oacute;rπ bÍdzisz uøywaÊ w czasie pracy. Gdy jednostka zostanie zmieniona, wszystkie wartoúci zostajπ przeliczone automatycznie.</LI>" POSTERAZORHELPENDLINE \
-					"<LI><b>JÍzyk:</b> wybierz sw&oacute;j jÍzyk. PosteRazor nie wymaga restartowanie po zmianie jÍzyka.</LI>" POSTERAZORHELPENDLINE \
-					"<LI><b>Podglπd z OpenGL:</b>Wybierz, Jeúli PosteRazor powinien uøywaÊ OpenGL do podglπdu obrazu. Zazwayczaj, w nowych komputerach OpenGL powinien byÊ szybszy i dawaÊ wiÍkszπ dok≥adnoúÊ podglπdu niø komputery nie obs≥ugujπce OpenGL. Jeøeli PosteRazor wydajÍ siÍ pracowaÊ wolno i nie reaguje, spr&oacute;buj czy nie bÍdzie lepiej pracowa≥ po wy≥aczeniu OpenGL.</LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>Jednostka miary:</b> wybierz jednostk"CHAR_HTML_ecedilla" miary, kt"CHAR_HTML_oacute"r"CHAR_HTML_acedilla" b"CHAR_HTML_ecedilla"dzisz u"CHAR_HTML_zdot"ywa"CHAR_HTML_cacute" w czasie pracy. Gdy jednostka zostanie zmieniona, wszystkie warto"CHAR_HTML_sacute"ci zostaj"CHAR_HTML_acedilla" przeliczone automatycznie.</LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>J"CHAR_HTML_ecedilla"zyk:</b> wybierz sw"CHAR_HTML_oacute"j j"CHAR_HTML_ecedilla"zyk. PosteRazor nie wymaga restartowanie po zmianie j"CHAR_HTML_ecedilla"zyka.</LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>Podgl"CHAR_HTML_acedilla"d z OpenGL:</b> Wybierz, Je"CHAR_HTML_sacute"li PosteRazor powinien u"CHAR_HTML_zdot"ywa"CHAR_HTML_cacute" OpenGL do podgl"CHAR_HTML_acedilla"du obrazu. Zazwayczaj, w nowych komputerach OpenGL powinien by"CHAR_HTML_cacute" szybszy i dawa"CHAR_HTML_cacute" wi"CHAR_HTML_ecedilla"ksz"CHAR_HTML_acedilla" dok"CHAR_HTML_laccent"adno"CHAR_HTML_sacute""CHAR_HTML_cacute" podgl"CHAR_HTML_acedilla"du ni"CHAR_HTML_zdot" komputery nie obs"CHAR_HTML_laccent"uguj"CHAR_HTML_acedilla"ce OpenGL. Je"CHAR_HTML_zdot"eli PosteRazor wydaj"CHAR_HTML_ecedilla" si"CHAR_HTML_ecedilla" pracowa"CHAR_HTML_cacute" wolno i nie reaguje, spr"CHAR_HTML_oacute"buj czy nie b"CHAR_HTML_ecedilla"dzie lepiej pracowa"CHAR_HTML_laccent" po wy"CHAR_HTML_laccent"aczeniu OpenGL.</LI>" POSTERAZORHELPENDLINE \
 					"</UL>" POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP01, POLISH_POSTERAZORHELSTEP " 1: " POLISH_POSTERAZORHELPSTEPTITLE01) \
-					POSTERAZORHELPINDENTATION "Za≥aduj obraz klikajπc na przycisk i wybierajπc plik graficzny lub chwytajπc i przeciagajπc obraz na PosteRazor. ChwyÊ i przeciπgij dzia≥a takøe w pozosta≥ych krokach.<br>" POSTERAZORHELPENDLINE \
-					"Wiele <a href=\"#" POSTERAZORHELPANCHORINPUTFILEFORMATS "\">format&oacute;w plik&oacute;w i typ&oacute;w obraz&oacute;w </a> moøe zostaÊ za≥adowanych. Po za≥adowaniu obrazu, najwaøniejsze informacje sπ wypisane w polu <b>Informacje o obrazie</b> ." POSTERAZORHELPENDLINE \
+/* polish html character test line		POSTERAZORHELPINDENTATION CHAR_HTML_Acedilla""CHAR_HTML_acedilla""CHAR_HTML_Cacute""CHAR_HTML_cacute""CHAR_HTML_Ecedilla""CHAR_HTML_ecedilla""CHAR_HTML_Laccent""CHAR_HTML_laccent""CHAR_HTML_Nacute""CHAR_HTML_nacute""CHAR_HTML_Oacute""CHAR_HTML_oacute""CHAR_HTML_Sacute""CHAR_HTML_sacute""CHAR_HTML_Zacute""CHAR_HTML_zacute""CHAR_HTML_Zdot""CHAR_HTML_zdot"<br>" POSTERAZORHELPENDLINE \ */
+					POSTERAZORHELPINDENTATION "Za"CHAR_HTML_laccent"aduj obraz klikaj"CHAR_HTML_acedilla"c na przycisk i wybieraj"CHAR_HTML_acedilla"c plik graficzny lub chwytaj"CHAR_HTML_acedilla"c i przeciagaj"CHAR_HTML_acedilla"c obraz na PosteRazor. Chwy"CHAR_HTML_cacute" i przeci"CHAR_HTML_acedilla"gij dzia"CHAR_HTML_laccent"a tak"CHAR_HTML_zdot"e w pozosta"CHAR_HTML_laccent"ych krokach.<br>" POSTERAZORHELPENDLINE \
+					"Wiele <a href=\"#" POSTERAZORHELPANCHORINPUTFILEFORMATS "\">format"CHAR_HTML_oacute"w plik"CHAR_HTML_oacute"w i typ"CHAR_HTML_oacute"w obraz"CHAR_HTML_oacute"w </a> mo"CHAR_HTML_zdot"e zosta"CHAR_HTML_cacute" za"CHAR_HTML_laccent"adowanych. Po za"CHAR_HTML_laccent"adowaniu obrazu, najwa"CHAR_HTML_zdot"niejsze informacje s"CHAR_HTML_acedilla" wypisane w polu <b>Informacje o obrazie</b>." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP02, POLISH_POSTERAZORHELSTEP " 2: " POLISH_POSTERAZORHELPSTEPTITLE02) \
-					POSTERAZORHELPINDENTATION "Zdefiniuj rozmiar papieru, kt&oacute;rego uøywasz w swojej drukarce. Standardowy rozmiar papieru moøe byÊ wybrany z opcji <b>Format</b> , wraz z poøπdanπ  <b>Orientacja</b> papieru. Moøna takøe zdefiniowaÊ w≥asny rozmiar papieru w zak≥adce <b>W≥asny</b> . (ProszÍ napisz do mnie email, jeúli nie ma jakiegoú standardowego rozmiaru do wyboru). " POSTERAZORHELPENDLINE \
-					"Marginesy sπ definiowane w polu <b>Marginesy</b>. Nawet jeúli twoja drukarka nie wymaga (choÊby ma≥ych) margines&oacute;w, jakiú margines moøe byÊ konieczny by m&oacute;c skleiÊ kawa≥ki plakatu w ca≥oúÊ." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Zdefiniuj rozmiar papieru, kt"CHAR_HTML_oacute"rego u"CHAR_HTML_zdot"ywasz w swojej drukarce. Standardowy rozmiar papieru mo"CHAR_HTML_zdot"e by"CHAR_HTML_cacute" wybrany z opcji <b>Format</b>, wraz z po"CHAR_HTML_zdot""CHAR_HTML_acedilla"dan"CHAR_HTML_acedilla"  <b>Orientacja</b> papieru. Mo"CHAR_HTML_zdot"na tak"CHAR_HTML_zdot"e zdefiniowa"CHAR_HTML_cacute" w"CHAR_HTML_laccent"asny rozmiar papieru w zak"CHAR_HTML_laccent"adce <b>W"CHAR_HTML_laccent"asny</b>. (Prosz"CHAR_HTML_ecedilla" napisz do mnie email, je"CHAR_HTML_sacute"li nie ma jakiego"CHAR_HTML_sacute" standardowego rozmiaru do wyboru). " POSTERAZORHELPENDLINE \
+					"Marginesy s"CHAR_HTML_acedilla" definiowane w polu <b>Marginesy</b>. Nawet je"CHAR_HTML_sacute"li twoja drukarka nie wymaga (cho"CHAR_HTML_cacute"by ma"CHAR_HTML_laccent"ych) margines"CHAR_HTML_oacute"w, jaki"CHAR_HTML_sacute" margines mo"CHAR_HTML_zdot"e by"CHAR_HTML_cacute" konieczny by m"CHAR_HTML_oacute"c sklei"CHAR_HTML_cacute" kawa"CHAR_HTML_laccent"ki plakatu w ca"CHAR_HTML_laccent"o"CHAR_HTML_sacute""CHAR_HTML_cacute"." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP03, POLISH_POSTERAZORHELSTEP " 3: " POLISH_POSTERAZORHELPSTEPTITLE03) \
-					POSTERAZORHELPINDENTATION "KrawÍdzie zachodzπce sπ konieczne jako tolerancja w czasie odcianania niepotrzebnych margines&oacute;w. Dodatkowo, tak jak marginesy, daje to wiekszπ powierzchnie klejenia kawa≥k&oacute;w w ca≥oúÊ. " POSTERAZORHELPENDLINE \
-					POSTERAZORHELPINDENTATION "<b>Miejsce zazÍbiania</b> okreúla brzeg jaki bÍdzie zachodziÊ na siebie z sπsiednim kawa≥kiem. Brzegi po drugiej stronie przenaczone do odciÍcia (opr&oacute;cz zewnÍtrznych kawa≥k&oacute;w)." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Kraw"CHAR_HTML_ecedilla"dzie zachodz"CHAR_HTML_acedilla"ce s"CHAR_HTML_acedilla" konieczne jako tolerancja w czasie odcianania niepotrzebnych margines"CHAR_HTML_oacute"w. Dodatkowo, tak jak marginesy, daje to wieksz"CHAR_HTML_acedilla" powierzchnie klejenia kawa"CHAR_HTML_laccent"k"CHAR_HTML_oacute"w w ca"CHAR_HTML_laccent"o"CHAR_HTML_sacute""CHAR_HTML_cacute". " POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "<b>Miejsce zaz"CHAR_HTML_ecedilla"biania</b> okre"CHAR_HTML_sacute"la brzeg jaki b"CHAR_HTML_ecedilla"dzie zachodzi"CHAR_HTML_cacute" na siebie z s"CHAR_HTML_acedilla"siednim kawa"CHAR_HTML_laccent"kiem. Brzegi po drugiej stronie przenaczone do odci"CHAR_HTML_ecedilla"cia (opr"CHAR_HTML_oacute"cz zewn"CHAR_HTML_ecedilla"trznych kawa"CHAR_HTML_laccent"k"CHAR_HTML_oacute"w)." POSTERAZORHELPENDLINE \
 					
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP04, POLISH_POSTERAZORHELSTEP " 4: " POLISH_POSTERAZORHELPSTEPTITLE04) \
-					POSTERAZORHELPINDENTATION "Okreúl koÒcowy rozmiar plakatu, jako jeden z trzech nastÍpujπcych tryb&oacute;w, wybranych przyciskiem:<br>" POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Okre"CHAR_HTML_sacute"l ko"CHAR_HTML_nacute"cowy rozmiar plakatu, jako jeden z trzech nast"CHAR_HTML_ecedilla"puj"CHAR_HTML_acedilla"cych tryb"CHAR_HTML_oacute"w, wybranych przyciskiem:<br>" POSTERAZORHELPENDLINE \
 					"<UL>" POSTERAZORHELPENDLINE \
-					"<LI><b>Calkowity rozmiar obrazu</b>: Chcesz mieÊ specyficzny rozmiar plakatu.</LI>" POSTERAZORHELPENDLINE \
-					"<LI><b>Rozmiar na stronach</b>: Chcesz uøyc ca≥e strony i okreúliÊ ile chcesz ich uøyÊ.</LI>" POSTERAZORHELPENDLINE \
-					"<LI><b>Rozmiar obrazu w procentach</b>: Tw&oacute;j obraz wejúciowy ma okreúlony rozmiar kt&oacute;ry jestdefiniowany przez iloúÊ pikseli oraz dpi (kropek na cal) i chcesz powiÍkszyÊ obraz.</LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>Calkowity rozmiar obrazu</b>: Chcesz mie"CHAR_HTML_cacute" specyficzny rozmiar plakatu.</LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>Rozmiar na stronach</b>: Chcesz u"CHAR_HTML_zdot"yc ca"CHAR_HTML_laccent"e strony i okre"CHAR_HTML_sacute"li"CHAR_HTML_cacute" ile chcesz ich u"CHAR_HTML_zdot"y"CHAR_HTML_cacute".</LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>Rozmiar obrazu w procentach</b>: Tw"CHAR_HTML_oacute"j obraz wej"CHAR_HTML_sacute"ciowy ma okre"CHAR_HTML_sacute"lony rozmiar kt"CHAR_HTML_oacute"ry jestdefiniowany przez ilo"CHAR_HTML_sacute""CHAR_HTML_cacute" pikseli oraz dpi (kropek na cal) i chcesz powi"CHAR_HTML_ecedilla"kszy"CHAR_HTML_cacute" obraz.</LI>" POSTERAZORHELPENDLINE \
 					"</UL>" POSTERAZORHELPENDLINE \
-					POSTERAZORHELPINDENTATION "Ratio szerokoúci i wysokoúci jest zawsze 1:1 i jest automatycznie przeliczane. W obszarze podglπdu, moøesz zobaczyÊ zazÍbiajπce siÍ powierzchnie, kt&oacute;re sπ otoczone czerwonymi prostokπtami. " POSTERAZORHELPENDLINE \
-					"<b>Po≥oøenie obrazu</b> ustawia po≥oøenie na kartce. Jest to przydatne jeúli chcesz wkorzystaÊ niezuøyty papier." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Ratio szeroko"CHAR_HTML_sacute"ci i wysoko"CHAR_HTML_sacute"ci jest zawsze 1:1 i jest automatycznie przeliczane. W obszarze podgl"CHAR_HTML_acedilla"du, mo"CHAR_HTML_zdot"esz zobaczy"CHAR_HTML_cacute" zaz"CHAR_HTML_ecedilla"biaj"CHAR_HTML_acedilla"ce si"CHAR_HTML_ecedilla" powierzchnie, kt"CHAR_HTML_oacute"re s"CHAR_HTML_acedilla" otoczone czerwonymi prostok"CHAR_HTML_acedilla"tami. " POSTERAZORHELPENDLINE \
+					"<b>Po"CHAR_HTML_laccent"o"CHAR_HTML_zdot"enie obrazu</b> ustawia po"CHAR_HTML_laccent"o"CHAR_HTML_zdot"enie na kartce. Jest to przydatne je"CHAR_HTML_sacute"li chcesz wkorzysta"CHAR_HTML_cacute" niezu"CHAR_HTML_zdot"yty papier." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP05, POLISH_POSTERAZORHELSTEP " 5: " POLISH_POSTERAZORHELPSTEPTITLE05) \
-					POSTERAZORHELPINDENTATION "Zapisz plakat klikajπc na przysisk zapisywania i okreúlajπc lokalizajcÍ nowego pliku. Sprawdü lub nie <b>Uruchom aplikacjÍ PDF po zapisaniu plakatu</b>, czy standardowa aplikacja PDF zainstalowana w stoim systemie operacyjnym powinna sie urychamiaÊ automatycznie po zapisaniu pliku PDF." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Zapisz plakat klikaj"CHAR_HTML_acedilla"c na przysisk zapisywania i okre"CHAR_HTML_sacute"laj"CHAR_HTML_acedilla"c lokalizajc"CHAR_HTML_ecedilla" nowego pliku. Sprawd"CHAR_HTML_zacute" lub nie <b>Uruchom aplikacj"CHAR_HTML_ecedilla" PDF po zapisaniu plakatu</b>, czy standardowa aplikacja PDF zainstalowana w stoim systemie operacyjnym powinna sie urychamia"CHAR_HTML_cacute" automatycznie po zapisaniu pliku PDF." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORINPUTFILEFORMATS, POLISH_POSTERAZORHELPINPUTFILEFORMATS) \
-					POSTERAZORHELPINDENTATION "WiÍkszoúÊ obraz&oacute;w rastrowych wspieranych przez FreeImage jest takøe wspierana przez PosteRazor:<br>" POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Wi"CHAR_HTML_ecedilla"kszo"CHAR_HTML_sacute""CHAR_HTML_cacute" obraz"CHAR_HTML_oacute"w rastrowych wspieranych przez FreeImage jest tak"CHAR_HTML_zdot"e wspierana przez PosteRazor:<br>" POSTERAZORHELPENDLINE \
 					"<b>BMP, pliki DDS, Dr. Halo, GIF, ICO, IFF, JBIG, JNG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, MNG, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM.<br></b>" POSTERAZORHELPENDLINE \
-					"PosteRazor odr&oacute;ønia obrazu czarno-bia≥e, skalÍ szaroúci, 4-bitowπ paletÍ, 8-bitowπ paletÍ, 24 bitowe RGB oraz CMYK (tylko z TIF). Obrazy RGB z kana≥em alfa sπ automatycznie ustawiane na bia≥ym tle." POSTERAZORHELPENDLINE \
+					"PosteRazor odr"CHAR_HTML_oacute""CHAR_HTML_zdot"nia obrazu czarno-bia"CHAR_HTML_laccent"e, skal"CHAR_HTML_ecedilla" szaro"CHAR_HTML_sacute"ci, 4-bitow"CHAR_HTML_acedilla" palet"CHAR_HTML_ecedilla", 8-bitow"CHAR_HTML_acedilla" palet"CHAR_HTML_ecedilla", 24 bitowe RGB oraz CMYK (tylko z TIF). Obrazy RGB z kana"CHAR_HTML_laccent"em alfa s"CHAR_HTML_acedilla" automatycznie ustawiane na bia"CHAR_HTML_laccent"ym tle." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORWHYPDFOUTPUT, POLISH_POSTERAZORHELPWHYPDFOUTPUT) \
-					POSTERAZORHELPINDENTATION "Dlaczego wyjúciowe pliki PDF nie sπ automatycznie drukowane? Po pierwsze tworca programu nie wie jeszcze jak \"wysy≥aÊ obraz do drukarki\", na r&oacute;znych systemach operacyjnych, gdzie dzia≥a PosteRazor. Takøe, tworzenie PDF ma sens, jeúli plakat bÍdzie wydrukowany i pociÍty w domowych warunkach, a nastepnego dnia drukowany na kolorowej drukarce laserowej w pracy (gdy wszyscy inni pojdπ juø do domu). " POSTERAZORHELPENDLINE \
-					POSTERAZORHELPINDENTATION "Dlaczego PDF a nie inny obraz rastrowy na wyjúciu? PDF dajÍ moøliwoúÊ stworzenia the ca≥ego obrazu i wirtualne jego pociÍcie; nie tylko pomiÍdzy pikselami, ale takøe w u≥amkach pikseli." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Dlaczego wyj"CHAR_HTML_sacute"ciowe pliki PDF nie s"CHAR_HTML_acedilla" automatycznie drukowane? Po pierwsze tworca programu nie wie jeszcze jak \"wysy"CHAR_HTML_laccent"a"CHAR_HTML_cacute" obraz do drukarki\", na r"CHAR_HTML_oacute"znych systemach operacyjnych, gdzie dzia"CHAR_HTML_laccent"a PosteRazor. Tak"CHAR_HTML_zdot"e, tworzenie PDF ma sens, je"CHAR_HTML_sacute"li plakat b"CHAR_HTML_ecedilla"dzie wydrukowany i poci"CHAR_HTML_ecedilla"ty w domowych warunkach, a nastepnego dnia drukowany na kolorowej drukarce laserowej w pracy (gdy wszyscy inni pojd"CHAR_HTML_acedilla" ju"CHAR_HTML_zdot" do domu). " POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Dlaczego PDF a nie inny obraz rastrowy na wyj"CHAR_HTML_sacute"ciu? PDF daj"CHAR_HTML_ecedilla" mo"CHAR_HTML_zdot"liwo"CHAR_HTML_sacute""CHAR_HTML_cacute" stworzenia the ca"CHAR_HTML_laccent"ego obrazu i wirtualne jego poci"CHAR_HTML_ecedilla"cie; nie tylko pomi"CHAR_HTML_ecedilla"dzy pikselami, ale tak"CHAR_HTML_zdot"e w u"CHAR_HTML_laccent"amkach pikseli." POSTERAZORHELPENDLINE \
 					
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES, POLISH_POSTERAZORHELPCODEFROMTHIRDPARTIES) \
 					"<UL>" POSTERAZORHELPENDLINE \
-					"<LI><b>FLTK</b> jest uøywane do interfejsu urzytkownika. Jest to ma≥y (jeúli chodzi o rozmiar), szybki, fun&easy do nauczenia oraz bardzo przenoúny zestaw narzÍdzi UI. <a href=\"http://www.fltk.org/\">www.fltk.org</a></LI>" POSTERAZORHELPENDLINE \
-					"<LI><b>FreeImage</b> jest uøywany do za≥adowania i trzymania obrazu. <a href=\"http://freeimage.sourceforge.net/\">FreeImage website</a></LI>" POSTERAZORHELPENDLINE \
-					"<LI><b>Fl_Native_File_Chooser</b> jest uøywany do otwierania plik&oacute;w i zapisywania. <a href=\"http://seriss.com/people/erco/fltk/Fl_Native_File_Chooser/\">Fl_Native_File_Chooser website</a></LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>FLTK</b> jest u"CHAR_HTML_zdot"ywane do interfejsu urzytkownika. Jest to ma"CHAR_HTML_laccent"y (je"CHAR_HTML_sacute"li chodzi o rozmiar), szybki, fun&easy do nauczenia oraz bardzo przeno"CHAR_HTML_sacute"ny zestaw narz"CHAR_HTML_ecedilla"dzi UI. <a href=\"http://www.fltk.org/\">www.fltk.org</a></LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>FreeImage</b> jest u"CHAR_HTML_zdot"ywany do za"CHAR_HTML_laccent"adowania i trzymania obrazu. <a href=\"http://freeimage.sourceforge.net/\">FreeImage website</a></LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>Fl_Native_File_Chooser</b> jest u"CHAR_HTML_zdot"ywany do otwierania plik"CHAR_HTML_oacute"w i zapisywania. <a href=\"http://seriss.com/people/erco/fltk/Fl_Native_File_Chooser/\">Fl_Native_File_Chooser website</a></LI>" POSTERAZORHELPENDLINE \
 					"</UL>" POSTERAZORHELPENDLINE \
 					
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORLICENSE, POLISH_POSTERAZORHELPLICENSE) \
-					"PosteRazor - Stw&oacute;rz sw&oacute;j w≥asny plakat!<br>" POSTERAZORHELPENDLINE \
+					"PosteRazor - Stw"CHAR_HTML_oacute"rz sw"CHAR_HTML_oacute"j w"CHAR_HTML_laccent"asny plakat!<br>" POSTERAZORHELPENDLINE \
 					"<a href=\"http://posterazor.sourceforge.net/\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
 					"Copyright (C) 2005-2006 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
 					"<b>Polskie tlumaczenie: Grzegorz Wacikowski.</b><br>" POSTERAZORHELPENDLINE \
 					"<b>Francuskie tlumaczenie: Martin Loyer (traduction<b></b>@<b></b>loyer<b></b>.<b></b>name).</b><br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
-					"Ten program jest darmowy; moøesz go rozprowadzaÊ i/lub modyfikowaÊ go stosujπc siÍ do warunk&oacute;w na <a href=\"http://www.gnu.org/licenses/gpl.txt\">GNU General Public License</a> opublikowana przed Free Software Foundation; r&oacute;wniez wersja 2 licencji lub kaøda nastÍpna.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
-					"Ten program jest rozprowadzany w nadziei, øe bÍdzie przydatny,  jednak BEZ ØADNEJ GWARANCJI. Zobacz wiÍcej detali GNU General Public License.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
-					"Powinieneú otrzymaÊ kopie licencji GNU General Public License wraz z tym programem; jeúli nie, napisz do Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA." POSTERAZORHELPENDLINE \
+					"Ten program jest darmowy; mo"CHAR_HTML_zdot"esz go rozprowadza"CHAR_HTML_cacute" i/lub modyfikowa"CHAR_HTML_cacute" go stosuj"CHAR_HTML_acedilla"c si"CHAR_HTML_ecedilla" do warunk"CHAR_HTML_oacute"w na <a href=\"http://www.gnu.org/licenses/gpl.txt\">GNU General Public License</a> opublikowana przed Free Software Foundation; r"CHAR_HTML_oacute"wniez wersja 2 licencji lub ka"CHAR_HTML_zdot"da nast"CHAR_HTML_ecedilla"pna.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+					"Ten program jest rozprowadzany w nadziei, "CHAR_HTML_zdot"e b"CHAR_HTML_ecedilla"dzie przydatny,  jednak BEZ "CHAR_HTML_Zdot"ADNEJ GWARANCJI. Zobacz wi"CHAR_HTML_ecedilla"cej detali GNU General Public License.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+					"Powiniene"CHAR_HTML_sacute" otrzyma"CHAR_HTML_cacute" kopie licencji GNU General Public License wraz z tym programem; je"CHAR_HTML_sacute"li nie, napisz do Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA." POSTERAZORHELPENDLINE \
 				"</BODY>" POSTERAZORHELPENDLINE \
 			"</HTML>";
 	}
