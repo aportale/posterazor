@@ -125,7 +125,7 @@ public:
 	const char* Size(void)                            {return "Rozmiar:";}
 	const char* SizeInPages(void)                     {return "Rozmiar na stronie:";}
 	const char* SizeInPercent(void)                   {return "Rozmiar w procentach:";}
-	const char* SizeInPixels(void)                    {return "Rozmiar (w pikselach):";}
+	const char* SizeInPixels(void)                    {return "Rozmiar:";} // (w pikselach)
 	const char* SizeInUnitOfLength(void)              {return "Rozmiar (w %s):";}
 	const char* Standard(void)                        {return "Standard";}
 	const char* StepXOfY(void)                        {return "Krok %d z %d";}
