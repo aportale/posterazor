@@ -47,6 +47,13 @@ const char preferencesKey_LoadImageChooserLastPath[] = "LoadImageChooserLastPath
 const char preferencesKey_SavePosterChooserLastPath[] = "SavePosterChooserLastPath";
 const char preferencesKey_UILanguage[] = "UILanguage";
 
+static const char* quickNDirtyFloatToString(float value)
+{
+	static char valueString[200];
+	sprintf(valueString, "%.2f", value);
+	return valueString;
+}
+
 PosteRazorDragDropWidget::PosteRazorDragDropWidget(int x, int y, int w, int h, const char *label)
 	:Fl_Box(FL_NO_BOX, x, y, w, h, label)
 {
@@ -757,11 +764,11 @@ void PosteRazorDialog::UpdateImageInfoFields(void)
 	m_imageInfoValuesLabel->copy_label(string);
 }
 
-void PosteRazorDialog::UpdatePosterSizeFields(Fl_Valuator *sourceWidget)
+void PosteRazorDialog::UpdatePosterSizeFields(Fl_Widget *sourceWidget)
 {
 	static const struct
 	{
-		Fl_Valuator* inputWidget;
+		Fl_Input* inputWidget;
 		bool width;
 		enum PosteRazor::ePosterSizeModes sizeMode;
 	}
@@ -782,9 +789,9 @@ void PosteRazorDialog::UpdatePosterSizeFields(Fl_Valuator *sourceWidget)
 		if (sizeInputWidgets[i].inputWidget == sourceWidget)
 		{
 			if (sizeInputWidgets[i].width)
-				m_posteRazor->SetPosterWidth(sizeInputWidgets[i].sizeMode, sizeInputWidgets[i].inputWidget->value());
+				m_posteRazor->SetPosterWidth(sizeInputWidgets[i].sizeMode, atof(sizeInputWidgets[i].inputWidget->value()));
 			else
-				m_posteRazor->SetPosterHeight(sizeInputWidgets[i].sizeMode, sizeInputWidgets[i].inputWidget->value());
+				m_posteRazor->SetPosterHeight(sizeInputWidgets[i].sizeMode, atof(sizeInputWidgets[i].inputWidget->value()));
 		}
 	}
 
@@ -794,9 +801,12 @@ void PosteRazorDialog::UpdatePosterSizeFields(Fl_Valuator *sourceWidget)
 		{
 			sizeInputWidgets[i].inputWidget->value
 			(
-				sizeInputWidgets[i].width?
-				m_posteRazor->GetPosterWidth(sizeInputWidgets[i].sizeMode)
-				:m_posteRazor->GetPosterHeight(sizeInputWidgets[i].sizeMode)
+				quickNDirtyFloatToString
+				(
+					sizeInputWidgets[i].width?
+					m_posteRazor->GetPosterWidth(sizeInputWidgets[i].sizeMode)
+					:m_posteRazor->GetPosterHeight(sizeInputWidgets[i].sizeMode)
+				)
 			);
 		}
 	}
@@ -811,14 +821,14 @@ void PosteRazorDialog::SetPaperSizeFields(void)
 	m_paperOrientationLandscapeRadioButton->value(m_posteRazor->GetPaperOrientation() == PosteRazor::ePaperOrientationLandscape);
 
 	// custom paper format
-	m_paperCustomWidthInput->value(m_posteRazor->GetCustomPaperWidth());
-	m_paperCustomHeightInput->value(m_posteRazor->GetCustomPaperHeight());
+	m_paperCustomWidthInput->value(quickNDirtyFloatToString(m_posteRazor->GetCustomPaperWidth()));
+	m_paperCustomHeightInput->value(quickNDirtyFloatToString(m_posteRazor->GetCustomPaperHeight()));
 
 	// paper borders
-	m_paperBorderTopInput->value(m_posteRazor->GetPaperBorderTop());
-	m_paperBorderRightInput->value(m_posteRazor->GetPaperBorderRight());
-	m_paperBorderBottomInput->value(m_posteRazor->GetPaperBorderBottom());
-	m_paperBorderLeftInput->value(m_posteRazor->GetPaperBorderLeft());
+	m_paperBorderTopInput->value(quickNDirtyFloatToString(m_posteRazor->GetPaperBorderTop()));
+	m_paperBorderRightInput->value(quickNDirtyFloatToString(m_posteRazor->GetPaperBorderRight()));
+	m_paperBorderBottomInput->value(quickNDirtyFloatToString(m_posteRazor->GetPaperBorderBottom()));
+	m_paperBorderLeftInput->value(quickNDirtyFloatToString(m_posteRazor->GetPaperBorderLeft()));
 
 	// select the active tab
 	m_paperFormatTypeTabs->value(m_posteRazor->GetUseCustomPaperSize()?m_paperFormatCustomGroup:m_paperFormatStandardGroup);
@@ -831,24 +841,33 @@ void PosteRazorDialog::HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userD
 
 void PosteRazorDialog::HandlePaperSizeChangement(Fl_Widget *sourceWidget)
 {
-	m_posteRazor->SetPaperBorderTop(m_paperBorderTopInput->value());
-	m_posteRazor->SetPaperBorderRight(m_paperBorderRightInput->value());
-	m_posteRazor->SetPaperBorderBottom(m_paperBorderBottomInput->value());
-	m_posteRazor->SetPaperBorderLeft(m_paperBorderLeftInput->value());
-
-	m_posteRazor->SetUseCustomPaperSize(m_paperFormatTypeTabs->value() == m_paperFormatCustomGroup);
-
-	if (!m_posteRazor->GetUseCustomPaperSize())
+	if (sourceWidget == m_paperBorderTopInput)
+		m_posteRazor->SetPaperBorderTop(atof(m_paperBorderTopInput->value()));
+	else if (sourceWidget == m_paperBorderRightInput)
+		m_posteRazor->SetPaperBorderRight(atof(m_paperBorderRightInput->value()));
+	else if (sourceWidget == m_paperBorderBottomInput)
+		m_posteRazor->SetPaperBorderBottom(atof(m_paperBorderBottomInput->value()));
+	else if (sourceWidget == m_paperBorderLeftInput)
+		m_posteRazor->SetPaperBorderLeft(atof(m_paperBorderLeftInput->value()));
+	else if (sourceWidget == m_paperFormatTypeTabs)
+		m_posteRazor->SetUseCustomPaperSize(m_paperFormatTypeTabs->value() == m_paperFormatCustomGroup);
+	else if (!m_posteRazor->GetUseCustomPaperSize())
 	{
-		const char* paperFormatName = m_paperFormatMenuItems[m_paperFormatChoice->value()].label();
-		enum PosteRazor::ePaperFormats paperFormat = PosteRazor::GetPaperFormatForName(paperFormatName);
-		m_posteRazor->SetPaperFormat(paperFormat);
-		m_posteRazor->SetPaperOrientation(m_paperOrientationLandscapeRadioButton->value() != 0?PosteRazor::ePaperOrientationLandscape:PosteRazor::ePaperOrientationPortrait);
+		if (sourceWidget == m_paperFormatChoice)
+		{
+			const char* paperFormatName = m_paperFormatMenuItems[m_paperFormatChoice->value()].label();
+			enum PosteRazor::ePaperFormats paperFormat = PosteRazor::GetPaperFormatForName(paperFormatName);
+			m_posteRazor->SetPaperFormat(paperFormat);
+		}
+		else if (sourceWidget == m_paperOrientationPortraitRadioButton || sourceWidget == m_paperOrientationLandscapeRadioButton)
+			m_posteRazor->SetPaperOrientation(m_paperOrientationLandscapeRadioButton->value() != 0?PosteRazor::ePaperOrientationLandscape:PosteRazor::ePaperOrientationPortrait);
 	}
 	else
 	{
-		m_posteRazor->SetCustomPaperWidth(m_paperCustomWidthInput->value());
-		m_posteRazor->SetCustomPaperHeight(m_paperCustomHeightInput->value());
+		if (sourceWidget == m_paperCustomWidthInput)
+			m_posteRazor->SetCustomPaperWidth(atof(m_paperCustomWidthInput->value()));
+		else if (sourceWidget == m_paperCustomHeightInput)
+			m_posteRazor->SetCustomPaperHeight(atof(m_paperCustomHeightInput->value()));
 	}
 
 	m_paintCanvasGroup->redraw();
@@ -856,8 +875,8 @@ void PosteRazorDialog::HandlePaperSizeChangement(Fl_Widget *sourceWidget)
 
 void PosteRazorDialog::SetOverlappingFields(void)
 {
-	m_overlappingWidthInput->value(m_posteRazor->GetOverlappingWidth());
-	m_overlappingHeightInput->value(m_posteRazor->GetOverlappingHeight());
+	m_overlappingWidthInput->value(quickNDirtyFloatToString(m_posteRazor->GetOverlappingWidth()));
+	m_overlappingHeightInput->value(quickNDirtyFloatToString(m_posteRazor->GetOverlappingHeight()));
 
 	enum PosteRazor::eOverlappingPositions overlappingPosition = m_posteRazor->GetOverlappingPosition();
 
@@ -871,16 +890,18 @@ void PosteRazorDialog::SetOverlappingFields(void)
 
 void PosteRazorDialog::HandleOverlappingChangement(Fl_Widget *sourceWidget)
 {
-	m_posteRazor->SetOverlappingWidth(m_overlappingWidthInput->value());
-	m_posteRazor->SetOverlappingHeight(m_overlappingHeightInput->value());
-
-	m_posteRazor->SetOverlappingPosition
-	(
-		m_overlappingPositionBottomRightButton->value()?PosteRazor::eOverlappingPositionBottomRight
-		:m_overlappingPositionBottomLeftButton->value()?PosteRazor::eOverlappingPositionBottomLeft
-		:m_overlappingPositionTopLeftButton->value()?PosteRazor::eOverlappingPositionTopLeft
-		:PosteRazor::eOverlappingPositionTopRight
-	);
+	if (sourceWidget == m_overlappingWidthInput)
+		m_posteRazor->SetOverlappingWidth(atof(m_overlappingWidthInput->value()));
+	else if (sourceWidget == m_overlappingHeightInput)
+		m_posteRazor->SetOverlappingHeight(atof(m_overlappingHeightInput->value()));
+	else
+		m_posteRazor->SetOverlappingPosition
+		(
+			m_overlappingPositionBottomRightButton->value()?PosteRazor::eOverlappingPositionBottomRight
+			:m_overlappingPositionBottomLeftButton->value()?PosteRazor::eOverlappingPositionBottomLeft
+			:m_overlappingPositionTopLeftButton->value()?PosteRazor::eOverlappingPositionTopLeft
+			:PosteRazor::eOverlappingPositionTopRight
+		);
 
 	m_paintCanvasGroup->redraw();
 }
