@@ -35,6 +35,7 @@
 #include <FL/Fl_Choice.H>
 #include <FL/Fl_Round_Button.H>
 #include <FL/Fl_Input.H>
+#include <FL/Fl_Repeat_Button.H>
 #include <FL/Fl_Check_Button.H>
 
 class PosteRazorDialogUI : public Fl_Double_Window {
@@ -189,11 +190,31 @@ private:
   void cb_m_posterPagesWidthInput_i(Fl_Input*, void*);
   static void cb_m_posterPagesWidthInput(Fl_Input*, void*);
 public:
+  Fl_Repeat_Button *m_posterPagesWidthIncreaseRadioButton;
+private:
+  void cb_m_posterPagesWidthIncreaseRadioButton_i(Fl_Repeat_Button*, void*);
+  static void cb_m_posterPagesWidthIncreaseRadioButton(Fl_Repeat_Button*, void*);
+public:
+  Fl_Repeat_Button *m_posterPagesWidthDecreaseRadioButton;
+private:
+  void cb_m_posterPagesWidthDecreaseRadioButton_i(Fl_Repeat_Button*, void*);
+  static void cb_m_posterPagesWidthDecreaseRadioButton(Fl_Repeat_Button*, void*);
+public:
   Fl_Box *m_posterPagesWidthLabel;
   Fl_Input *m_posterPagesHeightInput;
 private:
   void cb_m_posterPagesHeightInput_i(Fl_Input*, void*);
   static void cb_m_posterPagesHeightInput(Fl_Input*, void*);
+public:
+  Fl_Repeat_Button *m_posterPagesHeightIncreaseRadioButton;
+private:
+  void cb_m_posterPagesHeightIncreaseRadioButton_i(Fl_Repeat_Button*, void*);
+  static void cb_m_posterPagesHeightIncreaseRadioButton(Fl_Repeat_Button*, void*);
+public:
+  Fl_Repeat_Button *m_posterPagesHeightDecreaseRadioButton;
+private:
+  void cb_m_posterPagesHeightDecreaseRadioButton_i(Fl_Repeat_Button*, void*);
+  static void cb_m_posterPagesHeightDecreaseRadioButton(Fl_Repeat_Button*, void*);
 public:
   Fl_Box *m_posterPagesHeightLabel;
   Fl_Round_Button *m_posterSizePercentualRadioButton;
@@ -268,6 +289,7 @@ public:
   virtual void HandleOverlappingChangement(Fl_Widget* sourceWidget) = 0;
   virtual void UpdatePosterSizeGroupsState(void) = 0;
   virtual void UpdatePosterSizeFields(Fl_Widget* sourceWidget) = 0;
+  virtual void HandlePosterSizeSpinnerEvent(Fl_Widget* sourceWidget) = 0;
   virtual void HandlePosterImageAlignment(void) = 0;
   virtual void SavePoster(void) = 0;
   virtual void SetLaunchPDFApplication(void) = 0;
