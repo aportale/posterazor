@@ -29,6 +29,7 @@
 #include <string.h>
 
 #ifdef WIN32
+  #include <math.h>
   #include <io.h>
   #include "windowsResources/PosteRazorResource.h"
   #include <Shellapi.h>
@@ -837,16 +838,25 @@ void PosteRazorDialog::UpdatePosterSizeFields(Fl_Widget *sourceWidget)
 	m_paintCanvasGroup->redraw();
 }
 
+// from http://www.c-plusplus.de/forum/viewtopic-var-t-is-39342.html
+// WHY is a round not in the standard c library  >:|
+static double Round(double Zahl, int Stellen)
+{
+    return floor(Zahl * pow( 10, Stellen) + 0.5) * pow(10, -Stellen);
+} 
+
 void PosteRazorDialog::HandlePosterSizeSpinnerEvent(Fl_Widget* sourceWidget)
 {
 	float increaseValue =
-		(sourceWidget == m_posterPagesWidthIncreaseRadioButton || sourceWidget == m_posterPagesHeightIncreaseRadioButton)?.5:-.500001;
+		(sourceWidget == m_posterPagesWidthIncreaseRadioButton || sourceWidget == m_posterPagesHeightIncreaseRadioButton)?.5:-.50001;
 		
 	Fl_Input *flInput =
 		(sourceWidget == m_posterPagesWidthIncreaseRadioButton || sourceWidget == m_posterPagesWidthDecreaseRadioButton)?m_posterPagesWidthInput:m_posterPagesHeightInput;
 		
-	float inputValue = round(atof(flInput->value()) + increaseValue);
-	flInput->value(quickNDirtyFloatToString(inputValue));
+	float oldValue = atof(flInput->value());
+	float newValue = Round(oldValue + increaseValue, 0);
+	if (newValue >= 1.0)
+		flInput->value(quickNDirtyFloatToString(newValue));
 	
 	UpdatePosterSizeFields(flInput);
 }
