@@ -124,7 +124,7 @@ public:
 	{
 		return	"<HTML>" POSTERAZORHELPENDLINE \
 				"<BODY>" POSTERAZORHELPENDLINE \
-					"<A name=\"" POSTERAZORHELPANCHORTOP "\"><CENTER><H1>Aide de PosteRazor 1.1</H1></CENTER></A>" POSTERAZORHELPENDLINE \
+					"<A name=\"" POSTERAZORHELPANCHORTOP "\"><CENTER><H1>Aide de PosteRazor "POSTERAZORVERSION"</H1></CENTER></A>" POSTERAZORHELPENDLINE \
 
 					"<H3>Contents</H3>" POSTERAZORHELPENDLINE \
 					"<UL>" POSTERAZORHELPENDLINE \
@@ -152,7 +152,6 @@ public:
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUAL, FRENCH_POSTERAZORHELPMANUAL) \
 					POSTERAZORHELPINDENTATION "PosteRazor est organis&eacute; &agrave; la mani&egrave;re d'un assistant. La cr&eacute;ation d'un poster se fait en cinq &eacute;tapes. Les boutons <b>Pr&eacute;c&eacute;dent</b> et <b>Suivant</b> permettent de naviguer facilement entre ces diff&eacute;rentes &eacute;tapes.<br>" POSTERAZORHELPENDLINE \
 					"Le bouton <b>?</b> ouvre une fen&ecirc;tre d'aide, qui explique l'&eacute;tape en cours.<br>" POSTERAZORHELPENDLINE \
-					"Chaque r&eacute;glage (dimension, etc.) peut &ecirc;tre modifi&eacute; avec le clavier. Il est aussi possible de cliquer dessus ou de faire glisser la souris pour incr&eacute;menter/d&eacute;cr&eacute;menter la valeur.<br>" POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "Toutes les valeurs et choix sont conserv&eacute;s au prochain lancement de l'application." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORSETTINGS, FRENCH_POSTERAZORHELPSETTINGS) \

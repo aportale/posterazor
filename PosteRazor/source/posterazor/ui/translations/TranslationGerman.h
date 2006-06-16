@@ -118,7 +118,7 @@ public:
 	{
 		return	"<HTML>" POSTERAZORHELPENDLINE \
 				"<BODY>" POSTERAZORHELPENDLINE \
-					"<A name=\"" POSTERAZORHELPANCHORTOP "\"><CENTER><H1>PosteRazor 1.1 Hilfe</H1></CENTER></A>" POSTERAZORHELPENDLINE \
+					"<A name=\"" POSTERAZORHELPANCHORTOP "\"><CENTER><H1>PosteRazor "POSTERAZORVERSION" Hilfe</H1></CENTER></A>" POSTERAZORHELPENDLINE \
 
 					"<H3>Inhaltsverzeichnis</H3>" POSTERAZORHELPENDLINE \
 					"<UL>" POSTERAZORHELPENDLINE \
@@ -146,7 +146,6 @@ public:
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUAL, GERMAN_POSTERAZORHELPMANUAL) \
 					POSTERAZORHELPINDENTATION "Der PosteRazor hat eine Benutzerf&uuml;hrung im \"Assistenten\"-Stil. Alle Einstellungen f&uuml;r die Postererstellung werden in f&uuml;nf Schritten erledigt. Die <b>Weiter</b> und <b>Zur&uuml;ck</b>-Kn&ouml;pfe bl&auml;ttern durch diese Schritte.<br>" POSTERAZORHELPENDLINE \
 					"Der <b>?</b>-Knopf &ouml;ffnet ein Hilfefenster mit der Beschreibung des aktuellen Schrittes.<br>" POSTERAZORHELPENDLINE \
-					"Jedes Eingabefeld f&uuml;r z.B. eine Ma&szlig;angabe, kann wie &uuml;blich mit der Tastatur bearbeitet werden. Die Werte k&ouml;nnen aber auch mit der Maus modifiziert werden, indem auf ein Feld geklickt und die Maus hin &amp; her bewegt wird. Die verschiedenen Mauskn&ouml;pfe ver&auml;ndern die Werte in unterschiedlich gro&szlig;en Schritten.<br>" POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "Der PosteRazor merkt sich jede Eingabe und Auswahl bis zur n&auml;chsten Benutzung des Programms." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORSETTINGS, GERMAN_POSTERAZORHELPSETTINGS) \

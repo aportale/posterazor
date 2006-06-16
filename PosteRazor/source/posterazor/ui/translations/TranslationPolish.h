@@ -166,7 +166,7 @@ public:
 	{
 		return	"<HTML>" POSTERAZORHELPENDLINE \
 				"<BODY>" POSTERAZORHELPENDLINE \
-					"<A name=\"" POSTERAZORHELPANCHORTOP "\"><CENTER><H1>PosteRazor 1.1 Krok</H1></CENTER></A>" POSTERAZORHELPENDLINE \
+					"<A name=\"" POSTERAZORHELPANCHORTOP "\"><CENTER><H1>PosteRazor "POSTERAZORVERSION" Krok</H1></CENTER></A>" POSTERAZORHELPENDLINE \
 
 					"<H3>Contents</H3>" POSTERAZORHELPENDLINE \
 					"<UL>" POSTERAZORHELPENDLINE \
@@ -194,7 +194,6 @@ public:
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUAL, POLISH_POSTERAZORHELPMANUAL) \
 					POSTERAZORHELPINDENTATION "PosteRazor posiada interfejs u"CHAR_HTML_zdot"ytkownika zbudowanu w oparciu o \"Wizard\". Wszelkie ustawienia plakatu tworzone s"CHAR_HTML_acedilla" w 5 krokach. Przyciski <b>Cofnij</b> i <b>Dalej</b> prowadz"CHAR_HTML_acedilla" przez wizarda.<br>" POSTERAZORHELPENDLINE \
 					"Przycisk <b>?</b> otwiera okno pomocy z wyja"CHAR_HTML_sacute"nieniem danego kroku.<br>" POSTERAZORHELPENDLINE \
-					"Wszystkie pola wej"CHAR_HTML_sacute"ciowe, np. rozmiar, itd mog"CHAR_HTML_acedilla" by"CHAR_HTML_cacute", jak zwykle, modyfikowany przy pomocy klawiatury oraz klikaj"CHAR_HTML_acedilla"c i przeci"CHAR_HTML_acedilla"gaj"CHAR_HTML_acedilla"c myszka w lewo lub w prawo. R"CHAR_HTML_oacute""CHAR_HTML_zdot"ne przyciski myszy powi"CHAR_HTML_ecedilla"kszaj"CHAR_HTML_acedilla"/pomniejszaj"CHAR_HTML_acedilla" warto"CHAR_HTML_sacute""CHAR_HTML_cacute" w r"CHAR_HTML_oacute""CHAR_HTML_zdot"nych krokach.<br>" POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "Wszystkie wej"CHAR_HTML_sacute"cia i wybory s"CHAR_HTML_acedilla" pami"CHAR_HTML_ecedilla"tane do nast"CHAR_HTML_ecedilla"pnego u"CHAR_HTML_zdot"ycia PosteRazor." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORSETTINGS, POLISH_POSTERAZORHELPSETTINGS) \
