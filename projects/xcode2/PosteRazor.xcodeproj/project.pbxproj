@@ -10,7 +10,6 @@
 		82028CDA091E6F1500763263 /* CHANGES in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 82028CD7091E6F1500763263 /* CHANGES */; };
 		82028CDB091E6F1500763263 /* LICENSE in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 82028CD8091E6F1500763263 /* LICENSE */; };
 		82028CDC091E6F1500763263 /* README in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 82028CD9091E6F1500763263 /* README */; };
-		8214BC3C09FF9A0500B67807 /* TranslationPolish.h in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 8214BC3B09FF9A0500B67807 /* TranslationPolish.h */; };
 		821821DD0916D2A2004580FC /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 821821DB0916D2A2004580FC /* AGL.framework */; };
 		821821DE0916D2A2004580FC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 821821DC0916D2A2004580FC /* OpenGL.framework */; };
 		821821EA0916D2BA004580FC /* libfltk_gl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 821821E90916D2BA004580FC /* libfltk_gl.a */; };
@@ -21,7 +20,6 @@
 		82814C4308A5647B006D2A26 /* Fl_Native_File_Chooser.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82814C3B08A5647B006D2A26 /* Fl_Native_File_Chooser.cxx */; };
 		82814C6008A564A3006D2A26 /* PaperFormats.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82814C5708A564A3006D2A26 /* PaperFormats.cxx */; };
 		82C2674209351ED800E94922 /* UnitsOfLength.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82C2673E09351ED800E94922 /* UnitsOfLength.cxx */; };
-		82C4FB8F0A129EDA00DAB52D /* TranslationFrench.h in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 82C4FB8E0A129EDA00DAB52D /* TranslationFrench.h */; };
 		82ED6224093FCA800032F854 /* PosteRazor.icns in Resources */ = {isa = PBXBuildFile; fileRef = 8239907208F175820038ED14 /* PosteRazor.icns */; };
 		82F01D8C093FC18A0037F1BD /* PosteRazor.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D58093FC18A0037F1BD /* PosteRazor.cxx */; };
 		82F01D8F093FC18A0037F1BD /* PosteRazorImageIO.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D5B093FC18A0037F1BD /* PosteRazorImageIO.cxx */; };
@@ -37,44 +35,6 @@
 		8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXBuildStyle section */
-		4A9504C5FFE6A39111CA0CBA /* Development */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				HEADER_SEARCH_PATHS = (
-					"../../thirdparty/fltk-1.1",
-					../../thirdparty/FreeImage/Source,
-					../../thirdparty/Fl_Native_File_Chooser,
-				);
-				PREBINDING = NO;
-				ZERO_LINK = NO;
-			};
-			name = Development;
-		};
-		4A9504C6FFE6A39111CA0CBA /* Deployment */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEAD_CODE_STRIPPING = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				HEADER_SEARCH_PATHS = (
-					"../../thirdparty/fltk-1.1",
-					../../thirdparty/FreeImage/Source,
-					../../thirdparty/Fl_Native_File_Chooser,
-				);
-				PREBINDING = NO;
-				ZERO_LINK = NO;
-			};
-			name = Deployment;
-		};
-/* End PBXBuildStyle section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		82028CD5091E6E2E00763263 /* Copy README, LICENSE, CHANGES */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -85,8 +45,6 @@
 				82028CDB091E6F1500763263 /* LICENSE in Copy README, LICENSE, CHANGES */,
 				82028CDC091E6F1500763263 /* README in Copy README, LICENSE, CHANGES */,
 				82028CDA091E6F1500763263 /* CHANGES in Copy README, LICENSE, CHANGES */,
-				8214BC3C09FF9A0500B67807 /* TranslationPolish.h in Copy README, LICENSE, CHANGES */,
-				82C4FB8F0A129EDA00DAB52D /* TranslationFrench.h in Copy README, LICENSE, CHANGES */,
 			);
 			name = "Copy README, LICENSE, CHANGES";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,7 +102,6 @@
 		82F01D81093FC18A0037F1BD /* TranslationEnglish.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationEnglish.h; sourceTree = "<group>"; };
 		82F01D83093FC18A0037F1BD /* TranslationGerman.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationGerman.h; sourceTree = "<group>"; };
 		82F01D84093FC18A0037F1BD /* TranslationInterface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationInterface.h; sourceTree = "<group>"; };
-		82F01D85093FC18A0037F1BD /* TranslationItalian.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationItalian.h; sourceTree = "<group>"; };
 		82F01D86093FC18A0037F1BD /* Translations.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Translations.cxx; sourceTree = "<group>"; };
 		82F01D87093FC18A0037F1BD /* Translations.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Translations.h; sourceTree = "<group>"; };
 		82F043CC08B2A2F500EED792 /* PaintCanvasInterface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PaintCanvasInterface.h; sourceTree = "<group>"; };
@@ -307,7 +264,6 @@
 				82F01D81093FC18A0037F1BD /* TranslationEnglish.h */,
 				82F01D83093FC18A0037F1BD /* TranslationGerman.h */,
 				82F01D84093FC18A0037F1BD /* TranslationInterface.h */,
-				82F01D85093FC18A0037F1BD /* TranslationItalian.h */,
 				82F01D86093FC18A0037F1BD /* Translations.cxx */,
 				82F01D87093FC18A0037F1BD /* Translations.h */,
 			);
@@ -329,22 +285,6 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = PosteRazor_Prefix.pch;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"../../thirdparty/fltk-1.1/lib",
-					../../thirdparty/FreeImage,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = PosteRazor;
-				WRAPPER_EXTENSION = app;
-			};
 			dependencies = (
 			);
 			name = PosteRazor;
@@ -359,12 +299,6 @@
 		20286C28FDCF999611CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 82ACC090093FC12D00200A0E /* Build configuration list for PBXProject "PosteRazor" */;
-			buildSettings = {
-			};
-			buildStyles = (
-				4A9504C5FFE6A39111CA0CBA /* Development */,
-				4A9504C6FFE6A39111CA0CBA /* Deployment */,
-			);
 			hasScannedForEncodings = 1;
 			mainGroup = 20286C29FDCF999611CA2CEA /* PosteRazor */;
 			projectDirPath = "";
