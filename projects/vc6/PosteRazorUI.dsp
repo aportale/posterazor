@@ -184,10 +184,6 @@ SOURCE=..\..\source\posterazor\ui\translations\TranslationInterface.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\translations\TranslationItalian.h
-# End Source File
-# Begin Source File
-
 SOURCE=..\..\source\posterazor\ui\translations\TranslationPolish.h
 # End Source File
 # Begin Source File

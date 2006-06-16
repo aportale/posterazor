@@ -192,7 +192,7 @@ public:
 					"The PosteRazor mo"CHAR_HTML_zdot"na znale"CHAR_HTML_zacute""CHAR_HTML_cacute" na <b>posterazor.sourceforge.net</b>." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUAL, POLISH_POSTERAZORHELPMANUAL) \
-					POSTERAZORHELPINDENTATION "PosteRazor posiada interfejs u"CHAR_HTML_zdot"ytkownika zbudowanu w oparciu o \"Wizard\". Wszelkie ustawienia plakatu tworzone s"CHAR_HTML_acedilla" w 5 krokach. Przyciski <b>Cofnij</b> i <b>Dalej</b> prowadz"CHAR_HTML_acedilla" przez wizarda.<br>" POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "PosteRazor posiada interfejs u"CHAR_HTML_zdot"ytkownika zbudowanu w oparciu o \"Wizard\". Wszelkie ustawienia plakatu tworzone s"CHAR_HTML_acedilla" w 5 krokach. Przyciski <b>Wr"CHAR_HTML_oacute"c</b> i <b>Dalej</b> prowadz"CHAR_HTML_acedilla" przez wizarda.<br>" POSTERAZORHELPENDLINE \
 					"Przycisk <b>?</b> otwiera okno pomocy z wyja"CHAR_HTML_sacute"nieniem danego kroku.<br>" POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "Wszystkie wej"CHAR_HTML_sacute"cia i wybory s"CHAR_HTML_acedilla" pami"CHAR_HTML_ecedilla"tane do nast"CHAR_HTML_ecedilla"pnego u"CHAR_HTML_zdot"ycia PosteRazor." POSTERAZORHELPENDLINE \
 
