@@ -164,7 +164,7 @@ SOURCE=..\..\source\posterazor\ui\PosteRazorDialogUI.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\translations\PosteRazorHelpConstants.h
+SOURCE=..\..\source\posterazor\ui\translations\TranslationConstants.h
 # End Source File
 # Begin Source File
 
