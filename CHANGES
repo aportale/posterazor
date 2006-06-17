@@ -1,7 +1,11 @@
 PosteRazor 1.2
 ==============
--   Added: French translation by Martin Loyer <traduction _at_ loyer _dot_ name>
 -   Added: Polish translation by Grzegorz Wacikowski
+-   Added: French translation by Martin Loyer
+-   Added: +/- Spin buttons for poster size in pages
+- Changed: Numbers in input fields are selected instead of changed
+           on mouse drags. Should be more standard conformant.
+           Display precision of numbers is 4 pos. after dec. point.
 
 PosteRazor 1.1
 ==============
