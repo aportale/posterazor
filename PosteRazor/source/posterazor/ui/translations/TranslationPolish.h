@@ -26,6 +26,7 @@
 #define TranslationPolish_h
 
 #include "TranslationInterface.h"
+#include "TranslationConstants.h"
 
 #define CHAR_Acedilla       "¥"
 #define CHAR_HTML_Acedilla  "¥"
@@ -72,6 +73,7 @@
 #define CHAR_zdot           "¿"
 #define CHAR_HTML_zdot      "¿"
 
+#define POLISH_POSTERAZORWEBSITEURL POSTERAZORWEBSITEDOMAIN
 
 class TranslationPolish: public TranslationInterface
 {
@@ -114,6 +116,7 @@ public:
 	const char* Portrait(void)                        {return "Pionowo";}
 	const char* PosteRazorHelp(void)                  {return "PosteRazor pomoc";}
 	const char* PosteRazorSettings(void)              {return "PosteRazor ustawienia";}
+	const char* PosteRazorWebSiteURL(void)            {return POLISH_POSTERAZORWEBSITEURL;}
 	const char* PosteRazorWebSite(void)               {return "PosteRazor strona www";}
 	const char* PreviewWithOpenGL(void)               {return "Podgl"CHAR_acedilla"d z OpenGL";}
 	const char* PreviewWithOpenGLExplanation(void)    {return "OpenGL umo"CHAR_zdot"liwia p"CHAR_laccent"ynny podgl"CHAR_acedilla"d na nowoczesnych komputerach. Mo"CHAR_zdot"e wyd"CHAR_laccent"u"CHAR_zdot"y"CHAR_cacute" proces podgl"CHAR_acedilla"du na starszych maszynach.";}
@@ -136,8 +139,6 @@ public:
 	const char* UnitOfLengthExplanation(void)         {return "Wybierz miar"CHAR_ecedilla" d"CHAR_laccent"ugo"CHAR_sacute"ci, kt"CHAR_oacute"ej chcesz u"CHAR_zdot"ywa"CHAR_cacute"";}
 	const char* Width(void)                           {return "Szeroko"CHAR_sacute""CHAR_cacute":";}
 
-
-#include "PosteRazorHelpConstants.h"
 
 #define POLISH_POSTERAZORHELSTEP                     "Krok"
 
@@ -248,7 +249,7 @@ public:
 					
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORLICENSE, POLISH_POSTERAZORHELPLICENSE) \
 					"PosteRazor - Stw"CHAR_HTML_oacute"rz sw"CHAR_HTML_oacute"j w"CHAR_HTML_laccent"asny plakat!<br>" POSTERAZORHELPENDLINE \
-					"<a href=\"http://posterazor.sourceforge.net/\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
+					"<a href=\""POLISH_POSTERAZORWEBSITEURL"\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
 					"Copyright (C) 2005-2006 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
 					"<b>Polskie tlumaczenie: Grzegorz Wacikowski.</b><br>" POSTERAZORHELPENDLINE \

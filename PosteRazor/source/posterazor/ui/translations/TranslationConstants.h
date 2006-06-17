@@ -39,6 +39,7 @@
 #define POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES "codefromthirdparties"
 #define POSTERAZORHELPANCHORLICENSE "license"
 #define POSTERAZORVERSION "1.2"
+#define POSTERAZORWEBSITEDOMAIN "http://posterazor.sourceforge.net/"
 
 #define POSTERAZORHELPLINKTOTOP "&nbsp;&nbsp;&nbsp;<A href=\"#" POSTERAZORHELPANCHORTOP "\">^</A>"
 
