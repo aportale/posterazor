@@ -38,6 +38,16 @@
 				<h2><? text('News', 'Neuigkeiten'); ?></h2>
 				<ul>
 					<li>
+						<h3><? text('June 17th 2006', '17. Juni 2006'); ?>: Version 1.2</h3>
+						<p><? text('Two more languages, improved usability.', 'Zwei weitere Sprachen und grö&szlig;ere Bedienerfreundlichkeit.'); ?></p>
+						<ul>
+							<li><? text('Polish translation by Grzegorz Wacikowski.', 'Polnische &Uuml;bersetzung von Grzegorz Wacikowski.'); ?></li>
+							<li><? text('French translation by Martin Loyer.', 'Franz&ouml;sische &Uuml;bersetzung von Martin Loyer.'); ?></li>
+							<li><? text('Added +/- buttons to poster "Size in pages" input fields.', 'Den Poster-"Gr&ouml;&szlig;e in Seiten"-eingabefeldern wurden die Kn&ouml;pfe +/- hinzugefügt.'); ?></li>
+						</ul>
+						<p><a class="external" href="http://svn.sourceforge.net/viewcvs.cgi/posterazor/trunk/PosteRazor/CHANGES?view=markup"><? text('Full list of changements', 'Vollst&auml;ndige Liste der &Auml;nderungen (auf englisch)'); ?></a></p>
+					</li>
+					<li>
 						<h3><? text('February 7th 2006', '7. Februar 2006'); ?>: Version 1.1</h3>
 						<p><? text('A few bugfixes and improved usability, no significant new functional features.', 'Einige behobene Fehler und grö&szlig;ere Bedienerfreundlichkeit, keine relevanten neuen Funktionen.'); ?></p>
 						<ul>
@@ -45,7 +55,6 @@
 							<li><? text('The user interface is multilingual. English and German are choosable at present.', 'Die Benutzeroberfl&auml;che ist mehrsprachig. Derzeit sind deutsch und englisch ausw&auml;hlbar.'); ?></li>
 							<li><? text('The Poster preview is (optionally) done via OpenGL.', 'Die Vorschau des Posters wird (optional) per OpenGL dargestellt.'); ?></li>
 						</ul>
-						<p><a class="external" href="http://cvs.sourceforge.net/viewcvs.py/posterazor/PosteRazor/CHANGES?view=markup"><? text('Full list of changements', 'Vollst&auml;ndige Liste der &Auml;nderungen (auf englisch)'); ?></a></p>
 					</li>
 					<li>
 						<h3><? text('October 3rd 2005', '3. Oktober 2005'); ?>: Version 1.0</h3>
@@ -267,6 +276,11 @@
 				<? text('As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps. PosteRazor is available as a Windows and as an OSX version (it should also be compilable on Linux).', 'Als Ausgangsmaterial nimmt der PosteRazor eine Rasterbild-datei. Das Endprodukt ist ein Poster in Form eines mehrseitigen PDF-Dokuments. Eine einfach zu bedienende Benutzerschnittstelle im Assistenten-Stil begleitet durch f&uuml;nf Schritte. Der PosteRazor ist als Windows- und als OSX-Version erh&auml;ltlich (er sollte auch f&uuml;r Linux kompilierbar sein).'); ?>
 				<? text('It is an open source, ', 'Er ist ein quelloffenes, '); ?><a href="<?=linkParameters("license","")?>"><? text('GNU licensed', 'GNU-lizensiertes'); ?></a> <? text('project which is hosted on SourceForge.net.', 'Projekt, das auf SourceForge hinterlegt ist.'); ?>
 				<? text('For feedback, bug reports or feature requests, please use the', 'F&uuml;r Feedback, Fehlerberichte oder Erweiterungsw&uuml;nsche nutzen Sie bitte die '); ?> <a class="external" href="http://sourceforge.net/projects/posterazor/"><? text('PosteRazor project page', 'PosteRazor-Projektseite'); ?></a>, <? text('write a mail to', 'schreiben Sie eine Mail an'); ?> <strong>Alessandro&nbsp;&auml;t&nbsp;casaportale&nbsp;d&ocirc;t de</strong> <? text('or contact the author via', 'oder kontaktieren Sie den Autor via'); ?> <a class="external" href="http://www.casaportale.de/html/index.php?page=contact&amp;lang=<? text('english', 'german'); ?>&amp;menu=on"><? text('mail form', 'Mail-Formular'); ?></a>.
+				<h3><? text('Contributors', 'Mitwirkende'); ?>:</h3>
+				<ul>
+					<li><? text('Polish translation:', 'Polnische &Uuml;bersetzung:'); ?> Grzegorz Wacikowski</li>
+					<li><? text('French translation:', 'Franz&ouml;sische &Uuml;bersetzung:'); ?> Martin Loyer</li>
+				</ul>
 <?
 		};		
 	}
