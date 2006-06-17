@@ -28,7 +28,6 @@
 #ifdef WIN32
 #include "TranslationPolish.h"
 #endif
-//#include "TranslationItalian.h"
 #if defined (WIN32)
 #include <Windows.h>
 #elif defined (OSX)
@@ -52,7 +51,6 @@ static const TranslationSet TranslationsMap[] =
 #ifdef WIN32
 	,{&polish, Translations::eLanguagePolish}
 #endif
-//	,{&italian, Translations::eLanguageItalian} // My italian is too lousy, although it is my native language :/
 };
 
 static int TranslationsMapItemsCount = sizeof(TranslationsMap) / sizeof(TranslationSet);
@@ -105,7 +103,6 @@ public:
 			(primaryLangID == LANG_GERMAN)?eLanguageGerman:
 			(primaryLangID == LANG_FRENCH)?eLanguageFrench:
 			(primaryLangID == LANG_POLISH)?eLanguagePolish:
-//			(primaryLangID == LANG_ITALIAN)?eLanguageItalian:
 			eLanguageUndefined;
 #elif defined (OSX)
 		CFBundleRef mainBundle = CFBundleGetMainBundle();
@@ -116,17 +113,14 @@ public:
 		CFStringRef languageEnglish = CFSTR("English");
 		CFStringRef languageGerman = CFSTR("German");
 		CFStringRef languageFrench = CFSTR("French");
-//		CFStringRef languageItalian = CFSTR("Italian");
 		systemLanguage =
 			(CFStringCompare(language, languageEnglish, 0) == kCFCompareEqualTo)?eLanguageEnglish:
 			(CFStringCompare(language, languageGerman, 0) == kCFCompareEqualTo)?eLanguageGerman:
 			(CFStringCompare(language, languageFrench, 0) == kCFCompareEqualTo)?eLanguageFrench:
-//			(CFStringCompare(language, languageItalian, 0) == kCFCompareEqualTo)?eLanguageItalian:
 			eLanguageUndefined;
 		CFRelease(languageEnglish);
 		CFRelease(languageGerman);
 		CFRelease(languageFrench);
-//		CFRelease(languageItalian);
 
 		CFRelease(preferredLanguages);
 		CFRelease(locArray);
@@ -173,6 +167,7 @@ public:
 	const char* Portrait(void)                        {return m_selectedTranslation->Portrait();}
 	const char* PosteRazorHelp(void)                  {return m_selectedTranslation->PosteRazorHelp();}
 	const char* PosteRazorSettings(void)              {return m_selectedTranslation->PosteRazorSettings();}
+	const char* PosteRazorWebSiteURL(void)            {return m_selectedTranslation->PosteRazorWebSiteURL();}
 	const char* PosteRazorWebSite(void)               {return m_selectedTranslation->PosteRazorWebSite();}
 	const char* PreviewWithOpenGL(void)               {return m_selectedTranslation->PreviewWithOpenGL();}
 	const char* PreviewWithOpenGLExplanation(void)    {return m_selectedTranslation->PreviewWithOpenGLExplanation();}

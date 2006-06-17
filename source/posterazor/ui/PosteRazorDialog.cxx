@@ -25,7 +25,7 @@
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
 #include <FL/x.H>
-#include "translations/PosteRazorHelpConstants.h"
+#include "translations/TranslationConstants.h"
 #include <string.h>
 
 #ifdef WIN32
@@ -48,10 +48,16 @@ const char preferencesKey_LoadImageChooserLastPath[] = "LoadImageChooserLastPath
 const char preferencesKey_SavePosterChooserLastPath[] = "SavePosterChooserLastPath";
 const char preferencesKey_UILanguage[] = "UILanguage";
 
+// "Round()" from http://www.c-plusplus.de/forum/viewtopic-var-t-is-39342.html
+static double Round(double Zahl, int Stellen)
+{
+    return floor(Zahl * pow( 10, Stellen) + 0.5) * pow(10, -Stellen);
+} 
+
 static const char* quickNDirtyDoubleToString(double value)
 {
 	static char valueString[200];
-	sprintf(valueString, "%G", value);
+	sprintf(valueString, "%G", Round(value, 4));
 	return valueString;
 }
 
@@ -78,20 +84,16 @@ int PosteRazorDragDropWidget::handle(int event)
 
 class PosteRazorHelpDialog: public PosteRazorHelpDialogUI
 {
-	char m_homepageURL[2048];
 public:
-	PosteRazorHelpDialog(const char *homepageButtonLabel, const char *homepageURL)
+	PosteRazorHelpDialog()
 		:PosteRazorHelpDialogUI(500, 400, "PosteRazor Help")
 	{
-		SetHomepageButtonLabel(homepageButtonLabel);
-		strncpy(m_homepageURL, homepageURL, sizeof(m_homepageURL));
-		m_homepageURL[sizeof(m_homepageURL)-1] = '\0';
 		m_help_view->link(LinkCallback);
 	}
 
 	void SetHtmlContent(const char *content) {m_help_view->value(content);}
 	void JumpToAnchor(const char *anchor) {m_help_view->topline(anchor);}
-	void HandleHomepageButtonClick(void) {OpenURLInBrowser(m_homepageURL);}
+	void HandleHomepageButtonClick(void) {OpenURLInBrowser(TRANSLATIONS->PosteRazorWebSiteURL());}
 
 	void OpenURLInBrowser(const char* url)
 	{
@@ -452,7 +454,7 @@ void PosteRazorDialog::OpenHelpDialog(void)
 {
 	if (!m_helpDialog)
 	{
-		m_helpDialog = new PosteRazorHelpDialog("PosteRazor website", "http://posterazor.sourceforge.net/");
+		m_helpDialog = new PosteRazorHelpDialog();
 		m_helpDialog->UpdateLanguage();
 		m_helpDialog->set_modal();
 	}
@@ -837,13 +839,6 @@ void PosteRazorDialog::UpdatePosterSizeFields(Fl_Widget *sourceWidget)
 
 	m_paintCanvasGroup->redraw();
 }
-
-// from http://www.c-plusplus.de/forum/viewtopic-var-t-is-39342.html
-// WHY is a round not in the standard c library  >:|
-static double Round(double Zahl, int Stellen)
-{
-    return floor(Zahl * pow( 10, Stellen) + 0.5) * pow(10, -Stellen);
-} 
 
 void PosteRazorDialog::HandlePosterSizeSpinnerEvent(Fl_Widget* sourceWidget)
 {

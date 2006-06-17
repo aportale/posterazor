@@ -24,6 +24,9 @@
 #define TranslationGerman_h
 
 #include "TranslationInterface.h"
+#include "TranslationConstants.h"
+
+#define GERMAN_POSTERAZORWEBSITEURL POSTERAZORWEBSITEDOMAIN"?lang=german"
 
 class TranslationGerman: public TranslationInterface
 {
@@ -66,6 +69,7 @@ public:
 	const char* Portrait(void)                        {return "Hochformat";}
 	const char* PosteRazorHelp(void)                  {return "PosteRazor Hilfe";}
 	const char* PosteRazorSettings(void)              {return "PosteRazor Einstellungen";}
+	const char* PosteRazorWebSiteURL(void)            {return GERMAN_POSTERAZORWEBSITEURL;}
 	const char* PosteRazorWebSite(void)               {return "PosteRazor-Internetseite";}
 	const char* PreviewWithOpenGL(void)               {return "Vorschau mit OpenGL";}
 	const char* PreviewWithOpenGLExplanation(void)    {return "OpenGL ermöglicht eine bessere Vorschau. Auf alter Hardware könnte OpenGL jedoch langsamer sein.";}
@@ -88,8 +92,6 @@ public:
 	const char* UnitOfLengthExplanation(void)         {return "Wählen Sie die Längeneinheit, mit der Sie arbeiten möchten";}
 	const char* Width(void)                           {return "Breite:";}
 
-
-#include "PosteRazorHelpConstants.h"
 
 #define GERMAN_POSTERAZORHELSTEP                      "Schritt"
 
@@ -199,7 +201,7 @@ public:
 					
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORLICENSE, GERMAN_POSTERAZORHELPLICENSE) \
 					"PosteRazor - Mach' Dein eigenes Poster!<br>" POSTERAZORHELPENDLINE \
-					"<a href=\"http://posterazor.sourceforge.net/?lang=german\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
+					"<a href=\""GERMAN_POSTERAZORWEBSITEURL"\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
 					"Copyright (C) 2005-2006 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
 					"<b>Franz&ouml;sische &Uuml;bersetzung von Martin Loyer (traduction<b></b>@<b></b>loyer<b></b>.<b></b>name).</b><br>" POSTERAZORHELPENDLINE \

@@ -178,10 +178,10 @@
 				RelativePath="..\..\source\posterazor\ui\PosteRazorDialogUI.h">
 			</File>
 			<File
-				RelativePath="..\..\source\posterazor\ui\translations\PosteRazorHelpConstants.h">
+				RelativePath="..\..\source\posterazor\ui\windowsResources\PosteRazorResource.h">
 			</File>
 			<File
-				RelativePath="..\..\source\posterazor\ui\windowsResources\PosteRazorResource.h">
+				RelativePath="..\..\source\posterazor\ui\translations\TranslationConstants.h">
 			</File>
 			<File
 				RelativePath="..\..\source\posterazor\ui\translations\TranslationEnglish.h">

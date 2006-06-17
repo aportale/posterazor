@@ -26,6 +26,9 @@
 #define TranslationFrench_h
 
 #include "TranslationInterface.h"
+#include "TranslationConstants.h"
+
+#define FRENCH_POSTERAZORWEBSITEURL POSTERAZORWEBSITEDOMAIN
 
 class TranslationFrench: public TranslationInterface
 {
@@ -75,6 +78,7 @@ public:
 														"Réglages de PosteRazor"
 #endif
 	                                                  ;}
+	const char* PosteRazorWebSiteURL(void)            {return FRENCH_POSTERAZORWEBSITEURL;}
 	const char* PosteRazorWebSite(void)               {return "Siteweb de PosteRazor";}
 	const char* PreviewWithOpenGL(void)               {return "Prévisualisation OpenGL";}
 	const char* PreviewWithOpenGLExplanation(void)    {return "OpenGL permet un rendu plus net. Mais il peut ralentir la prévisualisation sur les machines moins récente.";}
@@ -97,8 +101,6 @@ public:
 	const char* UnitOfLengthExplanation(void)         {return "Choisissez l'unité de mesure qui vous convient.";}
 	const char* Width(void)                           {return "Largeur :";}
 
-
-#include "PosteRazorHelpConstants.h"
 
 #define FRENCH_POSTERAZORHELSTEP                     "&Eacute;tape"
 
@@ -205,7 +207,7 @@ public:
 					
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORLICENSE, FRENCH_POSTERAZORHELPLICENSE) \
 					"PosteRazor - Cr&eacute;ez vos propres posters !<br>" POSTERAZORHELPENDLINE \
-					"<a href=\"http://posterazor.sourceforge.net/\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
+					"<a href=\""FRENCH_POSTERAZORWEBSITEURL"\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
 					"Copyright (C) 2005-2006 par Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
 					"<b>Traduction Fran&ccedil;aise par Martin Loyer (traduction<b></b>@<b></b>loyer<b></b>.<b></b>name).</b><br>" POSTERAZORHELPENDLINE \

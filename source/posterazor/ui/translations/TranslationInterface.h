@@ -64,6 +64,7 @@ public:
 	virtual const char* Portrait(void) = 0;
 	virtual const char* PosteRazorHelp(void) = 0;
 	virtual const char* PosteRazorSettings(void) = 0;
+	virtual const char* PosteRazorWebSiteURL(void) = 0;
 	virtual const char* PosteRazorWebSite(void) = 0;
 	virtual const char* PreviewWithOpenGL(void) = 0;
 	virtual const char* PreviewWithOpenGLExplanation(void) = 0;
