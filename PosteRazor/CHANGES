@@ -1,7 +1,7 @@
 PosteRazor 1.2
 ==============
 -   Added: Polish translation by Grzegorz Wacikowski
-           This translation is unfortunately not in the OSX version
+           This translation is included only in the Win32 version
 -   Added: French translation by Martin Loyer
 -   Added: +/- Spin buttons for poster size in pages
 - Changed: Numbers in input fields are selected instead of changed
