@@ -38,10 +38,10 @@
 				<h2><? text('News', 'Neuigkeiten'); ?></h2>
 				<ul>
 					<li>
-						<h3><? text('June 17th 2006', '17. Juni 2006'); ?>: Version 1.2</h3>
+						<h3><? text('June 18th 2006', '18. Juni 2006'); ?>: Version 1.2</h3>
 						<p><? text('Two more languages, improved usability.', 'Zwei weitere Sprachen und grö&szlig;ere Bedienerfreundlichkeit.'); ?></p>
 						<ul>
-							<li><? text('Polish translation by Grzegorz Wacikowski.', 'Polnische &Uuml;bersetzung von Grzegorz Wacikowski.'); ?></li>
+							<li><? text('Polish translation by Grzegorz Wacikowski. <em>Windows version, only</em>.', 'Polnische &Uuml;bersetzung von Grzegorz Wacikowski. <em>Nur in der Windows-version</em>.'); ?></li>
 							<li><? text('French translation by Martin Loyer.', 'Franz&ouml;sische &Uuml;bersetzung von Martin Loyer.'); ?></li>
 							<li><? text('Added +/- buttons to poster "Size in pages" input fields.', 'Den Poster-"Gr&ouml;&szlig;e in Seiten"-eingabefeldern wurden die Kn&ouml;pfe +/- hinzugefügt.'); ?></li>
 						</ul>
