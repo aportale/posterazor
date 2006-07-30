@@ -7,13 +7,13 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
    height="297mm"
    id="svg2"
    sodipodi:version="0.32"
-   inkscape:version="0.42.2"
+   inkscape:version="0.44"
    sodipodi:docbase="D:\temp\PosteRazor\webpage\images"
    sodipodi:docname="workflow.svg">
   <defs
@@ -130,13 +130,13 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8000000"
-     inkscape:cx="543.34106"
+     inkscape:zoom="2.8"
+     inkscape:cx="354.89093"
      inkscape:cy="590.14287"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     inkscape:window-width="1280"
-     inkscape:window-height="1005"
+     inkscape:window-width="1028"
+     inkscape:window-height="756"
      inkscape:window-x="-4"
      inkscape:window-y="-4" />
   <metadata
@@ -163,9 +163,9 @@
        y="321.06546" />
     <g
        id="g5334"
-       inkscape:export-filename="workflow.png"
-       inkscape:export-xdpi="75.022018"
-       inkscape:export-ydpi="75.022018">
+       inkscape:export-filename="D:\temp\PosteRazor\webpage\workflow.png"
+       inkscape:export-xdpi="70.664406"
+       inkscape:export-ydpi="70.664406">
       <image
          y="341.83118"
          x="350.28574"
@@ -195,13 +195,13 @@
       <text
          id="text1330"
          y="475.76093"
-         x="209.33102"
-         style="font-size:14.143422px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+         x="207.75967"
+         style="font-size:14.14342213px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
          xml:space="preserve"><tspan
            y="475.76093"
-           x="209.33102"
+           x="207.75967"
            id="tspan1332"
-           sodipodi:role="line">Input image</tspan></text>
+           sodipodi:role="line">Monalisa.jpg</tspan></text>
       <g
          transform="matrix(1.228387,0.000000,0.000000,1.228387,-150.6998,-86.25125)"
          id="g2952">
