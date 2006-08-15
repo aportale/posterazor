@@ -28,6 +28,7 @@
 #ifdef WIN32
 #include "TranslationPolish.h"
 #endif
+#include "TranslationItalian.h"
 #if defined (WIN32)
 #include <Windows.h>
 #elif defined (OSX)
@@ -51,6 +52,7 @@ static const TranslationSet TranslationsMap[] =
 #ifdef WIN32
 	,{&polish, Translations::eLanguagePolish}
 #endif
+	,{&italian, Translations::eLanguageItalian}
 };
 
 static int TranslationsMapItemsCount = sizeof(TranslationsMap) / sizeof(TranslationSet);
@@ -103,6 +105,7 @@ public:
 			(primaryLangID == LANG_GERMAN)?eLanguageGerman:
 			(primaryLangID == LANG_FRENCH)?eLanguageFrench:
 			(primaryLangID == LANG_POLISH)?eLanguagePolish:
+			(primaryLangID == LANG_ITALIAN)?eLanguageItalian:
 			eLanguageUndefined;
 #elif defined (OSX)
 		CFBundleRef mainBundle = CFBundleGetMainBundle();
@@ -113,14 +116,17 @@ public:
 		CFStringRef languageEnglish = CFSTR("English");
 		CFStringRef languageGerman = CFSTR("German");
 		CFStringRef languageFrench = CFSTR("French");
+		CFStringRef languageFrench = CFSTR("Italian");
 		systemLanguage =
 			(CFStringCompare(language, languageEnglish, 0) == kCFCompareEqualTo)?eLanguageEnglish:
 			(CFStringCompare(language, languageGerman, 0) == kCFCompareEqualTo)?eLanguageGerman:
 			(CFStringCompare(language, languageFrench, 0) == kCFCompareEqualTo)?eLanguageFrench:
+			(CFStringCompare(language, languageFrench, 0) == kCFCompareEqualTo)?eLanguageItalian:
 			eLanguageUndefined;
 		CFRelease(languageEnglish);
 		CFRelease(languageGerman);
 		CFRelease(languageFrench);
+		CFRelease(languageItalian);
 
 		CFRelease(preferredLanguages);
 		CFRelease(locArray);
