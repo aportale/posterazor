@@ -127,15 +127,15 @@
 				<p><? text('For <strong>direct linking to the downloads</strong> from another site, please use exactly the following links, only these are guaranteed to be valid in the future.', '<strong>Direktes Verlinken auf die Downloads</strong> von anderen Seiten aus bitte mit den unten aufgef&uuml;hrten Links. Nur diese werden mit gro&szlig;er Sicherheit auch in Zukunft g&uuml;ltig sein.'); ?></p>
 				<ul>
 					<li>
-						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.1-Win32.zip?download"><strong><? text('Windows version', 'Windows-version'); ?></strong> (404 KB)</a><br />
+						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.2-Win32.zip?download"><strong><? text('Windows version', 'Windows-version'); ?></strong> (421 KB)</a><br />
 						<? text('After downloading the ZIP archive, extract the contained PosteRazor.exe to a place of Your choice and start it. If You use a Windows version below XP, You probably need an installed <a class="external" href="http://www.7-zip.org/">Unzip tool</a>.', 'Nach dem Herunterladen des ZIP-Archivs, k&ouml;nnen Sie das enthaltene PosteRazor.exe in ein Verzeichnis Ihrer Wahl entpacken und starten. Falls sie eine Windows-version unterhalb von XP nutzen, ben&ouml;tigen Sie evenuell ein installiertes <a class="external" href="http://www.7-zip.org/">Unzip-Programm</a>.'); ?>
 					</li>
 					<li>
-						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.1-OSX.dmg?download"><strong><? text('OSX version', 'OSX-version'); ?></strong> (668 KB)</a><br />
+						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.2-OSX.dmg?download"><strong><? text('OSX version', 'OSX-version'); ?></strong> (698 KB)</a><br />
 						<? text('After downloading the OSX disk image, double click to mount it if it doesn\'t mount automatically. You can start the contained PosteRazor application directly by double clicking it or drag it into a location of Your choice.', 'Nach dem Herunterladen des OSX-Diskimages k&ouml;nnen Sie es, falls dies nicht automatisch geschieht, per Doppelclick mounten. Danach kann die enthaltene PosteRazor-Applikation entweder direkt gestartet werden oder in einen Ordner Ihrer Wahl kopiert werden.'); ?><br />
 					</li>
 					<li>
-						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.1-Source.zip?download"><strong><? text('Source', 'Quelltext'); ?></strong> (189 KB)</a><br />
+						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.2-Source.zip?download"><strong><? text('Source', 'Quelltext'); ?></strong> (199 KB)</a><br />
 						<? text('The source archive includes only project files for VC6, VS 2003 .Net, XCode 2.2 and an unfinished CMake file. FLTK and FreeImage are not included. In order to compile without OpenGL, the preprocessor symbol <em>NO_OPENGL_PREVIEW</em> can be defined.', 'Das Quelltext-archiv enth&auml;lt nur Projekte f&uuml;r VC6, VS 2003 .Net, XCode 2.2 und eine unvollst&auml;ndige CMake-Datei. FLTK und FreeImage sind nicht enthalten. Um ohne OpenGL zu kompilieren, kann das Pr&auml;prozessorsymbol <em>NO_OPENGL_PREVIEW</em> definiert werden.'); ?><br />
 					</li>
 				</ul>
@@ -280,6 +280,7 @@
 				<ul>
 					<li><? text('Polish translation:', 'Polnische &Uuml;bersetzung:'); ?> Grzegorz Wacikowski</li>
 					<li><? text('French translation:', 'Franz&ouml;sische &Uuml;bersetzung:'); ?> Martin Loyer</li>
+					<li><? text('Italian translation (next PosteRazor version):', 'Italienische &Uuml;bersetzung (n&auml;chste PosteRazor-version):'); ?> Stefano Nosei</li>
 				</ul>
 <?
 		};		
