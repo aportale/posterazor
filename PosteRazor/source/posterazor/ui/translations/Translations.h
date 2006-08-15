@@ -47,7 +47,7 @@ public:
 #ifdef WIN32
 		,eLanguagePolish
 #endif
-//		,eLanguageItalian
+		,eLanguageItalian
 	};
 
 	static Translations* Instance(void);
