@@ -45,4 +45,4 @@ public:
 	virtual void DisposeImage(void) = 0;
 };
 
-#endif Fl_Paint_Canvas_Base_h
+#endif

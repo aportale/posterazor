@@ -49,4 +49,4 @@ public:
 	virtual void DrawImage(double x, double y, double width, double height);
 };
 
-#endif Fl_Draw_Paint_Canvas_h
+#endif
