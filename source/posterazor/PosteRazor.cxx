@@ -657,7 +657,7 @@ public:
 			char commandStr[2048];
 			sprintf(commandStr, "open \"%s\"", fileName);
 			system(commandStr);
-#endif;
+#endif
 		}
 		return err;
 	}
