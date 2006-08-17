@@ -23,8 +23,8 @@
 #ifndef Fl_Image_Text_Button_h
 #define Fl_Image_Text_Button_h
 
-#include <Fl/Fl_Image.h>
-#include <Fl/Fl_Button.h>
+#include <FL/Fl_Image.H>
+#include <FL/Fl_Button.H>
 
 class Fl_Image_Text_Button: public Fl_Button
 {

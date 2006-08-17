@@ -34,6 +34,7 @@
 #elif defined (OSX)
 #include <CoreFoundation/CoreFoundation.h>
 #endif
+#include <stdio.h> // for NULL
 
 Translations *Translations::m_instance = 0;
 
