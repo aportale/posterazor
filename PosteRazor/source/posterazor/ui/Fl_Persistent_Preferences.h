@@ -42,4 +42,4 @@ public:
 	const char *GetString(const char *key, const char *defaultValue);
 };
 
-#endif // Fl_Persistent_Preferences_h
+#endif
