@@ -73,4 +73,4 @@ protected:
 #endif
 };
 
-#endif Fl_Paint_Canvas_Group_h
+#endif
