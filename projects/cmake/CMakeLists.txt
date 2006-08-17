@@ -1,6 +1,6 @@
 PROJECT(PosteRazor)
 
-ADD_DEFINITIONS(-DFREEIMAGE_LIB)
+ADD_DEFINITIONS(-DFREEIMAGE_LIB, -DNO_OPENGL_PREVIEW)
 
 SET(POSTERAZOR_SRCS
 	../../source/posterazor/PosteRazor.cxx
@@ -9,7 +9,6 @@ SET(POSTERAZOR_SRCS
 	../../source/posterazor/ui/Fl_Paint_Canvas_Base.cpp
 	../../source/posterazor/ui/Fl_Paint_Canvas_Group.cpp
 	../../source/posterazor/ui/Fl_Draw_Paint_Canvas.cpp
-	../../source/posterazor/ui/Fl_Gl_Paint_Canvas.cpp
 	../../source/posterazor/ui/Fl_Persistent_Preferences.cxx
 	../../source/posterazor/ui/Fl_Image_Text_Button.cpp
 	../../source/posterazor/ui/PosteRazorDialog.cxx
@@ -32,6 +31,7 @@ INCLUDE_DIRECTORIES(
 LINK_DIRECTORIES(
 	${POSTERAZOR_SOURCE_DIR}../../thirdparty/fltk-1.1/lib
 	${POSTERAZOR_SOURCE_DIR}../../thirdparty/FreeImage/Dist
+	/usr/X11R6/lib
 )
 
 SET_TARGET_PROPERTIES(PosteRazor PROPERTIES LINK_FLAGS "/nodefaultlib:LIBC")
@@ -41,12 +41,15 @@ ADD_EXECUTABLE(PosteRazor ${POSTERAZOR_SRCS})
 TARGET_LINK_LIBRARIES(PosteRazor
 	debug fltkd
 	optimized fltk
-	debug fltkgld
-	optimized fltkgl
+	debug fltk_imagesd
+	optimized fltk_images
+#	debug fltkgld
+#	optimized fltkgl
 	debug FreeImaged
-	optimized FreeImage
-	wsock32
-	comctl32
-	glu32
-	opengl32
+	optimized freeimage
+	X11
+#	wsock32
+#	comctl32
+#	glu32
+#	opengl32
 )
