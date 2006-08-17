@@ -55,4 +55,4 @@ public:
 	virtual void DrawImage(double x, double y, double width, double height) = 0;
 };
 
-#endif PaintCanvasInterface_h
+#endif

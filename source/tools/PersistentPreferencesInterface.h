@@ -37,4 +37,4 @@ public:
 	virtual const char *GetString(const char *key, const char *defaultValue) = 0;
 };
 
-#endif // PersistentPreferencesInterface_h
+#endif

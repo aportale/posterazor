@@ -46,7 +46,6 @@ unsigned int PosteRazorPDFOutput::GetImageBytesCount(int widthPixels, int height
 	return GetImageBytesPerLineCount(widthPixels, bitPerPixel) * heightPixels;
 }
 
-
 class PosteRazorPDFOutputImplementation: public PosteRazorPDFOutput
 {
 private:
