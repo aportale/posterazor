@@ -34,6 +34,7 @@ void FreeImageErrorHandler(FREE_IMAGE_FORMAT fif, const char *message)
 	FreeImageErrorMessage[sizeof(FreeImageErrorMessage)-1] = '\0';
 }
 
+
 class FreeImageInitializer
 {
 public:
@@ -63,6 +64,14 @@ private:
 	unsigned int m_verticalDotsPerMeter;
 
 	char         m_imageFileName[1024];
+
+	static bool isSystemLittleEndian(void)
+	{
+		// Endianness detection lines borrowed from: http://en.wikipedia.org/wiki/Endianness
+		long int i = 1;
+		const char *p = (const char *) &i;
+		return p[0] == 1;  // Lowest address contains the least significant byte
+	}
 
 public:
 	PosteRazorImageIOImplementation()
@@ -213,10 +222,7 @@ public:
 		FreeImage_ConvertToRawBits(buffer, originalImage, width*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
 
 		// Swapping RGB data if needed (like on Intel)
-		// following 3 endianness detection lines borrowed from: http://en.wikipedia.org/wiki/Endianness
-		long int i = 1;
-		const char *p = (const char *) &i;
-		if (p[0] == 1)  // Lowest address contains the least significant byte
+		if (isSystemLittleEndian())
 		{
 			unsigned int numberOfPixels = width * height;
 
@@ -275,10 +281,10 @@ public:
 
 		FreeImage_ConvertToRawBits(imageData, m_bitmap, bytesPerLineCount, GetBitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
 
-#ifdef _WIN32
-		unsigned long numberOfPixels = GetWidthPixels() * GetHeightPixels();
-		
-		if (GetBitsPerPixel() == 24)
+		// Swapping RGB data if needed (like on Intel)
+		if (GetBitsPerPixel() == 24 && isSystemLittleEndian())
+		{
+			unsigned long numberOfPixels = GetWidthPixels() * GetHeightPixels();
 			for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++)
 			{
 				unsigned char *pixelPtr = imageData + pixelIndex*3;
@@ -288,7 +294,7 @@ public:
 				pixelPtr[2] = temp;
 				pixelPtr+=3;
 			}
-#endif
+		}
 
 		RGBQUAD *palette = FreeImage_GetPalette(m_bitmap);
 		unsigned char rgbPalette[768];
