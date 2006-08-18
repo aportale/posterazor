@@ -464,180 +464,209 @@ public:
 		delete[] rgbData;
 	}
 
-	void PaintOnCanvas(PaintCanvasInterface *paintCanvas, void* options = 0) const
+	void PaintImageOnCanvas(PaintCanvasInterface *paintCanvas) const
+	{
+
+		if (IsImageLoaded())
+		{
+			double canvasWidth = 0, canvasHeight = 0;
+			paintCanvas->GetSize(canvasWidth, canvasHeight);
+			int boxWidth = 0, boxHeight = 0;
+			double x_offset, y_offset;
+
+			GetPreviewSize(GetInputImageWidthPixels(), GetInputImageHeightPixels(), (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, false);
+			x_offset = (canvasWidth - boxWidth) / 2;
+			y_offset = (canvasHeight - boxHeight) / 2;
+			
+			// If the image is not downscaled, make sure that the coordinates are integers in order
+			// to prevent unneeded blurring (especially in OpenGL)
+			if (canvasWidth >= GetInputImageWidthPixels() && canvasHeight >= GetInputImageHeightPixels())
+			{
+				x_offset = floor(x_offset);
+				y_offset = floor(y_offset);
+			}			
+
+			paintCanvas->DrawImage(0 + x_offset, 0 + y_offset, boxWidth, boxHeight);
+		}
+	}
+
+	void PaintPaperOnCanvas(PaintCanvasInterface *paintCanvas, bool paintOverlapping) const
 	{
 		double canvasWidth = 0, canvasHeight = 0;
 		paintCanvas->GetSize(canvasWidth, canvasHeight);
 		int boxWidth = 0, boxHeight = 0;
-		double x_offset, y_offset;
+
+		double paperWidth = GetPaperWidth();
+		double paperHeight = GetPaperHeight();
+		GetPreviewSize(paperWidth, paperHeight, (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, true);
+		double x_offset = (canvasWidth - (double)boxWidth) / 2.0;
+		double y_offset = (canvasHeight - (double)boxHeight) / 2.0;
+		double UnitOfLengthToPixelfactor = (double)boxWidth/paperWidth;
+		double borderTop = GetPaperBorderTop() * UnitOfLengthToPixelfactor;
+		double borderRight = GetPaperBorderRight() * UnitOfLengthToPixelfactor;
+		double borderBottom = GetPaperBorderBottom() * UnitOfLengthToPixelfactor;
+		double borderLeft = GetPaperBorderLeft() * UnitOfLengthToPixelfactor;
+		double printableAreaWidth = boxWidth - borderLeft - borderRight;
+		double printableAreaHeight = boxHeight - borderTop - borderBottom;
 		
+		paintCanvas->DrawFilledRect(0 + x_offset, 0 + y_offset, boxWidth, boxHeight, 128, 128, 128, 255);
+		paintCanvas->DrawFilledRect(0 + borderLeft + x_offset, 0 + borderTop + y_offset, printableAreaWidth, printableAreaHeight, 230, 230, 230, 255);
+
+		if (paintOverlapping)
+		{
+			double overlappingWidth = GetOverlappingWidth() * UnitOfLengthToPixelfactor;
+			double overlappingHeight = GetOverlappingHeight() * UnitOfLengthToPixelfactor;
+			enum eOverlappingPositions overlappingPosition = GetOverlappingPosition();
+			double overlappingTop =
+				(overlappingPosition == eOverlappingPositionTopLeft || overlappingPosition == eOverlappingPositionTopRight)?
+				borderTop
+				:boxHeight - borderBottom - overlappingHeight;
+			double overlappingLeft = 
+				(overlappingPosition == eOverlappingPositionTopLeft || overlappingPosition == eOverlappingPositionBottomLeft)?
+				borderLeft
+				:boxWidth - borderRight - overlappingWidth;
+			
+			paintCanvas->DrawFilledRect(borderLeft + x_offset, overlappingTop + y_offset, printableAreaWidth, overlappingHeight, 255, 128, 128, 255);
+			paintCanvas->DrawFilledRect(overlappingLeft + x_offset, borderTop + y_offset, overlappingWidth, printableAreaHeight, 255, 128, 128, 255);
+		}
+	}
+
+	void PaintPosterOnCanvas(PaintCanvasInterface *paintCanvas) const
+	{
+		double canvasWidth = 0, canvasHeight = 0;
+		paintCanvas->GetSize(canvasWidth, canvasHeight);
+		int boxWidth = 0, boxHeight = 0;
+
+		double pagePrintableAreaWidth = GetPrintablePaperAreaWidth();
+		double pagePrintableAreaHeight = GetPrintablePaperAreaHeight();
+		int pagesHorizontal = (int)ceil(GetPosterWidth(ePosterSizeModePages));
+		int pagesVertical = (int)ceil(GetPosterHeight(ePosterSizeModePages));
+		double posterWidth = pagesHorizontal*pagePrintableAreaWidth - (pagesHorizontal-1)*GetOverlappingWidth() + GetPaperBorderLeft() + GetPaperBorderRight();
+		double posterHeight = pagesVertical*pagePrintableAreaHeight - (pagesVertical-1)*GetOverlappingHeight() + GetPaperBorderTop() + GetPaperBorderBottom();
+		GetPreviewSize(posterWidth, posterHeight, (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, true);
+		double x_offset = (canvasWidth - boxWidth) / 2;
+		double y_offset = (canvasHeight - boxHeight) / 2;
+		double UnitOfLengthToPixelfactor = (double)boxWidth/posterWidth;
+
+		double borderTop = GetPaperBorderTop() * UnitOfLengthToPixelfactor;
+		double borderRight = GetPaperBorderRight() * UnitOfLengthToPixelfactor;
+		double borderBottom = GetPaperBorderBottom() * UnitOfLengthToPixelfactor;
+		double borderLeft = GetPaperBorderLeft() * UnitOfLengthToPixelfactor;
+		double posterPrintableAreaWidth = boxWidth - borderLeft - borderRight;
+		double posterPrintableAreaHeight = boxHeight - borderTop - borderBottom;
+
+		paintCanvas->DrawFilledRect(x_offset, y_offset, boxWidth, boxHeight, 128, 128, 128, 255);
+		paintCanvas->DrawFilledRect(borderLeft + x_offset, borderTop + y_offset, posterPrintableAreaWidth, posterPrintableAreaHeight, 230, 230, 230, 255);
+
+		double imageWidth = GetPosterWidth(ePosterSizeModeAbsolute) * UnitOfLengthToPixelfactor;
+		double imageHeight = GetPosterHeight(ePosterSizeModeAbsolute) * UnitOfLengthToPixelfactor;
+
+		enum eVerticalAlignments verticalAlignment = GetPosterVerticalAlignment();
+		enum eHorizontalAlignments horizontalAlignment = GetPosterHorizontalAlignment();
+
+		paintCanvas->DrawImage
+		(
+			(
+				horizontalAlignment == eHorizontalAlignmentLeft?borderLeft
+				:horizontalAlignment == eHorizontalAlignmentCenter?
+					MINMAX(((double)boxWidth - imageWidth) / 2, borderLeft, borderLeft + posterPrintableAreaWidth - imageWidth)
+				:(borderLeft + posterPrintableAreaWidth - imageWidth)
+			)
+			+ x_offset,
+
+			(
+				verticalAlignment == eVerticalAlignmentTop?borderTop
+				:verticalAlignment == eVerticalAlignmentMiddle?
+					MINMAX(((double)boxHeight - imageHeight) / 2, borderTop, borderTop + posterPrintableAreaHeight - imageHeight)
+				:(borderTop + posterPrintableAreaHeight - imageHeight)
+				)
+			+ y_offset,
+			imageWidth, imageHeight
+		);
+
+		double overlappingHeight = GetOverlappingHeight() * UnitOfLengthToPixelfactor;
+		double overlappingWidth = GetOverlappingWidth() * UnitOfLengthToPixelfactor;
+		pagePrintableAreaWidth *= UnitOfLengthToPixelfactor;
+		pagePrintableAreaHeight *= UnitOfLengthToPixelfactor;
+
+		double overlappingRectangleYPosition = borderTop;
+		for (int pagesRow = 0; pagesRow < pagesVertical - 1; pagesRow++)
+		{
+			overlappingRectangleYPosition += pagePrintableAreaHeight - overlappingHeight;
+			paintCanvas->DrawFilledRect(x_offset, overlappingRectangleYPosition + y_offset, boxWidth, overlappingHeight, 255, 128, 128, 128);
+		}
+
+		double overlappingRectangleXPosition = borderLeft;
+		for (int pagesColumn = 0; pagesColumn < pagesHorizontal - 1; pagesColumn++)
+		{
+			overlappingRectangleXPosition += pagePrintableAreaWidth - overlappingWidth;
+			paintCanvas->DrawFilledRect(overlappingRectangleXPosition + x_offset, y_offset, overlappingWidth, boxHeight, 255, 128, 128, 128);
+		}
+	}
+
+	void PaintPosterPageOnCanvas(PaintCanvasInterface *paintCanvas, int page) const
+	{
+		int columsCount = (int)(ceil(GetPosterWidth(ePosterSizeModePages)));
+		int rowsCount = (int)(ceil(GetPosterHeight(ePosterSizeModePages)));
+		int column = page % columsCount;
+		int row = ((int)(floor((double)page / (double)columsCount)));
+
+		double posterImageWidthCm = ConvertDistanceToCm(GetPosterWidth(ePosterSizeModeAbsolute));
+		double posterImageHeightCm = ConvertDistanceToCm(GetPosterHeight(ePosterSizeModeAbsolute));
+		double printablePaperAreaWidthCm = ConvertDistanceToCm(GetPrintablePaperAreaWidth());
+		double printablePaperAreaHeightCm = ConvertDistanceToCm(GetPrintablePaperAreaHeight());
+		double overlappingWidthCm = ConvertDistanceToCm(GetOverlappingWidth());
+		double overlappingHeightCm = ConvertDistanceToCm(GetOverlappingHeight());
+		double printablePosterAreaWidthCm = columsCount * printablePaperAreaWidthCm - (columsCount - 1) * overlappingWidthCm;
+		double printablePosterAreaHeightCm = rowsCount * printablePaperAreaHeightCm - (rowsCount - 1) * overlappingHeightCm;
+		double borderTopCm = ConvertDistanceToCm(GetPaperBorderTop());
+		double borderRightCm = ConvertDistanceToCm(GetPaperBorderRight());
+		double borderBottomCm = ConvertDistanceToCm(GetPaperBorderBottom());
+		double borderLeftCm = ConvertDistanceToCm(GetPaperBorderLeft());
+		double posterTotalWidthCm = printablePosterAreaWidthCm + borderLeftCm + borderRightCm;
+		double posterTotalHeightCm = printablePosterAreaHeightCm + borderTopCm + borderBottomCm;
+		double imageOffsetFromLeftPosterBorderCm = 
+		(
+			GetPosterHorizontalAlignment() == eHorizontalAlignmentRight?posterTotalWidthCm - posterImageWidthCm - borderLeftCm
+			:GetPosterHorizontalAlignment() == eHorizontalAlignmentCenter?(posterTotalWidthCm - posterImageWidthCm)/2 - borderLeftCm
+			:-borderLeftCm
+		);
+		imageOffsetFromLeftPosterBorderCm = MINMAX(imageOffsetFromLeftPosterBorderCm, 0.0, posterTotalWidthCm - posterImageWidthCm - borderLeftCm - borderRightCm);
+		double imageOffsetFromTopPosterBorderCm = 
+		(
+			GetPosterVerticalAlignment() == eVerticalAlignmentBottom?posterTotalHeightCm - posterImageHeightCm - borderTopCm
+			:GetPosterVerticalAlignment() == eVerticalAlignmentMiddle?(posterTotalHeightCm - posterImageHeightCm)/2 - borderTopCm
+			:-borderTopCm
+		);
+		imageOffsetFromTopPosterBorderCm = MINMAX(imageOffsetFromTopPosterBorderCm, 0.0, posterTotalHeightCm - posterImageHeightCm - borderTopCm - borderBottomCm);
+		double pageOffsetToImageFromLeftCm = column * (printablePaperAreaWidthCm - overlappingWidthCm) - imageOffsetFromLeftPosterBorderCm;
+		double pageOffsetToImageFromTopCm = row * (printablePaperAreaHeightCm - overlappingHeightCm) - imageOffsetFromTopPosterBorderCm;
+		
+		paintCanvas->DrawImage(-pageOffsetToImageFromLeftCm, -pageOffsetToImageFromTopCm, posterImageWidthCm, posterImageHeightCm);
+	}
+
+	void PaintOnCanvas(PaintCanvasInterface *paintCanvas, void* options = 0) const
+	{
 		const char *state = (const char*)options;
 		
 		if (strcmp(state, "image") == 0)
 		{
-			if (IsImageLoaded())
-			{
-				GetPreviewSize(GetInputImageWidthPixels(), GetInputImageHeightPixels(), (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, false);
-				x_offset = (canvasWidth - boxWidth) / 2;
-				y_offset = (canvasHeight - boxHeight) / 2;
-				
-				// If the image is not downscaled, make sure that the coordinates are integers in order
-				// to prevent unneeded blurring (especially in OpenGL)
-				if (canvasWidth >= GetInputImageWidthPixels() && canvasHeight >= GetInputImageHeightPixels())
-				{
-					x_offset = floor(x_offset);
-					y_offset = floor(y_offset);
-				}			
-
-				paintCanvas->DrawImage(0 + x_offset, 0 + y_offset, boxWidth, boxHeight);
-			}
+			PaintImageOnCanvas(paintCanvas);
 		}
 		else if (strcmp(state, "paper") == 0 || strcmp(state, "overlapping") == 0)
 		{
-			double paperWidth = GetPaperWidth();
-			double paperHeight = GetPaperHeight();
-			GetPreviewSize(paperWidth, paperHeight, (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, true);
-			x_offset = (canvasWidth - (double)boxWidth) / 2.0;
-			y_offset = (canvasHeight - (double)boxHeight) / 2.0;
-			double UnitOfLengthToPixelfactor = (double)boxWidth/paperWidth;
-			double borderTop = GetPaperBorderTop() * UnitOfLengthToPixelfactor;
-			double borderRight = GetPaperBorderRight() * UnitOfLengthToPixelfactor;
-			double borderBottom = GetPaperBorderBottom() * UnitOfLengthToPixelfactor;
-			double borderLeft = GetPaperBorderLeft() * UnitOfLengthToPixelfactor;
-			double printableAreaWidth = boxWidth - borderLeft - borderRight;
-			double printableAreaHeight = boxHeight - borderTop - borderBottom;
-			
-			paintCanvas->DrawFilledRect(0 + x_offset, 0 + y_offset, boxWidth, boxHeight, 128, 128, 128, 255);
-			paintCanvas->DrawFilledRect(0 + borderLeft + x_offset, 0 + borderTop + y_offset, printableAreaWidth, printableAreaHeight, 230, 230, 230, 255);
-
-			if (strcmp(state, "overlapping") == 0)
-			{
-				double overlappingWidth = GetOverlappingWidth() * UnitOfLengthToPixelfactor;
-				double overlappingHeight = GetOverlappingHeight() * UnitOfLengthToPixelfactor;
-				enum eOverlappingPositions overlappingPosition = GetOverlappingPosition();
-				double overlappingTop =
-					(overlappingPosition == eOverlappingPositionTopLeft || overlappingPosition == eOverlappingPositionTopRight)?
-					borderTop
-					:boxHeight - borderBottom - overlappingHeight;
-				double overlappingLeft = 
-					(overlappingPosition == eOverlappingPositionTopLeft || overlappingPosition == eOverlappingPositionBottomLeft)?
-					borderLeft
-					:boxWidth - borderRight - overlappingWidth;
-				
-				paintCanvas->DrawFilledRect(borderLeft + x_offset, overlappingTop + y_offset, printableAreaWidth, overlappingHeight, 255, 128, 128, 255);
-				paintCanvas->DrawFilledRect(overlappingLeft + x_offset, borderTop + y_offset, overlappingWidth, printableAreaHeight, 255, 128, 128, 255);
-			}
+			PaintPaperOnCanvas(paintCanvas, strcmp(state, "overlapping") == 0);
 		}
 		else if (strcmp(state, "poster") == 0)
 		{
-			double pagePrintableAreaWidth = GetPrintablePaperAreaWidth();
-			double pagePrintableAreaHeight = GetPrintablePaperAreaHeight();
-			int pagesHorizontal = (int)ceil(GetPosterWidth(ePosterSizeModePages));
-			int pagesVertical = (int)ceil(GetPosterHeight(ePosterSizeModePages));
-			double posterWidth = pagesHorizontal*pagePrintableAreaWidth - (pagesHorizontal-1)*GetOverlappingWidth() + GetPaperBorderLeft() + GetPaperBorderRight();
-			double posterHeight = pagesVertical*pagePrintableAreaHeight - (pagesVertical-1)*GetOverlappingHeight() + GetPaperBorderTop() + GetPaperBorderBottom();
-			GetPreviewSize(posterWidth, posterHeight, (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, true);
-			x_offset = (canvasWidth - boxWidth) / 2;
-			y_offset = (canvasHeight - boxHeight) / 2;
-			double UnitOfLengthToPixelfactor = (double)boxWidth/posterWidth;
-
-			double borderTop = GetPaperBorderTop() * UnitOfLengthToPixelfactor;
-			double borderRight = GetPaperBorderRight() * UnitOfLengthToPixelfactor;
-			double borderBottom = GetPaperBorderBottom() * UnitOfLengthToPixelfactor;
-			double borderLeft = GetPaperBorderLeft() * UnitOfLengthToPixelfactor;
-			double posterPrintableAreaWidth = boxWidth - borderLeft - borderRight;
-			double posterPrintableAreaHeight = boxHeight - borderTop - borderBottom;
-
-			paintCanvas->DrawFilledRect(x_offset, y_offset, boxWidth, boxHeight, 128, 128, 128, 255);
-			paintCanvas->DrawFilledRect(borderLeft + x_offset, borderTop + y_offset, posterPrintableAreaWidth, posterPrintableAreaHeight, 230, 230, 230, 255);
-
-			double imageWidth = GetPosterWidth(ePosterSizeModeAbsolute) * UnitOfLengthToPixelfactor;
-			double imageHeight = GetPosterHeight(ePosterSizeModeAbsolute) * UnitOfLengthToPixelfactor;
-
-			enum eVerticalAlignments verticalAlignment = GetPosterVerticalAlignment();
-			enum eHorizontalAlignments horizontalAlignment = GetPosterHorizontalAlignment();
-
-			paintCanvas->DrawImage
-			(
-				(
-					horizontalAlignment == eHorizontalAlignmentLeft?borderLeft
-					:horizontalAlignment == eHorizontalAlignmentCenter?
-						MINMAX(((double)boxWidth - imageWidth) / 2, borderLeft, borderLeft + posterPrintableAreaWidth - imageWidth)
-					:(borderLeft + posterPrintableAreaWidth - imageWidth)
-				)
-				+ x_offset,
-
-				(
-					verticalAlignment == eVerticalAlignmentTop?borderTop
-					:verticalAlignment == eVerticalAlignmentMiddle?
-						MINMAX(((double)boxHeight - imageHeight) / 2, borderTop, borderTop + posterPrintableAreaHeight - imageHeight)
-					:(borderTop + posterPrintableAreaHeight - imageHeight)
-					)
-				+ y_offset,
-				imageWidth, imageHeight
-			);
-
-			double overlappingHeight = GetOverlappingHeight() * UnitOfLengthToPixelfactor;
-			double overlappingWidth = GetOverlappingWidth() * UnitOfLengthToPixelfactor;
-			pagePrintableAreaWidth *= UnitOfLengthToPixelfactor;
-			pagePrintableAreaHeight *= UnitOfLengthToPixelfactor;
-
-			double overlappingRectangleYPosition = borderTop;
-			for (int pagesRow = 0; pagesRow < pagesVertical - 1; pagesRow++)
-			{
-				overlappingRectangleYPosition += pagePrintableAreaHeight - overlappingHeight;
-				paintCanvas->DrawFilledRect(x_offset, overlappingRectangleYPosition + y_offset, boxWidth, overlappingHeight, 255, 128, 128, 128);
-			}
-
-			double overlappingRectangleXPosition = borderLeft;
-			for (int pagesColumn = 0; pagesColumn < pagesHorizontal - 1; pagesColumn++)
-			{
-				overlappingRectangleXPosition += pagePrintableAreaWidth - overlappingWidth;
-				paintCanvas->DrawFilledRect(overlappingRectangleXPosition + x_offset, y_offset, overlappingWidth, boxHeight, 255, 128, 128, 128);
-			}
+			PaintPosterOnCanvas(paintCanvas);
 		}
 		else if (strncmp(state, "posterpage", strlen("posterpage")) == 0)
 		{
 			int page;
-                        sscanf(state, "posterpage %d", &page);
+			sscanf(state, "posterpage %d", &page);
 
-			int columsCount = (int)(ceil(GetPosterWidth(ePosterSizeModePages)));
-			int rowsCount = (int)(ceil(GetPosterHeight(ePosterSizeModePages)));
-			int column = page % columsCount;
-			int row = ((int)(floor((double)page / (double)columsCount)));
-
-			double posterImageWidthCm = ConvertDistanceToCm(GetPosterWidth(ePosterSizeModeAbsolute));
-			double posterImageHeightCm = ConvertDistanceToCm(GetPosterHeight(ePosterSizeModeAbsolute));
-			double printablePaperAreaWidthCm = ConvertDistanceToCm(GetPrintablePaperAreaWidth());
-			double printablePaperAreaHeightCm = ConvertDistanceToCm(GetPrintablePaperAreaHeight());
-			double overlappingWidthCm = ConvertDistanceToCm(GetOverlappingWidth());
-			double overlappingHeightCm = ConvertDistanceToCm(GetOverlappingHeight());
-			double printablePosterAreaWidthCm = columsCount * printablePaperAreaWidthCm - (columsCount - 1) * overlappingWidthCm;
-			double printablePosterAreaHeightCm = rowsCount * printablePaperAreaHeightCm - (rowsCount - 1) * overlappingHeightCm;
-			double borderTopCm = ConvertDistanceToCm(GetPaperBorderTop());
-			double borderRightCm = ConvertDistanceToCm(GetPaperBorderRight());
-			double borderBottomCm = ConvertDistanceToCm(GetPaperBorderBottom());
-			double borderLeftCm = ConvertDistanceToCm(GetPaperBorderLeft());
-			double posterTotalWidthCm = printablePosterAreaWidthCm + borderLeftCm + borderRightCm;
-			double posterTotalHeightCm = printablePosterAreaHeightCm + borderTopCm + borderBottomCm;
-			double imageOffsetFromLeftPosterBorderCm = 
-			(
-				GetPosterHorizontalAlignment() == eHorizontalAlignmentRight?posterTotalWidthCm - posterImageWidthCm - borderLeftCm
-				:GetPosterHorizontalAlignment() == eHorizontalAlignmentCenter?(posterTotalWidthCm - posterImageWidthCm)/2 - borderLeftCm
-				:-borderLeftCm
-			);
-			imageOffsetFromLeftPosterBorderCm = MINMAX(imageOffsetFromLeftPosterBorderCm, 0.0, posterTotalWidthCm - posterImageWidthCm - borderLeftCm - borderRightCm);
-			double imageOffsetFromTopPosterBorderCm = 
-			(
-				GetPosterVerticalAlignment() == eVerticalAlignmentBottom?posterTotalHeightCm - posterImageHeightCm - borderTopCm
-				:GetPosterVerticalAlignment() == eVerticalAlignmentMiddle?(posterTotalHeightCm - posterImageHeightCm)/2 - borderTopCm
-				:-borderTopCm
-			);
-			imageOffsetFromTopPosterBorderCm = MINMAX(imageOffsetFromTopPosterBorderCm, 0.0, posterTotalHeightCm - posterImageHeightCm - borderTopCm - borderBottomCm);
-			double pageOffsetToImageFromLeftCm = column * (printablePaperAreaWidthCm - overlappingWidthCm) - imageOffsetFromLeftPosterBorderCm;
-			double pageOffsetToImageFromTopCm = row * (printablePaperAreaHeightCm - overlappingHeightCm) - imageOffsetFromTopPosterBorderCm;
-			
-			paintCanvas->DrawImage(-pageOffsetToImageFromLeftCm, -pageOffsetToImageFromTopCm, posterImageWidthCm, posterImageHeightCm);
+			PaintPosterPageOnCanvas(paintCanvas, page);
 		}
 	}
 
