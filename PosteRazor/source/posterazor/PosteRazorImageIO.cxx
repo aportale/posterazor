@@ -212,19 +212,24 @@ public:
 
 		FreeImage_ConvertToRawBits(buffer, originalImage, width*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
 
-#ifdef _WIN32
-		unsigned int numberOfPixels = width * height;
-
-		for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++)
+		// Swapping RGB data if needed (like on Intel)
+		// following 3 endianness detection lines borrowed from: http://en.wikipedia.org/wiki/Endianness
+		long int i = 1;
+		const char *p = (const char *) &i;
+		if (p[0] == 1)  // Lowest address contains the least significant byte
 		{
-			unsigned char *pixelPtr = buffer + pixelIndex*3;
+			unsigned int numberOfPixels = width * height;
 
-			unsigned char temp = pixelPtr[0];
-			pixelPtr[0] = pixelPtr[2];
-			pixelPtr[2] = temp;
-			pixelPtr+=3;
+			for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++)
+			{
+				unsigned char *pixelPtr = buffer + pixelIndex*3;
+
+				unsigned char temp = pixelPtr[0];
+				pixelPtr[0] = pixelPtr[2];
+				pixelPtr[2] = temp;
+				pixelPtr+=3;
+			}
 		}
-#endif
 
 		if (temp24BPPImage)
 			FreeImage_Unload(temp24BPPImage);
