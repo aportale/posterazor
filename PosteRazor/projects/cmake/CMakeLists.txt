@@ -1,6 +1,8 @@
 PROJECT(PosteRazor)
 
-ADD_DEFINITIONS(-DFREEIMAGE_LIB, -DNO_OPENGL_PREVIEW)
+ADD_DEFINITIONS(
+	-DFREEIMAGE_LIB
+)
 
 SET(POSTERAZOR_SRCS
 	../../source/posterazor/PosteRazor.cxx
@@ -23,33 +25,54 @@ INCLUDE_DIRECTORIES(
 	${POSTERAZOR_SOURCE_DIR}../../source/posterazor
 	${POSTERAZOR_SOURCE_DIR}../../source/posterazor/ui
 	${POSTERAZOR_SOURCE_DIR}../../source/tools
-	${POSTERAZOR_SOURCE_DIR}../../thirdparty/fltk-1.1
 	${POSTERAZOR_SOURCE_DIR}../../thirdparty/FreeImage/Dist
 	${POSTERAZOR_SOURCE_DIR}../../thirdparty/Fl_Native_File_Chooser
 )
 
 LINK_DIRECTORIES(
-	${POSTERAZOR_SOURCE_DIR}../../thirdparty/fltk-1.1/lib
 	${POSTERAZOR_SOURCE_DIR}../../thirdparty/FreeImage/Dist
-	/usr/X11R6/lib
 )
 
-SET_TARGET_PROPERTIES(PosteRazor PROPERTIES LINK_FLAGS "/nodefaultlib:LIBC")
-
 ADD_EXECUTABLE(PosteRazor ${POSTERAZOR_SRCS})
+
+IF (WIN32)
+	INCLUDE_DIRECTORIES(
+		${POSTERAZOR_SOURCE_DIR}../../thirdparty/fltk-1.1
+	)
+	LINK_DIRECTORIES(
+		${POSTERAZOR_SOURCE_DIR}../../thirdparty/fltk-1.1/lib
+	)
+	TARGET_LINK_LIBRARIES(PosteRazor
+		debug fltkgld
+		optimized fltkgl
+		wsock32
+		comctl32
+		glu32
+		opengl32
+	)
+	SET_TARGET_PROPERTIES(PosteRazor PROPERTIES LINK_FLAGS "/nodefaultlib:LIBC")
+ENDIF (WIN32)
+
+IF (UNIX)
+	ADD_DEFINITIONS(
+		-DNO_OPENGL_PREVIEW
+	)
+#	FIND_PACKAGE(X11)
+	LINK_DIRECTORIES(
+		${POSTERAZOR_SOURCE_DIR}../../thirdparty/FreeImage/Dist
+#		${X11_LIBRARIES}
+		/usr/X11R6/lib
+	)
+	TARGET_LINK_LIBRARIES(PosteRazor
+		debug fltk_imagesd
+		optimized fltk_images
+		X11
+	)
+ENDIF (UNIX)
 
 TARGET_LINK_LIBRARIES(PosteRazor
 	debug fltkd
 	optimized fltk
-	debug fltk_imagesd
-	optimized fltk_images
-#	debug fltkgld
-#	optimized fltkgl
 	debug FreeImaged
 	optimized freeimage
-	X11
-#	wsock32
-#	comctl32
-#	glu32
-#	opengl32
 )
