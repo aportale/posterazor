@@ -21,6 +21,13 @@ SET(POSTERAZOR_SRCS
 	../../source/posterazor/ui/translations/Translations.cxx
 )
 
+IF (WIN32 OR APPLE)
+	SET(POSTERAZOR_SRCS
+		${POSTERAZOR_SRCS}
+		../../source/posterazor/ui/Fl_Gl_Paint_Canvas.cpp
+	)
+ENDIF (WIN32 OR APPLE)
+
 INCLUDE_DIRECTORIES(
 	${POSTERAZOR_SOURCE_DIR}../../source/posterazor
 	${POSTERAZOR_SOURCE_DIR}../../source/posterazor/ui
@@ -31,6 +38,8 @@ INCLUDE_DIRECTORIES(
 
 LINK_DIRECTORIES(
 	${POSTERAZOR_SOURCE_DIR}../../thirdparty/FreeImage/Dist
+# This is unly needed for WIN32. It's here, because apparently CMake 2.4 doesn't allow to add LINK_DIRECTORIES in a second call
+	${POSTERAZOR_SOURCE_DIR}../../thirdparty/fltk-1.1/lib
 )
 
 ADD_EXECUTABLE(PosteRazor ${POSTERAZOR_SRCS})
@@ -76,3 +85,4 @@ TARGET_LINK_LIBRARIES(PosteRazor
 	debug FreeImaged
 	optimized freeimage
 )
+
