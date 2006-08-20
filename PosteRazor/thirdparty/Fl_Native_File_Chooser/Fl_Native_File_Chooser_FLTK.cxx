@@ -28,6 +28,7 @@
 //
 
 #include <FL/Fl_Native_File_Chooser.H>
+#include <sys/stat.h>
 #include "common.cxx"
 
 static int G_init = 0;				// 'first time' initialize flag
@@ -39,6 +40,7 @@ Fl_Native_File_Chooser::Fl_Native_File_Chooser(int val) {
 	Fl_File_Icon::load_system_icons();	// OK to call more than once
 	G_init = 1;				// eg. if app already called from main()
     }
+    _btype       = val;
     _options     = NO_OPTIONS;
     _filter      = NULL;
     _parsedfilt  = NULL;
@@ -89,7 +91,12 @@ int Fl_Native_File_Chooser::type_fl_file(int val) {
 }
 
 void Fl_Native_File_Chooser::type(int val) {
+    _btype = val;
     file_chooser->type(type_fl_file(val));
+}
+
+int Fl_Native_File_Chooser::type() const {
+    return(_btype);
 }
 
 // SET OPTIONS
@@ -136,9 +143,7 @@ int Fl_Native_File_Chooser::show() {
 
     // OPTIONS: NEW FOLDER
     if ( options() & NEW_FOLDER )
-        file_chooser->type(file_chooser->type() |  Fl_File_Chooser::CREATE);	// on
-    else
-        file_chooser->type(file_chooser->type() & ~Fl_File_Chooser::CREATE);	// off
+        file_chooser->type(file_chooser->type() | Fl_File_Chooser::CREATE);	// on
 
     // SHOW
     file_chooser->show();
@@ -151,6 +156,18 @@ int Fl_Native_File_Chooser::show() {
         _prevvalue = strfree(_prevvalue);
 	_prevvalue = strnew(file_chooser->value());
 	_filtvalue = file_chooser->filter_value();	// update filter value
+
+	// HANDLE SHOWING 'SaveAs' CONFIRM
+	if ( options() & SAVEAS_CONFIRM && type() == BROWSE_SAVE_FILE ) {
+	    struct stat buf;
+	    if ( stat(file_chooser->value(), &buf) != -1 ) {
+		if ( buf.st_mode & S_IFREG ) {			// Regular file + exists?
+		     if ( fl_choice("File exists. Are you sure you want to overwrite?", "Cancel", "   OK   ", NULL) == 0 ) {
+		         return(1);
+		     }
+		}
+	    }
+	}
     }
 
     if ( file_chooser->count() ) return(0);

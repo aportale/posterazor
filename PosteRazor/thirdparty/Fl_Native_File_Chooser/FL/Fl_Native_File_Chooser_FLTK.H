@@ -43,6 +43,7 @@ public:
 	PREVIEW        = 0x0004,	// enable preview mode
     };
 private:
+    int   _btype;			// kind-of browser to show()
     int   _options;			// general options
     char *_filter;			// user supplied filter
     char *_parsedfilt;			// parsed filter
