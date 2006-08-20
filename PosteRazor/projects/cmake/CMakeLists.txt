@@ -21,12 +21,12 @@ SET(POSTERAZOR_SRCS
 	../../source/posterazor/ui/translations/Translations.cxx
 )
 
-IF (WIN32 OR APPLE)
+IF (NOT UNIX)
 	SET(POSTERAZOR_SRCS
 		${POSTERAZOR_SRCS}
 		../../source/posterazor/ui/Fl_Gl_Paint_Canvas.cpp
 	)
-ENDIF (WIN32 OR APPLE)
+ENDIF (NOT UNIX)
 
 INCLUDE_DIRECTORIES(
 	${POSTERAZOR_SOURCE_DIR}../../source/posterazor
@@ -42,9 +42,9 @@ LINK_DIRECTORIES(
 	${POSTERAZOR_SOURCE_DIR}../../thirdparty/fltk-1.1/lib
 )
 
-ADD_EXECUTABLE(PosteRazor ${POSTERAZOR_SRCS})
 
 IF (WIN32)
+	ADD_EXECUTABLE(PosteRazor WIN32 ${POSTERAZOR_SRCS} ../../source/posterazor/ui/windowsResources/PosteRazorUI.rc)
 	INCLUDE_DIRECTORIES(
 		${POSTERAZOR_SOURCE_DIR}../../thirdparty/fltk-1.1
 	)
@@ -60,7 +60,10 @@ IF (WIN32)
 		opengl32
 	)
 	SET_TARGET_PROPERTIES(PosteRazor PROPERTIES LINK_FLAGS "/nodefaultlib:LIBC")
+ELSE (WIN32)
+	ADD_EXECUTABLE(PosteRazor ${POSTERAZOR_SRCS})
 ENDIF (WIN32)
+
 
 IF (UNIX)
 	ADD_DEFINITIONS(
@@ -78,6 +81,9 @@ IF (UNIX)
 		X11
 	)
 ENDIF (UNIX)
+
+IF (APPLE)
+ENDIF(APPLE)
 
 TARGET_LINK_LIBRARIES(PosteRazor
 	debug fltkd
