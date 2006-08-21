@@ -21,12 +21,12 @@ SET(POSTERAZOR_SRCS
 	../../source/posterazor/ui/translations/Translations.cxx
 )
 
-IF (NOT UNIX)
+IF (WIN32 OR APPLE)
 	SET(POSTERAZOR_SRCS
 		${POSTERAZOR_SRCS}
 		../../source/posterazor/ui/Fl_Gl_Paint_Canvas.cpp
 	)
-ENDIF (NOT UNIX)
+ENDIF (WIN32 OR APPLE)
 
 INCLUDE_DIRECTORIES(
 	${POSTERAZOR_SOURCE_DIR}../../source/posterazor
@@ -37,6 +37,7 @@ INCLUDE_DIRECTORIES(
 )
 
 LINK_DIRECTORIES(
+	${POSTERAZOR_SOURCE_DIR}../../thirdparty/FreeImage
 	${POSTERAZOR_SOURCE_DIR}../../thirdparty/FreeImage/Dist
 # This is unly needed for WIN32. It's here, because apparently CMake 2.4 doesn't allow to add LINK_DIRECTORIES in a second call
 	${POSTERAZOR_SOURCE_DIR}../../thirdparty/fltk-1.1/lib
@@ -65,7 +66,7 @@ ELSE (WIN32)
 ENDIF (WIN32)
 
 
-IF (UNIX)
+IF (UNIX AND NOT APPLE)
 	ADD_DEFINITIONS(
 		-DNO_OPENGL_PREVIEW
 	)
@@ -80,9 +81,17 @@ IF (UNIX)
 		optimized fltk_images
 		X11
 	)
-ENDIF (UNIX)
+ENDIF (UNIX AND NOT APPLE)
 
 IF (APPLE)
+# FreeImages make script on OSX doesn't finish and doesn't copy stuff into into the Dist directory
+	INCLUDE_DIRECTORIES(
+		${POSTERAZOR_SOURCE_DIR}../../thirdparty/FreeImage/Source
+	)
+	TARGET_LINK_LIBRARIES(PosteRazor
+		fltk_gl
+		AGL
+	)
 ENDIF(APPLE)
 
 TARGET_LINK_LIBRARIES(PosteRazor
