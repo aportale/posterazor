@@ -28,7 +28,7 @@
 #include "translations/TranslationConstants.h"
 #include <string.h>
 
-#ifdef WIN32
+#if defined (WIN32)
   #include <math.h>
   #include <io.h>
   #include "windowsResources/PosteRazorResource.h"
@@ -39,6 +39,11 @@
   #include <iostream>
   #define CASESENSITIVESTRCMP strcasecmp
   #define CASESENSITIVESTRNCMP strncasecmp
+#endif
+
+#if !defined (WIN32) && !defined(OSX)
+  #include <X11/xpm.h>
+  #include "x11Resources/PosteRazor.xpm"	
 #endif
 
 const char PreferencesVendor[] = "CasaPortale.de";
@@ -1081,6 +1086,13 @@ int main (int argc, char **argv)
 
 #ifdef WIN32
 	dialog.icon((char *)LoadIcon(fl_display, MAKEINTRESOURCE(POSTERAZOR_ICON)));
+#endif
+
+#if !defined (WIN32) && !defined(OSX)
+	fl_open_display();
+	Pixmap p, mask;
+	XpmCreatePixmapFromData(fl_display, DefaultRootWindow(fl_display), posteRazorXpm, &p, &mask, NULL);
+	dialog.icon((char *)p);
 #endif
 
 	Fl::scheme("plastic");

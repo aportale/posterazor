@@ -1,0 +1,25 @@
+/* XPM */
+static char *posteRazorXpm[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 3 1",
+"  c black",
+". c gray",
+"X c None",
+/* pixels */
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX",
+"XX            XX",
+"XX .......... XX",
+"XXX ........ XXX",
+"   ..........   ",
+" ...  .  .  ... ",
+" .. XX.XX.XX .. ",
+" .. XX.XX.XX .. ",
+" ...  .  .  ... ",
+"   ..........   ",
+"XXX ........ XXX",
+"XX .......... XX",
+"XX            XX",
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX"
+};

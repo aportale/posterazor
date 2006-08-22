@@ -43,7 +43,6 @@ LINK_DIRECTORIES(
 	${POSTERAZOR_SOURCE_DIR}../../thirdparty/fltk-1.1/lib
 )
 
-
 IF (WIN32)
 	ADD_EXECUTABLE(PosteRazor WIN32 ${POSTERAZOR_SRCS} ../../source/posterazor/ui/windowsResources/PosteRazorUI.rc)
 	INCLUDE_DIRECTORIES(
@@ -65,7 +64,6 @@ ELSE (WIN32)
 	ADD_EXECUTABLE(PosteRazor ${POSTERAZOR_SRCS})
 ENDIF (WIN32)
 
-
 IF (UNIX AND NOT APPLE)
 	ADD_DEFINITIONS(
 		-DNO_OPENGL_PREVIEW
@@ -80,6 +78,7 @@ IF (UNIX AND NOT APPLE)
 		debug fltk_imagesd
 		optimized fltk_images
 		X11
+		Xpm
 	)
 ENDIF (UNIX AND NOT APPLE)
 
@@ -100,4 +99,3 @@ TARGET_LINK_LIBRARIES(PosteRazor
 	debug FreeImaged
 	optimized freeimage
 )
-
