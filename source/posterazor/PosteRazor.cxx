@@ -680,9 +680,9 @@ public:
 		err = m_imageIO->SavePoster(fileName, GetPosterOutputFormat(), this, pagesCount, ConvertDistanceToCm(GetPrintablePaperAreaWidth()), ConvertDistanceToCm(GetPrintablePaperAreaHeight()));
 		if (!err && GetLaunchPDFApplication())
 		{
-#ifdef WIN32
+#if defined(WIN32)
 			ShellExecute(HWND_DESKTOP, "open", fileName, NULL, NULL, SW_SHOW);
-#else
+#elif defined(__APPLE__)
 			char commandStr[2048];
 			sprintf(commandStr, "open \"%s\"", fileName);
 			system(commandStr);

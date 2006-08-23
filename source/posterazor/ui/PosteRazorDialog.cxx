@@ -41,7 +41,7 @@
   #define CASESENSITIVESTRNCMP strncasecmp
 #endif
 
-#if !defined (WIN32) && !defined(OSX)
+#if !defined (WIN32) && !defined(__APPLE__)
   #include <X11/xpm.h>
   #include "x11Resources/PosteRazor.xpm"	
 #endif
@@ -104,7 +104,7 @@ public:
 	{
 #if defined (WIN32)
 		ShellExecute(HWND_DESKTOP, "open", url, NULL, NULL, SW_SHOW);
-#elif defined (OSX)
+#elif defined (__APPLE__)
 		char commandString[2048];
 		sprintf(commandString, "open \"%s\"", url);
 		system(commandString);
@@ -658,7 +658,7 @@ void PosteRazorDialog::LoadInputImage(const char *fileName)
 	bool loaded = false;
 
 	Fl_Native_File_Chooser loadImageChooser(Fl_Native_File_Chooser::BROWSE_FILE);
-#ifndef OSX
+#ifndef __APPLE__
 // filter stuff is still crashy os OSX
 	char filterString[1024] = "";
 	sprintf
@@ -1010,7 +1010,7 @@ void PosteRazorDialog::SavePoster(void)
 	bool fileExistsAskUserForOverwrite = false;
 	
 	Fl_Native_File_Chooser savePosterChooser(Fl_Native_File_Chooser::BROWSE_SAVE_FILE);
-#ifndef OSX
+#ifndef __APPLE__
 // filter stuff is still crashy os OSX
 	savePosterChooser.filter("Portable Document Format (*.PDF)\t*.pdf");
 #endif
@@ -1053,7 +1053,7 @@ void PosteRazorDialog::SetLaunchPDFApplication(void)
 	m_posteRazor->SetLaunchPDFApplication(m_setLaunchPDFApplicationCheckButton->value()==0?false:true);
 }
 
-#ifdef OSX
+#ifdef __APPLE__
 static char OSX_droppedFilenameOnIcon[2048] = "";
 static PosteRazorDialog *OSX_posteRazorDialogPointer = NULL;
 
@@ -1078,7 +1078,7 @@ static void	OSX_open_cb(const char* droppedFileName)
 
 int main (int argc, char **argv)
 {
-#ifdef OSX
+#ifdef __APPLE__
 	fl_open_callback(OSX_open_cb);
 #endif
 
@@ -1093,7 +1093,7 @@ int main (int argc, char **argv)
 	dialog.show();
 	Fl::wait();
 
-#if !defined (WIN32) && !defined(OSX)
+#if !defined(WIN32) && !defined(__APPLE__)
 	XpmAttributes icon_attributes;
 	Pixmap icon, icon_mask;
 	icon_attributes.valuemask = XpmSize | XpmReturnPixels;
@@ -1106,7 +1106,7 @@ int main (int argc, char **argv)
 	XSetWMHints(fl_display, fl_xid(&dialog), hints);
 #endif
 
-#ifndef OSX
+#ifndef __APPLE__
 	if (argc == 2)
 		dialog.LoadInputImage(argv[1]);
 #else
