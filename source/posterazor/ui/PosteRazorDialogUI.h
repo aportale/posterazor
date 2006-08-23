@@ -353,5 +353,4 @@ public:
   virtual void HandleUseOpenGLChangement(void) = 0;
   bool show_modal(void);
 };
-
 #endif
