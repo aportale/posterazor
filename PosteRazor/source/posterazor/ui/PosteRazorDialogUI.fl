@@ -46,12 +46,12 @@ widget_class PosteRazorDialogUI {
     Fl_Button m_nextButton {
       label {Next @-2->}
       callback {next();}
-      xywh {515 420 95 25} labelcolor 32
+      xywh {500 420 110 25} labelcolor 32
     }
     Fl_Button m_prevButton {
       label {@-2<- Back}
       callback {prev();}
-      xywh {410 420 95 25} labelcolor 32
+      xywh {380 420 110 25} labelcolor 32
     }
     Fl_Button m_settingsButton {
       label {Settings...}
@@ -91,7 +91,7 @@ widget_class PosteRazorDialogUI {
           xywh {460 130 135 65} align 21
         }
         Fl_Box m_imageInfoKeysLabel {
-          xywh {335 130 125 65} align 25
+          xywh {325 130 135 65} align 25
         }
       }
       Fl_Box {} {
