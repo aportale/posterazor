@@ -89,7 +89,7 @@ IF (APPLE)
 	)
 	TARGET_LINK_LIBRARIES(PosteRazor
 		fltk_gl
-		AGL
+		"-framework Carbon -framework AGL -framework ApplicationServices -framework OpenGL -lz"
 	)
 ENDIF(APPLE)
 
