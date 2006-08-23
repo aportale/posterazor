@@ -1082,23 +1082,29 @@ int main (int argc, char **argv)
 	fl_open_callback(OSX_open_cb);
 #endif
 
+	Fl::get_system_colors();
+	Fl::scheme("plastic");
 	PosteRazorDialog dialog;
 
 #ifdef WIN32
 	dialog.icon((char *)LoadIcon(fl_display, MAKEINTRESOURCE(POSTERAZOR_ICON)));
 #endif
 
-#if !defined (WIN32) && !defined(OSX)
-	fl_open_display();
-	Pixmap p, mask;
-	XpmCreatePixmapFromData(fl_display, DefaultRootWindow(fl_display), posteRazorXpm, &p, &mask, NULL);
-	dialog.icon((char *)p);
-#endif
-
-	Fl::scheme("plastic");
-	Fl::get_system_colors();
 	dialog.show();
 	Fl::wait();
+
+#if !defined (WIN32) && !defined(OSX)
+	XpmAttributes icon_attributes;
+	Pixmap icon, icon_mask;
+	icon_attributes.valuemask = XpmSize | XpmReturnPixels;
+	XWMHints *hints;	
+	XpmCreatePixmapFromData(fl_display, DefaultRootWindow(fl_display), posteRazorXpm, &icon, &icon_mask, &icon_attributes);
+	hints = XGetWMHints(fl_display, fl_xid(&dialog));
+	hints->icon_pixmap = icon;
+	hints->icon_mask = icon_mask;
+	hints->flags = IconPixmapHint | IconMaskHint;
+	XSetWMHints(fl_display, fl_xid(&dialog), hints);
+#endif
 
 #ifndef OSX
 	if (argc == 2)
