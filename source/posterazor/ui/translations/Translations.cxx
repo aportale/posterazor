@@ -31,7 +31,7 @@
 #include "TranslationItalian.h"
 #if defined (WIN32)
 #include <Windows.h>
-#elif defined (OSX)
+#elif defined (__APPLE__)
 #include <CoreFoundation/CoreFoundation.h>
 #endif
 #include <stdio.h> // for NULL
@@ -108,7 +108,7 @@ public:
 			(primaryLangID == LANG_POLISH)?eLanguagePolish:
 			(primaryLangID == LANG_ITALIAN)?eLanguageItalian:
 			eLanguageUndefined;
-#elif defined (OSX)
+#elif defined (__APPLE__)
 		CFBundleRef mainBundle = CFBundleGetMainBundle();
 		CFArrayRef locArray = CFBundleCopyBundleLocalizations(mainBundle);
 		CFArrayRef preferredLanguages = CFBundleCopyPreferredLocalizationsFromArray(locArray);
@@ -117,7 +117,7 @@ public:
 		CFStringRef languageEnglish = CFSTR("English");
 		CFStringRef languageGerman = CFSTR("German");
 		CFStringRef languageFrench = CFSTR("French");
-		CFStringRef languageFrench = CFSTR("Italian");
+		CFStringRef languageItalian = CFSTR("Italian");
 		systemLanguage =
 			(CFStringCompare(language, languageEnglish, 0) == kCFCompareEqualTo)?eLanguageEnglish:
 			(CFStringCompare(language, languageGerman, 0) == kCFCompareEqualTo)?eLanguageGerman:
