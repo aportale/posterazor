@@ -29,27 +29,27 @@ IF (WIN32 OR APPLE)
 ENDIF (WIN32 OR APPLE)
 
 INCLUDE_DIRECTORIES(
-	${POSTERAZOR_SOURCE_DIR}../../source/posterazor
-	${POSTERAZOR_SOURCE_DIR}../../source/posterazor/ui
-	${POSTERAZOR_SOURCE_DIR}../../source/tools
-	${POSTERAZOR_SOURCE_DIR}../../thirdparty/FreeImage/Dist
-	${POSTERAZOR_SOURCE_DIR}../../thirdparty/Fl_Native_File_Chooser
+	../../source/posterazor
+	../../source/posterazor/ui
+	../../source/tools
+	../../thirdparty/FreeImage/Dist
+	../../thirdparty/Fl_Native_File_Chooser
 )
 
 LINK_DIRECTORIES(
-	${POSTERAZOR_SOURCE_DIR}../../thirdparty/FreeImage
-	${POSTERAZOR_SOURCE_DIR}../../thirdparty/FreeImage/Dist
+	../../thirdparty/FreeImage
+	../../thirdparty/FreeImage/Dist
 # This is unly needed for WIN32. It's here, because apparently CMake 2.4 doesn't allow to add LINK_DIRECTORIES in a second call
-	${POSTERAZOR_SOURCE_DIR}../../thirdparty/fltk-1.1/lib
+	../../thirdparty/fltk-1.1/lib
 )
 
 IF (WIN32)
 	ADD_EXECUTABLE(PosteRazor WIN32 ${POSTERAZOR_SRCS} ../../source/posterazor/ui/windowsResources/PosteRazorUI.rc)
 	INCLUDE_DIRECTORIES(
-		${POSTERAZOR_SOURCE_DIR}../../thirdparty/fltk-1.1
+		../../thirdparty/fltk-1.1
 	)
 	LINK_DIRECTORIES(
-		${POSTERAZOR_SOURCE_DIR}../../thirdparty/fltk-1.1/lib
+		../../thirdparty/fltk-1.1/lib
 	)
 	TARGET_LINK_LIBRARIES(PosteRazor
 		debug fltkgld
@@ -60,17 +60,16 @@ IF (WIN32)
 		opengl32
 	)
 	SET_TARGET_PROPERTIES(PosteRazor PROPERTIES LINK_FLAGS "/nodefaultlib:LIBC")
-ELSE (WIN32)
-	ADD_EXECUTABLE(PosteRazor ${POSTERAZOR_SRCS})
 ENDIF (WIN32)
 
 IF (UNIX AND NOT APPLE)
+	ADD_EXECUTABLE(PosteRazor ${POSTERAZOR_SRCS})
 	ADD_DEFINITIONS(
 		-DNO_OPENGL_PREVIEW
 	)
 #	FIND_PACKAGE(X11)
 	LINK_DIRECTORIES(
-		${POSTERAZOR_SOURCE_DIR}../../thirdparty/FreeImage/Dist
+		../../thirdparty/FreeImage/Dist
 #		${X11_LIBRARIES}
 		/usr/X11R6/lib
 	)
@@ -83,9 +82,11 @@ IF (UNIX AND NOT APPLE)
 ENDIF (UNIX AND NOT APPLE)
 
 IF (APPLE)
+	ADD_EXECUTABLE(PosteRazor MACOSX_BUNDLE ${POSTERAZOR_SRCS})
+	SET(MACOSX_BUNDLE_ICON_FILE "../../source/posterazor/ui/OSXResources/PosteRazor.icns")
 # FreeImages make script on OSX doesn't finish and doesn't copy stuff into into the Dist directory
 	INCLUDE_DIRECTORIES(
-		${POSTERAZOR_SOURCE_DIR}../../thirdparty/FreeImage/Source
+		../../thirdparty/FreeImage/Source
 	)
 	TARGET_LINK_LIBRARIES(PosteRazor
 		fltk_gl
