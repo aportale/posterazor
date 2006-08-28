@@ -1,13 +1,18 @@
 PROJECT(PosteRazor)
 
-ADD_DEFINITIONS(
-	-DFREEIMAGE_LIB
-)
+IF (WIN32 OR APPLE)
+	SET(POSTERAZOR_ENABLEGLPREVIEW TRUE)
+ENDIF (WIN32 OR APPLE)
 
-SET(POSTERAZOR_SRCS
+SET(POSTERAZOR_CORESOURCES
 	../../source/posterazor/PosteRazor.cxx
 	../../source/posterazor/PosteRazorImageIO.cxx
 	../../source/posterazor/PosteRazorPDFOutput.cxx
+	../../source/tools/UnitsOfLength.cxx
+	../../source/tools/PaperFormats.cxx
+)
+
+SET(POSTERAZOR_UISOURCES
 	../../source/posterazor/ui/Fl_Paint_Canvas_Base.cpp
 	../../source/posterazor/ui/Fl_Paint_Canvas_Group.cpp
 	../../source/posterazor/ui/Fl_Draw_Paint_Canvas.cpp
@@ -15,20 +20,24 @@ SET(POSTERAZOR_SRCS
 	../../source/posterazor/ui/Fl_Image_Text_Button.cpp
 	../../source/posterazor/ui/PosteRazorDialog.cxx
 	../../source/posterazor/ui/PosteRazorDialogUI.cxx
-	../../source/tools/UnitsOfLength.cxx
-	../../source/tools/PaperFormats.cxx
-	../../thirdparty/Fl_Native_File_Chooser/Fl_Native_File_Chooser.cxx
 	../../source/posterazor/ui/translations/Translations.cxx
+	../../thirdparty/Fl_Native_File_Chooser/Fl_Native_File_Chooser.cxx
 )
 
-IF (WIN32 OR APPLE)
-	SET(POSTERAZOR_SRCS
-		${POSTERAZOR_SRCS}
-		../../source/posterazor/ui/Fl_Gl_Paint_Canvas.cpp
-	)
-ENDIF (WIN32 OR APPLE)
+SET(POSTERAZOR_SOURCES
+	${POSTERAZOR_CORESOURCES}
+	${POSTERAZOR_UISOURCES}
+)
 
-INCLUDE_DIRECTORIES(
+SET(POSTERAZOR_DEFINITIONS
+	-DFREEIMAGE_LIB
+)
+
+SET(POSTERAZOR_LINKDIRECTORIES
+	../../thirdparty/FreeImage/Dist
+)
+
+SET(POSTERAZOR_INCLUDEDIRECTORIES
 	../../source/posterazor
 	../../source/posterazor/ui
 	../../source/tools
@@ -36,67 +45,83 @@ INCLUDE_DIRECTORIES(
 	../../thirdparty/Fl_Native_File_Chooser
 )
 
-LINK_DIRECTORIES(
-	../../thirdparty/FreeImage
-	../../thirdparty/FreeImage/Dist
-# This is unly needed for WIN32. It's here, because apparently CMake 2.4 doesn't allow to add LINK_DIRECTORIES in a second call
-	../../thirdparty/fltk-1.1/lib
-)
+IF (POSTERAZOR_ENABLEGLPREVIEW)
+	SET(POSTERAZOR_SOURCES
+		${POSTERAZOR_SOURCES}
+		../../source/posterazor/ui/Fl_Gl_Paint_Canvas.cpp
+	)
+ELSE (POSTERAZOR_ENABLEGLPREVIEW)
+	SET(POSTERAZOR_DEFINITIONS
+		${POSTERAZOR_DEFINITIONS}
+		-DNO_OPENGL_PREVIEW
+	)
+ENDIF (POSTERAZOR_ENABLEGLPREVIEW)
 
 IF (WIN32)
-	ADD_EXECUTABLE(PosteRazor WIN32 ${POSTERAZOR_SRCS} ../../source/posterazor/ui/windowsResources/PosteRazorUI.rc)
-	INCLUDE_DIRECTORIES(
+	ADD_EXECUTABLE(PosteRazor WIN32 ${POSTERAZOR_SOURCES}
+		../../source/posterazor/ui/windowsResources/PosteRazorUI.rc
+	)
+	SET(POSTERAZOR_INCLUDEDIRECTORIES ${POSTERAZOR_INCLUDEDIRECTORIES}
 		../../thirdparty/fltk-1.1
 	)
-	LINK_DIRECTORIES(
+	SET(POSTERAZOR_LINKDIRECTORIES
+		${POSTERAZOR_LINKDIRECTORIES}
 		../../thirdparty/fltk-1.1/lib
 	)
-	TARGET_LINK_LIBRARIES(PosteRazor
-		debug fltkgld
-		optimized fltkgl
+	SET(POSTERAZOR_LINKLIBRARIES
+		debug FreeImaged
+		optimized FreeImage
+		debug fltkd
+		optimized fltk
 		wsock32
 		comctl32
-		glu32
-		opengl32
 	)
+	IF (POSTERAZOR_ENABLEGLPREVIEW)
+		SET(POSTERAZOR_LINKLIBRARIES 
+			${POSTERAZOR_LINKLIBRARIES}
+			debug fltkgld
+			optimized fltkgl
+			glu32
+			opengl32
+		)
+	ENDIF (POSTERAZOR_ENABLEGLPREVIEW)
 	SET_TARGET_PROPERTIES(PosteRazor PROPERTIES LINK_FLAGS "/nodefaultlib:LIBC")
 ENDIF (WIN32)
 
-IF (UNIX AND NOT APPLE)
-	ADD_EXECUTABLE(PosteRazor ${POSTERAZOR_SRCS})
-	ADD_DEFINITIONS(
-		-DNO_OPENGL_PREVIEW
+IF (APPLE)
+	ADD_EXECUTABLE(PosteRazor MACOSX_BUNDLE ${POSTERAZOR_SOURCES})
+# FreeImages make script on OSX doesn't finish and doesn't copy stuff into into the Dist directory
+	SET(POSTERAZOR_INCLUDEDIRECTORIES
+		${POSTERAZOR_INCLUDEDIRECTORIES}
+		../../thirdparty/FreeImage/Source
 	)
+	SET_TARGET_PROPERTIES(PosteRazor PROPERTIES LINK_FLAGS "-L../../thirdparty/FreeImage")
+	SET(POSTERAZOR_LINKLIBRARIES
+		fltk
+		fltk_gl
+		freeimage
+		"-framework Carbon -framework AGL -framework ApplicationServices -framework OpenGL -lz"
+	)
+ENDIF(APPLE)
+
+IF (UNIX AND NOT APPLE)
+	ADD_EXECUTABLE(PosteRazor ${POSTERAZOR_SOURCES})
 #	FIND_PACKAGE(X11)
-	LINK_DIRECTORIES(
-		../../thirdparty/FreeImage/Dist
+	SET(POSTERAZOR_LINKDIRECTORIES
+		${POSTERAZOR_LINKDIRECTORIES}
 #		${X11_LIBRARIES}
 		/usr/X11R6/lib
 	)
-	TARGET_LINK_LIBRARIES(PosteRazor
+	SET(POSTERAZOR_LINKLIBRARIES
 		debug fltk_imagesd
 		optimized fltk_images
+		freeimage
 		X11
 		Xpm
 	)
 ENDIF (UNIX AND NOT APPLE)
 
-IF (APPLE)
-	ADD_EXECUTABLE(PosteRazor MACOSX_BUNDLE ${POSTERAZOR_SRCS})
-	SET(MACOSX_BUNDLE_ICON_FILE "../../source/posterazor/ui/OSXResources/PosteRazor.icns")
-# FreeImages make script on OSX doesn't finish and doesn't copy stuff into into the Dist directory
-	INCLUDE_DIRECTORIES(
-		../../thirdparty/FreeImage/Source
-	)
-	TARGET_LINK_LIBRARIES(PosteRazor
-		fltk_gl
-		"-framework Carbon -framework AGL -framework ApplicationServices -framework OpenGL -lz"
-	)
-ENDIF(APPLE)
-
-TARGET_LINK_LIBRARIES(PosteRazor
-	debug fltkd
-	optimized fltk
-	debug FreeImaged
-	optimized freeimage
-)
+ADD_DEFINITIONS(${POSTERAZOR_DEFINITIONS})
+LINK_DIRECTORIES(${POSTERAZOR_LINKDIRECTORIES})
+INCLUDE_DIRECTORIES(${POSTERAZOR_INCLUDEDIRECTORIES})
+TARGET_LINK_LIBRARIES(PosteRazor ${POSTERAZOR_LINKLIBRARIES})
