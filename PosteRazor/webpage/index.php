@@ -281,6 +281,7 @@
 					<li><? text('Polish translation:', 'Polnische &Uuml;bersetzung:'); ?> Grzegorz Wacikowski</li>
 					<li><? text('French translation:', 'Franz&ouml;sische &Uuml;bersetzung:'); ?> Martin Loyer</li>
 					<li><? text('Italian translation (next PosteRazor version):', 'Italienische &Uuml;bersetzung (n&auml;chste PosteRazor-version):'); ?> Stefano Nosei</li>
+					<li><? text('Russian translation (next PosteRazor version):', 'Russische &Uuml;bersetzung (n&auml;chste PosteRazor-version):'); ?> Alendos</li>
 				</ul>
 <?
 		};		
