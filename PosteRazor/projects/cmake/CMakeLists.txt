@@ -113,8 +113,8 @@ IF (UNIX AND NOT APPLE)
 		/usr/X11R6/lib
 	)
 	SET(POSTERAZOR_LINKLIBRARIES
-		debug fltk_imagesd
-		optimized fltk_images
+		fltk
+		fltk_images
 		freeimage
 		X11
 		Xpm
