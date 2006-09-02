@@ -28,6 +28,7 @@
 #include <FL/Fl_Native_File_Chooser.H>
 #include "PosteRazor.h"
 #include "PosteRazorDialogUI.h"
+#include "PosteRazorSettingsDialog.h"
 #include "translations/Translations.h"
 
 class PosteRazorDragDropWidget : public Fl_Box
@@ -37,19 +38,6 @@ public:
 	int handle(int event);
 };
 
-typedef struct
-{
-	enum PosteRazor::eUnitsOfLength UnitOfLength;
-	enum Fl_Paint_Canvas_Group::ePaintCanvasTypes previewType;
-	enum Translations::eLanguages language;
-} posteRazorSettings;
-
-class SettingsChangementHandler
-{
-public:
-	virtual void HandleOptionsChangement(posteRazorSettings *settings) = 0;
-};
-
 class PosteRazorDialog : public PosteRazorDialogUI, public SettingsChangementHandler
 {
 private:
@@ -57,7 +45,7 @@ private:
 	PosteRazorDragDropWidget        *m_dragDropWidget;
 	Fl_Menu_Item                    *m_paperFormatMenuItems;
 	posteRazorSettings              m_settings;
-	class PosteRazorSettingsDialog  *m_settingsDialog;
+	PosteRazorSettingsDialog  *m_settingsDialog;
 	class PosteRazorHelpDialogUI    *m_helpDialog;
 	char                            m_loadImageChooserLastPath[1024];
 	char                            m_savePosterChooserLastPath[1024];
