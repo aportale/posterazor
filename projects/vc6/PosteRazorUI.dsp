@@ -120,6 +120,10 @@ SOURCE=..\..\source\posterazor\ui\PosteRazorDialogUI.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\source\posterazor\ui\PosteRazorSettingsDialog.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\source\posterazor\ui\windowsResources\PosteRazorUI.rc
 # End Source File
 # Begin Source File
@@ -161,6 +165,10 @@ SOURCE=..\..\source\posterazor\ui\PosteRazorDialog.h
 # Begin Source File
 
 SOURCE=..\..\source\posterazor\ui\PosteRazorDialogUI.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor\ui\PosteRazorSettingsDialog.h
 # End Source File
 # Begin Source File
 
