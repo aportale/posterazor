@@ -45,7 +45,7 @@ private:
 	PosteRazorDragDropWidget        *m_dragDropWidget;
 	Fl_Menu_Item                    *m_paperFormatMenuItems;
 	posteRazorSettings              m_settings;
-	PosteRazorSettingsDialog  *m_settingsDialog;
+	PosteRazorSettingsDialog        *m_settingsDialog;
 	class PosteRazorHelpDialogUI    *m_helpDialog;
 	char                            m_loadImageChooserLastPath[1024];
 	char                            m_savePosterChooserLastPath[1024];

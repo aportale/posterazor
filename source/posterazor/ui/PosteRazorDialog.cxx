@@ -21,6 +21,7 @@
 */
 
 #include "PosteRazorDialog.h"
+#include "PosteRazorHelpDialog.h"
 #include "Fl_Persistent_Preferences.h"
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
@@ -32,7 +33,6 @@
   #include <math.h>
   #include <io.h>
   #include "windowsResources/PosteRazorResource.h"
-  #include <Shellapi.h>
   #define CASESENSITIVESTRCMP stricmp
   #define CASESENSITIVESTRNCMP strnicmp
 #else
@@ -86,50 +86,6 @@ int PosteRazorDragDropWidget::handle(int event)
 		return 0;
 	};
 }
-
-class PosteRazorHelpDialog: public PosteRazorHelpDialogUI
-{
-public:
-	PosteRazorHelpDialog()
-		:PosteRazorHelpDialogUI(500, 400, "PosteRazor Help")
-	{
-		m_help_view->link(LinkCallback);
-	}
-
-	void SetHtmlContent(const char *content) {m_help_view->value(content);}
-	void JumpToAnchor(const char *anchor) {m_help_view->topline(anchor);}
-	void HandleHomepageButtonClick(void) {OpenURLInBrowser(TRANSLATIONS->PosteRazorWebSiteURL());}
-
-	void OpenURLInBrowser(const char* url)
-	{
-#if defined (WIN32)
-		ShellExecute(HWND_DESKTOP, "open", url, NULL, NULL, SW_SHOW);
-#elif defined (__APPLE__)
-		char commandString[2048];
-		sprintf(commandString, "open \"%s\"", url);
-		system(commandString);
-#endif
-	}
-
-	static const char *LinkCallback(Fl_Widget *w, const char *uri)
-	{
-#define HTTPSCHEMESTART "http://"
-		if (0 == CASESENSITIVESTRNCMP(uri, HTTPSCHEMESTART, strlen(HTTPSCHEMESTART)))
-		{
-			((PosteRazorHelpDialog*)(w->parent()))->OpenURLInBrowser(uri);
-			return NULL;
-		}
-		else
-			return uri;
-	}
-
-	void UpdateLanguage(void)
-	{
-		label(TRANSLATIONS->PosteRazorHelp());
-		SetHomepageButtonLabel(TRANSLATIONS->PosteRazorWebSite());
-		redraw();
-	}
-};
 
 PosteRazorDialog::PosteRazorDialog(void)
 	:PosteRazorDialogUI(620, 455, "PosteRazor "POSTERAZORVERSION)
