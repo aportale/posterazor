@@ -19,6 +19,7 @@ SET(POSTERAZOR_UISOURCES
 	../../source/posterazor/ui/Fl_Persistent_Preferences.cxx
 	../../source/posterazor/ui/Fl_Image_Text_Button.cpp
 	../../source/posterazor/ui/PosteRazorDialog.cxx
+	../../source/posterazor/ui/PosteRazorHelpDialog.cxx
 	../../source/posterazor/ui/PosteRazorSettingsDialog.cxx
 	../../source/posterazor/ui/PosteRazorDialogUI.cxx
 	../../source/posterazor/ui/translations/Translations.cxx
