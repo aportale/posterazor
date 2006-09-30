@@ -21,7 +21,7 @@
 */
 
 #include "PosteRazorHelpDialog.h"
-#include "translations/Translations.h"
+#include "Translations.h"
 
 #if defined (WIN32)
   #include <Shellapi.h>

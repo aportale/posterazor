@@ -26,13 +26,13 @@
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
 #include <FL/x.H>
-#include "translations/TranslationConstants.h"
+#include "TranslationConstants.h"
 #include <string.h>
 
 #if defined (WIN32)
   #include <math.h>
   #include <io.h>
-  #include "windowsResources/PosteRazorResource.h"
+  #include "PosteRazorResource.h"
   #define CASESENSITIVESTRCMP stricmp
   #define CASESENSITIVESTRNCMP strnicmp
 #else
@@ -43,7 +43,7 @@
 
 #if !defined (WIN32) && !defined(__APPLE__)
   #include <X11/xpm.h>
-  #include "x11Resources/PosteRazor.xpm"	
+  #include "PosteRazor.xpm"	
 #endif
 
 const char PreferencesVendor[] = "CasaPortale.de";

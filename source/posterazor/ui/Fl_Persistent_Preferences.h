@@ -24,7 +24,7 @@
 #define Fl_Persistent_Preferences_h
 
 #include <FL/Fl_Preferences.H>
-#include "../../tools/PersistentPreferencesInterface.h"
+#include "PersistentPreferencesInterface.h"
 
 class Fl_Persistent_Preferences: public Fl_Preferences, public PersistentPreferencesInterface
 {

@@ -23,11 +23,11 @@
 #ifndef PosteRazor_h
 #define PosteRazor_h
 
-#include "../tools/PaperFormats.h"
-#include "../tools/ColorTypes.h"
-#include "../tools/ImageIOTypes.h"
-#include "../tools/PaintCanvasInterface.h"
-#include "../tools/PersistentPreferencesInterface.h"
+#include "PaperFormats.h"
+#include "ColorTypes.h"
+#include "ImageIOTypes.h"
+#include "PaintCanvasInterface.h"
+#include "PersistentPreferencesInterface.h"
 
 class PosteRazor: public PaperFormats, public ColorTypes, public ImageIOTypes, public PainterInterface
 {
