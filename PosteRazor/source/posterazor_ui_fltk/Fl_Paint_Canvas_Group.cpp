@@ -20,9 +20,9 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
+#include "Fl_Paint_Canvas_Group.h"
 #include <string.h>
 #include <FL/Fl.H>
-#include "Fl_Paint_Canvas_Group.h"
 
 Fl_Paint_Canvas_Group::Fl_Paint_Canvas_Group(int x, int y, int width, int height)
 	:Fl_Group(x, y, width, height)

@@ -42,7 +42,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /W3 /GX /O2 /I "..\..\source\posterazor" /I "..\..\thirdparty\fltk-1.1" /I "..\..\thirdparty\Fl_Native_File_Chooser" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "VC_EXTRA_LEAN" /D "WIN32_EXTRA_LEAN" /D "OPENGL_PREVIEW" /FR /YX /FD /c
+# ADD CPP /nologo /W3 /GX /O2 /I "..\..\source\posterazor_ui_common\windowsResources" /I "..\..\source\posterazor_ui_common\translations" /I "..\..\source\tools" /I "..\..\source\posterazor" /I "..\..\thirdparty\fltk-1.1" /I "..\..\thirdparty\Fl_Native_File_Chooser" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "VC_EXTRA_LEAN" /D "WIN32_EXTRA_LEAN" /D "OPENGL_PREVIEW" /FR /YX /FD /c
 # ADD BASE RSC /l 0x407 /d "NDEBUG"
 # ADD RSC /l 0x407 /d "NDEBUG"
 BSC32=bscmake.exe
@@ -67,7 +67,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /I "..\..\source\posterazor" /I "..\..\source\posterazor\ui\windowsResources" /I "..\..\source\posterazor\ui\translations" /I "..\..\source\tools" /I "..\..\thirdparty\fltk-1.1" /I "..\..\thirdparty\Fl_Native_File_Chooser" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "VC_EXTRA_LEAN" /D "WIN32_EXTRA_LEAN" /D "OPENGL_PREVIEW" /FR /YX /FD /GZ /c
+# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /I "..\..\source\posterazor_ui_common\windowsResources" /I "..\..\source\posterazor_ui_common\translations" /I "..\..\source\tools" /I "..\..\source\posterazor" /I "..\..\thirdparty\fltk-1.1" /I "..\..\thirdparty\Fl_Native_File_Chooser" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "VC_EXTRA_LEAN" /D "WIN32_EXTRA_LEAN" /D "OPENGL_PREVIEW" /FR /YX /FD /GZ /c
 # ADD BASE RSC /l 0x407 /d "_DEBUG"
 # ADD RSC /l 0x407 /d "_DEBUG"
 BSC32=bscmake.exe
@@ -88,51 +88,51 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\Fl_Draw_Paint_Canvas.cpp
+SOURCE=..\..\source\posterazor_ui_fltk\Fl_Draw_Paint_Canvas.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\Fl_Gl_Paint_Canvas.cpp
+SOURCE=..\..\source\posterazor_ui_fltk\Fl_Gl_Paint_Canvas.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\Fl_Image_Text_Button.cpp
+SOURCE=..\..\source\posterazor_ui_fltk\Fl_Image_Text_Button.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\Fl_Paint_Canvas_Base.cpp
+SOURCE=..\..\source\posterazor_ui_fltk\Fl_Paint_Canvas_Base.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\Fl_Paint_Canvas_Group.cpp
+SOURCE=..\..\source\posterazor_ui_fltk\Fl_Paint_Canvas_Group.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\Fl_Persistent_Preferences.cxx
+SOURCE=..\..\source\posterazor_ui_fltk\Fl_Persistent_Preferences.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\PosteRazorDialog.cxx
+SOURCE=..\..\source\posterazor_ui_fltk\PosteRazorDialog.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\PosteRazorDialogUI.cxx
+SOURCE=..\..\source\posterazor_ui_fltk\PosteRazorDialogUI.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\PosteRazorHelpDialog.cxx
+SOURCE=..\..\source\posterazor_ui_fltk\PosteRazorHelpDialog.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\PosteRazorSettingsDialog.cxx
+SOURCE=..\..\source\posterazor_ui_fltk\PosteRazorSettingsDialog.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\windowsResources\PosteRazorUI.rc
+SOURCE=..\..\source\posterazor_ui_common\windowsResources\PosteRazorUI.rc
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\translations\Translations.cxx
+SOURCE=..\..\source\posterazor_ui_common\translations\Translations.cxx
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -140,75 +140,75 @@ SOURCE=..\..\source\posterazor\ui\translations\Translations.cxx
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\Fl_Draw_Paint_Canvas.h
+SOURCE=..\..\source\posterazor_ui_fltk\Fl_Draw_Paint_Canvas.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\Fl_Gl_Paint_Canvas.h
+SOURCE=..\..\source\posterazor_ui_fltk\Fl_Gl_Paint_Canvas.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\Fl_Image_Text_Button.h
+SOURCE=..\..\source\posterazor_ui_fltk\Fl_Image_Text_Button.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\Fl_Paint_Canvas_Base.h
+SOURCE=..\..\source\posterazor_ui_fltk\Fl_Paint_Canvas_Base.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\Fl_Paint_Canvas_Group.h
+SOURCE=..\..\source\posterazor_ui_fltk\Fl_Paint_Canvas_Group.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\Fl_Persistent_Preferences.h
+SOURCE=..\..\source\posterazor_ui_fltk\Fl_Persistent_Preferences.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\PosteRazorDialog.h
+SOURCE=..\..\source\posterazor_ui_fltk\PosteRazorDialog.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\PosteRazorDialogUI.h
+SOURCE=..\..\source\posterazor_ui_fltk\PosteRazorDialogUI.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\PosteRazorHelpDialog.h
+SOURCE=..\..\source\posterazor_ui_fltk\PosteRazorHelpDialog.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\PosteRazorSettingsDialog.h
+SOURCE=..\..\source\posterazor_ui_fltk\PosteRazorSettingsDialog.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\translations\TranslationConstants.h
+SOURCE=..\..\source\posterazor_ui_common\translations\TranslationConstants.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\translations\TranslationEnglish.h
+SOURCE=..\..\source\posterazor_ui_common\translations\TranslationEnglish.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\translations\TranslationFrench.h
+SOURCE=..\..\source\posterazor_ui_common\translations\TranslationFrench.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\translations\TranslationGerman.h
+SOURCE=..\..\source\posterazor_ui_common\translations\TranslationGerman.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\translations\TranslationInterface.h
+SOURCE=..\..\source\posterazor_ui_common\translations\TranslationInterface.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\translations\TranslationItalian.h
+SOURCE=..\..\source\posterazor_ui_common\translations\TranslationItalian.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\translations\TranslationPolish.h
+SOURCE=..\..\source\posterazor_ui_common\translations\TranslationPolish.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\translations\Translations.h
+SOURCE=..\..\source\posterazor_ui_common\translations\Translations.h
 # End Source File
 # End Group
 # Begin Group "Resource Files"
@@ -216,7 +216,7 @@ SOURCE=..\..\source\posterazor\ui\translations\Translations.h
 # PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\windowsResources\PosteRazor.ico
+SOURCE=..\..\source\posterazor_ui_common\windowsResources\PosteRazor.ico
 # End Source File
 # End Group
 # Begin Group "Fl_Native_File_Chooser"
@@ -229,7 +229,7 @@ SOURCE=..\..\thirdparty\Fl_Native_File_Chooser\Fl_Native_File_Chooser.cxx
 # End Group
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\ui\PosteRazorDialogUI.fl
+SOURCE=..\..\source\posterazor_ui_fltk\PosteRazorDialogUI.fl
 # End Source File
 # Begin Source File
 

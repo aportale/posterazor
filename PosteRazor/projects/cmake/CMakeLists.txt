@@ -13,16 +13,16 @@ SET(POSTERAZOR_CORESOURCES
 )
 
 SET(POSTERAZOR_UISOURCES
-	../../source/posterazor/ui/Fl_Paint_Canvas_Base.cpp
-	../../source/posterazor/ui/Fl_Paint_Canvas_Group.cpp
-	../../source/posterazor/ui/Fl_Draw_Paint_Canvas.cpp
-	../../source/posterazor/ui/Fl_Persistent_Preferences.cxx
-	../../source/posterazor/ui/Fl_Image_Text_Button.cpp
-	../../source/posterazor/ui/PosteRazorDialog.cxx
-	../../source/posterazor/ui/PosteRazorHelpDialog.cxx
-	../../source/posterazor/ui/PosteRazorSettingsDialog.cxx
-	../../source/posterazor/ui/PosteRazorDialogUI.cxx
-	../../source/posterazor/ui/translations/Translations.cxx
+	../../source/posterazor_ui_common/translations/Translations.cxx
+	../../source/posterazor_ui_fltk/Fl_Paint_Canvas_Base.cpp
+	../../source/posterazor_ui_fltk/Fl_Paint_Canvas_Group.cpp
+	../../source/posterazor_ui_fltk/Fl_Draw_Paint_Canvas.cpp
+	../../source/posterazor_ui_fltk/Fl_Persistent_Preferences.cxx
+	../../source/posterazor_ui_fltk/Fl_Image_Text_Button.cpp
+	../../source/posterazor_ui_fltk/PosteRazorDialog.cxx
+	../../source/posterazor_ui_fltk/PosteRazorHelpDialog.cxx
+	../../source/posterazor_ui_fltk/PosteRazorSettingsDialog.cxx
+	../../source/posterazor_ui_fltk/PosteRazorDialogUI.cxx
 	../../thirdparty/Fl_Native_File_Chooser/Fl_Native_File_Chooser.cxx
 )
 
@@ -41,8 +41,8 @@ SET(POSTERAZOR_LINKDIRECTORIES
 
 SET(POSTERAZOR_INCLUDEDIRECTORIES
 	../../source/posterazor
-	../../source/posterazor/ui
-	../../source/posterazor/ui/translations
+	../../source/posterazor_ui_common/translations
+	../../source/posterazor_ui_fltk
 	../../source/tools
 	../../thirdparty/FreeImage/Dist
 	../../thirdparty/Fl_Native_File_Chooser
@@ -51,7 +51,7 @@ SET(POSTERAZOR_INCLUDEDIRECTORIES
 IF (POSTERAZOR_ENABLEGLPREVIEW)
 	SET(POSTERAZOR_SOURCES
 		${POSTERAZOR_SOURCES}
-		../../source/posterazor/ui/Fl_Gl_Paint_Canvas.cpp
+		../../source/posterazor_ui_fltk/Fl_Gl_Paint_Canvas.cpp
 	)
 ELSE (POSTERAZOR_ENABLEGLPREVIEW)
 	SET(POSTERAZOR_DEFINITIONS
@@ -62,11 +62,11 @@ ENDIF (POSTERAZOR_ENABLEGLPREVIEW)
 
 IF (WIN32)
 	ADD_EXECUTABLE(PosteRazor WIN32 ${POSTERAZOR_SOURCES}
-		../../source/posterazor/ui/windowsResources/PosteRazorUI.rc
+		../../source/posterazor_ui_common/windowsResources/PosteRazorUI.rc
 	)
 	SET(POSTERAZOR_INCLUDEDIRECTORIES ${POSTERAZOR_INCLUDEDIRECTORIES}
 		../../thirdparty/fltk-1.1
-		../../source/posterazor/ui/windowsResources
+		../../source/posterazor_ui_common/windowsResources
 	)
 	SET(POSTERAZOR_LINKDIRECTORIES
 		${POSTERAZOR_LINKDIRECTORIES}
@@ -111,7 +111,7 @@ ENDIF(APPLE)
 IF (UNIX AND NOT APPLE)
 	ADD_EXECUTABLE(PosteRazor ${POSTERAZOR_SOURCES})
 	SET(POSTERAZOR_INCLUDEDIRECTORIES ${POSTERAZOR_INCLUDEDIRECTORIES}
-		../../source/posterazor/ui/x11Resources
+		../../source/posterazor_ui_common/x11Resources
 	)
 #	FIND_PACKAGE(X11)
 	SET(POSTERAZOR_LINKDIRECTORIES
