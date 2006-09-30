@@ -17,7 +17,11 @@ SET(POSTERAZOR_UISOURCES
 	PosteRazorHelpDialog.cxx
 	PosteRazorSettingsDialog.cxx
 	PosteRazorDialogUI.cxx
-	Fl_Native_File_Chooser.cxx
+	../Fl_Native_File_Chooser/Fl_Native_File_Chooser.cxx
+)
+
+SET(POSTERAZOR_INCLUDEDIRECTORIES
+	../Fl_Native_File_Chooser
 )
 
 IF (POSTERAZOR_ENABLEGLPREVIEW)
