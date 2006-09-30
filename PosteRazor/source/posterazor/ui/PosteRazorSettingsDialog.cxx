@@ -21,7 +21,7 @@
 */
 
 #include "PosteRazorSettingsDialog.h"
-#include "translations/TranslationConstants.h"
+#include "TranslationConstants.h"
 
 PosteRazorSettingsDialog::PosteRazorSettingsDialog()
 	:PosteRazorSettingsDialogUI(315, 400, "PosteRazor Settings")

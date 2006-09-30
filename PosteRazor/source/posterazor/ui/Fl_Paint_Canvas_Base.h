@@ -25,7 +25,7 @@
 
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Image.H>
-#include "../../tools/PaintCanvasInterface.h"
+#include "PaintCanvasInterface.h"
 
 class Fl_Paint_Canvas_Base: public PaintCanvasInterface
 {

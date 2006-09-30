@@ -26,7 +26,7 @@
 #include "PosteRazor.h"
 #include "PosteRazorDialogUI.h"
 #include "Fl_Paint_Canvas_Group.h"
-#include "translations/Translations.h"
+#include "Translations.h"
 
 typedef struct
 {

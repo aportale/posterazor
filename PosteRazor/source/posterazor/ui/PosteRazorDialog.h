@@ -29,7 +29,7 @@
 #include "PosteRazor.h"
 #include "PosteRazorDialogUI.h"
 #include "PosteRazorSettingsDialog.h"
-#include "translations/Translations.h"
+#include "Translations.h"
 
 class PosteRazorDragDropWidget : public Fl_Box
 {

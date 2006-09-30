@@ -42,6 +42,7 @@ SET(POSTERAZOR_LINKDIRECTORIES
 SET(POSTERAZOR_INCLUDEDIRECTORIES
 	../../source/posterazor
 	../../source/posterazor/ui
+	../../source/posterazor/ui/translations
 	../../source/tools
 	../../thirdparty/FreeImage/Dist
 	../../thirdparty/Fl_Native_File_Chooser
@@ -65,6 +66,7 @@ IF (WIN32)
 	)
 	SET(POSTERAZOR_INCLUDEDIRECTORIES ${POSTERAZOR_INCLUDEDIRECTORIES}
 		../../thirdparty/fltk-1.1
+		../../source/posterazor/ui/windowsResources
 	)
 	SET(POSTERAZOR_LINKDIRECTORIES
 		${POSTERAZOR_LINKDIRECTORIES}
