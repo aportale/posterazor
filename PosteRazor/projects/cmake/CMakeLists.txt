@@ -4,27 +4,11 @@ IF (WIN32 OR APPLE)
 	SET(POSTERAZOR_ENABLEGLPREVIEW TRUE)
 ENDIF (WIN32 OR APPLE)
 
-SET(POSTERAZOR_CORESOURCES
-	../../source/posterazor/PosteRazor.cxx
-	../../source/posterazor/PosteRazorImageIO.cxx
-	../../source/posterazor/PosteRazorPDFOutput.cxx
-	../../source/tools/UnitsOfLength.cxx
-	../../source/tools/PaperFormats.cxx
-)
-
-SET(POSTERAZOR_UISOURCES
-	../../source/posterazor_ui_common/translations/Translations.cxx
-	../../source/posterazor_ui_fltk/Fl_Paint_Canvas_Base.cpp
-	../../source/posterazor_ui_fltk/Fl_Paint_Canvas_Group.cpp
-	../../source/posterazor_ui_fltk/Fl_Draw_Paint_Canvas.cpp
-	../../source/posterazor_ui_fltk/Fl_Persistent_Preferences.cxx
-	../../source/posterazor_ui_fltk/Fl_Image_Text_Button.cpp
-	../../source/posterazor_ui_fltk/PosteRazorDialog.cxx
-	../../source/posterazor_ui_fltk/PosteRazorHelpDialog.cxx
-	../../source/posterazor_ui_fltk/PosteRazorSettingsDialog.cxx
-	../../source/posterazor_ui_fltk/PosteRazorDialogUI.cxx
-	../../thirdparty/Fl_Native_File_Chooser/Fl_Native_File_Chooser.cxx
-)
+IF (EXISTS PosteRazor.cxx)
+	INCLUDE (CMakeLists_flat_source_tree.txt)
+ELSE (EXISTS PosteRazor.cxx)
+	INCLUDE (CMakeLists_deep_source_tree.txt)
+ENDIF (EXISTS PosteRazor.cxx)
 
 SET(POSTERAZOR_SOURCES
 	${POSTERAZOR_CORESOURCES}
@@ -39,31 +23,15 @@ SET(POSTERAZOR_LINKDIRECTORIES
 	../../thirdparty/FreeImage/Dist
 )
 
-SET(POSTERAZOR_INCLUDEDIRECTORIES
-	../../source/posterazor
-	../../source/posterazor_ui_common/translations
-	../../source/posterazor_ui_fltk
-	../../source/tools
-	../../thirdparty/FreeImage/Dist
-	../../thirdparty/Fl_Native_File_Chooser
-)
-
-IF (POSTERAZOR_ENABLEGLPREVIEW)
-	SET(POSTERAZOR_SOURCES
-		${POSTERAZOR_SOURCES}
-		../../source/posterazor_ui_fltk/Fl_Gl_Paint_Canvas.cpp
-	)
-ELSE (POSTERAZOR_ENABLEGLPREVIEW)
+IF (NOT POSTERAZOR_ENABLEGLPREVIEW)
 	SET(POSTERAZOR_DEFINITIONS
 		${POSTERAZOR_DEFINITIONS}
 		-DNO_OPENGL_PREVIEW
 	)
-ENDIF (POSTERAZOR_ENABLEGLPREVIEW)
+ENDIF (NOT POSTERAZOR_ENABLEGLPREVIEW)
 
 IF (WIN32)
-	ADD_EXECUTABLE(PosteRazor WIN32 ${POSTERAZOR_SOURCES}
-		../../source/posterazor_ui_common/windowsResources/PosteRazorUI.rc
-	)
+	ADD_EXECUTABLE(PosteRazor WIN32 ${POSTERAZOR_SOURCES} ${POSTERAZOR_RC_FILE})
 	SET(POSTERAZOR_INCLUDEDIRECTORIES ${POSTERAZOR_INCLUDEDIRECTORIES}
 		../../thirdparty/fltk-1.1
 		../../source/posterazor_ui_common/windowsResources

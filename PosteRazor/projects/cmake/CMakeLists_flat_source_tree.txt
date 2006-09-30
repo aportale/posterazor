@@ -1,0 +1,32 @@
+SET(POSTERAZOR_CORESOURCES
+	PosteRazor.cxx
+	PosteRazorImageIO.cxx
+	PosteRazorPDFOutput.cxx
+	UnitsOfLength.cxx
+	PaperFormats.cxx
+)
+
+SET(POSTERAZOR_UISOURCES
+	Translations.cxx
+	Fl_Paint_Canvas_Base.cpp
+	Fl_Paint_Canvas_Group.cpp
+	Fl_Draw_Paint_Canvas.cpp
+	Fl_Persistent_Preferences.cxx
+	Fl_Image_Text_Button.cpp
+	PosteRazorDialog.cxx
+	PosteRazorHelpDialog.cxx
+	PosteRazorSettingsDialog.cxx
+	PosteRazorDialogUI.cxx
+	Fl_Native_File_Chooser.cxx
+)
+
+IF (POSTERAZOR_ENABLEGLPREVIEW)
+	SET(POSTERAZOR_SOURCES
+		${POSTERAZOR_SOURCES}
+		Fl_Gl_Paint_Canvas.cpp
+	)
+ENDIF (POSTERAZOR_ENABLEGLPREVIEW)
+
+IF (WIN32)
+	SET(POSTERAZOR_RC_FILE PosteRazorUI.rc)
+ENDIF (WIN32)
