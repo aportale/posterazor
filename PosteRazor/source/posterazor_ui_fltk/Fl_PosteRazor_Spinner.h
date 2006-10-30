@@ -33,11 +33,23 @@ class Fl_PosteRazor_Spinner: public Fl_Group
 
 public:
 	Fl_PosteRazor_Spinner(int x, int y, int width, int height, const char* label=0);
+	static const char* quickNDirtyDoubleToString(double value);
+	static double Fl_PosteRazor_Spinner::Round(double Zahl, int Stellen);
+	void setSpinnerVisible(bool visible);
+	double value();
+	void value(double value);
 
 private:
 	Fl_Input *m_input;
 	Fl_Repeat_Button *m_increaseButton;
 	Fl_Repeat_Button *m_decreaseButton;
+	bool m_spinnerVisible;
+
+	void UpdateButtonsState(void);
+	static void handleButtonPress_cb(Fl_Repeat_Button *button, void *data);
+	void handleButtonPress(Fl_Repeat_Button *button);
+	static void handleValueChangement_cb(Fl_Input *input, void *data);
+	void handleValueChangement(Fl_Input *input);
 };
 
 #endif

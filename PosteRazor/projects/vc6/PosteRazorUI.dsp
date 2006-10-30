@@ -112,6 +112,10 @@ SOURCE=..\..\source\posterazor_ui_fltk\Fl_Persistent_Preferences.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\source\posterazor_ui_fltk\Fl_PosteRazor_Spinner.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\source\posterazor_ui_fltk\PosteRazorDialog.cxx
 # End Source File
 # Begin Source File
@@ -161,6 +165,10 @@ SOURCE=..\..\source\posterazor_ui_fltk\Fl_Paint_Canvas_Group.h
 # Begin Source File
 
 SOURCE=..\..\source\posterazor_ui_fltk\Fl_Persistent_Preferences.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor_ui_fltk\Fl_PosteRazor_Spinner.h
 # End Source File
 # Begin Source File
 
