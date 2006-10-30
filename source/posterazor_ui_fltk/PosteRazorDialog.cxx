@@ -27,7 +27,6 @@
 #include <FL/fl_ask.H>
 #include <FL/x.H>
 #include "TranslationConstants.h"
-#include <string.h>
 
 #if defined (WIN32)
   #include <math.h>
@@ -52,19 +51,6 @@ const char preferencesKey_UseOpenGLForPreview[] = "UseOpenGLForPreview";
 const char preferencesKey_LoadImageChooserLastPath[] = "LoadImageChooserLastPath";
 const char preferencesKey_SavePosterChooserLastPath[] = "SavePosterChooserLastPath";
 const char preferencesKey_UILanguage[] = "UILanguage";
-
-// "Round()" from http://www.c-plusplus.de/forum/viewtopic-var-t-is-39342.html
-static double Round(double Zahl, int Stellen)
-{
-    return floor(Zahl * pow( 10, Stellen) + 0.5) * pow(10, -Stellen);
-} 
-
-static const char* quickNDirtyDoubleToString(double value)
-{
-	static char valueString[200];
-	sprintf(valueString, "%G", Round(value, 4));
-	return valueString;
-}
 
 PosteRazorDragDropWidget::PosteRazorDragDropWidget(int x, int y, int w, int h, const char *label)
 	:Fl_Box(FL_NO_BOX, x, y, w, h, label)
@@ -546,7 +532,7 @@ void PosteRazorDialog::UpdatePosterSizeFields(Fl_Widget *sourceWidget)
 {
 	static const struct
 	{
-		Fl_Input* inputWidget;
+		Fl_PosteRazor_Spinner* inputWidget;
 		bool width;
 		enum PosteRazor::ePosterSizeModes sizeMode;
 	}
@@ -567,9 +553,9 @@ void PosteRazorDialog::UpdatePosterSizeFields(Fl_Widget *sourceWidget)
 		if (sizeInputWidgets[i].inputWidget == sourceWidget)
 		{
 			if (sizeInputWidgets[i].width)
-				m_posteRazor->SetPosterWidth(sizeInputWidgets[i].sizeMode, atof(sizeInputWidgets[i].inputWidget->value()));
+				m_posteRazor->SetPosterWidth(sizeInputWidgets[i].sizeMode, sizeInputWidgets[i].inputWidget->value());
 			else
-				m_posteRazor->SetPosterHeight(sizeInputWidgets[i].sizeMode, atof(sizeInputWidgets[i].inputWidget->value()));
+				m_posteRazor->SetPosterHeight(sizeInputWidgets[i].sizeMode, sizeInputWidgets[i].inputWidget->value());
 		}
 	}
 
@@ -579,56 +565,14 @@ void PosteRazorDialog::UpdatePosterSizeFields(Fl_Widget *sourceWidget)
 		{
 			sizeInputWidgets[i].inputWidget->value
 			(
-				quickNDirtyDoubleToString
-				(
-					sizeInputWidgets[i].width?
-					m_posteRazor->GetPosterWidth(sizeInputWidgets[i].sizeMode)
-					:m_posteRazor->GetPosterHeight(sizeInputWidgets[i].sizeMode)
-				)
+				sizeInputWidgets[i].width?
+				m_posteRazor->GetPosterWidth(sizeInputWidgets[i].sizeMode)
+				:m_posteRazor->GetPosterHeight(sizeInputWidgets[i].sizeMode)
 			);
 		}
 	}
 
-	static const struct
-	{
-		Fl_Input* inputWidget;
-		Fl_Repeat_Button* increaseButton;
-		Fl_Repeat_Button* decreaseButton;
-	}
-	inputWidgetSpinButtons[] = 
-	{
-		{m_posterPagesWidthInput, m_posterPagesWidthIncreaseRadioButton, m_posterPagesWidthDecreaseRadioButton},
-		{m_posterPagesHeightInput, m_posterPagesHeightIncreaseRadioButton, m_posterPagesHeightDecreaseRadioButton}
-	};	
-	int inputWidgetSpinButtonsCount = sizeof(inputWidgetSpinButtons)/sizeof(inputWidgetSpinButtons[0]);
-
-	for (i = 0; i < inputWidgetSpinButtonsCount; i++)
-	{
-		double inputValue = atof(inputWidgetSpinButtons[i].inputWidget->value());
-		
-		if (inputValue - 1.0 <= 0.0)
-			inputWidgetSpinButtons[i].decreaseButton->deactivate();
-		else
-			inputWidgetSpinButtons[i].decreaseButton->activate();
-	}
-
 	m_paintCanvasGroup->redraw();
-}
-
-void PosteRazorDialog::HandlePosterSizeSpinnerEvent(Fl_Widget* sourceWidget)
-{
-	double increaseValue =
-		(sourceWidget == m_posterPagesWidthIncreaseRadioButton || sourceWidget == m_posterPagesHeightIncreaseRadioButton)?.5:-.50001;
-		
-	Fl_Input *flInput =
-		(sourceWidget == m_posterPagesWidthIncreaseRadioButton || sourceWidget == m_posterPagesWidthDecreaseRadioButton)?m_posterPagesWidthInput:m_posterPagesHeightInput;
-		
-	double oldValue = atof(flInput->value());
-	double newValue = Round(oldValue + increaseValue, 0);
-	if (newValue >= 1.0)
-		flInput->value(quickNDirtyDoubleToString(newValue));
-	
-	UpdatePosterSizeFields(flInput);
 }
 
 void PosteRazorDialog::SetPaperSizeFields(void)
@@ -638,14 +582,14 @@ void PosteRazorDialog::SetPaperSizeFields(void)
 	m_paperOrientationLandscapeRadioButton->value(m_posteRazor->GetPaperOrientation() == PosteRazor::ePaperOrientationLandscape);
 
 	// custom paper format
-	m_paperCustomWidthInput->value(quickNDirtyDoubleToString(m_posteRazor->GetCustomPaperWidth()));
-	m_paperCustomHeightInput->value(quickNDirtyDoubleToString(m_posteRazor->GetCustomPaperHeight()));
+	m_paperCustomWidthInput->value(m_posteRazor->GetCustomPaperWidth());
+	m_paperCustomHeightInput->value(m_posteRazor->GetCustomPaperHeight());
 
 	// paper borders
-	m_paperBorderTopInput->value(quickNDirtyDoubleToString(m_posteRazor->GetPaperBorderTop()));
-	m_paperBorderRightInput->value(quickNDirtyDoubleToString(m_posteRazor->GetPaperBorderRight()));
-	m_paperBorderBottomInput->value(quickNDirtyDoubleToString(m_posteRazor->GetPaperBorderBottom()));
-	m_paperBorderLeftInput->value(quickNDirtyDoubleToString(m_posteRazor->GetPaperBorderLeft()));
+	m_paperBorderTopInput->value(m_posteRazor->GetPaperBorderTop());
+	m_paperBorderRightInput->value(m_posteRazor->GetPaperBorderRight());
+	m_paperBorderBottomInput->value(m_posteRazor->GetPaperBorderBottom());
+	m_paperBorderLeftInput->value(m_posteRazor->GetPaperBorderLeft());
 
 	// select the active tab
 	m_paperFormatTypeTabs->value(m_posteRazor->GetUseCustomPaperSize()?m_paperFormatCustomGroup:m_paperFormatStandardGroup);
@@ -659,13 +603,13 @@ void PosteRazorDialog::HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userD
 void PosteRazorDialog::HandlePaperSizeChangement(Fl_Widget *sourceWidget)
 {
 	if (sourceWidget == m_paperBorderTopInput)
-		m_posteRazor->SetPaperBorderTop(atof(m_paperBorderTopInput->value()));
+		m_posteRazor->SetPaperBorderTop(m_paperBorderTopInput->value());
 	else if (sourceWidget == m_paperBorderRightInput)
-		m_posteRazor->SetPaperBorderRight(atof(m_paperBorderRightInput->value()));
+		m_posteRazor->SetPaperBorderRight(m_paperBorderRightInput->value());
 	else if (sourceWidget == m_paperBorderBottomInput)
-		m_posteRazor->SetPaperBorderBottom(atof(m_paperBorderBottomInput->value()));
+		m_posteRazor->SetPaperBorderBottom(m_paperBorderBottomInput->value());
 	else if (sourceWidget == m_paperBorderLeftInput)
-		m_posteRazor->SetPaperBorderLeft(atof(m_paperBorderLeftInput->value()));
+		m_posteRazor->SetPaperBorderLeft(m_paperBorderLeftInput->value());
 	else if (sourceWidget == m_paperFormatTypeTabs)
 		m_posteRazor->SetUseCustomPaperSize(m_paperFormatTypeTabs->value() == m_paperFormatCustomGroup);
 	else if (!m_posteRazor->GetUseCustomPaperSize())
@@ -682,9 +626,9 @@ void PosteRazorDialog::HandlePaperSizeChangement(Fl_Widget *sourceWidget)
 	else
 	{
 		if (sourceWidget == m_paperCustomWidthInput)
-			m_posteRazor->SetCustomPaperWidth(atof(m_paperCustomWidthInput->value()));
+			m_posteRazor->SetCustomPaperWidth(m_paperCustomWidthInput->value());
 		else if (sourceWidget == m_paperCustomHeightInput)
-			m_posteRazor->SetCustomPaperHeight(atof(m_paperCustomHeightInput->value()));
+			m_posteRazor->SetCustomPaperHeight(m_paperCustomHeightInput->value());
 	}
 
 	m_paintCanvasGroup->redraw();
@@ -692,8 +636,8 @@ void PosteRazorDialog::HandlePaperSizeChangement(Fl_Widget *sourceWidget)
 
 void PosteRazorDialog::SetOverlappingFields(void)
 {
-	m_overlappingWidthInput->value(quickNDirtyDoubleToString(m_posteRazor->GetOverlappingWidth()));
-	m_overlappingHeightInput->value(quickNDirtyDoubleToString(m_posteRazor->GetOverlappingHeight()));
+	m_overlappingWidthInput->value(m_posteRazor->GetOverlappingWidth());
+	m_overlappingHeightInput->value(m_posteRazor->GetOverlappingHeight());
 
 	enum PosteRazor::eOverlappingPositions overlappingPosition = m_posteRazor->GetOverlappingPosition();
 
@@ -708,9 +652,9 @@ void PosteRazorDialog::SetOverlappingFields(void)
 void PosteRazorDialog::HandleOverlappingChangement(Fl_Widget *sourceWidget)
 {
 	if (sourceWidget == m_overlappingWidthInput)
-		m_posteRazor->SetOverlappingWidth(atof(m_overlappingWidthInput->value()));
+		m_posteRazor->SetOverlappingWidth(m_overlappingWidthInput->value());
 	else if (sourceWidget == m_overlappingHeightInput)
-		m_posteRazor->SetOverlappingHeight(atof(m_overlappingHeightInput->value()));
+		m_posteRazor->SetOverlappingHeight(m_overlappingHeightInput->value());
 	else
 		m_posteRazor->SetOverlappingPosition
 		(
