@@ -47,8 +47,8 @@ public:
 
 	void redraw(void);
 
-	void SetPaintCanvasType(enum ePaintCanvasTypes type);
-	enum ePaintCanvasTypes GetPaintCanvasType(void) const {return m_paintCanvasType;}
+	void SetPaintCanvasType(ePaintCanvasTypes type);
+	ePaintCanvasTypes GetPaintCanvasType(void) const {return m_paintCanvasType;}
 	Fl_Paint_Canvas_Base *GetPaintCanvasBase(void) const;
 	Fl_Widget *GetPaintCanvasWidget(void) const;
 
@@ -66,7 +66,7 @@ public:
 	void DisposeImage(void);
 
 protected:
-	enum ePaintCanvasTypes m_paintCanvasType;
+	ePaintCanvasTypes m_paintCanvasType;
 	Fl_Draw_Paint_Canvas *m_drawPaintCanvas;
 #ifndef NO_OPENGL_PREVIEW
 	Fl_Gl_Paint_Canvas *m_glPaintCanvas;

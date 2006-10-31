@@ -62,7 +62,7 @@ class TranslationSwitcher: public Translations
 {
 private:
 	TranslationInterface *m_selectedTranslation;
-	enum eLanguages m_language;
+	eLanguages m_language;
 
 public:
 	TranslationSwitcher()
@@ -70,16 +70,28 @@ public:
 		SelectLangue(eLanguageUndefined);
 	}
 
-	void SelectLangue(enum eLanguages language)
+	void SelectLangue(eLanguages language)
 	{
 		m_language = language;
 		m_selectedTranslation = GetTranslationOfLanguage(m_language);
 	}
 
-	enum eLanguages GetSelectedLanguage(void)         {return m_language;}
-	int GetLanguagesCount(void)                       {return TranslationsMapItemsCount - 1;}
-	enum eLanguages GetLanguageForIndex(int index)    {return TranslationsMap[index + 1].language;}
-	TranslationInterface* GetTranslationOfLanguage(enum eLanguages language)
+	eLanguages GetSelectedLanguage(void)
+	{
+		return m_language;
+	}
+
+	int GetLanguagesCount(void)
+	{
+		return TranslationsMapItemsCount - 1;
+	}
+
+	eLanguages GetLanguageForIndex(int index)
+	{
+		return TranslationsMap[index + 1].language;
+	}
+
+	TranslationInterface* GetTranslationOfLanguage(eLanguages language)
 	{
 		TranslationInterface* foundTranslation = NULL;
 		for (int i = 0; i < TranslationsMapItemsCount; i++)
@@ -95,9 +107,9 @@ public:
 		return foundTranslation;
 	}
 
-	enum eLanguages GetSystemLanguage(void)
+	eLanguages GetSystemLanguage(void)
 	{
-		enum eLanguages systemLanguage = eLanguageUndefined;
+		eLanguages systemLanguage = eLanguageUndefined;
 #if defined (WIN32)
 		LANGID langID = GetSystemDefaultLangID();
 		WORD primaryLangID = PRIMARYLANGID(langID);

@@ -25,7 +25,7 @@
 
 typedef struct
 {
-	enum UnitsOfLength::eUnitsOfLength unit;
+	UnitsOfLength::eUnitsOfLength unit;
 	char *name;
 	double multipleOfCentimeter;
 } UnitsOfLengthStruct;
@@ -48,12 +48,12 @@ int UnitsOfLength::GetUnitsOfLengthCount(void)
 	return g_UnitsOfLengthCount;
 }
 
-enum UnitsOfLength::eUnitsOfLength UnitsOfLength::GetUnitOfLengthForIndex(int index)
+UnitsOfLength::eUnitsOfLength UnitsOfLength::GetUnitOfLengthForIndex(int index)
 {
 	return g_UnitsOfLength[index].unit;
 }
 
-int UnitsOfLength::GetUnitOfLengthIndex(enum eUnitsOfLength unit)
+int UnitsOfLength::GetUnitOfLengthIndex(eUnitsOfLength unit)
 {
 	int index = 0;
 
@@ -69,16 +69,16 @@ int UnitsOfLength::GetUnitOfLengthIndex(enum eUnitsOfLength unit)
 	return index;
 }
 
-const char* UnitsOfLength::GetUnitOfLengthName(enum eUnitsOfLength unit)
+const char* UnitsOfLength::GetUnitOfLengthName(eUnitsOfLength unit)
 {
 	int UnitOfLengthIndex = GetUnitOfLengthIndex(unit);
 
 	return g_UnitsOfLength[UnitOfLengthIndex].name;
 }
 
-enum UnitsOfLength::eUnitsOfLength UnitsOfLength::GetUnitOfLengthForName(const char* name)
+UnitsOfLength::eUnitsOfLength UnitsOfLength::GetUnitOfLengthForName(const char* name)
 {
-	enum eUnitsOfLength UnitOfLength = eUnitOfLengthCentimeter;
+	eUnitsOfLength UnitOfLength = eUnitOfLengthCentimeter;
 
 	for (int i = 0; i < g_UnitsOfLengthCount; i++)
 	{
@@ -92,19 +92,19 @@ enum UnitsOfLength::eUnitsOfLength UnitsOfLength::GetUnitOfLengthForName(const c
 	return UnitOfLength;
 }
 
-double CentimeterToUnitOfLength(double cm, enum UnitsOfLength::eUnitsOfLength unit)
+double CentimeterToUnitOfLength(double cm, UnitsOfLength::eUnitsOfLength unit)
 {
 	cm /= g_UnitsOfLength[UnitsOfLength::GetUnitOfLengthIndex(unit)].multipleOfCentimeter;
 	return cm;
 }
 
-double UnitOfLengthToCentimeter(double distance, enum UnitsOfLength::eUnitsOfLength unit)
+double UnitOfLengthToCentimeter(double distance, UnitsOfLength::eUnitsOfLength unit)
 {
 	distance *= g_UnitsOfLength[UnitsOfLength::GetUnitOfLengthIndex(unit)].multipleOfCentimeter;
 	return distance;
 }
 
-double UnitsOfLength::ConvertBetweenUnitsOfLength(double distance, enum eUnitsOfLength sourceUnit, enum eUnitsOfLength targetUnit)
+double UnitsOfLength::ConvertBetweenUnitsOfLength(double distance, eUnitsOfLength sourceUnit, eUnitsOfLength targetUnit)
 {
 	double convertedDistance = distance;
 

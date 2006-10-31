@@ -112,7 +112,7 @@ public:
 		return err;
 	}
 
-	int SaveImage(const char *jpegFileName, int widthPixels, int heightPixels, enum ColorTypes::eColorTypes colorType)
+	int SaveImage(const char *jpegFileName, int widthPixels, int heightPixels, ColorTypes::eColorTypes colorType)
 	{
 		int err = 0;
 
@@ -198,7 +198,7 @@ public:
 		return err;
 	}
 
-	int SaveImage(unsigned char *imageData, int widthPixels, int heightPixels, int bitPerPixel, enum ColorTypes::eColorTypes colorType, unsigned char *rgbPalette, int paletteEntries)
+	int SaveImage(unsigned char *imageData, int widthPixels, int heightPixels, int bitPerPixel, ColorTypes::eColorTypes colorType, unsigned char *rgbPalette, int paletteEntries)
 	{
 		int err = 0;
 		err = AddImageResourcesAndXObject();

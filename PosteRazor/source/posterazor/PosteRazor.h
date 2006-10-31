@@ -29,10 +29,10 @@
 #include "PaintCanvasInterface.h"
 #include "PersistentPreferencesInterface.h"
 
-class PosteRazor: public PaperFormats, public ColorTypes, public ImageIOTypes, public PainterInterface
+class PosteRazor: public PainterInterface
 {
 public:
-	typedef enum eOverlappingPositions
+	enum eOverlappingPositions
 	{
 		eOverlappingPositionTopRight,
 		eOverlappingPositionBottomRight,
@@ -40,21 +40,21 @@ public:
 		eOverlappingPositionTopLeft
 	};
 
-	typedef enum ePosterSizeModes
+	enum ePosterSizeModes
 	{
 		ePosterSizeModeAbsolute,
 		ePosterSizeModePercentual,
 		ePosterSizeModePages
 	};
 
-	typedef enum eVerticalAlignments
+	enum eVerticalAlignments
 	{
 		eVerticalAlignmentTop,
 		eVerticalAlignmentMiddle,
 		eVerticalAlignmentBottom
 	};
 
-	typedef enum eHorizontalAlignments
+	enum eHorizontalAlignments
 	{
 		eHorizontalAlignmentLeft,
 		eHorizontalAlignmentCenter,
@@ -80,21 +80,21 @@ public:
 	virtual double GetInputImageHeight(void) const = 0;
 	
 	virtual int GetInputImageBitsPerPixel(void) const = 0;
-	virtual enum eColorTypes GetInputImageColorType(void) const = 0;
+	virtual ColorTypes::eColorTypes GetInputImageColorType(void) const = 0;
 
-	virtual void SetUnitOfLength(enum eUnitsOfLength unit) = 0;
-	virtual enum eUnitsOfLength GetUnitOfLength(void) const = 0;
+	virtual void SetUnitOfLength(UnitsOfLength::eUnitsOfLength unit) = 0;
+	virtual UnitsOfLength::eUnitsOfLength GetUnitOfLength(void) const = 0;
 	virtual const char* GetUnitOfLengthName(void) const = 0;
 
-	virtual void SetPaperFormat(enum ePaperFormats format) = 0;
-	virtual void SetPaperOrientation(enum ePaperOrientations orientation) = 0;
+	virtual void SetPaperFormat(PaperFormats::ePaperFormats format) = 0;
+	virtual void SetPaperOrientation(PaperFormats::ePaperOrientations orientation) = 0;
 	virtual void SetPaperBorderTop(double border) = 0;
 	virtual void SetPaperBorderRight(double border) = 0;
 	virtual void SetPaperBorderBottom(double border) = 0;
 	virtual void SetPaperBorderLeft(double border) = 0;
 
-	virtual enum ePaperFormats GetPaperFormat(void) const = 0;
-	virtual enum ePaperOrientations GetPaperOrientation(void) const = 0;
+	virtual PaperFormats::ePaperFormats GetPaperFormat(void) const = 0;
+	virtual PaperFormats::ePaperOrientations GetPaperOrientation(void) const = 0;
 	virtual double GetPaperBorderTop(void) const = 0;
 	virtual double GetPaperBorderRight(void) const = 0;
 	virtual double GetPaperBorderBottom(void) const = 0;
@@ -115,21 +115,21 @@ public:
 	virtual void SetOverlappingHeight(double height) = 0;
 	virtual double GetOverlappingWidth(void) const = 0;
 	virtual double GetOverlappingHeight(void) const = 0;
-	virtual void SetOverlappingPosition(enum eOverlappingPositions position) = 0;
-	virtual enum eOverlappingPositions GetOverlappingPosition(void) const = 0;
+	virtual void SetOverlappingPosition(eOverlappingPositions position) = 0;
+	virtual eOverlappingPositions GetOverlappingPosition(void) const = 0;
 	
-	virtual void SetPosterWidth(enum ePosterSizeModes mode, double width) = 0;
-	virtual void SetPosterHeight(enum ePosterSizeModes mode, double height) = 0;
-	virtual double GetPosterWidth(enum ePosterSizeModes mode) const = 0;
-	virtual double GetPosterHeight(enum ePosterSizeModes mode) const = 0;
-	virtual enum ePosterSizeModes GetPosterSizeMode(void) const = 0;
-	virtual void SetPosterHorizontalAlignment(enum eHorizontalAlignments alignment) = 0;
-	virtual void SetPosterVerticalAlignment(enum eVerticalAlignments alignment) = 0;
-	virtual enum eHorizontalAlignments GetPosterHorizontalAlignment(void) const  = 0;
-	virtual enum eVerticalAlignments GetPosterVerticalAlignment(void) const = 0;
+	virtual void SetPosterWidth(ePosterSizeModes mode, double width) = 0;
+	virtual void SetPosterHeight(ePosterSizeModes mode, double height) = 0;
+	virtual double GetPosterWidth(ePosterSizeModes mode) const = 0;
+	virtual double GetPosterHeight(ePosterSizeModes mode) const = 0;
+	virtual ePosterSizeModes GetPosterSizeMode(void) const = 0;
+	virtual void SetPosterHorizontalAlignment(eHorizontalAlignments alignment) = 0;
+	virtual void SetPosterVerticalAlignment(eVerticalAlignments alignment) = 0;
+	virtual eHorizontalAlignments GetPosterHorizontalAlignment(void) const  = 0;
+	virtual eVerticalAlignments GetPosterVerticalAlignment(void) const = 0;
 
-	virtual void SetPosterOutputFormat(enum eImageFormats format) = 0;
-	virtual enum eImageFormats GetPosterOutputFormat(void) const = 0;
+	virtual void SetPosterOutputFormat(ImageIOTypes::eImageFormats format) = 0;
+	virtual ImageIOTypes::eImageFormats GetPosterOutputFormat(void) const = 0;
 
 	virtual int SavePoster(const char *fileName) const = 0;
 	virtual void SetLaunchPDFApplication(bool launch) = 0;
