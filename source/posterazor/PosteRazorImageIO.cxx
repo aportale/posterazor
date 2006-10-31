@@ -149,18 +149,18 @@ public:
 	int GetWidthPixels(void) const {return m_widthPixels;}
 	int GetHeightPixels(void) const {return m_heightPixels;}
 
-	double GetHorizontalDotsPerUnitOfLength(enum UnitsOfLength::eUnitsOfLength unit) const
+	double GetHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const
 	{
 		return m_horizontalDotsPerMeter / UnitsOfLength::ConvertBetweenUnitsOfLength(1, UnitsOfLength::eUnitOfLengthMeter, unit);
 	}
 
-	double GetVerticalDotsPerUnitOfLength(enum UnitsOfLength::eUnitsOfLength unit) const
+	double GetVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const
 	{
 		return m_verticalDotsPerMeter / UnitsOfLength::ConvertBetweenUnitsOfLength(1, UnitsOfLength::eUnitOfLengthMeter, unit);
 	}
 
-	double GetWidth(enum UnitsOfLength::eUnitsOfLength unit) const {return GetWidthPixels() / GetHorizontalDotsPerUnitOfLength(unit);}
-	double GetHeight(enum UnitsOfLength::eUnitsOfLength unit) const {return GetHeightPixels() / GetVerticalDotsPerUnitOfLength(unit);}
+	double GetWidth(UnitsOfLength::eUnitsOfLength unit) const {return GetWidthPixels() / GetHorizontalDotsPerUnitOfLength(unit);}
+	double GetHeight(UnitsOfLength::eUnitsOfLength unit) const {return GetHeightPixels() / GetVerticalDotsPerUnitOfLength(unit);}
 
 #define MAX(a, b) ((a)>(b)?(a):(b))
 
@@ -249,9 +249,9 @@ public:
 		return FreeImage_GetBPP(m_bitmap);
 	}
 	
-	enum eColorTypes GetColorDataType(void) const
+	eColorTypes GetColorDataType(void) const
 	{
-		enum eColorTypes colorDatatype = eColorTypeRGB;
+		eColorTypes colorDatatype = eColorTypeRGB;
 		FREE_IMAGE_COLOR_TYPE imageColorType = FreeImage_GetColorType(m_bitmap);
 		
 		if (imageColorType == FIC_MINISBLACK || imageColorType == FIC_MINISWHITE)
@@ -270,7 +270,7 @@ public:
 		return colorDatatype;
 	}
 
-	int SavePoster(const char *fileName, enum ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const
+	int SavePoster(const char *fileName, ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const
 	{
 		int err = 0;
 

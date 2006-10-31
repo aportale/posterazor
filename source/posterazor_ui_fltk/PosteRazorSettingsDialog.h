@@ -30,9 +30,9 @@
 
 typedef struct
 {
-	enum PosteRazor::eUnitsOfLength UnitOfLength;
-	enum Fl_Paint_Canvas_Group::ePaintCanvasTypes previewType;
-	enum Translations::eLanguages language;
+	UnitsOfLength::eUnitsOfLength UnitOfLength;
+	Fl_Paint_Canvas_Group::ePaintCanvasTypes previewType;
+	Translations::eLanguages language;
 } posteRazorSettings;
 
 class SettingsChangementHandler

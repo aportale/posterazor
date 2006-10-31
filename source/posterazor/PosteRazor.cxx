@@ -61,29 +61,29 @@ class PosteRazorImplementation: public PosteRazor
 private:
 	PosteRazorImageIO*     m_imageIO;
 
-	enum eUnitsOfLength    m_UnitOfLength;
+	UnitsOfLength::eUnitsOfLength     m_UnitOfLength;
 
-	double                 m_overlappingWidth;
-	double                 m_overlappingHeight;
-	enum eOverlappingPositions m_overlappingPosition;
+	double                            m_overlappingWidth;
+	double                            m_overlappingHeight;
+	eOverlappingPositions             m_overlappingPosition;
 
-	enum ePosterSizeModes  m_posterSizeMode;
-	double                 m_posterDimension;
-	bool                   m_posterDimensionIsWidth;
-	enum eHorizontalAlignments m_posterHorizontalAlignment;
-	enum eVerticalAlignments m_posterVerticalAlignment;
+	ePosterSizeModes                  m_posterSizeMode;
+	double                            m_posterDimension;
+	bool                              m_posterDimensionIsWidth;
+	eHorizontalAlignments             m_posterHorizontalAlignment;
+	eVerticalAlignments               m_posterVerticalAlignment;
 
-	bool                   m_useCustomPaperSize;
-	ePaperFormats          m_paperFormat;
-	ePaperOrientations     m_paperOrientation;
-	double                 m_paperBorderTop;
-	double                 m_paperBorderRight;
-	double                 m_paperBorderBottom;
-	double                 m_paperBorderLeft;
-	double                 m_customPaperWidth;
-	double                 m_customPaperHeight;
+	bool                              m_useCustomPaperSize;
+	PaperFormats::ePaperFormats       m_paperFormat;
+	PaperFormats::ePaperOrientations  m_paperOrientation;
+	double                            m_paperBorderTop;
+	double                            m_paperBorderRight;
+	double                            m_paperBorderBottom;
+	double                            m_paperBorderLeft;
+	double                            m_customPaperWidth;
+	double                            m_customPaperHeight;
 
-	enum eImageFormats     m_posterOutputFormat;
+	ImageIOTypes::eImageFormats     m_posterOutputFormat;
 
 	bool                   m_launchPDFApplication;
 
@@ -99,8 +99,8 @@ public:
 		m_posterVerticalAlignment      = eVerticalAlignmentTop;
 
 		m_useCustomPaperSize           = false;
-		m_paperFormat                  = ePaperFormatA4;
-		m_paperOrientation             = ePaperOrientationPortrait;
+		m_paperFormat                  = PaperFormats::ePaperFormatA4;
+		m_paperOrientation             = PaperFormats::ePaperOrientationPortrait;
 		m_paperBorderTop               = 1.5;
 		m_paperBorderRight             = 1.5;
 		m_paperBorderBottom            = 1.5;
@@ -112,9 +112,9 @@ public:
 		m_overlappingHeight            = 1.0;
 		m_overlappingPosition          = eOverlappingPositionBottomRight;
 
-		m_UnitOfLength                 = eUnitOfLengthCentimeter;
+		m_UnitOfLength                 = UnitsOfLength::eUnitOfLengthCentimeter;
 
-		m_posterOutputFormat           = eImageFormatPDF;
+		m_posterOutputFormat           = ImageIOTypes::eImageFormatPDF;
 
 		m_launchPDFApplication         = true;
 	}
@@ -134,8 +134,8 @@ public:
 		m_posterHorizontalAlignment    = (eHorizontalAlignments)preferences->GetInteger(preferencesKey_PosterHorizontalAlignment, (int)m_posterHorizontalAlignment);
 		m_posterVerticalAlignment      = (eVerticalAlignments)preferences->GetInteger(preferencesKey_PosterVerticalAlignment, (int)m_posterVerticalAlignment);
 		m_useCustomPaperSize           = preferences->GetBoolean(preferencesKey_UseCustomPaperSize, m_useCustomPaperSize);
-		m_paperFormat                  = (ePaperFormats)preferences->GetInteger(preferencesKey_PaperFormat, (int)m_paperFormat);
-		m_paperOrientation             = (ePaperOrientations)preferences->GetInteger(preferencesKey_PaperOrientation, (int)m_paperOrientation);
+		m_paperFormat                  = (PaperFormats::ePaperFormats)preferences->GetInteger(preferencesKey_PaperFormat, (int)m_paperFormat);
+		m_paperOrientation             = (PaperFormats::ePaperOrientations)preferences->GetInteger(preferencesKey_PaperOrientation, (int)m_paperOrientation);
 		m_paperBorderTop               = preferences->GetDouble(preferencesKey_PaperBorderTop, m_paperBorderTop);
 		m_paperBorderRight             = preferences->GetDouble(preferencesKey_PaperBorderRight, m_paperBorderRight);
 		m_paperBorderBottom            = preferences->GetDouble(preferencesKey_PaperBorderBottom, m_paperBorderBottom);
@@ -145,8 +145,8 @@ public:
 		m_overlappingWidth             = preferences->GetDouble(preferencesKey_OverlappingWidth, m_overlappingWidth);
 		m_overlappingHeight            = preferences->GetDouble(preferencesKey_OverlappingHeight, m_overlappingHeight);
 		m_overlappingPosition          = (eOverlappingPositions)preferences->GetInteger(preferencesKey_OverlappingPosition, (int)m_overlappingPosition);
-		m_UnitOfLength                 = (eUnitsOfLength)preferences->GetInteger(preferencesKey_UnitOfLength, (int)m_UnitOfLength);
-		m_posterOutputFormat           = (eImageFormats)preferences->GetInteger(preferencesKey_PosterOutputFormat, (int)m_posterOutputFormat);
+		m_UnitOfLength                 = (UnitsOfLength::eUnitsOfLength)preferences->GetInteger(preferencesKey_UnitOfLength, (int)m_UnitOfLength);
+		m_posterOutputFormat           = (ImageIOTypes::eImageFormats)preferences->GetInteger(preferencesKey_PosterOutputFormat, (int)m_posterOutputFormat);
 		m_launchPDFApplication         = preferences->GetBoolean(preferencesKey_LaunchPDFApplication, m_launchPDFApplication);
 
 		return returnValue;
@@ -180,70 +180,225 @@ public:
 		return returnValue;
 	}
 
-	PosteRazorImageIO *GetImageIO(void) {return m_imageIO;}
+	PosteRazorImageIO *GetImageIO(void)
+	{
+		return m_imageIO;
+	}
 
-	double ConvertDistanceToCm(double distance) const {return ConvertBetweenUnitsOfLength(distance, GetUnitOfLength(), eUnitOfLengthCentimeter);}
-	double ConvertCmToDistance(double cm) const {return ConvertBetweenUnitsOfLength(cm, eUnitOfLengthCentimeter, GetUnitOfLength());}
+	double ConvertDistanceToCm(double distance) const
+	{
+		return UnitsOfLength::ConvertBetweenUnitsOfLength(distance, GetUnitOfLength(), UnitsOfLength::eUnitOfLengthCentimeter);
+	}
+
+	double ConvertCmToDistance(double cm) const
+	{
+		return UnitsOfLength::ConvertBetweenUnitsOfLength(cm, UnitsOfLength::eUnitOfLengthCentimeter, GetUnitOfLength());
+	}
 
 	bool LoadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize)
 	{
 		return m_imageIO->LoadInputImage(imageFileName, errorMessage, errorMessageSize);
 	}
-	bool IsImageLoaded(void) const {return m_imageIO->IsImageLoaded();}
 
-	int GetInputImageWidthPixels(void) const {return m_imageIO->GetWidthPixels();}
-	int GetInputImageHeightPixels(void) const {return m_imageIO->GetHeightPixels();}
+	bool IsImageLoaded(void) const
+	{
+		return m_imageIO->IsImageLoaded();
+	}
 
-	double GetInputImageHorizontalDpi(void) const {return m_imageIO->GetHorizontalDotsPerUnitOfLength(eUnitOfLengthInch);}
-	double GetInputImageVerticalDpi(void) const {return m_imageIO->GetVerticalDotsPerUnitOfLength(eUnitOfLengthInch);}
+	int GetInputImageWidthPixels(void) const
+	{
+		return m_imageIO->GetWidthPixels();
+	}
 
-	double GetInputImageWidth(void) const {return m_imageIO->GetWidth(m_UnitOfLength);}
-	double GetInputImageHeight(void) const {return m_imageIO->GetHeight(m_UnitOfLength);}
+	int GetInputImageHeightPixels(void) const
+	{
+		return m_imageIO->GetHeightPixels();
+	}
 
-	int GetInputImageBitsPerPixel(void) const {return m_imageIO->GetBitsPerPixel();}
-	enum eColorTypes GetInputImageColorType(void) const {return m_imageIO->GetColorDataType();}
+	double GetInputImageHorizontalDpi(void) const
+	{
+		return m_imageIO->GetHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitOfLengthInch);
+	}
 
-	void SetUnitOfLength(enum eUnitsOfLength unit) {m_UnitOfLength = unit;}
-	enum eUnitsOfLength GetUnitOfLength(void) const {return m_UnitOfLength;}
-	const char* GetUnitOfLengthName(void) const {return UnitsOfLength::GetUnitOfLengthName(m_UnitOfLength);}
+	double GetInputImageVerticalDpi(void) const
+	{
+		return m_imageIO->GetVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitOfLengthInch);
+	}
 
-	void SetPaperFormat(enum ePaperFormats format) {m_paperFormat = format;}
-	void SetPaperOrientation(enum ePaperOrientations orientation) {m_paperOrientation = orientation;}
-	void SetPaperBorderTop(double border) {m_paperBorderTop = ConvertDistanceToCm(border);}
-	void SetPaperBorderRight(double border) {m_paperBorderRight = ConvertDistanceToCm(border);}
-	void SetPaperBorderBottom(double border) {m_paperBorderBottom = ConvertDistanceToCm(border);}
-	void SetPaperBorderLeft(double border) {m_paperBorderLeft = ConvertDistanceToCm(border);}
+	double GetInputImageWidth(void) const
+	{
+		return m_imageIO->GetWidth(m_UnitOfLength);
+	}
 
-	enum ePaperFormats GetPaperFormat(void) const {return m_paperFormat;}
-	enum ePaperOrientations GetPaperOrientation(void) const {return m_paperOrientation;}
-	double GetPaperBorderTop(void) const {return MINMAX(ConvertCmToDistance(m_paperBorderTop), 0, GetMaximalHorizontalPaperBorder());}
-	double GetPaperBorderRight(void) const {return MINMAX(ConvertCmToDistance(m_paperBorderRight), 0, GetMaximalVerticalPaperBorder());}
-	double GetPaperBorderBottom(void) const {return MINMAX(ConvertCmToDistance(m_paperBorderBottom), 0, GetMaximalHorizontalPaperBorder());}
-	double GetPaperBorderLeft(void) const {return MINMAX(ConvertCmToDistance(m_paperBorderLeft), 0, GetMaximalVerticalPaperBorder());}
+	double GetInputImageHeight(void) const
+	{
+		return m_imageIO->GetHeight(m_UnitOfLength);
+	}
 
-	double GetMaximalVerticalPaperBorder(void) const {return GetPaperWidth() / 2.0 - ConvertCmToDistance(1.0);}
-	double GetMaximalHorizontalPaperBorder(void) const {return GetPaperHeight() / 2.0 - ConvertCmToDistance(1.0);}
+	int GetInputImageBitsPerPixel(void) const
+	{
+		return m_imageIO->GetBitsPerPixel();
+	}
 
-	void SetCustomPaperWidth(double width) {m_customPaperWidth = ConvertDistanceToCm(width);}
-	void SetCustomPaperHeight(double height) {m_customPaperHeight = ConvertDistanceToCm(height);}
+	ColorTypes::eColorTypes GetInputImageColorType(void) const
+	{
+		return m_imageIO->GetColorDataType();
+	}
 
-	double GetCustomPaperWidth(void) const {return MINMAX(ConvertCmToDistance(m_customPaperWidth), GetCustomMinimalPaperWidth(), GetCustomMaximalPaperWidth());}
-	double GetCustomPaperHeight(void) const {return MINMAX(ConvertCmToDistance(m_customPaperHeight), GetCustomMinimalPaperHeight(), GetCustomMaximalPaperHeight());}
+	void SetUnitOfLength(UnitsOfLength::eUnitsOfLength unit)
+	{
+		m_UnitOfLength = unit;
+	}
 
-	double GetCustomMinimalPaperWidth(void) const {return ConvertCmToDistance(4.0);}
-	double GetCustomMinimalPaperHeight(void) const {return ConvertCmToDistance(4.0);}
+	UnitsOfLength::eUnitsOfLength GetUnitOfLength(void) const
+	{
+		return m_UnitOfLength;
+	}
 
-	double GetCustomMaximalPaperWidth(void) const {return ConvertCmToDistance(500.0);} // Maximum of PDF page
-	double GetCustomMaximalPaperHeight(void) const {return ConvertCmToDistance(500.0);}
+	const char* GetUnitOfLengthName(void) const
+	{
+		return UnitsOfLength::GetUnitOfLengthName(m_UnitOfLength);
+	}
 
-	void SetUseCustomPaperSize(bool useIt) {m_useCustomPaperSize = useIt;}
-	bool GetUseCustomPaperSize(void) const {return m_useCustomPaperSize;}
+	void SetPaperFormat(PaperFormats::ePaperFormats format)
+	{
+		m_paperFormat = format;
+	}
 
-	double GetPaperWidth(void) const {return GetUseCustomPaperSize()?GetCustomPaperWidth():PaperFormats::GetPaperWidth(GetPaperFormat(), GetPaperOrientation(), m_UnitOfLength);}
-	double GetPaperHeight(void) const {return GetUseCustomPaperSize()?GetCustomPaperHeight():PaperFormats::GetPaperHeight(GetPaperFormat(), GetPaperOrientation(), m_UnitOfLength);}
+	void SetPaperOrientation(PaperFormats::ePaperOrientations orientation)
+	{
+		m_paperOrientation = orientation;
+	}
 
-	double GetPrintablePaperAreaWidth(void) const {return GetPaperWidth() - GetPaperBorderLeft() - GetPaperBorderRight();}
-	double GetPrintablePaperAreaHeight(void) const {return GetPaperHeight() - GetPaperBorderTop() - GetPaperBorderBottom();}
+	void SetPaperBorderTop(double border)
+	{
+		m_paperBorderTop = ConvertDistanceToCm(border);
+	}
+
+	void SetPaperBorderRight(double border)
+	{
+		m_paperBorderRight = ConvertDistanceToCm(border);
+	}
+
+	void SetPaperBorderBottom(double border)
+	{
+		m_paperBorderBottom = ConvertDistanceToCm(border);
+	}
+
+	void SetPaperBorderLeft(double border)
+	{
+		m_paperBorderLeft = ConvertDistanceToCm(border);
+	}
+
+	PaperFormats::ePaperFormats GetPaperFormat(void) const
+	{
+		return m_paperFormat;
+	}
+
+	PaperFormats::ePaperOrientations GetPaperOrientation(void) const
+	{
+		return m_paperOrientation;
+	}
+
+	double GetPaperBorderTop(void) const
+	{
+		return MINMAX(ConvertCmToDistance(m_paperBorderTop), 0, GetMaximalHorizontalPaperBorder());
+	}
+
+	double GetPaperBorderRight(void) const
+	{
+		return MINMAX(ConvertCmToDistance(m_paperBorderRight), 0, GetMaximalVerticalPaperBorder());
+	}
+
+	double GetPaperBorderBottom(void) const
+	{
+		return MINMAX(ConvertCmToDistance(m_paperBorderBottom), 0, GetMaximalHorizontalPaperBorder());
+	}
+
+	double GetPaperBorderLeft(void) const
+	{
+		return MINMAX(ConvertCmToDistance(m_paperBorderLeft), 0, GetMaximalVerticalPaperBorder());
+	}
+
+	double GetMaximalVerticalPaperBorder(void) const
+	{
+		return GetPaperWidth() / 2.0 - ConvertCmToDistance(1.0);
+	}
+
+	double GetMaximalHorizontalPaperBorder(void) const
+	{
+		return GetPaperHeight() / 2.0 - ConvertCmToDistance(1.0);
+	}
+
+	void SetCustomPaperWidth(double width)
+	{
+		m_customPaperWidth = ConvertDistanceToCm(width);
+	}
+
+	void SetCustomPaperHeight(double height)
+	{
+		m_customPaperHeight = ConvertDistanceToCm(height);
+	}
+
+	double GetCustomPaperWidth(void) const
+	{
+		return MINMAX(ConvertCmToDistance(m_customPaperWidth), GetCustomMinimalPaperWidth(), GetCustomMaximalPaperWidth());
+	}
+
+	double GetCustomPaperHeight(void) const
+	{
+		return MINMAX(ConvertCmToDistance(m_customPaperHeight), GetCustomMinimalPaperHeight(), GetCustomMaximalPaperHeight());
+	}
+
+	double GetCustomMinimalPaperWidth(void) const
+	{
+		return ConvertCmToDistance(4.0);
+	}
+
+	double GetCustomMinimalPaperHeight(void) const
+	{
+		return ConvertCmToDistance(4.0);
+	}
+
+	double GetCustomMaximalPaperWidth(void) const
+	{
+		return ConvertCmToDistance(500.0); // Maximum of PDF page
+	}
+
+	double GetCustomMaximalPaperHeight(void) const
+	{
+		return ConvertCmToDistance(500.0);
+	}
+
+	void SetUseCustomPaperSize(bool useIt)
+	{
+		m_useCustomPaperSize = useIt;
+	}
+
+	bool GetUseCustomPaperSize(void) const
+	{
+		return m_useCustomPaperSize;
+	}
+
+	double GetPaperWidth(void) const
+	{
+		return GetUseCustomPaperSize()?GetCustomPaperWidth():PaperFormats::GetPaperWidth(GetPaperFormat(), GetPaperOrientation(), m_UnitOfLength);
+	}
+
+	double GetPaperHeight(void) const
+	{
+		return GetUseCustomPaperSize()?GetCustomPaperHeight():PaperFormats::GetPaperHeight(GetPaperFormat(), GetPaperOrientation(), m_UnitOfLength);
+	}
+
+	double GetPrintablePaperAreaWidth(void) const
+	{
+		return GetPaperWidth() - GetPaperBorderLeft() - GetPaperBorderRight();
+	}
+
+	double GetPrintablePaperAreaHeight(void) const
+	{
+		return GetPaperHeight() - GetPaperBorderTop() - GetPaperBorderBottom();
+	}
 
 	double ConvertBetweenAbsoluteAndPagesPosterDimension(double dimension, bool pagesToAbsolute, bool width) const
 	{
@@ -326,7 +481,7 @@ public:
 		return otherDimension;
 	}
 
-	void SetPosterDimension(enum ePosterSizeModes mode, double dimension, bool dimensionIsWidth)
+	void SetPosterDimension(ePosterSizeModes mode, double dimension, bool dimensionIsWidth)
 	{
 		m_posterSizeMode = mode;
 
@@ -337,26 +492,57 @@ public:
 		m_posterDimensionIsWidth = dimensionIsWidth;
 	}
 
-	void SetOverlappingWidth(double width) {m_overlappingWidth = ConvertDistanceToCm(width);}
-	void SetOverlappingHeight(double height) {m_overlappingHeight = ConvertDistanceToCm(height);}
-	double GetOverlappingWidth(void) const {return MINMAX(ConvertCmToDistance(m_overlappingWidth), 0, GetMaximalOverLappingWidth());}
-	double GetOverlappingHeight(void) const {return MINMAX(ConvertCmToDistance(m_overlappingHeight), 0, GetMaximalOverLappingHeight());}
-	double GetMaximalOverLappingWidth(void) const {return GetPaperWidth() - GetPaperBorderLeft() - GetPaperBorderRight() - ConvertCmToDistance(1.0);}
-	double GetMaximalOverLappingHeight(void) const {return GetPaperHeight() - GetPaperBorderTop() - GetPaperBorderBottom() - ConvertCmToDistance(1.0);}
-	void SetOverlappingPosition(enum eOverlappingPositions position) {m_overlappingPosition = position;}
-	enum eOverlappingPositions GetOverlappingPosition(void) const {return m_overlappingPosition;}
+	void SetOverlappingWidth(double width)
+	{
+		m_overlappingWidth = ConvertDistanceToCm(width);
+	}
 
-	void SetPosterWidth(enum ePosterSizeModes mode, double width)
+	void SetOverlappingHeight(double height)
+	{
+		m_overlappingHeight = ConvertDistanceToCm(height);
+	}
+
+	double GetOverlappingWidth(void) const
+	{
+		return MINMAX(ConvertCmToDistance(m_overlappingWidth), 0, GetMaximalOverLappingWidth());
+	}
+
+	double GetOverlappingHeight(void) const
+	{
+		return MINMAX(ConvertCmToDistance(m_overlappingHeight), 0, GetMaximalOverLappingHeight());
+	}
+
+	double GetMaximalOverLappingWidth(void) const
+	{
+		return GetPaperWidth() - GetPaperBorderLeft() - GetPaperBorderRight() - ConvertCmToDistance(1.0);
+	}
+
+	double GetMaximalOverLappingHeight(void) const
+	{
+		return GetPaperHeight() - GetPaperBorderTop() - GetPaperBorderBottom() - ConvertCmToDistance(1.0);
+	}
+
+	void SetOverlappingPosition(eOverlappingPositions position)
+	{
+		m_overlappingPosition = position;
+	}
+
+	eOverlappingPositions GetOverlappingPosition(void) const
+	{
+		return m_overlappingPosition;
+	}
+
+	void SetPosterWidth(ePosterSizeModes mode, double width)
 	{
 		SetPosterDimension(mode, width, true);
 	}
 
-	void SetPosterHeight(enum ePosterSizeModes mode, double height)
+	void SetPosterHeight(ePosterSizeModes mode, double height)
 	{
 		SetPosterDimension(mode, height, false);
 	}
 
-	double GetPosterDimension(enum ePosterSizeModes mode, bool width) const
+	double GetPosterDimension(ePosterSizeModes mode, bool width) const
 	{
 		double posterDimension = (width==m_posterDimensionIsWidth)?m_posterDimension:CalculateOtherPosterDimension();
 		
@@ -403,22 +589,40 @@ public:
                 return posterDimension;
 	}
 
-	double GetPosterWidth(enum ePosterSizeModes mode) const
+	double GetPosterWidth(ePosterSizeModes mode) const
 	{
 		return GetPosterDimension(mode, true);
 	}
 
-	double GetPosterHeight(enum ePosterSizeModes mode) const
+	double GetPosterHeight(ePosterSizeModes mode) const
 	{
 		return GetPosterDimension(mode, false);
 	}
 
-	enum ePosterSizeModes GetPosterSizeMode(void) const {return m_posterSizeMode;}
+	ePosterSizeModes GetPosterSizeMode(void) const
+	{
+		return m_posterSizeMode;
+	}
 
-	void SetPosterHorizontalAlignment(enum eHorizontalAlignments alignment) {m_posterHorizontalAlignment = alignment;}
-	void SetPosterVerticalAlignment(enum eVerticalAlignments alignment) {m_posterVerticalAlignment = alignment;}
-	enum eHorizontalAlignments GetPosterHorizontalAlignment(void) const {return m_posterHorizontalAlignment;}
-	enum eVerticalAlignments GetPosterVerticalAlignment(void) const {return m_posterVerticalAlignment;}
+	void SetPosterHorizontalAlignment(eHorizontalAlignments alignment) 
+	{
+		m_posterHorizontalAlignment = alignment;
+	}
+
+	void SetPosterVerticalAlignment(eVerticalAlignments alignment)
+	{
+		m_posterVerticalAlignment = alignment;
+	}
+
+	eHorizontalAlignments GetPosterHorizontalAlignment(void) const
+	{
+		return m_posterHorizontalAlignment;
+	}
+
+	eVerticalAlignments GetPosterVerticalAlignment(void) const
+	{
+		return m_posterVerticalAlignment;
+	}
 
 	void GetPreviewSize(double imageWidth, double imageHeight, int boxWidth, int boxHeight, int &previewWidth, int &previewHeight, bool enlargeToFit) const
 	{
@@ -516,7 +720,7 @@ public:
 		{
 			double overlappingWidth = GetOverlappingWidth() * UnitOfLengthToPixelfactor;
 			double overlappingHeight = GetOverlappingHeight() * UnitOfLengthToPixelfactor;
-			enum eOverlappingPositions overlappingPosition = GetOverlappingPosition();
+			eOverlappingPositions overlappingPosition = GetOverlappingPosition();
 			double overlappingTop =
 				(overlappingPosition == eOverlappingPositionTopLeft || overlappingPosition == eOverlappingPositionTopRight)?
 				borderTop
@@ -561,8 +765,8 @@ public:
 		double imageWidth = GetPosterWidth(ePosterSizeModeAbsolute) * UnitOfLengthToPixelfactor;
 		double imageHeight = GetPosterHeight(ePosterSizeModeAbsolute) * UnitOfLengthToPixelfactor;
 
-		enum eVerticalAlignments verticalAlignment = GetPosterVerticalAlignment();
-		enum eHorizontalAlignments horizontalAlignment = GetPosterHorizontalAlignment();
+		eVerticalAlignments verticalAlignment = GetPosterVerticalAlignment();
+		eHorizontalAlignments horizontalAlignment = GetPosterHorizontalAlignment();
 
 		paintCanvas->DrawImage
 		(
@@ -670,8 +874,15 @@ public:
 		}
 	}
 
-	void SetPosterOutputFormat(enum eImageFormats format) {m_posterOutputFormat = format;}
-	enum eImageFormats GetPosterOutputFormat(void) const {return m_posterOutputFormat;}
+	void SetPosterOutputFormat(ImageIOTypes::eImageFormats format)
+	{
+		m_posterOutputFormat = format;
+	}
+
+	ImageIOTypes::eImageFormats GetPosterOutputFormat(void) const
+	{
+		return m_posterOutputFormat;
+	}
 
 	int SavePoster(const char *fileName) const
 	{

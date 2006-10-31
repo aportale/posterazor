@@ -59,7 +59,7 @@ void Fl_Paint_Canvas_Group::redraw(void)
 #endif
 }
 
-void Fl_Paint_Canvas_Group::SetPaintCanvasType(enum ePaintCanvasTypes type)
+void Fl_Paint_Canvas_Group::SetPaintCanvasType(ePaintCanvasTypes type)
 {
 #ifndef NO_OPENGL_PREVIEW
 	m_paintCanvasType = type;

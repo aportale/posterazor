@@ -40,19 +40,19 @@ public:
 	virtual int GetWidthPixels(void) const = 0;
 	virtual int GetHeightPixels(void) const = 0;
 
-	virtual double GetHorizontalDotsPerUnitOfLength(enum UnitsOfLength::eUnitsOfLength unit) const = 0;
-	virtual double GetVerticalDotsPerUnitOfLength(enum UnitsOfLength::eUnitsOfLength unit) const = 0;
+	virtual double GetHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const = 0;
+	virtual double GetVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const = 0;
 
-	virtual double GetWidth(enum UnitsOfLength::eUnitsOfLength unit) const = 0;
-	virtual double GetHeight(enum UnitsOfLength::eUnitsOfLength unit) const = 0;
+	virtual double GetWidth(UnitsOfLength::eUnitsOfLength unit) const = 0;
+	virtual double GetHeight(UnitsOfLength::eUnitsOfLength unit) const = 0;
 
 	virtual void GetImageAsRGB(unsigned char *buffer) const = 0;
 	virtual void GetImageAsRGB(unsigned char *buffer, int width, int height) const = 0;
 	
 	virtual int GetBitsPerPixel(void) const = 0;
-	virtual enum eColorTypes GetColorDataType(void) const = 0;
+	virtual eColorTypes GetColorDataType(void) const = 0;
 
-	virtual int SavePoster(const char *fileName, enum ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const = 0;
+	virtual int SavePoster(const char *fileName, ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const = 0;
 };
 
 #endif

@@ -29,14 +29,14 @@ PosteRazorSettingsDialog::PosteRazorSettingsDialog()
 #define SETTINGCHOICEBUTTONSSPACING 10
 
 	int i;
-	m_unitOfLengthButtonsCount = PosteRazor::GetUnitsOfLengthCount();
+	m_unitOfLengthButtonsCount = UnitsOfLength::GetUnitsOfLengthCount();
 	m_unitOfLengthButtons = new Fl_Button*[m_unitOfLengthButtonsCount];
 	int unitOfLengthButtonWidth = (m_unitOfLengthButtonsGroup->w() + SETTINGCHOICEBUTTONSSPACING) / m_unitOfLengthButtonsCount - SETTINGCHOICEBUTTONSSPACING;
 
 	m_unitOfLengthButtonsGroup->begin();
 	for (i = 0; i < m_unitOfLengthButtonsCount; i++)
 	{
-		const char* UnitOfLengthName = UnitsOfLength::GetUnitOfLengthName(PosteRazor::GetUnitOfLengthForIndex(i));
+		const char* UnitOfLengthName = UnitsOfLength::GetUnitOfLengthName(UnitsOfLength::GetUnitOfLengthForIndex(i));
 		m_unitOfLengthButtons[i] = new Fl_Button
 		(
 			m_unitOfLengthButtonsGroup->x() + i * (unitOfLengthButtonWidth+SETTINGCHOICEBUTTONSSPACING),
@@ -70,7 +70,7 @@ PosteRazorSettingsDialog::PosteRazorSettingsDialog()
 			m_languageButtonsGroup->h()
 		);
 
-		enum Translations::eLanguages language = TRANSLATIONS->GetLanguageForIndex(i);
+		Translations::eLanguages language = TRANSLATIONS->GetLanguageForIndex(i);
 		TranslationInterface *translation = TRANSLATIONS->GetTranslationOfLanguage(language);
 		m_languageButtonImages[i] = new Fl_RGB_Image(translation->FlagImageRGBData(), translation->FlagImageWidth(), translation->FlagImageHeight());
 		m_languageButtons[i]->image(m_languageButtonImages[i]);
@@ -120,7 +120,7 @@ void PosteRazorSettingsDialog::SetOptionsAndHandler(posteRazorSettings *settings
 	m_changementHandler = changementHandler;
 
 	for (i = 0; i < m_unitOfLengthButtonsCount; i++)
-		m_unitOfLengthButtons[i]->value(PosteRazor::GetUnitOfLengthForIndex(i) == m_settings->UnitOfLength?1:0);
+		m_unitOfLengthButtons[i]->value(UnitsOfLength::GetUnitOfLengthForIndex(i) == m_settings->UnitOfLength?1:0);
 
 	m_useOpenGLCheckButton->value(m_settings->previewType == Fl_Paint_Canvas_Group::PaintCanvasTypeGL?1:0);
 
@@ -139,7 +139,7 @@ void PosteRazorSettingsDialog::HandleUnitOfLengthChoice(void)
 	{
 		if (m_unitOfLengthButtons[i]->value() != 0)
 		{
-			m_settings->UnitOfLength = PosteRazor::GetUnitOfLengthForIndex(i);
+			m_settings->UnitOfLength = UnitsOfLength::GetUnitOfLengthForIndex(i);
 			break;
 		}
 	}

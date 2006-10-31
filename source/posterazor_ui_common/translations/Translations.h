@@ -52,12 +52,12 @@ public:
 
 	static Translations* Instance(void);
 	
-	virtual void SelectLangue(enum eLanguages language) = 0;
-	virtual enum eLanguages GetSelectedLanguage(void) = 0;
+	virtual void SelectLangue(eLanguages language) = 0;
+	virtual eLanguages GetSelectedLanguage(void) = 0;
 	virtual int GetLanguagesCount(void) = 0;
-	virtual enum eLanguages GetLanguageForIndex(int index) = 0;
-	virtual TranslationInterface* GetTranslationOfLanguage(enum eLanguages language) = 0;
-	virtual enum eLanguages GetSystemLanguage(void) = 0;
+	virtual eLanguages GetLanguageForIndex(int index) = 0;
+	virtual TranslationInterface* GetTranslationOfLanguage(eLanguages language) = 0;
+	virtual eLanguages GetSystemLanguage(void) = 0;
 };
 
 #endif

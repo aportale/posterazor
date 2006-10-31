@@ -25,10 +25,10 @@
 
 #include "UnitsOfLength.h"
 
-class PaperFormats: public UnitsOfLength
+class PaperFormats
 {
 public:
-	typedef enum ePaperFormats
+	enum ePaperFormats
 	{
 		ePaperFormatA4,
 		ePaperFormatA3,
@@ -37,20 +37,20 @@ public:
 		ePaperFormatTabloid
 	};
 
-	typedef enum ePaperOrientations
+	enum ePaperOrientations
 	{
 		ePaperOrientationPortrait,
 		ePaperOrientationLandscape
 	};
 
 	static int GetPaperFormatsCount(void);
-	static enum PaperFormats::ePaperFormats GetPaperFormatForIndex(int index);
-	static const char* GetPaperFormatName(enum ePaperFormats format);
-	static enum ePaperFormats GetPaperFormatForName(const char* name);
+	static ePaperFormats GetPaperFormatForIndex(int index);
+	static const char* GetPaperFormatName(ePaperFormats format);
+	static ePaperFormats GetPaperFormatForName(const char* name);
 
-	static double GetPaperDimension(enum ePaperFormats format, enum ePaperOrientations orientation, enum eUnitsOfLength unit, bool width);
-	static double GetPaperWidth(enum ePaperFormats format, enum ePaperOrientations orientation, enum eUnitsOfLength unit);
-	static double GetPaperHeight(enum ePaperFormats format, enum ePaperOrientations orientation, enum eUnitsOfLength unit);
+	static double GetPaperDimension(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit, bool width);
+	static double GetPaperWidth(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit);
+	static double GetPaperHeight(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit);
 };
 
 #endif

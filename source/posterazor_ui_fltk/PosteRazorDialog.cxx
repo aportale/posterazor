@@ -92,7 +92,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 	m_posteRazor->ReadPersistentPreferences(&preferences);
 	Fl_Paint_Canvas_Group::ePaintCanvasTypes paintCanvasType =
 		preferences.GetBoolean(preferencesKey_UseOpenGLForPreview, true)?Fl_Paint_Canvas_Group::PaintCanvasTypeGL:Fl_Paint_Canvas_Group::PaintCanvasTypeDraw;
-	enum Translations::eLanguages language = (enum Translations::eLanguages)preferences.GetInteger(preferencesKey_UILanguage, Translations::eLanguageUndefined);
+	Translations::eLanguages language = (Translations::eLanguages)preferences.GetInteger(preferencesKey_UILanguage, Translations::eLanguageUndefined);
 	m_UILanguageIsUndefined = language == Translations::eLanguageUndefined;
 	if (m_UILanguageIsUndefined)
 		language = TRANSLATIONS->GetSystemLanguage();
@@ -103,12 +103,12 @@ PosteRazorDialog::PosteRazorDialog(void)
 	strncpy(m_savePosterChooserLastPath, preferences.GetString(preferencesKey_SavePosterChooserLastPath, ""), sizeof(m_savePosterChooserLastPath));
 	m_savePosterChooserLastPath[sizeof(m_savePosterChooserLastPath) - 1] = '\0';
 
-	int paperFormatMenuItemsCount = PosteRazor::GetPaperFormatsCount()+1;
+	int paperFormatMenuItemsCount = PaperFormats::GetPaperFormatsCount()+1;
 	m_paperFormatMenuItems = new Fl_Menu_Item[paperFormatMenuItemsCount];
 	memset(m_paperFormatMenuItems, 0, sizeof(Fl_Menu_Item)*paperFormatMenuItemsCount);
-	for (i = 0; i < PosteRazor::GetPaperFormatsCount(); i++)
+	for (i = 0; i < PaperFormats::GetPaperFormatsCount(); i++)
 	{
-		const char* paperFormatName = PosteRazor::GetPaperFormatName(PosteRazor::GetPaperFormatForIndex(i));
+		const char* paperFormatName = PaperFormats::GetPaperFormatName(PaperFormats::GetPaperFormatForIndex(i));
 		m_paperFormatMenuItems[i].label(paperFormatName);
 		m_paperFormatMenuItems[i].callback(HandlePaperFormatChoice_cb);
 		m_paperFormatMenuItems[i].user_data((void*)this);
@@ -497,7 +497,7 @@ void PosteRazorDialog::UpdateImageInfoFields(void)
 	sprintf(sizeInDimensionUnitString, TRANSLATIONS->SizeInUnitOfLength(), m_posteRazor->GetUnitOfLengthName());
 
 	char string[1024];
-	enum PosteRazor::eColorTypes colorType = m_posteRazor->GetInputImageColorType();
+	ColorTypes::eColorTypes colorType = m_posteRazor->GetInputImageColorType();
 
 	sprintf
 	(
@@ -517,11 +517,11 @@ void PosteRazorDialog::UpdateImageInfoFields(void)
 		m_posteRazor->GetInputImageWidthPixels(), m_posteRazor->GetInputImageHeightPixels(),
 		m_posteRazor->GetInputImageWidth(), m_posteRazor->GetInputImageHeight(),
 		m_posteRazor->GetInputImageVerticalDpi(),
-			colorType==PosteRazor::eColorTypeMonochrome?TRANSLATIONS->Monochrome():
-			colorType==PosteRazor::eColorTypeGreyscale?TRANSLATIONS->Grayscale():
-			colorType==PosteRazor::eColorTypePalette?TRANSLATIONS->Palette():
-			colorType==PosteRazor::eColorTypeRGB?"RGB":
-			colorType==PosteRazor::eColorTypeRGBA?"RGBA":
+			colorType==ColorTypes::eColorTypeMonochrome?TRANSLATIONS->Monochrome():
+			colorType==ColorTypes::eColorTypeGreyscale?TRANSLATIONS->Grayscale():
+			colorType==ColorTypes::eColorTypePalette?TRANSLATIONS->Palette():
+			colorType==ColorTypes::eColorTypeRGB?"RGB":
+			colorType==ColorTypes::eColorTypeRGBA?"RGBA":
 			/*colorType==eColorTypeCMYK?*/ "CMYK",
 		m_posteRazor->GetInputImageBitsPerPixel()
 	);
@@ -534,7 +534,7 @@ void PosteRazorDialog::UpdatePosterSizeFields(Fl_Widget *sourceWidget)
 	{
 		Fl_PosteRazor_Spinner* inputWidget;
 		bool width;
-		enum PosteRazor::ePosterSizeModes sizeMode;
+		PosteRazor::ePosterSizeModes sizeMode;
 	}
 	sizeInputWidgets[] = 
 	{
@@ -578,8 +578,8 @@ void PosteRazorDialog::UpdatePosterSizeFields(Fl_Widget *sourceWidget)
 void PosteRazorDialog::SetPaperSizeFields(void)
 {
 	// standard paper format
-	m_paperOrientationPortraitRadioButton->value(m_posteRazor->GetPaperOrientation() == PosteRazor::ePaperOrientationPortrait);
-	m_paperOrientationLandscapeRadioButton->value(m_posteRazor->GetPaperOrientation() == PosteRazor::ePaperOrientationLandscape);
+	m_paperOrientationPortraitRadioButton->value(m_posteRazor->GetPaperOrientation() == PaperFormats::ePaperOrientationPortrait);
+	m_paperOrientationLandscapeRadioButton->value(m_posteRazor->GetPaperOrientation() == PaperFormats::ePaperOrientationLandscape);
 
 	// custom paper format
 	m_paperCustomWidthInput->value(m_posteRazor->GetCustomPaperWidth());
@@ -617,11 +617,11 @@ void PosteRazorDialog::HandlePaperSizeChangement(Fl_Widget *sourceWidget)
 		if (sourceWidget == m_paperFormatChoice)
 		{
 			const char* paperFormatName = m_paperFormatMenuItems[m_paperFormatChoice->value()].label();
-			enum PosteRazor::ePaperFormats paperFormat = PosteRazor::GetPaperFormatForName(paperFormatName);
+			PaperFormats::ePaperFormats paperFormat = PaperFormats::GetPaperFormatForName(paperFormatName);
 			m_posteRazor->SetPaperFormat(paperFormat);
 		}
 		else if (sourceWidget == m_paperOrientationPortraitRadioButton || sourceWidget == m_paperOrientationLandscapeRadioButton)
-			m_posteRazor->SetPaperOrientation(m_paperOrientationLandscapeRadioButton->value() != 0?PosteRazor::ePaperOrientationLandscape:PosteRazor::ePaperOrientationPortrait);
+			m_posteRazor->SetPaperOrientation(m_paperOrientationLandscapeRadioButton->value() != 0?PaperFormats::ePaperOrientationLandscape:PaperFormats::ePaperOrientationPortrait);
 	}
 	else
 	{
@@ -639,7 +639,7 @@ void PosteRazorDialog::SetOverlappingFields(void)
 	m_overlappingWidthInput->value(m_posteRazor->GetOverlappingWidth());
 	m_overlappingHeightInput->value(m_posteRazor->GetOverlappingHeight());
 
-	enum PosteRazor::eOverlappingPositions overlappingPosition = m_posteRazor->GetOverlappingPosition();
+	PosteRazor::eOverlappingPositions overlappingPosition = m_posteRazor->GetOverlappingPosition();
 
 	(
 		overlappingPosition == PosteRazor::eOverlappingPositionBottomRight?m_overlappingPositionBottomRightButton
@@ -676,7 +676,7 @@ void PosteRazorDialog::UpdatePosterSizeGroupsState(void)
 
 void PosteRazorDialog::SetPosterImageAlignmentButtons(void)
 {
-	enum PosteRazor::eVerticalAlignments verticalAlignment = m_posteRazor->GetPosterVerticalAlignment();
+	PosteRazor::eVerticalAlignments verticalAlignment = m_posteRazor->GetPosterVerticalAlignment();
 	
 	(
 		verticalAlignment == PosteRazor::eVerticalAlignmentTop?m_posterAlignmentTopButton
@@ -684,7 +684,7 @@ void PosteRazorDialog::SetPosterImageAlignmentButtons(void)
 		:m_posterAlignmentBottomButton 
 	)->setonly();
 	
-	enum PosteRazor::eHorizontalAlignments horizontalAlignment = m_posteRazor->GetPosterHorizontalAlignment();
+	PosteRazor::eHorizontalAlignments horizontalAlignment = m_posteRazor->GetPosterHorizontalAlignment();
 	
 	(
 		horizontalAlignment == PosteRazor::eHorizontalAlignmentLeft?m_posterAlignmentLeftButton

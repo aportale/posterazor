@@ -26,7 +26,7 @@
 class UnitsOfLength
 {
 public:
-	typedef enum eUnitsOfLength
+	enum eUnitsOfLength
 	{
 		eUnitOfLengthMeter,
 		eUnitOfLengthMillimeter,
@@ -38,11 +38,11 @@ public:
 
 	static int GetUnitsOfLengthCount(void);
 
-	static double ConvertBetweenUnitsOfLength(double distance, enum eUnitsOfLength sourceUnit, enum eUnitsOfLength targetUnit);
-	static int GetUnitOfLengthIndex(enum eUnitsOfLength unit);
-	static const char* GetUnitOfLengthName(enum eUnitsOfLength unit);
-	static enum eUnitsOfLength GetUnitOfLengthForName(const char* name);
-	static enum eUnitsOfLength GetUnitOfLengthForIndex(int index);
+	static double ConvertBetweenUnitsOfLength(double distance, eUnitsOfLength sourceUnit, eUnitsOfLength targetUnit);
+	static int GetUnitOfLengthIndex(eUnitsOfLength unit);
+	static const char* GetUnitOfLengthName(eUnitsOfLength unit);
+	static eUnitsOfLength GetUnitOfLengthForName(const char* name);
+	static eUnitsOfLength GetUnitOfLengthForIndex(int index);
 };
 
 #endif

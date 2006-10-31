@@ -25,7 +25,7 @@
 
 typedef struct
 {
-	enum PaperFormats::ePaperFormats format;
+	PaperFormats::ePaperFormats format;
 	char *name;
 	double width;
 	double height;
@@ -48,12 +48,12 @@ int PaperFormats::GetPaperFormatsCount(void)
 	return g_paperFormatsCount;
 }
 
-enum PaperFormats::ePaperFormats PaperFormats::GetPaperFormatForIndex(int index)
+PaperFormats::ePaperFormats PaperFormats::GetPaperFormatForIndex(int index)
 {
 	return g_paperFormats[index].format;
 }
 
-const int GetPaperFormatIndex(enum PaperFormats::ePaperFormats format)
+const int GetPaperFormatIndex(PaperFormats::ePaperFormats format)
 {
 	int index = 0;
 
@@ -69,16 +69,16 @@ const int GetPaperFormatIndex(enum PaperFormats::ePaperFormats format)
 	return index;
 }
 
-const char* PaperFormats::GetPaperFormatName(enum ePaperFormats format)
+const char* PaperFormats::GetPaperFormatName(ePaperFormats format)
 {
 	int paperFormatIndex = GetPaperFormatIndex(format);
 
 	return g_paperFormats[paperFormatIndex].name;
 }
 
-enum PaperFormats::ePaperFormats PaperFormats::GetPaperFormatForName(const char* name)
+PaperFormats::ePaperFormats PaperFormats::GetPaperFormatForName(const char* name)
 {
-	enum ePaperFormats paperFormat = ePaperFormatA4;
+	ePaperFormats paperFormat = ePaperFormatA4;
 
 	for (int i = 0; i < g_paperFormatsCount; i++)
 	{
@@ -92,19 +92,19 @@ enum PaperFormats::ePaperFormats PaperFormats::GetPaperFormatForName(const char*
 	return paperFormat;
 }
 
-double PaperFormats::GetPaperDimension(enum ePaperFormats format, enum ePaperOrientations orientation, enum eUnitsOfLength unit, bool width)
+double PaperFormats::GetPaperDimension(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit, bool width)
 {
 	int paperFormatIndex = GetPaperFormatIndex(format);
 	double dimension = ((width && orientation == ePaperOrientationPortrait) || (!width && orientation == ePaperOrientationLandscape))?g_paperFormats[paperFormatIndex].width:g_paperFormats[paperFormatIndex].height;
-	return ConvertBetweenUnitsOfLength(dimension, eUnitOfLengthCentimeter, unit);
+	return UnitsOfLength::ConvertBetweenUnitsOfLength(dimension, UnitsOfLength::eUnitOfLengthCentimeter, unit);
 }
 
-double PaperFormats::GetPaperWidth(enum ePaperFormats format, enum ePaperOrientations orientation, enum eUnitsOfLength unit)
+double PaperFormats::GetPaperWidth(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit)
 {
 	return GetPaperDimension(format, orientation, unit, true);
 }
 
-double PaperFormats::GetPaperHeight(enum ePaperFormats format, enum ePaperOrientations orientation, enum eUnitsOfLength unit)
+double PaperFormats::GetPaperHeight(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit)
 {
 	return GetPaperDimension(format, orientation, unit, false);
 }
