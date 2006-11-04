@@ -13,6 +13,7 @@ SET(POSTERAZOR_UISOURCES
 	Fl_Draw_Paint_Canvas.cpp
 	Fl_Persistent_Preferences.cxx
 	Fl_Image_Text_Button.cpp
+	Fl_PosteRazor_Spinner.cpp
 	PosteRazorDialog.cxx
 	PosteRazorHelpDialog.cxx
 	PosteRazorSettingsDialog.cxx

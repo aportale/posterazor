@@ -13,6 +13,7 @@ SET(POSTERAZOR_UISOURCES
 	../../source/posterazor_ui_fltk/Fl_Draw_Paint_Canvas.cpp
 	../../source/posterazor_ui_fltk/Fl_Persistent_Preferences.cxx
 	../../source/posterazor_ui_fltk/Fl_Image_Text_Button.cpp
+	../../source/posterazor_ui_fltk/Fl_PosteRazor_Spinner.cpp
 	../../source/posterazor_ui_fltk/PosteRazorDialog.cxx
 	../../source/posterazor_ui_fltk/PosteRazorHelpDialog.cxx
 	../../source/posterazor_ui_fltk/PosteRazorSettingsDialog.cxx
