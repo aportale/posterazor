@@ -25,6 +25,9 @@
 #include <FL/Fl_Repeat_Button.H>
 #include <stdio.h>
 #include <math.h>
+#ifndef WIN32
+#include <iostream.h>
+#endif
 
 #define REPEATBUTTONWIDTH 15
 
