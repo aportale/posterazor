@@ -116,11 +116,11 @@ PosteRazorDialog::PosteRazorDialog(void)
 	m_paperFormatChoice->menu(m_paperFormatMenuItems);
 	m_paperFormatChoice->value((int)m_posteRazor->GetPaperFormat());
 
-	if (m_posteRazor->GetPosterSizeMode() == PosteRazor::ePosterSizeModeAbsolute)
+	if (m_posteRazor->GetPosterSizeMode() == PosteRazorEnums::ePosterSizeModeAbsolute)
 		m_posterSizeAbsoluteRadioButton->setonly();
-	else if (m_posteRazor->GetPosterSizeMode() == PosteRazor::ePosterSizeModePages)
+	else if (m_posteRazor->GetPosterSizeMode() == PosteRazorEnums::ePosterSizeModePages)
 		m_posterSizeInPagesRadioButton->setonly();
-	else // if (m_posteRazor->GetPosterSizeMode() == PosteRazor::ePosterSizeModePercentual)
+	else // if (m_posteRazor->GetPosterSizeMode() == PosteRazorEnums::ePosterSizeModePercentual)
 		m_posterSizePercentualRadioButton->setonly();
 	UpdatePosterSizeGroupsState();
 	SetPosterImageAlignmentButtons();
@@ -534,15 +534,15 @@ void PosteRazorDialog::UpdatePosterSizeFields(Fl_Widget *sourceWidget)
 	{
 		Fl_PosteRazor_Spinner* inputWidget;
 		bool width;
-		PosteRazor::ePosterSizeModes sizeMode;
+		PosteRazorEnums::ePosterSizeModes sizeMode;
 	}
 	sizeInputWidgets[] = 
 	{
-		{m_posterAbsoluteWidthInput, true, PosteRazor::ePosterSizeModeAbsolute},
-		{m_posterAbsoluteHeightInput, false, PosteRazor::ePosterSizeModeAbsolute},
-		{m_posterPagesWidthInput, true, PosteRazor::ePosterSizeModePages},
-		{m_posterPagesHeightInput, false, PosteRazor::ePosterSizeModePages},
-		{m_posterPercentualSizeInput, true, PosteRazor::ePosterSizeModePercentual}
+		{m_posterAbsoluteWidthInput, true, PosteRazorEnums::ePosterSizeModeAbsolute},
+		{m_posterAbsoluteHeightInput, false, PosteRazorEnums::ePosterSizeModeAbsolute},
+		{m_posterPagesWidthInput, true, PosteRazorEnums::ePosterSizeModePages},
+		{m_posterPagesHeightInput, false, PosteRazorEnums::ePosterSizeModePages},
+		{m_posterPercentualSizeInput, true, PosteRazorEnums::ePosterSizeModePercentual}
 	};
 
 	int sizeInputWidgetsCount = sizeof(sizeInputWidgets)/sizeof(sizeInputWidgets[0]);
@@ -639,12 +639,12 @@ void PosteRazorDialog::SetOverlappingFields(void)
 	m_overlappingWidthInput->value(m_posteRazor->GetOverlappingWidth());
 	m_overlappingHeightInput->value(m_posteRazor->GetOverlappingHeight());
 
-	PosteRazor::eOverlappingPositions overlappingPosition = m_posteRazor->GetOverlappingPosition();
+	PosteRazorEnums::eOverlappingPositions overlappingPosition = m_posteRazor->GetOverlappingPosition();
 
 	(
-		overlappingPosition == PosteRazor::eOverlappingPositionBottomRight?m_overlappingPositionBottomRightButton
-		:overlappingPosition == PosteRazor::eOverlappingPositionBottomLeft?m_overlappingPositionBottomLeftButton
-		:overlappingPosition == PosteRazor::eOverlappingPositionTopLeft?m_overlappingPositionTopLeftButton
+		overlappingPosition == PosteRazorEnums::eOverlappingPositionBottomRight?m_overlappingPositionBottomRightButton
+		:overlappingPosition == PosteRazorEnums::eOverlappingPositionBottomLeft?m_overlappingPositionBottomLeftButton
+		:overlappingPosition == PosteRazorEnums::eOverlappingPositionTopLeft?m_overlappingPositionTopLeftButton
 		:m_overlappingPositionTopRightButton
 	)->setonly();
 }
@@ -658,10 +658,10 @@ void PosteRazorDialog::HandleOverlappingChangement(Fl_Widget *sourceWidget)
 	else
 		m_posteRazor->SetOverlappingPosition
 		(
-			m_overlappingPositionBottomRightButton->value()?PosteRazor::eOverlappingPositionBottomRight
-			:m_overlappingPositionBottomLeftButton->value()?PosteRazor::eOverlappingPositionBottomLeft
-			:m_overlappingPositionTopLeftButton->value()?PosteRazor::eOverlappingPositionTopLeft
-			:PosteRazor::eOverlappingPositionTopRight
+			m_overlappingPositionBottomRightButton->value()?PosteRazorEnums::eOverlappingPositionBottomRight
+			:m_overlappingPositionBottomLeftButton->value()?PosteRazorEnums::eOverlappingPositionBottomLeft
+			:m_overlappingPositionTopLeftButton->value()?PosteRazorEnums::eOverlappingPositionTopLeft
+			:PosteRazorEnums::eOverlappingPositionTopRight
 		);
 
 	m_paintCanvasGroup->redraw();
@@ -676,19 +676,19 @@ void PosteRazorDialog::UpdatePosterSizeGroupsState(void)
 
 void PosteRazorDialog::SetPosterImageAlignmentButtons(void)
 {
-	PosteRazor::eVerticalAlignments verticalAlignment = m_posteRazor->GetPosterVerticalAlignment();
+	PosteRazorEnums::eVerticalAlignments verticalAlignment = m_posteRazor->GetPosterVerticalAlignment();
 	
 	(
-		verticalAlignment == PosteRazor::eVerticalAlignmentTop?m_posterAlignmentTopButton
-		:verticalAlignment == PosteRazor::eVerticalAlignmentMiddle?m_posterAlignmentMiddleButton
+		verticalAlignment == PosteRazorEnums::eVerticalAlignmentTop?m_posterAlignmentTopButton
+		:verticalAlignment == PosteRazorEnums::eVerticalAlignmentMiddle?m_posterAlignmentMiddleButton
 		:m_posterAlignmentBottomButton 
 	)->setonly();
 	
-	PosteRazor::eHorizontalAlignments horizontalAlignment = m_posteRazor->GetPosterHorizontalAlignment();
+	PosteRazorEnums::eHorizontalAlignments horizontalAlignment = m_posteRazor->GetPosterHorizontalAlignment();
 	
 	(
-		horizontalAlignment == PosteRazor::eHorizontalAlignmentLeft?m_posterAlignmentLeftButton
-		:horizontalAlignment == PosteRazor::eHorizontalAlignmentCenter?m_posterAlignmentCenterButton
+		horizontalAlignment == PosteRazorEnums::eHorizontalAlignmentLeft?m_posterAlignmentLeftButton
+		:horizontalAlignment == PosteRazorEnums::eHorizontalAlignmentCenter?m_posterAlignmentCenterButton
 		:m_posterAlignmentRightButton 
 	)->setonly();
 }
@@ -697,16 +697,16 @@ void PosteRazorDialog::HandlePosterImageAlignment(void)
 {
 	m_posteRazor->SetPosterVerticalAlignment
 	(
-		m_posterAlignmentTopButton->value() == 1?PosteRazor::eVerticalAlignmentTop
-		:m_posterAlignmentMiddleButton->value() == 1?PosteRazor::eVerticalAlignmentMiddle
-		:PosteRazor::eVerticalAlignmentBottom
+		m_posterAlignmentTopButton->value() == 1?PosteRazorEnums::eVerticalAlignmentTop
+		:m_posterAlignmentMiddleButton->value() == 1?PosteRazorEnums::eVerticalAlignmentMiddle
+		:PosteRazorEnums::eVerticalAlignmentBottom
 	);
 	
 	m_posteRazor->SetPosterHorizontalAlignment
 	(
-		m_posterAlignmentLeftButton->value() == 1?PosteRazor::eHorizontalAlignmentLeft
-		:m_posterAlignmentCenterButton->value() == 1?PosteRazor::eHorizontalAlignmentCenter
-		:PosteRazor::eHorizontalAlignmentRight
+		m_posterAlignmentLeftButton->value() == 1?PosteRazorEnums::eHorizontalAlignmentLeft
+		:m_posterAlignmentCenterButton->value() == 1?PosteRazorEnums::eHorizontalAlignmentCenter
+		:PosteRazorEnums::eHorizontalAlignmentRight
 	);
 	
 	m_paintCanvasGroup->redraw();
