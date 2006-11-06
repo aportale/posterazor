@@ -59,33 +59,33 @@ const char preferencesKey_LaunchPDFApplication[] = "LaunchPDFApplication";
 class PosteRazorImplementation: public PosteRazor
 {
 private:
-	PosteRazorImageIO*     m_imageIO;
+	PosteRazorImageIO*                      m_imageIO;
 
-	UnitsOfLength::eUnitsOfLength     m_UnitOfLength;
+	UnitsOfLength::eUnitsOfLength           m_UnitOfLength;
 
-	double                            m_overlappingWidth;
-	double                            m_overlappingHeight;
-	PosteRazorEnums::eOverlappingPositions m_overlappingPosition;
+	double                                  m_overlappingWidth;
+	double                                  m_overlappingHeight;
+	PosteRazorEnums::eOverlappingPositions  m_overlappingPosition;
 
-	PosteRazorEnums::ePosterSizeModes                  m_posterSizeMode;
-	double                            m_posterDimension;
-	bool                              m_posterDimensionIsWidth;
-	PosteRazorEnums::eHorizontalAlignments             m_posterHorizontalAlignment;
-	PosteRazorEnums::eVerticalAlignments               m_posterVerticalAlignment;
+	PosteRazorEnums::ePosterSizeModes       m_posterSizeMode;
+	double                                  m_posterDimension;
+	bool                                    m_posterDimensionIsWidth;
+	PosteRazorEnums::eHorizontalAlignments  m_posterHorizontalAlignment;
+	PosteRazorEnums::eVerticalAlignments    m_posterVerticalAlignment;
 
-	bool                              m_useCustomPaperSize;
-	PaperFormats::ePaperFormats       m_paperFormat;
-	PaperFormats::ePaperOrientations  m_paperOrientation;
-	double                            m_paperBorderTop;
-	double                            m_paperBorderRight;
-	double                            m_paperBorderBottom;
-	double                            m_paperBorderLeft;
-	double                            m_customPaperWidth;
-	double                            m_customPaperHeight;
+	bool                                    m_useCustomPaperSize;
+	PaperFormats::ePaperFormats             m_paperFormat;
+	PaperFormats::ePaperOrientations        m_paperOrientation;
+	double                                  m_paperBorderTop;
+	double                                  m_paperBorderRight;
+	double                                  m_paperBorderBottom;
+	double                                  m_paperBorderLeft;
+	double                                  m_customPaperWidth;
+	double                                  m_customPaperHeight;
 
-	ImageIOTypes::eImageFormats     m_posterOutputFormat;
+	ImageIOTypes::eImageFormats             m_posterOutputFormat;
 
-	bool                   m_launchPDFApplication;
+	bool                                    m_launchPDFApplication;
 
 public:
 	PosteRazorImplementation()
