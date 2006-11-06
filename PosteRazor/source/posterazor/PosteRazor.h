@@ -69,16 +69,16 @@ public:
 
 	virtual void SetPaperFormat(PaperFormats::ePaperFormats format) = 0;
 	virtual void SetPaperOrientation(PaperFormats::ePaperOrientations orientation) = 0;
-	
+
 	virtual void SetPaperBorderTop(double border) = 0;
 	virtual void SetPaperBorderRight(double border) = 0;
 	virtual void SetPaperBorderBottom(double border) = 0;
 	virtual void SetPaperBorderLeft(double border) = 0;
-	
+
 	virtual void SetCustomPaperWidth(double width) = 0;
 	virtual void SetCustomPaperHeight(double height) = 0;
 	virtual void SetUseCustomPaperSize(bool useIt) = 0;
-	
+
 	virtual void SetOverlappingWidth(double width) = 0;
 	virtual void SetOverlappingHeight(double height) = 0;
 	virtual void SetOverlappingPosition(PosteRazorEnums::eOverlappingPositions position) = 0;
@@ -103,7 +103,7 @@ public:
 
 	virtual double GetInputImageWidth(void) const = 0;
 	virtual double GetInputImageHeight(void) const = 0;
-	
+
 	virtual int GetInputImageBitsPerPixel(void) const = 0;
 	virtual ColorTypes::eColorTypes GetInputImageColorType(void) const = 0;
 
@@ -128,7 +128,7 @@ public:
 	virtual double GetOverlappingWidth(void) const = 0;
 	virtual double GetOverlappingHeight(void) const = 0;
 	virtual PosteRazorEnums::eOverlappingPositions GetOverlappingPosition(void) const = 0;
-	
+
 	virtual double GetPosterWidth(PosteRazorEnums::ePosterSizeModes mode) const = 0;
 	virtual double GetPosterHeight(PosteRazorEnums::ePosterSizeModes mode) const = 0;
 	virtual PosteRazorEnums::ePosterSizeModes GetPosterSizeMode(void) const = 0;
