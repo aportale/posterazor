@@ -34,9 +34,9 @@ int main(int argc, char *argv[])
 
 	if (loaded)
 	{
-		prz->SetPosterWidth(PosteRazor::ePosterSizeModePages, 2.5);
-		prz->SetPosterVerticalAlignment(PosteRazor::eVerticalAlignmentMiddle);
-		prz->SetPosterHorizontalAlignment(PosteRazor::eHorizontalAlignmentCenter);
+		prz->SetPosterWidth(PosteRazorEnums::ePosterSizeModePages, 2.5);
+		prz->SetPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentMiddle);
+		prz->SetPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignmentCenter);
 		int err = prz->SavePoster("c:\\poster.pdf");
 		int huhu= 1;
 	}
