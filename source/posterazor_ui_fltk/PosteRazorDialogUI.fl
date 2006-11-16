@@ -1,5 +1,5 @@
 # data file for the Fltk User Interface Designer (fluid)
-version 1.0107 
+version 1.0108 
 header_name {.h} 
 code_name {.cxx}
 comment {/*
@@ -35,8 +35,8 @@ decl {\#include "Fl_PosteRazor_Spinner.h"} {public
 } 
 
 widget_class PosteRazorDialogUI {
-  user_data this open
-  xywh {488 103 620 455} type Double resizable
+  user_data this open selected
+  xywh {400 103 620 455} type Double resizable
   code0 {size_range(this->w(), this->h());}
   class Fl_Double_Window visible
 } {
@@ -266,7 +266,7 @@ widget_class PosteRazorDialogUI {
         } {
           Fl_Group m_posterAbsoluteWidthInput {
             label {Width:}
-            callback {UpdatePosterSizeFields(m_posterAbsoluteWidthInput);} selected
+            callback {UpdatePosterSizeFields(m_posterAbsoluteWidthInput);}
             xywh {430 105 90 25} align 4 when 1
             class Fl_PosteRazor_Spinner
           } {}
@@ -431,13 +431,9 @@ widget_class PosteRazorDialogUI {
   decl {virtual void LoadInputImage(const char *fileName) = 0;} {public
   }
   decl {// ****** Paper size step:} {}
-  decl {virtual void SetPaperSizeFields(void) = 0;} {public
-  }
   decl {virtual void HandlePaperSizeChangement(Fl_Widget* sourceWidget) = 0;} {public
   }
   decl {// ****** Overlapping step:} {}
-  decl {virtual void SetOverlappingFields(void) = 0;} {public
-  }
   decl {virtual void HandleOverlappingChangement(Fl_Widget* sourceWidget) = 0;} {public
   }
   decl {// ****** Poster size step:} {}
@@ -499,7 +495,7 @@ widget_class PosteRazorHelpDialogUI {
 widget_class PosteRazorSettingsDialogUI {
   label {PosteRazor settings}
   user_data this open
-  xywh {451 556 315 400} type Double
+  xywh {451 364 315 400} type Double
   code0 {m_okWasPressed = false;}
   class Fl_Double_Window modal visible
 } {

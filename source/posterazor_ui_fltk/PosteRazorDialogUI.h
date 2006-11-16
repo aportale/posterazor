@@ -262,9 +262,7 @@ public:
   virtual void UpdateNavigationButtons(void) = 0; 
   virtual void OpenHelpDialog(void) = 0; 
   virtual void LoadInputImage(const char *fileName) = 0; 
-  virtual void SetPaperSizeFields(void) = 0; 
   virtual void HandlePaperSizeChangement(Fl_Widget* sourceWidget) = 0; 
-  virtual void SetOverlappingFields(void) = 0; 
   virtual void HandleOverlappingChangement(Fl_Widget* sourceWidget) = 0; 
   virtual void UpdatePosterSizeGroupsState(void) = 0; 
   virtual void UpdatePosterSizeFields(Fl_Widget* sourceWidget) = 0; 

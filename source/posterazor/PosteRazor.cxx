@@ -200,7 +200,7 @@ public:
 		return m_imageIO->LoadInputImage(imageFileName, errorMessage, errorMessageSize);
 	}
 
-	bool IsImageLoaded(void) const
+	bool GetIsImageLoaded(void) const
 	{
 		return m_imageIO->IsImageLoaded();
 	}
@@ -457,14 +457,14 @@ public:
 	{
 		double otherDimension = 0;
 
-		if (m_posterSizeMode != PosteRazorEnums::ePosterSizeModePercentual)
+		if (GetPosterSizeMode() != PosteRazorEnums::ePosterSizeModePercentual)
 		{
 			double sourceReference = m_posterDimensionIsWidth?GetInputImageWidth():GetInputImageHeight();
 			double targetReference = m_posterDimensionIsWidth?GetInputImageHeight():GetInputImageWidth();
 			
 			double aspectRatio = sourceReference/targetReference;
 
-			if (m_posterSizeMode != PosteRazorEnums::ePosterSizeModePages)
+			if (GetPosterSizeMode() != PosteRazorEnums::ePosterSizeModePages)
 			{
 				otherDimension = m_posterDimension / aspectRatio;
 			}
@@ -483,9 +483,9 @@ public:
 
 	void SetPosterDimension(PosteRazorEnums::ePosterSizeModes mode, double dimension, bool dimensionIsWidth)
 	{
-		m_posterSizeMode = mode;
+		SetPosterSizeMode(mode);
 
-		if (m_posterSizeMode == PosteRazorEnums::ePosterSizeModeAbsolute)
+		if (GetPosterSizeMode() == PosteRazorEnums::ePosterSizeModeAbsolute)
 			dimension = ConvertDistanceToCm(dimension);
 
 		m_posterDimension = dimension;
@@ -542,6 +542,11 @@ public:
 		SetPosterDimension(mode, height, false);
 	}
 
+	void SetPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode)
+	{
+		m_posterSizeMode = mode;
+	}
+
 	double GetPosterDimension(PosteRazorEnums::ePosterSizeModes mode, bool width) const
 	{
 		double posterDimension = (width==m_posterDimensionIsWidth)?m_posterDimension:CalculateOtherPosterDimension();
@@ -554,18 +559,18 @@ public:
 			, posterDimension
 		);
 
-		if (m_posterSizeMode != mode) // anything to convert?
+		if (GetPosterSizeMode() != mode) // anything to convert?
 		{
 			// These are needed for conversion from and to ePosterSizeModePercentual
 			double inputImageDimension = width?GetInputImageWidth():GetInputImageHeight();
 			inputImageDimension = ConvertDistanceToCm(inputImageDimension);
 
 			// First convert to absolute size mode (cm)
-			if (m_posterSizeMode == PosteRazorEnums::ePosterSizeModePages)
+			if (GetPosterSizeMode() == PosteRazorEnums::ePosterSizeModePages)
 			{
 				posterDimension = ConvertBetweenAbsoluteAndPagesPosterDimension(posterDimension, true, width);
 			}
-			else if (m_posterSizeMode == PosteRazorEnums::ePosterSizeModePercentual)
+			else if (GetPosterSizeMode() == PosteRazorEnums::ePosterSizeModePercentual)
 			{
 				posterDimension *= inputImageDimension;
 				posterDimension /= 100.0;
@@ -586,7 +591,7 @@ public:
 		if (mode == PosteRazorEnums::ePosterSizeModeAbsolute)
 			posterDimension = ConvertCmToDistance(posterDimension);
 
-                return posterDimension;
+		return posterDimension;
 	}
 
 	double GetPosterWidth(PosteRazorEnums::ePosterSizeModes mode) const
@@ -671,7 +676,7 @@ public:
 	void PaintImageOnCanvas(PaintCanvasInterface *paintCanvas) const
 	{
 
-		if (IsImageLoaded())
+		if (GetIsImageLoaded())
 		{
 			double canvasWidth = 0, canvasHeight = 0;
 			paintCanvas->GetSize(canvasWidth, canvasHeight);

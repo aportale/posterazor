@@ -29,6 +29,7 @@
 #include "PosteRazor.h"
 #include "PosteRazorDialogUI.h"
 #include "PosteRazorSettingsDialog.h"
+#include "PosteRazorDialogController.h"
 #include "Translations.h"
 
 class PosteRazorDragDropWidget : public Fl_Box
@@ -38,7 +39,7 @@ public:
 	int handle(int event);
 };
 
-class PosteRazorDialog : public PosteRazorDialogUI, public SettingsChangementHandler
+class PosteRazorDialog : public PosteRazorDialogUI, public SettingsChangementHandler, public PosteRazorDialogInterface
 {
 private:
 	PosteRazor                      *m_posteRazor;
@@ -50,6 +51,7 @@ private:
 	char                            m_loadImageChooserLastPath[1024];
 	char                            m_savePosterChooserLastPath[1024];
 	bool                            m_UILanguageIsUndefined;
+	PosteRazorDialogController      *m_posteRazorController;
 
 public:
 	~PosteRazorDialog();
@@ -66,27 +68,52 @@ public:
 	const char* GetCurrentWizardStepStepInfoString(void);
 	int GetCurrentWizardStepNumber(void);
 	void UpdateStepInfoBar(void);
+	void UpdatePreview(void);
 	void UpdatePreviewState(void);
-	void UpdateDimensionUnitLabels(void);
 	void UpdateLanguage(void);
 
 	void LoadInputImage(const char *fileName);
+	void UpdateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel);
 	void UpdateImageInfoFields(void);
 
-	void SetPaperSizeFields(void);
 	static void HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userData);
 	void HandlePaperSizeChangement(Fl_Widget *sourceWidget);
 
-	void SetOverlappingFields(void);
 	void HandleOverlappingChangement(Fl_Widget *sourceWidget);
 
 	void UpdatePosterSizeFields(Fl_Widget *sourceWidget);
 	void UpdatePosterSizeGroupsState(void);
-	void SetPosterImageAlignmentButtons(void);
 	void HandlePosterImageAlignment(void);
 
 	void SavePoster(void);
 	void SetLaunchPDFApplication(void);
+
+	void SetUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
+
+	void SetPaperFormat(PaperFormats::ePaperFormats format);
+	void SetPaperOrientation(PaperFormats::ePaperOrientations orientation);
+
+	void SetPaperBorderTop(double border);
+	void SetPaperBorderRight(double border);
+	void SetPaperBorderBottom(double border);
+	void SetPaperBorderLeft(double border);
+
+	void SetCustomPaperWidth(double width);
+	void SetCustomPaperHeight(double height);
+	void SetUseCustomPaperSize(bool useIt);
+
+	void SetOverlappingWidth(double width);
+	void SetOverlappingHeight(double height);
+	void SetOverlappingPosition(PosteRazorEnums::eOverlappingPositions position);
+
+	void SetPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width);
+	void SetPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height);
+	void SetPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode);
+	void SetPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment);
+	void SetPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment);
+
+	void SetPosterOutputFormat(ImageIOTypes::eImageFormats format);
+	void SetLaunchPDFApplication(bool launch);
 };
 
 #endif

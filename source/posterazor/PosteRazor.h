@@ -44,7 +44,8 @@ public:
 	{
 		ePosterSizeModeAbsolute,
 		ePosterSizeModePercentual,
-		ePosterSizeModePages
+		ePosterSizeModePages,
+		ePosterSizeModeNone
 	};
 
 	enum eVerticalAlignments
@@ -85,6 +86,7 @@ public:
 
 	virtual void SetPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width) = 0;
 	virtual void SetPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height) = 0;
+	virtual void SetPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode) = 0;
 	virtual void SetPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment) = 0;
 	virtual void SetPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment) = 0;
 
@@ -138,6 +140,8 @@ public:
 	virtual ImageIOTypes::eImageFormats GetPosterOutputFormat(void) const = 0;
 
 	virtual bool GetLaunchPDFApplication(void) const = 0;
+
+	virtual bool GetIsImageLoaded(void) const = 0;
 };
 
 class PosteRazorActionsInterface
@@ -147,7 +151,6 @@ public:
 	virtual bool WritePersistentPreferences(PersistentPreferencesInterface *preferences) const = 0;
 
 	virtual bool LoadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize) = 0;
-	virtual bool IsImageLoaded(void) const = 0;
 
 	virtual int SavePoster(const char *fileName) const = 0;
 };
