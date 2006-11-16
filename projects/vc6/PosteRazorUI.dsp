@@ -42,7 +42,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /W3 /GX /O2 /I "..\..\source\posterazor_ui_common\windowsResources" /I "..\..\source\posterazor_ui_common\translations" /I "..\..\source\tools" /I "..\..\source\posterazor" /I "..\..\thirdparty\fltk-1.1" /I "..\..\thirdparty\Fl_Native_File_Chooser" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "VC_EXTRA_LEAN" /D "WIN32_EXTRA_LEAN" /D "OPENGL_PREVIEW" /FR /YX /FD /c
+# ADD CPP /nologo /W3 /GX /O2 /I "..\..\source\posterazor_ui_common" /I "..\..\source\posterazor_ui_common\windowsResources" /I "..\..\source\posterazor_ui_common\translations" /I "..\..\source\tools" /I "..\..\source\posterazor" /I "..\..\thirdparty\fltk-1.1" /I "..\..\thirdparty\Fl_Native_File_Chooser" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "VC_EXTRA_LEAN" /D "WIN32_EXTRA_LEAN" /D "OPENGL_PREVIEW" /FR /YX /FD /c
 # ADD BASE RSC /l 0x407 /d "NDEBUG"
 # ADD RSC /l 0x407 /d "NDEBUG"
 BSC32=bscmake.exe
@@ -67,7 +67,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /I "..\..\source\posterazor_ui_common\windowsResources" /I "..\..\source\posterazor_ui_common\translations" /I "..\..\source\tools" /I "..\..\source\posterazor" /I "..\..\thirdparty\fltk-1.1" /I "..\..\thirdparty\Fl_Native_File_Chooser" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "VC_EXTRA_LEAN" /D "WIN32_EXTRA_LEAN" /D "OPENGL_PREVIEW" /FR /YX /FD /GZ /c
+# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /I "..\..\source\posterazor_ui_common" /I "..\..\source\posterazor_ui_common\windowsResources" /I "..\..\source\posterazor_ui_common\translations" /I "..\..\source\tools" /I "..\..\source\posterazor" /I "..\..\thirdparty\fltk-1.1" /I "..\..\thirdparty\Fl_Native_File_Chooser" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "VC_EXTRA_LEAN" /D "WIN32_EXTRA_LEAN" /D "OPENGL_PREVIEW" /FR /YX /FD /GZ /c
 # ADD BASE RSC /l 0x407 /d "_DEBUG"
 # ADD RSC /l 0x407 /d "_DEBUG"
 BSC32=bscmake.exe
@@ -117,6 +117,10 @@ SOURCE=..\..\source\posterazor_ui_fltk\Fl_PosteRazor_Spinner.cpp
 # Begin Source File
 
 SOURCE=..\..\source\posterazor_ui_fltk\PosteRazorDialog.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor_ui_common\PosteRazorDialogController.cpp
 # End Source File
 # Begin Source File
 
@@ -173,6 +177,10 @@ SOURCE=..\..\source\posterazor_ui_fltk\Fl_PosteRazor_Spinner.h
 # Begin Source File
 
 SOURCE=..\..\source\posterazor_ui_fltk\PosteRazorDialog.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\source\posterazor_ui_common\PosteRazorDialogController.h
 # End Source File
 # Begin Source File
 
