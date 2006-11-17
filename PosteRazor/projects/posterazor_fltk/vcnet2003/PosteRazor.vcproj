@@ -20,7 +20,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\source\tools;..\..\thirdparty\FreeImage\Dist"
+				AdditionalIncludeDirectories="..\..\..\source\tools;..\..\..\thirdparty\FreeImage\Dist"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;FREEIMAGE_LIB"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -34,7 +34,7 @@
 			<Tool
 				Name="VCLibrarianTool"
 				AdditionalDependencies="FreeImaged.lib"
-				AdditionalLibraryDirectories="..\..\thirdparty\FreeImage\Dist"/>
+				AdditionalLibraryDirectories="..\..\..\thirdparty\FreeImage\Dist"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -62,7 +62,7 @@
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\source\tools;..\..\thirdparty\FreeImage\Dist"
+				AdditionalIncludeDirectories="..\..\..\source\tools;..\..\..\thirdparty\FreeImage\Dist"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;FREEIMAGE_LIB"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -74,7 +74,7 @@
 			<Tool
 				Name="VCLibrarianTool"
 				AdditionalDependencies="FreeImage.lib"
-				AdditionalLibraryDirectories="..\..\thirdparty\FreeImage\Dist"/>
+				AdditionalLibraryDirectories="..\..\..\thirdparty\FreeImage\Dist"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -103,19 +103,19 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
 			<File
-				RelativePath="..\..\source\tools\PaperFormats.cxx">
+				RelativePath="..\..\..\source\tools\PaperFormats.cxx">
 			</File>
 			<File
-				RelativePath="..\..\source\posterazor\PosteRazor.cxx">
+				RelativePath="..\..\..\source\posterazor\PosteRazor.cxx">
 			</File>
 			<File
-				RelativePath="..\..\source\posterazor\PosteRazorImageIO.cxx">
+				RelativePath="..\..\..\source\posterazor\PosteRazorImageIO.cxx">
 			</File>
 			<File
-				RelativePath="..\..\source\posterazor\PosteRazorPDFOutput.cxx">
+				RelativePath="..\..\..\source\posterazor\PosteRazorPDFOutput.cxx">
 			</File>
 			<File
-				RelativePath="..\..\source\tools\UnitsOfLength.cxx">
+				RelativePath="..\..\..\source\tools\UnitsOfLength.cxx">
 			</File>
 		</Filter>
 		<Filter
@@ -123,31 +123,31 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
 			<File
-				RelativePath="..\..\source\tools\ColorTypes.h">
+				RelativePath="..\..\..\source\tools\ColorTypes.h">
 			</File>
 			<File
-				RelativePath="..\..\source\tools\ImageIOTypes.h">
+				RelativePath="..\..\..\source\tools\ImageIOTypes.h">
 			</File>
 			<File
-				RelativePath="..\..\source\tools\PaintCanvasInterface.h">
+				RelativePath="..\..\..\source\tools\PaintCanvasInterface.h">
 			</File>
 			<File
-				RelativePath="..\..\source\tools\PaperFormats.h">
+				RelativePath="..\..\..\source\tools\PaperFormats.h">
 			</File>
 			<File
-				RelativePath="..\..\source\tools\PersistentPreferencesInterface.h">
+				RelativePath="..\..\..\source\tools\PersistentPreferencesInterface.h">
 			</File>
 			<File
-				RelativePath="..\..\source\posterazor\PosteRazor.h">
+				RelativePath="..\..\..\source\posterazor\PosteRazor.h">
 			</File>
 			<File
-				RelativePath="..\..\source\posterazor\PosteRazorImageIO.h">
+				RelativePath="..\..\..\source\posterazor\PosteRazorImageIO.h">
 			</File>
 			<File
-				RelativePath="..\..\source\posterazor\PosteRazorPDFOutput.h">
+				RelativePath="..\..\..\source\posterazor\PosteRazorPDFOutput.h">
 			</File>
 			<File
-				RelativePath="..\..\source\tools\UnitsOfLength.h">
+				RelativePath="..\..\..\source\tools\UnitsOfLength.h">
 			</File>
 		</Filter>
 	</Files>
