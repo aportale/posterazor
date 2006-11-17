@@ -41,7 +41,7 @@ RSC=rc.exe
 # PROP Intermediate_Dir "Release"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /YX /FD /c
-# ADD CPP /nologo /W3 /GX /O2 /I "..\..\source\tools" /I "..\..\thirdparty\FreeImage\Dist" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "FREEIMAGE_LIB" /YX /FD /c
+# ADD CPP /nologo /W3 /GX /O2 /I "..\..\..\source\tools" /I "..\..\..\thirdparty\FreeImage\Dist" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "FREEIMAGE_LIB" /YX /FD /c
 # ADD BASE RSC /l 0x407 /d "NDEBUG"
 # ADD RSC /l 0x407 /d "NDEBUG"
 BSC32=bscmake.exe
@@ -64,7 +64,7 @@ LIB32=link.exe -lib
 # PROP Intermediate_Dir "PosteRazor___Win32_Debug"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /YX /FD /GZ /c
-# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /I "..\..\source\tools" /I "..\..\thirdparty\FreeImage\Dist" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /D "FREEIMAGE_LIB" /YX /FD /GZ /c
+# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /I "..\..\..\source\tools" /I "..\..\..\thirdparty\FreeImage\Dist" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /D "FREEIMAGE_LIB" /YX /FD /GZ /c
 # ADD BASE RSC /l 0x407 /d "_DEBUG"
 # ADD RSC /l 0x407 /d "_DEBUG"
 BSC32=bscmake.exe
@@ -85,23 +85,23 @@ LIB32=link.exe -lib
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=..\..\source\tools\PaperFormats.cxx
+SOURCE=..\..\..\source\tools\PaperFormats.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\PosteRazor.cxx
+SOURCE=..\..\..\source\posterazor\PosteRazor.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\PosteRazorImageIO.cxx
+SOURCE=..\..\..\source\posterazor\PosteRazorImageIO.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\PosteRazorPDFOutput.cxx
+SOURCE=..\..\..\source\posterazor\PosteRazorPDFOutput.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\tools\UnitsOfLength.cxx
+SOURCE=..\..\..\source\tools\UnitsOfLength.cxx
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -109,40 +109,40 @@ SOURCE=..\..\source\tools\UnitsOfLength.cxx
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=..\..\source\tools\ColorTypes.h
+SOURCE=..\..\..\source\tools\ColorTypes.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\tools\DistanceUnits.h
+SOURCE=..\..\..\source\tools\DistanceUnits.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\tools\PaintCanvasInterface.h
+SOURCE=..\..\..\source\tools\PaintCanvasInterface.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\tools\PaperFormats.h
+SOURCE=..\..\..\source\tools\PaperFormats.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\PosteRazor.h
+SOURCE=..\..\..\source\posterazor\PosteRazor.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\PosteRazorImageIO.h
+SOURCE=..\..\..\source\posterazor\PosteRazorImageIO.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\posterazor\PosteRazorPDFOutput.h
+SOURCE=..\..\..\source\posterazor\PosteRazorPDFOutput.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\source\tools\UnitsOfLength.h
+SOURCE=..\..\..\source\tools\UnitsOfLength.h
 # End Source File
 # End Group
 # Begin Source File
 
-SOURCE=..\..\thirdparty\FreeImage\Dist\FreeImaged.lib
+SOURCE=..\..\..\thirdparty\FreeImage\Dist\FreeImaged.lib
 
 !IF  "$(CFG)" == "PosteRazor - Win32 Release"
 
@@ -155,7 +155,7 @@ SOURCE=..\..\thirdparty\FreeImage\Dist\FreeImaged.lib
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\thirdparty\FreeImage\Dist\FreeImage.lib
+SOURCE=..\..\..\thirdparty\FreeImage\Dist\FreeImage.lib
 
 !IF  "$(CFG)" == "PosteRazor - Win32 Release"
 
