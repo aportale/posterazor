@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/Other" >
+        <file>images/settingsIcon.png</file>
+    </qresource>
+    <qresource prefix="/OverlappingPositionImages" >
+        <file>images/overlappingBottomLeft.png</file>
+        <file>images/overlappingBottomRight.png</file>
+        <file>images/overlappingTopLeft.png</file>
+        <file>images/overlappingTopRight.png</file>
+    </qresource>
+    <qresource prefix="/PosterAlignmentImages" >
+        <file>images/alignmentBottom.png</file>
+        <file>images/alignmentCenter.png</file>
+        <file>images/alignmentLeft.png</file>
+        <file>images/alignmentMiddle.png</file>
+        <file>images/alignmentRight.png</file>
+        <file>images/alignmentTop.png</file>
+    </qresource>
+</RCC>
