@@ -1,0 +1,498 @@
+<ui version="4.0" >
+ <author>Alessandro Portale</author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>Form</class>
+ <widget class="QWidget" name="Form" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>420</width>
+    <height>544</height>
+   </rect>
+  </property>
+  <property name="acceptDrops" >
+   <bool>true</bool>
+  </property>
+  <property name="windowTitle" >
+   <string>PosteRazor 1.4</string>
+  </property>
+  <layout class="QHBoxLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <layout class="QVBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <layout class="QHBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="frame_3" >
+         <property name="frameShape" >
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow" >
+          <enum>QFrame::Plain</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="toolButton" >
+         <property name="text" >
+          <string>...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="frame" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>1</hsizetype>
+           <vsizetype>5</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="frameShape" >
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow" >
+          <enum>QFrame::Raised</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QStackedWidget" name="stackedWidget" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>4</hsizetype>
+           <vsizetype>5</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="currentIndex" >
+          <number>1</number>
+         </property>
+         <widget class="QWidget" name="m_loadInputImageStep" >
+          <layout class="QVBoxLayout" >
+           <property name="margin" >
+            <number>9</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item>
+            <layout class="QVBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QGroupBox" name="groupBox" >
+               <property name="title" >
+                <string>Input Image</string>
+               </property>
+               <layout class="QVBoxLayout" >
+                <property name="margin" >
+                 <number>9</number>
+                </property>
+                <property name="spacing" >
+                 <number>6</number>
+                </property>
+                <item>
+                 <layout class="QVBoxLayout" >
+                  <property name="margin" >
+                   <number>0</number>
+                  </property>
+                  <property name="spacing" >
+                   <number>6</number>
+                  </property>
+                  <item>
+                   <layout class="QHBoxLayout" >
+                    <property name="margin" >
+                     <number>0</number>
+                    </property>
+                    <property name="spacing" >
+                     <number>6</number>
+                    </property>
+                    <item>
+                     <widget class="QFrame" name="m_inputFileNameLabel" >
+                      <property name="frameShape" >
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow" >
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QToolButton" name="m_imageLoadButton" >
+                      <property name="text" >
+                       <string>...</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="m_imageInfoGroup" >
+               <property name="title" >
+                <string>Image Informations</string>
+               </property>
+               <layout class="QVBoxLayout" >
+                <property name="margin" >
+                 <number>9</number>
+                </property>
+                <property name="spacing" >
+                 <number>6</number>
+                </property>
+                <item>
+                 <widget class="QTableWidget" name="m_imageInfoTable" />
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeType" >
+                <enum>QSizePolicy::Expanding</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="m_overlappingStep" >
+          <layout class="QVBoxLayout" >
+           <property name="margin" >
+            <number>9</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item>
+            <layout class="QVBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QGroupBox" name="" >
+               <property name="title" >
+                <string>Paper size</string>
+               </property>
+               <layout class="QGridLayout" >
+                <property name="margin" >
+                 <number>9</number>
+                </property>
+                <property name="spacing" >
+                 <number>6</number>
+                </property>
+                <item row="0" column="0" >
+                 <widget class="QTabWidget" name="tabWidget" >
+                  <property name="sizePolicy" >
+                   <sizepolicy>
+                    <hsizetype>7</hsizetype>
+                    <vsizetype>4</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="currentIndex" >
+                   <number>0</number>
+                  </property>
+                  <widget class="QWidget" name="m_paperFormatStandardTab" >
+                   <attribute name="title" >
+                    <string>Standard</string>
+                   </attribute>
+                   <layout class="QVBoxLayout" >
+                    <property name="margin" >
+                     <number>9</number>
+                    </property>
+                    <property name="spacing" >
+                     <number>6</number>
+                    </property>
+                    <item>
+                     <layout class="QGridLayout" >
+                      <property name="margin" >
+                       <number>0</number>
+                      </property>
+                      <property name="spacing" >
+                       <number>6</number>
+                      </property>
+                      <item row="0" column="0" >
+                       <widget class="QLabel" name="label" >
+                        <property name="sizePolicy" >
+                         <sizepolicy>
+                          <hsizetype>1</hsizetype>
+                          <vsizetype>5</vsizetype>
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="text" >
+                         <string>Format:</string>
+                        </property>
+                        <property name="alignment" >
+                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="1" >
+                       <widget class="QComboBox" name="m_paperFormatComboBox" />
+                      </item>
+                      <item row="1" column="0" >
+                       <widget class="QLabel" name="label" >
+                        <property name="sizePolicy" >
+                         <sizepolicy>
+                          <hsizetype>1</hsizetype>
+                          <vsizetype>5</vsizetype>
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="text" >
+                         <string>Orientation:</string>
+                        </property>
+                        <property name="alignment" >
+                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="1" column="1" >
+                       <widget class="QFrame" name="frame_2" >
+                        <property name="sizePolicy" >
+                         <sizepolicy>
+                          <hsizetype>3</hsizetype>
+                          <vsizetype>4</vsizetype>
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="frameShape" >
+                         <enum>QFrame::StyledPanel</enum>
+                        </property>
+                        <property name="frameShadow" >
+                         <enum>QFrame::Plain</enum>
+                        </property>
+                        <layout class="QVBoxLayout" >
+                         <property name="margin" >
+                          <number>9</number>
+                         </property>
+                         <property name="spacing" >
+                          <number>6</number>
+                         </property>
+                         <item>
+                          <widget class="QRadioButton" name="m_paperOrientationPortraitRadioButton" >
+                           <property name="text" >
+                            <string>Portrait</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QRadioButton" name="m_paperOrientationLandscapeRadioButton" >
+                           <property name="text" >
+                            <string>Landscape</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="m_paperFormatCustomTab" >
+                   <attribute name="title" >
+                    <string>Custom</string>
+                   </attribute>
+                   <layout class="QGridLayout" >
+                    <property name="margin" >
+                     <number>9</number>
+                    </property>
+                    <property name="spacing" >
+                     <number>6</number>
+                    </property>
+                    <item row="0" column="0" >
+                     <layout class="QGridLayout" >
+                      <property name="margin" >
+                       <number>0</number>
+                      </property>
+                      <property name="spacing" >
+                       <number>6</number>
+                      </property>
+                      <item row="1" column="2" >
+                       <widget class="QLabel" name="m_paperCustomHeightDimensionUnitLabel" >
+                        <property name="text" >
+                         <string>cm</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="0" >
+                       <widget class="QLabel" name="label" >
+                        <property name="text" >
+                         <string>Width:</string>
+                        </property>
+                        <property name="alignment" >
+                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="2" >
+                       <widget class="QLabel" name="m_paperCustomWidthDimensionUnitLabel" >
+                        <property name="text" >
+                         <string>cm</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="1" column="0" >
+                       <widget class="QLabel" name="label_2" >
+                        <property name="text" >
+                         <string>Height:</string>
+                        </property>
+                        <property name="alignment" >
+                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="1" >
+                       <widget class="QDoubleSpinBox" name="m_paperCustomWidthSpinner" />
+                      </item>
+                      <item row="1" column="1" >
+                       <widget class="QDoubleSpinBox" name="m_paperCustomHeightSpinner" />
+                      </item>
+                     </layout>
+                    </item>
+                   </layout>
+                  </widget>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_3" >
+               <property name="title" >
+                <string>Border Size (%1)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="m_settingsButton" >
+         <property name="text" >
+          <string>Settings...</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="m_prevButton" >
+         <property name="text" >
+          <string>Back</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="m_nextButton" >
+         <property name="text" >
+          <string>Next</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <resources/>
+ <connections/>
+</ui>
