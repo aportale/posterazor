@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>451</width>
+    <width>443</width>
     <height>544</height>
    </rect>
   </property>
@@ -52,7 +52,7 @@
        <item>
         <widget class="QToolButton" name="toolButton" >
          <property name="text" >
-          <string>...</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -82,6 +82,27 @@
          <property name="frameShadow" >
           <enum>QFrame::Raised</enum>
          </property>
+         <layout class="QVBoxLayout" >
+          <property name="margin" >
+           <number>9</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" >
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
@@ -101,7 +122,7 @@
           <enum>QFrame::Sunken</enum>
          </property>
          <property name="currentIndex" >
-          <number>1</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="m_loadInputImageStep" >
           <layout class="QVBoxLayout" >
@@ -605,7 +626,241 @@
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="m_overlappingStep" />
+         <widget class="QWidget" name="m_overlappingStep" >
+          <layout class="QVBoxLayout" >
+           <property name="margin" >
+            <number>9</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QGroupBox" name="" >
+             <property name="title" >
+              <string>Overlapping size</string>
+             </property>
+             <layout class="QVBoxLayout" >
+              <property name="margin" >
+               <number>9</number>
+              </property>
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <item>
+               <layout class="QGridLayout" >
+                <property name="margin" >
+                 <number>0</number>
+                </property>
+                <property name="spacing" >
+                 <number>6</number>
+                </property>
+                <item row="1" column="2" >
+                 <widget class="QLabel" name="m_overlappingHeightDimensionUnitLabel" >
+                  <property name="text" >
+                   <string>cm</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" >
+                 <widget class="QLabel" name="label_2" >
+                  <property name="text" >
+                   <string>Width:</string>
+                  </property>
+                  <property name="alignment" >
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2" >
+                 <widget class="QLabel" name="m_overlappingWidthDimensionUnitLabel" >
+                  <property name="text" >
+                   <string>cm</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0" >
+                 <widget class="QLabel" name="label_3" >
+                  <property name="text" >
+                   <string>Height:</string>
+                  </property>
+                  <property name="alignment" >
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1" >
+                 <widget class="QDoubleSpinBox" name="m_overlappingWidthInput" />
+                </item>
+                <item row="1" column="1" >
+                 <widget class="QDoubleSpinBox" name="m_overlappingHeightInput" />
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="" >
+             <property name="title" >
+              <string>Overlapping position</string>
+             </property>
+             <layout class="QGridLayout" >
+              <property name="margin" >
+               <number>9</number>
+              </property>
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <item row="0" column="1" >
+               <widget class="QToolButton" name="m_overlappingPositionTopRightButton" >
+                <property name="sizePolicy" >
+                 <sizepolicy>
+                  <hsizetype>3</hsizetype>
+                  <vsizetype>5</vsizetype>
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text" >
+                 <string>Top right</string>
+                </property>
+                <property name="icon" >
+                 <iconset resource="PosteRazorDialogResources.qrc" >:/OverlappingPositionImages/images/overlappingTopRight.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>24</width>
+                  <height>26</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+                <property name="toolButtonStyle" >
+                 <enum>Qt::ToolButtonTextUnderIcon</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" >
+               <widget class="QToolButton" name="m_overlappingPositionTopLeftButton" >
+                <property name="sizePolicy" >
+                 <sizepolicy>
+                  <hsizetype>7</hsizetype>
+                  <vsizetype>4</vsizetype>
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text" >
+                 <string>Top left</string>
+                </property>
+                <property name="icon" >
+                 <iconset resource="PosteRazorDialogResources.qrc" >:/OverlappingPositionImages/images/overlappingTopLeft.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>24</width>
+                  <height>26</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+                <property name="toolButtonStyle" >
+                 <enum>Qt::ToolButtonTextUnderIcon</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0" >
+               <widget class="QToolButton" name="m_overlappingPositionBottomLeftButton" >
+                <property name="sizePolicy" >
+                 <sizepolicy>
+                  <hsizetype>3</hsizetype>
+                  <vsizetype>4</vsizetype>
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text" >
+                 <string>Bottom left</string>
+                </property>
+                <property name="icon" >
+                 <iconset resource="PosteRazorDialogResources.qrc" >:/OverlappingPositionImages/images/overlappingBottomLeft.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>24</width>
+                  <height>26</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+                <property name="toolButtonStyle" >
+                 <enum>Qt::ToolButtonTextUnderIcon</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1" >
+               <widget class="QToolButton" name="m_overlappingPositionBottomRightButton" >
+                <property name="sizePolicy" >
+                 <sizepolicy>
+                  <hsizetype>3</hsizetype>
+                  <vsizetype>4</vsizetype>
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text" >
+                 <string>Bottom right</string>
+                </property>
+                <property name="icon" >
+                 <iconset resource="PosteRazorDialogResources.qrc" >:/OverlappingPositionImages/images/overlappingBottomRight.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>24</width>
+                  <height>26</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+                <property name="toolButtonStyle" >
+                 <enum>Qt::ToolButtonTextUnderIcon</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <spacer>
+             <property name="orientation" >
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" >
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
          <widget class="QWidget" name="m_posterSizeStep" >
           <layout class="QVBoxLayout" >
            <property name="margin" >
@@ -1053,5 +1308,22 @@
  <resources>
   <include location="PosteRazorDialogResources.qrc" />
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>m_nextButton</sender>
+   <signal>clicked()</signal>
+   <receiver>PosteRazorDialogUI</receiver>
+   <slot></slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>406</x>
+     <y>540</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>229</x>
+     <y>291</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
