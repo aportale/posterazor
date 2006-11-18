@@ -1,7 +1,7 @@
 <ui version="4.0" >
  <author>Alessandro Portale</author>
- <class>Form</class>
- <widget class="QWidget" name="Form" >
+ <class>PosteRazorDialogUI</class>
+ <widget class="QWidget" name="PosteRazorDialogUI" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -101,7 +101,7 @@
           <enum>QFrame::Sunken</enum>
          </property>
          <property name="currentIndex" >
-          <number>2</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="m_loadInputImageStep" >
           <layout class="QVBoxLayout" >
@@ -322,7 +322,7 @@
                          <enum>QFrame::StyledPanel</enum>
                         </property>
                         <property name="frameShadow" >
-                         <enum>QFrame::Plain</enum>
+                         <enum>QFrame::Sunken</enum>
                         </property>
                         <layout class="QVBoxLayout" >
                          <property name="margin" >
