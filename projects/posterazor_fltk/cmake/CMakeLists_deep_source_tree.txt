@@ -1,51 +1,53 @@
 SET(POSTERAZOR_CORESOURCES
-	../../source/posterazor/PosteRazor.cxx
-	../../source/posterazor/PosteRazorImageIO.cxx
-	../../source/posterazor/PosteRazorPDFOutput.cxx
-	../../source/tools/UnitsOfLength.cxx
-	../../source/tools/PaperFormats.cxx
+	../../../source/posterazor/PosteRazor.cxx
+	../../../source/posterazor/PosteRazorImageIO.cxx
+	../../../source/posterazor/PosteRazorPDFOutput.cxx
+	../../../source/tools/UnitsOfLength.cxx
+	../../../source/tools/PaperFormats.cxx
 )
 
 SET(POSTERAZOR_UISOURCES
-	../../source/posterazor_ui_common/translations/Translations.cxx
-	../../source/posterazor_ui_fltk/Fl_Paint_Canvas_Base.cpp
-	../../source/posterazor_ui_fltk/Fl_Paint_Canvas_Group.cpp
-	../../source/posterazor_ui_fltk/Fl_Draw_Paint_Canvas.cpp
-	../../source/posterazor_ui_fltk/Fl_Persistent_Preferences.cxx
-	../../source/posterazor_ui_fltk/Fl_Image_Text_Button.cpp
-	../../source/posterazor_ui_fltk/Fl_PosteRazor_Spinner.cpp
-	../../source/posterazor_ui_fltk/PosteRazorDialog.cxx
-	../../source/posterazor_ui_fltk/PosteRazorHelpDialog.cxx
-	../../source/posterazor_ui_fltk/PosteRazorSettingsDialog.cxx
-	../../source/posterazor_ui_fltk/PosteRazorDialogUI.cxx
-	../../thirdparty/Fl_Native_File_Chooser/Fl_Native_File_Chooser.cxx
+	../../../source/posterazor_ui_common/PosteRazorDialogController.cpp
+	../../../source/posterazor_ui_common/translations/Translations.cxx
+	../../../source/posterazor_ui_fltk/Fl_Paint_Canvas_Base.cpp
+	../../../source/posterazor_ui_fltk/Fl_Paint_Canvas_Group.cpp
+	../../../source/posterazor_ui_fltk/Fl_Draw_Paint_Canvas.cpp
+	../../../source/posterazor_ui_fltk/Fl_Persistent_Preferences.cxx
+	../../../source/posterazor_ui_fltk/Fl_Image_Text_Button.cpp
+	../../../source/posterazor_ui_fltk/Fl_PosteRazor_Spinner.cpp
+	../../../source/posterazor_ui_fltk/PosteRazorDialog.cxx
+	../../../source/posterazor_ui_fltk/PosteRazorHelpDialog.cxx
+	../../../source/posterazor_ui_fltk/PosteRazorSettingsDialog.cxx
+	../../../source/posterazor_ui_fltk/PosteRazorDialogUI.cxx
+	../../../thirdparty/Fl_Native_File_Chooser/Fl_Native_File_Chooser.cxx
 )
 
 SET(POSTERAZOR_INCLUDEDIRECTORIES
-	../../source/posterazor
-	../../source/posterazor_ui_common/translations
-	../../source/posterazor_ui_fltk
-	../../source/tools
-	../../thirdparty/FreeImage/Dist
-	../../thirdparty/Fl_Native_File_Chooser
+	../../../source/posterazor
+	../../../source/posterazor_ui_common
+	../../../source/posterazor_ui_common/translations
+	../../../source/posterazor_ui_fltk
+	../../../source/tools
+	../../../thirdparty/FreeImage/Dist
+	../../../thirdparty/Fl_Native_File_Chooser
 )
 
 IF (POSTERAZOR_ENABLEGLPREVIEW)
 	SET(POSTERAZOR_SOURCES
 		${POSTERAZOR_SOURCES}
-		../../source/posterazor_ui_fltk/Fl_Gl_Paint_Canvas.cpp
+		../../../source/posterazor_ui_fltk/Fl_Gl_Paint_Canvas.cpp
 	)
 ENDIF (POSTERAZOR_ENABLEGLPREVIEW)
 
 IF (WIN32)
-	SET(POSTERAZOR_RC_FILE ../../source/posterazor_ui_common/windowsResources/PosteRazorUI.rc)
+	SET(POSTERAZOR_RC_FILE ../../../source/posterazor_ui_common/windowsResources/PosteRazorUI.rc)
 	SET(POSTERAZOR_INCLUDEDIRECTORIES ${POSTERAZOR_INCLUDEDIRECTORIES}
-		../../source/posterazor_ui_common/windowsResources
+		../../../source/posterazor_ui_common/windowsResources
 	)
 ENDIF (WIN32)
 
 IF (UNIX AND NOT APPLE)
 	SET(POSTERAZOR_INCLUDEDIRECTORIES ${POSTERAZOR_INCLUDEDIRECTORIES}
-		../../source/posterazor_ui_common/x11Resources
+		../../../source/posterazor_ui_common/x11Resources
 	)
 ENDIF (UNIX AND NOT APPLE)
