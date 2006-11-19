@@ -16,7 +16,7 @@
   <property name="windowTitle" >
    <string>PosteRazor 1.4</string>
   </property>
-  <layout class="QHBoxLayout" >
+  <layout class="QVBoxLayout" >
    <property name="margin" >
     <number>9</number>
    </property>
@@ -24,7 +24,7 @@
     <number>6</number>
    </property>
    <item>
-    <layout class="QVBoxLayout" >
+    <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
      </property>
@@ -32,225 +32,203 @@
       <number>6</number>
      </property>
      <item>
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
+      <widget class="QFrame" name="frame_3" >
+       <property name="frameShape" >
+        <enum>QFrame::StyledPanel</enum>
        </property>
-       <property name="spacing" >
-        <number>6</number>
+       <property name="frameShadow" >
+        <enum>QFrame::Plain</enum>
        </property>
-       <item>
-        <widget class="QFrame" name="frame_3" >
-         <property name="frameShape" >
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow" >
-          <enum>QFrame::Plain</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="toolButton" >
-         <property name="text" >
-          <string/>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
+      <widget class="QToolButton" name="toolButton" >
+       <property name="text" >
+        <string/>
        </property>
-       <property name="spacing" >
-        <number>6</number>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QFrame" name="frame" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>3</hsizetype>
+         <vsizetype>5</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
-       <item>
-        <widget class="QFrame" name="frame" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>3</hsizetype>
-           <vsizetype>5</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="frameShape" >
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow" >
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QVBoxLayout" >
-          <property name="margin" >
-           <number>9</number>
+       <property name="frameShape" >
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow" >
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QVBoxLayout" >
+        <property name="margin" >
+         <number>9</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
           </property>
-          <property name="spacing" >
-           <number>6</number>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
           </property>
-          <item>
-           <spacer>
-            <property name="orientation" >
-             <enum>Qt::Horizontal</enum>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QStackedWidget" name="stackedWidget" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>4</hsizetype>
+         <vsizetype>5</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="frameShape" >
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow" >
+        <enum>QFrame::Sunken</enum>
+       </property>
+       <property name="currentIndex" >
+        <number>3</number>
+       </property>
+       <widget class="QWidget" name="m_loadInputImageStep" >
+        <layout class="QVBoxLayout" >
+         <property name="margin" >
+          <number>9</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QGroupBox" name="groupBox" >
+           <property name="title" >
+            <string>Input Image</string>
+           </property>
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>9</number>
             </property>
-            <property name="sizeHint" >
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
+            <property name="spacing" >
+             <number>6</number>
             </property>
-           </spacer>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QStackedWidget" name="stackedWidget" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>4</hsizetype>
-           <vsizetype>5</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="frameShape" >
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow" >
-          <enum>QFrame::Sunken</enum>
-         </property>
-         <property name="currentIndex" >
-          <number>2</number>
-         </property>
-         <widget class="QWidget" name="m_loadInputImageStep" >
-          <layout class="QVBoxLayout" >
-           <property name="margin" >
-            <number>9</number>
+            <item>
+             <widget class="QFrame" name="m_inputFileNameLabel" >
+              <property name="frameShape" >
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow" >
+               <enum>QFrame::Sunken</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="m_imageLoadButton" >
+              <property name="text" >
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="m_imageInfoGroup" >
+           <property name="title" >
+            <string>Image Informations</string>
            </property>
-           <property name="spacing" >
-            <number>6</number>
+           <layout class="QVBoxLayout" >
+            <property name="margin" >
+             <number>9</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item>
+             <widget class="QTableWidget" name="m_imageInfoTable" />
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Vertical</enum>
            </property>
-           <item>
-            <layout class="QVBoxLayout" >
-             <property name="margin" >
-              <number>0</number>
-             </property>
-             <property name="spacing" >
-              <number>6</number>
-             </property>
-             <item>
-              <widget class="QGroupBox" name="groupBox" >
-               <property name="title" >
-                <string>Input Image</string>
-               </property>
-               <layout class="QVBoxLayout" >
-                <property name="margin" >
-                 <number>9</number>
-                </property>
-                <property name="spacing" >
-                 <number>6</number>
-                </property>
-                <item>
-                 <layout class="QVBoxLayout" >
-                  <property name="margin" >
-                   <number>0</number>
-                  </property>
-                  <property name="spacing" >
-                   <number>6</number>
-                  </property>
-                  <item>
-                   <layout class="QHBoxLayout" >
-                    <property name="margin" >
-                     <number>0</number>
-                    </property>
-                    <property name="spacing" >
-                     <number>6</number>
-                    </property>
-                    <item>
-                     <widget class="QFrame" name="m_inputFileNameLabel" >
-                      <property name="frameShape" >
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow" >
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QToolButton" name="m_imageLoadButton" >
-                      <property name="text" >
-                       <string>...</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
-              <widget class="QGroupBox" name="m_imageInfoGroup" >
-               <property name="title" >
-                <string>Image Informations</string>
-               </property>
-               <layout class="QVBoxLayout" >
-                <property name="margin" >
-                 <number>9</number>
-                </property>
-                <property name="spacing" >
-                 <number>6</number>
-                </property>
-                <item>
-                 <widget class="QTableWidget" name="m_imageInfoTable" />
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
-              <spacer>
-               <property name="orientation" >
-                <enum>Qt::Vertical</enum>
-               </property>
-               <property name="sizeType" >
-                <enum>QSizePolicy::Expanding</enum>
-               </property>
-               <property name="sizeHint" >
-                <size>
-                 <width>20</width>
-                 <height>40</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="m_paperSizeStep" >
-          <layout class="QVBoxLayout" >
-           <property name="margin" >
-            <number>9</number>
+           <property name="sizeType" >
+            <enum>QSizePolicy::Expanding</enum>
            </property>
-           <property name="spacing" >
-            <number>6</number>
+           <property name="sizeHint" >
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
            </property>
-           <item>
-            <layout class="QVBoxLayout" >
-             <property name="margin" >
-              <number>0</number>
-             </property>
-             <property name="spacing" >
-              <number>6</number>
-             </property>
-             <item>
-              <widget class="QGroupBox" name="groupBox" >
-               <property name="title" >
-                <string>Paper size</string>
-               </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="m_paperSizeStep" >
+        <layout class="QVBoxLayout" >
+         <property name="margin" >
+          <number>9</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QGroupBox" name="groupBox" >
+           <property name="title" >
+            <string>Paper size</string>
+           </property>
+           <layout class="QGridLayout" >
+            <property name="margin" >
+             <number>9</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item row="0" column="0" >
+             <widget class="QTabWidget" name="tabWidget" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>7</hsizetype>
+                <vsizetype>4</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="currentIndex" >
+               <number>1</number>
+              </property>
+              <widget class="QWidget" name="m_paperFormatStandardTab" >
+               <attribute name="title" >
+                <string>Standard</string>
+               </attribute>
                <layout class="QGridLayout" >
                 <property name="margin" >
                  <number>9</number>
@@ -259,193 +237,90 @@
                  <number>6</number>
                 </property>
                 <item row="0" column="0" >
-                 <widget class="QTabWidget" name="tabWidget" >
+                 <widget class="QLabel" name="label" >
                   <property name="sizePolicy" >
                    <sizepolicy>
-                    <hsizetype>7</hsizetype>
+                    <hsizetype>1</hsizetype>
+                    <vsizetype>5</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text" >
+                   <string>Format:</string>
+                  </property>
+                  <property name="alignment" >
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1" >
+                 <widget class="QComboBox" name="m_paperFormatComboBox" />
+                </item>
+                <item row="1" column="0" >
+                 <widget class="QLabel" name="label" >
+                  <property name="sizePolicy" >
+                   <sizepolicy>
+                    <hsizetype>1</hsizetype>
+                    <vsizetype>5</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text" >
+                   <string>Orientation:</string>
+                  </property>
+                  <property name="alignment" >
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1" >
+                 <widget class="QFrame" name="frame" >
+                  <property name="sizePolicy" >
+                   <sizepolicy>
+                    <hsizetype>3</hsizetype>
                     <vsizetype>4</vsizetype>
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
-                  <property name="currentIndex" >
-                   <number>0</number>
+                  <property name="frameShape" >
+                   <enum>QFrame::StyledPanel</enum>
                   </property>
-                  <widget class="QWidget" name="m_paperFormatStandardTab" >
-                   <attribute name="title" >
-                    <string>Standard</string>
-                   </attribute>
-                   <layout class="QVBoxLayout" >
-                    <property name="margin" >
-                     <number>9</number>
-                    </property>
-                    <property name="spacing" >
-                     <number>6</number>
-                    </property>
-                    <item>
-                     <layout class="QGridLayout" >
-                      <property name="margin" >
-                       <number>0</number>
-                      </property>
-                      <property name="spacing" >
-                       <number>6</number>
-                      </property>
-                      <item row="0" column="0" >
-                       <widget class="QLabel" name="label" >
-                        <property name="sizePolicy" >
-                         <sizepolicy>
-                          <hsizetype>1</hsizetype>
-                          <vsizetype>5</vsizetype>
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="text" >
-                         <string>Format:</string>
-                        </property>
-                        <property name="alignment" >
-                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="0" column="1" >
-                       <widget class="QComboBox" name="m_paperFormatComboBox" />
-                      </item>
-                      <item row="1" column="0" >
-                       <widget class="QLabel" name="label" >
-                        <property name="sizePolicy" >
-                         <sizepolicy>
-                          <hsizetype>1</hsizetype>
-                          <vsizetype>5</vsizetype>
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="text" >
-                         <string>Orientation:</string>
-                        </property>
-                        <property name="alignment" >
-                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="1" >
-                       <widget class="QFrame" name="frame" >
-                        <property name="sizePolicy" >
-                         <sizepolicy>
-                          <hsizetype>3</hsizetype>
-                          <vsizetype>4</vsizetype>
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="frameShape" >
-                         <enum>QFrame::StyledPanel</enum>
-                        </property>
-                        <property name="frameShadow" >
-                         <enum>QFrame::Sunken</enum>
-                        </property>
-                        <layout class="QVBoxLayout" >
-                         <property name="margin" >
-                          <number>9</number>
-                         </property>
-                         <property name="spacing" >
-                          <number>6</number>
-                         </property>
-                         <item>
-                          <widget class="QRadioButton" name="m_paperOrientationPortraitRadioButton" >
-                           <property name="text" >
-                            <string>Portrait</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QRadioButton" name="m_paperOrientationLandscapeRadioButton" >
-                           <property name="text" >
-                            <string>Landscape</string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </item>
-                     </layout>
-                    </item>
-                   </layout>
-                  </widget>
-                  <widget class="QWidget" name="m_paperFormatCustomTab" >
-                   <attribute name="title" >
-                    <string>Custom</string>
-                   </attribute>
-                   <layout class="QGridLayout" >
-                    <property name="margin" >
-                     <number>9</number>
-                    </property>
-                    <property name="spacing" >
-                     <number>6</number>
-                    </property>
-                    <item row="0" column="0" >
-                     <layout class="QGridLayout" >
-                      <property name="margin" >
-                       <number>0</number>
-                      </property>
-                      <property name="spacing" >
-                       <number>6</number>
-                      </property>
-                      <item row="1" column="2" >
-                       <widget class="QLabel" name="m_paperCustomHeightDimensionUnitLabel" >
-                        <property name="text" >
-                         <string>cm</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="0" column="0" >
-                       <widget class="QLabel" name="label" >
-                        <property name="text" >
-                         <string>Width:</string>
-                        </property>
-                        <property name="alignment" >
-                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="0" column="2" >
-                       <widget class="QLabel" name="m_paperCustomWidthDimensionUnitLabel" >
-                        <property name="text" >
-                         <string>cm</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="0" >
-                       <widget class="QLabel" name="label" >
-                        <property name="text" >
-                         <string>Height:</string>
-                        </property>
-                        <property name="alignment" >
-                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="0" column="1" >
-                       <widget class="QDoubleSpinBox" name="m_paperCustomWidthSpinner" />
-                      </item>
-                      <item row="1" column="1" >
-                       <widget class="QDoubleSpinBox" name="m_paperCustomHeightSpinner" />
-                      </item>
-                     </layout>
-                    </item>
-                   </layout>
-                  </widget>
+                  <property name="frameShadow" >
+                   <enum>QFrame::Sunken</enum>
+                  </property>
+                  <layout class="QVBoxLayout" >
+                   <property name="margin" >
+                    <number>9</number>
+                   </property>
+                   <property name="spacing" >
+                    <number>6</number>
+                   </property>
+                   <item>
+                    <widget class="QRadioButton" name="m_paperOrientationPortraitRadioButton" >
+                     <property name="text" >
+                      <string>Portrait</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="m_paperOrientationLandscapeRadioButton" >
+                     <property name="text" >
+                      <string>Landscape</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
                  </widget>
                 </item>
                </layout>
               </widget>
-             </item>
-             <item>
-              <widget class="QGroupBox" name="m_paperBordersGroup" >
-               <property name="title" >
-                <string>Borders (%1)</string>
-               </property>
+              <widget class="QWidget" name="m_paperFormatCustomTab" >
+               <attribute name="title" >
+                <string>Custom</string>
+               </attribute>
                <layout class="QGridLayout" >
                 <property name="margin" >
                  <number>9</number>
@@ -453,216 +328,15 @@
                 <property name="spacing" >
                  <number>6</number>
                 </property>
-                <item row="0" column="0" >
-                 <layout class="QGridLayout" >
-                  <property name="margin" >
-                   <number>0</number>
-                  </property>
-                  <property name="spacing" >
-                   <number>0</number>
-                  </property>
-                  <item row="3" column="2" >
-                   <spacer>
-                    <property name="orientation" >
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" >
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="2" column="0" >
-                   <widget class="QDoubleSpinBox" name="m_paperBorderLeftInput" />
-                  </item>
-                  <item row="0" column="1" >
-                   <widget class="QLabel" name="label" >
-                    <property name="text" >
-                     <string>Top</string>
-                    </property>
-                    <property name="alignment" >
-                     <set>Qt::AlignBottom|Qt::AlignHCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="1" >
-                   <widget class="QDoubleSpinBox" name="m_paperBorderTopInput" />
-                  </item>
-                  <item row="3" column="0" >
-                   <spacer>
-                    <property name="orientation" >
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" >
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="1" column="0" >
-                   <widget class="QLabel" name="label" >
-                    <property name="text" >
-                     <string>Left</string>
-                    </property>
-                    <property name="alignment" >
-                     <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="2" >
-                   <spacer>
-                    <property name="orientation" >
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" >
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="3" column="1" >
-                   <widget class="QDoubleSpinBox" name="m_paperBorderBottomInput" />
-                  </item>
-                  <item row="0" column="0" >
-                   <spacer>
-                    <property name="orientation" >
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" >
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="2" column="1" >
-                   <spacer>
-                    <property name="orientation" >
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" >
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="1" column="2" >
-                   <widget class="QLabel" name="label" >
-                    <property name="text" >
-                     <string>Right</string>
-                    </property>
-                    <property name="alignment" >
-                     <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="2" >
-                   <widget class="QDoubleSpinBox" name="m_paperBorderRightInput" />
-                  </item>
-                  <item row="4" column="0" >
-                   <spacer>
-                    <property name="orientation" >
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" >
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="4" column="1" >
-                   <widget class="QLabel" name="label" >
-                    <property name="text" >
-                     <string>Bottom</string>
-                    </property>
-                    <property name="alignment" >
-                     <set>Qt::AlignHCenter|Qt::AlignTop</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="2" >
-                   <spacer>
-                    <property name="orientation" >
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" >
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
-              <spacer>
-               <property name="orientation" >
-                <enum>Qt::Vertical</enum>
-               </property>
-               <property name="sizeHint" >
-                <size>
-                 <width>20</width>
-                 <height>40</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="m_overlappingStep" >
-          <layout class="QVBoxLayout" >
-           <property name="margin" >
-            <number>9</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QGroupBox" name="" >
-             <property name="title" >
-              <string>Overlapping size</string>
-             </property>
-             <layout class="QVBoxLayout" >
-              <property name="margin" >
-               <number>9</number>
-              </property>
-              <property name="spacing" >
-               <number>6</number>
-              </property>
-              <item>
-               <layout class="QGridLayout" >
-                <property name="margin" >
-                 <number>0</number>
-                </property>
-                <property name="spacing" >
-                 <number>6</number>
-                </property>
                 <item row="1" column="2" >
-                 <widget class="QLabel" name="m_overlappingHeightDimensionUnitLabel" >
+                 <widget class="QLabel" name="m_paperCustomHeightDimensionUnitLabel" >
                   <property name="text" >
                    <string>cm</string>
                   </property>
                  </widget>
                 </item>
                 <item row="0" column="0" >
-                 <widget class="QLabel" name="label_2" >
+                 <widget class="QLabel" name="label" >
                   <property name="text" >
                    <string>Width:</string>
                   </property>
@@ -672,14 +346,14 @@
                  </widget>
                 </item>
                 <item row="0" column="2" >
-                 <widget class="QLabel" name="m_overlappingWidthDimensionUnitLabel" >
+                 <widget class="QLabel" name="m_paperCustomWidthDimensionUnitLabel" >
                   <property name="text" >
                    <string>cm</string>
                   </property>
                  </widget>
                 </item>
                 <item row="1" column="0" >
-                 <widget class="QLabel" name="label_3" >
+                 <widget class="QLabel" name="label" >
                   <property name="text" >
                    <string>Height:</string>
                   </property>
@@ -689,617 +363,813 @@
                  </widget>
                 </item>
                 <item row="0" column="1" >
-                 <widget class="QDoubleSpinBox" name="m_overlappingWidthInput" />
+                 <widget class="QDoubleSpinBox" name="m_paperCustomWidthSpinner" />
                 </item>
                 <item row="1" column="1" >
-                 <widget class="QDoubleSpinBox" name="m_overlappingHeightInput" />
+                 <widget class="QDoubleSpinBox" name="m_paperCustomHeightSpinner" />
                 </item>
                </layout>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QGroupBox" name="" >
-             <property name="title" >
-              <string>Overlapping position</string>
-             </property>
-             <layout class="QGridLayout" >
-              <property name="margin" >
-               <number>9</number>
-              </property>
-              <property name="spacing" >
-               <number>6</number>
-              </property>
-              <item row="0" column="1" >
-               <widget class="QToolButton" name="m_overlappingPositionTopRightButton" >
-                <property name="sizePolicy" >
-                 <sizepolicy>
-                  <hsizetype>3</hsizetype>
-                  <vsizetype>5</vsizetype>
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text" >
-                 <string>Top right</string>
-                </property>
-                <property name="icon" >
-                 <iconset resource="PosteRazorDialogResources.qrc" >:/OverlappingPositionImages/images/overlappingTopRight.png</iconset>
-                </property>
-                <property name="iconSize" >
-                 <size>
-                  <width>24</width>
-                  <height>26</height>
-                 </size>
-                </property>
-                <property name="checkable" >
-                 <bool>true</bool>
-                </property>
-                <property name="autoExclusive" >
-                 <bool>true</bool>
-                </property>
-                <property name="toolButtonStyle" >
-                 <enum>Qt::ToolButtonTextUnderIcon</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0" >
-               <widget class="QToolButton" name="m_overlappingPositionTopLeftButton" >
-                <property name="sizePolicy" >
-                 <sizepolicy>
-                  <hsizetype>7</hsizetype>
-                  <vsizetype>4</vsizetype>
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text" >
-                 <string>Top left</string>
-                </property>
-                <property name="icon" >
-                 <iconset resource="PosteRazorDialogResources.qrc" >:/OverlappingPositionImages/images/overlappingTopLeft.png</iconset>
-                </property>
-                <property name="iconSize" >
-                 <size>
-                  <width>24</width>
-                  <height>26</height>
-                 </size>
-                </property>
-                <property name="checkable" >
-                 <bool>true</bool>
-                </property>
-                <property name="autoExclusive" >
-                 <bool>true</bool>
-                </property>
-                <property name="toolButtonStyle" >
-                 <enum>Qt::ToolButtonTextUnderIcon</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0" >
-               <widget class="QToolButton" name="m_overlappingPositionBottomLeftButton" >
-                <property name="sizePolicy" >
-                 <sizepolicy>
-                  <hsizetype>3</hsizetype>
-                  <vsizetype>4</vsizetype>
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text" >
-                 <string>Bottom left</string>
-                </property>
-                <property name="icon" >
-                 <iconset resource="PosteRazorDialogResources.qrc" >:/OverlappingPositionImages/images/overlappingBottomLeft.png</iconset>
-                </property>
-                <property name="iconSize" >
-                 <size>
-                  <width>24</width>
-                  <height>26</height>
-                 </size>
-                </property>
-                <property name="checkable" >
-                 <bool>true</bool>
-                </property>
-                <property name="autoExclusive" >
-                 <bool>true</bool>
-                </property>
-                <property name="toolButtonStyle" >
-                 <enum>Qt::ToolButtonTextUnderIcon</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1" >
-               <widget class="QToolButton" name="m_overlappingPositionBottomRightButton" >
-                <property name="sizePolicy" >
-                 <sizepolicy>
-                  <hsizetype>3</hsizetype>
-                  <vsizetype>4</vsizetype>
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text" >
-                 <string>Bottom right</string>
-                </property>
-                <property name="icon" >
-                 <iconset resource="PosteRazorDialogResources.qrc" >:/OverlappingPositionImages/images/overlappingBottomRight.png</iconset>
-                </property>
-                <property name="iconSize" >
-                 <size>
-                  <width>24</width>
-                  <height>26</height>
-                 </size>
-                </property>
-                <property name="checkable" >
-                 <bool>true</bool>
-                </property>
-                <property name="autoExclusive" >
-                 <bool>true</bool>
-                </property>
-                <property name="toolButtonStyle" >
-                 <enum>Qt::ToolButtonTextUnderIcon</enum>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <spacer>
-             <property name="orientation" >
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" >
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="m_posterSizeStep" >
-          <layout class="QVBoxLayout" >
-           <property name="margin" >
-            <number>9</number>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="m_paperBordersGroup" >
+           <property name="title" >
+            <string>Borders (%1)</string>
            </property>
-           <property name="spacing" >
-            <number>6</number>
+           <layout class="QGridLayout" >
+            <property name="margin" >
+             <number>9</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item row="3" column="2" >
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="2" column="0" >
+             <widget class="QDoubleSpinBox" name="m_paperBorderLeftInput" />
+            </item>
+            <item row="0" column="1" >
+             <widget class="QLabel" name="label" >
+              <property name="text" >
+               <string>Top</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1" >
+             <widget class="QDoubleSpinBox" name="m_paperBorderTopInput" />
+            </item>
+            <item row="3" column="0" >
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="1" column="0" >
+             <widget class="QLabel" name="label" >
+              <property name="text" >
+               <string>Left</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2" >
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="3" column="1" >
+             <widget class="QDoubleSpinBox" name="m_paperBorderBottomInput" />
+            </item>
+            <item row="0" column="0" >
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="2" column="1" >
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="1" column="2" >
+             <widget class="QLabel" name="label" >
+              <property name="text" >
+               <string>Right</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2" >
+             <widget class="QDoubleSpinBox" name="m_paperBorderRightInput" />
+            </item>
+            <item row="4" column="0" >
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="4" column="1" >
+             <widget class="QLabel" name="label" >
+              <property name="text" >
+               <string>Bottom</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignHCenter|Qt::AlignTop</set>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="2" >
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Vertical</enum>
            </property>
-           <item>
-            <widget class="QGroupBox" name="groupBox" >
-             <property name="title" >
-              <string>Poster size</string>
-             </property>
-             <layout class="QVBoxLayout" >
-              <property name="margin" >
-               <number>9</number>
+           <property name="sizeHint" >
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="m_overlappingStep" >
+        <layout class="QVBoxLayout" >
+         <property name="margin" >
+          <number>9</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QGroupBox" name="groupBox" >
+           <property name="title" >
+            <string>Overlapping size</string>
+           </property>
+           <layout class="QGridLayout" >
+            <property name="margin" >
+             <number>9</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item row="1" column="2" >
+             <widget class="QLabel" name="m_overlappingHeightDimensionUnitLabel" >
+              <property name="text" >
+               <string>cm</string>
               </property>
-              <property name="spacing" >
-               <number>6</number>
+             </widget>
+            </item>
+            <item row="0" column="0" >
+             <widget class="QLabel" name="label_2" >
+              <property name="text" >
+               <string>Width:</string>
               </property>
-              <item>
-               <layout class="QGridLayout" >
-                <property name="margin" >
-                 <number>0</number>
-                </property>
-                <property name="spacing" >
-                 <number>6</number>
-                </property>
-                <item row="4" column="2" >
-                 <widget class="QLabel" name="label" >
-                  <property name="text" >
-                   <string>pages</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="5" column="1" >
-                 <widget class="QDoubleSpinBox" name="m_posterAbsoluteHeightInput" />
-                </item>
-                <item row="2" column="2" >
-                 <widget class="QLabel" name="m_posterAbsoluteHeightDimensionUnitLabel" >
-                  <property name="text" >
-                   <string>cm</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="5" column="2" >
-                 <widget class="QLabel" name="label" >
-                  <property name="text" >
-                   <string>pages</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0" >
-                 <widget class="QLabel" name="label" >
-                  <property name="text" >
-                   <string>Height:</string>
-                  </property>
-                  <property name="alignment" >
-                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                  </property>
-                 </widget>
-                </item>
-                <item row="6" column="0" colspan="3" >
-                 <widget class="QRadioButton" name="m_posterSizePercentualRadioButton" >
-                  <property name="text" >
-                   <string>Image size in percent</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0" colspan="3" >
-                 <widget class="QRadioButton" name="m_posterSizeAbsoluteRadioButton" >
-                  <property name="text" >
-                   <string>Absolute image size</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="2" >
-                 <widget class="QLabel" name="m_posterAbsoluteWidthDimensionUnitLabel" >
-                  <property name="text" >
-                   <string>cm</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="1" >
-                 <widget class="QDoubleSpinBox" name="m_posterPagesWidthInput" />
-                </item>
-                <item row="3" column="0" colspan="3" >
-                 <widget class="QRadioButton" name="m_posterSizeInPagesRadioButton" >
-                  <property name="text" >
-                   <string>Size in pages</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="0" >
-                 <widget class="QLabel" name="label" >
-                  <property name="text" >
-                   <string>Width:</string>
-                  </property>
-                  <property name="alignment" >
-                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="1" >
-                 <widget class="QDoubleSpinBox" name="m_posterAbsoluteHeightInput" />
-                </item>
-                <item row="1" column="0" >
-                 <widget class="QLabel" name="label" >
-                  <property name="text" >
-                   <string>Width:</string>
-                  </property>
-                  <property name="alignment" >
-                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1" >
-                 <widget class="QDoubleSpinBox" name="m_posterAbsoluteWidthInput" />
-                </item>
-                <item row="5" column="0" >
-                 <widget class="QLabel" name="label" >
-                  <property name="text" >
-                   <string>Height:</string>
-                  </property>
-                  <property name="alignment" >
-                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                  </property>
-                 </widget>
-                </item>
-                <item row="7" column="0" >
-                 <widget class="QLabel" name="label" >
-                  <property name="text" >
-                   <string>Size:</string>
-                  </property>
-                  <property name="alignment" >
-                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                  </property>
-                 </widget>
-                </item>
-                <item row="7" column="1" >
-                 <widget class="QDoubleSpinBox" name="m_posterPercentualSizeInput" />
-                </item>
-                <item row="7" column="2" >
-                 <widget class="QLabel" name="label" >
-                  <property name="text" >
-                   <string>%</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QGroupBox" name="groupBox" >
-             <property name="title" >
-              <string>Image alignment</string>
-             </property>
-             <layout class="QHBoxLayout" >
-              <property name="margin" >
-               <number>0</number>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
-              <property name="spacing" >
-               <number>0</number>
+             </widget>
+            </item>
+            <item row="0" column="2" >
+             <widget class="QLabel" name="m_overlappingWidthDimensionUnitLabel" >
+              <property name="text" >
+               <string>cm</string>
               </property>
-              <item>
-               <widget class="QWidget" native="1" name="widget" >
-                <layout class="QHBoxLayout" >
-                 <property name="margin" >
-                  <number>9</number>
+             </widget>
+            </item>
+            <item row="1" column="0" >
+             <widget class="QLabel" name="label_3" >
+              <property name="text" >
+               <string>Height:</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1" >
+             <widget class="QDoubleSpinBox" name="m_overlappingWidthInput" />
+            </item>
+            <item row="1" column="1" >
+             <widget class="QDoubleSpinBox" name="m_overlappingHeightInput" />
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox" >
+           <property name="title" >
+            <string>Overlapping position</string>
+           </property>
+           <layout class="QGridLayout" >
+            <property name="margin" >
+             <number>9</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item row="0" column="1" >
+             <widget class="QToolButton" name="m_overlappingPositionTopRightButton" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>3</hsizetype>
+                <vsizetype>5</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text" >
+               <string>Top right</string>
+              </property>
+              <property name="icon" >
+               <iconset resource="PosteRazorDialogResources.qrc" >:/OverlappingPositionImages/images/overlappingTopRight.png</iconset>
+              </property>
+              <property name="iconSize" >
+               <size>
+                <width>24</width>
+                <height>26</height>
+               </size>
+              </property>
+              <property name="checkable" >
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive" >
+               <bool>true</bool>
+              </property>
+              <property name="toolButtonStyle" >
+               <enum>Qt::ToolButtonTextUnderIcon</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0" >
+             <widget class="QToolButton" name="m_overlappingPositionTopLeftButton" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>7</hsizetype>
+                <vsizetype>4</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text" >
+               <string>Top left</string>
+              </property>
+              <property name="icon" >
+               <iconset resource="PosteRazorDialogResources.qrc" >:/OverlappingPositionImages/images/overlappingTopLeft.png</iconset>
+              </property>
+              <property name="iconSize" >
+               <size>
+                <width>24</width>
+                <height>26</height>
+               </size>
+              </property>
+              <property name="checkable" >
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive" >
+               <bool>true</bool>
+              </property>
+              <property name="toolButtonStyle" >
+               <enum>Qt::ToolButtonTextUnderIcon</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0" >
+             <widget class="QToolButton" name="m_overlappingPositionBottomLeftButton" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>3</hsizetype>
+                <vsizetype>4</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text" >
+               <string>Bottom left</string>
+              </property>
+              <property name="icon" >
+               <iconset resource="PosteRazorDialogResources.qrc" >:/OverlappingPositionImages/images/overlappingBottomLeft.png</iconset>
+              </property>
+              <property name="iconSize" >
+               <size>
+                <width>24</width>
+                <height>26</height>
+               </size>
+              </property>
+              <property name="checkable" >
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive" >
+               <bool>true</bool>
+              </property>
+              <property name="toolButtonStyle" >
+               <enum>Qt::ToolButtonTextUnderIcon</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1" >
+             <widget class="QToolButton" name="m_overlappingPositionBottomRightButton" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>3</hsizetype>
+                <vsizetype>4</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text" >
+               <string>Bottom right</string>
+              </property>
+              <property name="icon" >
+               <iconset resource="PosteRazorDialogResources.qrc" >:/OverlappingPositionImages/images/overlappingBottomRight.png</iconset>
+              </property>
+              <property name="iconSize" >
+               <size>
+                <width>24</width>
+                <height>26</height>
+               </size>
+              </property>
+              <property name="checkable" >
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive" >
+               <bool>true</bool>
+              </property>
+              <property name="toolButtonStyle" >
+               <enum>Qt::ToolButtonTextUnderIcon</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="m_posterSizeStep" >
+        <layout class="QVBoxLayout" >
+         <property name="margin" >
+          <number>9</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QGroupBox" name="groupBox" >
+           <property name="title" >
+            <string>Poster size</string>
+           </property>
+           <layout class="QGridLayout" >
+            <property name="margin" >
+             <number>9</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item row="4" column="2" >
+             <widget class="QLabel" name="label" >
+              <property name="text" >
+               <string>pages</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="1" >
+             <widget class="QDoubleSpinBox" name="m_posterAbsoluteHeightInput" />
+            </item>
+            <item row="2" column="2" >
+             <widget class="QLabel" name="m_posterAbsoluteHeightDimensionUnitLabel" >
+              <property name="text" >
+               <string>cm</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="2" >
+             <widget class="QLabel" name="label" >
+              <property name="text" >
+               <string>pages</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0" >
+             <widget class="QLabel" name="label" >
+              <property name="text" >
+               <string>Height:</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="0" colspan="3" >
+             <widget class="QRadioButton" name="m_posterSizePercentualRadioButton" >
+              <property name="text" >
+               <string>Image size in percent</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0" colspan="3" >
+             <widget class="QRadioButton" name="m_posterSizeAbsoluteRadioButton" >
+              <property name="text" >
+               <string>Absolute image size</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2" >
+             <widget class="QLabel" name="m_posterAbsoluteWidthDimensionUnitLabel" >
+              <property name="text" >
+               <string>cm</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1" >
+             <widget class="QDoubleSpinBox" name="m_posterPagesWidthInput" />
+            </item>
+            <item row="3" column="0" colspan="3" >
+             <widget class="QRadioButton" name="m_posterSizeInPagesRadioButton" >
+              <property name="text" >
+               <string>Size in pages</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0" >
+             <widget class="QLabel" name="label" >
+              <property name="text" >
+               <string>Width:</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1" >
+             <widget class="QDoubleSpinBox" name="m_posterAbsoluteHeightInput" />
+            </item>
+            <item row="1" column="0" >
+             <widget class="QLabel" name="label" >
+              <property name="text" >
+               <string>Width:</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1" >
+             <widget class="QDoubleSpinBox" name="m_posterAbsoluteWidthInput" />
+            </item>
+            <item row="5" column="0" >
+             <widget class="QLabel" name="label" >
+              <property name="text" >
+               <string>Height:</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="0" >
+             <widget class="QLabel" name="label" >
+              <property name="text" >
+               <string>Size:</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="1" >
+             <widget class="QDoubleSpinBox" name="m_posterPercentualSizeInput" />
+            </item>
+            <item row="7" column="2" >
+             <widget class="QLabel" name="label" >
+              <property name="text" >
+               <string>%</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox" >
+           <property name="title" >
+            <string>Image alignment</string>
+           </property>
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QWidget" native="1" name="widget" >
+              <layout class="QHBoxLayout" >
+               <property name="margin" >
+                <number>9</number>
+               </property>
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <item>
+                <widget class="QToolButton" name="m_posterAlignmentTopButton" >
+                 <property name="text" >
+                  <string/>
                  </property>
-                 <property name="spacing" >
-                  <number>6</number>
+                 <property name="icon" >
+                  <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentTop.png</iconset>
                  </property>
-                 <item>
-                  <layout class="QHBoxLayout" >
-                   <property name="margin" >
-                    <number>0</number>
-                   </property>
-                   <property name="spacing" >
-                    <number>6</number>
-                   </property>
-                   <item>
-                    <widget class="QToolButton" name="m_posterAlignmentTopButton" >
-                     <property name="text" >
-                      <string/>
-                     </property>
-                     <property name="icon" >
-                      <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentTop.png</iconset>
-                     </property>
-                     <property name="iconSize" >
-                      <size>
-                       <width>22</width>
-                       <height>22</height>
-                      </size>
-                     </property>
-                     <property name="checkable" >
-                      <bool>true</bool>
-                     </property>
-                     <property name="autoExclusive" >
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QToolButton" name="m_posterAlignmentMiddleButton" >
-                     <property name="text" >
-                      <string/>
-                     </property>
-                     <property name="icon" >
-                      <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentMiddle.png</iconset>
-                     </property>
-                     <property name="iconSize" >
-                      <size>
-                       <width>22</width>
-                       <height>22</height>
-                      </size>
-                     </property>
-                     <property name="checkable" >
-                      <bool>true</bool>
-                     </property>
-                     <property name="autoExclusive" >
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QToolButton" name="m_posterAlignmentBottomButton" >
-                     <property name="text" >
-                      <string/>
-                     </property>
-                     <property name="icon" >
-                      <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentBottom.png</iconset>
-                     </property>
-                     <property name="iconSize" >
-                      <size>
-                       <width>22</width>
-                       <height>22</height>
-                      </size>
-                     </property>
-                     <property name="checkable" >
-                      <bool>true</bool>
-                     </property>
-                     <property name="autoExclusive" >
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <spacer>
-                <property name="orientation" >
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" >
-                 <size>
-                  <width>42</width>
-                  <height>30</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QWidget" native="1" name="widget" >
-                <layout class="QHBoxLayout" >
-                 <property name="margin" >
-                  <number>9</number>
+                 <property name="iconSize" >
+                  <size>
+                   <width>22</width>
+                   <height>22</height>
+                  </size>
                  </property>
-                 <property name="spacing" >
-                  <number>6</number>
+                 <property name="checkable" >
+                  <bool>true</bool>
                  </property>
-                 <item>
-                  <layout class="QHBoxLayout" >
-                   <property name="margin" >
-                    <number>0</number>
-                   </property>
-                   <property name="spacing" >
-                    <number>6</number>
-                   </property>
-                   <item>
-                    <widget class="QToolButton" name="m_posterAlignmentLeftButton" >
-                     <property name="text" >
-                      <string/>
-                     </property>
-                     <property name="icon" >
-                      <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentLeft.png</iconset>
-                     </property>
-                     <property name="iconSize" >
-                      <size>
-                       <width>22</width>
-                       <height>22</height>
-                      </size>
-                     </property>
-                     <property name="checkable" >
-                      <bool>true</bool>
-                     </property>
-                     <property name="autoExclusive" >
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QToolButton" name="m_posterAlignmentCenterButton" >
-                     <property name="text" >
-                      <string/>
-                     </property>
-                     <property name="icon" >
-                      <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentCenter.png</iconset>
-                     </property>
-                     <property name="iconSize" >
-                      <size>
-                       <width>22</width>
-                       <height>22</height>
-                      </size>
-                     </property>
-                     <property name="checkable" >
-                      <bool>true</bool>
-                     </property>
-                     <property name="autoExclusive" >
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QToolButton" name="m_posterAlignmentRightButton" >
-                     <property name="text" >
-                      <string/>
-                     </property>
-                     <property name="icon" >
-                      <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentRight.png</iconset>
-                     </property>
-                     <property name="iconSize" >
-                      <size>
-                       <width>22</width>
-                       <height>22</height>
-                      </size>
-                     </property>
-                     <property name="checkable" >
-                      <bool>true</bool>
-                     </property>
-                     <property name="autoExclusive" >
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <spacer>
-             <property name="orientation" >
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" >
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" >
-             <property name="margin" >
-              <number>0</number>
-             </property>
-             <property name="spacing" >
-              <number>6</number>
-             </property>
-            </layout>
-           </item>
-          </layout>
-         </widget>
-        </widget>
-       </item>
-      </layout>
+                 <property name="autoExclusive" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QToolButton" name="m_posterAlignmentMiddleButton" >
+                 <property name="text" >
+                  <string/>
+                 </property>
+                 <property name="icon" >
+                  <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentMiddle.png</iconset>
+                 </property>
+                 <property name="iconSize" >
+                  <size>
+                   <width>22</width>
+                   <height>22</height>
+                  </size>
+                 </property>
+                 <property name="checkable" >
+                  <bool>true</bool>
+                 </property>
+                 <property name="autoExclusive" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QToolButton" name="m_posterAlignmentBottomButton" >
+                 <property name="text" >
+                  <string/>
+                 </property>
+                 <property name="icon" >
+                  <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentBottom.png</iconset>
+                 </property>
+                 <property name="iconSize" >
+                  <size>
+                   <width>22</width>
+                   <height>22</height>
+                  </size>
+                 </property>
+                 <property name="checkable" >
+                  <bool>true</bool>
+                 </property>
+                 <property name="autoExclusive" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>42</width>
+                <height>30</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QWidget" native="1" name="widget" >
+              <layout class="QHBoxLayout" >
+               <property name="margin" >
+                <number>9</number>
+               </property>
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <item>
+                <widget class="QToolButton" name="m_posterAlignmentLeftButton" >
+                 <property name="text" >
+                  <string/>
+                 </property>
+                 <property name="icon" >
+                  <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentLeft.png</iconset>
+                 </property>
+                 <property name="iconSize" >
+                  <size>
+                   <width>22</width>
+                   <height>22</height>
+                  </size>
+                 </property>
+                 <property name="checkable" >
+                  <bool>true</bool>
+                 </property>
+                 <property name="autoExclusive" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QToolButton" name="m_posterAlignmentCenterButton" >
+                 <property name="text" >
+                  <string/>
+                 </property>
+                 <property name="icon" >
+                  <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentCenter.png</iconset>
+                 </property>
+                 <property name="iconSize" >
+                  <size>
+                   <width>22</width>
+                   <height>22</height>
+                  </size>
+                 </property>
+                 <property name="checkable" >
+                  <bool>true</bool>
+                 </property>
+                 <property name="autoExclusive" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QToolButton" name="m_posterAlignmentRightButton" >
+                 <property name="text" >
+                  <string/>
+                 </property>
+                 <property name="icon" >
+                  <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentRight.png</iconset>
+                 </property>
+                 <property name="iconSize" >
+                  <size>
+                   <width>22</width>
+                   <height>22</height>
+                  </size>
+                 </property>
+                 <property name="checkable" >
+                  <bool>true</bool>
+                 </property>
+                 <property name="autoExclusive" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="m_settingsButton" >
+       <property name="text" >
+        <string>Settings...</string>
+       </property>
+       <property name="icon" >
+        <iconset resource="PosteRazorDialogResources.qrc" >:/Other/images/settingsIcon.png</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>35</width>
+         <height>14</height>
+        </size>
+       </property>
+      </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
        </property>
-       <property name="spacing" >
-        <number>6</number>
+       <property name="sizeHint" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
        </property>
-       <item>
-        <widget class="QPushButton" name="m_settingsButton" >
-         <property name="text" >
-          <string>Settings...</string>
-         </property>
-         <property name="icon" >
-          <iconset resource="PosteRazorDialogResources.qrc" >:/Other/images/settingsIcon.png</iconset>
-         </property>
-         <property name="iconSize" >
-          <size>
-           <width>35</width>
-           <height>14</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="m_prevButton" >
-         <property name="text" >
-          <string>Back</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="m_nextButton" >
-         <property name="text" >
-          <string>Next</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_prevButton" >
+       <property name="text" >
+        <string>Back</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_nextButton" >
+       <property name="text" >
+        <string>Next</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
