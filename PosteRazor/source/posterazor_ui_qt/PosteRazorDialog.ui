@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>443</width>
-    <height>544</height>
+    <width>363</width>
+    <height>587</height>
    </rect>
   </property>
   <property name="acceptDrops" >
@@ -37,7 +37,7 @@
         <enum>QFrame::StyledPanel</enum>
        </property>
        <property name="frameShadow" >
-        <enum>QFrame::Plain</enum>
+        <enum>QFrame::Sunken</enum>
        </property>
       </widget>
      </item>
@@ -98,7 +98,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QStackedWidget" name="stackedWidget" >
+      <widget class="QStackedWidget" name="m_wizard" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>4</hsizetype>
@@ -114,7 +114,7 @@
         <enum>QFrame::Sunken</enum>
        </property>
        <property name="currentIndex" >
-        <number>3</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="m_loadInputImageStep" >
         <layout class="QVBoxLayout" >
@@ -169,7 +169,68 @@
              <number>6</number>
             </property>
             <item>
-             <widget class="QTableWidget" name="m_imageInfoTable" />
+             <widget class="QTableWidget" name="m_imageInfoTable" >
+              <property name="autoFillBackground" >
+               <bool>false</bool>
+              </property>
+              <property name="editTriggers" >
+               <set>QAbstractItemView::NoEditTriggers</set>
+              </property>
+              <property name="selectionMode" >
+               <enum>QAbstractItemView::NoSelection</enum>
+              </property>
+              <property name="selectionBehavior" >
+               <enum>QAbstractItemView::SelectRows</enum>
+              </property>
+              <property name="gridStyle" >
+               <enum>Qt::SolidLine</enum>
+              </property>
+              <property name="sortingEnabled" >
+               <bool>false</bool>
+              </property>
+              <row>
+               <property name="text" >
+                <string>SizeInPixels</string>
+               </property>
+              </row>
+              <row>
+               <property name="text" >
+                <string>SizeInUnit</string>
+               </property>
+              </row>
+              <row>
+               <property name="text" >
+                <string>Resolution</string>
+               </property>
+              </row>
+              <row>
+               <property name="text" >
+                <string>ColorType</string>
+               </property>
+              </row>
+              <column/>
+              <column/>
+              <item row="0" column="0" >
+               <property name="text" >
+                <string>Size (in pixels):</string>
+               </property>
+              </item>
+              <item row="1" column="0" >
+               <property name="text" >
+                <string>Size (in %1):</string>
+               </property>
+              </item>
+              <item row="2" column="0" >
+               <property name="text" >
+                <string>Resolution:</string>
+               </property>
+              </item>
+              <item row="3" column="0" >
+               <property name="text" >
+                <string>Color type:</string>
+               </property>
+              </item>
+             </widget>
             </item>
            </layout>
           </widget>
@@ -213,7 +274,7 @@
              <number>6</number>
             </property>
             <item row="0" column="0" >
-             <widget class="QTabWidget" name="tabWidget" >
+             <widget class="QTabWidget" name="m_paperFormatTypeTabs" >
               <property name="sizePolicy" >
                <sizepolicy>
                 <hsizetype>7</hsizetype>
@@ -363,10 +424,18 @@
                  </widget>
                 </item>
                 <item row="0" column="1" >
-                 <widget class="QDoubleSpinBox" name="m_paperCustomWidthSpinner" />
+                 <widget class="QDoubleSpinBox" name="m_paperCustomWidthSpinner" >
+                  <property name="maximum" >
+                   <double>999999.000000000000000</double>
+                  </property>
+                 </widget>
                 </item>
                 <item row="1" column="1" >
-                 <widget class="QDoubleSpinBox" name="m_paperCustomHeightSpinner" />
+                 <widget class="QDoubleSpinBox" name="m_paperCustomHeightSpinner" >
+                  <property name="maximum" >
+                   <double>999999.000000000000000</double>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </widget>
@@ -387,21 +456,12 @@
             <property name="spacing" >
              <number>6</number>
             </property>
-            <item row="3" column="2" >
-             <spacer>
-              <property name="orientation" >
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" >
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
             <item row="2" column="0" >
-             <widget class="QDoubleSpinBox" name="m_paperBorderLeftInput" />
+             <widget class="QDoubleSpinBox" name="m_paperBorderLeftInput" >
+              <property name="maximum" >
+               <double>999999.000000000000000</double>
+              </property>
+             </widget>
             </item>
             <item row="0" column="1" >
              <widget class="QLabel" name="label" >
@@ -414,20 +474,11 @@
              </widget>
             </item>
             <item row="1" column="1" >
-             <widget class="QDoubleSpinBox" name="m_paperBorderTopInput" />
-            </item>
-            <item row="3" column="0" >
-             <spacer>
-              <property name="orientation" >
-               <enum>Qt::Horizontal</enum>
+             <widget class="QDoubleSpinBox" name="m_paperBorderTopInput" >
+              <property name="maximum" >
+               <double>999999.000000000000000</double>
               </property>
-              <property name="sizeHint" >
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
+             </widget>
             </item>
             <item row="1" column="0" >
              <widget class="QLabel" name="label" >
@@ -453,7 +504,11 @@
              </spacer>
             </item>
             <item row="3" column="1" >
-             <widget class="QDoubleSpinBox" name="m_paperBorderBottomInput" />
+             <widget class="QDoubleSpinBox" name="m_paperBorderBottomInput" >
+              <property name="maximum" >
+               <double>999999.000000000000000</double>
+              </property>
+             </widget>
             </item>
             <item row="0" column="0" >
              <spacer>
@@ -492,9 +547,23 @@
              </widget>
             </item>
             <item row="2" column="2" >
-             <widget class="QDoubleSpinBox" name="m_paperBorderRightInput" />
+             <widget class="QDoubleSpinBox" name="m_paperBorderRightInput" >
+              <property name="maximum" >
+               <double>999999.000000000000000</double>
+              </property>
+             </widget>
             </item>
-            <item row="4" column="0" >
+            <item row="4" column="1" >
+             <widget class="QLabel" name="label" >
+              <property name="text" >
+               <string>Bottom</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignHCenter|Qt::AlignTop</set>
+              </property>
+             </widget>
+            </item>
+            <item rowspan="2" row="3" column="0" >
              <spacer>
               <property name="orientation" >
                <enum>Qt::Horizontal</enum>
@@ -507,17 +576,7 @@
               </property>
              </spacer>
             </item>
-            <item row="4" column="1" >
-             <widget class="QLabel" name="label" >
-              <property name="text" >
-               <string>Bottom</string>
-              </property>
-              <property name="alignment" >
-               <set>Qt::AlignHCenter|Qt::AlignTop</set>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="2" >
+            <item rowspan="2" row="3" column="2" >
              <spacer>
               <property name="orientation" >
                <enum>Qt::Horizontal</enum>
@@ -603,10 +662,18 @@
              </widget>
             </item>
             <item row="0" column="1" >
-             <widget class="QDoubleSpinBox" name="m_overlappingWidthInput" />
+             <widget class="QDoubleSpinBox" name="m_overlappingWidthInput" >
+              <property name="maximum" >
+               <double>999999.000000000000000</double>
+              </property>
+             </widget>
             </item>
             <item row="1" column="1" >
-             <widget class="QDoubleSpinBox" name="m_overlappingHeightInput" />
+             <widget class="QDoubleSpinBox" name="m_overlappingHeightInput" >
+              <property name="maximum" >
+               <double>999999.000000000000000</double>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
@@ -794,14 +861,18 @@
              <number>6</number>
             </property>
             <item row="4" column="2" >
-             <widget class="QLabel" name="label" >
+             <widget class="QLabel" name="m_posterPagesWidthDimensionUnitLabel" >
               <property name="text" >
                <string>pages</string>
               </property>
              </widget>
             </item>
             <item row="5" column="1" >
-             <widget class="QDoubleSpinBox" name="m_posterAbsoluteHeightInput" />
+             <widget class="QDoubleSpinBox" name="m_posterPagesHeightInput" >
+              <property name="maximum" >
+               <double>999999.000000000000000</double>
+              </property>
+             </widget>
             </item>
             <item row="2" column="2" >
              <widget class="QLabel" name="m_posterAbsoluteHeightDimensionUnitLabel" >
@@ -811,14 +882,14 @@
              </widget>
             </item>
             <item row="5" column="2" >
-             <widget class="QLabel" name="label" >
+             <widget class="QLabel" name="m_posterPagesHeightDimensionUnitLabel" >
               <property name="text" >
                <string>pages</string>
               </property>
              </widget>
             </item>
             <item row="2" column="0" >
-             <widget class="QLabel" name="label" >
+             <widget class="QLabel" name="m_posterAbsoluteHeightLabel" >
               <property name="text" >
                <string>Height:</string>
               </property>
@@ -849,7 +920,11 @@
              </widget>
             </item>
             <item row="4" column="1" >
-             <widget class="QDoubleSpinBox" name="m_posterPagesWidthInput" />
+             <widget class="QDoubleSpinBox" name="m_posterPagesWidthInput" >
+              <property name="maximum" >
+               <double>999999.000000000000000</double>
+              </property>
+             </widget>
             </item>
             <item row="3" column="0" colspan="3" >
              <widget class="QRadioButton" name="m_posterSizeInPagesRadioButton" >
@@ -859,7 +934,7 @@
              </widget>
             </item>
             <item row="4" column="0" >
-             <widget class="QLabel" name="label" >
+             <widget class="QLabel" name="m_posterPagesWidthLabel" >
               <property name="text" >
                <string>Width:</string>
               </property>
@@ -869,10 +944,14 @@
              </widget>
             </item>
             <item row="2" column="1" >
-             <widget class="QDoubleSpinBox" name="m_posterAbsoluteHeightInput" />
+             <widget class="QDoubleSpinBox" name="m_posterAbsoluteHeightInput" >
+              <property name="maximum" >
+               <double>999999.000000000000000</double>
+              </property>
+             </widget>
             </item>
             <item row="1" column="0" >
-             <widget class="QLabel" name="label" >
+             <widget class="QLabel" name="m_posterAbsoluteWidthLabel" >
               <property name="text" >
                <string>Width:</string>
               </property>
@@ -882,10 +961,14 @@
              </widget>
             </item>
             <item row="1" column="1" >
-             <widget class="QDoubleSpinBox" name="m_posterAbsoluteWidthInput" />
+             <widget class="QDoubleSpinBox" name="m_posterAbsoluteWidthInput" >
+              <property name="maximum" >
+               <double>999999.000000000000000</double>
+              </property>
+             </widget>
             </item>
             <item row="5" column="0" >
-             <widget class="QLabel" name="label" >
+             <widget class="QLabel" name="m_posterPagesHeightLabel" >
               <property name="text" >
                <string>Height:</string>
               </property>
@@ -895,7 +978,7 @@
              </widget>
             </item>
             <item row="7" column="0" >
-             <widget class="QLabel" name="label" >
+             <widget class="QLabel" name="m_posterPercentualSizeLabel" >
               <property name="text" >
                <string>Size:</string>
               </property>
@@ -905,10 +988,14 @@
              </widget>
             </item>
             <item row="7" column="1" >
-             <widget class="QDoubleSpinBox" name="m_posterPercentualSizeInput" />
+             <widget class="QDoubleSpinBox" name="m_posterPercentualSizeInput" >
+              <property name="maximum" >
+               <double>999999.000000000000000</double>
+              </property>
+             </widget>
             </item>
             <item row="7" column="2" >
-             <widget class="QLabel" name="label" >
+             <widget class="QLabel" name="m_posterPercentualSizeUnitLabel" >
               <property name="text" >
                <string>%</string>
               </property>
@@ -1178,22 +1265,5 @@
  <resources>
   <include location="PosteRazorDialogResources.qrc" />
  </resources>
- <connections>
-  <connection>
-   <sender>m_nextButton</sender>
-   <signal>clicked()</signal>
-   <receiver>PosteRazorDialogUI</receiver>
-   <slot></slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>406</x>
-     <y>540</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>229</x>
-     <y>291</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
