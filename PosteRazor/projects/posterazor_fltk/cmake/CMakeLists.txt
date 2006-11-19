@@ -20,7 +20,7 @@ SET(POSTERAZOR_DEFINITIONS
 )
 
 SET(POSTERAZOR_LINKDIRECTORIES
-	../../thirdparty/FreeImage/Dist
+	../../../thirdparty/FreeImage/Dist
 )
 
 IF (NOT POSTERAZOR_ENABLEGLPREVIEW)
@@ -33,12 +33,12 @@ ENDIF (NOT POSTERAZOR_ENABLEGLPREVIEW)
 IF (WIN32)
 	ADD_EXECUTABLE(PosteRazor WIN32 ${POSTERAZOR_SOURCES} ${POSTERAZOR_RC_FILE})
 	SET(POSTERAZOR_INCLUDEDIRECTORIES ${POSTERAZOR_INCLUDEDIRECTORIES}
-		../../thirdparty/fltk-1.1
-		../../source/posterazor_ui_common/windowsResources
+		../../../thirdparty/fltk-1.1
+		../../../source/posterazor_ui_common/windowsResources
 	)
 	SET(POSTERAZOR_LINKDIRECTORIES
 		${POSTERAZOR_LINKDIRECTORIES}
-		../../thirdparty/fltk-1.1/lib
+		../../../thirdparty/fltk-1.1/lib
 	)
 	SET(POSTERAZOR_LINKLIBRARIES
 		debug FreeImaged
@@ -65,9 +65,9 @@ IF (APPLE)
 # FreeImages make script on OSX doesn't finish and doesn't copy stuff into into the Dist directory
 	SET(POSTERAZOR_INCLUDEDIRECTORIES
 		${POSTERAZOR_INCLUDEDIRECTORIES}
-		../../thirdparty/FreeImage/Source
+		../../../thirdparty/FreeImage/Source
 	)
-	SET_TARGET_PROPERTIES(PosteRazor PROPERTIES LINK_FLAGS "-L../../thirdparty/FreeImage")
+	SET_TARGET_PROPERTIES(PosteRazor PROPERTIES LINK_FLAGS "-L../../../thirdparty/FreeImage")
 	SET(POSTERAZOR_LINKLIBRARIES
 		fltk
 		fltk_gl
@@ -79,7 +79,7 @@ ENDIF(APPLE)
 IF (UNIX AND NOT APPLE)
 	ADD_EXECUTABLE(PosteRazor ${POSTERAZOR_SOURCES})
 	SET(POSTERAZOR_INCLUDEDIRECTORIES ${POSTERAZOR_INCLUDEDIRECTORIES}
-		../../source/posterazor_ui_common/x11Resources
+		../../../source/posterazor_ui_common/x11Resources
 	)
 #	FIND_PACKAGE(X11)
 	SET(POSTERAZOR_LINKDIRECTORIES
