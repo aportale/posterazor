@@ -20,11 +20,11 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "Fl_Paint_Canvas_Base.h"
+#include "PaintCanvasBase.h"
 #include <FL/fl_draw.H>
 #include <string.h>
 
-Fl_Paint_Canvas_Base::Fl_Paint_Canvas_Base()
+PaintCanvasBase::PaintCanvasBase()
 	:PaintCanvasInterface()
 {
 	m_stateString[0] = '\0';
@@ -33,20 +33,20 @@ Fl_Paint_Canvas_Base::Fl_Paint_Canvas_Base()
 	m_maxImageHeight = 1024;
 }
 
-void Fl_Paint_Canvas_Base::SetBackgroundColor(unsigned char red, unsigned char green, unsigned char blue)
+void PaintCanvasBase::SetBackgroundColor(unsigned char red, unsigned char green, unsigned char blue)
 {
 	m_backgroundColor[0] = red;
 	m_backgroundColor[1] = green;
 	m_backgroundColor[2] = blue;
 }
 
-void Fl_Paint_Canvas_Base::SetState(const char *state)
+void PaintCanvasBase::SetState(const char *state)
 {
 	strncpy(m_stateString, state, sizeof(m_stateString));
 	m_stateString[sizeof(m_stateString)-1] = '\0';
 }
 
-void Fl_Paint_Canvas_Base::RequestImage(void)
+void PaintCanvasBase::RequestImage(void)
 {
 	if (m_painter)
 		m_painter->GetImage(this, m_maxImageWidth, m_maxImageHeight);

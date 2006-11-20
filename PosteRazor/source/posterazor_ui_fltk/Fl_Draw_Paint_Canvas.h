@@ -25,9 +25,9 @@
 
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Image.H>
-#include "Fl_Paint_Canvas_Base.h"
+#include "PaintCanvasBase.h"
 
-class Fl_Draw_Paint_Canvas: public Fl_Box, public Fl_Paint_Canvas_Base
+class Fl_Draw_Paint_Canvas: public Fl_Box, public PaintCanvasBase
 {
 private:
 	unsigned char *m_imageRGBData;

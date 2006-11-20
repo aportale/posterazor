@@ -131,7 +131,7 @@
 				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Image_Text_Button.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Paint_Canvas_Base.cpp">
+				RelativePath="..\..\..\source\tools\PaintCanvasBase.cpp">
 			</File>
 			<File
 				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Paint_Canvas_Group.cpp">
@@ -175,7 +175,7 @@
 				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Image_Text_Button.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Paint_Canvas_Base.h">
+				RelativePath="..\..\..\source\tools\PaintCanvasBase.h">
 			</File>
 			<File
 				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Paint_Canvas_Group.h">
