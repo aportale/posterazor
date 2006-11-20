@@ -1,6 +1,7 @@
 #include "PosteRazorDialog.h"
 #include <QApplication>
 #include <QHeaderView>
+#include <QFileDialog>
 
 PosteRazorDialog::PosteRazorDialog(QWidget *parent, Qt::WFlags flags)
 :	QDialog(parent, flags)
@@ -165,12 +166,35 @@ void PosteRazorDialog::handlePaperFormatComboBoxActivated(int index)
 	m_posteRazorController->SetPaperFormat((PaperFormats::ePaperFormats)(m_paperFormatComboBox->itemData(index).toInt()));
 }
 
+void PosteRazorDialog::handleImageLoadButtonClicked(void)
+{
+	QStringList filters;
+	QStringList allExtensions;
+
+	for (int formatIndex = 0; formatIndex < ImageIOTypes::GetInputImageFormatsCount(); formatIndex++)
+	{
+		int extensionsCount = ImageIOTypes::GetFileExtensionsCount(formatIndex);
+
+		QStringList filterExtensions;
+		for (int extensionIndex = 0; extensionIndex < extensionsCount; extensionIndex++)
+		{
+			filterExtensions << "*." + QString(ImageIOTypes::GetFileExtensionForFormat(extensionIndex, formatIndex));
+		}
+		allExtensions << filterExtensions;
+
+		filters << QString(ImageIOTypes::GetInputImageFormat(formatIndex)) + " (" + filterExtensions.join(" ") + ")";
+	}
+	filters.prepend(tr("All image formats") + " (" +  allExtensions.join(" ") + ")"); 
+	QString s = QFileDialog::getOpenFileName(this, "blah", ".", filters.join(";;"));
+}
+
 void PosteRazorDialog::createConnections(void)
 {
 	connect(m_nextButton, SIGNAL(clicked()), this, SLOT(handleNextButtonClicked()));
 	connect(m_prevButton, SIGNAL(clicked()), this, SLOT(handlePrevButtonClicked()));
 
 	connect(m_paperFormatComboBox, SIGNAL(activated(int)), this, SLOT(handlePaperFormatComboBoxActivated(int)));
+	connect(m_imageLoadButton, SIGNAL(clicked()), this, SLOT(handleImageLoadButtonClicked()));
 
 	connect(m_posterSizeAbsoluteRadioButton, SIGNAL(clicked()), this, SLOT(updatePosterSizeGroupsState()));
 	connect(m_posterSizeInPagesRadioButton, SIGNAL(clicked()), this, SLOT(updatePosterSizeGroupsState()));
