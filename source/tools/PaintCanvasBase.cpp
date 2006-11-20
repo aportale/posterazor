@@ -21,7 +21,6 @@
 */
 
 #include "PaintCanvasBase.h"
-#include <FL/fl_draw.H>
 #include <string.h>
 
 PaintCanvasBase::PaintCanvasBase()
