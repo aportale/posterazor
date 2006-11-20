@@ -30,6 +30,11 @@ public:
 	{
 		eImageFormatPDF
 	};
+
+	static int GetInputImageFormatsCount(void);
+	static const char* GetInputImageFormat(int imageFormatIndex);
+	static int GetFileExtensionsCount(int imageFormatIndex);
+	static const char* GetFileExtensionForFormat(int extensionIndex, int imageFormatIndex);
 };
 
 #endif

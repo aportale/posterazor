@@ -54,6 +54,8 @@ private slots:
 	void handleNextButtonClicked(void);
 	void handlePrevButtonClicked(void);
 	void handlePaperFormatComboBoxActivated(int index);
+	void handleImageLoadButtonClicked(void);
+
 	void updatePosterSizeGroupsState(void);
 };
 

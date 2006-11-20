@@ -28,12 +28,12 @@
 #include <string.h>
 
 static char FreeImageErrorMessage[1024];
-void FreeImageErrorHandler(FREE_IMAGE_FORMAT fif, const char *message)
+
+void FreeImageErrorHandler(FREE_IMAGE_FORMAT /* fif */, const char *message)
 {
 	strncpy(FreeImageErrorMessage, message, sizeof(FreeImageErrorMessage));
 	FreeImageErrorMessage[sizeof(FreeImageErrorMessage)-1] = '\0';
 }
-
 
 class FreeImageInitializer
 {
@@ -270,7 +270,7 @@ public:
 		return colorDatatype;
 	}
 
-	int SavePoster(const char *fileName, ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const
+	int SavePoster(const char *fileName, ImageIOTypes::eImageFormats /* format */, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const
 	{
 		int err = 0;
 
