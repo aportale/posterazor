@@ -2,12 +2,14 @@ TEMPLATE = app
 
 SOURCES += \
 	../../../source/tools/PaperFormats.cxx \
+	../../../source/tools/PaintCanvasBase.cpp \
 	../../../source/tools/UnitsOfLength.cxx \
 	../../../source/tools/ImageIOTypes.cxx \
 	../../../source/posterazor/PosteRazor.cxx \
 	../../../source/posterazor/PosteRazorImageIO.cxx \
 	../../../source/posterazor/PosteRazorPDFOutput.cxx \
 	../../../source/posterazor_ui_qt/PosteRazorDialog.cpp \
+	../../../source/posterazor_ui_qt/QPaintCanvas.cpp \
 	../../../source/posterazor_ui_common/PosteRazorDialogController.cpp
 
 HEADERS += \
@@ -15,12 +17,14 @@ HEADERS += \
 	../../../source/tools/ImageIOTypes.h \
 	../../../source/tools/UnitsOfLength.h \
 	../../../source/tools/PaperFormats.h \
+	../../../source/tools/PaintCanvasBase.h \
 	../../../source/tools/PaintCanvasInterface.h \
 	../../../source/tools/PersistentPreferencesInterface.h \
 	../../../source/posterazor/PosteRazor.h \
 	../../../source/posterazor/PosteRazorImageIO.h \
 	../../../source/posterazor/PosteRazorPDFOutput.h \
 	../../../source/posterazor_ui_qt/PosteRazorDialog.h \
+	../../../source/posterazor_ui_qt/QPaintCanvas.h \
 	../../../source/posterazor_ui_common/PosteRazorDialogController.h
 
 INCLUDEPATH += \

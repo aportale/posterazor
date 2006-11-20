@@ -145,6 +145,7 @@ void PosteRazorDialog::SetLaunchPDFApplication(bool launch)
 
 void PosteRazorDialog::UpdatePreview(void)
 {
+	m_paintCanvas->repaint();
 }
 
 void PosteRazorDialog::UpdateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel)
@@ -209,6 +210,7 @@ void PosteRazorDialog::createConnections(void)
 void PosteRazorDialog::createPosteRazorDialogController(void)
 {
 	m_posteRazor = PosteRazor::CreatePosteRazor();
+	m_paintCanvas->SetPainterInterface(m_posteRazor);
 	m_posteRazorController = PosteRazorDialogController::CreatePosteRazorDialogController();
 	m_posteRazorController->SetPosteRazorDialog(this);
 	m_posteRazorController->SetPosteRazorModel(m_posteRazor);
@@ -258,7 +260,8 @@ void PosteRazorDialog::loadInputImage(const QString &fileName)
 	}
 	else
 	{
-
+		m_paintCanvas->RequestImage();
+		m_paintCanvas->SetState("image");
 	}
 }
 

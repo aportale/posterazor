@@ -1,7 +1,5 @@
 <ui version="4.0" >
  <author>Alessandro Portale</author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>PosteRazorDialogUI</class>
  <widget class="QWidget" name="PosteRazorDialogUI" >
   <property name="geometry" >
@@ -84,17 +82,7 @@
          <number>6</number>
         </property>
         <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
+         <widget class="QPaintCanvas" native="1" name="m_paintCanvas" />
         </item>
        </layout>
       </widget>
@@ -428,14 +416,14 @@
                 <item row="0" column="1" >
                  <widget class="QDoubleSpinBox" name="m_paperCustomWidthSpinner" >
                   <property name="maximum" >
-                   <double>999999</double>
+                   <double>999999.000000000000000</double>
                   </property>
                  </widget>
                 </item>
                 <item row="1" column="1" >
                  <widget class="QDoubleSpinBox" name="m_paperCustomHeightSpinner" >
                   <property name="maximum" >
-                   <double>999999</double>
+                   <double>999999.000000000000000</double>
                   </property>
                  </widget>
                 </item>
@@ -461,7 +449,7 @@
             <item row="2" column="0" >
              <widget class="QDoubleSpinBox" name="m_paperBorderLeftInput" >
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -478,7 +466,7 @@
             <item row="1" column="1" >
              <widget class="QDoubleSpinBox" name="m_paperBorderTopInput" >
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -508,7 +496,7 @@
             <item row="3" column="1" >
              <widget class="QDoubleSpinBox" name="m_paperBorderBottomInput" >
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -551,7 +539,7 @@
             <item row="2" column="2" >
              <widget class="QDoubleSpinBox" name="m_paperBorderRightInput" >
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -666,14 +654,14 @@
             <item row="0" column="1" >
              <widget class="QDoubleSpinBox" name="m_overlappingWidthInput" >
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
             <item row="1" column="1" >
              <widget class="QDoubleSpinBox" name="m_overlappingHeightInput" >
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -884,7 +872,7 @@
             <item row="5" column="1" >
              <widget class="QDoubleSpinBox" name="m_posterPagesHeightInput" >
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -936,7 +924,7 @@
             <item row="4" column="1" >
              <widget class="QDoubleSpinBox" name="m_posterPagesWidthInput" >
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -960,7 +948,7 @@
             <item row="2" column="1" >
              <widget class="QDoubleSpinBox" name="m_posterAbsoluteHeightInput" >
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -977,7 +965,7 @@
             <item row="1" column="1" >
              <widget class="QDoubleSpinBox" name="m_posterAbsoluteWidthInput" >
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -1004,7 +992,7 @@
             <item row="7" column="1" >
              <widget class="QDoubleSpinBox" name="m_posterPercentualSizeInput" >
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -1031,91 +1019,89 @@
              <number>0</number>
             </property>
             <item>
-             <widget class="QWidget" name="widget" >
-              <layout class="QHBoxLayout" >
-               <property name="margin" >
-                <number>9</number>
-               </property>
-               <property name="spacing" >
-                <number>6</number>
-               </property>
-               <item>
-                <widget class="QToolButton" name="m_posterAlignmentTopButton" >
-                 <property name="text" >
-                  <string/>
-                 </property>
-                 <property name="icon" >
-                  <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentTop.png</iconset>
-                 </property>
-                 <property name="iconSize" >
-                  <size>
-                   <width>22</width>
-                   <height>22</height>
-                  </size>
-                 </property>
-                 <property name="checkable" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoRaise" >
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QToolButton" name="m_posterAlignmentMiddleButton" >
-                 <property name="text" >
-                  <string/>
-                 </property>
-                 <property name="icon" >
-                  <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentMiddle.png</iconset>
-                 </property>
-                 <property name="iconSize" >
-                  <size>
-                   <width>22</width>
-                   <height>22</height>
-                  </size>
-                 </property>
-                 <property name="checkable" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoRaise" >
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QToolButton" name="m_posterAlignmentBottomButton" >
-                 <property name="text" >
-                  <string/>
-                 </property>
-                 <property name="icon" >
-                  <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentBottom.png</iconset>
-                 </property>
-                 <property name="iconSize" >
-                  <size>
-                   <width>22</width>
-                   <height>22</height>
-                  </size>
-                 </property>
-                 <property name="checkable" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoRaise" >
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
+             <layout class="QHBoxLayout" >
+              <property name="margin" >
+               <number>9</number>
+              </property>
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <item>
+               <widget class="QToolButton" name="m_posterAlignmentTopButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentTop.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoRaise" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="m_posterAlignmentMiddleButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentMiddle.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoRaise" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="m_posterAlignmentBottomButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentBottom.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoRaise" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
             <item>
              <spacer>
@@ -1131,91 +1117,89 @@
              </spacer>
             </item>
             <item>
-             <widget class="QWidget" name="widget" >
-              <layout class="QHBoxLayout" >
-               <property name="margin" >
-                <number>9</number>
-               </property>
-               <property name="spacing" >
-                <number>6</number>
-               </property>
-               <item>
-                <widget class="QToolButton" name="m_posterAlignmentLeftButton" >
-                 <property name="text" >
-                  <string/>
-                 </property>
-                 <property name="icon" >
-                  <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentLeft.png</iconset>
-                 </property>
-                 <property name="iconSize" >
-                  <size>
-                   <width>22</width>
-                   <height>22</height>
-                  </size>
-                 </property>
-                 <property name="checkable" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoRaise" >
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QToolButton" name="m_posterAlignmentCenterButton" >
-                 <property name="text" >
-                  <string/>
-                 </property>
-                 <property name="icon" >
-                  <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentCenter.png</iconset>
-                 </property>
-                 <property name="iconSize" >
-                  <size>
-                   <width>22</width>
-                   <height>22</height>
-                  </size>
-                 </property>
-                 <property name="checkable" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoRaise" >
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QToolButton" name="m_posterAlignmentRightButton" >
-                 <property name="text" >
-                  <string/>
-                 </property>
-                 <property name="icon" >
-                  <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentRight.png</iconset>
-                 </property>
-                 <property name="iconSize" >
-                  <size>
-                   <width>22</width>
-                   <height>22</height>
-                  </size>
-                 </property>
-                 <property name="checkable" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoRaise" >
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
+             <layout class="QHBoxLayout" >
+              <property name="margin" >
+               <number>9</number>
+              </property>
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <item>
+               <widget class="QToolButton" name="m_posterAlignmentLeftButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentLeft.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoRaise" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="m_posterAlignmentCenterButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentCenter.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoRaise" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="m_posterAlignmentRightButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentRight.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoRaise" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>
@@ -1294,7 +1278,13 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>QPaintCanvas</class>
+   <extends>QWidget</extends>
+   <header>QPaintCanvas.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="PosteRazorDialogResources.qrc" />
  </resources>
