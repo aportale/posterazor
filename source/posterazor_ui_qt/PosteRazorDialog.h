@@ -57,6 +57,7 @@ private slots:
 	void handleImageLoadButtonClicked(void);
 
 	void updatePosterSizeGroupsState(void);
+	void loadInputImage(const QString &fileName);
 };
 
 #endif

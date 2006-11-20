@@ -27,7 +27,7 @@
 #define MIN(a, b) ((a)<=(b)?(a):(b))
 
 Fl_Gl_Paint_Canvas::Fl_Gl_Paint_Canvas(int x, int y, int width, int height, Fl_Widget *parentWidget)
-	:Fl_Gl_Window(x, y, width, height), Fl_Paint_Canvas_Base()
+	:Fl_Gl_Window(x, y, width, height), PaintCanvasBase()
 {
 	m_texturesNames = NULL;
 	m_imageWidth = 0;

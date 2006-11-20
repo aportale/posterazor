@@ -29,9 +29,9 @@
 #include <FL/gl.h>
 
 #include <FL/Fl_Image.H>
-#include "Fl_Paint_Canvas_Base.h"
+#include "PaintCanvasBase.h"
 
-class Fl_Gl_Paint_Canvas: public Fl_Gl_Window, public Fl_Paint_Canvas_Base
+class Fl_Gl_Paint_Canvas: public Fl_Gl_Window, public PaintCanvasBase
 {
 private:
 	GLuint *m_texturesNames;

@@ -29,7 +29,7 @@
 #endif
 #include "Fl_Draw_Paint_Canvas.h"
 
-class Fl_Paint_Canvas_Group: public Fl_Group, public Fl_Paint_Canvas_Base
+class Fl_Paint_Canvas_Group: public Fl_Group, public PaintCanvasBase
 {
 private:
 	unsigned char *m_imageRGBData;
@@ -49,7 +49,7 @@ public:
 
 	void SetPaintCanvasType(ePaintCanvasTypes type);
 	ePaintCanvasTypes GetPaintCanvasType(void) const {return m_paintCanvasType;}
-	Fl_Paint_Canvas_Base *GetPaintCanvasBase(void) const;
+	PaintCanvasBase *GetPaintCanvasBase(void) const;
 	Fl_Widget *GetPaintCanvasWidget(void) const;
 
 	void SetPainterInterface(const PainterInterface *painter);

@@ -82,13 +82,13 @@ void Fl_Paint_Canvas_Group::SetPaintCanvasType(ePaintCanvasTypes type)
 #endif
 }
 
-Fl_Paint_Canvas_Base *Fl_Paint_Canvas_Group::GetPaintCanvasBase(void) const
+PaintCanvasBase *Fl_Paint_Canvas_Group::GetPaintCanvasBase(void) const
 {
 #ifndef NO_OPENGL_PREVIEW
 	if (GetPaintCanvasType()==PaintCanvasTypeDraw)
-		return dynamic_cast<Fl_Paint_Canvas_Base*>(m_drawPaintCanvas);
+		return dynamic_cast<PaintCanvasBase*>(m_drawPaintCanvas);
 	else
-		return dynamic_cast<Fl_Paint_Canvas_Base*>(m_glPaintCanvas);
+		return dynamic_cast<PaintCanvasBase*>(m_glPaintCanvas);
 #else
 	return m_drawPaintCanvas;
 #endif
@@ -143,7 +143,7 @@ void Fl_Paint_Canvas_Group::DrawImage(double x, double y, double width, double h
 
 void Fl_Paint_Canvas_Group::SetState(const char *state)
 {
-	Fl_Paint_Canvas_Base::SetState(state);
+	PaintCanvasBase::SetState(state);
 	m_drawPaintCanvas->SetState(m_stateString);
 #ifndef NO_OPENGL_PREVIEW
 	m_glPaintCanvas->SetState(m_stateString);

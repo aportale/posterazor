@@ -20,14 +20,12 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef Fl_Paint_Canvas_Base_h
-#define Fl_Paint_Canvas_Base_h
+#ifndef PaintCanvasBase_h
+#define PaintCanvasBase_h
 
-#include <FL/Fl_Box.H>
-#include <FL/Fl_Image.H>
 #include "PaintCanvasInterface.h"
 
-class Fl_Paint_Canvas_Base: public PaintCanvasInterface
+class PaintCanvasBase: public PaintCanvasInterface
 {
 protected:
 	char m_stateString[1024];
@@ -36,7 +34,7 @@ protected:
 	double m_maxImageHeight;
 	
 public:
-	Fl_Paint_Canvas_Base();
+	PaintCanvasBase();
 
 	virtual void SetState(const char *state);
 	virtual void SetBackgroundColor(unsigned char red, unsigned char green, unsigned char blue);

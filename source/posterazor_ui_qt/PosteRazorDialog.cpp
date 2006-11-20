@@ -186,6 +186,11 @@ void PosteRazorDialog::handleImageLoadButtonClicked(void)
 	}
 	filters.prepend(tr("All image formats") + " (" +  allExtensions.join(" ") + ")"); 
 	QString s = QFileDialog::getOpenFileName(this, "blah", ".", filters.join(";;"));
+
+	if (s != "")
+	{
+		loadInputImage(s);
+	}
 }
 
 void PosteRazorDialog::createConnections(void)
@@ -241,6 +246,20 @@ void PosteRazorDialog::updatePosterSizeGroupsState(void)
 	m_posterPercentualSizeLabel->setEnabled(percentual);
 	m_posterPercentualSizeInput->setEnabled(percentual);
 	m_posterPercentualSizeUnitLabel->setEnabled(percentual);
+}
+
+void PosteRazorDialog::loadInputImage(const QString &fileName)
+{
+	char errorMessage[1024];
+	bool successful = m_posteRazorController->LoadInputImage(fileName.toAscii(), errorMessage, sizeof(errorMessage));
+	if (!successful)
+	{
+
+	}
+	else
+	{
+
+	}
 }
 
 int main (int argc, char **argv)

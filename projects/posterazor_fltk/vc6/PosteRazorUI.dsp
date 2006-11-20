@@ -100,7 +100,7 @@ SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_Image_Text_Button.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_Paint_Canvas_Base.cpp
+SOURCE=..\..\..\source\tools\PaintCanvasBase.cpp
 # End Source File
 # Begin Source File
 
@@ -160,7 +160,7 @@ SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_Image_Text_Button.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_Paint_Canvas_Base.h
+SOURCE=..\..\..\source\tools\PaintCanvasBase.h
 # End Source File
 # Begin Source File
 
