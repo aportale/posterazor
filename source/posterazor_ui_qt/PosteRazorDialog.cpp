@@ -13,8 +13,6 @@ PosteRazorDialog::PosteRazorDialog(QWidget *parent, Qt::WFlags flags)
 	populateUI();
 	createPosteRazorDialogController();
 
-	m_imageInfoTable->horizontalHeader()->hide();
-	m_imageInfoTable->verticalHeader()->hide();
 	updatePosterSizeGroupsState();
 }
 
@@ -150,6 +148,20 @@ void PosteRazorDialog::UpdatePreview(void)
 
 void PosteRazorDialog::UpdateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel)
 {
+	m_imageInformationSizeInPixelsLabel->setText(QString::number(imageWidthInPixels) + " x " + QString::number(imageHeightInPixels));
+	m_imageInformationSizeLabel->setText(QString::number(imageWidth, 'f', 2) + " x " + QString::number(imageHeight, 'f', 2));
+	m_imageInformationResolutionLabel->setText(QString::number(verticalDpi, 'f', 1) + " dpi");
+	QString colorTypeString
+	(
+		colorType==ColorTypes::eColorTypeMonochrome?tr("Monochrome"):
+		colorType==ColorTypes::eColorTypeGreyscale?tr("Grayscale"):
+		colorType==ColorTypes::eColorTypePalette?tr("Palette"):
+		colorType==ColorTypes::eColorTypeRGB?tr("RGB"):
+		colorType==ColorTypes::eColorTypeRGBA?tr("RGBA"):
+		/*colorType==eColorTypeCMYK?*/ tr("CMYK")
+	);
+	colorTypeString += " " + QString::number(bitsPerPixel) + "bpp";
+	m_imageInformationColorTypeLabel->setText(colorTypeString);
 }
 
 void PosteRazorDialog::handleNextButtonClicked(void)
@@ -193,6 +205,25 @@ void PosteRazorDialog::handleImageLoadButtonClicked(void)
 		loadInputImage(s);
 	}
 }
+void PosteRazorDialog::handlePosterWidthAbsoluteChanged(double width)
+{
+	m_posteRazorController->SetPosterWidth(PosteRazorEnums::ePosterSizeModeAbsolute, width);
+}
+
+void PosteRazorDialog::handlePosterHeightAbsoluteChanged(double height)
+{
+	m_posteRazorController->SetPosterHeight(PosteRazorEnums::ePosterSizeModeAbsolute, height);
+}
+
+void PosteRazorDialog::handlePosterWidthPagesChanged(double width)
+{
+	m_posteRazorController->SetPosterWidth(PosteRazorEnums::ePosterSizeModePages, width);
+}
+
+void PosteRazorDialog::handlePosterHeightPagesChanged(double height)
+{
+	m_posteRazorController->SetPosterHeight(PosteRazorEnums::ePosterSizeModePages, height);
+}
 
 void PosteRazorDialog::createConnections(void)
 {
@@ -205,6 +236,11 @@ void PosteRazorDialog::createConnections(void)
 	connect(m_posterSizeAbsoluteRadioButton, SIGNAL(clicked()), this, SLOT(updatePosterSizeGroupsState()));
 	connect(m_posterSizeInPagesRadioButton, SIGNAL(clicked()), this, SLOT(updatePosterSizeGroupsState()));
 	connect(m_posterSizePercentualRadioButton, SIGNAL(clicked()), this, SLOT(updatePosterSizeGroupsState()));
+
+	connect(m_posterAbsoluteWidthInput, SIGNAL(valueChanged(double)), this, SLOT(handlePosterWidthAbsoluteChanged(double)));
+	connect(m_posterAbsoluteHeightInput, SIGNAL(valueChanged(double)), this, SLOT(handlePosterHeightAbsoluteChanged(double)));
+	connect(m_posterPagesWidthInput, SIGNAL(valueChanged(double)), this, SLOT(handlePosterWidthPagesChanged(double)));
+	connect(m_posterPagesHeightInput, SIGNAL(valueChanged(double)), this, SLOT(handlePosterHeightPagesChanged(double)));
 }
 
 void PosteRazorDialog::createPosteRazorDialogController(void)

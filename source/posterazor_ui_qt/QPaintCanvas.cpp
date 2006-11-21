@@ -24,8 +24,6 @@
 #include <QImage>
 #include <QPainter>
 
-#define BORDER 9
-
 QPaintCanvas::QPaintCanvas(QWidget *parent)
 :	QWidget(parent)
 ,	PaintCanvasBase()
@@ -43,59 +41,67 @@ void QPaintCanvas::paintEvent(QPaintEvent *event)
 {
 	QPainter painter(this);
 	m_qPainter = &painter;
-	DrawFilledRect(-BORDER, -BORDER, width(), height(), m_backgroundColor[0], m_backgroundColor[1], m_backgroundColor[2], 255);
 	m_painter->PaintOnCanvas(this, m_stateString);
 	m_qPainter = NULL;
 }
 
 void QPaintCanvas::DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
-	QColor color(qRgb(red, green, blue));
-	color.setAlpha(alpha);
-	m_qPainter->fillRect((int)(x + BORDER), (int)(y + BORDER), (int)width, (int)height, color);
-}
-
-void QPaintCanvas::DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
-{
-	if (height < 1)
+	if (height <= 1.0)
 	{
 		DrawLine(x, y, x+width, y, red, green, blue, alpha);
 	}
-	else if (width < 1)
+	else if (width <= 1.0)
 	{
 		DrawLine(x, y, x, y+height, red, green, blue, alpha);
 	}
 	else
 	{
-		m_qPainter->setPen(QColor(qRgb(red, green, blue)));
-		m_qPainter->drawRect((int)(x + BORDER), (int)(y + BORDER), (int)width, (int)height);
+		m_qPainter->fillRect((int)x, (int)y, (int)width, (int)height, QColor(red, green, blue, alpha));
+	}
+}
+
+void QPaintCanvas::DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
+{
+	if (height <= 1.0)
+	{
+		DrawLine(x, y, x+width, y, red, green, blue, alpha);
+	}
+	else if (width <= 1.0)
+	{
+		DrawLine(x, y, x, y+height, red, green, blue, alpha);
+	}
+	else
+	{
+		m_qPainter->setPen(QColor(red, green, blue, alpha));
+		m_qPainter->drawRect((int)x, (int)y, (int)width, (int)height);
 	}
 }
 
 void QPaintCanvas::DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
-	m_qPainter->setPen(QColor(qRgb(red, green, blue)));
-	m_qPainter->drawLine((int)(x1 + BORDER), (int)(y1 + BORDER), (int)(x2 + BORDER), (int)(y2 + BORDER));
+	m_qPainter->setPen(QColor(red, green, blue, alpha));
+	m_qPainter->drawLine((int)x1, (int)y1, (int)x2, (int)y2);
 }
 
 void QPaintCanvas::GetSize(double &width, double &height) const
 {
-	width = (double)(this->width()) - BORDER - BORDER;
-	height = (double)(this->height()) - BORDER - BORDER;
+	width = (double)(this->width());
+	height = (double)(this->height());
 }
 
 void QPaintCanvas::SetImage(const unsigned char* rgbData, double width, double height)
 {
 	DisposeImage();
+	// We have to transfrom the image data from rgb to bgra
 	int pixelsCount = (int)width * (int)height;
 	size_t bytesCount = pixelsCount * 4;
 	m_imageRGBData = new unsigned char[bytesCount];
-	memset(m_imageRGBData, 255, bytesCount);
+	memset(m_imageRGBData, 255, bytesCount); // Making sure, that all alpha bytes are opaque
 	const unsigned char* sourcePixel = rgbData;
 	unsigned char* destinationPixel = m_imageRGBData;
 	for (int pixel = 0; pixel < pixelsCount; pixel++)
 	{
-		//memcpy(destinationPixel, sourcePixel, 3);
 		destinationPixel[0] = sourcePixel[2];
 		destinationPixel[1] = sourcePixel[1];
 		destinationPixel[2] = sourcePixel[0];
@@ -122,9 +128,9 @@ void QPaintCanvas::DisposeImage(void)
 
 void QPaintCanvas::DrawImage(double x, double y, double width, double height)
 {
-	if (m_image)
+	if (m_image && width >= 1.0 && height >= 1.0) // >= 1.0 because otherwise an assertion would fail deep in Qt
 	{	
 		m_qPainter->setRenderHint(QPainter::SmoothPixmapTransform, true);
-		m_qPainter->drawImage(QRect((int)(x + BORDER), (int)(y + BORDER), (int)width, (int)height), *m_image);
+		m_qPainter->drawImage(QRect((int)x, (int)y, (int)width, (int)height), *m_image);
 	}
 }
