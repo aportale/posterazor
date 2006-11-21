@@ -1,7 +1,5 @@
 <ui version="4.0" >
  <author>Alessandro Portale</author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>PosteRazorDialogUI</class>
  <widget class="QWidget" name="PosteRazorDialogUI" >
   <property name="geometry" >
@@ -31,7 +29,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>0</number>
      </property>
      <item>
       <widget class="QFrame" name="m_stepInfoBox" >
@@ -74,7 +72,7 @@
         <enum>QFrame::StyledPanel</enum>
        </property>
        <property name="frameShadow" >
-        <enum>QFrame::Raised</enum>
+        <enum>QFrame::Sunken</enum>
        </property>
        <layout class="QVBoxLayout" >
         <property name="margin" >
@@ -84,7 +82,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QPaintCanvas" name="m_paintCanvas" />
+         <widget class="QPaintCanvas" native="1" name="m_paintCanvas" />
         </item>
        </layout>
       </widget>
@@ -106,7 +104,7 @@
         <enum>QFrame::Sunken</enum>
        </property>
        <property name="currentIndex" >
-        <number>3</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="m_loadInputImageStep" >
         <layout class="QVBoxLayout" >
@@ -126,7 +124,7 @@
              <number>9</number>
             </property>
             <property name="spacing" >
-             <number>6</number>
+             <number>0</number>
             </property>
             <item>
              <widget class="QFrame" name="m_inputFileNameLabel" >
@@ -153,75 +151,79 @@
            <property name="title" >
             <string>Image Informations</string>
            </property>
-           <layout class="QVBoxLayout" >
+           <layout class="QGridLayout" >
             <property name="margin" >
              <number>9</number>
             </property>
             <property name="spacing" >
              <number>6</number>
             </property>
-            <item>
-             <widget class="QTableWidget" name="m_imageInfoTable" >
-              <property name="autoFillBackground" >
-               <bool>false</bool>
+            <item row="0" column="1" >
+             <widget class="QLabel" name="m_imageInformationSizeInPixelsLabel" >
+              <property name="text" >
+               <string/>
               </property>
-              <property name="editTriggers" >
-               <set>QAbstractItemView::NoEditTriggers</set>
+             </widget>
+            </item>
+            <item row="0" column="0" >
+             <widget class="QLabel" name="label" >
+              <property name="text" >
+               <string>Size (in pixels):</string>
               </property>
-              <property name="selectionMode" >
-               <enum>QAbstractItemView::NoSelection</enum>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
-              <property name="selectionBehavior" >
-               <enum>QAbstractItemView::SelectRows</enum>
+             </widget>
+            </item>
+            <item row="1" column="1" >
+             <widget class="QLabel" name="m_imageInformationSizeLabel" >
+              <property name="text" >
+               <string/>
               </property>
-              <property name="gridStyle" >
-               <enum>Qt::SolidLine</enum>
+             </widget>
+            </item>
+            <item row="1" column="0" >
+             <widget class="QLabel" name="label" >
+              <property name="text" >
+               <string>Size:</string>
               </property>
-              <property name="sortingEnabled" >
-               <bool>false</bool>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
-              <row>
-               <property name="text" >
-                <string>SizeInPixels</string>
-               </property>
-              </row>
-              <row>
-               <property name="text" >
-                <string>SizeInUnit</string>
-               </property>
-              </row>
-              <row>
-               <property name="text" >
-                <string>Resolution</string>
-               </property>
-              </row>
-              <row>
-               <property name="text" >
-                <string>ColorType</string>
-               </property>
-              </row>
-              <column/>
-              <column/>
-              <item row="0" column="0" >
-               <property name="text" >
-                <string>Size (in pixels):</string>
-               </property>
-              </item>
-              <item row="1" column="0" >
-               <property name="text" >
-                <string>Size (in %1):</string>
-               </property>
-              </item>
-              <item row="2" column="0" >
-               <property name="text" >
-                <string>Resolution:</string>
-               </property>
-              </item>
-              <item row="3" column="0" >
-               <property name="text" >
-                <string>Color type:</string>
-               </property>
-              </item>
+             </widget>
+            </item>
+            <item row="2" column="0" >
+             <widget class="QLabel" name="label" >
+              <property name="text" >
+               <string>Resolution:</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1" >
+             <widget class="QLabel" name="m_imageInformationResolutionLabel" >
+              <property name="text" >
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0" >
+             <widget class="QLabel" name="label" >
+              <property name="text" >
+               <string>Color type:</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1" >
+             <widget class="QLabel" name="m_imageInformationColorTypeLabel" >
+              <property name="text" >
+               <string/>
+              </property>
              </widget>
             </item>
            </layout>
@@ -276,7 +278,7 @@
                </sizepolicy>
               </property>
               <property name="currentIndex" >
-               <number>1</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="m_paperFormatStandardTab" >
                <attribute name="title" >
@@ -417,15 +419,21 @@
                 </item>
                 <item row="0" column="1" >
                  <widget class="QDoubleSpinBox" name="m_paperCustomWidthSpinner" >
+                  <property name="buttonSymbols" >
+                   <enum>QAbstractSpinBox::PlusMinus</enum>
+                  </property>
                   <property name="maximum" >
-                   <double>999999</double>
+                   <double>999999.000000000000000</double>
                   </property>
                  </widget>
                 </item>
                 <item row="1" column="1" >
                  <widget class="QDoubleSpinBox" name="m_paperCustomHeightSpinner" >
+                  <property name="buttonSymbols" >
+                   <enum>QAbstractSpinBox::PlusMinus</enum>
+                  </property>
                   <property name="maximum" >
-                   <double>999999</double>
+                   <double>999999.000000000000000</double>
                   </property>
                  </widget>
                 </item>
@@ -450,8 +458,11 @@
             </property>
             <item row="2" column="0" >
              <widget class="QDoubleSpinBox" name="m_paperBorderLeftInput" >
+              <property name="buttonSymbols" >
+               <enum>QAbstractSpinBox::PlusMinus</enum>
+              </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -467,8 +478,11 @@
             </item>
             <item row="1" column="1" >
              <widget class="QDoubleSpinBox" name="m_paperBorderTopInput" >
+              <property name="buttonSymbols" >
+               <enum>QAbstractSpinBox::PlusMinus</enum>
+              </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -497,8 +511,11 @@
             </item>
             <item row="3" column="1" >
              <widget class="QDoubleSpinBox" name="m_paperBorderBottomInput" >
+              <property name="buttonSymbols" >
+               <enum>QAbstractSpinBox::PlusMinus</enum>
+              </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -540,8 +557,11 @@
             </item>
             <item row="2" column="2" >
              <widget class="QDoubleSpinBox" name="m_paperBorderRightInput" >
+              <property name="buttonSymbols" >
+               <enum>QAbstractSpinBox::PlusMinus</enum>
+              </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -655,15 +675,21 @@
             </item>
             <item row="0" column="1" >
              <widget class="QDoubleSpinBox" name="m_overlappingWidthInput" >
+              <property name="buttonSymbols" >
+               <enum>QAbstractSpinBox::PlusMinus</enum>
+              </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
             <item row="1" column="1" >
              <widget class="QDoubleSpinBox" name="m_overlappingHeightInput" >
+              <property name="buttonSymbols" >
+               <enum>QAbstractSpinBox::PlusMinus</enum>
+              </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -873,8 +899,11 @@
             </item>
             <item row="5" column="1" >
              <widget class="QDoubleSpinBox" name="m_posterPagesHeightInput" >
+              <property name="buttonSymbols" >
+               <enum>QAbstractSpinBox::PlusMinus</enum>
+              </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -925,8 +954,11 @@
             </item>
             <item row="4" column="1" >
              <widget class="QDoubleSpinBox" name="m_posterPagesWidthInput" >
+              <property name="buttonSymbols" >
+               <enum>QAbstractSpinBox::PlusMinus</enum>
+              </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -949,8 +981,11 @@
             </item>
             <item row="2" column="1" >
              <widget class="QDoubleSpinBox" name="m_posterAbsoluteHeightInput" >
+              <property name="buttonSymbols" >
+               <enum>QAbstractSpinBox::PlusMinus</enum>
+              </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -966,8 +1001,11 @@
             </item>
             <item row="1" column="1" >
              <widget class="QDoubleSpinBox" name="m_posterAbsoluteWidthInput" >
+              <property name="buttonSymbols" >
+               <enum>QAbstractSpinBox::PlusMinus</enum>
+              </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -993,8 +1031,11 @@
             </item>
             <item row="7" column="1" >
              <widget class="QDoubleSpinBox" name="m_posterPercentualSizeInput" >
+              <property name="buttonSymbols" >
+               <enum>QAbstractSpinBox::PlusMinus</enum>
+              </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -1280,14 +1321,11 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>QPaintCanvas</class>
    <extends>QWidget</extends>
    <header>QPaintCanvas.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <resources>

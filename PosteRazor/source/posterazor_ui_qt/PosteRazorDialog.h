@@ -56,6 +56,11 @@ private slots:
 	void handlePaperFormatComboBoxActivated(int index);
 	void handleImageLoadButtonClicked(void);
 
+	void handlePosterWidthAbsoluteChanged(double width);
+	void handlePosterHeightAbsoluteChanged(double height);
+	void handlePosterWidthPagesChanged(double width);
+	void handlePosterHeightPagesChanged(double height);
+
 	void updatePosterSizeGroupsState(void);
 	void loadInputImage(const QString &fileName);
 };
