@@ -186,7 +186,7 @@ void PosteRazorDialog::handleImageLoadButtonClicked(void)
 		filters << QString(ImageIOTypes::GetInputImageFormat(formatIndex)) + " (" + filterExtensions.join(" ") + ")";
 	}
 	filters.prepend(tr("All image formats") + " (" +  allExtensions.join(" ") + ")"); 
-	QString s = QFileDialog::getOpenFileName(this, "blah", ".", filters.join(";;"));
+	QString s = QFileDialog::getOpenFileName(this, "blah", NULL, filters.join(";;"));
 
 	if (s != "")
 	{
@@ -261,7 +261,7 @@ void PosteRazorDialog::loadInputImage(const QString &fileName)
 	else
 	{
 		m_paintCanvas->RequestImage();
-		m_paintCanvas->SetState("image");
+		m_paintCanvas->SetState("poster");
 	}
 }
 

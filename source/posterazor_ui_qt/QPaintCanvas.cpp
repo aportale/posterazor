@@ -50,14 +50,9 @@ void QPaintCanvas::paintEvent(QPaintEvent *event)
 
 void QPaintCanvas::DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
-	if (alpha < 255)
-	{
-		DrawRect(x, y, width, height, red, green, blue, alpha);
-	}
-	else
-	{
-		m_qPainter->fillRect((int)(x + BORDER), (int)(y + BORDER), (int)width, (int)height, QColor(qRgb(red, green, blue)));
-	}
+	QColor color(qRgb(red, green, blue));
+	color.setAlpha(alpha);
+	m_qPainter->fillRect((int)(x + BORDER), (int)(y + BORDER), (int)width, (int)height, color);
 }
 
 void QPaintCanvas::DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
@@ -92,8 +87,21 @@ void QPaintCanvas::GetSize(double &width, double &height) const
 void QPaintCanvas::SetImage(const unsigned char* rgbData, double width, double height)
 {
 	DisposeImage();
-	m_imageRGBData = new unsigned char[(int)width * (int)height * 3];
-	memcpy(m_imageRGBData, rgbData, (int)width * (int)height * 3);
+	int pixelsCount = (int)width * (int)height;
+	size_t bytesCount = pixelsCount * 4;
+	m_imageRGBData = new unsigned char[bytesCount];
+	memset(m_imageRGBData, 255, bytesCount);
+	const unsigned char* sourcePixel = rgbData;
+	unsigned char* destinationPixel = m_imageRGBData;
+	for (int pixel = 0; pixel < pixelsCount; pixel++)
+	{
+		//memcpy(destinationPixel, sourcePixel, 3);
+		destinationPixel[0] = sourcePixel[2];
+		destinationPixel[1] = sourcePixel[1];
+		destinationPixel[2] = sourcePixel[0];
+		destinationPixel += 4;
+		sourcePixel += 3;
+	}
 	m_image = new QImage(m_imageRGBData, (int)width, (int)height, QImage::Format_RGB32);
 	repaint();
 }
@@ -115,7 +123,8 @@ void QPaintCanvas::DisposeImage(void)
 void QPaintCanvas::DrawImage(double x, double y, double width, double height)
 {
 	if (m_image)
-	{
+	{	
+		m_qPainter->setRenderHint(QPainter::SmoothPixmapTransform, true);
 		m_qPainter->drawImage(QRect((int)(x + BORDER), (int)(y + BORDER), (int)width, (int)height), *m_image);
 	}
 }
