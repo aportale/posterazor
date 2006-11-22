@@ -1,7 +1,7 @@
 # data file for the Fltk User Interface Designer (fluid)
 version 1.0108 
 header_name {.h} 
-code_name {.cxx}
+code_name {.cpp}
 comment {/*
 	PosteRazor - Make your own poster!
 	Copyright (C) 2005-2006 by Alessandro Portale
