@@ -26,15 +26,15 @@
 class PersistentPreferencesInterface
 {
 public:
-	virtual void SetInteger(int value, const char *key) = 0;
-	virtual void SetDouble(double value, const char *key) = 0;
-	virtual void SetBoolean(bool value, const char *key) = 0;
-	virtual void SetString(const char *value, const char *key) = 0;
+	virtual void setInteger(int value, const char *key) = 0;
+	virtual void setDouble(double value, const char *key) = 0;
+	virtual void setBoolean(bool value, const char *key) = 0;
+	virtual void setString(const char *value, const char *key) = 0;
 	
-	virtual int GetInteger(const char *key, int defaultValue) = 0;
-	virtual double GetDouble(const char *key, double defaultValue) = 0;
-	virtual bool GetBoolean(const char *key, bool defaultValue) = 0;
-	virtual const char *GetString(const char *key, const char *defaultValue) = 0;
+	virtual int getInteger(const char *key, int defaultValue) = 0;
+	virtual double getDouble(const char *key, double defaultValue) = 0;
+	virtual bool getBoolean(const char *key, bool defaultValue) = 0;
+	virtual const char *getString(const char *key, const char *defaultValue) = 0;
 };
 
 #endif

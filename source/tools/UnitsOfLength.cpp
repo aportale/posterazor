@@ -43,17 +43,17 @@ static const UnitsOfLengthStruct g_UnitsOfLength[] =
 
 static const int g_UnitsOfLengthCount = sizeof(g_UnitsOfLength)/sizeof(g_UnitsOfLength[0]);
 
-int UnitsOfLength::GetUnitsOfLengthCount(void)
+int UnitsOfLength::getUnitsOfLengthCount(void)
 {
 	return g_UnitsOfLengthCount;
 }
 
-UnitsOfLength::eUnitsOfLength UnitsOfLength::GetUnitOfLengthForIndex(int index)
+UnitsOfLength::eUnitsOfLength UnitsOfLength::getUnitOfLengthForIndex(int index)
 {
 	return g_UnitsOfLength[index].unit;
 }
 
-int UnitsOfLength::GetUnitOfLengthIndex(eUnitsOfLength unit)
+int UnitsOfLength::getUnitOfLengthIndex(eUnitsOfLength unit)
 {
 	int index = 0;
 
@@ -69,42 +69,42 @@ int UnitsOfLength::GetUnitOfLengthIndex(eUnitsOfLength unit)
 	return index;
 }
 
-const char* UnitsOfLength::GetUnitOfLengthName(eUnitsOfLength unit)
+const char* UnitsOfLength::getUnitOfLengthName(eUnitsOfLength unit)
 {
-	int UnitOfLengthIndex = GetUnitOfLengthIndex(unit);
+	int UnitOfLengthIndex = getUnitOfLengthIndex(unit);
 
 	return g_UnitsOfLength[UnitOfLengthIndex].name;
 }
 
-UnitsOfLength::eUnitsOfLength UnitsOfLength::GetUnitOfLengthForName(const char* name)
+UnitsOfLength::eUnitsOfLength UnitsOfLength::getUnitOfLengthForName(const char* name)
 {
-	eUnitsOfLength UnitOfLength = eUnitOfLengthCentimeter;
+	eUnitsOfLength unitOfLength = eUnitOfLengthCentimeter;
 
 	for (int i = 0; i < g_UnitsOfLengthCount; i++)
 	{
 		if (0 == strcmp(name, g_UnitsOfLength[i].name))
 		{
-			UnitOfLength = g_UnitsOfLength[i].unit;
+			unitOfLength = g_UnitsOfLength[i].unit;
 			break;
 		}
 	}
 
-	return UnitOfLength;
+	return unitOfLength;
 }
 
 double CentimeterToUnitOfLength(double cm, UnitsOfLength::eUnitsOfLength unit)
 {
-	cm /= g_UnitsOfLength[UnitsOfLength::GetUnitOfLengthIndex(unit)].multipleOfCentimeter;
+	cm /= g_UnitsOfLength[UnitsOfLength::getUnitOfLengthIndex(unit)].multipleOfCentimeter;
 	return cm;
 }
 
 double UnitOfLengthToCentimeter(double distance, UnitsOfLength::eUnitsOfLength unit)
 {
-	distance *= g_UnitsOfLength[UnitsOfLength::GetUnitOfLengthIndex(unit)].multipleOfCentimeter;
+	distance *= g_UnitsOfLength[UnitsOfLength::getUnitOfLengthIndex(unit)].multipleOfCentimeter;
 	return distance;
 }
 
-double UnitsOfLength::ConvertBetweenUnitsOfLength(double distance, eUnitsOfLength sourceUnit, eUnitsOfLength targetUnit)
+double UnitsOfLength::convertBetweenUnitsOfLength(double distance, eUnitsOfLength sourceUnit, eUnitsOfLength targetUnit)
 {
 	double convertedDistance = distance;
 

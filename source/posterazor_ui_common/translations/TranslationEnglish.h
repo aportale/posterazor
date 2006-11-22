@@ -31,66 +31,66 @@
 class TranslationEnglish: public TranslationInterface
 {
 public:
-	const char* LanguageName(void)                    {return "English";}
+	const char* languageName(void)                    {return "English";}
 
-	const char* AbsoluteSize(void)                    {return "Absolute size:";}
-	const char* AllImageFormats(void)                 {return "All image formats";}
-	const char* Back(void)                            {return "Back";}
-	const char* Borders(void)                         {return "Borders";}
-	const char* Bottom(void)                          {return "Bottom";}
-	const char* BottomLeft(void)                      {return "Bottom left";}
-	const char* BottomRight(void)                     {return "Bottom right";}
-	const char* Cancel(void)                          {return "Cancel";}
-	const char* ColorType(void)                       {return "Color type:";}
-	const char* Custom(void)                          {return "Custom";}
-	const char* FileCouldNotBeLoaded(void)            {return "The File \"%s\" could not be loaded.";}
-	const char* Format(void)                          {return "Format:";}
-	const char* Grayscale(void)                       {return "Grayscale";}
-	const char* Height(void)                          {return "Height:";}
-	const char* ImageAlignment(void)                  {return "Image alignment";}
-	const char* ImageInformations(void)               {return "Image informations";}
-	const char* ImageSize(void)                       {return "Image size";}
-	const char* InputImage(void)                      {return "Input image";}
-	const char* Landscape(void)                       {return "Landscape";}
-	const char* Language(void)                        {return "Language";}
-	const char* LanguageExplanation(void)             {return "Choose your language";}
-	const char* LaunchPDFApplication(void)            {return "Launch PDF application after the poster is saved";}
-	const char* Left(void)                            {return "Left";}
-	const char* LoadAnInputImage(void)                {return StepTitle01();}
-	const char* Monochrome(void)                      {return "Monochrome";}
-	const char* Next(void)                            {return "Next";}
-	const char* Orientation(void)                     {return "Orientation:";}
-	const char* OverlappingPosition(void)             {return "Overlapping position";}
-	const char* OverlappingSize(void)                 {return "Overlapping size";}
-	const char* OverwriteFile(void)                   {return "The file '%s' already exists.\nDo you want to overwrite it?";}
-	const char* Pages(void)                           {return "pages";}
-	const char* PaperFormat(void)                     {return "Paper format";}
-	const char* Palette(void)                         {return "Palette";}
-	const char* Portrait(void)                        {return "Portrait";}
-	const char* PosteRazorHelp(void)                  {return "PosteRazor help";}
-	const char* PosteRazorSettings(void)              {return "PosteRazor settings";}
-	const char* PosteRazorWebSiteURL(void)            {return ENGLISH_POSTERAZORWEBSITEURL;}
-	const char* PosteRazorWebSite(void)               {return "PosteRazor website";}
-	const char* PreviewWithOpenGL(void)               {return "Preview with OpenGL";}
-	const char* PreviewWithOpenGLExplanation(void)    {return "OpenGL enables a smooth preview on modern systems. It could slow the preview down on old systems, though.";}
-	const char* Resolution(void)                      {return "Resolution:";}
-	const char* Right(void)                           {return "Right";}
-	const char* SaveThePoster(void)                   {return "Save the poster";}
-	const char* SaveThePosterAs(void)                 {return "Save the poster as";}
-	const char* Settings(void)                        {return "Settings...";}
+	const char* absoluteSize(void)                    {return "Absolute size:";}
+	const char* allImageFormats(void)                 {return "All image formats";}
+	const char* back(void)                            {return "Back";}
+	const char* borders(void)                         {return "Borders";}
+	const char* bottom(void)                          {return "Bottom";}
+	const char* bottomLeft(void)                      {return "Bottom left";}
+	const char* bottomRight(void)                     {return "Bottom right";}
+	const char* cancel(void)                          {return "Cancel";}
+	const char* colorType(void)                       {return "Color type:";}
+	const char* custom(void)                          {return "Custom";}
+	const char* fileCouldNotBeLoaded(void)            {return "The File \"%s\" could not be loaded.";}
+	const char* format(void)                          {return "Format:";}
+	const char* grayscale(void)                       {return "Grayscale";}
+	const char* height(void)                          {return "Height:";}
+	const char* imageAlignment(void)                  {return "Image alignment";}
+	const char* imageInformations(void)               {return "Image informations";}
+	const char* imageSize(void)                       {return "Image size";}
+	const char* inputImage(void)                      {return "Input image";}
+	const char* landscape(void)                       {return "Landscape";}
+	const char* language(void)                        {return "Language";}
+	const char* languageExplanation(void)             {return "Choose your language";}
+	const char* launchPDFApplication(void)            {return "Launch PDF application after the poster is saved";}
+	const char* left(void)                            {return "Left";}
+	const char* loadAnInputImage(void)                {return stepTitle01();}
+	const char* monochrome(void)                      {return "Monochrome";}
+	const char* next(void)                            {return "Next";}
+	const char* orientation(void)                     {return "Orientation:";}
+	const char* overlappingPosition(void)             {return "Overlapping position";}
+	const char* overlappingSize(void)                 {return "Overlapping size";}
+	const char* overwriteFile(void)                   {return "The file '%s' already exists.\nDo you want to overwrite it?";}
+	const char* pages(void)                           {return "pages";}
+	const char* paperFormat(void)                     {return "Paper format";}
+	const char* palette(void)                         {return "Palette";}
+	const char* portrait(void)                        {return "Portrait";}
+	const char* posteRazorHelp(void)                  {return "PosteRazor help";}
+	const char* posteRazorSettings(void)              {return "PosteRazor settings";}
+	const char* posteRazorWebSiteURL(void)            {return ENGLISH_POSTERAZORWEBSITEURL;}
+	const char* posteRazorWebSite(void)               {return "PosteRazor website";}
+	const char* previewWithOpenGL(void)               {return "Preview with OpenGL";}
+	const char* previewWithOpenGLExplanation(void)    {return "OpenGL enables a smooth preview on modern systems. It could slow the preview down on old systems, though.";}
+	const char* resolution(void)                      {return "Resolution:";}
+	const char* right(void)                           {return "Right";}
+	const char* saveThePoster(void)                   {return "Save the poster";}
+	const char* saveThePosterAs(void)                 {return "Save the poster as";}
+	const char* settings(void)                        {return "Settings...";}
 	const char* Size(void)                            {return "Size:";}
-	const char* SizeInPages(void)                     {return "Size in pages:";}
-	const char* SizeInPercent(void)                   {return "Size in percent:";}
-	const char* SizeInPixels(void)                    {return "Size (in pixels):";}
-	const char* SizeInUnitOfLength(void)              {return "Size (in %s):";}
-	const char* Standard(void)                        {return "Standard";}
-	const char* StepXOfY(void)                        {return "Step %d of %d";}
-	const char* Top(void)                             {return "Top";}
-	const char* TopLeft(void)                         {return "Top left";}
-	const char* TopRight(void)                        {return "Top right";}
-	const char* UnitOfLength(void)                    {return "Unit of Length";}
-	const char* UnitOfLengthExplanation(void)         {return "Choose the distance unit you want to work with";}
-	const char* Width(void)                           {return "Width:";}
+	const char* sizeInPages(void)                     {return "Size in pages:";}
+	const char* sizeInPercent(void)                   {return "Size in percent:";}
+	const char* sizeInPixels(void)                    {return "Size (in pixels):";}
+	const char* sizeInUnitOfLength(void)              {return "Size (in %s):";}
+	const char* standard(void)                        {return "Standard";}
+	const char* stepXOfY(void)                        {return "Step %d of %d";}
+	const char* top(void)                             {return "Top";}
+	const char* topLeft(void)                         {return "Top left";}
+	const char* topRight(void)                        {return "Top right";}
+	const char* unitOfLength(void)                    {return "Unit of Length";}
+	const char* unitOfLengthExplanation(void)         {return "Choose the distance unit you want to work with";}
+	const char* width(void)                           {return "Width:";}
 
 
 #define ENGLISH_POSTERAZORHELSTEP                     "Step"
@@ -108,12 +108,12 @@ public:
 #define ENGLISH_POSTERAZORHELPCODEFROMTHIRDPARTIES    "Code from third parties"
 #define ENGLISH_POSTERAZORHELPLICENSE                 "License"
 
-	const char* StepTitle01(void)                     {return ENGLISH_POSTERAZORHELPSTEPTITLE01;};
-	const char* StepTitle02(void)                     {return ENGLISH_POSTERAZORHELPSTEPTITLE02;};
-	const char* StepTitle03(void)                     {return ENGLISH_POSTERAZORHELPSTEPTITLE03;};
-	const char* StepTitle04(void)                     {return ENGLISH_POSTERAZORHELPSTEPTITLE04;};
-	const char* StepTitle05(void)                     {return ENGLISH_POSTERAZORHELPSTEPTITLE05;};
-	const char* HelpHtml(void)
+	const char* stepTitle01(void)                     {return ENGLISH_POSTERAZORHELPSTEPTITLE01;};
+	const char* stepTitle02(void)                     {return ENGLISH_POSTERAZORHELPSTEPTITLE02;};
+	const char* stepTitle03(void)                     {return ENGLISH_POSTERAZORHELPSTEPTITLE03;};
+	const char* stepTitle04(void)                     {return ENGLISH_POSTERAZORHELPSTEPTITLE04;};
+	const char* stepTitle05(void)                     {return ENGLISH_POSTERAZORHELPSTEPTITLE05;};
+	const char* helpHtml(void)
 	{
 		return	"<HTML>" POSTERAZORHELPENDLINE \
 				"<BODY>" POSTERAZORHELPENDLINE \
@@ -143,7 +143,7 @@ public:
 					"The PosteRazor is hostet on <b>posterazor.sourceforge.net</b>." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUAL, ENGLISH_POSTERAZORHELPMANUAL) \
-					POSTERAZORHELPINDENTATION "PosteRazor has its user interface organized in a \"Wizard\" fashion. All settings for the poster creation can be done in 5 Steps. The <b>Back</b> and <b>Next</b> buttons navigate through these steps.<br>" POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "PosteRazor has its user interface organized in a \"Wizard\" fashion. All settings for the poster creation can be done in 5 Steps. The <b>back</b> and <b>Next</b> buttons navigate through these steps.<br>" POSTERAZORHELPENDLINE \
 					"The <b>?</b> button opens a help window with an explanation of the current step.<br>" POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "All entries and choices are remembered until the next usage of the PosteRazor." POSTERAZORHELPENDLINE \
 
@@ -171,8 +171,8 @@ public:
 					POSTERAZORHELPINDENTATION "Define the final poster size, in one of the following three modes which can be selected by the corresponding radio buttons:<br>" POSTERAZORHELPENDLINE \
 					"<UL>" POSTERAZORHELPENDLINE \
 					"<LI><b>Absolute image size</b>: You want to have a specific size of your poster.</LI>" POSTERAZORHELPENDLINE \
-					"<LI><b>Size in Pages</b>: you want to use whole paper sheets and specify how many of them of them you want to use.</LI>" POSTERAZORHELPENDLINE \
-					"<LI><b>Image Size in percent</b>: your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to enlarge the image by a certain factor.</LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>Size in pages</b>: you want to use whole paper sheets and specify how many of them of them you want to use.</LI>" POSTERAZORHELPENDLINE \
+					"<LI><b>Image size in percent</b>: your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to enlarge the image by a certain factor.</LI>" POSTERAZORHELPENDLINE \
 					"</UL>" POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "The aspect ratio of width and height is always 1:1 and is automatically recalculated. In the preview area, you can see the overlapping areas which are surrounded by light red rectangles. " POSTERAZORHELPENDLINE \
 					"<b>Image alignment</b> sets the alignment of the image on the total paper area of the poster. This is useful if you want to keep the unused paper." POSTERAZORHELPENDLINE \
@@ -211,9 +211,9 @@ public:
 			"</HTML>";
 	}
 
-	const int FlagImageWidth(void)                    {return 20;}
-	const int FlagImageHeight(void)                   {return 11;}
-	const unsigned char *FlagImageRGBData(void)
+	const int flagImageWidth(void)                    {return 20;}
+	const int flagImageHeight(void)                   {return 11;}
+	const unsigned char *flagImageRGBData(void)
 	{
 		static const unsigned char flagRGBData[] =
 		{

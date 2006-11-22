@@ -28,16 +28,16 @@ int main(int argc, char *argv[])
 
 	// This is no real main program, yet. It is just testing the PosteRazor API.
 
-	PosteRazor* prz = PosteRazor::CreatePosteRazor();
+	PosteRazor* prz = PosteRazor::createPosteRazor();
 	char errorMessage[1024];
-	bool loaded = prz->LoadInputImage("c:\\image_cmyk.jpg", errorMessage, sizeof(errorMessage));
+	bool loaded = prz->loadInputImage("c:\\image_cmyk.jpg", errorMessage, sizeof(errorMessage));
 
 	if (loaded)
 	{
-		prz->SetPosterWidth(PosteRazorEnums::ePosterSizeModePages, 2.5);
-		prz->SetPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentMiddle);
-		prz->SetPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignmentCenter);
-		int err = prz->SavePoster("c:\\poster.pdf");
+		prz->setPosterWidth(PosteRazorEnums::ePosterSizeModePages, 2.5);
+		prz->setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentMiddle);
+		prz->setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignmentCenter);
+		int err = prz->savePoster("c:\\poster.pdf");
 		int huhu= 1;
 	}
 

@@ -43,14 +43,14 @@ public:
 		ePaperOrientationLandscape
 	};
 
-	static int GetPaperFormatsCount(void);
-	static ePaperFormats GetPaperFormatForIndex(int index);
-	static const char* GetPaperFormatName(ePaperFormats format);
-	static ePaperFormats GetPaperFormatForName(const char* name);
+	static int getPaperFormatsCount(void);
+	static ePaperFormats getPaperFormatForIndex(int index);
+	static const char* getPaperFormatName(ePaperFormats format);
+	static ePaperFormats getPaperFormatForName(const char* name);
 
-	static double GetPaperDimension(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit, bool width);
-	static double GetPaperWidth(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit);
-	static double GetPaperHeight(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit);
+	static double getPaperDimension(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit, bool width);
+	static double getPaperWidth(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit);
+	static double getPaperHeight(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit);
 };
 
 #endif

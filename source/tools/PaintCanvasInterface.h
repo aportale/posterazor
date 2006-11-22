@@ -28,8 +28,8 @@ class PaintCanvasInterface;
 class PainterInterface
 {
 public:
-	virtual void PaintOnCanvas(PaintCanvasInterface *paintCanvas, void* options = 0) const = 0;
-	virtual void GetImage(PaintCanvasInterface *paintCanvas, double maxWidth, double maxHeight) const = 0;
+	virtual void paintOnCanvas(PaintCanvasInterface *paintCanvas, void* options = 0) const = 0;
+	virtual void getImage(PaintCanvasInterface *paintCanvas, double maxWidth, double maxHeight) const = 0;
 };
 
 class PaintCanvasInterface
@@ -45,14 +45,14 @@ public:
 	
 	virtual ~PaintCanvasInterface() {}
 	
-	virtual void SetPainterInterface(const PainterInterface *painter) {m_painter = painter;}
-	virtual void SetBackgroundColor(unsigned char red, unsigned char green, unsigned char blue) = 0;
-	virtual void DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) = 0;
-	virtual void DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) = 0;
-	virtual void DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) = 0;
-	virtual void GetSize(double &width, double &height) const = 0;
-	virtual void SetImage(const unsigned char* rgbData, double width, double height) = 0;
-	virtual void DrawImage(double x, double y, double width, double height) = 0;
+	virtual void setPainterInterface(const PainterInterface *painter) {m_painter = painter;}
+	virtual void setBackgroundColor(unsigned char red, unsigned char green, unsigned char blue) = 0;
+	virtual void drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) = 0;
+	virtual void drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) = 0;
+	virtual void drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) = 0;
+	virtual void getSize(double &width, double &height) const = 0;
+	virtual void setImage(const unsigned char* rgbData, double width, double height) = 0;
+	virtual void drawImage(double x, double y, double width, double height) = 0;
 };
 
 #endif

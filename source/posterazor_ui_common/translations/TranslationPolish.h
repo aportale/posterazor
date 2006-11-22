@@ -78,66 +78,66 @@
 class TranslationPolish: public TranslationInterface
 {
 public:
-	const char* LanguageName(void)                    {return "Polski";}
+	const char* languageName(void)                    {return "Polski";}
 
-	const char* AbsoluteSize(void)                    {return "Rozmiar ca"CHAR_laccent"kowity:";}
-	const char* AllImageFormats(void)                 {return "Wszystkie formaty";}
-	const char* Back(void)                            {return "Wr"CHAR_oacute"c";}
-	const char* Borders(void)                         {return "Marginesy";}
-	const char* Bottom(void)                          {return "D"CHAR_oacute""CHAR_laccent;}
-	const char* BottomLeft(void)                      {return "D"CHAR_oacute""CHAR_laccent" z lewej";}
-	const char* BottomRight(void)                     {return "D"CHAR_oacute""CHAR_laccent" z prawej";}
-	const char* Cancel(void)                          {return "Anuluj";}
-	const char* ColorType(void)                       {return "Typ koloru:";}
-	const char* Custom(void)                          {return "W"CHAR_laccent"asny";}   
-	const char* FileCouldNotBeLoaded(void)            {return "Nie mo"CHAR_zdot"na otworzy"CHAR_cacute" pliku \"%s\"";}
-	const char* Format(void)                          {return "Format:";}
-	const char* Grayscale(void)                       {return "Skala szaro"CHAR_sacute"ci";}
-	const char* Height(void)                          {return "Wysoko"CHAR_sacute""CHAR_cacute":";}
-	const char* ImageAlignment(void)                  {return "Ustawienia obrazu";}
-	const char* ImageInformations(void)               {return "Informacje o obrazie";}
-	const char* ImageSize(void)                       {return "Rozmiar obrazu";}
-	const char* InputImage(void)                      {return "Obraz wej"CHAR_sacute"ciowy";}
-	const char* Landscape(void)                       {return "Poziomo";}
-	const char* Language(void)                        {return "J"CHAR_ecedilla"zyk";}
-	const char* LanguageExplanation(void)             {return "Wybierz j"CHAR_ecedilla"zyk";}
-	const char* LaunchPDFApplication(void)            {return "Uruchom przegladark"CHAR_ecedilla" PDF po zapisaniu plakatu";}
-	const char* Left(void)                            {return "Lewa";}
-	const char* LoadAnInputImage(void)                {return StepTitle01();}
-	const char* Monochrome(void)                      {return "Monochromatyczny";}
-	const char* Next(void)                            {return "Dalej";}
-	const char* Orientation(void)                     {return "Po"CHAR_laccent"o"CHAR_zdot"enie:";}
-	const char* OverlappingPosition(void)             {return "Miejsce zaz"CHAR_ecedilla"bienia";}
-	const char* OverlappingSize(void)                 {return "Szeroko"CHAR_sacute""CHAR_cacute" zaz"CHAR_ecedilla"bienia";}
-	const char* OverwriteFile(void)                   {return "Plik '%s' ju"CHAR_zdot" instnieje.\nCzy chcesz go nadpisa"CHAR_cacute"?";}
-	const char* Pages(void)                           {return "strony";}
-	const char* PaperFormat(void)                     {return "Rozmiar papieru";}
-	const char* Palette(void)                         {return "Paleta";}
-	const char* Portrait(void)                        {return "Pionowo";}
-	const char* PosteRazorHelp(void)                  {return "PosteRazor pomoc";}
-	const char* PosteRazorSettings(void)              {return "PosteRazor ustawienia";}
-	const char* PosteRazorWebSiteURL(void)            {return POLISH_POSTERAZORWEBSITEURL;}
-	const char* PosteRazorWebSite(void)               {return "PosteRazor strona www";}
-	const char* PreviewWithOpenGL(void)               {return "Podgl"CHAR_acedilla"d z OpenGL";}
-	const char* PreviewWithOpenGLExplanation(void)    {return "OpenGL umo"CHAR_zdot"liwia p"CHAR_laccent"ynny podgl"CHAR_acedilla"d na nowoczesnych komputerach. Mo"CHAR_zdot"e wyd"CHAR_laccent"u"CHAR_zdot"y"CHAR_cacute" proces podgl"CHAR_acedilla"du na starszych maszynach.";}
-	const char* Resolution(void)                      {return "Rozdzielczo"CHAR_sacute""CHAR_cacute":";}
-	const char* Right(void)                           {return "Prawa";}
-	const char* SaveThePoster(void)                   {return "Zapisz plakat";}
-	const char* SaveThePosterAs(void)                 {return "Zapisz plakat jako";}
-	const char* Settings(void)                        {return "Ustawienia...";}
+	const char* absoluteSize(void)                    {return "Rozmiar ca"CHAR_laccent"kowity:";}
+	const char* allImageFormats(void)                 {return "Wszystkie formaty";}
+	const char* back(void)                            {return "Wr"CHAR_oacute"c";}
+	const char* borders(void)                         {return "Marginesy";}
+	const char* bottom(void)                          {return "D"CHAR_oacute""CHAR_laccent;}
+	const char* bottomLeft(void)                      {return "D"CHAR_oacute""CHAR_laccent" z lewej";}
+	const char* bottomRight(void)                     {return "D"CHAR_oacute""CHAR_laccent" z prawej";}
+	const char* cancel(void)                          {return "Anuluj";}
+	const char* colorType(void)                       {return "Typ koloru:";}
+	const char* custom(void)                          {return "W"CHAR_laccent"asny";}   
+	const char* fileCouldNotBeLoaded(void)            {return "Nie mo"CHAR_zdot"na otworzy"CHAR_cacute" pliku \"%s\"";}
+	const char* format(void)                          {return "Format:";}
+	const char* grayscale(void)                       {return "Skala szaro"CHAR_sacute"ci";}
+	const char* height(void)                          {return "Wysoko"CHAR_sacute""CHAR_cacute":";}
+	const char* imageAlignment(void)                  {return "Ustawienia obrazu";}
+	const char* imageInformations(void)               {return "Informacje o obrazie";}
+	const char* imageSize(void)                       {return "Rozmiar obrazu";}
+	const char* inputImage(void)                      {return "Obraz wej"CHAR_sacute"ciowy";}
+	const char* landscape(void)                       {return "Poziomo";}
+	const char* language(void)                        {return "J"CHAR_ecedilla"zyk";}
+	const char* languageExplanation(void)             {return "Wybierz j"CHAR_ecedilla"zyk";}
+	const char* launchPDFApplication(void)            {return "Uruchom przegladark"CHAR_ecedilla" PDF po zapisaniu plakatu";}
+	const char* left(void)                            {return "Lewa";}
+	const char* loadAnInputImage(void)                {return stepTitle01();}
+	const char* monochrome(void)                      {return "Monochromatyczny";}
+	const char* next(void)                            {return "Dalej";}
+	const char* orientation(void)                     {return "Po"CHAR_laccent"o"CHAR_zdot"enie:";}
+	const char* overlappingPosition(void)             {return "Miejsce zaz"CHAR_ecedilla"bienia";}
+	const char* overlappingSize(void)                 {return "Szeroko"CHAR_sacute""CHAR_cacute" zaz"CHAR_ecedilla"bienia";}
+	const char* overwriteFile(void)                   {return "Plik '%s' ju"CHAR_zdot" instnieje.\nCzy chcesz go nadpisa"CHAR_cacute"?";}
+	const char* pages(void)                           {return "strony";}
+	const char* paperFormat(void)                     {return "Rozmiar papieru";}
+	const char* palette(void)                         {return "Paleta";}
+	const char* portrait(void)                        {return "Pionowo";}
+	const char* posteRazorHelp(void)                  {return "PosteRazor pomoc";}
+	const char* posteRazorSettings(void)              {return "PosteRazor ustawienia";}
+	const char* posteRazorWebSiteURL(void)            {return POLISH_POSTERAZORWEBSITEURL;}
+	const char* posteRazorWebSite(void)               {return "PosteRazor strona www";}
+	const char* previewWithOpenGL(void)               {return "Podgl"CHAR_acedilla"d z OpenGL";}
+	const char* previewWithOpenGLExplanation(void)    {return "OpenGL umo"CHAR_zdot"liwia p"CHAR_laccent"ynny podgl"CHAR_acedilla"d na nowoczesnych komputerach. Mo"CHAR_zdot"e wyd"CHAR_laccent"u"CHAR_zdot"y"CHAR_cacute" proces podgl"CHAR_acedilla"du na starszych maszynach.";}
+	const char* resolution(void)                      {return "Rozdzielczo"CHAR_sacute""CHAR_cacute":";}
+	const char* right(void)                           {return "Prawa";}
+	const char* saveThePoster(void)                   {return "Zapisz plakat";}
+	const char* saveThePosterAs(void)                 {return "Zapisz plakat jako";}
+	const char* settings(void)                        {return "Ustawienia...";}
 	const char* Size(void)                            {return "Rozmiar:";}
-	const char* SizeInPages(void)                     {return "Rozmiar na stronie:";}
-	const char* SizeInPercent(void)                   {return "Rozmiar w procentach:";}
-	const char* SizeInPixels(void)                    {return "Rozmiar:";} // (w pikselach)
-	const char* SizeInUnitOfLength(void)              {return "Rozmiar (w %s):";}
-	const char* Standard(void)                        {return "Standard";}
-	const char* StepXOfY(void)                        {return "Krok %d z %d";}
-	const char* Top(void)                             {return "G"CHAR_oacute"ra";}
-	const char* TopLeft(void)                         {return "G"CHAR_oacute"ra z lewej";}
-	const char* TopRight(void)                        {return "G"CHAR_oacute"ra z prawej";}
-	const char* UnitOfLength(void)                    {return "Jednostka d"CHAR_laccent"ugo"CHAR_sacute"ci";}
-	const char* UnitOfLengthExplanation(void)         {return "Wybierz miar"CHAR_ecedilla" d"CHAR_laccent"ugo"CHAR_sacute"ci, kt"CHAR_oacute"ej chcesz u"CHAR_zdot"ywa"CHAR_cacute"";}
-	const char* Width(void)                           {return "Szeroko"CHAR_sacute""CHAR_cacute":";}
+	const char* sizeInPages(void)                     {return "Rozmiar na stronie:";}
+	const char* sizeInPercent(void)                   {return "Rozmiar w procentach:";}
+	const char* sizeInPixels(void)                    {return "Rozmiar:";} // (w pikselach)
+	const char* sizeInUnitOfLength(void)              {return "Rozmiar (w %s):";}
+	const char* standard(void)                        {return "Standard";}
+	const char* stepXOfY(void)                        {return "Krok %d z %d";}
+	const char* top(void)                             {return "G"CHAR_oacute"ra";}
+	const char* topLeft(void)                         {return "G"CHAR_oacute"ra z lewej";}
+	const char* topRight(void)                        {return "G"CHAR_oacute"ra z prawej";}
+	const char* unitOfLength(void)                    {return "Jednostka d"CHAR_laccent"ugo"CHAR_sacute"ci";}
+	const char* unitOfLengthExplanation(void)         {return "Wybierz miar"CHAR_ecedilla" d"CHAR_laccent"ugo"CHAR_sacute"ci, kt"CHAR_oacute"ej chcesz u"CHAR_zdot"ywa"CHAR_cacute"";}
+	const char* width(void)                           {return "Szeroko"CHAR_sacute""CHAR_cacute":";}
 
 
 #define POLISH_POSTERAZORHELSTEP                     "Krok"
@@ -158,12 +158,12 @@ public:
 #define POLISH_POSTERAZORHELPCODEFROMTHIRDPARTIES    "Dodatkowy kod"
 #define POLISH_POSTERAZORHELPLICENSE                 "Licencja"
 
-	const char* StepTitle01(void)                     {return POLISH_POSTERAZORHELPSTEPTITLENOHTML01;}
-	const char* StepTitle02(void)                     {return POLISH_POSTERAZORHELPSTEPTITLE02;}
-	const char* StepTitle03(void)                     {return POLISH_POSTERAZORHELPSTEPTITLENOHTML03;}
-	const char* StepTitle04(void)                     {return POLISH_POSTERAZORHELPSTEPTITLENOHTML04;}
-	const char* StepTitle05(void)                     {return POLISH_POSTERAZORHELPSTEPTITLE05;}
-	const char* HelpHtml(void)
+	const char* stepTitle01(void)                     {return POLISH_POSTERAZORHELPSTEPTITLENOHTML01;}
+	const char* stepTitle02(void)                     {return POLISH_POSTERAZORHELPSTEPTITLE02;}
+	const char* stepTitle03(void)                     {return POLISH_POSTERAZORHELPSTEPTITLENOHTML03;}
+	const char* stepTitle04(void)                     {return POLISH_POSTERAZORHELPSTEPTITLENOHTML04;}
+	const char* stepTitle05(void)                     {return POLISH_POSTERAZORHELPSTEPTITLE05;}
+	const char* helpHtml(void)
 	{
 		return	"<HTML>" POSTERAZORHELPENDLINE \
 				"<BODY>" POSTERAZORHELPENDLINE \
@@ -262,9 +262,9 @@ public:
 			"</HTML>";
 	}
 
-	const int FlagImageWidth(void)                    {return 20;}
-	const int FlagImageHeight(void)                   {return 12;}
-	const unsigned char *FlagImageRGBData(void)
+	const int flagImageWidth(void)                    {return 20;}
+	const int flagImageHeight(void)                   {return 12;}
+	const unsigned char *flagImageRGBData(void)
 	{
 		static const unsigned char flagRGBData[] =
 		{

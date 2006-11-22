@@ -47,23 +47,23 @@ public:
 
 	void redraw(void);
 
-	void SetPaintCanvasType(ePaintCanvasTypes type);
-	ePaintCanvasTypes GetPaintCanvasType(void) const {return m_paintCanvasType;}
-	PaintCanvasBase *GetPaintCanvasBase(void) const;
-	Fl_Widget *GetPaintCanvasWidget(void) const;
+	void setPaintCanvasType(ePaintCanvasTypes type);
+	ePaintCanvasTypes getPaintCanvasType(void) const {return m_paintCanvasType;}
+	PaintCanvasBase *getPaintCanvasBase(void) const;
+	Fl_Widget *getPaintCanvasWidget(void) const;
 
-	void SetPainterInterface(const PainterInterface *painter);
-	void SetBackgroundColor(unsigned char red, unsigned char green, unsigned char blue);
-	void DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
-	void DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
-	void DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
-	void GetSize(double &width, double &height) const;
-	void SetImage(const unsigned char* rgbData, double width, double height);
-	void DrawImage(double x, double y, double width, double height);
+	void setPainterInterface(const PainterInterface *painter);
+	void setBackgroundColor(unsigned char red, unsigned char green, unsigned char blue);
+	void drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
+	void drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
+	void drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
+	void getSize(double &width, double &height) const;
+	void setImage(const unsigned char* rgbData, double width, double height);
+	void drawImage(double x, double y, double width, double height);
 
-	void SetState(const char *state);
+	void setState(const char *state);
 
-	void DisposeImage(void);
+	void disposeImage(void);
 
 protected:
 	ePaintCanvasTypes m_paintCanvasType;

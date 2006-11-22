@@ -256,19 +256,19 @@ private:
   void cb__i(Fl_Button*, void*);
   static void cb_(Fl_Button*, void*);
 public:
-  virtual void OpenSettingsDialog(void) = 0; 
+  virtual void openSettingsDialog(void) = 0; 
   virtual void next(void) = 0; 
   virtual void prev(void) = 0; 
-  virtual void UpdateNavigationButtons(void) = 0; 
-  virtual void OpenHelpDialog(void) = 0; 
-  virtual void LoadInputImage(const char *fileName) = 0; 
-  virtual void HandlePaperSizeChangement(Fl_Widget* sourceWidget) = 0; 
-  virtual void HandleOverlappingChangement(Fl_Widget* sourceWidget) = 0; 
-  virtual void UpdatePosterSizeGroupsState(void) = 0; 
-  virtual void UpdatePosterSizeFields(Fl_Widget* sourceWidget) = 0; 
-  virtual void HandlePosterImageAlignment(void) = 0; 
-  virtual void SavePoster(void) = 0; 
-  virtual void SetLaunchPDFApplication(void) = 0; 
+  virtual void updateNavigationButtons(void) = 0; 
+  virtual void openHelpDialog(void) = 0; 
+  virtual void loadInputImage(const char *fileName) = 0; 
+  virtual void handlePaperSizeChangement(Fl_Widget* sourceWidget) = 0; 
+  virtual void handleOverlappingChangement(Fl_Widget* sourceWidget) = 0; 
+  virtual void updatePosterSizeGroupsState(void) = 0; 
+  virtual void updatePosterSizeFields(Fl_Widget* sourceWidget) = 0; 
+  virtual void handlePosterImageAlignment(void) = 0; 
+  virtual void savePoster(void) = 0; 
+  virtual void setLaunchPDFApplication(void) = 0; 
 };
 #include <FL/Fl_Help_View.H>
 #include <FL/Fl_Return_Button.H>
@@ -288,10 +288,10 @@ private:
   void cb_m_homepageButton_i(Fl_Button*, void*);
   static void cb_m_homepageButton(Fl_Button*, void*);
 public:
-  virtual void JumpToAnchor(const char *anchor) = 0; 
-  virtual void SetHtmlContent(const char *content) = 0; 
-  virtual void HandleHomepageButtonClick(void) = 0; 
-  virtual void UpdateLanguage(void) = 0; 
+  virtual void jumpToAnchor(const char *anchor) = 0; 
+  virtual void setHtmlContent(const char *content) = 0; 
+  virtual void handleHomepageButtonClick(void) = 0; 
+  virtual void updateLanguage(void) = 0; 
   void SetHomepageButtonLabel(const char *label);
 };
 
@@ -326,7 +326,7 @@ private:
   void cb_m_cancelButton_i(Fl_Button*, void*);
   static void cb_m_cancelButton(Fl_Button*, void*);
 public:
-  virtual void HandleUseOpenGLChangement(void) = 0; 
+  virtual void handleUseOpenGLChangement(void) = 0; 
   bool show_modal(void);
 };
 #endif

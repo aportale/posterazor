@@ -36,11 +36,11 @@ protected:
 public:
 	PaintCanvasBase();
 
-	virtual void SetState(const char *state);
-	virtual void SetBackgroundColor(unsigned char red, unsigned char green, unsigned char blue);
-	virtual void RequestImage(void);
+	virtual void setState(const char *state);
+	virtual void setBackgroundColor(unsigned char red, unsigned char green, unsigned char blue);
+	virtual void requestImage(void);
 
-	virtual void DisposeImage(void) = 0;
+	virtual void disposeImage(void) = 0;
 };
 
 #endif

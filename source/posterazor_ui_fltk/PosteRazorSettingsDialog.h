@@ -30,7 +30,7 @@
 
 typedef struct
 {
-	UnitsOfLength::eUnitsOfLength UnitOfLength;
+	UnitsOfLength::eUnitsOfLength unitOfLength;
 	Fl_Paint_Canvas_Group::ePaintCanvasTypes previewType;
 	Translations::eLanguages language;
 } posteRazorSettings;
@@ -38,7 +38,7 @@ typedef struct
 class SettingsChangementHandler
 {
 public:
-	virtual void HandleOptionsChangement(posteRazorSettings *settings) = 0;
+	virtual void handleOptionsChangement(posteRazorSettings *settings) = 0;
 };
 
 class PosteRazorSettingsDialog: public PosteRazorSettingsDialogUI
@@ -55,13 +55,13 @@ public:
 	PosteRazorSettingsDialog();
 	~PosteRazorSettingsDialog();
 
-	void SetOptionsAndHandler(posteRazorSettings *settings, SettingsChangementHandler *changementHandler);
-	static void HandleUnitOfLengthChoice_cb(Fl_Widget *widget, void *userData);
-	void HandleUnitOfLengthChoice(void);
-	void HandleUseOpenGLChangement(void);
-	static void HandleLanguageChoice_cb(Fl_Widget *widget, void *userData);
-	void HandleLanguageChoice(void);
-	void UpdateLanguage(void);
+	void setOptionsAndHandler(posteRazorSettings *settings, SettingsChangementHandler *changementHandler);
+	static void handleUnitOfLengthChoice_cb(Fl_Widget *widget, void *userData);
+	void handleUnitOfLengthChoice(void);
+	void handleUseOpenGLChangement(void);
+	static void handleLanguageChoice_cb(Fl_Widget *widget, void *userData);
+	void handleLanguageChoice(void);
+	void updateLanguage(void);
 	void show(void);
 };
 

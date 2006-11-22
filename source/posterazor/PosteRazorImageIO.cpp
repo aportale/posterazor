@@ -89,10 +89,10 @@ public:
 
 	~PosteRazorImageIOImplementation()
 	{
-		DisposeImage();
+		disposeImage();
 	}
 
-	void DisposeImage()
+	void disposeImage()
 	{
 		if (m_bitmap)
 		{
@@ -101,7 +101,7 @@ public:
 		}
 	}
 
-	bool LoadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize)
+	bool loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize)
 	{
 		bool result = false;
 
@@ -112,7 +112,7 @@ public:
 		if (newImage)
 		{
 			result = true;
-			DisposeImage();
+			disposeImage();
 
 			m_bitmap = newImage;
 
@@ -129,8 +129,8 @@ public:
 
 			strcpy(m_imageFileName, imageFileName);
 
-			if ((GetColorDataType() == eColorTypeRGB && GetBitsPerPixel() == 32) // Sometimes, there are strange .PSD images like this (FreeImage bug?)
-				|| (GetColorDataType() == eColorTypeRGBA)) // We can't export alpha channels to PDF, anyway (yet)
+			if ((getColorDataType() == eColorTypeRGB && getBitsPerPixel() == 32) // Sometimes, there are strange .PSD images like this (FreeImage bug?)
+				|| (getColorDataType() == eColorTypeRGBA)) // We can't export alpha channels to PDF, anyway (yet)
 			{
 				RGBQUAD white = { 255, 255, 255, 0 };
 				FIBITMAP *Image24Bit = FreeImage_Composite(m_bitmap, FALSE, &white);
@@ -144,44 +144,44 @@ public:
 
 		return result;
 	}
-	bool IsImageLoaded(void) const {return (m_bitmap != NULL);}
+	bool isImageLoaded(void) const {return (m_bitmap != NULL);}
 
-	int GetWidthPixels(void) const {return m_widthPixels;}
-	int GetHeightPixels(void) const {return m_heightPixels;}
+	int getWidthPixels(void) const {return m_widthPixels;}
+	int getHeightPixels(void) const {return m_heightPixels;}
 
-	double GetHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const
+	double getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const
 	{
-		return m_horizontalDotsPerMeter / UnitsOfLength::ConvertBetweenUnitsOfLength(1, UnitsOfLength::eUnitOfLengthMeter, unit);
+		return m_horizontalDotsPerMeter / UnitsOfLength::convertBetweenUnitsOfLength(1, UnitsOfLength::eUnitOfLengthMeter, unit);
 	}
 
-	double GetVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const
+	double getVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const
 	{
-		return m_verticalDotsPerMeter / UnitsOfLength::ConvertBetweenUnitsOfLength(1, UnitsOfLength::eUnitOfLengthMeter, unit);
+		return m_verticalDotsPerMeter / UnitsOfLength::convertBetweenUnitsOfLength(1, UnitsOfLength::eUnitOfLengthMeter, unit);
 	}
 
-	double GetWidth(UnitsOfLength::eUnitsOfLength unit) const {return GetWidthPixels() / GetHorizontalDotsPerUnitOfLength(unit);}
-	double GetHeight(UnitsOfLength::eUnitsOfLength unit) const {return GetHeightPixels() / GetVerticalDotsPerUnitOfLength(unit);}
+	double getWidth(UnitsOfLength::eUnitsOfLength unit) const {return getWidthPixels() / getHorizontalDotsPerUnitOfLength(unit);}
+	double getHeight(UnitsOfLength::eUnitsOfLength unit) const {return getHeightPixels() / getVerticalDotsPerUnitOfLength(unit);}
 
 #define MAX(a, b) ((a)>(b)?(a):(b))
 
-	void GetImageAsRGB(unsigned char *buffer) const
+	void getImageAsRGB(unsigned char *buffer) const
 	{
-		GetImageAsRGB(buffer, GetWidthPixels(), GetHeightPixels());
+		getImageAsRGB(buffer, getWidthPixels(), getHeightPixels());
 	}
 
-	void GetImageAsRGB(unsigned char *buffer, int width, int height) const
+	void getImageAsRGB(unsigned char *buffer, int width, int height) const
 	{
 		FIBITMAP* originalImage = m_bitmap;
 		FIBITMAP* temp24BPPImage = NULL;
 		FIBITMAP* scaledImage = NULL;
 		
-		if (GetBitsPerPixel() != 24)
+		if (getBitsPerPixel() != 24)
 		{
-			if (GetColorDataType() == eColorTypeCMYK)
+			if (getColorDataType() == eColorTypeCMYK)
 			{
-				temp24BPPImage = FreeImage_Allocate(GetWidthPixels(), GetHeightPixels(), 24);
-				unsigned int scanlinesCount = GetHeightPixels();
-				unsigned int columnsCount = GetWidthPixels();
+				temp24BPPImage = FreeImage_Allocate(getWidthPixels(), getHeightPixels(), 24);
+				unsigned int scanlinesCount = getHeightPixels();
+				unsigned int columnsCount = getWidthPixels();
 				for (unsigned int scanline = 0; scanline < scanlinesCount; scanline++)
 				{
 					BYTE *cmykBits = FreeImage_GetScanLine(m_bitmap, scanline);
@@ -213,7 +213,7 @@ public:
 			originalImage = temp24BPPImage;
 		}
 
-		if (GetWidthPixels() != width || GetHeightPixels() != height)
+		if (getWidthPixels() != width || getHeightPixels() != height)
 		{
 			scaledImage = FreeImage_Rescale(originalImage, width, height, FILTER_BOX);
 			originalImage = scaledImage;
@@ -244,19 +244,19 @@ public:
 			FreeImage_Unload(scaledImage);
 	}
 	
-	int GetBitsPerPixel(void) const
+	int getBitsPerPixel(void) const
 	{
 		return FreeImage_GetBPP(m_bitmap);
 	}
 	
-	eColorTypes GetColorDataType(void) const
+	eColorTypes getColorDataType(void) const
 	{
 		eColorTypes colorDatatype = eColorTypeRGB;
 		FREE_IMAGE_COLOR_TYPE imageColorType = FreeImage_GetColorType(m_bitmap);
 		
 		if (imageColorType == FIC_MINISBLACK || imageColorType == FIC_MINISWHITE)
 		{
-			colorDatatype = GetBitsPerPixel()==1?eColorTypeMonochrome:eColorTypeGreyscale;
+			colorDatatype = getBitsPerPixel()==1?eColorTypeMonochrome:eColorTypeGreyscale;
 		}
 		else
 		{
@@ -270,21 +270,21 @@ public:
 		return colorDatatype;
 	}
 
-	int SavePoster(const char *fileName, ImageIOTypes::eImageFormats /* format */, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const
+	int savePoster(const char *fileName, ImageIOTypes::eImageFormats /* format */, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const
 	{
 		int err = 0;
 
-		unsigned int imageBytesCount = PosteRazorPDFOutput::GetImageBytesCount(GetWidthPixels(), GetHeightPixels(), GetBitsPerPixel());
+		unsigned int imageBytesCount = PosteRazorPDFOutput::getImageBytesCount(getWidthPixels(), getHeightPixels(), getBitsPerPixel());
 		unsigned char *imageData = new unsigned char[imageBytesCount];
 
-		unsigned int bytesPerLineCount = PosteRazorPDFOutput::GetImageBytesPerLineCount(GetWidthPixels(), GetBitsPerPixel());
+		unsigned int bytesPerLineCount = PosteRazorPDFOutput::getImageBytesPerLineCount(getWidthPixels(), getBitsPerPixel());
 
-		FreeImage_ConvertToRawBits(imageData, m_bitmap, bytesPerLineCount, GetBitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
+		FreeImage_ConvertToRawBits(imageData, m_bitmap, bytesPerLineCount, getBitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
 
 		// Swapping RGB data if needed (like on Intel)
-		if (GetBitsPerPixel() == 24 && isSystemLittleEndian())
+		if (getBitsPerPixel() == 24 && isSystemLittleEndian())
 		{
-			unsigned long numberOfPixels = GetWidthPixels() * GetHeightPixels();
+			unsigned long numberOfPixels = getWidthPixels() * getHeightPixels();
 			for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++)
 			{
 				unsigned char *pixelPtr = imageData + pixelIndex*3;
@@ -310,14 +310,14 @@ public:
 			}
 		}
 
-		PosteRazorPDFOutput *pdfOutput = PosteRazorPDFOutput::CreatePosteRazorPDFOutput();
-		err = pdfOutput->StartSaving(fileName, pagesCount, widthCm, heightCm);
+		PosteRazorPDFOutput *pdfOutput = PosteRazorPDFOutput::createPosteRazorPDFOutput();
+		err = pdfOutput->startSaving(fileName, pagesCount, widthCm, heightCm);
 		if (!err)
 		{
 			if (FreeImage_GetFileType(m_imageFileName, 0) == FIF_JPEG)
-				err = pdfOutput->SaveImage(m_imageFileName, GetWidthPixels(), GetHeightPixels(), GetColorDataType());
+				err = pdfOutput->saveImage(m_imageFileName, getWidthPixels(), getHeightPixels(), getColorDataType());
 			else
-				err = pdfOutput->SaveImage(imageData, GetWidthPixels(), GetHeightPixels(), GetBitsPerPixel(), GetColorDataType(), rgbPalette, FreeImage_GetColorsUsed(m_bitmap));
+				err = pdfOutput->saveImage(imageData, getWidthPixels(), getHeightPixels(), getBitsPerPixel(), getColorDataType(), rgbPalette, FreeImage_GetColorsUsed(m_bitmap));
 		}
 
 		if (!err)
@@ -326,11 +326,11 @@ public:
 			{
 				char paintOptions[1024];
 				sprintf(paintOptions, "posterpage %d", page);
-				pdfOutput->StartPage();
-				painter->PaintOnCanvas(pdfOutput, paintOptions);
-				pdfOutput->FinishPage();
+				pdfOutput->startPage();
+				painter->paintOnCanvas(pdfOutput, paintOptions);
+				pdfOutput->finishPage();
 			}
-			err = pdfOutput->FinishSaving();
+			err = pdfOutput->finishSaving();
 		}
 
 		delete pdfOutput;
@@ -342,7 +342,7 @@ public:
 	}
 };
 
-PosteRazorImageIO* PosteRazorImageIO::CreatePosteRazorImageIO(void)
+PosteRazorImageIO* PosteRazorImageIO::createPosteRazorImageIO(void)
 {
 	return (PosteRazorImageIO*) new PosteRazorImageIOImplementation();
 }

@@ -12,35 +12,35 @@ class PosteRazorDialog : public QDialog, private Ui::PosteRazorDialogUI, public 
 public:
 	PosteRazorDialog::PosteRazorDialog(QWidget *parent = 0, Qt::WFlags flags = 0);
 
-	virtual void SetUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
+	virtual void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
 
-	virtual void SetPaperFormat(PaperFormats::ePaperFormats format);
-	virtual void SetPaperOrientation(PaperFormats::ePaperOrientations orientation);
+	virtual void setPaperFormat(PaperFormats::ePaperFormats format);
+	virtual void setPaperOrientation(PaperFormats::ePaperOrientations orientation);
 
-	virtual void SetPaperBorderTop(double border);
-	virtual void SetPaperBorderRight(double border);
-	virtual void SetPaperBorderBottom(double border);
-	virtual void SetPaperBorderLeft(double border);
+	virtual void setPaperBorderTop(double border);
+	virtual void setPaperBorderRight(double border);
+	virtual void setPaperBorderBottom(double border);
+	virtual void setPaperBorderLeft(double border);
 
-	virtual void SetCustomPaperWidth(double width);
-	virtual void SetCustomPaperHeight(double height);
-	virtual void SetUseCustomPaperSize(bool useIt);
+	virtual void setCustomPaperWidth(double width);
+	virtual void setCustomPaperHeight(double height);
+	virtual void setUseCustomPaperSize(bool useIt);
 
-	virtual void SetOverlappingWidth(double width);
-	virtual void SetOverlappingHeight(double height);
-	virtual void SetOverlappingPosition(PosteRazorEnums::eOverlappingPositions position);
+	virtual void setOverlappingWidth(double width);
+	virtual void setOverlappingHeight(double height);
+	virtual void setOverlappingPosition(PosteRazorEnums::eOverlappingPositions position);
 
-	virtual void SetPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width);
-	virtual void SetPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height);
-	virtual void SetPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode);
-	virtual void SetPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment);
-	virtual void SetPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment);
+	virtual void setPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width);
+	virtual void setPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height);
+	virtual void setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode);
+	virtual void setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment);
+	virtual void setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment);
 
-	virtual void SetPosterOutputFormat(ImageIOTypes::eImageFormats format);
-	virtual void SetLaunchPDFApplication(bool launch);
+	virtual void setPosterOutputFormat(ImageIOTypes::eImageFormats format);
+	virtual void setLaunchPDFApplication(bool launch);
 
-	virtual void UpdatePreview(void);
-	virtual void UpdateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel);
+	virtual void updatePreview(void);
+	virtual void updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel);
 
 private:
 	PosteRazor *m_posteRazor;

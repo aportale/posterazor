@@ -31,66 +31,66 @@
 class TranslationGerman: public TranslationInterface
 {
 public:
-	const char* LanguageName(void)                    {return "Deutsch";}
+	const char* languageName(void)                    {return "Deutsch";}
 
-	const char* AbsoluteSize(void)                    {return "Absolute Maße:";}
-	const char* AllImageFormats(void)                 {return "Alle Bildformate";}
-	const char* Back(void)                            {return "Zurück";}
-	const char* Borders(void)                         {return "Ränder";}
-	const char* Bottom(void)                          {return "Unten";}
-	const char* BottomLeft(void)                      {return "Unten links";}
-	const char* BottomRight(void)                     {return "Unten rechts";}
-	const char* Cancel(void)                          {return "Abbruch";}
-	const char* ColorType(void)                       {return "Farbtyp:";}
-	const char* Custom(void)                          {return "Eigenes";}
-	const char* FileCouldNotBeLoaded(void)            {return "Die Datei \"%s\" konnte nicht geladen werden.";}
-	const char* Format(void)                          {return "Format:";}
-	const char* Grayscale(void)                       {return "Graustufen";}
-	const char* Height(void)                          {return "Höhe:";}
-	const char* ImageAlignment(void)                  {return "Ausrichtung des Bildes";}
-	const char* ImageInformations(void)               {return "Bildinformationen";}
-	const char* ImageSize(void)                       {return "Bildgröße";}
-	const char* InputImage(void)                      {return "Ausgangsbild";}
-	const char* Landscape(void)                       {return "Querformat";}
-	const char* Language(void)                        {return "Sprache";}
-	const char* LanguageExplanation(void)             {return "Wählen Sie ihre Sprache";}
-	const char* LaunchPDFApplication(void)            {return "PDF-Applikation nach Speicherung des Posters starten";}
-	const char* Left(void)                            {return "Links";}
-	const char* LoadAnInputImage(void)                {return StepTitle01();}
-	const char* Monochrome(void)                      {return "Monochrom";}
-	const char* Next(void)                            {return "Weiter";}
-	const char* Orientation(void)                     {return "Ausrichtung:";}
-	const char* OverlappingPosition(void)             {return "Überlappende Seiten";}
-	const char* OverlappingSize(void)                 {return "Maße der Überlappung";}
-	const char* OverwriteFile(void)                   {return "Die Datei '%s' extistiert bereits.\nSoll sie überschrieben werden?";}
-	const char* Pages(void)                           {return "Seiten";}
-	const char* Palette(void)                         {return "Palette";}
-	const char* PaperFormat(void)                     {return "Papierformat";}
-	const char* Portrait(void)                        {return "Hochformat";}
-	const char* PosteRazorHelp(void)                  {return "PosteRazor Hilfe";}
-	const char* PosteRazorSettings(void)              {return "PosteRazor Einstellungen";}
-	const char* PosteRazorWebSiteURL(void)            {return GERMAN_POSTERAZORWEBSITEURL;}
-	const char* PosteRazorWebSite(void)               {return "PosteRazor-Internetseite";}
-	const char* PreviewWithOpenGL(void)               {return "Vorschau mit OpenGL";}
-	const char* PreviewWithOpenGLExplanation(void)    {return "OpenGL ermöglicht eine bessere Vorschau. Auf alter Hardware könnte OpenGL jedoch langsamer sein.";}
-	const char* Resolution(void)                      {return "Auflösung:";}
-	const char* Right(void)                           {return "Rechts";}
-	const char* SaveThePoster(void)                   {return "Das Poster speichern";}
-	const char* SaveThePosterAs(void)                 {return "Das Poster speichern unter";}
-	const char* Settings(void)                        {return "Einstellungen...";}
+	const char* absoluteSize(void)                    {return "Absolute Maße:";}
+	const char* allImageFormats(void)                 {return "Alle Bildformate";}
+	const char* back(void)                            {return "Zurück";}
+	const char* borders(void)                         {return "Ränder";}
+	const char* bottom(void)                          {return "Unten";}
+	const char* bottomLeft(void)                      {return "Unten links";}
+	const char* bottomRight(void)                     {return "Unten rechts";}
+	const char* cancel(void)                          {return "Abbruch";}
+	const char* colorType(void)                       {return "Farbtyp:";}
+	const char* custom(void)                          {return "Eigenes";}
+	const char* fileCouldNotBeLoaded(void)            {return "Die Datei \"%s\" konnte nicht geladen werden.";}
+	const char* format(void)                          {return "Format:";}
+	const char* grayscale(void)                       {return "Graustufen";}
+	const char* height(void)                          {return "Höhe:";}
+	const char* imageAlignment(void)                  {return "Ausrichtung des Bildes";}
+	const char* imageInformations(void)               {return "Bildinformationen";}
+	const char* imageSize(void)                       {return "Bildgröße";}
+	const char* inputImage(void)                      {return "Ausgangsbild";}
+	const char* landscape(void)                       {return "Querformat";}
+	const char* language(void)                        {return "Sprache";}
+	const char* languageExplanation(void)             {return "Wählen Sie ihre Sprache";}
+	const char* launchPDFApplication(void)            {return "PDF-Applikation nach Speicherung des Posters starten";}
+	const char* left(void)                            {return "Links";}
+	const char* loadAnInputImage(void)                {return stepTitle01();}
+	const char* monochrome(void)                      {return "Monochrom";}
+	const char* next(void)                            {return "Weiter";}
+	const char* orientation(void)                     {return "Ausrichtung:";}
+	const char* overlappingPosition(void)             {return "Überlappende Seiten";}
+	const char* overlappingSize(void)                 {return "Maße der Überlappung";}
+	const char* overwriteFile(void)                   {return "Die Datei '%s' extistiert bereits.\nSoll sie überschrieben werden?";}
+	const char* pages(void)                           {return "Seiten";}
+	const char* palette(void)                         {return "Palette";}
+	const char* paperFormat(void)                     {return "Papierformat";}
+	const char* portrait(void)                        {return "Hochformat";}
+	const char* posteRazorHelp(void)                  {return "PosteRazor Hilfe";}
+	const char* posteRazorSettings(void)              {return "PosteRazor Einstellungen";}
+	const char* posteRazorWebSiteURL(void)            {return GERMAN_POSTERAZORWEBSITEURL;}
+	const char* posteRazorWebSite(void)               {return "PosteRazor-Internetseite";}
+	const char* previewWithOpenGL(void)               {return "Vorschau mit OpenGL";}
+	const char* previewWithOpenGLExplanation(void)    {return "OpenGL ermöglicht eine bessere Vorschau. Auf alter Hardware könnte OpenGL jedoch langsamer sein.";}
+	const char* resolution(void)                      {return "Auflösung:";}
+	const char* right(void)                           {return "Rechts";}
+	const char* saveThePoster(void)                   {return "Das Poster speichern";}
+	const char* saveThePosterAs(void)                 {return "Das Poster speichern unter";}
+	const char* settings(void)                        {return "Einstellungen...";}
 	const char* Size(void)                            {return "Größe:";}
-	const char* SizeInPages(void)                     {return "Größe in Seiten:";}
-	const char* SizeInPercent(void)                   {return "Prozentuelle Größe:";}
-	const char* SizeInPixels(void)                    {return "Größe (in Pixeln):";}
-	const char* SizeInUnitOfLength(void)              {return "Größe (in %s):";}
-	const char* Standard(void)                        {return "Standard";}
-	const char* StepXOfY(void)                        {return "Schritt %d von %d";}
-	const char* Top(void)                             {return "Oben";}
-	const char* TopLeft(void)                         {return "Oben links";}
-	const char* TopRight(void)                        {return "Oben rechts";}
-	const char* UnitOfLength(void)                    {return "Längeneinheit";}
-	const char* UnitOfLengthExplanation(void)         {return "Wählen Sie die Längeneinheit, mit der Sie arbeiten möchten";}
-	const char* Width(void)                           {return "Breite:";}
+	const char* sizeInPages(void)                     {return "Größe in Seiten:";}
+	const char* sizeInPercent(void)                   {return "Prozentuelle Größe:";}
+	const char* sizeInPixels(void)                    {return "Größe (in Pixeln):";}
+	const char* sizeInUnitOfLength(void)              {return "Größe (in %s):";}
+	const char* standard(void)                        {return "Standard";}
+	const char* stepXOfY(void)                        {return "Schritt %d von %d";}
+	const char* top(void)                             {return "Oben";}
+	const char* topLeft(void)                         {return "Oben links";}
+	const char* topRight(void)                        {return "Oben rechts";}
+	const char* unitOfLength(void)                    {return "Längeneinheit";}
+	const char* unitOfLengthExplanation(void)         {return "Wählen Sie die Längeneinheit, mit der Sie arbeiten möchten";}
+	const char* width(void)                           {return "Breite:";}
 
 
 #define GERMAN_POSTERAZORHELSTEP                      "Schritt"
@@ -111,12 +111,12 @@ public:
 #define GERMAN_POSTERAZORHELPCODEFROMTHIRDPARTIES     "Code von Drittanbietern"
 #define GERMAN_POSTERAZORHELPLICENSE                  "Lizenz"
 
-	const char* StepTitle01(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLE01;};
-	const char* StepTitle02(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML02;};
-	const char* StepTitle03(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML03;};
-	const char* StepTitle04(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML04;};
-	const char* StepTitle05(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLE05;};
-	const char* HelpHtml(void)
+	const char* stepTitle01(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLE01;};
+	const char* stepTitle02(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML02;};
+	const char* stepTitle03(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML03;};
+	const char* stepTitle04(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML04;};
+	const char* stepTitle05(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLE05;};
+	const char* helpHtml(void)
 	{
 		return	"<HTML>" POSTERAZORHELPENDLINE \
 				"<BODY>" POSTERAZORHELPENDLINE \
@@ -163,7 +163,7 @@ public:
 					"Viele <a href=\"#" POSTERAZORHELPANCHORINPUTFILEFORMATS "\">Bildformate</a> k&ouml;nnen geladen werden. Nach dem Laden eines Bildes werden in dem Feld <b>Bildinformationen</b> die wichtigsten Angaben aufgelistet." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP02, GERMAN_POSTERAZORHELSTEP " 2: " GERMAN_POSTERAZORHELPSTEPTITLE02) \
-					POSTERAZORHELPINDENTATION "Definieren Sie, welches Papierma&szlig; Ihr Drucker unterst&uuml;tzt. Ein Standard-papierbogen-Format kann in der <b>Format</b>-Auswahl selektiert werden und ebenso die gew&ouml;nschte <b>Ausrichtung</b> der B&ouml;gen. Alternativ k&ouml;nnen in dem <b>Eigenes</b>-Reiter selbstdefinierte Bogenma&szlig;e angegeben werden. (Bitte schreiben Sie mir eine E-Mail, Falls Sie Ihr Standard-Format in der Auswahl vermissen). " POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Definieren Sie, welches Papierma&szlig; Ihr Drucker unterst&uuml;tzt. Ein Standard-Papierbogen-Format kann in der <b>Format</b>-Auswahl selektiert werden und ebenso die gew&ouml;nschte <b>Ausrichtung</b> der B&ouml;gen. Alternativ k&ouml;nnen in dem <b>Eigenes</b>-Reiter selbstdefinierte Bogenma&szlig;e angegeben werden. (Bitte schreiben Sie mir eine E-Mail, Falls Sie Ihr Standard-Format in der Auswahl vermissen). " POSTERAZORHELPENDLINE \
 					"Papierr&auml;nder k&ouml;nnen in den <b>R&auml;nder</b>-Feldern angegeben werden. Auch wenn Ihr Drucker randlos druckt, wird sp&auml;ter gegebenfalls etwas Rand als Klebefl&auml;che ben&ouml;tigt." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP03, GERMAN_POSTERAZORHELSTEP " 3: " GERMAN_POSTERAZORHELPSTEPTITLE03) \
@@ -215,9 +215,9 @@ public:
 			"</HTML>";
 	}
 
-	const int FlagImageWidth(void)                    {return 20;}
-	const int FlagImageHeight(void)                   {return 11;}
-	const unsigned char *FlagImageRGBData(void)
+	const int flagImageWidth(void)                    {return 20;}
+	const int flagImageHeight(void)                   {return 11;}
+	const unsigned char *flagImageRGBData(void)
 	{
 		static const unsigned char flagRGBData[] =
 		{

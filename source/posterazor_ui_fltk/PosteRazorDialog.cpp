@@ -88,49 +88,49 @@ PosteRazorDialog::PosteRazorDialog(void)
 
 	m_wizard->value(m_loadInputImageStep);
 
-	m_posteRazor = PosteRazor::CreatePosteRazor();
-	m_posteRazorController = PosteRazorDialogController::CreatePosteRazorDialogController();
-	m_posteRazorController->SetPosteRazorDialog(this);
-	m_posteRazorController->SetPosteRazorModel(m_posteRazor);
+	m_posteRazor = PosteRazor::createPosteRazor();
+	m_posteRazorController = PosteRazorDialogController::createPosteRazorDialogController();
+	m_posteRazorController->setPosteRazorDialog(this);
+	m_posteRazorController->setPosteRazorModel(m_posteRazor);
 
 	Fl_Persistent_Preferences preferences(PreferencesVendor, PreferencesProduct);
-	m_posteRazorController->ReadPersistentPreferences(&preferences);
+	m_posteRazorController->readPersistentPreferences(&preferences);
 	Fl_Paint_Canvas_Group::ePaintCanvasTypes paintCanvasType =
-		preferences.GetBoolean(preferencesKey_UseOpenGLForPreview, true)?Fl_Paint_Canvas_Group::PaintCanvasTypeGL:Fl_Paint_Canvas_Group::PaintCanvasTypeDraw;
-	Translations::eLanguages language = (Translations::eLanguages)preferences.GetInteger(preferencesKey_UILanguage, Translations::eLanguageUndefined);
+		preferences.getBoolean(preferencesKey_UseOpenGLForPreview, true)?Fl_Paint_Canvas_Group::PaintCanvasTypeGL:Fl_Paint_Canvas_Group::PaintCanvasTypeDraw;
+	Translations::eLanguages language = (Translations::eLanguages)preferences.getInteger(preferencesKey_UILanguage, Translations::eLanguageUndefined);
 	m_UILanguageIsUndefined = language == Translations::eLanguageUndefined;
 	if (m_UILanguageIsUndefined)
 		language = TRANSLATIONS->GetSystemLanguage();
 	TRANSLATIONS->SelectLangue(language);
 
-	strncpy(m_loadImageChooserLastPath, preferences.GetString(preferencesKey_LoadImageChooserLastPath, ""), sizeof(m_loadImageChooserLastPath));
+	strncpy(m_loadImageChooserLastPath, preferences.getString(preferencesKey_LoadImageChooserLastPath, ""), sizeof(m_loadImageChooserLastPath));
 	m_loadImageChooserLastPath[sizeof(m_loadImageChooserLastPath) - 1] = '\0';
-	strncpy(m_savePosterChooserLastPath, preferences.GetString(preferencesKey_SavePosterChooserLastPath, ""), sizeof(m_savePosterChooserLastPath));
+	strncpy(m_savePosterChooserLastPath, preferences.getString(preferencesKey_SavePosterChooserLastPath, ""), sizeof(m_savePosterChooserLastPath));
 	m_savePosterChooserLastPath[sizeof(m_savePosterChooserLastPath) - 1] = '\0';
 
-	int paperFormatMenuItemsCount = PaperFormats::GetPaperFormatsCount()+1;
+	int paperFormatMenuItemsCount = PaperFormats::getPaperFormatsCount()+1;
 	m_paperFormatMenuItems = new Fl_Menu_Item[paperFormatMenuItemsCount];
 	memset(m_paperFormatMenuItems, 0, sizeof(Fl_Menu_Item)*paperFormatMenuItemsCount);
-	for (i = 0; i < PaperFormats::GetPaperFormatsCount(); i++)
+	for (i = 0; i < PaperFormats::getPaperFormatsCount(); i++)
 	{
-		const char* paperFormatName = PaperFormats::GetPaperFormatName(PaperFormats::GetPaperFormatForIndex(i));
+		const char* paperFormatName = PaperFormats::getPaperFormatName(PaperFormats::getPaperFormatForIndex(i));
 		m_paperFormatMenuItems[i].label(paperFormatName);
-		m_paperFormatMenuItems[i].callback(HandlePaperFormatChoice_cb);
+		m_paperFormatMenuItems[i].callback(handlePaperFormatChoice_cb);
 		m_paperFormatMenuItems[i].user_data((void*)this);
 	}
 	m_paperFormatChoice->menu(m_paperFormatMenuItems);
 
 	m_imageInfoGroup->deactivate();
 
-	m_paintCanvasGroup->SetPaintCanvasType(paintCanvasType);
-	m_paintCanvasGroup->SetPainterInterface(m_posteRazor);
+	m_paintCanvasGroup->setPaintCanvasType(paintCanvasType);
+	m_paintCanvasGroup->setPainterInterface(m_posteRazor);
 
 	m_settingsButton->label_image(m_settingsButtonLabel->image());
 
-	UpdateNavigationButtons();
-	UpdatePreviewState();
-	UpdateStepInfoBar();
-	UpdateLanguage();
+	updateNavigationButtons();
+	updatePreviewState();
+	updateStepInfoBar();
+	updateLanguage();
 }
 
 static const char* GetPathFromFileName(const char* fileName)
@@ -148,13 +148,13 @@ static const char* GetPathFromFileName(const char* fileName)
 PosteRazorDialog::~PosteRazorDialog()
 {
 	Fl_Persistent_Preferences preferences(PreferencesVendor, PreferencesProduct);
-	m_posteRazorController->WritePersistentPreferences(&preferences);
-	preferences.SetBoolean(m_paintCanvasGroup->GetPaintCanvasType() == Fl_Paint_Canvas_Group::PaintCanvasTypeGL, preferencesKey_UseOpenGLForPreview);
-	preferences.SetString(m_loadImageChooserLastPath, preferencesKey_LoadImageChooserLastPath);
-	preferences.SetString(m_savePosterChooserLastPath, preferencesKey_SavePosterChooserLastPath);
+	m_posteRazorController->writePersistentPreferences(&preferences);
+	preferences.setBoolean(m_paintCanvasGroup->getPaintCanvasType() == Fl_Paint_Canvas_Group::PaintCanvasTypeGL, preferencesKey_UseOpenGLForPreview);
+	preferences.setString(m_loadImageChooserLastPath, preferencesKey_LoadImageChooserLastPath);
+	preferences.setString(m_savePosterChooserLastPath, preferencesKey_SavePosterChooserLastPath);
 	if (m_UILanguageIsUndefined)
 		TRANSLATIONS->SelectLangue(Translations::eLanguageUndefined);
-	preferences.SetInteger(TRANSLATIONS->GetSelectedLanguage(), preferencesKey_UILanguage);
+	preferences.setInteger(TRANSLATIONS->GetSelectedLanguage(), preferencesKey_UILanguage);
 
 	if (m_paperFormatMenuItems)
 		delete[] m_paperFormatMenuItems;
@@ -171,63 +171,63 @@ int PosteRazorDialog::handle(int event)
 	switch (event)
 	{
 	case FL_PASTE:
-		LoadInputImage(Fl::event_text());
+		loadInputImage(Fl::event_text());
 		return 1;
 	default:
 		return PosteRazorDialogUI::handle(event);
 	};
 }
 
-void PosteRazorDialog::OpenSettingsDialog(void)
+void PosteRazorDialog::openSettingsDialog(void)
 {
 	if (!m_settingsDialog)
 	{
-		m_settings.UnitOfLength = m_posteRazor->GetUnitOfLength();
-		m_settings.previewType = m_paintCanvasGroup->GetPaintCanvasType();
+		m_settings.unitOfLength = m_posteRazor->getUnitOfLength();
+		m_settings.previewType = m_paintCanvasGroup->getPaintCanvasType();
 		m_settings.language = TRANSLATIONS->GetSelectedLanguage()!=Translations::eLanguageUndefined?TRANSLATIONS->GetSelectedLanguage():Translations::eLanguageEnglish;
 		m_settingsDialog = new PosteRazorSettingsDialog();
 		m_settingsDialog->set_modal();
 	}
 	
-	m_settingsDialog->SetOptionsAndHandler(&m_settings, this);
+	m_settingsDialog->setOptionsAndHandler(&m_settings, this);
 	
 	posteRazorSettings settingsbackup = m_settings;
 	bool languageIsUndefinedBackup = m_UILanguageIsUndefined;
 	if (!m_settingsDialog->show_modal())
 	{
-		HandleOptionsChangement(&settingsbackup);
+		handleOptionsChangement(&settingsbackup);
 		m_UILanguageIsUndefined = languageIsUndefinedBackup;
 	}
 }
 
-void PosteRazorDialog::OpenHelpDialog(void)
+void PosteRazorDialog::openHelpDialog(void)
 {
 	if (!m_helpDialog)
 	{
 		m_helpDialog = new PosteRazorHelpDialog();
-		m_helpDialog->UpdateLanguage();
+		m_helpDialog->updateLanguage();
 		m_helpDialog->set_modal();
 	}
 
 	char stepTopic[1024];
-	sprintf(stepTopic, POSTERAZORHELPANCHORMANUALSTEP "%.2d", GetCurrentWizardStepNumber() + 1);
+	sprintf(stepTopic, POSTERAZORHELPANCHORMANUALSTEP "%.2d", getCurrentWizardStepNumber() + 1);
 
-	m_helpDialog->SetHtmlContent(TRANSLATIONS->HelpHtml());
-	m_helpDialog->JumpToAnchor(stepTopic);
+	m_helpDialog->setHtmlContent(TRANSLATIONS->helpHtml());
+	m_helpDialog->jumpToAnchor(stepTopic);
 	m_helpDialog->show();
 }
 
-void PosteRazorDialog::HandleOptionsChangement(posteRazorSettings *settings)
+void PosteRazorDialog::handleOptionsChangement(posteRazorSettings *settings)
 {
-	m_posteRazorController->SetUnitOfLength(settings->UnitOfLength);
-	m_paintCanvasGroup->SetPaintCanvasType(settings->previewType);
-	UpdatePreviewState();
+	m_posteRazorController->setUnitOfLength(settings->unitOfLength);
+	m_paintCanvasGroup->setPaintCanvasType(settings->previewType);
+	updatePreviewState();
 
 	if (TRANSLATIONS->GetSelectedLanguage() != settings->language)
 	{
 		TRANSLATIONS->SelectLangue(settings->language);
 		m_UILanguageIsUndefined = false;
-		UpdateLanguage();
+		updateLanguage();
 	}
 	m_settings = *settings;
 }
@@ -235,20 +235,20 @@ void PosteRazorDialog::HandleOptionsChangement(posteRazorSettings *settings)
 void PosteRazorDialog::next(void)
 {
 	m_wizard->next();
-	UpdateNavigationButtons();
-	UpdatePreviewState();
-	UpdateStepInfoBar();
+	updateNavigationButtons();
+	updatePreviewState();
+	updateStepInfoBar();
 }
 
 void PosteRazorDialog::prev(void)
 {
 	m_wizard->prev();
-	UpdateNavigationButtons();
-	UpdatePreviewState();
-	UpdateStepInfoBar();
+	updateNavigationButtons();
+	updatePreviewState();
+	updateStepInfoBar();
 }
 
-void PosteRazorDialog::UpdateNavigationButtons(void)
+void PosteRazorDialog::updateNavigationButtons(void)
 {
 	if (m_wizard->value() != m_loadInputImageStep)
 		m_prevButton->activate();
@@ -262,19 +262,19 @@ void PosteRazorDialog::UpdateNavigationButtons(void)
 		m_nextButton->deactivate();
 }
 
-const char* PosteRazorDialog::GetCurrentWizardStepStepInfoString(void)
+const char* PosteRazorDialog::getCurrentWizardStepStepInfoString(void)
 {
 	return
 	(
-		m_wizard->value() == m_loadInputImageStep?TRANSLATIONS->StepTitle01()
-		:m_wizard->value() == m_paperSizeStep?TRANSLATIONS->StepTitle02()
-		:m_wizard->value() == m_overlappingStep?TRANSLATIONS->StepTitle03()
-		:m_wizard->value() == m_posterSizeStep?TRANSLATIONS->StepTitle04()
-		:TRANSLATIONS->StepTitle05()
+		m_wizard->value() == m_loadInputImageStep?TRANSLATIONS->stepTitle01()
+		:m_wizard->value() == m_paperSizeStep?TRANSLATIONS->stepTitle02()
+		:m_wizard->value() == m_overlappingStep?TRANSLATIONS->stepTitle03()
+		:m_wizard->value() == m_posterSizeStep?TRANSLATIONS->stepTitle04()
+		:TRANSLATIONS->stepTitle05()
 	);
 }
 
-int PosteRazorDialog::GetCurrentWizardStepNumber(void)
+int PosteRazorDialog::getCurrentWizardStepNumber(void)
 {
 	return
 	(
@@ -286,23 +286,23 @@ int PosteRazorDialog::GetCurrentWizardStepNumber(void)
 	);
 }
 
-void PosteRazorDialog::UpdateStepInfoBar(void)
+void PosteRazorDialog::updateStepInfoBar(void)
 {
 	char stepStr[1024];
-	sprintf(stepStr, TRANSLATIONS->StepXOfY(), GetCurrentWizardStepNumber() + 1, 5); 
+	sprintf(stepStr, TRANSLATIONS->stepXOfY(), getCurrentWizardStepNumber() + 1, 5); 
 	char helpTitleStr[1024];
-	sprintf(helpTitleStr, "  %s: %s", stepStr, GetCurrentWizardStepStepInfoString());
+	sprintf(helpTitleStr, "  %s: %s", stepStr, getCurrentWizardStepStepInfoString());
 	m_stepInfoBox->copy_label(helpTitleStr);
 }
 
-void PosteRazorDialog::UpdatePreview(void)
+void PosteRazorDialog::updatePreview(void)
 {
 	m_paintCanvasGroup->redraw();
 }
 
-void PosteRazorDialog::UpdatePreviewState(void)
+void PosteRazorDialog::updatePreviewState(void)
 {
-	m_paintCanvasGroup->SetState
+	m_paintCanvasGroup->setState
 	(
 		m_wizard->value() == m_loadInputImageStep?"image"
 		:m_wizard->value() == m_paperSizeStep?"paper"
@@ -310,73 +310,73 @@ void PosteRazorDialog::UpdatePreviewState(void)
 		:"poster"
 	);
 
-	UpdatePreview();
+	updatePreview();
 }
 
-void PosteRazorDialog::UpdateLanguage(void)
+void PosteRazorDialog::updateLanguage(void)
 {
 	char tempStr[1024];
 
-	sprintf(tempStr, "%s @-2->", TRANSLATIONS->Next());
+	sprintf(tempStr, "%s @-2->", TRANSLATIONS->next());
 	m_nextButton->copy_label(tempStr);
-	sprintf(tempStr, "@-2<- %s", TRANSLATIONS->Back());
+	sprintf(tempStr, "@-2<- %s", TRANSLATIONS->back());
 	m_prevButton->copy_label(tempStr);
 
-	m_paperFormatTypeTabs->label(TRANSLATIONS->PaperFormat());
-	m_paperFormatCustomGroup->label(TRANSLATIONS->Custom());
-	m_paperFormatStandardGroup->label(TRANSLATIONS->Standard());
-	m_paperFormatChoice->label(TRANSLATIONS->Format());
-	m_paperOrientationGroup->label(TRANSLATIONS->Orientation());
-	m_paperOrientationLandscapeRadioButton->label(TRANSLATIONS->Landscape());
-	m_paperOrientationPortraitRadioButton->label(TRANSLATIONS->Portrait());
-	m_paperCustomHeightInput->label(TRANSLATIONS->Height());
-	m_paperCustomWidthInput->label(TRANSLATIONS->Width());
-	m_paperBorderTopInput->label(TRANSLATIONS->Top());
-	m_paperBorderRightInput->label(TRANSLATIONS->Right());
-	m_paperBorderBottomInput->label(TRANSLATIONS->Bottom());
-	m_paperBorderLeftInput->label(TRANSLATIONS->Left());
+	m_paperFormatTypeTabs->label(TRANSLATIONS->paperFormat());
+	m_paperFormatCustomGroup->label(TRANSLATIONS->custom());
+	m_paperFormatStandardGroup->label(TRANSLATIONS->standard());
+	m_paperFormatChoice->label(TRANSLATIONS->format());
+	m_paperOrientationGroup->label(TRANSLATIONS->orientation());
+	m_paperOrientationLandscapeRadioButton->label(TRANSLATIONS->landscape());
+	m_paperOrientationPortraitRadioButton->label(TRANSLATIONS->portrait());
+	m_paperCustomHeightInput->label(TRANSLATIONS->height());
+	m_paperCustomWidthInput->label(TRANSLATIONS->width());
+	m_paperBorderTopInput->label(TRANSLATIONS->top());
+	m_paperBorderRightInput->label(TRANSLATIONS->right());
+	m_paperBorderBottomInput->label(TRANSLATIONS->bottom());
+	m_paperBorderLeftInput->label(TRANSLATIONS->left());
 
-	m_overlappingHeightInput->label(TRANSLATIONS->Height());
-	m_overlappingWidthInput->label(TRANSLATIONS->Width());
-	m_overlappingPositionGroup->label(TRANSLATIONS->OverlappingPosition());
-	m_overlappingSizeGroup->label(TRANSLATIONS->OverlappingSize());
-	m_overlappingPositionBottomLeftButton->label(TRANSLATIONS->BottomLeft());
-	m_overlappingPositionBottomRightButton->label(TRANSLATIONS->BottomRight());
-	m_overlappingPositionTopLeftButton->label(TRANSLATIONS->TopLeft());
-	m_overlappingPositionTopRightButton->label(TRANSLATIONS->TopRight());
+	m_overlappingHeightInput->label(TRANSLATIONS->height());
+	m_overlappingWidthInput->label(TRANSLATIONS->width());
+	m_overlappingPositionGroup->label(TRANSLATIONS->overlappingPosition());
+	m_overlappingSizeGroup->label(TRANSLATIONS->overlappingSize());
+	m_overlappingPositionBottomLeftButton->label(TRANSLATIONS->bottomLeft());
+	m_overlappingPositionBottomRightButton->label(TRANSLATIONS->bottomRight());
+	m_overlappingPositionTopLeftButton->label(TRANSLATIONS->topLeft());
+	m_overlappingPositionTopRightButton->label(TRANSLATIONS->topRight());
 
-	m_posterSizeGroup->label(TRANSLATIONS->ImageSize());
-	m_posterSizeAbsoluteRadioButton->label(TRANSLATIONS->AbsoluteSize());
-	m_posterAbsoluteHeightInput->label(TRANSLATIONS->Height());
-	m_posterAbsoluteWidthInput->label(TRANSLATIONS->Width());
-	m_posterSizeInPagesRadioButton->label(TRANSLATIONS->SizeInPages());
-	m_posterPagesHeightInput->label(TRANSLATIONS->Height());
-	m_posterPagesHeightLabel->label(TRANSLATIONS->Pages());
-	m_posterPagesWidthInput->label(TRANSLATIONS->Width());
-	m_posterPagesWidthLabel->label(TRANSLATIONS->Pages());
-	m_posterSizePercentualRadioButton->label(TRANSLATIONS->SizeInPercent());
+	m_posterSizeGroup->label(TRANSLATIONS->imageSize());
+	m_posterSizeAbsoluteRadioButton->label(TRANSLATIONS->absoluteSize());
+	m_posterAbsoluteHeightInput->label(TRANSLATIONS->height());
+	m_posterAbsoluteWidthInput->label(TRANSLATIONS->width());
+	m_posterSizeInPagesRadioButton->label(TRANSLATIONS->sizeInPages());
+	m_posterPagesHeightInput->label(TRANSLATIONS->height());
+	m_posterPagesHeightLabel->label(TRANSLATIONS->pages());
+	m_posterPagesWidthInput->label(TRANSLATIONS->width());
+	m_posterPagesWidthLabel->label(TRANSLATIONS->pages());
+	m_posterSizePercentualRadioButton->label(TRANSLATIONS->sizeInPercent());
 	m_posterPercentualSizeInput->label(TRANSLATIONS->Size());
-	m_imageAlignmentGroup->label(TRANSLATIONS->ImageAlignment());
-	m_imageInfoGroup->label(TRANSLATIONS->ImageInformations());
-	m_imageLoadGroup->label(TRANSLATIONS->InputImage());
-	m_settingsButton->label(TRANSLATIONS->Settings());
+	m_imageAlignmentGroup->label(TRANSLATIONS->imageAlignment());
+	m_imageInfoGroup->label(TRANSLATIONS->imageInformations());
+	m_imageLoadGroup->label(TRANSLATIONS->inputImage());
+	m_settingsButton->label(TRANSLATIONS->settings());
 
-	m_savePosterGroup->label(TRANSLATIONS->SaveThePoster());
-	m_setLaunchPDFApplicationCheckButton->label(TRANSLATIONS->LaunchPDFApplication());
+	m_savePosterGroup->label(TRANSLATIONS->saveThePoster());
+	m_setLaunchPDFApplicationCheckButton->label(TRANSLATIONS->launchPDFApplication());
 
-	m_posteRazorController->UpdateDialog();
-	UpdateStepInfoBar();
+	m_posteRazorController->updateDialog();
+	updateStepInfoBar();
 
 	if (m_settingsDialog)
-		m_settingsDialog->UpdateLanguage();
+		m_settingsDialog->updateLanguage();
 
 	if (m_helpDialog)
-		m_helpDialog->UpdateLanguage();
+		m_helpDialog->updateLanguage();
 
 	redraw();
 }
 
-void PosteRazorDialog::LoadInputImage(const char *fileName)
+void PosteRazorDialog::loadInputImage(const char *fileName)
 {
 	char errorMessage[1024] = "";
 	const char *loadFileName = fileName;
@@ -393,7 +393,7 @@ void PosteRazorDialog::LoadInputImage(const char *fileName)
 		"Windows, OS/2 Bitmap (*.BMP)\t*.BMP\n"\
 		"Dr. Halo (*.CUT)\t*.CUT\n"\
 		"DirectDraw Surface (*.DDS)\t*.DDS\n"\
-		"Graphic Interchange Format (*.GIF)\t*.GIF\n"\
+		"Graphic Interchange format (*.GIF)\t*.GIF\n"\
 		"Windows Icon (*.ICO)\t*.ICO\n"\
 		"Amiga IFF (*.IFF;*.LBM)\t*.{IFF,LBM}\n"\
 		"JBIG (*.JBIG)\t*.JBIG\n"\
@@ -410,15 +410,15 @@ void PosteRazorDialog::LoadInputImage(const char *fileName)
 		"Photoshop Document (*.PSD)\t*.PSD\n"\
 		"Sun Raster Graphic (*.RAS)\t*.RAS\n"\
 		"Targa (*.TGA)\t*.TGA\n"\
-		"Tagged Image File Format (*.TIF;*.TIFF)\t*.{TIF,TIFF}\n"\
+		"Tagged Image File format (*.TIF;*.TIFF)\t*.{TIF,TIFF}\n"\
 		"Wireless Bitmap (*.WBMP)\t*.WBMP\n"\
 		"X11 Bitmap (*.XBM)\t*.XBM\n"\
 		"X11 Pixmap (*.XPM)\t*.XPM",
-		TRANSLATIONS->AllImageFormats()
+		TRANSLATIONS->allImageFormats()
 	);
 	loadImageChooser.filter(filterString);
 #endif
-	loadImageChooser.title(TRANSLATIONS->LoadAnInputImage());
+	loadImageChooser.title(TRANSLATIONS->loadAnInputImage());
 
 	if (!loadFileName)
 	{
@@ -434,13 +434,13 @@ void PosteRazorDialog::LoadInputImage(const char *fileName)
 
 	if (loadFileName)
 	{
-		loaded = m_posteRazorController->LoadInputImage(loadFileName, errorMessage, sizeof(errorMessage));
+		loaded = m_posteRazorController->loadInputImage(loadFileName, errorMessage, sizeof(errorMessage));
 		if (!loaded)
 		{
 			if (strlen(errorMessage) > 0)
 				fl_message(errorMessage);
 			else
-				fl_message(TRANSLATIONS->FileCouldNotBeLoaded(), fl_filename_name(loadFileName));
+				fl_message(TRANSLATIONS->fileCouldNotBeLoaded(), fl_filename_name(loadFileName));
 		}
 	}
 
@@ -448,17 +448,17 @@ void PosteRazorDialog::LoadInputImage(const char *fileName)
 	{
 		m_imageInfoGroup->activate();
 		m_inputFileNameLabel->copy_label(fl_filename_name(loadFileName));
-		m_paintCanvasGroup->RequestImage();
+		m_paintCanvasGroup->requestImage();
 	}
 
-	UpdateNavigationButtons();
+	updateNavigationButtons();
 	Fl::flush(); // Needed for windows if image is loaded at startup
 }
 
-void PosteRazorDialog::UpdateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel)
+void PosteRazorDialog::updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel)
 {
 	char sizeInDimensionUnitString[100];
-	sprintf(sizeInDimensionUnitString, TRANSLATIONS->SizeInUnitOfLength(), UnitsOfLength::GetUnitOfLengthName(unitOfLength));
+	sprintf(sizeInDimensionUnitString, TRANSLATIONS->sizeInUnitOfLength(), UnitsOfLength::getUnitOfLengthName(unitOfLength));
 
 	char string[1024];
 
@@ -466,10 +466,10 @@ void PosteRazorDialog::UpdateImageInfoFields(int imageWidthInPixels, int imageHe
 	(
 		string,
 		"%s\n%s\n%s\n%s",
-		TRANSLATIONS->SizeInPixels(),
+		TRANSLATIONS->sizeInPixels(),
 		sizeInDimensionUnitString,
-		TRANSLATIONS->Resolution(),
-		TRANSLATIONS->ColorType()
+		TRANSLATIONS->resolution(),
+		TRANSLATIONS->colorType()
 	);
 	m_imageInfoKeysLabel->copy_label(string);
 
@@ -480,9 +480,9 @@ void PosteRazorDialog::UpdateImageInfoFields(int imageWidthInPixels, int imageHe
 		imageWidthInPixels, imageHeightInPixels,
 		imageWidth, imageHeight,
 		verticalDpi,
-			colorType==ColorTypes::eColorTypeMonochrome?TRANSLATIONS->Monochrome():
-			colorType==ColorTypes::eColorTypeGreyscale?TRANSLATIONS->Grayscale():
-			colorType==ColorTypes::eColorTypePalette?TRANSLATIONS->Palette():
+			colorType==ColorTypes::eColorTypeMonochrome?TRANSLATIONS->monochrome():
+			colorType==ColorTypes::eColorTypeGreyscale?TRANSLATIONS->grayscale():
+			colorType==ColorTypes::eColorTypePalette?TRANSLATIONS->palette():
 			colorType==ColorTypes::eColorTypeRGB?"RGB":
 			colorType==ColorTypes::eColorTypeRGBA?"RGBA":
 			/*colorType==eColorTypeCMYK?*/ "CMYK",
@@ -491,58 +491,58 @@ void PosteRazorDialog::UpdateImageInfoFields(int imageWidthInPixels, int imageHe
 	m_imageInfoValuesLabel->copy_label(string);
 }
 
-void PosteRazorDialog::UpdatePosterSizeFields(Fl_Widget *sourceWidget)
+void PosteRazorDialog::updatePosterSizeFields(Fl_Widget *sourceWidget)
 {
 	if (sourceWidget == m_posterAbsoluteWidthInput)
-		m_posteRazorController->SetPosterWidth(PosteRazorEnums::ePosterSizeModeAbsolute, m_posterAbsoluteWidthInput->value());
+		m_posteRazorController->setPosterWidth(PosteRazorEnums::ePosterSizeModeAbsolute, m_posterAbsoluteWidthInput->value());
 	else if (sourceWidget == m_posterAbsoluteHeightInput)
-		m_posteRazorController->SetPosterHeight(PosteRazorEnums::ePosterSizeModeAbsolute, m_posterAbsoluteHeightInput->value());
+		m_posteRazorController->setPosterHeight(PosteRazorEnums::ePosterSizeModeAbsolute, m_posterAbsoluteHeightInput->value());
 	else if (sourceWidget == m_posterPagesWidthInput)
-		m_posteRazorController->SetPosterWidth(PosteRazorEnums::ePosterSizeModePages, m_posterPagesWidthInput->value());
+		m_posteRazorController->setPosterWidth(PosteRazorEnums::ePosterSizeModePages, m_posterPagesWidthInput->value());
 	else if (sourceWidget == m_posterPagesHeightInput)
-		m_posteRazorController->SetPosterHeight(PosteRazorEnums::ePosterSizeModePages, m_posterPagesHeightInput->value());
+		m_posteRazorController->setPosterHeight(PosteRazorEnums::ePosterSizeModePages, m_posterPagesHeightInput->value());
 	else // if (sourceWidget == m_posterPercentualSizeInput)
-		m_posteRazorController->SetPosterWidth(PosteRazorEnums::ePosterSizeModePercentual, m_posterPercentualSizeInput->value());
+		m_posteRazorController->setPosterWidth(PosteRazorEnums::ePosterSizeModePercentual, m_posterPercentualSizeInput->value());
 }
 
-void PosteRazorDialog::HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userData)
+void PosteRazorDialog::handlePaperFormatChoice_cb(Fl_Widget *widget, void *userData)
 {
-	((PosteRazorDialog*)userData)->HandlePaperSizeChangement(((PosteRazorDialog*)userData)->m_paperFormatChoice);
+	((PosteRazorDialog*)userData)->handlePaperSizeChangement(((PosteRazorDialog*)userData)->m_paperFormatChoice);
 }
 
-void PosteRazorDialog::HandlePaperSizeChangement(Fl_Widget *sourceWidget)
+void PosteRazorDialog::handlePaperSizeChangement(Fl_Widget *sourceWidget)
 {
 	if (sourceWidget == m_paperBorderTopInput)
-		m_posteRazorController->SetPaperBorderTop(m_paperBorderTopInput->value());
+		m_posteRazorController->setPaperBorderTop(m_paperBorderTopInput->value());
 	else if (sourceWidget == m_paperBorderRightInput)
-		m_posteRazorController->SetPaperBorderRight(m_paperBorderRightInput->value());
+		m_posteRazorController->setPaperBorderRight(m_paperBorderRightInput->value());
 	else if (sourceWidget == m_paperBorderBottomInput)
-		m_posteRazorController->SetPaperBorderBottom(m_paperBorderBottomInput->value());
+		m_posteRazorController->setPaperBorderBottom(m_paperBorderBottomInput->value());
 	else if (sourceWidget == m_paperBorderLeftInput)
-		m_posteRazorController->SetPaperBorderLeft(m_paperBorderLeftInput->value());
+		m_posteRazorController->setPaperBorderLeft(m_paperBorderLeftInput->value());
 	else if (sourceWidget == m_paperFormatTypeTabs)
-		m_posteRazorController->SetUseCustomPaperSize(m_paperFormatTypeTabs->value() == m_paperFormatCustomGroup);
+		m_posteRazorController->setUseCustomPaperSize(m_paperFormatTypeTabs->value() == m_paperFormatCustomGroup);
 	else if (sourceWidget == m_paperFormatChoice)
 	{
 		const char* paperFormatName = m_paperFormatMenuItems[m_paperFormatChoice->value()].label();
-		m_posteRazorController->SetPaperFormatByName(paperFormatName);
+		m_posteRazorController->setPaperFormatByName(paperFormatName);
 	}
 	else if (sourceWidget == m_paperOrientationPortraitRadioButton || sourceWidget == m_paperOrientationLandscapeRadioButton)
-		m_posteRazorController->SetPaperOrientation(m_paperOrientationLandscapeRadioButton->value() != 0?PaperFormats::ePaperOrientationLandscape:PaperFormats::ePaperOrientationPortrait);
+		m_posteRazorController->setPaperOrientation(m_paperOrientationLandscapeRadioButton->value() != 0?PaperFormats::ePaperOrientationLandscape:PaperFormats::ePaperOrientationPortrait);
 	else if (sourceWidget == m_paperCustomWidthInput)
-		m_posteRazorController->SetCustomPaperWidth(m_paperCustomWidthInput->value());
+		m_posteRazorController->setCustomPaperWidth(m_paperCustomWidthInput->value());
 	else if (sourceWidget == m_paperCustomHeightInput)
-		m_posteRazorController->SetCustomPaperHeight(m_paperCustomHeightInput->value());
+		m_posteRazorController->setCustomPaperHeight(m_paperCustomHeightInput->value());
 }
 
-void PosteRazorDialog::HandleOverlappingChangement(Fl_Widget *sourceWidget)
+void PosteRazorDialog::handleOverlappingChangement(Fl_Widget *sourceWidget)
 {
 	if (sourceWidget == m_overlappingWidthInput)
-		m_posteRazorController->SetOverlappingWidth(m_overlappingWidthInput->value());
+		m_posteRazorController->setOverlappingWidth(m_overlappingWidthInput->value());
 	else if (sourceWidget == m_overlappingHeightInput)
-		m_posteRazorController->SetOverlappingHeight(m_overlappingHeightInput->value());
+		m_posteRazorController->setOverlappingHeight(m_overlappingHeightInput->value());
 	else
-		m_posteRazorController->SetOverlappingPosition
+		m_posteRazorController->setOverlappingPosition
 		(
 			m_overlappingPositionBottomRightButton->value()?PosteRazorEnums::eOverlappingPositionBottomRight
 			:m_overlappingPositionBottomLeftButton->value()?PosteRazorEnums::eOverlappingPositionBottomLeft
@@ -551,23 +551,23 @@ void PosteRazorDialog::HandleOverlappingChangement(Fl_Widget *sourceWidget)
 		);
 }
 
-void PosteRazorDialog::UpdatePosterSizeGroupsState(void)
+void PosteRazorDialog::updatePosterSizeGroupsState(void)
 {
 	m_posterSizeAbsoluteRadioButton->value() == 0?m_posterSizeAbsoluteGroup->deactivate():m_posterSizeAbsoluteGroup->activate();
 	m_posterSizeInPagesRadioButton->value() == 0?m_posterSizeInPagesGroup->deactivate():m_posterSizeInPagesGroup->activate();
 	m_posterSizePercentualRadioButton->value() == 0?m_posterSizePercentualGroup->deactivate():m_posterSizePercentualGroup->activate();
 }
 
-void PosteRazorDialog::HandlePosterImageAlignment(void)
+void PosteRazorDialog::handlePosterImageAlignment(void)
 {
-	m_posteRazorController->SetPosterVerticalAlignment
+	m_posteRazorController->setPosterVerticalAlignment
 	(
 		m_posterAlignmentTopButton->value() == 1?PosteRazorEnums::eVerticalAlignmentTop
 		:m_posterAlignmentMiddleButton->value() == 1?PosteRazorEnums::eVerticalAlignmentMiddle
 		:PosteRazorEnums::eVerticalAlignmentBottom
 	);
 	
-	m_posteRazorController->SetPosterHorizontalAlignment
+	m_posteRazorController->setPosterHorizontalAlignment
 	(
 		m_posterAlignmentLeftButton->value() == 1?PosteRazorEnums::eHorizontalAlignmentLeft
 		:m_posterAlignmentCenterButton->value() == 1?PosteRazorEnums::eHorizontalAlignmentCenter
@@ -581,7 +581,7 @@ static bool my_file_exists(const char* fileName)
 	return (access(fileName, 0) == 0);
 }
 
-void PosteRazorDialog::SavePoster(void)
+void PosteRazorDialog::savePoster(void)
 {
 	char saveFileName[1024] = "";
 	bool fileExistsAskUserForOverwrite = false;
@@ -589,9 +589,9 @@ void PosteRazorDialog::SavePoster(void)
 	Fl_Native_File_Chooser savePosterChooser(Fl_Native_File_Chooser::BROWSE_SAVE_FILE);
 #ifndef __APPLE__
 // filter stuff is still crashy os OSX
-	savePosterChooser.filter("Portable Document Format (*.PDF)\t*.pdf");
+	savePosterChooser.filter("Portable Document format (*.PDF)\t*.pdf");
 #endif
-	savePosterChooser.title(TRANSLATIONS->SaveThePosterAs());
+	savePosterChooser.title(TRANSLATIONS->saveThePosterAs());
 
 	do
 	{
@@ -611,10 +611,10 @@ void PosteRazorDialog::SavePoster(void)
 
 			fileExistsAskUserForOverwrite = my_file_exists(saveFileName);
 			char overwriteQuestion[1024] = "";
-			sprintf(overwriteQuestion, TRANSLATIONS->OverwriteFile(), fl_filename_name(saveFileName));
+			sprintf(overwriteQuestion, TRANSLATIONS->overwriteFile(), fl_filename_name(saveFileName));
 			if (!fileExistsAskUserForOverwrite || fl_ask(overwriteQuestion))
 			{
-				int err = m_posteRazorController->SavePoster(saveFileName);
+				int err = m_posteRazorController->savePoster(saveFileName);
 				if (err)
 					fl_message("The file '%s' could not be saved.", fl_filename_name(saveFileName));
 				fileExistsAskUserForOverwrite = false;
@@ -625,14 +625,14 @@ void PosteRazorDialog::SavePoster(void)
 	} while (fileExistsAskUserForOverwrite);
 }
 
-void PosteRazorDialog::SetLaunchPDFApplication(void)
+void PosteRazorDialog::setLaunchPDFApplication(void)
 {
-	m_posteRazorController->SetLaunchPDFApplication(m_setLaunchPDFApplicationCheckButton->value()==0?false:true);
+	m_posteRazorController->setLaunchPDFApplication(m_setLaunchPDFApplicationCheckButton->value()==0?false:true);
 }
 
-void PosteRazorDialog::SetUnitOfLength(UnitsOfLength::eUnitsOfLength unit)
+void PosteRazorDialog::setUnitOfLength(UnitsOfLength::eUnitsOfLength unit)
 {
-	const char* unitName = UnitsOfLength::GetUnitOfLengthName(unit);
+	const char* unitName = UnitsOfLength::getUnitOfLengthName(unit);
 	m_paperCustomWidthDimensionUnitLabel->label(unitName);
 	m_paperCustomHeightDimensionUnitLabel->label(unitName);
 	m_overlappingWidthDimensionUnitLabel->label(unitName);
@@ -640,69 +640,69 @@ void PosteRazorDialog::SetUnitOfLength(UnitsOfLength::eUnitsOfLength unit)
 	m_posterAbsoluteWidthDimensionUnitLabel->label(unitName);
 	m_posterAbsoluteHeightDimensionUnitLabel->label(unitName);
 	char paperBordersGroupLabel[100];
-	sprintf(paperBordersGroupLabel, "%s (%s)", TRANSLATIONS->Borders(), unitName);
+	sprintf(paperBordersGroupLabel, "%s (%s)", TRANSLATIONS->borders(), unitName);
 	m_paperBordersGroup->copy_label(paperBordersGroupLabel);
 }
 
-void PosteRazorDialog::SetPaperFormat(PaperFormats::ePaperFormats format)
+void PosteRazorDialog::setPaperFormat(PaperFormats::ePaperFormats format)
 {
 	m_paperFormatChoice->value((int)format);
 }
 
-void PosteRazorDialog::SetPaperOrientation(PaperFormats::ePaperOrientations orientation)
+void PosteRazorDialog::setPaperOrientation(PaperFormats::ePaperOrientations orientation)
 {
 	// standard paper format
 	m_paperOrientationPortraitRadioButton->value(orientation == PaperFormats::ePaperOrientationPortrait);
 	m_paperOrientationLandscapeRadioButton->value(orientation == PaperFormats::ePaperOrientationLandscape);
 }
 
-void PosteRazorDialog::SetPaperBorderTop(double border)
+void PosteRazorDialog::setPaperBorderTop(double border)
 {
 	m_paperBorderTopInput->value(border);
 }
 
-void PosteRazorDialog::SetPaperBorderRight(double border)
+void PosteRazorDialog::setPaperBorderRight(double border)
 {
 	m_paperBorderRightInput->value(border);
 }
 
-void PosteRazorDialog::SetPaperBorderBottom(double border)
+void PosteRazorDialog::setPaperBorderBottom(double border)
 {
 	m_paperBorderBottomInput->value(border);
 }
 
-void PosteRazorDialog::SetPaperBorderLeft(double border)
+void PosteRazorDialog::setPaperBorderLeft(double border)
 {
 	m_paperBorderLeftInput->value(border);
 }
 
-void PosteRazorDialog::SetCustomPaperWidth(double width)
+void PosteRazorDialog::setCustomPaperWidth(double width)
 {
 	m_paperCustomWidthInput->value(width);
 }
 
-void PosteRazorDialog::SetCustomPaperHeight(double height)
+void PosteRazorDialog::setCustomPaperHeight(double height)
 {
 	m_paperCustomHeightInput->value(height);
 }
 
-void PosteRazorDialog::SetUseCustomPaperSize(bool useIt)
+void PosteRazorDialog::setUseCustomPaperSize(bool useIt)
 {
 	// select the active tab
 	m_paperFormatTypeTabs->value(useIt?m_paperFormatCustomGroup:m_paperFormatStandardGroup);
 }
 
-void PosteRazorDialog::SetOverlappingWidth(double width)
+void PosteRazorDialog::setOverlappingWidth(double width)
 {
 	m_overlappingWidthInput->value(width);
 }
 
-void PosteRazorDialog::SetOverlappingHeight(double height)
+void PosteRazorDialog::setOverlappingHeight(double height)
 {
 	m_overlappingHeightInput->value(height);
 }
 
-void PosteRazorDialog::SetOverlappingPosition(PosteRazorEnums::eOverlappingPositions position)
+void PosteRazorDialog::setOverlappingPosition(PosteRazorEnums::eOverlappingPositions position)
 {
 	(
 		position == PosteRazorEnums::eOverlappingPositionBottomRight?m_overlappingPositionBottomRightButton
@@ -712,7 +712,7 @@ void PosteRazorDialog::SetOverlappingPosition(PosteRazorEnums::eOverlappingPosit
 	)->setonly();
 }
 
-void PosteRazorDialog::SetPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width)
+void PosteRazorDialog::setPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width)
 {
 	if (mode == PosteRazorEnums::ePosterSizeModeAbsolute)
 		m_posterAbsoluteWidthInput->value(width);
@@ -722,7 +722,7 @@ void PosteRazorDialog::SetPosterWidth(PosteRazorEnums::ePosterSizeModes mode, do
 		m_posterPercentualSizeInput->value(width);
 }
 
-void PosteRazorDialog::SetPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height)
+void PosteRazorDialog::setPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height)
 {
 	if (mode == PosteRazorEnums::ePosterSizeModeAbsolute)
 		m_posterAbsoluteHeightInput->value(height);
@@ -732,7 +732,7 @@ void PosteRazorDialog::SetPosterHeight(PosteRazorEnums::ePosterSizeModes mode, d
 		m_posterPercentualSizeInput->value(height);
 }
 
-void PosteRazorDialog::SetPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode)
+void PosteRazorDialog::setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode)
 {
 	if (mode == PosteRazorEnums::ePosterSizeModeAbsolute)
 		m_posterSizeAbsoluteRadioButton->setonly();
@@ -740,10 +740,10 @@ void PosteRazorDialog::SetPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode)
 		m_posterSizeInPagesRadioButton->setonly();
 	else // if (mode == PosteRazorEnums::ePosterSizeModePercentual)
 		m_posterSizePercentualRadioButton->setonly();
-	UpdatePosterSizeGroupsState();
+	updatePosterSizeGroupsState();
 }
 
-void PosteRazorDialog::SetPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment)
+void PosteRazorDialog::setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment)
 {
 	(
 		alignment == PosteRazorEnums::eHorizontalAlignmentLeft?m_posterAlignmentLeftButton
@@ -752,7 +752,7 @@ void PosteRazorDialog::SetPosterHorizontalAlignment(PosteRazorEnums::eHorizontal
 	)->setonly();
 }
 
-void PosteRazorDialog::SetPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment)
+void PosteRazorDialog::setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment)
 {
 	(
 		alignment == PosteRazorEnums::eVerticalAlignmentTop?m_posterAlignmentTopButton
@@ -761,11 +761,11 @@ void PosteRazorDialog::SetPosterVerticalAlignment(PosteRazorEnums::eVerticalAlig
 	)->setonly();
 }
 
-void PosteRazorDialog::SetPosterOutputFormat(ImageIOTypes::eImageFormats format)
+void PosteRazorDialog::setPosterOutputFormat(ImageIOTypes::eImageFormats format)
 {
 }
 
-void PosteRazorDialog::SetLaunchPDFApplication(bool launch)
+void PosteRazorDialog::setLaunchPDFApplication(bool launch)
 {
 	m_setLaunchPDFApplicationCheckButton->value(launch?1:0);
 }
@@ -779,7 +779,7 @@ static void	OSX_open_cb(const char* droppedFileName)
 	if (OSX_posteRazorDialogPointer)
 	{
 		// File was dropped on the already running application
-		OSX_posteRazorDialogPointer->LoadInputImage(droppedFileName);
+		OSX_posteRazorDialogPointer->loadInputImage(droppedFileName);
 	}
 	else
 	{
@@ -825,10 +825,10 @@ int main (int argc, char **argv)
 
 #ifndef __APPLE__
 	if (argc == 2)
-		dialog.LoadInputImage(argv[1]);
+		dialog.loadInputImage(argv[1]);
 #else
 	if (strcmp(OSX_droppedFilenameOnIcon, "") != 0)
-		dialog.LoadInputImage(OSX_droppedFilenameOnIcon);
+		dialog.loadInputImage(OSX_droppedFilenameOnIcon);
 
 	OSX_posteRazorDialogPointer = &dialog;
 #endif

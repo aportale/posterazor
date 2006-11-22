@@ -34,7 +34,7 @@ class Fl_PosteRazor_Spinner: public Fl_Group
 public:
 	Fl_PosteRazor_Spinner(int x, int y, int width, int height, const char* label=0);
 	static const char* quickNDirtyDoubleToString(double value);
-	static double Fl_PosteRazor_Spinner::Round(double Zahl, int Stellen);
+	static double round(double Zahl, int Stellen);
 	void setSpinnerVisible(bool visible);
 	double value();
 	void value(double value);
