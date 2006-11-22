@@ -292,7 +292,7 @@ public:
   virtual void setHtmlContent(const char *content) = 0; 
   virtual void handleHomepageButtonClick(void) = 0; 
   virtual void updateLanguage(void) = 0; 
-  void SetHomepageButtonLabel(const char *label);
+  void setHomepageButtonLabel(const char *label);
 };
 
 class PosteRazorSettingsDialogUI : public Fl_Double_Window {

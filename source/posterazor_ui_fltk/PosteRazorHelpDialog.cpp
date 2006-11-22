@@ -80,6 +80,6 @@ const char *PosteRazorHelpDialog::linkCallback(Fl_Widget *w, const char *uri)
 void PosteRazorHelpDialog::updateLanguage(void)
 {
 	label(TRANSLATIONS->posteRazorHelp());
-	SetHomepageButtonLabel(TRANSLATIONS->posteRazorWebSite());
+	setHomepageButtonLabel(TRANSLATIONS->posteRazorWebSite());
 	redraw();
 }

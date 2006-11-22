@@ -48,7 +48,7 @@ widget_class PosteRazorDialogUI {
     }
     Fl_Button m_settingsButton {
       label {Settings...}
-      callback {OpenSettingsDialog();}
+      callback {openSettingsDialog();}
       xywh {10 420 195 25} labelcolor 32 align 16
       class Fl_Image_Text_Button
     }
@@ -82,7 +82,7 @@ widget_class PosteRazorDialogUI {
         }
         Fl_Button m_imageLoadButton {
           label {@+1fileopen}
-          callback {LoadInputImage(0);}
+          callback {loadInputImage(0);}
           xywh {575 69 25 25} labelcolor 134
         }
       }
@@ -106,7 +106,7 @@ widget_class PosteRazorDialogUI {
     } {
       Fl_Tabs m_paperFormatTypeTabs {
         label {Paper size}
-        callback {HandlePaperSizeChangement(m_paperFormatTypeTabs);} open
+        callback {handlePaperSizeChangement(m_paperFormatTypeTabs);} open
         xywh {325 70 275 140}
       } {
         Fl_Group m_paperFormatStandardGroup {
@@ -123,12 +123,12 @@ widget_class PosteRazorDialogUI {
           } {
             Fl_Round_Button m_paperOrientationPortraitRadioButton {
               label Portrait
-              callback {HandlePaperSizeChangement(m_paperOrientationPortraitRadioButton);}
+              callback {handlePaperSizeChangement(m_paperOrientationPortraitRadioButton);}
               xywh {460 145 125 25} type Radio down_box ROUND_DOWN_BOX
             }
             Fl_Round_Button m_paperOrientationLandscapeRadioButton {
               label Landscape
-              callback {HandlePaperSizeChangement(m_paperOrientationLandscapeRadioButton);}
+              callback {handlePaperSizeChangement(m_paperOrientationLandscapeRadioButton);}
               xywh {460 170 125 25} type Radio down_box ROUND_DOWN_BOX
             }
           }
@@ -139,7 +139,7 @@ widget_class PosteRazorDialogUI {
         } {
           Fl_Group m_paperCustomWidthInput {
             label {Width:}
-            callback {HandlePaperSizeChangement(m_paperCustomWidthInput);}
+            callback {handlePaperSizeChangement(m_paperCustomWidthInput);}
             xywh {425 122 95 25} align 4 when 1
             class Fl_PosteRazor_Spinner
           } {}
@@ -149,7 +149,7 @@ widget_class PosteRazorDialogUI {
           }
           Fl_Group m_paperCustomHeightInput {
             label {Height:}
-            callback {HandlePaperSizeChangement(m_paperCustomHeightInput);}
+            callback {handlePaperSizeChangement(m_paperCustomHeightInput);}
             xywh {425 157 95 25} align 4 when 1
             class Fl_PosteRazor_Spinner
           } {}
@@ -165,25 +165,25 @@ widget_class PosteRazorDialogUI {
       } {
         Fl_Group m_paperBorderTopInput {
           label Top
-          callback {HandlePaperSizeChangement(m_paperBorderTopInput);}
+          callback {handlePaperSizeChangement(m_paperBorderTopInput);}
           xywh {430 260 60 25} when 1
           class Fl_PosteRazor_Spinner
         } {}
         Fl_Group m_paperBorderRightInput {
           label Right
-          callback {HandlePaperSizeChangement(m_paperBorderRightInput);}
+          callback {handlePaperSizeChangement(m_paperBorderRightInput);}
           xywh {490 290 60 25} align 9 when 1
           class Fl_PosteRazor_Spinner
         } {}
         Fl_Group m_paperBorderBottomInput {
           label Bottom
-          callback {HandlePaperSizeChangement(m_paperBorderBottomInput);}
+          callback {handlePaperSizeChangement(m_paperBorderBottomInput);}
           xywh {430 320 60 25} align 2 when 1
           class Fl_PosteRazor_Spinner
         } {}
         Fl_Group m_paperBorderLeftInput {
           label Left
-          callback {HandlePaperSizeChangement(m_paperBorderLeftInput);}
+          callback {handlePaperSizeChangement(m_paperBorderLeftInput);}
           xywh {370 290 60 25} align 5 when 1
           class Fl_PosteRazor_Spinner
         } {}
@@ -201,7 +201,7 @@ widget_class PosteRazorDialogUI {
       } {
         Fl_Group m_overlappingWidthInput {
           label {Width:}
-          callback {HandleOverlappingChangement(m_overlappingWidthInput);}
+          callback {handleOverlappingChangement(m_overlappingWidthInput);}
           xywh {430 80 90 25} align 4 when 1
           class Fl_PosteRazor_Spinner
         } {}
@@ -211,7 +211,7 @@ widget_class PosteRazorDialogUI {
         }
         Fl_Group m_overlappingHeightInput {
           label {Height:}
-          callback {HandleOverlappingChangement(m_overlappingHeightInput);}
+          callback {handleOverlappingChangement(m_overlappingHeightInput);}
           xywh {430 110 90 25} align 4 when 1
           class Fl_PosteRazor_Spinner
         } {}
@@ -229,22 +229,22 @@ widget_class PosteRazorDialogUI {
       } {
         Fl_Button m_overlappingPositionTopLeftButton {
           label {Top left}
-          callback {HandleOverlappingChangement(m_overlappingPositionTopLeftButton);}
+          callback {handleOverlappingChangement(m_overlappingPositionTopLeftButton);}
           image {../posterazor_ui_common/images/overlappingTopLeft.png} xywh {335 180 120 80} type Radio color 47 selection_color 55
         }
         Fl_Button m_overlappingPositionTopRightButton {
           label {Top right}
-          callback {HandleOverlappingChangement(m_overlappingPositionTopRightButton);}
+          callback {handleOverlappingChangement(m_overlappingPositionTopRightButton);}
           image {../posterazor_ui_common/images/overlappingTopRight.png} xywh {470 180 120 80} type Radio color 47 selection_color 55
         }
         Fl_Button m_overlappingPositionBottomLeftButton {
           label {Bottom left}
-          callback {HandleOverlappingChangement(m_overlappingPositionBottomLeftButton);}
+          callback {handleOverlappingChangement(m_overlappingPositionBottomLeftButton);}
           image {../posterazor_ui_common/images/overlappingBottomLeft.png} xywh {335 270 120 80} type Radio color 47 selection_color 55
         }
         Fl_Button m_overlappingPositionBottomRightButton {
           label {Bottom right}
-          callback {HandleOverlappingChangement(m_overlappingPositionBottomRightButton);}
+          callback {handleOverlappingChangement(m_overlappingPositionBottomRightButton);}
           image {../posterazor_ui_common/images/overlappingBottomRight.png} xywh {470 270 120 80} type Radio color 47 selection_color 55
         }
       }
@@ -258,7 +258,7 @@ widget_class PosteRazorDialogUI {
       } {
         Fl_Round_Button m_posterSizeAbsoluteRadioButton {
           label {Absolute image size}
-          callback {UpdatePosterSizeGroupsState();}
+          callback {updatePosterSizeGroupsState();}
           xywh {335 80 260 20} type Radio down_box ROUND_DOWN_BOX
         }
         Fl_Group m_posterSizeAbsoluteGroup {open
@@ -266,7 +266,7 @@ widget_class PosteRazorDialogUI {
         } {
           Fl_Group m_posterAbsoluteWidthInput {
             label {Width:}
-            callback {UpdatePosterSizeFields(m_posterAbsoluteWidthInput);}
+            callback {updatePosterSizeFields(m_posterAbsoluteWidthInput);}
             xywh {430 105 90 25} align 4 when 1
             class Fl_PosteRazor_Spinner
           } {}
@@ -276,7 +276,7 @@ widget_class PosteRazorDialogUI {
           }
           Fl_Group m_posterAbsoluteHeightInput {
             label {Height:}
-            callback {UpdatePosterSizeFields(m_posterAbsoluteHeightInput);}
+            callback {updatePosterSizeFields(m_posterAbsoluteHeightInput);}
             xywh {430 135 90 25} align 4 when 1
             class Fl_PosteRazor_Spinner
           } {}
@@ -287,7 +287,7 @@ widget_class PosteRazorDialogUI {
         }
         Fl_Round_Button m_posterSizeInPagesRadioButton {
           label {Size in pages}
-          callback {UpdatePosterSizeGroupsState();}
+          callback {updatePosterSizeGroupsState();}
           xywh {335 170 260 20} type Radio down_box ROUND_DOWN_BOX
         }
         Fl_Group m_posterSizeInPagesGroup {open
@@ -295,7 +295,7 @@ widget_class PosteRazorDialogUI {
         } {
           Fl_Group m_posterPagesWidthInput {
             label {Width:}
-            callback {UpdatePosterSizeFields(m_posterPagesWidthInput);}
+            callback {updatePosterSizeFields(m_posterPagesWidthInput);}
             xywh {430 195 90 25} align 4 when 1
             code0 {o->setSpinnerVisible(true);}
             class Fl_PosteRazor_Spinner
@@ -306,7 +306,7 @@ widget_class PosteRazorDialogUI {
           }
           Fl_Group m_posterPagesHeightInput {
             label {Height:}
-            callback {UpdatePosterSizeFields(m_posterPagesHeightInput);}
+            callback {updatePosterSizeFields(m_posterPagesHeightInput);}
             xywh {430 225 90 25} align 4 when 1
             code0 {o->setSpinnerVisible(true);}
             class Fl_PosteRazor_Spinner
@@ -318,7 +318,7 @@ widget_class PosteRazorDialogUI {
         }
         Fl_Round_Button m_posterSizePercentualRadioButton {
           label {Image size in percent}
-          callback {UpdatePosterSizeGroupsState();}
+          callback {updatePosterSizeGroupsState();}
           xywh {335 260 260 20} type Radio down_box ROUND_DOWN_BOX
         }
         Fl_Group m_posterSizePercentualGroup {open
@@ -326,7 +326,7 @@ widget_class PosteRazorDialogUI {
         } {
           Fl_Group m_posterPercentualSizeInput {
             label {Size:}
-            callback {UpdatePosterSizeFields(m_posterPercentualSizeInput);}
+            callback {updatePosterSizeFields(m_posterPercentualSizeInput);}
             xywh {430 285 90 25} align 4 when 1
             class Fl_PosteRazor_Spinner
           } {}
@@ -344,15 +344,15 @@ widget_class PosteRazorDialogUI {
           xywh {335 355 113 31}
         } {
           Fl_Button m_posterAlignmentTopButton {
-            callback {HandlePosterImageAlignment();}
+            callback {handlePosterImageAlignment();}
             image {../posterazor_ui_common/images/alignmentTop.png} xywh {335 355 31 31} type Radio color 47 selection_color 55
           }
           Fl_Button m_posterAlignmentMiddleButton {
-            callback {HandlePosterImageAlignment();}
+            callback {handlePosterImageAlignment();}
             image {../posterazor_ui_common/images/alignmentMiddle.png} xywh {376 355 31 31} type Radio color 47 selection_color 55
           }
           Fl_Button m_posterAlignmentBottomButton {
-            callback {HandlePosterImageAlignment();}
+            callback {handlePosterImageAlignment();}
             image {../posterazor_ui_common/images/alignmentBottom.png} xywh {417 355 31 31} type Radio color 47 selection_color 55
           }
         }
@@ -360,15 +360,15 @@ widget_class PosteRazorDialogUI {
           xywh {477 355 113 31}
         } {
           Fl_Button m_posterAlignmentLeftButton {
-            callback {HandlePosterImageAlignment();}
+            callback {handlePosterImageAlignment();}
             image {../posterazor_ui_common/images/alignmentLeft.png} xywh {477 355 31 31} type Radio color 47 selection_color 55
           }
           Fl_Button m_posterAlignmentCenterButton {
-            callback {HandlePosterImageAlignment();}
+            callback {handlePosterImageAlignment();}
             image {../posterazor_ui_common/images/alignmentCenter.png} xywh {518 355 31 31} type Radio color 47 selection_color 55
           }
           Fl_Button m_posterAlignmentRightButton {
-            callback {HandlePosterImageAlignment();}
+            callback {handlePosterImageAlignment();}
             image {../posterazor_ui_common/images/alignmentRight.png} xywh {559 355 31 31} type Radio color 47 selection_color 55
           }
         }
@@ -386,12 +386,12 @@ widget_class PosteRazorDialogUI {
       } {
         Fl_Button {} {
           label {@+14filesave}
-          callback {SavePoster();}
+          callback {savePoster();}
           xywh {335 80 255 25} labelcolor 42
         }
         Fl_Check_Button m_setLaunchPDFApplicationCheckButton {
           label {Launch PDF application after saving}
-          callback {SetLaunchPDFApplication();}
+          callback {setLaunchPDFApplication();}
           xywh {335 115 255 30} down_box DOWN_BOX align 148
         }
       }
@@ -413,40 +413,40 @@ widget_class PosteRazorDialogUI {
     }
     Fl_Button {} {
       label {?}
-      callback {OpenHelpDialog()}
+      callback {openHelpDialog()}
       xywh {585 10 25 25} color 10 labelfont 1 labelsize 15 labelcolor 32
     }
   }
-  decl {virtual void OpenSettingsDialog(void) = 0;} {public
+  decl {virtual void openSettingsDialog(void) = 0;} {public
   }
   decl {virtual void next(void) = 0;} {public
   }
   decl {virtual void prev(void) = 0;} {public
   }
-  decl {virtual void UpdateNavigationButtons(void) = 0;} {public
+  decl {virtual void updateNavigationButtons(void) = 0;} {public
   }
-  decl {virtual void OpenHelpDialog(void) = 0;} {public
+  decl {virtual void openHelpDialog(void) = 0;} {public
   }
   decl {// ****** Load input image step:} {}
-  decl {virtual void LoadInputImage(const char *fileName) = 0;} {public
+  decl {virtual void loadInputImage(const char *fileName) = 0;} {public
   }
   decl {// ****** Paper size step:} {}
-  decl {virtual void HandlePaperSizeChangement(Fl_Widget* sourceWidget) = 0;} {public
+  decl {virtual void handlePaperSizeChangement(Fl_Widget* sourceWidget) = 0;} {public
   }
   decl {// ****** Overlapping step:} {}
-  decl {virtual void HandleOverlappingChangement(Fl_Widget* sourceWidget) = 0;} {public
+  decl {virtual void handleOverlappingChangement(Fl_Widget* sourceWidget) = 0;} {public
   }
   decl {// ****** Poster size step:} {}
-  decl {virtual void UpdatePosterSizeGroupsState(void) = 0;} {public
+  decl {virtual void updatePosterSizeGroupsState(void) = 0;} {public
   }
-  decl {virtual void UpdatePosterSizeFields(Fl_Widget* sourceWidget) = 0;} {public
+  decl {virtual void updatePosterSizeFields(Fl_Widget* sourceWidget) = 0;} {public
   }
-  decl {virtual void HandlePosterImageAlignment(void) = 0;} {public
+  decl {virtual void handlePosterImageAlignment(void) = 0;} {public
   }
   decl {// ****** Save poster step:} {}
-  decl {virtual void SavePoster(void) = 0;} {public
+  decl {virtual void savePoster(void) = 0;} {public
   }
-  decl {virtual void SetLaunchPDFApplication(void) = 0;} {public
+  decl {virtual void setLaunchPDFApplication(void) = 0;} {public
   }
 } 
 
@@ -471,24 +471,24 @@ widget_class PosteRazorHelpDialogUI {
     }
     Fl_Button m_homepageButton {
       label Homepage
-      callback {HandleHomepageButtonClick();}
+      callback {handleHomepageButtonClick();}
       xywh {10 365 185 25}
     }
     Fl_Box {} {
       xywh {333 365 10 25} labelsize 8 resizable
     }
   }
-  Function {SetHomepageButtonLabel(const char *label)} {open return_type void
+  Function {setHomepageButtonLabel(const char *label)} {open return_type void
   } {
     code {m_homepageButton->label(label);} {}
   }
-  decl {virtual void JumpToAnchor(const char *anchor) = 0;} {public
+  decl {virtual void jumpToAnchor(const char *anchor) = 0;} {public
   }
-  decl {virtual void SetHtmlContent(const char *content) = 0;} {public
+  decl {virtual void setHtmlContent(const char *content) = 0;} {public
   }
-  decl {virtual void HandleHomepageButtonClick(void) = 0;} {public
+  decl {virtual void handleHomepageButtonClick(void) = 0;} {public
   }
-  decl {virtual void UpdateLanguage(void) = 0;} {public
+  decl {virtual void updateLanguage(void) = 0;} {public
   }
 } 
 
@@ -522,7 +522,7 @@ widget_class PosteRazorSettingsDialogUI {
     } {
       Fl_Check_Button m_useOpenGLCheckButton {
         label {use OpenGL}
-        callback {HandleUseOpenGLChangement();}
+        callback {handleUseOpenGLChangement();}
         xywh {30 154 255 20} down_box DOWN_BOX
       }
       Fl_Box m_useOpenGLExplanationBox {
@@ -561,7 +561,7 @@ hide();}
       xywh {10 365 10 25} labelsize 8 resizable
     }
   }
-  decl {virtual void HandleUseOpenGLChangement(void) = 0;} {public
+  decl {virtual void handleUseOpenGLChangement(void) = 0;} {public
   }
   Function {show_modal(void)} {open return_type bool
   } {
