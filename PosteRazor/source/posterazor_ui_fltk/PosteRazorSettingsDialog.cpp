@@ -24,19 +24,19 @@
 #include "TranslationConstants.h"
 
 PosteRazorSettingsDialog::PosteRazorSettingsDialog()
-	:PosteRazorSettingsDialogUI(315, 400, "PosteRazor Settings")
+	:PosteRazorSettingsDialogUI(315, 400, "PosteRazor settings")
 {
 #define SETTINGCHOICEBUTTONSSPACING 10
 
 	int i;
-	m_unitOfLengthButtonsCount = UnitsOfLength::GetUnitsOfLengthCount();
+	m_unitOfLengthButtonsCount = UnitsOfLength::getUnitsOfLengthCount();
 	m_unitOfLengthButtons = new Fl_Button*[m_unitOfLengthButtonsCount];
 	int unitOfLengthButtonWidth = (m_unitOfLengthButtonsGroup->w() + SETTINGCHOICEBUTTONSSPACING) / m_unitOfLengthButtonsCount - SETTINGCHOICEBUTTONSSPACING;
 
 	m_unitOfLengthButtonsGroup->begin();
 	for (i = 0; i < m_unitOfLengthButtonsCount; i++)
 	{
-		const char* UnitOfLengthName = UnitsOfLength::GetUnitOfLengthName(UnitsOfLength::GetUnitOfLengthForIndex(i));
+		const char* UnitOfLengthName = UnitsOfLength::getUnitOfLengthName(UnitsOfLength::getUnitOfLengthForIndex(i));
 		m_unitOfLengthButtons[i] = new Fl_Button
 		(
 			m_unitOfLengthButtonsGroup->x() + i * (unitOfLengthButtonWidth+SETTINGCHOICEBUTTONSSPACING),
@@ -49,7 +49,7 @@ PosteRazorSettingsDialog::PosteRazorSettingsDialog()
 		m_unitOfLengthButtons[i]->type(FL_RADIO_BUTTON);
 		m_unitOfLengthButtons[i]->color((Fl_Color)47);
 		m_unitOfLengthButtons[i]->selection_color((Fl_Color)55);
-		m_unitOfLengthButtons[i]->callback(HandleUnitOfLengthChoice_cb);
+		m_unitOfLengthButtons[i]->callback(handleUnitOfLengthChoice_cb);
 		m_unitOfLengthButtons[i]->user_data((void*)this);
 	}
 	m_unitOfLengthButtonsGroup->end();
@@ -72,13 +72,13 @@ PosteRazorSettingsDialog::PosteRazorSettingsDialog()
 
 		Translations::eLanguages language = TRANSLATIONS->GetLanguageForIndex(i);
 		TranslationInterface *translation = TRANSLATIONS->GetTranslationOfLanguage(language);
-		m_languageButtonImages[i] = new Fl_RGB_Image(translation->FlagImageRGBData(), translation->FlagImageWidth(), translation->FlagImageHeight());
+		m_languageButtonImages[i] = new Fl_RGB_Image(translation->flagImageRGBData(), translation->flagImageWidth(), translation->flagImageHeight());
 		m_languageButtons[i]->image(m_languageButtonImages[i]);
-		m_languageButtons[i]->tooltip(translation->LanguageName());
+		m_languageButtons[i]->tooltip(translation->languageName());
 		m_languageButtons[i]->type(FL_RADIO_BUTTON);
 		m_languageButtons[i]->color((Fl_Color)47);
 		m_languageButtons[i]->selection_color((Fl_Color)55);
-		m_languageButtons[i]->callback(HandleLanguageChoice_cb);
+		m_languageButtons[i]->callback(handleLanguageChoice_cb);
 		m_languageButtons[i]->user_data((void*)this);
 	}
 	m_languageButtonsGroup->end();
@@ -94,7 +94,7 @@ PosteRazorSettingsDialog::PosteRazorSettingsDialog()
 	size(w(), h() - moveUpDistance);
 #endif
 
-	UpdateLanguage();
+	updateLanguage();
 }
 
 PosteRazorSettingsDialog::~PosteRazorSettingsDialog()
@@ -113,14 +113,14 @@ PosteRazorSettingsDialog::~PosteRazorSettingsDialog()
 	}
 }
 
-void PosteRazorSettingsDialog::SetOptionsAndHandler(posteRazorSettings *settings, SettingsChangementHandler *changementHandler)
+void PosteRazorSettingsDialog::setOptionsAndHandler(posteRazorSettings *settings, SettingsChangementHandler *changementHandler)
 {
 	int i;
 	m_settings = settings;
 	m_changementHandler = changementHandler;
 
 	for (i = 0; i < m_unitOfLengthButtonsCount; i++)
-		m_unitOfLengthButtons[i]->value(UnitsOfLength::GetUnitOfLengthForIndex(i) == m_settings->UnitOfLength?1:0);
+		m_unitOfLengthButtons[i]->value(UnitsOfLength::getUnitOfLengthForIndex(i) == m_settings->unitOfLength?1:0);
 
 	m_useOpenGLCheckButton->value(m_settings->previewType == Fl_Paint_Canvas_Group::PaintCanvasTypeGL?1:0);
 
@@ -128,40 +128,40 @@ void PosteRazorSettingsDialog::SetOptionsAndHandler(posteRazorSettings *settings
 		m_languageButtons[i]->value((m_settings->language == TRANSLATIONS->GetLanguageForIndex(i))?1:0);
 }
 
-void PosteRazorSettingsDialog::HandleUnitOfLengthChoice_cb(Fl_Widget *widget, void *userData)
+void PosteRazorSettingsDialog::handleUnitOfLengthChoice_cb(Fl_Widget *widget, void *userData)
 {
-	((PosteRazorSettingsDialog*)userData)->HandleUnitOfLengthChoice();
+	((PosteRazorSettingsDialog*)userData)->handleUnitOfLengthChoice();
 }
 
-void PosteRazorSettingsDialog::HandleUnitOfLengthChoice(void)
+void PosteRazorSettingsDialog::handleUnitOfLengthChoice(void)
 {
 	for (int i = 0; i < m_unitOfLengthButtonsCount; i++)
 	{
 		if (m_unitOfLengthButtons[i]->value() != 0)
 		{
-			m_settings->UnitOfLength = UnitsOfLength::GetUnitOfLengthForIndex(i);
+			m_settings->unitOfLength = UnitsOfLength::getUnitOfLengthForIndex(i);
 			break;
 		}
 	}
 
 	if (m_changementHandler)
-		m_changementHandler->HandleOptionsChangement(m_settings);
+		m_changementHandler->handleOptionsChangement(m_settings);
 }
 
-void PosteRazorSettingsDialog::HandleUseOpenGLChangement(void)
+void PosteRazorSettingsDialog::handleUseOpenGLChangement(void)
 {
 	m_settings->previewType = m_useOpenGLCheckButton->value()?Fl_Paint_Canvas_Group::PaintCanvasTypeGL:Fl_Paint_Canvas_Group::PaintCanvasTypeDraw;
 
 	if (m_changementHandler)
-		m_changementHandler->HandleOptionsChangement(m_settings);
+		m_changementHandler->handleOptionsChangement(m_settings);
 }
 
-void PosteRazorSettingsDialog::HandleLanguageChoice_cb(Fl_Widget *widget, void *userData)
+void PosteRazorSettingsDialog::handleLanguageChoice_cb(Fl_Widget *widget, void *userData)
 {
-	((PosteRazorSettingsDialog*)userData)->HandleLanguageChoice();
+	((PosteRazorSettingsDialog*)userData)->handleLanguageChoice();
 }
 
-void PosteRazorSettingsDialog::HandleLanguageChoice(void)
+void PosteRazorSettingsDialog::handleLanguageChoice(void)
 {
 	for (int i = 0; i < m_languageButtonsCount; i++)
 	{
@@ -173,20 +173,20 @@ void PosteRazorSettingsDialog::HandleLanguageChoice(void)
 	}
 
 	if (m_changementHandler)
-		m_changementHandler->HandleOptionsChangement(m_settings);
+		m_changementHandler->handleOptionsChangement(m_settings);
 }
 
-void PosteRazorSettingsDialog::UpdateLanguage(void)
+void PosteRazorSettingsDialog::updateLanguage(void)
 {
-	label(TRANSLATIONS->PosteRazorSettings());
-	m_unitOfLengthGroup->label(TRANSLATIONS->UnitOfLength());
-	m_unitOfLengthExplanationBox->label(TRANSLATIONS->UnitOfLengthExplanation());
-	m_useOpenGLGroup->label(TRANSLATIONS->PreviewWithOpenGL());
-	m_useOpenGLCheckButton->label(TRANSLATIONS->PreviewWithOpenGL());
-	m_useOpenGLExplanationBox->label(TRANSLATIONS->PreviewWithOpenGLExplanation());
-	m_languageGroup->label(TRANSLATIONS->Language());
-	m_languageExplanationBox->label(TRANSLATIONS->LanguageExplanation());
-	m_cancelButton->label(TRANSLATIONS->Cancel());
+	label(TRANSLATIONS->posteRazorSettings());
+	m_unitOfLengthGroup->label(TRANSLATIONS->unitOfLength());
+	m_unitOfLengthExplanationBox->label(TRANSLATIONS->unitOfLengthExplanation());
+	m_useOpenGLGroup->label(TRANSLATIONS->previewWithOpenGL());
+	m_useOpenGLCheckButton->label(TRANSLATIONS->previewWithOpenGL());
+	m_useOpenGLExplanationBox->label(TRANSLATIONS->previewWithOpenGLExplanation());
+	m_languageGroup->label(TRANSLATIONS->language());
+	m_languageExplanationBox->label(TRANSLATIONS->languageExplanation());
+	m_cancelButton->label(TRANSLATIONS->cancel());
 
 	redraw();
 }

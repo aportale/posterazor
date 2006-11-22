@@ -88,17 +88,17 @@ static const fileExtensions g_fileExtensions[] =
 
 static const int g_fileExtensionsCount = sizeof(g_fileExtensions)/sizeof(g_fileExtensions[0]);
 
-int ImageIOTypes::GetInputImageFormatsCount(void)
+int ImageIOTypes::getInputImageFormatsCount(void)
 {
 	return g_imageFormatsCount;
 }
 
-const char* ImageIOTypes::GetInputImageFormat(int imageFormatIndex)
+const char* ImageIOTypes::getInputImageFormat(int imageFormatIndex)
 {
 	return g_imageFormats[imageFormatIndex];
 }
 
-int ImageIOTypes::GetFileExtensionsCount(int imageFormatIndex)
+int ImageIOTypes::getFileExtensionsCount(int imageFormatIndex)
 {
 	int result = 0;
 
@@ -113,7 +113,7 @@ int ImageIOTypes::GetFileExtensionsCount(int imageFormatIndex)
 	return result;
 }
 
-const char* ImageIOTypes::GetFileExtensionForFormat(int extensionIndex, int imageFormatIndex)
+const char* ImageIOTypes::getFileExtensionForFormat(int extensionIndex, int imageFormatIndex)
 {
 	const char *result = g_fileExtensions[0].name;
 	

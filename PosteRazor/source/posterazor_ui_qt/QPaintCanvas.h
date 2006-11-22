@@ -43,14 +43,14 @@ public:
 	~QPaintCanvas();
 
 	virtual void paintEvent(QPaintEvent *event);
-	virtual void DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
-	virtual void DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
-	virtual void DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
-	virtual void GetSize(double &width, double &height) const;
+	virtual void drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
+	virtual void drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
+	virtual void drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
+	virtual void getSize(double &width, double &height) const;
 
-	virtual void SetImage(const unsigned char* rgbData, double width, double height);
-	virtual void DisposeImage(void);
-	virtual void DrawImage(double x, double y, double width, double height);
+	virtual void setImage(const unsigned char* rgbData, double width, double height);
+	virtual void disposeImage(void);
+	virtual void drawImage(double x, double y, double width, double height);
 };
 
 #endif

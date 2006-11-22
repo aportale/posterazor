@@ -47,22 +47,22 @@ public:
 	virtual void draw();
 	virtual int handle(int event);
 
-	virtual void DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
-	virtual void DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
-	virtual void DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
-	virtual void GetSize(double &width, double &height) const;
+	virtual void drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
+	virtual void drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
+	virtual void drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
+	virtual void getSize(double &width, double &height) const;
 
-	virtual void SetImage(const unsigned char* rgbData, double width, double height);
-	virtual void DisposeImage(void);
-	virtual void DrawImage(double x, double y, double width, double height);
+	virtual void setImage(const unsigned char* rgbData, double width, double height);
+	virtual void disposeImage(void);
+	virtual void drawImage(double x, double y, double width, double height);
 
-	virtual unsigned int GetTexturesColumnsCount(void) const                      {return (int)ceil((double)m_imageWidth / (double)m_texturesSize);}
-	virtual unsigned int GetTexturesRowsCount(void) const                         {return (int)ceil((double)m_imageHeight / (double)m_texturesSize);}
-	virtual unsigned int GetTexturesCount(void) const                             {return GetTexturesColumnsCount() * GetTexturesRowsCount();}
-	virtual unsigned int GetLastTexturesColumnPixelsColumns(void) const           {return m_imageWidth - (GetTexturesColumnsCount()-1)*m_texturesSize;}
-	virtual unsigned int GetLastTexturesRowPixelsRows(void) const                 {return m_imageHeight - (GetTexturesRowsCount()-1)*m_texturesSize;}
-	virtual unsigned int GetTexturesColumnPixelColumns(unsigned int column) const {return column < GetTexturesColumnsCount()-1?m_texturesSize:GetLastTexturesColumnPixelsColumns();}
-	virtual unsigned int GetTexturesRowPixelRows(unsigned int row) const          {return row < GetTexturesRowsCount()-1?m_texturesSize:GetLastTexturesRowPixelsRows();}
+	virtual unsigned int getTexturesColumnsCount(void) const                      {return (int)ceil((double)m_imageWidth / (double)m_texturesSize);}
+	virtual unsigned int getTexturesRowsCount(void) const                         {return (int)ceil((double)m_imageHeight / (double)m_texturesSize);}
+	virtual unsigned int getTexturesCount(void) const                             {return getTexturesColumnsCount() * getTexturesRowsCount();}
+	virtual unsigned int getLastTexturesColumnPixelsColumns(void) const           {return m_imageWidth - (getTexturesColumnsCount()-1)*m_texturesSize;}
+	virtual unsigned int getLastTexturesRowPixelsRows(void) const                 {return m_imageHeight - (getTexturesRowsCount()-1)*m_texturesSize;}
+	virtual unsigned int getTexturesColumnPixelColumns(unsigned int column) const {return column < getTexturesColumnsCount()-1?m_texturesSize:getLastTexturesColumnPixelsColumns();}
+	virtual unsigned int getTexturesRowPixelRows(unsigned int row) const          {return row < getTexturesRowsCount()-1?m_texturesSize:getLastTexturesRowPixelsRows();}
 };
 
 #endif Fl_Gl_Paint_Canvas_h

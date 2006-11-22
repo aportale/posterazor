@@ -36,25 +36,25 @@
 PosteRazorHelpDialog::PosteRazorHelpDialog()
 	:PosteRazorHelpDialogUI(500, 400, "PosteRazor Help")
 {
-	m_help_view->link(LinkCallback);
+	m_help_view->link(linkCallback);
 }
 
-void PosteRazorHelpDialog::SetHtmlContent(const char *content)
+void PosteRazorHelpDialog::setHtmlContent(const char *content)
 {
 	m_help_view->value(content);
 }
 
-void PosteRazorHelpDialog::JumpToAnchor(const char *anchor)
+void PosteRazorHelpDialog::jumpToAnchor(const char *anchor)
 {
 	m_help_view->topline(anchor);
 }
 
-void PosteRazorHelpDialog::HandleHomepageButtonClick(void)
+void PosteRazorHelpDialog::handleHomepageButtonClick(void)
 {
-	OpenURLInBrowser(TRANSLATIONS->PosteRazorWebSiteURL());
+	openURLInBrowser(TRANSLATIONS->posteRazorWebSiteURL());
 }
 
-void PosteRazorHelpDialog::OpenURLInBrowser(const char* url)
+void PosteRazorHelpDialog::openURLInBrowser(const char* url)
 {
 #if defined (WIN32)
 	ShellExecute(HWND_DESKTOP, "open", url, NULL, NULL, SW_SHOW);
@@ -65,21 +65,21 @@ void PosteRazorHelpDialog::OpenURLInBrowser(const char* url)
 #endif
 }
 
-const char *PosteRazorHelpDialog::LinkCallback(Fl_Widget *w, const char *uri)
+const char *PosteRazorHelpDialog::linkCallback(Fl_Widget *w, const char *uri)
 {
 #define HTTPSCHEMESTART "http://"
 	if (0 == CASESENSITIVESTRNCMP(uri, HTTPSCHEMESTART, strlen(HTTPSCHEMESTART)))
 	{
-		((PosteRazorHelpDialog*)(w->parent()))->OpenURLInBrowser(uri);
+		((PosteRazorHelpDialog*)(w->parent()))->openURLInBrowser(uri);
 		return NULL;
 	}
 	else
 		return uri;
 }
 
-void PosteRazorHelpDialog::UpdateLanguage(void)
+void PosteRazorHelpDialog::updateLanguage(void)
 {
-	label(TRANSLATIONS->PosteRazorHelp());
-	SetHomepageButtonLabel(TRANSLATIONS->PosteRazorWebSite());
+	label(TRANSLATIONS->posteRazorHelp());
+	SetHomepageButtonLabel(TRANSLATIONS->posteRazorWebSite());
 	redraw();
 }

@@ -24,7 +24,7 @@
 #include "PosteRazorDialogUI.h"
 
 void PosteRazorDialogUI::cb_m_settingsButton_i(Fl_Image_Text_Button*, void*) {
-  OpenSettingsDialog();
+  openSettingsDialog();
 }
 void PosteRazorDialogUI::cb_m_settingsButton(Fl_Image_Text_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()))->cb_m_settingsButton_i(o,v);
@@ -130,91 +130,91 @@ void PosteRazorDialogUI::cb_m_nextButton(Fl_Button* o, void* v) {
 }
 
 void PosteRazorDialogUI::cb_m_imageLoadButton_i(Fl_Button*, void*) {
-  LoadInputImage(0);
+  loadInputImage(0);
 }
 void PosteRazorDialogUI::cb_m_imageLoadButton(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_m_imageLoadButton_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_paperFormatTypeTabs_i(Fl_Tabs*, void*) {
-  HandlePaperSizeChangement(m_paperFormatTypeTabs);
+  handlePaperSizeChangement(m_paperFormatTypeTabs);
 }
 void PosteRazorDialogUI::cb_m_paperFormatTypeTabs(Fl_Tabs* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()))->cb_m_paperFormatTypeTabs_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_paperOrientationPortraitRadioButton_i(Fl_Round_Button*, void*) {
-  HandlePaperSizeChangement(m_paperOrientationPortraitRadioButton);
+  handlePaperSizeChangement(m_paperOrientationPortraitRadioButton);
 }
 void PosteRazorDialogUI::cb_m_paperOrientationPortraitRadioButton(Fl_Round_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()))->cb_m_paperOrientationPortraitRadioButton_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_paperOrientationLandscapeRadioButton_i(Fl_Round_Button*, void*) {
-  HandlePaperSizeChangement(m_paperOrientationLandscapeRadioButton);
+  handlePaperSizeChangement(m_paperOrientationLandscapeRadioButton);
 }
 void PosteRazorDialogUI::cb_m_paperOrientationLandscapeRadioButton(Fl_Round_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()->parent()))->cb_m_paperOrientationLandscapeRadioButton_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_paperCustomWidthInput_i(Fl_PosteRazor_Spinner*, void*) {
-  HandlePaperSizeChangement(m_paperCustomWidthInput);
+  handlePaperSizeChangement(m_paperCustomWidthInput);
 }
 void PosteRazorDialogUI::cb_m_paperCustomWidthInput(Fl_PosteRazor_Spinner* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_paperCustomWidthInput_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_paperCustomHeightInput_i(Fl_PosteRazor_Spinner*, void*) {
-  HandlePaperSizeChangement(m_paperCustomHeightInput);
+  handlePaperSizeChangement(m_paperCustomHeightInput);
 }
 void PosteRazorDialogUI::cb_m_paperCustomHeightInput(Fl_PosteRazor_Spinner* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_paperCustomHeightInput_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_paperBorderTopInput_i(Fl_PosteRazor_Spinner*, void*) {
-  HandlePaperSizeChangement(m_paperBorderTopInput);
+  handlePaperSizeChangement(m_paperBorderTopInput);
 }
 void PosteRazorDialogUI::cb_m_paperBorderTopInput(Fl_PosteRazor_Spinner* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_m_paperBorderTopInput_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_paperBorderRightInput_i(Fl_PosteRazor_Spinner*, void*) {
-  HandlePaperSizeChangement(m_paperBorderRightInput);
+  handlePaperSizeChangement(m_paperBorderRightInput);
 }
 void PosteRazorDialogUI::cb_m_paperBorderRightInput(Fl_PosteRazor_Spinner* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_m_paperBorderRightInput_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_paperBorderBottomInput_i(Fl_PosteRazor_Spinner*, void*) {
-  HandlePaperSizeChangement(m_paperBorderBottomInput);
+  handlePaperSizeChangement(m_paperBorderBottomInput);
 }
 void PosteRazorDialogUI::cb_m_paperBorderBottomInput(Fl_PosteRazor_Spinner* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_m_paperBorderBottomInput_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_paperBorderLeftInput_i(Fl_PosteRazor_Spinner*, void*) {
-  HandlePaperSizeChangement(m_paperBorderLeftInput);
+  handlePaperSizeChangement(m_paperBorderLeftInput);
 }
 void PosteRazorDialogUI::cb_m_paperBorderLeftInput(Fl_PosteRazor_Spinner* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_m_paperBorderLeftInput_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_overlappingWidthInput_i(Fl_PosteRazor_Spinner*, void*) {
-  HandleOverlappingChangement(m_overlappingWidthInput);
+  handleOverlappingChangement(m_overlappingWidthInput);
 }
 void PosteRazorDialogUI::cb_m_overlappingWidthInput(Fl_PosteRazor_Spinner* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_m_overlappingWidthInput_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_overlappingHeightInput_i(Fl_PosteRazor_Spinner*, void*) {
-  HandleOverlappingChangement(m_overlappingHeightInput);
+  handleOverlappingChangement(m_overlappingHeightInput);
 }
 void PosteRazorDialogUI::cb_m_overlappingHeightInput(Fl_PosteRazor_Spinner* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_m_overlappingHeightInput_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_overlappingPositionTopLeftButton_i(Fl_Button*, void*) {
-  HandleOverlappingChangement(m_overlappingPositionTopLeftButton);
+  handleOverlappingChangement(m_overlappingPositionTopLeftButton);
 }
 void PosteRazorDialogUI::cb_m_overlappingPositionTopLeftButton(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_m_overlappingPositionTopLeftButton_i(o,v);
@@ -318,7 +318,7 @@ static unsigned char idata_overlappingTopLeft[] =
 static Fl_RGB_Image image_overlappingTopLeft(idata_overlappingTopLeft, 24, 26, 3, 0);
 
 void PosteRazorDialogUI::cb_m_overlappingPositionTopRightButton_i(Fl_Button*, void*) {
-  HandleOverlappingChangement(m_overlappingPositionTopRightButton);
+  handleOverlappingChangement(m_overlappingPositionTopRightButton);
 }
 void PosteRazorDialogUI::cb_m_overlappingPositionTopRightButton(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_m_overlappingPositionTopRightButton_i(o,v);
@@ -422,7 +422,7 @@ static unsigned char idata_overlappingTopRight[] =
 static Fl_RGB_Image image_overlappingTopRight(idata_overlappingTopRight, 24, 26, 3, 0);
 
 void PosteRazorDialogUI::cb_m_overlappingPositionBottomLeftButton_i(Fl_Button*, void*) {
-  HandleOverlappingChangement(m_overlappingPositionBottomLeftButton);
+  handleOverlappingChangement(m_overlappingPositionBottomLeftButton);
 }
 void PosteRazorDialogUI::cb_m_overlappingPositionBottomLeftButton(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_m_overlappingPositionBottomLeftButton_i(o,v);
@@ -526,7 +526,7 @@ static unsigned char idata_overlappingBottomLeft[] =
 static Fl_RGB_Image image_overlappingBottomLeft(idata_overlappingBottomLeft, 24, 26, 3, 0);
 
 void PosteRazorDialogUI::cb_m_overlappingPositionBottomRightButton_i(Fl_Button*, void*) {
-  HandleOverlappingChangement(m_overlappingPositionBottomRightButton);
+  handleOverlappingChangement(m_overlappingPositionBottomRightButton);
 }
 void PosteRazorDialogUI::cb_m_overlappingPositionBottomRightButton(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_m_overlappingPositionBottomRightButton_i(o,v);
@@ -630,63 +630,63 @@ static unsigned char idata_overlappingBottomRight[] =
 static Fl_RGB_Image image_overlappingBottomRight(idata_overlappingBottomRight, 24, 26, 3, 0);
 
 void PosteRazorDialogUI::cb_m_posterSizeAbsoluteRadioButton_i(Fl_Round_Button*, void*) {
-  UpdatePosterSizeGroupsState();
+  updatePosterSizeGroupsState();
 }
 void PosteRazorDialogUI::cb_m_posterSizeAbsoluteRadioButton(Fl_Round_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_m_posterSizeAbsoluteRadioButton_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_posterAbsoluteWidthInput_i(Fl_PosteRazor_Spinner*, void*) {
-  UpdatePosterSizeFields(m_posterAbsoluteWidthInput);
+  updatePosterSizeFields(m_posterAbsoluteWidthInput);
 }
 void PosteRazorDialogUI::cb_m_posterAbsoluteWidthInput(Fl_PosteRazor_Spinner* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_posterAbsoluteWidthInput_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_posterAbsoluteHeightInput_i(Fl_PosteRazor_Spinner*, void*) {
-  UpdatePosterSizeFields(m_posterAbsoluteHeightInput);
+  updatePosterSizeFields(m_posterAbsoluteHeightInput);
 }
 void PosteRazorDialogUI::cb_m_posterAbsoluteHeightInput(Fl_PosteRazor_Spinner* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_posterAbsoluteHeightInput_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_posterSizeInPagesRadioButton_i(Fl_Round_Button*, void*) {
-  UpdatePosterSizeGroupsState();
+  updatePosterSizeGroupsState();
 }
 void PosteRazorDialogUI::cb_m_posterSizeInPagesRadioButton(Fl_Round_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_m_posterSizeInPagesRadioButton_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_posterPagesWidthInput_i(Fl_PosteRazor_Spinner*, void*) {
-  UpdatePosterSizeFields(m_posterPagesWidthInput);
+  updatePosterSizeFields(m_posterPagesWidthInput);
 }
 void PosteRazorDialogUI::cb_m_posterPagesWidthInput(Fl_PosteRazor_Spinner* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_posterPagesWidthInput_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_posterPagesHeightInput_i(Fl_PosteRazor_Spinner*, void*) {
-  UpdatePosterSizeFields(m_posterPagesHeightInput);
+  updatePosterSizeFields(m_posterPagesHeightInput);
 }
 void PosteRazorDialogUI::cb_m_posterPagesHeightInput(Fl_PosteRazor_Spinner* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_posterPagesHeightInput_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_posterSizePercentualRadioButton_i(Fl_Round_Button*, void*) {
-  UpdatePosterSizeGroupsState();
+  updatePosterSizeGroupsState();
 }
 void PosteRazorDialogUI::cb_m_posterSizePercentualRadioButton(Fl_Round_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_m_posterSizePercentualRadioButton_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_posterPercentualSizeInput_i(Fl_PosteRazor_Spinner*, void*) {
-  UpdatePosterSizeFields(m_posterPercentualSizeInput);
+  updatePosterSizeFields(m_posterPercentualSizeInput);
 }
 void PosteRazorDialogUI::cb_m_posterPercentualSizeInput(Fl_PosteRazor_Spinner* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_posterPercentualSizeInput_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_posterAlignmentTopButton_i(Fl_Button*, void*) {
-  HandlePosterImageAlignment();
+  handlePosterImageAlignment();
 }
 void PosteRazorDialogUI::cb_m_posterAlignmentTopButton(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_posterAlignmentTopButton_i(o,v);
@@ -735,7 +735,7 @@ static unsigned char idata_alignmentTop[] =
 static Fl_RGB_Image image_alignmentTop(idata_alignmentTop, 15, 19, 4, 0);
 
 void PosteRazorDialogUI::cb_m_posterAlignmentMiddleButton_i(Fl_Button*, void*) {
-  HandlePosterImageAlignment();
+  handlePosterImageAlignment();
 }
 void PosteRazorDialogUI::cb_m_posterAlignmentMiddleButton(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_posterAlignmentMiddleButton_i(o,v);
@@ -784,7 +784,7 @@ static unsigned char idata_alignmentMiddle[] =
 static Fl_RGB_Image image_alignmentMiddle(idata_alignmentMiddle, 15, 19, 4, 0);
 
 void PosteRazorDialogUI::cb_m_posterAlignmentBottomButton_i(Fl_Button*, void*) {
-  HandlePosterImageAlignment();
+  handlePosterImageAlignment();
 }
 void PosteRazorDialogUI::cb_m_posterAlignmentBottomButton(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_posterAlignmentBottomButton_i(o,v);
@@ -833,7 +833,7 @@ static unsigned char idata_alignmentBottom[] =
 static Fl_RGB_Image image_alignmentBottom(idata_alignmentBottom, 15, 19, 4, 0);
 
 void PosteRazorDialogUI::cb_m_posterAlignmentLeftButton_i(Fl_Button*, void*) {
-  HandlePosterImageAlignment();
+  handlePosterImageAlignment();
 }
 void PosteRazorDialogUI::cb_m_posterAlignmentLeftButton(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_posterAlignmentLeftButton_i(o,v);
@@ -882,7 +882,7 @@ static unsigned char idata_alignmentLeft[] =
 static Fl_RGB_Image image_alignmentLeft(idata_alignmentLeft, 19, 15, 4, 0);
 
 void PosteRazorDialogUI::cb_m_posterAlignmentCenterButton_i(Fl_Button*, void*) {
-  HandlePosterImageAlignment();
+  handlePosterImageAlignment();
 }
 void PosteRazorDialogUI::cb_m_posterAlignmentCenterButton(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_posterAlignmentCenterButton_i(o,v);
@@ -931,7 +931,7 @@ static unsigned char idata_alignmentCenter[] =
 static Fl_RGB_Image image_alignmentCenter(idata_alignmentCenter, 19, 15, 4, 0);
 
 void PosteRazorDialogUI::cb_m_posterAlignmentRightButton_i(Fl_Button*, void*) {
-  HandlePosterImageAlignment();
+  handlePosterImageAlignment();
 }
 void PosteRazorDialogUI::cb_m_posterAlignmentRightButton(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()->parent()))->cb_m_posterAlignmentRightButton_i(o,v);
@@ -980,21 +980,21 @@ static unsigned char idata_alignmentRight[] =
 static Fl_RGB_Image image_alignmentRight(idata_alignmentRight, 19, 15, 4, 0);
 
 void PosteRazorDialogUI::cb_14filesave_i(Fl_Button*, void*) {
-  SavePoster();
+  savePoster();
 }
 void PosteRazorDialogUI::cb_14filesave(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_14filesave_i(o,v);
 }
 
 void PosteRazorDialogUI::cb_m_setLaunchPDFApplicationCheckButton_i(Fl_Check_Button*, void*) {
-  SetLaunchPDFApplication();
+  setLaunchPDFApplication();
 }
 void PosteRazorDialogUI::cb_m_setLaunchPDFApplicationCheckButton(Fl_Check_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()->parent()->parent()))->cb_m_setLaunchPDFApplicationCheckButton_i(o,v);
 }
 
 void PosteRazorDialogUI::cb__i(Fl_Button*, void*) {
-  OpenHelpDialog();
+  openHelpDialog();
 }
 void PosteRazorDialogUI::cb_(Fl_Button* o, void* v) {
   ((PosteRazorDialogUI*)(o->parent()->parent()))->cb__i(o,v);
@@ -1025,7 +1025,7 @@ this->when(FL_WHEN_RELEASE);
   { Fl_Box* o = new Fl_Box(295, 420, 15, 25);
     Fl_Group::current()->resizable(o);
   } // Fl_Box* o
-  { m_settingsButton = new Fl_Image_Text_Button(10, 420, 195, 25, "Settings...");
+  { m_settingsButton = new Fl_Image_Text_Button(10, 420, 195, 25, "settings...");
     m_settingsButton->box(FL_UP_BOX);
     m_settingsButton->color(FL_BACKGROUND_COLOR);
     m_settingsButton->selection_color(FL_BACKGROUND_COLOR);
@@ -1042,11 +1042,11 @@ this->when(FL_WHEN_RELEASE);
     m_settingsButtonLabel->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
     m_settingsButtonLabel->hide();
   } // Fl_Box* m_settingsButtonLabel
-  { m_prevButton = new Fl_Button(380, 420, 110, 25, "@-2<- Back");
+  { m_prevButton = new Fl_Button(380, 420, 110, 25, "@-2<- back");
     m_prevButton->labelcolor(FL_GRAY0);
     m_prevButton->callback((Fl_Callback*)cb_m_prevButton);
   } // Fl_Button* m_prevButton
-  { m_nextButton = new Fl_Button(500, 420, 110, 25, "Next @-2->");
+  { m_nextButton = new Fl_Button(500, 420, 110, 25, "next @-2->");
     m_nextButton->labelcolor(FL_GRAY0);
     m_nextButton->callback((Fl_Callback*)cb_m_nextButton);
   } // Fl_Button* m_nextButton
@@ -1091,23 +1091,23 @@ this->when(FL_WHEN_RELEASE);
     m_paperSizeStep->hide();
     { m_paperFormatTypeTabs = new Fl_Tabs(325, 70, 275, 140, "Paper size");
       m_paperFormatTypeTabs->callback((Fl_Callback*)cb_m_paperFormatTypeTabs);
-      { m_paperFormatStandardGroup = new Fl_Group(325, 95, 275, 115, "Standard");
+      { m_paperFormatStandardGroup = new Fl_Group(325, 95, 275, 115, "standard");
         m_paperFormatStandardGroup->box(FL_THIN_UP_BOX);
         m_paperFormatStandardGroup->selection_color((Fl_Color)40);
         m_paperFormatStandardGroup->hide();
-        { m_paperFormatChoice = new Fl_Choice(425, 105, 165, 25, "Format:");
+        { m_paperFormatChoice = new Fl_Choice(425, 105, 165, 25, "format:");
           m_paperFormatChoice->down_box(FL_BORDER_BOX);
         } // Fl_Choice* m_paperFormatChoice
-        { m_paperOrientationGroup = new Fl_Group(425, 140, 165, 60, "Orientation:");
+        { m_paperOrientationGroup = new Fl_Group(425, 140, 165, 60, "orientation:");
           m_paperOrientationGroup->box(FL_THIN_DOWN_BOX);
           m_paperOrientationGroup->color((Fl_Color)43);
           m_paperOrientationGroup->align(FL_ALIGN_LEFT);
-          { m_paperOrientationPortraitRadioButton = new Fl_Round_Button(460, 145, 125, 25, "Portrait");
+          { m_paperOrientationPortraitRadioButton = new Fl_Round_Button(460, 145, 125, 25, "portrait");
             m_paperOrientationPortraitRadioButton->type(102);
             m_paperOrientationPortraitRadioButton->down_box(FL_ROUND_DOWN_BOX);
             m_paperOrientationPortraitRadioButton->callback((Fl_Callback*)cb_m_paperOrientationPortraitRadioButton);
           } // Fl_Round_Button* m_paperOrientationPortraitRadioButton
-          { m_paperOrientationLandscapeRadioButton = new Fl_Round_Button(460, 170, 125, 25, "Landscape");
+          { m_paperOrientationLandscapeRadioButton = new Fl_Round_Button(460, 170, 125, 25, "landscape");
             m_paperOrientationLandscapeRadioButton->type(102);
             m_paperOrientationLandscapeRadioButton->down_box(FL_ROUND_DOWN_BOX);
             m_paperOrientationLandscapeRadioButton->callback((Fl_Callback*)cb_m_paperOrientationLandscapeRadioButton);
@@ -1116,10 +1116,10 @@ this->when(FL_WHEN_RELEASE);
         } // Fl_Group* m_paperOrientationGroup
         m_paperFormatStandardGroup->end();
       } // Fl_Group* m_paperFormatStandardGroup
-      { m_paperFormatCustomGroup = new Fl_Group(325, 95, 275, 115, "Custom");
+      { m_paperFormatCustomGroup = new Fl_Group(325, 95, 275, 115, "custom");
         m_paperFormatCustomGroup->box(FL_THIN_UP_BOX);
         m_paperFormatCustomGroup->selection_color((Fl_Color)40);
-        { m_paperCustomWidthInput = new Fl_PosteRazor_Spinner(425, 122, 95, 25, "Width:");
+        { m_paperCustomWidthInput = new Fl_PosteRazor_Spinner(425, 122, 95, 25, "width:");
           m_paperCustomWidthInput->box(FL_NO_BOX);
           m_paperCustomWidthInput->color(FL_BACKGROUND_COLOR);
           m_paperCustomWidthInput->selection_color(FL_BACKGROUND_COLOR);
@@ -1135,7 +1135,7 @@ this->when(FL_WHEN_RELEASE);
         { m_paperCustomWidthDimensionUnitLabel = new Fl_Box(520, 122, 75, 25, "cm");
           m_paperCustomWidthDimensionUnitLabel->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         } // Fl_Box* m_paperCustomWidthDimensionUnitLabel
-        { m_paperCustomHeightInput = new Fl_PosteRazor_Spinner(425, 157, 95, 25, "Height:");
+        { m_paperCustomHeightInput = new Fl_PosteRazor_Spinner(425, 157, 95, 25, "height:");
           m_paperCustomHeightInput->box(FL_NO_BOX);
           m_paperCustomHeightInput->color(FL_BACKGROUND_COLOR);
           m_paperCustomHeightInput->selection_color(FL_BACKGROUND_COLOR);
@@ -1155,10 +1155,10 @@ this->when(FL_WHEN_RELEASE);
       } // Fl_Group* m_paperFormatCustomGroup
       m_paperFormatTypeTabs->end();
     } // Fl_Tabs* m_paperFormatTypeTabs
-    { m_paperBordersGroup = new Fl_Group(325, 235, 275, 135, "Borders (cm)");
+    { m_paperBordersGroup = new Fl_Group(325, 235, 275, 135, "borders (cm)");
       m_paperBordersGroup->box(FL_THIN_DOWN_BOX);
       m_paperBordersGroup->color((Fl_Color)43);
-      { m_paperBorderTopInput = new Fl_PosteRazor_Spinner(430, 260, 60, 25, "Top");
+      { m_paperBorderTopInput = new Fl_PosteRazor_Spinner(430, 260, 60, 25, "top");
         m_paperBorderTopInput->box(FL_NO_BOX);
         m_paperBorderTopInput->color(FL_BACKGROUND_COLOR);
         m_paperBorderTopInput->selection_color(FL_BACKGROUND_COLOR);
@@ -1171,7 +1171,7 @@ this->when(FL_WHEN_RELEASE);
         m_paperBorderTopInput->when(FL_WHEN_CHANGED);
         m_paperBorderTopInput->end();
       } // Fl_PosteRazor_Spinner* m_paperBorderTopInput
-      { m_paperBorderRightInput = new Fl_PosteRazor_Spinner(490, 290, 60, 25, "Right");
+      { m_paperBorderRightInput = new Fl_PosteRazor_Spinner(490, 290, 60, 25, "right");
         m_paperBorderRightInput->box(FL_NO_BOX);
         m_paperBorderRightInput->color(FL_BACKGROUND_COLOR);
         m_paperBorderRightInput->selection_color(FL_BACKGROUND_COLOR);
@@ -1184,7 +1184,7 @@ this->when(FL_WHEN_RELEASE);
         m_paperBorderRightInput->when(FL_WHEN_CHANGED);
         m_paperBorderRightInput->end();
       } // Fl_PosteRazor_Spinner* m_paperBorderRightInput
-      { m_paperBorderBottomInput = new Fl_PosteRazor_Spinner(430, 320, 60, 25, "Bottom");
+      { m_paperBorderBottomInput = new Fl_PosteRazor_Spinner(430, 320, 60, 25, "bottom");
         m_paperBorderBottomInput->box(FL_NO_BOX);
         m_paperBorderBottomInput->color(FL_BACKGROUND_COLOR);
         m_paperBorderBottomInput->selection_color(FL_BACKGROUND_COLOR);
@@ -1197,7 +1197,7 @@ this->when(FL_WHEN_RELEASE);
         m_paperBorderBottomInput->when(FL_WHEN_CHANGED);
         m_paperBorderBottomInput->end();
       } // Fl_PosteRazor_Spinner* m_paperBorderBottomInput
-      { m_paperBorderLeftInput = new Fl_PosteRazor_Spinner(370, 290, 60, 25, "Left");
+      { m_paperBorderLeftInput = new Fl_PosteRazor_Spinner(370, 290, 60, 25, "left");
         m_paperBorderLeftInput->box(FL_NO_BOX);
         m_paperBorderLeftInput->color(FL_BACKGROUND_COLOR);
         m_paperBorderLeftInput->selection_color(FL_BACKGROUND_COLOR);
@@ -1223,7 +1223,7 @@ this->when(FL_WHEN_RELEASE);
       m_overlappingSizeGroup->box(FL_THIN_DOWN_BOX);
       m_overlappingSizeGroup->color(FL_DARK2);
       m_overlappingSizeGroup->selection_color(FL_LIGHT3);
-      { m_overlappingWidthInput = new Fl_PosteRazor_Spinner(430, 80, 90, 25, "Width:");
+      { m_overlappingWidthInput = new Fl_PosteRazor_Spinner(430, 80, 90, 25, "width:");
         m_overlappingWidthInput->box(FL_NO_BOX);
         m_overlappingWidthInput->color(FL_BACKGROUND_COLOR);
         m_overlappingWidthInput->selection_color(FL_BACKGROUND_COLOR);
@@ -1239,7 +1239,7 @@ this->when(FL_WHEN_RELEASE);
       { m_overlappingWidthDimensionUnitLabel = new Fl_Box(520, 80, 75, 25, "cm");
         m_overlappingWidthDimensionUnitLabel->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
       } // Fl_Box* m_overlappingWidthDimensionUnitLabel
-      { m_overlappingHeightInput = new Fl_PosteRazor_Spinner(430, 110, 90, 25, "Height:");
+      { m_overlappingHeightInput = new Fl_PosteRazor_Spinner(430, 110, 90, 25, "height:");
         m_overlappingHeightInput->box(FL_NO_BOX);
         m_overlappingHeightInput->color(FL_BACKGROUND_COLOR);
         m_overlappingHeightInput->selection_color(FL_BACKGROUND_COLOR);
@@ -1264,28 +1264,28 @@ this->when(FL_WHEN_RELEASE);
       m_overlappingPositionGroup->box(FL_THIN_DOWN_BOX);
       m_overlappingPositionGroup->color(FL_DARK2);
       m_overlappingPositionGroup->selection_color(FL_LIGHT3);
-      { m_overlappingPositionTopLeftButton = new Fl_Button(335, 180, 120, 80, "Top left");
+      { m_overlappingPositionTopLeftButton = new Fl_Button(335, 180, 120, 80, "top left");
         m_overlappingPositionTopLeftButton->type(102);
         m_overlappingPositionTopLeftButton->color(FL_DARK1);
         m_overlappingPositionTopLeftButton->selection_color((Fl_Color)55);
         m_overlappingPositionTopLeftButton->image(image_overlappingTopLeft);
         m_overlappingPositionTopLeftButton->callback((Fl_Callback*)cb_m_overlappingPositionTopLeftButton);
       } // Fl_Button* m_overlappingPositionTopLeftButton
-      { m_overlappingPositionTopRightButton = new Fl_Button(470, 180, 120, 80, "Top right");
+      { m_overlappingPositionTopRightButton = new Fl_Button(470, 180, 120, 80, "top right");
         m_overlappingPositionTopRightButton->type(102);
         m_overlappingPositionTopRightButton->color(FL_DARK1);
         m_overlappingPositionTopRightButton->selection_color((Fl_Color)55);
         m_overlappingPositionTopRightButton->image(image_overlappingTopRight);
         m_overlappingPositionTopRightButton->callback((Fl_Callback*)cb_m_overlappingPositionTopRightButton);
       } // Fl_Button* m_overlappingPositionTopRightButton
-      { m_overlappingPositionBottomLeftButton = new Fl_Button(335, 270, 120, 80, "Bottom left");
+      { m_overlappingPositionBottomLeftButton = new Fl_Button(335, 270, 120, 80, "bottom left");
         m_overlappingPositionBottomLeftButton->type(102);
         m_overlappingPositionBottomLeftButton->color(FL_DARK1);
         m_overlappingPositionBottomLeftButton->selection_color((Fl_Color)55);
         m_overlappingPositionBottomLeftButton->image(image_overlappingBottomLeft);
         m_overlappingPositionBottomLeftButton->callback((Fl_Callback*)cb_m_overlappingPositionBottomLeftButton);
       } // Fl_Button* m_overlappingPositionBottomLeftButton
-      { m_overlappingPositionBottomRightButton = new Fl_Button(470, 270, 120, 80, "Bottom right");
+      { m_overlappingPositionBottomRightButton = new Fl_Button(470, 270, 120, 80, "bottom right");
         m_overlappingPositionBottomRightButton->type(102);
         m_overlappingPositionBottomRightButton->color(FL_DARK1);
         m_overlappingPositionBottomRightButton->selection_color((Fl_Color)55);
@@ -1307,7 +1307,7 @@ this->when(FL_WHEN_RELEASE);
         m_posterSizeAbsoluteRadioButton->callback((Fl_Callback*)cb_m_posterSizeAbsoluteRadioButton);
       } // Fl_Round_Button* m_posterSizeAbsoluteRadioButton
       { m_posterSizeAbsoluteGroup = new Fl_Group(335, 105, 260, 55);
-        { m_posterAbsoluteWidthInput = new Fl_PosteRazor_Spinner(430, 105, 90, 25, "Width:");
+        { m_posterAbsoluteWidthInput = new Fl_PosteRazor_Spinner(430, 105, 90, 25, "width:");
           m_posterAbsoluteWidthInput->box(FL_NO_BOX);
           m_posterAbsoluteWidthInput->color(FL_BACKGROUND_COLOR);
           m_posterAbsoluteWidthInput->selection_color(FL_BACKGROUND_COLOR);
@@ -1323,7 +1323,7 @@ this->when(FL_WHEN_RELEASE);
         { m_posterAbsoluteWidthDimensionUnitLabel = new Fl_Box(520, 105, 70, 25, "cm");
           m_posterAbsoluteWidthDimensionUnitLabel->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         } // Fl_Box* m_posterAbsoluteWidthDimensionUnitLabel
-        { m_posterAbsoluteHeightInput = new Fl_PosteRazor_Spinner(430, 135, 90, 25, "Height:");
+        { m_posterAbsoluteHeightInput = new Fl_PosteRazor_Spinner(430, 135, 90, 25, "height:");
           m_posterAbsoluteHeightInput->box(FL_NO_BOX);
           m_posterAbsoluteHeightInput->color(FL_BACKGROUND_COLOR);
           m_posterAbsoluteHeightInput->selection_color(FL_BACKGROUND_COLOR);
@@ -1347,7 +1347,7 @@ this->when(FL_WHEN_RELEASE);
         m_posterSizeInPagesRadioButton->callback((Fl_Callback*)cb_m_posterSizeInPagesRadioButton);
       } // Fl_Round_Button* m_posterSizeInPagesRadioButton
       { m_posterSizeInPagesGroup = new Fl_Group(335, 195, 260, 55);
-        { Fl_PosteRazor_Spinner* o = m_posterPagesWidthInput = new Fl_PosteRazor_Spinner(430, 195, 90, 25, "Width:");
+        { Fl_PosteRazor_Spinner* o = m_posterPagesWidthInput = new Fl_PosteRazor_Spinner(430, 195, 90, 25, "width:");
           m_posterPagesWidthInput->box(FL_NO_BOX);
           m_posterPagesWidthInput->color(FL_BACKGROUND_COLOR);
           m_posterPagesWidthInput->selection_color(FL_BACKGROUND_COLOR);
@@ -1364,7 +1364,7 @@ this->when(FL_WHEN_RELEASE);
         { m_posterPagesWidthLabel = new Fl_Box(520, 195, 70, 25, "pages");
           m_posterPagesWidthLabel->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         } // Fl_Box* m_posterPagesWidthLabel
-        { Fl_PosteRazor_Spinner* o = m_posterPagesHeightInput = new Fl_PosteRazor_Spinner(430, 225, 90, 25, "Height:");
+        { Fl_PosteRazor_Spinner* o = m_posterPagesHeightInput = new Fl_PosteRazor_Spinner(430, 225, 90, 25, "height:");
           m_posterPagesHeightInput->box(FL_NO_BOX);
           m_posterPagesHeightInput->color(FL_BACKGROUND_COLOR);
           m_posterPagesHeightInput->selection_color(FL_BACKGROUND_COLOR);
@@ -1540,7 +1540,7 @@ void PosteRazorHelpDialogUI::cb_OK(Fl_Return_Button* o, void* v) {
 }
 
 void PosteRazorHelpDialogUI::cb_m_homepageButton_i(Fl_Button*, void*) {
-  HandleHomepageButtonClick();
+  handleHomepageButtonClick();
 }
 void PosteRazorHelpDialogUI::cb_m_homepageButton(Fl_Button* o, void* v) {
   ((PosteRazorHelpDialogUI*)(o->parent()->parent()))->cb_m_homepageButton_i(o,v);
@@ -1595,7 +1595,7 @@ void PosteRazorHelpDialogUI::SetHomepageButtonLabel(const char *label) {
 }
 
 void PosteRazorSettingsDialogUI::cb_m_useOpenGLCheckButton_i(Fl_Check_Button*, void*) {
-  HandleUseOpenGLChangement();
+  handleUseOpenGLChangement();
 }
 void PosteRazorSettingsDialogUI::cb_m_useOpenGLCheckButton(Fl_Check_Button* o, void* v) {
   ((PosteRazorSettingsDialogUI*)(o->parent()->parent()->parent()))->cb_m_useOpenGLCheckButton_i(o,v);
@@ -1664,7 +1664,7 @@ down on old systems, though.");
     } // Fl_Box* m_useOpenGLExplanationBox
     m_useOpenGLGroup->end();
   } // Fl_Group* m_useOpenGLGroup
-  { m_languageGroup = new Fl_Group(20, 275, 275, 70, "Language");
+  { m_languageGroup = new Fl_Group(20, 275, 275, 70, "language");
     m_languageGroup->box(FL_THIN_DOWN_BOX);
     m_languageGroup->color(FL_DARK2);
     { m_languageButtonsGroup = new Fl_Group(30, 285, 255, 25);
@@ -1681,7 +1681,7 @@ down on old systems, though.");
   { m_okButton = new Fl_Return_Button(210, 365, 95, 25, "OK");
     m_okButton->callback((Fl_Callback*)cb_m_okButton);
   } // Fl_Return_Button* m_okButton
-  { m_cancelButton = new Fl_Button(105, 365, 95, 25, "Cancel");
+  { m_cancelButton = new Fl_Button(105, 365, 95, 25, "cancel");
     m_cancelButton->callback((Fl_Callback*)cb_m_cancelButton);
   } // Fl_Button* m_cancelButton
   { Fl_Box* o = new Fl_Box(10, 365, 10, 25);

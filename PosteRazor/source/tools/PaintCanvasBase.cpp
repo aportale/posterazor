@@ -32,21 +32,21 @@ PaintCanvasBase::PaintCanvasBase()
 	m_maxImageHeight = 1024;
 }
 
-void PaintCanvasBase::SetBackgroundColor(unsigned char red, unsigned char green, unsigned char blue)
+void PaintCanvasBase::setBackgroundColor(unsigned char red, unsigned char green, unsigned char blue)
 {
 	m_backgroundColor[0] = red;
 	m_backgroundColor[1] = green;
 	m_backgroundColor[2] = blue;
 }
 
-void PaintCanvasBase::SetState(const char *state)
+void PaintCanvasBase::setState(const char *state)
 {
 	strncpy(m_stateString, state, sizeof(m_stateString));
 	m_stateString[sizeof(m_stateString)-1] = '\0';
 }
 
-void PaintCanvasBase::RequestImage(void)
+void PaintCanvasBase::requestImage(void)
 {
 	if (m_painter)
-		m_painter->GetImage(this, m_maxImageWidth, m_maxImageHeight);
+		m_painter->getImage(this, m_maxImageWidth, m_maxImageHeight);
 }

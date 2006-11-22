@@ -30,12 +30,12 @@ class PosteRazorHelpDialog: public PosteRazorHelpDialogUI
 public:
 	PosteRazorHelpDialog();
 
-	void SetHtmlContent(const char *content);
-	void JumpToAnchor(const char *anchor);
-	void HandleHomepageButtonClick(void);
-	void OpenURLInBrowser(const char* url);
-	static const char *LinkCallback(Fl_Widget *w, const char *uri);
-	void UpdateLanguage(void);
+	void setHtmlContent(const char *content);
+	void jumpToAnchor(const char *anchor);
+	void handleHomepageButtonClick(void);
+	void openURLInBrowser(const char* url);
+	static const char *linkCallback(Fl_Widget *w, const char *uri);
+	void updateLanguage(void);
 };
 
 #endif

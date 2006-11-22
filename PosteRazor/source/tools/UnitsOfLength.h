@@ -36,13 +36,13 @@ public:
 		eUnitOfLengthPoints
 	};
 
-	static int GetUnitsOfLengthCount(void);
+	static int getUnitsOfLengthCount(void);
 
-	static double ConvertBetweenUnitsOfLength(double distance, eUnitsOfLength sourceUnit, eUnitsOfLength targetUnit);
-	static int GetUnitOfLengthIndex(eUnitsOfLength unit);
-	static const char* GetUnitOfLengthName(eUnitsOfLength unit);
-	static eUnitsOfLength GetUnitOfLengthForName(const char* name);
-	static eUnitsOfLength GetUnitOfLengthForIndex(int index);
+	static double convertBetweenUnitsOfLength(double distance, eUnitsOfLength sourceUnit, eUnitsOfLength targetUnit);
+	static int getUnitOfLengthIndex(eUnitsOfLength unit);
+	static const char* getUnitOfLengthName(eUnitsOfLength unit);
+	static eUnitsOfLength getUnitOfLengthForName(const char* name);
+	static eUnitsOfLength getUnitOfLengthForIndex(int index);
 };
 
 #endif

@@ -32,27 +32,27 @@ class PosteRazorImageIO: public ColorTypes
 {
 public:
 	virtual ~PosteRazorImageIO() {};
-	static PosteRazorImageIO* CreatePosteRazorImageIO();
+	static PosteRazorImageIO* createPosteRazorImageIO();
 
-	virtual bool LoadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize) = 0;
-	virtual bool IsImageLoaded(void) const = 0;
+	virtual bool loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize) = 0;
+	virtual bool isImageLoaded(void) const = 0;
 
-	virtual int GetWidthPixels(void) const = 0;
-	virtual int GetHeightPixels(void) const = 0;
+	virtual int getWidthPixels(void) const = 0;
+	virtual int getHeightPixels(void) const = 0;
 
-	virtual double GetHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const = 0;
-	virtual double GetVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const = 0;
+	virtual double getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const = 0;
+	virtual double getVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const = 0;
 
-	virtual double GetWidth(UnitsOfLength::eUnitsOfLength unit) const = 0;
-	virtual double GetHeight(UnitsOfLength::eUnitsOfLength unit) const = 0;
+	virtual double getWidth(UnitsOfLength::eUnitsOfLength unit) const = 0;
+	virtual double getHeight(UnitsOfLength::eUnitsOfLength unit) const = 0;
 
-	virtual void GetImageAsRGB(unsigned char *buffer) const = 0;
-	virtual void GetImageAsRGB(unsigned char *buffer, int width, int height) const = 0;
+	virtual void getImageAsRGB(unsigned char *buffer) const = 0;
+	virtual void getImageAsRGB(unsigned char *buffer, int width, int height) const = 0;
 	
-	virtual int GetBitsPerPixel(void) const = 0;
-	virtual eColorTypes GetColorDataType(void) const = 0;
+	virtual int getBitsPerPixel(void) const = 0;
+	virtual eColorTypes getColorDataType(void) const = 0;
 
-	virtual int SavePoster(const char *fileName, ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const = 0;
+	virtual int savePoster(const char *fileName, ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const = 0;
 };
 
 #endif

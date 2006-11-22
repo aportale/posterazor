@@ -31,19 +31,19 @@
 #define CM2PT(cm) ((cm) / 2.54 * 72)
 #define JPEGFILECOPYBUFFERSIZE 10000
 
-unsigned int PosteRazorPDFOutput::GetImageBitsPerLineCount(int widthPixels, int bitPerPixel)
+unsigned int PosteRazorPDFOutput::getImageBitsPerLineCount(int widthPixels, int bitPerPixel)
 {
 	return (widthPixels * bitPerPixel);
 }
 
-unsigned int PosteRazorPDFOutput::GetImageBytesPerLineCount(int widthPixels, int bitPerPixel)
+unsigned int PosteRazorPDFOutput::getImageBytesPerLineCount(int widthPixels, int bitPerPixel)
 {
-	return (int)(ceil((double)GetImageBitsPerLineCount(widthPixels, bitPerPixel)/8.0f));
+	return (int)(ceil((double)getImageBitsPerLineCount(widthPixels, bitPerPixel)/8.0f));
 }
 
-unsigned int PosteRazorPDFOutput::GetImageBytesCount(int widthPixels, int heightPixels, int bitPerPixel)
+unsigned int PosteRazorPDFOutput::getImageBytesCount(int widthPixels, int heightPixels, int bitPerPixel)
 {
-	return GetImageBytesPerLineCount(widthPixels, bitPerPixel) * heightPixels;
+	return getImageBytesPerLineCount(widthPixels, bitPerPixel) * heightPixels;
 }
 
 class PosteRazorPDFOutputImplementation: public PosteRazorPDFOutput
@@ -112,7 +112,7 @@ public:
 		return err;
 	}
 
-	int SaveImage(const char *jpegFileName, int widthPixels, int heightPixels, ColorTypes::eColorTypes colorType)
+	int saveImage(const char *jpegFileName, int widthPixels, int heightPixels, ColorTypes::eColorTypes colorType)
 	{
 		int err = 0;
 
@@ -198,12 +198,12 @@ public:
 		return err;
 	}
 
-	int SaveImage(unsigned char *imageData, int widthPixels, int heightPixels, int bitPerPixel, ColorTypes::eColorTypes colorType, unsigned char *rgbPalette, int paletteEntries)
+	int saveImage(unsigned char *imageData, int widthPixels, int heightPixels, int bitPerPixel, ColorTypes::eColorTypes colorType, unsigned char *rgbPalette, int paletteEntries)
 	{
 		int err = 0;
 		err = AddImageResourcesAndXObject();
 
-		unsigned int imageBytesCount = GetImageBytesCount(widthPixels, heightPixels, bitPerPixel);
+		unsigned int imageBytesCount = getImageBytesCount(widthPixels, heightPixels, bitPerPixel);
 		unsigned int imageBytesCountCompressed = (unsigned int)(ceil((double)imageBytesCount*1.05))+12;
 		unsigned char *imageDataCompressed = NULL;
 
@@ -289,7 +289,7 @@ public:
 		return err;
 	}
 
-	int StartPage(void)
+	int startPage(void)
 	{
 		int err = 0;
 		m_pageContent[0] = '\0';
@@ -316,7 +316,7 @@ public:
 		return err;
 	}
 
-	int FinishPage(void)
+	int finishPage(void)
 	{
 		int err = 0;
 	
@@ -337,7 +337,7 @@ public:
 		return err;
 	}
 
-	int StartSaving(const char* fileName, int pages, double widthCm, double heightCm)
+	int startSaving(const char* fileName, int pages, double widthCm, double heightCm)
 	{
 		int err = 0;
 
@@ -416,7 +416,7 @@ public:
 		return err;
 	}
 
-	int FinishSaving()
+	int finishSaving()
 	{
 		int err = 0;
 
@@ -443,13 +443,13 @@ public:
 		return err;
 	}
 
-	void SetBackgroundColor(unsigned char red, unsigned char green, unsigned char blue) {}
-	void DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
-	void DrawRect(double x, double y, double width, double heigth, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
-	void DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
-	void GetSize(double &width, double &height) const {}
-	void SetImage(const unsigned char* rgbData, double width, double height) {}
-	void DrawImage(double x, double y, double width, double height)
+	void setBackgroundColor(unsigned char red, unsigned char green, unsigned char blue) {}
+	void drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
+	void drawRect(double x, double y, double width, double heigth, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
+	void drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
+	void getSize(double &width, double &height) const {}
+	void setImage(const unsigned char* rgbData, double width, double height) {}
+	void drawImage(double x, double y, double width, double height)
 	{
 		char imageCode[2048]="";
 
@@ -470,7 +470,7 @@ public:
 	}
 };
 
-PosteRazorPDFOutput* PosteRazorPDFOutput::CreatePosteRazorPDFOutput(void)
+PosteRazorPDFOutput* PosteRazorPDFOutput::createPosteRazorPDFOutput(void)
 {
 	return (PosteRazorPDFOutput*) new PosteRazorPDFOutputImplementation();
 }

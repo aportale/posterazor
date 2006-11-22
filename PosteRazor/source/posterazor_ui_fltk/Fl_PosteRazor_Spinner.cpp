@@ -67,12 +67,12 @@ Fl_PosteRazor_Spinner::Fl_PosteRazor_Spinner(int x, int y, int width, int height
 const char* Fl_PosteRazor_Spinner::quickNDirtyDoubleToString(double value)
 {
 	static char valueString[200];
-	sprintf(valueString, "%G", Round(value, 4));
+	sprintf(valueString, "%G", round(value, 4));
 	return valueString;
 }
 
-// "Round()" from http://www.c-plusplus.de/forum/viewtopic-var-t-is-39342.html
-double Fl_PosteRazor_Spinner::Round(double Zahl, int Stellen)
+// "round()" from http://www.c-plusplus.de/forum/viewtopic-var-t-is-39342.html
+double Fl_PosteRazor_Spinner::round(double Zahl, int Stellen)
 {
     return floor(Zahl * pow( 10, Stellen) + 0.5) * pow(10, -Stellen);
 } 
@@ -115,7 +115,7 @@ void Fl_PosteRazor_Spinner::handleButtonPress(Fl_Repeat_Button *button)
 {
 	double increaseValue = button==m_increaseButton?.5:-.50001;
 	double oldValue = value();
-	double newValue = Round(oldValue + increaseValue, 0);
+	double newValue = round(oldValue + increaseValue, 0);
 	if (newValue >= 1.0)
 		value(newValue);
 	UpdateButtonsState();

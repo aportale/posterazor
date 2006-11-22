@@ -38,7 +38,7 @@ Fl_Gl_Paint_Canvas::Fl_Gl_Paint_Canvas(int x, int y, int width, int height, Fl_W
 
 Fl_Gl_Paint_Canvas::~Fl_Gl_Paint_Canvas()
 {
-	DisposeImage();
+	disposeImage();
 }
 
 void Fl_Gl_Paint_Canvas::draw()
@@ -56,9 +56,9 @@ void Fl_Gl_Paint_Canvas::draw()
 	}
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	DrawFilledRect(-BORDER, -BORDER, w(), h(), m_backgroundColor[0], m_backgroundColor[1], m_backgroundColor[2], 255);
+	drawFilledRect(-BORDER, -BORDER, w(), h(), m_backgroundColor[0], m_backgroundColor[1], m_backgroundColor[2], 255);
 
-	m_painter->PaintOnCanvas(this, m_stateString);
+	m_painter->paintOnCanvas(this, m_stateString);
 }
 
 int Fl_Gl_Paint_Canvas::handle(int event)
@@ -82,15 +82,15 @@ int Fl_Gl_Paint_Canvas::handle(int event)
 		return Fl_Gl_Window::handle(event);
 }
 
-void Fl_Gl_Paint_Canvas::DrawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
+void Fl_Gl_Paint_Canvas::drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
 	if (height > 0 && height < 1)
 	{
-		DrawLine(x, y, x+width, y, red, green, blue, alpha);
+		drawLine(x, y, x+width, y, red, green, blue, alpha);
 	}
 	else if (width > 0 && width < 1)
 	{
-		DrawLine(x, y, x, y+height, red, green, blue, alpha);
+		drawLine(x, y, x, y+height, red, green, blue, alpha);
 	}
 	else
 	{
@@ -99,15 +99,15 @@ void Fl_Gl_Paint_Canvas::DrawFilledRect(double x, double y, double width, double
 	}
 }
 
-void Fl_Gl_Paint_Canvas::DrawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
+void Fl_Gl_Paint_Canvas::drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
 	if (height > 0 && height < 1)
 	{
-		DrawLine(x, y, x+width, y, red, green, blue, alpha);
+		drawLine(x, y, x+width, y, red, green, blue, alpha);
 	}
 	else if (width > 0 && width < 1)
 	{
-		DrawLine(x, y, x, y+height, red, green, blue, alpha);
+		drawLine(x, y, x, y+height, red, green, blue, alpha);
 	}
 	else
 	{
@@ -125,7 +125,7 @@ void Fl_Gl_Paint_Canvas::DrawRect(double x, double y, double width, double heigh
 	}
 }
 
-void Fl_Gl_Paint_Canvas::DrawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
+void Fl_Gl_Paint_Canvas::drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
 	glColor4d(red/255.0, green/255.0, blue/255.0, alpha/255.0);
 	glBegin(GL_LINES);
@@ -134,31 +134,31 @@ void Fl_Gl_Paint_Canvas::DrawLine(double x1, double y1, double x2, double y2, un
 	glEnd();
 }
 
-void Fl_Gl_Paint_Canvas::GetSize(double &width, double &height) const
+void Fl_Gl_Paint_Canvas::getSize(double &width, double &height) const
 {
 	width = w() - BORDER - BORDER;
 	height = h() - BORDER - BORDER;
 }
 
-void Fl_Gl_Paint_Canvas::SetImage(const unsigned char *rgbData, double width, double height)
+void Fl_Gl_Paint_Canvas::setImage(const unsigned char *rgbData, double width, double height)
 {
-	DisposeImage();
+	disposeImage();
 
 	m_imageHeight = (unsigned int)height;
 	m_imageWidth = (unsigned int)width;
-	m_texturesNames = new GLuint[GetTexturesCount()];
-	glGenTextures(GetTexturesCount(), m_texturesNames);
+	m_texturesNames = new GLuint[getTexturesCount()];
+	glGenTextures(getTexturesCount(), m_texturesNames);
 	unsigned long bytesPerImageRowCount = m_imageWidth * 3;
 	unsigned long bytesPerTextureRowCount = m_texturesSize * 3;
 	unsigned long textureRgbDataBytesCount = m_texturesSize * bytesPerTextureRowCount;
 	unsigned char *textureRgbData = new unsigned char[textureRgbDataBytesCount];
-	for (unsigned int texturesRow = 0; texturesRow < GetTexturesRowsCount(); texturesRow++)
+	for (unsigned int texturesRow = 0; texturesRow < getTexturesRowsCount(); texturesRow++)
 	{
-		for (unsigned int texturesColumn = 0; texturesColumn < GetTexturesColumnsCount(); texturesColumn++)
+		for (unsigned int texturesColumn = 0; texturesColumn < getTexturesColumnsCount(); texturesColumn++)
 		{
-			unsigned int currentTexture = texturesRow * GetTexturesColumnsCount() + texturesColumn;
-			unsigned int currentTexturePixelsColumns = GetTexturesColumnPixelColumns(texturesColumn);
-			unsigned int currentTexturePixelsRows = GetTexturesRowPixelRows(texturesRow);
+			unsigned int currentTexture = texturesRow * getTexturesColumnsCount() + texturesColumn;
+			unsigned int currentTexturePixelsColumns = getTexturesColumnPixelColumns(texturesColumn);
+			unsigned int currentTexturePixelsRows = getTexturesRowPixelRows(texturesRow);
 			memset(textureRgbData, 255, textureRgbDataBytesCount);
 
 			for (unsigned int texturePixelRow = 0; texturePixelRow < currentTexturePixelsRows; texturePixelRow++)
@@ -189,11 +189,11 @@ void Fl_Gl_Paint_Canvas::SetImage(const unsigned char *rgbData, double width, do
 	redraw();
 }
 
-void Fl_Gl_Paint_Canvas::DisposeImage(void)
+void Fl_Gl_Paint_Canvas::disposeImage(void)
 {
 	if (m_texturesNames)
 	{
-		glDeleteTextures(GetTexturesCount(), m_texturesNames);
+		glDeleteTextures(getTexturesCount(), m_texturesNames);
 		delete[] m_texturesNames;
 		m_texturesNames = NULL;
 		m_imageWidth = 0;
@@ -201,14 +201,14 @@ void Fl_Gl_Paint_Canvas::DisposeImage(void)
 	}
 }
 
-void Fl_Gl_Paint_Canvas::DrawImage(double x, double y, double width, double height)
+void Fl_Gl_Paint_Canvas::drawImage(double x, double y, double width, double height)
 {
 	if (m_texturesNames)
 	{
 		glColor4d(1, 1, 1, 1);
 		glEnable(GL_TEXTURE_2D);
-		unsigned int texturesRowsCount = GetTexturesRowsCount();
-		unsigned int texturesColumnsCount = GetTexturesColumnsCount();
+		unsigned int texturesRowsCount = getTexturesRowsCount();
+		unsigned int texturesColumnsCount = getTexturesColumnsCount();
 		double widthResizeFactor = width/(double)m_imageWidth;
 		double heightResizeFactor = height/(double)m_imageHeight;
 		double defaultTextureWidth = m_texturesSize * widthResizeFactor;
@@ -220,9 +220,9 @@ void Fl_Gl_Paint_Canvas::DrawImage(double x, double y, double width, double heig
 			for (unsigned int texturesColumn = 0; texturesColumn < texturesColumnsCount; texturesColumn++)
 			{
 				unsigned int currentTexture = texturesRow * texturesColumnsCount + texturesColumn;
-				unsigned int currentTexturePixelsColumns = GetTexturesColumnPixelColumns(texturesColumn);
+				unsigned int currentTexturePixelsColumns = getTexturesColumnPixelColumns(texturesColumn);
 				double currentTextureWidth = (double)currentTexturePixelsColumns * widthResizeFactor;
-				unsigned int currentTexturePixelsRows = GetTexturesRowPixelRows(texturesRow);
+				unsigned int currentTexturePixelsRows = getTexturesRowPixelRows(texturesRow);
 				double currentTextureHeight = (double)currentTexturePixelsRows * heightResizeFactor;
 				double currentTextureXOffset = texturesColumn * defaultTextureWidth;
 				double currentTexCoordMaxX = (GLdouble)currentTexturePixelsColumns / m_texturesSize;

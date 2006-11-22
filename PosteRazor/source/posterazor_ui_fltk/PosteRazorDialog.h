@@ -59,61 +59,61 @@ public:
 
 	int handle(int event);
 
-	void OpenSettingsDialog(void);
-	void OpenHelpDialog(void);
-	void HandleOptionsChangement(posteRazorSettings *settings);
+	void openSettingsDialog(void);
+	void openHelpDialog(void);
+	void handleOptionsChangement(posteRazorSettings *settings);
 	void next(void);
 	void prev(void);
-	void UpdateNavigationButtons(void);
-	const char* GetCurrentWizardStepStepInfoString(void);
-	int GetCurrentWizardStepNumber(void);
-	void UpdateStepInfoBar(void);
-	void UpdatePreview(void);
-	void UpdatePreviewState(void);
-	void UpdateLanguage(void);
+	void updateNavigationButtons(void);
+	const char* getCurrentWizardStepStepInfoString(void);
+	int getCurrentWizardStepNumber(void);
+	void updateStepInfoBar(void);
+	void updatePreview(void);
+	void updatePreviewState(void);
+	void updateLanguage(void);
 
-	void LoadInputImage(const char *fileName);
-	void UpdateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel);
-	void UpdateImageInfoFields(void);
+	void loadInputImage(const char *fileName);
+	void updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel);
+	void updateImageInfoFields(void);
 
-	static void HandlePaperFormatChoice_cb(Fl_Widget *widget, void *userData);
-	void HandlePaperSizeChangement(Fl_Widget *sourceWidget);
+	static void handlePaperFormatChoice_cb(Fl_Widget *widget, void *userData);
+	void handlePaperSizeChangement(Fl_Widget *sourceWidget);
 
-	void HandleOverlappingChangement(Fl_Widget *sourceWidget);
+	void handleOverlappingChangement(Fl_Widget *sourceWidget);
 
-	void UpdatePosterSizeFields(Fl_Widget *sourceWidget);
-	void UpdatePosterSizeGroupsState(void);
-	void HandlePosterImageAlignment(void);
+	void updatePosterSizeFields(Fl_Widget *sourceWidget);
+	void updatePosterSizeGroupsState(void);
+	void handlePosterImageAlignment(void);
 
-	void SavePoster(void);
-	void SetLaunchPDFApplication(void);
+	void savePoster(void);
+	void setLaunchPDFApplication(void);
 
-	void SetUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
+	void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
 
-	void SetPaperFormat(PaperFormats::ePaperFormats format);
-	void SetPaperOrientation(PaperFormats::ePaperOrientations orientation);
+	void setPaperFormat(PaperFormats::ePaperFormats format);
+	void setPaperOrientation(PaperFormats::ePaperOrientations orientation);
 
-	void SetPaperBorderTop(double border);
-	void SetPaperBorderRight(double border);
-	void SetPaperBorderBottom(double border);
-	void SetPaperBorderLeft(double border);
+	void setPaperBorderTop(double border);
+	void setPaperBorderRight(double border);
+	void setPaperBorderBottom(double border);
+	void setPaperBorderLeft(double border);
 
-	void SetCustomPaperWidth(double width);
-	void SetCustomPaperHeight(double height);
-	void SetUseCustomPaperSize(bool useIt);
+	void setCustomPaperWidth(double width);
+	void setCustomPaperHeight(double height);
+	void setUseCustomPaperSize(bool useIt);
 
-	void SetOverlappingWidth(double width);
-	void SetOverlappingHeight(double height);
-	void SetOverlappingPosition(PosteRazorEnums::eOverlappingPositions position);
+	void setOverlappingWidth(double width);
+	void setOverlappingHeight(double height);
+	void setOverlappingPosition(PosteRazorEnums::eOverlappingPositions position);
 
-	void SetPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width);
-	void SetPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height);
-	void SetPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode);
-	void SetPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment);
-	void SetPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment);
+	void setPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width);
+	void setPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height);
+	void setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode);
+	void setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment);
+	void setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment);
 
-	void SetPosterOutputFormat(ImageIOTypes::eImageFormats format);
-	void SetLaunchPDFApplication(bool launch);
+	void setPosterOutputFormat(ImageIOTypes::eImageFormats format);
+	void setLaunchPDFApplication(bool launch);
 };
 
 #endif
