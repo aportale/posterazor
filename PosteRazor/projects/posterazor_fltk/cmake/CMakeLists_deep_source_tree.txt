@@ -1,24 +1,24 @@
 SET(POSTERAZOR_CORESOURCES
-	../../../source/posterazor/PosteRazor.cxx
-	../../../source/posterazor/PosteRazorImageIO.cxx
-	../../../source/posterazor/PosteRazorPDFOutput.cxx
-	../../../source/tools/UnitsOfLength.cxx
-	../../../source/tools/PaperFormats.cxx
+	../../../source/posterazor/PosteRazor.cpp
+	../../../source/posterazor/PosteRazorImageIO.cpp
+	../../../source/posterazor/PosteRazorPDFOutput.cpp
+	../../../source/tools/UnitsOfLength.cpp
+	../../../source/tools/PaperFormats.cpp
 )
 
 SET(POSTERAZOR_UISOURCES
 	../../../source/posterazor_ui_common/PosteRazorDialogController.cpp
-	../../../source/posterazor_ui_common/translations/Translations.cxx
+	../../../source/posterazor_ui_common/translations/Translations.cpp
 	../../../source/posterazor_ui_fltk/Fl_Paint_Canvas_Base.cpp
 	../../../source/posterazor_ui_fltk/Fl_Paint_Canvas_Group.cpp
 	../../../source/posterazor_ui_fltk/Fl_Draw_Paint_Canvas.cpp
-	../../../source/posterazor_ui_fltk/Fl_Persistent_Preferences.cxx
+	../../../source/posterazor_ui_fltk/Fl_Persistent_Preferences.cpp
 	../../../source/posterazor_ui_fltk/Fl_Image_Text_Button.cpp
 	../../../source/posterazor_ui_fltk/Fl_PosteRazor_Spinner.cpp
-	../../../source/posterazor_ui_fltk/PosteRazorDialog.cxx
-	../../../source/posterazor_ui_fltk/PosteRazorHelpDialog.cxx
-	../../../source/posterazor_ui_fltk/PosteRazorSettingsDialog.cxx
-	../../../source/posterazor_ui_fltk/PosteRazorDialogUI.cxx
+	../../../source/posterazor_ui_fltk/PosteRazorDialog.cpp
+	../../../source/posterazor_ui_fltk/PosteRazorHelpDialog.cpp
+	../../../source/posterazor_ui_fltk/PosteRazorSettingsDialog.cpp
+	../../../source/posterazor_ui_fltk/PosteRazorDialogUI.cpp
 	../../../thirdparty/Fl_Native_File_Chooser/Fl_Native_File_Chooser.cxx
 )
 

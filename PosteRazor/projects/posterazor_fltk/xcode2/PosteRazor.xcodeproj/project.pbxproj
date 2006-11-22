@@ -18,20 +18,20 @@
 		82729AC109733F68004A7EF2 /* Fl_Image_Text_Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82729ABF09733F67004A7EF2 /* Fl_Image_Text_Button.cpp */; };
 		82814C2408A5642E006D2A26 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9504C8FFE6A3BC11CA0CBA /* ApplicationServices.framework */; };
 		82814C4308A5647B006D2A26 /* Fl_Native_File_Chooser.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82814C3B08A5647B006D2A26 /* Fl_Native_File_Chooser.cxx */; };
-		82814C6008A564A3006D2A26 /* PaperFormats.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82814C5708A564A3006D2A26 /* PaperFormats.cxx */; };
-		82C2674209351ED800E94922 /* UnitsOfLength.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82C2673E09351ED800E94922 /* UnitsOfLength.cxx */; };
+		82814C6008A564A3006D2A26 /* PaperFormats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82814C5708A564A3006D2A26 /* PaperFormats.cpp */; };
+		82C2674209351ED800E94922 /* UnitsOfLength.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82C2673E09351ED800E94922 /* UnitsOfLength.cpp */; };
 		82ED6224093FCA800032F854 /* PosteRazor.icns in Resources */ = {isa = PBXBuildFile; fileRef = 8239907208F175820038ED14 /* PosteRazor.icns */; };
-		82F01D8C093FC18A0037F1BD /* PosteRazor.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D58093FC18A0037F1BD /* PosteRazor.cxx */; };
-		82F01D8F093FC18A0037F1BD /* PosteRazorImageIO.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D5B093FC18A0037F1BD /* PosteRazorImageIO.cxx */; };
-		82F01D91093FC18A0037F1BD /* PosteRazorPDFOutput.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D5D093FC18A0037F1BD /* PosteRazorPDFOutput.cxx */; };
+		82F01D8C093FC18A0037F1BD /* PosteRazor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D58093FC18A0037F1BD /* PosteRazor.cpp */; };
+		82F01D8F093FC18A0037F1BD /* PosteRazorImageIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D5B093FC18A0037F1BD /* PosteRazorImageIO.cpp */; };
+		82F01D91093FC18A0037F1BD /* PosteRazorPDFOutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D5D093FC18A0037F1BD /* PosteRazorPDFOutput.cpp */; };
 		82F01D93093FC18A0037F1BD /* Fl_Draw_Paint_Canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D60093FC18A0037F1BD /* Fl_Draw_Paint_Canvas.cpp */; };
 		82F01D95093FC18A0037F1BD /* Fl_Gl_Paint_Canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D62093FC18A0037F1BD /* Fl_Gl_Paint_Canvas.cpp */; };
 		82F01D97093FC18A0037F1BD /* Fl_Paint_Canvas_Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D64093FC18A0037F1BD /* Fl_Paint_Canvas_Base.cpp */; };
 		82F01D99093FC18A0037F1BD /* Fl_Paint_Canvas_Group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D66093FC18A0037F1BD /* Fl_Paint_Canvas_Group.cpp */; };
-		82F01D9B093FC18A0037F1BD /* Fl_Persistent_Preferences.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D68093FC18A0037F1BD /* Fl_Persistent_Preferences.cxx */; };
-		82F01DAB093FC18A0037F1BD /* PosteRazorDialog.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D7A093FC18A0037F1BD /* PosteRazorDialog.cxx */; };
-		82F01DAD093FC18A0037F1BD /* PosteRazorDialogUI.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D7C093FC18A0037F1BD /* PosteRazorDialogUI.cxx */; };
-		82F01DB6093FC18A0037F1BD /* Translations.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D86093FC18A0037F1BD /* Translations.cxx */; };
+		82F01D9B093FC18A0037F1BD /* Fl_Persistent_Preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D68093FC18A0037F1BD /* Fl_Persistent_Preferences.cpp */; };
+		82F01DAB093FC18A0037F1BD /* PosteRazorDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D7A093FC18A0037F1BD /* PosteRazorDialog.cpp */; };
+		82F01DAD093FC18A0037F1BD /* PosteRazorDialogUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D7C093FC18A0037F1BD /* PosteRazorDialogUI.cpp */; };
+		82F01DB6093FC18A0037F1BD /* Translations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D86093FC18A0037F1BD /* Translations.cpp */; };
 		8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,20 +69,20 @@
 		82729AC009733F68004A7EF2 /* Fl_Image_Text_Button.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Image_Text_Button.h; sourceTree = "<group>"; };
 		82814C3708A5647B006D2A26 /* Fl_Native_File_Chooser.H */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Fl_Native_File_Chooser.H; sourceTree = "<group>"; };
 		82814C3B08A5647B006D2A26 /* Fl_Native_File_Chooser.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Native_File_Chooser.cxx; sourceTree = "<group>"; };
-		82814C5708A564A3006D2A26 /* PaperFormats.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PaperFormats.cxx; sourceTree = "<group>"; };
+		82814C5708A564A3006D2A26 /* PaperFormats.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PaperFormats.cpp; sourceTree = "<group>"; };
 		82814C5808A564A3006D2A26 /* PaperFormats.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PaperFormats.h; sourceTree = "<group>"; };
 		82C2673C09351ED800E94922 /* ImageIOTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ImageIOTypes.h; sourceTree = "<group>"; };
 		82C2673D09351ED800E94922 /* PersistentPreferencesInterface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PersistentPreferencesInterface.h; sourceTree = "<group>"; };
-		82C2673E09351ED800E94922 /* UnitsOfLength.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UnitsOfLength.cxx; sourceTree = "<group>"; };
+		82C2673E09351ED800E94922 /* UnitsOfLength.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UnitsOfLength.cpp; sourceTree = "<group>"; };
 		82C2673F09351ED800E94922 /* UnitsOfLength.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UnitsOfLength.h; sourceTree = "<group>"; };
 		82C4FB8E0A129EDA00DAB52D /* TranslationFrench.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationFrench.h; sourceTree = "<group>"; };
 		82CE849A0A442D8A00AE4F68 /* TranslationConstants.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationConstants.h; sourceTree = "<group>"; };
 		82E5567008A56658001EEB51 /* PosteRazor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosteRazor.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		82F01D58093FC18A0037F1BD /* PosteRazor.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazor.cxx; sourceTree = "<group>"; };
+		82F01D58093FC18A0037F1BD /* PosteRazor.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazor.cpp; sourceTree = "<group>"; };
 		82F01D59093FC18A0037F1BD /* PosteRazor.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazor.h; sourceTree = "<group>"; };
-		82F01D5B093FC18A0037F1BD /* PosteRazorImageIO.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorImageIO.cxx; sourceTree = "<group>"; };
+		82F01D5B093FC18A0037F1BD /* PosteRazorImageIO.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorImageIO.cpp; sourceTree = "<group>"; };
 		82F01D5C093FC18A0037F1BD /* PosteRazorImageIO.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorImageIO.h; sourceTree = "<group>"; };
-		82F01D5D093FC18A0037F1BD /* PosteRazorPDFOutput.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorPDFOutput.cxx; sourceTree = "<group>"; };
+		82F01D5D093FC18A0037F1BD /* PosteRazorPDFOutput.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorPDFOutput.cpp; sourceTree = "<group>"; };
 		82F01D5E093FC18A0037F1BD /* PosteRazorPDFOutput.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorPDFOutput.h; sourceTree = "<group>"; };
 		82F01D60093FC18A0037F1BD /* Fl_Draw_Paint_Canvas.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Draw_Paint_Canvas.cpp; sourceTree = "<group>"; };
 		82F01D61093FC18A0037F1BD /* Fl_Draw_Paint_Canvas.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Draw_Paint_Canvas.h; sourceTree = "<group>"; };
@@ -92,17 +92,17 @@
 		82F01D65093FC18A0037F1BD /* Fl_Paint_Canvas_Base.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Paint_Canvas_Base.h; sourceTree = "<group>"; };
 		82F01D66093FC18A0037F1BD /* Fl_Paint_Canvas_Group.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Paint_Canvas_Group.cpp; sourceTree = "<group>"; };
 		82F01D67093FC18A0037F1BD /* Fl_Paint_Canvas_Group.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Paint_Canvas_Group.h; sourceTree = "<group>"; };
-		82F01D68093FC18A0037F1BD /* Fl_Persistent_Preferences.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Persistent_Preferences.cxx; sourceTree = "<group>"; };
+		82F01D68093FC18A0037F1BD /* Fl_Persistent_Preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Persistent_Preferences.cpp; sourceTree = "<group>"; };
 		82F01D69093FC18A0037F1BD /* Fl_Persistent_Preferences.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Persistent_Preferences.h; sourceTree = "<group>"; };
-		82F01D7A093FC18A0037F1BD /* PosteRazorDialog.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorDialog.cxx; sourceTree = "<group>"; };
+		82F01D7A093FC18A0037F1BD /* PosteRazorDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorDialog.cpp; sourceTree = "<group>"; };
 		82F01D7B093FC18A0037F1BD /* PosteRazorDialog.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorDialog.h; sourceTree = "<group>"; };
-		82F01D7C093FC18A0037F1BD /* PosteRazorDialogUI.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorDialogUI.cxx; sourceTree = "<group>"; };
+		82F01D7C093FC18A0037F1BD /* PosteRazorDialogUI.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorDialogUI.cpp; sourceTree = "<group>"; };
 		82F01D7D093FC18A0037F1BD /* PosteRazorDialogUI.fl */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = PosteRazorDialogUI.fl; sourceTree = "<group>"; };
 		82F01D7E093FC18A0037F1BD /* PosteRazorDialogUI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorDialogUI.h; sourceTree = "<group>"; };
 		82F01D81093FC18A0037F1BD /* TranslationEnglish.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationEnglish.h; sourceTree = "<group>"; };
 		82F01D83093FC18A0037F1BD /* TranslationGerman.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationGerman.h; sourceTree = "<group>"; };
 		82F01D84093FC18A0037F1BD /* TranslationInterface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationInterface.h; sourceTree = "<group>"; };
-		82F01D86093FC18A0037F1BD /* Translations.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Translations.cxx; sourceTree = "<group>"; };
+		82F01D86093FC18A0037F1BD /* Translations.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Translations.cpp; sourceTree = "<group>"; };
 		82F01D87093FC18A0037F1BD /* Translations.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Translations.h; sourceTree = "<group>"; };
 		82F043CC08B2A2F500EED792 /* PaintCanvasInterface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PaintCanvasInterface.h; sourceTree = "<group>"; };
 		82F681D508AAA31500D5DF2C /* ColorTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ColorTypes.h; sourceTree = "<group>"; };
@@ -204,11 +204,11 @@
 			children = (
 				82C2673C09351ED800E94922 /* ImageIOTypes.h */,
 				82C2673D09351ED800E94922 /* PersistentPreferencesInterface.h */,
-				82C2673E09351ED800E94922 /* UnitsOfLength.cxx */,
+				82C2673E09351ED800E94922 /* UnitsOfLength.cpp */,
 				82C2673F09351ED800E94922 /* UnitsOfLength.h */,
 				82F043CC08B2A2F500EED792 /* PaintCanvasInterface.h */,
 				82F681D508AAA31500D5DF2C /* ColorTypes.h */,
-				82814C5708A564A3006D2A26 /* PaperFormats.cxx */,
+				82814C5708A564A3006D2A26 /* PaperFormats.cpp */,
 				82814C5808A564A3006D2A26 /* PaperFormats.h */,
 			);
 			name = tools;
@@ -218,11 +218,11 @@
 		82F01D57093FC18A0037F1BD /* posterazor */ = {
 			isa = PBXGroup;
 			children = (
-				82F01D58093FC18A0037F1BD /* PosteRazor.cxx */,
+				82F01D58093FC18A0037F1BD /* PosteRazor.cpp */,
 				82F01D59093FC18A0037F1BD /* PosteRazor.h */,
-				82F01D5B093FC18A0037F1BD /* PosteRazorImageIO.cxx */,
+				82F01D5B093FC18A0037F1BD /* PosteRazorImageIO.cpp */,
 				82F01D5C093FC18A0037F1BD /* PosteRazorImageIO.h */,
-				82F01D5D093FC18A0037F1BD /* PosteRazorPDFOutput.cxx */,
+				82F01D5D093FC18A0037F1BD /* PosteRazorPDFOutput.cpp */,
 				82F01D5E093FC18A0037F1BD /* PosteRazorPDFOutput.h */,
 				82F01D5F093FC18A0037F1BD /* ui */,
 			);
@@ -243,11 +243,11 @@
 				82F01D65093FC18A0037F1BD /* Fl_Paint_Canvas_Base.h */,
 				82F01D66093FC18A0037F1BD /* Fl_Paint_Canvas_Group.cpp */,
 				82F01D67093FC18A0037F1BD /* Fl_Paint_Canvas_Group.h */,
-				82F01D68093FC18A0037F1BD /* Fl_Persistent_Preferences.cxx */,
+				82F01D68093FC18A0037F1BD /* Fl_Persistent_Preferences.cpp */,
 				82F01D69093FC18A0037F1BD /* Fl_Persistent_Preferences.h */,
-				82F01D7A093FC18A0037F1BD /* PosteRazorDialog.cxx */,
+				82F01D7A093FC18A0037F1BD /* PosteRazorDialog.cpp */,
 				82F01D7B093FC18A0037F1BD /* PosteRazorDialog.h */,
-				82F01D7C093FC18A0037F1BD /* PosteRazorDialogUI.cxx */,
+				82F01D7C093FC18A0037F1BD /* PosteRazorDialogUI.cpp */,
 				82F01D7D093FC18A0037F1BD /* PosteRazorDialogUI.fl */,
 				82F01D7E093FC18A0037F1BD /* PosteRazorDialogUI.h */,
 				82F01D7F093FC18A0037F1BD /* translations */,
@@ -264,7 +264,7 @@
 				82F01D81093FC18A0037F1BD /* TranslationEnglish.h */,
 				82F01D83093FC18A0037F1BD /* TranslationGerman.h */,
 				82F01D84093FC18A0037F1BD /* TranslationInterface.h */,
-				82F01D86093FC18A0037F1BD /* Translations.cxx */,
+				82F01D86093FC18A0037F1BD /* Translations.cpp */,
 				82F01D87093FC18A0037F1BD /* Translations.h */,
 			);
 			path = translations;
@@ -342,19 +342,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				82814C4308A5647B006D2A26 /* Fl_Native_File_Chooser.cxx in Sources */,
-				82814C6008A564A3006D2A26 /* PaperFormats.cxx in Sources */,
-				82C2674209351ED800E94922 /* UnitsOfLength.cxx in Sources */,
-				82F01D8C093FC18A0037F1BD /* PosteRazor.cxx in Sources */,
-				82F01D8F093FC18A0037F1BD /* PosteRazorImageIO.cxx in Sources */,
-				82F01D91093FC18A0037F1BD /* PosteRazorPDFOutput.cxx in Sources */,
+				82814C6008A564A3006D2A26 /* PaperFormats.cpp in Sources */,
+				82C2674209351ED800E94922 /* UnitsOfLength.cpp in Sources */,
+				82F01D8C093FC18A0037F1BD /* PosteRazor.cpp in Sources */,
+				82F01D8F093FC18A0037F1BD /* PosteRazorImageIO.cpp in Sources */,
+				82F01D91093FC18A0037F1BD /* PosteRazorPDFOutput.cpp in Sources */,
 				82F01D93093FC18A0037F1BD /* Fl_Draw_Paint_Canvas.cpp in Sources */,
 				82F01D95093FC18A0037F1BD /* Fl_Gl_Paint_Canvas.cpp in Sources */,
 				82F01D97093FC18A0037F1BD /* Fl_Paint_Canvas_Base.cpp in Sources */,
 				82F01D99093FC18A0037F1BD /* Fl_Paint_Canvas_Group.cpp in Sources */,
-				82F01D9B093FC18A0037F1BD /* Fl_Persistent_Preferences.cxx in Sources */,
-				82F01DAB093FC18A0037F1BD /* PosteRazorDialog.cxx in Sources */,
-				82F01DAD093FC18A0037F1BD /* PosteRazorDialogUI.cxx in Sources */,
-				82F01DB6093FC18A0037F1BD /* Translations.cxx in Sources */,
+				82F01D9B093FC18A0037F1BD /* Fl_Persistent_Preferences.cpp in Sources */,
+				82F01DAB093FC18A0037F1BD /* PosteRazorDialog.cpp in Sources */,
+				82F01DAD093FC18A0037F1BD /* PosteRazorDialogUI.cpp in Sources */,
+				82F01DB6093FC18A0037F1BD /* Translations.cpp in Sources */,
 				82729AC109733F68004A7EF2 /* Fl_Image_Text_Button.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

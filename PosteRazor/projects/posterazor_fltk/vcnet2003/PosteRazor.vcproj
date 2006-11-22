@@ -103,19 +103,19 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
 			<File
-				RelativePath="..\..\..\source\tools\PaperFormats.cxx">
+				RelativePath="..\..\..\source\tools\PaperFormats.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor\PosteRazor.cxx">
+				RelativePath="..\..\..\source\posterazor\PosteRazor.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor\PosteRazorImageIO.cxx">
+				RelativePath="..\..\..\source\posterazor\PosteRazorImageIO.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor\PosteRazorPDFOutput.cxx">
+				RelativePath="..\..\..\source\posterazor\PosteRazorPDFOutput.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\tools\UnitsOfLength.cxx">
+				RelativePath="..\..\..\source\tools\UnitsOfLength.cpp">
 			</File>
 		</Filter>
 		<Filter

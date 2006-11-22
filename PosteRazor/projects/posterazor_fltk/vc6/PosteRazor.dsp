@@ -85,23 +85,23 @@ LIB32=link.exe -lib
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=..\..\..\source\tools\PaperFormats.cxx
+SOURCE=..\..\..\source\tools\PaperFormats.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\source\posterazor\PosteRazor.cxx
+SOURCE=..\..\..\source\posterazor\PosteRazor.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\source\posterazor\PosteRazorImageIO.cxx
+SOURCE=..\..\..\source\posterazor\PosteRazorImageIO.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\source\posterazor\PosteRazorPDFOutput.cxx
+SOURCE=..\..\..\source\posterazor\PosteRazorPDFOutput.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\source\tools\UnitsOfLength.cxx
+SOURCE=..\..\..\source\tools\UnitsOfLength.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"

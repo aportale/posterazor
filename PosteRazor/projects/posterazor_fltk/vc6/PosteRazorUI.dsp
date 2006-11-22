@@ -108,7 +108,7 @@ SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_Paint_Canvas_Group.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_Persistent_Preferences.cxx
+SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_Persistent_Preferences.cpp
 # End Source File
 # Begin Source File
 
@@ -116,7 +116,7 @@ SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_PosteRazor_Spinner.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\source\posterazor_ui_fltk\PosteRazorDialog.cxx
+SOURCE=..\..\..\source\posterazor_ui_fltk\PosteRazorDialog.cpp
 # End Source File
 # Begin Source File
 
@@ -124,15 +124,15 @@ SOURCE=..\..\..\source\posterazor_ui_common\PosteRazorDialogController.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\source\posterazor_ui_fltk\PosteRazorDialogUI.cxx
+SOURCE=..\..\..\source\posterazor_ui_fltk\PosteRazorDialogUI.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\source\posterazor_ui_fltk\PosteRazorHelpDialog.cxx
+SOURCE=..\..\..\source\posterazor_ui_fltk\PosteRazorHelpDialog.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\source\posterazor_ui_fltk\PosteRazorSettingsDialog.cxx
+SOURCE=..\..\..\source\posterazor_ui_fltk\PosteRazorSettingsDialog.cpp
 # End Source File
 # Begin Source File
 
@@ -140,7 +140,7 @@ SOURCE=..\..\..\source\posterazor_ui_common\windowsResources\PosteRazorUI.rc
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\source\posterazor_ui_common\translations\Translations.cxx
+SOURCE=..\..\..\source\posterazor_ui_common\translations\Translations.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"
