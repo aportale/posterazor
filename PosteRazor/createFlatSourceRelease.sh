@@ -30,7 +30,7 @@ mkdir $POSTERAZORPATH
 mkdir $FLNATIVEFILECHOOSERPATH
 
 for pathtocopy in $PATHSTOCOPY; do
-    cp $pathtocopy/*.{cpp,cxx,h} $POSTERAZORPATH;
+    cp $pathtocopy/*.{cpp,h} $POSTERAZORPATH;
 done
 
 for filetocopy in $FILESTOCOPY; do
