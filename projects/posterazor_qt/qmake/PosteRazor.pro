@@ -1,13 +1,13 @@
 TEMPLATE = app
 
 SOURCES += \
-	../../../source/tools/PaperFormats.cxx \
+	../../../source/tools/PaperFormats.cpp \
 	../../../source/tools/PaintCanvasBase.cpp \
-	../../../source/tools/UnitsOfLength.cxx \
-	../../../source/tools/ImageIOTypes.cxx \
-	../../../source/posterazor/PosteRazor.cxx \
-	../../../source/posterazor/PosteRazorImageIO.cxx \
-	../../../source/posterazor/PosteRazorPDFOutput.cxx \
+	../../../source/tools/UnitsOfLength.cpp \
+	../../../source/tools/ImageIOTypes.cpp \
+	../../../source/posterazor/PosteRazor.cpp \
+	../../../source/posterazor/PosteRazorImageIO.cpp \
+	../../../source/posterazor/PosteRazorPDFOutput.cpp \
 	../../../source/posterazor_ui_qt/PosteRazorDialog.cpp \
 	../../../source/posterazor_ui_qt/QPaintCanvas.cpp \
 	../../../source/posterazor_ui_common/PosteRazorDialogController.cpp
