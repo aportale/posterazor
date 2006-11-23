@@ -2,10 +2,12 @@
 #include <QApplication>
 #include <QHeaderView>
 #include <QFileDialog>
+#include "QPersistentPreferences.h"
 
 PosteRazorDialog::PosteRazorDialog(QWidget *parent, Qt::WFlags flags)
 :	QDialog(parent, flags)
 {
+	setAttribute(Qt::WA_DeleteOnClose);
 	setupUi(this);
 	m_wizard->setCurrentIndex(0);
 
@@ -13,7 +15,16 @@ PosteRazorDialog::PosteRazorDialog(QWidget *parent, Qt::WFlags flags)
 	populateUI();
 	createPosteRazorDialogController();
 
+	QPersistentPreferences preferences;
+	m_posteRazorController->readPersistentPreferences(&preferences);
+
 	updatePosterSizeGroupsState();
+}
+
+PosteRazorDialog::~PosteRazorDialog()
+{
+	QPersistentPreferences preferences;
+	m_posteRazorController->writePersistentPreferences(&preferences);
 }
 
 void PosteRazorDialog::setUnitOfLength(UnitsOfLength::eUnitsOfLength unit)
@@ -154,7 +165,7 @@ void PosteRazorDialog::updateImageInfoFields(int imageWidthInPixels, int imageHe
 	QString colorTypeString
 	(
 		colorType==ColorTypes::eColorTypeMonochrome?tr("Monochrome"):
-		colorType==ColorTypes::eColorTypeGreyscale?tr("Grayscale"):
+		colorType==ColorTypes::eColorTypeGreyscale?tr("Gray scale"):
 		colorType==ColorTypes::eColorTypePalette?tr("Palette"):
 		colorType==ColorTypes::eColorTypeRGB?tr("RGB"):
 		colorType==ColorTypes::eColorTypeRGBA?tr("RGBA"):
@@ -237,10 +248,10 @@ void PosteRazorDialog::createConnections(void)
 	connect(m_posterSizeInPagesRadioButton, SIGNAL(clicked()), this, SLOT(updatePosterSizeGroupsState()));
 	connect(m_posterSizePercentualRadioButton, SIGNAL(clicked()), this, SLOT(updatePosterSizeGroupsState()));
 
-	connect(m_posterAbsoluteWidthInput, SIGNAL(valueChanged(double)), this, SLOT(handlePosterWidthAbsoluteChanged(double)));
-	connect(m_posterAbsoluteHeightInput, SIGNAL(valueChanged(double)), this, SLOT(handlePosterHeightAbsoluteChanged(double)));
-	connect(m_posterPagesWidthInput, SIGNAL(valueChanged(double)), this, SLOT(handlePosterWidthPagesChanged(double)));
-	connect(m_posterPagesHeightInput, SIGNAL(valueChanged(double)), this, SLOT(handlePosterHeightPagesChanged(double)));
+	connect(m_posterAbsoluteWidthInput, SIGNAL(valueEdited(double)), this, SLOT(handlePosterWidthAbsoluteChanged(double)));
+	connect(m_posterAbsoluteHeightInput, SIGNAL(valueEdited(double)), this, SLOT(handlePosterHeightAbsoluteChanged(double)));
+	connect(m_posterPagesWidthInput, SIGNAL(valueEdited(double)), this, SLOT(handlePosterWidthPagesChanged(double)));
+	connect(m_posterPagesHeightInput, SIGNAL(valueEdited(double)), this, SLOT(handlePosterHeightPagesChanged(double)));
 }
 
 void PosteRazorDialog::createPosteRazorDialogController(void)
@@ -304,6 +315,9 @@ void PosteRazorDialog::loadInputImage(const QString &fileName)
 int main (int argc, char **argv)
 {
 	QApplication a(argc, argv);
+	QCoreApplication::setApplicationName("PosteRazor 1.4");
+	QCoreApplication::setOrganizationName("CasaPortale");
+	QCoreApplication::setOrganizationDomain("de.casaportale");
 
 	PosteRazorDialog *dialog = new PosteRazorDialog(NULL, Qt::Window);
 	dialog->show();

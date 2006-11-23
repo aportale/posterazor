@@ -9,6 +9,8 @@ SOURCES += \
 	../../../source/posterazor/PosteRazorImageIO.cpp \
 	../../../source/posterazor/PosteRazorPDFOutput.cpp \
 	../../../source/posterazor_ui_qt/PosteRazorDialog.cpp \
+	../../../source/posterazor_ui_qt/QPersistentPreferences.cpp \
+	../../../source/posterazor_ui_qt/QPosteRazorSpinBox.cpp \
 	../../../source/posterazor_ui_qt/QPaintCanvas.cpp \
 	../../../source/posterazor_ui_common/PosteRazorDialogController.cpp
 
@@ -24,6 +26,8 @@ HEADERS += \
 	../../../source/posterazor/PosteRazorImageIO.h \
 	../../../source/posterazor/PosteRazorPDFOutput.h \
 	../../../source/posterazor_ui_qt/PosteRazorDialog.h \
+	../../../source/posterazor_ui_qt/QPersistentPreferences.h \
+	../../../source/posterazor_ui_qt/QPosteRazorSpinBox.h \
 	../../../source/posterazor_ui_qt/QPaintCanvas.h \
 	../../../source/posterazor_ui_common/PosteRazorDialogController.h
 

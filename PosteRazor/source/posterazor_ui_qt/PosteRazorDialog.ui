@@ -104,7 +104,7 @@
         <enum>QFrame::Sunken</enum>
        </property>
        <property name="currentIndex" >
-        <number>0</number>
+        <number>3</number>
        </property>
        <widget class="QWidget" name="m_loadInputImageStep" >
         <layout class="QVBoxLayout" >
@@ -897,16 +897,6 @@
               </property>
              </widget>
             </item>
-            <item row="5" column="1" >
-             <widget class="QDoubleSpinBox" name="m_posterPagesHeightInput" >
-              <property name="buttonSymbols" >
-               <enum>QAbstractSpinBox::PlusMinus</enum>
-              </property>
-              <property name="maximum" >
-               <double>999999.000000000000000</double>
-              </property>
-             </widget>
-            </item>
             <item row="2" column="2" >
              <widget class="QLabel" name="m_posterAbsoluteHeightDimensionUnitLabel" >
               <property name="text" >
@@ -952,16 +942,6 @@
               </property>
              </widget>
             </item>
-            <item row="4" column="1" >
-             <widget class="QDoubleSpinBox" name="m_posterPagesWidthInput" >
-              <property name="buttonSymbols" >
-               <enum>QAbstractSpinBox::PlusMinus</enum>
-              </property>
-              <property name="maximum" >
-               <double>999999.000000000000000</double>
-              </property>
-             </widget>
-            </item>
             <item row="3" column="0" colspan="3" >
              <widget class="QRadioButton" name="m_posterSizeInPagesRadioButton" >
               <property name="text" >
@@ -979,16 +959,6 @@
               </property>
              </widget>
             </item>
-            <item row="2" column="1" >
-             <widget class="QDoubleSpinBox" name="m_posterAbsoluteHeightInput" >
-              <property name="buttonSymbols" >
-               <enum>QAbstractSpinBox::PlusMinus</enum>
-              </property>
-              <property name="maximum" >
-               <double>999999.000000000000000</double>
-              </property>
-             </widget>
-            </item>
             <item row="1" column="0" >
              <widget class="QLabel" name="m_posterAbsoluteWidthLabel" >
               <property name="text" >
@@ -996,16 +966,6 @@
               </property>
               <property name="alignment" >
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1" >
-             <widget class="QDoubleSpinBox" name="m_posterAbsoluteWidthInput" >
-              <property name="buttonSymbols" >
-               <enum>QAbstractSpinBox::PlusMinus</enum>
-              </property>
-              <property name="maximum" >
-               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -1029,20 +989,75 @@
               </property>
              </widget>
             </item>
-            <item row="7" column="1" >
-             <widget class="QDoubleSpinBox" name="m_posterPercentualSizeInput" >
+            <item row="7" column="2" >
+             <widget class="QLabel" name="m_posterPercentualSizeUnitLabel" >
+              <property name="text" >
+               <string>%</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1" >
+             <widget class="QPosteRazorSpinBox" name="m_posterPagesWidthInput" >
               <property name="buttonSymbols" >
                <enum>QAbstractSpinBox::PlusMinus</enum>
+              </property>
+              <property name="decimals" >
+               <number>4</number>
               </property>
               <property name="maximum" >
                <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
-            <item row="7" column="2" >
-             <widget class="QLabel" name="m_posterPercentualSizeUnitLabel" >
-              <property name="text" >
-               <string>%</string>
+            <item row="5" column="1" >
+             <widget class="QPosteRazorSpinBox" name="m_posterPagesHeightInput" >
+              <property name="buttonSymbols" >
+               <enum>QAbstractSpinBox::PlusMinus</enum>
+              </property>
+              <property name="decimals" >
+               <number>4</number>
+              </property>
+              <property name="maximum" >
+               <double>999999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1" >
+             <widget class="QPosteRazorSpinBox" name="m_posterAbsoluteHeightInput" >
+              <property name="buttonSymbols" >
+               <enum>QAbstractSpinBox::PlusMinus</enum>
+              </property>
+              <property name="decimals" >
+               <number>4</number>
+              </property>
+              <property name="maximum" >
+               <double>999999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1" >
+             <widget class="QPosteRazorSpinBox" name="m_posterAbsoluteWidthInput" >
+              <property name="buttonSymbols" >
+               <enum>QAbstractSpinBox::PlusMinus</enum>
+              </property>
+              <property name="decimals" >
+               <number>4</number>
+              </property>
+              <property name="maximum" >
+               <double>999999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="1" >
+             <widget class="QPosteRazorSpinBox" name="m_posterPercentualSizeInput" >
+              <property name="buttonSymbols" >
+               <enum>QAbstractSpinBox::PlusMinus</enum>
+              </property>
+              <property name="decimals" >
+               <number>4</number>
+              </property>
+              <property name="maximum" >
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -1326,6 +1341,11 @@
    <class>QPaintCanvas</class>
    <extends>QWidget</extends>
    <header>QPaintCanvas.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QPosteRazorSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>QPosteRazorSpinBox.h</header>
   </customwidget>
  </customwidgets>
  <resources>
