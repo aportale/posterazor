@@ -8,6 +8,7 @@ class PosteRazorDialogInterface: public PosteRazorSettersInterface
 public:
 	virtual void updatePreview(void) = 0;
 	virtual void updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel) = 0;
+	virtual ~PosteRazorDialogInterface() {};
 };
 
 class PosteRazorDialogController: public PosteRazorSettersInterface, public PosteRazorActionsInterface

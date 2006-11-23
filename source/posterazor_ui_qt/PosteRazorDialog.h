@@ -10,7 +10,8 @@ class PosteRazorDialog : public QDialog, private Ui::PosteRazorDialogUI, public 
 	Q_OBJECT
 
 public:
-	PosteRazorDialog::PosteRazorDialog(QWidget *parent = 0, Qt::WFlags flags = 0);
+	PosteRazorDialog(QWidget *parent = 0, Qt::WFlags flags = 0);
+	~PosteRazorDialog();
 
 	virtual void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
 
