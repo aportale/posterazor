@@ -61,6 +61,7 @@ public:
 	void setPaperFormat(PaperFormats::ePaperFormats format)
 	{
 		m_PosteRazor->setPaperFormat(format);
+		SetDialogPosterOptions();
 		updatePreview();
 	}
 
@@ -73,60 +74,70 @@ public:
 	void setPaperOrientation(PaperFormats::ePaperOrientations orientation)
 	{
 		m_PosteRazor->setPaperOrientation(orientation);
+		SetDialogPosterOptions();
 		updatePreview();
 	}
 
 	void setPaperBorderTop(double border)
 	{
 		m_PosteRazor->setPaperBorderTop(border);
+		SetDialogPosterOptions();
 		updatePreview();
 	}
 
 	void setPaperBorderRight(double border)
 	{
 		m_PosteRazor->setPaperBorderRight(border);
+		SetDialogPosterOptions();
 		updatePreview();
 	}
 
 	void setPaperBorderBottom(double border)
 	{
 		m_PosteRazor->setPaperBorderBottom(border);
+		SetDialogPosterOptions();
 		updatePreview();
 	}
 
 	void setPaperBorderLeft(double border)
 	{
 		m_PosteRazor->setPaperBorderLeft(border);
+		SetDialogPosterOptions();
 		updatePreview();
 	}
 
 	void setCustomPaperWidth(double width)
 	{
 		m_PosteRazor->setCustomPaperWidth(width);
+		SetDialogPosterOptions();
 		updatePreview();
 	}
 
 	void setCustomPaperHeight(double height)
 	{
 		m_PosteRazor->setCustomPaperHeight(height);
+		SetDialogPosterOptions();
 		updatePreview();
 	}
 
 	void setUseCustomPaperSize(bool useIt)
 	{
 		m_PosteRazor->setUseCustomPaperSize(useIt);
+		SetDialogPosterOptions();
 		updatePreview();
 	}
 
 	void setOverlappingWidth(double width)
 	{
 		m_PosteRazor->setOverlappingWidth(width);
+		SetDialogPosterOptions();
 		updatePreview();
 	}
 
 	void setOverlappingHeight(double height)
 	{
 		m_PosteRazor->setOverlappingHeight(height);
+		SetDialogPosterOptions();
 		updatePreview();
 	}
 
