@@ -130,7 +130,11 @@ void QPaintCanvas::drawImage(double x, double y, double width, double height)
 {
 	if (m_image && width >= 1.0 && height >= 1.0) // >= 1.0 because otherwise an assertion would fail deep in Qt
 	{	
-		m_qPainter->setRenderHint(QPainter::SmoothPixmapTransform, true);
+		double widthResizeFactor = width/(double)m_image->width();
+
+		if (widthResizeFactor < 2.75)
+			m_qPainter->setRenderHint(QPainter::SmoothPixmapTransform, true);
+
 		m_qPainter->drawImage(QRect((int)x, (int)y, (int)width, (int)height), *m_image);
 	}
 }
