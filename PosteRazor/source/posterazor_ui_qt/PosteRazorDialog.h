@@ -57,10 +57,21 @@ private slots:
 	void handlePaperFormatComboBoxActivated(int index);
 	void handleImageLoadButtonClicked(void);
 
+	void handleOverLappingWidthChanged(double width);
+	void handleOverLappingHeightChanged(double height);
+
 	void handlePosterWidthAbsoluteChanged(double width);
 	void handlePosterHeightAbsoluteChanged(double height);
 	void handlePosterWidthPagesChanged(double width);
 	void handlePosterHeightPagesChanged(double height);
+	void handlePosterSizePercentualChanged(double percent);
+
+	void handlePosterHorizontalAlignmentLeftSelected(void);
+	void handlePosterHorizontalAlignmentCenterSelected(void);
+	void handlePosterHorizontalAlignmentRightSelected(void);
+	void handlePosterVerticalAlignmentTopSelected(void);
+	void handlePosterVerticalAlignmentMiddleSelected(void);
+	void handlePosterVerticalAlignmentBottomSelected(void);
 
 	void updatePosterSizeGroupsState(void);
 	void loadInputImage(const QString &fileName);
