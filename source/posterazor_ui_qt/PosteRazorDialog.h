@@ -69,6 +69,10 @@ private slots:
 
 	void handleOverlappingWidthChanged(double width);
 	void handleOverlappingHeightChanged(double height);
+	void handleOverlappingPositionTopLeftSelected(void);
+	void handleOverlappingPositionTopRightSelected(void);
+	void handleOverlappingPositionBottomRightSelected(void);
+	void handleOverlappingPositionBottomLeftSelected(void);
 
 	void handlePosterWidthAbsoluteChanged(double width);
 	void handlePosterHeightAbsoluteChanged(double height);

@@ -272,6 +272,26 @@ void PosteRazorDialog::handleOverlappingHeightChanged(double height)
 	m_posteRazorController->setOverlappingHeight(height);
 }
 
+void PosteRazorDialog::handleOverlappingPositionTopLeftSelected(void)
+{
+	m_posteRazorController->setOverlappingPosition(PosteRazorEnums::eOverlappingPositionTopLeft);
+}
+
+void PosteRazorDialog::handleOverlappingPositionTopRightSelected(void)
+{
+	m_posteRazorController->setOverlappingPosition(PosteRazorEnums::eOverlappingPositionTopRight);
+}
+
+void PosteRazorDialog::handleOverlappingPositionBottomRightSelected(void)
+{
+	m_posteRazorController->setOverlappingPosition(PosteRazorEnums::eOverlappingPositionBottomRight);
+}
+
+void PosteRazorDialog::handleOverlappingPositionBottomLeftSelected(void)
+{
+	m_posteRazorController->setOverlappingPosition(PosteRazorEnums::eOverlappingPositionBottomLeft);
+}
+
 void PosteRazorDialog::handlePosterWidthAbsoluteChanged(double width)
 {
 	m_posteRazorController->setPosterWidth(PosteRazorEnums::ePosterSizeModeAbsolute, width);
@@ -351,6 +371,10 @@ void PosteRazorDialog::createConnections(void)
 
 	connect(m_overlappingWidthInput, SIGNAL(valueEdited(double)), this, SLOT(handleOverlappingWidthChanged(double)));
 	connect(m_overlappingHeightInput, SIGNAL(valueEdited(double)), this, SLOT(handleOverlappingHeightChanged(double)));
+	connect(m_overlappingPositionTopLeftButton, SIGNAL(clicked()), this, SLOT(handleOverlappingPositionTopLeftSelected()));
+	connect(m_overlappingPositionTopRightButton, SIGNAL(clicked()), this, SLOT(handleOverlappingPositionTopRightSelected()));
+	connect(m_overlappingPositionBottomRightButton, SIGNAL(clicked()), this, SLOT(handleOverlappingPositionBottomRightSelected()));
+	connect(m_overlappingPositionBottomLeftButton, SIGNAL(clicked()), this, SLOT(handleOverlappingPositionBottomLeftSelected()));
 
 	connect(m_posterAbsoluteWidthInput, SIGNAL(valueEdited(double)), this, SLOT(handlePosterWidthAbsoluteChanged(double)));
 	connect(m_posterAbsoluteHeightInput, SIGNAL(valueEdited(double)), this, SLOT(handlePosterHeightAbsoluteChanged(double)));
