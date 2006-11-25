@@ -57,8 +57,18 @@ private slots:
 	void handlePaperFormatComboBoxActivated(int index);
 	void handleImageLoadButtonClicked(void);
 
-	void handleOverLappingWidthChanged(double width);
-	void handleOverLappingHeightChanged(double height);
+	void handlePaperFormatTabChanged(int index);
+	void handlePaperOrientationPortraitSelected(void);
+	void handlePaperOrientationLandscapeSelected(void);
+	void handlePaperCustomWidthChanged(double width);
+	void handlePaperCustomHeightChanged(double height);
+	void handlePaperBorderTopChanged(double border);
+	void handlePaperBorderRightChanged(double border);
+	void handlePaperBorderBottomChanged(double border);
+	void handlePaperBorderLeftChanged(double border);
+
+	void handleOverlappingWidthChanged(double width);
+	void handleOverlappingHeightChanged(double height);
 
 	void handlePosterWidthAbsoluteChanged(double width);
 	void handlePosterHeightAbsoluteChanged(double height);

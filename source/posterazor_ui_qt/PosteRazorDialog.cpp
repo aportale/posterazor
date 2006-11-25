@@ -217,12 +217,57 @@ void PosteRazorDialog::handleImageLoadButtonClicked(void)
 	}
 }
 
-void PosteRazorDialog::handleOverLappingWidthChanged(double width)
+void PosteRazorDialog::handlePaperFormatTabChanged(int index)
+{
+	m_posteRazorController->setUseCustomPaperSize(index == 1);
+}
+
+void PosteRazorDialog::handlePaperOrientationPortraitSelected(void)
+{
+	m_posteRazorController->setPaperOrientation(PaperFormats::ePaperOrientationPortrait);
+}
+
+void PosteRazorDialog::handlePaperOrientationLandscapeSelected(void)
+{
+	m_posteRazorController->setPaperOrientation(PaperFormats::ePaperOrientationLandscape);
+}
+
+void PosteRazorDialog::handlePaperCustomWidthChanged(double width)
+{
+	m_posteRazorController->setCustomPaperWidth(width);
+}
+
+void PosteRazorDialog::handlePaperCustomHeightChanged(double height)
+{
+	m_posteRazorController->setCustomPaperHeight(height);
+}
+
+void PosteRazorDialog::handlePaperBorderTopChanged(double border)
+{
+	m_posteRazorController->setPaperBorderTop(border);
+}
+
+void PosteRazorDialog::handlePaperBorderRightChanged(double border)
+{
+	m_posteRazorController->setPaperBorderRight(border);
+}
+
+void PosteRazorDialog::handlePaperBorderBottomChanged(double border)
+{
+	m_posteRazorController->setPaperBorderBottom(border);
+}
+
+void PosteRazorDialog::handlePaperBorderLeftChanged(double border)
+{
+	m_posteRazorController->setPaperBorderLeft(border);
+}
+
+void PosteRazorDialog::handleOverlappingWidthChanged(double width)
 {
 	m_posteRazorController->setOverlappingWidth(width);
 }
 
-void PosteRazorDialog::handleOverLappingHeightChanged(double height)
+void PosteRazorDialog::handleOverlappingHeightChanged(double height)
 {
 	m_posteRazorController->setOverlappingHeight(height);
 }
@@ -287,15 +332,25 @@ void PosteRazorDialog::createConnections(void)
 	connect(m_nextButton, SIGNAL(clicked()), this, SLOT(handleNextButtonClicked()));
 	connect(m_prevButton, SIGNAL(clicked()), this, SLOT(handlePrevButtonClicked()));
 
+	connect(m_paperFormatTypeTabs, SIGNAL(currentChanged(int)), this, SLOT(handlePaperFormatTabChanged(int)));
 	connect(m_paperFormatComboBox, SIGNAL(activated(int)), this, SLOT(handlePaperFormatComboBoxActivated(int)));
+	connect(m_paperOrientationPortraitRadioButton, SIGNAL(clicked()), this, SLOT(handlePaperOrientationPortraitSelected()));
+	connect(m_paperOrientationLandscapeRadioButton, SIGNAL(clicked()), this, SLOT(handlePaperOrientationLandscapeSelected()));
+	connect(m_paperCustomWidthSpinner, SIGNAL(valueEdited(double)), this, SLOT(handlePaperCustomWidthChanged(double)));
+	connect(m_paperCustomHeightSpinner, SIGNAL(valueEdited(double)), this, SLOT(handlePaperCustomHeightChanged(double)));
+	connect(m_paperBorderTopInput, SIGNAL(valueEdited(double)), this, SLOT(handlePaperBorderTopChanged(double)));
+	connect(m_paperBorderRightInput, SIGNAL(valueEdited(double)), this, SLOT(handlePaperBorderRightChanged(double)));
+	connect(m_paperBorderBottomInput, SIGNAL(valueEdited(double)), this, SLOT(handlePaperBorderBottomChanged(double)));
+	connect(m_paperBorderLeftInput, SIGNAL(valueEdited(double)), this, SLOT(handlePaperBorderLeftChanged(double)));
+
 	connect(m_imageLoadButton, SIGNAL(clicked()), this, SLOT(handleImageLoadButtonClicked()));
 
 	connect(m_posterSizeAbsoluteRadioButton, SIGNAL(clicked()), this, SLOT(updatePosterSizeGroupsState()));
 	connect(m_posterSizeInPagesRadioButton, SIGNAL(clicked()), this, SLOT(updatePosterSizeGroupsState()));
 	connect(m_posterSizePercentualRadioButton, SIGNAL(clicked()), this, SLOT(updatePosterSizeGroupsState()));
 
-	connect(m_overlappingWidthInput, SIGNAL(valueEdited(double)), this, SLOT(handleOverLappingWidthChanged(double)));
-	connect(m_overlappingHeightInput, SIGNAL(valueEdited(double)), this, SLOT(handleOverLappingHeightChanged(double)));
+	connect(m_overlappingWidthInput, SIGNAL(valueEdited(double)), this, SLOT(handleOverlappingWidthChanged(double)));
+	connect(m_overlappingHeightInput, SIGNAL(valueEdited(double)), this, SLOT(handleOverlappingHeightChanged(double)));
 
 	connect(m_posterAbsoluteWidthInput, SIGNAL(valueEdited(double)), this, SLOT(handlePosterWidthAbsoluteChanged(double)));
 	connect(m_posterAbsoluteHeightInput, SIGNAL(valueEdited(double)), this, SLOT(handlePosterHeightAbsoluteChanged(double)));
