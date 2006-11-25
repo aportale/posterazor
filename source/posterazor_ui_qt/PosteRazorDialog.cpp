@@ -150,6 +150,7 @@ void PosteRazorDialog::setPosterOutputFormat(ImageIOTypes::eImageFormats format)
 
 void PosteRazorDialog::setLaunchPDFApplication(bool launch)
 {
+	m_launchPDFApplicationCheckBox->setCheckState(launch?Qt::Checked:Qt::Unchecked);
 }
 
 void PosteRazorDialog::updatePreview(void)
@@ -347,6 +348,11 @@ void PosteRazorDialog::handlePosterVerticalAlignmentBottomSelected(void)
 	m_posteRazorController->setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentBottom);
 }
 
+void PosteRazorDialog::handlelaunchPDFApplicationChanged(int state)
+{
+	m_posteRazorController->setLaunchPDFApplication(state == Qt::Checked);
+}
+
 void PosteRazorDialog::createConnections(void)
 {
 	connect(m_nextButton, SIGNAL(clicked()), this, SLOT(handleNextButtonClicked()));
@@ -388,6 +394,8 @@ void PosteRazorDialog::createConnections(void)
 	connect(m_posterAlignmentLeftButton, SIGNAL(clicked()), this, SLOT(handlePosterHorizontalAlignmentLeftSelected()));
 	connect(m_posterAlignmentCenterButton, SIGNAL(clicked()), this, SLOT(handlePosterHorizontalAlignmentCenterSelected()));
 	connect(m_posterAlignmentRightButton, SIGNAL(clicked()), this, SLOT(handlePosterHorizontalAlignmentRightSelected()));
+
+	connect(m_launchPDFApplicationCheckBox, SIGNAL(stateChanged(int)), this, SLOT(handlelaunchPDFApplicationChanged(int)));
 }
 
 void PosteRazorDialog::createPosteRazorDialogController(void)
