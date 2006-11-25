@@ -191,6 +191,7 @@ public:
 		SetDialogPosterDimensions(PosteRazorEnums::ePosterSizeModeNone, true);
 		m_Dialog->setPosterHorizontalAlignment(m_PosteRazor->getPosterHorizontalAlignment());
 		m_Dialog->setPosterVerticalAlignment(m_PosteRazor->getPosterVerticalAlignment());
+		m_Dialog->setPosterSizeMode(m_PosteRazor->getPosterSizeMode());
 	}
 
 	void SetDialogPosterDimensions(PosteRazorEnums::ePosterSizeModes excludedMode, bool widthExcluded)

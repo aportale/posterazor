@@ -216,6 +216,17 @@ void PosteRazorDialog::handleImageLoadButtonClicked(void)
 		loadInputImage(s);
 	}
 }
+
+void PosteRazorDialog::handleOverLappingWidthChanged(double width)
+{
+	m_posteRazorController->setOverlappingWidth(width);
+}
+
+void PosteRazorDialog::handleOverLappingHeightChanged(double height)
+{
+	m_posteRazorController->setOverlappingHeight(height);
+}
+
 void PosteRazorDialog::handlePosterWidthAbsoluteChanged(double width)
 {
 	m_posteRazorController->setPosterWidth(PosteRazorEnums::ePosterSizeModeAbsolute, width);
@@ -236,6 +247,41 @@ void PosteRazorDialog::handlePosterHeightPagesChanged(double height)
 	m_posteRazorController->setPosterHeight(PosteRazorEnums::ePosterSizeModePages, height);
 }
 
+void PosteRazorDialog::handlePosterSizePercentualChanged(double percent)
+{
+	m_posteRazorController->setPosterHeight(PosteRazorEnums::ePosterSizeModePercentual, percent);
+}
+
+void PosteRazorDialog::handlePosterHorizontalAlignmentLeftSelected(void)
+{
+	m_posteRazorController->setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignmentLeft);
+}
+
+void PosteRazorDialog::handlePosterHorizontalAlignmentCenterSelected(void)
+{
+	m_posteRazorController->setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignmentCenter);
+}
+
+void PosteRazorDialog::handlePosterHorizontalAlignmentRightSelected(void)
+{
+	m_posteRazorController->setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignmentRight);
+}
+
+void PosteRazorDialog::handlePosterVerticalAlignmentTopSelected(void)
+{
+	m_posteRazorController->setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentTop);
+}
+
+void PosteRazorDialog::handlePosterVerticalAlignmentMiddleSelected(void)
+{
+	m_posteRazorController->setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentMiddle);
+}
+
+void PosteRazorDialog::handlePosterVerticalAlignmentBottomSelected(void)
+{
+	m_posteRazorController->setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentBottom);
+}
+
 void PosteRazorDialog::createConnections(void)
 {
 	connect(m_nextButton, SIGNAL(clicked()), this, SLOT(handleNextButtonClicked()));
@@ -248,10 +294,21 @@ void PosteRazorDialog::createConnections(void)
 	connect(m_posterSizeInPagesRadioButton, SIGNAL(clicked()), this, SLOT(updatePosterSizeGroupsState()));
 	connect(m_posterSizePercentualRadioButton, SIGNAL(clicked()), this, SLOT(updatePosterSizeGroupsState()));
 
+	connect(m_overlappingWidthInput, SIGNAL(valueEdited(double)), this, SLOT(handleOverLappingWidthChanged(double)));
+	connect(m_overlappingHeightInput, SIGNAL(valueEdited(double)), this, SLOT(handleOverLappingHeightChanged(double)));
+
 	connect(m_posterAbsoluteWidthInput, SIGNAL(valueEdited(double)), this, SLOT(handlePosterWidthAbsoluteChanged(double)));
 	connect(m_posterAbsoluteHeightInput, SIGNAL(valueEdited(double)), this, SLOT(handlePosterHeightAbsoluteChanged(double)));
 	connect(m_posterPagesWidthInput, SIGNAL(valueEdited(double)), this, SLOT(handlePosterWidthPagesChanged(double)));
 	connect(m_posterPagesHeightInput, SIGNAL(valueEdited(double)), this, SLOT(handlePosterHeightPagesChanged(double)));
+	connect(m_posterPercentualSizeInput, SIGNAL(valueEdited(double)), this, SLOT(handlePosterSizePercentualChanged(double)));
+
+	connect(m_posterAlignmentTopButton, SIGNAL(clicked()), this, SLOT(handlePosterVerticalAlignmentTopSelected()));
+	connect(m_posterAlignmentMiddleButton, SIGNAL(clicked()), this, SLOT(handlePosterVerticalAlignmentMiddleSelected()));
+	connect(m_posterAlignmentBottomButton, SIGNAL(clicked()), this, SLOT(handlePosterVerticalAlignmentBottomSelected()));
+	connect(m_posterAlignmentLeftButton, SIGNAL(clicked()), this, SLOT(handlePosterHorizontalAlignmentLeftSelected()));
+	connect(m_posterAlignmentCenterButton, SIGNAL(clicked()), this, SLOT(handlePosterHorizontalAlignmentCenterSelected()));
+	connect(m_posterAlignmentRightButton, SIGNAL(clicked()), this, SLOT(handlePosterHorizontalAlignmentRightSelected()));
 }
 
 void PosteRazorDialog::createPosteRazorDialogController(void)
