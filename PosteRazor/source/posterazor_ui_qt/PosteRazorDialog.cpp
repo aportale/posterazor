@@ -453,6 +453,7 @@ void PosteRazorDialog::loadInputImage(const QString &fileName)
 	{
 		m_paintCanvas->requestImage();
 		m_paintCanvas->setState("poster");
+		m_inputFileNameLabel->setText(QFileInfo(fileName).fileName());
 	}
 }
 
