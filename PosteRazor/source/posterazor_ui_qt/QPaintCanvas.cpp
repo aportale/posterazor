@@ -132,9 +132,14 @@ void QPaintCanvas::drawImage(double x, double y, double width, double height)
 	{	
 		double widthResizeFactor = width/(double)m_image->width();
 
-		if (widthResizeFactor < 2.75)
-			m_qPainter->setRenderHint(QPainter::SmoothPixmapTransform, true);
+		m_qPainter->setRenderHint(QPainter::SmoothPixmapTransform, widthResizeFactor < 2.75);
 
 		m_qPainter->drawImage(QRect((int)x, (int)y, (int)width, (int)height), *m_image);
 	}
+}
+
+void QPaintCanvas::setState(const char *state)
+{
+	PaintCanvasBase::setState(state);
+	repaint();
 }

@@ -51,6 +51,8 @@ public:
 	virtual void setImage(const unsigned char* rgbData, double width, double height);
 	virtual void disposeImage(void);
 	virtual void drawImage(double x, double y, double width, double height);
+
+	virtual void setState(const char *state);
 };
 
 #endif
