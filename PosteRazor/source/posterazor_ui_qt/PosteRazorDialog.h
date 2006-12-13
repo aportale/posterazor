@@ -3,9 +3,9 @@
 
 #include <QDialog>
 #include "ui_PosteRazorDialog.h"
-#include "PosteRazorDialogController.h"
+#include "PosteRazorWizardDialogController.h"
 
-class PosteRazorDialog : public QDialog, private Ui::PosteRazorDialogUI, public PosteRazorDialogInterface
+class PosteRazorDialog : public QDialog, private Ui::PosteRazorDialogUI, public PosteRazorWizardDialogInterface
 {
 	Q_OBJECT
 
@@ -41,11 +41,12 @@ public:
 	virtual void setLaunchPDFApplication(bool launch);
 
 	virtual void updatePreview(void);
+	virtual void showImageFileName(const char *fileName);
 	virtual void updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel);
 
 private:
 	PosteRazor *m_posteRazor;
-	PosteRazorDialogController *m_posteRazorController;
+	PosteRazorWizardDialogController *m_posteRazorController;
 
 	void createConnections(void);
 	void createPosteRazorDialogController(void);

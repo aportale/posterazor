@@ -131,9 +131,6 @@
 				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Image_Text_Button.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\tools\PaintCanvasBase.cpp">
-			</File>
-			<File
 				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Paint_Canvas_Group.cpp">
 			</File>
 			<File
@@ -141,6 +138,9 @@
 			</File>
 			<File
 				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_PosteRazor_Spinner.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\source\tools\PaintCanvasBase.cpp">
 			</File>
 			<File
 				RelativePath="..\..\..\source\posterazor_ui_fltk\PosteRazorDialog.cpp">
@@ -156,6 +156,9 @@
 			</File>
 			<File
 				RelativePath="..\..\..\source\posterazor_ui_fltk\PosteRazorSettingsDialog.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\source\posterazor_ui_common\PosteRazorWizardDialogController.cpp">
 			</File>
 			<File
 				RelativePath="..\..\..\source\posterazor_ui_common\translations\Translations.cpp">
@@ -175,9 +178,6 @@
 				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Image_Text_Button.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\tools\PaintCanvasBase.h">
-			</File>
-			<File
 				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Paint_Canvas_Group.h">
 			</File>
 			<File
@@ -185,6 +185,9 @@
 			</File>
 			<File
 				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_PosteRazor_Spinner.h">
+			</File>
+			<File
+				RelativePath="..\..\..\source\tools\PaintCanvasBase.h">
 			</File>
 			<File
 				RelativePath="..\..\..\source\posterazor_ui_fltk\PosteRazorDialog.h">
@@ -203,6 +206,9 @@
 			</File>
 			<File
 				RelativePath="..\..\..\source\posterazor_ui_fltk\PosteRazorSettingsDialog.h">
+			</File>
+			<File
+				RelativePath="..\..\..\source\posterazor_ui_common\PosteRazorWizardDialogController.h">
 			</File>
 			<File
 				RelativePath="..\..\..\source\posterazor_ui_common\translations\TranslationConstants.h">
