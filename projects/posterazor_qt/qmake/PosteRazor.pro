@@ -12,7 +12,8 @@ SOURCES += \
 	../../../source/posterazor_ui_qt/QPersistentPreferences.cpp \
 	../../../source/posterazor_ui_qt/QPosteRazorSpinBox.cpp \
 	../../../source/posterazor_ui_qt/QPaintCanvas.cpp \
-	../../../source/posterazor_ui_common/PosteRazorDialogController.cpp
+	../../../source/posterazor_ui_common/PosteRazorDialogController.cpp \
+	../../../source/posterazor_ui_common/PosteRazorWizardDialogController.cpp
 
 HEADERS += \
 	../../../source/tools/ColorTypes.h \
@@ -29,7 +30,8 @@ HEADERS += \
 	../../../source/posterazor_ui_qt/QPersistentPreferences.h \
 	../../../source/posterazor_ui_qt/QPosteRazorSpinBox.h \
 	../../../source/posterazor_ui_qt/QPaintCanvas.h \
-	../../../source/posterazor_ui_common/PosteRazorDialogController.h
+	../../../source/posterazor_ui_common/PosteRazorDialogController.h \
+	../../../source/posterazor_ui_common/PosteRazorWizardDialogController.h
 
 INCLUDEPATH += \
 	../../../source/tools \

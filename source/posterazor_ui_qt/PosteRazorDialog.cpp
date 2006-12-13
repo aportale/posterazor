@@ -158,6 +158,11 @@ void PosteRazorDialog::updatePreview(void)
 	m_paintCanvas->repaint();
 }
 
+void PosteRazorDialog::showImageFileName(const char *fileName)
+{
+	m_inputFileNameLabel->setText(QFileInfo(fileName).fileName());
+}
+
 void PosteRazorDialog::updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel)
 {
 	m_imageInformationSizeInPixelsLabel->setText(QString::number(imageWidthInPixels) + " x " + QString::number(imageHeightInPixels));
@@ -402,8 +407,8 @@ void PosteRazorDialog::createPosteRazorDialogController(void)
 {
 	m_posteRazor = PosteRazor::createPosteRazor();
 	m_paintCanvas->setPainterInterface(m_posteRazor);
-	m_posteRazorController = PosteRazorDialogController::createPosteRazorDialogController();
-	m_posteRazorController->setPosteRazorDialog(this);
+	m_posteRazorController = new PosteRazorWizardDialogController();
+	m_posteRazorController->setPosteRazorWizardDialog(this);
 	m_posteRazorController->setPosteRazorModel(m_posteRazor);
 }
 
@@ -453,7 +458,6 @@ void PosteRazorDialog::loadInputImage(const QString &fileName)
 	{
 		m_paintCanvas->requestImage();
 		m_paintCanvas->setState("poster");
-		m_inputFileNameLabel->setText(QFileInfo(fileName).fileName());
 	}
 }
 

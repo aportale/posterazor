@@ -22,7 +22,7 @@
 
 #include "PosteRazorDialog.h"
 #include "PosteRazorHelpDialog.h"
-#include "PosteRazorDialogController.h"
+#include "PosteRazorWizardDialogController.h"
 #include "Fl_Persistent_Preferences.h"
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
@@ -89,7 +89,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 	m_wizard->value(m_loadInputImageStep);
 
 	m_posteRazor = PosteRazor::createPosteRazor();
-	m_posteRazorController = PosteRazorDialogController::createPosteRazorDialogController();
+	m_posteRazorController = new PosteRazorWizardDialogController();
 	m_posteRazorController->setPosteRazorDialog(this);
 	m_posteRazorController->setPosteRazorModel(m_posteRazor);
 
@@ -447,12 +447,16 @@ void PosteRazorDialog::loadInputImage(const char *fileName)
 	if (loaded)
 	{
 		m_imageInfoGroup->activate();
-		m_inputFileNameLabel->copy_label(fl_filename_name(loadFileName));
 		m_paintCanvasGroup->requestImage();
 	}
 
 	updateNavigationButtons();
 	Fl::flush(); // Needed for windows if image is loaded at startup
+}
+
+void PosteRazorDialog::showImageFileName(const char *fileName)
+{
+	m_inputFileNameLabel->copy_label(fl_filename_name(fileName));
 }
 
 void PosteRazorDialog::updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel)
