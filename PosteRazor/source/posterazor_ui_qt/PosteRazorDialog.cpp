@@ -181,14 +181,36 @@ void PosteRazorDialog::updateImageInfoFields(int imageWidthInPixels, int imageHe
 	m_imageInformationColorTypeLabel->setText(colorTypeString);
 }
 
+void PosteRazorDialog::setPrevButtonEnabled(bool enabled)
+{
+	m_prevButton->setDisabled(!enabled);
+}
+
+void PosteRazorDialog::setNextButtonEnabled(bool enabled)
+{
+	m_nextButton->setDisabled(!enabled);
+}
+
+void PosteRazorDialog::setWizardStep(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step)
+{
+	m_wizard->setCurrentWidget
+	(
+		step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepInputImage?m_loadInputImageStep
+		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPaperSize?m_paperSizeStep
+		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepOverlapping?m_overlappingStep
+		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPosterSize?m_posterSizeStep
+		:/* step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepSavePoster? */m_savePosterStep
+	);
+}
+
 void PosteRazorDialog::handleNextButtonClicked(void)
 {
-	m_wizard->setCurrentIndex(m_wizard->currentIndex() + 1);
+	m_posteRazorController->handleNextButtonPressed();
 }
 
 void PosteRazorDialog::handlePrevButtonClicked(void)
 {
-	m_wizard->setCurrentIndex(m_wizard->currentIndex() - 1);
+	m_posteRazorController->handlePrevButtonPressed();
 }
 
 void PosteRazorDialog::handlePaperFormatComboBoxActivated(int index)
