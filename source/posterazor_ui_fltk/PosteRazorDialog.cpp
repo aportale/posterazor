@@ -90,7 +90,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 
 	m_posteRazor = PosteRazor::createPosteRazor();
 	m_posteRazorController = new PosteRazorWizardDialogController();
-	m_posteRazorController->setPosteRazorDialog(this);
+	m_posteRazorController->setPosteRazorWizardDialog(this);
 	m_posteRazorController->setPosteRazorModel(m_posteRazor);
 
 	Fl_Persistent_Preferences preferences(PreferencesVendor, PreferencesProduct);
@@ -127,7 +127,6 @@ PosteRazorDialog::PosteRazorDialog(void)
 
 	m_settingsButton->label_image(m_settingsButtonLabel->image());
 
-	updateNavigationButtons();
 	updatePreviewState();
 	updateStepInfoBar();
 	updateLanguage();
@@ -234,32 +233,20 @@ void PosteRazorDialog::handleOptionsChangement(posteRazorSettings *settings)
 
 void PosteRazorDialog::next(void)
 {
-	m_wizard->next();
-	updateNavigationButtons();
+	m_posteRazorController->handleNextButtonPressed();
 	updatePreviewState();
 	updateStepInfoBar();
 }
 
 void PosteRazorDialog::prev(void)
 {
-	m_wizard->prev();
-	updateNavigationButtons();
+	m_posteRazorController->handlePrevButtonPressed();
 	updatePreviewState();
 	updateStepInfoBar();
 }
 
 void PosteRazorDialog::updateNavigationButtons(void)
 {
-	if (m_wizard->value() != m_loadInputImageStep)
-		m_prevButton->activate();
-	else
-		m_prevButton->deactivate();
-
-	if (m_inputFileNameLabel->label() && (strlen(m_inputFileNameLabel->label()) != 0)
-	    && m_wizard->value() != m_savePosterStep)
-		m_nextButton->activate();
-	else
-		m_nextButton->deactivate();
 }
 
 const char* PosteRazorDialog::getCurrentWizardStepStepInfoString(void)
@@ -774,6 +761,28 @@ void PosteRazorDialog::setLaunchPDFApplication(bool launch)
 	m_setLaunchPDFApplicationCheckButton->value(launch?1:0);
 }
 
+void PosteRazorDialog::setPrevButtonEnabled(bool enabled)
+{
+	enabled?m_prevButton->activate():m_prevButton->deactivate();
+}
+
+void PosteRazorDialog::setNextButtonEnabled(bool enabled)
+{
+	enabled?m_nextButton->activate():m_nextButton->deactivate();
+}
+
+void PosteRazorDialog::setWizardStep(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step)
+{
+	m_wizard->value
+	(
+		step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepInputImage?m_loadInputImageStep
+		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPaperSize?m_paperSizeStep
+		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepOverlapping?m_overlappingStep
+		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPosterSize?m_posterSizeStep
+		:/* step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepSavePoster? */m_savePosterStep
+	);
+}
+
 #ifdef __APPLE__
 static char OSX_droppedFilenameOnIcon[2048] = "";
 static PosteRazorDialog *OSX_posteRazorDialogPointer = NULL;
@@ -839,4 +848,3 @@ int main (int argc, char **argv)
 
 	return Fl::run();
 }
-

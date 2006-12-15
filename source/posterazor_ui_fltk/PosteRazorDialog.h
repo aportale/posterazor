@@ -29,7 +29,7 @@
 #include "PosteRazor.h"
 #include "PosteRazorDialogUI.h"
 #include "PosteRazorSettingsDialog.h"
-#include "PosteRazorDialogController.h"
+#include "PosteRazorWizardDialogController.h"
 #include "Translations.h"
 
 class PosteRazorDragDropWidget : public Fl_Box
@@ -39,19 +39,19 @@ public:
 	int handle(int event);
 };
 
-class PosteRazorDialog : public PosteRazorDialogUI, public SettingsChangementHandler, public PosteRazorDialogInterface
+class PosteRazorDialog : public PosteRazorDialogUI, public SettingsChangementHandler, public PosteRazorWizardDialogInterface
 {
 private:
-	PosteRazor                      *m_posteRazor;
-	PosteRazorDragDropWidget        *m_dragDropWidget;
-	Fl_Menu_Item                    *m_paperFormatMenuItems;
-	posteRazorSettings              m_settings;
-	PosteRazorSettingsDialog        *m_settingsDialog;
-	class PosteRazorHelpDialogUI    *m_helpDialog;
-	char                            m_loadImageChooserLastPath[1024];
-	char                            m_savePosterChooserLastPath[1024];
-	bool                            m_UILanguageIsUndefined;
-	PosteRazorDialogController      *m_posteRazorController;
+	PosteRazor                        *m_posteRazor;
+	PosteRazorDragDropWidget          *m_dragDropWidget;
+	Fl_Menu_Item                      *m_paperFormatMenuItems;
+	posteRazorSettings                m_settings;
+	PosteRazorSettingsDialog          *m_settingsDialog;
+	class PosteRazorHelpDialogUI      *m_helpDialog;
+	char                              m_loadImageChooserLastPath[1024];
+	char                              m_savePosterChooserLastPath[1024];
+	bool                              m_UILanguageIsUndefined;
+	PosteRazorWizardDialogController  *m_posteRazorController;
 
 public:
 	~PosteRazorDialog();
@@ -115,6 +115,10 @@ public:
 
 	void setPosterOutputFormat(ImageIOTypes::eImageFormats format);
 	void setLaunchPDFApplication(bool launch);
+
+	void setPrevButtonEnabled(bool enabled);
+	void setNextButtonEnabled(bool enabled);
+	void setWizardStep(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step);
 };
 
 #endif

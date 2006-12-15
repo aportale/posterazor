@@ -19,7 +19,7 @@ public:
 	virtual ~PosteRazorDialogController() {};
 
 	void setPosteRazorModel(PosteRazor *model);
-	void updateDialog(void);
+	virtual void updateDialog(void);
 	void setPosteRazorDialog(PosteRazorDialogInterface *dialog);
 	void setPaperFormatByName(const char *name);
 
