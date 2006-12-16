@@ -53,16 +53,16 @@ protected:
 	PosteRazor *m_PosteRazor;
 	PosteRazorDialogInterface *m_Dialog;
 
-	void SetDialogSaveOptions(void);
-	void SetDialogPosterSizeMode(void);
-	void SetDialogPosterOptions(void);
-	void SetDialogPosterDimensions(PosteRazorEnums::ePosterSizeModes excludedMode, bool widthExcluded);
-	void SetDialogPaperOptions(void);
-	void SetDialogPaperBorders(void);
-	void SetDialogCustomPaperDimensions(void);
-	void SetDialogImageInfoFields(void);
-	void SetDialogOverlappingDimensions(void);
-	void SetDialogOverlappingOptions(void);
+	void setDialogSaveOptions(void);
+	void setDialogPosterSizeMode(void);
+	void setDialogPosterOptions(void);
+	void setDialogPosterDimensions(PosteRazorEnums::ePosterSizeModes excludedMode, bool widthExcluded);
+	void setDialogPaperOptions(void);
+	void setDialogPaperBorders(void);
+	void setDialogCustomPaperDimensions(void);
+	void setDialogImageInfoFields(void);
+	void setDialogOverlappingDimensions(void);
+	void setDialogOverlappingOptions(void);
 };
 
 #endif

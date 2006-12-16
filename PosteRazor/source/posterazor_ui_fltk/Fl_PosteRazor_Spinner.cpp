@@ -59,7 +59,7 @@ Fl_PosteRazor_Spinner::Fl_PosteRazor_Spinner(int x, int y, int width, int height
 
 	setSpinnerVisible(false);
 
-	UpdateButtonsState();
+	updateButtonsState();
 
 	end();
 }
@@ -74,7 +74,7 @@ const char* Fl_PosteRazor_Spinner::quickNDirtyDoubleToString(double value)
 // "round()" from http://www.c-plusplus.de/forum/viewtopic-var-t-is-39342.html
 double Fl_PosteRazor_Spinner::round(double Zahl, int Stellen)
 {
-    return floor(Zahl * pow( 10, Stellen) + 0.5) * pow(10, -Stellen);
+    return floor(Zahl * pow( 10.0, Stellen) + 0.5) * pow(10.0, -Stellen);
 } 
 
 void Fl_PosteRazor_Spinner::setSpinnerVisible(bool visible)
@@ -98,7 +98,7 @@ void Fl_PosteRazor_Spinner::setSpinnerVisible(bool visible)
 	}
 }
 
-void Fl_PosteRazor_Spinner::UpdateButtonsState(void)
+void Fl_PosteRazor_Spinner::updateButtonsState(void)
 {
 	if (value() - 1.0 <= 0.0)
 		m_decreaseButton->deactivate();
@@ -118,7 +118,7 @@ void Fl_PosteRazor_Spinner::handleButtonPress(Fl_Repeat_Button *button)
 	double newValue = round(oldValue + increaseValue, 0);
 	if (newValue >= 1.0)
 		value(newValue);
-	UpdateButtonsState();
+	updateButtonsState();
 	do_callback();
 }
 
@@ -129,7 +129,7 @@ void Fl_PosteRazor_Spinner::handleValueChangement_cb(Fl_Input *input, void *data
 
 void Fl_PosteRazor_Spinner::handleValueChangement(Fl_Input *input)
 {
-	UpdateButtonsState();
+	updateButtonsState();
 	do_callback();
 }
 
@@ -141,5 +141,5 @@ double Fl_PosteRazor_Spinner::value()
 void Fl_PosteRazor_Spinner::value(double value)
 {
 	m_input->value(quickNDirtyDoubleToString(value));
-	UpdateButtonsState();
+	updateButtonsState();
 }

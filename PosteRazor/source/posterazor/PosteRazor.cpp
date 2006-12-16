@@ -185,12 +185,12 @@ public:
 		return m_imageIO;
 	}
 
-	double ConvertDistanceToCm(double distance) const
+	double convertDistanceToCm(double distance) const
 	{
 		return UnitsOfLength::convertBetweenUnitsOfLength(distance, getUnitOfLength(), UnitsOfLength::eUnitOfLengthCentimeter);
 	}
 
-	double ConvertCmToDistance(double cm) const
+	double convertCmToDistance(double cm) const
 	{
 		return UnitsOfLength::convertBetweenUnitsOfLength(cm, UnitsOfLength::eUnitOfLengthCentimeter, getUnitOfLength());
 	}
@@ -272,22 +272,22 @@ public:
 
 	void setPaperBorderTop(double border)
 	{
-		m_paperBorderTop = ConvertDistanceToCm(border);
+		m_paperBorderTop = convertDistanceToCm(border);
 	}
 
 	void setPaperBorderRight(double border)
 	{
-		m_paperBorderRight = ConvertDistanceToCm(border);
+		m_paperBorderRight = convertDistanceToCm(border);
 	}
 
 	void setPaperBorderBottom(double border)
 	{
-		m_paperBorderBottom = ConvertDistanceToCm(border);
+		m_paperBorderBottom = convertDistanceToCm(border);
 	}
 
 	void setPaperBorderLeft(double border)
 	{
-		m_paperBorderLeft = ConvertDistanceToCm(border);
+		m_paperBorderLeft = convertDistanceToCm(border);
 	}
 
 	PaperFormats::ePaperFormats getPaperFormat(void) const
@@ -302,72 +302,72 @@ public:
 
 	double getPaperBorderTop(void) const
 	{
-		return MINMAX(ConvertCmToDistance(m_paperBorderTop), 0, GetMaximalHorizontalPaperBorder());
+		return MINMAX(convertCmToDistance(m_paperBorderTop), 0, getMaximalHorizontalPaperBorder());
 	}
 
 	double getPaperBorderRight(void) const
 	{
-		return MINMAX(ConvertCmToDistance(m_paperBorderRight), 0, GetMaximalVerticalPaperBorder());
+		return MINMAX(convertCmToDistance(m_paperBorderRight), 0, getMaximalVerticalPaperBorder());
 	}
 
 	double getPaperBorderBottom(void) const
 	{
-		return MINMAX(ConvertCmToDistance(m_paperBorderBottom), 0, GetMaximalHorizontalPaperBorder());
+		return MINMAX(convertCmToDistance(m_paperBorderBottom), 0, getMaximalHorizontalPaperBorder());
 	}
 
 	double getPaperBorderLeft(void) const
 	{
-		return MINMAX(ConvertCmToDistance(m_paperBorderLeft), 0, GetMaximalVerticalPaperBorder());
+		return MINMAX(convertCmToDistance(m_paperBorderLeft), 0, getMaximalVerticalPaperBorder());
 	}
 
-	double GetMaximalVerticalPaperBorder(void) const
+	double getMaximalVerticalPaperBorder(void) const
 	{
-		return getPaperWidth() / 2.0 - ConvertCmToDistance(1.0);
+		return getPaperWidth() / 2.0 - convertCmToDistance(1.0);
 	}
 
-	double GetMaximalHorizontalPaperBorder(void) const
+	double getMaximalHorizontalPaperBorder(void) const
 	{
-		return getPaperHeight() / 2.0 - ConvertCmToDistance(1.0);
+		return getPaperHeight() / 2.0 - convertCmToDistance(1.0);
 	}
 
 	void setCustomPaperWidth(double width)
 	{
-		m_customPaperWidth = ConvertDistanceToCm(width);
+		m_customPaperWidth = convertDistanceToCm(width);
 	}
 
 	void setCustomPaperHeight(double height)
 	{
-		m_customPaperHeight = ConvertDistanceToCm(height);
+		m_customPaperHeight = convertDistanceToCm(height);
 	}
 
 	double getCustomPaperWidth(void) const
 	{
-		return MINMAX(ConvertCmToDistance(m_customPaperWidth), GetCustomMinimalPaperWidth(), GetCustomMaximalPaperWidth());
+		return MINMAX(convertCmToDistance(m_customPaperWidth), getCustomMinimalPaperWidth(), getCustomMaximalPaperWidth());
 	}
 
 	double getCustomPaperHeight(void) const
 	{
-		return MINMAX(ConvertCmToDistance(m_customPaperHeight), GetCustomMinimalPaperHeight(), GetCustomMaximalPaperHeight());
+		return MINMAX(convertCmToDistance(m_customPaperHeight), getCustomMinimalPaperHeight(), getCustomMaximalPaperHeight());
 	}
 
-	double GetCustomMinimalPaperWidth(void) const
+	double getCustomMinimalPaperWidth(void) const
 	{
-		return ConvertCmToDistance(4.0);
+		return convertCmToDistance(4.0);
 	}
 
-	double GetCustomMinimalPaperHeight(void) const
+	double getCustomMinimalPaperHeight(void) const
 	{
-		return ConvertCmToDistance(4.0);
+		return convertCmToDistance(4.0);
 	}
 
-	double GetCustomMaximalPaperWidth(void) const
+	double getCustomMaximalPaperWidth(void) const
 	{
-		return ConvertCmToDistance(500.0); // Maximum of PDF page
+		return convertCmToDistance(500.0); // Maximum of PDF page
 	}
 
-	double GetCustomMaximalPaperHeight(void) const
+	double getCustomMaximalPaperHeight(void) const
 	{
-		return ConvertCmToDistance(500.0);
+		return convertCmToDistance(500.0);
 	}
 
 	void setUseCustomPaperSize(bool useIt)
@@ -400,14 +400,14 @@ public:
 		return getPaperHeight() - getPaperBorderTop() - getPaperBorderBottom();
 	}
 
-	double ConvertBetweenAbsoluteAndPagesPosterDimension(double dimension, bool pagesToAbsolute, bool width) const
+	double convertBetweenAbsoluteAndPagesPosterDimension(double dimension, bool pagesToAbsolute, bool width) const
 	{
 		double posterDimension = dimension;
 
 		double printablePaperAreaWidth = getPrintablePaperAreaWidth();
 		double printablePaperAreaHeight = getPrintablePaperAreaHeight();
-		double printablePaperAreaDimension = ConvertDistanceToCm(width?printablePaperAreaWidth:printablePaperAreaHeight);
-		double overlappingDimension = ConvertDistanceToCm(width?getOverlappingWidth():getOverlappingHeight());
+		double printablePaperAreaDimension = convertDistanceToCm(width?printablePaperAreaWidth:printablePaperAreaHeight);
+		double overlappingDimension = convertDistanceToCm(width?getOverlappingWidth():getOverlappingHeight());
 
 		if (pagesToAbsolute)
 		{
@@ -453,7 +453,7 @@ public:
 
 	// Since m_posterDimension holds only height or width of the poster,
 	// here we calculate the other dimension considering the aspect ratio.
-	double CalculateOtherPosterDimension() const
+	double calculateOtherPosterDimension() const
 	{
 		double otherDimension = 0;
 
@@ -470,9 +470,9 @@ public:
 			}
 			else
 			{
-				double sourceAbsolute = ConvertBetweenAbsoluteAndPagesPosterDimension(m_posterDimension, true, m_posterDimensionIsWidth);
+				double sourceAbsolute = convertBetweenAbsoluteAndPagesPosterDimension(m_posterDimension, true, m_posterDimensionIsWidth);
 				double targetAbsolute = sourceAbsolute/aspectRatio;
-				otherDimension = ConvertBetweenAbsoluteAndPagesPosterDimension(targetAbsolute, false, !m_posterDimensionIsWidth);
+				otherDimension = convertBetweenAbsoluteAndPagesPosterDimension(targetAbsolute, false, !m_posterDimensionIsWidth);
 			}
 		}
 		else
@@ -481,12 +481,12 @@ public:
 		return otherDimension;
 	}
 
-	void SetPosterDimension(PosteRazorEnums::ePosterSizeModes mode, double dimension, bool dimensionIsWidth)
+	void setPosterDimension(PosteRazorEnums::ePosterSizeModes mode, double dimension, bool dimensionIsWidth)
 	{
 		setPosterSizeMode(mode);
 
 		if (getPosterSizeMode() == PosteRazorEnums::ePosterSizeModeAbsolute)
-			dimension = ConvertDistanceToCm(dimension);
+			dimension = convertDistanceToCm(dimension);
 
 		m_posterDimension = dimension;
 		m_posterDimensionIsWidth = dimensionIsWidth;
@@ -494,32 +494,32 @@ public:
 
 	void setOverlappingWidth(double width)
 	{
-		m_overlappingWidth = ConvertDistanceToCm(width);
+		m_overlappingWidth = convertDistanceToCm(width);
 	}
 
 	void setOverlappingHeight(double height)
 	{
-		m_overlappingHeight = ConvertDistanceToCm(height);
+		m_overlappingHeight = convertDistanceToCm(height);
 	}
 
 	double getOverlappingWidth(void) const
 	{
-		return MINMAX(ConvertCmToDistance(m_overlappingWidth), 0, GetMaximalOverLappingWidth());
+		return MINMAX(convertCmToDistance(m_overlappingWidth), 0, getMaximalOverLappingWidth());
 	}
 
 	double getOverlappingHeight(void) const
 	{
-		return MINMAX(ConvertCmToDistance(m_overlappingHeight), 0, GetMaximalOverLappingHeight());
+		return MINMAX(convertCmToDistance(m_overlappingHeight), 0, getMaximalOverLappingHeight());
 	}
 
-	double GetMaximalOverLappingWidth(void) const
+	double getMaximalOverLappingWidth(void) const
 	{
-		return getPaperWidth() - getPaperBorderLeft() - getPaperBorderRight() - ConvertCmToDistance(1.0);
+		return getPaperWidth() - getPaperBorderLeft() - getPaperBorderRight() - convertCmToDistance(1.0);
 	}
 
-	double GetMaximalOverLappingHeight(void) const
+	double getMaximalOverLappingHeight(void) const
 	{
-		return getPaperHeight() - getPaperBorderTop() - getPaperBorderBottom() - ConvertCmToDistance(1.0);
+		return getPaperHeight() - getPaperBorderTop() - getPaperBorderBottom() - convertCmToDistance(1.0);
 	}
 
 	void setOverlappingPosition(PosteRazorEnums::eOverlappingPositions position)
@@ -534,12 +534,12 @@ public:
 
 	void setPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width)
 	{
-		SetPosterDimension(mode, width, true);
+		setPosterDimension(mode, width, true);
 	}
 
 	void setPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height)
 	{
-		SetPosterDimension(mode, height, false);
+		setPosterDimension(mode, height, false);
 	}
 
 	void setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode)
@@ -547,9 +547,9 @@ public:
 		m_posterSizeMode = mode;
 	}
 
-	double GetPosterDimension(PosteRazorEnums::ePosterSizeModes mode, bool width) const
+	double getPosterDimension(PosteRazorEnums::ePosterSizeModes mode, bool width) const
 	{
-		double posterDimension = (width==m_posterDimensionIsWidth)?m_posterDimension:CalculateOtherPosterDimension();
+		double posterDimension = (width==m_posterDimensionIsWidth)?m_posterDimension:calculateOtherPosterDimension();
 		
 		posterDimension = MAX
 		(
@@ -563,12 +563,12 @@ public:
 		{
 			// These are needed for conversion from and to ePosterSizeModePercentual
 			double inputImageDimension = width?getInputImageWidth():getInputImageHeight();
-			inputImageDimension = ConvertDistanceToCm(inputImageDimension);
+			inputImageDimension = convertDistanceToCm(inputImageDimension);
 
 			// First convert to absolute size mode (cm)
 			if (getPosterSizeMode() == PosteRazorEnums::ePosterSizeModePages)
 			{
-				posterDimension = ConvertBetweenAbsoluteAndPagesPosterDimension(posterDimension, true, width);
+				posterDimension = convertBetweenAbsoluteAndPagesPosterDimension(posterDimension, true, width);
 			}
 			else if (getPosterSizeMode() == PosteRazorEnums::ePosterSizeModePercentual)
 			{
@@ -579,7 +579,7 @@ public:
 			// Then convert to the wanted size mode
 			if (mode == PosteRazorEnums::ePosterSizeModePages)
 			{
-				posterDimension = ConvertBetweenAbsoluteAndPagesPosterDimension(posterDimension, false, width);
+				posterDimension = convertBetweenAbsoluteAndPagesPosterDimension(posterDimension, false, width);
 			}
 			else if (mode == PosteRazorEnums::ePosterSizeModePercentual)
 			{
@@ -589,19 +589,19 @@ public:
 		}
 
 		if (mode == PosteRazorEnums::ePosterSizeModeAbsolute)
-			posterDimension = ConvertCmToDistance(posterDimension);
+			posterDimension = convertCmToDistance(posterDimension);
 
 		return posterDimension;
 	}
 
 	double getPosterWidth(PosteRazorEnums::ePosterSizeModes mode) const
 	{
-		return GetPosterDimension(mode, true);
+		return getPosterDimension(mode, true);
 	}
 
 	double getPosterHeight(PosteRazorEnums::ePosterSizeModes mode) const
 	{
-		return GetPosterDimension(mode, false);
+		return getPosterDimension(mode, false);
 	}
 
 	PosteRazorEnums::ePosterSizeModes getPosterSizeMode(void) const
@@ -629,7 +629,7 @@ public:
 		return m_posterVerticalAlignment;
 	}
 
-	void GetPreviewSize(double imageWidth, double imageHeight, int boxWidth, int boxHeight, int &previewWidth, int &previewHeight, bool enlargeToFit) const
+	void getPreviewSize(double imageWidth, double imageHeight, int boxWidth, int boxHeight, int &previewWidth, int &previewHeight, bool enlargeToFit) const
 	{
 		double aspectRatio = imageWidth / imageHeight;
 
@@ -652,14 +652,14 @@ public:
 		}
 	}
 
-	void GetInputImagePreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight) const
+	void getInputImagePreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight) const
 	{
-		GetPreviewSize(getInputImageWidthPixels(), getInputImageHeightPixels(), boxWidth, boxHeight, previewWidth, previewHeight, false);
+		getPreviewSize(getInputImageWidthPixels(), getInputImageHeightPixels(), boxWidth, boxHeight, previewWidth, previewHeight, false);
 	}
 
-	virtual void GetPaperPreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight) const
+	virtual void getPaperPreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight) const
 	{
-		GetPreviewSize(getPaperWidth(), getPaperHeight(), boxWidth, boxHeight, previewWidth, previewHeight, true);
+		getPreviewSize(getPaperWidth(), getPaperHeight(), boxWidth, boxHeight, previewWidth, previewHeight, true);
 	}
 	
 	void getImage(PaintCanvasInterface *paintCanvas, double maxWidth, double maxHeight) const
@@ -667,13 +667,13 @@ public:
 		unsigned char *rgbData = new unsigned char[m_imageIO->getWidthPixels() * m_imageIO->getHeightPixels() * 3];
 		int imageWidth;
 		int imageHeight;
-		GetInputImagePreviewSize((int)maxWidth, (int)maxHeight, imageWidth, imageHeight);
+		getInputImagePreviewSize((int)maxWidth, (int)maxHeight, imageWidth, imageHeight);
 		m_imageIO->getImageAsRGB(rgbData, imageWidth, imageHeight);
 		paintCanvas->setImage(rgbData, imageWidth, imageHeight);
 		delete[] rgbData;
 	}
 
-	void PaintImageOnCanvas(PaintCanvasInterface *paintCanvas) const
+	void paintImageOnCanvas(PaintCanvasInterface *paintCanvas) const
 	{
 
 		if (getIsImageLoaded())
@@ -683,7 +683,7 @@ public:
 			int boxWidth = 0, boxHeight = 0;
 			double x_offset, y_offset;
 
-			GetPreviewSize(getInputImageWidthPixels(), getInputImageHeightPixels(), (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, false);
+			getPreviewSize(getInputImageWidthPixels(), getInputImageHeightPixels(), (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, false);
 			x_offset = (canvasWidth - boxWidth) / 2;
 			y_offset = (canvasHeight - boxHeight) / 2;
 			
@@ -699,7 +699,7 @@ public:
 		}
 	}
 
-	void PaintPaperOnCanvas(PaintCanvasInterface *paintCanvas, bool paintOverlapping) const
+	void paintPaperOnCanvas(PaintCanvasInterface *paintCanvas, bool paintOverlapping) const
 	{
 		double canvasWidth = 0, canvasHeight = 0;
 		paintCanvas->getSize(canvasWidth, canvasHeight);
@@ -707,7 +707,7 @@ public:
 
 		double paperWidth = getPaperWidth();
 		double paperHeight = getPaperHeight();
-		GetPreviewSize(paperWidth, paperHeight, (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, true);
+		getPreviewSize(paperWidth, paperHeight, (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, true);
 		double x_offset = (canvasWidth - (double)boxWidth) / 2.0;
 		double y_offset = (canvasHeight - (double)boxHeight) / 2.0;
 		double UnitOfLengthToPixelfactor = (double)boxWidth/paperWidth;
@@ -740,7 +740,7 @@ public:
 		}
 	}
 
-	void PaintPosterOnCanvas(PaintCanvasInterface *paintCanvas) const
+	void paintPosterOnCanvas(PaintCanvasInterface *paintCanvas) const
 	{
 		double canvasWidth = 0, canvasHeight = 0;
 		paintCanvas->getSize(canvasWidth, canvasHeight);
@@ -752,7 +752,7 @@ public:
 		int pagesVertical = (int)ceil(getPosterHeight(PosteRazorEnums::ePosterSizeModePages));
 		double posterWidth = pagesHorizontal*pagePrintableAreaWidth - (pagesHorizontal-1)*getOverlappingWidth() + getPaperBorderLeft() + getPaperBorderRight();
 		double posterHeight = pagesVertical*pagePrintableAreaHeight - (pagesVertical-1)*getOverlappingHeight() + getPaperBorderTop() + getPaperBorderBottom();
-		GetPreviewSize(posterWidth, posterHeight, (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, true);
+		getPreviewSize(posterWidth, posterHeight, (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, true);
 		double x_offset = (canvasWidth - boxWidth) / 2;
 		double y_offset = (canvasHeight - boxHeight) / 2;
 		double UnitOfLengthToPixelfactor = (double)boxWidth/posterWidth;
@@ -813,25 +813,25 @@ public:
 		}
 	}
 
-	void PaintPosterPageOnCanvas(PaintCanvasInterface *paintCanvas, int page) const
+	void paintPosterPageOnCanvas(PaintCanvasInterface *paintCanvas, int page) const
 	{
 		int columsCount = (int)(ceil(getPosterWidth(PosteRazorEnums::ePosterSizeModePages)));
 		int rowsCount = (int)(ceil(getPosterHeight(PosteRazorEnums::ePosterSizeModePages)));
 		int column = page % columsCount;
 		int row = ((int)(floor((double)page / (double)columsCount)));
 
-		double posterImageWidthCm = ConvertDistanceToCm(getPosterWidth(PosteRazorEnums::ePosterSizeModeAbsolute));
-		double posterImageHeightCm = ConvertDistanceToCm(getPosterHeight(PosteRazorEnums::ePosterSizeModeAbsolute));
-		double printablePaperAreaWidthCm = ConvertDistanceToCm(getPrintablePaperAreaWidth());
-		double printablePaperAreaHeightCm = ConvertDistanceToCm(getPrintablePaperAreaHeight());
-		double overlappingWidthCm = ConvertDistanceToCm(getOverlappingWidth());
-		double overlappingHeightCm = ConvertDistanceToCm(getOverlappingHeight());
+		double posterImageWidthCm = convertDistanceToCm(getPosterWidth(PosteRazorEnums::ePosterSizeModeAbsolute));
+		double posterImageHeightCm = convertDistanceToCm(getPosterHeight(PosteRazorEnums::ePosterSizeModeAbsolute));
+		double printablePaperAreaWidthCm = convertDistanceToCm(getPrintablePaperAreaWidth());
+		double printablePaperAreaHeightCm = convertDistanceToCm(getPrintablePaperAreaHeight());
+		double overlappingWidthCm = convertDistanceToCm(getOverlappingWidth());
+		double overlappingHeightCm = convertDistanceToCm(getOverlappingHeight());
 		double printablePosterAreaWidthCm = columsCount * printablePaperAreaWidthCm - (columsCount - 1) * overlappingWidthCm;
 		double printablePosterAreaHeightCm = rowsCount * printablePaperAreaHeightCm - (rowsCount - 1) * overlappingHeightCm;
-		double borderTopCm = ConvertDistanceToCm(getPaperBorderTop());
-		double borderRightCm = ConvertDistanceToCm(getPaperBorderRight());
-		double borderBottomCm = ConvertDistanceToCm(getPaperBorderBottom());
-		double borderLeftCm = ConvertDistanceToCm(getPaperBorderLeft());
+		double borderTopCm = convertDistanceToCm(getPaperBorderTop());
+		double borderRightCm = convertDistanceToCm(getPaperBorderRight());
+		double borderBottomCm = convertDistanceToCm(getPaperBorderBottom());
+		double borderLeftCm = convertDistanceToCm(getPaperBorderLeft());
 		double posterTotalWidthCm = printablePosterAreaWidthCm + borderLeftCm + borderRightCm;
 		double posterTotalHeightCm = printablePosterAreaHeightCm + borderTopCm + borderBottomCm;
 		double imageOffsetFromLeftPosterBorderCm = 
@@ -860,22 +860,22 @@ public:
 		
 		if (strcmp(state, "image") == 0)
 		{
-			PaintImageOnCanvas(paintCanvas);
+			paintImageOnCanvas(paintCanvas);
 		}
 		else if (strcmp(state, "paper") == 0 || strcmp(state, "overlapping") == 0)
 		{
-			PaintPaperOnCanvas(paintCanvas, strcmp(state, "overlapping") == 0);
+			paintPaperOnCanvas(paintCanvas, strcmp(state, "overlapping") == 0);
 		}
 		else if (strcmp(state, "poster") == 0)
 		{
-			PaintPosterOnCanvas(paintCanvas);
+			paintPosterOnCanvas(paintCanvas);
 		}
 		else if (strncmp(state, "posterpage", strlen("posterpage")) == 0)
 		{
 			int page;
 			sscanf(state, "posterpage %d", &page);
 
-			PaintPosterPageOnCanvas(paintCanvas, page);
+			paintPosterPageOnCanvas(paintCanvas, page);
 		}
 	}
 
@@ -893,7 +893,7 @@ public:
 	{
 		int err = 0;
 		int pagesCount = (int)(ceil(getPosterWidth(PosteRazorEnums::ePosterSizeModePages))) * (int)(ceil(getPosterHeight(PosteRazorEnums::ePosterSizeModePages)));
-		err = m_imageIO->savePoster(fileName, getPosterOutputFormat(), this, pagesCount, ConvertDistanceToCm(getPrintablePaperAreaWidth()), ConvertDistanceToCm(getPrintablePaperAreaHeight()));
+		err = m_imageIO->savePoster(fileName, getPosterOutputFormat(), this, pagesCount, convertDistanceToCm(getPrintablePaperAreaWidth()), convertDistanceToCm(getPrintablePaperAreaHeight()));
 		if (!err && getLaunchPDFApplication())
 		{
 #if defined(WIN32)

@@ -128,7 +128,6 @@ PosteRazorDialog::PosteRazorDialog(void)
 	m_settingsButton->label_image(m_settingsButtonLabel->image());
 
 	updatePreviewState();
-	updateStepInfoBar();
 	updateLanguage();
 }
 
@@ -235,28 +234,26 @@ void PosteRazorDialog::next(void)
 {
 	m_posteRazorController->handleNextButtonPressed();
 	updatePreviewState();
-	updateStepInfoBar();
 }
 
 void PosteRazorDialog::prev(void)
 {
 	m_posteRazorController->handlePrevButtonPressed();
 	updatePreviewState();
-	updateStepInfoBar();
 }
 
 void PosteRazorDialog::updateNavigationButtons(void)
 {
 }
 
-const char* PosteRazorDialog::getCurrentWizardStepStepInfoString(void)
+const char* PosteRazorDialog::getWizardStepInfoString(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step)
 {
 	return
 	(
-		m_wizard->value() == m_loadInputImageStep?TRANSLATIONS->stepTitle01()
-		:m_wizard->value() == m_paperSizeStep?TRANSLATIONS->stepTitle02()
-		:m_wizard->value() == m_overlappingStep?TRANSLATIONS->stepTitle03()
-		:m_wizard->value() == m_posterSizeStep?TRANSLATIONS->stepTitle04()
+		step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepInputImage?TRANSLATIONS->stepTitle01()
+		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPaperSize?TRANSLATIONS->stepTitle02()
+		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepOverlapping?TRANSLATIONS->stepTitle03()
+		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPosterSize?TRANSLATIONS->stepTitle04()
 		:TRANSLATIONS->stepTitle05()
 	);
 }
@@ -273,12 +270,12 @@ int PosteRazorDialog::getCurrentWizardStepNumber(void)
 	);
 }
 
-void PosteRazorDialog::updateStepInfoBar(void)
+void PosteRazorDialog::updateStepInfoBar(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step)
 {
 	char stepStr[1024];
 	sprintf(stepStr, TRANSLATIONS->stepXOfY(), getCurrentWizardStepNumber() + 1, 5); 
 	char helpTitleStr[1024];
-	sprintf(helpTitleStr, "  %s: %s", stepStr, getCurrentWizardStepStepInfoString());
+	sprintf(helpTitleStr, "  %s: %s", stepStr, getWizardStepInfoString(step));
 	m_stepInfoBox->copy_label(helpTitleStr);
 }
 
@@ -352,7 +349,6 @@ void PosteRazorDialog::updateLanguage(void)
 	m_setLaunchPDFApplicationCheckButton->label(TRANSLATIONS->launchPDFApplication());
 
 	m_posteRazorController->updateDialog();
-	updateStepInfoBar();
 
 	if (m_settingsDialog)
 		m_settingsDialog->updateLanguage();
@@ -781,6 +777,8 @@ void PosteRazorDialog::setWizardStep(PosteRazorWizardDialogEnums::ePosteRazorWiz
 		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPosterSize?m_posterSizeStep
 		:/* step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepSavePoster? */m_savePosterStep
 	);
+
+	updateStepInfoBar(step);
 }
 
 #ifdef __APPLE__

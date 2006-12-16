@@ -12,7 +12,7 @@ void PosteRazorDialogController::setPosteRazorModel(PosteRazor *model)
 	if (m_Dialog)
 	{
 		updateDialog();
-		SetDialogPosterSizeMode();
+		setDialogPosterSizeMode();
 	}
 }
 
@@ -22,17 +22,17 @@ void PosteRazorDialogController::setPosteRazorDialog(PosteRazorDialogInterface *
 	if (m_PosteRazor)
 	{
 		updateDialog();
-		SetDialogPosterSizeMode();
+		setDialogPosterSizeMode();
 	}
 }
 
 void PosteRazorDialogController::updateDialog(void)
 {
-	SetDialogPaperOptions();
-	SetDialogPosterOptions();
-	SetDialogOverlappingOptions();
-	SetDialogImageInfoFields();
-	SetDialogSaveOptions();
+	setDialogPaperOptions();
+	setDialogPosterOptions();
+	setDialogOverlappingOptions();
+	setDialogImageInfoFields();
+	setDialogSaveOptions();
 	m_Dialog->setUnitOfLength(m_PosteRazor->getUnitOfLength());
 	updatePreview();
 }
@@ -51,7 +51,8 @@ void PosteRazorDialogController::setUnitOfLength(UnitsOfLength::eUnitsOfLength u
 void PosteRazorDialogController::setPaperFormat(PaperFormats::ePaperFormats format)
 {
 	m_PosteRazor->setPaperFormat(format);
-	SetDialogPosterOptions();
+	setDialogPosterOptions();
+	setDialogPaperBorders();
 	updatePreview();
 }
 
@@ -64,70 +65,74 @@ void PosteRazorDialogController::setPaperFormatByName(const char *name)
 void PosteRazorDialogController::setPaperOrientation(PaperFormats::ePaperOrientations orientation)
 {
 	m_PosteRazor->setPaperOrientation(orientation);
-	SetDialogPosterOptions();
+	setDialogPosterOptions();
+	setDialogPaperBorders();
 	updatePreview();
 }
 
 void PosteRazorDialogController::setPaperBorderTop(double border)
 {
 	m_PosteRazor->setPaperBorderTop(border);
-	SetDialogPosterOptions();
+	setDialogPosterOptions();
 	updatePreview();
 }
 
 void PosteRazorDialogController::setPaperBorderRight(double border)
 {
 	m_PosteRazor->setPaperBorderRight(border);
-	SetDialogPosterOptions();
+	setDialogPosterOptions();
 	updatePreview();
 }
 
 void PosteRazorDialogController::setPaperBorderBottom(double border)
 {
 	m_PosteRazor->setPaperBorderBottom(border);
-	SetDialogPosterOptions();
+	setDialogPosterOptions();
 	updatePreview();
 }
 
 void PosteRazorDialogController::setPaperBorderLeft(double border)
 {
 	m_PosteRazor->setPaperBorderLeft(border);
-	SetDialogPosterOptions();
+	setDialogPosterOptions();
 	updatePreview();
 }
 
 void PosteRazorDialogController::setCustomPaperWidth(double width)
 {
 	m_PosteRazor->setCustomPaperWidth(width);
-	SetDialogPosterOptions();
+	setDialogPosterOptions();
+	setDialogPaperBorders();
 	updatePreview();
 }
 
 void PosteRazorDialogController::setCustomPaperHeight(double height)
 {
 	m_PosteRazor->setCustomPaperHeight(height);
-	SetDialogPosterOptions();
+	setDialogPosterOptions();
+	setDialogPaperBorders();
 	updatePreview();
 }
 
 void PosteRazorDialogController::setUseCustomPaperSize(bool useIt)
 {
 	m_PosteRazor->setUseCustomPaperSize(useIt);
-	SetDialogPosterOptions();
+	setDialogPosterOptions();
+	setDialogPaperBorders();
 	updatePreview();
 }
 
 void PosteRazorDialogController::setOverlappingWidth(double width)
 {
 	m_PosteRazor->setOverlappingWidth(width);
-	SetDialogPosterOptions();
+	setDialogPosterOptions();
 	updatePreview();
 }
 
 void PosteRazorDialogController::setOverlappingHeight(double height)
 {
 	m_PosteRazor->setOverlappingHeight(height);
-	SetDialogPosterOptions();
+	setDialogPosterOptions();
 	updatePreview();
 }
 
@@ -140,13 +145,13 @@ void PosteRazorDialogController::setOverlappingPosition(PosteRazorEnums::eOverla
 void PosteRazorDialogController::setPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width)
 {
 	m_PosteRazor->setPosterWidth(mode, width);
-	SetDialogPosterDimensions(mode, true);
+	setDialogPosterDimensions(mode, true);
 }
 
 void PosteRazorDialogController::setPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height)
 {
 	m_PosteRazor->setPosterHeight(mode, height);
-	SetDialogPosterDimensions(mode, false);
+	setDialogPosterDimensions(mode, false);
 }
 
 void PosteRazorDialogController::setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode)
@@ -174,28 +179,28 @@ void PosteRazorDialogController::setPosterOutputFormat(ImageIOTypes::eImageForma
 void PosteRazorDialogController::setLaunchPDFApplication(bool launch)
 {
 	m_PosteRazor->setLaunchPDFApplication(launch);
-	SetDialogSaveOptions();
+	setDialogSaveOptions();
 }
 
-void PosteRazorDialogController::SetDialogSaveOptions(void)
+void PosteRazorDialogController::setDialogSaveOptions(void)
 {
 	m_Dialog->setLaunchPDFApplication(m_PosteRazor->getLaunchPDFApplication());
 }
 
-void PosteRazorDialogController::SetDialogPosterSizeMode(void)
+void PosteRazorDialogController::setDialogPosterSizeMode(void)
 {
 	m_Dialog->setPosterSizeMode(m_PosteRazor->getPosterSizeMode());
 }
 
-void PosteRazorDialogController::SetDialogPosterOptions(void)
+void PosteRazorDialogController::setDialogPosterOptions(void)
 {
-	SetDialogPosterDimensions(PosteRazorEnums::ePosterSizeModeNone, true);
+	setDialogPosterDimensions(PosteRazorEnums::ePosterSizeModeNone, true);
 	m_Dialog->setPosterHorizontalAlignment(m_PosteRazor->getPosterHorizontalAlignment());
 	m_Dialog->setPosterVerticalAlignment(m_PosteRazor->getPosterVerticalAlignment());
 	m_Dialog->setPosterSizeMode(m_PosteRazor->getPosterSizeMode());
 }
 
-void PosteRazorDialogController::SetDialogPosterDimensions(PosteRazorEnums::ePosterSizeModes excludedMode, bool widthExcluded)
+void PosteRazorDialogController::setDialogPosterDimensions(PosteRazorEnums::ePosterSizeModes excludedMode, bool widthExcluded)
 {
 	static const struct
 	{
@@ -226,16 +231,16 @@ void PosteRazorDialogController::SetDialogPosterDimensions(PosteRazorEnums::ePos
 	updatePreview();
 }
 
-void PosteRazorDialogController::SetDialogPaperOptions(void)
+void PosteRazorDialogController::setDialogPaperOptions(void)
 {
-	SetDialogPaperBorders();
-	SetDialogCustomPaperDimensions();
+	setDialogPaperBorders();
+	setDialogCustomPaperDimensions();
 	m_Dialog->setUseCustomPaperSize(m_PosteRazor->getUseCustomPaperSize());
 	m_Dialog->setPaperFormat(m_PosteRazor->getPaperFormat());
 	m_Dialog->setPaperOrientation(m_PosteRazor->getPaperOrientation());
 }
 
-void PosteRazorDialogController::SetDialogPaperBorders(void)
+void PosteRazorDialogController::setDialogPaperBorders(void)
 {
 	m_Dialog->setPaperBorderTop(m_PosteRazor->getPaperBorderTop());
 	m_Dialog->setPaperBorderRight(m_PosteRazor->getPaperBorderRight());
@@ -243,13 +248,13 @@ void PosteRazorDialogController::SetDialogPaperBorders(void)
 	m_Dialog->setPaperBorderLeft(m_PosteRazor->getPaperBorderLeft());
 }
 
-void PosteRazorDialogController::SetDialogCustomPaperDimensions(void)
+void PosteRazorDialogController::setDialogCustomPaperDimensions(void)
 {
 	m_Dialog->setCustomPaperWidth(m_PosteRazor->getCustomPaperWidth());
 	m_Dialog->setCustomPaperHeight(m_PosteRazor->getCustomPaperHeight());
 }
 
-void PosteRazorDialogController::SetDialogImageInfoFields(void)
+void PosteRazorDialogController::setDialogImageInfoFields(void)
 {
 	if (m_PosteRazor->getIsImageLoaded())
 	{
@@ -268,15 +273,15 @@ void PosteRazorDialogController::SetDialogImageInfoFields(void)
 	}
 }
 
-void PosteRazorDialogController::SetDialogOverlappingDimensions(void)
+void PosteRazorDialogController::setDialogOverlappingDimensions(void)
 {
 	m_Dialog->setOverlappingWidth(m_PosteRazor->getOverlappingWidth());
 	m_Dialog->setOverlappingHeight(m_PosteRazor->getOverlappingHeight());
 }
 
-void PosteRazorDialogController::SetDialogOverlappingOptions(void)
+void PosteRazorDialogController::setDialogOverlappingOptions(void)
 {
-	SetDialogOverlappingDimensions();
+	setDialogOverlappingDimensions();
 	m_Dialog->setOverlappingPosition(m_PosteRazor->getOverlappingPosition());
 }
 
