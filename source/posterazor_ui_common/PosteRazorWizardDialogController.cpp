@@ -42,6 +42,7 @@ void PosteRazorWizardDialogController::handleNextButtonPressed(void)
 
 void PosteRazorWizardDialogController::updateDialog(void)
 {
+	PosteRazorDialogController::updateDialog();
 	updateDialogWizardStep();
 }
 

@@ -65,9 +65,9 @@ public:
 	void next(void);
 	void prev(void);
 	void updateNavigationButtons(void);
-	const char* getCurrentWizardStepStepInfoString(void);
+	const char* getWizardStepInfoString(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step);
 	int getCurrentWizardStepNumber(void);
-	void updateStepInfoBar(void);
+	void updateStepInfoBar(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step);
 	void updatePreview(void);
 	void updatePreviewState(void);
 	void updateLanguage(void);

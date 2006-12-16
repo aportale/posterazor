@@ -45,7 +45,7 @@ private:
 	Fl_Repeat_Button *m_decreaseButton;
 	bool m_spinnerVisible;
 
-	void UpdateButtonsState(void);
+	void updateButtonsState(void);
 	static void handleButtonPress_cb(Fl_Repeat_Button *button, void *data);
 	void handleButtonPress(Fl_Repeat_Button *button);
 	static void handleValueChangement_cb(Fl_Input *input, void *data);
