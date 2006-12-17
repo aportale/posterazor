@@ -161,6 +161,7 @@ public:
 	const char* colorType(void)                       {return m_selectedTranslation->colorType();}
 	const char* custom(void)                          {return m_selectedTranslation->custom();}
 	const char* fileCouldNotBeLoaded(void)            {return m_selectedTranslation->fileCouldNotBeLoaded();}
+	const char* fileCouldNotBeSaved(void)             {return m_selectedTranslation->fileCouldNotBeSaved();}
 	const char* format(void)                          {return m_selectedTranslation->format();}
 	const char* grayscale(void)                       {return m_selectedTranslation->grayscale();}
 	const char* height(void)                          {return m_selectedTranslation->height();}

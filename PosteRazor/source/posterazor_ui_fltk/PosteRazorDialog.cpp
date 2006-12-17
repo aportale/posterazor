@@ -603,7 +603,7 @@ void PosteRazorDialog::savePoster(void)
 			{
 				int err = m_posteRazorController->savePoster(saveFileName);
 				if (err)
-					fl_message("The file '%s' could not be saved.", fl_filename_name(saveFileName));
+					fl_message(TRANSLATIONS->fileCouldNotBeSaved(), fl_filename_name(saveFileName));
 				fileExistsAskUserForOverwrite = false;
 			}
 		}

@@ -46,6 +46,7 @@ public:
 	const char* colorType(void)                       {return "Tipo di colore:";}
 	const char* custom(void)                          {return "Personalizzato";}
 	const char* fileCouldNotBeLoaded(void)            {return "Il file \"%s\" non può essere caricato.";}
+	const char* fileCouldNotBeSaved(void)             {return "Il file \"%s\" non può essere salvato.";}
 	const char* format(void)                          {return "Formato:";}
 	const char* grayscale(void)                       {return "Scala di grigi";}
 	const char* height(void)                          {return "Altezza:";}

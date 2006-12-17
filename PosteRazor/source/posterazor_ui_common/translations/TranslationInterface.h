@@ -39,6 +39,7 @@ public:
 	virtual const char* colorType(void) = 0;
 	virtual const char* custom(void) = 0;
 	virtual const char* fileCouldNotBeLoaded(void) = 0;
+	virtual const char* fileCouldNotBeSaved(void) = 0;
 	virtual const char* format(void) = 0;
 	virtual const char* grayscale(void) = 0;
 	virtual const char* height(void) = 0;

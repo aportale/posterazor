@@ -91,6 +91,7 @@ public:
 	const char* colorType(void)                       {return "Typ koloru:";}
 	const char* custom(void)                          {return "W"CHAR_laccent"asny";}   
 	const char* fileCouldNotBeLoaded(void)            {return "Nie mo"CHAR_zdot"na otworzy"CHAR_cacute" pliku \"%s\"";}
+	const char* fileCouldNotBeSaved(void)             {return "The File \"%s\" could not be saved.";}
 	const char* format(void)                          {return "Format:";}
 	const char* grayscale(void)                       {return "Skala szaro"CHAR_sacute"ci";}
 	const char* height(void)                          {return "Wysoko"CHAR_sacute""CHAR_cacute":";}
