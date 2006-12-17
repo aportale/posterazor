@@ -2,6 +2,7 @@
 #include <QApplication>
 #include <QHeaderView>
 #include <QFileDialog>
+#include <QMessageBox>
 #include "QPersistentPreferences.h"
 
 PosteRazorDialog::PosteRazorDialog(QWidget *parent, Qt::WFlags flags)
@@ -375,7 +376,51 @@ void PosteRazorDialog::handlePosterVerticalAlignmentBottomSelected(void)
 	m_posteRazorController->setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentBottom);
 }
 
-void PosteRazorDialog::handlelaunchPDFApplicationChanged(int state)
+void PosteRazorDialog::handleSavePosterButtonClicked(void)
+{
+	static const QString savePathSettingsKey("savePath");
+	QSettings savePathSettings;
+
+	QString saveFileName = savePathSettings.value(savePathSettingsKey, ".").toString();
+	bool fileExistsAskUserForOverwrite = false;
+
+	do
+	{
+		saveFileName = QFileDialog::getSaveFileName
+		(
+			this,
+			"Choose a filename to save under",
+			saveFileName,
+			"Portable Document format (*.PDF)",
+			NULL,
+			QFileDialog::DontConfirmOverwrite
+		);
+
+		if (saveFileName != "")
+		{
+			if (QFileInfo(saveFileName).suffix().toLower() != "pdf")
+				saveFileName += ".pdf";
+
+			fileExistsAskUserForOverwrite = QFileInfo(saveFileName).exists();
+
+			if (!fileExistsAskUserForOverwrite
+				|| QMessageBox::Yes == (QMessageBox::question(this, "", tr("The file '%1' already exists.\nDo you want to overwrite it?").arg(saveFileName), QMessageBox::Yes, QMessageBox::No))
+				)
+			{
+				int result = m_posteRazorController->savePoster(saveFileName.toAscii());
+				if (result != 0)
+					QMessageBox::critical(this, "", tr("The File \"%1\" could not be saved.").arg(saveFileName), QMessageBox::Ok, QMessageBox::NoButton);
+				else
+					savePathSettings.setValue(savePathSettingsKey, QFileInfo(saveFileName).absolutePath());
+				fileExistsAskUserForOverwrite = false;
+			}
+		}
+		else
+			break;
+	} while (fileExistsAskUserForOverwrite);
+}
+
+void PosteRazorDialog::handleLaunchPDFApplicationChanged(int state)
 {
 	m_posteRazorController->setLaunchPDFApplication(state == Qt::Checked);
 }
@@ -422,6 +467,7 @@ void PosteRazorDialog::createConnections(void)
 	connect(m_posterAlignmentCenterButton, SIGNAL(clicked()), this, SLOT(handlePosterHorizontalAlignmentCenterSelected()));
 	connect(m_posterAlignmentRightButton, SIGNAL(clicked()), this, SLOT(handlePosterHorizontalAlignmentRightSelected()));
 
+	connect(m_savePosterButton, SIGNAL(clicked()), this, SLOT(handleSavePosterButtonClicked()));
 	connect(m_launchPDFApplicationCheckBox, SIGNAL(stateChanged(int)), this, SLOT(handlelaunchPDFApplicationChanged(int)));
 }
 
