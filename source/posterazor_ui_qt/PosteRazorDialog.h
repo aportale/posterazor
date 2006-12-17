@@ -92,7 +92,8 @@ private slots:
 	void handlePosterVerticalAlignmentMiddleSelected(void);
 	void handlePosterVerticalAlignmentBottomSelected(void);
 
-	void handlelaunchPDFApplicationChanged(int state);
+	void handleSavePosterButtonClicked(void);
+	void handleLaunchPDFApplicationChanged(int state);
 
 	void updatePosterSizeGroupsState(void);
 	void loadInputImage(const QString &fileName);
