@@ -32,7 +32,8 @@
 #define REPEATBUTTONWIDTH 15
 
 Fl_PosteRazor_Spinner::Fl_PosteRazor_Spinner(int x, int y, int width, int height, const char* label)
-	:Fl_Group(x, y, width, height, label)
+	: Fl_Group(x, y, width, height, label)
+	, m_spinnerVisible(true)
 {
 	begin();
 	m_input = new Fl_Input(1, 1, 1, 1);
@@ -40,8 +41,6 @@ Fl_PosteRazor_Spinner::Fl_PosteRazor_Spinner(int x, int y, int width, int height
 	m_input->value("1");
 	m_input->callback((Fl_Callback*)handleValueChangement_cb, this);
 	m_input->when(FL_WHEN_CHANGED);
-
-	m_spinnerVisible = true;
 
 	m_increaseButton = new Fl_Repeat_Button(1, 1, 1, 1);
 	m_increaseButton->label("+");

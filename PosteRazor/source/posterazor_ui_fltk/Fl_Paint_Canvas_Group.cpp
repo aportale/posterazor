@@ -25,12 +25,11 @@
 #include <FL/Fl.H>
 
 Fl_Paint_Canvas_Group::Fl_Paint_Canvas_Group(int x, int y, int width, int height)
-	:Fl_Group(x, y, width, height)
+	: Fl_Group(x, y, width, height)
+	, m_imageRGBData(NULL)
+	, m_imageWidth(0)
+	, m_imageHeight(0)
 {
-	m_imageRGBData = NULL;
-	m_imageWidth = 0;
-	m_imageHeight = 0;
-
 	begin();
 	m_drawPaintCanvas = new Fl_Draw_Paint_Canvas(x+1, y+1, width-2, height-2);
 #ifndef NO_OPENGL_PREVIEW

@@ -27,11 +27,12 @@
 #define BORDER 9
 
 Fl_Draw_Paint_Canvas::Fl_Draw_Paint_Canvas(int x, int y, int width, int height)
-	:Fl_Box(x, y, width, height), PaintCanvasBase()
+	: Fl_Box(x, y, width, height)
+	, PaintCanvasBase()
+	, m_imageRGBData(NULL)
+	, m_image(NULL)
+	, m_scaledImage(NULL)
 {
-	m_imageRGBData = NULL;
-	m_image = NULL;
-	m_scaledImage = NULL;
 }
 
 Fl_Draw_Paint_Canvas::~Fl_Draw_Paint_Canvas()

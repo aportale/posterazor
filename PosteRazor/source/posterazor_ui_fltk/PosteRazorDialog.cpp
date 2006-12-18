@@ -76,11 +76,10 @@ int PosteRazorDragDropWidget::handle(int event)
 }
 
 PosteRazorDialog::PosteRazorDialog(void)
-	:PosteRazorDialogUI(620, 455, "PosteRazor "POSTERAZORVERSION)
+	: PosteRazorDialogUI(620, 455, "PosteRazor "POSTERAZORVERSION)
+	, m_settingsDialog(NULL)
+	, m_helpDialog(NULL)
 {
-	m_settingsDialog = NULL;
-	m_helpDialog = NULL;
-
 	int i;
 	begin();
 	m_dragDropWidget = new PosteRazorDragDropWidget(0, 0, w(), h());

@@ -24,12 +24,12 @@
 #include <string.h>
 
 PaintCanvasBase::PaintCanvasBase()
-	:PaintCanvasInterface()
+	: PaintCanvasInterface()
+	, m_maxImageWidth(1024)
+	, m_maxImageHeight(1024)
 {
 	m_stateString[0] = '\0';
 	m_backgroundColor[0] = m_backgroundColor[1] = m_backgroundColor[2] = 0;
-	m_maxImageWidth = 1024;
-	m_maxImageHeight = 1024;
 }
 
 void PaintCanvasBase::setBackgroundColor(unsigned char red, unsigned char green, unsigned char blue)
