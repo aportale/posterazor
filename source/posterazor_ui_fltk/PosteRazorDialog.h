@@ -69,7 +69,6 @@ public:
 	int getCurrentWizardStepNumber(void);
 	void updateStepInfoBar(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step);
 	void updatePreview(void);
-	void updatePreviewState(void);
 	void updateLanguage(void);
 
 	void loadInputImage(const char *fileName);
@@ -119,6 +118,7 @@ public:
 	void setPrevButtonEnabled(bool enabled);
 	void setNextButtonEnabled(bool enabled);
 	void setWizardStep(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step);
+	void setPreviewState(const char *state);
 };
 
 #endif
