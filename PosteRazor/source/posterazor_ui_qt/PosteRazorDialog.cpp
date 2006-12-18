@@ -204,6 +204,11 @@ void PosteRazorDialog::setWizardStep(PosteRazorWizardDialogEnums::ePosteRazorWiz
 	);
 }
 
+void PosteRazorDialog::setPreviewState(const char *state)
+{
+	m_paintCanvas->setState(state);
+}
+
 void PosteRazorDialog::handleNextButtonClicked(void)
 {
 	m_posteRazorController->handleNextButtonPressed();
@@ -238,11 +243,23 @@ void PosteRazorDialog::handleImageLoadButtonClicked(void)
 		filters << QString(ImageIOTypes::getInputImageFormat(formatIndex)) + " (" + filterExtensions.join(" ") + ")";
 	}
 	filters.prepend(tr("All image formats") + " (" +  allExtensions.join(" ") + ")"); 
-	QString s = QFileDialog::getOpenFileName(this, "blah", NULL, filters.join(";;"));
 
-	if (s != "")
+	static const QString loadPathSettingsKey("loadPath");
+	QSettings loadPathSettings;
+
+	QString loadFileName = QFileDialog::getOpenFileName
+	(
+		this,
+		tr("Load an input image"),
+		loadPathSettings.value(loadPathSettingsKey, ".").toString(),
+		filters.join(";;")
+	);
+
+	if (loadFileName != "")
 	{
-		loadInputImage(s);
+		bool successful = loadInputImage(loadFileName);
+		if (successful)
+			loadPathSettings.setValue(loadPathSettingsKey, QFileInfo(loadFileName).absolutePath());
 	}
 }
 
@@ -389,9 +406,9 @@ void PosteRazorDialog::handleSavePosterButtonClicked(void)
 		saveFileName = QFileDialog::getSaveFileName
 		(
 			this,
-			"Choose a filename to save under",
+			tr("Choose a filename to save under"),
 			saveFileName,
-			"Portable Document format (*.PDF)",
+			tr("Portable Document format (*.PDF)"),
 			NULL,
 			QFileDialog::DontConfirmOverwrite
 		);
@@ -514,7 +531,7 @@ void PosteRazorDialog::updatePosterSizeGroupsState(void)
 	m_posterPercentualSizeUnitLabel->setEnabled(percentual);
 }
 
-void PosteRazorDialog::loadInputImage(const QString &fileName)
+bool PosteRazorDialog::loadInputImage(const QString &fileName)
 {
 	char errorMessage[1024];
 	bool successful = m_posteRazorController->loadInputImage(fileName.toAscii(), errorMessage, sizeof(errorMessage));
@@ -525,8 +542,9 @@ void PosteRazorDialog::loadInputImage(const QString &fileName)
 	else
 	{
 		m_paintCanvas->requestImage();
-		m_paintCanvas->setState("poster");
 	}
+
+	return successful;
 }
 
 int main (int argc, char **argv)

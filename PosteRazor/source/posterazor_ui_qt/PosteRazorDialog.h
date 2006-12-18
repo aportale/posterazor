@@ -47,6 +47,7 @@ public:
 	void setPrevButtonEnabled(bool enabled);
 	void setNextButtonEnabled(bool enabled);
 	void setWizardStep(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step);
+	void setPreviewState(const char *state);
 
 private:
 	PosteRazor *m_posteRazor;
@@ -96,7 +97,7 @@ private slots:
 	void handleLaunchPDFApplicationChanged(int state);
 
 	void updatePosterSizeGroupsState(void);
-	void loadInputImage(const QString &fileName);
+	bool loadInputImage(const QString &fileName);
 };
 
 #endif

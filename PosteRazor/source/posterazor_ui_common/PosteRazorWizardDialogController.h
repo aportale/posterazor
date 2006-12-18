@@ -22,6 +22,7 @@ public:
 	virtual void setPrevButtonEnabled(bool enabled) = 0;
 	virtual void setNextButtonEnabled(bool enabled) = 0;
 	virtual void setWizardStep(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step) = 0;
+	virtual void setPreviewState(const char *state) = 0;
 };
 
 class PosteRazorWizardDialogController: public PosteRazorDialogController

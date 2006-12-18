@@ -127,7 +127,6 @@ PosteRazorDialog::PosteRazorDialog(void)
 
 	m_settingsButton->label_image(m_settingsButtonLabel->image());
 
-	updatePreviewState();
 	updateLanguage();
 }
 
@@ -219,7 +218,6 @@ void PosteRazorDialog::handleOptionsChangement(posteRazorSettings *settings)
 {
 	m_posteRazorController->setUnitOfLength(settings->unitOfLength);
 	m_paintCanvasGroup->setPaintCanvasType(settings->previewType);
-	updatePreviewState();
 
 	if (TRANSLATIONS->GetSelectedLanguage() != settings->language)
 	{
@@ -233,13 +231,11 @@ void PosteRazorDialog::handleOptionsChangement(posteRazorSettings *settings)
 void PosteRazorDialog::next(void)
 {
 	m_posteRazorController->handleNextButtonPressed();
-	updatePreviewState();
 }
 
 void PosteRazorDialog::prev(void)
 {
 	m_posteRazorController->handlePrevButtonPressed();
-	updatePreviewState();
 }
 
 void PosteRazorDialog::updateNavigationButtons(void)
@@ -282,19 +278,6 @@ void PosteRazorDialog::updateStepInfoBar(PosteRazorWizardDialogEnums::ePosteRazo
 void PosteRazorDialog::updatePreview(void)
 {
 	m_paintCanvasGroup->redraw();
-}
-
-void PosteRazorDialog::updatePreviewState(void)
-{
-	m_paintCanvasGroup->setState
-	(
-		m_wizard->value() == m_loadInputImageStep?"image"
-		:m_wizard->value() == m_paperSizeStep?"paper"
-		:m_wizard->value() == m_overlappingStep?"overlapping"
-		:"poster"
-	);
-
-	updatePreview();
 }
 
 void PosteRazorDialog::updateLanguage(void)
@@ -779,6 +762,12 @@ void PosteRazorDialog::setWizardStep(PosteRazorWizardDialogEnums::ePosteRazorWiz
 	);
 
 	updateStepInfoBar(step);
+}
+
+void PosteRazorDialog::setPreviewState(const char *state)
+{
+	m_paintCanvasGroup->setState(state);
+	updatePreview();
 }
 
 #ifdef __APPLE__
