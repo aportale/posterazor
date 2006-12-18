@@ -75,15 +75,12 @@ private:
 
 public:
 	PosteRazorImageIOImplementation()
+		: m_bitmap(NULL)
+		, m_widthPixels(0)
+		, m_heightPixels(0)
+		, m_horizontalDotsPerMeter(0)
+		, m_verticalDotsPerMeter(0)
 	{
-		m_bitmap = NULL;
-
-		m_widthPixels = 0;
-		m_heightPixels = 0;
-
-		m_horizontalDotsPerMeter = 0;
-		m_verticalDotsPerMeter = 0;
-
 		m_imageFileName[0] = '\0';
 	}
 

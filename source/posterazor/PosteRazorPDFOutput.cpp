@@ -62,15 +62,15 @@ private:
 
 public:
 	PosteRazorPDFOutputImplementation()
+		: m_outputFile(NULL)
+		, m_pdfObjectCount(0)
+		, m_objectPagesID(0)
+		, m_objectResourcesID(0)
+		, m_objectImageID(0)
+		, m_mediaboxWidth(5000.0)
+		, m_mediaboxHeight(5000.0)
 	{
-		m_outputFile                 = NULL;
-		m_pdfObjectCount             = 0;
-		m_objectPagesID              = 0;
-		m_objectResourcesID          = 0;
-		m_objectImageID              = 0;
-		m_pageContent[0]             = '\0';
-		m_mediaboxWidth              = 5000.0;
-		m_mediaboxHeight             = 5000.0;
+		m_pageContent[0] = '\0';
 	}
 
 	void AddOffsetToXref(void)

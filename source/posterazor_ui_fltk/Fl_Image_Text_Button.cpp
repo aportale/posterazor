@@ -25,9 +25,9 @@
 #include <FL/Fl.H>
 
 Fl_Image_Text_Button::Fl_Image_Text_Button(int x, int y, int w, int h, const char* label)
-	:Fl_Button(x, y, w, h, label)
+	: Fl_Button(x, y, w, h, label)
+	, m_label_image(0)
 {
-	m_label_image = 0;
 }
 
 void Fl_Image_Text_Button::label_image(Fl_Image *image)

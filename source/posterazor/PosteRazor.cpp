@@ -89,34 +89,34 @@ private:
 
 public:
 	PosteRazorImplementation()
+		: m_posterSizeMode(PosteRazorEnums::ePosterSizeModePages)
+		, m_posterDimension(2.0)
+		, m_posterDimensionIsWidth(true)
+		, m_posterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignmentLeft)
+		, m_posterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentTop)
+
+		, m_useCustomPaperSize(false)
+		, m_paperFormat(PaperFormats::ePaperFormatA4)
+		, m_paperOrientation(PaperFormats::ePaperOrientationPortrait)
+		, m_paperBorderTop(1.5)
+		, m_paperBorderRight(1.5)
+		, m_paperBorderBottom(1.5)
+		, m_paperBorderLeft(1.5)
+		, m_customPaperWidth(20)
+		, m_customPaperHeight(20)
+
+		, m_overlappingWidth(1.0)
+		, m_overlappingHeight(1.0)
+		, m_overlappingPosition(PosteRazorEnums::eOverlappingPositionBottomRight)
+
+		, m_UnitOfLength(UnitsOfLength::eUnitOfLengthCentimeter)
+
+		, m_posterOutputFormat(ImageIOTypes::eImageFormatPDF)
+
+		, m_launchPDFApplication(true)
 	{
-		m_imageIO                      = PosteRazorImageIO::createPosteRazorImageIO();
+		m_imageIO = PosteRazorImageIO::createPosteRazorImageIO();
 
-		m_posterSizeMode               = PosteRazorEnums::ePosterSizeModePages;
-		m_posterDimension              = 2.0;
-		m_posterDimensionIsWidth       = true;
-		m_posterHorizontalAlignment    = PosteRazorEnums::eHorizontalAlignmentLeft;
-		m_posterVerticalAlignment      = PosteRazorEnums::eVerticalAlignmentTop;
-
-		m_useCustomPaperSize           = false;
-		m_paperFormat                  = PaperFormats::ePaperFormatA4;
-		m_paperOrientation             = PaperFormats::ePaperOrientationPortrait;
-		m_paperBorderTop               = 1.5;
-		m_paperBorderRight             = 1.5;
-		m_paperBorderBottom            = 1.5;
-		m_paperBorderLeft              = 1.5;
-		m_customPaperWidth             = 20;
-		m_customPaperHeight            = 20;
-
-		m_overlappingWidth             = 1.0;
-		m_overlappingHeight            = 1.0;
-		m_overlappingPosition          = PosteRazorEnums::eOverlappingPositionBottomRight;
-
-		m_UnitOfLength                 = UnitsOfLength::eUnitOfLengthCentimeter;
-
-		m_posterOutputFormat           = ImageIOTypes::eImageFormatPDF;
-
-		m_launchPDFApplication         = true;
 	}
 
 	~PosteRazorImplementation()
