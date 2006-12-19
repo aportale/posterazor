@@ -4,16 +4,18 @@ SET(POSTERAZOR_CORESOURCES
 	PosteRazorPDFOutput.cpp
 	UnitsOfLength.cpp
 	PaperFormats.cpp
+	PaintCanvasBase.cpp
 )
 
 SET(POSTERAZOR_UISOURCES
 	Translations.cpp
-	Fl_Paint_Canvas_Base.cpp
 	Fl_Paint_Canvas_Group.cpp
 	Fl_Draw_Paint_Canvas.cpp
 	Fl_Persistent_Preferences.cpp
 	Fl_Image_Text_Button.cpp
 	Fl_PosteRazor_Spinner.cpp
+	PosteRazorDialogController.cpp
+	PosteRazorWizardDialogController.cpp
 	PosteRazorDialog.cpp
 	PosteRazorHelpDialog.cpp
 	PosteRazorSettingsDialog.cpp

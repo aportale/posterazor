@@ -4,12 +4,13 @@ SET(POSTERAZOR_CORESOURCES
 	../../../source/posterazor/PosteRazorPDFOutput.cpp
 	../../../source/tools/UnitsOfLength.cpp
 	../../../source/tools/PaperFormats.cpp
+	../../../source/tools/PaintCanvasBase.cpp
 )
 
 SET(POSTERAZOR_UISOURCES
 	../../../source/posterazor_ui_common/PosteRazorDialogController.cpp
+	../../../source/posterazor_ui_common/PosteRazorWizardDialogController.cpp
 	../../../source/posterazor_ui_common/translations/Translations.cpp
-	../../../source/posterazor_ui_fltk/Fl_Paint_Canvas_Base.cpp
 	../../../source/posterazor_ui_fltk/Fl_Paint_Canvas_Group.cpp
 	../../../source/posterazor_ui_fltk/Fl_Draw_Paint_Canvas.cpp
 	../../../source/posterazor_ui_fltk/Fl_Persistent_Preferences.cpp

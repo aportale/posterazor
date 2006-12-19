@@ -9,6 +9,7 @@ SOURCEARCHIVENAME=PosteRazor-$POSTERAZORVERSION-Source.tgz
 PATHSTOCOPY="\
     source/tools \
     source/posterazor \
+    source/posterazor_ui_common \
     source/posterazor_ui_common/translations \
     source/posterazor_ui_fltk \
 "
@@ -16,8 +17,8 @@ FILESTOCOPY="\
     CHANGES \
     LICENSE \
     README \
-    projects/cmake/CMakeLists.txt \
-    projects/cmake/CMakeLists_flat_source_tree.txt \
+    projects/posterazor_fltk/cmake/CMakeLists.txt \
+    projects/posterazor_fltk/cmake/CMakeLists_flat_source_tree.txt \
     source/posterazor_ui_common/x11Resources/PosteRazor.xpm \
 "
 

@@ -4,11 +4,11 @@ IF (WIN32 OR APPLE)
 	SET(POSTERAZOR_ENABLEGLPREVIEW TRUE)
 ENDIF (WIN32 OR APPLE)
 
-IF (EXISTS PosteRazor.cxx)
+IF (EXISTS PosteRazor.cpp)
 	INCLUDE (CMakeLists_flat_source_tree.txt)
-ELSE (EXISTS PosteRazor.cxx)
+ELSE (EXISTS PosteRazor.cpp)
 	INCLUDE (CMakeLists_deep_source_tree.txt)
-ENDIF (EXISTS PosteRazor.cxx)
+ENDIF (EXISTS PosteRazor.cpp)
 
 SET(POSTERAZOR_SOURCES
 	${POSTERAZOR_CORESOURCES}
