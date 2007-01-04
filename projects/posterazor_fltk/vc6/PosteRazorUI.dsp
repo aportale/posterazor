@@ -42,7 +42,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /W3 /GX /O2 /I "..\..\..\source\posterazor_ui_common" /I "..\..\..\source\posterazor_ui_common\windowsResources" /I "..\..\..\source\posterazor_ui_common\translations" /I "..\..\..\source\tools" /I "..\..\..\source\posterazor" /I "..\..\..\thirdparty\fltk-1.1" /I "..\..\..\thirdparty\Fl_Native_File_Chooser" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "VC_EXTRA_LEAN" /D "WIN32_EXTRA_LEAN" /D "OPENGL_PREVIEW" /FR /YX /FD /c
+# ADD CPP /nologo /W3 /GX /O2 /I "..\..\..\source\posterazor_ui_common" /I "..\..\..\source\posterazor_ui_common\windowsResources" /I "..\..\..\source\posterazor_ui_common\translations" /I "..\..\..\source\tools" /I "..\..\..\source\posterazor" /I "..\..\..\thirdparty\fltk-1.1" /I "..\..\..\thirdparty\Fl_Native_File_Chooser" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "VC_EXTRA_LEAN" /D "WIN32_EXTRA_LEAN" /D "OPENGL_PREVIEW" /FR /YX /FD /Zm200 /c
 # ADD BASE RSC /l 0x407 /d "NDEBUG"
 # ADD RSC /l 0x407 /d "NDEBUG"
 BSC32=bscmake.exe
@@ -205,6 +205,10 @@ SOURCE=..\..\..\source\posterazor_ui_common\PosteRazorWizardDialogController.h
 # Begin Source File
 
 SOURCE=..\..\..\source\posterazor_ui_common\translations\TranslationConstants.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\source\posterazor_ui_common\translations\TranslationDutch.h
 # End Source File
 # Begin Source File
 

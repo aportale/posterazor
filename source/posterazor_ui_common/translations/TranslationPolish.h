@@ -253,8 +253,12 @@ public:
 					"<a href=\""POLISH_POSTERAZORWEBSITEURL"\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
 					"Copyright (C) 2005-2006 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
-					"<b>Polskie tlumaczenie: Grzegorz Wacikowski.</b><br>" POSTERAZORHELPENDLINE \
-					"<b>Francuskie tlumaczenie: Martin Loyer (traduction<b></b>@<b></b>loyer<b></b>.<b></b>name).</b><br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+					"<b>Polish translation by Grzegorz Wacikowski.</b><br>" POSTERAZORHELPENDLINE \
+					"<b>French translation by Martin Loyer (traduction<b></b>@<b></b>loyer<b></b>.<b></b>name).</b><br>" POSTERAZORHELPENDLINE \
+					"<b>Italian translation by Stefano Nosei (kluster<b></b>@<b></b>imente<b></b>.<b></b>org).</b><br>" POSTERAZORHELPENDLINE \
+					"<b>Dutch/Belgian translation by Erik Wijkamp - Lochem (The Netherlands) (e_wijkamp<b></b>@<b></b>yahoo<b></b>.<b></b>com).</b><br>" POSTERAZORHELPENDLINE \
+
+					"&nbsp;<br>" \
 
 					"Ten program jest darmowy; mo"CHAR_HTML_zdot"esz go rozprowadza"CHAR_HTML_cacute" i/lub modyfikowa"CHAR_HTML_cacute" go stosuj"CHAR_HTML_acedilla"c si"CHAR_HTML_ecedilla" do warunk"CHAR_HTML_oacute"w na <a href=\"http://www.gnu.org/licenses/gpl.txt\">GNU General Public License</a> opublikowana przed Free Software Foundation; r"CHAR_HTML_oacute"wniez wersja 2 licencji lub ka"CHAR_HTML_zdot"da nast"CHAR_HTML_ecedilla"pna.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 					"Ten program jest rozprowadzany w nadziei, "CHAR_HTML_zdot"e b"CHAR_HTML_ecedilla"dzie przydatny,  jednak BEZ "CHAR_HTML_Zdot"ADNEJ GWARANCJI. Zobacz wi"CHAR_HTML_ecedilla"cej detali GNU General Public License.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \

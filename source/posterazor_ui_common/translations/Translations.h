@@ -48,6 +48,7 @@ public:
 		,eLanguagePolish
 #endif
 		,eLanguageItalian
+		,eLanguageDutch
 	};
 
 	static Translations* Instance(void);
