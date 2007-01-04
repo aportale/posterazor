@@ -211,8 +211,12 @@ public:
 					"<a href=\""FRENCH_POSTERAZORWEBSITEURL"\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
 					"Copyright (C) 2005-2006 par Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
-					"<b>Traduction Fran&ccedil;aise par Martin Loyer (traduction<b></b>@<b></b>loyer<b></b>.<b></b>name).</b><br>" POSTERAZORHELPENDLINE \
-					"<b>Traduction Polonaise par Grzegorz Wacikowski.</b><br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+					"<b>French translation by Martin Loyer (traduction<b></b>@<b></b>loyer<b></b>.<b></b>name).</b><br>" POSTERAZORHELPENDLINE \
+					"<b>Polish translation by Grzegorz Wacikowski.</b><br>" POSTERAZORHELPENDLINE \
+					"<b>Italian translation by Stefano Nosei (kluster<b></b>@<b></b>imente<b></b>.<b></b>org).</b><br>" POSTERAZORHELPENDLINE \
+					"<b>Dutch/Belgian translation by Erik Wijkamp - Lochem (The Netherlands) (e_wijkamp<b></b>@<b></b>yahoo<b></b>.<b></b>com).</b><br>" POSTERAZORHELPENDLINE \
+
+					"&nbsp;<br>" \
 
 					"La licence GNU GPL est pour le moment en Anglais, tant que la Free Software Foundation n'aura pas valid&eacute; la licence en langue Fran&ccedil;aise.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 					"This program is free software; you can redistribute it and/or modify it under the terms of the <a href=\"http://www.gnu.org/licenses/gpl.txt\">GNU General Public License</a> as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
