@@ -100,10 +100,6 @@ SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_Image_Text_Button.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\source\tools\PaintCanvasBase.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_Paint_Canvas_Group.cpp
 # End Source File
 # Begin Source File
@@ -113,6 +109,10 @@ SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_Persistent_Preferences.cpp
 # Begin Source File
 
 SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_PosteRazor_Spinner.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\source\tools\PaintCanvasBase.cpp
 # End Source File
 # Begin Source File
 
@@ -140,6 +140,10 @@ SOURCE=..\..\..\source\posterazor_ui_common\windowsResources\PosteRazorUI.rc
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\source\posterazor_ui_common\PosteRazorWizardDialogController.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\source\posterazor_ui_common\translations\Translations.cpp
 # End Source File
 # End Group
@@ -160,10 +164,6 @@ SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_Image_Text_Button.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\source\tools\PaintCanvasBase.h
-# End Source File
-# Begin Source File
-
 SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_Paint_Canvas_Group.h
 # End Source File
 # Begin Source File
@@ -173,6 +173,10 @@ SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_Persistent_Preferences.h
 # Begin Source File
 
 SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_PosteRazor_Spinner.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\source\tools\PaintCanvasBase.h
 # End Source File
 # Begin Source File
 
@@ -193,6 +197,10 @@ SOURCE=..\..\..\source\posterazor_ui_fltk\PosteRazorHelpDialog.h
 # Begin Source File
 
 SOURCE=..\..\..\source\posterazor_ui_fltk\PosteRazorSettingsDialog.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\source\posterazor_ui_common\PosteRazorWizardDialogController.h
 # End Source File
 # Begin Source File
 
