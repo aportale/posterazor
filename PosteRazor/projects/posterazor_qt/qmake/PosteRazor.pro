@@ -38,10 +38,13 @@ INCLUDEPATH += \
 	../../../source/posterazor \
 	../../../source/posterazor_ui_qt \
 	../../../source/posterazor_ui_common \
-	../../../thirdparty/FreeImage/Dist  \
+	../../../thirdparty/FreeImage/Dist
 
-LIBS += \
+win32:LIBS += \
 	../../../thirdparty/FreeImage/Dist/FreeImage.lib
+unix:LIBS += \
+	-L/usr/lib \
+	-lfreeimage
 
 DEFINES += \
 	FREEIMAGE_LIB
