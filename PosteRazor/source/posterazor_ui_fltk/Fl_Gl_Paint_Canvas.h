@@ -65,4 +65,4 @@ public:
 	virtual unsigned int getTexturesRowPixelRows(unsigned int row) const          {return row < getTexturesRowsCount()-1?m_texturesSize:getLastTexturesRowPixelsRows();}
 };
 
-#endif Fl_Gl_Paint_Canvas_h
+#endif
