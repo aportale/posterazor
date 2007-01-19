@@ -99,7 +99,7 @@ public:
 #define GERMAN_POSTERAZORHELPABOUT                    "&Uuml;ber den PosteRazor"
 #define GERMAN_POSTERAZORHELPMANUAL                   "Bedienungsanleitung"
 #define GERMAN_POSTERAZORHELPSETTINGS                 "Einstellungen"
-#define GERMAN_POSTERAZORHELPSTEPTITLE01			  "Ein Ausgangsbild laden"
+#define GERMAN_POSTERAZORHELPSTEPTITLE01              "Ein Ausgangsbild laden"
 #define GERMAN_POSTERAZORHELPSTEPTITLENOHTML02        "Druckerpapier-Maﬂe definieren"
 #define GERMAN_POSTERAZORHELPSTEPTITLE02              "Druckerpapier-Ma&szlig;e definieren"
 #define GERMAN_POSTERAZORHELPSTEPTITLENOHTML03        "‹berlappung der Bildabschnitte definieren"
