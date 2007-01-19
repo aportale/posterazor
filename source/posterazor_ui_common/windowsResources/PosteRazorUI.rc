@@ -52,11 +52,11 @@ BEGIN
     BEGIN
         BLOCK "00000000"
         BEGIN
-            VALUE "Comments", "PosteRazor 1.4, Copyright 2005-2006 Alessandro Portale, GNU General Public License"
+            VALUE "Comments", "PosteRazor 1.4, Copyright 2005-2007 Alessandro Portale, GNU General Public License"
             VALUE "CompanyName", "Alessandro Portale www.casaportale.de"
             VALUE "FileDescription", "PosteRazor"
             VALUE "FileVersion", "1.4"
-            VALUE "LegalCopyright", "Copyright (C) 2005-2006 Alessandro Portale"
+            VALUE "LegalCopyright", "Copyright (C) 2005-2007 Alessandro Portale"
             VALUE "LegalTrademarks", "Alessandro Portale"
             VALUE "OriginalFilename", "PosteRazor.exe"
             VALUE "ProductName", "PosteRazor"
