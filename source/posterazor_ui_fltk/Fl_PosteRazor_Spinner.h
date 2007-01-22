@@ -38,6 +38,7 @@ public:
 	void setSpinnerVisible(bool visible);
 	double value();
 	void value(double value);
+	int handle(int event);
 
 private:
 	Fl_Input *m_input;
@@ -48,8 +49,10 @@ private:
 	void updateButtonsState(void);
 	static void handleButtonPress_cb(Fl_Repeat_Button *button, void *data);
 	void handleButtonPress(Fl_Repeat_Button *button);
+	void doValueSpin(bool increase);
 	static void handleValueChangement_cb(Fl_Input *input, void *data);
 	void handleValueChangement(Fl_Input *input);
+	bool isValueDecrementationDisabled(void);
 };
 
 #endif

@@ -99,7 +99,7 @@ void Fl_PosteRazor_Spinner::setSpinnerVisible(bool visible)
 
 void Fl_PosteRazor_Spinner::updateButtonsState(void)
 {
-	if (value() - 1.0 <= 0.0)
+	if (isValueDecrementationDisabled())
 		m_decreaseButton->deactivate();
 	else
 		m_decreaseButton->activate();
@@ -112,7 +112,12 @@ void Fl_PosteRazor_Spinner::handleButtonPress_cb(Fl_Repeat_Button *button, void 
 
 void Fl_PosteRazor_Spinner::handleButtonPress(Fl_Repeat_Button *button)
 {
-	double increaseValue = button==m_increaseButton?.5:-.50001;
+	doValueSpin(button==m_increaseButton);
+}
+
+void Fl_PosteRazor_Spinner::doValueSpin(bool increase)
+{
+	double increaseValue = increase?.5:-.50001;
 	double oldValue = value();
 	double newValue = round(oldValue + increaseValue, 0);
 	if (newValue >= 1.0)
@@ -141,4 +146,27 @@ void Fl_PosteRazor_Spinner::value(double value)
 {
 	m_input->value(quickNDirtyDoubleToString(value));
 	updateButtonsState();
+}
+
+int Fl_PosteRazor_Spinner::handle(int event)
+{
+	bool mouseIsOnGroup = 
+		Fl::event_x() > x()
+		&& Fl::event_x() <= x() + w()
+		&& Fl::event_y() > y()
+		&& Fl::event_y() <= y() + h();
+
+	if (event == FL_MOUSEWHEEL && mouseIsOnGroup)
+	{
+		bool increase = Fl::e_dy < 0;
+		if (Fl::e_dy != 0 && (increase || !isValueDecrementationDisabled()))
+			doValueSpin(increase);
+	}
+	else
+		return Fl_Group::handle(event);
+}
+
+bool Fl_PosteRazor_Spinner::isValueDecrementationDisabled(void)
+{
+	return (value() - 1.0 <= 0.0);
 }
