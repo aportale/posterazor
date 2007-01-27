@@ -341,6 +341,44 @@ void PosteRazorDialog::updateLanguage(void)
 	redraw();
 }
 
+void PosteRazorDialog::getFileOpenDialogFilter(char *filter, int bufferLength)
+{
+	char filterString[1024] = "";
+	char allExtensions[1024] = "";
+	char formats[1024] = "%s\t*.{%s}";
+
+	for (int formatIndex = 0; formatIndex < ImageIOTypes::getInputImageFormatsCount(); formatIndex++)
+	{
+		char extensionsOfFormat[1024] = "";
+		char format[1024] = "";
+
+		int extensionsCount = ImageIOTypes::getFileExtensionsCount(formatIndex);
+
+		for (int extensionIndex = 0; extensionIndex < extensionsCount; extensionIndex++)
+		{
+			if (extensionIndex != 0)
+				strcat(extensionsOfFormat, ", ");
+			strcat(extensionsOfFormat, ImageIOTypes::getFileExtensionForFormat(extensionIndex, formatIndex));
+		}
+		if (formatIndex != 0)
+			strcat(allExtensions, ", ");
+		strcat(allExtensions, extensionsOfFormat);
+		sprintf(format, "\n%s (%s)\t*.{%s}", ImageIOTypes::getInputImageFormat(formatIndex), extensionsOfFormat, extensionsOfFormat);
+		strcat(formats, format);
+	}
+
+	sprintf
+	(
+		filterString,
+		formats,
+		TRANSLATIONS->allImageFormats(),
+		allExtensions
+	);
+
+	strncpy(filter, filterString, bufferLength);
+	filter[bufferLength-1] = '\0';
+}
+
 void PosteRazorDialog::loadInputImage(const char *fileName)
 {
 	char errorMessage[1024] = "";
@@ -350,37 +388,8 @@ void PosteRazorDialog::loadInputImage(const char *fileName)
 	Fl_Native_File_Chooser loadImageChooser(Fl_Native_File_Chooser::BROWSE_FILE);
 #ifndef __APPLE__
 // filter stuff is still crashy os OSX
-	char filterString[1024] = "";
-	sprintf
-	(
-		filterString,
-		"%s\t*.{BMP,CUT,DDS,GIF,ICO,IFF,LBM,JNG,JPG,JPEG,JPE,JIF,KOA,MNG,PBM,PCD,PCX,PGM,PNG,PPM,PSD,RAS,TGA,TIF,TIFF,WBMP,XBM,XPM}\n"\
-		"Windows, OS/2 Bitmap (*.BMP)\t*.BMP\n"\
-		"Dr. Halo (*.CUT)\t*.CUT\n"\
-		"DirectDraw Surface (*.DDS)\t*.DDS\n"\
-		"Graphic Interchange format (*.GIF)\t*.GIF\n"\
-		"Windows Icon (*.ICO)\t*.ICO\n"\
-		"Amiga IFF (*.IFF;*.LBM)\t*.{IFF,LBM}\n"\
-		"JBIG (*.JBIG)\t*.JBIG\n"\
-		"JPEG Network Graphics (*.JNG)\t*.JNG\n"\
-		"Independent JPEG Group (*.JPG;*.JPEG;*.JPE;*.JIF)\t*.{JPG,JIF,JPEG,JPE}\n"\
-		"Commodore 64 Koala (*.KOA)\t*.KOA\n"\
-		"Multiple Network Graphics (*.MNG)\t*.MNG\n"\
-		"Portable Bitmap (*.PBM)\t*.PBM\n"\
-		"Kodak PhotoCD (*.PCD)\t*.PCD\n"\
-		"PC Paintbrush Bitmap (*.PCX)\t*.PCX\n"\
-		"Portable Graymap (*.PGM)\t*.PGM\n"\
-		"Portable Network Graphics (*.PNG)\t*.PNG\n"\
-		"Portable Pixelmap (*.PPM)\t*.PPM\n"\
-		"Photoshop Document (*.PSD)\t*.PSD\n"\
-		"Sun Raster Graphic (*.RAS)\t*.RAS\n"\
-		"Targa (*.TGA)\t*.TGA\n"\
-		"Tagged Image File format (*.TIF;*.TIFF)\t*.{TIF,TIFF}\n"\
-		"Wireless Bitmap (*.WBMP)\t*.WBMP\n"\
-		"X11 Bitmap (*.XBM)\t*.XBM\n"\
-		"X11 Pixmap (*.XPM)\t*.XPM",
-		TRANSLATIONS->allImageFormats()
-	);
+	char filterString[1024];
+	getFileOpenDialogFilter(filterString, sizeof(filterString));
 	loadImageChooser.filter(filterString);
 #endif
 	loadImageChooser.title(TRANSLATIONS->loadAnInputImage());

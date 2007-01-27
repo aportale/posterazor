@@ -112,6 +112,10 @@ SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_PosteRazor_Spinner.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\source\tools\ImageIOTypes.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\source\tools\PaintCanvasBase.cpp
 # End Source File
 # Begin Source File
@@ -173,6 +177,10 @@ SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_Persistent_Preferences.h
 # Begin Source File
 
 SOURCE=..\..\..\source\posterazor_ui_fltk\Fl_PosteRazor_Spinner.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\source\tools\ImageIOTypes.h
 # End Source File
 # Begin Source File
 

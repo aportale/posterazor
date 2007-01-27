@@ -71,6 +71,7 @@ public:
 	void updatePreview(void);
 	void updateLanguage(void);
 
+	void getFileOpenDialogFilter(char *filter, int bufferLength);
 	void loadInputImage(const char *fileName);
 	void showImageFileName(const char *fileName);
 	void updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel);
