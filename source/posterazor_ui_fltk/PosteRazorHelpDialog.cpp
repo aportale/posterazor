@@ -37,6 +37,9 @@ PosteRazorHelpDialog::PosteRazorHelpDialog()
 	:PosteRazorHelpDialogUI(500, 400, "PosteRazor Help")
 {
 	m_help_view->link(linkCallback);
+#if defined(NO_LAUNCH_URLS_OR_FILES)
+	m_homepageButton->hide();
+#endif
 }
 
 void PosteRazorHelpDialog::setHtmlContent(const char *content)
