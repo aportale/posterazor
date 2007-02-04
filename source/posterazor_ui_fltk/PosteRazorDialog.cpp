@@ -81,10 +81,15 @@ PosteRazorDialog::PosteRazorDialog(void)
 	, m_helpDialog(NULL)
 {
 	int i;
+#if defined(WIN32) || defined(__APPLE__)
+// Drag & Drop doesn't work on Linux. That is dragging a file from Konqueror just gives
+// us the filename without path but with an appended character with ascii value 10.
+// Also, we sometimes get a "X_ConvertSelection: BadAtom (invalid Atom parameter) 0x2" message on stderr
+// May work with other file managers
 	begin();
 	m_dragDropWidget = new PosteRazorDragDropWidget(0, 0, w(), h());
 	end();
-
+#endif
 	m_wizard->value(m_loadInputImageStep);
 
 	m_posteRazor = PosteRazor::createPosteRazor();
@@ -348,8 +353,8 @@ void PosteRazorDialog::loadInputImage(const char *fileName)
 	bool loaded = false;
 
 	Fl_Native_File_Chooser loadImageChooser(Fl_Native_File_Chooser::BROWSE_FILE);
-#ifndef __APPLE__
-// filter stuff is still crashy os OSX
+#if defined (WIN32)
+// filter stuff is still crashy os OSX and ugly on Linux
 	char filterString[1024] = "";
 	sprintf
 	(
