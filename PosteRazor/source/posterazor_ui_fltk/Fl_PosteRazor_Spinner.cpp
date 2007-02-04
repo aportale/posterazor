@@ -26,7 +26,7 @@
 #include <stdio.h>
 #include <math.h>
 #ifndef WIN32
-#include <iostream.h>
+#include <iostream>
 #endif
 
 #define REPEATBUTTONWIDTH 15
@@ -161,6 +161,7 @@ int Fl_PosteRazor_Spinner::handle(int event)
 		bool increase = Fl::e_dy < 0;
 		if (Fl::e_dy != 0 && (increase || !isValueDecrementationDisabled()))
 			doValueSpin(increase);
+		return 1; // consume event
 	}
 	else
 		return Fl_Group::handle(event);
