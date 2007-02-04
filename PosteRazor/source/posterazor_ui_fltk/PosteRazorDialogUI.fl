@@ -392,7 +392,7 @@ widget_class PosteRazorDialogUI {
         Fl_Check_Button m_setLaunchPDFApplicationCheckButton {
           label {Launch PDF application after saving}
           callback {setLaunchPDFApplication();}
-          xywh {335 115 255 30} down_box DOWN_BOX align 148
+          xywh {335 110 255 40} down_box DOWN_BOX align 148
         }
       }
       Fl_Box {} {

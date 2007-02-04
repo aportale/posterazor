@@ -131,6 +131,12 @@ PosteRazorDialog::PosteRazorDialog(void)
 
 	m_settingsButton->label_image(m_settingsButtonLabel->image());
 
+#if defined(NO_LAUNCH_URLS_OR_FILES)
+	m_setLaunchPDFApplicationCheckButton->hide();
+	m_savePosterGroup->resizable(m_setLaunchPDFApplicationCheckButton);
+	m_savePosterGroup->size(m_savePosterGroup->w(),  m_savePosterGroup->h()-m_setLaunchPDFApplicationCheckButton->h());
+#endif
+
 	updateLanguage();
 }
 
