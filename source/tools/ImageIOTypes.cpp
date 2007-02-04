@@ -116,10 +116,10 @@ int ImageIOTypes::getFileExtensionsCount(int imageFormatIndex)
 const char* ImageIOTypes::getFileExtensionForFormat(int extensionIndex, int imageFormatIndex)
 {
 	const char *result = g_fileExtensions[0].name;
+	int nthFoundExtension = 0;
 	
 	for (int i = 0; i < g_fileExtensionsCount; i++)
 	{
-		int nthFoundExtension = 0;
 		if (imageFormatIndex == g_fileExtensions[i].imageFormatIndex)
 		{
 			result = g_fileExtensions[i].name;
