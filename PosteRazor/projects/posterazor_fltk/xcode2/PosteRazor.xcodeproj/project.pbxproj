@@ -7,31 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		82028CDA091E6F1500763263 /* CHANGES in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 82028CD7091E6F1500763263 /* CHANGES */; };
-		82028CDB091E6F1500763263 /* LICENSE in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 82028CD8091E6F1500763263 /* LICENSE */; };
-		82028CDC091E6F1500763263 /* README in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 82028CD9091E6F1500763263 /* README */; };
 		821821DD0916D2A2004580FC /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 821821DB0916D2A2004580FC /* AGL.framework */; };
 		821821DE0916D2A2004580FC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 821821DC0916D2A2004580FC /* OpenGL.framework */; };
-		821821EA0916D2BA004580FC /* libfltk_gl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 821821E90916D2BA004580FC /* libfltk_gl.a */; };
-		8221C68408A566EC00EB193B /* libfltk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8221C68308A566EC00EB193B /* libfltk.a */; };
-		8221C68608A566FC00EB193B /* libfreeimage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8221C68508A566FC00EB193B /* libfreeimage.a */; };
-		82729AC109733F68004A7EF2 /* Fl_Image_Text_Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82729ABF09733F67004A7EF2 /* Fl_Image_Text_Button.cpp */; };
+		8268C3BE0B77D84B0038820A /* libfltk_gl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8268C3BC0B77D84B0038820A /* libfltk_gl.a */; };
+		8268C3BF0B77D84B0038820A /* libfltk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8268C3BD0B77D84B0038820A /* libfltk.a */; };
+		8268C3C90B77D8BB0038820A /* libfreeimage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8268C3C80B77D8BB0038820A /* libfreeimage.a */; };
+		8268C4210B77D8DC0038820A /* PosteRazor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C3CB0B77D8DC0038820A /* PosteRazor.cpp */; };
+		8268C4240B77D8DC0038820A /* PosteRazorImageIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C3CE0B77D8DC0038820A /* PosteRazorImageIO.cpp */; };
+		8268C4260B77D8DC0038820A /* PosteRazorPDFOutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C3D00B77D8DC0038820A /* PosteRazorPDFOutput.cpp */; };
+		8268C43D0B77D8DC0038820A /* PosteRazorDialogController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C3EA0B77D8DC0038820A /* PosteRazorDialogController.cpp */; };
+		8268C43F0B77D8DC0038820A /* PosteRazorWizardDialogController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C3EC0B77D8DC0038820A /* PosteRazorWizardDialogController.cpp */; };
+		8268C4490B77D8DC0038820A /* Translations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C3F70B77D8DC0038820A /* Translations.cpp */; };
+		8268C44F0B77D8DC0038820A /* Fl_Draw_Paint_Canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4000B77D8DC0038820A /* Fl_Draw_Paint_Canvas.cpp */; };
+		8268C4510B77D8DC0038820A /* Fl_Gl_Paint_Canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4020B77D8DC0038820A /* Fl_Gl_Paint_Canvas.cpp */; };
+		8268C4530B77D8DC0038820A /* Fl_Image_Text_Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4040B77D8DC0038820A /* Fl_Image_Text_Button.cpp */; };
+		8268C4550B77D8DC0038820A /* Fl_Paint_Canvas_Group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4060B77D8DC0038820A /* Fl_Paint_Canvas_Group.cpp */; };
+		8268C4570B77D8DC0038820A /* Fl_Persistent_Preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4080B77D8DC0038820A /* Fl_Persistent_Preferences.cpp */; };
+		8268C4590B77D8DC0038820A /* Fl_PosteRazor_Spinner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C40A0B77D8DC0038820A /* Fl_PosteRazor_Spinner.cpp */; };
+		8268C45B0B77D8DC0038820A /* PosteRazorDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C40C0B77D8DC0038820A /* PosteRazorDialog.cpp */; };
+		8268C45D0B77D8DC0038820A /* PosteRazorDialogUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C40E0B77D8DC0038820A /* PosteRazorDialogUI.cpp */; };
+		8268C4600B77D8DC0038820A /* PosteRazorHelpDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4110B77D8DC0038820A /* PosteRazorHelpDialog.cpp */; };
+		8268C4620B77D8DC0038820A /* PosteRazorSettingsDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4130B77D8DC0038820A /* PosteRazorSettingsDialog.cpp */; };
+		8268C4650B77D8DC0038820A /* ImageIOTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4170B77D8DC0038820A /* ImageIOTypes.cpp */; };
+		8268C4670B77D8DC0038820A /* PaintCanvasBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4190B77D8DC0038820A /* PaintCanvasBase.cpp */; };
+		8268C46A0B77D8DC0038820A /* PaperFormats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C41C0B77D8DC0038820A /* PaperFormats.cpp */; };
+		8268C46D0B77D8DC0038820A /* UnitsOfLength.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C41F0B77D8DC0038820A /* UnitsOfLength.cpp */; };
+		8268C4A20B77D9150038820A /* Fl_Native_File_Chooser.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4950B77D9150038820A /* Fl_Native_File_Chooser.cxx */; };
 		82814C2408A5642E006D2A26 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9504C8FFE6A3BC11CA0CBA /* ApplicationServices.framework */; };
-		82814C4308A5647B006D2A26 /* Fl_Native_File_Chooser.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82814C3B08A5647B006D2A26 /* Fl_Native_File_Chooser.cxx */; };
-		82814C6008A564A3006D2A26 /* PaperFormats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82814C5708A564A3006D2A26 /* PaperFormats.cpp */; };
-		82C2674209351ED800E94922 /* UnitsOfLength.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82C2673E09351ED800E94922 /* UnitsOfLength.cpp */; };
-		82ED6224093FCA800032F854 /* PosteRazor.icns in Resources */ = {isa = PBXBuildFile; fileRef = 8239907208F175820038ED14 /* PosteRazor.icns */; };
-		82F01D8C093FC18A0037F1BD /* PosteRazor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D58093FC18A0037F1BD /* PosteRazor.cpp */; };
-		82F01D8F093FC18A0037F1BD /* PosteRazorImageIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D5B093FC18A0037F1BD /* PosteRazorImageIO.cpp */; };
-		82F01D91093FC18A0037F1BD /* PosteRazorPDFOutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D5D093FC18A0037F1BD /* PosteRazorPDFOutput.cpp */; };
-		82F01D93093FC18A0037F1BD /* Fl_Draw_Paint_Canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D60093FC18A0037F1BD /* Fl_Draw_Paint_Canvas.cpp */; };
-		82F01D95093FC18A0037F1BD /* Fl_Gl_Paint_Canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D62093FC18A0037F1BD /* Fl_Gl_Paint_Canvas.cpp */; };
-		82F01D97093FC18A0037F1BD /* Fl_Paint_Canvas_Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D64093FC18A0037F1BD /* Fl_Paint_Canvas_Base.cpp */; };
-		82F01D99093FC18A0037F1BD /* Fl_Paint_Canvas_Group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D66093FC18A0037F1BD /* Fl_Paint_Canvas_Group.cpp */; };
-		82F01D9B093FC18A0037F1BD /* Fl_Persistent_Preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D68093FC18A0037F1BD /* Fl_Persistent_Preferences.cpp */; };
-		82F01DAB093FC18A0037F1BD /* PosteRazorDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D7A093FC18A0037F1BD /* PosteRazorDialog.cpp */; };
-		82F01DAD093FC18A0037F1BD /* PosteRazorDialogUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D7C093FC18A0037F1BD /* PosteRazorDialogUI.cpp */; };
-		82F01DB6093FC18A0037F1BD /* Translations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82F01D86093FC18A0037F1BD /* Translations.cpp */; };
+		82AFF3EC0B77D9C2003095B0 /* PosteRazor.icns in Resources */ = {isa = PBXBuildFile; fileRef = 8268C3C00B77D8700038820A /* PosteRazor.icns */; };
+		82AFF4000B77DA12003095B0 /* CHANGES in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 8268C3C20B77D8860038820A /* CHANGES */; };
+		82AFF4010B77DA18003095B0 /* LICENSE in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 8268C3C30B77D8860038820A /* LICENSE */; };
+		82AFF4020B77DA1B003095B0 /* README in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 8268C3C40B77D8860038820A /* README */; };
 		8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,9 +48,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				82028CDB091E6F1500763263 /* LICENSE in Copy README, LICENSE, CHANGES */,
-				82028CDC091E6F1500763263 /* README in Copy README, LICENSE, CHANGES */,
-				82028CDA091E6F1500763263 /* CHANGES in Copy README, LICENSE, CHANGES */,
+				82AFF4000B77DA12003095B0 /* CHANGES in Copy README, LICENSE, CHANGES */,
+				82AFF4010B77DA18003095B0 /* LICENSE in Copy README, LICENSE, CHANGES */,
+				82AFF4020B77DA1B003095B0 /* README in Copy README, LICENSE, CHANGES */,
 			);
 			name = "Copy README, LICENSE, CHANGES";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,58 +60,76 @@
 /* Begin PBXFileReference section */
 		20286C33FDCF999611CA2CEA /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		4A9504C8FFE6A3BC11CA0CBA /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
-		82028CD7091E6F1500763263 /* CHANGES */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = CHANGES; path = ../../CHANGES; sourceTree = SOURCE_ROOT; };
-		82028CD8091E6F1500763263 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = LICENSE; path = ../../LICENSE; sourceTree = SOURCE_ROOT; };
-		82028CD9091E6F1500763263 /* README */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = README; path = ../../README; sourceTree = SOURCE_ROOT; };
-		8214BC3B09FF9A0500B67807 /* TranslationPolish.h */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.c.h; path = TranslationPolish.h; sourceTree = "<group>"; };
 		821821DB0916D2A2004580FC /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		821821DC0916D2A2004580FC /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
-		821821E90916D2BA004580FC /* libfltk_gl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfltk_gl.a; path = "../../thirdparty/fltk-1.1/lib/libfltk_gl.a"; sourceTree = SOURCE_ROOT; };
-		8221C68308A566EC00EB193B /* libfltk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfltk.a; path = "../../thirdparty/fltk-1.1/lib/libfltk.a"; sourceTree = SOURCE_ROOT; };
-		8221C68508A566FC00EB193B /* libfreeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreeimage.a; path = ../../thirdparty/FreeImage/libfreeimage.a; sourceTree = SOURCE_ROOT; };
 		8221C68908A567C100EB193B /* PosteRazor_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazor_Prefix.pch; sourceTree = "<group>"; };
-		8239907208F175820038ED14 /* PosteRazor.icns */ = {isa = PBXFileReference; explicitFileType = image.icns; name = PosteRazor.icns; path = ../../source/posterazor/ui/OSXResources/PosteRazor.icns; sourceTree = SOURCE_ROOT; };
-		82729ABF09733F67004A7EF2 /* Fl_Image_Text_Button.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Image_Text_Button.cpp; sourceTree = "<group>"; };
-		82729AC009733F68004A7EF2 /* Fl_Image_Text_Button.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Image_Text_Button.h; sourceTree = "<group>"; };
-		82814C3708A5647B006D2A26 /* Fl_Native_File_Chooser.H */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Fl_Native_File_Chooser.H; sourceTree = "<group>"; };
-		82814C3B08A5647B006D2A26 /* Fl_Native_File_Chooser.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Native_File_Chooser.cxx; sourceTree = "<group>"; };
-		82814C5708A564A3006D2A26 /* PaperFormats.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PaperFormats.cpp; sourceTree = "<group>"; };
-		82814C5808A564A3006D2A26 /* PaperFormats.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PaperFormats.h; sourceTree = "<group>"; };
-		82C2673C09351ED800E94922 /* ImageIOTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ImageIOTypes.h; sourceTree = "<group>"; };
-		82C2673D09351ED800E94922 /* PersistentPreferencesInterface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PersistentPreferencesInterface.h; sourceTree = "<group>"; };
-		82C2673E09351ED800E94922 /* UnitsOfLength.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UnitsOfLength.cpp; sourceTree = "<group>"; };
-		82C2673F09351ED800E94922 /* UnitsOfLength.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UnitsOfLength.h; sourceTree = "<group>"; };
-		82C4FB8E0A129EDA00DAB52D /* TranslationFrench.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationFrench.h; sourceTree = "<group>"; };
-		82CE849A0A442D8A00AE4F68 /* TranslationConstants.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationConstants.h; sourceTree = "<group>"; };
+		8268C3BC0B77D84B0038820A /* libfltk_gl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfltk_gl.a; path = "../../../thirdparty/fltk-1.1/lib/libfltk_gl.a"; sourceTree = SOURCE_ROOT; };
+		8268C3BD0B77D84B0038820A /* libfltk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfltk.a; path = "../../../thirdparty/fltk-1.1/lib/libfltk.a"; sourceTree = SOURCE_ROOT; };
+		8268C3C00B77D8700038820A /* PosteRazor.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = PosteRazor.icns; path = ../../../source/posterazor_ui_common/OSXResources/PosteRazor.icns; sourceTree = SOURCE_ROOT; };
+		8268C3C20B77D8860038820A /* CHANGES */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = CHANGES; path = ../../../CHANGES; sourceTree = SOURCE_ROOT; };
+		8268C3C30B77D8860038820A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = LICENSE; path = ../../../LICENSE; sourceTree = SOURCE_ROOT; };
+		8268C3C40B77D8860038820A /* README */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = README; path = ../../../README; sourceTree = SOURCE_ROOT; };
+		8268C3C80B77D8BB0038820A /* libfreeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreeimage.a; path = ../../../thirdparty/FreeImage/libfreeimage.a; sourceTree = SOURCE_ROOT; };
+		8268C3CB0B77D8DC0038820A /* PosteRazor.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazor.cpp; sourceTree = "<group>"; };
+		8268C3CC0B77D8DC0038820A /* PosteRazor.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazor.h; sourceTree = "<group>"; };
+		8268C3CE0B77D8DC0038820A /* PosteRazorImageIO.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorImageIO.cpp; sourceTree = "<group>"; };
+		8268C3CF0B77D8DC0038820A /* PosteRazorImageIO.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorImageIO.h; sourceTree = "<group>"; };
+		8268C3D00B77D8DC0038820A /* PosteRazorPDFOutput.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorPDFOutput.cpp; sourceTree = "<group>"; };
+		8268C3D10B77D8DC0038820A /* PosteRazorPDFOutput.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorPDFOutput.h; sourceTree = "<group>"; };
+		8268C3E90B77D8DC0038820A /* PosteRazor.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PosteRazor.icns; sourceTree = "<group>"; };
+		8268C3EA0B77D8DC0038820A /* PosteRazorDialogController.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorDialogController.cpp; sourceTree = "<group>"; };
+		8268C3EB0B77D8DC0038820A /* PosteRazorDialogController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorDialogController.h; sourceTree = "<group>"; };
+		8268C3EC0B77D8DC0038820A /* PosteRazorWizardDialogController.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorWizardDialogController.cpp; sourceTree = "<group>"; };
+		8268C3ED0B77D8DC0038820A /* PosteRazorWizardDialogController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorWizardDialogController.h; sourceTree = "<group>"; };
+		8268C3EF0B77D8DC0038820A /* TranslationConstants.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationConstants.h; sourceTree = "<group>"; };
+		8268C3F00B77D8DC0038820A /* TranslationDutch.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationDutch.h; sourceTree = "<group>"; };
+		8268C3F10B77D8DC0038820A /* TranslationEnglish.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationEnglish.h; sourceTree = "<group>"; };
+		8268C3F20B77D8DC0038820A /* TranslationFrench.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationFrench.h; sourceTree = "<group>"; };
+		8268C3F30B77D8DC0038820A /* TranslationGerman.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationGerman.h; sourceTree = "<group>"; };
+		8268C3F40B77D8DC0038820A /* TranslationInterface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationInterface.h; sourceTree = "<group>"; };
+		8268C3F50B77D8DC0038820A /* TranslationItalian.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationItalian.h; sourceTree = "<group>"; };
+		8268C3F60B77D8DC0038820A /* TranslationPolish.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationPolish.h; sourceTree = "<group>"; };
+		8268C3F70B77D8DC0038820A /* Translations.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Translations.cpp; sourceTree = "<group>"; };
+		8268C3F80B77D8DC0038820A /* Translations.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Translations.h; sourceTree = "<group>"; };
+		8268C4000B77D8DC0038820A /* Fl_Draw_Paint_Canvas.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Draw_Paint_Canvas.cpp; sourceTree = "<group>"; };
+		8268C4010B77D8DC0038820A /* Fl_Draw_Paint_Canvas.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Draw_Paint_Canvas.h; sourceTree = "<group>"; };
+		8268C4020B77D8DC0038820A /* Fl_Gl_Paint_Canvas.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Gl_Paint_Canvas.cpp; sourceTree = "<group>"; };
+		8268C4030B77D8DC0038820A /* Fl_Gl_Paint_Canvas.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Gl_Paint_Canvas.h; sourceTree = "<group>"; };
+		8268C4040B77D8DC0038820A /* Fl_Image_Text_Button.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Image_Text_Button.cpp; sourceTree = "<group>"; };
+		8268C4050B77D8DC0038820A /* Fl_Image_Text_Button.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Image_Text_Button.h; sourceTree = "<group>"; };
+		8268C4060B77D8DC0038820A /* Fl_Paint_Canvas_Group.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Paint_Canvas_Group.cpp; sourceTree = "<group>"; };
+		8268C4070B77D8DC0038820A /* Fl_Paint_Canvas_Group.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Paint_Canvas_Group.h; sourceTree = "<group>"; };
+		8268C4080B77D8DC0038820A /* Fl_Persistent_Preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Persistent_Preferences.cpp; sourceTree = "<group>"; };
+		8268C4090B77D8DC0038820A /* Fl_Persistent_Preferences.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Persistent_Preferences.h; sourceTree = "<group>"; };
+		8268C40A0B77D8DC0038820A /* Fl_PosteRazor_Spinner.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_PosteRazor_Spinner.cpp; sourceTree = "<group>"; };
+		8268C40B0B77D8DC0038820A /* Fl_PosteRazor_Spinner.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_PosteRazor_Spinner.h; sourceTree = "<group>"; };
+		8268C40C0B77D8DC0038820A /* PosteRazorDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorDialog.cpp; sourceTree = "<group>"; };
+		8268C40D0B77D8DC0038820A /* PosteRazorDialog.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorDialog.h; sourceTree = "<group>"; };
+		8268C40E0B77D8DC0038820A /* PosteRazorDialogUI.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorDialogUI.cpp; sourceTree = "<group>"; };
+		8268C40F0B77D8DC0038820A /* PosteRazorDialogUI.fl */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = PosteRazorDialogUI.fl; sourceTree = "<group>"; };
+		8268C4100B77D8DC0038820A /* PosteRazorDialogUI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorDialogUI.h; sourceTree = "<group>"; };
+		8268C4110B77D8DC0038820A /* PosteRazorHelpDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorHelpDialog.cpp; sourceTree = "<group>"; };
+		8268C4120B77D8DC0038820A /* PosteRazorHelpDialog.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorHelpDialog.h; sourceTree = "<group>"; };
+		8268C4130B77D8DC0038820A /* PosteRazorSettingsDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorSettingsDialog.cpp; sourceTree = "<group>"; };
+		8268C4140B77D8DC0038820A /* PosteRazorSettingsDialog.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorSettingsDialog.h; sourceTree = "<group>"; };
+		8268C4160B77D8DC0038820A /* ColorTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ColorTypes.h; sourceTree = "<group>"; };
+		8268C4170B77D8DC0038820A /* ImageIOTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = ImageIOTypes.cpp; sourceTree = "<group>"; };
+		8268C4180B77D8DC0038820A /* ImageIOTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ImageIOTypes.h; sourceTree = "<group>"; };
+		8268C4190B77D8DC0038820A /* PaintCanvasBase.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PaintCanvasBase.cpp; sourceTree = "<group>"; };
+		8268C41A0B77D8DC0038820A /* PaintCanvasBase.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PaintCanvasBase.h; sourceTree = "<group>"; };
+		8268C41B0B77D8DC0038820A /* PaintCanvasInterface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PaintCanvasInterface.h; sourceTree = "<group>"; };
+		8268C41C0B77D8DC0038820A /* PaperFormats.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PaperFormats.cpp; sourceTree = "<group>"; };
+		8268C41D0B77D8DC0038820A /* PaperFormats.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PaperFormats.h; sourceTree = "<group>"; };
+		8268C41E0B77D8DC0038820A /* PersistentPreferencesInterface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PersistentPreferencesInterface.h; sourceTree = "<group>"; };
+		8268C41F0B77D8DC0038820A /* UnitsOfLength.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UnitsOfLength.cpp; sourceTree = "<group>"; };
+		8268C4200B77D8DC0038820A /* UnitsOfLength.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UnitsOfLength.h; sourceTree = "<group>"; };
+		8268C48C0B77D9150038820A /* CHANGES */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = CHANGES; sourceTree = "<group>"; };
+		8268C48E0B77D9150038820A /* COPYING */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		8268C48F0B77D9150038820A /* CREDITS */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = CREDITS; sourceTree = "<group>"; };
+		8268C4910B77D9150038820A /* Fl_Native_File_Chooser.H */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Fl_Native_File_Chooser.H; sourceTree = "<group>"; };
+		8268C4950B77D9150038820A /* Fl_Native_File_Chooser.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Native_File_Chooser.cxx; sourceTree = "<group>"; };
+		8268C4990B77D9150038820A /* README.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		82E5567008A56658001EEB51 /* PosteRazor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosteRazor.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		82F01D58093FC18A0037F1BD /* PosteRazor.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazor.cpp; sourceTree = "<group>"; };
-		82F01D59093FC18A0037F1BD /* PosteRazor.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazor.h; sourceTree = "<group>"; };
-		82F01D5B093FC18A0037F1BD /* PosteRazorImageIO.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorImageIO.cpp; sourceTree = "<group>"; };
-		82F01D5C093FC18A0037F1BD /* PosteRazorImageIO.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorImageIO.h; sourceTree = "<group>"; };
-		82F01D5D093FC18A0037F1BD /* PosteRazorPDFOutput.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorPDFOutput.cpp; sourceTree = "<group>"; };
-		82F01D5E093FC18A0037F1BD /* PosteRazorPDFOutput.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorPDFOutput.h; sourceTree = "<group>"; };
-		82F01D60093FC18A0037F1BD /* Fl_Draw_Paint_Canvas.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Draw_Paint_Canvas.cpp; sourceTree = "<group>"; };
-		82F01D61093FC18A0037F1BD /* Fl_Draw_Paint_Canvas.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Draw_Paint_Canvas.h; sourceTree = "<group>"; };
-		82F01D62093FC18A0037F1BD /* Fl_Gl_Paint_Canvas.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Gl_Paint_Canvas.cpp; sourceTree = "<group>"; };
-		82F01D63093FC18A0037F1BD /* Fl_Gl_Paint_Canvas.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Gl_Paint_Canvas.h; sourceTree = "<group>"; };
-		82F01D64093FC18A0037F1BD /* Fl_Paint_Canvas_Base.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Paint_Canvas_Base.cpp; sourceTree = "<group>"; };
-		82F01D65093FC18A0037F1BD /* Fl_Paint_Canvas_Base.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Paint_Canvas_Base.h; sourceTree = "<group>"; };
-		82F01D66093FC18A0037F1BD /* Fl_Paint_Canvas_Group.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Paint_Canvas_Group.cpp; sourceTree = "<group>"; };
-		82F01D67093FC18A0037F1BD /* Fl_Paint_Canvas_Group.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Paint_Canvas_Group.h; sourceTree = "<group>"; };
-		82F01D68093FC18A0037F1BD /* Fl_Persistent_Preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Persistent_Preferences.cpp; sourceTree = "<group>"; };
-		82F01D69093FC18A0037F1BD /* Fl_Persistent_Preferences.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Persistent_Preferences.h; sourceTree = "<group>"; };
-		82F01D7A093FC18A0037F1BD /* PosteRazorDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorDialog.cpp; sourceTree = "<group>"; };
-		82F01D7B093FC18A0037F1BD /* PosteRazorDialog.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorDialog.h; sourceTree = "<group>"; };
-		82F01D7C093FC18A0037F1BD /* PosteRazorDialogUI.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorDialogUI.cpp; sourceTree = "<group>"; };
-		82F01D7D093FC18A0037F1BD /* PosteRazorDialogUI.fl */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = PosteRazorDialogUI.fl; sourceTree = "<group>"; };
-		82F01D7E093FC18A0037F1BD /* PosteRazorDialogUI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorDialogUI.h; sourceTree = "<group>"; };
-		82F01D81093FC18A0037F1BD /* TranslationEnglish.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationEnglish.h; sourceTree = "<group>"; };
-		82F01D83093FC18A0037F1BD /* TranslationGerman.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationGerman.h; sourceTree = "<group>"; };
-		82F01D84093FC18A0037F1BD /* TranslationInterface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationInterface.h; sourceTree = "<group>"; };
-		82F01D86093FC18A0037F1BD /* Translations.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Translations.cpp; sourceTree = "<group>"; };
-		82F01D87093FC18A0037F1BD /* Translations.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Translations.h; sourceTree = "<group>"; };
-		82F043CC08B2A2F500EED792 /* PaintCanvasInterface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PaintCanvasInterface.h; sourceTree = "<group>"; };
-		82F681D508AAA31500D5DF2C /* ColorTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ColorTypes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,11 +139,11 @@
 			files = (
 				8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */,
 				82814C2408A5642E006D2A26 /* ApplicationServices.framework in Frameworks */,
-				8221C68408A566EC00EB193B /* libfltk.a in Frameworks */,
-				821821EA0916D2BA004580FC /* libfltk_gl.a in Frameworks */,
-				8221C68608A566FC00EB193B /* libfreeimage.a in Frameworks */,
 				821821DD0916D2A2004580FC /* AGL.framework in Frameworks */,
 				821821DE0916D2A2004580FC /* OpenGL.framework in Frameworks */,
+				8268C3BE0B77D84B0038820A /* libfltk_gl.a in Frameworks */,
+				8268C3BF0B77D84B0038820A /* libfltk.a in Frameworks */,
+				8268C3C90B77D8BB0038820A /* libfreeimage.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,9 +161,9 @@
 		20286C29FDCF999611CA2CEA /* PosteRazor */ = {
 			isa = PBXGroup;
 			children = (
-				82028CD7091E6F1500763263 /* CHANGES */,
-				82028CD8091E6F1500763263 /* LICENSE */,
-				82028CD9091E6F1500763263 /* README */,
+				8268C3C20B77D8860038820A /* CHANGES */,
+				8268C3C30B77D8860038820A /* LICENSE */,
+				8268C3C40B77D8860038820A /* README */,
 				8221C68908A567C100EB193B /* PosteRazor_Prefix.pch */,
 				20286C2AFDCF999611CA2CEA /* Sources */,
 				20286C2CFDCF999611CA2CEA /* Resources */,
@@ -152,9 +176,11 @@
 		20286C2AFDCF999611CA2CEA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				82F01D57093FC18A0037F1BD /* posterazor */,
-				82814C5408A564A3006D2A26 /* tools */,
-				82814C3208A5647B006D2A26 /* Fl_Native_File_Chooser */,
+				8268C3CA0B77D8DC0038820A /* posterazor */,
+				8268C3D20B77D8DC0038820A /* posterazor_ui_common */,
+				8268C3FF0B77D8DC0038820A /* posterazor_ui_fltk */,
+				8268C4150B77D8DC0038820A /* tools */,
+				8268C48B0B77D9150038820A /* Fl_Native_File_Chooser */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -162,7 +188,7 @@
 		20286C2CFDCF999611CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8239907208F175820038ED14 /* PosteRazor.icns */,
+				8268C3C00B77D8700038820A /* PosteRazor.icns */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -170,9 +196,9 @@
 		20286C32FDCF999611CA2CEA /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				8221C68308A566EC00EB193B /* libfltk.a */,
-				821821E90916D2BA004580FC /* libfltk_gl.a */,
-				8221C68508A566FC00EB193B /* libfreeimage.a */,
+				8268C3C80B77D8BB0038820A /* libfreeimage.a */,
+				8268C3BC0B77D84B0038820A /* libfltk_gl.a */,
+				8268C3BD0B77D84B0038820A /* libfltk.a */,
 				821821DC0916D2A2004580FC /* OpenGL.framework */,
 				821821DB0916D2A2004580FC /* AGL.framework */,
 				20286C33FDCF999611CA2CEA /* Carbon.framework */,
@@ -181,93 +207,127 @@
 			name = "External Frameworks and Libraries";
 			sourceTree = "<group>";
 		};
-		82814C3208A5647B006D2A26 /* Fl_Native_File_Chooser */ = {
+		8268C3CA0B77D8DC0038820A /* posterazor */ = {
 			isa = PBXGroup;
 			children = (
-				82814C3608A5647B006D2A26 /* FL */,
-				82814C3B08A5647B006D2A26 /* Fl_Native_File_Chooser.cxx */,
-			);
-			name = Fl_Native_File_Chooser;
-			path = ../../thirdparty/Fl_Native_File_Chooser;
-			sourceTree = SOURCE_ROOT;
-		};
-		82814C3608A5647B006D2A26 /* FL */ = {
-			isa = PBXGroup;
-			children = (
-				82814C3708A5647B006D2A26 /* Fl_Native_File_Chooser.H */,
-			);
-			path = FL;
-			sourceTree = "<group>";
-		};
-		82814C5408A564A3006D2A26 /* tools */ = {
-			isa = PBXGroup;
-			children = (
-				82C2673C09351ED800E94922 /* ImageIOTypes.h */,
-				82C2673D09351ED800E94922 /* PersistentPreferencesInterface.h */,
-				82C2673E09351ED800E94922 /* UnitsOfLength.cpp */,
-				82C2673F09351ED800E94922 /* UnitsOfLength.h */,
-				82F043CC08B2A2F500EED792 /* PaintCanvasInterface.h */,
-				82F681D508AAA31500D5DF2C /* ColorTypes.h */,
-				82814C5708A564A3006D2A26 /* PaperFormats.cpp */,
-				82814C5808A564A3006D2A26 /* PaperFormats.h */,
-			);
-			name = tools;
-			path = ../../source/tools;
-			sourceTree = SOURCE_ROOT;
-		};
-		82F01D57093FC18A0037F1BD /* posterazor */ = {
-			isa = PBXGroup;
-			children = (
-				82F01D58093FC18A0037F1BD /* PosteRazor.cpp */,
-				82F01D59093FC18A0037F1BD /* PosteRazor.h */,
-				82F01D5B093FC18A0037F1BD /* PosteRazorImageIO.cpp */,
-				82F01D5C093FC18A0037F1BD /* PosteRazorImageIO.h */,
-				82F01D5D093FC18A0037F1BD /* PosteRazorPDFOutput.cpp */,
-				82F01D5E093FC18A0037F1BD /* PosteRazorPDFOutput.h */,
-				82F01D5F093FC18A0037F1BD /* ui */,
+				8268C3CB0B77D8DC0038820A /* PosteRazor.cpp */,
+				8268C3CC0B77D8DC0038820A /* PosteRazor.h */,
+				8268C3CE0B77D8DC0038820A /* PosteRazorImageIO.cpp */,
+				8268C3CF0B77D8DC0038820A /* PosteRazorImageIO.h */,
+				8268C3D00B77D8DC0038820A /* PosteRazorPDFOutput.cpp */,
+				8268C3D10B77D8DC0038820A /* PosteRazorPDFOutput.h */,
 			);
 			name = posterazor;
-			path = ../../source/posterazor;
+			path = ../../../source/posterazor;
 			sourceTree = SOURCE_ROOT;
 		};
-		82F01D5F093FC18A0037F1BD /* ui */ = {
+		8268C3D20B77D8DC0038820A /* posterazor_ui_common */ = {
 			isa = PBXGroup;
 			children = (
-				82729ABF09733F67004A7EF2 /* Fl_Image_Text_Button.cpp */,
-				82729AC009733F68004A7EF2 /* Fl_Image_Text_Button.h */,
-				82F01D60093FC18A0037F1BD /* Fl_Draw_Paint_Canvas.cpp */,
-				82F01D61093FC18A0037F1BD /* Fl_Draw_Paint_Canvas.h */,
-				82F01D62093FC18A0037F1BD /* Fl_Gl_Paint_Canvas.cpp */,
-				82F01D63093FC18A0037F1BD /* Fl_Gl_Paint_Canvas.h */,
-				82F01D64093FC18A0037F1BD /* Fl_Paint_Canvas_Base.cpp */,
-				82F01D65093FC18A0037F1BD /* Fl_Paint_Canvas_Base.h */,
-				82F01D66093FC18A0037F1BD /* Fl_Paint_Canvas_Group.cpp */,
-				82F01D67093FC18A0037F1BD /* Fl_Paint_Canvas_Group.h */,
-				82F01D68093FC18A0037F1BD /* Fl_Persistent_Preferences.cpp */,
-				82F01D69093FC18A0037F1BD /* Fl_Persistent_Preferences.h */,
-				82F01D7A093FC18A0037F1BD /* PosteRazorDialog.cpp */,
-				82F01D7B093FC18A0037F1BD /* PosteRazorDialog.h */,
-				82F01D7C093FC18A0037F1BD /* PosteRazorDialogUI.cpp */,
-				82F01D7D093FC18A0037F1BD /* PosteRazorDialogUI.fl */,
-				82F01D7E093FC18A0037F1BD /* PosteRazorDialogUI.h */,
-				82F01D7F093FC18A0037F1BD /* translations */,
+				8268C3E80B77D8DC0038820A /* OSXResources */,
+				8268C3EA0B77D8DC0038820A /* PosteRazorDialogController.cpp */,
+				8268C3EB0B77D8DC0038820A /* PosteRazorDialogController.h */,
+				8268C3EC0B77D8DC0038820A /* PosteRazorWizardDialogController.cpp */,
+				8268C3ED0B77D8DC0038820A /* PosteRazorWizardDialogController.h */,
+				8268C3EE0B77D8DC0038820A /* translations */,
 			);
-			path = ui;
+			name = posterazor_ui_common;
+			path = ../../../source/posterazor_ui_common;
+			sourceTree = SOURCE_ROOT;
+		};
+		8268C3E80B77D8DC0038820A /* OSXResources */ = {
+			isa = PBXGroup;
+			children = (
+				8268C3E90B77D8DC0038820A /* PosteRazor.icns */,
+			);
+			path = OSXResources;
 			sourceTree = "<group>";
 		};
-		82F01D7F093FC18A0037F1BD /* translations */ = {
+		8268C3EE0B77D8DC0038820A /* translations */ = {
 			isa = PBXGroup;
 			children = (
-				82CE849A0A442D8A00AE4F68 /* TranslationConstants.h */,
-				82C4FB8E0A129EDA00DAB52D /* TranslationFrench.h */,
-				8214BC3B09FF9A0500B67807 /* TranslationPolish.h */,
-				82F01D81093FC18A0037F1BD /* TranslationEnglish.h */,
-				82F01D83093FC18A0037F1BD /* TranslationGerman.h */,
-				82F01D84093FC18A0037F1BD /* TranslationInterface.h */,
-				82F01D86093FC18A0037F1BD /* Translations.cpp */,
-				82F01D87093FC18A0037F1BD /* Translations.h */,
+				8268C3EF0B77D8DC0038820A /* TranslationConstants.h */,
+				8268C3F00B77D8DC0038820A /* TranslationDutch.h */,
+				8268C3F10B77D8DC0038820A /* TranslationEnglish.h */,
+				8268C3F20B77D8DC0038820A /* TranslationFrench.h */,
+				8268C3F30B77D8DC0038820A /* TranslationGerman.h */,
+				8268C3F40B77D8DC0038820A /* TranslationInterface.h */,
+				8268C3F50B77D8DC0038820A /* TranslationItalian.h */,
+				8268C3F60B77D8DC0038820A /* TranslationPolish.h */,
+				8268C3F70B77D8DC0038820A /* Translations.cpp */,
+				8268C3F80B77D8DC0038820A /* Translations.h */,
 			);
 			path = translations;
+			sourceTree = "<group>";
+		};
+		8268C3FF0B77D8DC0038820A /* posterazor_ui_fltk */ = {
+			isa = PBXGroup;
+			children = (
+				8268C4000B77D8DC0038820A /* Fl_Draw_Paint_Canvas.cpp */,
+				8268C4010B77D8DC0038820A /* Fl_Draw_Paint_Canvas.h */,
+				8268C4020B77D8DC0038820A /* Fl_Gl_Paint_Canvas.cpp */,
+				8268C4030B77D8DC0038820A /* Fl_Gl_Paint_Canvas.h */,
+				8268C4040B77D8DC0038820A /* Fl_Image_Text_Button.cpp */,
+				8268C4050B77D8DC0038820A /* Fl_Image_Text_Button.h */,
+				8268C4060B77D8DC0038820A /* Fl_Paint_Canvas_Group.cpp */,
+				8268C4070B77D8DC0038820A /* Fl_Paint_Canvas_Group.h */,
+				8268C4080B77D8DC0038820A /* Fl_Persistent_Preferences.cpp */,
+				8268C4090B77D8DC0038820A /* Fl_Persistent_Preferences.h */,
+				8268C40A0B77D8DC0038820A /* Fl_PosteRazor_Spinner.cpp */,
+				8268C40B0B77D8DC0038820A /* Fl_PosteRazor_Spinner.h */,
+				8268C40C0B77D8DC0038820A /* PosteRazorDialog.cpp */,
+				8268C40D0B77D8DC0038820A /* PosteRazorDialog.h */,
+				8268C40E0B77D8DC0038820A /* PosteRazorDialogUI.cpp */,
+				8268C40F0B77D8DC0038820A /* PosteRazorDialogUI.fl */,
+				8268C4100B77D8DC0038820A /* PosteRazorDialogUI.h */,
+				8268C4110B77D8DC0038820A /* PosteRazorHelpDialog.cpp */,
+				8268C4120B77D8DC0038820A /* PosteRazorHelpDialog.h */,
+				8268C4130B77D8DC0038820A /* PosteRazorSettingsDialog.cpp */,
+				8268C4140B77D8DC0038820A /* PosteRazorSettingsDialog.h */,
+			);
+			name = posterazor_ui_fltk;
+			path = ../../../source/posterazor_ui_fltk;
+			sourceTree = SOURCE_ROOT;
+		};
+		8268C4150B77D8DC0038820A /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				8268C4160B77D8DC0038820A /* ColorTypes.h */,
+				8268C4170B77D8DC0038820A /* ImageIOTypes.cpp */,
+				8268C4180B77D8DC0038820A /* ImageIOTypes.h */,
+				8268C4190B77D8DC0038820A /* PaintCanvasBase.cpp */,
+				8268C41A0B77D8DC0038820A /* PaintCanvasBase.h */,
+				8268C41B0B77D8DC0038820A /* PaintCanvasInterface.h */,
+				8268C41C0B77D8DC0038820A /* PaperFormats.cpp */,
+				8268C41D0B77D8DC0038820A /* PaperFormats.h */,
+				8268C41E0B77D8DC0038820A /* PersistentPreferencesInterface.h */,
+				8268C41F0B77D8DC0038820A /* UnitsOfLength.cpp */,
+				8268C4200B77D8DC0038820A /* UnitsOfLength.h */,
+			);
+			name = tools;
+			path = ../../../source/tools;
+			sourceTree = SOURCE_ROOT;
+		};
+		8268C48B0B77D9150038820A /* Fl_Native_File_Chooser */ = {
+			isa = PBXGroup;
+			children = (
+				8268C48C0B77D9150038820A /* CHANGES */,
+				8268C48E0B77D9150038820A /* COPYING */,
+				8268C48F0B77D9150038820A /* CREDITS */,
+				8268C4900B77D9150038820A /* FL */,
+				8268C4950B77D9150038820A /* Fl_Native_File_Chooser.cxx */,
+				8268C4990B77D9150038820A /* README.txt */,
+			);
+			name = Fl_Native_File_Chooser;
+			path = ../../../thirdparty/Fl_Native_File_Chooser;
+			sourceTree = SOURCE_ROOT;
+		};
+		8268C4900B77D9150038820A /* FL */ = {
+			isa = PBXGroup;
+			children = (
+				8268C4910B77D9150038820A /* Fl_Native_File_Chooser.H */,
+			);
+			path = FL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,7 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82ED6224093FCA800032F854 /* PosteRazor.icns in Resources */,
+				82AFF3EC0B77D9C2003095B0 /* PosteRazor.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +392,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "RESOURCESFOLDER=$BUILT_PRODUCTS_DIR/$TARGET_NAME.app/Contents/Resources/\n\nENGLISH=$RESOURCESFOLDER/English.lproj\nGERMAN=$RESOURCESFOLDER/German.lproj\nFRENCH=$RESOURCESFOLDER/French.lproj\n\nfor LANGUAGE in $ENGLISH $GERMAN $FRENCH\ndo\n\tif [ ! -d $LANGUAGE ]\n\tthen\tmkdir $LANGUAGE\n\tfi\ndone\n";
+			shellScript = "RESOURCESFOLDER=$BUILT_PRODUCTS_DIR/$TARGET_NAME.app/Contents/Resources/\nLANGUAGES=\"Enlish German French Italian Dutch Spanish\"\n\nfor LANGUAGE in $LANGUAGES\ndo\n\tLANGUAGEFOLDER=$RESOURCESFOLDER/$LANGUAGE.lproj\n\tif [ ! -d $LANGUAGEFOLDER ]\n\tthen\tmkdir $LANGUAGEFOLDER\n\tfi\ndone\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -341,21 +401,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82814C4308A5647B006D2A26 /* Fl_Native_File_Chooser.cxx in Sources */,
-				82814C6008A564A3006D2A26 /* PaperFormats.cpp in Sources */,
-				82C2674209351ED800E94922 /* UnitsOfLength.cpp in Sources */,
-				82F01D8C093FC18A0037F1BD /* PosteRazor.cpp in Sources */,
-				82F01D8F093FC18A0037F1BD /* PosteRazorImageIO.cpp in Sources */,
-				82F01D91093FC18A0037F1BD /* PosteRazorPDFOutput.cpp in Sources */,
-				82F01D93093FC18A0037F1BD /* Fl_Draw_Paint_Canvas.cpp in Sources */,
-				82F01D95093FC18A0037F1BD /* Fl_Gl_Paint_Canvas.cpp in Sources */,
-				82F01D97093FC18A0037F1BD /* Fl_Paint_Canvas_Base.cpp in Sources */,
-				82F01D99093FC18A0037F1BD /* Fl_Paint_Canvas_Group.cpp in Sources */,
-				82F01D9B093FC18A0037F1BD /* Fl_Persistent_Preferences.cpp in Sources */,
-				82F01DAB093FC18A0037F1BD /* PosteRazorDialog.cpp in Sources */,
-				82F01DAD093FC18A0037F1BD /* PosteRazorDialogUI.cpp in Sources */,
-				82F01DB6093FC18A0037F1BD /* Translations.cpp in Sources */,
-				82729AC109733F68004A7EF2 /* Fl_Image_Text_Button.cpp in Sources */,
+				8268C4210B77D8DC0038820A /* PosteRazor.cpp in Sources */,
+				8268C4240B77D8DC0038820A /* PosteRazorImageIO.cpp in Sources */,
+				8268C4260B77D8DC0038820A /* PosteRazorPDFOutput.cpp in Sources */,
+				8268C43D0B77D8DC0038820A /* PosteRazorDialogController.cpp in Sources */,
+				8268C43F0B77D8DC0038820A /* PosteRazorWizardDialogController.cpp in Sources */,
+				8268C4490B77D8DC0038820A /* Translations.cpp in Sources */,
+				8268C44F0B77D8DC0038820A /* Fl_Draw_Paint_Canvas.cpp in Sources */,
+				8268C4510B77D8DC0038820A /* Fl_Gl_Paint_Canvas.cpp in Sources */,
+				8268C4530B77D8DC0038820A /* Fl_Image_Text_Button.cpp in Sources */,
+				8268C4550B77D8DC0038820A /* Fl_Paint_Canvas_Group.cpp in Sources */,
+				8268C4570B77D8DC0038820A /* Fl_Persistent_Preferences.cpp in Sources */,
+				8268C4590B77D8DC0038820A /* Fl_PosteRazor_Spinner.cpp in Sources */,
+				8268C45B0B77D8DC0038820A /* PosteRazorDialog.cpp in Sources */,
+				8268C45D0B77D8DC0038820A /* PosteRazorDialogUI.cpp in Sources */,
+				8268C4600B77D8DC0038820A /* PosteRazorHelpDialog.cpp in Sources */,
+				8268C4620B77D8DC0038820A /* PosteRazorSettingsDialog.cpp in Sources */,
+				8268C4650B77D8DC0038820A /* ImageIOTypes.cpp in Sources */,
+				8268C4670B77D8DC0038820A /* PaintCanvasBase.cpp in Sources */,
+				8268C46A0B77D8DC0038820A /* PaperFormats.cpp in Sources */,
+				8268C46D0B77D8DC0038820A /* UnitsOfLength.cpp in Sources */,
+				8268C4A20B77D9150038820A /* Fl_Native_File_Chooser.cxx in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,16 +441,35 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"../../thirdparty/fltk-1.1",
-					../../thirdparty/FreeImage/Source,
-					../../thirdparty/Fl_Native_File_Chooser,
+					"$(HEADER_SEARCH_PATHS_QUOTED_1)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_2)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_3)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_4)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_5)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_6)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_7)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_8)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_9)",
 				);
+				HEADER_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../../source\"";
+				HEADER_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../../../source/posterazor\"";
+				HEADER_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/../../../source/posterazor_ui_common\"";
+				HEADER_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/../../../source/posterazor_ui_common/translations\"";
+				HEADER_SEARCH_PATHS_QUOTED_5 = "\"$(SRCROOT)/../../../source/posterazor_ui_fltk\"";
+				HEADER_SEARCH_PATHS_QUOTED_6 = "\"$(SRCROOT)/../../../source/tools\"";
+				HEADER_SEARCH_PATHS_QUOTED_7 = "\"$(SRCROOT)/../../../thirdparty/Fl_Native_File_Chooser\"";
+				HEADER_SEARCH_PATHS_QUOTED_8 = "\"$(SRCROOT)/../../../thirdparty/fltk-1.1\"";
+				HEADER_SEARCH_PATHS_QUOTED_9 = "\"$(SRCROOT)/../../../thirdparty/FreeImage/Source\"";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
-					"../../thirdparty/fltk-1.1/lib",
-					../../thirdparty/FreeImage,
+					"../../../thirdparty/fltk-1.1/lib",
+					../../../thirdparty/FreeImage,
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
 				);
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../../thirdparty/fltk-1.1/lib\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../../../thirdparty/FreeImage\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = PosteRazor;
 				WRAPPER_EXTENSION = app;
@@ -404,16 +489,35 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"../../thirdparty/fltk-1.1",
-					../../thirdparty/FreeImage/Source,
-					../../thirdparty/Fl_Native_File_Chooser,
+					"$(HEADER_SEARCH_PATHS_QUOTED_1)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_2)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_3)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_4)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_5)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_6)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_7)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_8)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_9)",
 				);
+				HEADER_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../../source\"";
+				HEADER_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../../../source/posterazor\"";
+				HEADER_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/../../../source/posterazor_ui_common\"";
+				HEADER_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/../../../source/posterazor_ui_common/translations\"";
+				HEADER_SEARCH_PATHS_QUOTED_5 = "\"$(SRCROOT)/../../../source/posterazor_ui_fltk\"";
+				HEADER_SEARCH_PATHS_QUOTED_6 = "\"$(SRCROOT)/../../../source/tools\"";
+				HEADER_SEARCH_PATHS_QUOTED_7 = "\"$(SRCROOT)/../../../thirdparty/Fl_Native_File_Chooser\"";
+				HEADER_SEARCH_PATHS_QUOTED_8 = "\"$(SRCROOT)/../../../thirdparty/fltk-1.1\"";
+				HEADER_SEARCH_PATHS_QUOTED_9 = "\"$(SRCROOT)/../../../thirdparty/FreeImage/Source\"";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
-					"../../thirdparty/fltk-1.1/lib",
-					../../thirdparty/FreeImage,
+					"../../../thirdparty/fltk-1.1/lib",
+					../../../thirdparty/FreeImage,
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
 				);
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../../thirdparty/fltk-1.1/lib\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../../../thirdparty/FreeImage\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = PosteRazor;
 				WRAPPER_EXTENSION = app;
@@ -429,12 +533,36 @@
 				GCC_PREFIX_HEADER = PosteRazor_Prefix.pch;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(HEADER_SEARCH_PATHS_QUOTED_1)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_2)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_3)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_4)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_5)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_6)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_7)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_8)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_9)",
+				);
+				HEADER_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../../source\"";
+				HEADER_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../../../source/posterazor\"";
+				HEADER_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/../../../source/posterazor_ui_common\"";
+				HEADER_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/../../../source/posterazor_ui_common/translations\"";
+				HEADER_SEARCH_PATHS_QUOTED_5 = "\"$(SRCROOT)/../../../source/posterazor_ui_fltk\"";
+				HEADER_SEARCH_PATHS_QUOTED_6 = "\"$(SRCROOT)/../../../source/tools\"";
+				HEADER_SEARCH_PATHS_QUOTED_7 = "\"$(SRCROOT)/../../../thirdparty/Fl_Native_File_Chooser\"";
+				HEADER_SEARCH_PATHS_QUOTED_8 = "\"$(SRCROOT)/../../../thirdparty/fltk-1.1\"";
+				HEADER_SEARCH_PATHS_QUOTED_9 = "\"$(SRCROOT)/../../../thirdparty/FreeImage/Source\"";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
-					"../../thirdparty/fltk-1.1/lib",
-					../../thirdparty/FreeImage,
+					"../../../thirdparty/fltk-1.1/lib",
+					../../../thirdparty/FreeImage,
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
 				);
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../../thirdparty/fltk-1.1/lib\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../../../thirdparty/FreeImage\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = PosteRazor;
 				WRAPPER_EXTENSION = app;
