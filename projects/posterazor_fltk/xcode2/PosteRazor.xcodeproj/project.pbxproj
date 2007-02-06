@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		820EEBC80B791F0100F57594 /* TranslationSpanish.h in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 820EEBC70B791F0100F57594 /* TranslationSpanish.h */; };
 		821821DD0916D2A2004580FC /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 821821DB0916D2A2004580FC /* AGL.framework */; };
 		821821DE0916D2A2004580FC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 821821DC0916D2A2004580FC /* OpenGL.framework */; };
 		8268C3BE0B77D84B0038820A /* libfltk_gl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8268C3BC0B77D84B0038820A /* libfltk_gl.a */; };
@@ -51,6 +52,7 @@
 				82AFF4000B77DA12003095B0 /* CHANGES in Copy README, LICENSE, CHANGES */,
 				82AFF4010B77DA18003095B0 /* LICENSE in Copy README, LICENSE, CHANGES */,
 				82AFF4020B77DA1B003095B0 /* README in Copy README, LICENSE, CHANGES */,
+				820EEBC80B791F0100F57594 /* TranslationSpanish.h in Copy README, LICENSE, CHANGES */,
 			);
 			name = "Copy README, LICENSE, CHANGES";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,6 +62,7 @@
 /* Begin PBXFileReference section */
 		20286C33FDCF999611CA2CEA /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		4A9504C8FFE6A3BC11CA0CBA /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
+		820EEBC70B791F0100F57594 /* TranslationSpanish.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationSpanish.h; sourceTree = "<group>"; };
 		821821DB0916D2A2004580FC /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		821821DC0916D2A2004580FC /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		8221C68908A567C100EB193B /* PosteRazor_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazor_Prefix.pch; sourceTree = "<group>"; };
@@ -82,12 +85,12 @@
 		8268C3EC0B77D8DC0038820A /* PosteRazorWizardDialogController.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorWizardDialogController.cpp; sourceTree = "<group>"; };
 		8268C3ED0B77D8DC0038820A /* PosteRazorWizardDialogController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorWizardDialogController.h; sourceTree = "<group>"; };
 		8268C3EF0B77D8DC0038820A /* TranslationConstants.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationConstants.h; sourceTree = "<group>"; };
-		8268C3F00B77D8DC0038820A /* TranslationDutch.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationDutch.h; sourceTree = "<group>"; };
+		8268C3F00B77D8DC0038820A /* TranslationDutch.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationDutch.h; sourceTree = "<group>"; };
 		8268C3F10B77D8DC0038820A /* TranslationEnglish.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationEnglish.h; sourceTree = "<group>"; };
-		8268C3F20B77D8DC0038820A /* TranslationFrench.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationFrench.h; sourceTree = "<group>"; };
-		8268C3F30B77D8DC0038820A /* TranslationGerman.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationGerman.h; sourceTree = "<group>"; };
+		8268C3F20B77D8DC0038820A /* TranslationFrench.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationFrench.h; sourceTree = "<group>"; };
+		8268C3F30B77D8DC0038820A /* TranslationGerman.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationGerman.h; sourceTree = "<group>"; };
 		8268C3F40B77D8DC0038820A /* TranslationInterface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationInterface.h; sourceTree = "<group>"; };
-		8268C3F50B77D8DC0038820A /* TranslationItalian.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationItalian.h; sourceTree = "<group>"; };
+		8268C3F50B77D8DC0038820A /* TranslationItalian.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationItalian.h; sourceTree = "<group>"; };
 		8268C3F60B77D8DC0038820A /* TranslationPolish.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationPolish.h; sourceTree = "<group>"; };
 		8268C3F70B77D8DC0038820A /* Translations.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Translations.cpp; sourceTree = "<group>"; };
 		8268C3F80B77D8DC0038820A /* Translations.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Translations.h; sourceTree = "<group>"; };
@@ -255,6 +258,7 @@
 				8268C3F50B77D8DC0038820A /* TranslationItalian.h */,
 				8268C3F60B77D8DC0038820A /* TranslationPolish.h */,
 				8268C3F70B77D8DC0038820A /* Translations.cpp */,
+				820EEBC70B791F0100F57594 /* TranslationSpanish.h */,
 				8268C3F80B77D8DC0038820A /* Translations.h */,
 			);
 			path = translations;
