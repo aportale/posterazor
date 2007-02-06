@@ -49,6 +49,7 @@ public:
 #endif
 		,eLanguageItalian
 		,eLanguageDutch
+		,eLanguageSpanish
 	};
 
 	static Translations* Instance(void);

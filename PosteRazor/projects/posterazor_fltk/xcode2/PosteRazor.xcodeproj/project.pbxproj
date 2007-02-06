@@ -38,6 +38,7 @@
 		82AFF4000B77DA12003095B0 /* CHANGES in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 8268C3C20B77D8860038820A /* CHANGES */; };
 		82AFF4010B77DA18003095B0 /* LICENSE in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 8268C3C30B77D8860038820A /* LICENSE */; };
 		82AFF4020B77DA1B003095B0 /* README in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 8268C3C40B77D8860038820A /* README */; };
+		82EC5F530B791B0B0009B8A2 /* TranslationSpanish.h in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 82EC5F520B791B0B0009B8A2 /* TranslationSpanish.h */; };
 		8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 				82AFF4000B77DA12003095B0 /* CHANGES in Copy README, LICENSE, CHANGES */,
 				82AFF4010B77DA18003095B0 /* LICENSE in Copy README, LICENSE, CHANGES */,
 				82AFF4020B77DA1B003095B0 /* README in Copy README, LICENSE, CHANGES */,
+				82EC5F530B791B0B0009B8A2 /* TranslationSpanish.h in Copy README, LICENSE, CHANGES */,
 			);
 			name = "Copy README, LICENSE, CHANGES";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,12 +84,12 @@
 		8268C3EC0B77D8DC0038820A /* PosteRazorWizardDialogController.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorWizardDialogController.cpp; sourceTree = "<group>"; };
 		8268C3ED0B77D8DC0038820A /* PosteRazorWizardDialogController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorWizardDialogController.h; sourceTree = "<group>"; };
 		8268C3EF0B77D8DC0038820A /* TranslationConstants.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationConstants.h; sourceTree = "<group>"; };
-		8268C3F00B77D8DC0038820A /* TranslationDutch.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationDutch.h; sourceTree = "<group>"; };
+		8268C3F00B77D8DC0038820A /* TranslationDutch.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationDutch.h; sourceTree = "<group>"; };
 		8268C3F10B77D8DC0038820A /* TranslationEnglish.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationEnglish.h; sourceTree = "<group>"; };
-		8268C3F20B77D8DC0038820A /* TranslationFrench.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationFrench.h; sourceTree = "<group>"; };
-		8268C3F30B77D8DC0038820A /* TranslationGerman.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationGerman.h; sourceTree = "<group>"; };
+		8268C3F20B77D8DC0038820A /* TranslationFrench.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationFrench.h; sourceTree = "<group>"; };
+		8268C3F30B77D8DC0038820A /* TranslationGerman.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationGerman.h; sourceTree = "<group>"; };
 		8268C3F40B77D8DC0038820A /* TranslationInterface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationInterface.h; sourceTree = "<group>"; };
-		8268C3F50B77D8DC0038820A /* TranslationItalian.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationItalian.h; sourceTree = "<group>"; };
+		8268C3F50B77D8DC0038820A /* TranslationItalian.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationItalian.h; sourceTree = "<group>"; };
 		8268C3F60B77D8DC0038820A /* TranslationPolish.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationPolish.h; sourceTree = "<group>"; };
 		8268C3F70B77D8DC0038820A /* Translations.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Translations.cpp; sourceTree = "<group>"; };
 		8268C3F80B77D8DC0038820A /* Translations.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Translations.h; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		8268C4950B77D9150038820A /* Fl_Native_File_Chooser.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Native_File_Chooser.cxx; sourceTree = "<group>"; };
 		8268C4990B77D9150038820A /* README.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		82E5567008A56658001EEB51 /* PosteRazor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosteRazor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		82EC5F520B791B0B0009B8A2 /* TranslationSpanish.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationSpanish.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +249,7 @@
 		8268C3EE0B77D8DC0038820A /* translations */ = {
 			isa = PBXGroup;
 			children = (
+				82EC5F520B791B0B0009B8A2 /* TranslationSpanish.h */,
 				8268C3EF0B77D8DC0038820A /* TranslationConstants.h */,
 				8268C3F00B77D8DC0038820A /* TranslationDutch.h */,
 				8268C3F10B77D8DC0038820A /* TranslationEnglish.h */,
