@@ -238,6 +238,10 @@ SOURCE=..\..\..\source\posterazor_ui_common\translations\TranslationPolish.h
 
 SOURCE=..\..\..\source\posterazor_ui_common\translations\Translations.h
 # End Source File
+# Begin Source File
+
+SOURCE=..\..\..\source\posterazor_ui_common\translations\TranslationSpanish.h
+# End Source File
 # End Group
 # Begin Group "Resource Files"
 
