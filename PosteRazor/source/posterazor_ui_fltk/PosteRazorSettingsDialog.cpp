@@ -26,7 +26,7 @@
 PosteRazorSettingsDialog::PosteRazorSettingsDialog()
 	:PosteRazorSettingsDialogUI(315, 400, "PosteRazor settings")
 {
-#define SETTINGCHOICEBUTTONSSPACING 10
+#define SETTINGCHOICEBUTTONSSPACING 5
 
 	int i;
 	m_unitOfLengthButtonsCount = UnitsOfLength::getUnitsOfLengthCount();
