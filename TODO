@@ -1,2 +1,0 @@
-- Fix bug where the initially undefined language gets by fault defined if a language is selected in the settings dialog and the dialog is closed via cancel.
-- Introduce a preprocessor variable that allows compiling without OpenGL. Without OpenGL, hide the according items in the settings dialog.
