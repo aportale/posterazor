@@ -34,8 +34,8 @@ class QPaintCanvas: public QWidget, public PaintCanvasBase
 	Q_OBJECT
 
 private:
-	unsigned char *m_imageRGBData;
 	QImage *m_image;
+	unsigned char *m_imageRGBData;
 	QPainter *m_qPainter;
 	
 public:

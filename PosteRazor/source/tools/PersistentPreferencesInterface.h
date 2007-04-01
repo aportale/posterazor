@@ -26,6 +26,8 @@
 class PersistentPreferencesInterface
 {
 public:
+	virtual ~PersistentPreferencesInterface() {}
+
 	virtual void setInteger(int value, const char *key) = 0;
 	virtual void setDouble(double value, const char *key) = 0;
 	virtual void setBoolean(bool value, const char *key) = 0;

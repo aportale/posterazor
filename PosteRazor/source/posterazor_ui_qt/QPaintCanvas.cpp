@@ -29,6 +29,7 @@ QPaintCanvas::QPaintCanvas(QWidget *parent)
 ,	PaintCanvasBase()
 ,	m_image(NULL)
 ,	m_imageRGBData(NULL)
+,	m_qPainter(NULL)
 {
 }
 
@@ -37,7 +38,7 @@ QPaintCanvas::~QPaintCanvas()
 	disposeImage();
 }
 
-void QPaintCanvas::paintEvent(QPaintEvent *event)
+void QPaintCanvas::paintEvent(QPaintEvent * /*event*/)
 {
 	QPainter painter(this);
 	m_qPainter = &painter;

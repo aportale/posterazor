@@ -27,9 +27,15 @@ PaintCanvasBase::PaintCanvasBase()
 	: PaintCanvasInterface()
 	, m_maxImageWidth(1024)
 	, m_maxImageHeight(1024)
+	, m_painter(NULL)
 {
 	m_stateString[0] = '\0';
 	m_backgroundColor[0] = m_backgroundColor[1] = m_backgroundColor[2] = 0;
+}
+
+void PaintCanvasBase::setPainterInterface(const PainterInterface *painter)
+{
+	m_painter = painter;
 }
 
 void PaintCanvasBase::setBackgroundColor(unsigned char red, unsigned char green, unsigned char blue)

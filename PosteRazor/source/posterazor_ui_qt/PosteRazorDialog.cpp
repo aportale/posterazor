@@ -28,7 +28,7 @@ PosteRazorDialog::~PosteRazorDialog()
 	m_posteRazorController->writePersistentPreferences(&preferences);
 }
 
-void PosteRazorDialog::setUnitOfLength(UnitsOfLength::eUnitsOfLength unit)
+void PosteRazorDialog::setUnitOfLength(UnitsOfLength::eUnitsOfLength /* unit */)
 {
 }
 
@@ -145,7 +145,7 @@ void PosteRazorDialog::setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlig
 	)->setChecked(true);
 }
 
-void PosteRazorDialog::setPosterOutputFormat(ImageIOTypes::eImageFormats format)
+void PosteRazorDialog::setPosterOutputFormat(ImageIOTypes::eImageFormats /* format */)
 {
 }
 
@@ -164,7 +164,7 @@ void PosteRazorDialog::showImageFileName(const char *fileName)
 	m_inputFileNameLabel->setText(QFileInfo(fileName).fileName());
 }
 
-void PosteRazorDialog::updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel)
+void PosteRazorDialog::updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength /* unitOfLength */, double verticalDpi, double /* horizontalDpi */, ColorTypes::eColorTypes colorType, int bitsPerPixel)
 {
 	m_imageInformationSizeInPixelsLabel->setText(QString::number(imageWidthInPixels) + " x " + QString::number(imageHeightInPixels));
 	m_imageInformationSizeLabel->setText(QString::number(imageWidth, 'f', 2) + " x " + QString::number(imageHeight, 'f', 2));

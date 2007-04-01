@@ -59,6 +59,7 @@ private:
 	char m_pageContent[2048];
 	double m_mediaboxWidth;
 	double m_mediaboxHeight;
+	const PainterInterface *m_painter;
 
 public:
 	PosteRazorPDFOutputImplementation()
@@ -69,15 +70,21 @@ public:
 		, m_objectImageID(0)
 		, m_mediaboxWidth(5000.0)
 		, m_mediaboxHeight(5000.0)
+		, m_painter(NULL)
 	{
 		m_pageContent[0] = '\0';
+	}
+
+	void setPainterInterface(const PainterInterface *painter)
+	{
+		m_painter = painter;
 	}
 
 	void AddOffsetToXref(void)
 	{
 		char xrefLine[25];
 		m_pdfObjectCount++;
-		sprintf(xrefLine, "%.10d %.5d n " LINEFEED, ftell(m_outputFile), 0);
+		sprintf(xrefLine, "%.10d %.5d n " LINEFEED, (int)ftell(m_outputFile), 0);
 		strcat(m_xref, xrefLine);
 	}
 
@@ -331,7 +338,7 @@ public:
 			"%s" LINEFEED\
 			"endstream" LINEFEED\
 			"endobj",
-			m_pdfObjectCount, strlen(m_pageContent), m_pageContent
+			m_pdfObjectCount, (int)strlen(m_pageContent), m_pageContent
 		);
 
 		return err;
@@ -443,12 +450,12 @@ public:
 		return err;
 	}
 
-	void setBackgroundColor(unsigned char red, unsigned char green, unsigned char blue) {}
-	void drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
-	void drawRect(double x, double y, double width, double heigth, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
-	void drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
-	void getSize(double &width, double &height) const {}
-	void setImage(const unsigned char* rgbData, double width, double height) {}
+	void setBackgroundColor(unsigned char, unsigned char, unsigned char) {}
+	void drawFilledRect(double, double, double, double, unsigned char, unsigned char, unsigned char, unsigned char) {}
+	void drawRect(double, double, double, double, unsigned char, unsigned char, unsigned char, unsigned char) {}
+	void drawLine(double, double, double, double, unsigned char, unsigned char, unsigned char, unsigned char) {}
+	void getSize(double &, double &) const {}
+	void setImage(const unsigned char*, double, double ) {}
 	void drawImage(double x, double y, double width, double height)
 	{
 		char imageCode[2048]="";
