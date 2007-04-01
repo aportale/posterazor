@@ -6,17 +6,18 @@
 class PosteRazorDialogInterface: public PosteRazorSettersInterface
 {
 public:
+	virtual ~PosteRazorDialogInterface() {}
+
 	virtual void updatePreview(void) = 0;
 	virtual void showImageFileName(const char *fileName) = 0;
 	virtual void updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel) = 0;
-	virtual ~PosteRazorDialogInterface() {};
 };
 
 class PosteRazorDialogController: public PosteRazorSettersInterface, public PosteRazorActionsInterface
 {
 public:
 	PosteRazorDialogController();
-	virtual ~PosteRazorDialogController() {};
+	virtual ~PosteRazorDialogController() {}
 
 	void setPosteRazorModel(PosteRazor *model);
 	virtual void updateDialog(void);

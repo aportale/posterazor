@@ -31,7 +31,8 @@
 class PosteRazorImageIO: public ColorTypes
 {
 public:
-	virtual ~PosteRazorImageIO() {};
+	virtual ~PosteRazorImageIO() {}
+
 	static PosteRazorImageIO* createPosteRazorImageIO();
 
 	virtual bool loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize) = 0;

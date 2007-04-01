@@ -61,12 +61,6 @@ class PosteRazorImplementation: public PosteRazor
 private:
 	PosteRazorImageIO*                      m_imageIO;
 
-	UnitsOfLength::eUnitsOfLength           m_UnitOfLength;
-
-	double                                  m_overlappingWidth;
-	double                                  m_overlappingHeight;
-	PosteRazorEnums::eOverlappingPositions  m_overlappingPosition;
-
 	PosteRazorEnums::ePosterSizeModes       m_posterSizeMode;
 	double                                  m_posterDimension;
 	bool                                    m_posterDimensionIsWidth;
@@ -82,6 +76,12 @@ private:
 	double                                  m_paperBorderLeft;
 	double                                  m_customPaperWidth;
 	double                                  m_customPaperHeight;
+
+	double                                  m_overlappingWidth;
+	double                                  m_overlappingHeight;
+	PosteRazorEnums::eOverlappingPositions  m_overlappingPosition;
+
+	UnitsOfLength::eUnitsOfLength           m_UnitOfLength;
 
 	ImageIOTypes::eImageFormats             m_posterOutputFormat;
 
@@ -116,7 +116,6 @@ public:
 		, m_launchPDFApplication(true)
 	{
 		m_imageIO = PosteRazorImageIO::createPosteRazorImageIO();
-
 	}
 
 	~PosteRazorImplementation()

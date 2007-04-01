@@ -66,6 +66,8 @@ public:
 class PosteRazorSettersInterface
 {
 public:
+	virtual ~PosteRazorSettersInterface() {}
+
 	virtual void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit) = 0;
 
 	virtual void setPaperFormat(PaperFormats::ePaperFormats format) = 0;
@@ -97,6 +99,8 @@ public:
 class PosteRazorGettersInterface
 {
 public:
+	virtual ~PosteRazorGettersInterface() {}
+
 	virtual int getInputImageWidthPixels(void) const = 0;
 	virtual int getInputImageHeightPixels(void) const = 0;
 
@@ -147,6 +151,8 @@ public:
 class PosteRazorActionsInterface
 {
 public:
+	virtual ~PosteRazorActionsInterface() {}
+
 	virtual bool readPersistentPreferences(PersistentPreferencesInterface *preferences) = 0;
 	virtual bool writePersistentPreferences(PersistentPreferencesInterface *preferences) const = 0;
 

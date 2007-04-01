@@ -28,24 +28,18 @@ class PaintCanvasInterface;
 class PainterInterface
 {
 public:
+	virtual ~PainterInterface() {}
+
 	virtual void paintOnCanvas(PaintCanvasInterface *paintCanvas, void* options = 0) const = 0;
 	virtual void getImage(PaintCanvasInterface *paintCanvas, double maxWidth, double maxHeight) const = 0;
 };
 
 class PaintCanvasInterface
 {
-protected:
-	const PainterInterface *m_painter;
-
 public:
-	PaintCanvasInterface()
-	{
-		m_painter = 0;
-	}
-	
 	virtual ~PaintCanvasInterface() {}
 	
-	virtual void setPainterInterface(const PainterInterface *painter) {m_painter = painter;}
+	virtual void setPainterInterface(const PainterInterface *painter) = 0;
 	virtual void setBackgroundColor(unsigned char red, unsigned char green, unsigned char blue) = 0;
 	virtual void drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) = 0;
 	virtual void drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) = 0;

@@ -29,7 +29,8 @@
 class PosteRazorPDFOutput: public PaintCanvasInterface
 {
 public:
-	virtual ~PosteRazorPDFOutput() {};
+	virtual ~PosteRazorPDFOutput() {}
+
 	static PosteRazorPDFOutput* createPosteRazorPDFOutput();
 
 	static unsigned int getImageBitsPerLineCount(int widthPixels, int bitPerPixel);

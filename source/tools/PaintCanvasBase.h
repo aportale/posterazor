@@ -32,10 +32,12 @@ protected:
 	unsigned char m_backgroundColor[3];
 	double m_maxImageWidth;
 	double m_maxImageHeight;
+	const PainterInterface *m_painter;
 	
 public:
 	PaintCanvasBase();
 
+	virtual void setPainterInterface(const PainterInterface *painter);
 	virtual void setState(const char *state);
 	virtual void setBackgroundColor(unsigned char red, unsigned char green, unsigned char blue);
 	virtual void requestImage(void);

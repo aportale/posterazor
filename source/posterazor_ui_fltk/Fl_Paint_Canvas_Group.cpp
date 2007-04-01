@@ -107,7 +107,7 @@ Fl_Widget *Fl_Paint_Canvas_Group::getPaintCanvasWidget(void) const
 
 void Fl_Paint_Canvas_Group::setPainterInterface(const PainterInterface *painter)
 {
-	PaintCanvasInterface::setPainterInterface(painter);
+	PaintCanvasBase::setPainterInterface(painter);
 	m_drawPaintCanvas->setPainterInterface(m_painter);
 #ifndef NO_OPENGL_PREVIEW
 	m_glPaintCanvas->setPainterInterface(m_painter);
