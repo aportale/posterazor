@@ -2,6 +2,7 @@ SET(POSTERAZOR_CORESOURCES
 	../../../source/posterazor/PosteRazor.cpp
 	../../../source/posterazor/PosteRazorImageIO.cpp
 	../../../source/posterazor/PosteRazorPDFOutput.cpp
+	../../../source/tools/ImageIOTypes.cpp
 	../../../source/tools/UnitsOfLength.cpp
 	../../../source/tools/PaperFormats.cpp
 	../../../source/tools/PaintCanvasBase.cpp
