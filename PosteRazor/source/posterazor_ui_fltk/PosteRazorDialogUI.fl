@@ -1,5 +1,5 @@
 # data file for the Fltk User Interface Designer (fluid)
-version 1.0108 
+version 1.0107 
 header_name {.h} 
 code_name {.cpp}
 comment {/*
@@ -35,7 +35,7 @@ decl {\#include "Fl_PosteRazor_Spinner.h"} {public
 } 
 
 widget_class PosteRazorDialogUI {
-  user_data this open selected
+  user_data this open
   xywh {400 103 620 455} type Double resizable
   code0 {size_range(this->w(), this->h());}
   class Fl_Double_Window visible
@@ -49,11 +49,11 @@ widget_class PosteRazorDialogUI {
     Fl_Button m_settingsButton {
       label {Settings...}
       callback {openSettingsDialog();}
-      xywh {10 420 195 25} labelcolor 32 align 16
+      xywh {10 420 220 25} labelcolor 32 align 16
       class Fl_Image_Text_Button
     }
     Fl_Box m_settingsButtonLabel {
-      image {../posterazor_ui_common/images/settingsIcon.png} xywh {205 420 40 25} align 20 hide
+      image {../posterazor_ui_common/images/settingsIcon.png} xywh {230 420 40 25} align 20 hide
     }
     Fl_Button m_prevButton {
       label {@-2<- Back}
@@ -102,7 +102,7 @@ widget_class PosteRazorDialogUI {
       }
     }
     Fl_Group m_paperSizeStep {open
-      xywh {315 45 295 365} hide
+      xywh {315 45 295 365}
     } {
       Fl_Tabs m_paperFormatTypeTabs {
         label {Paper size}
@@ -165,26 +165,26 @@ widget_class PosteRazorDialogUI {
       } {
         Fl_Group m_paperBorderTopInput {
           label Top
-          callback {handlePaperSizeChangement(m_paperBorderTopInput);}
-          xywh {430 260 60 25} when 1
+          callback {handlePaperSizeChangement(m_paperBorderTopInput);} selected
+          xywh {422 260 80 25} when 1
           class Fl_PosteRazor_Spinner
         } {}
         Fl_Group m_paperBorderRightInput {
           label Right
-          callback {handlePaperSizeChangement(m_paperBorderRightInput);}
-          xywh {490 290 60 25} align 9 when 1
+          callback {handlePaperSizeChangement(m_paperBorderRightInput);} selected
+          xywh {502 290 80 25} align 9 when 1
           class Fl_PosteRazor_Spinner
         } {}
         Fl_Group m_paperBorderBottomInput {
           label Bottom
-          callback {handlePaperSizeChangement(m_paperBorderBottomInput);}
-          xywh {430 320 60 25} align 2 when 1
+          callback {handlePaperSizeChangement(m_paperBorderBottomInput);} selected
+          xywh {422 320 80 25} align 2 when 1
           class Fl_PosteRazor_Spinner
         } {}
         Fl_Group m_paperBorderLeftInput {
           label Left
-          callback {handlePaperSizeChangement(m_paperBorderLeftInput);}
-          xywh {370 290 60 25} align 5 when 1
+          callback {handlePaperSizeChangement(m_paperBorderLeftInput);} selected
+          xywh {342 290 80 25} align 5 when 1
           class Fl_PosteRazor_Spinner
         } {}
       }
@@ -230,27 +230,27 @@ widget_class PosteRazorDialogUI {
         Fl_Button m_overlappingPositionTopLeftButton {
           label {Top left}
           callback {handleOverlappingChangement(m_overlappingPositionTopLeftButton);}
-          image {../posterazor_ui_common/images/overlappingTopLeft.png} xywh {335 180 120 80} type Radio color 47 selection_color 55
+          image {../posterazor_ui_common/images/overlappingTopLeft.png} xywh {335 180 120 80} type Radio color 47 selection_color 55 align 128
         }
         Fl_Button m_overlappingPositionTopRightButton {
           label {Top right}
           callback {handleOverlappingChangement(m_overlappingPositionTopRightButton);}
-          image {../posterazor_ui_common/images/overlappingTopRight.png} xywh {470 180 120 80} type Radio color 47 selection_color 55
+          image {../posterazor_ui_common/images/overlappingTopRight.png} xywh {470 180 120 80} type Radio color 47 selection_color 55 align 128
         }
         Fl_Button m_overlappingPositionBottomLeftButton {
           label {Bottom left}
           callback {handleOverlappingChangement(m_overlappingPositionBottomLeftButton);}
-          image {../posterazor_ui_common/images/overlappingBottomLeft.png} xywh {335 270 120 80} type Radio color 47 selection_color 55
+          image {../posterazor_ui_common/images/overlappingBottomLeft.png} xywh {335 270 120 80} type Radio color 47 selection_color 55 align 128
         }
         Fl_Button m_overlappingPositionBottomRightButton {
           label {Bottom right}
           callback {handleOverlappingChangement(m_overlappingPositionBottomRightButton);}
-          image {../posterazor_ui_common/images/overlappingBottomRight.png} xywh {470 270 120 80} type Radio color 47 selection_color 55
+          image {../posterazor_ui_common/images/overlappingBottomRight.png} xywh {470 270 120 80} type Radio color 47 selection_color 55 align 128
         }
       }
     }
     Fl_Group m_posterSizeStep {open
-      xywh {315 45 295 365}
+      xywh {315 45 295 365} hide
     } {
       Fl_Group m_posterSizeGroup {
         label {Image size} open

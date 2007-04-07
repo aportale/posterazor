@@ -83,7 +83,7 @@ public:
 	const char* sizeInPages(void)                     {return "Tamaño en páginas:";}
 	const char* sizeInPercent(void)                   {return "Tamaño en porcentaje:";}
 	const char* sizeInPixels(void)                    {return "Tamaño (en píx.):";}
-	const char* sizeInUnitOfLength(void)              {return "Tamaño (in %s):";}
+	const char* sizeInUnitOfLength(void)              {return "Tamaño (en %s):";}
 	const char* standard(void)                        {return "Estándar";}
 	const char* stepXOfY(void)                        {return "Paso %d de %d";}
 	const char* top(void)                             {return "Superior";}
@@ -113,9 +113,9 @@ public:
 
 	const char* stepTitle01(void)                     {return SPANISH_POSTERAZORHELPSTEPTITLE01;}
 	const char* stepTitle02(void)                     {return SPANISH_POSTERAZORHELPSTEPTITLE02;}
-	const char* stepTitle03(void)                     {return SPANISH_POSTERAZORHELPSTEPTITLE03;}
+	const char* stepTitle03(void)                     {return SPANISH_POSTERAZORHELPSTEPTITLENOHTML03;}
 	const char* stepTitle04(void)                     {return SPANISH_POSTERAZORHELPSTEPTITLE04;}
-	const char* stepTitle05(void)                     {return SPANISH_POSTERAZORHELPSTEPTITLE05;}
+	const char* stepTitle05(void)                     {return SPANISH_POSTERAZORHELPSTEPTITLENOHTML05;}
 	const char* helpHtml(void)
 	{
 		return	"<HTML>" POSTERAZORHELPENDLINE \

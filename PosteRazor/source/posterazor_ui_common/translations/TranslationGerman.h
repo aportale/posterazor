@@ -112,11 +112,11 @@ public:
 #define GERMAN_POSTERAZORHELPCODEFROMTHIRDPARTIES     "Code von Drittanbietern"
 #define GERMAN_POSTERAZORHELPLICENSE                  "Lizenz"
 
-	const char* stepTitle01(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLE01;};
-	const char* stepTitle02(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML02;};
-	const char* stepTitle03(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML03;};
-	const char* stepTitle04(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML04;};
-	const char* stepTitle05(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLE05;};
+	const char* stepTitle01(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLE01;}
+	const char* stepTitle02(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML02;}
+	const char* stepTitle03(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML03;}
+	const char* stepTitle04(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML04;}
+	const char* stepTitle05(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLE05;}
 	const char* helpHtml(void)
 	{
 		return	"<HTML>" POSTERAZORHELPENDLINE \
