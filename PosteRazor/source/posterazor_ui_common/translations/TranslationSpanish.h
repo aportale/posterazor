@@ -69,7 +69,14 @@ public:
 	const char* palette(void)                         {return "Paleta";}
 	const char* portrait(void)                        {return "Vertical";}
 	const char* posteRazorHelp(void)                  {return "Ayuda de PosteRazor";}
-	const char* posteRazorSettings(void)              {return "Configuración de PosteRazor";}
+	const char* posteRazorSettings(void)              {return
+#ifdef __APPLE__
+// This seems to be the only problematic string on OSX. It is used for a window title.
+                                                        "Configuraci\x97n de PosteRazor"
+#else
+                                                        "Configuración de PosteRazor"
+#endif
+                                                      ;}
 	const char* posteRazorWebSiteURL(void)            {return SPANISH_POSTERAZORWEBSITEURL;}
 	const char* posteRazorWebSite(void)               {return "Sitio web de PosteRazor";}
 	const char* previewWithOpenGL(void)               {return "Previsualizar con OpenGL";}
