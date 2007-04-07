@@ -54,7 +54,7 @@ public:
 	const char* inputImage(void)                      {return "Afbeelding";}
 	const char* landscape(void)                       {return "Landschap";}
 	const char* language(void)                        {return "Taal";}
-	const char* languageExplanation(void)             {return "kies uw taal";}
+	const char* languageExplanation(void)             {return "Kies uw taal";}
 	const char* launchPDFApplication(void)            {return "De PDF-applicatie opstarten nadat de poster is opgeslagen";}
 	const char* left(void)                            {return "Links";}
 	const char* loadAnInputImage(void)                {return stepTitle01();}

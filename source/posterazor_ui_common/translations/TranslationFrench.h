@@ -72,7 +72,7 @@ public:
 	const char* portrait(void)                        {return "Portrait";}
 	const char* posteRazorHelp(void)                  {return "Aide de PosteRazor";}
 	const char* posteRazorSettings(void)              {return 
-#ifndef WIN32
+#ifdef __APPLE__
 // This seems to be the only problematic string on OSX. It is used for a window title.
 														"R\x8Eglages de PosteRazor"
 #else
