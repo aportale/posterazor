@@ -211,10 +211,13 @@ public:
 					"<a href=\""FRENCH_POSTERAZORWEBSITEURL"\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
 					"Copyright (C) 2005-2007 par Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
-					"<b>French translation by Martin Loyer (traduction<b></b>@<b></b>loyer<b></b>.<b></b>name).</b><br>" POSTERAZORHELPENDLINE \
-					"<b>Polish translation by Grzegorz Wacikowski.</b><br>" POSTERAZORHELPENDLINE \
-					"<b>Italian translation by Stefano Nosei (kluster<b></b>@<b></b>imente<b></b>.<b></b>org).</b><br>" POSTERAZORHELPENDLINE \
-					"<b>Dutch/Belgian translation by Erik Wijkamp - Lochem (The Netherlands) (e_wijkamp<b></b>@<b></b>yahoo<b></b>.<b></b>com).</b><br>" POSTERAZORHELPENDLINE \
+					POSTERAZORTRANSLATIONCREDITSSTART \
+					POSTERAZORTRANSLATIONCREDITSFRENCH \
+					POSTERAZORTRANSLATIONCREDITSPOLISH \
+					POSTERAZORTRANSLATIONCREDITSDUTCH \
+					POSTERAZORTRANSLATIONCREDITSITALIAN \
+					POSTERAZORTRANSLATIONCREDITSSPANISH \
+					POSTERAZORTRANSLATIONCREDITSEND \
 
 					"&nbsp;<br>" \
 
