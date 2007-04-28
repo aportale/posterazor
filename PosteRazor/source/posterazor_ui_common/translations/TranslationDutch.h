@@ -205,10 +205,13 @@ public:
 					"<a href=\""ENGLISH_POSTERAZORWEBSITEURL"\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
 					"Copyright (C) 2005-2007 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
-					"<b>Dutch/Belgian translation <br>by Erik Wijkamp - Lochem (The Netherlands) (e_wijkamp<b></b>@<b></b>yahoo<b></b>.<b></b>com).</b><br>" POSTERAZORHELPENDLINE \
-					"<b>French translation <br>by Martin Loyer (traduction<b></b>@<b></b>loyer<b></b>.<b></b>name).</b><br>" POSTERAZORHELPENDLINE \
-					"<b>Polish translation <br>by Grzegorz Wacikowski.</b><br>" POSTERAZORHELPENDLINE \
-					"<b>Italian translation <br>by Stefano Nosei (kluster<b></b>@<b></b>imente<b></b>.<b></b>org).</b><br>" POSTERAZORHELPENDLINE \
+					POSTERAZORTRANSLATIONCREDITSSTART \
+					POSTERAZORTRANSLATIONCREDITSDUTCH \
+					POSTERAZORTRANSLATIONCREDITSFRENCH \
+					POSTERAZORTRANSLATIONCREDITSPOLISH \
+					POSTERAZORTRANSLATIONCREDITSITALIAN \
+					POSTERAZORTRANSLATIONCREDITSSPANISH \
+					POSTERAZORTRANSLATIONCREDITSEND \
 
 					"&nbsp;<br>" \
 

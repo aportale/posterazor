@@ -48,5 +48,13 @@
 
 #define POSTERAZORHELPSECTIONHEADER(ANCHOR, TITLE) "<br><H3><A name=\"" ANCHOR "\">" TITLE "</A>" POSTERAZORHELPLINKTOTOP "</H3>" POSTERAZORHELPENDLINE
 
+#define POSTERAZORTRANSLATIONCREDITSSTART "<dl>" POSTERAZORHELPENDLINE
+#define POSTERAZORTRANSLATIONCREDITSEND "</dl>" POSTERAZORHELPENDLINE
+#define POSTERAZORTRANSLATIONCREDITSFRENCH "<dt>French translation</dt><dd>Martin Loyer (traduction<b></b>@<b></b>loyer<b></b>.<b></b>name).</dd>" POSTERAZORHELPENDLINE
+#define POSTERAZORTRANSLATIONCREDITSPOLISH "<dt>Polish translation</dt><dd>Grzegorz Wacikowski.</dd>" POSTERAZORHELPENDLINE
+#define POSTERAZORTRANSLATIONCREDITSDUTCH "<dt>Dutch/Belgian translation</dt><dd>Erik Wijkamp - Lochem (The Netherlands) (e_wijkamp<b></b>@<b></b>yahoo<b></b>.<b></b>com).</dd>" POSTERAZORHELPENDLINE
+#define POSTERAZORTRANSLATIONCREDITSITALIAN "<dt>Italian translation</dt><dd>Stefano Nosei (kluster<b></b>@<b></b>imente<b></b>.<b></b>org).</dd>" POSTERAZORHELPENDLINE
+#define POSTERAZORTRANSLATIONCREDITSSPANISH "<dt>Spanish translation</dt><dd><a href=\"http://hispanicoweb.net\">Hisp&aacute;nicoWeb</a></dd>" POSTERAZORHELPENDLINE
+
 #endif
 
