@@ -81,7 +81,7 @@ private:
 	double                                  m_overlappingHeight;
 	PosteRazorEnums::eOverlappingPositions  m_overlappingPosition;
 
-	UnitsOfLength::eUnitsOfLength           m_UnitOfLength;
+	UnitsOfLength::eUnitsOfLength           m_unitOfLength;
 
 	ImageIOTypes::eImageFormats             m_posterOutputFormat;
 
@@ -109,7 +109,7 @@ public:
 		, m_overlappingHeight(1.0)
 		, m_overlappingPosition(PosteRazorEnums::eOverlappingPositionBottomRight)
 
-		, m_UnitOfLength(UnitsOfLength::eUnitOfLengthCentimeter)
+		, m_unitOfLength(UnitsOfLength::eUnitOfLengthCentimeter)
 
 		, m_posterOutputFormat(ImageIOTypes::eImageFormatPDF)
 
@@ -144,7 +144,7 @@ public:
 		m_overlappingWidth             = preferences->getDouble(preferencesKey_OverlappingWidth, m_overlappingWidth);
 		m_overlappingHeight            = preferences->getDouble(preferencesKey_OverlappingHeight, m_overlappingHeight);
 		m_overlappingPosition          = (PosteRazorEnums::eOverlappingPositions)preferences->getInteger(preferencesKey_OverlappingPosition, (int)m_overlappingPosition);
-		m_UnitOfLength                 = (UnitsOfLength::eUnitsOfLength)preferences->getInteger(preferencesKey_UnitOfLength, (int)m_UnitOfLength);
+		m_unitOfLength                 = (UnitsOfLength::eUnitsOfLength)preferences->getInteger(preferencesKey_UnitOfLength, (int)m_unitOfLength);
 		m_posterOutputFormat           = (ImageIOTypes::eImageFormats)preferences->getInteger(preferencesKey_PosterOutputFormat, (int)m_posterOutputFormat);
 		m_launchPDFApplication         = preferences->getBoolean(preferencesKey_LaunchPDFApplication, m_launchPDFApplication);
 
@@ -172,7 +172,7 @@ public:
 		preferences->setDouble(m_overlappingWidth, preferencesKey_OverlappingWidth);
 		preferences->setDouble(m_overlappingHeight, preferencesKey_OverlappingHeight);
 		preferences->setInteger((int)m_overlappingPosition, preferencesKey_OverlappingPosition);
-		preferences->setInteger((int)m_UnitOfLength, preferencesKey_UnitOfLength);
+		preferences->setInteger((int)m_unitOfLength, preferencesKey_UnitOfLength);
 		preferences->setInteger((int)m_posterOutputFormat, preferencesKey_PosterOutputFormat);
 		preferences->setBoolean(m_launchPDFApplication, preferencesKey_LaunchPDFApplication);
 
@@ -226,12 +226,12 @@ public:
 
 	double getInputImageWidth(void) const
 	{
-		return m_imageIO->getWidth(m_UnitOfLength);
+		return m_imageIO->getWidth(m_unitOfLength);
 	}
 
 	double getInputImageHeight(void) const
 	{
-		return m_imageIO->getHeight(m_UnitOfLength);
+		return m_imageIO->getHeight(m_unitOfLength);
 	}
 
 	int getInputImageBitsPerPixel(void) const
@@ -246,17 +246,17 @@ public:
 
 	void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit)
 	{
-		m_UnitOfLength = unit;
+		m_unitOfLength = unit;
 	}
 
 	UnitsOfLength::eUnitsOfLength getUnitOfLength(void) const
 	{
-		return m_UnitOfLength;
+		return m_unitOfLength;
 	}
 
 	const char* getUnitOfLengthName(void) const
 	{
-		return UnitsOfLength::getUnitOfLengthName(m_UnitOfLength);
+		return UnitsOfLength::getUnitOfLengthName(m_unitOfLength);
 	}
 
 	void setPaperFormat(PaperFormats::ePaperFormats format)
@@ -381,12 +381,12 @@ public:
 
 	double getPaperWidth(void) const
 	{
-		return getUseCustomPaperSize()?getCustomPaperWidth():PaperFormats::getPaperWidth(getPaperFormat(), getPaperOrientation(), m_UnitOfLength);
+		return getUseCustomPaperSize()?getCustomPaperWidth():PaperFormats::getPaperWidth(getPaperFormat(), getPaperOrientation(), m_unitOfLength);
 	}
 
 	double getPaperHeight(void) const
 	{
-		return getUseCustomPaperSize()?getCustomPaperHeight():PaperFormats::getPaperHeight(getPaperFormat(), getPaperOrientation(), m_UnitOfLength);
+		return getUseCustomPaperSize()?getCustomPaperHeight():PaperFormats::getPaperHeight(getPaperFormat(), getPaperOrientation(), m_unitOfLength);
 	}
 
 	double getPrintablePaperAreaWidth(void) const
@@ -644,7 +644,7 @@ public:
 		previewWidth = MIN((int)imageWidth, boxWidth);
 		previewHeight = (int)((double)previewWidth / aspectRatio);
 
-                if (previewHeight > boxHeight)
+		if (previewHeight > boxHeight)
 		{
 			previewWidth = (int)((double)boxHeight * aspectRatio);
 			previewHeight = boxHeight;
