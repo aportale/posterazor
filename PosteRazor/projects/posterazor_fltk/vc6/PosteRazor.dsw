@@ -3,6 +3,33 @@ Microsoft Developer Studio Workspace File, Format Version 6.00
 
 ###############################################################################
 
+Project: "PosteRazor"=.\PosteRazor.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "PosteRazorCmdLine"=.\PosteRazorCmdLine.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name PosteRazor
+    End Project Dependency
+}}}
+
+###############################################################################
+
 Project: "PosteRazorUI"=.\PosteRazorUI.dsp - Package Owner=<4>
 
 Package=<5>
@@ -18,25 +45,13 @@ Package=<4>
 
 ###############################################################################
 
-Project: "PosteRazor"=.\PosteRazor.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
-}}}
-
-###############################################################################
-
 Global:
 
-Package=<3>
+Package=<5>
 {{{
 }}}
 
-Package=<5>
+Package=<3>
 {{{
 }}}
 
