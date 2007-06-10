@@ -25,19 +25,21 @@
 int main(int argc, char *argv[])
 {
 	int error = 0;
+	if (argc < 3)
+		return 1;
 
 	// This is no real main program, yet. It is just testing the PosteRazor API.
 
 	PosteRazor* prz = PosteRazor::createPosteRazor();
 	char errorMessage[1024];
-	bool loaded = prz->loadInputImage("c:\\image_cmyk.jpg", errorMessage, sizeof(errorMessage));
+	bool loaded = prz->loadInputImage(argv[1], errorMessage, sizeof(errorMessage));
 
 	if (loaded)
 	{
 		prz->setPosterWidth(PosteRazorEnums::ePosterSizeModePages, 2.5);
 		prz->setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentMiddle);
 		prz->setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignmentCenter);
-		int err = prz->savePoster("c:\\poster.pdf");
+		int err = prz->savePoster(argv[2]);
 		int huhu= 1;
 	}
 
