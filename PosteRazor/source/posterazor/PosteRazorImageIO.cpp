@@ -161,13 +161,15 @@ public:
 
 #define MAX(a, b) ((a)>(b)?(a):(b))
 
-	void getImageAsRGB(unsigned char *buffer) const
+	bool getImageAsRGB(unsigned char *buffer) const
 	{
-		getImageAsRGB(buffer, getWidthPixels(), getHeightPixels());
+		return getImageAsRGB(buffer, getWidthPixels(), getHeightPixels());
 	}
 
-	void getImageAsRGB(unsigned char *buffer, int width, int height) const
+	bool getImageAsRGB(unsigned char *buffer, int width, int height) const
 	{
+		bool success = true;
+	
 		FIBITMAP* originalImage = m_bitmap;
 		FIBITMAP* temp24BPPImage = NULL;
 		FIBITMAP* scaledImage = NULL;
@@ -239,6 +241,8 @@ public:
 
 		if (scaledImage)
 			FreeImage_Unload(scaledImage);
+
+		return success;
 	}
 	
 	int getBitsPerPixel(void) const

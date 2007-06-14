@@ -24,6 +24,10 @@
 #define Fl_Paint_Canvas_Group_h
 
 #include <FL/Fl_Group.H>
+#include "PaintCanvasBase.h"
+
+// No forward declaration for the canvases, because of
+// wierd inclusions trouble in VC 6
 #ifndef NO_OPENGL_PREVIEW
   #include "Fl_Gl_Paint_Canvas.h"
 #endif

@@ -28,7 +28,6 @@
 #include <FL/Fl_Gl_Window.H>
 #include <FL/gl.h>
 
-#include <FL/Fl_Image.H>
 #include "PaintCanvasBase.h"
 
 class Fl_Gl_Paint_Canvas: public Fl_Gl_Window, public PaintCanvasBase
@@ -56,13 +55,13 @@ public:
 	virtual void disposeImage(void);
 	virtual void drawImage(double x, double y, double width, double height);
 
-	virtual unsigned int getTexturesColumnsCount(void) const                      {return (int)ceil((double)m_imageWidth / (double)m_texturesSize);}
-	virtual unsigned int getTexturesRowsCount(void) const                         {return (int)ceil((double)m_imageHeight / (double)m_texturesSize);}
-	virtual unsigned int getTexturesCount(void) const                             {return getTexturesColumnsCount() * getTexturesRowsCount();}
-	virtual unsigned int getLastTexturesColumnPixelsColumns(void) const           {return m_imageWidth - (getTexturesColumnsCount()-1)*m_texturesSize;}
-	virtual unsigned int getLastTexturesRowPixelsRows(void) const                 {return m_imageHeight - (getTexturesRowsCount()-1)*m_texturesSize;}
-	virtual unsigned int getTexturesColumnPixelColumns(unsigned int column) const {return column < getTexturesColumnsCount()-1?m_texturesSize:getLastTexturesColumnPixelsColumns();}
-	virtual unsigned int getTexturesRowPixelRows(unsigned int row) const          {return row < getTexturesRowsCount()-1?m_texturesSize:getLastTexturesRowPixelsRows();}
+	virtual unsigned int getTexturesColumnsCount(void) const;
+	virtual unsigned int getTexturesRowsCount(void) const;
+	virtual unsigned int getTexturesCount(void) const;
+	virtual unsigned int getLastTexturesColumnPixelsColumns(void) const;
+	virtual unsigned int getLastTexturesRowPixelsRows(void) const;
+	virtual unsigned int getTexturesColumnPixelColumns(unsigned int column) const;
+	virtual unsigned int getTexturesRowPixelRows(unsigned int row) const;
 };
 
 #endif

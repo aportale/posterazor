@@ -27,7 +27,8 @@
 #include "ColorTypes.h"
 #include "ImageIOTypes.h"
 #include "PaintCanvasInterface.h"
-#include "PersistentPreferencesInterface.h"
+
+class PersistentPreferencesInterface;
 
 class PosteRazorEnums
 {

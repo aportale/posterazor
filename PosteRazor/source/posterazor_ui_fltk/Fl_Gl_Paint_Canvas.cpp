@@ -246,3 +246,38 @@ void Fl_Gl_Paint_Canvas::drawImage(double x, double y, double width, double heig
 		glDisable(GL_TEXTURE_2D);
 	}
 }
+
+unsigned int Fl_Gl_Paint_Canvas::getTexturesColumnsCount(void) const
+{
+	return (int)ceil((double)m_imageWidth / (double)m_texturesSize);
+}
+
+unsigned int Fl_Gl_Paint_Canvas::getTexturesRowsCount(void) const
+{
+	return (int)ceil((double)m_imageHeight / (double)m_texturesSize);
+}
+
+unsigned int Fl_Gl_Paint_Canvas::getTexturesCount(void) const
+{
+	return getTexturesColumnsCount() * getTexturesRowsCount();
+}
+
+unsigned int Fl_Gl_Paint_Canvas::getLastTexturesColumnPixelsColumns(void) const
+{
+	return m_imageWidth - (getTexturesColumnsCount()-1)*m_texturesSize;
+}
+
+unsigned int Fl_Gl_Paint_Canvas::getLastTexturesRowPixelsRows(void) const
+{
+	return m_imageHeight - (getTexturesRowsCount()-1)*m_texturesSize;
+}
+
+unsigned int Fl_Gl_Paint_Canvas::getTexturesColumnPixelColumns(unsigned int column) const
+{
+	return column < getTexturesColumnsCount()-1?m_texturesSize:getLastTexturesColumnPixelsColumns();
+}
+
+unsigned int Fl_Gl_Paint_Canvas::getTexturesRowPixelRows(unsigned int row) const
+{
+	return row < getTexturesRowsCount()-1?m_texturesSize:getLastTexturesRowPixelsRows();
+}

@@ -25,8 +25,9 @@
 
 #include "UnitsOfLength.h"
 #include "ColorTypes.h"
-#include "PaintCanvasInterface.h"
 #include "ImageIOTypes.h"
+
+class PainterInterface;
 
 class PosteRazorImageIO: public ColorTypes
 {
@@ -47,8 +48,8 @@ public:
 	virtual double getWidth(UnitsOfLength::eUnitsOfLength unit) const = 0;
 	virtual double getHeight(UnitsOfLength::eUnitsOfLength unit) const = 0;
 
-	virtual void getImageAsRGB(unsigned char *buffer) const = 0;
-	virtual void getImageAsRGB(unsigned char *buffer, int width, int height) const = 0;
+	virtual bool getImageAsRGB(unsigned char *buffer) const = 0;
+	virtual bool getImageAsRGB(unsigned char *buffer, int width, int height) const = 0;
 	
 	virtual int getBitsPerPixel(void) const = 0;
 	virtual eColorTypes getColorDataType(void) const = 0;

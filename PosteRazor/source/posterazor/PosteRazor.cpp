@@ -22,6 +22,7 @@
 
 #include "PosteRazor.h"
 #include "PosteRazorImageIO.h"
+#include "PersistentPreferencesInterface.h"
 #include <stdio.h>
 #include <string.h>
 #ifdef WIN32
@@ -663,12 +664,12 @@ public:
 	
 	void getImage(PaintCanvasInterface *paintCanvas, double maxWidth, double maxHeight) const
 	{
-		unsigned char *rgbData = new unsigned char[m_imageIO->getWidthPixels() * m_imageIO->getHeightPixels() * 3];
 		int imageWidth;
 		int imageHeight;
 		getInputImagePreviewSize((int)maxWidth, (int)maxHeight, imageWidth, imageHeight);
-		m_imageIO->getImageAsRGB(rgbData, imageWidth, imageHeight);
-		paintCanvas->setImage(rgbData, imageWidth, imageHeight);
+		unsigned char *rgbData = new unsigned char[imageWidth * imageHeight * 3];
+		if (m_imageIO->getImageAsRGB(rgbData, imageWidth, imageHeight))
+			paintCanvas->setImage(rgbData, imageWidth, imageHeight);
 		delete[] rgbData;
 	}
 

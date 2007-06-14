@@ -24,8 +24,10 @@
 #define Fl_Draw_Paint_Canvas_h
 
 #include <FL/Fl_Box.H>
-#include <FL/Fl_Image.H>
 #include "PaintCanvasBase.h"
+
+class Fl_RGB_Image;
+class Fl_Image;
 
 class Fl_Draw_Paint_Canvas: public Fl_Box, public PaintCanvasBase
 {
