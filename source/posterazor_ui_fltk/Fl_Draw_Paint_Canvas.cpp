@@ -21,6 +21,7 @@
 */
 
 #include "Fl_Draw_Paint_Canvas.h"
+#include <FL/Fl_Image.H>
 #include <FL/fl_draw.H>
 #include <string.h>
 
