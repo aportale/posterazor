@@ -113,10 +113,6 @@ SOURCE=..\..\..\source\tools\ColorTypes.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\source\tools\DistanceUnits.h
-# End Source File
-# Begin Source File
-
 SOURCE=..\..\..\source\tools\PaintCanvasInterface.h
 # End Source File
 # Begin Source File
