@@ -1,3 +1,18 @@
+PosteRazor 1.4
+==============
+-   Added: PosteRazor builds on Linux!
+-   Added: Italian translation by Stefano Nosei
+-   Added: Dutch translation by Erik Wijkamp
+-   Added: Spanish translation by Hispanicoweb.net
+-   Fixed: PosteRazors image preview tries not to crash if an image
+           with high resolution is loaded.
+
+PosteRazor 1.3
+==============
+This version was skipped. A few web sites offered version 1.2
+labelled as 1.3. This was probably just a mistake which is
+fixed by skipping this version.
+
 PosteRazor 1.2
 ==============
 -   Added: Polish translation by Grzegorz Wacikowski
@@ -21,9 +36,9 @@ PosteRazor 1.1
 -   Added: The user is warned if he overwrites an existing .pdf
            file
 -   Added: The open input image and save poster file chooser have
-           usable file extensions in their choosers	   
+           usable file extensions in their choosers
 -   Added: PosteRazor remembers the directories where the input
-           image was loaded and the poster was saved   
+           image was loaded and the poster was saved
 -   Added: The poster preview is (optionally) rendered using OpenGL
            PosteRazor can still be compiled and used without OpenGL
 -   Added: PosteRazor is now multilingual (English, German)
