@@ -667,9 +667,12 @@ public:
 		int imageWidth;
 		int imageHeight;
 		getInputImagePreviewSize((int)maxWidth, (int)maxHeight, imageWidth, imageHeight);
-		unsigned char *rgbData = new unsigned char[imageWidth * imageHeight * 3];
-		if (m_imageIO->getImageAsRGB(rgbData, imageWidth, imageHeight))
-			paintCanvas->setImage(rgbData, imageWidth, imageHeight);
+		size_t rgbDataBytesCount = imageWidth * imageHeight * 3;
+		unsigned char *rgbData = new unsigned char[rgbDataBytesCount];
+		if (!m_imageIO->getImageAsRGB(rgbData, imageWidth, imageHeight))
+			// If preview fails because of low memory...
+			memset(rgbData, 0x66, rgbDataBytesCount);
+		paintCanvas->setImage(rgbData, imageWidth, imageHeight);
 		delete[] rgbData;
 	}
 
