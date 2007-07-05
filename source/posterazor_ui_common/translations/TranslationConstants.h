@@ -50,11 +50,16 @@
 
 #define POSTERAZORTRANSLATIONCREDITSSTART "<dl>" POSTERAZORHELPENDLINE
 #define POSTERAZORTRANSLATIONCREDITSEND "</dl>" POSTERAZORHELPENDLINE
-#define POSTERAZORTRANSLATIONCREDITSFRENCH "<dt>French translation</dt><dd>Martin Loyer (traduction<b></b>@<b></b>loyer<b></b>.<b></b>name).</dd>" POSTERAZORHELPENDLINE
-#define POSTERAZORTRANSLATIONCREDITSPOLISH "<dt>Polish translation</dt><dd>Grzegorz Wacikowski.</dd>" POSTERAZORHELPENDLINE
-#define POSTERAZORTRANSLATIONCREDITSDUTCH "<dt>Dutch/Belgian translation</dt><dd>Erik Wijkamp - Lochem (The Netherlands) (e_wijkamp<b></b>@<b></b>yahoo<b></b>.<b></b>com).</dd>" POSTERAZORHELPENDLINE
-#define POSTERAZORTRANSLATIONCREDITSITALIAN "<dt>Italian translation</dt><dd>Stefano Nosei (kluster<b></b>@<b></b>imente<b></b>.<b></b>org).</dd>" POSTERAZORHELPENDLINE
-#define POSTERAZORTRANSLATIONCREDITSSPANISH "<dt>Spanish translation</dt><dd><a href=\"http://hispanicoweb.net\">Hisp&aacute;nicoWeb</a></dd>" POSTERAZORHELPENDLINE
+#define POSTERAZORTRANSLATIONCREDITSFRENCH "<dt>French translation:</dt><dd>&nbsp;&nbsp;&nbsp;Martin Loyer (traduction<b></b>@<b></b>loyer<b></b>.<b></b>name).</dd>" POSTERAZORHELPENDLINE
+#define POSTERAZORTRANSLATIONCREDITSPOLISH "<dt>Polish translation:</dt><dd>&nbsp;&nbsp;&nbsp;Grzegorz Wacikowski.</dd>" POSTERAZORHELPENDLINE
+#define POSTERAZORTRANSLATIONCREDITSDUTCH "<dt>Dutch/Belgian translation:</dt><dd>&nbsp;&nbsp;&nbsp;Erik Wijkamp - Lochem (The Netherlands) (e_wijkamp<b></b>@<b></b>yahoo<b></b>.<b></b>com)</dd>" POSTERAZORHELPENDLINE
+#define POSTERAZORTRANSLATIONCREDITSITALIAN "<dt>Italian translation:</dt><dd>&nbsp;&nbsp;&nbsp;Stefano Nosei (kluster<b></b>@<b></b>imente<b></b>.<b></b>org).</dd>" POSTERAZORHELPENDLINE
+#define POSTERAZORTRANSLATIONCREDITSSPANISH "<dt>Spanish translation:</dt><dd>&nbsp;&nbsp;&nbsp;Cristobal from <a href=\"http://hispanicoweb.net/\">Hisp&aacute;nicoWeb</a></dd>" POSTERAZORHELPENDLINE
+
+#define POSTERAZORLICENSE \
+	"This program is free software; you can redistribute it and/or modify it under the terms of the <a href=\"http://www.gnu.org/licenses/gpl.txt\">GNU General Public License</a> as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+	"This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+	"You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA." POSTERAZORHELPENDLINE
 
 #endif
 

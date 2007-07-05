@@ -263,9 +263,8 @@ public:
 
 					"&nbsp;<br>" \
 
-					"Ten program jest darmowy; mo"CHAR_HTML_zdot"esz go rozprowadza"CHAR_HTML_cacute" i/lub modyfikowa"CHAR_HTML_cacute" go stosuj"CHAR_HTML_acedilla"c si"CHAR_HTML_ecedilla" do warunk"CHAR_HTML_oacute"w na <a href=\"http://www.gnu.org/licenses/gpl.txt\">GNU General Public License</a> opublikowana przed Free Software Foundation; r"CHAR_HTML_oacute"wniez wersja 2 licencji lub ka"CHAR_HTML_zdot"da nast"CHAR_HTML_ecedilla"pna.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
-					"Ten program jest rozprowadzany w nadziei, "CHAR_HTML_zdot"e b"CHAR_HTML_ecedilla"dzie przydatny,  jednak BEZ "CHAR_HTML_Zdot"ADNEJ GWARANCJI. Zobacz wi"CHAR_HTML_ecedilla"cej detali GNU General Public License.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
-					"Powiniene"CHAR_HTML_sacute" otrzyma"CHAR_HTML_cacute" kopie licencji GNU General Public License wraz z tym programem; je"CHAR_HTML_sacute"li nie, napisz do Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA." POSTERAZORHELPENDLINE \
+					POSTERAZORLICENSE \
+
 				"</BODY>" POSTERAZORHELPENDLINE \
 			"</HTML>";
 	}
