@@ -220,10 +220,8 @@ public:
 					POSTERAZORTRANSLATIONCREDITSEND \
 
 					"&nbsp;<br>" \
+					POSTERAZORLICENSE \
 
-					"Este programa es software libre; puede usted redistribuirlo y/o modificarlo bajo los términos de la <a href=\"http://www.gnu.org/licenses/gpl.txt\">Licencia Pública General GNU</a> publicada por la Free Software Foundation; ya sea en la versi&oacute;n 2 de la Licencia, o (a su opci&oacute;n) en cualquier versi&oacute;n posterior.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
-					"Este programa es distribuido con la esperanza de que ser&aacute; útil, pero SIN NINGUNA GARANTIA; incluso sin la garantía implícita de MERCANTIBILIDAD o APTITUD PARA UN PROPOSITO PARTICULAR. Vea la Licencia Pública General GNU para m&aacute;s informaci&oacute;n.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
-					"Usted debería haber recibido una copia de la Licencia Pública General GNU junto con este programa; si no es así, escriba a la Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA." POSTERAZORHELPENDLINE \
 				"</BODY>" POSTERAZORHELPENDLINE \
 			"</HTML>";
 	}

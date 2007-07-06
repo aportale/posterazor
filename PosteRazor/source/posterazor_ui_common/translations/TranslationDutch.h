@@ -181,10 +181,10 @@ public:
 					POSTERAZORHELPINDENTATION "De breedte-hoogte verhouding is altijd 1:1 en wordt automatisch herberekend. In het schermvoorbeeld venster worden de overlappende zijden helderrood gemarkeerd. "  POSTERAZORHELPENDLINE \
 					"<b>Afbeelding uitlijnen</b> bepaalt de positie van de poster ten opzichte van het totale oppervlak van alle vellen.  Dit kan handig zijn voor papierbesparing van het overgebleven papier." POSTERAZORHELPENDLINE \
 
-					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP05, ENGLISH_POSTERAZORHELSTEP " 5: " DUTCH_POSTERAZORHELPSTEPTITLE05) \
+					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP05, DUTCH_POSTERAZORHELSTEP " 5: " DUTCH_POSTERAZORHELPSTEPTITLE05) \
 					POSTERAZORHELPINDENTATION "Sla de poster op door te klikken op de brede knop en het ingeven van een nieuwe, voor opslag geschikte bestandsnaam. Vink <b>De PDF-applicatie opstarten.. </b> aan als de opgeslagen poster in de voor het besturingssysteem tot standaard gemaakte PDF-applicatie moet worden opgestart." POSTERAZORHELPENDLINE \
 
-					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORINPUTFILEFORMATS, ENGLISH_POSTERAZORHELPINPUTFILEFORMATS) \
+					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORINPUTFILEFORMATS, DUTCH_POSTERAZORHELPINPUTFILEFORMATS) \
 					POSTERAZORHELPINDENTATION "De meeste bestandsformaten die ondersteund worden bij FreeImage, worden ook ondersteund in PosteRazor:<br>" POSTERAZORHELPENDLINE \
 					"<b>BMP, DDS files, Dr. Halo, GIF, ICO, IFF, JBIG, JNG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, MNG, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM.<br></b>" POSTERAZORHELPENDLINE \
 					"PosteRazor herkent ook de volgende bestandsformaten en kan ze gebruiken: monochroom, grijstinten, 4-bit palet, 8-bit palet, 24 bit RGB, en CMYK (alleen bij TIF) afbeeldingen. RGB afbeeldingen met een alpha kanaal worden automatisch geconverteerd en getoond op een witte achtergrond." POSTERAZORHELPENDLINE \
@@ -193,16 +193,16 @@ public:
 					POSTERAZORHELPINDENTATION "Waarom een  PDF bestand en niet direct printen? Allereerst weet de ontwerper van dit programma nog niet hoe dit \"send images to the printer\" werkt op verschillende platformen en besturingssystemen waar PosteRazor voor is bedoeld. Echter, het PDF formaat geeft ook een uitstekend resultaat als de poster thuis \"gerazored\" is en als PDF bestand meegenomen wordt naar het werk, om daar op de kleuren laserprinter te worden uitgedraaid (en natuurlijk iedereen al naar huis is...)." POSTERAZORHELPENDLINE \
 					POSTERAZORHELPINDENTATION "Waarom PDF en geen ander bestandsformaat als eindresultaat? PDF geeft de mogelijkheid om meer dan de benodigde gegevens in één bestand op te slaan. PDF geeft ook nog eens de mogelijkheid om hele bestanden in één totaalbestand op te nemen en virtueel te delen, niet alleen in pixels maar ook in fracties van pixels. Ook is het printen van één -uit meerdere pagina’s bestaand- PDF bestand handiger dan meerdere losse afbeeldingen in meerdere bestanden." POSTERAZORHELPENDLINE \
 
-					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES, ENGLISH_POSTERAZORHELPCODEFROMTHIRDPARTIES) \
+					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES, DUTCH_POSTERAZORHELPCODEFROMTHIRDPARTIES) \
 					"<UL>" POSTERAZORHELPENDLINE \
 					"<LI><b>FLTK</b> wordt gebruikt in de gebruikersinterface. Het is een klein (in opslag), snel, leuk, eenvoudig te leren en bijzonder uitwisselbare UI Toolkit. Het is te vinden op de <a href=\"http://www.fltk.org/\">www.fltk.org</a> website.</LI>" POSTERAZORHELPENDLINE \
 					"<LI><b>FreeImage</b> wordt gebruikt voor de grafische afhandeling. Dat maakt het  tonen van bestanden en een grafische weergave simpel en is uitwisselbaar op meerdere platformen waar PosteRazor ook op werkt. Het is te vinden op de <a href=\"http://freeimage.sourceforge.net/\">FreeImage</a> website.</LI>" POSTERAZORHELPENDLINE \
 					"<LI><b>Fl_Native_File_Chooser</b> wordt gebruikt voor het openen en opslaan van bestanden in de vertrouwde \"look and feel\" stijl. Het is te vinden op: <a href=\"http://seriss.com/people/erco/fltk/Fl_Native_File_Chooser/\">Fl Native File Chooser</a> website.</LI>" POSTERAZORHELPENDLINE \
 					"</UL>" POSTERAZORHELPENDLINE \
 
-					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORLICENSE, ENGLISH_POSTERAZORHELPLICENSE) \
+					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORLICENSE, DUTCH_POSTERAZORHELPLICENSE) \
 					"PosteRazor - Make your own poster!<br>" POSTERAZORHELPENDLINE \
-					"<a href=\""ENGLISH_POSTERAZORWEBSITEURL"\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
+					"<a href=\""DUTCH_POSTERAZORWEBSITEURL"\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
 					"Copyright (C) 2005-2007 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
 					POSTERAZORTRANSLATIONCREDITSSTART \
@@ -215,9 +215,7 @@ public:
 
 					"&nbsp;<br>" \
 
-					"This program is free software; you can redistribute it and/or modify it under the terms of the <a href=\"http://www.gnu.org/licenses/gpl.txt\">GNU General Public License</a> as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
-					"This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
-					"You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA." POSTERAZORHELPENDLINE \
+					POSTERAZORLICENSE \
 
 				"</BODY>" POSTERAZORHELPENDLINE \
 			"</HTML>";

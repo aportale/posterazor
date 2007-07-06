@@ -214,9 +214,8 @@ public:
 
 					"&nbsp;<br>" \
 
-					"Questo programma &egrave; un software gratis; puoi redistribuirlo e/o modificarlo sotto i termini della <a href=\"http://www.gnu.org/licenses/gpl.txt\">GNU General Public License</a> come pubblicato dalla Free Software Foundation; compresa la versione 2 della Licenza, oppure (a tua scelta) qualsiasi successiva versione.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
-					"Questo programma &egrave; distribuito nella speranza che sia per te utile, ma SENZA ALCUNA GARANZIA; senza persino la garanzia implicita di MERCHANTABILITY o di IDONEITÀ PER UNO SCOPO PRECISO. Per maggiori dettaglio visualizza la GNU General Public License.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
-					"Dovresti aver ricevuto una copia della GNU General Public License insieme a questo programma; se non &egrave; cos&igrave;, ti prego di scrivere alla Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA." POSTERAZORHELPENDLINE \
+					POSTERAZORLICENSE \
+
 				"</BODY>" POSTERAZORHELPENDLINE \
 			"</HTML>";
 	}
