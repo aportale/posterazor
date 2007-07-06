@@ -124,6 +124,7 @@ public:
 			(primaryLangID == LANG_POLISH)?eLanguagePolish:
 			(primaryLangID == LANG_ITALIAN)?eLanguageItalian:
 			(primaryLangID == LANG_DUTCH)?eLanguageDutch:
+			(primaryLangID == LANG_SPANISH)?eLanguageSpanish:
 			eLanguageUndefined;
 #elif defined (__APPLE__)
 		CFBundleRef mainBundle = CFBundleGetMainBundle();
@@ -136,18 +137,21 @@ public:
 		CFStringRef languageFrench = CFSTR("French");
 		CFStringRef languageItalian = CFSTR("Italian");
 		CFStringRef languageDutch = CFSTR("Dutch");
+		CFStringRef languageSpanish = CFSTR("Spanish");
 		systemLanguage =
 			(CFStringCompare(language, languageEnglish, 0) == kCFCompareEqualTo)?eLanguageEnglish:
 			(CFStringCompare(language, languageGerman, 0) == kCFCompareEqualTo)?eLanguageGerman:
 			(CFStringCompare(language, languageFrench, 0) == kCFCompareEqualTo)?eLanguageFrench:
 			(CFStringCompare(language, languageItalian, 0) == kCFCompareEqualTo)?eLanguageItalian:
 			(CFStringCompare(language, languageDutch, 0) == kCFCompareEqualTo)?eLanguageDutch:
+			(CFStringCompare(language, languageSpanish, 0) == kCFCompareEqualTo)?eLanguageSpanish:
 			eLanguageUndefined;
 		CFRelease(languageEnglish);
 		CFRelease(languageGerman);
 		CFRelease(languageFrench);
 		CFRelease(languageItalian);
 		CFRelease(languageDutch);
+		CFRelease(languageSpanish);
 
 		CFRelease(preferredLanguages);
 		CFRelease(locArray);
