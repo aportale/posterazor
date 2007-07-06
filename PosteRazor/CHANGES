@@ -3,7 +3,7 @@ PosteRazor 1.4
 -   Added: PosteRazor builds on Linux!
 -   Added: Italian translation by Stefano Nosei
 -   Added: Dutch translation by Erik Wijkamp
--   Added: Spanish translation by Hispanicoweb.net
+-   Added: Spanish translation by Cristobal from Hispanicoweb.net
 -   Fixed: PosteRazors image preview tries not to crash if an image
            with high resolution is loaded.
 
