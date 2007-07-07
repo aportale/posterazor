@@ -23,6 +23,13 @@ SET(POSTERAZOR_UISOURCES
 	../../../thirdparty/Fl_Native_File_Chooser/Fl_Native_File_Chooser.cxx
 )
 
+IF (POSTERAZOR_ENABLEGLPREVIEW)
+	SET(POSTERAZOR_UISOURCES
+		${POSTERAZOR_UISOURCES}
+		../../../source/posterazor_ui_fltk/Fl_Gl_Paint_Canvas.cpp
+	)
+ENDIF (POSTERAZOR_ENABLEGLPREVIEW)
+
 SET(POSTERAZOR_INCLUDEDIRECTORIES
 	../../../source/posterazor
 	../../../source/posterazor_ui_common
@@ -32,13 +39,6 @@ SET(POSTERAZOR_INCLUDEDIRECTORIES
 	../../../thirdparty/FreeImage/Dist
 	../../../thirdparty/Fl_Native_File_Chooser
 )
-
-IF (POSTERAZOR_ENABLEGLPREVIEW)
-	SET(POSTERAZOR_UISOURCES
-		${POSTERAZOR_UISOURCES}
-		../../../source/posterazor_ui_fltk/Fl_Gl_Paint_Canvas.cpp
-	)
-ENDIF (POSTERAZOR_ENABLEGLPREVIEW)
 
 IF (WIN32)
 	SET(POSTERAZOR_RC_FILE ../../../source/posterazor_ui_common/windowsResources/PosteRazorUI.rc)

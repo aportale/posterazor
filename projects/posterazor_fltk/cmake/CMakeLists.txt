@@ -70,12 +70,6 @@ ENDIF (WIN32)
 
 IF (APPLE)
 	ADD_EXECUTABLE(PosteRazor MACOSX_BUNDLE ${POSTERAZOR_SOURCES})
-# FreeImages make script on OSX doesn't finish and doesn't copy stuff into into the Dist directory
-	SET(POSTERAZOR_INCLUDEDIRECTORIES
-		${POSTERAZOR_INCLUDEDIRECTORIES}
-		../../../thirdparty/FreeImage/Source
-	)
-	SET_TARGET_PROPERTIES(PosteRazor PROPERTIES LINK_FLAGS "-L../../../thirdparty/FreeImage")
 	SET(POSTERAZOR_LINKLIBRARIES
 		fltk
 		fltk_gl
