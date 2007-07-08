@@ -26,6 +26,8 @@
 class TranslationInterface
 {
 public:
+	virtual ~TranslationInterface() {};
+
 	virtual const char* languageName(void) = 0;
 
 	virtual const char* absoluteSize(void) = 0;
