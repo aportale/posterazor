@@ -100,7 +100,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 	Fl_Persistent_Preferences preferences(PreferencesVendor, PreferencesProduct);
 	m_posteRazorController->readPersistentPreferences(&preferences);
 	Fl_Paint_Canvas_Group::ePaintCanvasTypes paintCanvasType =
-		preferences.getBoolean(preferencesKey_UseOpenGLForPreview, true)?Fl_Paint_Canvas_Group::PaintCanvasTypeGL:Fl_Paint_Canvas_Group::PaintCanvasTypeDraw;
+		preferences.getBoolean(preferencesKey_UseOpenGLForPreview, getUseOpenGLForPreviewByDefault())?Fl_Paint_Canvas_Group::PaintCanvasTypeGL:Fl_Paint_Canvas_Group::PaintCanvasTypeDraw;
 	Translations::eLanguages language = (Translations::eLanguages)preferences.getInteger(preferencesKey_UILanguage, Translations::eLanguageUndefined);
 	m_UILanguageIsUndefined = language == Translations::eLanguageUndefined;
 	if (m_UILanguageIsUndefined)
@@ -183,6 +183,20 @@ int PosteRazorDialog::handle(int event)
 	default:
 		return PosteRazorDialogUI::handle(event);
 	};
+}
+
+bool PosteRazorDialog::getUseOpenGLForPreviewByDefault(void)
+{
+#if defined(WIN32)
+	// For some reasons, some Windows 98 systems had problems with OpenGL. Maybe all non-NT versions?
+	OSVERSIONINFO osvi;
+	ZeroMemory(&osvi, sizeof(OSVERSIONINFO));
+	osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
+	GetVersionEx(&osvi);
+	return (osvi.dwPlatformId != VER_PLATFORM_WIN32_WINDOWS);
+#else
+	return true;
+#endif
 }
 
 void PosteRazorDialog::openSettingsDialog(void)
