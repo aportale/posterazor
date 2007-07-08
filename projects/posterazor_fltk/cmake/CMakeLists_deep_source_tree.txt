@@ -47,6 +47,11 @@ IF (WIN32)
 	)
 ENDIF (WIN32)
 
+IF (APPLE)
+	SET(POSTERAZOR_ICON_FILE ../../../source/posterazor_ui_common/OSXResources/PosteRazor.icns)
+	SET(POSTERAZOR_INFOPLIST ../xcode2/Info.plist)
+ENDIF (APPLE)
+
 IF (UNIX AND NOT APPLE)
 	SET(POSTERAZOR_INCLUDEDIRECTORIES ${POSTERAZOR_INCLUDEDIRECTORIES}
 		../../../source/posterazor_ui_common/x11Resources
