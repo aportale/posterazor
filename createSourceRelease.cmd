@@ -1,0 +1,1 @@
+7z a -tzip -r PosteRazor-1.4-Src.zip -x!.svn
