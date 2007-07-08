@@ -394,7 +394,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "RESOURCESFOLDER=$BUILT_PRODUCTS_DIR/$TARGET_NAME.app/Contents/Resources/\nLANGUAGES=\"Enlish German French Italian Dutch Spanish\"\n\nfor LANGUAGE in $LANGUAGES\ndo\n\tLANGUAGEFOLDER=$RESOURCESFOLDER/$LANGUAGE.lproj\n\tif [ ! -d $LANGUAGEFOLDER ]\n\tthen\tmkdir $LANGUAGEFOLDER\n\tfi\ndone\n";
+			shellScript = "RESOURCESFOLDER=$BUILT_PRODUCTS_DIR/$TARGET_NAME.app/Contents/Resources/\nLANGUAGES=\"English German French Italian Dutch Spanish\"\n\nfor LANGUAGE in $LANGUAGES\ndo\n\tLANGUAGEFOLDER=$RESOURCESFOLDER/$LANGUAGE.lproj\n\tif [ ! -d $LANGUAGEFOLDER ]\n\tthen\tmkdir $LANGUAGEFOLDER\n\tfi\ndone\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
