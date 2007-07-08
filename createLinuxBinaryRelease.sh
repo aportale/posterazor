@@ -1,3 +1,5 @@
+#!/bin/sh
+
 pushd projects/posterazor_fltk/cmake
 cmake .
 make clean
