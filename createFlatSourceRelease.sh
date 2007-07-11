@@ -19,7 +19,7 @@ FILESTOCOPY="\
     README \
     projects/posterazor_fltk/cmake/CMakeLists.txt \
     projects/posterazor_fltk/cmake/CMakeLists_flat_source_tree.txt \
-    projects/posterazor_fltk/xcode2/info.plist \
+    projects/posterazor_fltk/xcode2/Info.plist \
     source/posterazor_ui_common/OSXResources/PosteRazor.icns \
     source/posterazor_ui_common/windowsResources/PosteRazor.ico \
     source/posterazor_ui_common/windowsResources/PosteRazorResource.h \
