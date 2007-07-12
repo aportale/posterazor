@@ -38,7 +38,7 @@
 				<h2><? text('News', 'Neuigkeiten'); ?></h2>
 				<ul>
 					<li>
-						<h3><? text('July 12th 2007', '12. Juli 2007'); ?>: Version 1.2</h3>
+						<h3><? text('July 12th 2007', '12. Juli 2007'); ?>: Version 1.4</h3>
 						<p><? text('Three more languages and a Linux port.', 'Drei weitere Sprachen und eine Linux-Portierung.'); ?></p>
 						<ul>
 							<li><? text('PosteRazor builds on Linux!', 'PosteRazor kompiliert unter Linux!'); ?></li>
