@@ -38,6 +38,17 @@
 				<h2><? text('News', 'Neuigkeiten'); ?></h2>
 				<ul>
 					<li>
+						<h3><? text('July 12th 2007', '12. Juli 2007'); ?>: Version 1.2</h3>
+						<p><? text('Three more languages and a Linux port.', 'Drei weitere Sprachen und eine Linux-Portierung.'); ?></p>
+						<ul>
+							<li><? text('PosteRazor builds on Linux!', 'PosteRazor kompiliert unter Linux!'); ?></li>
+							<li><? text('Italian translation by Stefano Nosei', 'Italienische &Uuml;bersetzung von Stefano Nosei'); ?></li>
+							<li><? text('Dutch translation by Erik Wijkamp', 'Holl&auml;ndische &Uuml;bersetzung von Erik Wijkamp'); ?></li>
+							<li><? text('Spanish translation by Cristobal from Hispanicoweb.net', 'Spanische &Uuml;bersetzung von Cristobal (Hispanicoweb.net)'); ?></li>
+						</ul>
+						<p><a class="external" href="http://svn.sourceforge.net/viewcvs.cgi/posterazor/trunk/PosteRazor/CHANGES?view=markup"><? text('Full list of changements', 'Vollst&auml;ndige Liste der &Auml;nderungen (auf englisch)'); ?></a></p>
+					</li>
+					<li>
 						<h3><? text('June 18th 2006', '18. Juni 2006'); ?>: Version 1.2</h3>
 						<p><? text('Two more languages, improved usability.', 'Zwei weitere Sprachen und grö&szlig;ere Bedienerfreundlichkeit.'); ?></p>
 						<ul>
@@ -63,7 +74,7 @@
 				</ul>
 <?
 			break;
-			case 'features':		
+			case 'features':
 ?>
 				<h2><? text('Features', 'Funktionen'); ?></h2>
 				<ul>
@@ -107,7 +118,7 @@
 				<p><strong><? text('Missing features', 'Fehlende Funktionen'); ?>:</strong> <? text('Cut lines/aids; Support of Jpeg-CMYK images; Support of 16 Bit Grayscale images; Embedding an ICC profile into the PDF if there is one embedded in the input image', 'Schnittlinen -hilfen; Unterst&uuml;tzung von CMYK-Jpeg; Unterst&uuml;tzung von 16-Bit-Graustufen-Bildern; ICC-Profile, die in einem Ausgangsbild eingebettet sein können im PDF einbetten.'); ?></p>
 <?
 			break;
-			case 'screenshots':		
+			case 'screenshots':
 ?>
 				<h2><? text('Screenshots', 'Bildschirmfotos'); ?></h2>
 				<div id="screenshotthumbs">
@@ -120,28 +131,36 @@
 				</div>
 <?
 			break;
-			case 'download':		
+			case 'download':
 ?>
 				<h2><? text('Download', 'Herunterladen'); ?></h2>
 				<p><? text('The following PosteRazor download links lead to sites with lists of download locations. There, please click on a "Download" link next to a location that is geographically next to Your place.', 'Die folgenden PosteRazor-Download-Verweise f&uuml;hren auf Seiten mit mehreren m&ouml;glichen Downloadservern. Bitte klicken Sie Dort auf einen "Download"-Verweis, der Ihnen geografisch am n&auml;chsten ist.'); ?></p>
 				<p><? text('For <strong>direct linking to the downloads</strong> from another site, please use exactly the following links, only these are guaranteed to be valid in the future.', '<strong>Direktes Verlinken auf die Downloads</strong> von anderen Seiten aus bitte mit den unten aufgef&uuml;hrten Links. Nur diese werden mit gro&szlig;er Sicherheit auch in Zukunft g&uuml;ltig sein.'); ?></p>
 				<ul>
 					<li>
-						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.2-Win32.zip?download"><strong><? text('Windows version', 'Windows-version'); ?></strong> (421 KB)</a><br />
+						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.4-Win32.zip?download"><strong><? text('Windows version', 'Windows-version'); ?></strong> (346 KB)</a><br />
 						<? text('After downloading the ZIP archive, extract the contained PosteRazor.exe to a place of Your choice and start it. If You use a Windows version below XP, You probably need an installed <a class="external" href="http://www.7-zip.org/">Unzip tool</a>.', 'Nach dem Herunterladen des ZIP-Archivs, k&ouml;nnen Sie das enthaltene PosteRazor.exe in ein Verzeichnis Ihrer Wahl entpacken und starten. Falls sie eine Windows-version unterhalb von XP nutzen, ben&ouml;tigen Sie evenuell ein installiertes <a class="external" href="http://www.7-zip.org/">Unzip-Programm</a>.'); ?>
 					</li>
 					<li>
-						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.2-OSX.dmg?download"><strong><? text('OSX version', 'OSX-version'); ?></strong> (698 KB)</a><br />
+						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.4-OSX.dmg?download"><strong><? text('OSX version', 'OSX-version'); ?></strong> (610 KB)</a><br />
 						<? text('After downloading the OSX disk image, double click to mount it if it doesn\'t mount automatically. You can start the contained PosteRazor application directly by double clicking it or drag it into a location of Your choice.', 'Nach dem Herunterladen des OSX-Diskimages k&ouml;nnen Sie es, falls dies nicht automatisch geschieht, per Doppelclick mounten. Danach kann die enthaltene PosteRazor-Applikation entweder direkt gestartet werden oder in einen Ordner Ihrer Wahl kopiert werden.'); ?><br />
 					</li>
 					<li>
-						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.2-Source.zip?download"><strong><? text('Source', 'Quelltext'); ?></strong> (199 KB)</a><br />
-						<? text('The source archive includes only project files for VC6, VS 2003 .Net, XCode 2.2 and an unfinished CMake file. FLTK and FreeImage are not included. In order to compile without OpenGL, the preprocessor symbol <em>NO_OPENGL_PREVIEW</em> can be defined.', 'Das Quelltext-archiv enth&auml;lt nur Projekte f&uuml;r VC6, VS 2003 .Net, XCode 2.2 und eine unvollst&auml;ndige CMake-Datei. FLTK und FreeImage sind nicht enthalten. Um ohne OpenGL zu kompilieren, kann das Pr&auml;prozessorsymbol <em>NO_OPENGL_PREVIEW</em> definiert werden.'); ?><br />
+						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.4-Linux-x86.tgz?download"><strong><? text('Linux version', 'Linux-version'); ?></strong> (768 KB)</a><br />
+						<? text('After downloading, untar it. This binary was statically linked against Fltk and FreeImage. It runs on (K)Ubuntu 6.06 and 7.04 from boot CD. Howerver, it will probably not run on a non-(K)Ubuntu system. If I figure out how to easily create distribution packages, I will create these.', 'Nach dem Herunterladen ent-TAR-en. Dieses Binärpaket wurde statisch gegen Fltk und FreeImage gelinkt. Es l&auml;uft auf (K)Ubuntu 6.06 und 7.04 von Boot-CD. Aber es wird eventuell nicht auf einem nicht-(K)Ubuntu-System laufen. Wenn ich mal herausbekomme, wie man einfach Distributions-pakete baut, werde ich diese bauen.'); ?><br />
+					</li>
+					<li>
+						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.4-Source.zip?download"><strong><? text('Source', 'Quelltext'); ?></strong> (226 KB)</a><br />
+						<? text('The source archive includes project files for VC6, VS 2003 .Net, XCode 2.2 and CMake. Depends on the not included FLTK and FreeImage (and libXpm-dev on Linux). In order to compile without OpenGL, the preprocessor symbol <em>NO_OPENGL_PREVIEW</em> can be defined.', 'Das Quelltext-archiv enth&auml;lt Projekte f&uuml;r VC6, VS 2003 .Net, XCode 2.2 und CMake. Linkt gegen die nicht enthaltenen FLTK und FreeImage (und libXpm-dev unter Linux). Um ohne OpenGL zu kompilieren, kann das Pr&auml;prozessorsymbol <em>NO_OPENGL_PREVIEW</em> definiert werden.'); ?><br />
+					</li>
+					<li>
+						<a class="external" href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.4-FlatSource.tgz?download"><strong><? text('Flat Source', 'Flacher Quelltext'); ?></strong> (144 KB)</a><br />
+						<? text('The source archive has a flat file hierarchy and includes only project files for CMake. Depends on the not included FLTK and FreeImage (and libXpm-dev on Linux). In order to compile without OpenGL, the preprocessor symbol <em>NO_OPENGL_PREVIEW</em> can be defined. Not intended for compilation under Windows.', 'Das Quelltext-archiv hat eine flache Verzeichnisstruktur und enth&auml;lt nur Projekte f&uuml;r CMake. Linkt gegen die nicht enthaltenen FLTK und FreeImage (und libXpm-dev unter Linux). Um ohne OpenGL zu kompilieren, kann das Pr&auml;prozessorsymbol <em>NO_OPENGL_PREVIEW</em> definiert werden. Nicht f&uuml;r das Kompilieren unter Windows gedacht.'); ?><br />
 					</li>
 				</ul>
 <?
 			break;
-			case 'thirdparty':		
+			case 'thirdparty':
 ?>
 				<h2><? text('Third party code', 'Code von Drittanbietern'); ?></h2>
 				<? text('PosteRazor uses third party Open Source libraries. Without those, it would have been painful and unmotivating to create the PosteRazor, and the feature set and portability would have been much smaller. The libraries are statically linked into the PosteRazor.',
@@ -159,7 +178,7 @@
 				</ul>
 <?
 			break;
-			case 'license':		
+			case 'license':
 ?>
 				<h2><? text('License', 'Lizenz'); ?></h2>
 				<p>
@@ -172,7 +191,7 @@
 				<p>PosteRazor is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the <a class="external" href="http://www.gnu.org/copyleft/gpl.html">GNU General Public License</a> for more details.</p>
 <?
 			break;
-			case 'marketing':		
+			case 'marketing':
 ?>
 				<h2><? text('Marketing', 'Marketing'); ?></h2>
 				<ul>
@@ -268,26 +287,24 @@
 				</ul>
 <?
 			break;
-			default:		
+			default:
 ?>
 				<h2><? text('About', '&Uuml;ber'); ?></h2>
 				<? text('The PosteRazor cuts a raster image into pieces which can afterwards be printed out and assembled to a poster.', 'Der PosteRazor schneidet eine Rasterbild-datei in St&uuml;cke, die anschlie&szlig;end ausgedruckt und zu einem Poster zusammengef&uuml;gt werden k&ouml;nnen.'); ?>
 				<br /><div style="text-align: center; margin: 10px;"><img src="workflow.png" width="376" height="107" alt="PosteRazor workflow"/></div>
-				<? text('As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps. PosteRazor is available as a Windows and as an OSX version (it should also be compilable on Linux).', 'Als Ausgangsmaterial nimmt der PosteRazor eine Rasterbild-datei. Das Endprodukt ist ein Poster in Form eines mehrseitigen PDF-Dokuments. Eine einfach zu bedienende Benutzerschnittstelle im Assistenten-Stil begleitet durch f&uuml;nf Schritte. Der PosteRazor ist als Windows- und als OSX-Version erh&auml;ltlich (er sollte auch f&uuml;r Linux kompilierbar sein).'); ?>
+				<? text('As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps. PosteRazor is available as a Windows, an OSX and a Linux version.', 'Als Ausgangsmaterial nimmt der PosteRazor eine Rasterbild-datei. Das Endprodukt ist ein Poster in Form eines mehrseitigen PDF-Dokuments. Eine einfach zu bedienende Benutzerschnittstelle im Assistenten-Stil begleitet durch f&uuml;nf Schritte. Der PosteRazor ist als Windows-, als OSX- und als Linux-Version erh&auml;ltlich.'); ?>
 				<? text('It is an open source, ', 'Er ist ein quelloffenes, '); ?><a href="<?=linkParameters("license","")?>"><? text('GNU licensed', 'GNU-lizensiertes'); ?></a> <? text('project which is hosted on SourceForge.net.', 'Projekt, das auf SourceForge hinterlegt ist.'); ?>
 				<? text('For feedback, bug reports or feature requests, please use the', 'F&uuml;r Feedback, Fehlerberichte oder Erweiterungsw&uuml;nsche nutzen Sie bitte die '); ?> <a class="external" href="http://sourceforge.net/projects/posterazor/"><? text('PosteRazor project page', 'PosteRazor-Projektseite'); ?></a>, <? text('write a mail to', 'schreiben Sie eine Mail an'); ?> <strong>Alessandro&nbsp;&auml;t&nbsp;casaportale&nbsp;d&ocirc;t de</strong> <? text('or contact the author via', 'oder kontaktieren Sie den Autor via'); ?> <a class="external" href="http://www.casaportale.de/html/index.php?page=contact&amp;lang=<? text('english', 'german'); ?>&amp;menu=on"><? text('mail form', 'Mail-Formular'); ?></a>.
 				<h3><? text('Contributors', 'Mitwirkende'); ?>:</h3>
 				<ul>
 					<li><? text('Polish translation:', 'Polnische &Uuml;bersetzung:'); ?> Grzegorz Wacikowski</li>
 					<li><? text('French translation:', 'Franz&ouml;sische &Uuml;bersetzung:'); ?> Martin Loyer</li>
-					<li><? text('Italian translation (next PosteRazor version):', 'Italienische &Uuml;bersetzung (n&auml;chste PosteRazor-version):'); ?> Stefano Nosei</li>
-					<li><? text('Dutch/Belgian translation (next PosteRazor version):', 'Holl&auml;ndische/Belgische &Uuml;bersetzung (n&auml;chste PosteRazor-version):'); ?> Erik Wijkamp</li>
-					<li><? text('Spanish translation (next PosteRazor version):', 'Spanische &Uuml;bersetzung (n&auml;chste PosteRazor-version):'); ?> Hispanicoweb.net</li>
-					<li><? text('Russian translation (next PosteRazor version):', 'Russische &Uuml;bersetzung (n&auml;chste PosteRazor-version):'); ?> Alendos</li>
-					<li><? text('Brazilian Portuguese translation (next PosteRazor version):', 'Brasilianisch-Portugisische &Uuml;bersetzung (n&auml;chste PosteRazor-version):'); ?> &Eacute;derson</li>
+					<li><? text('Italian translation:', 'Italienische &Uuml;bersetzung:'); ?> Stefano Nosei</li>
+					<li><? text('Dutch/Belgian translation:', 'Holl&auml;ndische/Belgische &Uuml;bersetzung:'); ?> Erik Wijkamp</li>
+					<li><? text('Spanish translation:', 'Spanische &Uuml;bersetzung:'); ?> Hispanicoweb.net</li>
 				</ul>
 <?
-		};		
+		};
 	}
 	
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"

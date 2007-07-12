@@ -34,19 +34,19 @@
 	</Company_Info>
 	<Program_Info>
 		<Program_Name>PosteRazor</Program_Name>
-		<Program_Version>1.2</Program_Version>
-		<Program_Release_Month>06</Program_Release_Month>
-		<Program_Release_Day>18</Program_Release_Day>
-		<Program_Release_Year>2006</Program_Release_Year>
+		<Program_Version>1.4</Program_Version>
+		<Program_Release_Month>07</Program_Release_Month>
+		<Program_Release_Day>12</Program_Release_Day>
+		<Program_Release_Year>2007</Program_Release_Year>
 		<Program_Cost_Dollars>0.00</Program_Cost_Dollars>
 		<Program_Cost_Other_Code />
 		<Program_Cost_Other>0.00</Program_Cost_Other>
 		<Program_Type>Freeware</Program_Type>
 		<Program_Release_Status>Minor Update</Program_Release_Status>
 		<Program_Install_Support>No Install Support</Program_Install_Support>
-		<Program_OS_Support>Win98,WinME,Windows2000,WinXP,Windows2003,Mac OS X</Program_OS_Support>
-		<Program_Language>English,German,French,Polish</Program_Language>
-		<Program_Change_Info>Improved usability</Program_Change_Info>
+		<Program_OS_Support>Win98,WinME,Windows2000,WinXP,Windows2003,Mac OS X,Linux</Program_OS_Support>
+		<Program_Language>English,German,French,Polish,Italian,Dutch,Spanish</Program_Language>
+		<Program_Change_Info>Morelanguages, Linux port</Program_Change_Info>
 		<Program_Specific_Category />
 		<Program_Category_Class>Graphic Apps::Other</Program_Category_Class>
 		<Program_Categories />
@@ -59,9 +59,9 @@
 			<Filename_Previous />
 			<Filename_Generic />
 			<Filename_Long />
-			<File_Size_Bytes>414391</File_Size_Bytes>
-			<File_Size_K>404</File_Size_K>
-			<File_Size_MB>0.40</File_Size_MB>
+			<File_Size_Bytes>354656</File_Size_Bytes>
+			<File_Size_K>348</File_Size_K>
+			<File_Size_MB>0.35</File_Size_MB>
 		</File_Info>
 		<Expire_Info>
 			<Has_Expire_Info>N</Has_Expire_Info>
@@ -75,7 +75,7 @@
 	</Program_Info>
 	<Program_Descriptions>
 		<English>
-			<Keywords>Print, poster, pdf</Keywords>
+			<Keywords>Print, poster, PDF</Keywords>
 			<Char_Desc_45 />
 			<Char_Desc_80>Make your own poster!</Char_Desc_80>
 			<Char_Desc_250 />
@@ -84,7 +84,7 @@
 As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps.</Char_Desc_2000>
 		</English>
 		<German>
-			<Keywords>Poster, drucken, pdf</Keywords>
+			<Keywords>Poster, drucken, PDF</Keywords>
 			<Char_Desc_45 />
 			<Char_Desc_80>Mach' Dein eigenes Poster!</Char_Desc_80>
 			<Char_Desc_250 />
@@ -102,8 +102,8 @@ Als Ausgangsmaterial nimmt der PosteRazor eine Rasterbild-datei. Das Endprodukt 
 			<Application_XML_File_URL>http://posterazor.sourceforge.net/pad_file.xml</Application_XML_File_URL>
 		</Application_URLs>
 		<Download_URLs>
-			<Primary_Download_URL>http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.2-Win32.zip?download.zip</Primary_Download_URL>
-			<Secondary_Download_URL>http://www.casaportale.de/lagerraum/PosteRazor-1.2-Win32.zip</Secondary_Download_URL>
+			<Primary_Download_URL>http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.4-Win32.zip?download.zip</Primary_Download_URL>
+			<Secondary_Download_URL>http://www.casaportale.de/lagerraum/PosteRazor-1.4-Win32.zip</Secondary_Download_URL>
 			<Additional_Download_URL_1 />
 			<Additional_Download_URL_2 />
 		</Download_URLs>
