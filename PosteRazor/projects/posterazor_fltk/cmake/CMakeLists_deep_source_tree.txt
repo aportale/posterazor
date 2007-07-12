@@ -2,7 +2,6 @@ SET(POSTERAZOR_CORESOURCES
 	../../../source/posterazor/PosteRazor.cpp
 	../../../source/posterazor/PosteRazorImageIO.cpp
 	../../../source/posterazor/PosteRazorPDFOutput.cpp
-	../../../source/tools/ImageIOTypes.cpp
 	../../../source/tools/UnitsOfLength.cpp
 	../../../source/tools/PaperFormats.cpp
 	../../../source/tools/PaintCanvasBase.cpp
@@ -24,6 +23,13 @@ SET(POSTERAZOR_UISOURCES
 	../../../thirdparty/Fl_Native_File_Chooser/Fl_Native_File_Chooser.cxx
 )
 
+IF (POSTERAZOR_ENABLEGLPREVIEW)
+	SET(POSTERAZOR_UISOURCES
+		${POSTERAZOR_UISOURCES}
+		../../../source/posterazor_ui_fltk/Fl_Gl_Paint_Canvas.cpp
+	)
+ENDIF (POSTERAZOR_ENABLEGLPREVIEW)
+
 SET(POSTERAZOR_INCLUDEDIRECTORIES
 	../../../source/posterazor
 	../../../source/posterazor_ui_common
@@ -34,19 +40,17 @@ SET(POSTERAZOR_INCLUDEDIRECTORIES
 	../../../thirdparty/Fl_Native_File_Chooser
 )
 
-IF (POSTERAZOR_ENABLEGLPREVIEW)
-	SET(POSTERAZOR_UISOURCES
-		${POSTERAZOR_UISOURCES}
-		../../../source/posterazor_ui_fltk/Fl_Gl_Paint_Canvas.cpp
-	)
-ENDIF (POSTERAZOR_ENABLEGLPREVIEW)
-
 IF (WIN32)
 	SET(POSTERAZOR_RC_FILE ../../../source/posterazor_ui_common/windowsResources/PosteRazorUI.rc)
 	SET(POSTERAZOR_INCLUDEDIRECTORIES ${POSTERAZOR_INCLUDEDIRECTORIES}
 		../../../source/posterazor_ui_common/windowsResources
 	)
 ENDIF (WIN32)
+
+IF (APPLE)
+	SET(POSTERAZOR_ICON_FILE ../../../source/posterazor_ui_common/OSXResources/PosteRazor.icns)
+	SET(POSTERAZOR_INFOPLIST ../xcode2/Info.plist)
+ENDIF (APPLE)
 
 IF (UNIX AND NOT APPLE)
 	SET(POSTERAZOR_INCLUDEDIRECTORIES ${POSTERAZOR_INCLUDEDIRECTORIES}

@@ -4,7 +4,7 @@ POSTERAZORVERSION=1.4
 BASEPATH=/tmp/PosteRazor_source_release_$$
 POSTERAZORPATH=$BASEPATH/PosteRazor-$POSTERAZORVERSION
 FLNATIVEFILECHOOSERPATH=$BASEPATH/Fl_Native_File_Chooser
-SOURCEARCHIVENAME=PosteRazor-$POSTERAZORVERSION-Source.tgz
+SOURCEARCHIVENAME=PosteRazor-$POSTERAZORVERSION-FlatSource.tgz
 
 PATHSTOCOPY="\
     source/tools \
@@ -19,6 +19,11 @@ FILESTOCOPY="\
     README \
     projects/posterazor_fltk/cmake/CMakeLists.txt \
     projects/posterazor_fltk/cmake/CMakeLists_flat_source_tree.txt \
+    projects/posterazor_fltk/xcode2/Info.plist \
+    source/posterazor_ui_common/OSXResources/PosteRazor.icns \
+    source/posterazor_ui_common/windowsResources/PosteRazor.ico \
+    source/posterazor_ui_common/windowsResources/PosteRazorResource.h \
+    source/posterazor_ui_common/windowsResources/PosteRazorUI.rc \
     source/posterazor_ui_common/x11Resources/PosteRazor.xpm \
 "
 

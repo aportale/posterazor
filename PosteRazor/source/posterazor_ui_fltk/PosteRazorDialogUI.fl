@@ -387,7 +387,7 @@ widget_class PosteRazorDialogUI {
         Fl_Button {} {
           label {@+14filesave}
           callback {savePoster();}
-          xywh {335 80 255 25} labelcolor 42
+          xywh {335 80 255 25} labelcolor 37
         }
         Fl_Check_Button m_setLaunchPDFApplicationCheckButton {
           label {Launch PDF application after saving}

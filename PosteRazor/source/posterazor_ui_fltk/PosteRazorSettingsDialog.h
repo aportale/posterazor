@@ -38,6 +38,8 @@ typedef struct
 class SettingsChangementHandler
 {
 public:
+	virtual ~SettingsChangementHandler() {}
+
 	virtual void handleOptionsChangement(posteRazorSettings *settings) = 0;
 };
 

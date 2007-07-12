@@ -54,11 +54,12 @@ private:
 	PosteRazorWizardDialogController  *m_posteRazorController;
 
 public:
-	~PosteRazorDialog();
 	PosteRazorDialog();
+	~PosteRazorDialog();
 
 	int handle(int event);
 
+	bool getUseOpenGLForPreviewByDefault(void);
 	void openSettingsDialog(void);
 	void openHelpDialog(void);
 	void handleOptionsChangement(posteRazorSettings *settings);
