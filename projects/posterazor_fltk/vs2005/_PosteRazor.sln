@@ -1,0 +1,28 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual C++ Express 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_PosteRazorUI", "_PosteRazorUI.vcproj", "{9033B105-F4B8-452E-9069-719F15FF1C19}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A32B23B4-C8B1-4BA6-A0B7-AAF7EACCC371} = {A32B23B4-C8B1-4BA6-A0B7-AAF7EACCC371}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_PosteRazor", "_PosteRazor.vcproj", "{A32B23B4-C8B1-4BA6-A0B7-AAF7EACCC371}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9033B105-F4B8-452E-9069-719F15FF1C19}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9033B105-F4B8-452E-9069-719F15FF1C19}.Debug|Win32.Build.0 = Debug|Win32
+		{9033B105-F4B8-452E-9069-719F15FF1C19}.Release|Win32.ActiveCfg = Release|Win32
+		{9033B105-F4B8-452E-9069-719F15FF1C19}.Release|Win32.Build.0 = Release|Win32
+		{A32B23B4-C8B1-4BA6-A0B7-AAF7EACCC371}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A32B23B4-C8B1-4BA6-A0B7-AAF7EACCC371}.Debug|Win32.Build.0 = Debug|Win32
+		{A32B23B4-C8B1-4BA6-A0B7-AAF7EACCC371}.Release|Win32.ActiveCfg = Release|Win32
+		{A32B23B4-C8B1-4BA6-A0B7-AAF7EACCC371}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
