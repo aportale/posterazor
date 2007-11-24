@@ -38,7 +38,7 @@
 #define POSTERAZORHELPANCHORWHYPDFOUTPUT "whypdfoutput"
 #define POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES "codefromthirdparties"
 #define POSTERAZORHELPANCHORLICENSE "license"
-#define POSTERAZORVERSION "1.4"
+#define POSTERAZORVERSION "1.4.1"
 #define POSTERAZORWEBSITEDOMAIN "http://posterazor.sourceforge.net/"
 
 #define POSTERAZORHELPLINKTOTOP "&nbsp;&nbsp;&nbsp;<A href=\"#" POSTERAZORHELPANCHORTOP "\">^</A>"
