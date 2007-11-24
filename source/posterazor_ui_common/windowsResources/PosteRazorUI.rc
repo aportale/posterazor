@@ -1,7 +1,6 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
-
-#define POSTERAZOR_ICON                 102
+#include "PosteRazorResource.h"
 
 POSTERAZOR_ICON         ICON                    "PosteRazor.ico"
 
