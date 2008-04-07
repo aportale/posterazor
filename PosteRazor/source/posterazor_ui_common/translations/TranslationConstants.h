@@ -55,6 +55,7 @@
 #define POSTERAZORTRANSLATIONCREDITSDUTCH "<dt>Dutch/Belgian translation:</dt><dd>&nbsp;&nbsp;&nbsp;Erik Wijkamp - Lochem (The Netherlands) (e_wijkamp<b></b>@<b></b>yahoo<b></b>.<b></b>com)</dd>" POSTERAZORHELPENDLINE
 #define POSTERAZORTRANSLATIONCREDITSITALIAN "<dt>Italian translation:</dt><dd>&nbsp;&nbsp;&nbsp;Stefano Nosei (kluster<b></b>@<b></b>imente<b></b>.<b></b>org).</dd>" POSTERAZORHELPENDLINE
 #define POSTERAZORTRANSLATIONCREDITSSPANISH "<dt>Spanish translation:</dt><dd>&nbsp;&nbsp;&nbsp;Cristobal from <a href=\"http://hispanicoweb.net/\">Hisp&aacute;nicoWeb</a></dd>" POSTERAZORHELPENDLINE
+#define POSTERAZORTRANSLATIONCREDITSBRAZILIANPORTUGUESE "<dt>Brazilian Portuguese translation:</dt><dd>&nbsp;&nbsp;&nbsp;&Eacute;derson Gomes dos Santos.</dd>" POSTERAZORHELPENDLINE
 
 #define POSTERAZORLICENSE \
 	"This program is free software; you can redistribute it and/or modify it under the terms of the <a href=\"http://www.gnu.org/licenses/gpl.txt\">GNU General Public License</a> as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.<br>&nbsp;<br>" POSTERAZORHELPENDLINE \

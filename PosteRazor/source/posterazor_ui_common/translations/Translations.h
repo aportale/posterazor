@@ -50,6 +50,7 @@ public:
 		,eLanguageItalian
 		,eLanguageDutch
 		,eLanguageSpanish
+		,eLanguageBrazilianPortuguese
 	};
 
 	static Translations* Instance(void);

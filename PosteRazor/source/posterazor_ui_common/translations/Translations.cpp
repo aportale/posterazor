@@ -31,6 +31,7 @@
 #include "TranslationItalian.h"
 #include "TranslationDutch.h"
 #include "TranslationSpanish.h"
+#include "TranslationBrazilianPortuguese.h"
 #if defined (WIN32)
 #include <Windows.h>
 #elif defined (__APPLE__)
@@ -58,6 +59,7 @@ static const TranslationSet TranslationsMap[] =
 	,{&italian, Translations::eLanguageItalian}
 	,{&dutch, Translations::eLanguageDutch}
 	,{&spanish, Translations::eLanguageSpanish}
+	,{&brazilianPortuguese, Translations::eLanguageBrazilianPortuguese}
 };
 
 static int TranslationsMapItemsCount = sizeof(TranslationsMap) / sizeof(TranslationSet);

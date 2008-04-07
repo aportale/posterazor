@@ -211,6 +211,9 @@
 				RelativePath="..\..\..\source\posterazor_ui_common\PosteRazorWizardDialogController.h">
 			</File>
 			<File
+				RelativePath="..\..\..\source\posterazor_ui_common\translations\TranslationBrazilianPortuguese.h">
+			</File>
+			<File
 				RelativePath="..\..\..\source\posterazor_ui_common\translations\TranslationConstants.h">
 			</File>
 			<File
