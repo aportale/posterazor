@@ -31,45 +31,45 @@
 class TranslationSpanish: public TranslationInterface
 {
 public:
-	const char* languageName(void)                    {return "Español";}
+	const char* languageName(void) const                    {return "Español";}
 
-	const char* absoluteSize(void)                    {return "Tamaño total:";}
-	const char* allImageFormats(void)                 {return "Todos los formatos de imagen";}
-	const char* back(void)                            {return "Atrás";}
-	const char* borders(void)                         {return "Márgenes";}
-	const char* bottom(void)                          {return "Inferior";}
-	const char* bottomLeft(void)                      {return "Inferior izquierdo";}
-	const char* bottomRight(void)                     {return "Inferior derecho";}
-	const char* cancel(void)                          {return "Cancelar";}
-	const char* colorType(void)                       {return "Tipo de color:";}
-	const char* custom(void)                          {return "Personalizado";}
-	const char* fileCouldNotBeLoaded(void)            {return "No se pudo cargar el archivo \"%s\".";}
-	const char* fileCouldNotBeSaved(void)             {return "No se pudo guardar el archivo \"%s\".";}
-	const char* format(void)                          {return "Formato:";}
-	const char* grayscale(void)                       {return "Escala de grises";}
-	const char* height(void)                          {return "Altura:";}
-	const char* imageAlignment(void)                  {return "Alineación de imagen";}
-	const char* imageInformations(void)               {return "Informaciones de imagen";}
-	const char* imageSize(void)                       {return "Tamaño de imagen";}
-	const char* inputImage(void)                      {return "Imagen de entrada";}
-	const char* landscape(void)                       {return "Horizontal";}
-	const char* language(void)                        {return "Idioma";}
-	const char* languageExplanation(void)             {return "Escoja su idioma";}
-	const char* launchPDFApplication(void)            {return "Ejecutar la aplicación PDF tras guardar el poster";}
-	const char* left(void)                            {return "Izquierdo";}
-	const char* loadAnInputImage(void)                {return stepTitle01();}
-	const char* monochrome(void)                      {return "Monocromo";}
-	const char* next(void)                            {return "Siguiente";}
-	const char* orientation(void)                     {return "Orientación:";}
-	const char* overlappingPosition(void)             {return "Posición de superposición";}
-	const char* overlappingSize(void)                 {return "Tamaño de superposición";}
-	const char* overwriteFile(void)                   {return "El archivo '%s' ya existe.\n¿Desea sobrescribirlo?";}
-	const char* pages(void)                           {return "páginas";}
-	const char* paperFormat(void)                     {return "Formato de papel";}
-	const char* palette(void)                         {return "Paleta";}
-	const char* portrait(void)                        {return "Vertical";}
-	const char* posteRazorHelp(void)                  {return "Ayuda de PosteRazor";}
-	const char* posteRazorSettings(void)              {return
+	const char* absoluteSize(void) const                    {return "Tamaño total:";}
+	const char* allImageFormats(void) const                 {return "Todos los formatos de imagen";}
+	const char* back(void) const                            {return "Atrás";}
+	const char* borders(void) const                         {return "Márgenes";}
+	const char* bottom(void) const                          {return "Inferior";}
+	const char* bottomLeft(void) const                      {return "Inferior izquierdo";}
+	const char* bottomRight(void) const                     {return "Inferior derecho";}
+	const char* cancel(void) const                          {return "Cancelar";}
+	const char* colorType(void) const                       {return "Tipo de color:";}
+	const char* custom(void) const                          {return "Personalizado";}
+	const char* fileCouldNotBeLoaded(void) const            {return "No se pudo cargar el archivo \"%s\".";}
+	const char* fileCouldNotBeSaved(void) const             {return "No se pudo guardar el archivo \"%s\".";}
+	const char* format(void) const                          {return "Formato:";}
+	const char* grayscale(void) const                       {return "Escala de grises";}
+	const char* height(void) const                          {return "Altura:";}
+	const char* imageAlignment(void) const                  {return "Alineación de imagen";}
+	const char* imageInformations(void) const               {return "Informaciones de imagen";}
+	const char* imageSize(void) const                       {return "Tamaño de imagen";}
+	const char* inputImage(void) const                      {return "Imagen de entrada";}
+	const char* landscape(void) const                       {return "Horizontal";}
+	const char* language(void) const                        {return "Idioma";}
+	const char* languageExplanation(void) const             {return "Escoja su idioma";}
+	const char* launchPDFApplication(void) const            {return "Ejecutar la aplicación PDF tras guardar el poster";}
+	const char* left(void) const                            {return "Izquierdo";}
+	const char* loadAnInputImage(void) const                {return stepTitle01();}
+	const char* monochrome(void) const                      {return "Monocromo";}
+	const char* next(void) const                            {return "Siguiente";}
+	const char* orientation(void) const                     {return "Orientación:";}
+	const char* overlappingPosition(void) const             {return "Posición de superposición";}
+	const char* overlappingSize(void) const                 {return "Tamaño de superposición";}
+	const char* overwriteFile(void) const                   {return "El archivo '%s' ya existe.\n¿Desea sobrescribirlo?";}
+	const char* pages(void) const                           {return "páginas";}
+	const char* paperFormat(void) const                     {return "Formato de papel";}
+	const char* palette(void) const                         {return "Paleta";}
+	const char* portrait(void) const                        {return "Vertical";}
+	const char* posteRazorHelp(void) const                  {return "Ayuda de PosteRazor";}
+	const char* posteRazorSettings(void) const              {return
 #ifdef __APPLE__
 // This seems to be the only problematic string on OSX. It is used for a window title.
                                                         "Configuraci\x97n de PosteRazor"
@@ -77,28 +77,28 @@ public:
                                                         "Configuración de PosteRazor"
 #endif
                                                       ;}
-	const char* posteRazorWebSiteURL(void)            {return SPANISH_POSTERAZORWEBSITEURL;}
-	const char* posteRazorWebSite(void)               {return "Sitio web de PosteRazor";}
-	const char* previewWithOpenGL(void)               {return "Previsualizar con OpenGL";}
-	const char* previewWithOpenGLExplanation(void)    {return "OpenGL posibilita una previsualización fácil en los sistemas modernos. En sistemas antiguos puede ralentizar la previsualización.";}
-	const char* resolution(void)                      {return "Resolución:";}
-	const char* right(void)                           {return "Derecho";}
-	const char* saveThePoster(void)                   {return "Guardar el póster";}
-	const char* saveThePosterAs(void)                 {return "Guardar el póster como";}
-	const char* settings(void)                        {return "Configuraciones...";}
-	const char* Size(void)                            {return "Tamaño:";}
-	const char* sizeInPages(void)                     {return "Tamaño en páginas:";}
-	const char* sizeInPercent(void)                   {return "Tamaño en porcentaje:";}
-	const char* sizeInPixels(void)                    {return "Tamaño (en píx.):";}
-	const char* sizeInUnitOfLength(void)              {return "Tamaño (en %s):";}
-	const char* standard(void)                        {return "Estándar";}
-	const char* stepXOfY(void)                        {return "Paso %d de %d";}
-	const char* top(void)                             {return "Superior";}
-	const char* topLeft(void)                         {return "Superior izquierdo";}
-	const char* topRight(void)                        {return "Superior derecho";}
-	const char* unitOfLength(void)                    {return "Unidad de longitud";}
-	const char* unitOfLengthExplanation(void)         {return "Escoja la unidad con la que desea trabajar";}
-	const char* width(void)                           {return "Anchura:";}
+	const char* posteRazorWebSiteURL(void) const            {return SPANISH_POSTERAZORWEBSITEURL;}
+	const char* posteRazorWebSite(void) const               {return "Sitio web de PosteRazor";}
+	const char* previewWithOpenGL(void) const               {return "Previsualizar con OpenGL";}
+	const char* previewWithOpenGLExplanation(void) const    {return "OpenGL posibilita una previsualización fácil en los sistemas modernos. En sistemas antiguos puede ralentizar la previsualización.";}
+	const char* resolution(void) const                      {return "Resolución:";}
+	const char* right(void) const                           {return "Derecho";}
+	const char* saveThePoster(void) const                   {return "Guardar el póster";}
+	const char* saveThePosterAs(void) const                 {return "Guardar el póster como";}
+	const char* settings(void) const                        {return "Configuraciones...";}
+	const char* Size(void) const                            {return "Tamaño:";}
+	const char* sizeInPages(void) const                     {return "Tamaño en páginas:";}
+	const char* sizeInPercent(void) const                   {return "Tamaño en porcentaje:";}
+	const char* sizeInPixels(void) const                    {return "Tamaño (en píx.):";}
+	const char* sizeInUnitOfLength(void) const              {return "Tamaño (en %s):";}
+	const char* standard(void) const                        {return "Estándar";}
+	const char* stepXOfY(void) const                        {return "Paso %d de %d";}
+	const char* top(void) const                             {return "Superior";}
+	const char* topLeft(void) const                         {return "Superior izquierdo";}
+	const char* topRight(void) const                        {return "Superior derecho";}
+	const char* unitOfLength(void) const                    {return "Unidad de longitud";}
+	const char* unitOfLengthExplanation(void) const         {return "Escoja la unidad con la que desea trabajar";}
+	const char* width(void) const                           {return "Anchura:";}
 
 
 #define SPANISH_POSTERAZORHELSTEP                         "Paso"
@@ -118,12 +118,12 @@ public:
 #define SPANISH_POSTERAZORHELPCODEFROMTHIRDPARTIES        "C&oacute;digo de terceros"
 #define SPANISH_POSTERAZORHELPLICENSE                     "Licencia"
 
-	const char* stepTitle01(void)                     {return SPANISH_POSTERAZORHELPSTEPTITLE01;}
-	const char* stepTitle02(void)                     {return SPANISH_POSTERAZORHELPSTEPTITLE02;}
-	const char* stepTitle03(void)                     {return SPANISH_POSTERAZORHELPSTEPTITLENOHTML03;}
-	const char* stepTitle04(void)                     {return SPANISH_POSTERAZORHELPSTEPTITLE04;}
-	const char* stepTitle05(void)                     {return SPANISH_POSTERAZORHELPSTEPTITLENOHTML05;}
-	const char* helpHtml(void)
+	const char* stepTitle01(void) const                     {return SPANISH_POSTERAZORHELPSTEPTITLE01;}
+	const char* stepTitle02(void) const                     {return SPANISH_POSTERAZORHELPSTEPTITLE02;}
+	const char* stepTitle03(void) const                     {return SPANISH_POSTERAZORHELPSTEPTITLENOHTML03;}
+	const char* stepTitle04(void) const                     {return SPANISH_POSTERAZORHELPSTEPTITLE04;}
+	const char* stepTitle05(void) const                     {return SPANISH_POSTERAZORHELPSTEPTITLENOHTML05;}
+	const char* helpHtml(void) const
 	{
 		return	"<HTML>" POSTERAZORHELPENDLINE \
 				"<BODY>" POSTERAZORHELPENDLINE \
@@ -227,9 +227,9 @@ public:
 			"</HTML>";
 	}
 
-	const int flagImageWidth(void)                    {return 20;}
-	const int flagImageHeight(void)                   {return 11;}
-	const unsigned char *flagImageRGBData(void)
+	const int flagImageWidth(void) const                    {return 20;}
+	const int flagImageHeight(void) const                   {return 11;}
+	const unsigned char *flagImageRGBData(void) const
 	{
 		static const unsigned char flagRGBData[] =
 		{

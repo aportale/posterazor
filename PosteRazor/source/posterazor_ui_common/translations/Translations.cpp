@@ -40,7 +40,7 @@
 #include <stdio.h> // for NULL
 
 static const struct {
-	TranslationInterface *translation;
+	const TranslationInterface *translation;
 	Translations::eLanguages language;
 } TranslationsMap[] = {
 	{&english, Translations::eLanguageUndefined}
@@ -55,14 +55,13 @@ static const struct {
 	,{&spanish, Translations::eLanguageSpanish}
 	,{&brazilianPortuguese, Translations::eLanguageBrazilianPortuguese}
 };
-
 static const int TranslationsMapItemsCount = sizeof(TranslationsMap) / sizeof(TranslationsMap[0]);
 
 class TranslationSwitcher: public Translations
 {
 private:
-	TranslationInterface *m_selectedTranslation;
-	eLanguages m_language;
+	mutable const TranslationInterface *m_selectedTranslation;
+	mutable eLanguages m_language;
 
 public:
 	TranslationSwitcher()
@@ -70,30 +69,30 @@ public:
 		SelectLangue(eLanguageUndefined);
 	}
 
-	void SelectLangue(eLanguages language)
+	void SelectLangue(eLanguages language) const
 	{
 		m_language = language;
 		m_selectedTranslation = GetTranslationOfLanguage(m_language);
 	}
 
-	eLanguages GetSelectedLanguage(void)
+	eLanguages GetSelectedLanguage(void) const
 	{
 		return m_language;
 	}
 
-	int GetLanguagesCount(void)
+	int GetLanguagesCount(void) const
 	{
 		return TranslationsMapItemsCount - 1;
 	}
 
-	eLanguages GetLanguageForIndex(int index)
+	eLanguages GetLanguageForIndex(int index) const
 	{
 		return TranslationsMap[index + 1].language;
 	}
 
-	TranslationInterface* GetTranslationOfLanguage(eLanguages language)
+	const TranslationInterface* GetTranslationOfLanguage(eLanguages language) const
 	{
-		TranslationInterface* foundTranslation = NULL;
+		const TranslationInterface* foundTranslation = NULL;
 		for (int i = 0; i < TranslationsMapItemsCount; i++) {
 			if(TranslationsMap[i].language == language)	{
 				foundTranslation = TranslationsMap[i].translation;
@@ -105,7 +104,7 @@ public:
 		return foundTranslation;
 	}
 
-	eLanguages GetSystemLanguage(void)
+	eLanguages GetSystemLanguage(void) const
 	{
 		eLanguages systemLanguage = eLanguageUndefined;
 #if defined (WIN32)
@@ -154,82 +153,82 @@ public:
 	}
 
 
-	const char* languageName(void)                    {return m_selectedTranslation->languageName();}
+	const char* languageName(void) const                     {return m_selectedTranslation->languageName();}
 
-	const char* absoluteSize(void)                    {return m_selectedTranslation->absoluteSize();}
-	const char* allImageFormats(void)                 {return m_selectedTranslation->allImageFormats();}
-	const char* back(void)                            {return m_selectedTranslation->back();}
-	const char* borders(void)                         {return m_selectedTranslation->borders();}
-	const char* bottom(void)                          {return m_selectedTranslation->bottom();}
-	const char* bottomLeft(void)                      {return m_selectedTranslation->bottomLeft();}
-	const char* bottomRight(void)                     {return m_selectedTranslation->bottomRight();}
-	const char* cancel(void)                          {return m_selectedTranslation->cancel();}
-	const char* colorType(void)                       {return m_selectedTranslation->colorType();}
-	const char* custom(void)                          {return m_selectedTranslation->custom();}
-	const char* fileCouldNotBeLoaded(void)            {return m_selectedTranslation->fileCouldNotBeLoaded();}
-	const char* fileCouldNotBeSaved(void)             {return m_selectedTranslation->fileCouldNotBeSaved();}
-	const char* format(void)                          {return m_selectedTranslation->format();}
-	const char* grayscale(void)                       {return m_selectedTranslation->grayscale();}
-	const char* height(void)                          {return m_selectedTranslation->height();}
-	const char* imageAlignment(void)                  {return m_selectedTranslation->imageAlignment();}
-	const char* imageInformations(void)               {return m_selectedTranslation->imageInformations();}
-	const char* imageSize(void)                       {return m_selectedTranslation->imageSize();}
-	const char* inputImage(void)                      {return m_selectedTranslation->inputImage();}
-	const char* landscape(void)                       {return m_selectedTranslation->landscape();}
-	const char* language(void)                        {return m_selectedTranslation->language();}
-	const char* languageExplanation(void)             {return m_selectedTranslation->languageExplanation();}
-	const char* launchPDFApplication(void)            {return m_selectedTranslation->launchPDFApplication();}
-	const char* left(void)                            {return m_selectedTranslation->left();}
-	const char* loadAnInputImage(void)                {return m_selectedTranslation->loadAnInputImage();}
-	const char* monochrome(void)                      {return m_selectedTranslation->monochrome();}
-	const char* next(void)                            {return m_selectedTranslation->next();}
-	const char* orientation(void)                     {return m_selectedTranslation->orientation();}
-	const char* overlappingPosition(void)             {return m_selectedTranslation->overlappingPosition();}
-	const char* overlappingSize(void)                 {return m_selectedTranslation->overlappingSize();}
-	const char* overwriteFile(void)                   {return m_selectedTranslation->overwriteFile();}
-	const char* pages(void)                           {return m_selectedTranslation->pages();}
-	const char* palette(void)                         {return m_selectedTranslation->palette();}
-	const char* paperFormat(void)                     {return m_selectedTranslation->paperFormat();}
-	const char* portrait(void)                        {return m_selectedTranslation->portrait();}
-	const char* posteRazorHelp(void)                  {return m_selectedTranslation->posteRazorHelp();}
-	const char* posteRazorSettings(void)              {return m_selectedTranslation->posteRazorSettings();}
-	const char* posteRazorWebSiteURL(void)            {return m_selectedTranslation->posteRazorWebSiteURL();}
-	const char* posteRazorWebSite(void)               {return m_selectedTranslation->posteRazorWebSite();}
-	const char* previewWithOpenGL(void)               {return m_selectedTranslation->previewWithOpenGL();}
-	const char* previewWithOpenGLExplanation(void)    {return m_selectedTranslation->previewWithOpenGLExplanation();}
-	const char* resolution(void)                      {return m_selectedTranslation->resolution();}
-	const char* right(void)                           {return m_selectedTranslation->right();}
-	const char* saveThePoster(void)                   {return m_selectedTranslation->saveThePoster();}
-	const char* saveThePosterAs(void)                 {return m_selectedTranslation->saveThePosterAs();}
-	const char* settings(void)                        {return m_selectedTranslation->settings();}
-	const char* Size(void)                            {return m_selectedTranslation->Size();}
-	const char* sizeInPages(void)                     {return m_selectedTranslation->sizeInPages();}
-	const char* sizeInPercent(void)                   {return m_selectedTranslation->sizeInPercent();}
-	const char* sizeInPixels(void)                    {return m_selectedTranslation->sizeInPixels();}
-	const char* sizeInUnitOfLength(void)              {return m_selectedTranslation->sizeInUnitOfLength();}
-	const char* standard(void)                        {return m_selectedTranslation->standard();}
-	const char* stepXOfY(void)                        {return m_selectedTranslation->stepXOfY();}
-	const char* top(void)                             {return m_selectedTranslation->top();}
-	const char* topLeft(void)                         {return m_selectedTranslation->topLeft();}
-	const char* topRight(void)                        {return m_selectedTranslation->topRight();}
-	const char* unitOfLength(void)                    {return m_selectedTranslation->unitOfLength();}
-	const char* unitOfLengthExplanation(void)         {return m_selectedTranslation->unitOfLengthExplanation();}
-	const char* width(void)                           {return m_selectedTranslation->width();}
+	const char* absoluteSize(void) const                     {return m_selectedTranslation->absoluteSize();}
+	const char* allImageFormats(void) const                  {return m_selectedTranslation->allImageFormats();}
+	const char* back(void) const                             {return m_selectedTranslation->back();}
+	const char* borders(void) const                          {return m_selectedTranslation->borders();}
+	const char* bottom(void) const                           {return m_selectedTranslation->bottom();}
+	const char* bottomLeft(void) const                       {return m_selectedTranslation->bottomLeft();}
+	const char* bottomRight(void) const                      {return m_selectedTranslation->bottomRight();}
+	const char* cancel(void) const                           {return m_selectedTranslation->cancel();}
+	const char* colorType(void) const                        {return m_selectedTranslation->colorType();}
+	const char* custom(void) const                           {return m_selectedTranslation->custom();}
+	const char* fileCouldNotBeLoaded(void) const             {return m_selectedTranslation->fileCouldNotBeLoaded();}
+	const char* fileCouldNotBeSaved(void) const              {return m_selectedTranslation->fileCouldNotBeSaved();}
+	const char* format(void) const                           {return m_selectedTranslation->format();}
+	const char* grayscale(void) const                        {return m_selectedTranslation->grayscale();}
+	const char* height(void) const                           {return m_selectedTranslation->height();}
+	const char* imageAlignment(void) const                   {return m_selectedTranslation->imageAlignment();}
+	const char* imageInformations(void) const                {return m_selectedTranslation->imageInformations();}
+	const char* imageSize(void) const                        {return m_selectedTranslation->imageSize();}
+	const char* inputImage(void) const                       {return m_selectedTranslation->inputImage();}
+	const char* landscape(void) const                        {return m_selectedTranslation->landscape();}
+	const char* language(void) const                         {return m_selectedTranslation->language();}
+	const char* languageExplanation(void) const              {return m_selectedTranslation->languageExplanation();}
+	const char* launchPDFApplication(void) const             {return m_selectedTranslation->launchPDFApplication();}
+	const char* left(void) const                             {return m_selectedTranslation->left();}
+	const char* loadAnInputImage(void) const                 {return m_selectedTranslation->loadAnInputImage();}
+	const char* monochrome(void) const                       {return m_selectedTranslation->monochrome();}
+	const char* next(void) const                             {return m_selectedTranslation->next();}
+	const char* orientation(void) const                      {return m_selectedTranslation->orientation();}
+	const char* overlappingPosition(void) const              {return m_selectedTranslation->overlappingPosition();}
+	const char* overlappingSize(void) const                  {return m_selectedTranslation->overlappingSize();}
+	const char* overwriteFile(void) const                    {return m_selectedTranslation->overwriteFile();}
+	const char* pages(void) const                            {return m_selectedTranslation->pages();}
+	const char* palette(void) const                          {return m_selectedTranslation->palette();}
+	const char* paperFormat(void) const                      {return m_selectedTranslation->paperFormat();}
+	const char* portrait(void) const                         {return m_selectedTranslation->portrait();}
+	const char* posteRazorHelp(void) const                   {return m_selectedTranslation->posteRazorHelp();}
+	const char* posteRazorSettings(void) const               {return m_selectedTranslation->posteRazorSettings();}
+	const char* posteRazorWebSiteURL(void) const             {return m_selectedTranslation->posteRazorWebSiteURL();}
+	const char* posteRazorWebSite(void) const                {return m_selectedTranslation->posteRazorWebSite();}
+	const char* previewWithOpenGL(void) const                {return m_selectedTranslation->previewWithOpenGL();}
+	const char* previewWithOpenGLExplanation(void) const     {return m_selectedTranslation->previewWithOpenGLExplanation();}
+	const char* resolution(void) const                       {return m_selectedTranslation->resolution();}
+	const char* right(void) const                            {return m_selectedTranslation->right();}
+	const char* saveThePoster(void) const                    {return m_selectedTranslation->saveThePoster();}
+	const char* saveThePosterAs(void) const                  {return m_selectedTranslation->saveThePosterAs();}
+	const char* settings(void) const                         {return m_selectedTranslation->settings();}
+	const char* Size(void) const                             {return m_selectedTranslation->Size();}
+	const char* sizeInPages(void) const                      {return m_selectedTranslation->sizeInPages();}
+	const char* sizeInPercent(void) const                    {return m_selectedTranslation->sizeInPercent();}
+	const char* sizeInPixels(void) const                     {return m_selectedTranslation->sizeInPixels();}
+	const char* sizeInUnitOfLength(void) const               {return m_selectedTranslation->sizeInUnitOfLength();}
+	const char* standard(void) const                         {return m_selectedTranslation->standard();}
+	const char* stepXOfY(void) const                         {return m_selectedTranslation->stepXOfY();}
+	const char* top(void) const                              {return m_selectedTranslation->top();}
+	const char* topLeft(void) const                          {return m_selectedTranslation->topLeft();}
+	const char* topRight(void) const                         {return m_selectedTranslation->topRight();}
+	const char* unitOfLength(void) const                     {return m_selectedTranslation->unitOfLength();}
+	const char* unitOfLengthExplanation(void) const          {return m_selectedTranslation->unitOfLengthExplanation();}
+	const char* width(void) const                            {return m_selectedTranslation->width();}
 
-	const char* stepTitle01(void)                     {return m_selectedTranslation->stepTitle01();}
-	const char* stepTitle02(void)                     {return m_selectedTranslation->stepTitle02();}
-	const char* stepTitle03(void)                     {return m_selectedTranslation->stepTitle03();}
-	const char* stepTitle04(void)                     {return m_selectedTranslation->stepTitle04();}
-	const char* stepTitle05(void)                     {return m_selectedTranslation->stepTitle05();}
-	const char* helpHtml(void)                        {return m_selectedTranslation->helpHtml();}
+	const char* stepTitle01(void) const                      {return m_selectedTranslation->stepTitle01();}
+	const char* stepTitle02(void) const                      {return m_selectedTranslation->stepTitle02();}
+	const char* stepTitle03(void) const                      {return m_selectedTranslation->stepTitle03();}
+	const char* stepTitle04(void) const                      {return m_selectedTranslation->stepTitle04();}
+	const char* stepTitle05(void) const                      {return m_selectedTranslation->stepTitle05();}
+	const char* helpHtml(void) const                         {return m_selectedTranslation->helpHtml();}
 
-	const int flagImageWidth(void)                    {return m_selectedTranslation->flagImageWidth();}
-	const int flagImageHeight(void)                   {return m_selectedTranslation->flagImageHeight();}
-	const unsigned char* flagImageRGBData(void)       {return m_selectedTranslation->flagImageRGBData();}
+	const int flagImageWidth(void) const                     {return m_selectedTranslation->flagImageWidth();}
+	const int flagImageHeight(void) const                    {return m_selectedTranslation->flagImageHeight();}
+	const unsigned char* flagImageRGBData(void) const        {return m_selectedTranslation->flagImageRGBData();}
 };
 
-Translations* Translations::Instance(void)
+const Translations* Translations::Instance(void)
 {
-	static Translations *instance = (Translations*)new TranslationSwitcher();
-	return instance;
+	static const TranslationSwitcher switcher;
+	return &switcher;
 }

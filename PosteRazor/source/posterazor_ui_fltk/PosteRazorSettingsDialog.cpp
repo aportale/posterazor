@@ -67,7 +67,7 @@ PosteRazorSettingsDialog::PosteRazorSettingsDialog()
 		);
 
 		const Translations::eLanguages language = TRANSLATIONS->GetLanguageForIndex(i);
-		TranslationInterface* const translation = TRANSLATIONS->GetTranslationOfLanguage(language);
+		const TranslationInterface* const translation = TRANSLATIONS->GetTranslationOfLanguage(language);
 		m_languageButtonImages[i] = new Fl_RGB_Image(translation->flagImageRGBData(), translation->flagImageWidth(), translation->flagImageHeight());
 		m_languageButtons[i]->image(m_languageButtonImages[i]);
 		m_languageButtons[i]->tooltip(translation->languageName());

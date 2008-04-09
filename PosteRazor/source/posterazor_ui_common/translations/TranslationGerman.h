@@ -31,67 +31,67 @@
 class TranslationGerman: public TranslationInterface
 {
 public:
-	const char* languageName(void)                    {return "Deutsch";}
+	const char* languageName(void) const                    {return "Deutsch";}
 
-	const char* absoluteSize(void)                    {return "Absolute Maße:";}
-	const char* allImageFormats(void)                 {return "Alle Bildformate";}
-	const char* back(void)                            {return "Zurück";}
-	const char* borders(void)                         {return "Ränder";}
-	const char* bottom(void)                          {return "Unten";}
-	const char* bottomLeft(void)                      {return "Unten links";}
-	const char* bottomRight(void)                     {return "Unten rechts";}
-	const char* cancel(void)                          {return "Abbruch";}
-	const char* colorType(void)                       {return "Farbtyp:";}
-	const char* custom(void)                          {return "Eigenes";}
-	const char* fileCouldNotBeLoaded(void)            {return "Die Datei \"%s\" konnte nicht geladen werden.";}
-	const char* fileCouldNotBeSaved(void)             {return "Die Datei \"%s\" konnte nicht gespeichert werden.";}
-	const char* format(void)                          {return "Format:";}
-	const char* grayscale(void)                       {return "Graustufen";}
-	const char* height(void)                          {return "Höhe:";}
-	const char* imageAlignment(void)                  {return "Ausrichtung des Bildes";}
-	const char* imageInformations(void)               {return "Bildinformationen";}
-	const char* imageSize(void)                       {return "Bildgröße";}
-	const char* inputImage(void)                      {return "Ausgangsbild";}
-	const char* landscape(void)                       {return "Querformat";}
-	const char* language(void)                        {return "Sprache";}
-	const char* languageExplanation(void)             {return "Wählen Sie ihre Sprache";}
-	const char* launchPDFApplication(void)            {return "PDF-Applikation nach Speicherung des Posters starten";}
-	const char* left(void)                            {return "Links";}
-	const char* loadAnInputImage(void)                {return stepTitle01();}
-	const char* monochrome(void)                      {return "Monochrom";}
-	const char* next(void)                            {return "Weiter";}
-	const char* orientation(void)                     {return "Ausrichtung:";}
-	const char* overlappingPosition(void)             {return "Überlappende Seiten";}
-	const char* overlappingSize(void)                 {return "Maße der Überlappung";}
-	const char* overwriteFile(void)                   {return "Die Datei '%s' extistiert bereits.\nSoll sie überschrieben werden?";}
-	const char* pages(void)                           {return "Seiten";}
-	const char* palette(void)                         {return "Palette";}
-	const char* paperFormat(void)                     {return "Papierformat";}
-	const char* portrait(void)                        {return "Hochformat";}
-	const char* posteRazorHelp(void)                  {return "PosteRazor Hilfe";}
-	const char* posteRazorSettings(void)              {return "PosteRazor Einstellungen";}
-	const char* posteRazorWebSiteURL(void)            {return GERMAN_POSTERAZORWEBSITEURL;}
-	const char* posteRazorWebSite(void)               {return "PosteRazor-Internetseite";}
-	const char* previewWithOpenGL(void)               {return "Vorschau mit OpenGL";}
-	const char* previewWithOpenGLExplanation(void)    {return "OpenGL ermöglicht eine bessere Vorschau. Auf alter Hardware könnte OpenGL jedoch langsamer sein.";}
-	const char* resolution(void)                      {return "Auflösung:";}
-	const char* right(void)                           {return "Rechts";}
-	const char* saveThePoster(void)                   {return "Das Poster speichern";}
-	const char* saveThePosterAs(void)                 {return "Das Poster speichern unter";}
-	const char* settings(void)                        {return "Einstellungen...";}
-	const char* Size(void)                            {return "Größe:";}
-	const char* sizeInPages(void)                     {return "Größe in Seiten:";}
-	const char* sizeInPercent(void)                   {return "Prozentuelle Größe:";}
-	const char* sizeInPixels(void)                    {return "Größe (in Pixeln):";}
-	const char* sizeInUnitOfLength(void)              {return "Größe (in %s):";}
-	const char* standard(void)                        {return "Standard";}
-	const char* stepXOfY(void)                        {return "Schritt %d von %d";}
-	const char* top(void)                             {return "Oben";}
-	const char* topLeft(void)                         {return "Oben links";}
-	const char* topRight(void)                        {return "Oben rechts";}
-	const char* unitOfLength(void)                    {return "Längeneinheit";}
-	const char* unitOfLengthExplanation(void)         {return "Wählen Sie die Längeneinheit, mit der Sie arbeiten möchten";}
-	const char* width(void)                           {return "Breite:";}
+	const char* absoluteSize(void) const                    {return "Absolute Maße:";}
+	const char* allImageFormats(void) const                 {return "Alle Bildformate";}
+	const char* back(void) const                            {return "Zurück";}
+	const char* borders(void) const                         {return "Ränder";}
+	const char* bottom(void) const                          {return "Unten";}
+	const char* bottomLeft(void) const                      {return "Unten links";}
+	const char* bottomRight(void) const                     {return "Unten rechts";}
+	const char* cancel(void) const                          {return "Abbruch";}
+	const char* colorType(void) const                       {return "Farbtyp:";}
+	const char* custom(void) const                          {return "Eigenes";}
+	const char* fileCouldNotBeLoaded(void) const            {return "Die Datei \"%s\" konnte nicht geladen werden.";}
+	const char* fileCouldNotBeSaved(void) const             {return "Die Datei \"%s\" konnte nicht gespeichert werden.";}
+	const char* format(void) const                          {return "Format:";}
+	const char* grayscale(void) const                       {return "Graustufen";}
+	const char* height(void) const                          {return "Höhe:";}
+	const char* imageAlignment(void) const                  {return "Ausrichtung des Bildes";}
+	const char* imageInformations(void) const               {return "Bildinformationen";}
+	const char* imageSize(void) const                       {return "Bildgröße";}
+	const char* inputImage(void) const                      {return "Ausgangsbild";}
+	const char* landscape(void) const                       {return "Querformat";}
+	const char* language(void) const                        {return "Sprache";}
+	const char* languageExplanation(void) const             {return "Wählen Sie ihre Sprache";}
+	const char* launchPDFApplication(void) const            {return "PDF-Applikation nach Speicherung des Posters starten";}
+	const char* left(void) const                            {return "Links";}
+	const char* loadAnInputImage(void) const                {return stepTitle01();}
+	const char* monochrome(void) const                      {return "Monochrom";}
+	const char* next(void) const                            {return "Weiter";}
+	const char* orientation(void) const                     {return "Ausrichtung:";}
+	const char* overlappingPosition(void) const             {return "Überlappende Seiten";}
+	const char* overlappingSize(void) const                 {return "Maße der Überlappung";}
+	const char* overwriteFile(void) const                   {return "Die Datei '%s' extistiert bereits.\nSoll sie überschrieben werden?";}
+	const char* pages(void) const                           {return "Seiten";}
+	const char* palette(void) const                         {return "Palette";}
+	const char* paperFormat(void) const                     {return "Papierformat";}
+	const char* portrait(void) const                        {return "Hochformat";}
+	const char* posteRazorHelp(void) const                  {return "PosteRazor Hilfe";}
+	const char* posteRazorSettings(void) const              {return "PosteRazor Einstellungen";}
+	const char* posteRazorWebSiteURL(void) const            {return GERMAN_POSTERAZORWEBSITEURL;}
+	const char* posteRazorWebSite(void) const               {return "PosteRazor-Internetseite";}
+	const char* previewWithOpenGL(void) const               {return "Vorschau mit OpenGL";}
+	const char* previewWithOpenGLExplanation(void) const    {return "OpenGL ermöglicht eine bessere Vorschau. Auf alter Hardware könnte OpenGL jedoch langsamer sein.";}
+	const char* resolution(void) const                      {return "Auflösung:";}
+	const char* right(void) const                           {return "Rechts";}
+	const char* saveThePoster(void) const                   {return "Das Poster speichern";}
+	const char* saveThePosterAs(void) const                 {return "Das Poster speichern unter";}
+	const char* settings(void) const                        {return "Einstellungen...";}
+	const char* Size(void) const                            {return "Größe:";}
+	const char* sizeInPages(void) const                     {return "Größe in Seiten:";}
+	const char* sizeInPercent(void) const                   {return "Prozentuelle Größe:";}
+	const char* sizeInPixels(void) const                    {return "Größe (in Pixeln):";}
+	const char* sizeInUnitOfLength(void) const              {return "Größe (in %s):";}
+	const char* standard(void) const                        {return "Standard";}
+	const char* stepXOfY(void) const                        {return "Schritt %d von %d";}
+	const char* top(void) const                             {return "Oben";}
+	const char* topLeft(void) const                         {return "Oben links";}
+	const char* topRight(void) const                        {return "Oben rechts";}
+	const char* unitOfLength(void) const                    {return "Längeneinheit";}
+	const char* unitOfLengthExplanation(void) const         {return "Wählen Sie die Längeneinheit, mit der Sie arbeiten möchten";}
+	const char* width(void) const                           {return "Breite:";}
 
 
 #define GERMAN_POSTERAZORHELSTEP                      "Schritt"
@@ -112,12 +112,12 @@ public:
 #define GERMAN_POSTERAZORHELPCODEFROMTHIRDPARTIES     "Code von Drittanbietern"
 #define GERMAN_POSTERAZORHELPLICENSE                  "Lizenz"
 
-	const char* stepTitle01(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLE01;}
-	const char* stepTitle02(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML02;}
-	const char* stepTitle03(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML03;}
-	const char* stepTitle04(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML04;}
-	const char* stepTitle05(void)                     {return GERMAN_POSTERAZORHELPSTEPTITLE05;}
-	const char* helpHtml(void)
+	const char* stepTitle01(void) const                     {return GERMAN_POSTERAZORHELPSTEPTITLE01;}
+	const char* stepTitle02(void) const                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML02;}
+	const char* stepTitle03(void) const                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML03;}
+	const char* stepTitle04(void) const                     {return GERMAN_POSTERAZORHELPSTEPTITLENOHTML04;}
+	const char* stepTitle05(void) const                     {return GERMAN_POSTERAZORHELPSTEPTITLE05;}
+	const char* helpHtml(void) const
 	{
 		return	"<HTML>" POSTERAZORHELPENDLINE \
 				"<BODY>" POSTERAZORHELPENDLINE \
@@ -223,9 +223,9 @@ public:
 			"</HTML>";
 	}
 
-	const int flagImageWidth(void)                    {return 20;}
-	const int flagImageHeight(void)                   {return 11;}
-	const unsigned char *flagImageRGBData(void)
+	const int flagImageWidth(void) const                    {return 20;}
+	const int flagImageHeight(void) const                   {return 11;}
+	const unsigned char *flagImageRGBData(void) const
 	{
 		static const unsigned char flagRGBData[] =
 		{
@@ -261,6 +261,6 @@ public:
 	}
 };
 
-static TranslationGerman german;
+static const TranslationGerman german;
 
 #endif

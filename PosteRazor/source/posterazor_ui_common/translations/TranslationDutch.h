@@ -31,67 +31,67 @@
 class TranslationDutch: public TranslationInterface
 {
 public:
-	const char* languageName(void)                    {return "Nederlands";}
+	const char* languageName(void) const                    {return "Nederlands";}
 
-	const char* absoluteSize(void)                    {return "Absolute grootte:";}
-	const char* allImageFormats(void)                 {return "Alle beeldformaten";}
-	const char* back(void)                            {return "Terug";}
-	const char* borders(void)                         {return "Marges";}
-	const char* bottom(void)                          {return "Onder";}
-	const char* bottomLeft(void)                      {return "Linksonder";}
-	const char* bottomRight(void)                     {return "Rechtsonder";}
-	const char* cancel(void)                          {return "Afbreken";}
-	const char* colorType(void)                       {return "Kleurinformatie:";}
-	const char* custom(void)                          {return "Op maat";}
-	const char* fileCouldNotBeLoaded(void)            {return "Het bestand \"%s\" kan niet geopend worden.";}
-	const char* fileCouldNotBeSaved(void)             {return "The File \"%s\" could not be saved.";}
-	const char* format(void)                          {return "Formaat:";}
-	const char* grayscale(void)                       {return "Grijstinten";}
-	const char* height(void)                          {return "Hoogte:";}
-	const char* imageAlignment(void)                  {return "Afbeelding uitlijnen";}
-	const char* imageInformations(void)               {return "Afbeeldinginformatie";}
-	const char* imageSize(void)                       {return "Afbeeldinggrootte";}
-	const char* inputImage(void)                      {return "Afbeelding";}
-	const char* landscape(void)                       {return "Landschap";}
-	const char* language(void)                        {return "Taal";}
-	const char* languageExplanation(void)             {return "Kies uw taal";}
-	const char* launchPDFApplication(void)            {return "De PDF-applicatie opstarten nadat de poster is opgeslagen";}
-	const char* left(void)                            {return "Links";}
-	const char* loadAnInputImage(void)                {return stepTitle01();}
-	const char* monochrome(void)                      {return "Monochroom";}
-	const char* next(void)                            {return "Volgende";}
-	const char* orientation(void)                     {return "Oriëntatie:";}
-	const char* overlappingPosition(void)             {return "Overlappende zijden";}
-	const char* overlappingSize(void)                 {return "Overlapping";}
-	const char* overwriteFile(void)                   {return "Het bestand '%s' bestaat reeds.\nMoet dit worden overschreven?";}
-	const char* pages(void)                           {return "Pagina's";}
-	const char* palette(void)                         {return "Palet";}
-	const char* paperFormat(void)                     {return "Papierformaat";}
-	const char* portrait(void)                        {return "Portret";}
-	const char* posteRazorHelp(void)                  {return "PosteRazor Help";}
-	const char* posteRazorSettings(void)              {return "PosteRazor instellingen";}
-	const char* posteRazorWebSiteURL(void)            {return DUTCH_POSTERAZORWEBSITEURL;}
-	const char* posteRazorWebSite(void)               {return "PosteRazor website";}
-	const char* previewWithOpenGL(void)               {return "Schermvoorbeeld met OpenGL";}
-	const char* previewWithOpenGLExplanation(void)    {return "OpenGL zorgt voor een beter schermvoorbeeld. Bij oude hardware vertraagt OpenGL deze werking.";}
-	const char* resolution(void)                      {return "Resolutie:";}
-	const char* right(void)                           {return "Rechts";}
-	const char* saveThePoster(void)                   {return "De poster opslaan";}
-	const char* saveThePosterAs(void)                 {return "De poster opslaan als";}
-	const char* settings(void)                        {return "Instellingen...";}
-	const char* Size(void)                            {return "Grootte:";}
-	const char* sizeInPages(void)                     {return "Grootte in pagina's:";}
-	const char* sizeInPercent(void)                   {return "Grootte in percentage:";}
-	const char* sizeInPixels(void)                    {return "Formaat (in pixels):";}
-	const char* sizeInUnitOfLength(void)              {return "Formaat (in %s):";}
-	const char* standard(void)                        {return "Standaard";}
-	const char* stepXOfY(void)                        {return "Stap %d van %d";}
-	const char* top(void)                             {return "Boven";}
-	const char* topLeft(void)                         {return "Linksboven";}
-	const char* topRight(void)                        {return "Rechtsboven";}
-	const char* unitOfLength(void)                    {return "Lengtemaat";}
-	const char* unitOfLengthExplanation(void)         {return "Kies de lengtemaat waarmee gewerkt moet worden";}
-	const char* width(void)                           {return "Breedte:";}
+	const char* absoluteSize(void) const                    {return "Absolute grootte:";}
+	const char* allImageFormats(void) const                 {return "Alle beeldformaten";}
+	const char* back(void) const                            {return "Terug";}
+	const char* borders(void) const                         {return "Marges";}
+	const char* bottom(void) const                          {return "Onder";}
+	const char* bottomLeft(void) const                      {return "Linksonder";}
+	const char* bottomRight(void) const                     {return "Rechtsonder";}
+	const char* cancel(void) const                          {return "Afbreken";}
+	const char* colorType(void) const                       {return "Kleurinformatie:";}
+	const char* custom(void) const                          {return "Op maat";}
+	const char* fileCouldNotBeLoaded(void) const            {return "Het bestand \"%s\" kan niet geopend worden.";}
+	const char* fileCouldNotBeSaved(void) const             {return "The File \"%s\" could not be saved.";}
+	const char* format(void) const                          {return "Formaat:";}
+	const char* grayscale(void) const                       {return "Grijstinten";}
+	const char* height(void) const                          {return "Hoogte:";}
+	const char* imageAlignment(void) const                  {return "Afbeelding uitlijnen";}
+	const char* imageInformations(void) const               {return "Afbeeldinginformatie";}
+	const char* imageSize(void) const                       {return "Afbeeldinggrootte";}
+	const char* inputImage(void) const                      {return "Afbeelding";}
+	const char* landscape(void) const                       {return "Landschap";}
+	const char* language(void) const                        {return "Taal";}
+	const char* languageExplanation(void) const             {return "Kies uw taal";}
+	const char* launchPDFApplication(void) const            {return "De PDF-applicatie opstarten nadat de poster is opgeslagen";}
+	const char* left(void) const                            {return "Links";}
+	const char* loadAnInputImage(void) const                {return stepTitle01();}
+	const char* monochrome(void) const                      {return "Monochroom";}
+	const char* next(void) const                            {return "Volgende";}
+	const char* orientation(void) const                     {return "Oriëntatie:";}
+	const char* overlappingPosition(void) const             {return "Overlappende zijden";}
+	const char* overlappingSize(void) const                 {return "Overlapping";}
+	const char* overwriteFile(void) const                   {return "Het bestand '%s' bestaat reeds.\nMoet dit worden overschreven?";}
+	const char* pages(void) const                           {return "Pagina's";}
+	const char* palette(void) const                         {return "Palet";}
+	const char* paperFormat(void) const                     {return "Papierformaat";}
+	const char* portrait(void) const                        {return "Portret";}
+	const char* posteRazorHelp(void) const                  {return "PosteRazor Help";}
+	const char* posteRazorSettings(void) const              {return "PosteRazor instellingen";}
+	const char* posteRazorWebSiteURL(void) const            {return DUTCH_POSTERAZORWEBSITEURL;}
+	const char* posteRazorWebSite(void) const               {return "PosteRazor website";}
+	const char* previewWithOpenGL(void) const               {return "Schermvoorbeeld met OpenGL";}
+	const char* previewWithOpenGLExplanation(void) const    {return "OpenGL zorgt voor een beter schermvoorbeeld. Bij oude hardware vertraagt OpenGL deze werking.";}
+	const char* resolution(void) const                      {return "Resolutie:";}
+	const char* right(void) const                           {return "Rechts";}
+	const char* saveThePoster(void) const                   {return "De poster opslaan";}
+	const char* saveThePosterAs(void) const                 {return "De poster opslaan als";}
+	const char* settings(void) const                        {return "Instellingen...";}
+	const char* Size(void) const                            {return "Grootte:";}
+	const char* sizeInPages(void) const                     {return "Grootte in pagina's:";}
+	const char* sizeInPercent(void) const                   {return "Grootte in percentage:";}
+	const char* sizeInPixels(void) const                    {return "Formaat (in pixels):";}
+	const char* sizeInUnitOfLength(void) const              {return "Formaat (in %s):";}
+	const char* standard(void) const                        {return "Standaard";}
+	const char* stepXOfY(void) const                        {return "Stap %d van %d";}
+	const char* top(void) const                             {return "Boven";}
+	const char* topLeft(void) const                         {return "Linksboven";}
+	const char* topRight(void) const                        {return "Rechtsboven";}
+	const char* unitOfLength(void) const                    {return "Lengtemaat";}
+	const char* unitOfLengthExplanation(void) const         {return "Kies de lengtemaat waarmee gewerkt moet worden";}
+	const char* width(void) const                           {return "Breedte:";}
 
 
 #define DUTCH_POSTERAZORHELSTEP                       "Stap"
@@ -112,12 +112,12 @@ public:
 #define DUTCH_POSTERAZORHELPCODEFROMTHIRDPARTIES      "Code van derden"
 #define DUTCH_POSTERAZORHELPLICENSE                   "Licentie"
 
-	const char* stepTitle01(void)                     {return DUTCH_POSTERAZORHELPSTEPTITLE01;};
-	const char* stepTitle02(void)                     {return DUTCH_POSTERAZORHELPSTEPTITLENOHTML02;};
-	const char* stepTitle03(void)                     {return DUTCH_POSTERAZORHELPSTEPTITLENOHTML03;};
-	const char* stepTitle04(void)                     {return DUTCH_POSTERAZORHELPSTEPTITLENOHTML04;};
-	const char* stepTitle05(void)                     {return DUTCH_POSTERAZORHELPSTEPTITLE05;};
-	const char* helpHtml(void)
+	const char* stepTitle01(void) const                     {return DUTCH_POSTERAZORHELPSTEPTITLE01;};
+	const char* stepTitle02(void) const                     {return DUTCH_POSTERAZORHELPSTEPTITLENOHTML02;};
+	const char* stepTitle03(void) const                     {return DUTCH_POSTERAZORHELPSTEPTITLENOHTML03;};
+	const char* stepTitle04(void) const                     {return DUTCH_POSTERAZORHELPSTEPTITLENOHTML04;};
+	const char* stepTitle05(void) const                     {return DUTCH_POSTERAZORHELPSTEPTITLE05;};
+	const char* helpHtml(void) const
 	{
 		return	"<HTML>" POSTERAZORHELPENDLINE \
 				"<BODY>" POSTERAZORHELPENDLINE \
@@ -223,9 +223,9 @@ public:
 			"</HTML>";
 	}
 
-	const int flagImageWidth(void)                    {return 20;}
-	const int flagImageHeight(void)                   {return 11;}
-	const unsigned char *flagImageRGBData(void)
+	const int flagImageWidth(void) const                    {return 20;}
+	const int flagImageHeight(void) const                   {return 11;}
+	const unsigned char *flagImageRGBData(void) const
 	{
 		static const unsigned char flagRGBData[] =
 		{
@@ -265,6 +265,6 @@ public:
 	}
 };
 
-static TranslationDutch dutch;
+static const TranslationDutch dutch;
 
 #endif
