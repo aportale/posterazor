@@ -300,7 +300,8 @@
 					<li><? text('French translation:', 'Franz&ouml;sische &Uuml;bersetzung:'); ?> Martin Loyer</li>
 					<li><? text('Italian translation:', 'Italienische &Uuml;bersetzung:'); ?> Stefano Nosei</li>
 					<li><? text('Dutch/Belgian translation:', 'Holl&auml;ndische/Belgische &Uuml;bersetzung:'); ?> Erik Wijkamp</li>
-					<li><? text('Spanish translation:', 'Spanische &Uuml;bersetzung:'); ?> Hispanicoweb.net</li>
+					<li><? text('Spanish translation:', 'Spanische &Uuml;bersetzung:'); ?> <a class="external" href="http://hispanicoweb.net/">Hisp&aacute;nico Web</a></li>
+					<li><? text('Brazilian Portuguese translation (included in next version):', 'Brasilianisch-portugisische &Uuml;bersetzung (in n&auml;chster Version enthalten):'); ?> &Eacute;derson Gomes dos Santos</li>
 				</ul>
 <?
 		};
