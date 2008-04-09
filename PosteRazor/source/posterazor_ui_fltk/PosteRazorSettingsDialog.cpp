@@ -24,7 +24,7 @@
 #include "TranslationConstants.h"
 
 PosteRazorSettingsDialog::PosteRazorSettingsDialog()
-	:PosteRazorSettingsDialogUI(315, 400, "PosteRazor settings")
+	:PosteRazorSettingsDialogUI(385, 400, "PosteRazor settings")
 {
 #define SETTINGCHOICEBUTTONSSPACING 5
 

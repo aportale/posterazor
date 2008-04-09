@@ -165,25 +165,25 @@ widget_class PosteRazorDialogUI {
       } {
         Fl_Group m_paperBorderTopInput {
           label Top
-          callback {handlePaperSizeChangement(m_paperBorderTopInput);} selected
+          callback {handlePaperSizeChangement(m_paperBorderTopInput);}
           xywh {422 260 80 25} when 1
           class Fl_PosteRazor_Spinner
         } {}
         Fl_Group m_paperBorderRightInput {
           label Right
-          callback {handlePaperSizeChangement(m_paperBorderRightInput);} selected
+          callback {handlePaperSizeChangement(m_paperBorderRightInput);}
           xywh {502 290 80 25} align 9 when 1
           class Fl_PosteRazor_Spinner
         } {}
         Fl_Group m_paperBorderBottomInput {
           label Bottom
-          callback {handlePaperSizeChangement(m_paperBorderBottomInput);} selected
+          callback {handlePaperSizeChangement(m_paperBorderBottomInput);}
           xywh {422 320 80 25} align 2 when 1
           class Fl_PosteRazor_Spinner
         } {}
         Fl_Group m_paperBorderLeftInput {
           label Left
-          callback {handlePaperSizeChangement(m_paperBorderLeftInput);} selected
+          callback {handlePaperSizeChangement(m_paperBorderLeftInput);}
           xywh {342 290 80 25} align 5 when 1
           class Fl_PosteRazor_Spinner
         } {}
@@ -495,67 +495,67 @@ widget_class PosteRazorHelpDialogUI {
 widget_class PosteRazorSettingsDialogUI {
   label {PosteRazor settings}
   user_data this open
-  xywh {451 364 315 400} type Double
+  xywh {273 448 385 400} type Double
   code0 {m_okWasPressed = false;}
   class Fl_Double_Window modal visible
 } {
   decl {bool m_okWasPressed;} {public
   }
   Fl_Group m_backgroudGroup {open
-    xywh {10 10 295 345} box THIN_DOWN_BOX labelsize 8
+    xywh {10 10 365 345} box THIN_DOWN_BOX labelsize 8
   } {
     Fl_Group m_unitOfLengthGroup {
       label Units open
-      xywh {20 35 275 85} box THIN_DOWN_BOX color 45
+      xywh {20 35 345 85} box THIN_DOWN_BOX color 45
     } {
       Fl_Group m_unitOfLengthButtonsGroup {open
-        xywh {30 45 255 25}
+        xywh {30 45 325 25}
       } {}
       Fl_Box m_unitOfLengthExplanationBox {
         label {Choose the distance unit you want to work with}
-        xywh {30 80 255 30} align 150
+        xywh {30 80 325 30} align 148
       }
     }
     Fl_Group m_useOpenGLGroup {
       label {Preview with OpenGL} open
-      xywh {20 145 275 105} box THIN_DOWN_BOX color 45
+      xywh {20 145 345 105} box THIN_DOWN_BOX color 45
     } {
       Fl_Check_Button m_useOpenGLCheckButton {
         label {use OpenGL}
         callback {handleUseOpenGLChangement();}
-        xywh {30 154 255 20} down_box DOWN_BOX
+        xywh {30 154 325 20} down_box DOWN_BOX
       }
       Fl_Box m_useOpenGLExplanationBox {
         label {OpenGL enables a smooth preview on modern systems. It could slow the preview down on old systems, though.}
-        xywh {30 179 255 60} align 150
+        xywh {30 179 325 60} align 148
       }
     }
     Fl_Group m_languageGroup {
       label Language open
-      xywh {20 275 275 70} box THIN_DOWN_BOX color 45
+      xywh {20 275 345 70} box THIN_DOWN_BOX color 45
     } {
       Fl_Group m_languageButtonsGroup {open
-        xywh {30 285 255 25}
+        xywh {30 285 325 25}
       } {}
       Fl_Box m_languageExplanationBox {
         label {Choose your language}
-        xywh {30 315 255 20} align 150
+        xywh {30 315 325 20} align 148
       }
     }
   }
-  Fl_Group m_confirmButtonsGroup {open
-    xywh {10 365 296 25}
+  Fl_Group m_confirmButtonsGroup {open selected
+    xywh {10 365 365 25}
   } {
     Fl_Return_Button m_okButton {
       label OK
       callback {m_okWasPressed = true;
 hide();}
-      xywh {210 365 95 25}
+      xywh {280 365 95 25}
     }
     Fl_Button m_cancelButton {
       label Cancel
       callback {hide();}
-      xywh {105 365 95 25}
+      xywh {175 365 95 25}
     }
     Fl_Box {} {
       xywh {10 365 10 25} labelsize 8 resizable
