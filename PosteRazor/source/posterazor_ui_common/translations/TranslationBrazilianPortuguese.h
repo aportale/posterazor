@@ -82,8 +82,8 @@ public:
 	const char* Size(void) const                            {return "Tamanho:";}
 	const char* sizeInPages(void) const                     {return "Tamanho em páginas:";}
 	const char* sizeInPercent(void) const                   {return "Tamanho em percentual:";}
-	const char* sizeInPixels(void) const                    {return "Tamanho (em pixels):";}
-	const char* sizeInUnitOfLength(void) const              {return "Tamanho (em %s):";}
+	const char* sizeInPixels(void) const                    {return "Tamanho (pixels):";}
+	const char* sizeInUnitOfLength(void) const              {return "Tamanho (%s):";}
 	const char* standard(void) const                        {return "Padrão";}
 	const char* stepXOfY(void) const                        {return "Passo %d de %d";}
 	const char* top(void) const                             {return "Superior";}
