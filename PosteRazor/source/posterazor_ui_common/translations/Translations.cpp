@@ -40,20 +40,20 @@
 #include <stdio.h> // for NULL
 
 static const struct {
-	const TranslationInterface *translation;
+	const TranslationInterface &translation;
 	Translations::eLanguages language;
 } TranslationsMap[] = {
-	{&english, Translations::eLanguageUndefined}
-	,{&english, Translations::eLanguageEnglish}
-	,{&german, Translations::eLanguageGerman}
-	,{&french, Translations::eLanguageFrench}
+	{english, Translations::eLanguageUndefined}
+	,{english, Translations::eLanguageEnglish}
+	,{german, Translations::eLanguageGerman}
+	,{french, Translations::eLanguageFrench}
 #ifdef WIN32
-	,{&polish, Translations::eLanguagePolish}
+	,{polish, Translations::eLanguagePolish}
 #endif
-	,{&italian, Translations::eLanguageItalian}
-	,{&dutch, Translations::eLanguageDutch}
-	,{&spanish, Translations::eLanguageSpanish}
-	,{&brazilianPortuguese, Translations::eLanguageBrazilianPortuguese}
+	,{italian, Translations::eLanguageItalian}
+	,{dutch, Translations::eLanguageDutch}
+	,{spanish, Translations::eLanguageSpanish}
+	,{brazilianPortuguese, Translations::eLanguageBrazilianPortuguese}
 };
 static const int TranslationsMapItemsCount = sizeof(TranslationsMap) / sizeof(TranslationsMap[0]);
 
@@ -95,12 +95,12 @@ public:
 		const TranslationInterface* foundTranslation = NULL;
 		for (int i = 0; i < TranslationsMapItemsCount; i++) {
 			if(TranslationsMap[i].language == language)	{
-				foundTranslation = TranslationsMap[i].translation;
+				foundTranslation = &TranslationsMap[i].translation;
 				break;
 			}
 		}
 		if (!foundTranslation)
-			foundTranslation = TranslationsMap[0].translation;
+			foundTranslation = &TranslationsMap[0].translation;
 		return foundTranslation;
 	}
 
@@ -110,6 +110,7 @@ public:
 #if defined (WIN32)
 		const LANGID langID = GetSystemDefaultLangID();
 		const WORD primaryLangID = PRIMARYLANGID(langID);
+		const WORD subLangID = SUBLANGID(langID);
 		systemLanguage =
 			(primaryLangID == LANG_ENGLISH)?eLanguageEnglish:
 			(primaryLangID == LANG_GERMAN)?eLanguageGerman:
@@ -118,6 +119,7 @@ public:
 			(primaryLangID == LANG_ITALIAN)?eLanguageItalian:
 			(primaryLangID == LANG_DUTCH)?eLanguageDutch:
 			(primaryLangID == LANG_SPANISH)?eLanguageSpanish:
+			(primaryLangID == LANG_PORTUGUESE && subLangID == SUBLANG_PORTUGUESE_BRAZILIAN)?eLanguageBrazilianPortuguese:
 			eLanguageUndefined;
 #elif defined (__APPLE__)
 		CFBundleRef mainBundle = CFBundleGetMainBundle();
@@ -131,6 +133,7 @@ public:
 		CFStringRef languageItalian = CFSTR("Italian");
 		CFStringRef languageDutch = CFSTR("Dutch");
 		CFStringRef languageSpanish = CFSTR("Spanish");
+		CFStringRef languageBrazilianPortuguese = CFSTR("BrazilianPortuguese");
 		systemLanguage =
 			(CFStringCompare(language, languageEnglish, 0) == kCFCompareEqualTo)?eLanguageEnglish:
 			(CFStringCompare(language, languageGerman, 0) == kCFCompareEqualTo)?eLanguageGerman:
@@ -138,6 +141,7 @@ public:
 			(CFStringCompare(language, languageItalian, 0) == kCFCompareEqualTo)?eLanguageItalian:
 			(CFStringCompare(language, languageDutch, 0) == kCFCompareEqualTo)?eLanguageDutch:
 			(CFStringCompare(language, languageSpanish, 0) == kCFCompareEqualTo)?eLanguageSpanish:
+			(CFStringCompare(language, languageBrazilianPortuguese, 0) == kCFCompareEqualTo)?eLanguageBrazilianPortuguese:
 			eLanguageUndefined;
 		CFRelease(languageEnglish);
 		CFRelease(languageGerman);
@@ -145,6 +149,7 @@ public:
 		CFRelease(languageItalian);
 		CFRelease(languageDutch);
 		CFRelease(languageSpanish);
+		CFRelease(languageBrazilianPortuguese);
 
 		CFRelease(preferredLanguages);
 		CFRelease(locArray);
