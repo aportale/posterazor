@@ -57,10 +57,8 @@ const int GetPaperFormatIndex(PaperFormats::ePaperFormats format)
 {
 	int index = 0;
 
-	for (int i = 0; i < g_paperFormatsCount; i++)
-	{
-		if (format == g_paperFormats[i].format)
-		{
+	for (int i = 0; i < g_paperFormatsCount; i++) {
+		if (format == g_paperFormats[i].format) {
 			index = i;
 			break;
 		}
@@ -71,8 +69,7 @@ const int GetPaperFormatIndex(PaperFormats::ePaperFormats format)
 
 const char* PaperFormats::getPaperFormatName(ePaperFormats format)
 {
-	int paperFormatIndex = GetPaperFormatIndex(format);
-
+	const int paperFormatIndex = GetPaperFormatIndex(format);
 	return g_paperFormats[paperFormatIndex].name;
 }
 
@@ -80,10 +77,8 @@ PaperFormats::ePaperFormats PaperFormats::getPaperFormatForName(const char* name
 {
 	ePaperFormats paperFormat = ePaperFormatA4;
 
-	for (int i = 0; i < g_paperFormatsCount; i++)
-	{
-		if (0 == strcmp(name, g_paperFormats[i].name))
-		{
+	for (int i = 0; i < g_paperFormatsCount; i++) {
+		if (0 == strcmp(name, g_paperFormats[i].name)) {
 			paperFormat = getPaperFormatForIndex(i);
 			break;
 		}
@@ -94,8 +89,8 @@ PaperFormats::ePaperFormats PaperFormats::getPaperFormatForName(const char* name
 
 double PaperFormats::getPaperDimension(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit, bool width)
 {
-	int paperFormatIndex = GetPaperFormatIndex(format);
-	double dimension = ((width && orientation == ePaperOrientationPortrait) || (!width && orientation == ePaperOrientationLandscape))?g_paperFormats[paperFormatIndex].width:g_paperFormats[paperFormatIndex].height;
+	const int paperFormatIndex = GetPaperFormatIndex(format);
+	const double dimension = ((width && orientation == ePaperOrientationPortrait) || (!width && orientation == ePaperOrientationLandscape))?g_paperFormats[paperFormatIndex].width:g_paperFormats[paperFormatIndex].height;
 	return UnitsOfLength::convertBetweenUnitsOfLength(dimension, UnitsOfLength::eUnitOfLengthCentimeter, unit);
 }
 

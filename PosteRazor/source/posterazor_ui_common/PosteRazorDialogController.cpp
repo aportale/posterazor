@@ -9,8 +9,7 @@ PosteRazorDialogController::PosteRazorDialogController()
 void PosteRazorDialogController::setPosteRazorModel(PosteRazor *model)
 {
 	m_PosteRazor = model;
-	if (m_Dialog)
-	{
+	if (m_Dialog) {
 		updateDialog();
 		setDialogPosterSizeMode();
 	}
@@ -19,8 +18,7 @@ void PosteRazorDialogController::setPosteRazorModel(PosteRazor *model)
 void PosteRazorDialogController::setPosteRazorDialog(PosteRazorDialogInterface *dialog)
 {
 	m_Dialog = dialog;
-	if (m_PosteRazor)
-	{
+	if (m_PosteRazor) {
 		updateDialog();
 		setDialogPosterSizeMode();
 	}
@@ -58,7 +56,7 @@ void PosteRazorDialogController::setPaperFormat(PaperFormats::ePaperFormats form
 
 void PosteRazorDialogController::setPaperFormatByName(const char *name)
 {
-	PaperFormats::ePaperFormats paperFormat = PaperFormats::getPaperFormatForName(name);
+	const PaperFormats::ePaperFormats paperFormat = PaperFormats::getPaperFormatForName(name);
 	setPaperFormat(paperFormat);
 }
 
@@ -202,12 +200,10 @@ void PosteRazorDialogController::setDialogPosterOptions(void)
 
 void PosteRazorDialogController::setDialogPosterDimensions(PosteRazorEnums::ePosterSizeModes excludedMode, bool widthExcluded)
 {
-	static const struct
-	{
+	static const struct	{
 		bool isWidth;
 		PosteRazorEnums::ePosterSizeModes sizeMode;
-	}
-	sizeModes[] = 
+	} sizeModes[] = 
 	{
 		{true, PosteRazorEnums::ePosterSizeModeAbsolute},
 		{false, PosteRazorEnums::ePosterSizeModeAbsolute},
@@ -216,12 +212,10 @@ void PosteRazorDialogController::setDialogPosterDimensions(PosteRazorEnums::ePos
 		{true, PosteRazorEnums::ePosterSizeModePercentual}
 	};
 
-	int sizeModesCount = sizeof(sizeModes)/sizeof(sizeModes[0]);
+	const int sizeModesCount = sizeof(sizeModes)/sizeof(sizeModes[0]);
 
-	for (int i = 0; i < sizeModesCount; i++)
-	{
-		if ((excludedMode != sizeModes[i].sizeMode) || (widthExcluded != sizeModes[i].isWidth))
-		{
+	for (int i = 0; i < sizeModesCount; i++) {
+		if ((excludedMode != sizeModes[i].sizeMode) || (widthExcluded != sizeModes[i].isWidth)) {
 			if (sizeModes[i].isWidth)
 				m_Dialog->setPosterWidth(sizeModes[i].sizeMode, m_PosteRazor->getPosterWidth(sizeModes[i].sizeMode));
 			else
@@ -256,10 +250,8 @@ void PosteRazorDialogController::setDialogCustomPaperDimensions(void)
 
 void PosteRazorDialogController::setDialogImageInfoFields(void)
 {
-	if (m_PosteRazor->getIsImageLoaded())
-	{
-		m_Dialog->updateImageInfoFields
-		(
+	if (m_PosteRazor->getIsImageLoaded()) {
+		m_Dialog->updateImageInfoFields (
 			m_PosteRazor->getInputImageWidthPixels(),
 			m_PosteRazor->getInputImageHeightPixels(),
 			m_PosteRazor->getInputImageWidth(),
@@ -287,7 +279,7 @@ void PosteRazorDialogController::setDialogOverlappingOptions(void)
 
 bool PosteRazorDialogController::readPersistentPreferences(PersistentPreferencesInterface *preferences)
 {
-	bool result = m_PosteRazor->readPersistentPreferences(preferences);
+	const bool result = m_PosteRazor->readPersistentPreferences(preferences);
 
 	if (result)
 		updateDialog();
@@ -302,10 +294,9 @@ bool PosteRazorDialogController::writePersistentPreferences(PersistentPreference
 
 bool PosteRazorDialogController::loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize)
 {
-	bool result = m_PosteRazor->loadInputImage(imageFileName, errorMessage, errorMessageSize);
+	const bool result = m_PosteRazor->loadInputImage(imageFileName, errorMessage, errorMessageSize);
 
-	if (result)
-	{
+	if (result) {
 		updateDialog();
 		m_Dialog->showImageFileName(imageFileName);
 	}

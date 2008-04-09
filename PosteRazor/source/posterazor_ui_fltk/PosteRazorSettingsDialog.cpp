@@ -31,14 +31,12 @@ PosteRazorSettingsDialog::PosteRazorSettingsDialog()
 	int i;
 	m_unitOfLengthButtonsCount = UnitsOfLength::getUnitsOfLengthCount();
 	m_unitOfLengthButtons = new Fl_Button*[m_unitOfLengthButtonsCount];
-	int unitOfLengthButtonWidth = (m_unitOfLengthButtonsGroup->w() + SETTINGCHOICEBUTTONSSPACING) / m_unitOfLengthButtonsCount - SETTINGCHOICEBUTTONSSPACING;
+	const int unitOfLengthButtonWidth = (m_unitOfLengthButtonsGroup->w() + SETTINGCHOICEBUTTONSSPACING) / m_unitOfLengthButtonsCount - SETTINGCHOICEBUTTONSSPACING;
 
 	m_unitOfLengthButtonsGroup->begin();
-	for (i = 0; i < m_unitOfLengthButtonsCount; i++)
-	{
+	for (i = 0; i < m_unitOfLengthButtonsCount; i++) {
 		const char* UnitOfLengthName = UnitsOfLength::getUnitOfLengthName(UnitsOfLength::getUnitOfLengthForIndex(i));
-		m_unitOfLengthButtons[i] = new Fl_Button
-		(
+		m_unitOfLengthButtons[i] = new Fl_Button (
 			m_unitOfLengthButtonsGroup->x() + i * (unitOfLengthButtonWidth+SETTINGCHOICEBUTTONSSPACING),
 			m_unitOfLengthButtonsGroup->y(),
 			unitOfLengthButtonWidth,
@@ -57,21 +55,19 @@ PosteRazorSettingsDialog::PosteRazorSettingsDialog()
 	m_languageButtonsCount = TRANSLATIONS->GetLanguagesCount();
 	m_languageButtons = new Fl_Button*[m_languageButtonsCount];
 	m_languageButtonImages = new Fl_RGB_Image*[m_languageButtonsCount];
-	int languageButtonWidth = (m_languageButtonsGroup->w() + SETTINGCHOICEBUTTONSSPACING) / m_languageButtonsCount - SETTINGCHOICEBUTTONSSPACING;
+	const int languageButtonWidth = (m_languageButtonsGroup->w() + SETTINGCHOICEBUTTONSSPACING) / m_languageButtonsCount - SETTINGCHOICEBUTTONSSPACING;
 
 	m_languageButtonsGroup->begin();
-	for (i = 0; i < m_languageButtonsCount; i++)
-	{
-		m_languageButtons[i] = new Fl_Button
-		(
+	for (i = 0; i < m_languageButtonsCount; i++) {
+		m_languageButtons[i] = new Fl_Button (
 			m_languageButtonsGroup->x() + i * (languageButtonWidth+SETTINGCHOICEBUTTONSSPACING),
 			m_languageButtonsGroup->y(),
 			languageButtonWidth,
 			m_languageButtonsGroup->h()
 		);
 
-		Translations::eLanguages language = TRANSLATIONS->GetLanguageForIndex(i);
-		TranslationInterface *translation = TRANSLATIONS->GetTranslationOfLanguage(language);
+		const Translations::eLanguages language = TRANSLATIONS->GetLanguageForIndex(i);
+		TranslationInterface* const translation = TRANSLATIONS->GetTranslationOfLanguage(language);
 		m_languageButtonImages[i] = new Fl_RGB_Image(translation->flagImageRGBData(), translation->flagImageWidth(), translation->flagImageHeight());
 		m_languageButtons[i]->image(m_languageButtonImages[i]);
 		m_languageButtons[i]->tooltip(translation->languageName());
@@ -85,7 +81,7 @@ PosteRazorSettingsDialog::PosteRazorSettingsDialog()
 
 #ifdef NO_OPENGL_PREVIEW
 	// Hide OpenGL preview option and shrink dialog
-	int moveUpDistance = m_languageGroup->y() - m_useOpenGLGroup->y();
+	const int moveUpDistance = m_languageGroup->y() - m_useOpenGLGroup->y();
 	m_useOpenGLGroup->hide();
 	m_languageGroup->position(m_languageGroup->x(), m_languageGroup->y() - moveUpDistance);
 	m_confirmButtonsGroup->position(m_confirmButtonsGroup->x(), m_confirmButtonsGroup->y() - moveUpDistance);
@@ -105,8 +101,7 @@ PosteRazorSettingsDialog::~PosteRazorSettingsDialog()
 	if (m_languageButtons)
 		delete[] m_languageButtons; // the actual buttons are deleted by FLTK
 
-	if (m_languageButtonImages)
-	{
+	if (m_languageButtonImages) {
 		for (int i = 0; i <m_languageButtonsCount; i++)
 			delete m_languageButtonImages[i];
 		delete[] m_languageButtonImages;
@@ -135,10 +130,8 @@ void PosteRazorSettingsDialog::handleUnitOfLengthChoice_cb(Fl_Widget *widget, vo
 
 void PosteRazorSettingsDialog::handleUnitOfLengthChoice(void)
 {
-	for (int i = 0; i < m_unitOfLengthButtonsCount; i++)
-	{
-		if (m_unitOfLengthButtons[i]->value() != 0)
-		{
+	for (int i = 0; i < m_unitOfLengthButtonsCount; i++) {
+		if (m_unitOfLengthButtons[i]->value() != 0)	{
 			m_settings->unitOfLength = UnitsOfLength::getUnitOfLengthForIndex(i);
 			break;
 		}
@@ -163,10 +156,8 @@ void PosteRazorSettingsDialog::handleLanguageChoice_cb(Fl_Widget *widget, void *
 
 void PosteRazorSettingsDialog::handleLanguageChoice(void)
 {
-	for (int i = 0; i < m_languageButtonsCount; i++)
-	{
-		if (m_languageButtons[i]->value() != 0)
-		{
+	for (int i = 0; i < m_languageButtonsCount; i++) {
+		if (m_languageButtons[i]->value() != 0) {
 			m_settings->language = TRANSLATIONS->GetLanguageForIndex(i);
 			break;
 		}

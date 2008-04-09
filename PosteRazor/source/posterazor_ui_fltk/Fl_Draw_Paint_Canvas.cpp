@@ -50,12 +50,9 @@ void Fl_Draw_Paint_Canvas::draw()
 
 void Fl_Draw_Paint_Canvas::drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
-	if (alpha < 255)
-	{
+	if (alpha < 255) {
 		drawRect(x, y, width, height, red, green, blue, alpha);
-	}
-	else
-	{
+	} else {
 		fl_color(red, green, blue);
 		fl_rectf((int)(x + Fl_Box::x() + BORDER), (int)(y + Fl_Box::y() + BORDER), (int)width, (int)height);
 	}
@@ -63,16 +60,11 @@ void Fl_Draw_Paint_Canvas::drawFilledRect(double x, double y, double width, doub
 
 void Fl_Draw_Paint_Canvas::drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
-	if (height < 1)
-	{
+	if (height < 1) {
 		drawLine(x, y, x+width, y, red, green, blue, alpha);
-	}
-	else if (width < 1)
-	{
+	} else if (width < 1) {
 		drawLine(x, y, x, y+height, red, green, blue, alpha);
-	}
-	else
-	{
+	} else {
 		fl_color(red, green, blue);
 		fl_rect((int)(x + Fl_Box::x() + BORDER), (int)(y + Fl_Box::y() + BORDER), (int)width, (int)height);
 	}
@@ -101,18 +93,15 @@ void Fl_Draw_Paint_Canvas::setImage(const unsigned char* rgbData, double width, 
 
 void Fl_Draw_Paint_Canvas::disposeImage(void)
 {
-	if (m_image)
-	{
+	if (m_image) {
 		delete(m_image);
 		m_image = NULL;
 	}
-	if (m_scaledImage)
-	{
+	if (m_scaledImage) {
 		delete(m_scaledImage);
 		m_scaledImage = NULL;
 	}
-	if (m_imageRGBData)
-	{
+	if (m_imageRGBData) {
 		delete[] m_imageRGBData;
 		m_imageRGBData = NULL;
 	}
@@ -120,10 +109,8 @@ void Fl_Draw_Paint_Canvas::disposeImage(void)
 
 void Fl_Draw_Paint_Canvas::drawImage(double x, double y, double width, double height)
 {
-	if (m_image)
-	{
-		if (m_scaledImage && (width != m_scaledImage->w() || height != m_scaledImage->h()))
-		{
+	if (m_image) {
+		if (m_scaledImage && (width != m_scaledImage->w() || height != m_scaledImage->h()))	{
 			delete m_scaledImage;
 			m_scaledImage = NULL;
 		}

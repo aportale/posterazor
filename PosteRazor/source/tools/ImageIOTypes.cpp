@@ -22,7 +22,7 @@
 
 #include "ImageIOTypes.h"
 
-static const char* g_imageFormats[] =
+static const char* const g_imageFormats[] =
 {
 	"Windows, OS/2 Bitmap",           //  0
 	"Dr. Halo",
@@ -49,17 +49,13 @@ static const char* g_imageFormats[] =
 	"X11 Bitmap",
 	"X11 Pixmap"
 };
-
 static const int g_imageFormatsCount = sizeof(g_imageFormats)/sizeof(g_imageFormats[0]);
 
-typedef struct
+static const struct
 {
-	const char *name;
+	const char* const name;
 	int imageFormatIndex;
-} fileExtensions;
-
-static const fileExtensions g_fileExtensions[] =
-{
+} g_fileExtensions[] = {
 	{"BMP",   0},
 	{"CUT",   1},
 	{"DDS",   2},
@@ -85,7 +81,6 @@ static const fileExtensions g_fileExtensions[] =
 	{"XBM",  22},
 	{"XPM",  23}
 };
-
 static const int g_fileExtensionsCount = sizeof(g_fileExtensions)/sizeof(g_fileExtensions[0]);
 
 int ImageIOTypes::getInputImageFormatsCount(void)
@@ -102,10 +97,8 @@ int ImageIOTypes::getFileExtensionsCount(int imageFormatIndex)
 {
 	int result = 0;
 
-	for(int i = 0; i < g_fileExtensionsCount; i++)
-	{
-		if (g_fileExtensions[i].imageFormatIndex == imageFormatIndex)
-		{
+	for(int i = 0; i < g_fileExtensionsCount; i++) {
+		if (g_fileExtensions[i].imageFormatIndex == imageFormatIndex) {
 			result++;
 		}
 	}
@@ -118,10 +111,8 @@ const char* ImageIOTypes::getFileExtensionForFormat(int extensionIndex, int imag
 	const char *result = g_fileExtensions[0].name;
 	int nthFoundExtension = 0;
 	
-	for (int i = 0; i < g_fileExtensionsCount; i++)
-	{
-		if (imageFormatIndex == g_fileExtensions[i].imageFormatIndex)
-		{
+	for (int i = 0; i < g_fileExtensionsCount; i++) {
+		if (imageFormatIndex == g_fileExtensions[i].imageFormatIndex) {
 			result = g_fileExtensions[i].name;
 
 			if (extensionIndex == nthFoundExtension)

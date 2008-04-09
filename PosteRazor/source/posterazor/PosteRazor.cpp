@@ -404,46 +404,37 @@ public:
 	{
 		double posterDimension = dimension;
 
-		double printablePaperAreaWidth = getPrintablePaperAreaWidth();
-		double printablePaperAreaHeight = getPrintablePaperAreaHeight();
-		double printablePaperAreaDimension = convertDistanceToCm(width?printablePaperAreaWidth:printablePaperAreaHeight);
-		double overlappingDimension = convertDistanceToCm(width?getOverlappingWidth():getOverlappingHeight());
+		const double printablePaperAreaWidth = getPrintablePaperAreaWidth();
+		const double printablePaperAreaHeight = getPrintablePaperAreaHeight();
+		const double printablePaperAreaDimension = convertDistanceToCm(width?printablePaperAreaWidth:printablePaperAreaHeight);
+		const double overlappingDimension = convertDistanceToCm(width?getOverlappingWidth():getOverlappingHeight());
 
-		if (pagesToAbsolute)
-		{
+		if (pagesToAbsolute) {
 			double posterDimensionAbsolute = 0;
-			if (posterDimension >= 1.0)
-			{
+			if (posterDimension >= 1.0) {
 				posterDimension -= 1.0;
 				posterDimensionAbsolute += printablePaperAreaDimension;
-			}
-			else
-			{
+			} else {
 				posterDimensionAbsolute = posterDimension * printablePaperAreaDimension;
 				posterDimension = 0;
 			}
 
 			if (posterDimension > 0)
-	                        posterDimensionAbsolute += (posterDimension * (printablePaperAreaDimension - overlappingDimension));
+				posterDimensionAbsolute += (posterDimension * (printablePaperAreaDimension - overlappingDimension));
 
 			posterDimension = posterDimensionAbsolute;
-		}
-		else
-		{
+		} else {
 			double posterDimensionPages = 0;
-			if (posterDimension >= printablePaperAreaDimension)
-			{
+			if (posterDimension >= printablePaperAreaDimension) {
 				posterDimension -= printablePaperAreaDimension;
 				posterDimensionPages += 1.0;
-			}
-			else if (posterDimension < printablePaperAreaDimension)
-			{
+			} else if (posterDimension < printablePaperAreaDimension) {
 				posterDimensionPages = posterDimension / printablePaperAreaDimension;
 				posterDimension = 0;
 			}
 
 			if (posterDimension > 0)
-	                        posterDimensionPages += (posterDimension / (printablePaperAreaDimension - overlappingDimension));
+				posterDimensionPages += (posterDimension / (printablePaperAreaDimension - overlappingDimension));
 
 			posterDimension = posterDimensionPages;
 		}
@@ -457,21 +448,16 @@ public:
 	{
 		double otherDimension = 0;
 
-		if (getPosterSizeMode() != PosteRazorEnums::ePosterSizeModePercentual)
-		{
-			double sourceReference = m_posterDimensionIsWidth?getInputImageWidth():getInputImageHeight();
-			double targetReference = m_posterDimensionIsWidth?getInputImageHeight():getInputImageWidth();
-			
-			double aspectRatio = sourceReference/targetReference;
+		if (getPosterSizeMode() != PosteRazorEnums::ePosterSizeModePercentual) {
+			const double sourceReference = m_posterDimensionIsWidth?getInputImageWidth():getInputImageHeight();
+			const double targetReference = m_posterDimensionIsWidth?getInputImageHeight():getInputImageWidth();
+			const double aspectRatio = sourceReference/targetReference;
 
-			if (getPosterSizeMode() != PosteRazorEnums::ePosterSizeModePages)
-			{
+			if (getPosterSizeMode() != PosteRazorEnums::ePosterSizeModePages) {
 				otherDimension = m_posterDimension / aspectRatio;
-			}
-			else
-			{
-				double sourceAbsolute = convertBetweenAbsoluteAndPagesPosterDimension(m_posterDimension, true, m_posterDimensionIsWidth);
-				double targetAbsolute = sourceAbsolute/aspectRatio;
+			} else {
+				const double sourceAbsolute = convertBetweenAbsoluteAndPagesPosterDimension(m_posterDimension, true, m_posterDimensionIsWidth);
+				const double targetAbsolute = sourceAbsolute/aspectRatio;
 				otherDimension = convertBetweenAbsoluteAndPagesPosterDimension(targetAbsolute, false, !m_posterDimensionIsWidth);
 			}
 		}
@@ -551,38 +537,30 @@ public:
 	{
 		double posterDimension = (width==m_posterDimensionIsWidth)?m_posterDimension:calculateOtherPosterDimension();
 		
-		posterDimension = MAX
-		(
+		posterDimension = MAX (
 			(mode == PosteRazorEnums::ePosterSizeModeAbsolute)?0.001
 			:(mode == PosteRazorEnums::ePosterSizeModePages)?0.001
 			:0.001
 			, posterDimension
 		);
 
-		if (getPosterSizeMode() != mode) // anything to convert?
-		{
+		// anything to convert?
+		if (getPosterSizeMode() != mode){
 			// These are needed for conversion from and to ePosterSizeModePercentual
-			double inputImageDimension = width?getInputImageWidth():getInputImageHeight();
-			inputImageDimension = convertDistanceToCm(inputImageDimension);
+			const double inputImageDimension = convertDistanceToCm(width?getInputImageWidth():getInputImageHeight());
 
 			// First convert to absolute size mode (cm)
-			if (getPosterSizeMode() == PosteRazorEnums::ePosterSizeModePages)
-			{
+			if (getPosterSizeMode() == PosteRazorEnums::ePosterSizeModePages) {
 				posterDimension = convertBetweenAbsoluteAndPagesPosterDimension(posterDimension, true, width);
-			}
-			else if (getPosterSizeMode() == PosteRazorEnums::ePosterSizeModePercentual)
-			{
+			} else if (getPosterSizeMode() == PosteRazorEnums::ePosterSizeModePercentual) {
 				posterDimension *= inputImageDimension;
 				posterDimension /= 100.0;
 			}
 
 			// Then convert to the wanted size mode
-			if (mode == PosteRazorEnums::ePosterSizeModePages)
-			{
+			if (mode == PosteRazorEnums::ePosterSizeModePages) {
 				posterDimension = convertBetweenAbsoluteAndPagesPosterDimension(posterDimension, false, width);
-			}
-			else if (mode == PosteRazorEnums::ePosterSizeModePercentual)
-			{
+			} else if (mode == PosteRazorEnums::ePosterSizeModePercentual) {
 				posterDimension /= inputImageDimension;
 				posterDimension *= 100.0;
 			}
@@ -631,13 +609,12 @@ public:
 
 	void getPreviewSize(double imageWidth, double imageHeight, int boxWidth, int boxHeight, int &previewWidth, int &previewHeight, bool enlargeToFit) const
 	{
-		double aspectRatio = imageWidth / imageHeight;
+		const double aspectRatio = imageWidth / imageHeight;
 
-		if (enlargeToFit)
-		{
-			double widthFactor = imageWidth/(double)boxWidth;
-			double heightFactor = imageHeight/(double)boxHeight;
-			double factor = widthFactor<heightFactor?widthFactor:heightFactor;
+		if (enlargeToFit) {
+			const double widthFactor = imageWidth/(double)boxWidth;
+			const double heightFactor = imageHeight/(double)boxHeight;
+			const double factor = widthFactor<heightFactor?widthFactor:heightFactor;
 			imageWidth /= factor;
 			imageHeight /= factor;
 		}
@@ -645,8 +622,7 @@ public:
 		previewWidth = MIN((int)imageWidth, boxWidth);
 		previewHeight = (int)((double)previewWidth / aspectRatio);
 
-		if (previewHeight > boxHeight)
-		{
+		if (previewHeight > boxHeight) {
 			previewWidth = (int)((double)boxHeight * aspectRatio);
 			previewHeight = boxHeight;
 		}
@@ -667,7 +643,7 @@ public:
 		int imageWidth;
 		int imageHeight;
 		getInputImagePreviewSize((int)maxWidth, (int)maxHeight, imageWidth, imageHeight);
-		size_t rgbDataBytesCount = imageWidth * imageHeight * 3;
+		const size_t rgbDataBytesCount = imageWidth * imageHeight * 3;
 		unsigned char *rgbData = new unsigned char[rgbDataBytesCount];
 		if (!m_imageIO->getImageAsRGB(rgbData, imageWidth, imageHeight))
 			// If preview fails because of low memory...
@@ -678,9 +654,7 @@ public:
 
 	void paintImageOnCanvas(PaintCanvasInterface *paintCanvas) const
 	{
-
-		if (getIsImageLoaded())
-		{
+		if (getIsImageLoaded()) {
 			double canvasWidth = 0, canvasHeight = 0;
 			paintCanvas->getSize(canvasWidth, canvasHeight);
 			int boxWidth = 0, boxHeight = 0;
@@ -692,8 +666,7 @@ public:
 			
 			// If the image is not downscaled, make sure that the coordinates are integers in order
 			// to prevent unneeded blurring (especially in OpenGL)
-			if (canvasWidth >= getInputImageWidthPixels() && canvasHeight >= getInputImageHeightPixels())
-			{
+			if (canvasWidth >= getInputImageWidthPixels() && canvasHeight >= getInputImageHeightPixels()) {
 				x_offset = floor(x_offset);
 				y_offset = floor(y_offset);
 			}			
@@ -708,32 +681,31 @@ public:
 		paintCanvas->getSize(canvasWidth, canvasHeight);
 		int boxWidth = 0, boxHeight = 0;
 
-		double paperWidth = getPaperWidth();
-		double paperHeight = getPaperHeight();
+		const double paperWidth = getPaperWidth();
+		const double paperHeight = getPaperHeight();
 		getPreviewSize(paperWidth, paperHeight, (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, true);
-		double x_offset = (canvasWidth - (double)boxWidth) / 2.0;
-		double y_offset = (canvasHeight - (double)boxHeight) / 2.0;
-		double UnitOfLengthToPixelfactor = (double)boxWidth/paperWidth;
-		double borderTop = getPaperBorderTop() * UnitOfLengthToPixelfactor;
-		double borderRight = getPaperBorderRight() * UnitOfLengthToPixelfactor;
-		double borderBottom = getPaperBorderBottom() * UnitOfLengthToPixelfactor;
-		double borderLeft = getPaperBorderLeft() * UnitOfLengthToPixelfactor;
-		double printableAreaWidth = boxWidth - borderLeft - borderRight;
-		double printableAreaHeight = boxHeight - borderTop - borderBottom;
+		const double x_offset = (canvasWidth - (double)boxWidth) / 2.0;
+		const double y_offset = (canvasHeight - (double)boxHeight) / 2.0;
+		const double UnitOfLengthToPixelfactor = (double)boxWidth/paperWidth;
+		const double borderTop = getPaperBorderTop() * UnitOfLengthToPixelfactor;
+		const double borderRight = getPaperBorderRight() * UnitOfLengthToPixelfactor;
+		const double borderBottom = getPaperBorderBottom() * UnitOfLengthToPixelfactor;
+		const double borderLeft = getPaperBorderLeft() * UnitOfLengthToPixelfactor;
+		const double printableAreaWidth = boxWidth - borderLeft - borderRight;
+		const double printableAreaHeight = boxHeight - borderTop - borderBottom;
 		
 		paintCanvas->drawFilledRect(0 + x_offset, 0 + y_offset, boxWidth, boxHeight, 128, 128, 128, 255);
 		paintCanvas->drawFilledRect(0 + borderLeft + x_offset, 0 + borderTop + y_offset, printableAreaWidth, printableAreaHeight, 230, 230, 230, 255);
 
-		if (paintOverlapping)
-		{
-			double overlappingWidth = getOverlappingWidth() * UnitOfLengthToPixelfactor;
-			double overlappingHeight = getOverlappingHeight() * UnitOfLengthToPixelfactor;
-			PosteRazorEnums::eOverlappingPositions overlappingPosition = getOverlappingPosition();
-			double overlappingTop =
+		if (paintOverlapping) {
+			const double overlappingWidth = getOverlappingWidth() * UnitOfLengthToPixelfactor;
+			const double overlappingHeight = getOverlappingHeight() * UnitOfLengthToPixelfactor;
+			const PosteRazorEnums::eOverlappingPositions overlappingPosition = getOverlappingPosition();
+			const double overlappingTop =
 				(overlappingPosition == PosteRazorEnums::eOverlappingPositionTopLeft || overlappingPosition == PosteRazorEnums::eOverlappingPositionTopRight)?
 				borderTop
 				:boxHeight - borderBottom - overlappingHeight;
-			double overlappingLeft = 
+			const double overlappingLeft = 
 				(overlappingPosition == PosteRazorEnums::eOverlappingPositionTopLeft || overlappingPosition == PosteRazorEnums::eOverlappingPositionBottomLeft)?
 				borderLeft
 				:boxWidth - borderRight - overlappingWidth;
@@ -751,33 +723,32 @@ public:
 
 		double pagePrintableAreaWidth = getPrintablePaperAreaWidth();
 		double pagePrintableAreaHeight = getPrintablePaperAreaHeight();
-		int pagesHorizontal = (int)ceil(getPosterWidth(PosteRazorEnums::ePosterSizeModePages));
-		int pagesVertical = (int)ceil(getPosterHeight(PosteRazorEnums::ePosterSizeModePages));
-		double posterWidth = pagesHorizontal*pagePrintableAreaWidth - (pagesHorizontal-1)*getOverlappingWidth() + getPaperBorderLeft() + getPaperBorderRight();
-		double posterHeight = pagesVertical*pagePrintableAreaHeight - (pagesVertical-1)*getOverlappingHeight() + getPaperBorderTop() + getPaperBorderBottom();
+		const int pagesHorizontal = (int)ceil(getPosterWidth(PosteRazorEnums::ePosterSizeModePages));
+		const int pagesVertical = (int)ceil(getPosterHeight(PosteRazorEnums::ePosterSizeModePages));
+		const double posterWidth = pagesHorizontal*pagePrintableAreaWidth - (pagesHorizontal-1)*getOverlappingWidth() + getPaperBorderLeft() + getPaperBorderRight();
+		const double posterHeight = pagesVertical*pagePrintableAreaHeight - (pagesVertical-1)*getOverlappingHeight() + getPaperBorderTop() + getPaperBorderBottom();
 		getPreviewSize(posterWidth, posterHeight, (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, true);
-		double x_offset = (canvasWidth - boxWidth) / 2;
-		double y_offset = (canvasHeight - boxHeight) / 2;
-		double UnitOfLengthToPixelfactor = (double)boxWidth/posterWidth;
+		const double x_offset = (canvasWidth - boxWidth) / 2;
+		const double y_offset = (canvasHeight - boxHeight) / 2;
+		const double UnitOfLengthToPixelfactor = (double)boxWidth/posterWidth;
 
-		double borderTop = getPaperBorderTop() * UnitOfLengthToPixelfactor;
-		double borderRight = getPaperBorderRight() * UnitOfLengthToPixelfactor;
-		double borderBottom = getPaperBorderBottom() * UnitOfLengthToPixelfactor;
-		double borderLeft = getPaperBorderLeft() * UnitOfLengthToPixelfactor;
-		double posterPrintableAreaWidth = boxWidth - borderLeft - borderRight;
-		double posterPrintableAreaHeight = boxHeight - borderTop - borderBottom;
+		const double borderTop = getPaperBorderTop() * UnitOfLengthToPixelfactor;
+		const double borderRight = getPaperBorderRight() * UnitOfLengthToPixelfactor;
+		const double borderBottom = getPaperBorderBottom() * UnitOfLengthToPixelfactor;
+		const double borderLeft = getPaperBorderLeft() * UnitOfLengthToPixelfactor;
+		const double posterPrintableAreaWidth = boxWidth - borderLeft - borderRight;
+		const double posterPrintableAreaHeight = boxHeight - borderTop - borderBottom;
 
 		paintCanvas->drawFilledRect(x_offset, y_offset, boxWidth, boxHeight, 128, 128, 128, 255);
 		paintCanvas->drawFilledRect(borderLeft + x_offset, borderTop + y_offset, posterPrintableAreaWidth, posterPrintableAreaHeight, 230, 230, 230, 255);
 
-		double imageWidth = getPosterWidth(PosteRazorEnums::ePosterSizeModeAbsolute) * UnitOfLengthToPixelfactor;
-		double imageHeight = getPosterHeight(PosteRazorEnums::ePosterSizeModeAbsolute) * UnitOfLengthToPixelfactor;
+		const double imageWidth = getPosterWidth(PosteRazorEnums::ePosterSizeModeAbsolute) * UnitOfLengthToPixelfactor;
+		const double imageHeight = getPosterHeight(PosteRazorEnums::ePosterSizeModeAbsolute) * UnitOfLengthToPixelfactor;
 
-		PosteRazorEnums::eVerticalAlignments verticalAlignment = getPosterVerticalAlignment();
-		PosteRazorEnums::eHorizontalAlignments horizontalAlignment = getPosterHorizontalAlignment();
+		const PosteRazorEnums::eVerticalAlignments verticalAlignment = getPosterVerticalAlignment();
+		const PosteRazorEnums::eHorizontalAlignments horizontalAlignment = getPosterHorizontalAlignment();
 
-		paintCanvas->drawImage
-		(
+		paintCanvas->drawImage(
 			(
 				horizontalAlignment == PosteRazorEnums::eHorizontalAlignmentLeft?borderLeft
 				:horizontalAlignment == PosteRazorEnums::eHorizontalAlignmentCenter?
@@ -796,21 +767,19 @@ public:
 			imageWidth, imageHeight
 		);
 
-		double overlappingHeight = getOverlappingHeight() * UnitOfLengthToPixelfactor;
-		double overlappingWidth = getOverlappingWidth() * UnitOfLengthToPixelfactor;
+		const double overlappingHeight = getOverlappingHeight() * UnitOfLengthToPixelfactor;
+		const double overlappingWidth = getOverlappingWidth() * UnitOfLengthToPixelfactor;
 		pagePrintableAreaWidth *= UnitOfLengthToPixelfactor;
 		pagePrintableAreaHeight *= UnitOfLengthToPixelfactor;
 
 		double overlappingRectangleYPosition = borderTop;
-		for (int pagesRow = 0; pagesRow < pagesVertical - 1; pagesRow++)
-		{
+		for (int pagesRow = 0; pagesRow < pagesVertical - 1; pagesRow++) {
 			overlappingRectangleYPosition += pagePrintableAreaHeight - overlappingHeight;
 			paintCanvas->drawFilledRect(x_offset, overlappingRectangleYPosition + y_offset, boxWidth, overlappingHeight, 255, 128, 128, 128);
 		}
 
 		double overlappingRectangleXPosition = borderLeft;
-		for (int pagesColumn = 0; pagesColumn < pagesHorizontal - 1; pagesColumn++)
-		{
+		for (int pagesColumn = 0; pagesColumn < pagesHorizontal - 1; pagesColumn++) {
 			overlappingRectangleXPosition += pagePrintableAreaWidth - overlappingWidth;
 			paintCanvas->drawFilledRect(overlappingRectangleXPosition + x_offset, y_offset, overlappingWidth, boxHeight, 255, 128, 128, 128);
 		}
@@ -818,63 +787,54 @@ public:
 
 	void paintPosterPageOnCanvas(PaintCanvasInterface *paintCanvas, int page) const
 	{
-		int columsCount = (int)(ceil(getPosterWidth(PosteRazorEnums::ePosterSizeModePages)));
-		int rowsCount = (int)(ceil(getPosterHeight(PosteRazorEnums::ePosterSizeModePages)));
-		int column = page % columsCount;
-		int row = ((int)(floor((double)page / (double)columsCount)));
+		const int columsCount = (int)(ceil(getPosterWidth(PosteRazorEnums::ePosterSizeModePages)));
+		const int rowsCount = (int)(ceil(getPosterHeight(PosteRazorEnums::ePosterSizeModePages)));
+		const int column = page % columsCount;
+		const int row = ((int)(floor((double)page / (double)columsCount)));
 
-		double posterImageWidthCm = convertDistanceToCm(getPosterWidth(PosteRazorEnums::ePosterSizeModeAbsolute));
-		double posterImageHeightCm = convertDistanceToCm(getPosterHeight(PosteRazorEnums::ePosterSizeModeAbsolute));
-		double printablePaperAreaWidthCm = convertDistanceToCm(getPrintablePaperAreaWidth());
-		double printablePaperAreaHeightCm = convertDistanceToCm(getPrintablePaperAreaHeight());
-		double overlappingWidthCm = convertDistanceToCm(getOverlappingWidth());
-		double overlappingHeightCm = convertDistanceToCm(getOverlappingHeight());
-		double printablePosterAreaWidthCm = columsCount * printablePaperAreaWidthCm - (columsCount - 1) * overlappingWidthCm;
-		double printablePosterAreaHeightCm = rowsCount * printablePaperAreaHeightCm - (rowsCount - 1) * overlappingHeightCm;
-		double borderTopCm = convertDistanceToCm(getPaperBorderTop());
-		double borderRightCm = convertDistanceToCm(getPaperBorderRight());
-		double borderBottomCm = convertDistanceToCm(getPaperBorderBottom());
-		double borderLeftCm = convertDistanceToCm(getPaperBorderLeft());
-		double posterTotalWidthCm = printablePosterAreaWidthCm + borderLeftCm + borderRightCm;
-		double posterTotalHeightCm = printablePosterAreaHeightCm + borderTopCm + borderBottomCm;
-		double imageOffsetFromLeftPosterBorderCm = 
-		(
+		const double posterImageWidthCm = convertDistanceToCm(getPosterWidth(PosteRazorEnums::ePosterSizeModeAbsolute));
+		const double posterImageHeightCm = convertDistanceToCm(getPosterHeight(PosteRazorEnums::ePosterSizeModeAbsolute));
+		const double printablePaperAreaWidthCm = convertDistanceToCm(getPrintablePaperAreaWidth());
+		const double printablePaperAreaHeightCm = convertDistanceToCm(getPrintablePaperAreaHeight());
+		const double overlappingWidthCm = convertDistanceToCm(getOverlappingWidth());
+		const double overlappingHeightCm = convertDistanceToCm(getOverlappingHeight());
+		const double printablePosterAreaWidthCm = columsCount * printablePaperAreaWidthCm - (columsCount - 1) * overlappingWidthCm;
+		const double printablePosterAreaHeightCm = rowsCount * printablePaperAreaHeightCm - (rowsCount - 1) * overlappingHeightCm;
+		const double borderTopCm = convertDistanceToCm(getPaperBorderTop());
+		const double borderRightCm = convertDistanceToCm(getPaperBorderRight());
+		const double borderBottomCm = convertDistanceToCm(getPaperBorderBottom());
+		const double borderLeftCm = convertDistanceToCm(getPaperBorderLeft());
+		const double posterTotalWidthCm = printablePosterAreaWidthCm + borderLeftCm + borderRightCm;
+		const double posterTotalHeightCm = printablePosterAreaHeightCm + borderTopCm + borderBottomCm;
+		double imageOffsetFromLeftPosterBorderCm = (
 			getPosterHorizontalAlignment() == PosteRazorEnums::eHorizontalAlignmentRight?posterTotalWidthCm - posterImageWidthCm - borderLeftCm
 			:getPosterHorizontalAlignment() == PosteRazorEnums::eHorizontalAlignmentCenter?(posterTotalWidthCm - posterImageWidthCm)/2 - borderLeftCm
 			:-borderLeftCm
 		);
 		imageOffsetFromLeftPosterBorderCm = MINMAX(imageOffsetFromLeftPosterBorderCm, 0.0, posterTotalWidthCm - posterImageWidthCm - borderLeftCm - borderRightCm);
-		double imageOffsetFromTopPosterBorderCm = 
-		(
+		double imageOffsetFromTopPosterBorderCm = (
 			getPosterVerticalAlignment() == PosteRazorEnums::eVerticalAlignmentBottom?posterTotalHeightCm - posterImageHeightCm - borderTopCm
 			:getPosterVerticalAlignment() == PosteRazorEnums::eVerticalAlignmentMiddle?(posterTotalHeightCm - posterImageHeightCm)/2 - borderTopCm
 			:-borderTopCm
 		);
 		imageOffsetFromTopPosterBorderCm = MINMAX(imageOffsetFromTopPosterBorderCm, 0.0, posterTotalHeightCm - posterImageHeightCm - borderTopCm - borderBottomCm);
-		double pageOffsetToImageFromLeftCm = column * (printablePaperAreaWidthCm - overlappingWidthCm) - imageOffsetFromLeftPosterBorderCm;
-		double pageOffsetToImageFromTopCm = row * (printablePaperAreaHeightCm - overlappingHeightCm) - imageOffsetFromTopPosterBorderCm;
+		const double pageOffsetToImageFromLeftCm = column * (printablePaperAreaWidthCm - overlappingWidthCm) - imageOffsetFromLeftPosterBorderCm;
+		const double pageOffsetToImageFromTopCm = row * (printablePaperAreaHeightCm - overlappingHeightCm) - imageOffsetFromTopPosterBorderCm;
 		
 		paintCanvas->drawImage(-pageOffsetToImageFromLeftCm, -pageOffsetToImageFromTopCm, posterImageWidthCm, posterImageHeightCm);
 	}
 
 	void paintOnCanvas(PaintCanvasInterface *paintCanvas, void* options = 0) const
 	{
-		const char *state = (const char*)options;
+		const char* const state = (const char*)options;
 		
-		if (strcmp(state, "image") == 0)
-		{
+		if (strcmp(state, "image") == 0) {
 			paintImageOnCanvas(paintCanvas);
-		}
-		else if (strcmp(state, "paper") == 0 || strcmp(state, "overlapping") == 0)
-		{
+		} else if (strcmp(state, "paper") == 0 || strcmp(state, "overlapping") == 0) {
 			paintPaperOnCanvas(paintCanvas, strcmp(state, "overlapping") == 0);
-		}
-		else if (strcmp(state, "poster") == 0)
-		{
+		} else if (strcmp(state, "poster") == 0) {
 			paintPosterOnCanvas(paintCanvas);
-		}
-		else if (strncmp(state, "posterpage", strlen("posterpage")) == 0)
-		{
+		} else if (strncmp(state, "posterpage", strlen("posterpage")) == 0) {
 			int page;
 			sscanf(state, "posterpage %d", &page);
 
@@ -895,10 +855,9 @@ public:
 	int savePoster(const char *fileName) const
 	{
 		int err = 0;
-		int pagesCount = (int)(ceil(getPosterWidth(PosteRazorEnums::ePosterSizeModePages))) * (int)(ceil(getPosterHeight(PosteRazorEnums::ePosterSizeModePages)));
+		const int pagesCount = (int)(ceil(getPosterWidth(PosteRazorEnums::ePosterSizeModePages))) * (int)(ceil(getPosterHeight(PosteRazorEnums::ePosterSizeModePages)));
 		err = m_imageIO->savePoster(fileName, getPosterOutputFormat(), this, pagesCount, convertDistanceToCm(getPrintablePaperAreaWidth()), convertDistanceToCm(getPrintablePaperAreaHeight()));
-		if (!err && getLaunchPDFApplication())
-		{
+		if (!err && getLaunchPDFApplication()) {
 #if defined(WIN32)
 			ShellExecute(HWND_DESKTOP, "open", fileName, NULL, NULL, SW_SHOW);
 #elif defined(__APPLE__)

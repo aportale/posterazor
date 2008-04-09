@@ -68,7 +68,7 @@ private:
 	static bool isSystemLittleEndian(void)
 	{
 		// Endianness detection lines borrowed from: http://en.wikipedia.org/wiki/Endianness
-		long int i = 1;
+		const long int i = 1;
 		const char *p = (const char *) &i;
 		return p[0] == 1;  // Lowest address contains the least significant byte
 	}
@@ -91,8 +91,7 @@ public:
 
 	void disposeImage()
 	{
-		if (m_bitmap)
-		{
+		if (m_bitmap) {
 			FreeImage_Unload(m_bitmap);
 			m_bitmap = NULL;
 		}
@@ -106,8 +105,7 @@ public:
 
 		FIBITMAP* newImage = FreeImage_Load(FreeImage_GetFileType(imageFileName, 0), imageFileName, TIFF_CMYK);
 
-		if (newImage)
-		{
+		if (newImage) {
 			result = true;
 			disposeImage();
 
@@ -174,46 +172,40 @@ public:
 		FIBITMAP* temp24BPPImage = NULL;
 		FIBITMAP* scaledImage = NULL;
 		
-		if (getBitsPerPixel() != 24)
-		{
-			if (getColorDataType() == eColorTypeCMYK)
-			{
+		if (getBitsPerPixel() != 24) {
+			if (getColorDataType() == eColorTypeCMYK) {
 				temp24BPPImage = FreeImage_Allocate(getWidthPixels(), getHeightPixels(), 24);
-				unsigned int scanlinesCount = getHeightPixels();
-				unsigned int columnsCount = getWidthPixels();
-				for (unsigned int scanline = 0; scanline < scanlinesCount; scanline++)
-				{
-					BYTE *cmykBits = FreeImage_GetScanLine(m_bitmap, scanline);
-					BYTE *rgbBits = FreeImage_GetScanLine(temp24BPPImage, scanline);
-					for (unsigned int column = 0; column < columnsCount; column++)
-					{
-						unsigned int cmykColumn = column * 4;
-						unsigned int rgbColumn = column * 3;
+				const unsigned int scanlinesCount = getHeightPixels();
+				const unsigned int columnsCount = getWidthPixels();
+				for (unsigned int scanline = 0; scanline < scanlinesCount; scanline++) {
+					const BYTE* const cmykBits = FreeImage_GetScanLine(m_bitmap, scanline);
+					BYTE* const rgbBits = FreeImage_GetScanLine(temp24BPPImage, scanline);
 
-						BYTE cyan = cmykBits[cmykColumn];
-						BYTE magenta = cmykBits[cmykColumn + 1];
-						BYTE yellow = cmykBits[cmykColumn + 2];
-						BYTE black = cmykBits[cmykColumn + 3];
+					for (unsigned int column = 0; column < columnsCount; column++) {
+						const unsigned int cmykColumn = column * 4;
+						const unsigned int rgbColumn = column * 3;
 
-						BYTE red = MAX(0, (255 - (unsigned char)((double)yellow/1.5) - (unsigned char)((double)black/1.5)));
-						BYTE green = MAX(0, (255 - (unsigned char)((double)magenta/1.5) - (unsigned char)((double)black/1.5)));
-						BYTE blue = MAX(0, (255 - (unsigned char)((double)cyan/1.5) - (unsigned char)((double)black/1.5)));
+						const BYTE cyan = cmykBits[cmykColumn];
+						const BYTE magenta = cmykBits[cmykColumn + 1];
+						const BYTE yellow = cmykBits[cmykColumn + 2];
+						const BYTE black = cmykBits[cmykColumn + 3];
+
+						const BYTE red = MAX(0, (255 - (unsigned char)((double)yellow/1.5) - (unsigned char)((double)black/1.5)));
+						const BYTE green = MAX(0, (255 - (unsigned char)((double)magenta/1.5) - (unsigned char)((double)black/1.5)));
+						const BYTE blue = MAX(0, (255 - (unsigned char)((double)cyan/1.5) - (unsigned char)((double)black/1.5)));
 
 						rgbBits[rgbColumn] = red;
 						rgbBits[rgbColumn + 1] = green;
 						rgbBits[rgbColumn + 2] = blue;
 					}
 				}
-			}
-			else
-			{
+			} else {
 				temp24BPPImage = FreeImage_ConvertTo24Bits(originalImage);
 			}
 			originalImage = temp24BPPImage;
 		}
 
-		if (getWidthPixels() != width || getHeightPixels() != height)
-		{
+		if (getWidthPixels() != width || getHeightPixels() != height) {
 			scaledImage = FreeImage_Rescale(originalImage, width, height, FILTER_BOX);
 			originalImage = scaledImage;
 		}
@@ -221,15 +213,13 @@ public:
 		FreeImage_ConvertToRawBits(buffer, originalImage, width*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
 
 		// Swapping RGB data if needed (like on Intel)
-		if (isSystemLittleEndian())
-		{
-			unsigned int numberOfPixels = width * height;
+		if (isSystemLittleEndian()) {
+			const unsigned int numberOfPixels = width * height;
 
-			for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++)
-			{
-				unsigned char *pixelPtr = buffer + pixelIndex*3;
+			for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
+				unsigned char* pixelPtr = buffer + pixelIndex*3;
 
-				unsigned char temp = pixelPtr[0];
+				const unsigned char temp = pixelPtr[0];
 				pixelPtr[0] = pixelPtr[2];
 				pixelPtr[2] = temp;
 				pixelPtr+=3;
@@ -253,14 +243,11 @@ public:
 	eColorTypes getColorDataType(void) const
 	{
 		eColorTypes colorDatatype = eColorTypeRGB;
-		FREE_IMAGE_COLOR_TYPE imageColorType = FreeImage_GetColorType(m_bitmap);
+		const FREE_IMAGE_COLOR_TYPE imageColorType = FreeImage_GetColorType(m_bitmap);
 		
-		if (imageColorType == FIC_MINISBLACK || imageColorType == FIC_MINISWHITE)
-		{
+		if (imageColorType == FIC_MINISBLACK || imageColorType == FIC_MINISWHITE) {
 			colorDatatype = getBitsPerPixel()==1?eColorTypeMonochrome:eColorTypeGreyscale;
-		}
-		else
-		{
+		} else {
 			colorDatatype =
 				imageColorType==FIC_PALETTE?eColorTypePalette:
 				imageColorType==FIC_RGB?eColorTypeRGB:
@@ -275,36 +262,34 @@ public:
 	{
 		int err = 0;
 
-		unsigned int imageBytesCount = PosteRazorPDFOutput::getImageBytesCount(getWidthPixels(), getHeightPixels(), getBitsPerPixel());
+		const unsigned int imageBytesCount = PosteRazorPDFOutput::getImageBytesCount(getWidthPixels(), getHeightPixels(), getBitsPerPixel());
 		unsigned char *imageData = new unsigned char[imageBytesCount];
 
-		unsigned int bytesPerLineCount = PosteRazorPDFOutput::getImageBytesPerLineCount(getWidthPixels(), getBitsPerPixel());
+		const unsigned int bytesPerLineCount = PosteRazorPDFOutput::getImageBytesPerLineCount(getWidthPixels(), getBitsPerPixel());
 
 		FreeImage_ConvertToRawBits(imageData, m_bitmap, bytesPerLineCount, getBitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
 
 		// Swapping RGB data if needed (like on Intel)
-		if (getBitsPerPixel() == 24 && isSystemLittleEndian())
-		{
-			unsigned long numberOfPixels = getWidthPixels() * getHeightPixels();
-			for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++)
-			{
+		if (getBitsPerPixel() == 24 && isSystemLittleEndian()) {
+			const unsigned long numberOfPixels = getWidthPixels() * getHeightPixels();
+			for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
 				unsigned char *pixelPtr = imageData + pixelIndex*3;
 
-				unsigned char temp = pixelPtr[0];
+				const unsigned char temp = pixelPtr[0];
 				pixelPtr[0] = pixelPtr[2];
 				pixelPtr[2] = temp;
 				pixelPtr+=3;
 			}
 		}
 
-		RGBQUAD *palette = FreeImage_GetPalette(m_bitmap);
+		const RGBQUAD* const palette = FreeImage_GetPalette(m_bitmap);
 		unsigned char rgbPalette[768];
-		if (palette) // Compacting the palette
-		{
-			int count = FreeImage_GetColorsUsed(m_bitmap);
-			for (int i = 0; i < count; i++)
-			{
-				int offset = i*3;
+
+		// Compacting the palette
+		if (palette) {
+			const int count = FreeImage_GetColorsUsed(m_bitmap);
+			for (int i = 0; i < count; i++) {
+				const int offset = i*3;
 				rgbPalette[offset] = palette[i].rgbRed;
 				rgbPalette[offset + 1] = palette[i].rgbGreen;
 				rgbPalette[offset + 2] = palette[i].rgbBlue;
@@ -313,18 +298,15 @@ public:
 
 		PosteRazorPDFOutput *pdfOutput = PosteRazorPDFOutput::createPosteRazorPDFOutput();
 		err = pdfOutput->startSaving(fileName, pagesCount, widthCm, heightCm);
-		if (!err)
-		{
+		if (!err) {
 			if (FreeImage_GetFileType(m_imageFileName, 0) == FIF_JPEG)
 				err = pdfOutput->saveImage(m_imageFileName, getWidthPixels(), getHeightPixels(), getColorDataType());
 			else
 				err = pdfOutput->saveImage(imageData, getWidthPixels(), getHeightPixels(), getBitsPerPixel(), getColorDataType(), rgbPalette, FreeImage_GetColorsUsed(m_bitmap));
 		}
 
-		if (!err)
-		{
-			for (int page = 0; page < pagesCount; page++)
-			{
+		if (!err) {
+			for (int page = 0; page < pagesCount; page++) {
 				char paintOptions[1024];
 				sprintf(paintOptions, "posterpage %d", page);
 				pdfOutput->startPage();

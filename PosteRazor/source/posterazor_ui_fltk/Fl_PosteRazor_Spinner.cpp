@@ -80,17 +80,14 @@ void Fl_PosteRazor_Spinner::setSpinnerVisible(bool visible)
 {
 	m_spinnerVisible = visible;
 
-	if (m_spinnerVisible)
-	{
-		int repeatButtonHeight = (int)((float)h()/2);
+	if (m_spinnerVisible) {
+		const int repeatButtonHeight = (int)((float)h()/2);
 		m_increaseButton->resize(x() + w() - REPEATBUTTONWIDTH, y(), REPEATBUTTONWIDTH, repeatButtonHeight);
 		m_decreaseButton->resize(x() + w() - REPEATBUTTONWIDTH, y() + h() - repeatButtonHeight, REPEATBUTTONWIDTH, repeatButtonHeight);
 		m_increaseButton->show();
 		m_decreaseButton->show();
 		m_input->resize(x(), y(), w() - REPEATBUTTONWIDTH, h());
-	}
-	else
-	{
+	} else {
 		m_input->resize(x(), y(), w(), h());
 		m_increaseButton->hide();
 		m_decreaseButton->hide();
@@ -117,9 +114,9 @@ void Fl_PosteRazor_Spinner::handleButtonPress(Fl_Repeat_Button *button)
 
 void Fl_PosteRazor_Spinner::doValueSpin(bool increase)
 {
-	double increaseValue = increase?.5:-.50001;
-	double oldValue = value();
-	double newValue = round(oldValue + increaseValue, 0);
+	const double increaseValue = increase?.5:-.50001;
+	const double oldValue = value();
+	const double newValue = round(oldValue + increaseValue, 0);
 	if (newValue >= 1.0)
 		value(newValue);
 	updateButtonsState();
@@ -150,15 +147,14 @@ void Fl_PosteRazor_Spinner::value(double value)
 
 int Fl_PosteRazor_Spinner::handle(int event)
 {
-	bool mouseIsOnGroup = 
+	const bool mouseIsOnGroup = 
 		Fl::event_x() > x()
 		&& Fl::event_x() <= x() + w()
 		&& Fl::event_y() > y()
 		&& Fl::event_y() <= y() + h();
 
-	if (event == FL_MOUSEWHEEL && mouseIsOnGroup)
-	{
-		bool increase = Fl::e_dy < 0;
+	if (event == FL_MOUSEWHEEL && mouseIsOnGroup) {
+		const bool increase = Fl::e_dy < 0;
 		if (Fl::e_dy != 0 && (increase || !isValueDecrementationDisabled()))
 			doValueSpin(increase);
 		return 1; // consume event

@@ -70,9 +70,8 @@ void PosteRazorHelpDialog::openURLInBrowser(const char* url)
 
 const char *PosteRazorHelpDialog::linkCallback(Fl_Widget *w, const char *uri)
 {
-#define HTTPSCHEMESTART "http://"
-	if (0 == CASESENSITIVESTRNCMP(uri, HTTPSCHEMESTART, strlen(HTTPSCHEMESTART)))
-	{
+	const char* const httpSchemeStart = "http://";
+	if (0 == CASESENSITIVESTRNCMP(uri, httpSchemeStart, strlen(httpSchemeStart))) {
 		((PosteRazorHelpDialog*)(w->parent()))->openURLInBrowser(uri);
 		return NULL;
 	}

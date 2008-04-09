@@ -99,7 +99,7 @@ PosteRazorDialog::PosteRazorDialog(void)
 
 	Fl_Persistent_Preferences preferences(PreferencesVendor, PreferencesProduct);
 	m_posteRazorController->readPersistentPreferences(&preferences);
-	Fl_Paint_Canvas_Group::ePaintCanvasTypes paintCanvasType =
+	const Fl_Paint_Canvas_Group::ePaintCanvasTypes paintCanvasType =
 		preferences.getBoolean(preferencesKey_UseOpenGLForPreview, getUseOpenGLForPreviewByDefault())?Fl_Paint_Canvas_Group::PaintCanvasTypeGL:Fl_Paint_Canvas_Group::PaintCanvasTypeDraw;
 	Translations::eLanguages language = (Translations::eLanguages)preferences.getInteger(preferencesKey_UILanguage, Translations::eLanguageUndefined);
 	m_UILanguageIsUndefined = language == Translations::eLanguageUndefined;
@@ -112,12 +112,11 @@ PosteRazorDialog::PosteRazorDialog(void)
 	strncpy(m_savePosterChooserLastPath, preferences.getString(preferencesKey_SavePosterChooserLastPath, ""), sizeof(m_savePosterChooserLastPath));
 	m_savePosterChooserLastPath[sizeof(m_savePosterChooserLastPath) - 1] = '\0';
 
-	int paperFormatMenuItemsCount = PaperFormats::getPaperFormatsCount()+1;
+	const int paperFormatMenuItemsCount = PaperFormats::getPaperFormatsCount()+1;
 	m_paperFormatMenuItems = new Fl_Menu_Item[paperFormatMenuItemsCount];
 	memset(m_paperFormatMenuItems, 0, sizeof(Fl_Menu_Item)*paperFormatMenuItemsCount);
-	for (i = 0; i < PaperFormats::getPaperFormatsCount(); i++)
-	{
-		const char* paperFormatName = PaperFormats::getPaperFormatName(PaperFormats::getPaperFormatForIndex(i));
+	for (i = 0; i < PaperFormats::getPaperFormatsCount(); i++) {
+		const char* const paperFormatName = PaperFormats::getPaperFormatName(PaperFormats::getPaperFormatForIndex(i));
 		m_paperFormatMenuItems[i].label(paperFormatName);
 		m_paperFormatMenuItems[i].callback(handlePaperFormatChoice_cb);
 		m_paperFormatMenuItems[i].user_data((void*)this);
@@ -201,8 +200,7 @@ bool PosteRazorDialog::getUseOpenGLForPreviewByDefault(void)
 
 void PosteRazorDialog::openSettingsDialog(void)
 {
-	if (!m_settingsDialog)
-	{
+	if (!m_settingsDialog) {
 		m_settings.unitOfLength = m_posteRazor->getUnitOfLength();
 		m_settings.previewType = m_paintCanvasGroup->getPaintCanvasType();
 		m_settings.language = TRANSLATIONS->GetSelectedLanguage()!=Translations::eLanguageUndefined?TRANSLATIONS->GetSelectedLanguage():Translations::eLanguageEnglish;
@@ -213,9 +211,8 @@ void PosteRazorDialog::openSettingsDialog(void)
 	m_settingsDialog->setOptionsAndHandler(&m_settings, this);
 	
 	posteRazorSettings settingsbackup = m_settings;
-	bool languageIsUndefinedBackup = m_UILanguageIsUndefined;
-	if (!m_settingsDialog->show_modal())
-	{
+	const bool languageIsUndefinedBackup = m_UILanguageIsUndefined;
+	if (!m_settingsDialog->show_modal()) {
 		handleOptionsChangement(&settingsbackup);
 		m_UILanguageIsUndefined = languageIsUndefinedBackup;
 	}
@@ -223,8 +220,7 @@ void PosteRazorDialog::openSettingsDialog(void)
 
 void PosteRazorDialog::openHelpDialog(void)
 {
-	if (!m_helpDialog)
-	{
+	if (!m_helpDialog) {
 		m_helpDialog = new PosteRazorHelpDialog();
 		m_helpDialog->updateLanguage();
 		m_helpDialog->set_modal();
@@ -243,8 +239,7 @@ void PosteRazorDialog::handleOptionsChangement(posteRazorSettings *settings)
 	m_posteRazorController->setUnitOfLength(settings->unitOfLength);
 	m_paintCanvasGroup->setPaintCanvasType(settings->previewType);
 
-	if (TRANSLATIONS->GetSelectedLanguage() != settings->language)
-	{
+	if (TRANSLATIONS->GetSelectedLanguage() != settings->language) {
 		TRANSLATIONS->SelectLangue(settings->language);
 		m_UILanguageIsUndefined = false;
 		updateLanguage();
@@ -268,8 +263,7 @@ void PosteRazorDialog::updateNavigationButtons(void)
 
 const char* PosteRazorDialog::getWizardStepInfoString(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step)
 {
-	return
-	(
+	return (
 		step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepInputImage?TRANSLATIONS->stepTitle01()
 		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPaperSize?TRANSLATIONS->stepTitle02()
 		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepOverlapping?TRANSLATIONS->stepTitle03()
@@ -280,8 +274,7 @@ const char* PosteRazorDialog::getWizardStepInfoString(PosteRazorWizardDialogEnum
 
 int PosteRazorDialog::getCurrentWizardStepNumber(void)
 {
-	return
-	(
+	return (
 		m_wizard->value() == m_loadInputImageStep?0
 		:m_wizard->value() == m_paperSizeStep?1
 		:m_wizard->value() == m_overlappingStep?2
@@ -372,15 +365,13 @@ void PosteRazorDialog::getFileOpenDialogFilter(char *filter, int bufferLength)
 	char allExtensions[1024] = "";
 	char formats[1024] = "%s\t*.{%s}";
 
-	for (int formatIndex = 0; formatIndex < ImageIOTypes::getInputImageFormatsCount(); formatIndex++)
-	{
+	for (int formatIndex = 0; formatIndex < ImageIOTypes::getInputImageFormatsCount(); formatIndex++) {
 		char extensionsOfFormat[1024] = "";
 		char format[1024] = "";
 
-		int extensionsCount = ImageIOTypes::getFileExtensionsCount(formatIndex);
+		const int extensionsCount = ImageIOTypes::getFileExtensionsCount(formatIndex);
 
-		for (int extensionIndex = 0; extensionIndex < extensionsCount; extensionIndex++)
-		{
+		for (int extensionIndex = 0; extensionIndex < extensionsCount; extensionIndex++) {
 			if (extensionIndex != 0)
 				strcat(extensionsOfFormat, ", ");
 			strcat(extensionsOfFormat, ImageIOTypes::getFileExtensionForFormat(extensionIndex, formatIndex));
@@ -392,8 +383,7 @@ void PosteRazorDialog::getFileOpenDialogFilter(char *filter, int bufferLength)
 		strcat(formats, format);
 	}
 
-	sprintf
-	(
+	sprintf	(
 		filterString,
 		formats,
 		TRANSLATIONS->allImageFormats(),
@@ -419,11 +409,9 @@ void PosteRazorDialog::loadInputImage(const char *fileName)
 #endif
 	loadImageChooser.title(TRANSLATIONS->loadAnInputImage());
 
-	if (!loadFileName)
-	{
+	if (!loadFileName) {
 		loadImageChooser.directory(m_loadImageChooserLastPath);
-		if (loadImageChooser.show() == 0)
-		{
+		if (loadImageChooser.show() == 0) {
 			loadFileName = loadImageChooser.filename();
 
 			strncpy(m_loadImageChooserLastPath, GetPathFromFileName(loadFileName), sizeof(m_loadImageChooserLastPath));
@@ -431,11 +419,9 @@ void PosteRazorDialog::loadInputImage(const char *fileName)
 		}
 	}
 
-	if (loadFileName)
-	{
+	if (loadFileName) {
 		loaded = m_posteRazorController->loadInputImage(loadFileName, errorMessage, sizeof(errorMessage));
-		if (!loaded)
-		{
+		if (!loaded) {
 			if (strlen(errorMessage) > 0)
 				fl_message(errorMessage);
 			else
@@ -443,8 +429,7 @@ void PosteRazorDialog::loadInputImage(const char *fileName)
 		}
 	}
 
-	if (loaded)
-	{
+	if (loaded) {
 		m_imageInfoGroup->activate();
 		m_paintCanvasGroup->requestImage();
 	}
@@ -465,8 +450,7 @@ void PosteRazorDialog::updateImageInfoFields(int imageWidthInPixels, int imageHe
 
 	char string[1024];
 
-	sprintf
-	(
+	sprintf (
 		string,
 		"%s\n%s\n%s\n%s",
 		TRANSLATIONS->sizeInPixels(),
@@ -476,8 +460,7 @@ void PosteRazorDialog::updateImageInfoFields(int imageWidthInPixels, int imageHe
 	);
 	m_imageInfoKeysLabel->copy_label(string);
 
-	sprintf
-	(
+	sprintf (
 		string,
 		"%d x %d\n%.2f x %.2f\n%.1f dpi\n%s %dbpp",
 		imageWidthInPixels, imageHeightInPixels,
@@ -515,6 +498,7 @@ void PosteRazorDialog::handlePaperFormatChoice_cb(Fl_Widget *widget, void *userD
 
 void PosteRazorDialog::handlePaperSizeChangement(Fl_Widget *sourceWidget)
 {
+	// TODO: Convert to switch
 	if (sourceWidget == m_paperBorderTopInput)
 		m_posteRazorController->setPaperBorderTop(m_paperBorderTopInput->value());
 	else if (sourceWidget == m_paperBorderRightInput)
@@ -525,9 +509,8 @@ void PosteRazorDialog::handlePaperSizeChangement(Fl_Widget *sourceWidget)
 		m_posteRazorController->setPaperBorderLeft(m_paperBorderLeftInput->value());
 	else if (sourceWidget == m_paperFormatTypeTabs)
 		m_posteRazorController->setUseCustomPaperSize(m_paperFormatTypeTabs->value() == m_paperFormatCustomGroup);
-	else if (sourceWidget == m_paperFormatChoice)
-	{
-		const char* paperFormatName = m_paperFormatMenuItems[m_paperFormatChoice->value()].label();
+	else if (sourceWidget == m_paperFormatChoice) {
+		const char* const paperFormatName = m_paperFormatMenuItems[m_paperFormatChoice->value()].label();
 		m_posteRazorController->setPaperFormatByName(paperFormatName);
 	}
 	else if (sourceWidget == m_paperOrientationPortraitRadioButton || sourceWidget == m_paperOrientationLandscapeRadioButton)
@@ -540,13 +523,13 @@ void PosteRazorDialog::handlePaperSizeChangement(Fl_Widget *sourceWidget)
 
 void PosteRazorDialog::handleOverlappingChangement(Fl_Widget *sourceWidget)
 {
+	// TODO: Convert to switch
 	if (sourceWidget == m_overlappingWidthInput)
 		m_posteRazorController->setOverlappingWidth(m_overlappingWidthInput->value());
 	else if (sourceWidget == m_overlappingHeightInput)
 		m_posteRazorController->setOverlappingHeight(m_overlappingHeightInput->value());
 	else
-		m_posteRazorController->setOverlappingPosition
-		(
+		m_posteRazorController->setOverlappingPosition (
 			m_overlappingPositionBottomRightButton->value()?PosteRazorEnums::eOverlappingPositionBottomRight
 			:m_overlappingPositionBottomLeftButton->value()?PosteRazorEnums::eOverlappingPositionBottomLeft
 			:m_overlappingPositionTopLeftButton->value()?PosteRazorEnums::eOverlappingPositionTopLeft
@@ -563,15 +546,13 @@ void PosteRazorDialog::updatePosterSizeGroupsState(void)
 
 void PosteRazorDialog::handlePosterImageAlignment(void)
 {
-	m_posteRazorController->setPosterVerticalAlignment
-	(
+	m_posteRazorController->setPosterVerticalAlignment (
 		m_posterAlignmentTopButton->value() == 1?PosteRazorEnums::eVerticalAlignmentTop
 		:m_posterAlignmentMiddleButton->value() == 1?PosteRazorEnums::eVerticalAlignmentMiddle
 		:PosteRazorEnums::eVerticalAlignmentBottom
 	);
 	
-	m_posteRazorController->setPosterHorizontalAlignment
-	(
+	m_posteRazorController->setPosterHorizontalAlignment (
 		m_posterAlignmentLeftButton->value() == 1?PosteRazorEnums::eHorizontalAlignmentLeft
 		:m_posterAlignmentCenterButton->value() == 1?PosteRazorEnums::eHorizontalAlignmentCenter
 		:PosteRazorEnums::eHorizontalAlignmentRight
@@ -596,14 +577,12 @@ void PosteRazorDialog::savePoster(void)
 #endif
 	savePosterChooser.title(TRANSLATIONS->saveThePosterAs());
 
-	do
-	{
+	do {
 		if (fileExistsAskUserForOverwrite)
 			savePosterChooser.preset_file(fl_filename_name(saveFileName));
 
 		savePosterChooser.directory(m_savePosterChooserLastPath);
-		if (savePosterChooser.show() == 0)
-		{
+		if (savePosterChooser.show() == 0) {
 			strcpy(saveFileName, savePosterChooser.filename());
 
 			strncpy(m_savePosterChooserLastPath, GetPathFromFileName(saveFileName), sizeof(m_savePosterChooserLastPath));
@@ -615,8 +594,7 @@ void PosteRazorDialog::savePoster(void)
 			fileExistsAskUserForOverwrite = my_file_exists(saveFileName);
 			char overwriteQuestion[1024] = "";
 			sprintf(overwriteQuestion, TRANSLATIONS->overwriteFile(), fl_filename_name(saveFileName));
-			if (!fileExistsAskUserForOverwrite || fl_ask(overwriteQuestion))
-			{
+			if (!fileExistsAskUserForOverwrite || fl_ask(overwriteQuestion)) {
 				int err = m_posteRazorController->savePoster(saveFileName);
 				if (err)
 					fl_message(TRANSLATIONS->fileCouldNotBeSaved(), fl_filename_name(saveFileName));
@@ -635,7 +613,7 @@ void PosteRazorDialog::setLaunchPDFApplication(void)
 
 void PosteRazorDialog::setUnitOfLength(UnitsOfLength::eUnitsOfLength unit)
 {
-	const char* unitName = UnitsOfLength::getUnitOfLengthName(unit);
+	const char* const unitName = UnitsOfLength::getUnitOfLengthName(unit);
 	m_paperCustomWidthDimensionUnitLabel->label(unitName);
 	m_paperCustomHeightDimensionUnitLabel->label(unitName);
 	m_overlappingWidthDimensionUnitLabel->label(unitName);
@@ -785,8 +763,7 @@ void PosteRazorDialog::setNextButtonEnabled(bool enabled)
 
 void PosteRazorDialog::setWizardStep(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step)
 {
-	m_wizard->value
-	(
+	m_wizard->value	(
 		step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepInputImage?m_loadInputImageStep
 		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPaperSize?m_paperSizeStep
 		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepOverlapping?m_overlappingStep
@@ -809,16 +786,13 @@ static PosteRazorDialog *OSX_posteRazorDialogPointer = NULL;
 
 static void	OSX_open_cb(const char* droppedFileName)
 {
-	if (OSX_posteRazorDialogPointer)
-	{
+	if (OSX_posteRazorDialogPointer) {
 		// File was dropped on the already running application
 		OSX_posteRazorDialogPointer->loadInputImage(droppedFileName);
-	}
-	else
-	{
+	} else {
 		// File was dropped on an application icon, but PosteRazor was not yet running
-		if (strcmp(OSX_droppedFilenameOnIcon, "") == 0) // If more than one were dropped, use only the first one.
-		{
+		if (strcmp(OSX_droppedFilenameOnIcon, "") == 0) {
+			// If more than one were dropped, use only the first one.
 			strncpy(OSX_droppedFilenameOnIcon, droppedFileName, sizeof(OSX_droppedFilenameOnIcon));
 			OSX_droppedFilenameOnIcon[sizeof(OSX_droppedFilenameOnIcon)-1] = '\0';
 		}

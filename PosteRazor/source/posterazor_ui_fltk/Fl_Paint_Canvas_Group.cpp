@@ -38,7 +38,7 @@ Fl_Paint_Canvas_Group::Fl_Paint_Canvas_Group(int x, int y, int width, int height
 	end();
 
 	Fl::get_system_colors();
-	unsigned int backgroundColor = Fl::get_color(color2());
+	const unsigned int backgroundColor = Fl::get_color(color2());
 	setBackgroundColor((backgroundColor >> 24) & 255, (backgroundColor >> 16) & 255, (backgroundColor >> 8) & 255);
 	
 	resizable(m_drawPaintCanvas);
@@ -63,13 +63,10 @@ void Fl_Paint_Canvas_Group::setPaintCanvasType(ePaintCanvasTypes type)
 #ifndef NO_OPENGL_PREVIEW
 	m_paintCanvasType = type;
 
-	if (getPaintCanvasType()==PaintCanvasTypeDraw)
-	{
+	if (getPaintCanvasType()==PaintCanvasTypeDraw) {
 		m_glPaintCanvas->hide();
 		m_glPaintCanvas->disposeImage();
-	}
-	else
-	{
+	} else {
 		m_drawPaintCanvas->hide();
 		m_drawPaintCanvas->disposeImage();
 	}
@@ -156,8 +153,7 @@ void Fl_Paint_Canvas_Group::disposeImage(void)
 	m_glPaintCanvas->disposeImage();
 #endif
 
-	if (m_imageRGBData)
-	{
+	if (m_imageRGBData) {
 		delete[] m_imageRGBData;
 		m_imageRGBData = NULL;
 		m_imageWidth = 0;

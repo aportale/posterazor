@@ -57,10 +57,8 @@ int UnitsOfLength::getUnitOfLengthIndex(eUnitsOfLength unit)
 {
 	int index = 0;
 
-	for (int i = 0; i < g_UnitsOfLengthCount; i++)
-	{
-		if (unit == g_UnitsOfLength[i].unit)
-		{
+	for (int i = 0; i < g_UnitsOfLengthCount; i++) {
+		if (unit == g_UnitsOfLength[i].unit) {
 			index = i;
 			break;
 		}
@@ -71,7 +69,7 @@ int UnitsOfLength::getUnitOfLengthIndex(eUnitsOfLength unit)
 
 const char* UnitsOfLength::getUnitOfLengthName(eUnitsOfLength unit)
 {
-	int UnitOfLengthIndex = getUnitOfLengthIndex(unit);
+	const int UnitOfLengthIndex = getUnitOfLengthIndex(unit);
 
 	return g_UnitsOfLength[UnitOfLengthIndex].name;
 }
@@ -80,10 +78,8 @@ UnitsOfLength::eUnitsOfLength UnitsOfLength::getUnitOfLengthForName(const char* 
 {
 	eUnitsOfLength unitOfLength = eUnitOfLengthCentimeter;
 
-	for (int i = 0; i < g_UnitsOfLengthCount; i++)
-	{
-		if (0 == strcmp(name, g_UnitsOfLength[i].name))
-		{
+	for (int i = 0; i < g_UnitsOfLengthCount; i++) {
+		if (0 == strcmp(name, g_UnitsOfLength[i].name)) {
 			unitOfLength = g_UnitsOfLength[i].unit;
 			break;
 		}
@@ -108,8 +104,7 @@ double UnitsOfLength::convertBetweenUnitsOfLength(double distance, eUnitsOfLengt
 {
 	double convertedDistance = distance;
 
-	if (sourceUnit != targetUnit)
-	{
+	if (sourceUnit != targetUnit) {
 		if (sourceUnit != eUnitOfLengthCentimeter)
 			convertedDistance = UnitOfLengthToCentimeter(convertedDistance, sourceUnit);
 

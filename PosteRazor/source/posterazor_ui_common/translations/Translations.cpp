@@ -39,16 +39,10 @@
 #endif
 #include <stdio.h> // for NULL
 
-Translations *Translations::m_instance = 0;
-
-typedef struct
-{
+static const struct {
 	TranslationInterface *translation;
 	Translations::eLanguages language;
-} TranslationSet;
-
-static const TranslationSet TranslationsMap[] =
-{
+} TranslationsMap[] = {
 	{&english, Translations::eLanguageUndefined}
 	,{&english, Translations::eLanguageEnglish}
 	,{&german, Translations::eLanguageGerman}
@@ -62,7 +56,7 @@ static const TranslationSet TranslationsMap[] =
 	,{&brazilianPortuguese, Translations::eLanguageBrazilianPortuguese}
 };
 
-static int TranslationsMapItemsCount = sizeof(TranslationsMap) / sizeof(TranslationSet);
+static const int TranslationsMapItemsCount = sizeof(TranslationsMap) / sizeof(TranslationsMap[0]);
 
 class TranslationSwitcher: public Translations
 {
@@ -100,10 +94,8 @@ public:
 	TranslationInterface* GetTranslationOfLanguage(eLanguages language)
 	{
 		TranslationInterface* foundTranslation = NULL;
-		for (int i = 0; i < TranslationsMapItemsCount; i++)
-		{
-			if(TranslationsMap[i].language == language)
-			{
+		for (int i = 0; i < TranslationsMapItemsCount; i++) {
+			if(TranslationsMap[i].language == language)	{
 				foundTranslation = TranslationsMap[i].translation;
 				break;
 			}
@@ -117,8 +109,8 @@ public:
 	{
 		eLanguages systemLanguage = eLanguageUndefined;
 #if defined (WIN32)
-		LANGID langID = GetSystemDefaultLangID();
-		WORD primaryLangID = PRIMARYLANGID(langID);
+		const LANGID langID = GetSystemDefaultLangID();
+		const WORD primaryLangID = PRIMARYLANGID(langID);
 		systemLanguage =
 			(primaryLangID == LANG_ENGLISH)?eLanguageEnglish:
 			(primaryLangID == LANG_GERMAN)?eLanguageGerman:
@@ -238,8 +230,6 @@ public:
 
 Translations* Translations::Instance(void)
 {
-	if (m_instance == 0)
-		m_instance = (Translations*)new TranslationSwitcher();
-
-	return m_instance;
+	static Translations *instance = (Translations*)new TranslationSwitcher();
+	return instance;
 }

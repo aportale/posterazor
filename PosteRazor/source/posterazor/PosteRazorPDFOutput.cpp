@@ -94,8 +94,7 @@ public:
 
 		AddOffsetToXref();
 		m_objectResourcesID = m_pdfObjectCount;
-		fprintf
-		(
+		fprintf (
 			m_outputFile,
 			LINEFEED "%d 0 obj" LINEFEED\
 			"<</XObject %d 0 R" LINEFEED\
@@ -106,8 +105,7 @@ public:
 		);
 
 		AddOffsetToXref();
-		fprintf
-		(
+		fprintf (
 			m_outputFile,
 			LINEFEED "%d 0 obj" LINEFEED\
 			"<</Im1 %d 0 R" LINEFEED\
@@ -126,16 +124,14 @@ public:
 		err = AddImageResourcesAndXObject();
 
 		FILE *jpegFile = NULL;
-		if (!err)
-		{
+		if (!err) {
 			jpegFile = fopen(jpegFileName, "rb");
 			if (!jpegFile)
 				err = 2;
 		}
 
 		int jpegFileSize = 0;
-		if (!err)
-		{
+		if (!err) {
 			fseek(jpegFile, 0, SEEK_END);
 			jpegFileSize = ftell(jpegFile);
 			fseek(jpegFile, 0, SEEK_SET);
@@ -143,11 +139,9 @@ public:
 				err = 6;
 		}
 
-		if (!err)
-		{
+		if (!err) {
 			AddOffsetToXref();
-			fprintf
-			(
+			fprintf (
 				m_outputFile,
 				LINEFEED "%d 0 obj" LINEFEED\
 				"<</ColorSpace %s" LINEFEED\
@@ -169,28 +163,22 @@ public:
 		unsigned char* buffer = NULL;
 		if (!err)
 			buffer = new unsigned char[JPEGFILECOPYBUFFERSIZE];
-                if (!buffer)
-                        err = 3;
+		if (!buffer)
+			err = 3;
 
-		while(!err && !feof(jpegFile))
-		{
+		while(!err && !feof(jpegFile)) {
 			size_t readBytes = fread(buffer, 1, JPEGFILECOPYBUFFERSIZE, jpegFile);
-			if (!ferror(jpegFile))
-			{
+			if (!ferror(jpegFile)) {
 				fwrite(buffer, 1, readBytes, m_outputFile);
 				if (ferror(m_outputFile))
 					err = 4;
-			}
-			else
-			{
+			} else {
 				err = 5;
 			}
 		}
 
-		if (!err)
-		{
-			fprintf
-			(
+		if (!err) {
+			fprintf (
 				m_outputFile,
 				LINEFEED "endstream" LINEFEED\
 				"endobj"
@@ -210,44 +198,34 @@ public:
 		int err = 0;
 		err = AddImageResourcesAndXObject();
 
-		unsigned int imageBytesCount = getImageBytesCount(widthPixels, heightPixels, bitPerPixel);
+		const unsigned int imageBytesCount = getImageBytesCount(widthPixels, heightPixels, bitPerPixel);
 		unsigned int imageBytesCountCompressed = (unsigned int)(ceil((double)imageBytesCount*1.05))+12;
 		unsigned char *imageDataCompressed = NULL;
 
-		if (!err)
-		{
+		if (!err) {
 			imageDataCompressed = new unsigned char[imageBytesCountCompressed];
 			if (!imageDataCompressed)
 				err = 1;
 		}
 
-		if (!err)
-		{
+		if (!err) {
 			imageBytesCountCompressed = FreeImage_ZLibCompress(imageDataCompressed, imageBytesCountCompressed, imageData, imageBytesCount);
 			if (!imageBytesCountCompressed)
 				err = 2;
 		}
 
 		char colorSpaceString[5000] = "";
-		if (colorType == ColorTypes::eColorTypeRGB)
-		{
+		// TODO: convert to switch
+		if (colorType == ColorTypes::eColorTypeRGB) {
 			strcpy(colorSpaceString, "/DeviceRGB");
-		}
-		else if(colorType == ColorTypes::eColorTypeGreyscale)
-		{
+		} else if(colorType == ColorTypes::eColorTypeGreyscale) {
 			strcpy(colorSpaceString, "/DeviceGray");
-		}
-/*		else if(colorType == ColorTypes::eColorTypeMonochrome)
+		} /* else if(colorType == ColorTypes::eColorTypeMonochrome)
 		{
 			sprintf(colorSpaceString, "/DeviceGray" LINEFEED "/BlackIs1 %s", rgbPalette[0]?"false":"true");
-		}
-*/
-		else if(colorType == ColorTypes::eColorTypeCMYK)
-		{
+		} */ else if(colorType == ColorTypes::eColorTypeCMYK) {
 			strcpy(colorSpaceString, "/DeviceCMYK");
-		}
-		else
-		{
+		} else {
 			sprintf(colorSpaceString, "[/Indexed /DeviceRGB %d <", paletteEntries-1); // -1, because PDF wants the highest index, not the number of entries
 			for (int i = 0; i < paletteEntries; i++)
 			{
@@ -259,8 +237,7 @@ public:
 		}
 		AddOffsetToXref();
 		m_objectImageID = m_pdfObjectCount;
-		fprintf
-		(
+		fprintf (
 			m_outputFile,
 			LINEFEED "%d 0 obj" LINEFEED\
 			"<</ColorSpace %s" LINEFEED\
@@ -283,8 +260,7 @@ public:
 			)
 		);
 		fwrite(imageDataCompressed, (int)imageBytesCountCompressed, 1, m_outputFile);
-		fprintf
-		(
+		fprintf (
 			m_outputFile,
 			LINEFEED "endstream" LINEFEED\
 			"endobj"
@@ -302,8 +278,7 @@ public:
 		m_pageContent[0] = '\0';
 
 		AddOffsetToXref();
-		fprintf
-		(
+		fprintf (
 			m_outputFile,
 			LINEFEED "%d 0 obj" LINEFEED\
 			"<</Group <</CS /DeviceRGB" LINEFEED\
@@ -328,8 +303,7 @@ public:
 		int err = 0;
 	
 		AddOffsetToXref();
-		fprintf	
-		(
+		fprintf (
 			m_outputFile,
 			LINEFEED "%d 0 obj" LINEFEED\
 			"<</Length %d" LINEFEED\
@@ -354,8 +328,7 @@ public:
 		m_outputFile = fopen(fileName, "wb");
 		if (!m_outputFile)
 			err = 1;
-		if (!err)
-		{
+		if (!err) {
 			m_contentPagesCount = pages;
 			m_xref = new char[(m_contentPagesCount+15) * 50];
 			sprintf(m_xref, LINEFEED "xref" LINEFEED "0 %d" LINEFEED "0000000000 65535 f " LINEFEED, 7 + m_contentPagesCount*2);
@@ -370,8 +343,7 @@ public:
 			sprintf(dateStr, "%.4d%.2d%.2d%.2d%.2d%.2d", timeinfo->tm_year+1900, timeinfo->tm_mon+1, timeinfo->tm_mday, timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
 
  			AddOffsetToXref();
-			fprintf
-			(
+			fprintf (
 				m_outputFile,
 				LINEFEED "%d 0 obj" LINEFEED\
 				"<</Creator (PosteRazor)" LINEFEED\
@@ -384,8 +356,7 @@ public:
 			);
 
 			AddOffsetToXref();
-			fprintf
-			(
+			fprintf (
 				m_outputFile,
 				LINEFEED "%d 0 obj" LINEFEED\
 				"<</Pages %d 0 R" LINEFEED\
@@ -399,14 +370,12 @@ public:
 			m_objectPagesID = m_pdfObjectCount;
 			char *kidsStr = new char[pages * 20];
 			kidsStr[0] = '\0';
-			for (int i = 0; i < pages; i++)
-			{
+			for (int i = 0; i < pages; i++) {
 				char kidStr[10];
 				sprintf(kidStr, "%s%d 0 R", i != 0?" ":"", i*2 + (m_pdfObjectCount) + 4);
 				strcat(kidsStr, kidStr);
 			}
-			fprintf
-			(
+			fprintf (
 				m_outputFile,
 				LINEFEED "%d 0 obj" LINEFEED\
 				"<</MediaBox [0 0 %f %f]" LINEFEED\
@@ -427,11 +396,10 @@ public:
 	{
 		int err = 0;
 
-		unsigned int startxref = ftell(m_outputFile);
+		const unsigned int startxref = ftell(m_outputFile);
 		fprintf(m_outputFile, m_xref);
 
-		fprintf
-		(
+		fprintf (
 			m_outputFile,
 			"trailer" LINEFEED\
 			"<</Info 1 0 R" LINEFEED\
@@ -460,8 +428,7 @@ public:
 	{
 		char imageCode[2048]="";
 
-		sprintf
-		(
+		sprintf (
 			imageCode,
 			"0 w" LINEFEED\
 			"q 0 0 %.4f %.4f re W* n" LINEFEED\

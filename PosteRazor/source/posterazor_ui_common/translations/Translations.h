@@ -29,9 +29,6 @@
 
 class Translations: public TranslationInterface
 {
-private:
-	static Translations *m_instance;
-
 protected:
 	Translations() {}
 

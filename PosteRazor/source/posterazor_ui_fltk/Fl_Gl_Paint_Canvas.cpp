@@ -44,8 +44,7 @@ Fl_Gl_Paint_Canvas::~Fl_Gl_Paint_Canvas()
 
 void Fl_Gl_Paint_Canvas::draw()
 {
-	if (!valid())
-	{
+	if (!valid()) {
 		valid(1);
 		glLoadIdentity();
 		glViewport(0, 0, w(), h());
@@ -64,8 +63,7 @@ void Fl_Gl_Paint_Canvas::draw()
 
 int Fl_Gl_Paint_Canvas::handle(int event)
 {
-	if (m_parentWidget)
-	{
+	if (m_parentWidget) {
 		switch (event)
 		{
 		case FL_DND_ENTER:
@@ -78,23 +76,17 @@ int Fl_Gl_Paint_Canvas::handle(int event)
 		default:
 			return Fl_Gl_Window::handle(event);
 		};
-	}
-	else
+	} else
 		return Fl_Gl_Window::handle(event);
 }
 
 void Fl_Gl_Paint_Canvas::drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
-	if (height > 0 && height < 1)
-	{
+	if (height > 0 && height < 1) {
 		drawLine(x, y, x+width, y, red, green, blue, alpha);
-	}
-	else if (width > 0 && width < 1)
-	{
+	} else if (width > 0 && width < 1) {
 		drawLine(x, y, x, y+height, red, green, blue, alpha);
-	}
-	else
-	{
+	} else {
 		glColor4d(red/255.0, green/255.0, blue/255.0, alpha/255.0);
 		glRectd(x + BORDER, y + BORDER, width + x + BORDER, height + y + BORDER);
 	}
@@ -102,16 +94,11 @@ void Fl_Gl_Paint_Canvas::drawFilledRect(double x, double y, double width, double
 
 void Fl_Gl_Paint_Canvas::drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
-	if (height > 0 && height < 1)
-	{
+	if (height > 0 && height < 1) {
 		drawLine(x, y, x+width, y, red, green, blue, alpha);
-	}
-	else if (width > 0 && width < 1)
-	{
+	} else if (width > 0 && width < 1) {
 		drawLine(x, y, x, y+height, red, green, blue, alpha);
-	}
-	else
-	{
+	} else {
 		glColor4d(red/255.0, green/255.0, blue/255.0, alpha/255.0);
 		glBegin(GL_LINE_LOOP);
 		double x1 = x + BORDER;
@@ -149,23 +136,19 @@ void Fl_Gl_Paint_Canvas::setImage(const unsigned char *rgbData, double width, do
 	m_imageWidth = (unsigned int)width;
 	m_texturesNames = new GLuint[getTexturesCount()];
 	glGenTextures(getTexturesCount(), m_texturesNames);
-	unsigned long bytesPerImageRowCount = m_imageWidth * 3;
-	unsigned long bytesPerTextureRowCount = m_texturesSize * 3;
-	unsigned long textureRgbDataBytesCount = m_texturesSize * bytesPerTextureRowCount;
+	const unsigned long bytesPerImageRowCount = m_imageWidth * 3;
+	const unsigned long bytesPerTextureRowCount = m_texturesSize * 3;
+	const unsigned long textureRgbDataBytesCount = m_texturesSize * bytesPerTextureRowCount;
 	unsigned char *textureRgbData = new unsigned char[textureRgbDataBytesCount];
-	for (unsigned int texturesRow = 0; texturesRow < getTexturesRowsCount(); texturesRow++)
-	{
-		for (unsigned int texturesColumn = 0; texturesColumn < getTexturesColumnsCount(); texturesColumn++)
-		{
-			unsigned int currentTexture = texturesRow * getTexturesColumnsCount() + texturesColumn;
-			unsigned int currentTexturePixelsColumns = getTexturesColumnPixelColumns(texturesColumn);
-			unsigned int currentTexturePixelsRows = getTexturesRowPixelRows(texturesRow);
+	for (unsigned int texturesRow = 0; texturesRow < getTexturesRowsCount(); texturesRow++) {
+		for (unsigned int texturesColumn = 0; texturesColumn < getTexturesColumnsCount(); texturesColumn++) {
+			const unsigned int currentTexture = texturesRow * getTexturesColumnsCount() + texturesColumn;
+			const unsigned int currentTexturePixelsColumns = getTexturesColumnPixelColumns(texturesColumn);
+			const unsigned int currentTexturePixelsRows = getTexturesRowPixelRows(texturesRow);
 			memset(textureRgbData, 255, textureRgbDataBytesCount);
 
-			for (unsigned int texturePixelRow = 0; texturePixelRow < currentTexturePixelsRows; texturePixelRow++)
-			{
-				memcpy
-				(
+			for (unsigned int texturePixelRow = 0; texturePixelRow < currentTexturePixelsRows; texturePixelRow++) {
+				memcpy(
 					textureRgbData + texturePixelRow*bytesPerTextureRowCount,
 					rgbData + ((texturesRow*m_texturesSize+texturePixelRow)*bytesPerImageRowCount) + (texturesColumn*bytesPerTextureRowCount),
 					currentTexturePixelsColumns * 3
@@ -192,8 +175,7 @@ void Fl_Gl_Paint_Canvas::setImage(const unsigned char *rgbData, double width, do
 
 void Fl_Gl_Paint_Canvas::disposeImage(void)
 {
-	if (m_texturesNames)
-	{
+	if (m_texturesNames) {
 		glDeleteTextures(getTexturesCount(), m_texturesNames);
 		delete[] m_texturesNames;
 		m_texturesNames = NULL;
@@ -204,30 +186,27 @@ void Fl_Gl_Paint_Canvas::disposeImage(void)
 
 void Fl_Gl_Paint_Canvas::drawImage(double x, double y, double width, double height)
 {
-	if (m_texturesNames)
-	{
+	if (m_texturesNames) {
 		glColor4d(1, 1, 1, 1);
 		glEnable(GL_TEXTURE_2D);
-		unsigned int texturesRowsCount = getTexturesRowsCount();
-		unsigned int texturesColumnsCount = getTexturesColumnsCount();
-		double widthResizeFactor = width/(double)m_imageWidth;
-		double heightResizeFactor = height/(double)m_imageHeight;
-		double defaultTextureWidth = m_texturesSize * widthResizeFactor;
-		double defaultTextureHeight = m_texturesSize * heightResizeFactor;
-		GLint textureMagFilter = widthResizeFactor >= 2.75?GL_NEAREST:GL_LINEAR;
-		for (unsigned int texturesRow = 0; texturesRow < texturesRowsCount; texturesRow++)
-		{
-			double currentTextureYOffset = texturesRow * defaultTextureHeight;
-			for (unsigned int texturesColumn = 0; texturesColumn < texturesColumnsCount; texturesColumn++)
-			{
-				unsigned int currentTexture = texturesRow * texturesColumnsCount + texturesColumn;
-				unsigned int currentTexturePixelsColumns = getTexturesColumnPixelColumns(texturesColumn);
-				double currentTextureWidth = (double)currentTexturePixelsColumns * widthResizeFactor;
-				unsigned int currentTexturePixelsRows = getTexturesRowPixelRows(texturesRow);
-				double currentTextureHeight = (double)currentTexturePixelsRows * heightResizeFactor;
-				double currentTextureXOffset = texturesColumn * defaultTextureWidth;
-				double currentTexCoordMaxX = (GLdouble)currentTexturePixelsColumns / m_texturesSize;
-				double currentTexCoordMaxY = (GLdouble)currentTexturePixelsRows / m_texturesSize;
+		const unsigned int texturesRowsCount = getTexturesRowsCount();
+		const unsigned int texturesColumnsCount = getTexturesColumnsCount();
+		const double widthResizeFactor = width/(double)m_imageWidth;
+		const double heightResizeFactor = height/(double)m_imageHeight;
+		const double defaultTextureWidth = m_texturesSize * widthResizeFactor;
+		const double defaultTextureHeight = m_texturesSize * heightResizeFactor;
+		const GLint textureMagFilter = widthResizeFactor >= 2.75?GL_NEAREST:GL_LINEAR;
+		for (unsigned int texturesRow = 0; texturesRow < texturesRowsCount; texturesRow++) {
+			const double currentTextureYOffset = texturesRow * defaultTextureHeight;
+			for (unsigned int texturesColumn = 0; texturesColumn < texturesColumnsCount; texturesColumn++) {
+				const unsigned int currentTexture = texturesRow * texturesColumnsCount + texturesColumn;
+				const unsigned int currentTexturePixelsColumns = getTexturesColumnPixelColumns(texturesColumn);
+				const double currentTextureWidth = (double)currentTexturePixelsColumns * widthResizeFactor;
+				const unsigned int currentTexturePixelsRows = getTexturesRowPixelRows(texturesRow);
+				const double currentTextureHeight = (double)currentTexturePixelsRows * heightResizeFactor;
+				const double currentTextureXOffset = texturesColumn * defaultTextureWidth;
+				const double currentTexCoordMaxX = (GLdouble)currentTexturePixelsColumns / m_texturesSize;
+				const double currentTexCoordMaxY = (GLdouble)currentTexturePixelsRows / m_texturesSize;
 
 				glBindTexture(GL_TEXTURE_2D, m_texturesNames[currentTexture]);
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, textureMagFilter);
