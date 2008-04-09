@@ -31,67 +31,67 @@
 class TranslationBrazilianPortuguese: public TranslationInterface
 {
 public:
-	const char* languageName(void)                    {return "Português do Brasil";}
+	const char* languageName(void) const                    {return "Português do Brasil";}
 
-	const char* absoluteSize(void)                    {return "Tamanho total:";}
-	const char* allImageFormats(void)                 {return "Todos os formatos de imagens";}
-	const char* back(void)                            {return "Voltar";}
-	const char* borders(void)                         {return "Margens";}
-	const char* bottom(void)                          {return "Inferior";}
-	const char* bottomLeft(void)                      {return "Inferior esquerdo";}
-	const char* bottomRight(void)                     {return "Inferior direito";}
-	const char* cancel(void)                          {return "Cancelar";}
-	const char* colorType(void)                       {return "Tipo de cor:";}
-	const char* custom(void)                          {return "Personalizado";}
-	const char* fileCouldNotBeLoaded(void)            {return "O arquivo \"%s\" não pôde ser carregado.";}
-	const char* fileCouldNotBeSaved(void)             {return "O Arquivo \"%s\" não pôde ser salvo.";}
-	const char* format(void)                          {return "Formato:";}
-	const char* grayscale(void)                       {return "Escala de cinza";}
-	const char* height(void)                          {return "Altura:";}
-	const char* imageAlignment(void)                  {return "Alinhamento da imagem";}
-	const char* imageInformations(void)               {return "Informações da imagem";}
-	const char* imageSize(void)                       {return "Tamanho da imagem";}
-	const char* inputImage(void)                      {return "Imagem de entrada";}
-	const char* landscape(void)                       {return "Paisagem";}
-	const char* language(void)                        {return "Idioma";}
-	const char* languageExplanation(void)             {return "Escolha seu idioma";}
-	const char* launchPDFApplication(void)            {return "Execute o leitor PDF após salvar o poster";}
-	const char* left(void)                            {return "Esquerda";}
-	const char* loadAnInputImage(void)                {return stepTitle01();}
-	const char* monochrome(void)                      {return "Monocromático";}
-	const char* next(void)                            {return "Próximo";}
-	const char* orientation(void)                     {return "Orientação:";}
-	const char* overlappingPosition(void)             {return "Posição da Superposição";}
-	const char* overlappingSize(void)                 {return "Tamanho da Superposição";}
-	const char* overwriteFile(void)                   {return "O arquivo '%s' já existe.\nQuer sobrescrevê-lo?";}
-	const char* pages(void)                           {return "Páginas";}
-	const char* paperFormat(void)                     {return "Formato do papel";}
-	const char* palette(void)                         {return "Paleta";}
-	const char* portrait(void)                        {return "Retrato";}
-	const char* posteRazorHelp(void)                  {return "Ajuda do PosteRazor";}
-	const char* posteRazorSettings(void)              {return "Configurações do PosteRazor";}
-	const char* posteRazorWebSiteURL(void)            {return BRAZILIANPORTUGUESE_POSTERAZORWEBSITEURL;}
-	const char* posteRazorWebSite(void)               {return "Homepage do PosteRazor";}
-	const char* previewWithOpenGL(void)               {return "Previsualizar com OpenGL";}
-	const char* previewWithOpenGLExplanation(void)    {return "OpenGL possibilita uma previsualização fácil em sistemas modernos. Em sistemas mais antigos a previsualização fica mais lenta.";}
-	const char* resolution(void)                      {return "Resolução:";}
-	const char* right(void)                           {return "Direita";}
-	const char* saveThePoster(void)                   {return "Salvar o poster";}
-	const char* saveThePosterAs(void)                 {return "Salvar o poster como";}
-	const char* settings(void)                        {return "Configurações...";}
-	const char* Size(void)                            {return "Tamanho:";}
-	const char* sizeInPages(void)                     {return "Tamanho em páginas:";}
-	const char* sizeInPercent(void)                   {return "Tamanho em percentual:";}
-	const char* sizeInPixels(void)                    {return "Tamanho (em pixels):";}
-	const char* sizeInUnitOfLength(void)              {return "Tamanho (em %s):";}
-	const char* standard(void)                        {return "Padrão";}
-	const char* stepXOfY(void)                        {return "Passo %d de %d";}
-	const char* top(void)                             {return "Superior";}
-	const char* topLeft(void)                         {return "Superior esquerdo";}
-	const char* topRight(void)                        {return "Superior direito";}
-	const char* unitOfLength(void)                    {return "Unidade de Comprimento";}
-	const char* unitOfLengthExplanation(void)         {return "Escolha a unidade com que deseja trabalhar";}
-	const char* width(void)                           {return "Largura:";}
+	const char* absoluteSize(void) const                    {return "Tamanho total:";}
+	const char* allImageFormats(void) const                 {return "Todos os formatos de imagens";}
+	const char* back(void) const                            {return "Voltar";}
+	const char* borders(void) const                         {return "Margens";}
+	const char* bottom(void) const                          {return "Inferior";}
+	const char* bottomLeft(void) const                      {return "Inferior esquerdo";}
+	const char* bottomRight(void) const                     {return "Inferior direito";}
+	const char* cancel(void) const                          {return "Cancelar";}
+	const char* colorType(void) const                       {return "Tipo de cor:";}
+	const char* custom(void) const                          {return "Personalizado";}
+	const char* fileCouldNotBeLoaded(void) const            {return "O arquivo \"%s\" não pôde ser carregado.";}
+	const char* fileCouldNotBeSaved(void) const             {return "O Arquivo \"%s\" não pôde ser salvo.";}
+	const char* format(void) const                          {return "Formato:";}
+	const char* grayscale(void) const                       {return "Escala de cinza";}
+	const char* height(void) const                          {return "Altura:";}
+	const char* imageAlignment(void) const                  {return "Alinhamento da imagem";}
+	const char* imageInformations(void) const               {return "Informações da imagem";}
+	const char* imageSize(void) const                       {return "Tamanho da imagem";}
+	const char* inputImage(void) const                      {return "Imagem de entrada";}
+	const char* landscape(void) const                       {return "Paisagem";}
+	const char* language(void) const                        {return "Idioma";}
+	const char* languageExplanation(void) const             {return "Escolha seu idioma";}
+	const char* launchPDFApplication(void) const            {return "Execute o leitor PDF após salvar o poster";}
+	const char* left(void) const                            {return "Esquerda";}
+	const char* loadAnInputImage(void) const                {return stepTitle01();}
+	const char* monochrome(void) const                      {return "Monocromático";}
+	const char* next(void) const                            {return "Próximo";}
+	const char* orientation(void) const                     {return "Orientação:";}
+	const char* overlappingPosition(void) const             {return "Posição da Superposição";}
+	const char* overlappingSize(void) const                 {return "Tamanho da Superposição";}
+	const char* overwriteFile(void) const                   {return "O arquivo '%s' já existe.\nQuer sobrescrevê-lo?";}
+	const char* pages(void) const                           {return "Páginas";}
+	const char* paperFormat(void) const                     {return "Formato do papel";}
+	const char* palette(void) const                         {return "Paleta";}
+	const char* portrait(void) const                        {return "Retrato";}
+	const char* posteRazorHelp(void) const                  {return "Ajuda do PosteRazor";}
+	const char* posteRazorSettings(void) const              {return "Configurações do PosteRazor";}
+	const char* posteRazorWebSiteURL(void) const            {return BRAZILIANPORTUGUESE_POSTERAZORWEBSITEURL;}
+	const char* posteRazorWebSite(void) const               {return "Homepage do PosteRazor";}
+	const char* previewWithOpenGL(void) const               {return "Previsualizar com OpenGL";}
+	const char* previewWithOpenGLExplanation(void) const    {return "OpenGL possibilita uma previsualização fácil em sistemas modernos. Em sistemas mais antigos a previsualização fica mais lenta.";}
+	const char* resolution(void) const                      {return "Resolução:";}
+	const char* right(void) const                           {return "Direita";}
+	const char* saveThePoster(void) const                   {return "Salvar o poster";}
+	const char* saveThePosterAs(void) const                 {return "Salvar o poster como";}
+	const char* settings(void) const                        {return "Configurações...";}
+	const char* Size(void) const                            {return "Tamanho:";}
+	const char* sizeInPages(void) const                     {return "Tamanho em páginas:";}
+	const char* sizeInPercent(void) const                   {return "Tamanho em percentual:";}
+	const char* sizeInPixels(void) const                    {return "Tamanho (em pixels):";}
+	const char* sizeInUnitOfLength(void) const              {return "Tamanho (em %s):";}
+	const char* standard(void) const                        {return "Padrão";}
+	const char* stepXOfY(void) const                        {return "Passo %d de %d";}
+	const char* top(void) const                             {return "Superior";}
+	const char* topLeft(void) const                         {return "Superior esquerdo";}
+	const char* topRight(void) const                        {return "Superior direito";}
+	const char* unitOfLength(void) const                    {return "Unidade de Comprimento";}
+	const char* unitOfLengthExplanation(void) const         {return "Escolha a unidade com que deseja trabalhar";}
+	const char* width(void) const                           {return "Largura:";}
 
 
 #define BRAZILIANPORTUGUESE_POSTERAZORHELSTEP                     "Passo"
@@ -109,12 +109,12 @@ public:
 #define BRAZILIANPORTUGUESE_POSTERAZORHELPCODEFROMTHIRDPARTIES    "Código de terceiros"
 #define BRAZILIANPORTUGUESE_POSTERAZORHELPLICENSE                 "Licença"
 
-	const char* stepTitle01(void)                     {return BRAZILIANPORTUGUESE_POSTERAZORHELPSTEPTITLE01;};
-	const char* stepTitle02(void)                     {return BRAZILIANPORTUGUESE_POSTERAZORHELPSTEPTITLE02;};
-	const char* stepTitle03(void)                     {return BRAZILIANPORTUGUESE_POSTERAZORHELPSTEPTITLE03;};
-	const char* stepTitle04(void)                     {return BRAZILIANPORTUGUESE_POSTERAZORHELPSTEPTITLE04;};
-	const char* stepTitle05(void)                     {return BRAZILIANPORTUGUESE_POSTERAZORHELPSTEPTITLE05;};
-	const char* helpHtml(void)
+	const char* stepTitle01(void) const                     {return BRAZILIANPORTUGUESE_POSTERAZORHELPSTEPTITLE01;}
+	const char* stepTitle02(void) const                     {return BRAZILIANPORTUGUESE_POSTERAZORHELPSTEPTITLE02;}
+	const char* stepTitle03(void) const                     {return BRAZILIANPORTUGUESE_POSTERAZORHELPSTEPTITLE03;}
+	const char* stepTitle04(void) const                     {return BRAZILIANPORTUGUESE_POSTERAZORHELPSTEPTITLE04;}
+	const char* stepTitle05(void) const                     {return BRAZILIANPORTUGUESE_POSTERAZORHELPSTEPTITLE05;}
+	const char* helpHtml(void) const
 	{
 		return	"<HTML>" POSTERAZORHELPENDLINE \
 				"<BODY>" POSTERAZORHELPENDLINE \
@@ -219,47 +219,47 @@ public:
 			"</HTML>";
 	}
 
-	const int flagImageWidth(void)                    {return 20;}
-	const int flagImageHeight(void)                   {return 11;}
-	const unsigned char *flagImageRGBData(void)
+	const int flagImageWidth(void) const                    {return 20;}
+	const int flagImageHeight(void) const                   {return 11;}
+	const unsigned char *flagImageRGBData(void) const
 	{
 		static const unsigned char flagRGBData[] =
 		{
 			140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,
 			140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,
 			140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,
-			140,140,140,140,140,0,146,63,0,146,63,0,146,63,0,146,63,0,146,63,0,146,63,0,146,
-			63,0,146,63,62,158,47,62,158,47,0,146,63,0,146,63,0,146,63,0,146,63,0,146,63,0,
-			146,63,0,146,63,0,146,63,140,140,140,140,140,140,0,146,63,0,146,63,0,146,63,0,
-			146,63,0,146,63,0,146,63,62,158,47,187,183,16,187,144,33,187,144,33,187,183,16,
-			62,158,47,0,146,63,0,146,63,0,146,63,0,146,63,0,146,63,0,146,63,140,140,140,
-			140,140,140,0,146,63,0,146,63,0,146,63,0,146,63,62,158,47,187,183,16,214,168,18,
-			66,43,97,40,22,111,40,22,111,66,43,97,214,168,18,187,183,16,62,158,47,0,146,63,
-			0,146,63,0,146,63,0,146,63,140,140,140,140,140,140,0,146,63,0,146,63,62,158,
-			47,187,183,16,248,195,0,248,195,0,151,125,102,112,100,160,128,117,170,60,41,
-			108,40,22,111,126,93,65,248,195,0,248,195,0,187,183,16,62,158,47,0,146,63,0,146,
-			63,140,140,140,140,140,140,0,146,63,124,171,31,248,195,0,248,195,0,248,195,0,
-			248,195,0,60,41,108,40,22,111,43,25,113,112,100,160,112,100,160,60,41,108,248,
-			195,0,248,195,0,248,195,0,248,195,0,124,171,31,0,146,63,140,140,140,140,140,140,
-			0,146,63,0,146,63,62,158,47,187,183,16,248,195,0,248,195,0,126,93,65,40,22,
-			111,40,22,111,40,22,111,112,100,160,151,125,102,248,195,0,248,195,0,187,183,16,
-			62,158,47,0,146,63,0,146,63,140,140,140,140,140,140,0,146,63,0,146,63,0,146,63,
-			0,146,63,62,158,47,187,183,16,214,168,18,66,43,97,40,22,111,40,22,111,66,43,
-			97,214,168,18,187,183,16,62,158,47,0,146,63,0,146,63,0,146,63,0,146,63,140,140,
-			140,140,140,140,0,146,63,0,146,63,0,146,63,0,146,63,0,146,63,0,146,63,62,158,47,
-			187,183,16,187,144,33,187,144,33,187,183,16,62,158,47,0,146,63,0,146,63,0,146,
-			63,0,146,63,0,146,63,0,146,63,140,140,140,140,140,140,0,146,63,0,146,63,0,146,
-			63,0,146,63,0,146,63,0,146,63,0,146,63,0,146,63,62,158,47,62,158,47,0,146,63,0,
-			146,63,0,146,63,0,146,63,0,146,63,0,146,63,0,146,63,0,146,63,140,140,140,140,
+			140,140,140,140,140,0,175,75,0,175,75,0,175,75,0,175,75,0,175,75,0,175,75,0,175,
+			75,0,175,75,62,192,56,62,192,56,0,175,75,0,175,75,0,175,75,0,175,75,0,175,75,0,
+			175,75,0,175,75,0,175,75,140,140,140,140,140,140,0,175,75,0,175,75,0,175,75,0,
+			175,75,0,175,75,0,175,75,62,192,56,187,226,19,248,243,0,248,243,0,187,226,19,62,
+			192,56,0,175,75,0,175,75,0,175,75,0,175,75,0,175,75,0,175,75,140,140,140,140,
+			140,140,0,175,75,0,175,75,0,175,75,0,175,75,62,192,56,187,226,19,236,233,8,139,
+			150,75,67,88,126,67,88,126,139,150,75,236,233,8,187,226,19,62,192,56,0,175,75,0,
+			175,75,0,175,75,0,175,75,140,140,140,140,140,140,0,175,75,0,175,75,62,192,56,
+			187,226,19,248,243,0,248,243,0,160,168,111,121,137,193,121,137,193,53,78,142,30,
+			57,151,139,150,75,248,243,0,248,243,0,187,226,19,62,192,56,0,175,75,0,175,75,
+			140,140,140,140,140,140,0,175,75,124,209,37,248,243,0,248,243,0,248,243,0,248,
+			243,0,53,78,142,30,57,151,33,59,152,113,130,189,94,113,181,53,78,142,248,243,0,
+			248,243,0,248,243,0,248,243,0,124,209,37,0,175,75,140,140,140,140,140,140,0,175,
+			75,0,175,75,62,192,56,187,226,19,248,243,0,248,243,0,139,150,75,30,57,151,30,
+			57,151,30,57,151,94,113,181,160,168,111,248,243,0,248,243,0,187,226,19,62,192,
+			56,0,175,75,0,175,75,140,140,140,140,140,140,0,175,75,0,175,75,0,175,75,0,175,
+			75,62,192,56,187,226,19,236,233,8,139,150,75,67,88,126,67,88,126,139,150,75,
+			236,233,8,187,226,19,62,192,56,0,175,75,0,175,75,0,175,75,0,175,75,140,140,140,
+			140,140,140,0,175,75,0,175,75,0,175,75,0,175,75,0,175,75,0,175,75,62,192,56,187,
+			226,19,248,243,0,248,243,0,187,226,19,62,192,56,0,175,75,0,175,75,0,175,75,0,
+			175,75,0,175,75,0,175,75,140,140,140,140,140,140,0,175,75,0,175,75,0,175,75,0,
+			175,75,0,175,75,0,175,75,0,175,75,0,175,75,62,192,56,62,192,56,0,175,75,0,175,
+			75,0,175,75,0,175,75,0,175,75,0,175,75,0,175,75,0,175,75,140,140,140,140,140,
 			140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,
 			140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,
-			140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140
+			140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140
 		};
 
 		return flagRGBData;
 	}
 };
 
-static TranslationBrazilianPortuguese brazilianPortuguese;
+static const TranslationBrazilianPortuguese brazilianPortuguese;
 
 #endif
