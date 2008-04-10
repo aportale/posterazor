@@ -550,7 +550,7 @@ bool PosteRazorDialog::loadInputImage(const QString &fileName)
 int main (int argc, char **argv)
 {
 	QApplication a(argc, argv);
-	QCoreApplication::setApplicationName("PosteRazor 1.4");
+	QCoreApplication::setApplicationName("PosteRazor 1.5");
 	QCoreApplication::setOrganizationName("CasaPortale");
 	QCoreApplication::setOrganizationDomain("de.casaportale");
 

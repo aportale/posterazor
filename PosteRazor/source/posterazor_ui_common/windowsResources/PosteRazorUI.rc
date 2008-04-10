@@ -36,8 +36,8 @@ POSTERAZOR_ICON         ICON                    "PosteRazor.ico"
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,4,0,0
- PRODUCTVERSION 1,4,0,0
+ FILEVERSION 1,5,0,0
+ PRODUCTVERSION 1,5,0,0
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -52,15 +52,15 @@ BEGIN
     BEGIN
         BLOCK "00000000"
         BEGIN
-            VALUE "Comments", "PosteRazor 1.4, Copyright 2005-2007 Alessandro Portale, GNU General Public License"
+            VALUE "Comments", "PosteRazor 1.5, Copyright 2005-2008 Alessandro Portale, GNU General Public License"
             VALUE "CompanyName", "Alessandro Portale www.casaportale.de"
             VALUE "FileDescription", "PosteRazor"
-            VALUE "FileVersion", "1.4"
-            VALUE "LegalCopyright", "Copyright (C) 2005-2007 Alessandro Portale"
+            VALUE "FileVersion", "1.5"
+            VALUE "LegalCopyright", "Copyright (C) 2005-2008 Alessandro Portale"
             VALUE "LegalTrademarks", "Alessandro Portale"
             VALUE "OriginalFilename", "PosteRazor.exe"
             VALUE "ProductName", "PosteRazor"
-            VALUE "ProductVersion", "1.4"
+            VALUE "ProductVersion", "1.5"
         END
     END
     BLOCK "VarFileInfo"

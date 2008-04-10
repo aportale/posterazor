@@ -1,6 +1,6 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005-2007 by Alessandro Portale
+	Copyright (C) 2005-2008 by Alessandro Portale
 	http://posterazor.sourceforge.net/
 	
 	Italian translation by Stefano Nosei - kluster[at]imente[dot]org
@@ -202,7 +202,7 @@ public:
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORLICENSE, ITALIAN_POSTERAZORHELPLICENSE) \
 					"PosteRazor - Crea il tuo poster!<br>" POSTERAZORHELPENDLINE \
 					"<a href=\""ITALIAN_POSTERAZORWEBSITEURL"\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
-					"Copyright (C) 2005-2007 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+					"Copyright (C) 2005-2008 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
 					POSTERAZORTRANSLATIONCREDITSSTART \
 					POSTERAZORTRANSLATIONCREDITSFRENCH \

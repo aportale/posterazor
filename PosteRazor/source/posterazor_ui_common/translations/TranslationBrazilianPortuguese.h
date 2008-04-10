@@ -1,6 +1,6 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005-2007 by Alessandro Portale
+	Copyright (C) 2005-2008 by Alessandro Portale
 	http://posterazor.sourceforge.net/
 
 	This file is part of PosteRazor
@@ -200,7 +200,7 @@ public:
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORLICENSE, BRAZILIANPORTUGUESE_POSTERAZORHELPLICENSE) \
 					"PosteRazor - Faça seu próprio poster!<br>" POSTERAZORHELPENDLINE \
 					"<a href=\""BRAZILIANPORTUGUESE_POSTERAZORWEBSITEURL"\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
-					"Copyright (C) 2005-2007 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+					"Copyright (C) 2005-2008 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
 					POSTERAZORTRANSLATIONCREDITSSTART \
 					POSTERAZORTRANSLATIONCREDITSBRAZILIANPORTUGUESE \

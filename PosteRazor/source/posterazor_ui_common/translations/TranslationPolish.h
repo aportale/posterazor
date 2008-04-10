@@ -1,6 +1,6 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005-2007 by Alessandro Portale
+	Copyright (C) 2005-2008 by Alessandro Portale
 	http://posterazor.sourceforge.net/
 
 	Polish translation by Grzegorz Wacikowski
@@ -251,7 +251,7 @@ public:
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORLICENSE, POLISH_POSTERAZORHELPLICENSE) \
 					"PosteRazor - Stw"CHAR_HTML_oacute"rz sw"CHAR_HTML_oacute"j w"CHAR_HTML_laccent"asny plakat!<br>" POSTERAZORHELPENDLINE \
 					"<a href=\""POLISH_POSTERAZORWEBSITEURL"\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
-					"Copyright (C) 2005-2007 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+					"Copyright (C) 2005-2008 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
 
 					POSTERAZORTRANSLATIONCREDITSSTART \
 					POSTERAZORTRANSLATIONCREDITSPOLISH \

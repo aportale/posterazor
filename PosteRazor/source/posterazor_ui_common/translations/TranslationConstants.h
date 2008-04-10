@@ -1,6 +1,6 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005-2007 by Alessandro Portale
+	Copyright (C) 2005-2008 by Alessandro Portale
 	http://posterazor.sourceforge.net/
 
 	This file is part of PosteRazor
@@ -38,7 +38,7 @@
 #define POSTERAZORHELPANCHORWHYPDFOUTPUT "whypdfoutput"
 #define POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES "codefromthirdparties"
 #define POSTERAZORHELPANCHORLICENSE "license"
-#define POSTERAZORVERSION "1.4"
+#define POSTERAZORVERSION "1.5"
 #define POSTERAZORWEBSITEDOMAIN "http://posterazor.sourceforge.net/"
 
 #define POSTERAZORHELPLINKTOTOP "&nbsp;&nbsp;&nbsp;<A href=\"#" POSTERAZORHELPANCHORTOP "\">^</A>"

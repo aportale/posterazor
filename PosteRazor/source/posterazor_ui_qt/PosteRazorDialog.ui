@@ -16,7 +16,7 @@
    <bool>true</bool>
   </property>
   <property name="windowTitle" >
-   <string>PosteRazor 1.4</string>
+   <string>PosteRazor 1.5</string>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
