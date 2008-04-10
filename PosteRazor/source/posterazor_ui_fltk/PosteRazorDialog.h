@@ -23,14 +23,13 @@
 #ifndef PosteRazorDialog_h
 #define PosteRazorDialog_h
 
-#include <FL/Fl_Image.H>
-#include <FL/Fl_Menu_Item.H>
-#include <FL/Fl_Native_File_Chooser.H>
-#include "PosteRazor.h"
 #include "PosteRazorDialogUI.h"
 #include "PosteRazorSettingsDialog.h"
 #include "PosteRazorWizardDialogController.h"
-#include "Translations.h"
+
+class PosteRazor;
+struct Fl_Menu_Item;
+class PosteRazorHelpDialogUI;
 
 class PosteRazorDragDropWidget : public Fl_Box
 {
@@ -47,7 +46,7 @@ private:
 	Fl_Menu_Item                      *m_paperFormatMenuItems;
 	posteRazorSettings                m_settings;
 	PosteRazorSettingsDialog          *m_settingsDialog;
-	class PosteRazorHelpDialogUI      *m_helpDialog;
+	PosteRazorHelpDialogUI            *m_helpDialog;
 	char                              m_loadImageChooserLastPath[1024];
 	char                              m_savePosterChooserLastPath[1024];
 	bool                              m_UILanguageIsUndefined;

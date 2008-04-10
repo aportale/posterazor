@@ -27,6 +27,7 @@
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
 #include <FL/x.H>
+#include <FL/Fl_Native_File_Chooser.H>
 #include "TranslationConstants.h"
 
 

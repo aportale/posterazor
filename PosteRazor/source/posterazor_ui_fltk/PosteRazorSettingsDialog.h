@@ -23,7 +23,7 @@
 #ifndef PosteRazorSettingsDialog_h
 #define PosteRazorSettingsDialog_h
 
-#include "PosteRazor.h"
+#include "UnitsOfLength.h"
 #include "PosteRazorDialogUI.h"
 #include "Fl_Paint_Canvas_Group.h"
 #include "Translations.h"

@@ -21,8 +21,7 @@
 */
 
 #include "Fl_Image_Text_Button.h"
-#include <FL/fl_draw.H>
-#include <FL/Fl.H>
+#include <FL/Fl_Image.H>
 
 Fl_Image_Text_Button::Fl_Image_Text_Button(int x, int y, int w, int h, const char* label)
 	: Fl_Button(x, y, w, h, label)
