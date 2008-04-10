@@ -1,6 +1,6 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005-2008 by Alessandro Portale
+	Copyright (C) 2005-2007 by Alessandro Portale
 	http://posterazor.sourceforge.net/
 
 	This file is part of PosteRazor
@@ -66,97 +66,19 @@ private:
 public:
 	TranslationSwitcher()
 	{
-		SelectLangue(eLanguageUndefined);
+		selectLangue(eLanguageUndefined);
 	}
 
-	void SelectLangue(eLanguages language) const
+	void selectLangue(eLanguages language) const
 	{
 		m_language = language;
-		m_selectedTranslation = GetTranslationOfLanguage(m_language);
+		m_selectedTranslation = &getTranslationOfLanguage(m_language);
 	}
 
-	eLanguages GetSelectedLanguage(void) const
+	eLanguages getSelectedLanguage(void) const
 	{
 		return m_language;
 	}
-
-	int GetLanguagesCount(void) const
-	{
-		return TranslationsMapItemsCount - 1;
-	}
-
-	eLanguages GetLanguageForIndex(int index) const
-	{
-		return TranslationsMap[index + 1].language;
-	}
-
-	const TranslationInterface* GetTranslationOfLanguage(eLanguages language) const
-	{
-		const TranslationInterface* foundTranslation = NULL;
-		for (int i = 0; i < TranslationsMapItemsCount; i++) {
-			if(TranslationsMap[i].language == language)	{
-				foundTranslation = &TranslationsMap[i].translation;
-				break;
-			}
-		}
-		if (!foundTranslation)
-			foundTranslation = &TranslationsMap[0].translation;
-		return foundTranslation;
-	}
-
-	eLanguages GetSystemLanguage(void) const
-	{
-		eLanguages systemLanguage = eLanguageUndefined;
-#if defined (WIN32)
-		const LANGID langID = GetSystemDefaultLangID();
-		const WORD primaryLangID = PRIMARYLANGID(langID);
-		const WORD subLangID = SUBLANGID(langID);
-		systemLanguage =
-			(primaryLangID == LANG_ENGLISH)?eLanguageEnglish:
-			(primaryLangID == LANG_GERMAN)?eLanguageGerman:
-			(primaryLangID == LANG_FRENCH)?eLanguageFrench:
-			(primaryLangID == LANG_POLISH)?eLanguagePolish:
-			(primaryLangID == LANG_ITALIAN)?eLanguageItalian:
-			(primaryLangID == LANG_DUTCH)?eLanguageDutch:
-			(primaryLangID == LANG_SPANISH)?eLanguageSpanish:
-			(primaryLangID == LANG_PORTUGUESE && subLangID == SUBLANG_PORTUGUESE_BRAZILIAN)?eLanguageBrazilianPortuguese:
-			eLanguageUndefined;
-#elif defined (__APPLE__)
-		CFBundleRef mainBundle = CFBundleGetMainBundle();
-		CFArrayRef locArray = CFBundleCopyBundleLocalizations(mainBundle);
-		CFArrayRef preferredLanguages = CFBundleCopyPreferredLocalizationsFromArray(locArray);
-		CFStringRef language = (CFStringRef)CFArrayGetValueAtIndex(preferredLanguages, 0);
-
-		CFStringRef languageEnglish = CFSTR("English");
-		CFStringRef languageGerman = CFSTR("German");
-		CFStringRef languageFrench = CFSTR("French");
-		CFStringRef languageItalian = CFSTR("Italian");
-		CFStringRef languageDutch = CFSTR("Dutch");
-		CFStringRef languageSpanish = CFSTR("Spanish");
-		CFStringRef languageBrazilianPortuguese = CFSTR("BrazilianPortuguese");
-		systemLanguage =
-			(CFStringCompare(language, languageEnglish, 0) == kCFCompareEqualTo)?eLanguageEnglish:
-			(CFStringCompare(language, languageGerman, 0) == kCFCompareEqualTo)?eLanguageGerman:
-			(CFStringCompare(language, languageFrench, 0) == kCFCompareEqualTo)?eLanguageFrench:
-			(CFStringCompare(language, languageItalian, 0) == kCFCompareEqualTo)?eLanguageItalian:
-			(CFStringCompare(language, languageDutch, 0) == kCFCompareEqualTo)?eLanguageDutch:
-			(CFStringCompare(language, languageSpanish, 0) == kCFCompareEqualTo)?eLanguageSpanish:
-			(CFStringCompare(language, languageBrazilianPortuguese, 0) == kCFCompareEqualTo)?eLanguageBrazilianPortuguese:
-			eLanguageUndefined;
-		CFRelease(languageEnglish);
-		CFRelease(languageGerman);
-		CFRelease(languageFrench);
-		CFRelease(languageItalian);
-		CFRelease(languageDutch);
-		CFRelease(languageSpanish);
-		CFRelease(languageBrazilianPortuguese);
-
-		CFRelease(preferredLanguages);
-		CFRelease(locArray);
-#endif
-		return systemLanguage;
-	}
-
 
 	const char* languageName(void) const                     {return m_selectedTranslation->languageName();}
 
@@ -232,8 +154,85 @@ public:
 	const unsigned char* flagImageRGBData(void) const        {return m_selectedTranslation->flagImageRGBData();}
 };
 
-const Translations* Translations::Instance(void)
+const Translations& Translations::instance(void)
 {
 	static const TranslationSwitcher switcher;
-	return &switcher;
+	return switcher;
+}
+
+Translations::eLanguages Translations::getSystemLanguage(void)
+{
+	eLanguages systemLanguage = eLanguageUndefined;
+#if defined (WIN32)
+	const LANGID langID = GetSystemDefaultLangID();
+	const WORD primaryLangID = PRIMARYLANGID(langID);
+	const WORD subLangID = SUBLANGID(langID);
+	systemLanguage =
+		(primaryLangID == LANG_ENGLISH)?eLanguageEnglish:
+	(primaryLangID == LANG_GERMAN)?eLanguageGerman:
+	(primaryLangID == LANG_FRENCH)?eLanguageFrench:
+	(primaryLangID == LANG_POLISH)?eLanguagePolish:
+	(primaryLangID == LANG_ITALIAN)?eLanguageItalian:
+	(primaryLangID == LANG_DUTCH)?eLanguageDutch:
+	(primaryLangID == LANG_SPANISH)?eLanguageSpanish:
+	(primaryLangID == LANG_PORTUGUESE && subLangID == SUBLANG_PORTUGUESE_BRAZILIAN)?eLanguageBrazilianPortuguese:
+	eLanguageUndefined;
+#elif defined (__APPLE__)
+	CFBundleRef mainBundle = CFBundleGetMainBundle();
+	CFArrayRef locArray = CFBundleCopyBundleLocalizations(mainBundle);
+	CFArrayRef preferredLanguages = CFBundleCopyPreferredLocalizationsFromArray(locArray);
+	CFStringRef language = (CFStringRef)CFArrayGetValueAtIndex(preferredLanguages, 0);
+
+	CFStringRef languageEnglish = CFSTR("English");
+	CFStringRef languageGerman = CFSTR("German");
+	CFStringRef languageFrench = CFSTR("French");
+	CFStringRef languageItalian = CFSTR("Italian");
+	CFStringRef languageDutch = CFSTR("Dutch");
+	CFStringRef languageSpanish = CFSTR("Spanish");
+	CFStringRef languageBrazilianPortuguese = CFSTR("BrazilianPortuguese");
+	systemLanguage =
+		(CFStringCompare(language, languageEnglish, 0) == kCFCompareEqualTo)?eLanguageEnglish:
+	(CFStringCompare(language, languageGerman, 0) == kCFCompareEqualTo)?eLanguageGerman:
+	(CFStringCompare(language, languageFrench, 0) == kCFCompareEqualTo)?eLanguageFrench:
+	(CFStringCompare(language, languageItalian, 0) == kCFCompareEqualTo)?eLanguageItalian:
+	(CFStringCompare(language, languageDutch, 0) == kCFCompareEqualTo)?eLanguageDutch:
+	(CFStringCompare(language, languageSpanish, 0) == kCFCompareEqualTo)?eLanguageSpanish:
+	(CFStringCompare(language, languageBrazilianPortuguese, 0) == kCFCompareEqualTo)?eLanguageBrazilianPortuguese:
+	eLanguageUndefined;
+	CFRelease(languageEnglish);
+	CFRelease(languageGerman);
+	CFRelease(languageFrench);
+	CFRelease(languageItalian);
+	CFRelease(languageDutch);
+	CFRelease(languageSpanish);
+	CFRelease(languageBrazilianPortuguese);
+
+	CFRelease(preferredLanguages);
+	CFRelease(locArray);
+#endif
+	return systemLanguage;
+}
+
+int Translations::getLanguagesCount(void)
+{
+	return TranslationsMapItemsCount - 1;
+}
+
+Translations::eLanguages Translations::getLanguageForIndex(int index)
+{
+	return TranslationsMap[index + 1].language;
+}
+
+const TranslationInterface& Translations::getTranslationOfLanguage(eLanguages language)
+{
+	const TranslationInterface* foundTranslation = NULL;
+	for (int i = 0; i < TranslationsMapItemsCount; i++) {
+		if(TranslationsMap[i].language == language)	{
+			foundTranslation = &TranslationsMap[i].translation;
+			break;
+		}
+	}
+	if (!foundTranslation)
+		foundTranslation = &TranslationsMap[0].translation;
+	return *foundTranslation;
 }

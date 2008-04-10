@@ -25,8 +25,6 @@
 
 #include "TranslationInterface.h"
 
-#define TRANSLATIONS Translations::Instance()
-
 class Translations: public TranslationInterface
 {
 protected:
@@ -50,14 +48,14 @@ public:
 		,eLanguageBrazilianPortuguese
 	};
 
-	static const Translations* Instance(void);
+	static const Translations& instance(void);
+	static eLanguages getSystemLanguage(void);
+	static int getLanguagesCount(void);
+	static eLanguages getLanguageForIndex(int index);
+	static const TranslationInterface& getTranslationOfLanguage(eLanguages language);
 	
-	virtual void SelectLangue(eLanguages language) const = 0;
-	virtual eLanguages GetSelectedLanguage(void) const = 0;
-	virtual int GetLanguagesCount(void) const = 0;
-	virtual eLanguages GetLanguageForIndex(int index) const = 0;
-	virtual const TranslationInterface* GetTranslationOfLanguage(eLanguages language) const = 0;
-	virtual eLanguages GetSystemLanguage(void) const = 0;
+	virtual void selectLangue(eLanguages language) const = 0;
+	virtual eLanguages getSelectedLanguage(void) const = 0;
 };
 
 #endif

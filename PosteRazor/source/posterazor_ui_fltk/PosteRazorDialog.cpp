@@ -104,8 +104,8 @@ PosteRazorDialog::PosteRazorDialog(void)
 	Translations::eLanguages language = (Translations::eLanguages)preferences.getInteger(preferencesKey_UILanguage, Translations::eLanguageUndefined);
 	m_UILanguageIsUndefined = language == Translations::eLanguageUndefined;
 	if (m_UILanguageIsUndefined)
-		language = TRANSLATIONS->GetSystemLanguage();
-	TRANSLATIONS->SelectLangue(language);
+		language = Translations::getSystemLanguage();
+	Translations::instance().selectLangue(language);
 
 	strncpy(m_loadImageChooserLastPath, preferences.getString(preferencesKey_LoadImageChooserLastPath, ""), sizeof(m_loadImageChooserLastPath));
 	m_loadImageChooserLastPath[sizeof(m_loadImageChooserLastPath) - 1] = '\0';
@@ -159,8 +159,8 @@ PosteRazorDialog::~PosteRazorDialog()
 	preferences.setString(m_loadImageChooserLastPath, preferencesKey_LoadImageChooserLastPath);
 	preferences.setString(m_savePosterChooserLastPath, preferencesKey_SavePosterChooserLastPath);
 	if (m_UILanguageIsUndefined)
-		TRANSLATIONS->SelectLangue(Translations::eLanguageUndefined);
-	preferences.setInteger(TRANSLATIONS->GetSelectedLanguage(), preferencesKey_UILanguage);
+		Translations::instance().selectLangue(Translations::eLanguageUndefined);
+	preferences.setInteger(Translations::instance().getSelectedLanguage(), preferencesKey_UILanguage);
 
 	if (m_paperFormatMenuItems)
 		delete[] m_paperFormatMenuItems;
@@ -203,7 +203,7 @@ void PosteRazorDialog::openSettingsDialog(void)
 	if (!m_settingsDialog) {
 		m_settings.unitOfLength = m_posteRazor->getUnitOfLength();
 		m_settings.previewType = m_paintCanvasGroup->getPaintCanvasType();
-		m_settings.language = TRANSLATIONS->GetSelectedLanguage()!=Translations::eLanguageUndefined?TRANSLATIONS->GetSelectedLanguage():Translations::eLanguageEnglish;
+		m_settings.language = Translations::instance().getSelectedLanguage()!=Translations::eLanguageUndefined?Translations::instance().getSelectedLanguage():Translations::eLanguageEnglish;
 		m_settingsDialog = new PosteRazorSettingsDialog();
 		m_settingsDialog->set_modal();
 	}
@@ -229,7 +229,7 @@ void PosteRazorDialog::openHelpDialog(void)
 	char stepTopic[1024];
 	sprintf(stepTopic, POSTERAZORHELPANCHORMANUALSTEP "%.2d", getCurrentWizardStepNumber() + 1);
 
-	m_helpDialog->setHtmlContent(TRANSLATIONS->helpHtml());
+	m_helpDialog->setHtmlContent(Translations::instance().helpHtml());
 	m_helpDialog->jumpToAnchor(stepTopic);
 	m_helpDialog->show();
 }
@@ -239,8 +239,8 @@ void PosteRazorDialog::handleOptionsChangement(posteRazorSettings *settings)
 	m_posteRazorController->setUnitOfLength(settings->unitOfLength);
 	m_paintCanvasGroup->setPaintCanvasType(settings->previewType);
 
-	if (TRANSLATIONS->GetSelectedLanguage() != settings->language) {
-		TRANSLATIONS->SelectLangue(settings->language);
+	if (Translations::instance().getSelectedLanguage() != settings->language) {
+		Translations::instance().selectLangue(settings->language);
 		m_UILanguageIsUndefined = false;
 		updateLanguage();
 	}
@@ -264,11 +264,11 @@ void PosteRazorDialog::updateNavigationButtons(void)
 const char* PosteRazorDialog::getWizardStepInfoString(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step)
 {
 	return (
-		step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepInputImage?TRANSLATIONS->stepTitle01()
-		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPaperSize?TRANSLATIONS->stepTitle02()
-		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepOverlapping?TRANSLATIONS->stepTitle03()
-		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPosterSize?TRANSLATIONS->stepTitle04()
-		:TRANSLATIONS->stepTitle05()
+		step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepInputImage?Translations::instance().stepTitle01()
+		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPaperSize?Translations::instance().stepTitle02()
+		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepOverlapping?Translations::instance().stepTitle03()
+		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPosterSize?Translations::instance().stepTitle04()
+		:Translations::instance().stepTitle05()
 	);
 }
 
@@ -286,7 +286,7 @@ int PosteRazorDialog::getCurrentWizardStepNumber(void)
 void PosteRazorDialog::updateStepInfoBar(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step)
 {
 	char stepStr[1024];
-	sprintf(stepStr, TRANSLATIONS->stepXOfY(), getCurrentWizardStepNumber() + 1, 5); 
+	sprintf(stepStr, Translations::instance().stepXOfY(), getCurrentWizardStepNumber() + 1, 5); 
 	char helpTitleStr[1024];
 	sprintf(helpTitleStr, "  %s: %s", stepStr, getWizardStepInfoString(step));
 	m_stepInfoBox->copy_label(helpTitleStr);
@@ -301,52 +301,52 @@ void PosteRazorDialog::updateLanguage(void)
 {
 	char tempStr[1024];
 
-	sprintf(tempStr, "%s @-2->", TRANSLATIONS->next());
+	sprintf(tempStr, "%s @-2->", Translations::instance().next());
 	m_nextButton->copy_label(tempStr);
-	sprintf(tempStr, "@-2<- %s", TRANSLATIONS->back());
+	sprintf(tempStr, "@-2<- %s", Translations::instance().back());
 	m_prevButton->copy_label(tempStr);
 
-	m_paperFormatTypeTabs->label(TRANSLATIONS->paperFormat());
-	m_paperFormatCustomGroup->label(TRANSLATIONS->custom());
-	m_paperFormatStandardGroup->label(TRANSLATIONS->standard());
-	m_paperFormatChoice->label(TRANSLATIONS->format());
-	m_paperOrientationGroup->label(TRANSLATIONS->orientation());
-	m_paperOrientationLandscapeRadioButton->label(TRANSLATIONS->landscape());
-	m_paperOrientationPortraitRadioButton->label(TRANSLATIONS->portrait());
-	m_paperCustomHeightInput->label(TRANSLATIONS->height());
-	m_paperCustomWidthInput->label(TRANSLATIONS->width());
-	m_paperBorderTopInput->label(TRANSLATIONS->top());
-	m_paperBorderRightInput->label(TRANSLATIONS->right());
-	m_paperBorderBottomInput->label(TRANSLATIONS->bottom());
-	m_paperBorderLeftInput->label(TRANSLATIONS->left());
+	m_paperFormatTypeTabs->label(Translations::instance().paperFormat());
+	m_paperFormatCustomGroup->label(Translations::instance().custom());
+	m_paperFormatStandardGroup->label(Translations::instance().standard());
+	m_paperFormatChoice->label(Translations::instance().format());
+	m_paperOrientationGroup->label(Translations::instance().orientation());
+	m_paperOrientationLandscapeRadioButton->label(Translations::instance().landscape());
+	m_paperOrientationPortraitRadioButton->label(Translations::instance().portrait());
+	m_paperCustomHeightInput->label(Translations::instance().height());
+	m_paperCustomWidthInput->label(Translations::instance().width());
+	m_paperBorderTopInput->label(Translations::instance().top());
+	m_paperBorderRightInput->label(Translations::instance().right());
+	m_paperBorderBottomInput->label(Translations::instance().bottom());
+	m_paperBorderLeftInput->label(Translations::instance().left());
 
-	m_overlappingHeightInput->label(TRANSLATIONS->height());
-	m_overlappingWidthInput->label(TRANSLATIONS->width());
-	m_overlappingPositionGroup->label(TRANSLATIONS->overlappingPosition());
-	m_overlappingSizeGroup->label(TRANSLATIONS->overlappingSize());
-	m_overlappingPositionBottomLeftButton->label(TRANSLATIONS->bottomLeft());
-	m_overlappingPositionBottomRightButton->label(TRANSLATIONS->bottomRight());
-	m_overlappingPositionTopLeftButton->label(TRANSLATIONS->topLeft());
-	m_overlappingPositionTopRightButton->label(TRANSLATIONS->topRight());
+	m_overlappingHeightInput->label(Translations::instance().height());
+	m_overlappingWidthInput->label(Translations::instance().width());
+	m_overlappingPositionGroup->label(Translations::instance().overlappingPosition());
+	m_overlappingSizeGroup->label(Translations::instance().overlappingSize());
+	m_overlappingPositionBottomLeftButton->label(Translations::instance().bottomLeft());
+	m_overlappingPositionBottomRightButton->label(Translations::instance().bottomRight());
+	m_overlappingPositionTopLeftButton->label(Translations::instance().topLeft());
+	m_overlappingPositionTopRightButton->label(Translations::instance().topRight());
 
-	m_posterSizeGroup->label(TRANSLATIONS->imageSize());
-	m_posterSizeAbsoluteRadioButton->label(TRANSLATIONS->absoluteSize());
-	m_posterAbsoluteHeightInput->label(TRANSLATIONS->height());
-	m_posterAbsoluteWidthInput->label(TRANSLATIONS->width());
-	m_posterSizeInPagesRadioButton->label(TRANSLATIONS->sizeInPages());
-	m_posterPagesHeightInput->label(TRANSLATIONS->height());
-	m_posterPagesHeightLabel->label(TRANSLATIONS->pages());
-	m_posterPagesWidthInput->label(TRANSLATIONS->width());
-	m_posterPagesWidthLabel->label(TRANSLATIONS->pages());
-	m_posterSizePercentualRadioButton->label(TRANSLATIONS->sizeInPercent());
-	m_posterPercentualSizeInput->label(TRANSLATIONS->Size());
-	m_imageAlignmentGroup->label(TRANSLATIONS->imageAlignment());
-	m_imageInfoGroup->label(TRANSLATIONS->imageInformations());
-	m_imageLoadGroup->label(TRANSLATIONS->inputImage());
-	m_settingsButton->label(TRANSLATIONS->settings());
+	m_posterSizeGroup->label(Translations::instance().imageSize());
+	m_posterSizeAbsoluteRadioButton->label(Translations::instance().absoluteSize());
+	m_posterAbsoluteHeightInput->label(Translations::instance().height());
+	m_posterAbsoluteWidthInput->label(Translations::instance().width());
+	m_posterSizeInPagesRadioButton->label(Translations::instance().sizeInPages());
+	m_posterPagesHeightInput->label(Translations::instance().height());
+	m_posterPagesHeightLabel->label(Translations::instance().pages());
+	m_posterPagesWidthInput->label(Translations::instance().width());
+	m_posterPagesWidthLabel->label(Translations::instance().pages());
+	m_posterSizePercentualRadioButton->label(Translations::instance().sizeInPercent());
+	m_posterPercentualSizeInput->label(Translations::instance().Size());
+	m_imageAlignmentGroup->label(Translations::instance().imageAlignment());
+	m_imageInfoGroup->label(Translations::instance().imageInformations());
+	m_imageLoadGroup->label(Translations::instance().inputImage());
+	m_settingsButton->label(Translations::instance().settings());
 
-	m_savePosterGroup->label(TRANSLATIONS->saveThePoster());
-	m_setLaunchPDFApplicationCheckButton->label(TRANSLATIONS->launchPDFApplication());
+	m_savePosterGroup->label(Translations::instance().saveThePoster());
+	m_setLaunchPDFApplicationCheckButton->label(Translations::instance().launchPDFApplication());
 
 	m_posteRazorController->updateDialog();
 
@@ -386,7 +386,7 @@ void PosteRazorDialog::getFileOpenDialogFilter(char *filter, int bufferLength)
 	sprintf	(
 		filterString,
 		formats,
-		TRANSLATIONS->allImageFormats(),
+		Translations::instance().allImageFormats(),
 		allExtensions
 	);
 
@@ -407,7 +407,7 @@ void PosteRazorDialog::loadInputImage(const char *fileName)
 	getFileOpenDialogFilter(filterString, sizeof(filterString));
 	loadImageChooser.filter(filterString);
 #endif
-	loadImageChooser.title(TRANSLATIONS->loadAnInputImage());
+	loadImageChooser.title(Translations::instance().loadAnInputImage());
 
 	if (!loadFileName) {
 		loadImageChooser.directory(m_loadImageChooserLastPath);
@@ -425,7 +425,7 @@ void PosteRazorDialog::loadInputImage(const char *fileName)
 			if (strlen(errorMessage) > 0)
 				fl_message(errorMessage);
 			else
-				fl_message(TRANSLATIONS->fileCouldNotBeLoaded(), fl_filename_name(loadFileName));
+				fl_message(Translations::instance().fileCouldNotBeLoaded(), fl_filename_name(loadFileName));
 		}
 	}
 
@@ -446,17 +446,17 @@ void PosteRazorDialog::showImageFileName(const char *fileName)
 void PosteRazorDialog::updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel)
 {
 	char sizeInDimensionUnitString[100];
-	sprintf(sizeInDimensionUnitString, TRANSLATIONS->sizeInUnitOfLength(), UnitsOfLength::getUnitOfLengthName(unitOfLength));
+	sprintf(sizeInDimensionUnitString, Translations::instance().sizeInUnitOfLength(), UnitsOfLength::getUnitOfLengthName(unitOfLength));
 
 	char string[1024];
 
 	sprintf (
 		string,
 		"%s\n%s\n%s\n%s",
-		TRANSLATIONS->sizeInPixels(),
+		Translations::instance().sizeInPixels(),
 		sizeInDimensionUnitString,
-		TRANSLATIONS->resolution(),
-		TRANSLATIONS->colorType()
+		Translations::instance().resolution(),
+		Translations::instance().colorType()
 	);
 	m_imageInfoKeysLabel->copy_label(string);
 
@@ -466,9 +466,9 @@ void PosteRazorDialog::updateImageInfoFields(int imageWidthInPixels, int imageHe
 		imageWidthInPixels, imageHeightInPixels,
 		imageWidth, imageHeight,
 		verticalDpi,
-			colorType==ColorTypes::eColorTypeMonochrome?TRANSLATIONS->monochrome():
-			colorType==ColorTypes::eColorTypeGreyscale?TRANSLATIONS->grayscale():
-			colorType==ColorTypes::eColorTypePalette?TRANSLATIONS->palette():
+			colorType==ColorTypes::eColorTypeMonochrome?Translations::instance().monochrome():
+			colorType==ColorTypes::eColorTypeGreyscale?Translations::instance().grayscale():
+			colorType==ColorTypes::eColorTypePalette?Translations::instance().palette():
 			colorType==ColorTypes::eColorTypeRGB?"RGB":
 			colorType==ColorTypes::eColorTypeRGBA?"RGBA":
 			/*colorType==eColorTypeCMYK?*/ "CMYK",
@@ -575,7 +575,7 @@ void PosteRazorDialog::savePoster(void)
 // filter stuff is still crashy os OSX
 	savePosterChooser.filter("Portable Document format (*.PDF)\t*.pdf");
 #endif
-	savePosterChooser.title(TRANSLATIONS->saveThePosterAs());
+	savePosterChooser.title(Translations::instance().saveThePosterAs());
 
 	do {
 		if (fileExistsAskUserForOverwrite)
@@ -593,11 +593,11 @@ void PosteRazorDialog::savePoster(void)
 
 			fileExistsAskUserForOverwrite = my_file_exists(saveFileName);
 			char overwriteQuestion[1024] = "";
-			sprintf(overwriteQuestion, TRANSLATIONS->overwriteFile(), fl_filename_name(saveFileName));
+			sprintf(overwriteQuestion, Translations::instance().overwriteFile(), fl_filename_name(saveFileName));
 			if (!fileExistsAskUserForOverwrite || fl_ask(overwriteQuestion)) {
 				int err = m_posteRazorController->savePoster(saveFileName);
 				if (err)
-					fl_message(TRANSLATIONS->fileCouldNotBeSaved(), fl_filename_name(saveFileName));
+					fl_message(Translations::instance().fileCouldNotBeSaved(), fl_filename_name(saveFileName));
 				fileExistsAskUserForOverwrite = false;
 			}
 		}
@@ -621,7 +621,7 @@ void PosteRazorDialog::setUnitOfLength(UnitsOfLength::eUnitsOfLength unit)
 	m_posterAbsoluteWidthDimensionUnitLabel->label(unitName);
 	m_posterAbsoluteHeightDimensionUnitLabel->label(unitName);
 	char paperBordersGroupLabel[100];
-	sprintf(paperBordersGroupLabel, "%s (%s)", TRANSLATIONS->borders(), unitName);
+	sprintf(paperBordersGroupLabel, "%s (%s)", Translations::instance().borders(), unitName);
 	m_paperBordersGroup->copy_label(paperBordersGroupLabel);
 }
 

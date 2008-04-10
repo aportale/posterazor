@@ -52,7 +52,7 @@ PosteRazorSettingsDialog::PosteRazorSettingsDialog()
 	}
 	m_unitOfLengthButtonsGroup->end();
 
-	m_languageButtonsCount = TRANSLATIONS->GetLanguagesCount();
+	m_languageButtonsCount = Translations::getLanguagesCount();
 	m_languageButtons = new Fl_Button*[m_languageButtonsCount];
 	m_languageButtonImages = new Fl_RGB_Image*[m_languageButtonsCount];
 	const int languageButtonWidth = (m_languageButtonsGroup->w() + SETTINGCHOICEBUTTONSSPACING) / m_languageButtonsCount - SETTINGCHOICEBUTTONSSPACING;
@@ -66,11 +66,11 @@ PosteRazorSettingsDialog::PosteRazorSettingsDialog()
 			m_languageButtonsGroup->h()
 		);
 
-		const Translations::eLanguages language = TRANSLATIONS->GetLanguageForIndex(i);
-		const TranslationInterface* const translation = TRANSLATIONS->GetTranslationOfLanguage(language);
-		m_languageButtonImages[i] = new Fl_RGB_Image(translation->flagImageRGBData(), translation->flagImageWidth(), translation->flagImageHeight());
+		const Translations::eLanguages language = Translations::getLanguageForIndex(i);
+		const TranslationInterface& translation = Translations::getTranslationOfLanguage(language);
+		m_languageButtonImages[i] = new Fl_RGB_Image(translation.flagImageRGBData(), translation.flagImageWidth(), translation.flagImageHeight());
 		m_languageButtons[i]->image(m_languageButtonImages[i]);
-		m_languageButtons[i]->tooltip(translation->languageName());
+		m_languageButtons[i]->tooltip(translation.languageName());
 		m_languageButtons[i]->type(FL_RADIO_BUTTON);
 		m_languageButtons[i]->color((Fl_Color)47);
 		m_languageButtons[i]->selection_color((Fl_Color)55);
@@ -120,7 +120,7 @@ void PosteRazorSettingsDialog::setOptionsAndHandler(posteRazorSettings *settings
 	m_useOpenGLCheckButton->value(m_settings->previewType == Fl_Paint_Canvas_Group::PaintCanvasTypeGL?1:0);
 
 	for (i = 0; i < m_languageButtonsCount; i++)
-		m_languageButtons[i]->value((m_settings->language == TRANSLATIONS->GetLanguageForIndex(i))?1:0);
+		m_languageButtons[i]->value((m_settings->language == Translations::getLanguageForIndex(i))?1:0);
 }
 
 void PosteRazorSettingsDialog::handleUnitOfLengthChoice_cb(Fl_Widget *widget, void *userData)
@@ -158,7 +158,7 @@ void PosteRazorSettingsDialog::handleLanguageChoice(void)
 {
 	for (int i = 0; i < m_languageButtonsCount; i++) {
 		if (m_languageButtons[i]->value() != 0) {
-			m_settings->language = TRANSLATIONS->GetLanguageForIndex(i);
+			m_settings->language = Translations::getLanguageForIndex(i);
 			break;
 		}
 	}
@@ -169,15 +169,15 @@ void PosteRazorSettingsDialog::handleLanguageChoice(void)
 
 void PosteRazorSettingsDialog::updateLanguage(void)
 {
-	label(TRANSLATIONS->posteRazorSettings());
-	m_unitOfLengthGroup->label(TRANSLATIONS->unitOfLength());
-	m_unitOfLengthExplanationBox->label(TRANSLATIONS->unitOfLengthExplanation());
-	m_useOpenGLGroup->label(TRANSLATIONS->previewWithOpenGL());
-	m_useOpenGLCheckButton->label(TRANSLATIONS->previewWithOpenGL());
-	m_useOpenGLExplanationBox->label(TRANSLATIONS->previewWithOpenGLExplanation());
-	m_languageGroup->label(TRANSLATIONS->language());
-	m_languageExplanationBox->label(TRANSLATIONS->languageExplanation());
-	m_cancelButton->label(TRANSLATIONS->cancel());
+	label(Translations::instance().posteRazorSettings());
+	m_unitOfLengthGroup->label(Translations::instance().unitOfLength());
+	m_unitOfLengthExplanationBox->label(Translations::instance().unitOfLengthExplanation());
+	m_useOpenGLGroup->label(Translations::instance().previewWithOpenGL());
+	m_useOpenGLCheckButton->label(Translations::instance().previewWithOpenGL());
+	m_useOpenGLExplanationBox->label(Translations::instance().previewWithOpenGLExplanation());
+	m_languageGroup->label(Translations::instance().language());
+	m_languageExplanationBox->label(Translations::instance().languageExplanation());
+	m_cancelButton->label(Translations::instance().cancel());
 
 	redraw();
 }

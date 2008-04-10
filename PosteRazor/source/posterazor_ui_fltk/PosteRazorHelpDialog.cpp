@@ -54,7 +54,7 @@ void PosteRazorHelpDialog::jumpToAnchor(const char *anchor)
 
 void PosteRazorHelpDialog::handleHomepageButtonClick(void)
 {
-	openURLInBrowser(TRANSLATIONS->posteRazorWebSiteURL());
+	openURLInBrowser(Translations::instance().posteRazorWebSiteURL());
 }
 
 void PosteRazorHelpDialog::openURLInBrowser(const char* url)
@@ -81,7 +81,7 @@ const char *PosteRazorHelpDialog::linkCallback(Fl_Widget *w, const char *uri)
 
 void PosteRazorHelpDialog::updateLanguage(void)
 {
-	label(TRANSLATIONS->posteRazorHelp());
-	setHomepageButtonLabel(TRANSLATIONS->posteRazorWebSite());
+	label(Translations::instance().posteRazorHelp());
+	setHomepageButtonLabel(Translations::instance().posteRazorWebSite());
 	redraw();
 }
