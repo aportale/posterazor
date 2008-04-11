@@ -25,13 +25,13 @@ comment {/*
 */} {in_source in_header
 } 
 
-decl {\#include "Fl_Paint_Canvas_Group.h"} {public
+decl {\#include "FlPaintCanvasGroup.h"} {public
 } 
 
-decl {\#include "Fl_Image_Text_Button.h"} {public
+decl {\#include "FlImageTextButton.h"} {public
 } 
 
-decl {\#include "Fl_PosteRazor_Spinner.h"} {public
+decl {\#include "FlPosteRazorSpinner.h"} {public
 } 
 
 widget_class PosteRazorDialogUI {
@@ -50,7 +50,7 @@ widget_class PosteRazorDialogUI {
       label {Settings...}
       callback {openSettingsDialog();}
       xywh {10 420 220 25} labelcolor 32 align 16
-      class Fl_Image_Text_Button
+      class FlImageTextButton
     }
     Fl_Box m_settingsButtonLabel {
       image {../posterazor_ui_common/images/settingsIcon.png} xywh {230 420 40 25} align 20 hide
@@ -141,7 +141,7 @@ widget_class PosteRazorDialogUI {
             label {Width:}
             callback {handlePaperSizeChangement(m_paperCustomWidthInput);}
             xywh {425 122 95 25} align 4 when 1
-            class Fl_PosteRazor_Spinner
+            class FlPosteRazorSpinner
           } {}
           Fl_Box m_paperCustomWidthDimensionUnitLabel {
             label cm
@@ -151,7 +151,7 @@ widget_class PosteRazorDialogUI {
             label {Height:}
             callback {handlePaperSizeChangement(m_paperCustomHeightInput);}
             xywh {425 157 95 25} align 4 when 1
-            class Fl_PosteRazor_Spinner
+            class FlPosteRazorSpinner
           } {}
           Fl_Box m_paperCustomHeightDimensionUnitLabel {
             label cm
@@ -167,25 +167,25 @@ widget_class PosteRazorDialogUI {
           label Top
           callback {handlePaperSizeChangement(m_paperBorderTopInput);}
           xywh {422 260 80 25} when 1
-          class Fl_PosteRazor_Spinner
+          class FlPosteRazorSpinner
         } {}
         Fl_Group m_paperBorderRightInput {
           label Right
           callback {handlePaperSizeChangement(m_paperBorderRightInput);}
           xywh {502 290 80 25} align 9 when 1
-          class Fl_PosteRazor_Spinner
+          class FlPosteRazorSpinner
         } {}
         Fl_Group m_paperBorderBottomInput {
           label Bottom
           callback {handlePaperSizeChangement(m_paperBorderBottomInput);}
           xywh {422 320 80 25} align 2 when 1
-          class Fl_PosteRazor_Spinner
+          class FlPosteRazorSpinner
         } {}
         Fl_Group m_paperBorderLeftInput {
           label Left
           callback {handlePaperSizeChangement(m_paperBorderLeftInput);}
           xywh {342 290 80 25} align 5 when 1
-          class Fl_PosteRazor_Spinner
+          class FlPosteRazorSpinner
         } {}
       }
       Fl_Box {} {
@@ -203,7 +203,7 @@ widget_class PosteRazorDialogUI {
           label {Width:}
           callback {handleOverlappingChangement(m_overlappingWidthInput);}
           xywh {430 80 90 25} align 4 when 1
-          class Fl_PosteRazor_Spinner
+          class FlPosteRazorSpinner
         } {}
         Fl_Box m_overlappingWidthDimensionUnitLabel {
           label cm
@@ -213,7 +213,7 @@ widget_class PosteRazorDialogUI {
           label {Height:}
           callback {handleOverlappingChangement(m_overlappingHeightInput);}
           xywh {430 110 90 25} align 4 when 1
-          class Fl_PosteRazor_Spinner
+          class FlPosteRazorSpinner
         } {}
         Fl_Box m_overlappingHeightDimensionUnitLabel {
           label cm
@@ -268,7 +268,7 @@ widget_class PosteRazorDialogUI {
             label {Width:}
             callback {updatePosterSizeFields(m_posterAbsoluteWidthInput);}
             xywh {430 105 90 25} align 4 when 1
-            class Fl_PosteRazor_Spinner
+            class FlPosteRazorSpinner
           } {}
           Fl_Box m_posterAbsoluteWidthDimensionUnitLabel {
             label cm
@@ -278,7 +278,7 @@ widget_class PosteRazorDialogUI {
             label {Height:}
             callback {updatePosterSizeFields(m_posterAbsoluteHeightInput);}
             xywh {430 135 90 25} align 4 when 1
-            class Fl_PosteRazor_Spinner
+            class FlPosteRazorSpinner
           } {}
           Fl_Box m_posterAbsoluteHeightDimensionUnitLabel {
             label cm
@@ -298,7 +298,7 @@ widget_class PosteRazorDialogUI {
             callback {updatePosterSizeFields(m_posterPagesWidthInput);}
             xywh {430 195 90 25} align 4 when 1
             code0 {o->setSpinnerVisible(true);}
-            class Fl_PosteRazor_Spinner
+            class FlPosteRazorSpinner
           } {}
           Fl_Box m_posterPagesWidthLabel {
             label pages
@@ -309,7 +309,7 @@ widget_class PosteRazorDialogUI {
             callback {updatePosterSizeFields(m_posterPagesHeightInput);}
             xywh {430 225 90 25} align 4 when 1
             code0 {o->setSpinnerVisible(true);}
-            class Fl_PosteRazor_Spinner
+            class FlPosteRazorSpinner
           } {}
           Fl_Box m_posterPagesHeightLabel {
             label pages
@@ -328,7 +328,7 @@ widget_class PosteRazorDialogUI {
             label {Size:}
             callback {updatePosterSizeFields(m_posterPercentualSizeInput);}
             xywh {430 285 90 25} align 4 when 1
-            class Fl_PosteRazor_Spinner
+            class FlPosteRazorSpinner
           } {}
           Fl_Box m_posterPercentualWidthLabel {
             label {%}
@@ -402,7 +402,7 @@ widget_class PosteRazorDialogUI {
   }
   Fl_Group m_paintCanvasGroup {open
     xywh {10 45 300 365} box FLAT_BOX color 45 labelcolor 30 resizable
-    class Fl_Paint_Canvas_Group
+    class FlPaintCanvasGroup
   } {}
   Fl_Group {} {
     xywh {10 10 600 25}

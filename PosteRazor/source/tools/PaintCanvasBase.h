@@ -20,8 +20,8 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef PaintCanvasBase_h
-#define PaintCanvasBase_h
+#ifndef PAINTCANVASBASE_H
+#define PAINTCANVASBASE_H
 
 #include "PaintCanvasInterface.h"
 
@@ -45,4 +45,4 @@ public:
 	virtual void disposeImage(void) = 0;
 };
 
-#endif
+#endif // PAINTCANVASBASE_H

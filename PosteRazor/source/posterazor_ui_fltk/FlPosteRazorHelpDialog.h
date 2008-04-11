@@ -20,15 +20,15 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef PosteRazorHelpDialog_h
-#define PosteRazorHelpDialog_h
+#ifndef FLPOSTERAZORHELPDIALOG_H
+#define FLPOSTERAZORHELPDIALOG_H
 
-#include "PosteRazorDialogUI.h"
+#include "FlPosteRazorDialogUI.h"
 
-class PosteRazorHelpDialog: public PosteRazorHelpDialogUI
+class FlPosteRazorHelpDialog: public PosteRazorHelpDialogUI
 {
 public:
-	PosteRazorHelpDialog();
+	FlPosteRazorHelpDialog();
 
 	void setHtmlContent(const char *content);
 	void jumpToAnchor(const char *anchor);
@@ -38,4 +38,4 @@ public:
 	void updateLanguage(void);
 };
 
-#endif
+#endif // FLPOSTERAZORHELPDIALOG_H

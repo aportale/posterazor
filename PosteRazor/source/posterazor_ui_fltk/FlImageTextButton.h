@@ -20,23 +20,23 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef Fl_Image_Text_Button_h
-#define Fl_Image_Text_Button_h
+#ifndef FLIMAGETEXTBUTTON_H
+#define FLIMAGETEXTBUTTON_H
 
 #include <FL/Fl_Button.H>
 
 class Fl_Image;
 
-class Fl_Image_Text_Button: public Fl_Button
+class FlImageTextButton: public Fl_Button
 {
 public:
-	Fl_Image_Text_Button(int x, int y, int w, int h, const char* label = 0);
-	void label_image(Fl_Image *image);
+	FlImageTextButton(int x, int y, int w, int h, const char* label = 0);
+	void labelImage(Fl_Image *image);
 
 private:
-	Fl_Image *m_label_image;
+	Fl_Image *m_labelImage;
 
 	virtual void draw();
 };
 
-#endif
+#endif // FLIMAGETEXTBUTTON_H

@@ -20,32 +20,32 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef PosteRazorDialog_h
-#define PosteRazorDialog_h
+#ifndef FLPOSTERAZORDIALOG_H
+#define FLPOSTERAZORDIALOG_H
 
-#include "PosteRazorDialogUI.h"
-#include "PosteRazorSettingsDialog.h"
+#include "FlPosteRazorDialogUI.h"
+#include "FlPosteRazorSettingsDialog.h"
 #include "PosteRazorWizardDialogController.h"
 
 class PosteRazor;
 struct Fl_Menu_Item;
 class PosteRazorHelpDialogUI;
 
-class PosteRazorDragDropWidget : public Fl_Box
+class FlPosteRazorDragDropWidget : public Fl_Box
 {
 public:
-	PosteRazorDragDropWidget(int x, int y, int w, int h, const char *label = 0);
+	FlPosteRazorDragDropWidget(int x, int y, int w, int h, const char *label = 0);
 	int handle(int event);
 };
 
-class PosteRazorDialog : public PosteRazorDialogUI, public SettingsChangementHandler, public PosteRazorWizardDialogInterface
+class FlPosteRazorDialog : public PosteRazorDialogUI, public SettingsChangementHandler, public PosteRazorWizardDialogInterface
 {
 private:
 	PosteRazor                        *m_posteRazor;
-	PosteRazorDragDropWidget          *m_dragDropWidget;
+	FlPosteRazorDragDropWidget        *m_dragDropWidget;
 	Fl_Menu_Item                      *m_paperFormatMenuItems;
 	posteRazorSettings                m_settings;
-	PosteRazorSettingsDialog          *m_settingsDialog;
+	FlPosteRazorSettingsDialog          *m_settingsDialog;
 	PosteRazorHelpDialogUI            *m_helpDialog;
 	char                              m_loadImageChooserLastPath[1024];
 	char                              m_savePosterChooserLastPath[1024];
@@ -53,8 +53,8 @@ private:
 	PosteRazorWizardDialogController  *m_posteRazorController;
 
 public:
-	PosteRazorDialog();
-	~PosteRazorDialog();
+	FlPosteRazorDialog();
+	~FlPosteRazorDialog();
 
 	int handle(int event);
 
@@ -122,4 +122,4 @@ public:
 	void setPreviewState(const char *state);
 };
 
-#endif
+#endif // FLPOSTERAZORDIALOG_H

@@ -20,8 +20,8 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef PosteRazor_h
-#define PosteRazor_h
+#ifndef POSTERAZOR_H
+#define POSTERAZOR_H
 
 #include "PaperFormats.h"
 #include "ColorTypes.h"
@@ -33,31 +33,27 @@ class PersistentPreferencesInterface;
 class PosteRazorEnums
 {
 public:
-	enum eOverlappingPositions
-	{
+	enum eOverlappingPositions {
 		eOverlappingPositionTopRight,
 		eOverlappingPositionBottomRight,
 		eOverlappingPositionBottomLeft,
 		eOverlappingPositionTopLeft
 	};
 
-	enum ePosterSizeModes
-	{
+	enum ePosterSizeModes {
 		ePosterSizeModeAbsolute,
 		ePosterSizeModePercentual,
 		ePosterSizeModePages,
 		ePosterSizeModeNone
 	};
 
-	enum eVerticalAlignments
-	{
+	enum eVerticalAlignments {
 		eVerticalAlignmentTop,
 		eVerticalAlignmentMiddle,
 		eVerticalAlignmentBottom
 	};
 
-	enum eHorizontalAlignments
-	{
+	enum eHorizontalAlignments {
 		eHorizontalAlignmentLeft,
 		eHorizontalAlignmentCenter,
 		eHorizontalAlignmentRight
@@ -169,4 +165,4 @@ public:
 	static PosteRazor* createPosteRazor();
 };
 
-#endif
+#endif // POSTERAZOR_H

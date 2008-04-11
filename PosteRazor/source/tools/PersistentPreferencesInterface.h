@@ -20,8 +20,8 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef PersistentPreferencesInterface_h
-#define PersistentPreferencesInterface_h
+#ifndef PERSISTENTPREFERENCESINTERFACE_H
+#define PERSISTENTPREFERENCESINTERFACE_H
 
 class PersistentPreferencesInterface
 {
@@ -39,4 +39,4 @@ public:
 	virtual const char *getString(const char *key, const char *defaultValue) = 0;
 };
 
-#endif
+#endif // PERSISTENTPREFERENCESINTERFACE_H

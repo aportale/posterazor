@@ -24,9 +24,9 @@
 #ifndef PosteRazorDialogUI_h
 #define PosteRazorDialogUI_h
 #include <FL/Fl.H>
-#include "Fl_Paint_Canvas_Group.h"
-#include "Fl_Image_Text_Button.h"
-#include "Fl_PosteRazor_Spinner.h"
+#include "FlPaintCanvasGroup.h"
+#include "FlImageTextButton.h"
+#include "FlPosteRazorSpinner.h"
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Group.H>
 #include <FL/Fl_Box.H>
@@ -42,10 +42,10 @@ class PosteRazorDialogUI : public Fl_Double_Window {
 public:
   PosteRazorDialogUI(int X, int Y, int W, int H, const char *L = 0);
   PosteRazorDialogUI(int W, int H, const char *L = 0);
-  Fl_Image_Text_Button *m_settingsButton;
+  FlImageTextButton *m_settingsButton;
 private:
-  void cb_m_settingsButton_i(Fl_Image_Text_Button*, void*);
-  static void cb_m_settingsButton(Fl_Image_Text_Button*, void*);
+  void cb_m_settingsButton_i(FlImageTextButton*, void*);
+  static void cb_m_settingsButton(FlImageTextButton*, void*);
 public:
   Fl_Box *m_settingsButtonLabel;
   Fl_Button *m_prevButton;
@@ -90,51 +90,51 @@ private:
   static void cb_m_paperOrientationLandscapeRadioButton(Fl_Round_Button*, void*);
 public:
   Fl_Group *m_paperFormatCustomGroup;
-  Fl_PosteRazor_Spinner *m_paperCustomWidthInput;
+  FlPosteRazorSpinner *m_paperCustomWidthInput;
 private:
-  void cb_m_paperCustomWidthInput_i(Fl_PosteRazor_Spinner*, void*);
-  static void cb_m_paperCustomWidthInput(Fl_PosteRazor_Spinner*, void*);
+  void cb_m_paperCustomWidthInput_i(FlPosteRazorSpinner*, void*);
+  static void cb_m_paperCustomWidthInput(FlPosteRazorSpinner*, void*);
 public:
   Fl_Box *m_paperCustomWidthDimensionUnitLabel;
-  Fl_PosteRazor_Spinner *m_paperCustomHeightInput;
+  FlPosteRazorSpinner *m_paperCustomHeightInput;
 private:
-  void cb_m_paperCustomHeightInput_i(Fl_PosteRazor_Spinner*, void*);
-  static void cb_m_paperCustomHeightInput(Fl_PosteRazor_Spinner*, void*);
+  void cb_m_paperCustomHeightInput_i(FlPosteRazorSpinner*, void*);
+  static void cb_m_paperCustomHeightInput(FlPosteRazorSpinner*, void*);
 public:
   Fl_Box *m_paperCustomHeightDimensionUnitLabel;
   Fl_Group *m_paperBordersGroup;
-  Fl_PosteRazor_Spinner *m_paperBorderTopInput;
+  FlPosteRazorSpinner *m_paperBorderTopInput;
 private:
-  void cb_m_paperBorderTopInput_i(Fl_PosteRazor_Spinner*, void*);
-  static void cb_m_paperBorderTopInput(Fl_PosteRazor_Spinner*, void*);
+  void cb_m_paperBorderTopInput_i(FlPosteRazorSpinner*, void*);
+  static void cb_m_paperBorderTopInput(FlPosteRazorSpinner*, void*);
 public:
-  Fl_PosteRazor_Spinner *m_paperBorderRightInput;
+  FlPosteRazorSpinner *m_paperBorderRightInput;
 private:
-  void cb_m_paperBorderRightInput_i(Fl_PosteRazor_Spinner*, void*);
-  static void cb_m_paperBorderRightInput(Fl_PosteRazor_Spinner*, void*);
+  void cb_m_paperBorderRightInput_i(FlPosteRazorSpinner*, void*);
+  static void cb_m_paperBorderRightInput(FlPosteRazorSpinner*, void*);
 public:
-  Fl_PosteRazor_Spinner *m_paperBorderBottomInput;
+  FlPosteRazorSpinner *m_paperBorderBottomInput;
 private:
-  void cb_m_paperBorderBottomInput_i(Fl_PosteRazor_Spinner*, void*);
-  static void cb_m_paperBorderBottomInput(Fl_PosteRazor_Spinner*, void*);
+  void cb_m_paperBorderBottomInput_i(FlPosteRazorSpinner*, void*);
+  static void cb_m_paperBorderBottomInput(FlPosteRazorSpinner*, void*);
 public:
-  Fl_PosteRazor_Spinner *m_paperBorderLeftInput;
+  FlPosteRazorSpinner *m_paperBorderLeftInput;
 private:
-  void cb_m_paperBorderLeftInput_i(Fl_PosteRazor_Spinner*, void*);
-  static void cb_m_paperBorderLeftInput(Fl_PosteRazor_Spinner*, void*);
+  void cb_m_paperBorderLeftInput_i(FlPosteRazorSpinner*, void*);
+  static void cb_m_paperBorderLeftInput(FlPosteRazorSpinner*, void*);
 public:
   Fl_Group *m_overlappingStep;
   Fl_Group *m_overlappingSizeGroup;
-  Fl_PosteRazor_Spinner *m_overlappingWidthInput;
+  FlPosteRazorSpinner *m_overlappingWidthInput;
 private:
-  void cb_m_overlappingWidthInput_i(Fl_PosteRazor_Spinner*, void*);
-  static void cb_m_overlappingWidthInput(Fl_PosteRazor_Spinner*, void*);
+  void cb_m_overlappingWidthInput_i(FlPosteRazorSpinner*, void*);
+  static void cb_m_overlappingWidthInput(FlPosteRazorSpinner*, void*);
 public:
   Fl_Box *m_overlappingWidthDimensionUnitLabel;
-  Fl_PosteRazor_Spinner *m_overlappingHeightInput;
+  FlPosteRazorSpinner *m_overlappingHeightInput;
 private:
-  void cb_m_overlappingHeightInput_i(Fl_PosteRazor_Spinner*, void*);
-  static void cb_m_overlappingHeightInput(Fl_PosteRazor_Spinner*, void*);
+  void cb_m_overlappingHeightInput_i(FlPosteRazorSpinner*, void*);
+  static void cb_m_overlappingHeightInput(FlPosteRazorSpinner*, void*);
 public:
   Fl_Box *m_overlappingHeightDimensionUnitLabel;
   Fl_Group *m_overlappingPositionGroup;
@@ -166,16 +166,16 @@ private:
   static void cb_m_posterSizeAbsoluteRadioButton(Fl_Round_Button*, void*);
 public:
   Fl_Group *m_posterSizeAbsoluteGroup;
-  Fl_PosteRazor_Spinner *m_posterAbsoluteWidthInput;
+  FlPosteRazorSpinner *m_posterAbsoluteWidthInput;
 private:
-  void cb_m_posterAbsoluteWidthInput_i(Fl_PosteRazor_Spinner*, void*);
-  static void cb_m_posterAbsoluteWidthInput(Fl_PosteRazor_Spinner*, void*);
+  void cb_m_posterAbsoluteWidthInput_i(FlPosteRazorSpinner*, void*);
+  static void cb_m_posterAbsoluteWidthInput(FlPosteRazorSpinner*, void*);
 public:
   Fl_Box *m_posterAbsoluteWidthDimensionUnitLabel;
-  Fl_PosteRazor_Spinner *m_posterAbsoluteHeightInput;
+  FlPosteRazorSpinner *m_posterAbsoluteHeightInput;
 private:
-  void cb_m_posterAbsoluteHeightInput_i(Fl_PosteRazor_Spinner*, void*);
-  static void cb_m_posterAbsoluteHeightInput(Fl_PosteRazor_Spinner*, void*);
+  void cb_m_posterAbsoluteHeightInput_i(FlPosteRazorSpinner*, void*);
+  static void cb_m_posterAbsoluteHeightInput(FlPosteRazorSpinner*, void*);
 public:
   Fl_Box *m_posterAbsoluteHeightDimensionUnitLabel;
   Fl_Round_Button *m_posterSizeInPagesRadioButton;
@@ -184,16 +184,16 @@ private:
   static void cb_m_posterSizeInPagesRadioButton(Fl_Round_Button*, void*);
 public:
   Fl_Group *m_posterSizeInPagesGroup;
-  Fl_PosteRazor_Spinner *m_posterPagesWidthInput;
+  FlPosteRazorSpinner *m_posterPagesWidthInput;
 private:
-  void cb_m_posterPagesWidthInput_i(Fl_PosteRazor_Spinner*, void*);
-  static void cb_m_posterPagesWidthInput(Fl_PosteRazor_Spinner*, void*);
+  void cb_m_posterPagesWidthInput_i(FlPosteRazorSpinner*, void*);
+  static void cb_m_posterPagesWidthInput(FlPosteRazorSpinner*, void*);
 public:
   Fl_Box *m_posterPagesWidthLabel;
-  Fl_PosteRazor_Spinner *m_posterPagesHeightInput;
+  FlPosteRazorSpinner *m_posterPagesHeightInput;
 private:
-  void cb_m_posterPagesHeightInput_i(Fl_PosteRazor_Spinner*, void*);
-  static void cb_m_posterPagesHeightInput(Fl_PosteRazor_Spinner*, void*);
+  void cb_m_posterPagesHeightInput_i(FlPosteRazorSpinner*, void*);
+  static void cb_m_posterPagesHeightInput(FlPosteRazorSpinner*, void*);
 public:
   Fl_Box *m_posterPagesHeightLabel;
   Fl_Round_Button *m_posterSizePercentualRadioButton;
@@ -202,10 +202,10 @@ private:
   static void cb_m_posterSizePercentualRadioButton(Fl_Round_Button*, void*);
 public:
   Fl_Group *m_posterSizePercentualGroup;
-  Fl_PosteRazor_Spinner *m_posterPercentualSizeInput;
+  FlPosteRazorSpinner *m_posterPercentualSizeInput;
 private:
-  void cb_m_posterPercentualSizeInput_i(Fl_PosteRazor_Spinner*, void*);
-  static void cb_m_posterPercentualSizeInput(Fl_PosteRazor_Spinner*, void*);
+  void cb_m_posterPercentualSizeInput_i(FlPosteRazorSpinner*, void*);
+  static void cb_m_posterPercentualSizeInput(FlPosteRazorSpinner*, void*);
 public:
   Fl_Box *m_posterPercentualWidthLabel;
   Fl_Group *m_imageAlignmentGroup;
@@ -250,7 +250,7 @@ private:
   void cb_m_setLaunchPDFApplicationCheckButton_i(Fl_Check_Button*, void*);
   static void cb_m_setLaunchPDFApplicationCheckButton(Fl_Check_Button*, void*);
 public:
-  Fl_Paint_Canvas_Group *m_paintCanvasGroup;
+  FlPaintCanvasGroup *m_paintCanvasGroup;
   Fl_Box *m_stepInfoBox;
 private:
   void cb__i(Fl_Button*, void*);

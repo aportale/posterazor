@@ -20,10 +20,10 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "PosteRazorSettingsDialog.h"
+#include "FlPosteRazorSettingsDialog.h"
 #include "TranslationConstants.h"
 
-PosteRazorSettingsDialog::PosteRazorSettingsDialog()
+FlPosteRazorSettingsDialog::FlPosteRazorSettingsDialog()
 	:PosteRazorSettingsDialogUI(385, 400, "PosteRazor settings")
 {
 #define SETTINGCHOICEBUTTONSSPACING 5
@@ -93,7 +93,7 @@ PosteRazorSettingsDialog::PosteRazorSettingsDialog()
 	updateLanguage();
 }
 
-PosteRazorSettingsDialog::~PosteRazorSettingsDialog()
+FlPosteRazorSettingsDialog::~FlPosteRazorSettingsDialog()
 {
 	if (m_unitOfLengthButtons)
 		delete[] m_unitOfLengthButtons;
@@ -108,7 +108,7 @@ PosteRazorSettingsDialog::~PosteRazorSettingsDialog()
 	}
 }
 
-void PosteRazorSettingsDialog::setOptionsAndHandler(posteRazorSettings *settings, SettingsChangementHandler *changementHandler)
+void FlPosteRazorSettingsDialog::setOptionsAndHandler(posteRazorSettings *settings, SettingsChangementHandler *changementHandler)
 {
 	int i;
 	m_settings = settings;
@@ -117,18 +117,18 @@ void PosteRazorSettingsDialog::setOptionsAndHandler(posteRazorSettings *settings
 	for (i = 0; i < m_unitOfLengthButtonsCount; i++)
 		m_unitOfLengthButtons[i]->value(UnitsOfLength::getUnitOfLengthForIndex(i) == m_settings->unitOfLength?1:0);
 
-	m_useOpenGLCheckButton->value(m_settings->previewType == Fl_Paint_Canvas_Group::PaintCanvasTypeGL?1:0);
+	m_useOpenGLCheckButton->value(m_settings->previewType == FlPaintCanvasGroup::PaintCanvasTypeGL?1:0);
 
 	for (i = 0; i < m_languageButtonsCount; i++)
 		m_languageButtons[i]->value((m_settings->language == Translations::getLanguageForIndex(i))?1:0);
 }
 
-void PosteRazorSettingsDialog::handleUnitOfLengthChoice_cb(Fl_Widget *widget, void *userData)
+void FlPosteRazorSettingsDialog::handleUnitOfLengthChoice_cb(Fl_Widget *widget, void *userData)
 {
-	((PosteRazorSettingsDialog*)userData)->handleUnitOfLengthChoice();
+	((FlPosteRazorSettingsDialog*)userData)->handleUnitOfLengthChoice();
 }
 
-void PosteRazorSettingsDialog::handleUnitOfLengthChoice(void)
+void FlPosteRazorSettingsDialog::handleUnitOfLengthChoice(void)
 {
 	for (int i = 0; i < m_unitOfLengthButtonsCount; i++) {
 		if (m_unitOfLengthButtons[i]->value() != 0)	{
@@ -141,20 +141,20 @@ void PosteRazorSettingsDialog::handleUnitOfLengthChoice(void)
 		m_changementHandler->handleOptionsChangement(m_settings);
 }
 
-void PosteRazorSettingsDialog::handleUseOpenGLChangement(void)
+void FlPosteRazorSettingsDialog::handleUseOpenGLChangement(void)
 {
-	m_settings->previewType = m_useOpenGLCheckButton->value()?Fl_Paint_Canvas_Group::PaintCanvasTypeGL:Fl_Paint_Canvas_Group::PaintCanvasTypeDraw;
+	m_settings->previewType = m_useOpenGLCheckButton->value()?FlPaintCanvasGroup::PaintCanvasTypeGL:FlPaintCanvasGroup::PaintCanvasTypeDraw;
 
 	if (m_changementHandler)
 		m_changementHandler->handleOptionsChangement(m_settings);
 }
 
-void PosteRazorSettingsDialog::handleLanguageChoice_cb(Fl_Widget *widget, void *userData)
+void FlPosteRazorSettingsDialog::handleLanguageChoice_cb(Fl_Widget *widget, void *userData)
 {
-	((PosteRazorSettingsDialog*)userData)->handleLanguageChoice();
+	((FlPosteRazorSettingsDialog*)userData)->handleLanguageChoice();
 }
 
-void PosteRazorSettingsDialog::handleLanguageChoice(void)
+void FlPosteRazorSettingsDialog::handleLanguageChoice(void)
 {
 	for (int i = 0; i < m_languageButtonsCount; i++) {
 		if (m_languageButtons[i]->value() != 0) {
@@ -167,7 +167,7 @@ void PosteRazorSettingsDialog::handleLanguageChoice(void)
 		m_changementHandler->handleOptionsChangement(m_settings);
 }
 
-void PosteRazorSettingsDialog::updateLanguage(void)
+void FlPosteRazorSettingsDialog::updateLanguage(void)
 {
 	label(Translations::instance().posteRazorSettings());
 	m_unitOfLengthGroup->label(Translations::instance().unitOfLength());
@@ -182,7 +182,7 @@ void PosteRazorSettingsDialog::updateLanguage(void)
 	redraw();
 }
 
-void PosteRazorSettingsDialog::show(void)
+void FlPosteRazorSettingsDialog::show(void)
 {
 	m_okWasPressed = false;
 	PosteRazorSettingsDialogUI::show();

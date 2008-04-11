@@ -20,14 +20,13 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef ImageIOTypes_h
-#define ImageIOTypes_h
+#ifndef IMAGEIOTYPES_H
+#define IMAGEIOTYPES_H
 
 class ImageIOTypes
 {
 public:
-	enum eImageFormats
-	{
+	enum eImageFormats {
 		eImageFormatPDF
 	};
 
@@ -37,4 +36,4 @@ public:
 	static const char* getFileExtensionForFormat(int extensionIndex, int imageFormatIndex);
 };
 
-#endif
+#endif // IMAGEIOTYPES_H

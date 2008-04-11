@@ -20,14 +20,13 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef UnitsOfLength_h
-#define UnitsOfLength_h
+#ifndef UNITSOFLENGTH_H
+#define UNITSOFLENGTH_H
 
 class UnitsOfLength
 {
 public:
-	enum eUnitsOfLength
-	{
+	enum eUnitsOfLength	{
 		eUnitOfLengthMeter,
 		eUnitOfLengthMillimeter,
 		eUnitOfLengthCentimeter,
@@ -45,4 +44,4 @@ public:
 	static eUnitsOfLength getUnitOfLengthForIndex(int index);
 };
 
-#endif
+#endif // UNITSOFLENGTH_H

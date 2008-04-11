@@ -6,8 +6,7 @@
 class PosteRazorWizardDialogEnums
 {
 public:
-	enum ePosteRazorWizardSteps
-	{
+	enum ePosteRazorWizardSteps	{
 		ePosteRazorWizardStepInputImage,
 		ePosteRazorWizardStepPaperSize,
 		ePosteRazorWizardStepOverlapping,

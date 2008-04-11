@@ -66,4 +66,4 @@ protected:
 	void setDialogOverlappingOptions(void);
 };
 
-#endif
+#endif // POSTERAZORDIALOGCONTROLLER_H

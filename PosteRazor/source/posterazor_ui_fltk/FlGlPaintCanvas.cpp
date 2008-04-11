@@ -20,13 +20,13 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "Fl_Gl_Paint_Canvas.h"
+#include "FlGlPaintCanvas.h"
 #include <string.h>
 
 #define BORDER 9.0
 #define MIN(a, b) ((a)<=(b)?(a):(b))
 
-Fl_Gl_Paint_Canvas::Fl_Gl_Paint_Canvas(int x, int y, int width, int height, Fl_Widget *parentWidget)
+FlGlPaintCanvas::FlGlPaintCanvas(int x, int y, int width, int height, Fl_Widget *parentWidget)
 	:Fl_Gl_Window(x, y, width, height)
 	, PaintCanvasBase()
 	, m_texturesNames(NULL)
@@ -37,12 +37,12 @@ Fl_Gl_Paint_Canvas::Fl_Gl_Paint_Canvas(int x, int y, int width, int height, Fl_W
 {
 }
 
-Fl_Gl_Paint_Canvas::~Fl_Gl_Paint_Canvas()
+FlGlPaintCanvas::~FlGlPaintCanvas()
 {
 	disposeImage();
 }
 
-void Fl_Gl_Paint_Canvas::draw()
+void FlGlPaintCanvas::draw()
 {
 	if (!valid()) {
 		valid(1);
@@ -61,7 +61,7 @@ void Fl_Gl_Paint_Canvas::draw()
 	m_painter->paintOnCanvas(this, m_stateString);
 }
 
-int Fl_Gl_Paint_Canvas::handle(int event)
+int FlGlPaintCanvas::handle(int event)
 {
 	if (m_parentWidget) {
 		switch (event)
@@ -80,7 +80,7 @@ int Fl_Gl_Paint_Canvas::handle(int event)
 		return Fl_Gl_Window::handle(event);
 }
 
-void Fl_Gl_Paint_Canvas::drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
+void FlGlPaintCanvas::drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
 	if (height > 0 && height < 1) {
 		drawLine(x, y, x+width, y, red, green, blue, alpha);
@@ -92,7 +92,7 @@ void Fl_Gl_Paint_Canvas::drawFilledRect(double x, double y, double width, double
 	}
 }
 
-void Fl_Gl_Paint_Canvas::drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
+void FlGlPaintCanvas::drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
 	if (height > 0 && height < 1) {
 		drawLine(x, y, x+width, y, red, green, blue, alpha);
@@ -113,7 +113,7 @@ void Fl_Gl_Paint_Canvas::drawRect(double x, double y, double width, double heigh
 	}
 }
 
-void Fl_Gl_Paint_Canvas::drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
+void FlGlPaintCanvas::drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
 	glColor4d(red/255.0, green/255.0, blue/255.0, alpha/255.0);
 	glBegin(GL_LINES);
@@ -122,13 +122,13 @@ void Fl_Gl_Paint_Canvas::drawLine(double x1, double y1, double x2, double y2, un
 	glEnd();
 }
 
-void Fl_Gl_Paint_Canvas::getSize(double &width, double &height) const
+void FlGlPaintCanvas::getSize(double &width, double &height) const
 {
 	width = w() - BORDER - BORDER;
 	height = h() - BORDER - BORDER;
 }
 
-void Fl_Gl_Paint_Canvas::setImage(const unsigned char *rgbData, double width, double height)
+void FlGlPaintCanvas::setImage(const unsigned char *rgbData, double width, double height)
 {
 	disposeImage();
 
@@ -173,7 +173,7 @@ void Fl_Gl_Paint_Canvas::setImage(const unsigned char *rgbData, double width, do
 	redraw();
 }
 
-void Fl_Gl_Paint_Canvas::disposeImage(void)
+void FlGlPaintCanvas::disposeImage(void)
 {
 	if (m_texturesNames) {
 		glDeleteTextures(getTexturesCount(), m_texturesNames);
@@ -184,7 +184,7 @@ void Fl_Gl_Paint_Canvas::disposeImage(void)
 	}
 }
 
-void Fl_Gl_Paint_Canvas::drawImage(double x, double y, double width, double height)
+void FlGlPaintCanvas::drawImage(double x, double y, double width, double height)
 {
 	if (m_texturesNames) {
 		glColor4d(1, 1, 1, 1);
@@ -226,37 +226,37 @@ void Fl_Gl_Paint_Canvas::drawImage(double x, double y, double width, double heig
 	}
 }
 
-unsigned int Fl_Gl_Paint_Canvas::getTexturesColumnsCount(void) const
+unsigned int FlGlPaintCanvas::getTexturesColumnsCount(void) const
 {
 	return (int)ceil((double)m_imageWidth / (double)m_texturesSize);
 }
 
-unsigned int Fl_Gl_Paint_Canvas::getTexturesRowsCount(void) const
+unsigned int FlGlPaintCanvas::getTexturesRowsCount(void) const
 {
 	return (int)ceil((double)m_imageHeight / (double)m_texturesSize);
 }
 
-unsigned int Fl_Gl_Paint_Canvas::getTexturesCount(void) const
+unsigned int FlGlPaintCanvas::getTexturesCount(void) const
 {
 	return getTexturesColumnsCount() * getTexturesRowsCount();
 }
 
-unsigned int Fl_Gl_Paint_Canvas::getLastTexturesColumnPixelsColumns(void) const
+unsigned int FlGlPaintCanvas::getLastTexturesColumnPixelsColumns(void) const
 {
 	return m_imageWidth - (getTexturesColumnsCount()-1)*m_texturesSize;
 }
 
-unsigned int Fl_Gl_Paint_Canvas::getLastTexturesRowPixelsRows(void) const
+unsigned int FlGlPaintCanvas::getLastTexturesRowPixelsRows(void) const
 {
 	return m_imageHeight - (getTexturesRowsCount()-1)*m_texturesSize;
 }
 
-unsigned int Fl_Gl_Paint_Canvas::getTexturesColumnPixelColumns(unsigned int column) const
+unsigned int FlGlPaintCanvas::getTexturesColumnPixelColumns(unsigned int column) const
 {
 	return column < getTexturesColumnsCount()-1?m_texturesSize:getLastTexturesColumnPixelsColumns();
 }
 
-unsigned int Fl_Gl_Paint_Canvas::getTexturesRowPixelRows(unsigned int row) const
+unsigned int FlGlPaintCanvas::getTexturesRowPixelRows(unsigned int row) const
 {
 	return row < getTexturesRowsCount()-1?m_texturesSize:getLastTexturesRowPixelsRows();
 }

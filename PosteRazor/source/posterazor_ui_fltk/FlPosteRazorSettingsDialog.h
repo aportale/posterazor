@@ -20,18 +20,18 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef PosteRazorSettingsDialog_h
-#define PosteRazorSettingsDialog_h
+#ifndef FLPOSTERAZORSETTINGSDIALOG_H
+#define FLPOSTERAZORSETTINGSDIALOG_H
 
 #include "UnitsOfLength.h"
-#include "PosteRazorDialogUI.h"
-#include "Fl_Paint_Canvas_Group.h"
+#include "FlPosteRazorDialogUI.h"
+#include "FlPaintCanvasGroup.h"
 #include "Translations.h"
 
 typedef struct
 {
 	UnitsOfLength::eUnitsOfLength unitOfLength;
-	Fl_Paint_Canvas_Group::ePaintCanvasTypes previewType;
+	FlPaintCanvasGroup::ePaintCanvasTypes previewType;
 	Translations::eLanguages language;
 } posteRazorSettings;
 
@@ -43,7 +43,7 @@ public:
 	virtual void handleOptionsChangement(posteRazorSettings *settings) = 0;
 };
 
-class PosteRazorSettingsDialog: public PosteRazorSettingsDialogUI
+class FlPosteRazorSettingsDialog: public PosteRazorSettingsDialogUI
 {
 	posteRazorSettings *m_settings;
 	SettingsChangementHandler *m_changementHandler;
@@ -54,8 +54,8 @@ class PosteRazorSettingsDialog: public PosteRazorSettingsDialogUI
 	Fl_RGB_Image **m_languageButtonImages;
 
 public:
-	PosteRazorSettingsDialog();
-	~PosteRazorSettingsDialog();
+	FlPosteRazorSettingsDialog();
+	~FlPosteRazorSettingsDialog();
 
 	void setOptionsAndHandler(posteRazorSettings *settings, SettingsChangementHandler *changementHandler);
 	static void handleUnitOfLengthChoice_cb(Fl_Widget *widget, void *userData);
@@ -67,4 +67,4 @@ public:
 	void show(void);
 };
 
-#endif
+#endif // FLPOSTERAZORSETTINGSDIALOG_H

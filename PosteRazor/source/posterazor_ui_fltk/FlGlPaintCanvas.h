@@ -20,8 +20,8 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef Fl_Gl_Paint_Canvas_h
-#define Fl_Gl_Paint_Canvas_h
+#ifndef FLGLPAINTCANVAS_H
+#define FLGLPAINTCANVAS_H
 
 #include <math.h>
 
@@ -30,7 +30,7 @@
 
 #include "PaintCanvasBase.h"
 
-class Fl_Gl_Paint_Canvas: public Fl_Gl_Window, public PaintCanvasBase
+class FlGlPaintCanvas: public Fl_Gl_Window, public PaintCanvasBase
 {
 private:
 	GLuint *m_texturesNames;
@@ -40,8 +40,8 @@ private:
 	Fl_Widget *m_parentWidget;
 	
 public:
-	Fl_Gl_Paint_Canvas(int x, int y, int width, int height, Fl_Widget *parentWidget);
-	~Fl_Gl_Paint_Canvas();
+	FlGlPaintCanvas(int x, int y, int width, int height, Fl_Widget *parentWidget);
+	~FlGlPaintCanvas();
 
 	virtual void draw();
 	virtual int handle(int event);
@@ -64,4 +64,4 @@ public:
 	virtual unsigned int getTexturesRowPixelRows(unsigned int row) const;
 };
 
-#endif
+#endif // FLGLPAINTCANVAS_H

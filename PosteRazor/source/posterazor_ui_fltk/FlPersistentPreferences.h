@@ -20,16 +20,16 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef Fl_Persistent_Preferences_h
-#define Fl_Persistent_Preferences_h
+#ifndef FLPERSISTENTPREFERENCES_H
+#define FLPERSISTENTPREFERENCES_H
 
 #include <FL/Fl_Preferences.H>
 #include "PersistentPreferencesInterface.h"
 
-class Fl_Persistent_Preferences: public Fl_Preferences, public PersistentPreferencesInterface
+class FlPersistentPreferences: public Fl_Preferences, public PersistentPreferencesInterface
 {
 public:
-	Fl_Persistent_Preferences(const char *vendor, const char *application);
+	FlPersistentPreferences(const char *vendor, const char *application);
 
 	void setInteger(int value, const char *key);
 	void setDouble(double value, const char *key);
@@ -42,4 +42,4 @@ public:
 	const char *getString(const char *key, const char *defaultValue);
 };
 
-#endif
+#endif // FLPERSISTENTPREFERENCES_H

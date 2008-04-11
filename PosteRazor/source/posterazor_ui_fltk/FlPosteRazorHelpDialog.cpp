@@ -20,7 +20,7 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "PosteRazorHelpDialog.h"
+#include "FlPosteRazorHelpDialog.h"
 #include "Translations.h"
 
 #if defined (WIN32)
@@ -33,7 +33,7 @@
   #define CASESENSITIVESTRNCMP strncasecmp
 #endif
 
-PosteRazorHelpDialog::PosteRazorHelpDialog()
+FlPosteRazorHelpDialog::FlPosteRazorHelpDialog()
 	:PosteRazorHelpDialogUI(500, 400, "PosteRazor Help")
 {
 	m_help_view->link(linkCallback);
@@ -42,22 +42,22 @@ PosteRazorHelpDialog::PosteRazorHelpDialog()
 #endif
 }
 
-void PosteRazorHelpDialog::setHtmlContent(const char *content)
+void FlPosteRazorHelpDialog::setHtmlContent(const char *content)
 {
 	m_help_view->value(content);
 }
 
-void PosteRazorHelpDialog::jumpToAnchor(const char *anchor)
+void FlPosteRazorHelpDialog::jumpToAnchor(const char *anchor)
 {
 	m_help_view->topline(anchor);
 }
 
-void PosteRazorHelpDialog::handleHomepageButtonClick(void)
+void FlPosteRazorHelpDialog::handleHomepageButtonClick(void)
 {
 	openURLInBrowser(Translations::instance().posteRazorWebSiteURL());
 }
 
-void PosteRazorHelpDialog::openURLInBrowser(const char* url)
+void FlPosteRazorHelpDialog::openURLInBrowser(const char* url)
 {
 #if defined (WIN32)
 	ShellExecute(HWND_DESKTOP, "open", url, NULL, NULL, SW_SHOW);
@@ -68,18 +68,18 @@ void PosteRazorHelpDialog::openURLInBrowser(const char* url)
 #endif
 }
 
-const char *PosteRazorHelpDialog::linkCallback(Fl_Widget *w, const char *uri)
+const char *FlPosteRazorHelpDialog::linkCallback(Fl_Widget *w, const char *uri)
 {
 	const char* const httpSchemeStart = "http://";
 	if (0 == CASESENSITIVESTRNCMP(uri, httpSchemeStart, strlen(httpSchemeStart))) {
-		((PosteRazorHelpDialog*)(w->parent()))->openURLInBrowser(uri);
+		((FlPosteRazorHelpDialog*)(w->parent()))->openURLInBrowser(uri);
 		return NULL;
 	}
 	else
 		return uri;
 }
 
-void PosteRazorHelpDialog::updateLanguage(void)
+void FlPosteRazorHelpDialog::updateLanguage(void)
 {
 	label(Translations::instance().posteRazorHelp());
 	setHomepageButtonLabel(Translations::instance().posteRazorWebSite());

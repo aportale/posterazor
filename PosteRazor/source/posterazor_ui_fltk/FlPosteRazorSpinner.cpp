@@ -20,7 +20,7 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "Fl_PosteRazor_Spinner.h"
+#include "FlPosteRazorSpinner.h"
 #include <FL/Fl_Input.H>
 #include <FL/Fl_Repeat_Button.H>
 #include <stdio.h>
@@ -31,7 +31,7 @@
 
 #define REPEATBUTTONWIDTH 15
 
-Fl_PosteRazor_Spinner::Fl_PosteRazor_Spinner(int x, int y, int width, int height, const char* label)
+FlPosteRazorSpinner::FlPosteRazorSpinner(int x, int y, int width, int height, const char* label)
 	: Fl_Group(x, y, width, height, label)
 	, m_spinnerVisible(true)
 {
@@ -63,7 +63,7 @@ Fl_PosteRazor_Spinner::Fl_PosteRazor_Spinner(int x, int y, int width, int height
 	end();
 }
 
-const char* Fl_PosteRazor_Spinner::quickNDirtyDoubleToString(double value)
+const char* FlPosteRazorSpinner::quickNDirtyDoubleToString(double value)
 {
 	static char valueString[200];
 	sprintf(valueString, "%G", round(value, 4));
@@ -71,12 +71,12 @@ const char* Fl_PosteRazor_Spinner::quickNDirtyDoubleToString(double value)
 }
 
 // "round()" from http://www.c-plusplus.de/forum/viewtopic-var-t-is-39342.html
-double Fl_PosteRazor_Spinner::round(double Zahl, int Stellen)
+double FlPosteRazorSpinner::round(double Zahl, int Stellen)
 {
     return floor(Zahl * pow( 10.0, Stellen) + 0.5) * pow(10.0, -Stellen);
 } 
 
-void Fl_PosteRazor_Spinner::setSpinnerVisible(bool visible)
+void FlPosteRazorSpinner::setSpinnerVisible(bool visible)
 {
 	m_spinnerVisible = visible;
 
@@ -94,7 +94,7 @@ void Fl_PosteRazor_Spinner::setSpinnerVisible(bool visible)
 	}
 }
 
-void Fl_PosteRazor_Spinner::updateButtonsState(void)
+void FlPosteRazorSpinner::updateButtonsState(void)
 {
 	if (isValueDecrementationDisabled())
 		m_decreaseButton->deactivate();
@@ -102,17 +102,17 @@ void Fl_PosteRazor_Spinner::updateButtonsState(void)
 		m_decreaseButton->activate();
 }
 
-void Fl_PosteRazor_Spinner::handleButtonPress_cb(Fl_Repeat_Button *button, void *data)
+void FlPosteRazorSpinner::handleButtonPress_cb(Fl_Repeat_Button *button, void *data)
 {
-	((Fl_PosteRazor_Spinner*)(data))->handleButtonPress(button);
+	((FlPosteRazorSpinner*)(data))->handleButtonPress(button);
 }
 
-void Fl_PosteRazor_Spinner::handleButtonPress(Fl_Repeat_Button *button)
+void FlPosteRazorSpinner::handleButtonPress(Fl_Repeat_Button *button)
 {
 	doValueSpin(button==m_increaseButton);
 }
 
-void Fl_PosteRazor_Spinner::doValueSpin(bool increase)
+void FlPosteRazorSpinner::doValueSpin(bool increase)
 {
 	const double increaseValue = increase?.5:-.50001;
 	const double oldValue = value();
@@ -123,29 +123,29 @@ void Fl_PosteRazor_Spinner::doValueSpin(bool increase)
 	do_callback();
 }
 
-void Fl_PosteRazor_Spinner::handleValueChangement_cb(Fl_Input *input, void *data)
+void FlPosteRazorSpinner::handleValueChangement_cb(Fl_Input *input, void *data)
 {
-	((Fl_PosteRazor_Spinner*)(data))->handleValueChangement(input);
+	((FlPosteRazorSpinner*)(data))->handleValueChangement(input);
 }
 
-void Fl_PosteRazor_Spinner::handleValueChangement(Fl_Input *input)
+void FlPosteRazorSpinner::handleValueChangement(Fl_Input *input)
 {
 	updateButtonsState();
 	do_callback();
 }
 
-double Fl_PosteRazor_Spinner::value()
+double FlPosteRazorSpinner::value()
 {
 	return atof(m_input->value());
 }
 
-void Fl_PosteRazor_Spinner::value(double value)
+void FlPosteRazorSpinner::value(double value)
 {
 	m_input->value(quickNDirtyDoubleToString(value));
 	updateButtonsState();
 }
 
-int Fl_PosteRazor_Spinner::handle(int event)
+int FlPosteRazorSpinner::handle(int event)
 {
 	const bool mouseIsOnGroup = 
 		Fl::event_x() > x()
@@ -163,7 +163,7 @@ int Fl_PosteRazor_Spinner::handle(int event)
 		return Fl_Group::handle(event);
 }
 
-bool Fl_PosteRazor_Spinner::isValueDecrementationDisabled(void)
+bool FlPosteRazorSpinner::isValueDecrementationDisabled(void)
 {
 	return (value() - 1.0 <= 0.0);
 }

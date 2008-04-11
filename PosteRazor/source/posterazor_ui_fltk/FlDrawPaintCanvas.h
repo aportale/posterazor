@@ -20,8 +20,8 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef Fl_Draw_Paint_Canvas_h
-#define Fl_Draw_Paint_Canvas_h
+#ifndef FLDRAWPAINTCANVAS_H
+#define FLDRAWPAINTCANVAS_H
 
 #include <FL/Fl_Box.H>
 #include "PaintCanvasBase.h"
@@ -29,7 +29,7 @@
 class Fl_RGB_Image;
 class Fl_Image;
 
-class Fl_Draw_Paint_Canvas: public Fl_Box, public PaintCanvasBase
+class FlDrawPaintCanvas: public Fl_Box, public PaintCanvasBase
 {
 private:
 	unsigned char *m_imageRGBData;
@@ -37,8 +37,8 @@ private:
 	Fl_Image *m_scaledImage;
 	
 public:
-	Fl_Draw_Paint_Canvas(int x, int y, int width, int height);
-	~Fl_Draw_Paint_Canvas();
+	FlDrawPaintCanvas(int x, int y, int width, int height);
+	~FlDrawPaintCanvas();
 
 	virtual void draw();
 	virtual void drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
@@ -51,4 +51,4 @@ public:
 	virtual void drawImage(double x, double y, double width, double height);
 };
 
-#endif
+#endif // FLDRAWPAINTCANVAS_H

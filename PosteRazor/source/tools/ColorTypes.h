@@ -20,14 +20,13 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef ColorTypes_h
-#define ColorTypes_h
+#ifndef COLORTYPES_H
+#define COLORTYPES_H
 
 class ColorTypes
 {
 public:
-	enum eColorTypes
-	{
+	enum eColorTypes {
 		eColorTypeMonochrome,
 		eColorTypeGreyscale,
 		eColorTypePalette,
@@ -37,4 +36,4 @@ public:
 	};
 };
 
-#endif
+#endif // COLORTYPES_H

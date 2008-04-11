@@ -122,40 +122,40 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Draw_Paint_Canvas.cpp">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlDrawPaintCanvas.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Gl_Paint_Canvas.cpp">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlGlPaintCanvas.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Image_Text_Button.cpp">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlImageTextButton.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Paint_Canvas_Group.cpp">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPaintCanvasGroup.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Persistent_Preferences.cpp">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPersistentPreferences.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_PosteRazor_Spinner.cpp">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorSpinner.cpp">
 			</File>
 			<File
 				RelativePath="..\..\..\source\tools\PaintCanvasBase.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\PosteRazorDialog.cpp">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorDialog.cpp">
 			</File>
 			<File
 				RelativePath="..\..\..\source\posterazor_ui_common\PosteRazorDialogController.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\PosteRazorDialogUI.cpp">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorDialogUI.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\PosteRazorHelpDialog.cpp">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorHelpDialog.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\PosteRazorSettingsDialog.cpp">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorSettingsDialog.cpp">
 			</File>
 			<File
 				RelativePath="..\..\..\source\posterazor_ui_common\PosteRazorWizardDialogController.cpp">
@@ -169,43 +169,43 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Draw_Paint_Canvas.h">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlDrawPaintCanvas.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Gl_Paint_Canvas.h">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlGlPaintCanvas.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Image_Text_Button.h">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlImageTextButton.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Paint_Canvas_Group.h">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPaintCanvasGroup.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_Persistent_Preferences.h">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPersistentPreferences.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\Fl_PosteRazor_Spinner.h">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorSpinner.h">
 			</File>
 			<File
 				RelativePath="..\..\..\source\tools\PaintCanvasBase.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\PosteRazorDialog.h">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorDialog.h">
 			</File>
 			<File
 				RelativePath="..\..\..\source\posterazor_ui_common\PosteRazorDialogController.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\PosteRazorDialogUI.h">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorDialogUI.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\PosteRazorHelpDialog.h">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorHelpDialog.h">
 			</File>
 			<File
 				RelativePath="..\..\..\source\posterazor_ui_common\windowsResources\PosteRazorResource.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\PosteRazorSettingsDialog.h">
+				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorSettingsDialog.h">
 			</File>
 			<File
 				RelativePath="..\..\..\source\posterazor_ui_common\PosteRazorWizardDialogController.h">
@@ -255,7 +255,7 @@
 			RelativePath="..\..\..\source\posterazor_ui_common\windowsResources\PosteRazor.ico">
 		</File>
 		<File
-			RelativePath="..\..\..\source\posterazor_ui_fltk\PosteRazorDialogUI.fl">
+			RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorDialogUI.fl">
 		</File>
 		<File
 			RelativePath="..\..\..\source\posterazor_ui_common\windowsResources\PosteRazorUI.rc">

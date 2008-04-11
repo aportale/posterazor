@@ -20,8 +20,8 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef PosteRazorPDFOutput_h
-#define PosteRazorPDFOutput_h
+#ifndef POSTERAZORPDFOUTPUT_H
+#define POSTERAZORPDFOUTPUT_H
 
 #include "ColorTypes.h"
 #include "PaintCanvasInterface.h"
@@ -47,4 +47,4 @@ public:
 	virtual int finishSaving() = 0;
 };
 
-#endif
+#endif // POSTERAZORPDFOUTPUT_H

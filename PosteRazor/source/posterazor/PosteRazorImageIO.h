@@ -20,8 +20,8 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef PosteRazorImageIO_h
-#define PosteRazorImageIO_h
+#ifndef POSTERAZORIMAGEIO_H
+#define POSTERAZORIMAGEIO_H
 
 #include "UnitsOfLength.h"
 #include "ColorTypes.h"
@@ -57,4 +57,4 @@ public:
 	virtual int savePoster(const char *fileName, ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const = 0;
 };
 
-#endif
+#endif // POSTERAZORIMAGEIO_H

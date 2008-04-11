@@ -20,16 +20,15 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef PaperFormats_h
-#define PaperFormats_h
+#ifndef PAPERFORMATS_H
+#define PAPERFORMATS_H
 
 #include "UnitsOfLength.h"
 
 class PaperFormats
 {
 public:
-	enum ePaperFormats
-	{
+	enum ePaperFormats {
 		ePaperFormatA4,
 		ePaperFormatA3,
 		ePaperFormatLegal,
@@ -37,8 +36,7 @@ public:
 		ePaperFormatTabloid
 	};
 
-	enum ePaperOrientations
-	{
+	enum ePaperOrientations {
 		ePaperOrientationPortrait,
 		ePaperOrientationLandscape
 	};
@@ -53,4 +51,4 @@ public:
 	static double getPaperHeight(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit);
 };
 
-#endif
+#endif // PAPERFORMATS_H

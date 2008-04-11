@@ -20,19 +20,18 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef Fl_PosteRazor_Spinner_h
-#define Fl_PosteRazor_Spinner_h
+#ifndef FLPOSTERAZORSPINNER_H
+#define FLPOSTERAZORSPINNER_H
 
 #include <FL/Fl_Group.H>
 
 class Fl_Input;
 class Fl_Repeat_Button;
 
-class Fl_PosteRazor_Spinner: public Fl_Group
+class FlPosteRazorSpinner: public Fl_Group
 {
-
 public:
-	Fl_PosteRazor_Spinner(int x, int y, int width, int height, const char* label=0);
+	FlPosteRazorSpinner(int x, int y, int width, int height, const char* label=0);
 	static const char* quickNDirtyDoubleToString(double value);
 	static double round(double Zahl, int Stellen);
 	void setSpinnerVisible(bool visible);
@@ -55,4 +54,4 @@ private:
 	bool isValueDecrementationDisabled(void);
 };
 
-#endif
+#endif // FLPOSTERAZORSPINNER_H

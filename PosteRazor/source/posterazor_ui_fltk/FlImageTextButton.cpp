@@ -20,24 +20,24 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "Fl_Image_Text_Button.h"
+#include "FlImageTextButton.h"
 #include <FL/Fl_Image.H>
 
-Fl_Image_Text_Button::Fl_Image_Text_Button(int x, int y, int w, int h, const char* label)
+FlImageTextButton::FlImageTextButton(int x, int y, int w, int h, const char* label)
 	: Fl_Button(x, y, w, h, label)
-	, m_label_image(0)
+	, m_labelImage(0)
 {
 }
 
-void Fl_Image_Text_Button::label_image(Fl_Image *image)
+void FlImageTextButton::labelImage(Fl_Image *image)
 {
-	m_label_image = image;
+	m_labelImage = image;
 }
 
-void Fl_Image_Text_Button::draw()
+void FlImageTextButton::draw()
 {
 	Fl_Button::draw();
 
-	if (m_label_image)
-		m_label_image->draw(x() + 6, y() + (h()-m_label_image->h()) / 2);
+	if (m_labelImage)
+		m_labelImage->draw(x() + 6, y() + (h()-m_labelImage->h()) / 2);
 }

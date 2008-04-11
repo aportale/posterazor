@@ -19,16 +19,16 @@
 		8268C43D0B77D8DC0038820A /* PosteRazorDialogController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C3EA0B77D8DC0038820A /* PosteRazorDialogController.cpp */; };
 		8268C43F0B77D8DC0038820A /* PosteRazorWizardDialogController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C3EC0B77D8DC0038820A /* PosteRazorWizardDialogController.cpp */; };
 		8268C4490B77D8DC0038820A /* Translations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C3F70B77D8DC0038820A /* Translations.cpp */; };
-		8268C44F0B77D8DC0038820A /* Fl_Draw_Paint_Canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4000B77D8DC0038820A /* Fl_Draw_Paint_Canvas.cpp */; };
-		8268C4510B77D8DC0038820A /* Fl_Gl_Paint_Canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4020B77D8DC0038820A /* Fl_Gl_Paint_Canvas.cpp */; };
-		8268C4530B77D8DC0038820A /* Fl_Image_Text_Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4040B77D8DC0038820A /* Fl_Image_Text_Button.cpp */; };
-		8268C4550B77D8DC0038820A /* Fl_Paint_Canvas_Group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4060B77D8DC0038820A /* Fl_Paint_Canvas_Group.cpp */; };
-		8268C4570B77D8DC0038820A /* Fl_Persistent_Preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4080B77D8DC0038820A /* Fl_Persistent_Preferences.cpp */; };
-		8268C4590B77D8DC0038820A /* Fl_PosteRazor_Spinner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C40A0B77D8DC0038820A /* Fl_PosteRazor_Spinner.cpp */; };
-		8268C45B0B77D8DC0038820A /* PosteRazorDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C40C0B77D8DC0038820A /* PosteRazorDialog.cpp */; };
-		8268C45D0B77D8DC0038820A /* PosteRazorDialogUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C40E0B77D8DC0038820A /* PosteRazorDialogUI.cpp */; };
-		8268C4600B77D8DC0038820A /* PosteRazorHelpDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4110B77D8DC0038820A /* PosteRazorHelpDialog.cpp */; };
-		8268C4620B77D8DC0038820A /* PosteRazorSettingsDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4130B77D8DC0038820A /* PosteRazorSettingsDialog.cpp */; };
+		8268C44F0B77D8DC0038820A /* FlDrawPaintCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4000B77D8DC0038820A /* FlDrawPaintCanvas.cpp */; };
+		8268C4510B77D8DC0038820A /* FlGlPaintCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4020B77D8DC0038820A /* FlGlPaintCanvas.cpp */; };
+		8268C4530B77D8DC0038820A /* FlImageTextButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4040B77D8DC0038820A /* FlImageTextButton.cpp */; };
+		8268C4550B77D8DC0038820A /* FlPaintCanvasGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4060B77D8DC0038820A /* FlPaintCanvasGroup.cpp */; };
+		8268C4570B77D8DC0038820A /* FlPersistentPreferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4080B77D8DC0038820A /* FlPersistentPreferences.cpp */; };
+		8268C4590B77D8DC0038820A /* FlPosteRazorSpinner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C40A0B77D8DC0038820A /* FlPosteRazorSpinner.cpp */; };
+		8268C45B0B77D8DC0038820A /* FlPosteRazorDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C40C0B77D8DC0038820A /* FlPosteRazorDialog.cpp */; };
+		8268C45D0B77D8DC0038820A /* FlPosteRazorDialogUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C40E0B77D8DC0038820A /* FlPosteRazorDialogUI.cpp */; };
+		8268C4600B77D8DC0038820A /* FlPosteRazorHelpDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4110B77D8DC0038820A /* FlPosteRazorHelpDialog.cpp */; };
+		8268C4620B77D8DC0038820A /* FlPosteRazorSettingsDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4130B77D8DC0038820A /* FlPosteRazorSettingsDialog.cpp */; };
 		8268C4650B77D8DC0038820A /* ImageIOTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4170B77D8DC0038820A /* ImageIOTypes.cpp */; };
 		8268C4670B77D8DC0038820A /* PaintCanvasBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C4190B77D8DC0038820A /* PaintCanvasBase.cpp */; };
 		8268C46A0B77D8DC0038820A /* PaperFormats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8268C41C0B77D8DC0038820A /* PaperFormats.cpp */; };
@@ -95,27 +95,27 @@
 		8268C3F60B77D8DC0038820A /* TranslationPolish.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationPolish.h; sourceTree = "<group>"; };
 		8268C3F70B77D8DC0038820A /* Translations.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Translations.cpp; sourceTree = "<group>"; };
 		8268C3F80B77D8DC0038820A /* Translations.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Translations.h; sourceTree = "<group>"; };
-		8268C4000B77D8DC0038820A /* Fl_Draw_Paint_Canvas.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Draw_Paint_Canvas.cpp; sourceTree = "<group>"; };
-		8268C4010B77D8DC0038820A /* Fl_Draw_Paint_Canvas.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Draw_Paint_Canvas.h; sourceTree = "<group>"; };
-		8268C4020B77D8DC0038820A /* Fl_Gl_Paint_Canvas.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Gl_Paint_Canvas.cpp; sourceTree = "<group>"; };
-		8268C4030B77D8DC0038820A /* Fl_Gl_Paint_Canvas.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Gl_Paint_Canvas.h; sourceTree = "<group>"; };
-		8268C4040B77D8DC0038820A /* Fl_Image_Text_Button.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Image_Text_Button.cpp; sourceTree = "<group>"; };
-		8268C4050B77D8DC0038820A /* Fl_Image_Text_Button.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Image_Text_Button.h; sourceTree = "<group>"; };
-		8268C4060B77D8DC0038820A /* Fl_Paint_Canvas_Group.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Paint_Canvas_Group.cpp; sourceTree = "<group>"; };
-		8268C4070B77D8DC0038820A /* Fl_Paint_Canvas_Group.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Paint_Canvas_Group.h; sourceTree = "<group>"; };
-		8268C4080B77D8DC0038820A /* Fl_Persistent_Preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Persistent_Preferences.cpp; sourceTree = "<group>"; };
-		8268C4090B77D8DC0038820A /* Fl_Persistent_Preferences.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_Persistent_Preferences.h; sourceTree = "<group>"; };
-		8268C40A0B77D8DC0038820A /* Fl_PosteRazor_Spinner.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_PosteRazor_Spinner.cpp; sourceTree = "<group>"; };
-		8268C40B0B77D8DC0038820A /* Fl_PosteRazor_Spinner.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Fl_PosteRazor_Spinner.h; sourceTree = "<group>"; };
-		8268C40C0B77D8DC0038820A /* PosteRazorDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorDialog.cpp; sourceTree = "<group>"; };
-		8268C40D0B77D8DC0038820A /* PosteRazorDialog.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorDialog.h; sourceTree = "<group>"; };
-		8268C40E0B77D8DC0038820A /* PosteRazorDialogUI.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorDialogUI.cpp; sourceTree = "<group>"; };
-		8268C40F0B77D8DC0038820A /* PosteRazorDialogUI.fl */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = PosteRazorDialogUI.fl; sourceTree = "<group>"; };
-		8268C4100B77D8DC0038820A /* PosteRazorDialogUI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorDialogUI.h; sourceTree = "<group>"; };
-		8268C4110B77D8DC0038820A /* PosteRazorHelpDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorHelpDialog.cpp; sourceTree = "<group>"; };
-		8268C4120B77D8DC0038820A /* PosteRazorHelpDialog.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorHelpDialog.h; sourceTree = "<group>"; };
-		8268C4130B77D8DC0038820A /* PosteRazorSettingsDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorSettingsDialog.cpp; sourceTree = "<group>"; };
-		8268C4140B77D8DC0038820A /* PosteRazorSettingsDialog.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorSettingsDialog.h; sourceTree = "<group>"; };
+		8268C4000B77D8DC0038820A /* FlDrawPaintCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = FlDrawPaintCanvas.cpp; sourceTree = "<group>"; };
+		8268C4010B77D8DC0038820A /* FlDrawPaintCanvas.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FlDrawPaintCanvas.h; sourceTree = "<group>"; };
+		8268C4020B77D8DC0038820A /* FlGlPaintCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = FlGlPaintCanvas.cpp; sourceTree = "<group>"; };
+		8268C4030B77D8DC0038820A /* FlGlPaintCanvas.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FlGlPaintCanvas.h; sourceTree = "<group>"; };
+		8268C4040B77D8DC0038820A /* FlImageTextButton.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = FlImageTextButton.cpp; sourceTree = "<group>"; };
+		8268C4050B77D8DC0038820A /* FlImageTextButton.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FlImageTextButton.h; sourceTree = "<group>"; };
+		8268C4060B77D8DC0038820A /* FlPaintCanvasGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = FlPaintCanvasGroup.cpp; sourceTree = "<group>"; };
+		8268C4070B77D8DC0038820A /* FlPaintCanvasGroup.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FlPaintCanvasGroup.h; sourceTree = "<group>"; };
+		8268C4080B77D8DC0038820A /* FlPersistentPreferences.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = FlPersistentPreferences.cpp; sourceTree = "<group>"; };
+		8268C4090B77D8DC0038820A /* FlPersistentPreferences.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FlPersistentPreferences.h; sourceTree = "<group>"; };
+		8268C40A0B77D8DC0038820A /* FlPosteRazorSpinner.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = FlPosteRazorSpinner.cpp; sourceTree = "<group>"; };
+		8268C40B0B77D8DC0038820A /* FlPosteRazorSpinner.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FlPosteRazorSpinner.h; sourceTree = "<group>"; };
+		8268C40C0B77D8DC0038820A /* FlPosteRazorDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = FlPosteRazorDialog.cpp; sourceTree = "<group>"; };
+		8268C40D0B77D8DC0038820A /* FlPosteRazorDialog.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FlPosteRazorDialog.h; sourceTree = "<group>"; };
+		8268C40E0B77D8DC0038820A /* FlPosteRazorDialogUI.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = FlPosteRazorDialogUI.cpp; sourceTree = "<group>"; };
+		8268C40F0B77D8DC0038820A /* FlPosteRazorDialogUI.fl */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = FlPosteRazorDialogUI.fl; sourceTree = "<group>"; };
+		8268C4100B77D8DC0038820A /* FlPosteRazorDialogUI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FlPosteRazorDialogUI.h; sourceTree = "<group>"; };
+		8268C4110B77D8DC0038820A /* FlPosteRazorHelpDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = FlPosteRazorHelpDialog.cpp; sourceTree = "<group>"; };
+		8268C4120B77D8DC0038820A /* FlPosteRazorHelpDialog.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FlPosteRazorHelpDialog.h; sourceTree = "<group>"; };
+		8268C4130B77D8DC0038820A /* FlPosteRazorSettingsDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = FlPosteRazorSettingsDialog.cpp; sourceTree = "<group>"; };
+		8268C4140B77D8DC0038820A /* FlPosteRazorSettingsDialog.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FlPosteRazorSettingsDialog.h; sourceTree = "<group>"; };
 		8268C4160B77D8DC0038820A /* ColorTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ColorTypes.h; sourceTree = "<group>"; };
 		8268C4170B77D8DC0038820A /* ImageIOTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = ImageIOTypes.cpp; sourceTree = "<group>"; };
 		8268C4180B77D8DC0038820A /* ImageIOTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ImageIOTypes.h; sourceTree = "<group>"; };
@@ -269,27 +269,27 @@
 		8268C3FF0B77D8DC0038820A /* posterazor_ui_fltk */ = {
 			isa = PBXGroup;
 			children = (
-				8268C4000B77D8DC0038820A /* Fl_Draw_Paint_Canvas.cpp */,
-				8268C4010B77D8DC0038820A /* Fl_Draw_Paint_Canvas.h */,
-				8268C4020B77D8DC0038820A /* Fl_Gl_Paint_Canvas.cpp */,
-				8268C4030B77D8DC0038820A /* Fl_Gl_Paint_Canvas.h */,
-				8268C4040B77D8DC0038820A /* Fl_Image_Text_Button.cpp */,
-				8268C4050B77D8DC0038820A /* Fl_Image_Text_Button.h */,
-				8268C4060B77D8DC0038820A /* Fl_Paint_Canvas_Group.cpp */,
-				8268C4070B77D8DC0038820A /* Fl_Paint_Canvas_Group.h */,
-				8268C4080B77D8DC0038820A /* Fl_Persistent_Preferences.cpp */,
-				8268C4090B77D8DC0038820A /* Fl_Persistent_Preferences.h */,
-				8268C40A0B77D8DC0038820A /* Fl_PosteRazor_Spinner.cpp */,
-				8268C40B0B77D8DC0038820A /* Fl_PosteRazor_Spinner.h */,
-				8268C40C0B77D8DC0038820A /* PosteRazorDialog.cpp */,
-				8268C40D0B77D8DC0038820A /* PosteRazorDialog.h */,
-				8268C40E0B77D8DC0038820A /* PosteRazorDialogUI.cpp */,
-				8268C40F0B77D8DC0038820A /* PosteRazorDialogUI.fl */,
-				8268C4100B77D8DC0038820A /* PosteRazorDialogUI.h */,
-				8268C4110B77D8DC0038820A /* PosteRazorHelpDialog.cpp */,
-				8268C4120B77D8DC0038820A /* PosteRazorHelpDialog.h */,
-				8268C4130B77D8DC0038820A /* PosteRazorSettingsDialog.cpp */,
-				8268C4140B77D8DC0038820A /* PosteRazorSettingsDialog.h */,
+				8268C4000B77D8DC0038820A /* FlDrawPaintCanvas.cpp */,
+				8268C4010B77D8DC0038820A /* FlDrawPaintCanvas.h */,
+				8268C4020B77D8DC0038820A /* FlGlPaintCanvas.cpp */,
+				8268C4030B77D8DC0038820A /* FlGlPaintCanvas.h */,
+				8268C4040B77D8DC0038820A /* FlImageTextButton.cpp */,
+				8268C4050B77D8DC0038820A /* FlImageTextButton.h */,
+				8268C4060B77D8DC0038820A /* FlPaintCanvasGroup.cpp */,
+				8268C4070B77D8DC0038820A /* FlPaintCanvasGroup.h */,
+				8268C4080B77D8DC0038820A /* FlPersistentPreferences.cpp */,
+				8268C4090B77D8DC0038820A /* FlPersistentPreferences.h */,
+				8268C40A0B77D8DC0038820A /* FlPosteRazorSpinner.cpp */,
+				8268C40B0B77D8DC0038820A /* FlPosteRazorSpinner.h */,
+				8268C40C0B77D8DC0038820A /* FlPosteRazorDialog.cpp */,
+				8268C40D0B77D8DC0038820A /* FlPosteRazorDialog.h */,
+				8268C40E0B77D8DC0038820A /* FlPosteRazorDialogUI.cpp */,
+				8268C40F0B77D8DC0038820A /* FlPosteRazorDialogUI.fl */,
+				8268C4100B77D8DC0038820A /* FlPosteRazorDialogUI.h */,
+				8268C4110B77D8DC0038820A /* FlPosteRazorHelpDialog.cpp */,
+				8268C4120B77D8DC0038820A /* FlPosteRazorHelpDialog.h */,
+				8268C4130B77D8DC0038820A /* FlPosteRazorSettingsDialog.cpp */,
+				8268C4140B77D8DC0038820A /* FlPosteRazorSettingsDialog.h */,
 			);
 			name = posterazor_ui_fltk;
 			path = ../../../source/posterazor_ui_fltk;
@@ -413,16 +413,16 @@
 				8268C43D0B77D8DC0038820A /* PosteRazorDialogController.cpp in Sources */,
 				8268C43F0B77D8DC0038820A /* PosteRazorWizardDialogController.cpp in Sources */,
 				8268C4490B77D8DC0038820A /* Translations.cpp in Sources */,
-				8268C44F0B77D8DC0038820A /* Fl_Draw_Paint_Canvas.cpp in Sources */,
-				8268C4510B77D8DC0038820A /* Fl_Gl_Paint_Canvas.cpp in Sources */,
-				8268C4530B77D8DC0038820A /* Fl_Image_Text_Button.cpp in Sources */,
-				8268C4550B77D8DC0038820A /* Fl_Paint_Canvas_Group.cpp in Sources */,
-				8268C4570B77D8DC0038820A /* Fl_Persistent_Preferences.cpp in Sources */,
-				8268C4590B77D8DC0038820A /* Fl_PosteRazor_Spinner.cpp in Sources */,
-				8268C45B0B77D8DC0038820A /* PosteRazorDialog.cpp in Sources */,
-				8268C45D0B77D8DC0038820A /* PosteRazorDialogUI.cpp in Sources */,
-				8268C4600B77D8DC0038820A /* PosteRazorHelpDialog.cpp in Sources */,
-				8268C4620B77D8DC0038820A /* PosteRazorSettingsDialog.cpp in Sources */,
+				8268C44F0B77D8DC0038820A /* FlDrawPaintCanvas.cpp in Sources */,
+				8268C4510B77D8DC0038820A /* FlGlPaintCanvas.cpp in Sources */,
+				8268C4530B77D8DC0038820A /* FlImageTextButton.cpp in Sources */,
+				8268C4550B77D8DC0038820A /* FlPaintCanvasGroup.cpp in Sources */,
+				8268C4570B77D8DC0038820A /* FlPersistentPreferences.cpp in Sources */,
+				8268C4590B77D8DC0038820A /* FlPosteRazorSpinner.cpp in Sources */,
+				8268C45B0B77D8DC0038820A /* FlPosteRazorDialog.cpp in Sources */,
+				8268C45D0B77D8DC0038820A /* FlPosteRazorDialogUI.cpp in Sources */,
+				8268C4600B77D8DC0038820A /* FlPosteRazorHelpDialog.cpp in Sources */,
+				8268C4620B77D8DC0038820A /* FlPosteRazorSettingsDialog.cpp in Sources */,
 				8268C4650B77D8DC0038820A /* ImageIOTypes.cpp in Sources */,
 				8268C4670B77D8DC0038820A /* PaintCanvasBase.cpp in Sources */,
 				8268C46A0B77D8DC0038820A /* PaperFormats.cpp in Sources */,

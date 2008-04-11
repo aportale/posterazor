@@ -20,20 +20,20 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "Fl_Paint_Canvas_Group.h"
+#include "FlPaintCanvasGroup.h"
 #include <string.h>
 #include <FL/Fl.H>
 
-Fl_Paint_Canvas_Group::Fl_Paint_Canvas_Group(int x, int y, int width, int height)
+FlPaintCanvasGroup::FlPaintCanvasGroup(int x, int y, int width, int height)
 	: Fl_Group(x, y, width, height)
 	, m_imageRGBData(NULL)
 	, m_imageWidth(0)
 	, m_imageHeight(0)
 {
 	begin();
-	m_drawPaintCanvas = new Fl_Draw_Paint_Canvas(x+1, y+1, width-2, height-2);
+	m_drawPaintCanvas = new FlDrawPaintCanvas(x+1, y+1, width-2, height-2);
 #ifndef NO_OPENGL_PREVIEW
-	m_glPaintCanvas = new Fl_Gl_Paint_Canvas(x+1, y+1, width-2, height-2, this);
+	m_glPaintCanvas = new FlGlPaintCanvas(x+1, y+1, width-2, height-2, this);
 #endif
 	end();
 
@@ -50,7 +50,7 @@ Fl_Paint_Canvas_Group::Fl_Paint_Canvas_Group(int x, int y, int width, int height
 #endif
 }
 
-void Fl_Paint_Canvas_Group::redraw(void)
+void FlPaintCanvasGroup::redraw(void)
 {
 	Fl_Group::redraw();
 #ifndef NO_OPENGL_PREVIEW
@@ -58,7 +58,7 @@ void Fl_Paint_Canvas_Group::redraw(void)
 #endif
 }
 
-void Fl_Paint_Canvas_Group::setPaintCanvasType(ePaintCanvasTypes type)
+void FlPaintCanvasGroup::setPaintCanvasType(ePaintCanvasTypes type)
 {
 #ifndef NO_OPENGL_PREVIEW
 	m_paintCanvasType = type;
@@ -78,7 +78,7 @@ void Fl_Paint_Canvas_Group::setPaintCanvasType(ePaintCanvasTypes type)
 #endif
 }
 
-PaintCanvasBase *Fl_Paint_Canvas_Group::getPaintCanvasBase(void) const
+PaintCanvasBase *FlPaintCanvasGroup::getPaintCanvasBase(void) const
 {
 #ifndef NO_OPENGL_PREVIEW
 	if (getPaintCanvasType()==PaintCanvasTypeDraw)
@@ -90,7 +90,7 @@ PaintCanvasBase *Fl_Paint_Canvas_Group::getPaintCanvasBase(void) const
 #endif
 }
 
-Fl_Widget *Fl_Paint_Canvas_Group::getPaintCanvasWidget(void) const
+Fl_Widget *FlPaintCanvasGroup::getPaintCanvasWidget(void) const
 {
 #ifndef NO_OPENGL_PREVIEW
 	if (getPaintCanvasType()==PaintCanvasTypeDraw)
@@ -102,7 +102,7 @@ Fl_Widget *Fl_Paint_Canvas_Group::getPaintCanvasWidget(void) const
 #endif
 }
 
-void Fl_Paint_Canvas_Group::setPainterInterface(const PainterInterface *painter)
+void FlPaintCanvasGroup::setPainterInterface(const PainterInterface *painter)
 {
 	PaintCanvasBase::setPainterInterface(painter);
 	m_drawPaintCanvas->setPainterInterface(m_painter);
@@ -111,7 +111,7 @@ void Fl_Paint_Canvas_Group::setPainterInterface(const PainterInterface *painter)
 #endif
 }
 
-void Fl_Paint_Canvas_Group::setBackgroundColor(unsigned char red, unsigned char green, unsigned char blue)
+void FlPaintCanvasGroup::setBackgroundColor(unsigned char red, unsigned char green, unsigned char blue)
 {
 	m_drawPaintCanvas->setBackgroundColor(red, green, blue);
 #ifndef NO_OPENGL_PREVIEW
@@ -119,12 +119,12 @@ void Fl_Paint_Canvas_Group::setBackgroundColor(unsigned char red, unsigned char 
 #endif
 }
 
-void Fl_Paint_Canvas_Group::drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
-void Fl_Paint_Canvas_Group::drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
-void Fl_Paint_Canvas_Group::drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
-void Fl_Paint_Canvas_Group::getSize(double &width, double &height) const {}
+void FlPaintCanvasGroup::drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
+void FlPaintCanvasGroup::drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
+void FlPaintCanvasGroup::drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {}
+void FlPaintCanvasGroup::getSize(double &width, double &height) const {}
 
-void Fl_Paint_Canvas_Group::setImage(const unsigned char* rgbData, double width, double height)
+void FlPaintCanvasGroup::setImage(const unsigned char* rgbData, double width, double height)
 {
 	disposeImage();
 	m_imageRGBData = new unsigned char[(int)width * (int)height * 3];
@@ -135,9 +135,9 @@ void Fl_Paint_Canvas_Group::setImage(const unsigned char* rgbData, double width,
 	getPaintCanvasBase()->setImage(m_imageRGBData, m_imageWidth, m_imageHeight);
 }
 
-void Fl_Paint_Canvas_Group::drawImage(double x, double y, double width, double height) {}
+void FlPaintCanvasGroup::drawImage(double x, double y, double width, double height) {}
 
-void Fl_Paint_Canvas_Group::setState(const char *state)
+void FlPaintCanvasGroup::setState(const char *state)
 {
 	PaintCanvasBase::setState(state);
 	m_drawPaintCanvas->setState(m_stateString);
@@ -146,7 +146,7 @@ void Fl_Paint_Canvas_Group::setState(const char *state)
 #endif
 }
 
-void Fl_Paint_Canvas_Group::disposeImage(void)
+void FlPaintCanvasGroup::disposeImage(void)
 {
 	m_drawPaintCanvas->disposeImage();
 #ifndef NO_OPENGL_PREVIEW
