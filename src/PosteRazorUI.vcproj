@@ -19,7 +19,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\..\source\tools;..\..\..\source\posterazor;..\..\..\source\posterazor_ui_common;..\..\..\source\posterazor_ui_common\translations;..\..\..\source\posterazor_ui_common\windowsResources;..\..\..\source\posterazor_ui_fltk;&quot;..\..\..\thirdparty\fltk-1.1&quot;;..\..\..\thirdparty\Fl_Native_File_Chooser"
+				AdditionalIncludeDirectories="&quot;thirdparty\fltk-1.1&quot;;thirdparty\Fl_Native_File_Chooser"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;OPENGL_PREVIEW"
 				MinimalRebuild="FALSE"
 				BasicRuntimeChecks="0"
@@ -36,7 +36,7 @@
 				AdditionalDependencies="fltkd.lib fltkgld.lib wsock32.lib comctl32.lib glu32.lib opengl32.lib"
 				OutputFile="$(OutDir)/PosteRazorGUI.exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;..\..\..\thirdparty\fltk-1.1\lib&quot;"
+				AdditionalLibraryDirectories="&quot;thirdparty\fltk-1.1\lib&quot;"
 				IgnoreDefaultLibraryNames="libcd"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/PosteRazorUI.pdb"
@@ -71,7 +71,7 @@
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\source\tools;..\..\..\source\posterazor;..\..\..\source\posterazor_ui_common;..\..\..\source\posterazor_ui_common\translations;..\..\..\source\posterazor_ui_common\windowsResources;..\..\..\source\posterazor_ui_fltk;&quot;..\..\..\thirdparty\fltk-1.1&quot;;..\..\..\thirdparty\Fl_Native_File_Chooser"
+				AdditionalIncludeDirectories="&quot;thirdparty\fltk-1.1&quot;;thirdparty\Fl_Native_File_Chooser"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -85,7 +85,7 @@
 				AdditionalDependencies="fltk.lib fltkgl.lib wsock32.lib comctl32.lib glu32.lib opengl32.lib"
 				OutputFile="$(OutDir)/PosteRazorUI.exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\..\..\thirdparty\fltk-1.1\lib&quot;"
+				AdditionalLibraryDirectories="&quot;thirdparty\fltk-1.1\lib&quot;"
 				IgnoreDefaultLibraryNames="libc"
 				GenerateDebugInformation="FALSE"
 				SubSystem="2"
@@ -122,46 +122,46 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlDrawPaintCanvas.cpp">
+				RelativePath="FlDrawPaintCanvas.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlGlPaintCanvas.cpp">
+				RelativePath="FlGlPaintCanvas.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlImageTextButton.cpp">
+				RelativePath="FlImageTextButton.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPaintCanvasGroup.cpp">
+				RelativePath="FlPaintCanvasGroup.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPersistentPreferences.cpp">
+				RelativePath="FlPersistentPreferences.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorSpinner.cpp">
+				RelativePath="FlPosteRazorSpinner.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\tools\PaintCanvasBase.cpp">
+				RelativePath="PaintCanvasBase.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorDialog.cpp">
+				RelativePath="FlPosteRazorDialog.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_common\PosteRazorDialogController.cpp">
+				RelativePath="PosteRazorDialogController.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorDialogUI.cpp">
+				RelativePath="FlPosteRazorDialogUI.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorHelpDialog.cpp">
+				RelativePath="FlPosteRazorHelpDialog.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorSettingsDialog.cpp">
+				RelativePath="FlPosteRazorSettingsDialog.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_common\PosteRazorWizardDialogController.cpp">
+				RelativePath="PosteRazorWizardDialogController.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_common\translations\Translations.cpp">
+				RelativePath="Translations.cpp">
 			</File>
 		</Filter>
 		<Filter
@@ -169,96 +169,96 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlDrawPaintCanvas.h">
+				RelativePath="FlDrawPaintCanvas.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlGlPaintCanvas.h">
+				RelativePath="FlGlPaintCanvas.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlImageTextButton.h">
+				RelativePath="FlImageTextButton.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPaintCanvasGroup.h">
+				RelativePath="FlPaintCanvasGroup.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPersistentPreferences.h">
+				RelativePath="FlPersistentPreferences.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorSpinner.h">
+				RelativePath="FlPosteRazorSpinner.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\tools\PaintCanvasBase.h">
+				RelativePath="PaintCanvasBase.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorDialog.h">
+				RelativePath="FlPosteRazorDialog.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_common\PosteRazorDialogController.h">
+				RelativePath="PosteRazorDialogController.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorDialogUI.h">
+				RelativePath="FlPosteRazorDialogUI.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorHelpDialog.h">
+				RelativePath="FlPosteRazorHelpDialog.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_common\windowsResources\PosteRazorResource.h">
+				RelativePath="PosteRazorResource.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorSettingsDialog.h">
+				RelativePath="FlPosteRazorSettingsDialog.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_common\PosteRazorWizardDialogController.h">
+				RelativePath="PosteRazorWizardDialogController.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_common\translations\TranslationBrazilianPortuguese.h">
+				RelativePath="TranslationBrazilianPortuguese.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_common\translations\TranslationConstants.h">
+				RelativePath="TranslationConstants.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_common\translations\TranslationDutch.h">
+				RelativePath="TranslationDutch.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_common\translations\TranslationEnglish.h">
+				RelativePath="TranslationEnglish.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_common\translations\TranslationFrench.h">
+				RelativePath="TranslationFrench.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_common\translations\TranslationGerman.h">
+				RelativePath="TranslationGerman.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_common\translations\TranslationInterface.h">
+				RelativePath="TranslationInterface.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_common\translations\TranslationItalian.h">
+				RelativePath="TranslationItalian.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_common\translations\TranslationPolish.h">
+				RelativePath="TranslationPolish.h">
 			</File>
 			<File
-				RelativePath="..\..\..\source\posterazor_ui_common\translations\Translations.h">
+				RelativePath="Translations.h">
 			</File>
 		</Filter>
 		<Filter
 			Name="Fl_Native_File_Chooser"
 			Filter="">
 			<File
-				RelativePath="..\..\..\thirdparty\Fl_Native_File_Chooser\Fl_Native_File_Chooser.cxx">
+				RelativePath="thirdparty\Fl_Native_File_Chooser\Fl_Native_File_Chooser.cxx">
 			</File>
 			<File
-				RelativePath="..\..\..\thirdparty\Fl_Native_File_Chooser\Fl\Fl_Native_File_Chooser.H">
+				RelativePath="thirdparty\Fl_Native_File_Chooser\Fl\Fl_Native_File_Chooser.H">
 			</File>
 		</Filter>
 		<File
-			RelativePath="..\..\..\source\posterazor_ui_common\windowsResources\PosteRazor.ico">
+			RelativePath="PosteRazor.ico">
 		</File>
 		<File
-			RelativePath="..\..\..\source\posterazor_ui_fltk\FlPosteRazorDialogUI.fl">
+			RelativePath="FlPosteRazorDialogUI.fl">
 		</File>
 		<File
-			RelativePath="..\..\..\source\posterazor_ui_common\windowsResources\PosteRazorUI.rc">
+			RelativePath="PosteRazorUI.rc">
 		</File>
 	</Files>
 	<Globals>
