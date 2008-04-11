@@ -1,8 +1,0 @@
-%product PosteRazor
-%copyright 2005-2007 by Alessandro Portale, All Rights Reserved.
-%vendor Alessandro Portale
-%license LICENSE
-%readme README
-%description Make Your own Poster!
-%version 1.4
-f 755 root sys /usr/bin/posterazor projects/posterazor_fltk/cmake/PosteRazor
