@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="7.10"
-	Name="PosteRazorUI"
+	Name="PosteRazor"
 	ProjectGUID="{9033B105-F4B8-452E-9069-719F15FF1C19}"
 	Keyword="Win32Proj">
 	<Platforms>
@@ -34,7 +34,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="FreeImaged.lib fltkd.lib fltkgld.lib wsock32.lib comctl32.lib glu32.lib opengl32.lib"
-				OutputFile="$(OutDir)/PosteRazorGUI.exe"
+				OutputFile="$(OutDir)/PosteRazor.exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="thirdparty\FreeImage\Dist;&quot;thirdparty\fltk-1.1\lib&quot;"
 				IgnoreDefaultLibraryNames="libcd"
@@ -83,7 +83,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="FreeImage.lib fltk.lib fltkgl.lib wsock32.lib comctl32.lib glu32.lib opengl32.lib"
-				OutputFile="$(OutDir)/PosteRazorUI.exe"
+				OutputFile="$(OutDir)/PosteRazor.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="thirdparty\FreeImage\Dist;&quot;thirdparty\fltk-1.1\lib&quot;"
 				IgnoreDefaultLibraryNames="libc"
