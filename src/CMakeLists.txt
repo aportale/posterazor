@@ -5,14 +5,42 @@ IF (WIN32 OR APPLE)
 	SET(POSTERAZOR_ENABLELAUNCHURLSORFILES TRUE)
 ENDIF (WIN32 OR APPLE)
 
-IF (EXISTS PosteRazor.cpp)
-	IF (WIN32)
-		MESSAGE(FATAL_ERROR "The flat source tree is not buildable on Windows. Please use the normal source package.") 
-	ENDIF (WIN32)
-	INCLUDE (CMakeLists_flat_source_tree.txt)
-ELSE (EXISTS PosteRazor.cpp)
-	INCLUDE (CMakeLists_deep_source_tree.txt)
-ENDIF (EXISTS PosteRazor.cpp)
+SET(POSTERAZOR_CORESOURCES
+	ImageIOTypes.cpp
+	PosteRazor.cpp
+	PosteRazorImageIO.cpp
+	PosteRazorPDFOutput.cpp
+	UnitsOfLength.cpp
+	PaperFormats.cpp
+	PaintCanvasBase.cpp
+)
+
+SET(POSTERAZOR_UISOURCES
+	Translations.cpp
+	FlPaintCanvasGroup.cpp
+	FlDrawPaintCanvas.cpp
+	FlPersistentPreferences.cpp
+	FlImageTextButton.cpp
+	FlPosteRazorSpinner.cpp
+	PosteRazorDialogController.cpp
+	PosteRazorWizardDialogController.cpp
+	FlPosteRazorDialog.cpp
+	FlPosteRazorHelpDialog.cpp
+	FlPosteRazorSettingsDialog.cpp
+	FlPosteRazorDialogUI.cpp
+	thirdparty/Fl_Native_File_Chooser/Fl_Native_File_Chooser.cxx
+)
+
+SET(POSTERAZOR_INCLUDEDIRECTORIES
+	thirdparty/Fl_Native_File_Chooser
+)
+
+IF (POSTERAZOR_ENABLEGLPREVIEW)
+	SET(POSTERAZOR_UISOURCES
+		${POSTERAZOR_UISOURCES}
+		FlGlPaintCanvas.cpp
+	)
+ENDIF (POSTERAZOR_ENABLEGLPREVIEW)
 
 SET(POSTERAZOR_SOURCES
 	${POSTERAZOR_CORESOURCES}
@@ -38,14 +66,14 @@ IF (NOT POSTERAZOR_ENABLELAUNCHURLSORFILES)
 ENDIF (NOT POSTERAZOR_ENABLELAUNCHURLSORFILES)
 
 IF (WIN32)
-	SET(POSTERAZOR_EXECUTABLE WIN32 ${POSTERAZOR_SOURCES} ${POSTERAZOR_RC_FILE})
+	SET(POSTERAZOR_EXECUTABLE WIN32 ${POSTERAZOR_SOURCES} PosteRazorUI.rc)
 	SET(POSTERAZOR_INCLUDEDIRECTORIES ${POSTERAZOR_INCLUDEDIRECTORIES}
-		../../../thirdparty/fltk-1.1
-		../../../source/posterazor_ui_common/windowsResources
+		thirdparty/FreeImage/Dist
+		thirdparty/fltk-1.1
 	)
 	SET(POSTERAZOR_LINKDIRECTORIES
-		../../../thirdparty/FreeImage/Dist
-		../../../thirdparty/fltk-1.1/lib
+		thirdparty/FreeImage/Dist
+		thirdparty/fltk-1.1/lib
 	)
 	SET(POSTERAZOR_LINKLIBRARIES
 		debug FreeImaged
@@ -111,11 +139,11 @@ IF (APPLE)
 	SET(MACOSX_RESOURCES_PATH ${MACOSX_CONTENTS_PATH}/Resources)
 	ADD_CUSTOM_COMMAND(TARGET PosteRazor POST_BUILD
 		COMMAND mkdir ARGS -p ${MACOSX_RESOURCES_PATH}
-		COMMAND cp ARGS ${POSTERAZOR_ICON_FILE} ${MACOSX_RESOURCES_PATH}
-		COMMAND cp ARGS ${POSTERAZOR_INFOPLIST} ${MACOSX_CONTENTS_PATH}
+		COMMAND cp ARGS PosteRazor.icns ${MACOSX_RESOURCES_PATH}
+		COMMAND cp ARGS Info.plist ${MACOSX_CONTENTS_PATH}
 		COMMAND strip ARGS ${MACOSX_CONTENTS_PATH}/MacOS/PosteRazor
 		)
-	FOREACH(language English German French Italian Dutch Spanish)
+	FOREACH(language English German French Italian Dutch Spanish BrazilianPortuguese)
 		ADD_CUSTOM_COMMAND(TARGET PosteRazor POST_BUILD
 			COMMAND mkdir ARGS -p ${MACOSX_RESOURCES_PATH}/${language}.lproj)
 	ENDFOREACH(language)
