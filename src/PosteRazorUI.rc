@@ -7,7 +7,9 @@
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#include "afxres.h"
+//#include "afxres.h"
+// afxres.h is not present in VS 2008 express. Windows.h works fine, there
+#include "Windows.h"
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
