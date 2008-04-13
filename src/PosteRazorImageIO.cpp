@@ -73,6 +73,16 @@ private:
 		return p[0] == 1;  // Lowest address contains the least significant byte
 	}
 
+	// FreeImage_Convert[To|From]RawBits inverted the topdown parameter until v3.10
+	static BOOL hasFreeImageVersionCorrectTopDownInConvertBits(void)
+	{
+		const char *version = FreeImage_GetVersion();
+		int majorVersion;
+		int minorVersion;
+		int readCount = sscanf(version, "%d.%d", &majorVersion, &minorVersion);
+		return readCount == 2 && majorVersion >= 3 && minorVersion >= 10?TRUE:FALSE;
+	}
+
 public:
 	PosteRazorImageIOImplementation()
 		: m_bitmap(NULL)
@@ -210,7 +220,7 @@ public:
 			originalImage = scaledImage;
 		}
 
-		FreeImage_ConvertToRawBits(buffer, originalImage, width*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
+		FreeImage_ConvertToRawBits(buffer, originalImage, width*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, hasFreeImageVersionCorrectTopDownInConvertBits());
 
 		// Swapping RGB data if needed (like on Intel)
 		if (isSystemLittleEndian()) {
@@ -267,7 +277,7 @@ public:
 
 		const unsigned int bytesPerLineCount = PosteRazorPDFOutput::getImageBytesPerLineCount(getWidthPixels(), getBitsPerPixel());
 
-		FreeImage_ConvertToRawBits(imageData, m_bitmap, bytesPerLineCount, getBitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, FALSE);
+		FreeImage_ConvertToRawBits(imageData, m_bitmap, bytesPerLineCount, getBitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, hasFreeImageVersionCorrectTopDownInConvertBits());
 
 		// Swapping RGB data if needed (like on Intel)
 		if (getBitsPerPixel() == 24 && isSystemLittleEndian()) {
