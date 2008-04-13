@@ -1,6 +1,6 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005-2007 by Alessandro Portale
+	Copyright (C) 2005-2008 by Alessandro Portale
 	http://posterazor.sourceforge.net/
 
 	This file is part of PosteRazor
@@ -20,8 +20,8 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef QPaintCanvas_h
-#define QPaintCanvas_h
+#ifndef QTPAINTCANVAS_H
+#define QTPAINTCANVAS_H
 
 #include <QWidget>
 #include "PaintCanvasBase.h"
@@ -29,7 +29,7 @@
 class QImage;
 class QPainter;
 
-class QPaintCanvas: public QWidget, public PaintCanvasBase
+class QtPaintCanvas: public QWidget, public PaintCanvasBase
 {
 	Q_OBJECT
 
@@ -39,8 +39,8 @@ private:
 	QPainter *m_qPainter;
 	
 public:
-	QPaintCanvas(QWidget *parent);
-	~QPaintCanvas();
+	QtPaintCanvas(QWidget *parent);
+	~QtPaintCanvas();
 
 	virtual void paintEvent(QPaintEvent *event);
 	virtual void drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
@@ -55,4 +55,4 @@ public:
 	virtual void setState(const char *state);
 };
 
-#endif
+#endif // QTPAINTCANVAS_H

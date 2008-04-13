@@ -1,6 +1,6 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005-2007 by Alessandro Portale
+	Copyright (C) 2005-2008 by Alessandro Portale
 	http://posterazor.sourceforge.net/
 
 	This file is part of PosteRazor
@@ -20,11 +20,11 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "QPaintCanvas.h"
+#include "QtPaintCanvas.h"
 #include <QImage>
 #include <QPainter>
 
-QPaintCanvas::QPaintCanvas(QWidget *parent)
+QtPaintCanvas::QtPaintCanvas(QWidget *parent)
 :	QWidget(parent)
 ,	PaintCanvasBase()
 ,	m_image(NULL)
@@ -33,12 +33,12 @@ QPaintCanvas::QPaintCanvas(QWidget *parent)
 {
 }
 
-QPaintCanvas::~QPaintCanvas()
+QtPaintCanvas::~QtPaintCanvas()
 {
 	disposeImage();
 }
 
-void QPaintCanvas::paintEvent(QPaintEvent * /*event*/)
+void QtPaintCanvas::paintEvent(QPaintEvent * /*event*/)
 {
 	QPainter painter(this);
 	m_qPainter = &painter;
@@ -46,7 +46,7 @@ void QPaintCanvas::paintEvent(QPaintEvent * /*event*/)
 	m_qPainter = NULL;
 }
 
-void QPaintCanvas::drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
+void QtPaintCanvas::drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
 	if (height <= 1.0)
 	{
@@ -62,7 +62,7 @@ void QPaintCanvas::drawFilledRect(double x, double y, double width, double heigh
 	}
 }
 
-void QPaintCanvas::drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
+void QtPaintCanvas::drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
 	if (height <= 1.0)
 	{
@@ -79,19 +79,19 @@ void QPaintCanvas::drawRect(double x, double y, double width, double height, uns
 	}
 }
 
-void QPaintCanvas::drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
+void QtPaintCanvas::drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
 	m_qPainter->setPen(QColor(red, green, blue, alpha));
 	m_qPainter->drawLine((int)x1, (int)y1, (int)x2, (int)y2);
 }
 
-void QPaintCanvas::getSize(double &width, double &height) const
+void QtPaintCanvas::getSize(double &width, double &height) const
 {
 	width = (double)(this->width());
 	height = (double)(this->height());
 }
 
-void QPaintCanvas::setImage(const unsigned char* rgbData, double width, double height)
+void QtPaintCanvas::setImage(const unsigned char* rgbData, double width, double height)
 {
 	disposeImage();
 	// We have to transfrom the image data from rgb to bgra
@@ -113,7 +113,7 @@ void QPaintCanvas::setImage(const unsigned char* rgbData, double width, double h
 	repaint();
 }
 
-void QPaintCanvas::disposeImage(void)
+void QtPaintCanvas::disposeImage(void)
 {
 	if (m_image)
 	{
@@ -127,7 +127,7 @@ void QPaintCanvas::disposeImage(void)
 	}
 }
 
-void QPaintCanvas::drawImage(double x, double y, double width, double height)
+void QtPaintCanvas::drawImage(double x, double y, double width, double height)
 {
 	if (m_image && width >= 1.0 && height >= 1.0) // >= 1.0 because otherwise an assertion would fail deep in Qt
 	{	
@@ -139,7 +139,7 @@ void QPaintCanvas::drawImage(double x, double y, double width, double height)
 	}
 }
 
-void QPaintCanvas::setState(const char *state)
+void QtPaintCanvas::setState(const char *state)
 {
 	PaintCanvasBase::setState(state);
 	repaint();

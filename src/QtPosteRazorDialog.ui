@@ -1,7 +1,5 @@
 <ui version="4.0" >
  <author>Alessandro Portale</author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>PosteRazorDialogUI</class>
  <widget class="QWidget" name="PosteRazorDialogUI" >
   <property name="geometry" >
@@ -19,18 +17,36 @@
    <string>PosteRazor 1.5</string>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="margin" >
+   <property name="spacing" >
     <number>6</number>
    </property>
-   <property name="spacing" >
+   <property name="leftMargin" >
+    <number>6</number>
+   </property>
+   <property name="topMargin" >
+    <number>6</number>
+   </property>
+   <property name="rightMargin" >
+    <number>6</number>
+   </property>
+   <property name="bottomMargin" >
     <number>6</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
+     <property name="spacing" >
       <number>0</number>
      </property>
-     <property name="spacing" >
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
       <number>0</number>
      </property>
      <item>
@@ -54,18 +70,25 @@
    </item>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <widget class="QFrame" name="frame" >
        <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>7</hsizetype>
-         <vsizetype>5</vsizetype>
+        <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -77,14 +100,23 @@
         <enum>QFrame::Sunken</enum>
        </property>
        <layout class="QVBoxLayout" >
-        <property name="margin" >
-         <number>9</number>
-        </property>
         <property name="spacing" >
          <number>6</number>
         </property>
+        <property name="leftMargin" >
+         <number>9</number>
+        </property>
+        <property name="topMargin" >
+         <number>9</number>
+        </property>
+        <property name="rightMargin" >
+         <number>9</number>
+        </property>
+        <property name="bottomMargin" >
+         <number>9</number>
+        </property>
         <item>
-         <widget class="QPaintCanvas" name="m_paintCanvas" />
+         <widget class="QtPaintCanvas" native="1" name="m_paintCanvas" />
         </item>
        </layout>
       </widget>
@@ -92,9 +124,7 @@
      <item>
       <widget class="QStackedWidget" name="m_wizard" >
        <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>4</hsizetype>
-         <vsizetype>5</vsizetype>
+        <sizepolicy vsizetype="Preferred" hsizetype="Maximum" >
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -106,15 +136,24 @@
         <enum>QFrame::Sunken</enum>
        </property>
        <property name="currentIndex" >
-        <number>4</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="m_loadInputImageStep" >
         <layout class="QVBoxLayout" >
-         <property name="margin" >
-          <number>9</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="leftMargin" >
+          <number>9</number>
+         </property>
+         <property name="topMargin" >
+          <number>9</number>
+         </property>
+         <property name="rightMargin" >
+          <number>9</number>
+         </property>
+         <property name="bottomMargin" >
+          <number>9</number>
          </property>
          <item>
           <widget class="QGroupBox" name="groupBox" >
@@ -122,11 +161,20 @@
             <string>Input Image</string>
            </property>
            <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>9</number>
-            </property>
             <property name="spacing" >
              <number>0</number>
+            </property>
+            <property name="leftMargin" >
+             <number>9</number>
+            </property>
+            <property name="topMargin" >
+             <number>9</number>
+            </property>
+            <property name="rightMargin" >
+             <number>9</number>
+            </property>
+            <property name="bottomMargin" >
+             <number>9</number>
             </property>
             <item>
              <widget class="QLabel" name="m_inputFileNameLabel" >
@@ -154,10 +202,22 @@
             <string>Image Informations</string>
            </property>
            <layout class="QGridLayout" >
-            <property name="margin" >
+            <property name="leftMargin" >
              <number>9</number>
             </property>
-            <property name="spacing" >
+            <property name="topMargin" >
+             <number>9</number>
+            </property>
+            <property name="rightMargin" >
+             <number>9</number>
+            </property>
+            <property name="bottomMargin" >
+             <number>9</number>
+            </property>
+            <property name="horizontalSpacing" >
+             <number>6</number>
+            </property>
+            <property name="verticalSpacing" >
              <number>6</number>
             </property>
             <item row="0" column="1" >
@@ -251,11 +311,20 @@
        </widget>
        <widget class="QWidget" name="m_paperSizeStep" >
         <layout class="QVBoxLayout" >
-         <property name="margin" >
-          <number>9</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="leftMargin" >
+          <number>9</number>
+         </property>
+         <property name="topMargin" >
+          <number>9</number>
+         </property>
+         <property name="rightMargin" >
+          <number>9</number>
+         </property>
+         <property name="bottomMargin" >
+          <number>9</number>
          </property>
          <item>
           <widget class="QGroupBox" name="groupBox" >
@@ -263,18 +332,28 @@
             <string>Paper size</string>
            </property>
            <layout class="QGridLayout" >
-            <property name="margin" >
+            <property name="leftMargin" >
              <number>9</number>
             </property>
-            <property name="spacing" >
+            <property name="topMargin" >
+             <number>9</number>
+            </property>
+            <property name="rightMargin" >
+             <number>9</number>
+            </property>
+            <property name="bottomMargin" >
+             <number>9</number>
+            </property>
+            <property name="horizontalSpacing" >
+             <number>6</number>
+            </property>
+            <property name="verticalSpacing" >
              <number>6</number>
             </property>
             <item row="0" column="0" >
              <widget class="QTabWidget" name="m_paperFormatTypeTabs" >
               <property name="sizePolicy" >
-               <sizepolicy>
-                <hsizetype>7</hsizetype>
-                <vsizetype>4</vsizetype>
+               <sizepolicy vsizetype="Maximum" hsizetype="Expanding" >
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -287,18 +366,28 @@
                 <string>Standard</string>
                </attribute>
                <layout class="QGridLayout" >
-                <property name="margin" >
+                <property name="leftMargin" >
                  <number>9</number>
                 </property>
-                <property name="spacing" >
+                <property name="topMargin" >
+                 <number>9</number>
+                </property>
+                <property name="rightMargin" >
+                 <number>9</number>
+                </property>
+                <property name="bottomMargin" >
+                 <number>9</number>
+                </property>
+                <property name="horizontalSpacing" >
+                 <number>6</number>
+                </property>
+                <property name="verticalSpacing" >
                  <number>6</number>
                 </property>
                 <item row="0" column="0" >
                  <widget class="QLabel" name="label" >
                   <property name="sizePolicy" >
-                   <sizepolicy>
-                    <hsizetype>1</hsizetype>
-                    <vsizetype>5</vsizetype>
+                   <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -317,9 +406,7 @@
                 <item row="1" column="0" >
                  <widget class="QLabel" name="label" >
                   <property name="sizePolicy" >
-                   <sizepolicy>
-                    <hsizetype>1</hsizetype>
-                    <vsizetype>5</vsizetype>
+                   <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -335,9 +422,7 @@
                 <item row="1" column="1" >
                  <widget class="QFrame" name="frame" >
                   <property name="sizePolicy" >
-                   <sizepolicy>
-                    <hsizetype>3</hsizetype>
-                    <vsizetype>4</vsizetype>
+                   <sizepolicy vsizetype="Maximum" hsizetype="MinimumExpanding" >
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -349,11 +434,20 @@
                    <enum>QFrame::Sunken</enum>
                   </property>
                   <layout class="QVBoxLayout" >
-                   <property name="margin" >
-                    <number>9</number>
-                   </property>
                    <property name="spacing" >
                     <number>6</number>
+                   </property>
+                   <property name="leftMargin" >
+                    <number>9</number>
+                   </property>
+                   <property name="topMargin" >
+                    <number>9</number>
+                   </property>
+                   <property name="rightMargin" >
+                    <number>9</number>
+                   </property>
+                   <property name="bottomMargin" >
+                    <number>9</number>
                    </property>
                    <item>
                     <widget class="QRadioButton" name="m_paperOrientationPortraitRadioButton" >
@@ -379,10 +473,22 @@
                 <string>Custom</string>
                </attribute>
                <layout class="QGridLayout" >
-                <property name="margin" >
+                <property name="leftMargin" >
                  <number>9</number>
                 </property>
-                <property name="spacing" >
+                <property name="topMargin" >
+                 <number>9</number>
+                </property>
+                <property name="rightMargin" >
+                 <number>9</number>
+                </property>
+                <property name="bottomMargin" >
+                 <number>9</number>
+                </property>
+                <property name="horizontalSpacing" >
+                 <number>6</number>
+                </property>
+                <property name="verticalSpacing" >
                  <number>6</number>
                 </property>
                 <item row="1" column="2" >
@@ -420,22 +526,22 @@
                  </widget>
                 </item>
                 <item row="0" column="1" >
-                 <widget class="QPosteRazorSpinBox" name="m_paperCustomWidthSpinner" >
+                 <widget class="QtPosteRazorSpinBox" name="m_paperCustomWidthSpinner" >
                   <property name="buttonSymbols" >
                    <enum>QAbstractSpinBox::PlusMinus</enum>
                   </property>
                   <property name="maximum" >
-                   <double>999999</double>
+                   <double>999999.000000000000000</double>
                   </property>
                  </widget>
                 </item>
                 <item row="1" column="1" >
-                 <widget class="QPosteRazorSpinBox" name="m_paperCustomHeightSpinner" >
+                 <widget class="QtPosteRazorSpinBox" name="m_paperCustomHeightSpinner" >
                   <property name="buttonSymbols" >
                    <enum>QAbstractSpinBox::PlusMinus</enum>
                   </property>
                   <property name="maximum" >
-                   <double>999999</double>
+                   <double>999999.000000000000000</double>
                   </property>
                  </widget>
                 </item>
@@ -452,10 +558,22 @@
             <string>Borders (%1)</string>
            </property>
            <layout class="QGridLayout" >
-            <property name="margin" >
+            <property name="leftMargin" >
              <number>9</number>
             </property>
-            <property name="spacing" >
+            <property name="topMargin" >
+             <number>9</number>
+            </property>
+            <property name="rightMargin" >
+             <number>9</number>
+            </property>
+            <property name="bottomMargin" >
+             <number>9</number>
+            </property>
+            <property name="horizontalSpacing" >
+             <number>6</number>
+            </property>
+            <property name="verticalSpacing" >
              <number>6</number>
             </property>
             <item row="0" column="1" >
@@ -564,42 +682,42 @@
              </spacer>
             </item>
             <item row="1" column="1" >
-             <widget class="QPosteRazorSpinBox" name="m_paperBorderTopInput" >
+             <widget class="QtPosteRazorSpinBox" name="m_paperBorderTopInput" >
               <property name="buttonSymbols" >
                <enum>QAbstractSpinBox::PlusMinus</enum>
               </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
             <item row="2" column="2" >
-             <widget class="QPosteRazorSpinBox" name="m_paperBorderRightInput" >
+             <widget class="QtPosteRazorSpinBox" name="m_paperBorderRightInput" >
               <property name="buttonSymbols" >
                <enum>QAbstractSpinBox::PlusMinus</enum>
               </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
             <item row="2" column="0" >
-             <widget class="QPosteRazorSpinBox" name="m_paperBorderLeftInput" >
+             <widget class="QtPosteRazorSpinBox" name="m_paperBorderLeftInput" >
               <property name="buttonSymbols" >
                <enum>QAbstractSpinBox::PlusMinus</enum>
               </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
             <item row="3" column="1" >
-             <widget class="QPosteRazorSpinBox" name="m_paperBorderBottomInput" >
+             <widget class="QtPosteRazorSpinBox" name="m_paperBorderBottomInput" >
               <property name="buttonSymbols" >
                <enum>QAbstractSpinBox::PlusMinus</enum>
               </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -623,11 +741,20 @@
        </widget>
        <widget class="QWidget" name="m_overlappingStep" >
         <layout class="QVBoxLayout" >
-         <property name="margin" >
-          <number>9</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="leftMargin" >
+          <number>9</number>
+         </property>
+         <property name="topMargin" >
+          <number>9</number>
+         </property>
+         <property name="rightMargin" >
+          <number>9</number>
+         </property>
+         <property name="bottomMargin" >
+          <number>9</number>
          </property>
          <item>
           <widget class="QGroupBox" name="groupBox" >
@@ -635,10 +762,22 @@
             <string>Overlapping size</string>
            </property>
            <layout class="QGridLayout" >
-            <property name="margin" >
+            <property name="leftMargin" >
              <number>9</number>
             </property>
-            <property name="spacing" >
+            <property name="topMargin" >
+             <number>9</number>
+            </property>
+            <property name="rightMargin" >
+             <number>9</number>
+            </property>
+            <property name="bottomMargin" >
+             <number>9</number>
+            </property>
+            <property name="horizontalSpacing" >
+             <number>6</number>
+            </property>
+            <property name="verticalSpacing" >
              <number>6</number>
             </property>
             <item row="1" column="2" >
@@ -676,7 +815,7 @@
              </widget>
             </item>
             <item row="0" column="1" >
-             <widget class="QPosteRazorSpinBox" name="m_overlappingWidthInput" >
+             <widget class="QtPosteRazorSpinBox" name="m_overlappingWidthInput" >
               <property name="buttonSymbols" >
                <enum>QAbstractSpinBox::PlusMinus</enum>
               </property>
@@ -684,12 +823,12 @@
                <number>4</number>
               </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
             <item row="1" column="1" >
-             <widget class="QPosteRazorSpinBox" name="m_overlappingHeightInput" >
+             <widget class="QtPosteRazorSpinBox" name="m_overlappingHeightInput" >
               <property name="buttonSymbols" >
                <enum>QAbstractSpinBox::PlusMinus</enum>
               </property>
@@ -697,7 +836,7 @@
                <number>4</number>
               </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -710,18 +849,28 @@
             <string>Overlapping position</string>
            </property>
            <layout class="QGridLayout" >
-            <property name="margin" >
+            <property name="leftMargin" >
              <number>9</number>
             </property>
-            <property name="spacing" >
+            <property name="topMargin" >
+             <number>9</number>
+            </property>
+            <property name="rightMargin" >
+             <number>9</number>
+            </property>
+            <property name="bottomMargin" >
+             <number>9</number>
+            </property>
+            <property name="horizontalSpacing" >
+             <number>6</number>
+            </property>
+            <property name="verticalSpacing" >
              <number>6</number>
             </property>
             <item row="0" column="1" >
              <widget class="QToolButton" name="m_overlappingPositionTopRightButton" >
               <property name="sizePolicy" >
-               <sizepolicy>
-                <hsizetype>3</hsizetype>
-                <vsizetype>5</vsizetype>
+               <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -730,7 +879,7 @@
                <string>Top right</string>
               </property>
               <property name="icon" >
-               <iconset resource="PosteRazorDialogResources.qrc" >:/OverlappingPositionImages/images/overlappingTopRight.png</iconset>
+               <iconset/>
               </property>
               <property name="iconSize" >
                <size>
@@ -755,9 +904,7 @@
             <item row="0" column="0" >
              <widget class="QToolButton" name="m_overlappingPositionTopLeftButton" >
               <property name="sizePolicy" >
-               <sizepolicy>
-                <hsizetype>7</hsizetype>
-                <vsizetype>4</vsizetype>
+               <sizepolicy vsizetype="Maximum" hsizetype="Expanding" >
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -766,7 +913,7 @@
                <string>Top left</string>
               </property>
               <property name="icon" >
-               <iconset resource="PosteRazorDialogResources.qrc" >:/OverlappingPositionImages/images/overlappingTopLeft.png</iconset>
+               <iconset/>
               </property>
               <property name="iconSize" >
                <size>
@@ -791,9 +938,7 @@
             <item row="1" column="0" >
              <widget class="QToolButton" name="m_overlappingPositionBottomLeftButton" >
               <property name="sizePolicy" >
-               <sizepolicy>
-                <hsizetype>3</hsizetype>
-                <vsizetype>4</vsizetype>
+               <sizepolicy vsizetype="Maximum" hsizetype="MinimumExpanding" >
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -802,7 +947,7 @@
                <string>Bottom left</string>
               </property>
               <property name="icon" >
-               <iconset resource="PosteRazorDialogResources.qrc" >:/OverlappingPositionImages/images/overlappingBottomLeft.png</iconset>
+               <iconset/>
               </property>
               <property name="iconSize" >
                <size>
@@ -827,9 +972,7 @@
             <item row="1" column="1" >
              <widget class="QToolButton" name="m_overlappingPositionBottomRightButton" >
               <property name="sizePolicy" >
-               <sizepolicy>
-                <hsizetype>3</hsizetype>
-                <vsizetype>4</vsizetype>
+               <sizepolicy vsizetype="Maximum" hsizetype="MinimumExpanding" >
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -838,7 +981,7 @@
                <string>Bottom right</string>
               </property>
               <property name="icon" >
-               <iconset resource="PosteRazorDialogResources.qrc" >:/OverlappingPositionImages/images/overlappingBottomRight.png</iconset>
+               <iconset/>
               </property>
               <property name="iconSize" >
                <size>
@@ -880,11 +1023,20 @@
        </widget>
        <widget class="QWidget" name="m_posterSizeStep" >
         <layout class="QVBoxLayout" >
-         <property name="margin" >
-          <number>9</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="leftMargin" >
+          <number>9</number>
+         </property>
+         <property name="topMargin" >
+          <number>9</number>
+         </property>
+         <property name="rightMargin" >
+          <number>9</number>
+         </property>
+         <property name="bottomMargin" >
+          <number>9</number>
          </property>
          <item>
           <widget class="QGroupBox" name="groupBox" >
@@ -892,10 +1044,22 @@
             <string>Poster size</string>
            </property>
            <layout class="QGridLayout" >
-            <property name="margin" >
+            <property name="leftMargin" >
              <number>9</number>
             </property>
-            <property name="spacing" >
+            <property name="topMargin" >
+             <number>9</number>
+            </property>
+            <property name="rightMargin" >
+             <number>9</number>
+            </property>
+            <property name="bottomMargin" >
+             <number>9</number>
+            </property>
+            <property name="horizontalSpacing" >
+             <number>6</number>
+            </property>
+            <property name="verticalSpacing" >
              <number>6</number>
             </property>
             <item row="4" column="2" >
@@ -1005,7 +1169,7 @@
              </widget>
             </item>
             <item row="4" column="1" >
-             <widget class="QPosteRazorSpinBox" name="m_posterPagesWidthInput" >
+             <widget class="QtPosteRazorSpinBox" name="m_posterPagesWidthInput" >
               <property name="buttonSymbols" >
                <enum>QAbstractSpinBox::PlusMinus</enum>
               </property>
@@ -1013,12 +1177,12 @@
                <number>4</number>
               </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
             <item row="5" column="1" >
-             <widget class="QPosteRazorSpinBox" name="m_posterPagesHeightInput" >
+             <widget class="QtPosteRazorSpinBox" name="m_posterPagesHeightInput" >
               <property name="buttonSymbols" >
                <enum>QAbstractSpinBox::PlusMinus</enum>
               </property>
@@ -1026,12 +1190,12 @@
                <number>4</number>
               </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
             <item row="2" column="1" >
-             <widget class="QPosteRazorSpinBox" name="m_posterAbsoluteHeightInput" >
+             <widget class="QtPosteRazorSpinBox" name="m_posterAbsoluteHeightInput" >
               <property name="buttonSymbols" >
                <enum>QAbstractSpinBox::PlusMinus</enum>
               </property>
@@ -1039,12 +1203,12 @@
                <number>4</number>
               </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
             <item row="1" column="1" >
-             <widget class="QPosteRazorSpinBox" name="m_posterAbsoluteWidthInput" >
+             <widget class="QtPosteRazorSpinBox" name="m_posterAbsoluteWidthInput" >
               <property name="buttonSymbols" >
                <enum>QAbstractSpinBox::PlusMinus</enum>
               </property>
@@ -1052,12 +1216,12 @@
                <number>4</number>
               </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
             <item row="7" column="1" >
-             <widget class="QPosteRazorSpinBox" name="m_posterPercentualSizeInput" >
+             <widget class="QtPosteRazorSpinBox" name="m_posterPercentualSizeInput" >
               <property name="buttonSymbols" >
                <enum>QAbstractSpinBox::PlusMinus</enum>
               </property>
@@ -1065,7 +1229,7 @@
                <number>4</number>
               </property>
               <property name="maximum" >
-               <double>999999</double>
+               <double>999999.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -1078,98 +1242,114 @@
             <string>Image alignment</string>
            </property>
            <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>9</number>
-            </property>
             <property name="spacing" >
              <number>6</number>
             </property>
+            <property name="leftMargin" >
+             <number>9</number>
+            </property>
+            <property name="topMargin" >
+             <number>9</number>
+            </property>
+            <property name="rightMargin" >
+             <number>9</number>
+            </property>
+            <property name="bottomMargin" >
+             <number>9</number>
+            </property>
             <item>
-             <widget class="QWidget" name="widget" >
-              <layout class="QHBoxLayout" >
-               <property name="margin" >
-                <number>0</number>
-               </property>
-               <property name="spacing" >
-                <number>6</number>
-               </property>
-               <item>
-                <widget class="QToolButton" name="m_posterAlignmentTopButton" >
-                 <property name="text" >
-                  <string/>
-                 </property>
-                 <property name="icon" >
-                  <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentTop.png</iconset>
-                 </property>
-                 <property name="iconSize" >
-                  <size>
-                   <width>22</width>
-                   <height>22</height>
-                  </size>
-                 </property>
-                 <property name="checkable" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoRaise" >
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QToolButton" name="m_posterAlignmentMiddleButton" >
-                 <property name="text" >
-                  <string/>
-                 </property>
-                 <property name="icon" >
-                  <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentMiddle.png</iconset>
-                 </property>
-                 <property name="iconSize" >
-                  <size>
-                   <width>22</width>
-                   <height>22</height>
-                  </size>
-                 </property>
-                 <property name="checkable" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoRaise" >
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QToolButton" name="m_posterAlignmentBottomButton" >
-                 <property name="text" >
-                  <string/>
-                 </property>
-                 <property name="icon" >
-                  <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentBottom.png</iconset>
-                 </property>
-                 <property name="iconSize" >
-                  <size>
-                   <width>22</width>
-                   <height>22</height>
-                  </size>
-                 </property>
-                 <property name="checkable" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoRaise" >
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
+             <layout class="QHBoxLayout" >
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <property name="leftMargin" >
+               <number>0</number>
+              </property>
+              <property name="topMargin" >
+               <number>0</number>
+              </property>
+              <property name="rightMargin" >
+               <number>0</number>
+              </property>
+              <property name="bottomMargin" >
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QToolButton" name="m_posterAlignmentTopButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset/>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoRaise" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="m_posterAlignmentMiddleButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset/>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoRaise" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="m_posterAlignmentBottomButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset/>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoRaise" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
             <item>
              <spacer>
@@ -1185,91 +1365,98 @@
              </spacer>
             </item>
             <item>
-             <widget class="QWidget" name="widget_2" >
-              <layout class="QHBoxLayout" >
-               <property name="margin" >
-                <number>0</number>
-               </property>
-               <property name="spacing" >
-                <number>6</number>
-               </property>
-               <item>
-                <widget class="QToolButton" name="m_posterAlignmentLeftButton" >
-                 <property name="text" >
-                  <string/>
-                 </property>
-                 <property name="icon" >
-                  <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentLeft.png</iconset>
-                 </property>
-                 <property name="iconSize" >
-                  <size>
-                   <width>22</width>
-                   <height>22</height>
-                  </size>
-                 </property>
-                 <property name="checkable" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoRaise" >
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QToolButton" name="m_posterAlignmentCenterButton" >
-                 <property name="text" >
-                  <string/>
-                 </property>
-                 <property name="icon" >
-                  <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentCenter.png</iconset>
-                 </property>
-                 <property name="iconSize" >
-                  <size>
-                   <width>22</width>
-                   <height>22</height>
-                  </size>
-                 </property>
-                 <property name="checkable" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoRaise" >
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QToolButton" name="m_posterAlignmentRightButton" >
-                 <property name="text" >
-                  <string/>
-                 </property>
-                 <property name="icon" >
-                  <iconset resource="PosteRazorDialogResources.qrc" >:/PosterAlignmentImages/images/alignmentRight.png</iconset>
-                 </property>
-                 <property name="iconSize" >
-                  <size>
-                   <width>22</width>
-                   <height>22</height>
-                  </size>
-                 </property>
-                 <property name="checkable" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoRaise" >
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
+             <layout class="QHBoxLayout" >
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <property name="leftMargin" >
+               <number>0</number>
+              </property>
+              <property name="topMargin" >
+               <number>0</number>
+              </property>
+              <property name="rightMargin" >
+               <number>0</number>
+              </property>
+              <property name="bottomMargin" >
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QToolButton" name="m_posterAlignmentLeftButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset/>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoRaise" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="m_posterAlignmentCenterButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset/>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoRaise" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="m_posterAlignmentRightButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset/>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoRaise" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>
@@ -1291,11 +1478,20 @@
        </widget>
        <widget class="QWidget" name="m_savePosterStep" >
         <layout class="QVBoxLayout" >
-         <property name="margin" >
-          <number>9</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="leftMargin" >
+          <number>9</number>
+         </property>
+         <property name="topMargin" >
+          <number>9</number>
+         </property>
+         <property name="rightMargin" >
+          <number>9</number>
+         </property>
+         <property name="bottomMargin" >
+          <number>9</number>
          </property>
          <item>
           <widget class="QGroupBox" name="groupBox_3" >
@@ -1303,11 +1499,20 @@
             <string>Save the poster</string>
            </property>
            <layout class="QVBoxLayout" >
-            <property name="margin" >
-             <number>9</number>
-            </property>
             <property name="spacing" >
              <number>6</number>
+            </property>
+            <property name="leftMargin" >
+             <number>9</number>
+            </property>
+            <property name="topMargin" >
+             <number>9</number>
+            </property>
+            <property name="rightMargin" >
+             <number>9</number>
+            </property>
+            <property name="bottomMargin" >
+             <number>9</number>
             </property>
             <item>
              <widget class="QPushButton" name="m_savePosterButton" >
@@ -1347,11 +1552,20 @@
    </item>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <widget class="QPushButton" name="m_settingsButton" >
@@ -1359,7 +1573,7 @@
         <string>Settings...</string>
        </property>
        <property name="icon" >
-        <iconset resource="PosteRazorDialogResources.qrc" >:/Other/images/settingsIcon.png</iconset>
+        <iconset/>
        </property>
        <property name="iconSize" >
         <size>
@@ -1400,25 +1614,20 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>QPaintCanvas</class>
+   <class>QtPaintCanvas</class>
    <extends>QWidget</extends>
-   <header>QPaintCanvas.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
+   <header>QtPaintCanvas.h</header>
   </customwidget>
   <customwidget>
-   <class>QPosteRazorSpinBox</class>
+   <class>QtPosteRazorSpinBox</class>
    <extends>QDoubleSpinBox</extends>
-   <header>QPosteRazorSpinBox.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
+   <header>QtPosteRazorSpinBox.h</header>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="PosteRazorDialogResources.qrc" />
+  <include location="QtPosteRazorDialogResources.qrc" />
  </resources>
  <connections/>
 </ui>

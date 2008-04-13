@@ -1,6 +1,6 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005-2007 by Alessandro Portale
+	Copyright (C) 2005-2008 by Alessandro Portale
 	http://posterazor.sourceforge.net/
 
 	This file is part of PosteRazor
@@ -20,17 +20,17 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef QPosteRazorSpinner_h
-#define QPosteRazorSpinner_h
+#ifndef QTPOSTERAZORSPINBOX_H
+#define QTPOSTERAZORSPINBOX_H
 
 #include <QDoubleSpinBox>
 
-class QPosteRazorSpinBox: public QDoubleSpinBox
+class QtPosteRazorSpinBox: public QDoubleSpinBox
 {
 	Q_OBJECT
 	
 public:
-	QPosteRazorSpinBox(QWidget *parent);
+	QtPosteRazorSpinBox(QWidget *parent);
 	void setValue(double value);
 
 protected:
@@ -45,4 +45,4 @@ signals:
 	void valueEdited(double value);
 };
 
-#endif
+#endif // QTPOSTERAZORSPINBOX_H

@@ -1,6 +1,6 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005-2007 by Alessandro Portale
+	Copyright (C) 2005-2008 by Alessandro Portale
 	http://posterazor.sourceforge.net/
 
 	This file is part of PosteRazor
@@ -20,49 +20,49 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "QPersistentPreferences.h"
+#include "QtPersistentPreferences.h"
 
-QPersistentPreferences::QPersistentPreferences(QObject *parent)
+QtPersistentPreferences::QtPersistentPreferences(QObject *parent)
 :	QSettings(parent)
 {
 }
 
-void QPersistentPreferences::setInteger(int value, const char *key)
+void QtPersistentPreferences::setInteger(int value, const char *key)
 {
 	setValue(key, value);
 }
 
-void QPersistentPreferences::setDouble(double value, const char *key)
+void QtPersistentPreferences::setDouble(double value, const char *key)
 {
 	setValue(key, value);
 }
 
-void QPersistentPreferences::setBoolean(bool value, const char *key)
+void QtPersistentPreferences::setBoolean(bool value, const char *key)
 {
 	setValue(key, value);
 }
 
-void QPersistentPreferences::setString(const char *value, const char *key)
+void QtPersistentPreferences::setString(const char *value, const char *key)
 {
 	setValue(key, value);
 }
 
-int QPersistentPreferences::getInteger(const char *key, int defaultValue)
+int QtPersistentPreferences::getInteger(const char *key, int defaultValue)
 {
 	return value(key, defaultValue).toInt();
 }
 
-double QPersistentPreferences::getDouble(const char *key, double defaultValue)
+double QtPersistentPreferences::getDouble(const char *key, double defaultValue)
 {
 	return value(key, defaultValue).toDouble();
 }
 
-bool QPersistentPreferences::getBoolean(const char *key, bool defaultValue)
+bool QtPersistentPreferences::getBoolean(const char *key, bool defaultValue)
 {
 	return value(key, defaultValue).toBool();
 }
 
-const char *QPersistentPreferences::getString(const char *key, const char *defaultValue)
+const char *QtPersistentPreferences::getString(const char *key, const char *defaultValue)
 {
 	return value(key, defaultValue).toString().toAscii();
 }

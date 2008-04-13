@@ -1,6 +1,6 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005-2007 by Alessandro Portale
+	Copyright (C) 2005-2008 by Alessandro Portale
 	http://posterazor.sourceforge.net/
 
 	This file is part of PosteRazor
@@ -20,18 +20,18 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef QPersistentPreferences_h
-#define QPersistentPreferences_h
+#ifndef QTPERSISTENTPREFERENCES_H
+#define QTPERSISTENTPREFERENCES_H
 
 #include <QSettings>
 #include "PersistentPreferencesInterface.h"
 
-class QPersistentPreferences: public QSettings, public PersistentPreferencesInterface
+class QtPersistentPreferences: public QSettings, public PersistentPreferencesInterface
 {
 	Q_OBJECT
 	
 public:
-	QPersistentPreferences(QObject *parent = NULL);
+	QtPersistentPreferences(QObject *parent = NULL);
 
 	void setInteger(int value, const char *key);
 	void setDouble(double value, const char *key);
@@ -44,4 +44,4 @@ public:
 	const char *getString(const char *key, const char *defaultValue);
 };
 
-#endif
+#endif // QTPERSISTENTPREFERENCES_H

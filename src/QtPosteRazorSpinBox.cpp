@@ -1,6 +1,6 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005-2007 by Alessandro Portale
+	Copyright (C) 2005-2008 by Alessandro Portale
 	http://posterazor.sourceforge.net/
 
 	This file is part of PosteRazor
@@ -20,16 +20,16 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "QPosteRazorSpinBox.h"
+#include "QtPosteRazorSpinBox.h"
 
-QPosteRazorSpinBox::QPosteRazorSpinBox(QWidget *parent)
+QtPosteRazorSpinBox::QtPosteRazorSpinBox(QWidget *parent)
 :	QDoubleSpinBox(parent)
 ,	m_originalValue(0.0)
 {
 	connect((const QObject *)lineEdit(), SIGNAL(textEdited(const QString &)), this, SLOT(handleLineEditTextEdited(const QString &)));
 }
 
-QAbstractSpinBox::StepEnabled QPosteRazorSpinBox::stepEnabled() const
+QAbstractSpinBox::StepEnabled QtPosteRazorSpinBox::stepEnabled() const
 {
 	QAbstractSpinBox::StepEnabled enabled = QAbstractSpinBox::StepUpEnabled;
 	if (value() > 1.0)
@@ -37,20 +37,20 @@ QAbstractSpinBox::StepEnabled QPosteRazorSpinBox::stepEnabled() const
 	return enabled;
 }
 
-void QPosteRazorSpinBox::setValue(double value)
+void QtPosteRazorSpinBox::setValue(double value)
 {
 	// We intercept setValue() in order to always have the non-rounded value
 	m_originalValue = value;
 	QDoubleSpinBox::setValue(value);
 }
 
-void QPosteRazorSpinBox::handleLineEditTextEdited(const QString &text)
+void QtPosteRazorSpinBox::handleLineEditTextEdited(const QString &text)
 {
 	m_originalValue = text.toDouble();
 	emit(valueEdited(m_originalValue));
 }
 
-void QPosteRazorSpinBox::stepBy(int steps)
+void QtPosteRazorSpinBox::stepBy(int steps)
 {
 	double increaseValue = (steps > 0)?(steps-.5):(steps+.49999);
 	double oldValue = m_originalValue;

@@ -1,47 +1,49 @@
 TEMPLATE = app
 
 SOURCES += \
-	../../../source/tools/PaperFormats.cpp \
-	../../../source/tools/PaintCanvasBase.cpp \
-	../../../source/tools/UnitsOfLength.cpp \
-	../../../source/tools/ImageIOTypes.cpp \
-	../../../source/posterazor/PosteRazor.cpp \
-	../../../source/posterazor/PosteRazorImageIO.cpp \
-	../../../source/posterazor/PosteRazorPDFOutput.cpp \
-	../../../source/posterazor_ui_qt/PosteRazorDialog.cpp \
-	../../../source/posterazor_ui_qt/QPersistentPreferences.cpp \
-	../../../source/posterazor_ui_qt/QPosteRazorSpinBox.cpp \
-	../../../source/posterazor_ui_qt/QPaintCanvas.cpp \
-	../../../source/posterazor_ui_common/PosteRazorDialogController.cpp \
-	../../../source/posterazor_ui_common/PosteRazorWizardDialogController.cpp
+	PaperFormats.cpp \
+	PaintCanvasBase.cpp \
+	UnitsOfLength.cpp \
+	ImageIOTypes.cpp \
+	PosteRazor.cpp \
+	PosteRazorImageIO.cpp \
+	PosteRazorPDFOutput.cpp \
+	QtPosteRazorDialog.cpp \
+	QtPersistentPreferences.cpp \
+	QtPosteRazorSpinBox.cpp \
+	QtPaintCanvas.cpp \
+	PosteRazorDialogController.cpp \
+	PosteRazorWizardDialogController.cpp
 
 HEADERS += \
-	../../../source/tools/ColorTypes.h \
-	../../../source/tools/ImageIOTypes.h \
-	../../../source/tools/UnitsOfLength.h \
-	../../../source/tools/PaperFormats.h \
-	../../../source/tools/PaintCanvasBase.h \
-	../../../source/tools/PaintCanvasInterface.h \
-	../../../source/tools/PersistentPreferencesInterface.h \
-	../../../source/posterazor/PosteRazor.h \
-	../../../source/posterazor/PosteRazorImageIO.h \
-	../../../source/posterazor/PosteRazorPDFOutput.h \
-	../../../source/posterazor_ui_qt/PosteRazorDialog.h \
-	../../../source/posterazor_ui_qt/QPersistentPreferences.h \
-	../../../source/posterazor_ui_qt/QPosteRazorSpinBox.h \
-	../../../source/posterazor_ui_qt/QPaintCanvas.h \
-	../../../source/posterazor_ui_common/PosteRazorDialogController.h \
-	../../../source/posterazor_ui_common/PosteRazorWizardDialogController.h
+	ColorTypes.h \
+	ImageIOTypes.h \
+	UnitsOfLength.h \
+	PaperFormats.h \
+	PaintCanvasBase.h \
+	PaintCanvasInterface.h \
+	PersistentPreferencesInterface.h \
+	PosteRazor.h \
+	PosteRazorImageIO.h \
+	PosteRazorPDFOutput.h \
+	QtPosteRazorDialog.h \
+	QtPersistentPreferences.h \
+	QtPosteRazorSpinBox.h \
+	QtPaintCanvas.h \
+	PosteRazorDialogController.h \
+	PosteRazorWizardDialogController.h
 
 INCLUDEPATH += \
-	../../../source/tools \
-	../../../source/posterazor \
-	../../../source/posterazor_ui_qt \
-	../../../source/posterazor_ui_common \
-	../../../thirdparty/FreeImage/Dist
+	tools \
+	posterazor \
+	posterazor_ui_qt \
+	posterazor_ui_common \
+	thirdparty/FreeImage/Dist
 
-win32:LIBS += \
-	../../../thirdparty/FreeImage/Dist/FreeImage.lib
+win32:debug:LIBS += \
+	thirdparty/FreeImage/Dist/FreeImaged.lib
+win32:release:LIBS += \
+	thirdparty/FreeImage/Dist/FreeImage.lib
 unix:LIBS += \
 	-L/usr/lib \
 	-lfreeimage
@@ -52,14 +54,8 @@ DEFINES += \
 DEFINES -= \
 	UNICODE
 
-UI_HEADERS_DIR = \
-	../../../source/posterazor_ui_qt
-
-UI_SOURCES_DIR = \
-	../../../source/posterazor_ui_qt
-
 FORMS += \
-	../../../source/posterazor_ui_qt/PosteRazorDialog.ui
+	QtPosteRazorDialog.ui
 
 RESOURCES += \
-	../../../source/posterazor_ui_qt/PosteRazorDialogResources.qrc
+	QtPosteRazorDialogResources.qrc
