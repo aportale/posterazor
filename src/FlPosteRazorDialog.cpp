@@ -404,9 +404,17 @@ void FlPosteRazorDialog::loadInputImage(const char *fileName)
 	Fl_Native_File_Chooser loadImageChooser(Fl_Native_File_Chooser::BROWSE_FILE);
 #if defined (WIN32)
 // filter stuff is still crashy os OSX and ugly on Linux
-	char filterString[1024];
-	getFileOpenDialogFilter(filterString, sizeof(filterString));
-	loadImageChooser.filter(filterString);
+	OSVERSIONINFO osvi;
+	ZeroMemory(&osvi, sizeof(OSVERSIONINFO));
+	osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
+	GetVersionEx(&osvi);
+
+// It apparently does also not work in Windows Vista
+	if (osvi.dwMajorVersion < 6) {
+		char filterString[1024];
+		getFileOpenDialogFilter(filterString, sizeof(filterString));
+		loadImageChooser.filter(filterString);
+	}
 #endif
 	loadImageChooser.title(Translations::instance().loadAnInputImage());
 
