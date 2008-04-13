@@ -79,7 +79,7 @@ private:
 		const char *version = FreeImage_GetVersion();
 		int majorVersion;
 		int minorVersion;
-		int readCount = sscanf(version, "%d.%d", &majorVersion, &minorVersion);
+		const int readCount = sscanf(version, "%d.%d", &majorVersion, &minorVersion);
 		return readCount == 2 && majorVersion >= 3 && minorVersion >= 10?TRUE:FALSE;
 	}
 
