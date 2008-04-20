@@ -107,7 +107,7 @@ public:
 #define ITALIAN_POSTERAZORHELPSTEPTITLE04             "Definisci le dimensioni finali del poster"
 #define ITALIAN_POSTERAZORHELPSTEPTITLE05             "Salva il Poster"
 #define ITALIAN_POSTERAZORHELPINPUTFILEFORMATS        "Immagine supportate"
-#define ITALIAN_POSTERAZORHELPWHYPDFOUTPUT            "Perchè un output in PDF?"
+#define ITALIAN_POSTERAZORHELPWHYPDFOUTPUT            "Perch&egrave; un output in PDF?"
 #define ITALIAN_POSTERAZORHELPCODEFROMTHIRDPARTIES    "Codice da Terze Parti"
 #define ITALIAN_POSTERAZORHELPLICENSE                 "Licenza"
 
@@ -202,7 +202,7 @@ public:
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORLICENSE, ITALIAN_POSTERAZORHELPLICENSE) \
 					"PosteRazor - Crea il tuo poster!<br>" POSTERAZORHELPENDLINE \
 					"<a href=\""ITALIAN_POSTERAZORWEBSITEURL"\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
-					"Copyright (C) 2005-2007 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+					POSTERAZORCOPYRIGHT \
 
 					POSTERAZORTRANSLATIONCREDITSSTART \
 					POSTERAZORTRANSLATIONCREDITSFRENCH \

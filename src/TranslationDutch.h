@@ -191,7 +191,7 @@ public:
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORWHYPDFOUTPUT, DUTCH_POSTERAZORHELPWHYPDFOUTPUT) \
 					POSTERAZORHELPINDENTATION "Waarom een  PDF bestand en niet direct printen? Allereerst weet de ontwerper van dit programma nog niet hoe dit \"send images to the printer\" werkt op verschillende platformen en besturingssystemen waar PosteRazor voor is bedoeld. Echter, het PDF formaat geeft ook een uitstekend resultaat als de poster thuis \"gerazored\" is en als PDF bestand meegenomen wordt naar het werk, om daar op de kleuren laserprinter te worden uitgedraaid (en natuurlijk iedereen al naar huis is...)." POSTERAZORHELPENDLINE \
-					POSTERAZORHELPINDENTATION "Waarom PDF en geen ander bestandsformaat als eindresultaat? PDF geeft de mogelijkheid om meer dan de benodigde gegevens in één bestand op te slaan. PDF geeft ook nog eens de mogelijkheid om hele bestanden in één totaalbestand op te nemen en virtueel te delen, niet alleen in pixels maar ook in fracties van pixels. Ook is het printen van één -uit meerdere pagina’s bestaand- PDF bestand handiger dan meerdere losse afbeeldingen in meerdere bestanden." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Waarom PDF en geen ander bestandsformaat als eindresultaat? PDF geeft de mogelijkheid om meer dan de benodigde gegevens in &eacute;&eacute;n bestand op te slaan. PDF geeft ook nog eens de mogelijkheid om hele bestanden in &eacute;&eacute;n totaalbestand op te nemen en virtueel te delen, niet alleen in pixels maar ook in fracties van pixels. Ook is het printen van &eacute;&eacute;n -uit meerdere pagina's bestaand- PDF bestand handiger dan meerdere losse afbeeldingen in meerdere bestanden." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES, DUTCH_POSTERAZORHELPCODEFROMTHIRDPARTIES) \
 					"<UL>" POSTERAZORHELPENDLINE \
@@ -203,7 +203,7 @@ public:
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORLICENSE, DUTCH_POSTERAZORHELPLICENSE) \
 					"PosteRazor - Make your own poster!<br>" POSTERAZORHELPENDLINE \
 					"<a href=\""DUTCH_POSTERAZORWEBSITEURL"\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
-					"Copyright (C) 2005-2008 by Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+					POSTERAZORCOPYRIGHT \
 
 					POSTERAZORTRANSLATIONCREDITSSTART \
 					POSTERAZORTRANSLATIONCREDITSDUTCH \

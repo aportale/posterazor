@@ -188,7 +188,7 @@ public:
 					"Le bouton <b>Position de l'image</b> permet de r&eacute;gler la position de l'image par rapport au papier. L'image peut &ecirc;tre centr&eacute;e ou coll&eacute;e sur un des bords." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP05, FRENCH_POSTERAZORHELSTEP " 5: " FRENCH_POSTERAZORHELPSTEPTITLE05) \
-					POSTERAZORHELPINDENTATION "Enregistrez votre poster en cliquant sur le bouton en forme de disquette. Ensuite, donnez un nom &agrave; votre œuvre, choisissez l'emplacement, puis cliquez sur <b>Enregistrer</b>. Si vous cochez l'option <b>Ouvrir le PDF apr&egrave;s avoir sauv&eacute; le poster</b>, le poster sera automatiquement ouvert dans votre application PDF apr&egrave;s l'enregistrement." POSTERAZORHELPENDLINE \
+					POSTERAZORHELPINDENTATION "Enregistrez votre poster en cliquant sur le bouton en forme de disquette. Ensuite, donnez un nom &agrave; votre &aelig;uvre, choisissez l'emplacement, puis cliquez sur <b>Enregistrer</b>. Si vous cochez l'option <b>Ouvrir le PDF apr&egrave;s avoir sauv&eacute; le poster</b>, le poster sera automatiquement ouvert dans votre application PDF apr&egrave;s l'enregistrement." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORINPUTFILEFORMATS, FRENCH_POSTERAZORHELPINPUTFILEFORMATS) \
 					POSTERAZORHELPINDENTATION "La plupart des formats d'images support&eacute;s par FreeImage sont support&eacute;s par PosteRazor. Les formats suivants sont g&eacute;r&eacute;s :<br>" POSTERAZORHELPENDLINE \
@@ -209,7 +209,7 @@ public:
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORLICENSE, FRENCH_POSTERAZORHELPLICENSE) \
 					"PosteRazor - Cr&eacute;ez vos propres posters !<br>" POSTERAZORHELPENDLINE \
 					"<a href=\""FRENCH_POSTERAZORWEBSITEURL"\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
-					"Copyright (C) 2005-2008 par Alessandro Portale<br>&nbsp;<br>" POSTERAZORHELPENDLINE \
+					POSTERAZORCOPYRIGHT \
 
 					POSTERAZORTRANSLATIONCREDITSSTART \
 					POSTERAZORTRANSLATIONCREDITSFRENCH \
