@@ -29,29 +29,29 @@
 #include "TranslationConstants.h"
 
 #define CHAR_Acedilla       "•"
-#define CHAR_HTML_Acedilla  "•"
+#define CHAR_HTML_Acedilla  "&#165;"
 #define CHAR_acedilla       "π"
 #define CHAR_HTML_acedilla  "&#185;"
 
 #define CHAR_Cacute         "∆"
-#define CHAR_HTML_Cacute    "∆"
+#define CHAR_HTML_Cacute    "&#198;"
 #define CHAR_cacute         "Ê"
-#define CHAR_HTML_cacute    "Ê"
+#define CHAR_HTML_cacute    "&#230;"
 
 #define CHAR_Ecedilla       " "
-#define CHAR_HTML_Ecedilla  " "
+#define CHAR_HTML_Ecedilla  "&#202;"
 #define CHAR_ecedilla       "Í"
 #define CHAR_HTML_ecedilla  "&#234;"
 
 #define CHAR_Laccent        "£"
-#define CHAR_HTML_Laccent   "£"
+#define CHAR_HTML_Laccent   "&#163;"
 #define CHAR_laccent        "≥"
 #define CHAR_HTML_laccent   "&#179;"
 
 #define CHAR_Nacute         "—"
-#define CHAR_HTML_Nacute    "—"
+#define CHAR_HTML_Nacute    "&#209;"
 #define CHAR_nacute         "Ò"
-#define CHAR_HTML_nacute    "Ò"
+#define CHAR_HTML_nacute    "&#241;"
 
 #define CHAR_Oacute         "”"
 #define CHAR_HTML_Oacute    "&Oacute;"
@@ -59,19 +59,19 @@
 #define CHAR_HTML_oacute    "&oacute;"
 
 #define CHAR_Sacute         "å"
-#define CHAR_HTML_Sacute    "å"
+#define CHAR_HTML_Sacute    "&#140;"
 #define CHAR_sacute         "ú"
-#define CHAR_HTML_sacute    "ú"
+#define CHAR_HTML_sacute    "&#156;"
 
 #define CHAR_Zacute         "è"
-#define CHAR_HTML_Zacute    "è"
+#define CHAR_HTML_Zacute    "&#143;"
 #define CHAR_zacute         "ü"
-#define CHAR_HTML_zacute    "ü"
+#define CHAR_HTML_zacute    "&#159;"
 
 #define CHAR_Zdot           "Ø"
-#define CHAR_HTML_Zdot      "Ø"
+#define CHAR_HTML_Zdot      "&#175;"
 #define CHAR_zdot           "ø"
-#define CHAR_HTML_zdot      "ø"
+#define CHAR_HTML_zdot      "&#191;"
 
 #define POLISH_POSTERAZORWEBSITEURL POSTERAZORWEBSITEDOMAIN
 
