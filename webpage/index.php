@@ -46,7 +46,7 @@
 							<li><? text('Dutch translation by Erik Wijkamp', 'Holl&auml;ndische &Uuml;bersetzung von Erik Wijkamp'); ?></li>
 							<li><? text('Spanish translation by Cristobal from Hispanicoweb.net', 'Spanische &Uuml;bersetzung von Cristobal (Hispanicoweb.net)'); ?></li>
 						</ul>
-						<p><a class="external" href="http://posterazor.svn.sourceforge.net/viewcvs.cgi/posterazor/trunk/PosteRazor/CHANGES?view=markup"><? text('Full list of changements', 'Vollst&auml;ndige Liste der &Auml;nderungen (auf englisch)'); ?></a></p>
+						<p><a class="external" href="http://posterazor.svn.sourceforge.net/viewvc/*checkout*/posterazor/tags/PosteRazor_1_4_0/CHANGES"><? text('Full list of changements', 'Vollst&auml;ndige Liste der &Auml;nderungen (auf englisch)'); ?></a></p>
 					</li>
 					<li>
 						<h3><? text('June 18th 2006', '18. Juni 2006'); ?>: Version 1.2</h3>
