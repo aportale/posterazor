@@ -113,7 +113,7 @@ IF (UNIX AND NOT APPLE)
 		freeimage
 		X11
 		Xpm
-#		Xft
+		Xft
 #		Xinerama
 	)
 	IF (POSTERAZOR_ENABLEGLPREVIEW)
