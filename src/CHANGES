@@ -1,10 +1,9 @@
 PosteRazor 1.5
 ==============
 -   Added: Brazilian Portuguese translation by
-           Éderson Gomes dos Santos
+           Ederson Gomes dos Santos
 -   Fixed: The image file open dialog does now show
            image files on Windows Vista.
-- Changed: Uses Fltk version 1.1.9
 - Changed: Uses FreeImage version 3.10
 - Changed: Simplified source structure
 
