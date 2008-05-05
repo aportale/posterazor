@@ -31,21 +31,19 @@ static const char* const g_imageFormats[] =
 	"Windows Icon",                   //  4
 	"Amiga IFF",
 	"JBIG",
-	"JPEG Network Graphics",
 	"Independent JPEG Group",
-	"Commodore 64 Koala",             //  9
-	"Multiple Network Graphics",
-	"Portable Bitmap",
+	"Commodore 64 Koala",
+	"Portable Bitmap",                //  9
 	"Kodak PhotoCD",
 	"PC Paintbrush Bitmap",
-	"Portable Graymap",               // 14
+	"Portable Graymap",
 	"Portable Network Graphics",
-	"Portable Pixelmap",
+	"Portable Pixelmap",              // 14
 	"Photoshop Document",
 	"Sun Raster Graphic",
-	"Targa",                          // 19
+	"Targa",
 	"Tagged Image File Format",
-	"Wireless Bitmap",
+	"Wireless Bitmap",                // 19
 	"X11 Bitmap",
 	"X11 Pixmap"
 };
@@ -63,23 +61,21 @@ static const struct
 	{"ICO",   4},
 	{"IFF",   5}, {"LBM", 5},
 	{"JBIG",  6},
-	{"JNG",   7},
-	{"JPG",   8}, {"JPEG", 8}, {"JPE", 8}, {"JIF", 8},
-	{"KOA",   9},
-	{"MNG",  10},
-	{"PBM",  11},
-	{"PCD",  12},
-	{"PCX",  13},
-	{"PGM",  14},
-	{"PNG",  15},
-	{"PPM",  16},
-	{"PSD",  17},
-	{"RAS",  18},
-	{"TGA",  19},
-	{"TIF",  20}, {"TIFF", 20},
-	{"WBMP", 21},
-	{"XBM",  22},
-	{"XPM",  23}
+	{"JPG",   7}, {"JPEG", 7}, {"JPE", 7}, {"JIF", 7},
+	{"KOA",   8},
+	{"PBM",   9},
+	{"PCD",  10},
+	{"PCX",  11},
+	{"PGM",  12},
+	{"PNG",  13},
+	{"PPM",  14},
+	{"PSD",  15},
+	{"RAS",  16},
+	{"TGA",  17},
+	{"TIF",  18}, {"TIFF", 18},
+	{"WBMP", 19},
+	{"XBM",  20},
+	{"XPM",  21}
 };
 static const int g_fileExtensionsCount = sizeof(g_fileExtensions)/sizeof(g_fileExtensions[0]);
 
