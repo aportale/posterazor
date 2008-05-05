@@ -40,9 +40,7 @@ INCLUDEPATH += \
 	posterazor_ui_common \
 	thirdparty/FreeImage/Dist
 
-win32:debug:LIBS += \
-	thirdparty/FreeImage/Dist/FreeImaged.lib
-win32:release:LIBS += \
+win32:LIBS += \
 	thirdparty/FreeImage/Dist/FreeImage.lib
 unix:LIBS += \
 	-L/usr/lib \
