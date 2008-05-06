@@ -2,22 +2,45 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
    height="297mm"
    id="svg2"
    sodipodi:version="0.32"
-   inkscape:version="0.42.2"
+   inkscape:version="0.46"
    sodipodi:docbase="D:\temp\PosteRazor\webpage\images"
-   sodipodi:docname="logo.svg">
+   sodipodi:docname="logo.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
      id="defs4">
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#pattern2096"
+       id="pattern3194"
+       patternTransform="matrix(0.25808,0,0,0.25808,202.904,22.672477)" />
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#pattern2180"
+       id="pattern3191"
+       patternTransform="matrix(0.2531927,-4.9985709e-2,4.9985709e-2,0.2531927,189.99938,16.898943)" />
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#pattern2171"
+       id="pattern3188"
+       patternTransform="matrix(0.2565997,-2.7601656e-2,2.7601656e-2,0.2565997,194.74423,23.105354)" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective30" />
     <pattern
        inkscape:collect="always"
        xlink:href="#pattern2173"
@@ -102,6 +125,14 @@
          y="-337.63782"
          transform="translate(400.0000,337.6378)" />
     </pattern>
+    <filter
+       inkscape:collect="always"
+       id="filter4039">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="4.3887046"
+         id="feGaussianBlur4041" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -123,9 +154,20 @@
      inkscape:window-x="-4"
      inkscape:window-y="-4"
      inkscape:grid-points="false"
-     gridspacingx="10.000000px"
-     gridspacingy="10.000000px"
-     gridtolerance="10.000000px" />
+     gridtolerance="10.000000px">
+    <inkscape:grid
+       id="GridFromPre046Settings"
+       type="xygrid"
+       originx="0px"
+       originy="0px"
+       spacingx="10.000000px"
+       spacingy="10.000000px"
+       color="#0000ff"
+       empcolor="#0000ff"
+       opacity="0.2"
+       empopacity="0.4"
+       empspacing="5" />
+  </sodipodi:namedview>
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -161,15 +203,27 @@
     <g
        id="g1334">
       <rect
-         inkscape:export-ydpi="61.000000"
-         inkscape:export-xdpi="61.000000"
-         inkscape:export-filename="logo.png"
-         y="-26.435684"
-         x="159.89735"
-         height="228.79787"
-         width="200.10265"
+         inkscape:export-ydpi="31.135136"
+         inkscape:export-xdpi="31.135136"
+         inkscape:export-filename="C:\Users\aportale\Desktop\logo.png"
+         y="0.37233517"
+         x="169.51524"
+         height="185"
+         width="185.10001"
          id="rect2912"
-         style="fill:#ffffee;fill-opacity:1.0000000;fill-rule:nonzero;stroke:#000000;stroke-width:0.00000000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000" />
+         style="fill:#ffffee;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <g
+         transform="translate(-124.46853,68.57059)"
+         inkscape:export-ydpi="57.857143"
+         inkscape:export-xdpi="57.857143"
+         inkscape:export-filename="logo.png"
+         id="g3175"
+         style="opacity:0.42477876;filter:url(#filter4039)">
+        <path
+           id="path3179"
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           d="M 387.07438,-42.904967 L 387.07438,31.938236 L 335.45838,31.938236 C 335.45838,106.78144 335.45838,106.78144 335.45838,106.78144 L 438.69038,106.78144 L 438.69038,-42.904967 L 387.07438,-42.904967 z M 322.55438,-48.678547 L 330.43628,-10.473907 L 381.07488,-20.471077 L 373.19298,-58.675717 L 322.55438,-48.678547 z M 331.41573,-5.0329174 L 335.30343,31.941821 L 386.62338,26.421498 L 382.73568,-10.553237 L 331.41573,-5.0329174 z M 445.59293,49.654646 C 436.17983,53.031246 439.45482,62.385216 434.17506,47.281436 C 434.17506,47.281436 415.29006,53.866016 415.29006,53.866016 C 420.56981,68.969796 417.27753,59.527296 407.82293,62.823796 C 407.82293,62.823796 424.28437,110.03631 424.28437,110.03631 C 433.49947,106.6342 430.44668,97.297306 435.70225,112.40953 L 454.58725,105.82495 C 449.33168,90.712726 452.64127,100.24376 462.05438,96.867156 L 445.59293,49.654646 z M 432.01934,54.387316 C 431.87191,54.371146 428.4854,55.641986 429.66157,59.015316 C 430.83774,62.388656 434.37209,61.135156 435.54826,64.508496 C 436.72443,67.881826 433.1872,69.127056 434.36337,72.500396 C 435.53954,75.873726 439.07389,74.620236 440.25006,77.993566 C 441.42623,81.366896 437.889,82.612126 439.06517,85.985466 C 440.24134,89.358806 443.77569,88.105296 444.95186,91.478636 C 446.12803,94.851976 442.59079,96.097196 443.76697,99.470536 C 444.94314,102.84387 448.48078,101.59982 448.48078,101.59982 L 437.85797,105.30365 C 437.85797,105.30365 441.40219,104.07847 440.22603,100.70515 C 439.04986,97.331816 435.50522,98.555796 434.32905,95.182466 C 433.15287,91.809126 436.7004,90.593406 435.52423,87.220076 C 434.34806,83.846736 430.80342,85.070726 429.62725,81.697386 C 428.45108,78.324056 431.9986,77.108336 430.82243,73.734996 C 429.64626,70.361666 426.10162,71.585656 424.92545,68.212316 C 423.74928,64.838986 427.2968,63.623256 426.12063,60.249926 C 424.94446,56.876596 421.39652,58.091136 421.39652,58.091136 C 421.39652,58.091136 421.39973,58.090016 432.01934,54.387316 z" />
+      </g>
       <g
          transform="translate(0.000000,-4.542845)"
          inkscape:export-ydpi="57.857143"
