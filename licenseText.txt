@@ -1,13 +1,13 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005 by Alessandro Portale
+	Copyright (C) 2005-2008 by Alessandro Portale
 	http://posterazor.sourceforge.net/
 
 	This file is part of PosteRazor
 
 	PosteRazor is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
+	the Free Software Foundation, either version 3 of the License, or
 	(at your option) any later version.
 	
 	PosteRazor is distributed in the hope that it will be useful,
