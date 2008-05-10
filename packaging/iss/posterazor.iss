@@ -37,9 +37,9 @@ WizardSmallImageFile=wizsmallimage.bmp
 
 [Files]
 Source: ..\..\src\Release\PosteRazor.exe; DestDir: {app}
-Source: ..\..\src\LICENSE; DestDir: {app}; DestName: LICENSE.txt
-Source: ..\..\src\CHANGES; DestDir: {app}; DestName: CHANGES.txt
-Source: ..\..\src\README; DestDir: {app}; DestName: README.txt
+Source: ..\..\LICENSE; DestDir: {app}; DestName: LICENSE.txt
+Source: ..\..\CHANGES; DestDir: {app}; DestName: CHANGES.txt
+Source: ..\..\README; DestDir: {app}; DestName: README.txt
 
 [Dirs]
 Name: {#PREFERENCESDIR}; AfterInstall: SetLanguagePreferences
