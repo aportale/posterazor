@@ -3,6 +3,7 @@
 #define COPYRIGHT "2005-2008 Alessandro Portale"
 #define PREFERENCESDIR "{userappdata}\CasaPortale.de"
 #define PREFERENCESFILE PREFERENCESDIR + "\PosteRazor.prefs"
+#define WEBSITE "http://posterazor.sourceforge.net/"
 
 [Setup]
 InternalCompressLevel=ultra
@@ -21,7 +22,7 @@ ShowLanguageDialog=yes
 AppPublisher=Alessandro Portale
 AppPublisherURL=http://www.casaportale.de/
 AppSupportURL=http://sourceforge.net/tracker/?group_id=141842
-AppUpdatesURL=http://www.casaportale.de/
+AppUpdatesURL={#WEBSITE}
 AppVersion={#VERSION}
 UninstallDisplayIcon={app}\PosteRazor.exe
 UninstallDisplayName={#APPLICATIONTITLE}
@@ -35,15 +36,18 @@ WizardImageFile=wizimage.bmp
 WizardSmallImageFile=wizsmallimage.bmp
 
 [Files]
-Source: ..\..\src\Release\PosteRazor.exe; DestDir: {app}; AfterInstall: SetLanguagePreferences
+Source: ..\..\src\Release\PosteRazor.exe; DestDir: {app}
 Source: ..\..\src\LICENSE; DestDir: {app}; DestName: LICENSE.txt
 Source: ..\..\src\CHANGES; DestDir: {app}; DestName: CHANGES.txt
 Source: ..\..\src\README; DestDir: {app}; DestName: README.txt
 
+[Dirs]
+Name: {#PREFERENCESDIR}; AfterInstall: SetLanguagePreferences
+
 [Icons]
 Name: {group}\{#APPLICATIONTITLE}; Filename: {app}\PosteRazor.exe; WorkingDir: {app}; IconFilename: {app}\PosteRazor.exe
 Name: {group}\License; Filename: {app}\LICENSE.txt
-Name: {group}\{cm:ProgramOnTheWeb,{#APPLICATIONTITLE}}; Filename: http://posterazor.sourceforge.net/
+Name: {group}\{cm:ProgramOnTheWeb,{#APPLICATIONTITLE}}; Filename: {#WEBSITE}
 Name: {group}\{cm:UninstallProgram,{#APPLICATIONTITLE}}; Filename: {uninstallexe}
 
 [Run]
