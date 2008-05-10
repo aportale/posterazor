@@ -30,13 +30,13 @@ DefaultDirName={pf}\{#APPLICATIONTITLE}
 DisableProgramGroupPage=true
 DisableReadyPage=true
 LicenseFile=license.rtf
-OutputDir=.
+OutputDir=..\
 DefaultGroupName={#APPLICATIONTITLE}
 WizardImageFile=wizimage.bmp
 WizardSmallImageFile=wizsmallimage.bmp
 
 [Files]
-Source: ..\..\src\Release\PosteRazor.exe; DestDir: {app}
+Source: ..\..\src\PosteRazor.exe; DestDir: {app}
 Source: ..\..\LICENSE; DestDir: {app}; DestName: LICENSE.txt
 Source: ..\..\CHANGES; DestDir: {app}; DestName: CHANGES.txt
 Source: ..\..\README; DestDir: {app}; DestName: README.txt
