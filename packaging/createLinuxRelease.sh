@@ -8,6 +8,6 @@ cmake .
 make clean
 make
 strip PosteRazor
-tar cfz $ARCHIVEFILENAME PosteRazor CHANGES  README  LICENSE
+tar cfz $ARCHIVEFILENAME PosteRazor ../CHANGES  ../README  ../LICENSE
 popd
 mv -f $SOURCEDIR/$ARCHIVEFILENAME .
