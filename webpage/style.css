@@ -1,25 +1,23 @@
+A[href*="http://"]
+{
+	background: url(external.png) center right no-repeat;
+	padding-right: 13px;
+}
+
 A
 {
 	color : #330000;
-	background-color : #FFFFCC;
-}			
+}
 
 A:Visited
 {
 	color : #330000;
-	background-color : #FFFFCC;
-}			
+}
 
 A:Hover, A.external:Hover
 {
 	color : #FFFFCC;
 	background-color : #666633;
-}			
-
-A.external
-{
-	background: url(external.png) center right no-repeat;
-	padding-right: 13px;
 }
 
 h2
@@ -54,22 +52,22 @@ body
 #header
 {
 	background : url(header.jpg) left top no-repeat;
-	padding: 30px 40px 0px 0px;
+	padding: 55px 40px 0px 0px;
 	margin: 0px;
-	height: 135px;
+	height: 165px;
 	text-align: right;
 }
 
 #title
 {
-	font-size : 70px;
+	font-size : 64px;
 	font-weight: bold;
 }
 
 #tagline
 {
-	margin-top: -8px;
-	font-size : 22px;
+	margin: -8px 0 50px 0;
+	font-size : 20px;
 	font-weight: bold;
 }
 
@@ -152,5 +150,9 @@ body
 	float: left;
 	text-align: center;
 	padding: 5px;
-	margin: 10px;
+	margin: 5px;
+	border-color: #999966;
+	border-style: solid;
+	border-width: 1px;
+	text-decoration: none;
 }
