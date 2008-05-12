@@ -160,8 +160,8 @@
 		1803F4AA0DD88CBB0020E188 /* CHANGES */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = CHANGES; path = ../CHANGES; sourceTree = SOURCE_ROOT; };
 		1803F4AC0DD88CD60020E188 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = SOURCE_ROOT; };
 		1803F4AE0DD88CF30020E188 /* README */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = README; path = ../README; sourceTree = SOURCE_ROOT; };
-		18CDF2EC0DD8921D00EE5E02 /* PosteRazor_i386.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosteRazor_i386.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		18CDF31D0DD893B900EE5E02 /* PosteRazor_ppc.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PosteRazor_ppc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18CDF2EC0DD8921D00EE5E02 /* PosteRazor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosteRazor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18CDF31D0DD893B900EE5E02 /* PosteRazor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosteRazor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18CDF3220DD8946400EE5E02 /* libfreeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreeimage.a; path = ../../../../FreeImage/Dist/libfreeimage.a; sourceTree = SOURCE_ROOT; };
 		18CDF3250DD8949900EE5E02 /* libfltk_gl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfltk_gl.a; path = "../../../../fltk-1.1.9_i386/lib/libfltk_gl.a"; sourceTree = SOURCE_ROOT; };
 		18CDF3260DD8949900EE5E02 /* libfltk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfltk.a; path = "../../../../fltk-1.1.9_i386/lib/libfltk.a"; sourceTree = SOURCE_ROOT; };
@@ -213,18 +213,17 @@
 		821432B00DAFBDBD0049725F /* PosteRazorResource.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorResource.h; sourceTree = "<group>"; };
 		821432B10DAFBDBD0049725F /* PosteRazorWizardDialogController.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorWizardDialogController.cpp; sourceTree = "<group>"; };
 		821432B20DAFBDBD0049725F /* PosteRazorWizardDialogController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorWizardDialogController.h; sourceTree = "<group>"; };
-		821432B30DAFBDBD0049725F /* TranslationBrazilianPortuguese.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationBrazilianPortuguese.h; sourceTree = "<group>"; };
+		821432B30DAFBDBD0049725F /* TranslationBrazilianPortuguese.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationBrazilianPortuguese.h; sourceTree = "<group>"; };
 		821432B40DAFBDBD0049725F /* TranslationConstants.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationConstants.h; sourceTree = "<group>"; };
-		821432B50DAFBDBD0049725F /* TranslationDutch.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationDutch.h; sourceTree = "<group>"; };
-		821432B60DAFBDBD0049725F /* TranslationEnglish.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationEnglish.h; sourceTree = "<group>"; };
-		821432B70DAFBDBD0049725F /* TranslationFrench.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationFrench.h; sourceTree = "<group>"; };
-		821432B80DAFBDBD0049725F /* TranslationGerman.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationGerman.h; sourceTree = "<group>"; };
+		821432B50DAFBDBD0049725F /* TranslationDutch.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationDutch.h; sourceTree = "<group>"; };
+		821432B60DAFBDBD0049725F /* TranslationEnglish.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationEnglish.h; sourceTree = "<group>"; };
+		821432B70DAFBDBD0049725F /* TranslationFrench.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationFrench.h; sourceTree = "<group>"; };
+		821432B80DAFBDBD0049725F /* TranslationGerman.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationGerman.h; sourceTree = "<group>"; };
 		821432B90DAFBDBD0049725F /* TranslationInterface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationInterface.h; sourceTree = "<group>"; };
-		821432BA0DAFBDBD0049725F /* TranslationItalian.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationItalian.h; sourceTree = "<group>"; };
-		821432BB0DAFBDBD0049725F /* TranslationPolish.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationPolish.h; sourceTree = "<group>"; };
+		821432BA0DAFBDBD0049725F /* TranslationItalian.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationItalian.h; sourceTree = "<group>"; };
 		821432BC0DAFBDBD0049725F /* Translations.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Translations.cpp; sourceTree = "<group>"; };
 		821432BD0DAFBDBD0049725F /* Translations.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Translations.h; sourceTree = "<group>"; };
-		821432BE0DAFBDBD0049725F /* TranslationSpanish.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TranslationSpanish.h; sourceTree = "<group>"; };
+		821432BE0DAFBDBD0049725F /* TranslationSpanish.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; path = TranslationSpanish.h; sourceTree = "<group>"; };
 		821432BF0DAFBDBD0049725F /* UnitsOfLength.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UnitsOfLength.cpp; sourceTree = "<group>"; };
 		821432C00DAFBDBD0049725F /* UnitsOfLength.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UnitsOfLength.h; sourceTree = "<group>"; };
 		821821DB0916D2A2004580FC /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -283,8 +282,8 @@
 			isa = PBXGroup;
 			children = (
 				82E5567008A56658001EEB51 /* PosteRazor.app */,
-				18CDF2EC0DD8921D00EE5E02 /* PosteRazor_i386.app */,
-				18CDF31D0DD893B900EE5E02 /* PosteRazor_ppc.app */,
+				18CDF2EC0DD8921D00EE5E02 /* PosteRazor.app */,
+				18CDF31D0DD893B900EE5E02 /* PosteRazor.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -348,7 +347,6 @@
 				821432B80DAFBDBD0049725F /* TranslationGerman.h */,
 				821432B90DAFBDBD0049725F /* TranslationInterface.h */,
 				821432BA0DAFBDBD0049725F /* TranslationItalian.h */,
-				821432BB0DAFBDBD0049725F /* TranslationPolish.h */,
 				821432BC0DAFBDBD0049725F /* Translations.cpp */,
 				821432BD0DAFBDBD0049725F /* Translations.h */,
 				821432BE0DAFBDBD0049725F /* TranslationSpanish.h */,
@@ -416,7 +414,7 @@
 			name = PosteRazor_i386;
 			productInstallPath = "$(HOME)/Applications";
 			productName = PosteRazor;
-			productReference = 18CDF2EC0DD8921D00EE5E02 /* PosteRazor_i386.app */;
+			productReference = 18CDF2EC0DD8921D00EE5E02 /* PosteRazor.app */;
 			productType = "com.apple.product-type.application";
 		};
 		18CDF2EF0DD893B900EE5E02 /* PosteRazor_ppc */ = {
@@ -436,7 +434,7 @@
 			name = PosteRazor_ppc;
 			productInstallPath = "$(HOME)/Applications";
 			productName = PosteRazor;
-			productReference = 18CDF31D0DD893B900EE5E02 /* PosteRazor_ppc.app */;
+			productReference = 18CDF31D0DD893B900EE5E02 /* PosteRazor.app */;
 			productType = "com.apple.product-type.application";
 		};
 		8D0C4E890486CD37000505A6 /* PosteRazor */ = {
