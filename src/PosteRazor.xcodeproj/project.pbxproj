@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		821432830DAFBD430049725F /* README in Resources */ = {isa = PBXBuildFile; fileRef = 821432820DAFBD430049725F /* README */; };
+		1803F4AB0DD88CBB0020E188 /* CHANGES in Resources */ = {isa = PBXBuildFile; fileRef = 1803F4AA0DD88CBB0020E188 /* CHANGES */; };
+		1803F4AD0DD88CD70020E188 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 1803F4AC0DD88CD60020E188 /* LICENSE */; };
+		1803F4AF0DD88CF30020E188 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 1803F4AE0DD88CF30020E188 /* README */; };
+		1803F4B00DD88D330020E188 /* README in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 1803F4AE0DD88CF30020E188 /* README */; };
+		1803F4B10DD88D330020E188 /* LICENSE in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 1803F4AC0DD88CD60020E188 /* LICENSE */; };
+		1803F4B20DD88D330020E188 /* CHANGES in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 1803F4AA0DD88CBB0020E188 /* CHANGES */; };
 		821432C20DAFBDBD0049725F /* FlDrawPaintCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432850DAFBDBD0049725F /* FlDrawPaintCanvas.cpp */; };
 		821432C40DAFBDBD0049725F /* FlGlPaintCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432870DAFBDBD0049725F /* FlGlPaintCanvas.cpp */; };
 		821432C60DAFBDBD0049725F /* FlImageTextButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432890DAFBDBD0049725F /* FlImageTextButton.cpp */; };
@@ -15,7 +20,6 @@
 		821432CA0DAFBDBD0049725F /* FlPersistentPreferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8214328D0DAFBDBD0049725F /* FlPersistentPreferences.cpp */; };
 		821432CC0DAFBDBD0049725F /* FlPosteRazorDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8214328F0DAFBDBD0049725F /* FlPosteRazorDialog.cpp */; };
 		821432CE0DAFBDBD0049725F /* FlPosteRazorDialogUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432910DAFBDBD0049725F /* FlPosteRazorDialogUI.cpp */; };
-		821432CF0DAFBDBD0049725F /* FlPosteRazorDialogUI.fl in Resources */ = {isa = PBXBuildFile; fileRef = 821432920DAFBDBD0049725F /* FlPosteRazorDialogUI.fl */; };
 		821432D10DAFBDBD0049725F /* FlPosteRazorHelpDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432940DAFBDBD0049725F /* FlPosteRazorHelpDialog.cpp */; };
 		821432D30DAFBDBD0049725F /* FlPosteRazorSettingsDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432960DAFBDBD0049725F /* FlPosteRazorSettingsDialog.cpp */; };
 		821432D50DAFBDBD0049725F /* FlPosteRazorSpinner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432980DAFBDBD0049725F /* FlPosteRazorSpinner.cpp */; };
@@ -25,8 +29,6 @@
 		821432DD0DAFBDBD0049725F /* PaperFormats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432A00DAFBDBD0049725F /* PaperFormats.cpp */; };
 		821432E10DAFBDBD0049725F /* PosteRazor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432A40DAFBDBD0049725F /* PosteRazor.cpp */; };
 		821432E30DAFBDBD0049725F /* PosteRazor.icns in Resources */ = {isa = PBXBuildFile; fileRef = 821432A60DAFBDBD0049725F /* PosteRazor.icns */; };
-		821432E40DAFBDBD0049725F /* PosteRazor.pro in Resources */ = {isa = PBXBuildFile; fileRef = 821432A70DAFBDBD0049725F /* PosteRazor.pro */; };
-		821432E50DAFBDBD0049725F /* PosteRazor.sln in Resources */ = {isa = PBXBuildFile; fileRef = 821432A80DAFBDBD0049725F /* PosteRazor.sln */; };
 		821432E70DAFBDBD0049725F /* PosteRazorDialogController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432AA0DAFBDBD0049725F /* PosteRazorDialogController.cpp */; };
 		821432E90DAFBDBD0049725F /* PosteRazorImageIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432AC0DAFBDBD0049725F /* PosteRazorImageIO.cpp */; };
 		821432EB0DAFBDBD0049725F /* PosteRazorPDFOutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432AE0DAFBDBD0049725F /* PosteRazorPDFOutput.cpp */; };
@@ -39,48 +41,7 @@
 		8268C3BF0B77D84B0038820A /* libfltk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8268C3BD0B77D84B0038820A /* libfltk.a */; };
 		8268C3C90B77D8BB0038820A /* libfreeimage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8268C3C80B77D8BB0038820A /* libfreeimage.a */; };
 		82814C2408A5642E006D2A26 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9504C8FFE6A3BC11CA0CBA /* ApplicationServices.framework */; };
-		82D482FF0DAFC601009CFF74 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 821432820DAFBD430049725F /* README */; };
-		82D483000DAFC601009CFF74 /* FlPosteRazorDialogUI.fl in Resources */ = {isa = PBXBuildFile; fileRef = 821432920DAFBDBD0049725F /* FlPosteRazorDialogUI.fl */; };
-		82D483010DAFC601009CFF74 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8214329C0DAFBDBD0049725F /* Info.plist */; };
-		82D483020DAFC601009CFF74 /* PosteRazor.icns in Resources */ = {isa = PBXBuildFile; fileRef = 821432A60DAFBDBD0049725F /* PosteRazor.icns */; };
-		82D483030DAFC601009CFF74 /* PosteRazor.pro in Resources */ = {isa = PBXBuildFile; fileRef = 821432A70DAFBDBD0049725F /* PosteRazor.pro */; };
-		82D483040DAFC601009CFF74 /* PosteRazor.sln in Resources */ = {isa = PBXBuildFile; fileRef = 821432A80DAFBDBD0049725F /* PosteRazor.sln */; };
-		82D483060DAFC601009CFF74 /* FlDrawPaintCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432850DAFBDBD0049725F /* FlDrawPaintCanvas.cpp */; };
-		82D483070DAFC601009CFF74 /* FlGlPaintCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432870DAFBDBD0049725F /* FlGlPaintCanvas.cpp */; };
-		82D483080DAFC601009CFF74 /* FlImageTextButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432890DAFBDBD0049725F /* FlImageTextButton.cpp */; };
-		82D483090DAFC601009CFF74 /* FlPaintCanvasGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8214328B0DAFBDBD0049725F /* FlPaintCanvasGroup.cpp */; };
-		82D4830A0DAFC601009CFF74 /* FlPersistentPreferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8214328D0DAFBDBD0049725F /* FlPersistentPreferences.cpp */; };
-		82D4830B0DAFC601009CFF74 /* FlPosteRazorDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8214328F0DAFBDBD0049725F /* FlPosteRazorDialog.cpp */; };
-		82D4830C0DAFC601009CFF74 /* FlPosteRazorDialogUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432910DAFBDBD0049725F /* FlPosteRazorDialogUI.cpp */; };
-		82D4830D0DAFC601009CFF74 /* FlPosteRazorHelpDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432940DAFBDBD0049725F /* FlPosteRazorHelpDialog.cpp */; };
-		82D4830E0DAFC601009CFF74 /* FlPosteRazorSettingsDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432960DAFBDBD0049725F /* FlPosteRazorSettingsDialog.cpp */; };
-		82D4830F0DAFC601009CFF74 /* FlPosteRazorSpinner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432980DAFBDBD0049725F /* FlPosteRazorSpinner.cpp */; };
-		82D483100DAFC601009CFF74 /* ImageIOTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8214329A0DAFBDBD0049725F /* ImageIOTypes.cpp */; };
-		82D483110DAFC601009CFF74 /* PaintCanvasBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8214329D0DAFBDBD0049725F /* PaintCanvasBase.cpp */; };
-		82D483120DAFC601009CFF74 /* PaperFormats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432A00DAFBDBD0049725F /* PaperFormats.cpp */; };
-		82D483130DAFC601009CFF74 /* PosteRazor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432A40DAFBDBD0049725F /* PosteRazor.cpp */; };
-		82D483150DAFC601009CFF74 /* PosteRazorDialogController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432AA0DAFBDBD0049725F /* PosteRazorDialogController.cpp */; };
-		82D483160DAFC601009CFF74 /* PosteRazorImageIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432AC0DAFBDBD0049725F /* PosteRazorImageIO.cpp */; };
-		82D483170DAFC601009CFF74 /* PosteRazorPDFOutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432AE0DAFBDBD0049725F /* PosteRazorPDFOutput.cpp */; };
-		82D483180DAFC601009CFF74 /* PosteRazorWizardDialogController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432B10DAFBDBD0049725F /* PosteRazorWizardDialogController.cpp */; };
-		82D483190DAFC601009CFF74 /* Translations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432BC0DAFBDBD0049725F /* Translations.cpp */; };
-		82D4831A0DAFC601009CFF74 /* UnitsOfLength.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821432BF0DAFBDBD0049725F /* UnitsOfLength.cpp */; };
-		82D4831C0DAFC601009CFF74 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
-		82D4831D0DAFC601009CFF74 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9504C8FFE6A3BC11CA0CBA /* ApplicationServices.framework */; };
-		82D4831E0DAFC601009CFF74 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 821821DB0916D2A2004580FC /* AGL.framework */; };
-		82D4831F0DAFC601009CFF74 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 821821DC0916D2A2004580FC /* OpenGL.framework */; };
-		82D483200DAFC601009CFF74 /* libfltk_gl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8268C3BC0B77D84B0038820A /* libfltk_gl.a */; };
-		82D483210DAFC601009CFF74 /* libfltk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8268C3BD0B77D84B0038820A /* libfltk.a */; };
-		82D483220DAFC601009CFF74 /* libfreeimage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8268C3C80B77D8BB0038820A /* libfreeimage.a */; };
-		82D483410DAFC6D2009CFF74 /* CHANGES in Resources */ = {isa = PBXBuildFile; fileRef = 82D483330DAFC6D2009CFF74 /* CHANGES */; };
-		82D483430DAFC6D2009CFF74 /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = 82D483350DAFC6D2009CFF74 /* COPYING */; };
-		82D483440DAFC6D2009CFF74 /* CREDITS in Resources */ = {isa = PBXBuildFile; fileRef = 82D483360DAFC6D2009CFF74 /* CREDITS */; };
-		82D483450DAFC6D2009CFF74 /* Fl_Native_File_Chooser.H in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 82D483380DAFC6D2009CFF74 /* Fl_Native_File_Chooser.H */; };
-		82D483460DAFC6D2009CFF74 /* Fl_Native_File_Chooser_FLTK.H in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 82D483390DAFC6D2009CFF74 /* Fl_Native_File_Chooser_FLTK.H */; };
-		82D483470DAFC6D2009CFF74 /* Fl_Native_File_Chooser_MAC.H in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 82D4833A0DAFC6D2009CFF74 /* Fl_Native_File_Chooser_MAC.H */; };
-		82D483480DAFC6D2009CFF74 /* Fl_Native_File_Chooser_WIN32.H in Copy README, LICENSE, CHANGES */ = {isa = PBXBuildFile; fileRef = 82D4833B0DAFC6D2009CFF74 /* Fl_Native_File_Chooser_WIN32.H */; };
 		82D483490DAFC6D2009CFF74 /* Fl_Native_File_Chooser.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 82D4833C0DAFC6D2009CFF74 /* Fl_Native_File_Chooser.cxx */; };
-		82D4834D0DAFC6D2009CFF74 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 82D483400DAFC6D2009CFF74 /* README.txt */; };
 		8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,20 +52,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				82D483450DAFC6D2009CFF74 /* Fl_Native_File_Chooser.H in Copy README, LICENSE, CHANGES */,
-				82D483460DAFC6D2009CFF74 /* Fl_Native_File_Chooser_FLTK.H in Copy README, LICENSE, CHANGES */,
-				82D483470DAFC6D2009CFF74 /* Fl_Native_File_Chooser_MAC.H in Copy README, LICENSE, CHANGES */,
-				82D483480DAFC6D2009CFF74 /* Fl_Native_File_Chooser_WIN32.H in Copy README, LICENSE, CHANGES */,
-			);
-			name = "Copy README, LICENSE, CHANGES";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82D483230DAFC601009CFF74 /* Copy README, LICENSE, CHANGES */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 16;
-			files = (
+				1803F4B00DD88D330020E188 /* README in Copy README, LICENSE, CHANGES */,
+				1803F4B10DD88D330020E188 /* LICENSE in Copy README, LICENSE, CHANGES */,
+				1803F4B20DD88D330020E188 /* CHANGES in Copy README, LICENSE, CHANGES */,
 			);
 			name = "Copy README, LICENSE, CHANGES";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,9 +62,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1803F4AA0DD88CBB0020E188 /* CHANGES */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = CHANGES; path = ../CHANGES; sourceTree = SOURCE_ROOT; };
+		1803F4AC0DD88CD60020E188 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = SOURCE_ROOT; };
+		1803F4AE0DD88CF30020E188 /* README */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = README; path = ../README; sourceTree = SOURCE_ROOT; };
 		20286C33FDCF999611CA2CEA /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		4A9504C8FFE6A3BC11CA0CBA /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
-		821432820DAFBD430049725F /* README */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		821432840DAFBDBD0049725F /* ColorTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ColorTypes.h; sourceTree = "<group>"; };
 		821432850DAFBDBD0049725F /* FlDrawPaintCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = FlDrawPaintCanvas.cpp; sourceTree = "<group>"; };
 		821432860DAFBDBD0049725F /* FlDrawPaintCanvas.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FlDrawPaintCanvas.h; sourceTree = "<group>"; };
@@ -150,8 +102,6 @@
 		821432A40DAFBDBD0049725F /* PosteRazor.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazor.cpp; sourceTree = "<group>"; };
 		821432A50DAFBDBD0049725F /* PosteRazor.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazor.h; sourceTree = "<group>"; };
 		821432A60DAFBDBD0049725F /* PosteRazor.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PosteRazor.icns; sourceTree = "<group>"; };
-		821432A70DAFBDBD0049725F /* PosteRazor.pro */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = PosteRazor.pro; sourceTree = "<group>"; };
-		821432A80DAFBDBD0049725F /* PosteRazor.sln */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = PosteRazor.sln; sourceTree = "<group>"; };
 		821432AA0DAFBDBD0049725F /* PosteRazorDialogController.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorDialogController.cpp; sourceTree = "<group>"; };
 		821432AB0DAFBDBD0049725F /* PosteRazorDialogController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PosteRazorDialogController.h; sourceTree = "<group>"; };
 		821432AC0DAFBDBD0049725F /* PosteRazorImageIO.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PosteRazorImageIO.cpp; sourceTree = "<group>"; };
@@ -181,35 +131,13 @@
 		8268C3BC0B77D84B0038820A /* libfltk_gl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfltk_gl.a; path = "thirdparty/fltk-1.1/lib/libfltk_gl.a"; sourceTree = SOURCE_ROOT; };
 		8268C3BD0B77D84B0038820A /* libfltk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfltk.a; path = "thirdparty/fltk-1.1/lib/libfltk.a"; sourceTree = SOURCE_ROOT; };
 		8268C3C80B77D8BB0038820A /* libfreeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreeimage.a; path = thirdparty/FreeImage/libfreeimage.a; sourceTree = SOURCE_ROOT; };
-		82D483290DAFC601009CFF74 /* PosteRazor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosteRazor.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		82D4832B0DAFC601009CFF74 /* Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Info copy.plist"; sourceTree = "<group>"; };
-		82D483330DAFC6D2009CFF74 /* CHANGES */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = CHANGES; sourceTree = "<group>"; };
-		82D483350DAFC6D2009CFF74 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
-		82D483360DAFC6D2009CFF74 /* CREDITS */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = CREDITS; sourceTree = "<group>"; };
 		82D483380DAFC6D2009CFF74 /* Fl_Native_File_Chooser.H */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Fl_Native_File_Chooser.H; sourceTree = "<group>"; };
-		82D483390DAFC6D2009CFF74 /* Fl_Native_File_Chooser_FLTK.H */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Fl_Native_File_Chooser_FLTK.H; sourceTree = "<group>"; };
 		82D4833A0DAFC6D2009CFF74 /* Fl_Native_File_Chooser_MAC.H */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Fl_Native_File_Chooser_MAC.H; sourceTree = "<group>"; };
-		82D4833B0DAFC6D2009CFF74 /* Fl_Native_File_Chooser_WIN32.H */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Fl_Native_File_Chooser_WIN32.H; sourceTree = "<group>"; };
 		82D4833C0DAFC6D2009CFF74 /* Fl_Native_File_Chooser.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_Native_File_Chooser.cxx; sourceTree = "<group>"; };
-		82D483400DAFC6D2009CFF74 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		82E5567008A56658001EEB51 /* PosteRazor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosteRazor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		82D4831B0DAFC601009CFF74 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				82D4831C0DAFC601009CFF74 /* Carbon.framework in Frameworks */,
-				82D4831D0DAFC601009CFF74 /* ApplicationServices.framework in Frameworks */,
-				82D4831E0DAFC601009CFF74 /* AGL.framework in Frameworks */,
-				82D4831F0DAFC601009CFF74 /* OpenGL.framework in Frameworks */,
-				82D483200DAFC601009CFF74 /* libfltk_gl.a in Frameworks */,
-				82D483210DAFC601009CFF74 /* libfltk.a in Frameworks */,
-				82D483220DAFC601009CFF74 /* libfreeimage.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8D0C4E910486CD37000505A6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -231,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				82E5567008A56658001EEB51 /* PosteRazor.app */,
-				82D483290DAFC601009CFF74 /* PosteRazor.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -239,6 +166,9 @@
 		20286C29FDCF999611CA2CEA /* PosteRazor */ = {
 			isa = PBXGroup;
 			children = (
+				1803F4AE0DD88CF30020E188 /* README */,
+				1803F4AC0DD88CD60020E188 /* LICENSE */,
+				1803F4AA0DD88CBB0020E188 /* CHANGES */,
 				82D483320DAFC6D2009CFF74 /* Fl_Native_File_Chooser */,
 				821432840DAFBDBD0049725F /* ColorTypes.h */,
 				821432850DAFBDBD0049725F /* FlDrawPaintCanvas.cpp */,
@@ -275,8 +205,6 @@
 				821432A40DAFBDBD0049725F /* PosteRazor.cpp */,
 				821432A50DAFBDBD0049725F /* PosteRazor.h */,
 				821432A60DAFBDBD0049725F /* PosteRazor.icns */,
-				821432A70DAFBDBD0049725F /* PosteRazor.pro */,
-				821432A80DAFBDBD0049725F /* PosteRazor.sln */,
 				821432AA0DAFBDBD0049725F /* PosteRazorDialogController.cpp */,
 				821432AB0DAFBDBD0049725F /* PosteRazorDialogController.h */,
 				821432AC0DAFBDBD0049725F /* PosteRazorImageIO.cpp */,
@@ -300,11 +228,9 @@
 				821432BE0DAFBDBD0049725F /* TranslationSpanish.h */,
 				821432BF0DAFBDBD0049725F /* UnitsOfLength.cpp */,
 				821432C00DAFBDBD0049725F /* UnitsOfLength.h */,
-				821432820DAFBD430049725F /* README */,
 				8221C68908A567C100EB193B /* PosteRazor_Prefix.pch */,
 				20286C32FDCF999611CA2CEA /* External Frameworks and Libraries */,
 				195DF8CFFE9D517E11CA2CBB /* Products */,
-				82D4832B0DAFC601009CFF74 /* Info copy.plist */,
 			);
 			name = PosteRazor;
 			sourceTree = "<group>";
@@ -326,12 +252,8 @@
 		82D483320DAFC6D2009CFF74 /* Fl_Native_File_Chooser */ = {
 			isa = PBXGroup;
 			children = (
-				82D483330DAFC6D2009CFF74 /* CHANGES */,
-				82D483350DAFC6D2009CFF74 /* COPYING */,
-				82D483360DAFC6D2009CFF74 /* CREDITS */,
 				82D483370DAFC6D2009CFF74 /* FL */,
 				82D4833C0DAFC6D2009CFF74 /* Fl_Native_File_Chooser.cxx */,
-				82D483400DAFC6D2009CFF74 /* README.txt */,
 			);
 			name = Fl_Native_File_Chooser;
 			path = thirdparty/Fl_Native_File_Chooser;
@@ -341,9 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				82D483380DAFC6D2009CFF74 /* Fl_Native_File_Chooser.H */,
-				82D483390DAFC6D2009CFF74 /* Fl_Native_File_Chooser_FLTK.H */,
 				82D4833A0DAFC6D2009CFF74 /* Fl_Native_File_Chooser_MAC.H */,
-				82D4833B0DAFC6D2009CFF74 /* Fl_Native_File_Chooser_WIN32.H */,
 			);
 			path = FL;
 			sourceTree = "<group>";
@@ -351,26 +271,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		82D482FD0DAFC601009CFF74 /* PosteRazor copy */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 82D483250DAFC601009CFF74 /* Build configuration list for PBXNativeTarget "PosteRazor copy" */;
-			buildPhases = (
-				82D482FE0DAFC601009CFF74 /* Resources */,
-				82D483050DAFC601009CFF74 /* Sources */,
-				82D4831B0DAFC601009CFF74 /* Frameworks */,
-				82D483230DAFC601009CFF74 /* Copy README, LICENSE, CHANGES */,
-				82D483240DAFC601009CFF74 /* Generate language resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "PosteRazor copy";
-			productInstallPath = "$(HOME)/Applications";
-			productName = PosteRazor;
-			productReference = 82D483290DAFC601009CFF74 /* PosteRazor.app */;
-			productType = "com.apple.product-type.application";
-		};
 		8D0C4E890486CD37000505A6 /* PosteRazor */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 82ACC08C093FC12D00200A0E /* Build configuration list for PBXNativeTarget "PosteRazor" */;
@@ -402,39 +302,20 @@
 			projectDirPath = "";
 			targets = (
 				8D0C4E890486CD37000505A6 /* PosteRazor */,
-				82D482FD0DAFC601009CFF74 /* PosteRazor copy */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		82D482FE0DAFC601009CFF74 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				82D482FF0DAFC601009CFF74 /* README in Resources */,
-				82D483000DAFC601009CFF74 /* FlPosteRazorDialogUI.fl in Resources */,
-				82D483010DAFC601009CFF74 /* Info.plist in Resources */,
-				82D483020DAFC601009CFF74 /* PosteRazor.icns in Resources */,
-				82D483030DAFC601009CFF74 /* PosteRazor.pro in Resources */,
-				82D483040DAFC601009CFF74 /* PosteRazor.sln in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8D0C4E8C0486CD37000505A6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				821432830DAFBD430049725F /* README in Resources */,
-				821432CF0DAFBDBD0049725F /* FlPosteRazorDialogUI.fl in Resources */,
 				821432D90DAFBDBD0049725F /* Info.plist in Resources */,
 				821432E30DAFBDBD0049725F /* PosteRazor.icns in Resources */,
-				821432E40DAFBDBD0049725F /* PosteRazor.pro in Resources */,
-				821432E50DAFBDBD0049725F /* PosteRazor.sln in Resources */,
-				82D483410DAFC6D2009CFF74 /* CHANGES in Resources */,
-				82D483430DAFC6D2009CFF74 /* COPYING in Resources */,
-				82D483440DAFC6D2009CFF74 /* CREDITS in Resources */,
-				82D4834D0DAFC6D2009CFF74 /* README.txt in Resources */,
+				1803F4AB0DD88CBB0020E188 /* CHANGES in Resources */,
+				1803F4AD0DD88CD70020E188 /* LICENSE in Resources */,
+				1803F4AF0DD88CF30020E188 /* README in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,52 +334,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "RESOURCESFOLDER=$BUILT_PRODUCTS_DIR/$TARGET_NAME.app/Contents/Resources/\nLANGUAGES=\"English German French Italian Dutch Spanish\"\n\nfor LANGUAGE in $LANGUAGES\ndo\n\tLANGUAGEFOLDER=$RESOURCESFOLDER/$LANGUAGE.lproj\n\tif [ ! -d $LANGUAGEFOLDER ]\n\tthen\tmkdir $LANGUAGEFOLDER\n\tfi\ndone\n";
-		};
-		82D483240DAFC601009CFF74 /* Generate language resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Generate language resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "RESOURCESFOLDER=$BUILT_PRODUCTS_DIR/$TARGET_NAME.app/Contents/Resources/\nLANGUAGES=\"English German French Italian Dutch Spanish\"\n\nfor LANGUAGE in $LANGUAGES\ndo\n\tLANGUAGEFOLDER=$RESOURCESFOLDER/$LANGUAGE.lproj\n\tif [ ! -d $LANGUAGEFOLDER ]\n\tthen\tmkdir $LANGUAGEFOLDER\n\tfi\ndone\n";
+			shellScript = "RESOURCESFOLDER=$BUILT_PRODUCTS_DIR/$TARGET_NAME.app/Contents/Resources/\nLANGUAGES=\"English German French Italian Dutch Spanish BrazilianPortuguese\"\n\nfor LANGUAGE in $LANGUAGES\ndo\n\tLANGUAGEFOLDER=$RESOURCESFOLDER/$LANGUAGE.lproj\n\tif [ ! -d $LANGUAGEFOLDER ]\n\tthen\tmkdir $LANGUAGEFOLDER\n\tfi\ndone\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		82D483050DAFC601009CFF74 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				82D483060DAFC601009CFF74 /* FlDrawPaintCanvas.cpp in Sources */,
-				82D483070DAFC601009CFF74 /* FlGlPaintCanvas.cpp in Sources */,
-				82D483080DAFC601009CFF74 /* FlImageTextButton.cpp in Sources */,
-				82D483090DAFC601009CFF74 /* FlPaintCanvasGroup.cpp in Sources */,
-				82D4830A0DAFC601009CFF74 /* FlPersistentPreferences.cpp in Sources */,
-				82D4830B0DAFC601009CFF74 /* FlPosteRazorDialog.cpp in Sources */,
-				82D4830C0DAFC601009CFF74 /* FlPosteRazorDialogUI.cpp in Sources */,
-				82D4830D0DAFC601009CFF74 /* FlPosteRazorHelpDialog.cpp in Sources */,
-				82D4830E0DAFC601009CFF74 /* FlPosteRazorSettingsDialog.cpp in Sources */,
-				82D4830F0DAFC601009CFF74 /* FlPosteRazorSpinner.cpp in Sources */,
-				82D483100DAFC601009CFF74 /* ImageIOTypes.cpp in Sources */,
-				82D483110DAFC601009CFF74 /* PaintCanvasBase.cpp in Sources */,
-				82D483120DAFC601009CFF74 /* PaperFormats.cpp in Sources */,
-				82D483130DAFC601009CFF74 /* PosteRazor.cpp in Sources */,
-				82D483150DAFC601009CFF74 /* PosteRazorDialogController.cpp in Sources */,
-				82D483160DAFC601009CFF74 /* PosteRazorImageIO.cpp in Sources */,
-				82D483170DAFC601009CFF74 /* PosteRazorPDFOutput.cpp in Sources */,
-				82D483180DAFC601009CFF74 /* PosteRazorWizardDialogController.cpp in Sources */,
-				82D483190DAFC601009CFF74 /* Translations.cpp in Sources */,
-				82D4831A0DAFC601009CFF74 /* UnitsOfLength.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8D0C4E8F0486CD37000505A6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -651,99 +491,6 @@
 			};
 			name = Default;
 		};
-		82D483260DAFC601009CFF74 /* Development */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = PosteRazor_Prefix.pch;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(HEADER_SEARCH_PATHS_QUOTED_1)",
-					"$(HEADER_SEARCH_PATHS_QUOTED_2)",
-				);
-				HEADER_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/thirdparty/fltk-1.1\"";
-				HEADER_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/thirdparty/FreeImage/Source\"";
-				INFOPLIST_FILE = "/Users/alessandroportale/ownprojects/posterazor/trunk/src/Info copy.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
-				);
-				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/thirdparty/fltk-1.1/lib\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/thirdparty/FreeImage\"";
-				PREBINDING = NO;
-				PRODUCT_NAME = PosteRazor;
-				WRAPPER_EXTENSION = app;
-				ZERO_LINK = NO;
-			};
-			name = Development;
-		};
-		82D483270DAFC601009CFF74 /* Deployment */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEAD_CODE_STRIPPING = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = PosteRazor_Prefix.pch;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(HEADER_SEARCH_PATHS_QUOTED_1)",
-					"$(HEADER_SEARCH_PATHS_QUOTED_2)",
-				);
-				HEADER_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/thirdparty/fltk-1.1\"";
-				HEADER_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/thirdparty/FreeImage/Source\"";
-				INFOPLIST_FILE = "/Users/alessandroportale/ownprojects/posterazor/trunk/src/Info copy.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
-				);
-				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/thirdparty/fltk-1.1/lib\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/thirdparty/FreeImage\"";
-				PREBINDING = NO;
-				PRODUCT_NAME = PosteRazor;
-				WRAPPER_EXTENSION = app;
-				ZERO_LINK = NO;
-			};
-			name = Deployment;
-		};
-		82D483280DAFC601009CFF74 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = PosteRazor_Prefix.pch;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(HEADER_SEARCH_PATHS_QUOTED_1)",
-					"$(HEADER_SEARCH_PATHS_QUOTED_2)",
-				);
-				HEADER_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/thirdparty/fltk-1.1\"";
-				HEADER_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/thirdparty/FreeImage/Source\"";
-				INFOPLIST_FILE = "/Users/alessandroportale/ownprojects/posterazor/trunk/src/Info copy.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
-				);
-				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/thirdparty/fltk-1.1/lib\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/thirdparty/FreeImage\"";
-				PREBINDING = NO;
-				PRODUCT_NAME = PosteRazor;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Default;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -763,16 +510,6 @@
 				82ACC091093FC12D00200A0E /* Development */,
 				82ACC092093FC12D00200A0E /* Deployment */,
 				82ACC093093FC12D00200A0E /* Default */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
-		};
-		82D483250DAFC601009CFF74 /* Build configuration list for PBXNativeTarget "PosteRazor copy" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				82D483260DAFC601009CFF74 /* Development */,
-				82D483270DAFC601009CFF74 /* Deployment */,
-				82D483280DAFC601009CFF74 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
