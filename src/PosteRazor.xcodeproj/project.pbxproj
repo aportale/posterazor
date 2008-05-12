@@ -160,8 +160,8 @@
 		1803F4AA0DD88CBB0020E188 /* CHANGES */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = CHANGES; path = ../CHANGES; sourceTree = SOURCE_ROOT; };
 		1803F4AC0DD88CD60020E188 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = SOURCE_ROOT; };
 		1803F4AE0DD88CF30020E188 /* README */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = README; path = ../README; sourceTree = SOURCE_ROOT; };
-		18CDF2EC0DD8921D00EE5E02 /* PosteRazor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosteRazor.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		18CDF31D0DD893B900EE5E02 /* PosteRazor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosteRazor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18CDF2EC0DD8921D00EE5E02 /* PosteRazor_i386.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosteRazor_i386.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18CDF31D0DD893B900EE5E02 /* PosteRazor_ppc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosteRazor_ppc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18CDF3220DD8946400EE5E02 /* libfreeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreeimage.a; path = ../../../../FreeImage/Dist/libfreeimage.a; sourceTree = SOURCE_ROOT; };
 		18CDF3250DD8949900EE5E02 /* libfltk_gl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfltk_gl.a; path = "../../../../fltk-1.1.9_i386/lib/libfltk_gl.a"; sourceTree = SOURCE_ROOT; };
 		18CDF3260DD8949900EE5E02 /* libfltk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfltk.a; path = "../../../../fltk-1.1.9_i386/lib/libfltk.a"; sourceTree = SOURCE_ROOT; };
@@ -282,8 +282,8 @@
 			isa = PBXGroup;
 			children = (
 				82E5567008A56658001EEB51 /* PosteRazor.app */,
-				18CDF2EC0DD8921D00EE5E02 /* PosteRazor.app */,
-				18CDF31D0DD893B900EE5E02 /* PosteRazor.app */,
+				18CDF2EC0DD8921D00EE5E02 /* PosteRazor_i386.app */,
+				18CDF31D0DD893B900EE5E02 /* PosteRazor_ppc.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -414,7 +414,7 @@
 			name = PosteRazor_i386;
 			productInstallPath = "$(HOME)/Applications";
 			productName = PosteRazor;
-			productReference = 18CDF2EC0DD8921D00EE5E02 /* PosteRazor.app */;
+			productReference = 18CDF2EC0DD8921D00EE5E02 /* PosteRazor_i386.app */;
 			productType = "com.apple.product-type.application";
 		};
 		18CDF2EF0DD893B900EE5E02 /* PosteRazor_ppc */ = {
@@ -434,7 +434,7 @@
 			name = PosteRazor_ppc;
 			productInstallPath = "$(HOME)/Applications";
 			productName = PosteRazor;
-			productReference = 18CDF31D0DD893B900EE5E02 /* PosteRazor.app */;
+			productReference = 18CDF31D0DD893B900EE5E02 /* PosteRazor_ppc.app */;
 			productType = "com.apple.product-type.application";
 		};
 		8D0C4E890486CD37000505A6 /* PosteRazor */ = {
@@ -704,7 +704,7 @@
 				HEADER_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/thirdparty/fltk-1.1\"";
 				HEADER_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/thirdparty/FreeImage/Source\"";
 				HEADER_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/thirdparty/Fl_Native_File_Chooser\"";
-				INFOPLIST_FILE = "/Users/apple/Desktop/posterazor/branches/PosteRazor_1_5_0_release/src/Info copy.plist";
+				INFOPLIST_FILE = /Users/apple/Desktop/posterazor/branches/PosteRazor_1_5_0_release/src/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
@@ -817,7 +817,7 @@
 				HEADER_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/thirdparty/fltk-1.1\"";
 				HEADER_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/thirdparty/FreeImage/Source\"";
 				HEADER_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/thirdparty/Fl_Native_File_Chooser\"";
-				INFOPLIST_FILE = "/Users/apple/Desktop/posterazor/branches/PosteRazor_1_5_0_release/src/Info copy 2.plist";
+				INFOPLIST_FILE = /Users/apple/Desktop/posterazor/branches/PosteRazor_1_5_0_release/src/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
