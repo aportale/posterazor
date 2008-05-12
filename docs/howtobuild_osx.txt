@@ -1,0 +1,13 @@
+OSX package building tricks
+
+Configure Fltk, the ppc part of the Universal Binary:
+
+--with-archflags="-arch ppc -nostdinc -mmacosx-version-min=10.3 -DMAC_OS_X_VERSION_MIN_REQUIRED=1030 -F/Developer/SDKs/MacOSX10.3.9.sdk/System/Library/Frameworks -I/Developer/SDKs/MacOSX10.3.9.sdk/usr/lib/gcc/powerpc-apple-darwin8/4.0.1/include -isystem /Developer/SDKs/MacOSX10.3.9.sdk/usr/include -L/Developer/SDKs/MacOSX10.3.9.sdk/usr/lib/gcc/powerpc-apple-darwin8/4.0.0 -Wl,-syslibroot,/Developer/SDKs/MacOSX10.3.9.sdk"
+
+Strip and lipo the ppc and i386 binaries together:
+
+strip build/Deployment/PosteRazor_ppc.app/Contents/MacOS/PosteRazor_ppc && strip build/Deployment/PosteRazor_i386.app/Contents/MacOS/PosteRazor_i386 && lipo -create -output build/Deployment/PosteRazor.app/Contents/MacOS/PosteRazor -arch ppc build/Deployment/PosteRazor_ppc.app/Contents/MacOS/PosteRazor_ppc -arch i386 build/Deployment/PosteRazor_i386.app/Contents/MacOS/PosteRazor_i386
+
+Create a .dmg image:
+
+hdiutil create -volname "PosteRazor" -ov -format UDZO -imagekey zlib-level=9 -srcfolder "build/Deployment" "PosteRazor-1.5-OSX.dmg"
