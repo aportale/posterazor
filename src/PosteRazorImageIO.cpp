@@ -73,6 +73,16 @@ private:
 		return p[0] == 1;  // Lowest address contains the least significant byte
 	}
 
+	static bool issRgbDataSwappingNeeded(void)
+	{
+#ifdef __APPLE__
+		// It seems that OSX i386 interpretes image data just like OSX ppc
+		return false;
+#else
+		return isSystemLittleEndian();
+#endif
+	}
+
 	// FreeImage_Convert[To|From]RawBits inverted the topdown parameter until v3.10
 	static BOOL hasFreeImageVersionCorrectTopDownInConvertBits(void)
 	{
@@ -223,7 +233,7 @@ public:
 		FreeImage_ConvertToRawBits(buffer, originalImage, width*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, hasFreeImageVersionCorrectTopDownInConvertBits());
 
 		// Swapping RGB data if needed (like on Intel)
-		if (isSystemLittleEndian()) {
+		if (issRgbDataSwappingNeeded()) {
 			const unsigned int numberOfPixels = width * height;
 
 			for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
@@ -280,7 +290,7 @@ public:
 		FreeImage_ConvertToRawBits(imageData, m_bitmap, bytesPerLineCount, getBitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, hasFreeImageVersionCorrectTopDownInConvertBits());
 
 		// Swapping RGB data if needed (like on Intel)
-		if (getBitsPerPixel() == 24 && isSystemLittleEndian()) {
+		if (getBitsPerPixel() == 24 && issRgbDataSwappingNeeded()) {
 			const unsigned long numberOfPixels = getWidthPixels() * getHeightPixels();
 			for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
 				unsigned char *pixelPtr = imageData + pixelIndex*3;
