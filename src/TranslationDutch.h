@@ -3,6 +3,8 @@
 	Copyright (C) 2005-2008 by Alessandro Portale
 	http://posterazor.sourceforge.net/
 
+	Dutch/Belgian translation by Erik Wijkamp
+
 	This file is part of PosteRazor
 
 	PosteRazor is free software; you can redistribute it and/or modify
@@ -186,7 +188,7 @@ public:
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORINPUTFILEFORMATS, DUTCH_POSTERAZORHELPINPUTFILEFORMATS) \
 					POSTERAZORHELPINDENTATION "De meeste bestandsformaten die ondersteund worden bij FreeImage, worden ook ondersteund in PosteRazor:<br>" POSTERAZORHELPENDLINE \
-					"<b>BMP, DDS files, Dr. Halo, GIF, ICO, IFF, JBIG, JNG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, MNG, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM.<br></b>" POSTERAZORHELPENDLINE \
+					"<b>BMP, DDS files, Dr. Halo, GIF, ICO, IFF, JBIG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM.<br></b>" POSTERAZORHELPENDLINE \
 					"PosteRazor herkent ook de volgende bestandsformaten en kan ze gebruiken: monochroom, grijstinten, 4-bit palet, 8-bit palet, 24 bit RGB, en CMYK (alleen bij TIF) afbeeldingen. RGB afbeeldingen met een alpha kanaal worden automatisch geconverteerd en getoond op een witte achtergrond." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORWHYPDFOUTPUT, DUTCH_POSTERAZORHELPWHYPDFOUTPUT) \

@@ -1,7 +1,9 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005-2007 by Alessandro Portale
+	Copyright (C) 2005-2008 by Alessandro Portale
 	http://posterazor.sourceforge.net/
+
+	Spanish translation by Hispanico Web http://hispanicoweb.net/
 
 	This file is part of PosteRazor
 
@@ -193,7 +195,7 @@ public:
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORINPUTFILEFORMATS, SPANISH_POSTERAZORHELPINPUTFILEFORMATS) \
 					POSTERAZORHELPINDENTATION "La mayor&iacute;a de los formatos de imagen r&aacute;ster soportados por FreeImage tambi&eacute;n son soportados por PosteRazor:<br>" POSTERAZORHELPENDLINE \
-					"<b>BMP, archivos DDS, Dr. Halo, GIF, ICO, IFF, JBIG, JNG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, MNG, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM.<br></b>" POSTERAZORHELPENDLINE \
+					"<b>BMP, archivos DDS, Dr. Halo, GIF, ICO, IFF, JBIG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM.<br></b>" POSTERAZORHELPENDLINE \
 					"PosteRazor distingue y maneja im&aacute;genes monocromas, de escala de grises, de paleta de 4-bit, de paleta de 8-bit, de 24 bit RGB, y CMYK (s&oacute;lo desde TIF). Las im&aacute;genes RGB con un canal alfa son compuestas autom&aacute;ticamente encima de un fondo blanco." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORWHYPDFOUTPUT, SPANISH_POSTERAZORHELPWHYPDFOUTPUT) \
