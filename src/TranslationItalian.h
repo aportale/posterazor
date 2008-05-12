@@ -1,6 +1,6 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005-2007 by Alessandro Portale
+	Copyright (C) 2005-2008 by Alessandro Portale
 	http://posterazor.sourceforge.net/
 	
 	Italian translation by Stefano Nosei - kluster[at]imente[dot]org
@@ -185,7 +185,7 @@ public:
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORINPUTFILEFORMATS, ITALIAN_POSTERAZORHELPINPUTFILEFORMATS) \
 					POSTERAZORHELPINDENTATION "La maggior parte delle immagini raster che sono supportate da FreeImage sono supportate anche da PosteRazor:<br>" POSTERAZORHELPENDLINE \
-					"<b>BMP, file DDS , Dr. Halo, GIF, ICO, IFF, JBIG, JNG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, MNG, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM.<br></b>" POSTERAZORHELPENDLINE \
+					"<b>BMP, file DDS , Dr. Halo, GIF, ICO, IFF, JBIG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM.<br></b>" POSTERAZORHELPENDLINE \
 					"PosteRazor distingue e supporta immagini monocromatiche, a scala di grigi, con palette a 4-bit ,8-bit, 24 bit RGB, e quadricromia CMYK (solo per il formato Tif). Le immagini RGB con un canale alpha sono automaticamente composte con sfondo bianco." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORWHYPDFOUTPUT, ITALIAN_POSTERAZORHELPWHYPDFOUTPUT) \

@@ -1,7 +1,9 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005-2007 by Alessandro Portale
+	Copyright (C) 2005-2008 by Alessandro Portale
 	http://posterazor.sourceforge.net/
+
+	Brazilian Portuguese translation by Ederson Gomes dos Santos
 
 	This file is part of PosteRazor
 
@@ -184,7 +186,7 @@ public:
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORINPUTFILEFORMATS, BRAZILIANPORTUGUESE_POSTERAZORHELPINPUTFILEFORMATS) \
 					POSTERAZORHELPINDENTATION "A maioria dos formatos de imagem s&atilde;o suportados pelo FreeImage tamb&eacute;m s&atilde;o suportadas pelo PosteRazor:<br>" POSTERAZORHELPENDLINE \
-					"<b>BMP, arquivos DDS, Dr. Halo, GIF, ICO, IFF, JBIG, JNG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, MNG, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM.<br></b>" POSTERAZORHELPENDLINE \
+					"<b>BMP, arquivos DDS, Dr. Halo, GIF, ICO, IFF, JBIG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM.<br></b>" POSTERAZORHELPENDLINE \
 					"PosteRazor distingue e maneja imagens monocrom&aacute;ticas, escala de cinza, paleta de 4-bits, paleta de 8-bits, RGB 24 bits, e CMYK (apenas de TIF). Imagens RGB com um canal alfa s&atilde;o compostas automaticamente sobre um fundo branco." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORWHYPDFOUTPUT, BRAZILIANPORTUGUESE_POSTERAZORHELPWHYPDFOUTPUT) \

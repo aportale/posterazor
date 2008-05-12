@@ -186,7 +186,7 @@ public:
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORINPUTFILEFORMATS, GERMAN_POSTERAZORHELPINPUTFILEFORMATS) \
 					POSTERAZORHELPINDENTATION "Die meisten der Raster-Bild-Formate, die von FreeImage unterst&uuml;tzt werden, k&ouml;nnen vom PosteRazor verarbeitet werden:<br>" POSTERAZORHELPENDLINE \
-					"<b>BMP, DDS files, Dr. Halo, GIF, ICO, IFF, JBIG, JNG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, MNG, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM.<br></b>" POSTERAZORHELPENDLINE \
+					"<b>BMP, DDS files, Dr. Halo, GIF, ICO, IFF, JBIG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM.<br></b>" POSTERAZORHELPENDLINE \
 					"PosteRazor unterscheidet und behandelt Monochrom-, Graustufen-, 4-bit Paletten-, 8-bit Paletten-, 24 bit RGB-, and CMYK-Bilder (CMYK nur im TIF-Format). RGB-Bilder mit einem Alphakanal/Transparenzen werden automatisch auf einen wei&szlig;en Hintergrund reduziert." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORWHYPDFOUTPUT, GERMAN_POSTERAZORHELPWHYPDFOUTPUT) \

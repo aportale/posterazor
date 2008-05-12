@@ -234,7 +234,7 @@ public:
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORINPUTFILEFORMATS, POLISH_POSTERAZORHELPINPUTFILEFORMATS) \
 					POSTERAZORHELPINDENTATION "Wi"CHAR_HTML_ecedilla"kszo"CHAR_HTML_sacute""CHAR_HTML_cacute" obraz"CHAR_HTML_oacute"w rastrowych wspieranych przez FreeImage jest tak"CHAR_HTML_zdot"e wspierana przez PosteRazor:<br>" POSTERAZORHELPENDLINE \
-					"<b>BMP, pliki DDS, Dr. Halo, GIF, ICO, IFF, JBIG, JNG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, MNG, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM.<br></b>" POSTERAZORHELPENDLINE \
+					"<b>BMP, pliki DDS, Dr. Halo, GIF, ICO, IFF, JBIG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM.<br></b>" POSTERAZORHELPENDLINE \
 					"PosteRazor odr"CHAR_HTML_oacute""CHAR_HTML_zdot"nia obrazu czarno-bia"CHAR_HTML_laccent"e, skal"CHAR_HTML_ecedilla" szaro"CHAR_HTML_sacute"ci, 4-bitow"CHAR_HTML_acedilla" palet"CHAR_HTML_ecedilla", 8-bitow"CHAR_HTML_acedilla" palet"CHAR_HTML_ecedilla", 24 bitowe RGB oraz CMYK (tylko z TIF). Obrazy RGB z kana"CHAR_HTML_laccent"em alfa s"CHAR_HTML_acedilla" automatycznie ustawiane na bia"CHAR_HTML_laccent"ym tle." POSTERAZORHELPENDLINE \
 
 					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORWHYPDFOUTPUT, POLISH_POSTERAZORHELPWHYPDFOUTPUT) \
