@@ -154,7 +154,7 @@
 				<ul>
 					<li>
 						<a href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.5-Win32-Installer.exe?download"><strong><?= text('Windows version (Installer)', 'Windows-version (Installationsprogramm)') ?></strong> (346 KB)</a><br />
-						<?= text('Download and execute the installer. An uninstaller is integrated.', 'Laden Sie das Installationsprogramm aus, und f;uuml;hren Si es aus. Ein Deinstallationsprogramm ist enthalten.') ?>
+						<?= text('Download and execute the installer. An uninstaller is integrated.', 'Laden Sie das Installationsprogramm aus, und f&uuml;hren Sie es aus. Ein Deinstallationsprogramm ist enthalten.') ?>
 					</li>
 					<li>
 						<a href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.5-Win32.zip?download"><strong><?= text('Windows version (zipped)', 'Windows-version (gezippt)') ?></strong> (346 KB)</a><br />
@@ -170,7 +170,7 @@
 					</li>
 					<li>
 						<a href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.5-Source.zip?download"><strong><?= text('Source', 'Quelltext') ?></strong> (226 KB)</a><br />
-						<?= text('The source archive includes project files for VS 2003 .Net, XCode 2.2 and CMake. Depends on the not included FLTK and FreeImage (and libXpm-dev on Linux). In order to compile without OpenGL, the preprocessor symbol <em>NO_OPENGL_PREVIEW</em> can be defined.', 'Das Quelltext-archiv enth&auml;lt Projekte f&uuml;r VS 2003 .Net, XCode 2.2 und CMake. Linkt gegen die nicht enthaltenen FLTK und FreeImage (und libXpm-dev unter Linux). Um ohne OpenGL zu kompilieren, kann das Pr&auml;prozessorsymbol <em>NO_OPENGL_PREVIEW</em> definiert werden.') ?><br />
+						<?= text('The source archive includes project files for <a href="http://www.cmake.org">CMake</a> and XCode 2.2. Depends on the not included FLTK and FreeImage (and libXpm-dev on Linux). In order to compile without OpenGL, the preprocessor symbol <em>NO_OPENGL_PREVIEW</em> can be defined.', 'Das Quelltext-archiv enth&auml;lt Projekte f&uuml;r <a href="http://www.cmake.org">CMake</a> und XCode 2.2. Linkt gegen die nicht enthaltenen FLTK und FreeImage (und libXpm-dev unter Linux). Um ohne OpenGL zu kompilieren, kann das Pr&auml;prozessorsymbol <em>NO_OPENGL_PREVIEW</em> definiert werden.') ?><br />
 					</li>
 				</ul>
 <?
