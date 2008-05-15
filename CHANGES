@@ -6,8 +6,9 @@ PosteRazor 1.5
 -   Fixed: The image file open dialog does now show
            image files on Windows Vista.
 -   Fixed: Startup problem on some Windows systems seems to be gone
+-   Fixed: A crash on some Leopard systems after image loading is gone
 - Changed: PosteRazors binary OSX package is now a universal binary
-- Changed: Upgraded Fltk to version 1.1.9
+- Changed: Upgraded Fltk used for OSX package to version 1.1.9
 - Changed: Upgraded FreeImage to version 3.10
 - Changed: Switched license from GPL v2 to GPL v3
 - Changed: Simplified source structure
