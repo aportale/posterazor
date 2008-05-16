@@ -154,23 +154,23 @@
 				<p><?= text('For <strong>direct linking to the downloads</strong> from another site, please use exactly the following links, only these are guaranteed to be valid in the future.', '<strong>Direktes Verlinken auf die Downloads</strong> von anderen Seiten aus bitte mit den unten aufgef&uuml;hrten Links. Nur diese werden mit gro&szlig;er Sicherheit auch in Zukunft g&uuml;ltig sein.') ?></p>
 				<ul>
 					<li>
-						<a href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.5-Win32-Installer.exe?download"><strong><?= text('Windows version (Installer)', 'Windows-version (Installationsprogramm)') ?></strong> (346 KB)</a><br />
+						<a href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.5-Win32-Installer.exe?download"><strong><?= text('Windows version (Installer)', 'Windows-version (Installationsprogramm)') ?></strong> (814 KB)</a><br />
 						<?= text('Download and execute the installer. An uninstaller is integrated.', 'Laden Sie das Installationsprogramm aus, und f&uuml;hren Sie es aus. Ein Deinstallationsprogramm ist enthalten.') ?>
 					</li>
 					<li>
-						<a href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.5-Win32.zip?download"><strong><?= text('Windows version (zipped)', 'Windows-version (gezippt)') ?></strong> (346 KB)</a><br />
+						<a href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.5-Win32.zip?download"><strong><?= text('Windows version (zipped)', 'Windows-version (gezippt)') ?></strong> (483 KB)</a><br />
 						<?= text('After downloading the ZIP archive, extract the contained PosteRazor.exe to a place of Your choice and start it. If You use a Windows version below XP, You probably need an installed <a href="http://www.7-zip.org/">Unzip tool</a>.', 'Nach dem Herunterladen des ZIP-Archivs, k&ouml;nnen Sie das enthaltene PosteRazor.exe in ein Verzeichnis Ihrer Wahl entpacken und starten. Falls sie eine Windows-version unterhalb von XP nutzen, ben&ouml;tigen Sie evenuell ein installiertes <a href="http://www.7-zip.org/">Unzip-Programm</a>.') ?>
 					</li>
 					<li>
-						<a href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.5-OSX.dmg?download"><strong><?= text('OSX version', 'OSX-version') ?> (Universal Binary)</strong> (610 KB)</a><br />
+						<a href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.5-OSX.dmg?download"><strong><?= text('OSX version', 'OSX-version') ?> (Universal Binary)</strong> (1240 KB)</a><br />
 						<?= text('After downloading the OSX disk image, double click to mount it if it doesn\'t mount automatically. You can start the contained PosteRazor application directly by double clicking it or drag it into a location of Your choice.', 'Nach dem Herunterladen des OSX-Diskimages k&ouml;nnen Sie es, falls dies nicht automatisch geschieht, per Doppelclick mounten. Danach kann die enthaltene PosteRazor-Applikation entweder direkt gestartet werden oder in einen Ordner Ihrer Wahl kopiert werden.') ?><br />
 					</li>
 					<li>
-						<a href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.5-Linux-x86.tgz?download"><strong><?= text('Linux version', 'Linux-version') ?></strong> (768 KB)</a><br />
+						<a href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.5-Linux-x86.tgz?download"><strong><?= text('Linux version', 'Linux-version') ?></strong> (641 KB)</a><br />
 						<?= text('After downloading, untar it. This binary was statically linked against Fltk and FreeImage. It runs on (K)Ubuntu 6.06, 7.04, 7.10 and 8.04 from boot CD. Howerver, it will probably not run on a non-(K)Ubuntu system.', 'Nach dem Herunterladen ent-TAR-en. Dieses Binärpaket wurde statisch gegen Fltk und FreeImage gelinkt. Es l&auml;uft auf (K)Ubuntu 6.06, 7.04, 7.10 und 8.04 von Boot-CD. Aber es wird eventuell nicht auf einem nicht-(K)Ubuntu-System laufen.') ?><br />
 					</li>
 					<li>
-						<a href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.5-Source.zip?download"><strong><?= text('Source', 'Quelltext') ?></strong> (226 KB)</a><br />
+						<a href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.5-Source.zip?download"><strong><?= text('Source', 'Quelltext') ?></strong> (262 KB)</a><br />
 						<?= text('The source archive includes project files for <a href="http://www.cmake.org">CMake</a> and XCode 2.2. Depends on the not included FLTK and FreeImage (and libXpm-dev on Linux). In order to compile without OpenGL, the preprocessor symbol <em>NO_OPENGL_PREVIEW</em> can be defined.', 'Das Quelltext-archiv enth&auml;lt Projekte f&uuml;r <a href="http://www.cmake.org">CMake</a> und XCode 2.2. Linkt gegen die nicht enthaltenen FLTK und FreeImage (und libXpm-dev unter Linux). Um ohne OpenGL zu kompilieren, kann das Pr&auml;prozessorsymbol <em>NO_OPENGL_PREVIEW</em> definiert werden.') ?><br />
 					</li>
 				</ul>
