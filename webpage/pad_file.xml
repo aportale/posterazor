@@ -7,11 +7,11 @@
 	</MASTER_PAD_VERSION_INFO>
 	<Company_Info>
 		<Company_Name>Alessandro Portale</Company_Name>
-		<Address_1>Anton-Wattendorff-Str.1</Address_1>
+		<Address_1>Finowstr.1</Address_1>
 		<Address_2 />
-		<City_Town>Steinfurt</City_Town>
+		<City_Town>Berlin</City_Town>
 		<State_Province />
-		<Zip_Postal_Code>48565</Zip_Postal_Code>
+		<Zip_Postal_Code>12045</Zip_Postal_Code>
 		<Country>Deutschland</Country>
 		<Company_WebSite_URL>http://www.casaportale.de/</Company_WebSite_URL>
 		<Contact_Info>
@@ -34,10 +34,10 @@
 	</Company_Info>
 	<Program_Info>
 		<Program_Name>PosteRazor</Program_Name>
-		<Program_Version>1.4</Program_Version>
-		<Program_Release_Month>07</Program_Release_Month>
-		<Program_Release_Day>12</Program_Release_Day>
-		<Program_Release_Year>2007</Program_Release_Year>
+		<Program_Version>1.5</Program_Version>
+		<Program_Release_Month>05</Program_Release_Month>
+		<Program_Release_Day>17</Program_Release_Day>
+		<Program_Release_Year>2008</Program_Release_Year>
 		<Program_Cost_Dollars>0.00</Program_Cost_Dollars>
 		<Program_Cost_Other_Code />
 		<Program_Cost_Other>0.00</Program_Cost_Other>
@@ -45,8 +45,8 @@
 		<Program_Release_Status>Minor Update</Program_Release_Status>
 		<Program_Install_Support>No Install Support</Program_Install_Support>
 		<Program_OS_Support>Win98,WinME,Windows2000,WinXP,Windows2003,Mac OS X,Linux</Program_OS_Support>
-		<Program_Language>English,German,French,Polish,Italian,Dutch,Spanish</Program_Language>
-		<Program_Change_Info>Morelanguages, Linux port</Program_Change_Info>
+		<Program_Language>English,German,French,Polish,Italian,Dutch,Spanish,BrasilianPortuguese</Program_Language>
+		<Program_Change_Info>One More language, better packages.</Program_Change_Info>
 		<Program_Specific_Category />
 		<Program_Category_Class>Graphic Apps::Other</Program_Category_Class>
 		<Program_Categories />
@@ -59,9 +59,9 @@
 			<Filename_Previous />
 			<Filename_Generic />
 			<Filename_Long />
-			<File_Size_Bytes>354656</File_Size_Bytes>
-			<File_Size_K>348</File_Size_K>
-			<File_Size_MB>0.35</File_Size_MB>
+			<File_Size_Bytes>833776</File_Size_Bytes>
+			<File_Size_K>814</File_Size_K>
+			<File_Size_MB>0.81</File_Size_MB>
 		</File_Info>
 		<Expire_Info>
 			<Has_Expire_Info>N</Has_Expire_Info>
@@ -102,25 +102,25 @@ Als Ausgangsmaterial nimmt der PosteRazor eine Rasterbild-datei. Das Endprodukt 
 			<Application_XML_File_URL>http://posterazor.sourceforge.net/pad_file.xml</Application_XML_File_URL>
 		</Application_URLs>
 		<Download_URLs>
-			<Primary_Download_URL>http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.4-Win32.zip?download.zip</Primary_Download_URL>
-			<Secondary_Download_URL>http://www.casaportale.de/lagerraum/PosteRazor-1.4-Win32.zip</Secondary_Download_URL>
+			<Primary_Download_URL>http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.5-Win32-Installer.exe?download.exe</Primary_Download_URL>
+			<Secondary_Download_URL>http://www.casaportale.de/lagerraum/PosteRazor-1.5-Win32-Installer.exe</Secondary_Download_URL>
 			<Additional_Download_URL_1 />
 			<Additional_Download_URL_2 />
 		</Download_URLs>
 	</Web_Info>
 	<Permissions>
 		<Distribution_Permissions>PosteRazor - Make your own poster!
-Copyright (C) 2005-2006 by Alessandro Portale
+Copyright (C) 2005-2007 by Alessandro Portale
 http://posterazor.sourceforge.net/
 
-PosteRazor is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+PosteRazor is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
 PosteRazor is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</Distribution_Permissions>
 		<EULA>PosteRazor - Make your own poster!
-Copyright (C) 2005-2006 by Alessandro Portale
+Copyright (C) 2005-2008 by Alessandro Portale
 http://posterazor.sourceforge.net/
 
-PosteRazor is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+PosteRazor is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
 PosteRazor is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</EULA>
 	</Permissions>

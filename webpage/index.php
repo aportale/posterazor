@@ -44,13 +44,14 @@
 				<h2><?= text('News', 'Neuigkeiten') ?></h2>
 				<ul>
 					<li>
-						<h3><?= text('May 15th 2008', '15. Mai 2007') ?>: Version 1.5</h3>
+						<h3><?= text('May 17th 2008', '17. Mai 2008') ?>: Version 1.5</h3>
 						<p><?= text('A new language, better packages.', 'Eine weitere Sprache, bessere Pakete.') ?></p>
 						<ul>
 							<li><?= text('Brazilian Portuguese translation by', 'Brasilianisch-portugisische &Uuml;bersetzung von') ?> &Eacute;derson Gomes dos Santos</li>
 							<li><?= text('An installer for Windows', 'Ein Installationsprogramm f&uuml;r Windows') ?></li>
 							<li><?= text('Universal Binary for OSX', 'Universal Binary f&uuml;r OSX') ?></li>
 							<li><?= text('A program startup crash on Windows was fixed', 'Ein Absturz beim Programmstart unter Windows wurde behoben') ?></li>
+							<li><?= text('A crash on OSX Leopard was fixed', 'Ein Absturz unter OSX Leopard wurde behoben') ?></li>
 						</ul>
 						<p><a href="http://posterazor.svn.sourceforge.net/viewvc/*checkout*/posterazor/tags/PosteRazor_1_5_0/CHANGES"><?= text('Full list of changements', 'Vollst&auml;ndige Liste der &Auml;nderungen (auf englisch)') ?></a></p>
 					</li>
