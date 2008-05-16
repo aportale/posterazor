@@ -332,18 +332,18 @@
 		<style type="text/css" media="all">
 			@import "style.css";
 		</style>
-<?	if ($page == "screenshots"){
-		// MooTools/Slimbox, somehow make IE 6 not display anything
-		require_once ('phpSniff.class.php');
-		$phpSniff=new phpSniff();
-		if ($phpSniff->property('browser') != "ie" || $phpSniff->property('maj_ver') > 6){ ?>
+<?	if ($page == "screenshots"){ ?>
 		<style type="text/css" media="screen">
-			@import "slimbox.css";
+			@import "jquery.lightbox-0.5.css";
 		</style>
-		<script src="mootools-release-1.11.js" type="text/javascript" />
-		<script src="slimbox.js" type="text/javascript" />
-<? 		}
-	}?>
+		<script type="text/javascript" src="jquery-1.2.3.min.js"></script>
+		<script type="text/javascript" src="jquery.lightbox-0.5.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('#screenshotthumbs a').lightBox();
+			});
+		</script>
+<?	}?>
 	</head>
 	<body>
 		<div id="page">
