@@ -340,7 +340,7 @@
 		<style type="text/css" media="screen">
 			@import "jquery.lightbox-0.5.css";
 		</style>
-		<script type="text/javascript" src="jquery-1.2.3.min.js"></script>
+		<script type="text/javascript" src="jquery-1.2.6.min.js"></script>
 		<script type="text/javascript" src="jquery.lightbox-0.5.min.js"></script>
 		<script type="text/javascript">
 			$(function() {
