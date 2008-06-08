@@ -156,3 +156,10 @@ body
 	border-width: 1px;
 	text-decoration: none;
 }
+
+.centeredimage
+{
+	text-align: center;
+	margin: 10px;
+	display: block;
+}

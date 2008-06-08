@@ -300,11 +300,16 @@
 			default:
 ?>
 				<h2><?= text('About', '&Uuml;ber') ?></h2>
-				<?= text('The PosteRazor cuts a raster image into pieces which can afterwards be printed out and assembled to a poster.', 'Der PosteRazor schneidet eine Rasterbild-datei in St&uuml;cke, die anschlie&szlig;end ausgedruckt und zu einem Poster zusammengef&uuml;gt werden k&ouml;nnen.') ?>
-				<br /><div style="text-align: center; margin: 10px;"><img src="workflow.png" width="376" height="107" alt="PosteRazor workflow"/></div>
-				<?= text('As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps. PosteRazor is available as a Windows, an OSX and a Linux version.', 'Als Ausgangsmaterial nimmt der PosteRazor eine Rasterbild-datei. Das Endprodukt ist ein Poster in Form eines mehrseitigen PDF-Dokuments. Eine einfach zu bedienende Benutzerschnittstelle im Assistenten-Stil begleitet durch f&uuml;nf Schritte. Der PosteRazor ist als Windows-, als OSX- und als Linux-Version erh&auml;ltlich.') ?>
-				<?= text('It is an open source, ', 'Er ist ein quelloffenes, ') ?><a href="<?=linkParameters("license","")?>"><?= text('GNU licensed', 'GNU-lizensiertes') ?></a> <?= text('project which is hosted on SourceForge.net.', 'Projekt, das auf SourceForge hinterlegt ist.') ?>
-				<?= text('For feedback, bug reports or feature requests, please use the', 'F&uuml;r Feedback, Fehlerberichte oder Erweiterungsw&uuml;nsche nutzen Sie bitte die ') ?> <a href="http://sourceforge.net/projects/posterazor/"><?= text('PosteRazor project page', 'PosteRazor-Projektseite') ?></a>, <?= text('write a mail to', 'schreiben Sie eine Mail an') ?> <strong>Alessandro&nbsp;&auml;t&nbsp;casaportale&nbsp;d&ocirc;t de</strong> <?= text('or contact the author via', 'oder kontaktieren Sie den Autor via') ?> <a href="http://www.casaportale.de/html/index.php?page=contact&amp;lang=<?= text('english', 'german') ?>&amp;menu=on"><?= text('mail form', 'Mail-Formular') ?></a>.
+				<p>
+					<?= text('The PosteRazor cuts a raster image into pieces which can afterwards be printed out and assembled to a poster.', 'Der PosteRazor schneidet eine Rasterbild-datei in St&uuml;cke, die anschlie&szlig;end ausgedruckt und zu einem Poster zusammengef&uuml;gt werden k&ouml;nnen.') ?>
+					<span class="centeredimage"><img src="workflow.png" width="376" height="107" alt="PosteRazor workflow"/></span>
+					<?= text('As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps. PosteRazor is available as a Windows, an OSX and a Linux version.', 'Als Ausgangsmaterial nimmt der PosteRazor eine Rasterbild-datei. Das Endprodukt ist ein Poster in Form eines mehrseitigen PDF-Dokuments. Eine einfach zu bedienende Benutzerschnittstelle im Assistenten-Stil begleitet durch f&uuml;nf Schritte. Der PosteRazor ist als Windows-, als OSX- und als Linux-Version erh&auml;ltlich.') ?>
+					<?= text('It is an open source, ', 'Er ist ein quelloffenes, ') ?><a href="<?=linkParameters("license","")?>"><?= text('GNU licensed', 'GNU-lizensiertes') ?></a> <?= text('project which is hosted on SourceForge.net.', 'Projekt, das auf SourceForge hinterlegt ist.') ?>
+				</p>
+				<p>
+					<?= text('For bug reports and feature requests please use the', 'F&uuml;r Fehlerberichte und Erweiterungsw&uuml;nsche nutzen Sie bitte den ') ?> <a href="http://sourceforge.net/tracker/?group_id=141842"><?= text('PosteRazor tracker', 'PosteRazor-Tracker') ?></a>.
+					<?= text('For questions and feedback, please use the', 'F&uuml;r Fragen und Feedback nutzen Sie bitte das ') ?> <a href="http://sourceforge.net/forum/?group_id=141842"><?= text('PosteRazor forum', 'PosteRazor-Forum') ?></a>.
+				</p>
 				<h3><?= text('Contributors', 'Mitwirkende') ?>:</h3>
 				<ul>
 					<li><?= text('Polish translation:', 'Polnische &Uuml;bersetzung:') ?> Grzegorz Wacikowski</li>
@@ -313,6 +318,7 @@
 					<li><?= text('Dutch/Belgian translation:', 'Holl&auml;ndische/Belgische &Uuml;bersetzung:') ?> Erik Wijkamp</li>
 					<li><?= text('Spanish translation:', 'Spanische &Uuml;bersetzung:') ?> <a href="http://hispanicoweb.net/">Hisp&aacute;nico Web</a></li>
 					<li><?= text('Brazilian Portuguese translation:', 'Brasilianisch-portugisische &Uuml;bersetzung:') ?> &Eacute;derson Gomes dos Santos</li>
+					<li><?= text('Simplified Chinese translation:', 'Vereinfacht-Chinesische &Uuml;bersetzung:') ?> Sun Li (Next PosteRazor version)</li>
 				</ul>
 <?
 		};
@@ -320,10 +326,7 @@
 	
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<?
-	$textColor = "#330000";
-	$contentBackgroundColor = "#ffffee";
-?><html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<meta name="author" content="Alessandro Portale" />
