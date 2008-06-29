@@ -28,7 +28,7 @@
   #define CASESENSITIVESTRCMP stricmp
   #define CASESENSITIVESTRNCMP strnicmp
 #else
-  #include <iostream>
+  #include <cstring>
   #define CASESENSITIVESTRCMP strcasecmp
   #define CASESENSITIVESTRNCMP strncasecmp
 #endif

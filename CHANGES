@@ -1,3 +1,7 @@
+PosteRazor 1.5.1
+================
+-   Fixed: Compile errors with GCC 4.3. On Ubuntu 8.10
+
 PosteRazor 1.5
 ==============
 -   Added: Brazilian Portuguese translation by
