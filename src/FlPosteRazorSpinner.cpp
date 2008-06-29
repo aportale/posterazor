@@ -25,6 +25,7 @@
 #include <FL/Fl_Repeat_Button.H>
 #include <stdio.h>
 #include <math.h>
+#include <cstdlib>
 #ifndef WIN32
 #include <iostream>
 #endif
