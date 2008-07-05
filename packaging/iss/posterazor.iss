@@ -1,5 +1,5 @@
 #define APPLICATIONTITLE "PosteRazor"
-#define VERSION "1.5"
+#define VERSION "1.5.1"
 #define COPYRIGHT "2005-2008 Alessandro Portale"
 #define PREFERENCESDIR "{userappdata}\CasaPortale.de"
 #define PREFERENCESFILE PREFERENCESDIR + "\PosteRazor.prefs"
