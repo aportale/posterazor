@@ -32,6 +32,9 @@
   #define CASESENSITIVESTRCMP strcasecmp
   #define CASESENSITIVESTRNCMP strncasecmp
 #endif
+#if defined (__APPLE__)
+  #include <stdlib.h>
+#endif
 
 FlPosteRazorHelpDialog::FlPosteRazorHelpDialog()
 	:PosteRazorHelpDialogUI(500, 400, "PosteRazor Help")
