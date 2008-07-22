@@ -318,7 +318,8 @@
 					<li><?= text('Dutch/Belgian translation:', 'Holl&auml;ndische/Belgische &Uuml;bersetzung:') ?> Erik Wijkamp</li>
 					<li><?= text('Spanish translation:', 'Spanische &Uuml;bersetzung:') ?> <a href="http://hispanicoweb.net/">Hisp&aacute;nico Web</a></li>
 					<li><?= text('Brazilian Portuguese translation:', 'Brasilianisch-portugisische &Uuml;bersetzung:') ?> &Eacute;derson Gomes dos Santos</li>
-					<li><?= text('Simplified Chinese translation:', 'Vereinfacht-Chinesische &Uuml;bersetzung:') ?> Sun Li (Next PosteRazor version)</li>
+					<li><?= text('Simplified Chinese translation (Next PosteRazor version):', 'Vereinfacht-Chinesische &Uuml;bersetzung (N&auml;chste PosteRazor-version):') ?> Sun Li</li>
+					<li><?= text('Finnish translation (Next PosteRazor version):', 'Finnische &Uuml;bersetzung (N&auml;chste PosteRazor-version):') ?> Olli</li>
 				</ul>
 <?
 		};
@@ -367,5 +368,14 @@
 			<div id="footer">
 			</div>
 		</div>
+		<script type="text/javascript">
+			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+			var pageTracker = _gat._getTracker("UA-5062374-1");
+			pageTracker._initData();
+			pageTracker._trackPageview();
+		</script>
 	</body>
 </html>
