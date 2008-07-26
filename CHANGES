@@ -1,3 +1,8 @@
+PosteRazor 1.5.2
+================
+-   Fixed: Crash on Windows when loading a GIF file.
+           Used FreeImage 3.10 with PluginGIF.cpp, CVS rev. 1.19.
+
 PosteRazor 1.5.1
 ================
 -   Fixed: Compile errors with GCC 4.3. On Ubuntu 8.10
