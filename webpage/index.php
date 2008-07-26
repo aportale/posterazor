@@ -44,6 +44,14 @@
 				<h2><?= text('News', 'Neuigkeiten') ?></h2>
 				<ul>
 					<li>
+						<h3><?= text('July 26th 2008', '26. Juli 2008') ?>: Version 1.5.2 (Windows only)</h3>
+						<p><?= text('Fix of a crashbug on Windows.', 'Behebung eines Abstrurzes unter Windows.') ?></p>
+						<ul>
+							<li><?= text('PosteRazor does not crash anymore when loading a GIF file', 'PosteRazor st&uuml;rzt beim Laden eines GIF-Bildes nicht mehr ab.') ?></li>
+						</ul>
+						<p><a href="http://posterazor.svn.sourceforge.net/viewvc/*checkout*/posterazor/tags/PosteRazor_1_5_2/CHANGES"><?= text('Full list of changements', 'Vollst&auml;ndige Liste der &Auml;nderungen (auf englisch)') ?></a></p>
+					</li>
+					<li>
 						<h3><?= text('May 17th 2008', '17. Mai 2008') ?>: Version 1.5</h3>
 						<p><?= text('A new language, better packages.', 'Eine weitere Sprache, bessere Pakete.') ?></p>
 						<ul>
@@ -53,7 +61,6 @@
 							<li><?= text('A program startup crash on Windows was fixed', 'Ein Absturz beim Programmstart unter Windows wurde behoben') ?></li>
 							<li><?= text('A crash on OSX Leopard was fixed', 'Ein Absturz unter OSX Leopard wurde behoben') ?></li>
 						</ul>
-						<p><a href="http://posterazor.svn.sourceforge.net/viewvc/*checkout*/posterazor/tags/PosteRazor_1_5_0/CHANGES"><?= text('Full list of changements', 'Vollst&auml;ndige Liste der &Auml;nderungen (auf englisch)') ?></a></p>
 					</li>
 					<li>
 						<h3><?= text('July 12th 2007', '12. Juli 2007') ?>: Version 1.4</h3>
@@ -154,11 +161,11 @@
 				<p><?= text('For <strong>direct linking to the downloads</strong> from another site, please use exactly the following links, only these are guaranteed to be valid in the future.', '<strong>Direktes Verlinken auf die Downloads</strong> von anderen Seiten aus bitte mit den unten aufgef&uuml;hrten Links. Nur diese werden mit gro&szlig;er Sicherheit auch in Zukunft g&uuml;ltig sein.') ?></p>
 				<ul>
 					<li>
-						<a href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.5-Win32-Installer.exe?download"><strong><?= text('Windows version (Installer)', 'Windows-version (Installationsprogramm)') ?></strong> (814 KB)</a><br />
+						<a href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.5.2-Win32-Installer.exe?download"><strong><?= text('Windows version (Installer)', 'Windows-version (Installationsprogramm)') ?></strong> (814 KB)</a><br />
 						<?= text('Download and execute the installer. An uninstaller is integrated.', 'Laden Sie das Installationsprogramm aus, und f&uuml;hren Sie es aus. Ein Deinstallationsprogramm ist enthalten.') ?>
 					</li>
 					<li>
-						<a href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.5-Win32.zip?download"><strong><?= text('Windows version (zipped)', 'Windows-version (gezippt)') ?></strong> (483 KB)</a><br />
+						<a href="http://prdownloads.sourceforge.net/posterazor/PosteRazor-1.5.2-Win32.zip?download"><strong><?= text('Windows version (zipped)', 'Windows-version (gezippt)') ?></strong> (483 KB)</a><br />
 						<?= text('After downloading the ZIP archive, extract the contained PosteRazor.exe to a place of Your choice and start it. If You use a Windows version below XP, You probably need an installed <a href="http://www.7-zip.org/">Unzip tool</a>.', 'Nach dem Herunterladen des ZIP-Archivs, k&ouml;nnen Sie das enthaltene PosteRazor.exe in ein Verzeichnis Ihrer Wahl entpacken und starten. Falls sie eine Windows-version unterhalb von XP nutzen, ben&ouml;tigen Sie evenuell ein installiertes <a href="http://www.7-zip.org/">Unzip-Programm</a>.') ?>
 					</li>
 					<li>
