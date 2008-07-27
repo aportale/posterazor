@@ -28,7 +28,7 @@
 #include <QMessageBox>
 
 QtPosteRazorDialog::QtPosteRazorDialog(QWidget *parent, Qt::WFlags flags)
-:	QDialog(parent, flags)
+	: QDialog(parent, flags)
 {
 	setAttribute(Qt::WA_DeleteOnClose);
 	setupUi(this);
@@ -191,8 +191,7 @@ void QtPosteRazorDialog::updateImageInfoFields(int imageWidthInPixels, int image
 	m_imageInformationSizeInPixelsLabel->setText(QString::number(imageWidthInPixels) + " x " + QString::number(imageHeightInPixels));
 	m_imageInformationSizeLabel->setText(QString::number(imageWidth, 'f', 2) + " x " + QString::number(imageHeight, 'f', 2));
 	m_imageInformationResolutionLabel->setText(QString::number(verticalDpi, 'f', 1) + " dpi");
-	QString colorTypeString
-	(
+	QString colorTypeString	(
 		colorType==ColorTypes::eColorTypeMonochrome?tr("Monochrome"):
 		colorType==ColorTypes::eColorTypeGreyscale?tr("Gray scale"):
 		colorType==ColorTypes::eColorTypePalette?tr("Palette"):
@@ -216,8 +215,7 @@ void QtPosteRazorDialog::setNextButtonEnabled(bool enabled)
 
 void QtPosteRazorDialog::setWizardStep(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step)
 {
-	m_wizard->setCurrentWidget
-	(
+	m_wizard->setCurrentWidget (
 		step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepInputImage?m_loadInputImageStep
 		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPaperSize?m_paperSizeStep
 		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepOverlapping?m_overlappingStep
@@ -251,13 +249,11 @@ void QtPosteRazorDialog::handleImageLoadButtonClicked(void)
 	QStringList filters;
 	QStringList allExtensions;
 
-	for (int formatIndex = 0; formatIndex < ImageIOTypes::getInputImageFormatsCount(); formatIndex++)
-	{
+	for (int formatIndex = 0; formatIndex < ImageIOTypes::getInputImageFormatsCount(); formatIndex++) {
 		int extensionsCount = ImageIOTypes::getFileExtensionsCount(formatIndex);
 
 		QStringList filterExtensions;
-		for (int extensionIndex = 0; extensionIndex < extensionsCount; extensionIndex++)
-		{
+		for (int extensionIndex = 0; extensionIndex < extensionsCount; extensionIndex++) {
 			filterExtensions << "*." + QString(ImageIOTypes::getFileExtensionForFormat(extensionIndex, formatIndex));
 		}
 		allExtensions << filterExtensions;
@@ -269,16 +265,14 @@ void QtPosteRazorDialog::handleImageLoadButtonClicked(void)
 	static const QString loadPathSettingsKey("loadPath");
 	QSettings loadPathSettings;
 
-	QString loadFileName = QFileDialog::getOpenFileName
-	(
+	QString loadFileName = QFileDialog::getOpenFileName (
 		this,
 		tr("Load an input image"),
 		loadPathSettings.value(loadPathSettingsKey, ".").toString(),
 		filters.join(";;")
 	);
 
-	if (loadFileName != "")
-	{
+	if (loadFileName != "") {
 		bool successful = loadInputImage(loadFileName);
 		if (successful)
 			loadPathSettings.setValue(loadPathSettingsKey, QFileInfo(loadFileName).absolutePath());
@@ -423,10 +417,8 @@ void QtPosteRazorDialog::handleSavePosterButtonClicked(void)
 	QString saveFileName = savePathSettings.value(savePathSettingsKey, ".").toString();
 	bool fileExistsAskUserForOverwrite = false;
 
-	do
-	{
-		saveFileName = QFileDialog::getSaveFileName
-		(
+	do {
+		saveFileName = QFileDialog::getSaveFileName (
 			this,
 			tr("Choose a filename to save under"),
 			saveFileName,
@@ -444,8 +436,7 @@ void QtPosteRazorDialog::handleSavePosterButtonClicked(void)
 
 			if (!fileExistsAskUserForOverwrite
 				|| QMessageBox::Yes == (QMessageBox::question(this, "", tr("The file '%1' already exists.\nDo you want to overwrite it?").arg(saveFileName), QMessageBox::Yes, QMessageBox::No))
-				)
-			{
+				) {
 				int result = m_posteRazorController->savePoster(saveFileName.toAscii());
 				if (result != 0)
 					QMessageBox::critical(this, "", tr("The File \"%1\" could not be saved.").arg(saveFileName), QMessageBox::Ok, QMessageBox::NoButton);
@@ -521,8 +512,7 @@ void QtPosteRazorDialog::createPosteRazorDialogController(void)
 
 void QtPosteRazorDialog::populateUI(void)
 {
-	for (int i = 0; i < PaperFormats::getPaperFormatsCount(); i++)
-	{
+	for (int i = 0; i < PaperFormats::getPaperFormatsCount(); i++) {
 		PaperFormats::ePaperFormats format = PaperFormats::getPaperFormatForIndex(i);
 		QString formatName(PaperFormats::getPaperFormatName(format));
 		m_paperFormatComboBox->addItem(formatName, QVariant(format));
@@ -557,12 +547,9 @@ bool QtPosteRazorDialog::loadInputImage(const QString &fileName)
 {
 	char errorMessage[1024];
 	bool successful = m_posteRazorController->loadInputImage(fileName.toAscii(), errorMessage, sizeof(errorMessage));
-	if (!successful)
-	{
-
-	}
-	else
-	{
+	if (!successful) {
+		QMessageBox::critical(this, tr("Loading Error"), tr("The Image '%1' could not be loaded.").arg(fileName));
+	} else {
 		m_paintCanvas->requestImage();
 	}
 
@@ -572,12 +559,15 @@ bool QtPosteRazorDialog::loadInputImage(const QString &fileName)
 int main (int argc, char **argv)
 {
 	QApplication a(argc, argv);
-	QCoreApplication::setApplicationName("PosteRazor 1.5");
+
+	QCoreApplication::setApplicationName("PosteRazor");
 	QCoreApplication::setOrganizationName("CasaPortale");
 	QCoreApplication::setOrganizationDomain("de.casaportale");
 
 	QtPosteRazorDialog *dialog = new QtPosteRazorDialog(NULL, Qt::Window);
 	dialog->show();
+	if (argc == 2)
+		dialog->loadInputImage(argv[1]);
 
 	return a.exec();
 }

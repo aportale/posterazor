@@ -71,6 +71,9 @@ public:
 	void setWizardStep(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step);
 	void setPreviewState(const char *state);
 
+public slots:
+	bool loadInputImage(const QString &fileName);
+
 private:
 	PosteRazor *m_posteRazor;
 	PosteRazorWizardDialogController *m_posteRazorController;
@@ -119,7 +122,6 @@ private slots:
 	void handleLaunchPDFApplicationChanged(int state);
 
 	void updatePosterSizeGroupsState(void);
-	bool loadInputImage(const QString &fileName);
 };
 
 #endif // QTPOSTERAZORDIALOG_H
