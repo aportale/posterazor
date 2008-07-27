@@ -25,11 +25,11 @@
 #include <QPainter>
 
 QtPaintCanvas::QtPaintCanvas(QWidget *parent)
-:	QWidget(parent)
-,	PaintCanvasBase()
-,	m_image(NULL)
-,	m_imageRGBData(NULL)
-,	m_qPainter(NULL)
+	: QWidget(parent)
+	, PaintCanvasBase()
+	, m_image(NULL)
+	, m_imageRGBData(NULL)
+	, m_qPainter(NULL)
 {
 }
 
@@ -38,51 +38,31 @@ QtPaintCanvas::~QtPaintCanvas()
 	disposeImage();
 }
 
-void QtPaintCanvas::paintEvent(QPaintEvent * /*event*/)
+void QtPaintCanvas::paintEvent(QPaintEvent *event)
 {
+	Q_UNUSED(event)
 	QPainter painter(this);
 	m_qPainter = &painter;
+	m_qPainter->setRenderHint(QPainter::Antialiasing);
 	m_painter->paintOnCanvas(this, m_stateString);
 	m_qPainter = NULL;
 }
 
 void QtPaintCanvas::drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
-	if (height <= 1.0)
-	{
-		drawLine(x, y, x+width, y, red, green, blue, alpha);
-	}
-	else if (width <= 1.0)
-	{
-		drawLine(x, y, x, y+height, red, green, blue, alpha);
-	}
-	else
-	{
-		m_qPainter->fillRect((int)x, (int)y, (int)width, (int)height, QColor(red, green, blue, alpha));
-	}
+	m_qPainter->fillRect(QRectF(x, y, qMax(width, 1.), qMax(height, 1.)), QColor(red, green, blue, alpha));
 }
 
 void QtPaintCanvas::drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
-	if (height <= 1.0)
-	{
-		drawLine(x, y, x+width, y, red, green, blue, alpha);
-	}
-	else if (width <= 1.0)
-	{
-		drawLine(x, y, x, y+height, red, green, blue, alpha);
-	}
-	else
-	{
-		m_qPainter->setPen(QColor(red, green, blue, alpha));
-		m_qPainter->drawRect((int)x, (int)y, (int)width, (int)height);
-	}
+	m_qPainter->setPen(qRgba(red, green, blue, alpha));
+	m_qPainter->drawRect(QRectF(x, y, width, height));
 }
 
 void QtPaintCanvas::drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
 {
-	m_qPainter->setPen(QColor(red, green, blue, alpha));
-	m_qPainter->drawLine((int)x1, (int)y1, (int)x2, (int)y2);
+	m_qPainter->setPen(qRgba(red, green, blue, alpha));
+	m_qPainter->drawLine(QLineF(x1, y1, x2, y2));
 }
 
 void QtPaintCanvas::getSize(double &width, double &height) const
@@ -101,8 +81,7 @@ void QtPaintCanvas::setImage(const unsigned char* rgbData, double width, double 
 	memset(m_imageRGBData, 255, bytesCount); // Making sure, that all alpha bytes are opaque
 	const unsigned char* sourcePixel = rgbData;
 	unsigned char* destinationPixel = m_imageRGBData;
-	for (int pixel = 0; pixel < pixelsCount; pixel++)
-	{
+	for (int pixel = 0; pixel < pixelsCount; pixel++) {
 		destinationPixel[0] = sourcePixel[2];
 		destinationPixel[1] = sourcePixel[1];
 		destinationPixel[2] = sourcePixel[0];
@@ -115,13 +94,11 @@ void QtPaintCanvas::setImage(const unsigned char* rgbData, double width, double 
 
 void QtPaintCanvas::disposeImage(void)
 {
-	if (m_image)
-	{
+	if (m_image) {
 		delete(m_image);
 		m_image = NULL;
 	}
-	if (m_imageRGBData)
-	{
+	if (m_imageRGBData) {
 		delete[] m_imageRGBData;
 		m_imageRGBData = NULL;
 	}
@@ -129,13 +106,10 @@ void QtPaintCanvas::disposeImage(void)
 
 void QtPaintCanvas::drawImage(double x, double y, double width, double height)
 {
-	if (m_image && width >= 1.0 && height >= 1.0) // >= 1.0 because otherwise an assertion would fail deep in Qt
-	{	
+	if (m_image) {	
 		double widthResizeFactor = width/(double)m_image->width();
-
 		m_qPainter->setRenderHint(QPainter::SmoothPixmapTransform, widthResizeFactor < 2.75);
-
-		m_qPainter->drawImage(QRect((int)x, (int)y, (int)width, (int)height), *m_image);
+		m_qPainter->drawImage(QRectF(x, y, width, height), *m_image);
 	}
 }
 
