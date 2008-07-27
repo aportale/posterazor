@@ -225,8 +225,7 @@ void PosteRazorDialogController::setDialogPosterDimensions(PosteRazorEnums::ePos
 	static const struct	{
 		bool isWidth;
 		PosteRazorEnums::ePosterSizeModes sizeMode;
-	} sizeModes[] = 
-	{
+	} sizeModes[] = {
 		{true, PosteRazorEnums::ePosterSizeModeAbsolute},
 		{false, PosteRazorEnums::ePosterSizeModeAbsolute},
 		{true, PosteRazorEnums::ePosterSizeModePages},
