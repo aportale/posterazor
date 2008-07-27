@@ -90,7 +90,6 @@ public:
 	virtual void setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment) = 0;
 
 	virtual void setPosterOutputFormat(ImageIOTypes::eImageFormats format) = 0;
-	virtual void setLaunchPDFApplication(bool launch) = 0;
 };
 
 class PosteRazorGettersInterface
@@ -139,8 +138,6 @@ public:
 	virtual PosteRazorEnums::eVerticalAlignments getPosterVerticalAlignment(void) const = 0;
 
 	virtual ImageIOTypes::eImageFormats getPosterOutputFormat(void) const = 0;
-
-	virtual bool getLaunchPDFApplication(void) const = 0;
 
 	virtual bool getIsImageLoaded(void) const = 0;
 };

@@ -21,10 +21,14 @@
 */
 
 #include "PosteRazorDialogController.h"
+#include "PersistentPreferencesInterface.h"
+
+const char preferencesKey_LaunchPDFApplication[] = "launchPDFApplication";
 
 PosteRazorDialogController::PosteRazorDialogController()
 	: m_PosteRazor(0)
 	, m_Dialog(0)
+	, m_launchPDFApplication(true)
 {
 }
 
@@ -198,13 +202,13 @@ void PosteRazorDialogController::setPosterOutputFormat(ImageIOTypes::eImageForma
 
 void PosteRazorDialogController::setLaunchPDFApplication(bool launch)
 {
-	m_PosteRazor->setLaunchPDFApplication(launch);
+	m_launchPDFApplication = launch;
 	setDialogSaveOptions();
 }
 
 void PosteRazorDialogController::setDialogSaveOptions(void)
 {
-	m_Dialog->setLaunchPDFApplication(m_PosteRazor->getLaunchPDFApplication());
+	m_Dialog->setLaunchPDFApplication(m_launchPDFApplication);
 }
 
 void PosteRazorDialogController::setDialogPosterSizeMode(void)
@@ -301,6 +305,7 @@ void PosteRazorDialogController::setDialogOverlappingOptions(void)
 bool PosteRazorDialogController::readPersistentPreferences(PersistentPreferencesInterface *preferences)
 {
 	const bool result = m_PosteRazor->readPersistentPreferences(preferences);
+	m_launchPDFApplication = preferences->getBoolean(preferencesKey_LaunchPDFApplication, m_launchPDFApplication);
 
 	if (result)
 		updateDialog();
@@ -310,6 +315,7 @@ bool PosteRazorDialogController::readPersistentPreferences(PersistentPreferences
 
 bool PosteRazorDialogController::writePersistentPreferences(PersistentPreferencesInterface *preferences) const
 {
+	preferences->setBoolean(m_launchPDFApplication, preferencesKey_LaunchPDFApplication);
 	return m_PosteRazor->writePersistentPreferences(preferences);
 }
 
@@ -327,5 +333,8 @@ bool PosteRazorDialogController::loadInputImage(const char *imageFileName, char 
 
 int PosteRazorDialogController::savePoster(const char *fileName) const
 {
-	return m_PosteRazor->savePoster(fileName);
+	const int result = m_PosteRazor->savePoster(fileName);
+	if (result == 0 && m_launchPDFApplication)
+		m_Dialog->launchPdfApplication(fileName);
+	return result;
 }

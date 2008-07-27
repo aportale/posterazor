@@ -33,6 +33,8 @@ public:
 	virtual void updatePreview(void) = 0;
 	virtual void showImageFileName(const char *fileName) = 0;
 	virtual void updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel) = 0;
+	virtual void setLaunchPDFApplication(bool launch) = 0;
+	virtual void launchPdfApplication(const char *pdfFileName) const = 0;
 };
 
 class PosteRazorDialogController: public PosteRazorSettersInterface, public PosteRazorActionsInterface
@@ -75,6 +77,7 @@ public:
 protected:
 	PosteRazor *m_PosteRazor;
 	PosteRazorDialogInterface *m_Dialog;
+	bool m_launchPDFApplication;
 
 	void setDialogSaveOptions(void);
 	void setDialogPosterSizeMode(void);

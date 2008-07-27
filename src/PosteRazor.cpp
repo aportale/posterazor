@@ -55,7 +55,6 @@ const char preferencesKey_OverlappingHeight[] = "OverlappingHeight";
 const char preferencesKey_OverlappingPosition[] = "overlappingPosition";
 const char preferencesKey_UnitOfLength[] = "unitOfLength";
 const char preferencesKey_PosterOutputFormat[] = "PosterOutputFormat";
-const char preferencesKey_LaunchPDFApplication[] = "launchPDFApplication";
 
 class PosteRazorImplementation: public PosteRazor
 {
@@ -86,8 +85,6 @@ private:
 
 	ImageIOTypes::eImageFormats             m_posterOutputFormat;
 
-	bool                                    m_launchPDFApplication;
-
 public:
 	PosteRazorImplementation()
 		: m_posterSizeMode(PosteRazorEnums::ePosterSizeModePages)
@@ -113,8 +110,6 @@ public:
 		, m_unitOfLength(UnitsOfLength::eUnitOfLengthCentimeter)
 
 		, m_posterOutputFormat(ImageIOTypes::eImageFormatPDF)
-
-		, m_launchPDFApplication(true)
 	{
 		m_imageIO = PosteRazorImageIO::createPosteRazorImageIO();
 	}
@@ -147,7 +142,6 @@ public:
 		m_overlappingPosition          = (PosteRazorEnums::eOverlappingPositions)preferences->getInteger(preferencesKey_OverlappingPosition, (int)m_overlappingPosition);
 		m_unitOfLength                 = (UnitsOfLength::eUnitsOfLength)preferences->getInteger(preferencesKey_UnitOfLength, (int)m_unitOfLength);
 		m_posterOutputFormat           = (ImageIOTypes::eImageFormats)preferences->getInteger(preferencesKey_PosterOutputFormat, (int)m_posterOutputFormat);
-		m_launchPDFApplication         = preferences->getBoolean(preferencesKey_LaunchPDFApplication, m_launchPDFApplication);
 
 		return returnValue;
 	}
@@ -175,7 +169,6 @@ public:
 		preferences->setInteger((int)m_overlappingPosition, preferencesKey_OverlappingPosition);
 		preferences->setInteger((int)m_unitOfLength, preferencesKey_UnitOfLength);
 		preferences->setInteger((int)m_posterOutputFormat, preferencesKey_PosterOutputFormat);
-		preferences->setBoolean(m_launchPDFApplication, preferencesKey_LaunchPDFApplication);
 
 		return returnValue;
 	}
@@ -837,7 +830,6 @@ public:
 		} else if (strncmp(state, "posterpage", strlen("posterpage")) == 0) {
 			int page;
 			sscanf(state, "posterpage %d", &page);
-
 			paintPosterPageOnCanvas(paintCanvas, page);
 		}
 	}
@@ -854,23 +846,9 @@ public:
 
 	int savePoster(const char *fileName) const
 	{
-		int err = 0;
 		const int pagesCount = (int)(ceil(getPosterWidth(PosteRazorEnums::ePosterSizeModePages))) * (int)(ceil(getPosterHeight(PosteRazorEnums::ePosterSizeModePages)));
-		err = m_imageIO->savePoster(fileName, getPosterOutputFormat(), this, pagesCount, convertDistanceToCm(getPrintablePaperAreaWidth()), convertDistanceToCm(getPrintablePaperAreaHeight()));
-		if (!err && getLaunchPDFApplication()) {
-#if defined(WIN32)
-			ShellExecute(HWND_DESKTOP, "open", fileName, NULL, NULL, SW_SHOW);
-#elif defined(__APPLE__)
-			char commandStr[2048];
-			sprintf(commandStr, "open \"%s\"", fileName);
-			system(commandStr);
-#endif
-		}
-		return err;
+		return m_imageIO->savePoster(fileName, getPosterOutputFormat(), this, pagesCount, convertDistanceToCm(getPrintablePaperAreaWidth()), convertDistanceToCm(getPrintablePaperAreaHeight()));
 	}
-
-	virtual void setLaunchPDFApplication(bool launch) {m_launchPDFApplication = launch;}
-	virtual bool getLaunchPDFApplication(void) const {return m_launchPDFApplication;}
 };
 
 PosteRazor* PosteRazor::createPosteRazor()

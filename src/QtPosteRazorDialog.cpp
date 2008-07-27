@@ -26,6 +26,8 @@
 #include <QHeaderView>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QUrl>
+#include <QDesktopServices>
 
 QtPosteRazorDialog::QtPosteRazorDialog(QWidget *parent, Qt::WFlags flags)
 	: QDialog(parent, flags)
@@ -201,6 +203,11 @@ void QtPosteRazorDialog::updateImageInfoFields(int imageWidthInPixels, int image
 	);
 	colorTypeString += " " + QString::number(bitsPerPixel) + "bpp";
 	m_imageInformationColorTypeLabel->setText(colorTypeString);
+}
+
+void QtPosteRazorDialog::launchPdfApplication(const char *pdfFileName) const
+{
+	QDesktopServices::openUrl(QUrl(pdfFileName));
 }
 
 void QtPosteRazorDialog::setPrevButtonEnabled(bool enabled)
@@ -498,7 +505,7 @@ void QtPosteRazorDialog::createConnections(void)
 	connect(m_posterAlignmentRightButton, SIGNAL(clicked()), this, SLOT(handlePosterHorizontalAlignmentRightSelected()));
 
 	connect(m_savePosterButton, SIGNAL(clicked()), this, SLOT(handleSavePosterButtonClicked()));
-	connect(m_launchPDFApplicationCheckBox, SIGNAL(stateChanged(int)), this, SLOT(handlelaunchPDFApplicationChanged(int)));
+	connect(m_launchPDFApplicationCheckBox, SIGNAL(stateChanged(int)), this, SLOT(handleLaunchPDFApplicationChanged(int)));
 }
 
 void QtPosteRazorDialog::createPosteRazorDialogController(void)

@@ -65,6 +65,7 @@ public:
 	virtual void updatePreview(void);
 	virtual void showImageFileName(const char *fileName);
 	virtual void updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel);
+	virtual void launchPdfApplication(const char *pdfFileName) const;
 
 	void setPrevButtonEnabled(bool enabled);
 	void setNextButtonEnabled(bool enabled);
