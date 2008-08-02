@@ -9,7 +9,6 @@ SOURCES += \
 	PosteRazorImageIO.cpp \
 	PosteRazorPDFOutput.cpp \
 	QtPosteRazorDialog.cpp \
-	QtPersistentPreferences.cpp \
 	QtPosteRazorSpinBox.cpp \
 	QtPaintCanvas.cpp \
 	PosteRazorDialogController.cpp \
@@ -22,12 +21,10 @@ HEADERS += \
 	PaperFormats.h \
 	PaintCanvasBase.h \
 	PaintCanvasInterface.h \
-	PersistentPreferencesInterface.h \
 	PosteRazor.h \
 	PosteRazorImageIO.h \
 	PosteRazorPDFOutput.h \
 	QtPosteRazorDialog.h \
-	QtPersistentPreferences.h \
 	QtPosteRazorSpinBox.h \
 	QtPaintCanvas.h \
 	PosteRazorDialogController.h \

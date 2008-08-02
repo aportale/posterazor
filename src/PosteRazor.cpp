@@ -22,7 +22,7 @@
 
 #include "PosteRazor.h"
 #include "PosteRazorImageIO.h"
-#include "PersistentPreferencesInterface.h"
+#include <QSettings>
 #include <stdio.h>
 #include <string.h>
 #ifdef WIN32
@@ -36,25 +36,25 @@
 #define MAX(a, b) ((a)>(b)?(a):(b))
 #define MINMAX(a, min, max) (MIN((max), MAX((a), (min))))
 
-const char preferencesKey_PosterSizeMode[] = "PosterSizeMode";
-const char preferencesKey_PosterDimension[] = "PosterDimension";
-const char preferencesKey_PosterDimensionIsWidth[] = "PosterDimensionIsWidth";
-const char preferencesKey_PosterHorizontalAlignment[] = "PosterHorizontalAlignment";
-const char preferencesKey_PosterVerticalAlignment[] = "PosterVerticalAlignment";
-const char preferencesKey_UseCustomPaperSize[] = "UseCustomPaperSize";
-const char preferencesKey_PaperFormat[] = "paperFormat";
-const char preferencesKey_PaperOrientation[] = "PaperOrientation";
-const char preferencesKey_PaperBorderTop[] = "PaperBorderTop";
-const char preferencesKey_PaperBorderRight[] = "PaperBorderRight";
-const char preferencesKey_PaperBorderBottom[] = "PaperBorderBottom";
-const char preferencesKey_PaperBorderLeft[] = "PaperBorderLeft";
-const char preferencesKey_CustomPaperWidth[] = "CustomPaperWidth";
-const char preferencesKey_CustomPaperHeight[] = "CustomPaperHeight";
-const char preferencesKey_OverlappingWidth[] = "OverlappingWidth";
-const char preferencesKey_OverlappingHeight[] = "OverlappingHeight";
-const char preferencesKey_OverlappingPosition[] = "overlappingPosition";
-const char preferencesKey_UnitOfLength[] = "unitOfLength";
-const char preferencesKey_PosterOutputFormat[] = "PosterOutputFormat";
+const QLatin1String settingsKey_PosterSizeMode("PosterSizeMode");
+const QLatin1String settingsKey_PosterDimension("PosterDimension");
+const QLatin1String settingsKey_PosterDimensionIsWidth("PosterDimensionIsWidth");
+const QLatin1String settingsKey_PosterHorizontalAlignment("PosterHorizontalAlignment");
+const QLatin1String settingsKey_PosterVerticalAlignment("PosterVerticalAlignment");
+const QLatin1String settingsKey_UseCustomPaperSize("UseCustomPaperSize");
+const QLatin1String settingsKey_PaperFormat("paperFormat");
+const QLatin1String settingsKey_PaperOrientation("PaperOrientation");
+const QLatin1String settingsKey_PaperBorderTop("PaperBorderTop");
+const QLatin1String settingsKey_PaperBorderRight("PaperBorderRight");
+const QLatin1String settingsKey_PaperBorderBottom("PaperBorderBottom");
+const QLatin1String settingsKey_PaperBorderLeft("PaperBorderLeft");
+const QLatin1String settingsKey_CustomPaperWidth("CustomPaperWidth");
+const QLatin1String settingsKey_CustomPaperHeight("CustomPaperHeight");
+const QLatin1String settingsKey_OverlappingWidth("OverlappingWidth");
+const QLatin1String settingsKey_OverlappingHeight("OverlappingHeight");
+const QLatin1String settingsKey_OverlappingPosition("overlappingPosition");
+const QLatin1String settingsKey_UnitOfLength("unitOfLength");
+const QLatin1String settingsKey_PosterOutputFormat("PosterOutputFormat");
 
 class PosteRazorImplementation: public PosteRazor
 {
@@ -119,56 +119,56 @@ public:
 		delete m_imageIO;
 	}
 
-	virtual bool readPersistentPreferences(PersistentPreferencesInterface *preferences)
+	virtual bool readSettings(const QSettings *settings)
 	{
 		bool returnValue = true;
-		
-		m_posterSizeMode               = (PosteRazorEnums::ePosterSizeModes)preferences->getInteger(preferencesKey_PosterSizeMode, (int)m_posterSizeMode);
-		m_posterDimension              = preferences->getDouble(preferencesKey_PosterDimension, m_posterDimension);
-		m_posterDimensionIsWidth       = preferences->getBoolean(preferencesKey_PosterDimensionIsWidth, m_posterDimensionIsWidth);
-		m_posterHorizontalAlignment    = (PosteRazorEnums::eHorizontalAlignments)preferences->getInteger(preferencesKey_PosterHorizontalAlignment, (int)m_posterHorizontalAlignment);
-		m_posterVerticalAlignment      = (PosteRazorEnums::eVerticalAlignments)preferences->getInteger(preferencesKey_PosterVerticalAlignment, (int)m_posterVerticalAlignment);
-		m_useCustomPaperSize           = preferences->getBoolean(preferencesKey_UseCustomPaperSize, m_useCustomPaperSize);
-		m_paperFormat                  = (PaperFormats::ePaperFormats)preferences->getInteger(preferencesKey_PaperFormat, (int)m_paperFormat);
-		m_paperOrientation             = (PaperFormats::ePaperOrientations)preferences->getInteger(preferencesKey_PaperOrientation, (int)m_paperOrientation);
-		m_paperBorderTop               = preferences->getDouble(preferencesKey_PaperBorderTop, m_paperBorderTop);
-		m_paperBorderRight             = preferences->getDouble(preferencesKey_PaperBorderRight, m_paperBorderRight);
-		m_paperBorderBottom            = preferences->getDouble(preferencesKey_PaperBorderBottom, m_paperBorderBottom);
-		m_paperBorderLeft              = preferences->getDouble(preferencesKey_PaperBorderLeft, m_paperBorderLeft);
-		m_customPaperWidth             = preferences->getDouble(preferencesKey_CustomPaperWidth, m_customPaperWidth);
-		m_customPaperHeight            = preferences->getDouble(preferencesKey_CustomPaperHeight, m_customPaperHeight);
-		m_overlappingWidth             = preferences->getDouble(preferencesKey_OverlappingWidth, m_overlappingWidth);
-		m_overlappingHeight            = preferences->getDouble(preferencesKey_OverlappingHeight, m_overlappingHeight);
-		m_overlappingPosition          = (PosteRazorEnums::eOverlappingPositions)preferences->getInteger(preferencesKey_OverlappingPosition, (int)m_overlappingPosition);
-		m_unitOfLength                 = (UnitsOfLength::eUnitsOfLength)preferences->getInteger(preferencesKey_UnitOfLength, (int)m_unitOfLength);
-		m_posterOutputFormat           = (ImageIOTypes::eImageFormats)preferences->getInteger(preferencesKey_PosterOutputFormat, (int)m_posterOutputFormat);
+
+		m_posterSizeMode               = (PosteRazorEnums::ePosterSizeModes)settings->value(settingsKey_PosterSizeMode, (int)m_posterSizeMode).toInt();
+		m_posterDimension              = settings->value(settingsKey_PosterDimension, m_posterDimension).toDouble();
+		m_posterDimensionIsWidth       = settings->value(settingsKey_PosterDimensionIsWidth, m_posterDimensionIsWidth).toBool();
+		m_posterHorizontalAlignment    = (PosteRazorEnums::eHorizontalAlignments)settings->value(settingsKey_PosterHorizontalAlignment, (int)m_posterHorizontalAlignment).toInt();
+		m_posterVerticalAlignment      = (PosteRazorEnums::eVerticalAlignments)settings->value(settingsKey_PosterVerticalAlignment, (int)m_posterVerticalAlignment).toInt();
+		m_useCustomPaperSize           = settings->value(settingsKey_UseCustomPaperSize, m_useCustomPaperSize).toBool();
+		m_paperFormat                  = (PaperFormats::ePaperFormats)settings->value(settingsKey_PaperFormat, (int)m_paperFormat).toInt();
+		m_paperOrientation             = (PaperFormats::ePaperOrientations)settings->value(settingsKey_PaperOrientation, (int)m_paperOrientation).toInt();
+		m_paperBorderTop               = settings->value(settingsKey_PaperBorderTop, m_paperBorderTop).toDouble();
+		m_paperBorderRight             = settings->value(settingsKey_PaperBorderRight, m_paperBorderRight).toDouble();
+		m_paperBorderBottom            = settings->value(settingsKey_PaperBorderBottom, m_paperBorderBottom).toDouble();
+		m_paperBorderLeft              = settings->value(settingsKey_PaperBorderLeft, m_paperBorderLeft).toDouble();
+		m_customPaperWidth             = settings->value(settingsKey_CustomPaperWidth, m_customPaperWidth).toDouble();
+		m_customPaperHeight            = settings->value(settingsKey_CustomPaperHeight, m_customPaperHeight).toDouble();
+		m_overlappingWidth             = settings->value(settingsKey_OverlappingWidth, m_overlappingWidth).toDouble();
+		m_overlappingHeight            = settings->value(settingsKey_OverlappingHeight, m_overlappingHeight).toDouble();
+		m_overlappingPosition          = (PosteRazorEnums::eOverlappingPositions)settings->value(settingsKey_OverlappingPosition, (int)m_overlappingPosition).toInt();
+		m_unitOfLength                 = (UnitsOfLength::eUnitsOfLength)settings->value(settingsKey_UnitOfLength, (int)m_unitOfLength).toInt();
+		m_posterOutputFormat           = (ImageIOTypes::eImageFormats)settings->value(settingsKey_PosterOutputFormat, (int)m_posterOutputFormat).toInt();
 
 		return returnValue;
 	}
 
-	virtual bool writePersistentPreferences(PersistentPreferencesInterface *preferences) const
+	virtual bool writeSettings(QSettings *settings) const
 	{
 		bool returnValue = true;
 
-		preferences->setInteger((int)m_posterSizeMode, preferencesKey_PosterSizeMode);
-		preferences->setDouble(m_posterDimension, preferencesKey_PosterDimension);
-		preferences->setBoolean(m_posterDimensionIsWidth, preferencesKey_PosterDimensionIsWidth);
-		preferences->setInteger((int)m_posterHorizontalAlignment, preferencesKey_PosterHorizontalAlignment);
-		preferences->setInteger((int)m_posterVerticalAlignment, preferencesKey_PosterVerticalAlignment);
-		preferences->setBoolean(m_useCustomPaperSize, preferencesKey_UseCustomPaperSize);
-		preferences->setInteger((int)m_paperFormat, preferencesKey_PaperFormat);
-		preferences->setInteger((int)m_paperOrientation, preferencesKey_PaperOrientation);
-		preferences->setDouble(m_paperBorderTop, preferencesKey_PaperBorderTop);
-		preferences->setDouble(m_paperBorderRight, preferencesKey_PaperBorderRight);
-		preferences->setDouble(m_paperBorderBottom, preferencesKey_PaperBorderBottom);
-		preferences->setDouble(m_paperBorderLeft, preferencesKey_PaperBorderLeft);
-		preferences->setDouble(m_customPaperWidth, preferencesKey_CustomPaperWidth);
-		preferences->setDouble(m_customPaperHeight, preferencesKey_CustomPaperHeight);
-		preferences->setDouble(m_overlappingWidth, preferencesKey_OverlappingWidth);
-		preferences->setDouble(m_overlappingHeight, preferencesKey_OverlappingHeight);
-		preferences->setInteger((int)m_overlappingPosition, preferencesKey_OverlappingPosition);
-		preferences->setInteger((int)m_unitOfLength, preferencesKey_UnitOfLength);
-		preferences->setInteger((int)m_posterOutputFormat, preferencesKey_PosterOutputFormat);
+		settings->setValue(settingsKey_PosterSizeMode, (int)m_posterSizeMode);
+		settings->setValue(settingsKey_PosterDimension, m_posterDimension);
+		settings->setValue(settingsKey_PosterDimensionIsWidth, m_posterDimensionIsWidth);
+		settings->setValue(settingsKey_PosterHorizontalAlignment, (int)m_posterHorizontalAlignment);
+		settings->setValue(settingsKey_PosterVerticalAlignment, (int)m_posterVerticalAlignment);
+		settings->setValue(settingsKey_UseCustomPaperSize, m_useCustomPaperSize);
+		settings->setValue(settingsKey_PaperFormat, (int)m_paperFormat);
+		settings->setValue(settingsKey_PaperOrientation, (int)m_paperOrientation);
+		settings->setValue(settingsKey_PaperBorderTop, m_paperBorderTop);
+		settings->setValue(settingsKey_PaperBorderRight, m_paperBorderRight);
+		settings->setValue(settingsKey_PaperBorderBottom, m_paperBorderBottom);
+		settings->setValue(settingsKey_PaperBorderLeft, m_paperBorderLeft);
+		settings->setValue(settingsKey_CustomPaperWidth, m_customPaperWidth);
+		settings->setValue(settingsKey_CustomPaperHeight, m_customPaperHeight);
+		settings->setValue(settingsKey_OverlappingWidth, m_overlappingWidth);
+		settings->setValue(settingsKey_OverlappingHeight, m_overlappingHeight);
+		settings->setValue(settingsKey_OverlappingPosition, (int)m_overlappingPosition);
+		settings->setValue(settingsKey_UnitOfLength, (int)m_unitOfLength);
+		settings->setValue(settingsKey_PosterOutputFormat, (int)m_posterOutputFormat);
 
 		return returnValue;
 	}

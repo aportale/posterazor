@@ -28,7 +28,7 @@
 #include "ImageIOTypes.h"
 #include "PaintCanvasInterface.h"
 
-class PersistentPreferencesInterface;
+class QSettings;
 
 class PosteRazorEnums
 {
@@ -147,8 +147,8 @@ class PosteRazorActionsInterface
 public:
 	virtual ~PosteRazorActionsInterface() {}
 
-	virtual bool readPersistentPreferences(PersistentPreferencesInterface *preferences) = 0;
-	virtual bool writePersistentPreferences(PersistentPreferencesInterface *preferences) const = 0;
+	virtual bool readSettings(const QSettings *settings) = 0;
+	virtual bool writeSettings(QSettings *settings) const = 0;
 
 	virtual bool loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize) = 0;
 

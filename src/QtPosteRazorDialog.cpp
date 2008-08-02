@@ -21,7 +21,7 @@
 */
 
 #include "QtPosteRazorDialog.h"
-#include "QtPersistentPreferences.h"
+#include <QSettings>
 #include <QApplication>
 #include <QHeaderView>
 #include <QFileDialog>
@@ -40,16 +40,16 @@ QtPosteRazorDialog::QtPosteRazorDialog(QWidget *parent, Qt::WFlags flags)
 	populateUI();
 	createPosteRazorDialogController();
 
-	QtPersistentPreferences preferences;
-	m_posteRazorController->readPersistentPreferences(&preferences);
+	QSettings settings;
+	m_posteRazorController->readSettings(&settings);
 
 	updatePosterSizeGroupsState();
 }
 
 QtPosteRazorDialog::~QtPosteRazorDialog()
 {
-	QtPersistentPreferences preferences;
-	m_posteRazorController->writePersistentPreferences(&preferences);
+	QSettings settings;
+	m_posteRazorController->writeSettings(&settings);
 }
 
 void QtPosteRazorDialog::setUnitOfLength(UnitsOfLength::eUnitsOfLength /* unit */)

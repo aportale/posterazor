@@ -21,9 +21,9 @@
 */
 
 #include "PosteRazorDialogController.h"
-#include "PersistentPreferencesInterface.h"
+#include <QSettings>
 
-const char preferencesKey_LaunchPDFApplication[] = "launchPDFApplication";
+const QLatin1String settingsKey_LaunchPDFApplication("launchPDFApplication");
 
 PosteRazorDialogController::PosteRazorDialogController()
 	: m_PosteRazor(0)
@@ -302,10 +302,10 @@ void PosteRazorDialogController::setDialogOverlappingOptions(void)
 	m_Dialog->setOverlappingPosition(m_PosteRazor->getOverlappingPosition());
 }
 
-bool PosteRazorDialogController::readPersistentPreferences(PersistentPreferencesInterface *preferences)
+bool PosteRazorDialogController::readSettings(const QSettings *settings)
 {
-	const bool result = m_PosteRazor->readPersistentPreferences(preferences);
-	m_launchPDFApplication = preferences->getBoolean(preferencesKey_LaunchPDFApplication, m_launchPDFApplication);
+	const bool result = m_PosteRazor->readSettings(settings);
+	m_launchPDFApplication = settings->value(settingsKey_LaunchPDFApplication, m_launchPDFApplication).toBool();
 
 	if (result)
 		updateDialog();
@@ -313,10 +313,10 @@ bool PosteRazorDialogController::readPersistentPreferences(PersistentPreferences
 	return result;
 }
 
-bool PosteRazorDialogController::writePersistentPreferences(PersistentPreferencesInterface *preferences) const
+bool PosteRazorDialogController::writeSettings(QSettings *settings) const
 {
-	preferences->setBoolean(m_launchPDFApplication, preferencesKey_LaunchPDFApplication);
-	return m_PosteRazor->writePersistentPreferences(preferences);
+	settings->setValue(settingsKey_LaunchPDFApplication, m_launchPDFApplication);
+	return m_PosteRazor->writeSettings(settings);
 }
 
 bool PosteRazorDialogController::loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize)

@@ -69,8 +69,8 @@ public:
 	void setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment);
 	void setPosterOutputFormat(ImageIOTypes::eImageFormats format);
 	void setLaunchPDFApplication(bool launch);
-	bool readPersistentPreferences(PersistentPreferencesInterface *preferences);
-	bool writePersistentPreferences(PersistentPreferencesInterface *preferences) const;
+	bool readSettings(const QSettings *settings);
+	bool writeSettings(QSettings *settings) const;
 	bool loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize);
 	int savePoster(const char *fileName) const;
 
