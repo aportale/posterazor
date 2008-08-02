@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>546</width>
-    <height>512</height>
+    <width>638</width>
+    <height>408</height>
    </rect>
   </property>
   <property name="acceptDrops" >
@@ -25,11 +25,48 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="palette" >
+      <palette>
+       <active>
+        <colorrole role="Window" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>192</red>
+           <green>192</green>
+           <blue>192</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="Window" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>192</red>
+           <green>192</green>
+           <blue>192</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="Window" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>192</red>
+           <green>192</green>
+           <blue>192</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="autoFillBackground" >
+      <bool>true</bool>
+     </property>
      <property name="frameShape" >
       <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow" >
-      <enum>QFrame::Sunken</enum>
      </property>
      <layout class="QVBoxLayout" >
       <property name="spacing" >
@@ -86,6 +123,46 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="palette" >
+            <palette>
+             <active>
+              <colorrole role="Window" >
+               <brush brushstyle="SolidPattern" >
+                <color alpha="255" >
+                 <red>240</red>
+                 <green>240</green>
+                 <blue>240</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="Window" >
+               <brush brushstyle="SolidPattern" >
+                <color alpha="255" >
+                 <red>240</red>
+                 <green>240</green>
+                 <blue>240</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="Window" >
+               <brush brushstyle="SolidPattern" >
+                <color alpha="255" >
+                 <red>240</red>
+                 <green>240</green>
+                 <blue>240</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="autoFillBackground" >
+            <bool>true</bool>
+           </property>
            <property name="frameShape" >
             <enum>QFrame::StyledPanel</enum>
            </property>
@@ -97,7 +174,7 @@
          <item>
           <widget class="QToolButton" name="m_helpLaunchButton" >
            <property name="text" >
-            <string/>
+            <string>?</string>
            </property>
           </widget>
          </item>
@@ -119,9 +196,17 @@
          <enum>QFrame::Sunken</enum>
         </property>
         <property name="currentIndex" >
-         <number>3</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="m_loadInputImageStep" >
+         <property name="geometry" >
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>232</width>
+           <height>335</height>
+          </rect>
+         </property>
          <layout class="QVBoxLayout" >
           <property name="spacing" >
            <number>6</number>
@@ -143,14 +228,54 @@
              </property>
              <item>
               <widget class="QLabel" name="m_inputFileNameLabel" >
+               <property name="palette" >
+                <palette>
+                 <active>
+                  <colorrole role="Window" >
+                   <brush brushstyle="SolidPattern" >
+                    <color alpha="255" >
+                     <red>240</red>
+                     <green>240</green>
+                     <blue>240</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                 </active>
+                 <inactive>
+                  <colorrole role="Window" >
+                   <brush brushstyle="SolidPattern" >
+                    <color alpha="255" >
+                     <red>240</red>
+                     <green>240</green>
+                     <blue>240</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                 </inactive>
+                 <disabled>
+                  <colorrole role="Window" >
+                   <brush brushstyle="SolidPattern" >
+                    <color alpha="255" >
+                     <red>240</red>
+                     <green>240</green>
+                     <blue>240</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                 </disabled>
+                </palette>
+               </property>
+               <property name="autoFillBackground" >
+                <bool>true</bool>
+               </property>
                <property name="frameShape" >
                 <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow" >
-                <enum>QFrame::Sunken</enum>
+                <enum>QFrame::Plain</enum>
                </property>
                <property name="text" >
-                <string/>
+                <string>sdfgsdfg</string>
                </property>
               </widget>
              </item>
@@ -163,7 +288,7 @@
                 </sizepolicy>
                </property>
                <property name="text" >
-                <string/>
+                <string>...</string>
                </property>
               </widget>
              </item>
@@ -272,6 +397,14 @@
          </layout>
         </widget>
         <widget class="QWidget" name="m_paperSizeStep" >
+         <property name="geometry" >
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>232</width>
+           <height>312</height>
+          </rect>
+         </property>
          <layout class="QVBoxLayout" >
           <property name="spacing" >
            <number>6</number>
@@ -299,10 +432,55 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="palette" >
+                <palette>
+                 <active>
+                  <colorrole role="Window" >
+                   <brush brushstyle="SolidPattern" >
+                    <color alpha="255" >
+                     <red>192</red>
+                     <green>192</green>
+                     <blue>192</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                 </active>
+                 <inactive>
+                  <colorrole role="Window" >
+                   <brush brushstyle="SolidPattern" >
+                    <color alpha="255" >
+                     <red>192</red>
+                     <green>192</green>
+                     <blue>192</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                 </inactive>
+                 <disabled>
+                  <colorrole role="Window" >
+                   <brush brushstyle="SolidPattern" >
+                    <color alpha="255" >
+                     <red>192</red>
+                     <green>192</green>
+                     <blue>192</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                 </disabled>
+                </palette>
+               </property>
                <property name="currentIndex" >
                 <number>0</number>
                </property>
                <widget class="QWidget" name="m_paperFormatStandardTab" >
+                <property name="geometry" >
+                 <rect>
+                  <x>4</x>
+                  <y>30</y>
+                  <width>206</width>
+                  <height>93</height>
+                 </rect>
+                </property>
                 <attribute name="title" >
                  <string>Standard</string>
                 </attribute>
@@ -403,6 +581,14 @@
                 </layout>
                </widget>
                <widget class="QWidget" name="m_paperFormatCustomTab" >
+                <property name="geometry" >
+                 <rect>
+                  <x>52</x>
+                  <y>118</y>
+                  <width>1252</width>
+                  <height>730</height>
+                 </rect>
+                </property>
                 <attribute name="title" >
                  <string>Custom</string>
                 </attribute>
@@ -621,6 +807,14 @@
          </layout>
         </widget>
         <widget class="QWidget" name="m_overlappingStep" >
+         <property name="geometry" >
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>232</width>
+           <height>312</height>
+          </rect>
+         </property>
          <layout class="QVBoxLayout" >
           <property name="spacing" >
            <number>6</number>
@@ -886,6 +1080,14 @@
          </layout>
         </widget>
         <widget class="QWidget" name="m_posterSizeStep" >
+         <property name="geometry" >
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>232</width>
+           <height>312</height>
+          </rect>
+         </property>
          <layout class="QVBoxLayout" >
           <property name="spacing" >
            <number>6</number>
@@ -1372,6 +1574,14 @@
          </layout>
         </widget>
         <widget class="QWidget" name="m_savePosterStep" >
+         <property name="geometry" >
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>232</width>
+           <height>312</height>
+          </rect>
+         </property>
          <layout class="QVBoxLayout" >
           <property name="spacing" >
            <number>6</number>
