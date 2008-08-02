@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>639</width>
+    <width>546</width>
     <height>512</height>
    </rect>
   </property>
@@ -1126,6 +1126,18 @@
                 </property>
                 <item>
                  <widget class="QToolButton" name="m_posterAlignmentTopButton" >
+                  <property name="sizePolicy" >
+                   <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize" >
+                   <size>
+                    <width>0</width>
+                    <height>29</height>
+                   </size>
+                  </property>
                   <property name="text" >
                    <string/>
                   </property>
@@ -1152,6 +1164,12 @@
                 </item>
                 <item>
                  <widget class="QToolButton" name="m_posterAlignmentMiddleButton" >
+                  <property name="minimumSize" >
+                   <size>
+                    <width>0</width>
+                    <height>29</height>
+                   </size>
+                  </property>
                   <property name="text" >
                    <string/>
                   </property>
@@ -1178,6 +1196,12 @@
                 </item>
                 <item>
                  <widget class="QToolButton" name="m_posterAlignmentBottomButton" >
+                  <property name="minimumSize" >
+                   <size>
+                    <width>0</width>
+                    <height>29</height>
+                   </size>
+                  </property>
                   <property name="text" >
                    <string/>
                   </property>
@@ -1229,6 +1253,12 @@
                 </property>
                 <item>
                  <widget class="QToolButton" name="m_posterAlignmentLeftButton" >
+                  <property name="minimumSize" >
+                   <size>
+                    <width>0</width>
+                    <height>29</height>
+                   </size>
+                  </property>
                   <property name="text" >
                    <string/>
                   </property>
@@ -1255,6 +1285,12 @@
                 </item>
                 <item>
                  <widget class="QToolButton" name="m_posterAlignmentCenterButton" >
+                  <property name="minimumSize" >
+                   <size>
+                    <width>0</width>
+                    <height>29</height>
+                   </size>
+                  </property>
                   <property name="text" >
                    <string/>
                   </property>
@@ -1281,6 +1317,12 @@
                 </item>
                 <item>
                  <widget class="QToolButton" name="m_posterAlignmentRightButton" >
+                  <property name="minimumSize" >
+                   <size>
+                    <width>0</width>
+                    <height>29</height>
+                   </size>
+                  </property>
                   <property name="text" >
                    <string/>
                   </property>
