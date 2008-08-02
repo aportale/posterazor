@@ -32,10 +32,6 @@
 #endif
 #include <math.h>
 
-#define MIN(a, b) ((a)<=(b)?(a):(b))
-#define MAX(a, b) ((a)>(b)?(a):(b))
-#define MINMAX(a, min, max) (MIN((max), MAX((a), (min))))
-
 const QLatin1String settingsKey_PosterSizeMode("PosterSizeMode");
 const QLatin1String settingsKey_PosterDimension("PosterDimension");
 const QLatin1String settingsKey_PosterDimensionIsWidth("PosterDimensionIsWidth");
@@ -295,22 +291,22 @@ public:
 
 	double getPaperBorderTop(void) const
 	{
-		return MINMAX(convertCmToDistance(m_paperBorderTop), 0, getMaximalHorizontalPaperBorder());
+		return qBound(.0, convertCmToDistance(m_paperBorderTop), getMaximalHorizontalPaperBorder());
 	}
 
 	double getPaperBorderRight(void) const
 	{
-		return MINMAX(convertCmToDistance(m_paperBorderRight), 0, getMaximalVerticalPaperBorder());
+		return qBound(.0, convertCmToDistance(m_paperBorderRight), getMaximalVerticalPaperBorder());
 	}
 
 	double getPaperBorderBottom(void) const
 	{
-		return MINMAX(convertCmToDistance(m_paperBorderBottom), 0, getMaximalHorizontalPaperBorder());
+		return qBound(.0, convertCmToDistance(m_paperBorderBottom), getMaximalHorizontalPaperBorder());
 	}
 
 	double getPaperBorderLeft(void) const
 	{
-		return MINMAX(convertCmToDistance(m_paperBorderLeft), 0, getMaximalVerticalPaperBorder());
+		return qBound(.0, convertCmToDistance(m_paperBorderLeft), getMaximalVerticalPaperBorder());
 	}
 
 	double getMaximalVerticalPaperBorder(void) const
@@ -335,12 +331,12 @@ public:
 
 	double getCustomPaperWidth(void) const
 	{
-		return MINMAX(convertCmToDistance(m_customPaperWidth), getCustomMinimalPaperWidth(), getCustomMaximalPaperWidth());
+		return qBound(getCustomMinimalPaperWidth(), convertCmToDistance(m_customPaperWidth), getCustomMaximalPaperWidth());
 	}
 
 	double getCustomPaperHeight(void) const
 	{
-		return MINMAX(convertCmToDistance(m_customPaperHeight), getCustomMinimalPaperHeight(), getCustomMaximalPaperHeight());
+		return qBound(getCustomMinimalPaperHeight(), convertCmToDistance(m_customPaperHeight), getCustomMaximalPaperHeight());
 	}
 
 	double getCustomMinimalPaperWidth(void) const
@@ -483,12 +479,12 @@ public:
 
 	double getOverlappingWidth(void) const
 	{
-		return MINMAX(convertCmToDistance(m_overlappingWidth), 0, getMaximalOverLappingWidth());
+		return qBound(.0, convertCmToDistance(m_overlappingWidth), getMaximalOverLappingWidth());
 	}
 
 	double getOverlappingHeight(void) const
 	{
-		return MINMAX(convertCmToDistance(m_overlappingHeight), 0, getMaximalOverLappingHeight());
+		return qBound(.0, convertCmToDistance(m_overlappingHeight), getMaximalOverLappingHeight());
 	}
 
 	double getMaximalOverLappingWidth(void) const
@@ -530,7 +526,7 @@ public:
 	{
 		double posterDimension = (width==m_posterDimensionIsWidth)?m_posterDimension:calculateOtherPosterDimension();
 		
-		posterDimension = MAX (
+		posterDimension = qMax(
 			(mode == PosteRazorEnums::ePosterSizeModeAbsolute)?0.001
 			:(mode == PosteRazorEnums::ePosterSizeModePages)?0.001
 			:0.001
@@ -612,7 +608,7 @@ public:
 			imageHeight /= factor;
 		}
 
-		previewWidth = MIN((int)imageWidth, boxWidth);
+		previewWidth = qMin((int)imageWidth, boxWidth);
 		previewHeight = (int)((double)previewWidth / aspectRatio);
 
 		if (previewHeight > boxHeight) {
@@ -745,7 +741,7 @@ public:
 			(
 				horizontalAlignment == PosteRazorEnums::eHorizontalAlignmentLeft?borderLeft
 				:horizontalAlignment == PosteRazorEnums::eHorizontalAlignmentCenter?
-					MINMAX(((double)boxWidth - imageWidth) / 2, borderLeft, borderLeft + posterPrintableAreaWidth - imageWidth)
+					qBound(borderLeft, ((double)boxWidth - imageWidth) / 2, borderLeft + posterPrintableAreaWidth - imageWidth)
 				:(borderLeft + posterPrintableAreaWidth - imageWidth)
 			)
 			+ x_offset,
@@ -753,7 +749,7 @@ public:
 			(
 				verticalAlignment == PosteRazorEnums::eVerticalAlignmentTop?borderTop
 				:verticalAlignment == PosteRazorEnums::eVerticalAlignmentMiddle?
-					MINMAX(((double)boxHeight - imageHeight) / 2, borderTop, borderTop + posterPrintableAreaHeight - imageHeight)
+					qBound(borderTop, ((double)boxHeight - imageHeight) / 2, borderTop + posterPrintableAreaHeight - imageHeight)
 				:(borderTop + posterPrintableAreaHeight - imageHeight)
 				)
 			+ y_offset,
@@ -804,13 +800,13 @@ public:
 			:getPosterHorizontalAlignment() == PosteRazorEnums::eHorizontalAlignmentCenter?(posterTotalWidthCm - posterImageWidthCm)/2 - borderLeftCm
 			:-borderLeftCm
 		);
-		imageOffsetFromLeftPosterBorderCm = MINMAX(imageOffsetFromLeftPosterBorderCm, 0.0, posterTotalWidthCm - posterImageWidthCm - borderLeftCm - borderRightCm);
+		imageOffsetFromLeftPosterBorderCm = qBound(.0, imageOffsetFromLeftPosterBorderCm, posterTotalWidthCm - posterImageWidthCm - borderLeftCm - borderRightCm);
 		double imageOffsetFromTopPosterBorderCm = (
 			getPosterVerticalAlignment() == PosteRazorEnums::eVerticalAlignmentBottom?posterTotalHeightCm - posterImageHeightCm - borderTopCm
 			:getPosterVerticalAlignment() == PosteRazorEnums::eVerticalAlignmentMiddle?(posterTotalHeightCm - posterImageHeightCm)/2 - borderTopCm
 			:-borderTopCm
 		);
-		imageOffsetFromTopPosterBorderCm = MINMAX(imageOffsetFromTopPosterBorderCm, 0.0, posterTotalHeightCm - posterImageHeightCm - borderTopCm - borderBottomCm);
+		imageOffsetFromTopPosterBorderCm = qBound(.0, imageOffsetFromTopPosterBorderCm, posterTotalHeightCm - posterImageHeightCm - borderTopCm - borderBottomCm);
 		const double pageOffsetToImageFromLeftCm = column * (printablePaperAreaWidthCm - overlappingWidthCm) - imageOffsetFromLeftPosterBorderCm;
 		const double pageOffsetToImageFromTopCm = row * (printablePaperAreaHeightCm - overlappingHeightCm) - imageOffsetFromTopPosterBorderCm;
 		
