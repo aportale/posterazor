@@ -39,13 +39,14 @@ INCLUDEPATH += \
 
 win32:LIBS += \
 	thirdparty/FreeImage/Dist/FreeImage.lib
+
 unix:LIBS += \
 	-L/usr/lib \
 	-lfreeimage
 
 DEFINES += \
 	FREEIMAGE_LIB
-	
+
 DEFINES -= \
 	UNICODE
 
@@ -54,3 +55,14 @@ FORMS += \
 
 RESOURCES += \
 	QtPosteRazorDialogResources.qrc
+
+TRANSLATIONS += \
+	de.ts \
+	es.ts \
+	fi.ts \
+	fr.ts \
+	it.ts \
+	nl.ts \
+	pl.ts \
+	pt_BR.ts \
+	zh_CN.ts

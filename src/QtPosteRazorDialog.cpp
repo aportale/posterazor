@@ -27,6 +27,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QUrl>
+#include <QTranslator>
 #include <QDesktopServices>
 
 QtPosteRazorDialog::QtPosteRazorDialog(QWidget *parent, Qt::WFlags flags)
@@ -566,6 +567,10 @@ bool QtPosteRazorDialog::loadInputImage(const QString &fileName)
 int main (int argc, char **argv)
 {
 	QApplication a(argc, argv);
+
+	QTranslator myAppTranslator;
+	myAppTranslator.load(":/Translations/" + QLocale::system().name());
+	a.installTranslator(&myAppTranslator);
 
 	QCoreApplication::setApplicationName("PosteRazor");
 	QCoreApplication::setOrganizationName("CasaPortale");
