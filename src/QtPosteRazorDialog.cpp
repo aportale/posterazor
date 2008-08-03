@@ -455,9 +455,9 @@ void QtPosteRazorDialog::handleSavePosterButtonClicked(void)
 	} while (fileExistsAskUserForOverwrite);
 }
 
-void QtPosteRazorDialog::handleLaunchPDFApplicationChanged(int state)
+void QtPosteRazorDialog::handleLaunchPDFApplicationChanged(bool launch)
 {
-	m_posteRazorController->setLaunchPDFApplication(state == Qt::Checked);
+	m_posteRazorController->setLaunchPDFApplication(launch);
 }
 
 void QtPosteRazorDialog::createConnections(void)
@@ -503,7 +503,7 @@ void QtPosteRazorDialog::createConnections(void)
 	connect(m_posterAlignmentRightButton, SIGNAL(clicked()), SLOT(handlePosterHorizontalAlignmentRightSelected()));
 
 	connect(m_savePosterButton, SIGNAL(clicked()), SLOT(handleSavePosterButtonClicked()));
-	connect(m_launchPDFApplicationCheckBox, SIGNAL(stateChanged(int)), SLOT(handleLaunchPDFApplicationChanged(int)));
+	connect(m_launchPDFApplicationCheckBox, SIGNAL(toggled(bool)), SLOT(handleLaunchPDFApplicationChanged(bool)));
 }
 
 void QtPosteRazorDialog::createPosteRazorDialogController(void)

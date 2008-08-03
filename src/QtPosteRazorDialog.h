@@ -120,7 +120,7 @@ private slots:
 	void handlePosterVerticalAlignmentBottomSelected(void);
 
 	void handleSavePosterButtonClicked(void);
-	void handleLaunchPDFApplicationChanged(int state);
+	void handleLaunchPDFApplicationChanged(bool launch);
 
 	void updatePosterSizeGroupsState(void);
 };
