@@ -572,6 +572,7 @@ int main (int argc, char **argv)
 	a.installTranslator(&myAppTranslator);
 
 	QCoreApplication::setApplicationName("PosteRazor");
+	QCoreApplication::setApplicationVersion("1.9.0-alpha");
 	QCoreApplication::setOrganizationName("CasaPortale");
 	QCoreApplication::setOrganizationDomain("de.casaportale");
 
