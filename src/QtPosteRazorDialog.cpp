@@ -33,7 +33,6 @@
 QtPosteRazorDialog::QtPosteRazorDialog(QWidget *parent, Qt::WFlags flags)
 	: QDialog(parent, flags)
 {
-	setAttribute(Qt::WA_DeleteOnClose);
 	setupUi(this);
 	m_wizard->setCurrentIndex(0);
 
@@ -189,21 +188,20 @@ void QtPosteRazorDialog::showImageFileName(const char *fileName)
 	m_inputFileNameLabel->setText(QFileInfo(fileName).fileName());
 }
 
-void QtPosteRazorDialog::updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength /* unitOfLength */, double verticalDpi, double /* horizontalDpi */, ColorTypes::eColorTypes colorType, int bitsPerPixel)
+void QtPosteRazorDialog::updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel)
 {
-	m_imageInformationSizeInPixelsLabel->setText(QString("%1 x %2").arg(imageWidthInPixels).arg(imageHeightInPixels));
-	m_imageInformationSizeLabel->setText(QString("%1 x %2").arg(imageWidth, 0, 'f', 2).arg(imageHeight, 0, 'f', 2));
-	m_imageInformationResolutionLabel->setText(QString("%1 dpi").arg(verticalDpi, 0, 'f', 1));
-	QString colorTypeString(
+	m_imageInformationSizeInPixelsValue->setText(QString("%1 x %2").arg(imageWidthInPixels).arg(imageHeightInPixels));
+	m_imageInformationSizeValue->setText(QString("%1 x %2").arg(imageWidth, 0, 'f', 2).arg(imageHeight, 0, 'f', 2));
+	m_imageInformationResolutionValue->setText(QString("%1 dpi").arg(verticalDpi, 0, 'f', 1));
+	const QString colorTypeString = (
 		colorType==ColorTypes::eColorTypeMonochrome?QCoreApplication::translate("PosteRazorDialog", "Monochrome"):
 		colorType==ColorTypes::eColorTypeGreyscale?QCoreApplication::translate("PosteRazorDialog", "Gray scale"):
 		colorType==ColorTypes::eColorTypePalette?QCoreApplication::translate("PosteRazorDialog", "Palette"):
 		colorType==ColorTypes::eColorTypeRGB?QCoreApplication::translate("PosteRazorDialog", "RGB"):
 		colorType==ColorTypes::eColorTypeRGBA?QCoreApplication::translate("PosteRazorDialog", "RGBA"):
 		/*colorType==eColorTypeCMYK?*/ QCoreApplication::translate("PosteRazorDialog", "CMYK")
-	);
-	colorTypeString += QString(" %1bpp").arg(bitsPerPixel);
-	m_imageInformationColorTypeLabel->setText(colorTypeString);
+	) + QString(" %1bpp").arg(bitsPerPixel);
+	m_imageInformationColorTypeValue->setText(colorTypeString);
 }
 
 void QtPosteRazorDialog::launchPdfApplication(const char *pdfFileName) const
@@ -464,48 +462,48 @@ void QtPosteRazorDialog::handleLaunchPDFApplicationChanged(int state)
 
 void QtPosteRazorDialog::createConnections(void)
 {
-	connect(m_nextButton, SIGNAL(clicked()), this, SLOT(handleNextButtonClicked()));
-	connect(m_prevButton, SIGNAL(clicked()), this, SLOT(handlePrevButtonClicked()));
+	connect(m_nextButton, SIGNAL(clicked()), SLOT(handleNextButtonClicked()));
+	connect(m_prevButton, SIGNAL(clicked()), SLOT(handlePrevButtonClicked()));
 
-	connect(m_paperFormatTypeTabs, SIGNAL(currentChanged(int)), this, SLOT(handlePaperFormatTabChanged(int)));
-	connect(m_paperFormatComboBox, SIGNAL(activated(int)), this, SLOT(handlePaperFormatComboBoxActivated(int)));
-	connect(m_paperOrientationPortraitRadioButton, SIGNAL(clicked()), this, SLOT(handlePaperOrientationPortraitSelected()));
-	connect(m_paperOrientationLandscapeRadioButton, SIGNAL(clicked()), this, SLOT(handlePaperOrientationLandscapeSelected()));
-	connect(m_paperCustomWidthSpinner, SIGNAL(valueEdited(double)), this, SLOT(handlePaperCustomWidthChanged(double)));
-	connect(m_paperCustomHeightSpinner, SIGNAL(valueEdited(double)), this, SLOT(handlePaperCustomHeightChanged(double)));
-	connect(m_paperBorderTopInput, SIGNAL(valueEdited(double)), this, SLOT(handlePaperBorderTopChanged(double)));
-	connect(m_paperBorderRightInput, SIGNAL(valueEdited(double)), this, SLOT(handlePaperBorderRightChanged(double)));
-	connect(m_paperBorderBottomInput, SIGNAL(valueEdited(double)), this, SLOT(handlePaperBorderBottomChanged(double)));
-	connect(m_paperBorderLeftInput, SIGNAL(valueEdited(double)), this, SLOT(handlePaperBorderLeftChanged(double)));
+	connect(m_paperFormatTypeTabs, SIGNAL(currentChanged(int)), SLOT(handlePaperFormatTabChanged(int)));
+	connect(m_paperFormatComboBox, SIGNAL(activated(int)), SLOT(handlePaperFormatComboBoxActivated(int)));
+	connect(m_paperOrientationPortraitRadioButton, SIGNAL(clicked()), SLOT(handlePaperOrientationPortraitSelected()));
+	connect(m_paperOrientationLandscapeRadioButton, SIGNAL(clicked()), SLOT(handlePaperOrientationLandscapeSelected()));
+	connect(m_paperCustomWidthSpinner, SIGNAL(valueEdited(double)), SLOT(handlePaperCustomWidthChanged(double)));
+	connect(m_paperCustomHeightSpinner, SIGNAL(valueEdited(double)), SLOT(handlePaperCustomHeightChanged(double)));
+	connect(m_paperBorderTopInput, SIGNAL(valueEdited(double)), SLOT(handlePaperBorderTopChanged(double)));
+	connect(m_paperBorderRightInput, SIGNAL(valueEdited(double)), SLOT(handlePaperBorderRightChanged(double)));
+	connect(m_paperBorderBottomInput, SIGNAL(valueEdited(double)), SLOT(handlePaperBorderBottomChanged(double)));
+	connect(m_paperBorderLeftInput, SIGNAL(valueEdited(double)), SLOT(handlePaperBorderLeftChanged(double)));
 
-	connect(m_imageLoadButton, SIGNAL(clicked()), this, SLOT(handleImageLoadButtonClicked()));
+	connect(m_imageLoadButton, SIGNAL(clicked()), SLOT(handleImageLoadButtonClicked()));
 
-	connect(m_posterSizeAbsoluteRadioButton, SIGNAL(clicked()), this, SLOT(updatePosterSizeGroupsState()));
-	connect(m_posterSizeInPagesRadioButton, SIGNAL(clicked()), this, SLOT(updatePosterSizeGroupsState()));
-	connect(m_posterSizePercentualRadioButton, SIGNAL(clicked()), this, SLOT(updatePosterSizeGroupsState()));
+	connect(m_posterSizeAbsoluteRadioButton, SIGNAL(clicked()), SLOT(updatePosterSizeGroupsState()));
+	connect(m_posterSizeInPagesRadioButton, SIGNAL(clicked()), SLOT(updatePosterSizeGroupsState()));
+	connect(m_posterSizePercentualRadioButton, SIGNAL(clicked()), SLOT(updatePosterSizeGroupsState()));
 
-	connect(m_overlappingWidthInput, SIGNAL(valueEdited(double)), this, SLOT(handleOverlappingWidthChanged(double)));
-	connect(m_overlappingHeightInput, SIGNAL(valueEdited(double)), this, SLOT(handleOverlappingHeightChanged(double)));
-	connect(m_overlappingPositionTopLeftButton, SIGNAL(clicked()), this, SLOT(handleOverlappingPositionTopLeftSelected()));
-	connect(m_overlappingPositionTopRightButton, SIGNAL(clicked()), this, SLOT(handleOverlappingPositionTopRightSelected()));
-	connect(m_overlappingPositionBottomRightButton, SIGNAL(clicked()), this, SLOT(handleOverlappingPositionBottomRightSelected()));
-	connect(m_overlappingPositionBottomLeftButton, SIGNAL(clicked()), this, SLOT(handleOverlappingPositionBottomLeftSelected()));
+	connect(m_overlappingWidthInput, SIGNAL(valueEdited(double)), SLOT(handleOverlappingWidthChanged(double)));
+	connect(m_overlappingHeightInput, SIGNAL(valueEdited(double)), SLOT(handleOverlappingHeightChanged(double)));
+	connect(m_overlappingPositionTopLeftButton, SIGNAL(clicked()), SLOT(handleOverlappingPositionTopLeftSelected()));
+	connect(m_overlappingPositionTopRightButton, SIGNAL(clicked()), SLOT(handleOverlappingPositionTopRightSelected()));
+	connect(m_overlappingPositionBottomRightButton, SIGNAL(clicked()), SLOT(handleOverlappingPositionBottomRightSelected()));
+	connect(m_overlappingPositionBottomLeftButton, SIGNAL(clicked()), SLOT(handleOverlappingPositionBottomLeftSelected()));
 
-	connect(m_posterAbsoluteWidthInput, SIGNAL(valueEdited(double)), this, SLOT(handlePosterWidthAbsoluteChanged(double)));
-	connect(m_posterAbsoluteHeightInput, SIGNAL(valueEdited(double)), this, SLOT(handlePosterHeightAbsoluteChanged(double)));
-	connect(m_posterPagesWidthInput, SIGNAL(valueEdited(double)), this, SLOT(handlePosterWidthPagesChanged(double)));
-	connect(m_posterPagesHeightInput, SIGNAL(valueEdited(double)), this, SLOT(handlePosterHeightPagesChanged(double)));
-	connect(m_posterPercentualSizeInput, SIGNAL(valueEdited(double)), this, SLOT(handlePosterSizePercentualChanged(double)));
+	connect(m_posterAbsoluteWidthInput, SIGNAL(valueEdited(double)), SLOT(handlePosterWidthAbsoluteChanged(double)));
+	connect(m_posterAbsoluteHeightInput, SIGNAL(valueEdited(double)), SLOT(handlePosterHeightAbsoluteChanged(double)));
+	connect(m_posterPagesWidthInput, SIGNAL(valueEdited(double)), SLOT(handlePosterWidthPagesChanged(double)));
+	connect(m_posterPagesHeightInput, SIGNAL(valueEdited(double)), SLOT(handlePosterHeightPagesChanged(double)));
+	connect(m_posterPercentualSizeInput, SIGNAL(valueEdited(double)), SLOT(handlePosterSizePercentualChanged(double)));
 
-	connect(m_posterAlignmentTopButton, SIGNAL(clicked()), this, SLOT(handlePosterVerticalAlignmentTopSelected()));
-	connect(m_posterAlignmentMiddleButton, SIGNAL(clicked()), this, SLOT(handlePosterVerticalAlignmentMiddleSelected()));
-	connect(m_posterAlignmentBottomButton, SIGNAL(clicked()), this, SLOT(handlePosterVerticalAlignmentBottomSelected()));
-	connect(m_posterAlignmentLeftButton, SIGNAL(clicked()), this, SLOT(handlePosterHorizontalAlignmentLeftSelected()));
-	connect(m_posterAlignmentCenterButton, SIGNAL(clicked()), this, SLOT(handlePosterHorizontalAlignmentCenterSelected()));
-	connect(m_posterAlignmentRightButton, SIGNAL(clicked()), this, SLOT(handlePosterHorizontalAlignmentRightSelected()));
+	connect(m_posterAlignmentTopButton, SIGNAL(clicked()), SLOT(handlePosterVerticalAlignmentTopSelected()));
+	connect(m_posterAlignmentMiddleButton, SIGNAL(clicked()), SLOT(handlePosterVerticalAlignmentMiddleSelected()));
+	connect(m_posterAlignmentBottomButton, SIGNAL(clicked()), SLOT(handlePosterVerticalAlignmentBottomSelected()));
+	connect(m_posterAlignmentLeftButton, SIGNAL(clicked()), SLOT(handlePosterHorizontalAlignmentLeftSelected()));
+	connect(m_posterAlignmentCenterButton, SIGNAL(clicked()), SLOT(handlePosterHorizontalAlignmentCenterSelected()));
+	connect(m_posterAlignmentRightButton, SIGNAL(clicked()), SLOT(handlePosterHorizontalAlignmentRightSelected()));
 
-	connect(m_savePosterButton, SIGNAL(clicked()), this, SLOT(handleSavePosterButtonClicked()));
-	connect(m_launchPDFApplicationCheckBox, SIGNAL(stateChanged(int)), this, SLOT(handleLaunchPDFApplicationChanged(int)));
+	connect(m_savePosterButton, SIGNAL(clicked()), SLOT(handleSavePosterButtonClicked()));
+	connect(m_launchPDFApplicationCheckBox, SIGNAL(stateChanged(int)), SLOT(handleLaunchPDFApplicationChanged(int)));
 }
 
 void QtPosteRazorDialog::createPosteRazorDialogController(void)
@@ -528,7 +526,7 @@ void QtPosteRazorDialog::populateUI(void)
 
 void QtPosteRazorDialog::updatePosterSizeGroupsState(void)
 {
-	bool absolute = m_posterSizeAbsoluteRadioButton->isChecked();
+	const bool absolute = m_posterSizeAbsoluteRadioButton->isChecked();
 	m_posterAbsoluteWidthLabel->setEnabled(absolute);
 	m_posterAbsoluteWidthInput->setEnabled(absolute);
 	m_posterAbsoluteWidthDimensionUnitLabel->setEnabled(absolute);
@@ -536,7 +534,7 @@ void QtPosteRazorDialog::updatePosterSizeGroupsState(void)
 	m_posterAbsoluteHeightInput->setEnabled(absolute);
 	m_posterAbsoluteHeightDimensionUnitLabel->setEnabled(absolute);
 
-	bool inPages = m_posterSizeInPagesRadioButton->isChecked();
+	const bool inPages = m_posterSizeInPagesRadioButton->isChecked();
 	m_posterPagesHeightLabel->setEnabled(inPages);
 	m_posterPagesWidthInput->setEnabled(inPages);
 	m_posterPagesWidthDimensionUnitLabel->setEnabled(inPages);
@@ -544,7 +542,7 @@ void QtPosteRazorDialog::updatePosterSizeGroupsState(void)
 	m_posterPagesHeightInput->setEnabled(inPages);
 	m_posterPagesHeightDimensionUnitLabel->setEnabled(inPages);
 
-	bool percentual = m_posterSizePercentualRadioButton->isChecked();
+	const bool percentual = m_posterSizePercentualRadioButton->isChecked();
 	m_posterPercentualSizeLabel->setEnabled(percentual);
 	m_posterPercentualSizeInput->setEnabled(percentual);
 	m_posterPercentualSizeUnitLabel->setEnabled(percentual);
@@ -553,7 +551,7 @@ void QtPosteRazorDialog::updatePosterSizeGroupsState(void)
 bool QtPosteRazorDialog::loadInputImage(const QString &fileName)
 {
 	char errorMessage[1024];
-	bool successful = m_posteRazorController->loadInputImage(fileName.toAscii(), errorMessage, sizeof(errorMessage));
+	const bool successful = m_posteRazorController->loadInputImage(fileName.toAscii(), errorMessage, sizeof(errorMessage));
 	if (!successful) {
 		QMessageBox::critical(this, QCoreApplication::translate("PosteRazorDialog", "Loading Error"), QCoreApplication::translate("PosteRazorDialog", "The Image '%1' could not be loaded.").arg(fileName));
 	} else {
@@ -576,10 +574,10 @@ int main (int argc, char **argv)
 	QCoreApplication::setOrganizationName("CasaPortale");
 	QCoreApplication::setOrganizationDomain("de.casaportale");
 
-	QtPosteRazorDialog *dialog = new QtPosteRazorDialog(NULL, Qt::Window);
-	dialog->show();
+	QtPosteRazorDialog dialog;
+	dialog.show();
 	if (argc == 2)
-		dialog->loadInputImage(argv[1]);
+		dialog.loadInputImage(argv[1]);
 
 	return a.exec();
 }
