@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>596</width>
-    <height>385</height>
+    <width>470</width>
+    <height>380</height>
    </rect>
   </property>
   <property name="acceptDrops" >
@@ -15,7 +15,7 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_3" >
    <item>
-    <widget class="QFrame" name="frame" >
+    <widget class="QFrame" name="m_preview" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
        <horstretch>3</horstretch>
@@ -193,7 +193,7 @@
          <enum>QFrame::Sunken</enum>
         </property>
         <property name="currentIndex" >
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="m_loadInputImageStep" >
          <layout class="QVBoxLayout" >
@@ -204,7 +204,7 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QGroupBox" name="groupBox" >
+           <widget class="QGroupBox" name="m_inputImageGroup" >
             <property name="title" >
              <string>Input Image</string>
             </property>
@@ -391,7 +391,7 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QGroupBox" name="groupBox" >
+           <widget class="QGroupBox" name="m_paperSizeGroup" >
             <property name="title" >
              <string>Paper size</string>
             </property>
@@ -564,7 +564,7 @@
                  <item row="1" column="2" >
                   <widget class="QLabel" name="m_paperCustomHeightDimensionUnitLabel" >
                    <property name="text" >
-                    <string/>
+                    <string>cm</string>
                    </property>
                   </widget>
                  </item>
@@ -581,7 +581,7 @@
                  <item row="0" column="2" >
                   <widget class="QLabel" name="m_paperCustomWidthDimensionUnitLabel" >
                    <property name="text" >
-                    <string/>
+                    <string>cm</string>
                    </property>
                   </widget>
                  </item>
@@ -777,7 +777,7 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QGroupBox" name="groupBox" >
+           <widget class="QGroupBox" name="m_overlappingSizeGroup" >
             <property name="title" >
              <string>Overlapping size</string>
             </property>
@@ -791,7 +791,7 @@
              <item row="1" column="2" >
               <widget class="QLabel" name="m_overlappingHeightDimensionUnitLabel" >
                <property name="text" >
-                <string/>
+                <string>cm</string>
                </property>
               </widget>
              </item>
@@ -808,7 +808,7 @@
              <item row="0" column="2" >
               <widget class="QLabel" name="m_overlappingWidthDimensionUnitLabel" >
                <property name="text" >
-                <string/>
+                <string>cm</string>
                </property>
               </widget>
              </item>
@@ -864,7 +864,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QGroupBox" name="groupBox" >
+           <widget class="QGroupBox" name="m_overlappingPositionGroup" >
             <property name="title" >
              <string>Overlapping position</string>
             </property>
@@ -1042,7 +1042,7 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QGroupBox" name="m_posterSizeGroupBox" >
+           <widget class="QGroupBox" name="m_posterSizeGroup" >
             <property name="title" >
              <string>Poster size</string>
             </property>
@@ -1063,7 +1063,7 @@
              <item row="2" column="2" >
               <widget class="QLabel" name="m_posterAbsoluteHeightDimensionUnitLabel" >
                <property name="text" >
-                <string/>
+                <string>cm</string>
                </property>
               </widget>
              </item>
@@ -1101,7 +1101,7 @@
              <item row="1" column="2" >
               <widget class="QLabel" name="m_posterAbsoluteWidthDimensionUnitLabel" >
                <property name="text" >
-                <string/>
+                <string>cm</string>
                </property>
               </widget>
              </item>
@@ -1155,7 +1155,7 @@
              <item row="7" column="2" >
               <widget class="QLabel" name="m_posterPercentualSizeUnitLabel" >
                <property name="text" >
-                <string/>
+                <string>%</string>
                </property>
               </widget>
              </item>
@@ -1258,7 +1258,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QGroupBox" name="m_posterAlignmentGroupBox" >
+           <widget class="QGroupBox" name="m_posterAlignmentGroup" >
             <property name="title" >
              <string>Image alignment</string>
             </property>
@@ -1528,7 +1528,7 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QGroupBox" name="m_savePosterGroupBox" >
+           <widget class="QGroupBox" name="m_savePosterGroup" >
             <property name="title" >
              <string>Save the poster</string>
             </property>
