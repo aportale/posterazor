@@ -27,7 +27,7 @@
 #include "ui_QtPosteRazorDialog.h"
 #include "PosteRazorWizardDialogController.h"
 
-class QtPosteRazorDialog : public QDialog, private Ui::PosteRazorDialogUI, public PosteRazorWizardDialogInterface
+class QtPosteRazorDialog : public QDialog, private Ui::PosteRazorDialog, public PosteRazorWizardDialogInterface
 {
 	Q_OBJECT
 

@@ -191,18 +191,18 @@ void QtPosteRazorDialog::showImageFileName(const char *fileName)
 
 void QtPosteRazorDialog::updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength /* unitOfLength */, double verticalDpi, double /* horizontalDpi */, ColorTypes::eColorTypes colorType, int bitsPerPixel)
 {
-	m_imageInformationSizeInPixelsLabel->setText(QString::number(imageWidthInPixels) + " x " + QString::number(imageHeightInPixels));
-	m_imageInformationSizeLabel->setText(QString::number(imageWidth, 'f', 2) + " x " + QString::number(imageHeight, 'f', 2));
-	m_imageInformationResolutionLabel->setText(QString::number(verticalDpi, 'f', 1) + " dpi");
-	QString colorTypeString	(
-		colorType==ColorTypes::eColorTypeMonochrome?tr("Monochrome"):
-		colorType==ColorTypes::eColorTypeGreyscale?tr("Gray scale"):
-		colorType==ColorTypes::eColorTypePalette?tr("Palette"):
-		colorType==ColorTypes::eColorTypeRGB?tr("RGB"):
-		colorType==ColorTypes::eColorTypeRGBA?tr("RGBA"):
-		/*colorType==eColorTypeCMYK?*/ tr("CMYK")
+	m_imageInformationSizeInPixelsLabel->setText(QString("%1 x %2").arg(imageWidthInPixels).arg(imageHeightInPixels));
+	m_imageInformationSizeLabel->setText(QString("%1 x %2").arg(imageWidth, 0, 'f', 2).arg(imageHeight, 0, 'f', 2));
+	m_imageInformationResolutionLabel->setText(QString("%1 dpi").arg(verticalDpi, 0, 'f', 1));
+	QString colorTypeString(
+		colorType==ColorTypes::eColorTypeMonochrome?QCoreApplication::translate("PosteRazorDialog", "Monochrome"):
+		colorType==ColorTypes::eColorTypeGreyscale?QCoreApplication::translate("PosteRazorDialog", "Gray scale"):
+		colorType==ColorTypes::eColorTypePalette?QCoreApplication::translate("PosteRazorDialog", "Palette"):
+		colorType==ColorTypes::eColorTypeRGB?QCoreApplication::translate("PosteRazorDialog", "RGB"):
+		colorType==ColorTypes::eColorTypeRGBA?QCoreApplication::translate("PosteRazorDialog", "RGBA"):
+		/*colorType==eColorTypeCMYK?*/ QCoreApplication::translate("PosteRazorDialog", "CMYK")
 	);
-	colorTypeString += " " + QString::number(bitsPerPixel) + "bpp";
+	colorTypeString += QString(" %1bpp").arg(bitsPerPixel);
 	m_imageInformationColorTypeLabel->setText(colorTypeString);
 }
 
@@ -268,19 +268,19 @@ void QtPosteRazorDialog::handleImageLoadButtonClicked(void)
 
 		filters << QString(ImageIOTypes::getInputImageFormat(formatIndex)) + " (" + filterExtensions.join(" ") + ")";
 	}
-	filters.prepend(tr("All image formats") + " (" +  allExtensions.join(" ") + ")"); 
+	filters.prepend(QCoreApplication::translate("PosteRazorDialog", "All image formats") + " (" +  allExtensions.join(" ") + ")"); 
 
 	static const QString loadPathSettingsKey("loadPath");
 	QSettings loadPathSettings;
 
 	QString loadFileName = QFileDialog::getOpenFileName (
 		this,
-		tr("Load an input image"),
+		QCoreApplication::translate("PosteRazorDialog", "Load an input image"),
 		loadPathSettings.value(loadPathSettingsKey, ".").toString(),
 		filters.join(";;")
 	);
 
-	if (loadFileName != "") {
+	if (!loadFileName.isEmpty()) {
 		bool successful = loadInputImage(loadFileName);
 		if (successful)
 			loadPathSettings.setValue(loadPathSettingsKey, QFileInfo(loadFileName).absolutePath());
@@ -419,35 +419,34 @@ void QtPosteRazorDialog::handlePosterVerticalAlignmentBottomSelected(void)
 
 void QtPosteRazorDialog::handleSavePosterButtonClicked(void)
 {
-	static const QString savePathSettingsKey("savePath");
+	static const QLatin1String savePathSettingsKey("savePath");
 	QSettings savePathSettings;
 
 	QString saveFileName = savePathSettings.value(savePathSettingsKey, ".").toString();
 	bool fileExistsAskUserForOverwrite = false;
 
 	do {
-		saveFileName = QFileDialog::getSaveFileName (
+		saveFileName = QFileDialog::getSaveFileName(
 			this,
-			tr("Choose a filename to save under"),
+			QCoreApplication::translate("PosteRazorDialog", "Choose a filename to save under"),
 			saveFileName,
-			tr("Portable Document format (*.PDF)"),
+			QLatin1String("Portable Document format (*.pdf)"),
 			NULL,
 			QFileDialog::DontConfirmOverwrite
 		);
 
-		if (saveFileName != "")
-		{
-			if (QFileInfo(saveFileName).suffix().toLower() != "pdf")
-				saveFileName += ".pdf";
+		if (!saveFileName.isEmpty()) {
+			if (QFileInfo(saveFileName).suffix().toLower() != QLatin1String("pdf"))
+				saveFileName.append(".pdf");
 
 			fileExistsAskUserForOverwrite = QFileInfo(saveFileName).exists();
 
 			if (!fileExistsAskUserForOverwrite
-				|| QMessageBox::Yes == (QMessageBox::question(this, "", tr("The file '%1' already exists.\nDo you want to overwrite it?").arg(saveFileName), QMessageBox::Yes, QMessageBox::No))
+				|| QMessageBox::Yes == (QMessageBox::question(this, "", QCoreApplication::translate("PosteRazorDialog", "The file '%1' already exists.\nDo you want to overwrite it?").arg(saveFileName), QMessageBox::Yes, QMessageBox::No))
 				) {
 				int result = m_posteRazorController->savePoster(saveFileName.toAscii());
 				if (result != 0)
-					QMessageBox::critical(this, "", tr("The File \"%1\" could not be saved.").arg(saveFileName), QMessageBox::Ok, QMessageBox::NoButton);
+					QMessageBox::critical(this, "", QCoreApplication::translate("PosteRazorDialog", "The File \"%1\" could not be saved.").arg(saveFileName), QMessageBox::Ok, QMessageBox::NoButton);
 				else
 					savePathSettings.setValue(savePathSettingsKey, QFileInfo(saveFileName).absolutePath());
 				fileExistsAskUserForOverwrite = false;
@@ -556,7 +555,7 @@ bool QtPosteRazorDialog::loadInputImage(const QString &fileName)
 	char errorMessage[1024];
 	bool successful = m_posteRazorController->loadInputImage(fileName.toAscii(), errorMessage, sizeof(errorMessage));
 	if (!successful) {
-		QMessageBox::critical(this, tr("Loading Error"), tr("The Image '%1' could not be loaded.").arg(fileName));
+		QMessageBox::critical(this, QCoreApplication::translate("PosteRazorDialog", "Loading Error"), QCoreApplication::translate("PosteRazorDialog", "The Image '%1' could not be loaded.").arg(fileName));
 	} else {
 		m_paintCanvas->requestImage();
 	}

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de_DE">
-<defaultcodec></defaultcodec>
 <context>
-    <name>PosteRazorDialogUI</name>
+    <name>PosteRazorDialog</name>
     <message>
         <location filename="QtPosteRazorDialog.ui" line="17"/>
         <source>PosteRazor 1.5</source>
@@ -14,261 +13,258 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="220"/>
+        <location filename="QtPosteRazorDialog.ui" line="212"/>
         <source>Input Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="278"/>
+        <location filename="QtPosteRazorDialog.ui" line="270"/>
         <source>sdfgsdfg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="291"/>
+        <location filename="QtPosteRazorDialog.ui" line="283"/>
         <source>...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="301"/>
+        <location filename="QtPosteRazorDialog.ui" line="293"/>
         <source>Image Informations</source>
         <translation type="unfinished">Bildinformationen</translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="320"/>
+        <location filename="QtPosteRazorDialog.ui" line="312"/>
         <source>Size (in pixels):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="1202"/>
+        <location filename="QtPosteRazorDialog.ui" line="1154"/>
         <source>Size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="347"/>
+        <location filename="QtPosteRazorDialog.ui" line="339"/>
         <source>Resolution:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="364"/>
+        <location filename="QtPosteRazorDialog.ui" line="356"/>
         <source>Color type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="418"/>
+        <location filename="QtPosteRazorDialog.ui" line="402"/>
         <source>Paper size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="485"/>
+        <location filename="QtPosteRazorDialog.ui" line="461"/>
         <source>Standard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="497"/>
+        <location filename="QtPosteRazorDialog.ui" line="473"/>
         <source>Format:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="523"/>
+        <location filename="QtPosteRazorDialog.ui" line="499"/>
         <source>Orientation:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="554"/>
+        <location filename="QtPosteRazorDialog.ui" line="530"/>
         <source>Portrait</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="561"/>
+        <location filename="QtPosteRazorDialog.ui" line="537"/>
         <source>Landscape</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="593"/>
+        <location filename="QtPosteRazorDialog.ui" line="561"/>
         <source>Custom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="1158"/>
+        <location filename="QtPosteRazorDialog.ui" line="1110"/>
         <source>cm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="1182"/>
+        <location filename="QtPosteRazorDialog.ui" line="1134"/>
         <source>Width:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="1192"/>
+        <location filename="QtPosteRazorDialog.ui" line="1144"/>
         <source>Height:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="678"/>
+        <location filename="QtPosteRazorDialog.ui" line="646"/>
         <source>Borders (%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="690"/>
+        <location filename="QtPosteRazorDialog.ui" line="658"/>
         <source>Top</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="700"/>
+        <location filename="QtPosteRazorDialog.ui" line="668"/>
         <source>Left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="710"/>
+        <location filename="QtPosteRazorDialog.ui" line="678"/>
         <source>Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="720"/>
+        <location filename="QtPosteRazorDialog.ui" line="688"/>
         <source>Bottom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="828"/>
+        <location filename="QtPosteRazorDialog.ui" line="788"/>
         <source>Overlapping size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="915"/>
+        <location filename="QtPosteRazorDialog.ui" line="875"/>
         <source>Overlapping position</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="933"/>
+        <location filename="QtPosteRazorDialog.ui" line="893"/>
         <source>Top right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="968"/>
+        <location filename="QtPosteRazorDialog.ui" line="928"/>
         <source>Top left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="1003"/>
+        <location filename="QtPosteRazorDialog.ui" line="963"/>
         <source>Bottom left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="1038"/>
+        <location filename="QtPosteRazorDialog.ui" line="998"/>
         <source>Bottom right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="1101"/>
+        <location filename="QtPosteRazorDialog.ui" line="1053"/>
         <source>Poster size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="1127"/>
+        <location filename="QtPosteRazorDialog.ui" line="1079"/>
         <source>pages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="1144"/>
+        <location filename="QtPosteRazorDialog.ui" line="1096"/>
         <source>Image size in percent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="1151"/>
+        <location filename="QtPosteRazorDialog.ui" line="1103"/>
         <source>Absolute image size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="1165"/>
+        <location filename="QtPosteRazorDialog.ui" line="1117"/>
         <source>Size in pages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="1212"/>
+        <location filename="QtPosteRazorDialog.ui" line="1164"/>
         <source>%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="1317"/>
+        <location filename="QtPosteRazorDialog.ui" line="1269"/>
         <source>Image alignment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="1595"/>
+        <location filename="QtPosteRazorDialog.ui" line="1539"/>
         <source>Save the poster</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="1607"/>
+        <location filename="QtPosteRazorDialog.ui" line="1551"/>
         <source>Save poster</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="1620"/>
+        <location filename="QtPosteRazorDialog.ui" line="1564"/>
         <source>Launch PDF application after saving</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="1681"/>
+        <location filename="QtPosteRazorDialog.ui" line="1625"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.ui" line="1694"/>
+        <location filename="QtPosteRazorDialog.ui" line="1638"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QtPosteRazorDialog</name>
-    <message>
-        <location filename="QtPosteRazorDialog.cpp" line="197"/>
-        <source>Monochrome</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="QtPosteRazorDialog.cpp" line="198"/>
-        <source>Gray scale</source>
+        <source>Monochrome</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="QtPosteRazorDialog.cpp" line="199"/>
-        <source>Palette</source>
+        <source>Gray scale</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="QtPosteRazorDialog.cpp" line="200"/>
-        <source>RGB</source>
+        <source>Palette</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="QtPosteRazorDialog.cpp" line="201"/>
+        <source>RGB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtPosteRazorDialog.cpp" line="202"/>
         <source>RGBA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.cpp" line="203"/>
+        <location filename="QtPosteRazorDialog.cpp" line="204"/>
         <source>CMYK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.cpp" line="270"/>
+        <location filename="QtPosteRazorDialog.cpp" line="271"/>
         <source>All image formats</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.cpp" line="277"/>
+        <location filename="QtPosteRazorDialog.cpp" line="278"/>
         <source>Load an input image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.cpp" line="430"/>
+        <location filename="QtPosteRazorDialog.cpp" line="431"/>
         <source>Choose a filename to save under</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="QtPosteRazorDialog.cpp" line="432"/>
-        <source>Portable Document format (*.PDF)</source>
+        <location filename="QtPosteRazorDialog.cpp" line="433"/>
+        <source>Portable Document format (*.pdf)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

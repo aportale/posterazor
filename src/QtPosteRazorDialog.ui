@@ -1,13 +1,13 @@
 <ui version="4.0" >
  <author>Alessandro Portale</author>
- <class>PosteRazorDialogUI</class>
- <widget class="QWidget" name="PosteRazorDialogUI" >
+ <class>PosteRazorDialog</class>
+ <widget class="QWidget" name="PosteRazorDialog" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>638</width>
-    <height>408</height>
+    <width>596</width>
+    <height>385</height>
    </rect>
   </property>
   <property name="acceptDrops" >
@@ -196,17 +196,9 @@
          <enum>QFrame::Sunken</enum>
         </property>
         <property name="currentIndex" >
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="m_loadInputImageStep" >
-         <property name="geometry" >
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>232</width>
-           <height>335</height>
-          </rect>
-         </property>
          <layout class="QVBoxLayout" >
           <property name="spacing" >
            <number>6</number>
@@ -397,14 +389,6 @@
          </layout>
         </widget>
         <widget class="QWidget" name="m_paperSizeStep" >
-         <property name="geometry" >
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>232</width>
-           <height>312</height>
-          </rect>
-         </property>
          <layout class="QVBoxLayout" >
           <property name="spacing" >
            <number>6</number>
@@ -473,14 +457,6 @@
                 <number>0</number>
                </property>
                <widget class="QWidget" name="m_paperFormatStandardTab" >
-                <property name="geometry" >
-                 <rect>
-                  <x>4</x>
-                  <y>30</y>
-                  <width>206</width>
-                  <height>93</height>
-                 </rect>
-                </property>
                 <attribute name="title" >
                  <string>Standard</string>
                 </attribute>
@@ -581,14 +557,6 @@
                 </layout>
                </widget>
                <widget class="QWidget" name="m_paperFormatCustomTab" >
-                <property name="geometry" >
-                 <rect>
-                  <x>52</x>
-                  <y>118</y>
-                  <width>1252</width>
-                  <height>730</height>
-                 </rect>
-                </property>
                 <attribute name="title" >
                  <string>Custom</string>
                 </attribute>
@@ -807,14 +775,6 @@
          </layout>
         </widget>
         <widget class="QWidget" name="m_overlappingStep" >
-         <property name="geometry" >
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>232</width>
-           <height>312</height>
-          </rect>
-         </property>
          <layout class="QVBoxLayout" >
           <property name="spacing" >
            <number>6</number>
@@ -1080,14 +1040,6 @@
          </layout>
         </widget>
         <widget class="QWidget" name="m_posterSizeStep" >
-         <property name="geometry" >
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>232</width>
-           <height>312</height>
-          </rect>
-         </property>
          <layout class="QVBoxLayout" >
           <property name="spacing" >
            <number>6</number>
@@ -1574,14 +1526,6 @@
          </layout>
         </widget>
         <widget class="QWidget" name="m_savePosterStep" >
-         <property name="geometry" >
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>232</width>
-           <height>312</height>
-          </rect>
-         </property>
          <layout class="QVBoxLayout" >
           <property name="spacing" >
            <number>6</number>
