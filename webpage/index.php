@@ -331,7 +331,7 @@
 				<h3><?= text('Packagers', 'Pakete-ersteller') ?>:</h3>
 				<ul>
 					<li><a href="http://packages.ubuntu.com/intrepid/universe/posterazor">Ubuntu</a>: <a href="https://launchpad.net/~drebellion">Simrun Basuita</a></li>
-					<li><a href="http://bugs.gentoo.org/show_bug.cgi?id=234125">Gentoo</a>: <a href="http://auralfixation.org/">Seth McClain</a></li>
+					<li><a href="http://bugs.gentoo.org/show_bug.cgi?id=234125">Gentoo</a>: <a href="http://www.opengov.org/">Seth McClain</a></li>
 				</ul>
 <?
 		};
