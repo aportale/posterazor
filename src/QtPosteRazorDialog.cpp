@@ -34,7 +34,7 @@ QtPosteRazorDialog::QtPosteRazorDialog(QWidget *parent, Qt::WFlags flags)
 	: QDialog(parent, flags)
 {
 	setupUi(this);
-	m_wizard->setCurrentIndex(0);
+	m_steps->setCurrentIndex(0);
 
 	createConnections();
 	populateUI();
@@ -221,7 +221,7 @@ void QtPosteRazorDialog::setNextButtonEnabled(bool enabled)
 
 void QtPosteRazorDialog::setWizardStep(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step)
 {
-	m_wizard->setCurrentWidget (
+	m_steps->setCurrentWidget (
 		step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepInputImage?m_loadInputImageStep
 		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPaperSize?m_paperSizeStep
 		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepOverlapping?m_overlappingStep

@@ -86,7 +86,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QWidget" native="1" name="m_wizardUi" >
+    <widget class="QWidget" native="1" name="m_wizard" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Preferred" hsizetype="Maximum" >
        <horstretch>1</horstretch>
@@ -179,7 +179,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QStackedWidget" name="m_wizard" >
+       <widget class="QStackedWidget" name="m_steps" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Preferred" hsizetype="Maximum" >
           <horstretch>0</horstretch>
