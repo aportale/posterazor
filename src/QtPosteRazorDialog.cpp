@@ -219,14 +219,14 @@ void QtPosteRazorDialog::setNextButtonEnabled(bool enabled)
 	m_nextButton->setDisabled(!enabled);
 }
 
-void QtPosteRazorDialog::setWizardStep(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step)
+void QtPosteRazorDialog::setWizardStep(PosteRazorWizardDialogController::ePosteRazorWizardSteps step)
 {
 	m_steps->setCurrentWidget (
-		step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepInputImage?m_loadInputImageStep
-		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPaperSize?m_paperSizeStep
-		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepOverlapping?m_overlappingStep
-		:step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPosterSize?m_posterSizeStep
-		:/* step == PosteRazorWizardDialogEnums::ePosteRazorWizardStepSavePoster? */m_savePosterStep
+		step == PosteRazorWizardDialogController::ePosteRazorWizardStepInputImage?m_loadInputImageStep
+		:step == PosteRazorWizardDialogController::ePosteRazorWizardStepPaperSize?m_paperSizeStep
+		:step == PosteRazorWizardDialogController::ePosteRazorWizardStepOverlapping?m_overlappingStep
+		:step == PosteRazorWizardDialogController::ePosteRazorWizardStepPosterSize?m_posterSizeStep
+		:/* step == PosteRazorWizardDialogController::ePosteRazorWizardStepSavePoster? */m_savePosterStep
 	);
 }
 

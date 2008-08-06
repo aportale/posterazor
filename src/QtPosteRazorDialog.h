@@ -69,7 +69,7 @@ public:
 
 	void setPrevButtonEnabled(bool enabled);
 	void setNextButtonEnabled(bool enabled);
-	void setWizardStep(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step);
+	void setWizardStep(PosteRazorWizardDialogController::ePosteRazorWizardSteps step);
 	void setPreviewState(const char *state);
 
 public slots:

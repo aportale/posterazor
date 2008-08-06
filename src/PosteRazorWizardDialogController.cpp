@@ -24,7 +24,7 @@
 
 PosteRazorWizardDialogController::PosteRazorWizardDialogController()
 	: m_WizardDialog(0)
-	, m_wizardStep(PosteRazorWizardDialogEnums::ePosteRazorWizardStepInputImage)
+	, m_wizardStep(ePosteRazorWizardStepInputImage)
 {
 }
 
@@ -37,10 +37,10 @@ void PosteRazorWizardDialogController::setPosteRazorWizardDialog(PosteRazorWizar
 void PosteRazorWizardDialogController::handlePrevButtonPressed(void)
 {
 	m_wizardStep =
-		m_wizardStep == PosteRazorWizardDialogEnums::ePosteRazorWizardStepSavePoster?PosteRazorWizardDialogEnums::ePosteRazorWizardStepPosterSize
-		:m_wizardStep == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPosterSize?PosteRazorWizardDialogEnums::ePosteRazorWizardStepOverlapping
-		:m_wizardStep == PosteRazorWizardDialogEnums::ePosteRazorWizardStepOverlapping?PosteRazorWizardDialogEnums::ePosteRazorWizardStepPaperSize
-		:/* m_wizardStep == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPaperSize? */PosteRazorWizardDialogEnums::ePosteRazorWizardStepInputImage;
+		m_wizardStep == ePosteRazorWizardStepSavePoster?ePosteRazorWizardStepPosterSize
+		:m_wizardStep == ePosteRazorWizardStepPosterSize?ePosteRazorWizardStepOverlapping
+		:m_wizardStep == ePosteRazorWizardStepOverlapping?ePosteRazorWizardStepPaperSize
+		:/* m_wizardStep == ePosteRazorWizardStepPaperSize? */ePosteRazorWizardStepInputImage;
 
 	updateDialogWizardStep();
 }
@@ -48,10 +48,10 @@ void PosteRazorWizardDialogController::handlePrevButtonPressed(void)
 void PosteRazorWizardDialogController::handleNextButtonPressed(void)
 {
 	m_wizardStep =
-		m_wizardStep == PosteRazorWizardDialogEnums::ePosteRazorWizardStepInputImage?PosteRazorWizardDialogEnums::ePosteRazorWizardStepPaperSize
-		:m_wizardStep == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPaperSize?PosteRazorWizardDialogEnums::ePosteRazorWizardStepOverlapping
-		:m_wizardStep == PosteRazorWizardDialogEnums::ePosteRazorWizardStepOverlapping?PosteRazorWizardDialogEnums::ePosteRazorWizardStepPosterSize
-		:/* m_wizardStep == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPosterSize? */PosteRazorWizardDialogEnums::ePosteRazorWizardStepSavePoster;
+		m_wizardStep == ePosteRazorWizardStepInputImage?ePosteRazorWizardStepPaperSize
+		:m_wizardStep == ePosteRazorWizardStepPaperSize?ePosteRazorWizardStepOverlapping
+		:m_wizardStep == ePosteRazorWizardStepOverlapping?ePosteRazorWizardStepPosterSize
+		:/* m_wizardStep == ePosteRazorWizardStepPosterSize? */ePosteRazorWizardStepSavePoster;
 
 	updateDialogWizardStep();
 }
@@ -67,16 +67,16 @@ void PosteRazorWizardDialogController::updateDialogWizardStep(void)
 	m_WizardDialog->setWizardStep(m_wizardStep);
 	m_WizardDialog->setPreviewState
 	(
-		m_wizardStep == PosteRazorWizardDialogEnums::ePosteRazorWizardStepInputImage?"image"
-		:m_wizardStep == PosteRazorWizardDialogEnums::ePosteRazorWizardStepOverlapping?"overlapping"
-		:m_wizardStep == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPaperSize?"paper"
-		:m_wizardStep == PosteRazorWizardDialogEnums::ePosteRazorWizardStepPosterSize?"poster"
-		:/* m_wizardStep == PosteRazorWizardDialogEnums::ePosteRazorWizardStepSavePoster? */"poster"
+		m_wizardStep == ePosteRazorWizardStepInputImage?"image"
+		:m_wizardStep == ePosteRazorWizardStepOverlapping?"overlapping"
+		:m_wizardStep == ePosteRazorWizardStepPaperSize?"paper"
+		:m_wizardStep == ePosteRazorWizardStepPosterSize?"poster"
+		:/* m_wizardStep == ePosteRazorWizardStepSavePoster? */"poster"
 	);
-	m_WizardDialog->setPrevButtonEnabled(m_wizardStep != PosteRazorWizardDialogEnums::ePosteRazorWizardStepInputImage);
+	m_WizardDialog->setPrevButtonEnabled(m_wizardStep != ePosteRazorWizardStepInputImage);
 	m_WizardDialog->setNextButtonEnabled
 	(
-		m_wizardStep != PosteRazorWizardDialogEnums::ePosteRazorWizardStepSavePoster
+		m_wizardStep != ePosteRazorWizardStepSavePoster
 		&& m_PosteRazor->getIsImageLoaded()
 	);
 }

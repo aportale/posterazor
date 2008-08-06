@@ -25,30 +25,19 @@
 
 #include "PosteRazorDialogController.h"
 
-class PosteRazorWizardDialogEnums
+class PosteRazorWizardDialogInterface;
+
+class PosteRazorWizardDialogController: public PosteRazorDialogController
 {
 public:
-	enum ePosteRazorWizardSteps	{
+	enum ePosteRazorWizardSteps {
 		ePosteRazorWizardStepInputImage,
 		ePosteRazorWizardStepPaperSize,
 		ePosteRazorWizardStepOverlapping,
 		ePosteRazorWizardStepPosterSize,
 		ePosteRazorWizardStepSavePoster
 	};
-};
 
-class PosteRazorWizardDialogInterface: public PosteRazorDialogInterface
-{
-public:
-	virtual void setPrevButtonEnabled(bool enabled) = 0;
-	virtual void setNextButtonEnabled(bool enabled) = 0;
-	virtual void setWizardStep(PosteRazorWizardDialogEnums::ePosteRazorWizardSteps step) = 0;
-	virtual void setPreviewState(const char *state) = 0;
-};
-
-class PosteRazorWizardDialogController: public PosteRazorDialogController
-{
-public:
 	PosteRazorWizardDialogController();
 	virtual ~PosteRazorWizardDialogController() {};
 	void setPosteRazorWizardDialog(PosteRazorWizardDialogInterface *dialog);
@@ -58,8 +47,17 @@ public:
 
 private:
 	PosteRazorWizardDialogInterface *m_WizardDialog;
-	PosteRazorWizardDialogEnums::ePosteRazorWizardSteps m_wizardStep;
+	ePosteRazorWizardSteps m_wizardStep;
 	void updateDialogWizardStep(void);
+};
+
+class PosteRazorWizardDialogInterface: public PosteRazorDialogInterface
+{
+public:
+	virtual void setPrevButtonEnabled(bool enabled) = 0;
+	virtual void setNextButtonEnabled(bool enabled) = 0;
+	virtual void setWizardStep(PosteRazorWizardDialogController::ePosteRazorWizardSteps step) = 0;
+	virtual void setPreviewState(const char *state) = 0;
 };
 
 #endif
