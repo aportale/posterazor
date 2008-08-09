@@ -8,7 +8,7 @@ SOURCES += \
 	PosteRazor.cpp \
 	PosteRazorImageIO.cpp \
 	PosteRazorPDFOutput.cpp \
-	QtPosteRazorDialog.cpp \
+	mainwindow.cpp \
 	QtPosteRazorSpinBox.cpp \
 	QtPaintCanvas.cpp \
 	PosteRazorDialogController.cpp \
@@ -24,7 +24,7 @@ HEADERS += \
 	PosteRazor.h \
 	PosteRazorImageIO.h \
 	PosteRazorPDFOutput.h \
-	QtPosteRazorDialog.h \
+	mainwindow.h \
 	QtPosteRazorSpinBox.h \
 	QtPaintCanvas.h \
 	PosteRazorDialogController.h \
@@ -51,7 +51,7 @@ DEFINES -= \
 	UNICODE
 
 FORMS += \
-	QtPosteRazorDialog.ui
+	mainwindow.ui
 
 RESOURCES += \
 	QtPosteRazorDialogResources.qrc
