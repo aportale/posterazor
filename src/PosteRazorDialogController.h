@@ -50,7 +50,7 @@ public:
 
 	void updatePreview(void);
 	void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
-	void setPaperFormat(PaperFormats::ePaperFormats format);
+	void setPaperFormat(const QString &format);
 	void setPaperOrientation(PaperFormats::ePaperOrientations orientation);
 	void setPaperBorderTop(double border);
 	void setPaperBorderRight(double border);

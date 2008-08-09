@@ -21,85 +21,42 @@
 */
 
 #include "PaperFormats.h"
-#include <string.h>
 
-typedef struct
+const QHash<QString, QSizeF> &PaperFormats::paperFormats()
 {
-	PaperFormats::ePaperFormats format;
-	char *name;
-	double width;
-	double height;
-} paperFormats;
-
-// Needs to have the same order as the ePaperFormats enum!!!
-static const paperFormats g_paperFormats[] =
-{
-	{PaperFormats::ePaperFormatA4, "DIN A4", 21.0, 29.7},
-	{PaperFormats::ePaperFormatA3, "DIN A3", 29.7, 42.0},
-	{PaperFormats::ePaperFormatLegal, "Legal", 21.6, 35.6},
-	{PaperFormats::ePaperFormatLetter, "Letter", 21.6, 27.9},
-	{PaperFormats::ePaperFormatTabloid, "Tabloid", 27.9, 43.2}
-};
-
-static const int g_paperFormatsCount = sizeof(g_paperFormats)/sizeof(g_paperFormats[0]);
-
-int PaperFormats::getPaperFormatsCount(void)
-{
-	return g_paperFormatsCount;
-}
-
-PaperFormats::ePaperFormats PaperFormats::getPaperFormatForIndex(int index)
-{
-	return g_paperFormats[index].format;
-}
-
-const int GetPaperFormatIndex(PaperFormats::ePaperFormats format)
-{
-	int index = 0;
-
-	for (int i = 0; i < g_paperFormatsCount; i++) {
-		if (format == g_paperFormats[i].format) {
-			index = i;
-			break;
-		}
+	static QHash<QString, QSizeF> formats;
+	if (formats.empty()) {
+		const struct {
+			QString name;
+			double width;
+			double height;
+		} paperFormats[] = {
+			{QLatin1String("DIN A4"),    21.0, 29.7},
+			{QLatin1String("DIN A3"),    29.7, 42.0},
+			{QLatin1String("Legal"),     21.6, 35.6},
+			{QLatin1String("Letter"),    21.6, 27.9},
+			{QLatin1String("Tabloid"),   27.9, 43.2}
+		};
+		const int paperFormatsCount = (int)sizeof(paperFormats)/sizeof(paperFormats[0]);
+		for (int i = 0; i < paperFormatsCount; i++)
+			formats.insert(paperFormats[i].name, QSizeF(paperFormats[i].width, paperFormats[i].height));
 	}
-
-	return index;
+	return formats;
 }
 
-const char* PaperFormats::getPaperFormatName(ePaperFormats format)
+double PaperFormats::getPaperDimension(const QString &format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit, bool width)
 {
-	const int paperFormatIndex = GetPaperFormatIndex(format);
-	return g_paperFormats[paperFormatIndex].name;
-}
-
-PaperFormats::ePaperFormats PaperFormats::getPaperFormatForName(const char* name)
-{
-	ePaperFormats paperFormat = ePaperFormatA4;
-
-	for (int i = 0; i < g_paperFormatsCount; i++) {
-		if (0 == strcmp(name, g_paperFormats[i].name)) {
-			paperFormat = getPaperFormatForIndex(i);
-			break;
-		}
-	}
-
-	return paperFormat;
-}
-
-double PaperFormats::getPaperDimension(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit, bool width)
-{
-	const int paperFormatIndex = GetPaperFormatIndex(format);
-	const double dimension = ((width && orientation == ePaperOrientationPortrait) || (!width && orientation == ePaperOrientationLandscape))?g_paperFormats[paperFormatIndex].width:g_paperFormats[paperFormatIndex].height;
+	const QSizeF paperSize = paperFormats().value(format);
+	const double dimension = ((width && orientation == ePaperOrientationPortrait) || (!width && orientation == ePaperOrientationLandscape))?paperSize.width():paperSize.height();
 	return UnitsOfLength::convertBetweenUnitsOfLength(dimension, UnitsOfLength::eUnitOfLengthCentimeter, unit);
 }
 
-double PaperFormats::getPaperWidth(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit)
+double PaperFormats::getPaperWidth(const QString &format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit)
 {
 	return getPaperDimension(format, orientation, unit, true);
 }
 
-double PaperFormats::getPaperHeight(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit)
+double PaperFormats::getPaperHeight(const QString &format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit)
 {
 	return getPaperDimension(format, orientation, unit, false);
 }

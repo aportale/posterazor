@@ -72,18 +72,12 @@ void PosteRazorDialogController::setUnitOfLength(UnitsOfLength::eUnitsOfLength u
 	updateDialog();
 }
 
-void PosteRazorDialogController::setPaperFormat(PaperFormats::ePaperFormats format)
+void PosteRazorDialogController::setPaperFormat(const QString &format)
 {
 	m_PosteRazor->setPaperFormat(format);
 	setDialogPosterOptions();
 	setDialogPaperBorders();
 	updatePreview();
-}
-
-void PosteRazorDialogController::setPaperFormatByName(const char *name)
-{
-	const PaperFormats::ePaperFormats paperFormat = PaperFormats::getPaperFormatForName(name);
-	setPaperFormat(paperFormat);
 }
 
 void PosteRazorDialogController::setPaperOrientation(PaperFormats::ePaperOrientations orientation)

@@ -24,31 +24,25 @@
 #define PAPERFORMATS_H
 
 #include "UnitsOfLength.h"
+#include <QHash>
+#include <QString>
+#include <QSizeF>
 
 class PaperFormats
 {
 public:
-	enum ePaperFormats {
-		ePaperFormatA4,
-		ePaperFormatA3,
-		ePaperFormatLegal,
-		ePaperFormatLetter,
-		ePaperFormatTabloid
-	};
-
 	enum ePaperOrientations {
 		ePaperOrientationPortrait,
 		ePaperOrientationLandscape
 	};
 
-	static int getPaperFormatsCount(void);
-	static ePaperFormats getPaperFormatForIndex(int index);
-	static const char* getPaperFormatName(ePaperFormats format);
-	static ePaperFormats getPaperFormatForName(const char* name);
+	static const QHash<QString, QSizeF> &paperFormats();
 
-	static double getPaperDimension(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit, bool width);
-	static double getPaperWidth(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit);
-	static double getPaperHeight(ePaperFormats format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit);
+	static int getPaperFormatsCount(void);
+
+	static double getPaperDimension(const QString &format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit, bool width);
+	static double getPaperWidth(const QString &format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit);
+	static double getPaperHeight(const QString &format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit);
 };
 
 #endif // PAPERFORMATS_H

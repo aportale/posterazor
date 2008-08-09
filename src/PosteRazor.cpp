@@ -64,7 +64,7 @@ private:
 	PosteRazorEnums::eVerticalAlignments    m_posterVerticalAlignment;
 
 	bool                                    m_useCustomPaperSize;
-	PaperFormats::ePaperFormats             m_paperFormat;
+	QString                                 m_paperFormat;
 	PaperFormats::ePaperOrientations        m_paperOrientation;
 	double                                  m_paperBorderTop;
 	double                                  m_paperBorderRight;
@@ -90,7 +90,7 @@ public:
 		, m_posterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentTop)
 
 		, m_useCustomPaperSize(false)
-		, m_paperFormat(PaperFormats::ePaperFormatA4)
+		, m_paperFormat("DIN A4")
 		, m_paperOrientation(PaperFormats::ePaperOrientationPortrait)
 		, m_paperBorderTop(1.5)
 		, m_paperBorderRight(1.5)
@@ -125,7 +125,7 @@ public:
 		m_posterHorizontalAlignment    = (PosteRazorEnums::eHorizontalAlignments)settings->value(settingsKey_PosterHorizontalAlignment, (int)m_posterHorizontalAlignment).toInt();
 		m_posterVerticalAlignment      = (PosteRazorEnums::eVerticalAlignments)settings->value(settingsKey_PosterVerticalAlignment, (int)m_posterVerticalAlignment).toInt();
 		m_useCustomPaperSize           = settings->value(settingsKey_UseCustomPaperSize, m_useCustomPaperSize).toBool();
-		m_paperFormat                  = (PaperFormats::ePaperFormats)settings->value(settingsKey_PaperFormat, (int)m_paperFormat).toInt();
+		m_paperFormat                  = settings->value(settingsKey_PaperFormat, m_paperFormat).toString();
 		m_paperOrientation             = (PaperFormats::ePaperOrientations)settings->value(settingsKey_PaperOrientation, (int)m_paperOrientation).toInt();
 		m_paperBorderTop               = settings->value(settingsKey_PaperBorderTop, m_paperBorderTop).toDouble();
 		m_paperBorderRight             = settings->value(settingsKey_PaperBorderRight, m_paperBorderRight).toDouble();
@@ -152,7 +152,7 @@ public:
 		settings->setValue(settingsKey_PosterHorizontalAlignment, (int)m_posterHorizontalAlignment);
 		settings->setValue(settingsKey_PosterVerticalAlignment, (int)m_posterVerticalAlignment);
 		settings->setValue(settingsKey_UseCustomPaperSize, m_useCustomPaperSize);
-		settings->setValue(settingsKey_PaperFormat, (int)m_paperFormat);
+		settings->setValue(settingsKey_PaperFormat, m_paperFormat);
 		settings->setValue(settingsKey_PaperOrientation, (int)m_paperOrientation);
 		settings->setValue(settingsKey_PaperBorderTop, m_paperBorderTop);
 		settings->setValue(settingsKey_PaperBorderRight, m_paperBorderRight);
@@ -249,7 +249,7 @@ public:
 		return UnitsOfLength::getUnitOfLengthName(m_unitOfLength);
 	}
 
-	void setPaperFormat(PaperFormats::ePaperFormats format)
+	void setPaperFormat(const QString &format)
 	{
 		m_paperFormat = format;
 	}
@@ -279,7 +279,7 @@ public:
 		m_paperBorderLeft = convertDistanceToCm(border);
 	}
 
-	PaperFormats::ePaperFormats getPaperFormat(void) const
+	const QString getPaperFormat(void) const
 	{
 		return m_paperFormat;
 	}

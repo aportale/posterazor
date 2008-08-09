@@ -56,9 +56,10 @@ void MainWindow::setUnitOfLength(UnitsOfLength::eUnitsOfLength /* unit */)
 {
 }
 
-void MainWindow::setPaperFormat(PaperFormats::ePaperFormats format)
+void MainWindow::setPaperFormat(const QString &format)
 {
-	m_paperFormatComboBox->setCurrentIndex(m_paperFormatComboBox->findData(QVariant(format)));
+	const int index = m_paperFormatComboBox->findData(format, Qt::DisplayRole);
+	m_paperFormatComboBox->setCurrentIndex(index);
 }
 
 void MainWindow::setPaperOrientation(PaperFormats::ePaperOrientations orientation)
@@ -190,6 +191,9 @@ void MainWindow::showImageFileName(const char *fileName)
 
 void MainWindow::updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel)
 {
+	Q_UNUSED(horizontalDpi)
+	Q_UNUSED(unitOfLength)
+
 	m_imageInformationSizeInPixelsValue->setText(QString("%1 x %2").arg(imageWidthInPixels).arg(imageHeightInPixels));
 	m_imageInformationSizeValue->setText(QString("%1 x %2").arg(imageWidth, 0, 'f', 2).arg(imageHeight, 0, 'f', 2));
 	m_imageInformationResolutionValue->setText(QString("%1 dpi").arg(verticalDpi, 0, 'f', 1));
@@ -245,9 +249,9 @@ void MainWindow::handlePrevButtonClicked(void)
 	m_posteRazorController->handlePrevButtonPressed();
 }
 
-void MainWindow::handlePaperFormatComboBoxActivated(int index)
+void MainWindow::handlePaperFormatComboBoxChanged(const QString &format)
 {
-	m_posteRazorController->setPaperFormat((PaperFormats::ePaperFormats)(m_paperFormatComboBox->itemData(index).toInt()));
+	m_posteRazorController->setPaperFormat(format);
 }
 
 void MainWindow::handleImageLoadButtonClicked(void)
@@ -449,9 +453,9 @@ void MainWindow::handleSavePosterButtonClicked(void)
 					savePathSettings.setValue(savePathSettingsKey, QFileInfo(saveFileName).absolutePath());
 				fileExistsAskUserForOverwrite = false;
 			}
-		}
-		else
+		} else {
 			break;
+		}
 	} while (fileExistsAskUserForOverwrite);
 }
 
@@ -466,7 +470,7 @@ void MainWindow::createConnections(void)
 	connect(m_prevButton, SIGNAL(clicked()), SLOT(handlePrevButtonClicked()));
 
 	connect(m_paperFormatTypeTabs, SIGNAL(currentChanged(int)), SLOT(handlePaperFormatTabChanged(int)));
-	connect(m_paperFormatComboBox, SIGNAL(activated(int)), SLOT(handlePaperFormatComboBoxActivated(int)));
+	connect(m_paperFormatComboBox, SIGNAL(activated(const QString &)), SLOT(handlePaperFormatComboBoxChanged(const QString &)));
 	connect(m_paperOrientationPortraitRadioButton, SIGNAL(clicked()), SLOT(handlePaperOrientationPortraitSelected()));
 	connect(m_paperOrientationLandscapeRadioButton, SIGNAL(clicked()), SLOT(handlePaperOrientationLandscapeSelected()));
 	connect(m_paperCustomWidthSpinner, SIGNAL(valueEdited(double)), SLOT(handlePaperCustomWidthChanged(double)));
@@ -517,11 +521,9 @@ void MainWindow::createPosteRazorDialogController(void)
 
 void MainWindow::populateUI(void)
 {
-	for (int i = 0; i < PaperFormats::getPaperFormatsCount(); i++) {
-		PaperFormats::ePaperFormats format = PaperFormats::getPaperFormatForIndex(i);
-		QString formatName(PaperFormats::getPaperFormatName(format));
-		m_paperFormatComboBox->addItem(formatName, QVariant(format));
-	}
+	QStringList formats = PaperFormats::paperFormats().keys();
+	formats.sort();
+	m_paperFormatComboBox->addItems(formats);
 }
 
 void MainWindow::updatePosterSizeGroupsState(void)

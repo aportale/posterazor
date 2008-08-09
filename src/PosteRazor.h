@@ -67,7 +67,7 @@ public:
 
 	virtual void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit) = 0;
 
-	virtual void setPaperFormat(PaperFormats::ePaperFormats format) = 0;
+	virtual void setPaperFormat(const QString &format) = 0;
 	virtual void setPaperOrientation(PaperFormats::ePaperOrientations orientation) = 0;
 
 	virtual void setPaperBorderTop(double border) = 0;
@@ -112,7 +112,7 @@ public:
 	virtual UnitsOfLength::eUnitsOfLength getUnitOfLength(void) const = 0;
 	virtual const char* getUnitOfLengthName(void) const = 0;
 
-	virtual PaperFormats::ePaperFormats getPaperFormat(void) const = 0;
+	virtual const QString getPaperFormat(void) const = 0;
 	virtual PaperFormats::ePaperOrientations getPaperOrientation(void) const = 0;
 	virtual double getPaperBorderTop(void) const = 0;
 	virtual double getPaperBorderRight(void) const = 0;

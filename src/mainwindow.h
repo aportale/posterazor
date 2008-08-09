@@ -37,7 +37,7 @@ public:
 
 	virtual void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
 
-	virtual void setPaperFormat(PaperFormats::ePaperFormats format);
+	virtual void setPaperFormat(const QString &format);
 	virtual void setPaperOrientation(PaperFormats::ePaperOrientations orientation);
 
 	virtual void setPaperBorderTop(double border);
@@ -86,10 +86,10 @@ private:
 private slots:
 	void handleNextButtonClicked(void);
 	void handlePrevButtonClicked(void);
-	void handlePaperFormatComboBoxActivated(int index);
 	void handleImageLoadButtonClicked(void);
 
 	void handlePaperFormatTabChanged(int index);
+	void handlePaperFormatComboBoxChanged(const QString &format);
 	void handlePaperOrientationPortraitSelected(void);
 	void handlePaperOrientationLandscapeSelected(void);
 	void handlePaperCustomWidthChanged(double width);
