@@ -20,7 +20,7 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "QtPosteRazorDialog.h"
+#include "mainwindow.h"
 #include <QSettings>
 #include <QApplication>
 #include <QHeaderView>
@@ -30,8 +30,8 @@
 #include <QTranslator>
 #include <QDesktopServices>
 
-QtPosteRazorDialog::QtPosteRazorDialog(QWidget *parent, Qt::WFlags flags)
-	: QDialog(parent, flags)
+MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
+	: QMainWindow(parent, flags)
 {
 	setupUi(this);
 	m_steps->setCurrentIndex(0);
@@ -46,22 +46,22 @@ QtPosteRazorDialog::QtPosteRazorDialog(QWidget *parent, Qt::WFlags flags)
 	updatePosterSizeGroupsState();
 }
 
-QtPosteRazorDialog::~QtPosteRazorDialog()
+MainWindow::~MainWindow()
 {
 	QSettings settings;
 	m_posteRazorController->writeSettings(&settings);
 }
 
-void QtPosteRazorDialog::setUnitOfLength(UnitsOfLength::eUnitsOfLength /* unit */)
+void MainWindow::setUnitOfLength(UnitsOfLength::eUnitsOfLength /* unit */)
 {
 }
 
-void QtPosteRazorDialog::setPaperFormat(PaperFormats::ePaperFormats format)
+void MainWindow::setPaperFormat(PaperFormats::ePaperFormats format)
 {
 	m_paperFormatComboBox->setCurrentIndex(m_paperFormatComboBox->findData(QVariant(format)));
 }
 
-void QtPosteRazorDialog::setPaperOrientation(PaperFormats::ePaperOrientations orientation)
+void MainWindow::setPaperOrientation(PaperFormats::ePaperOrientations orientation)
 {
 	(
 		orientation == PaperFormats::ePaperOrientationLandscape?m_paperOrientationLandscapeRadioButton
@@ -69,52 +69,52 @@ void QtPosteRazorDialog::setPaperOrientation(PaperFormats::ePaperOrientations or
 	)->setChecked(true);
 }
 
-void QtPosteRazorDialog::setPaperBorderTop(double border)
+void MainWindow::setPaperBorderTop(double border)
 {
 	m_paperBorderTopInput->setValue(border);
 }
 
-void QtPosteRazorDialog::setPaperBorderRight(double border)
+void MainWindow::setPaperBorderRight(double border)
 {
 	m_paperBorderRightInput->setValue(border);
 }
 
-void QtPosteRazorDialog::setPaperBorderBottom(double border)
+void MainWindow::setPaperBorderBottom(double border)
 {
 	m_paperBorderBottomInput->setValue(border);
 }
 
-void QtPosteRazorDialog::setPaperBorderLeft(double border)
+void MainWindow::setPaperBorderLeft(double border)
 {
 	m_paperBorderLeftInput->setValue(border);
 }
 
-void QtPosteRazorDialog::setCustomPaperWidth(double width)
+void MainWindow::setCustomPaperWidth(double width)
 {
 	m_paperCustomWidthSpinner->setValue(width);
 }
 
-void QtPosteRazorDialog::setCustomPaperHeight(double height)
+void MainWindow::setCustomPaperHeight(double height)
 {
 	m_paperCustomHeightSpinner->setValue(height);
 }
 
-void QtPosteRazorDialog::setUseCustomPaperSize(bool useIt)
+void MainWindow::setUseCustomPaperSize(bool useIt)
 {
 	m_paperFormatTypeTabs->setCurrentWidget(useIt?m_paperFormatCustomTab:m_paperFormatStandardTab);
 }
 
-void QtPosteRazorDialog::setOverlappingWidth(double width)
+void MainWindow::setOverlappingWidth(double width)
 {
 	m_overlappingWidthInput->setValue(width);
 }
 
-void QtPosteRazorDialog::setOverlappingHeight(double height)
+void MainWindow::setOverlappingHeight(double height)
 {
 	m_overlappingHeightInput->setValue(height);
 }
 
-void QtPosteRazorDialog::setOverlappingPosition(PosteRazorEnums::eOverlappingPositions position)
+void MainWindow::setOverlappingPosition(PosteRazorEnums::eOverlappingPositions position)
 {
 	(
 		position == PosteRazorEnums::eOverlappingPositionTopLeft?m_overlappingPositionTopLeftButton
@@ -124,7 +124,7 @@ void QtPosteRazorDialog::setOverlappingPosition(PosteRazorEnums::eOverlappingPos
 	)->setChecked(true);
 }
 
-void QtPosteRazorDialog::setPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width)
+void MainWindow::setPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width)
 {
 	(
 		mode == PosteRazorEnums::ePosterSizeModeAbsolute?m_posterAbsoluteWidthInput
@@ -133,7 +133,7 @@ void QtPosteRazorDialog::setPosterWidth(PosteRazorEnums::ePosterSizeModes mode, 
 	)->setValue(width);
 }
 
-void QtPosteRazorDialog::setPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height)
+void MainWindow::setPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height)
 {
 	(
 		mode == PosteRazorEnums::ePosterSizeModeAbsolute?m_posterAbsoluteHeightInput
@@ -142,7 +142,7 @@ void QtPosteRazorDialog::setPosterHeight(PosteRazorEnums::ePosterSizeModes mode,
 	)->setValue(height);
 }
 
-void QtPosteRazorDialog::setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode)
+void MainWindow::setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode)
 {
 	(
 		mode == PosteRazorEnums::ePosterSizeModeAbsolute?m_posterSizeAbsoluteRadioButton
@@ -151,7 +151,7 @@ void QtPosteRazorDialog::setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mod
 	)->setChecked(true);
 }
 
-void QtPosteRazorDialog::setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment)
+void MainWindow::setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment)
 {
 	(
 		alignment == PosteRazorEnums::eHorizontalAlignmentLeft?m_posterAlignmentLeftButton
@@ -160,7 +160,7 @@ void QtPosteRazorDialog::setPosterHorizontalAlignment(PosteRazorEnums::eHorizont
 	)->setChecked(true);
 }
 
-void QtPosteRazorDialog::setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment)
+void MainWindow::setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment)
 {
 	(
 		alignment == PosteRazorEnums::eVerticalAlignmentTop?m_posterAlignmentTopButton
@@ -169,26 +169,26 @@ void QtPosteRazorDialog::setPosterVerticalAlignment(PosteRazorEnums::eVerticalAl
 	)->setChecked(true);
 }
 
-void QtPosteRazorDialog::setPosterOutputFormat(ImageIOTypes::eImageFormats /* format */)
+void MainWindow::setPosterOutputFormat(ImageIOTypes::eImageFormats /* format */)
 {
 }
 
-void QtPosteRazorDialog::setLaunchPDFApplication(bool launch)
+void MainWindow::setLaunchPDFApplication(bool launch)
 {
 	m_launchPDFApplicationCheckBox->setCheckState(launch?Qt::Checked:Qt::Unchecked);
 }
 
-void QtPosteRazorDialog::updatePreview(void)
+void MainWindow::updatePreview(void)
 {
 	m_paintCanvas->repaint();
 }
 
-void QtPosteRazorDialog::showImageFileName(const char *fileName)
+void MainWindow::showImageFileName(const char *fileName)
 {
 	m_inputFileNameLabel->setText(QFileInfo(fileName).fileName());
 }
 
-void QtPosteRazorDialog::updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel)
+void MainWindow::updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel)
 {
 	m_imageInformationSizeInPixelsValue->setText(QString("%1 x %2").arg(imageWidthInPixels).arg(imageHeightInPixels));
 	m_imageInformationSizeValue->setText(QString("%1 x %2").arg(imageWidth, 0, 'f', 2).arg(imageHeight, 0, 'f', 2));
@@ -204,22 +204,22 @@ void QtPosteRazorDialog::updateImageInfoFields(int imageWidthInPixels, int image
 	m_imageInformationColorTypeValue->setText(colorTypeString);
 }
 
-void QtPosteRazorDialog::launchPdfApplication(const char *pdfFileName) const
+void MainWindow::launchPdfApplication(const char *pdfFileName) const
 {
 	QDesktopServices::openUrl(QUrl(pdfFileName));
 }
 
-void QtPosteRazorDialog::setPrevButtonEnabled(bool enabled)
+void MainWindow::setPrevButtonEnabled(bool enabled)
 {
 	m_prevButton->setDisabled(!enabled);
 }
 
-void QtPosteRazorDialog::setNextButtonEnabled(bool enabled)
+void MainWindow::setNextButtonEnabled(bool enabled)
 {
 	m_nextButton->setDisabled(!enabled);
 }
 
-void QtPosteRazorDialog::setWizardStep(PosteRazorWizardDialogController::ePosteRazorWizardSteps step)
+void MainWindow::setWizardStep(PosteRazorWizardDialogController::ePosteRazorWizardSteps step)
 {
 	m_steps->setCurrentWidget (
 		step == PosteRazorWizardDialogController::ePosteRazorWizardStepInputImage?m_loadInputImageStep
@@ -230,27 +230,27 @@ void QtPosteRazorDialog::setWizardStep(PosteRazorWizardDialogController::ePosteR
 	);
 }
 
-void QtPosteRazorDialog::setPreviewState(const char *state)
+void MainWindow::setPreviewState(const char *state)
 {
 	m_paintCanvas->setState(state);
 }
 
-void QtPosteRazorDialog::handleNextButtonClicked(void)
+void MainWindow::handleNextButtonClicked(void)
 {
 	m_posteRazorController->handleNextButtonPressed();
 }
 
-void QtPosteRazorDialog::handlePrevButtonClicked(void)
+void MainWindow::handlePrevButtonClicked(void)
 {
 	m_posteRazorController->handlePrevButtonPressed();
 }
 
-void QtPosteRazorDialog::handlePaperFormatComboBoxActivated(int index)
+void MainWindow::handlePaperFormatComboBoxActivated(int index)
 {
 	m_posteRazorController->setPaperFormat((PaperFormats::ePaperFormats)(m_paperFormatComboBox->itemData(index).toInt()));
 }
 
-void QtPosteRazorDialog::handleImageLoadButtonClicked(void)
+void MainWindow::handleImageLoadButtonClicked(void)
 {
 	QStringList filters;
 	QStringList allExtensions;
@@ -285,137 +285,137 @@ void QtPosteRazorDialog::handleImageLoadButtonClicked(void)
 	}
 }
 
-void QtPosteRazorDialog::handlePaperFormatTabChanged(int index)
+void MainWindow::handlePaperFormatTabChanged(int index)
 {
 	m_posteRazorController->setUseCustomPaperSize(index == 1);
 }
 
-void QtPosteRazorDialog::handlePaperOrientationPortraitSelected(void)
+void MainWindow::handlePaperOrientationPortraitSelected(void)
 {
 	m_posteRazorController->setPaperOrientation(PaperFormats::ePaperOrientationPortrait);
 }
 
-void QtPosteRazorDialog::handlePaperOrientationLandscapeSelected(void)
+void MainWindow::handlePaperOrientationLandscapeSelected(void)
 {
 	m_posteRazorController->setPaperOrientation(PaperFormats::ePaperOrientationLandscape);
 }
 
-void QtPosteRazorDialog::handlePaperCustomWidthChanged(double width)
+void MainWindow::handlePaperCustomWidthChanged(double width)
 {
 	m_posteRazorController->setCustomPaperWidth(width);
 }
 
-void QtPosteRazorDialog::handlePaperCustomHeightChanged(double height)
+void MainWindow::handlePaperCustomHeightChanged(double height)
 {
 	m_posteRazorController->setCustomPaperHeight(height);
 }
 
-void QtPosteRazorDialog::handlePaperBorderTopChanged(double border)
+void MainWindow::handlePaperBorderTopChanged(double border)
 {
 	m_posteRazorController->setPaperBorderTop(border);
 }
 
-void QtPosteRazorDialog::handlePaperBorderRightChanged(double border)
+void MainWindow::handlePaperBorderRightChanged(double border)
 {
 	m_posteRazorController->setPaperBorderRight(border);
 }
 
-void QtPosteRazorDialog::handlePaperBorderBottomChanged(double border)
+void MainWindow::handlePaperBorderBottomChanged(double border)
 {
 	m_posteRazorController->setPaperBorderBottom(border);
 }
 
-void QtPosteRazorDialog::handlePaperBorderLeftChanged(double border)
+void MainWindow::handlePaperBorderLeftChanged(double border)
 {
 	m_posteRazorController->setPaperBorderLeft(border);
 }
 
-void QtPosteRazorDialog::handleOverlappingWidthChanged(double width)
+void MainWindow::handleOverlappingWidthChanged(double width)
 {
 	m_posteRazorController->setOverlappingWidth(width);
 }
 
-void QtPosteRazorDialog::handleOverlappingHeightChanged(double height)
+void MainWindow::handleOverlappingHeightChanged(double height)
 {
 	m_posteRazorController->setOverlappingHeight(height);
 }
 
-void QtPosteRazorDialog::handleOverlappingPositionTopLeftSelected(void)
+void MainWindow::handleOverlappingPositionTopLeftSelected(void)
 {
 	m_posteRazorController->setOverlappingPosition(PosteRazorEnums::eOverlappingPositionTopLeft);
 }
 
-void QtPosteRazorDialog::handleOverlappingPositionTopRightSelected(void)
+void MainWindow::handleOverlappingPositionTopRightSelected(void)
 {
 	m_posteRazorController->setOverlappingPosition(PosteRazorEnums::eOverlappingPositionTopRight);
 }
 
-void QtPosteRazorDialog::handleOverlappingPositionBottomRightSelected(void)
+void MainWindow::handleOverlappingPositionBottomRightSelected(void)
 {
 	m_posteRazorController->setOverlappingPosition(PosteRazorEnums::eOverlappingPositionBottomRight);
 }
 
-void QtPosteRazorDialog::handleOverlappingPositionBottomLeftSelected(void)
+void MainWindow::handleOverlappingPositionBottomLeftSelected(void)
 {
 	m_posteRazorController->setOverlappingPosition(PosteRazorEnums::eOverlappingPositionBottomLeft);
 }
 
-void QtPosteRazorDialog::handlePosterWidthAbsoluteChanged(double width)
+void MainWindow::handlePosterWidthAbsoluteChanged(double width)
 {
 	m_posteRazorController->setPosterWidth(PosteRazorEnums::ePosterSizeModeAbsolute, width);
 }
 
-void QtPosteRazorDialog::handlePosterHeightAbsoluteChanged(double height)
+void MainWindow::handlePosterHeightAbsoluteChanged(double height)
 {
 	m_posteRazorController->setPosterHeight(PosteRazorEnums::ePosterSizeModeAbsolute, height);
 }
 
-void QtPosteRazorDialog::handlePosterWidthPagesChanged(double width)
+void MainWindow::handlePosterWidthPagesChanged(double width)
 {
 	m_posteRazorController->setPosterWidth(PosteRazorEnums::ePosterSizeModePages, width);
 }
 
-void QtPosteRazorDialog::handlePosterHeightPagesChanged(double height)
+void MainWindow::handlePosterHeightPagesChanged(double height)
 {
 	m_posteRazorController->setPosterHeight(PosteRazorEnums::ePosterSizeModePages, height);
 }
 
-void QtPosteRazorDialog::handlePosterSizePercentualChanged(double percent)
+void MainWindow::handlePosterSizePercentualChanged(double percent)
 {
 	m_posteRazorController->setPosterHeight(PosteRazorEnums::ePosterSizeModePercentual, percent);
 }
 
-void QtPosteRazorDialog::handlePosterHorizontalAlignmentLeftSelected(void)
+void MainWindow::handlePosterHorizontalAlignmentLeftSelected(void)
 {
 	m_posteRazorController->setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignmentLeft);
 }
 
-void QtPosteRazorDialog::handlePosterHorizontalAlignmentCenterSelected(void)
+void MainWindow::handlePosterHorizontalAlignmentCenterSelected(void)
 {
 	m_posteRazorController->setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignmentCenter);
 }
 
-void QtPosteRazorDialog::handlePosterHorizontalAlignmentRightSelected(void)
+void MainWindow::handlePosterHorizontalAlignmentRightSelected(void)
 {
 	m_posteRazorController->setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignmentRight);
 }
 
-void QtPosteRazorDialog::handlePosterVerticalAlignmentTopSelected(void)
+void MainWindow::handlePosterVerticalAlignmentTopSelected(void)
 {
 	m_posteRazorController->setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentTop);
 }
 
-void QtPosteRazorDialog::handlePosterVerticalAlignmentMiddleSelected(void)
+void MainWindow::handlePosterVerticalAlignmentMiddleSelected(void)
 {
 	m_posteRazorController->setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentMiddle);
 }
 
-void QtPosteRazorDialog::handlePosterVerticalAlignmentBottomSelected(void)
+void MainWindow::handlePosterVerticalAlignmentBottomSelected(void)
 {
 	m_posteRazorController->setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentBottom);
 }
 
-void QtPosteRazorDialog::handleSavePosterButtonClicked(void)
+void MainWindow::handleSavePosterButtonClicked(void)
 {
 	static const QLatin1String savePathSettingsKey("savePath");
 	QSettings savePathSettings;
@@ -455,12 +455,12 @@ void QtPosteRazorDialog::handleSavePosterButtonClicked(void)
 	} while (fileExistsAskUserForOverwrite);
 }
 
-void QtPosteRazorDialog::handleLaunchPDFApplicationChanged(bool launch)
+void MainWindow::handleLaunchPDFApplicationChanged(bool launch)
 {
 	m_posteRazorController->setLaunchPDFApplication(launch);
 }
 
-void QtPosteRazorDialog::createConnections(void)
+void MainWindow::createConnections(void)
 {
 	connect(m_nextButton, SIGNAL(clicked()), SLOT(handleNextButtonClicked()));
 	connect(m_prevButton, SIGNAL(clicked()), SLOT(handlePrevButtonClicked()));
@@ -506,7 +506,7 @@ void QtPosteRazorDialog::createConnections(void)
 	connect(m_launchPDFApplicationCheckBox, SIGNAL(toggled(bool)), SLOT(handleLaunchPDFApplicationChanged(bool)));
 }
 
-void QtPosteRazorDialog::createPosteRazorDialogController(void)
+void MainWindow::createPosteRazorDialogController(void)
 {
 	m_posteRazor = PosteRazor::createPosteRazor();
 	m_paintCanvas->setPainterInterface(m_posteRazor);
@@ -515,7 +515,7 @@ void QtPosteRazorDialog::createPosteRazorDialogController(void)
 	m_posteRazorController->setPosteRazorModel(m_posteRazor);
 }
 
-void QtPosteRazorDialog::populateUI(void)
+void MainWindow::populateUI(void)
 {
 	for (int i = 0; i < PaperFormats::getPaperFormatsCount(); i++) {
 		PaperFormats::ePaperFormats format = PaperFormats::getPaperFormatForIndex(i);
@@ -524,7 +524,7 @@ void QtPosteRazorDialog::populateUI(void)
 	}
 }
 
-void QtPosteRazorDialog::updatePosterSizeGroupsState(void)
+void MainWindow::updatePosterSizeGroupsState(void)
 {
 	const bool absolute = m_posterSizeAbsoluteRadioButton->isChecked();
 	m_posterAbsoluteWidthLabel->setEnabled(absolute);
@@ -548,7 +548,7 @@ void QtPosteRazorDialog::updatePosterSizeGroupsState(void)
 	m_posterPercentualSizeUnitLabel->setEnabled(percentual);
 }
 
-bool QtPosteRazorDialog::loadInputImage(const QString &fileName)
+bool MainWindow::loadInputImage(const QString &fileName)
 {
 	char errorMessage[1024];
 	const bool successful = m_posteRazorController->loadInputImage(fileName.toAscii(), errorMessage, sizeof(errorMessage));
@@ -574,7 +574,7 @@ int main (int argc, char **argv)
 	QCoreApplication::setOrganizationName("CasaPortale");
 	QCoreApplication::setOrganizationDomain("de.casaportale");
 
-	QtPosteRazorDialog dialog;
+	MainWindow dialog;
 	dialog.show();
 	if (argc == 2)
 		dialog.loadInputImage(argv[1]);

@@ -20,20 +20,20 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef QTPOSTERAZORDIALOG_H
-#define QTPOSTERAZORDIALOG_H
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
-#include <QDialog>
-#include "ui_QtPosteRazorDialog.h"
+#include <QMainWindow>
+#include "ui_mainwindow.h"
 #include "PosteRazorWizardDialogController.h"
 
-class QtPosteRazorDialog : public QDialog, private Ui::PosteRazorDialog, public PosteRazorWizardDialogInterface
+class MainWindow : public QMainWindow, private Ui::MainWindow, public PosteRazorWizardDialogInterface
 {
 	Q_OBJECT
 
 public:
-	QtPosteRazorDialog(QWidget *parent = 0, Qt::WFlags flags = 0);
-	~QtPosteRazorDialog();
+	MainWindow(QWidget *parent = 0, Qt::WFlags flags = 0);
+	~MainWindow();
 
 	virtual void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
 
@@ -125,4 +125,4 @@ private slots:
 	void updatePosterSizeGroupsState(void);
 };
 
-#endif // QTPOSTERAZORDIALOG_H
+#endif // MAINWINDOW_H
