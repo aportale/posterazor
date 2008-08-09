@@ -23,6 +23,8 @@
 #ifndef PAINTCANVASINTERFACE_H
 #define PAINTCANVASINTERFACE_H
 
+#include <QVariant>
+
 class PaintCanvasInterface;
 
 class PainterInterface
@@ -30,7 +32,7 @@ class PainterInterface
 public:
 	virtual ~PainterInterface() {}
 
-	virtual void paintOnCanvas(PaintCanvasInterface *paintCanvas, void* options = 0) const = 0;
+	virtual void paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVariant &options = QVariant()) const = 0;
 	virtual void getImage(PaintCanvasInterface *paintCanvas, double maxWidth, double maxHeight) const = 0;
 };
 

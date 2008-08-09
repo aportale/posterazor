@@ -24,11 +24,12 @@
 #define PAINTCANVASBASE_H
 
 #include "PaintCanvasInterface.h"
+#include <QString>
 
 class PaintCanvasBase: public PaintCanvasInterface
 {
 protected:
-	char m_stateString[1024];
+	QString m_stateString;
 	unsigned char m_backgroundColor[3];
 	double m_maxImageWidth;
 	double m_maxImageHeight;
@@ -38,7 +39,7 @@ public:
 	PaintCanvasBase();
 
 	virtual void setPainterInterface(const PainterInterface *painter);
-	virtual void setState(const char *state);
+	virtual void setState(const QString &state);
 	virtual void setBackgroundColor(unsigned char red, unsigned char green, unsigned char blue);
 	virtual void requestImage(void);
 

@@ -9,19 +9,18 @@
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 3 of the License, or
 	(at your option) any later version.
-	
+
 	PosteRazor is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with PosteRazor; if not, write to the Free Software
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
 #include "PaintCanvasBase.h"
-#include <string.h>
 
 PaintCanvasBase::PaintCanvasBase()
 	: PaintCanvasInterface()
@@ -29,7 +28,6 @@ PaintCanvasBase::PaintCanvasBase()
 	, m_maxImageHeight(1024)
 	, m_painter(NULL)
 {
-	m_stateString[0] = '\0';
 	m_backgroundColor[0] = m_backgroundColor[1] = m_backgroundColor[2] = 0;
 }
 
@@ -45,10 +43,9 @@ void PaintCanvasBase::setBackgroundColor(unsigned char red, unsigned char green,
 	m_backgroundColor[2] = blue;
 }
 
-void PaintCanvasBase::setState(const char *state)
+void PaintCanvasBase::setState(const QString &state)
 {
-	strncpy(m_stateString, state, sizeof(m_stateString));
-	m_stateString[sizeof(m_stateString)-1] = '\0';
+	m_stateString = state;
 }
 
 void PaintCanvasBase::requestImage(void)

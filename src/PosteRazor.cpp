@@ -23,13 +23,7 @@
 #include "PosteRazor.h"
 #include "PosteRazorImageIO.h"
 #include <QSettings>
-#include <stdio.h>
-#include <string.h>
-#ifdef WIN32
-  #include <windows.h>
-#else
-  #include <stdlib.h>
-#endif
+#include <QStringList>
 #include <math.h>
 
 const QLatin1String settingsKey_PosterSizeMode("PosterSizeMode");
@@ -813,19 +807,18 @@ public:
 		paintCanvas->drawImage(-pageOffsetToImageFromLeftCm, -pageOffsetToImageFromTopCm, posterImageWidthCm, posterImageHeightCm);
 	}
 
-	void paintOnCanvas(PaintCanvasInterface *paintCanvas, void* options = 0) const
+	void paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVariant &options = 0) const
 	{
-		const char* const state = (const char*)options;
+		const QString state = options.toString();
 		
-		if (strcmp(state, "image") == 0) {
+		if (state == QLatin1String("image")) {
 			paintImageOnCanvas(paintCanvas);
-		} else if (strcmp(state, "paper") == 0 || strcmp(state, "overlapping") == 0) {
-			paintPaperOnCanvas(paintCanvas, strcmp(state, "overlapping") == 0);
-		} else if (strcmp(state, "poster") == 0) {
+		} else if (state == QLatin1String("paper") || state == QLatin1String("overlapping")) {
+			paintPaperOnCanvas(paintCanvas, state == QLatin1String("overlapping"));
+		} else if (state == QLatin1String("poster")) {
 			paintPosterOnCanvas(paintCanvas);
-		} else if (strncmp(state, "posterpage", strlen("posterpage")) == 0) {
-			int page;
-			sscanf(state, "posterpage %d", &page);
+		} else if (state.startsWith(QLatin1String("posterpage"))) {
+			const int page = state.split(' ').last().toInt();
 			paintPosterPageOnCanvas(paintCanvas, page);
 		}
 	}
