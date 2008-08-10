@@ -33,7 +33,6 @@ protected:
 	unsigned char m_backgroundColor[3];
 	double m_maxImageWidth;
 	double m_maxImageHeight;
-	const PainterInterface *m_painter;
 	
 public:
 	PaintCanvasBase();

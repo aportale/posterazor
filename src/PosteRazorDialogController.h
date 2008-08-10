@@ -25,30 +25,21 @@
 
 #include "PosteRazor.h"
 
-class PosteRazorDialogInterface: public PosteRazorSettersInterface
-{
-public:
-	virtual ~PosteRazorDialogInterface() {}
+class MainWindow;
 
-	virtual void updatePreview(void) = 0;
-	virtual void showImageFileName(const char *fileName) = 0;
-	virtual void updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel) = 0;
-	virtual void setLaunchPDFApplication(bool launch) = 0;
-	virtual void launchPdfApplication(const char *pdfFileName) const = 0;
-};
-
-class PosteRazorDialogController: public PosteRazorSettersInterface, public PosteRazorActionsInterface
+class PosteRazorDialogController: public QObject, public PosteRazorSettersInterface, public PosteRazorActionsInterface
 {
+	Q_OBJECT
+
 public:
 	PosteRazorDialogController();
 	virtual ~PosteRazorDialogController() {}
 
-	void setPosteRazorModel(PosteRazor *model);
-	virtual void updateDialog(void);
-	void setPosteRazorDialog(PosteRazorDialogInterface *dialog);
-	void setPaperFormatByName(const char *name);
-
+	void setPosteRazorAndDialog(PosteRazor *model, MainWindow *dialog);
+	void updateDialog(void);
 	void updatePreview(void);
+
+public slots:
 	void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
 	void setPaperFormat(const QString &format);
 	void setPaperOrientation(PaperFormats::ePaperOrientations orientation);
@@ -71,12 +62,21 @@ public:
 	void setLaunchPDFApplication(bool launch);
 	bool readSettings(const QSettings *settings);
 	bool writeSettings(QSettings *settings) const;
+	void loadInputImage(void);
+	bool loadInputImage(const QString &fileName);
 	bool loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize);
 	int savePoster(const char *fileName) const;
+	void savePoster() const;
+
+signals:
+	virtual void previewChanged();
+	virtual void imageFileNameChanged(const char *fileName);
+	virtual void imageInfoChanged(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel);
+	virtual void pddfLaunch(const QString &pdfFileName);
 
 protected:
 	PosteRazor *m_PosteRazor;
-	PosteRazorDialogInterface *m_Dialog;
+	MainWindow *m_Dialog;
 	bool m_launchPDFApplication;
 
 	void setDialogSaveOptions(void);

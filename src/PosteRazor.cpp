@@ -180,7 +180,10 @@ public:
 
 	bool loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize)
 	{
-		return m_imageIO->loadInputImage(imageFileName, errorMessage, errorMessageSize);
+		const bool success = m_imageIO->loadInputImage(imageFileName, errorMessage, errorMessageSize);
+		if (success)
+			createPreviewImage();
+		return success;
 	}
 
 	bool getIsImageLoaded(void) const
@@ -621,7 +624,7 @@ public:
 		getPreviewSize(getPaperWidth(), getPaperHeight(), boxWidth, boxHeight, previewWidth, previewHeight, true);
 	}
 	
-	void getImage(PaintCanvasInterface *paintCanvas, double maxWidth, double maxHeight) const
+	void createPreviewImage(double maxWidth = 1024, double maxHeight = 768) const
 	{
 		int imageWidth;
 		int imageHeight;
@@ -631,7 +634,8 @@ public:
 		if (!m_imageIO->getImageAsRGB(rgbData, imageWidth, imageHeight))
 			// If preview fails because of low memory...
 			memset(rgbData, 0x66, rgbDataBytesCount);
-		paintCanvas->setImage(rgbData, imageWidth, imageHeight);
+		emit previewImageChanged(rgbData, QSize(imageWidth, imageHeight));
+		//paintCanvas->setImage(rgbData, imageWidth, imageHeight);
 		delete[] rgbData;
 	}
 
@@ -807,7 +811,7 @@ public:
 		paintCanvas->drawImage(-pageOffsetToImageFromLeftCm, -pageOffsetToImageFromTopCm, posterImageWidthCm, posterImageHeightCm);
 	}
 
-	void paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVariant &options = 0) const
+	virtual void paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVariant &options) const
 	{
 		const QString state = options.toString();
 		

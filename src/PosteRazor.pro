@@ -2,7 +2,6 @@ TEMPLATE = app
 
 SOURCES += \
 	PaperFormats.cpp \
-	PaintCanvasBase.cpp \
 	UnitsOfLength.cpp \
 	ImageIOTypes.cpp \
 	PosteRazor.cpp \
@@ -19,7 +18,6 @@ HEADERS += \
 	ImageIOTypes.h \
 	UnitsOfLength.h \
 	PaperFormats.h \
-	PaintCanvasBase.h \
 	PaintCanvasInterface.h \
 	PosteRazor.h \
 	PosteRazorImageIO.h \

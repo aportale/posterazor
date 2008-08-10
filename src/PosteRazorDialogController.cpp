@@ -21,7 +21,10 @@
 */
 
 #include "PosteRazorDialogController.h"
+#include "mainwindow.h"
 #include <QSettings>
+#include <QFileDialog>
+#include <QMessageBox>
 
 const QLatin1String settingsKey_LaunchPDFApplication("launchPDFApplication");
 
@@ -32,22 +35,18 @@ PosteRazorDialogController::PosteRazorDialogController()
 {
 }
 
-void PosteRazorDialogController::setPosteRazorModel(PosteRazor *model)
+void PosteRazorDialogController::setPosteRazorAndDialog(PosteRazor *model, MainWindow *dialog)
 {
 	m_PosteRazor = model;
-	if (m_Dialog) {
-		updateDialog();
-		setDialogPosterSizeMode();
-	}
-}
-
-void PosteRazorDialogController::setPosteRazorDialog(PosteRazorDialogInterface *dialog)
-{
 	m_Dialog = dialog;
-	if (m_PosteRazor) {
-		updateDialog();
-		setDialogPosterSizeMode();
-	}
+
+	connect(m_Dialog, SIGNAL(paperCustomWidthChanged(double)), SLOT(setCustomPaperWidth(double)));
+	connect(m_Dialog, SIGNAL(loadImageSignal()), SLOT(loadInputImage()));
+	connect(m_Dialog, SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), model, SLOT(paintOnCanvas(PaintCanvasInterface*, const QVariant&)));
+	connect(model, SIGNAL(previewImageChanged(const unsigned char*, const QSize&)), dialog, SLOT(setPreviewImage(const unsigned char*, const QSize&)));
+
+	updateDialog();
+	setDialogPosterSizeMode();
 }
 
 void PosteRazorDialogController::updateDialog(void)
@@ -313,6 +312,54 @@ bool PosteRazorDialogController::writeSettings(QSettings *settings) const
 	return m_PosteRazor->writeSettings(settings);
 }
 
+void PosteRazorDialogController::loadInputImage(void)
+{
+	QStringList filters;
+	QStringList allExtensions;
+
+	for (int formatIndex = 0; formatIndex < ImageIOTypes::getInputImageFormatsCount(); formatIndex++) {
+		int extensionsCount = ImageIOTypes::getFileExtensionsCount(formatIndex);
+
+		QStringList filterExtensions;
+		for (int extensionIndex = 0; extensionIndex < extensionsCount; extensionIndex++) {
+			filterExtensions << "*." + QString(ImageIOTypes::getFileExtensionForFormat(extensionIndex, formatIndex));
+		}
+		allExtensions << filterExtensions;
+
+		filters << QString(ImageIOTypes::getInputImageFormat(formatIndex)) + " (" + filterExtensions.join(" ") + ")";
+	}
+	filters.prepend(QCoreApplication::translate("PosteRazorDialog", "All image formats") + " (" +  allExtensions.join(" ") + ")"); 
+
+	static const QString loadPathSettingsKey("loadPath");
+	QSettings loadPathSettings;
+
+	QString loadFileName = QFileDialog::getOpenFileName (
+		NULL,
+		QCoreApplication::translate("PosteRazorDialog", "Load an input image"),
+		loadPathSettings.value(loadPathSettingsKey, ".").toString(),
+		filters.join(";;")
+	);
+
+	if (!loadFileName.isEmpty()) {
+		bool successful = loadInputImage(loadFileName);
+		if (successful)
+			loadPathSettings.setValue(loadPathSettingsKey, QFileInfo(loadFileName).absolutePath());
+	}
+}
+
+bool PosteRazorDialogController::loadInputImage(const QString &fileName)
+{
+	char errorMessage[1024];
+	const bool successful = loadInputImage(fileName.toAscii(), errorMessage, sizeof(errorMessage));
+	if (!successful) {
+		QMessageBox::critical(NULL, QCoreApplication::translate("PosteRazorDialog", "Loading Error"), QCoreApplication::translate("PosteRazorDialog", "The Image '%1' could not be loaded.").arg(fileName));
+	} else {
+//		m_paintCanvas->requestImage();
+	}
+
+	return successful;
+}
+
 bool PosteRazorDialogController::loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize)
 {
 	const bool result = m_PosteRazor->loadInputImage(imageFileName, errorMessage, errorMessageSize);
@@ -331,4 +378,44 @@ int PosteRazorDialogController::savePoster(const char *fileName) const
 	if (result == 0 && m_launchPDFApplication)
 		m_Dialog->launchPdfApplication(fileName);
 	return result;
+}
+
+void PosteRazorDialogController::savePoster() const
+{
+	static const QLatin1String savePathSettingsKey("savePath");
+	QSettings savePathSettings;
+
+	QString saveFileName = savePathSettings.value(savePathSettingsKey, ".").toString();
+	bool fileExistsAskUserForOverwrite = false;
+
+	do {
+		saveFileName = QFileDialog::getSaveFileName(
+			NULL,
+			QCoreApplication::translate("PosteRazorDialog", "Choose a filename to save under"),
+			saveFileName,
+			QLatin1String("Portable Document format (*.pdf)"),
+			NULL,
+			QFileDialog::DontConfirmOverwrite
+		);
+
+		if (!saveFileName.isEmpty()) {
+			if (QFileInfo(saveFileName).suffix().toLower() != QLatin1String("pdf"))
+				saveFileName.append(".pdf");
+
+			fileExistsAskUserForOverwrite = QFileInfo(saveFileName).exists();
+
+			if (!fileExistsAskUserForOverwrite
+				|| QMessageBox::Yes == (QMessageBox::question(NULL, "", QCoreApplication::translate("PosteRazorDialog", "The file '%1' already exists.\nDo you want to overwrite it?").arg(saveFileName), QMessageBox::Yes, QMessageBox::No))
+				) {
+				int result = savePoster(saveFileName.toAscii());
+				if (result != 0)
+					QMessageBox::critical(NULL, "", QCoreApplication::translate("PosteRazorDialog", "The File \"%1\" could not be saved.").arg(saveFileName), QMessageBox::Ok, QMessageBox::NoButton);
+				else
+					savePathSettings.setValue(savePathSettingsKey, QFileInfo(saveFileName).absolutePath());
+				fileExistsAskUserForOverwrite = false;
+			}
+		} else {
+			break;
+		}
+	} while (fileExistsAskUserForOverwrite);
 }

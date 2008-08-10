@@ -28,10 +28,10 @@ PosteRazorWizardDialogController::PosteRazorWizardDialogController()
 {
 }
 
-void PosteRazorWizardDialogController::setPosteRazorWizardDialog(PosteRazorWizardDialogInterface *dialog)
+void PosteRazorWizardDialogController::setPosteRazorWizardDialog(QObject *dialog)
 {
-	PosteRazorDialogController::setPosteRazorDialog(dialog);
-	m_WizardDialog = dialog;
+//	PosteRazorDialogController::setPosteRazorDialog(dialog);
+//	m_WizardDialog = dialog;
 }
 
 void PosteRazorWizardDialogController::handlePrevButtonPressed(void)
@@ -58,7 +58,7 @@ void PosteRazorWizardDialogController::handleNextButtonPressed(void)
 
 void PosteRazorWizardDialogController::updateDialog(void)
 {
-	PosteRazorDialogController::updateDialog();
+	emit previewChanged();
 	updateDialogWizardStep();
 }
 

@@ -26,10 +26,10 @@
 
 QtPaintCanvas::QtPaintCanvas(QWidget *parent)
 	: QWidget(parent)
-	, PaintCanvasBase()
 	, m_image(NULL)
 	, m_imageRGBData(NULL)
 	, m_qPainter(NULL)
+	, m_state("image")
 {
 }
 
@@ -44,7 +44,7 @@ void QtPaintCanvas::paintEvent(QPaintEvent *event)
 	QPainter painter(this);
 	m_qPainter = &painter;
 	m_qPainter->setRenderHint(QPainter::Antialiasing);
-	m_painter->paintOnCanvas(this, m_stateString);
+	emit needsPaint(this, m_state);
 	m_qPainter = NULL;
 }
 
@@ -71,11 +71,11 @@ void QtPaintCanvas::getSize(double &width, double &height) const
 	height = (double)(this->height());
 }
 
-void QtPaintCanvas::setImage(const unsigned char* rgbData, double width, double height)
+void QtPaintCanvas::setImage(const unsigned char* rgbData, const QSize &size)
 {
 	disposeImage();
 	// We have to transfrom the image data from rgb to bgra
-	int pixelsCount = (int)width * (int)height;
+	int pixelsCount = size.width() * size.height();
 	size_t bytesCount = pixelsCount * 4;
 	m_imageRGBData = new unsigned char[bytesCount];
 	memset(m_imageRGBData, 255, bytesCount); // Making sure, that all alpha bytes are opaque
@@ -88,7 +88,7 @@ void QtPaintCanvas::setImage(const unsigned char* rgbData, double width, double 
 		destinationPixel += 4;
 		sourcePixel += 3;
 	}
-	m_image = new QImage(m_imageRGBData, (int)width, (int)height, QImage::Format_RGB32);
+	m_image = new QImage(m_imageRGBData, size.width(), size.height(), QImage::Format_RGB32);
 	repaint();
 }
 
@@ -113,8 +113,8 @@ void QtPaintCanvas::drawImage(double x, double y, double width, double height)
 	}
 }
 
-void QtPaintCanvas::setState(const char *state)
+void QtPaintCanvas::setState(const QString &state)
 {
-	PaintCanvasBase::setState(state);
+	m_state = state;
 	repaint();
 }

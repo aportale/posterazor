@@ -32,8 +32,7 @@ class PainterInterface
 public:
 	virtual ~PainterInterface() {}
 
-	virtual void paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVariant &options = QVariant()) const = 0;
-	virtual void getImage(PaintCanvasInterface *paintCanvas, double maxWidth, double maxHeight) const = 0;
+	virtual void paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVariant &options) const = 0;
 };
 
 class PaintCanvasInterface
@@ -41,13 +40,10 @@ class PaintCanvasInterface
 public:
 	virtual ~PaintCanvasInterface() {}
 	
-	virtual void setPainterInterface(const PainterInterface *painter) = 0;
-	virtual void setBackgroundColor(unsigned char red, unsigned char green, unsigned char blue) = 0;
 	virtual void drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) = 0;
 	virtual void drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) = 0;
 	virtual void drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) = 0;
 	virtual void getSize(double &width, double &height) const = 0;
-	virtual void setImage(const unsigned char* rgbData, double width, double height) = 0;
 	virtual void drawImage(double x, double y, double width, double height) = 0;
 };
 

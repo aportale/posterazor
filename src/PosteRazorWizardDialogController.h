@@ -29,6 +29,8 @@ class PosteRazorWizardDialogInterface;
 
 class PosteRazorWizardDialogController: public PosteRazorDialogController
 {
+	Q_OBJECT
+
 public:
 	enum ePosteRazorWizardSteps {
 		ePosteRazorWizardStepInputImage,
@@ -40,7 +42,7 @@ public:
 
 	PosteRazorWizardDialogController();
 	virtual ~PosteRazorWizardDialogController() {};
-	void setPosteRazorWizardDialog(PosteRazorWizardDialogInterface *dialog);
+	void setPosteRazorWizardDialog(QObject *dialog);
 	void handlePrevButtonPressed(void);
 	void handleNextButtonPressed(void);
 	void updateDialog(void);
@@ -51,7 +53,7 @@ private:
 	void updateDialogWizardStep(void);
 };
 
-class PosteRazorWizardDialogInterface: public PosteRazorDialogInterface
+class PosteRazorWizardDialogInterface
 {
 public:
 	virtual void setPrevButtonEnabled(bool enabled) = 0;

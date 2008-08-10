@@ -25,9 +25,11 @@
 
 #include <QMainWindow>
 #include "ui_mainwindow.h"
-#include "PosteRazorWizardDialogController.h"
+#include "UnitsOfLength.h"
+#include "PaperFormats.h"
+#include "PosteRazor.h"
 
-class MainWindow : public QMainWindow, private Ui::MainWindow, public PosteRazorWizardDialogInterface
+class MainWindow : public QMainWindow, private Ui::MainWindow 
 {
 	Q_OBJECT
 
@@ -69,48 +71,53 @@ public:
 
 	void setPrevButtonEnabled(bool enabled);
 	void setNextButtonEnabled(bool enabled);
-	void setWizardStep(PosteRazorWizardDialogController::ePosteRazorWizardSteps step);
+	void setWizardStep(int step);
 	void setPreviewState(const char *state);
 
 public slots:
-	bool loadInputImage(const QString &fileName);
+	void setPreviewImage(const unsigned char* rgbData, const QSize &size);
 
 private:
 	PosteRazor *m_posteRazor;
-	PosteRazorWizardDialogController *m_posteRazorController;
 
 	void createConnections(void);
-	void createPosteRazorDialogController(void);
 	void populateUI(void);
 
-private slots:
-	void handleNextButtonClicked(void);
-	void handlePrevButtonClicked(void);
-	void handleImageLoadButtonClicked(void);
+signals:
+	void paperFormatChanged(const QString &format);
+	void paperOrientationChanged(PaperFormats::ePaperOrientations orientation);
+	void paperCustomWidthChanged(double width);
+	void paperCustomHeightChanged(double height);
+	void paperBorderTopChanged(double border);
+	void paperBorderRightChanged(double border);
+	void paperBorderBottomChanged(double border);
+	void paperBorderLeftChanged(double border);
+	void overlappingWidthChanged(double width);
+	void overlappingHeightChanged(double height);
+	void overlappingPositionChanged(PosteRazorEnums::eHorizontalAlignments, PosteRazorEnums::eVerticalAlignments);
+	void posterWidthAbsoluteChanged(double width);
+	void posterHeightAbsoluteChanged(double height);
+	void posterWidthPagesChanged(double width);
+	void posterHeightPagesChanged(double height);
+	void posterSizePercentualChanged(double percent);
+	void posterAlignmentChanged(PosteRazorEnums::eHorizontalAlignments, PosteRazorEnums::eVerticalAlignments);
+	void savePosterSelected(void);
+	void launchPDFApplicationChanged(bool launch);
+	void nextButtonClicked(void);
+	void prevButtonClicked(void);
+	void savePosterSignal(void);
+	void loadImageSignal(void);
+	void needsPaint(PaintCanvasInterface *paintDevice, const QVariant &options) const;
 
+private slots:
 	void handlePaperFormatTabChanged(int index);
-	void handlePaperFormatComboBoxChanged(const QString &format);
 	void handlePaperOrientationPortraitSelected(void);
 	void handlePaperOrientationLandscapeSelected(void);
-	void handlePaperCustomWidthChanged(double width);
-	void handlePaperCustomHeightChanged(double height);
-	void handlePaperBorderTopChanged(double border);
-	void handlePaperBorderRightChanged(double border);
-	void handlePaperBorderBottomChanged(double border);
-	void handlePaperBorderLeftChanged(double border);
 
-	void handleOverlappingWidthChanged(double width);
-	void handleOverlappingHeightChanged(double height);
 	void handleOverlappingPositionTopLeftSelected(void);
 	void handleOverlappingPositionTopRightSelected(void);
 	void handleOverlappingPositionBottomRightSelected(void);
 	void handleOverlappingPositionBottomLeftSelected(void);
-
-	void handlePosterWidthAbsoluteChanged(double width);
-	void handlePosterHeightAbsoluteChanged(double height);
-	void handlePosterWidthPagesChanged(double width);
-	void handlePosterHeightPagesChanged(double height);
-	void handlePosterSizePercentualChanged(double percent);
 
 	void handlePosterHorizontalAlignmentLeftSelected(void);
 	void handlePosterHorizontalAlignmentCenterSelected(void);
@@ -118,9 +125,6 @@ private slots:
 	void handlePosterVerticalAlignmentTopSelected(void);
 	void handlePosterVerticalAlignmentMiddleSelected(void);
 	void handlePosterVerticalAlignmentBottomSelected(void);
-
-	void handleSavePosterButtonClicked(void);
-	void handleLaunchPDFApplicationChanged(bool launch);
 
 	void updatePosterSizeGroupsState(void);
 };

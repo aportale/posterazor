@@ -59,7 +59,6 @@ private:
 	char m_pageContent[2048];
 	double m_mediaboxWidth;
 	double m_mediaboxHeight;
-	const PainterInterface *m_painter;
 
 public:
 	PosteRazorPDFOutputImplementation()
@@ -70,14 +69,8 @@ public:
 		, m_objectImageID(0)
 		, m_mediaboxWidth(5000.0)
 		, m_mediaboxHeight(5000.0)
-		, m_painter(NULL)
 	{
 		m_pageContent[0] = '\0';
-	}
-
-	void setPainterInterface(const PainterInterface *painter)
-	{
-		m_painter = painter;
 	}
 
 	void AddOffsetToXref(void)
@@ -418,12 +411,10 @@ public:
 		return err;
 	}
 
-	void setBackgroundColor(unsigned char, unsigned char, unsigned char) {}
 	void drawFilledRect(double, double, double, double, unsigned char, unsigned char, unsigned char, unsigned char) {}
 	void drawRect(double, double, double, double, unsigned char, unsigned char, unsigned char, unsigned char) {}
 	void drawLine(double, double, double, double, unsigned char, unsigned char, unsigned char, unsigned char) {}
 	void getSize(double &, double &) const {}
-	void setImage(const unsigned char*, double, double ) {}
 	void drawImage(double x, double y, double width, double height)
 	{
 		char imageCode[2048]="";

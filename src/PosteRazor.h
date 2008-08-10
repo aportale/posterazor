@@ -27,6 +27,7 @@
 #include "ColorTypes.h"
 #include "ImageIOTypes.h"
 #include "PaintCanvasInterface.h"
+#include <QObject>
 
 class QSettings;
 
@@ -60,7 +61,7 @@ public:
 	};
 };
 
-class PosteRazorSettersInterface
+class PosteRazorSettersInterface 
 {
 public:
 	virtual ~PosteRazorSettersInterface() {}
@@ -155,11 +156,19 @@ public:
 	virtual int savePoster(const char *fileName) const = 0;
 };
 
-class PosteRazor: public PosteRazorSettersInterface, public PosteRazorGettersInterface, public PosteRazorActionsInterface, public PainterInterface
+class PosteRazor: public QObject, public PosteRazorSettersInterface, public PosteRazorGettersInterface, public PosteRazorActionsInterface, public PainterInterface
 {
+	Q_OBJECT
+
 public:
 	virtual ~PosteRazor() {};
 	static PosteRazor* createPosteRazor();
+
+public slots:
+	virtual void paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVariant &options) const = 0;
+
+signals:
+	void previewImageChanged(const unsigned char *rgbData, const QSize &size) const;
 };
 
 #endif // POSTERAZOR_H
