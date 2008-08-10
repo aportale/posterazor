@@ -392,14 +392,12 @@ int main (int argc, char **argv)
 	QCoreApplication::setOrganizationDomain("de.casaportale");
 
 	MainWindow dialog;
-	PosteRazor *posteRazor = PosteRazor::createPosteRazor();
-
-//	m_paintCanvas->setPainterInterface(m_posteRazor);
+	PosteRazor posteRazor;
 
 	PosteRazorWizardDialogController *controller = new PosteRazorWizardDialogController();
 
 	QSettings settings;
-	controller->setPosteRazorAndDialog(posteRazor, &dialog);
+	controller->setPosteRazorAndDialog(&posteRazor, &dialog);
 	controller->readSettings(&settings);
 
 	dialog.show();

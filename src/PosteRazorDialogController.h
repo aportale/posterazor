@@ -27,7 +27,7 @@
 
 class MainWindow;
 
-class PosteRazorDialogController: public QObject, public PosteRazorSettersInterface, public PosteRazorActionsInterface
+class PosteRazorDialogController: public QObject
 {
 	Q_OBJECT
 

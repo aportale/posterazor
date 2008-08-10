@@ -30,6 +30,7 @@
 #include <QObject>
 
 class QSettings;
+class PosteRazorImageIO;
 
 class PosteRazorEnums
 {
@@ -61,114 +62,129 @@ public:
 	};
 };
 
-class PosteRazorSettersInterface 
-{
-public:
-	virtual ~PosteRazorSettersInterface() {}
-
-	virtual void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit) = 0;
-
-	virtual void setPaperFormat(const QString &format) = 0;
-	virtual void setPaperOrientation(PaperFormats::ePaperOrientations orientation) = 0;
-
-	virtual void setPaperBorderTop(double border) = 0;
-	virtual void setPaperBorderRight(double border) = 0;
-	virtual void setPaperBorderBottom(double border) = 0;
-	virtual void setPaperBorderLeft(double border) = 0;
-
-	virtual void setCustomPaperWidth(double width) = 0;
-	virtual void setCustomPaperHeight(double height) = 0;
-	virtual void setUseCustomPaperSize(bool useIt) = 0;
-
-	virtual void setOverlappingWidth(double width) = 0;
-	virtual void setOverlappingHeight(double height) = 0;
-	virtual void setOverlappingPosition(PosteRazorEnums::eOverlappingPositions position) = 0;
-
-	virtual void setPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width) = 0;
-	virtual void setPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height) = 0;
-	virtual void setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode) = 0;
-	virtual void setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment) = 0;
-	virtual void setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment) = 0;
-
-	virtual void setPosterOutputFormat(ImageIOTypes::eImageFormats format) = 0;
-};
-
-class PosteRazorGettersInterface
-{
-public:
-	virtual ~PosteRazorGettersInterface() {}
-
-	virtual int getInputImageWidthPixels(void) const = 0;
-	virtual int getInputImageHeightPixels(void) const = 0;
-
-	virtual double getInputImageHorizontalDpi(void) const = 0;
-	virtual double getInputImageVerticalDpi(void) const = 0;
-
-	virtual double getInputImageWidth(void) const = 0;
-	virtual double getInputImageHeight(void) const = 0;
-
-	virtual int getInputImageBitsPerPixel(void) const = 0;
-	virtual ColorTypes::eColorTypes getInputImageColorType(void) const = 0;
-
-	virtual UnitsOfLength::eUnitsOfLength getUnitOfLength(void) const = 0;
-	virtual const char* getUnitOfLengthName(void) const = 0;
-
-	virtual const QString getPaperFormat(void) const = 0;
-	virtual PaperFormats::ePaperOrientations getPaperOrientation(void) const = 0;
-	virtual double getPaperBorderTop(void) const = 0;
-	virtual double getPaperBorderRight(void) const = 0;
-	virtual double getPaperBorderBottom(void) const = 0;
-	virtual double getPaperBorderLeft(void) const = 0;
-
-	virtual double getCustomPaperWidth(void) const = 0;
-	virtual double getCustomPaperHeight(void) const = 0;
-	virtual bool getUseCustomPaperSize(void) const = 0;
-	virtual double getPaperWidth(void) const = 0;
-	virtual double getPaperHeight(void) const = 0;
-	virtual double getPrintablePaperAreaWidth(void) const = 0;
-	virtual double getPrintablePaperAreaHeight(void) const = 0;
-
-	virtual double getOverlappingWidth(void) const = 0;
-	virtual double getOverlappingHeight(void) const = 0;
-	virtual PosteRazorEnums::eOverlappingPositions getOverlappingPosition(void) const = 0;
-
-	virtual double getPosterWidth(PosteRazorEnums::ePosterSizeModes mode) const = 0;
-	virtual double getPosterHeight(PosteRazorEnums::ePosterSizeModes mode) const = 0;
-	virtual PosteRazorEnums::ePosterSizeModes getPosterSizeMode(void) const = 0;
-	virtual PosteRazorEnums::eHorizontalAlignments getPosterHorizontalAlignment(void) const = 0;
-	virtual PosteRazorEnums::eVerticalAlignments getPosterVerticalAlignment(void) const = 0;
-
-	virtual ImageIOTypes::eImageFormats getPosterOutputFormat(void) const = 0;
-
-	virtual bool getIsImageLoaded(void) const = 0;
-};
-
-class PosteRazorActionsInterface
-{
-public:
-	virtual ~PosteRazorActionsInterface() {}
-
-	virtual bool readSettings(const QSettings *settings) = 0;
-	virtual bool writeSettings(QSettings *settings) const = 0;
-
-	virtual bool loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize) = 0;
-
-	virtual int savePoster(const char *fileName) const = 0;
-};
-
-class PosteRazor: public QObject, public PosteRazorSettersInterface, public PosteRazorGettersInterface, public PosteRazorActionsInterface, public PainterInterface
+class PosteRazor: public QObject, public PainterInterface
 {
 	Q_OBJECT
 
 public:
-	virtual ~PosteRazor() {};
-	static PosteRazor* createPosteRazor();
+	PosteRazor();
+	~PosteRazor();
+
+	bool readSettings(const QSettings *settings);
+	bool writeSettings(QSettings *settings) const;
+	bool loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize);
+	int savePoster(const char *fileName) const;
+
+	int getInputImageWidthPixels(void) const;
+	int getInputImageHeightPixels(void) const;
+	double getInputImageHorizontalDpi(void) const;
+	double getInputImageVerticalDpi(void) const;
+	double getInputImageWidth(void) const;
+	double getInputImageHeight(void) const;
+	int getInputImageBitsPerPixel(void) const;
+	ColorTypes::eColorTypes getInputImageColorType(void) const;
+	UnitsOfLength::eUnitsOfLength getUnitOfLength(void) const;
+	const char* getUnitOfLengthName(void) const;
+	const QString getPaperFormat(void) const;
+	PaperFormats::ePaperOrientations getPaperOrientation(void) const;
+	double getPaperBorderTop(void) const;
+	double getPaperBorderRight(void) const;
+	double getPaperBorderBottom(void) const;
+	double getPaperBorderLeft(void) const;
+	double getCustomPaperWidth(void) const;
+	double getCustomPaperHeight(void) const;
+	bool getUseCustomPaperSize(void) const;
+	double getPaperWidth(void) const;
+	double getPaperHeight(void) const;
+	double getPrintablePaperAreaWidth(void) const;
+	double getPrintablePaperAreaHeight(void) const;
+	double getOverlappingWidth(void) const;
+	double getOverlappingHeight(void) const;
+	PosteRazorEnums::eOverlappingPositions getOverlappingPosition(void) const;
+	double getPosterWidth(PosteRazorEnums::ePosterSizeModes mode) const;
+	double getPosterHeight(PosteRazorEnums::ePosterSizeModes mode) const;
+	PosteRazorEnums::ePosterSizeModes getPosterSizeMode(void) const;
+	PosteRazorEnums::eHorizontalAlignments getPosterHorizontalAlignment(void) const;
+	PosteRazorEnums::eVerticalAlignments getPosterVerticalAlignment(void) const;
+	ImageIOTypes::eImageFormats getPosterOutputFormat(void) const;
+	bool getIsImageLoaded(void) const;
+
+	void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
+	void setPaperFormat(const QString &format);
+	void setPaperOrientation(PaperFormats::ePaperOrientations orientation);
+	void setPaperBorderTop(double border);
+	void setPaperBorderRight(double border);
+	void setPaperBorderBottom(double border);
+	void setPaperBorderLeft(double border);
+	void setCustomPaperWidth(double width);
+	void setCustomPaperHeight(double height);
+	void setUseCustomPaperSize(bool useIt);
+	void setOverlappingWidth(double width);
+	void setOverlappingHeight(double height);
+	void setOverlappingPosition(PosteRazorEnums::eOverlappingPositions position);
+	void setPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width);
+	void setPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height);
+	void setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode);
+	void setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment);
+	void setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment);
+	void setPosterOutputFormat(ImageIOTypes::eImageFormats format);
 
 public slots:
-	virtual void paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVariant &options) const = 0;
+	void paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVariant &options) const;
+
+private:
+	double convertDistanceToCm(double distance) const;
+	double convertCmToDistance(double cm) const;
+	void createPreviewImage(double maxWidth, double maxHeight) const;
+	double getMaximalVerticalPaperBorder(void) const;
+	double getMaximalHorizontalPaperBorder(void) const;
+	double getCustomMinimalPaperWidth(void) const;
+	double getCustomMinimalPaperHeight(void) const;
+	double getCustomMaximalPaperWidth(void) const;
+	double getCustomMaximalPaperHeight(void) const;
+	double convertBetweenAbsoluteAndPagesPosterDimension(double dimension, bool pagesToAbsolute, bool width) const;
+	double calculateOtherPosterDimension() const;
+	void setPosterDimension(PosteRazorEnums::ePosterSizeModes mode, double dimension, bool dimensionIsWidth);
+	double getMaximalOverLappingWidth(void) const;
+	double getMaximalOverLappingHeight(void) const;
+	double getPosterDimension(PosteRazorEnums::ePosterSizeModes mode, bool width) const;
+	void getPreviewSize(double imageWidth, double imageHeight, int boxWidth, int boxHeight, int &previewWidth, int &previewHeight, bool enlargeToFit) const;
+	void getInputImagePreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight) const;
+	void getPaperPreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight) const;
+	void paintImageOnCanvas(PaintCanvasInterface *paintCanvas) const;
+	void paintPaperOnCanvas(PaintCanvasInterface *paintCanvas, bool paintOverlapping) const;
+	void paintPosterOnCanvas(PaintCanvasInterface *paintCanvas) const;
+	void paintPosterPageOnCanvas(PaintCanvasInterface *paintCanvas, int page) const;
 
 signals:
 	void previewImageChanged(const unsigned char *rgbData, const QSize &size) const;
+
+private:
+	PosteRazorImageIO*                      m_imageIO;
+
+	PosteRazorEnums::ePosterSizeModes       m_posterSizeMode;
+	double                                  m_posterDimension;
+	bool                                    m_posterDimensionIsWidth;
+	PosteRazorEnums::eHorizontalAlignments  m_posterHorizontalAlignment;
+	PosteRazorEnums::eVerticalAlignments    m_posterVerticalAlignment;
+
+	bool                                    m_useCustomPaperSize;
+	QString                                 m_paperFormat;
+	PaperFormats::ePaperOrientations        m_paperOrientation;
+	double                                  m_paperBorderTop;
+	double                                  m_paperBorderRight;
+	double                                  m_paperBorderBottom;
+	double                                  m_paperBorderLeft;
+	double                                  m_customPaperWidth;
+	double                                  m_customPaperHeight;
+
+	double                                  m_overlappingWidth;
+	double                                  m_overlappingHeight;
+	PosteRazorEnums::eOverlappingPositions  m_overlappingPosition;
+
+	UnitsOfLength::eUnitsOfLength           m_unitOfLength;
+
+	ImageIOTypes::eImageFormats             m_posterOutputFormat;
 };
 
 #endif // POSTERAZOR_H
