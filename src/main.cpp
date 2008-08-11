@@ -55,5 +55,8 @@ int main (int argc, char **argv)
 	if (argc == 2)
 		controller->loadInputImage(argv[1]);
 
-	return a.exec();
+	const int appReturn = a.exec();
+	controller->writeSettings(&settings);
+
+	return appReturn;
 }
