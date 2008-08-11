@@ -36,8 +36,8 @@ public:
 	virtual ~PosteRazorDialogController() {}
 
 	void setPosteRazorAndDialog(PosteRazor *model, MainWindow *dialog);
-	void updateDialog(void);
-	void updatePreview(void);
+	void updateDialog();
+	void updatePreview();
 
 public slots:
 	void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
@@ -53,8 +53,11 @@ public slots:
 	void setOverlappingWidth(double width);
 	void setOverlappingHeight(double height);
 	void setOverlappingPosition(PosteRazorEnums::eOverlappingPositions position);
-	void setPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width);
-	void setPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height);
+	void setPosterWidthAbsolute(double width);
+	void setPosterHeightAbsolute(double height);
+	void setPosterWidthPages(double width);
+	void setPosterHeightPages(double height);
+	void setPosterSizePercentual(double percent);
 	void setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode);
 	void setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment);
 	void setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment);
@@ -62,7 +65,7 @@ public slots:
 	void setLaunchPDFApplication(bool launch);
 	bool readSettings(const QSettings *settings);
 	bool writeSettings(QSettings *settings) const;
-	void loadInputImage(void);
+	void loadInputImage();
 	bool loadInputImage(const QString &fileName);
 	bool loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize);
 	int savePoster(const char *fileName) const;
@@ -79,16 +82,16 @@ protected:
 	MainWindow *m_Dialog;
 	bool m_launchPDFApplication;
 
-	void setDialogSaveOptions(void);
-	void setDialogPosterSizeMode(void);
-	void setDialogPosterOptions(void);
+	void setDialogSaveOptions();
+	void setDialogPosterSizeMode();
+	void setDialogPosterOptions();
 	void setDialogPosterDimensions(PosteRazorEnums::ePosterSizeModes excludedMode, bool widthExcluded);
-	void setDialogPaperOptions(void);
-	void setDialogPaperBorders(void);
-	void setDialogCustomPaperDimensions(void);
-	void setDialogImageInfoFields(void);
-	void setDialogOverlappingDimensions(void);
-	void setDialogOverlappingOptions(void);
+	void setDialogPaperOptions();
+	void setDialogPaperBorders();
+	void setDialogCustomPaperDimensions();
+	void setDialogImageInfoFields();
+	void setDialogOverlappingDimensions();
+	void setDialogOverlappingOptions();
 };
 
 #endif // POSTERAZORDIALOGCONTROLLER_H

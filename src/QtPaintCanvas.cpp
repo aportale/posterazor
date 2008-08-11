@@ -92,7 +92,7 @@ void QtPaintCanvas::setImage(const unsigned char* rgbData, const QSize &size)
 	repaint();
 }
 
-void QtPaintCanvas::disposeImage(void)
+void QtPaintCanvas::disposeImage()
 {
 	if (m_image) {
 		delete(m_image);

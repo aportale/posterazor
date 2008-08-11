@@ -65,7 +65,7 @@ private:
 
 	char         m_imageFileName[1024];
 
-	static bool isSystemLittleEndian(void)
+	static bool isSystemLittleEndian()
 	{
 		// Endianness detection lines borrowed from: http://en.wikipedia.org/wiki/Endianness
 		const long int i = 1;
@@ -74,7 +74,7 @@ private:
 	}
 
 	// FreeImage_Convert[To|From]RawBits inverted the topdown parameter until v3.10
-	static BOOL hasFreeImageVersionCorrectTopDownInConvertBits(void)
+	static BOOL hasFreeImageVersionCorrectTopDownInConvertBits()
 	{
 		const char *version = FreeImage_GetVersion();
 		int majorVersion;
@@ -149,10 +149,10 @@ public:
 
 		return result;
 	}
-	bool isImageLoaded(void) const {return (m_bitmap != NULL);}
+	bool isImageLoaded() const {return (m_bitmap != NULL);}
 
-	int getWidthPixels(void) const {return m_widthPixels;}
-	int getHeightPixels(void) const {return m_heightPixels;}
+	int getWidthPixels() const {return m_widthPixels;}
+	int getHeightPixels() const {return m_heightPixels;}
 
 	double getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const
 	{
@@ -245,12 +245,12 @@ public:
 		return success;
 	}
 	
-	int getBitsPerPixel(void) const
+	int getBitsPerPixel() const
 	{
 		return FreeImage_GetBPP(m_bitmap);
 	}
 	
-	eColorTypes getColorDataType(void) const
+	eColorTypes getColorDataType() const
 	{
 		eColorTypes colorDatatype = eColorTypeRGB;
 		const FREE_IMAGE_COLOR_TYPE imageColorType = FreeImage_GetColorType(m_bitmap);
@@ -335,7 +335,7 @@ public:
 	}
 };
 
-PosteRazorImageIO* PosteRazorImageIO::createPosteRazorImageIO(void)
+PosteRazorImageIO* PosteRazorImageIO::createPosteRazorImageIO()
 {
 	return (PosteRazorImageIO*) new PosteRazorImageIOImplementation();
 }

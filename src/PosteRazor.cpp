@@ -151,47 +151,47 @@ bool PosteRazor::loadInputImage(const char *imageFileName, char *errorMessage, i
 	return success;
 }
 
-bool PosteRazor::getIsImageLoaded(void) const
+bool PosteRazor::getIsImageLoaded() const
 {
 	return m_imageIO->isImageLoaded();
 }
 
-int PosteRazor::getInputImageWidthPixels(void) const
+int PosteRazor::getInputImageWidthPixels() const
 {
 	return m_imageIO->getWidthPixels();
 }
 
-int PosteRazor::getInputImageHeightPixels(void) const
+int PosteRazor::getInputImageHeightPixels() const
 {
 	return m_imageIO->getHeightPixels();
 }
 
-double PosteRazor::getInputImageHorizontalDpi(void) const
+double PosteRazor::getInputImageHorizontalDpi() const
 {
 	return m_imageIO->getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitOfLengthInch);
 }
 
-double PosteRazor::getInputImageVerticalDpi(void) const
+double PosteRazor::getInputImageVerticalDpi() const
 {
 	return m_imageIO->getVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitOfLengthInch);
 }
 
-double PosteRazor::getInputImageWidth(void) const
+double PosteRazor::getInputImageWidth() const
 {
 	return m_imageIO->getWidth(m_unitOfLength);
 }
 
-double PosteRazor::getInputImageHeight(void) const
+double PosteRazor::getInputImageHeight() const
 {
 	return m_imageIO->getHeight(m_unitOfLength);
 }
 
-int PosteRazor::getInputImageBitsPerPixel(void) const
+int PosteRazor::getInputImageBitsPerPixel() const
 {
 	return m_imageIO->getBitsPerPixel();
 }
 
-ColorTypes::eColorTypes PosteRazor::getInputImageColorType(void) const
+ColorTypes::eColorTypes PosteRazor::getInputImageColorType() const
 {
 	return m_imageIO->getColorDataType();
 }
@@ -201,12 +201,12 @@ void PosteRazor::setUnitOfLength(UnitsOfLength::eUnitsOfLength unit)
 	m_unitOfLength = unit;
 }
 
-UnitsOfLength::eUnitsOfLength PosteRazor::getUnitOfLength(void) const
+UnitsOfLength::eUnitsOfLength PosteRazor::getUnitOfLength() const
 {
 	return m_unitOfLength;
 }
 
-const char* PosteRazor::getUnitOfLengthName(void) const
+const char* PosteRazor::getUnitOfLengthName() const
 {
 	return UnitsOfLength::getUnitOfLengthName(m_unitOfLength);
 }
@@ -241,42 +241,42 @@ void PosteRazor::setPaperBorderLeft(double border)
 	m_paperBorderLeft = convertDistanceToCm(border);
 }
 
-const QString PosteRazor::getPaperFormat(void) const
+const QString PosteRazor::getPaperFormat() const
 {
 	return m_paperFormat;
 }
 
-PaperFormats::ePaperOrientations PosteRazor::getPaperOrientation(void) const
+PaperFormats::ePaperOrientations PosteRazor::getPaperOrientation() const
 {
 	return m_paperOrientation;
 }
 
-double PosteRazor::getPaperBorderTop(void) const
+double PosteRazor::getPaperBorderTop() const
 {
 	return qBound(.0, convertCmToDistance(m_paperBorderTop), getMaximalHorizontalPaperBorder());
 }
 
-double PosteRazor::getPaperBorderRight(void) const
+double PosteRazor::getPaperBorderRight() const
 {
 	return qBound(.0, convertCmToDistance(m_paperBorderRight), getMaximalVerticalPaperBorder());
 }
 
-double PosteRazor::getPaperBorderBottom(void) const
+double PosteRazor::getPaperBorderBottom() const
 {
 	return qBound(.0, convertCmToDistance(m_paperBorderBottom), getMaximalHorizontalPaperBorder());
 }
 
-double PosteRazor::getPaperBorderLeft(void) const
+double PosteRazor::getPaperBorderLeft() const
 {
 	return qBound(.0, convertCmToDistance(m_paperBorderLeft), getMaximalVerticalPaperBorder());
 }
 
-double PosteRazor::getMaximalVerticalPaperBorder(void) const
+double PosteRazor::getMaximalVerticalPaperBorder() const
 {
 	return getPaperWidth() / 2.0 - convertCmToDistance(1.0);
 }
 
-double PosteRazor::getMaximalHorizontalPaperBorder(void) const
+double PosteRazor::getMaximalHorizontalPaperBorder() const
 {
 	return getPaperHeight() / 2.0 - convertCmToDistance(1.0);
 }
@@ -291,32 +291,32 @@ void PosteRazor::setCustomPaperHeight(double height)
 	m_customPaperHeight = convertDistanceToCm(height);
 }
 
-double PosteRazor::getCustomPaperWidth(void) const
+double PosteRazor::getCustomPaperWidth() const
 {
 	return qBound(getCustomMinimalPaperWidth(), convertCmToDistance(m_customPaperWidth), getCustomMaximalPaperWidth());
 }
 
-double PosteRazor::getCustomPaperHeight(void) const
+double PosteRazor::getCustomPaperHeight() const
 {
 	return qBound(getCustomMinimalPaperHeight(), convertCmToDistance(m_customPaperHeight), getCustomMaximalPaperHeight());
 }
 
-double PosteRazor::getCustomMinimalPaperWidth(void) const
+double PosteRazor::getCustomMinimalPaperWidth() const
 {
 	return convertCmToDistance(4.0);
 }
 
-double PosteRazor::getCustomMinimalPaperHeight(void) const
+double PosteRazor::getCustomMinimalPaperHeight() const
 {
 	return convertCmToDistance(4.0);
 }
 
-double PosteRazor::getCustomMaximalPaperWidth(void) const
+double PosteRazor::getCustomMaximalPaperWidth() const
 {
 	return convertCmToDistance(500.0); // Maximum of PDF page
 }
 
-double PosteRazor::getCustomMaximalPaperHeight(void) const
+double PosteRazor::getCustomMaximalPaperHeight() const
 {
 	return convertCmToDistance(500.0);
 }
@@ -326,27 +326,27 @@ void PosteRazor::setUseCustomPaperSize(bool useIt)
 	m_useCustomPaperSize = useIt;
 }
 
-bool PosteRazor::getUseCustomPaperSize(void) const
+bool PosteRazor::getUseCustomPaperSize() const
 {
 	return m_useCustomPaperSize;
 }
 
-double PosteRazor::getPaperWidth(void) const
+double PosteRazor::getPaperWidth() const
 {
 	return getUseCustomPaperSize()?getCustomPaperWidth():PaperFormats::getPaperWidth(getPaperFormat(), getPaperOrientation(), m_unitOfLength);
 }
 
-double PosteRazor::getPaperHeight(void) const
+double PosteRazor::getPaperHeight() const
 {
 	return getUseCustomPaperSize()?getCustomPaperHeight():PaperFormats::getPaperHeight(getPaperFormat(), getPaperOrientation(), m_unitOfLength);
 }
 
-double PosteRazor::getPrintablePaperAreaWidth(void) const
+double PosteRazor::getPrintablePaperAreaWidth() const
 {
 	return getPaperWidth() - getPaperBorderLeft() - getPaperBorderRight();
 }
 
-double PosteRazor::getPrintablePaperAreaHeight(void) const
+double PosteRazor::getPrintablePaperAreaHeight() const
 {
 	return getPaperHeight() - getPaperBorderTop() - getPaperBorderBottom();
 }
@@ -439,22 +439,22 @@ void PosteRazor::setOverlappingHeight(double height)
 	m_overlappingHeight = convertDistanceToCm(height);
 }
 
-double PosteRazor::getOverlappingWidth(void) const
+double PosteRazor::getOverlappingWidth() const
 {
 	return qBound(.0, convertCmToDistance(m_overlappingWidth), getMaximalOverLappingWidth());
 }
 
-double PosteRazor::getOverlappingHeight(void) const
+double PosteRazor::getOverlappingHeight() const
 {
 	return qBound(.0, convertCmToDistance(m_overlappingHeight), getMaximalOverLappingHeight());
 }
 
-double PosteRazor::getMaximalOverLappingWidth(void) const
+double PosteRazor::getMaximalOverLappingWidth() const
 {
 	return getPaperWidth() - getPaperBorderLeft() - getPaperBorderRight() - convertCmToDistance(1.0);
 }
 
-double PosteRazor::getMaximalOverLappingHeight(void) const
+double PosteRazor::getMaximalOverLappingHeight() const
 {
 	return getPaperHeight() - getPaperBorderTop() - getPaperBorderBottom() - convertCmToDistance(1.0);
 }
@@ -464,7 +464,7 @@ void PosteRazor::setOverlappingPosition(PosteRazorEnums::eOverlappingPositions p
 	m_overlappingPosition = position;
 }
 
-PosteRazorEnums::eOverlappingPositions PosteRazor::getOverlappingPosition(void) const
+PosteRazorEnums::eOverlappingPositions PosteRazor::getOverlappingPosition() const
 {
 	return m_overlappingPosition;
 }
@@ -533,7 +533,7 @@ double PosteRazor::getPosterHeight(PosteRazorEnums::ePosterSizeModes mode) const
 	return getPosterDimension(mode, false);
 }
 
-PosteRazorEnums::ePosterSizeModes PosteRazor::getPosterSizeMode(void) const
+PosteRazorEnums::ePosterSizeModes PosteRazor::getPosterSizeMode() const
 {
 	return m_posterSizeMode;
 }
@@ -548,12 +548,12 @@ void PosteRazor::setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments
 	m_posterVerticalAlignment = alignment;
 }
 
-PosteRazorEnums::eHorizontalAlignments PosteRazor::getPosterHorizontalAlignment(void) const
+PosteRazorEnums::eHorizontalAlignments PosteRazor::getPosterHorizontalAlignment() const
 {
 	return m_posterHorizontalAlignment;
 }
 
-PosteRazorEnums::eVerticalAlignments PosteRazor::getPosterVerticalAlignment(void) const
+PosteRazorEnums::eVerticalAlignments PosteRazor::getPosterVerticalAlignment() const
 {
 	return m_posterVerticalAlignment;
 }
@@ -797,7 +797,7 @@ void PosteRazor::setPosterOutputFormat(ImageIOTypes::eImageFormats format)
 	m_posterOutputFormat = format;
 }
 
-ImageIOTypes::eImageFormats PosteRazor::getPosterOutputFormat(void) const
+ImageIOTypes::eImageFormats PosteRazor::getPosterOutputFormat() const
 {
 	return m_posterOutputFormat;
 }

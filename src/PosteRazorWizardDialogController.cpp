@@ -23,18 +23,31 @@
 #include "PosteRazorWizardDialogController.h"
 
 PosteRazorWizardDialogController::PosteRazorWizardDialogController()
-	: m_WizardDialog(0)
-	, m_wizardStep(ePosteRazorWizardStepInputImage)
+	: m_wizardStep(ePosteRazorWizardStepInputImage)
+	, m_imageWasLoaded(false)
 {
 }
 
 void PosteRazorWizardDialogController::setPosteRazorWizardDialog(QObject *dialog)
 {
-//	PosteRazorDialogController::setPosteRazorDialog(dialog);
-//	m_WizardDialog = dialog;
+	connect(this, SIGNAL(wizardStepChanged(int)), dialog, SLOT(setWizardStep(int)));
+	connect(this, SIGNAL(prevButtonEnabled(bool)), dialog, SLOT(setPrevButtonEnabled(bool)));
+	connect(this, SIGNAL(nextButtonEnabled(bool)), dialog, SLOT(setNextButtonEnabled(bool)));
+	connect(this, SIGNAL(previewStateChanged(const QString&)), dialog, SLOT(setPreviewState(const QString&)));
+	connect(dialog, SIGNAL(imageLoaded()), SLOT(handleImageLoaded()));
+	connect(dialog, SIGNAL(prevButtonPressed()), SLOT(handlePrevButtonPressed()));
+	connect(dialog, SIGNAL(nextButtonPressed()), SLOT(handleNextButtonPressed()));
+
+	updateDialogWizardStep();
 }
 
-void PosteRazorWizardDialogController::handlePrevButtonPressed(void)
+void PosteRazorWizardDialogController::handleImageLoaded()
+{
+	m_imageWasLoaded = true;
+	updateDialogWizardStep();
+}
+
+void PosteRazorWizardDialogController::handlePrevButtonPressed()
 {
 	m_wizardStep =
 		m_wizardStep == ePosteRazorWizardStepSavePoster?ePosteRazorWizardStepPosterSize
@@ -45,7 +58,7 @@ void PosteRazorWizardDialogController::handlePrevButtonPressed(void)
 	updateDialogWizardStep();
 }
 
-void PosteRazorWizardDialogController::handleNextButtonPressed(void)
+void PosteRazorWizardDialogController::handleNextButtonPressed()
 {
 	m_wizardStep =
 		m_wizardStep == ePosteRazorWizardStepInputImage?ePosteRazorWizardStepPaperSize
@@ -56,27 +69,19 @@ void PosteRazorWizardDialogController::handleNextButtonPressed(void)
 	updateDialogWizardStep();
 }
 
-void PosteRazorWizardDialogController::updateDialog(void)
+void PosteRazorWizardDialogController::updateDialogWizardStep()
 {
-	emit previewChanged();
-	updateDialogWizardStep();
-}
-
-void PosteRazorWizardDialogController::updateDialogWizardStep(void)
-{
-	m_WizardDialog->setWizardStep(m_wizardStep);
-	m_WizardDialog->setPreviewState
-	(
-		m_wizardStep == ePosteRazorWizardStepInputImage?"image"
-		:m_wizardStep == ePosteRazorWizardStepOverlapping?"overlapping"
-		:m_wizardStep == ePosteRazorWizardStepPaperSize?"paper"
-		:m_wizardStep == ePosteRazorWizardStepPosterSize?"poster"
-		:/* m_wizardStep == ePosteRazorWizardStepSavePoster? */"poster"
+	emit wizardStepChanged(m_wizardStep);
+	emit previewStateChanged(
+		m_wizardStep == ePosteRazorWizardStepInputImage?QLatin1String("image")
+		:m_wizardStep == ePosteRazorWizardStepOverlapping?QLatin1String("overlapping")
+		:m_wizardStep == ePosteRazorWizardStepPaperSize?QLatin1String("paper")
+		:m_wizardStep == ePosteRazorWizardStepPosterSize?QLatin1String("poster")
+		:QLatin1String("poster")
 	);
-	m_WizardDialog->setPrevButtonEnabled(m_wizardStep != ePosteRazorWizardStepInputImage);
-	m_WizardDialog->setNextButtonEnabled
-	(
+	emit prevButtonEnabled(m_wizardStep != ePosteRazorWizardStepInputImage);
+	emit nextButtonEnabled(
 		m_wizardStep != ePosteRazorWizardStepSavePoster
-		&& m_PosteRazor->getIsImageLoaded()
+		&& m_imageWasLoaded
 	);
 }

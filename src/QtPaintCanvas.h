@@ -50,7 +50,7 @@ public:
 	virtual void drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
 	virtual void getSize(double &width, double &height) const;
 
-	virtual void disposeImage(void);
+	virtual void disposeImage();
 	virtual void drawImage(double x, double y, double width, double height);
 
 	virtual void setState(const QString &state);

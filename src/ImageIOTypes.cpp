@@ -79,7 +79,7 @@ static const struct
 };
 static const int g_fileExtensionsCount = sizeof(g_fileExtensions)/sizeof(g_fileExtensions[0]);
 
-int ImageIOTypes::getInputImageFormatsCount(void)
+int ImageIOTypes::getInputImageFormatsCount()
 {
 	return g_imageFormatsCount;
 }

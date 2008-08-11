@@ -73,7 +73,7 @@ public:
 		m_pageContent[0] = '\0';
 	}
 
-	void AddOffsetToXref(void)
+	void AddOffsetToXref()
 	{
 		char xrefLine[25];
 		m_pdfObjectCount++;
@@ -265,7 +265,7 @@ public:
 		return err;
 	}
 
-	int startPage(void)
+	int startPage()
 	{
 		int err = 0;
 		m_pageContent[0] = '\0';
@@ -291,7 +291,7 @@ public:
 		return err;
 	}
 
-	int finishPage(void)
+	int finishPage()
 	{
 		int err = 0;
 	
@@ -435,7 +435,7 @@ public:
 	}
 };
 
-PosteRazorPDFOutput* PosteRazorPDFOutput::createPosteRazorPDFOutput(void)
+PosteRazorPDFOutput* PosteRazorPDFOutput::createPosteRazorPDFOutput()
 {
 	return (PosteRazorPDFOutput*) new PosteRazorPDFOutputImplementation();
 }

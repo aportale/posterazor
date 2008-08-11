@@ -37,10 +37,10 @@ public:
 	static PosteRazorImageIO* createPosteRazorImageIO();
 
 	virtual bool loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize) = 0;
-	virtual bool isImageLoaded(void) const = 0;
+	virtual bool isImageLoaded() const = 0;
 
-	virtual int getWidthPixels(void) const = 0;
-	virtual int getHeightPixels(void) const = 0;
+	virtual int getWidthPixels() const = 0;
+	virtual int getHeightPixels() const = 0;
 
 	virtual double getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const = 0;
 	virtual double getVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const = 0;
@@ -51,8 +51,8 @@ public:
 	virtual bool getImageAsRGB(unsigned char *buffer) const = 0;
 	virtual bool getImageAsRGB(unsigned char *buffer, int width, int height) const = 0;
 	
-	virtual int getBitsPerPixel(void) const = 0;
-	virtual eColorTypes getColorDataType(void) const = 0;
+	virtual int getBitsPerPixel() const = 0;
+	virtual eColorTypes getColorDataType() const = 0;
 
 	virtual int savePoster(const char *fileName, ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const = 0;
 };

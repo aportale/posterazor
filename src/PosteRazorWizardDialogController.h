@@ -23,11 +23,9 @@
 #ifndef POSTERAZORWIZARDDIALOGCONTROLLER_H
 #define POSTERAZORWIZARDDIALOGCONTROLLER_H
 
-#include "PosteRazorDialogController.h"
+#include <QObject>
 
-class PosteRazorWizardDialogInterface;
-
-class PosteRazorWizardDialogController: public PosteRazorDialogController
+class PosteRazorWizardDialogController: public QObject
 {
 	Q_OBJECT
 
@@ -41,25 +39,24 @@ public:
 	};
 
 	PosteRazorWizardDialogController();
-	virtual ~PosteRazorWizardDialogController() {};
+
 	void setPosteRazorWizardDialog(QObject *dialog);
-	void handlePrevButtonPressed(void);
-	void handleNextButtonPressed(void);
-	void updateDialog(void);
+
+private slots:
+	void updateDialogWizardStep();
+	void handlePrevButtonPressed();
+	void handleNextButtonPressed();
+	void handleImageLoaded();
+
+signals:
+	void wizardStepChanged(int step) const;
+	void previewStateChanged(const QString &state) const;
+	void prevButtonEnabled(bool enabled) const;
+	void nextButtonEnabled(bool enabled) const;
 
 private:
-	PosteRazorWizardDialogInterface *m_WizardDialog;
 	ePosteRazorWizardSteps m_wizardStep;
-	void updateDialogWizardStep(void);
-};
-
-class PosteRazorWizardDialogInterface
-{
-public:
-	virtual void setPrevButtonEnabled(bool enabled) = 0;
-	virtual void setNextButtonEnabled(bool enabled) = 0;
-	virtual void setWizardStep(PosteRazorWizardDialogController::ePosteRazorWizardSteps step) = 0;
-	virtual void setPreviewState(const char *state) = 0;
+	bool m_imageWasLoaded;
 };
 
 #endif
