@@ -26,6 +26,8 @@
 #include <QStringList>
 #include <math.h>
 
+const QLatin1String defaultValue_PaperFormat("DIN A4");
+
 const QLatin1String settingsKey_PosterSizeMode("PosterSizeMode");
 const QLatin1String settingsKey_PosterDimension("PosterDimension");
 const QLatin1String settingsKey_PosterDimensionIsWidth("PosterDimensionIsWidth");
@@ -54,7 +56,7 @@ PosteRazor::PosteRazor()
 	, m_posterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentTop)
 
 	, m_useCustomPaperSize(false)
-	, m_paperFormat("DIN A4")
+	, m_paperFormat(defaultValue_PaperFormat)
 	, m_paperOrientation(PaperFormats::ePaperOrientationPortrait)
 	, m_paperBorderTop(1.5)
 	, m_paperBorderRight(1.5)
@@ -90,6 +92,8 @@ bool PosteRazor::readSettings(const QSettings *settings)
 	m_posterVerticalAlignment      = (PosteRazorEnums::eVerticalAlignments)settings->value(settingsKey_PosterVerticalAlignment, (int)m_posterVerticalAlignment).toInt();
 	m_useCustomPaperSize           = settings->value(settingsKey_UseCustomPaperSize, m_useCustomPaperSize).toBool();
 	m_paperFormat                  = settings->value(settingsKey_PaperFormat, m_paperFormat).toString();
+	if (!PaperFormats::paperFormats().contains(m_paperFormat))
+		m_paperFormat = QLatin1String(defaultValue_PaperFormat);
 	m_paperOrientation             = (PaperFormats::ePaperOrientations)settings->value(settingsKey_PaperOrientation, (int)m_paperOrientation).toInt();
 	m_paperBorderTop               = settings->value(settingsKey_PaperBorderTop, m_paperBorderTop).toDouble();
 	m_paperBorderRight             = settings->value(settingsKey_PaperBorderRight, m_paperBorderRight).toDouble();
