@@ -11,7 +11,8 @@ SOURCES += \
 	QtPosteRazorSpinBox.cpp \
 	QtPaintCanvas.cpp \
 	PosteRazorDialogController.cpp \
-	PosteRazorWizardDialogController.cpp
+	PosteRazorWizardDialogController.cpp \
+	main.cpp
 
 HEADERS += \
 	ColorTypes.h \

@@ -21,15 +21,9 @@
 */
 
 #include "mainwindow.h"
-#include <QSettings>
-#include <QApplication>
-#include <QHeaderView>
 #include <QUrl>
-#include <QTranslator>
 #include <QDesktopServices>
 #include <QFileDialog>
-#include "PosteRazorDialogController.h"
-#include "PosteRazorWizardDialogController.h"
 
 MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -385,35 +379,4 @@ void MainWindow::updatePosterSizeGroupsState()
 	m_posterPercentualSizeLabel->setEnabled(percentual);
 	m_posterPercentualSizeInput->setEnabled(percentual);
 	m_posterPercentualSizeUnitLabel->setEnabled(percentual);
-}
-
-int main (int argc, char **argv)
-{
-	QApplication a(argc, argv);
-
-	QTranslator myAppTranslator;
-	myAppTranslator.load(":/Translations/" + QLocale::system().name());
-	a.installTranslator(&myAppTranslator);
-
-	QCoreApplication::setApplicationName("PosteRazor");
-	QCoreApplication::setApplicationVersion("1.9.0-alpha");
-	QCoreApplication::setOrganizationName("CasaPortale");
-	QCoreApplication::setOrganizationDomain("de.casaportale");
-
-	MainWindow dialog;
-	PosteRazor posteRazor;
-
-	PosteRazorDialogController *controller = new PosteRazorDialogController;
-	PosteRazorWizardDialogController *wizardController = new PosteRazorWizardDialogController;
-
-	QSettings settings;
-	controller->setPosteRazorAndDialog(&posteRazor, &dialog);
-	controller->readSettings(&settings);
-	wizardController->setPosteRazorWizardDialog(&dialog);
-
-	dialog.show();
-	if (argc == 2)
-		controller->loadInputImage(argv[1]);
-
-	return a.exec();
 }
