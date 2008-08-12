@@ -10,7 +10,7 @@ SOURCES += \
 	mainwindow.cpp \
 	QtPosteRazorSpinBox.cpp \
 	QtPaintCanvas.cpp \
-	PosteRazorDialogController.cpp \
+	controller.cpp \
 	PosteRazorWizardDialogController.cpp \
 	main.cpp
 
@@ -26,7 +26,7 @@ HEADERS += \
 	mainwindow.h \
 	QtPosteRazorSpinBox.h \
 	QtPaintCanvas.h \
-	PosteRazorDialogController.h \
+	controller.h \
 	PosteRazorWizardDialogController.h
 
 INCLUDEPATH += \

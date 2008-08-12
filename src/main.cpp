@@ -24,7 +24,7 @@
 #include <QSettings>
 #include <QApplication>
 #include <QTranslator>
-#include "PosteRazorDialogController.h"
+#include "controller.h"
 #include "PosteRazorWizardDialogController.h"
 
 int main (int argc, char **argv)
@@ -42,7 +42,7 @@ int main (int argc, char **argv)
 
 	MainWindow dialog;
 	PosteRazor posteRazor;
-	PosteRazorDialogController controller(&posteRazor, &dialog);
+	Controller controller(&posteRazor, &dialog);
 	PosteRazorWizardDialogController wizardController(&dialog);
 
 	QSettings settings;

@@ -20,19 +20,19 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef POSTERAZORDIALOGCONTROLLER_H
-#define POSTERAZORDIALOGCONTROLLER_H
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
 
 #include "PosteRazor.h"
 
 class MainWindow;
 
-class PosteRazorDialogController: public QObject
+class Controller: public QObject
 {
 	Q_OBJECT
 
 public:
-	PosteRazorDialogController(PosteRazor *model, MainWindow *dialog, QObject *parent = 0);
+	Controller(PosteRazor *model, MainWindow *dialog, QObject *parent = 0);
 
 	void updateDialog();
 	void updatePreview();
@@ -93,4 +93,4 @@ protected:
 	void setDialogOverlappingOptions();
 };
 
-#endif // POSTERAZORDIALOGCONTROLLER_H
+#endif // CONTROLLER_H
