@@ -1174,7 +1174,7 @@
                  <number>4</number>
                 </property>
                 <property name="maximum" >
-                 <double>999999.000000000000000</double>
+                 <double>999.000000000000000</double>
                 </property>
                </widget>
               </item>
@@ -1193,7 +1193,7 @@
                  <number>4</number>
                 </property>
                 <property name="maximum" >
-                 <double>999999.000000000000000</double>
+                 <double>999.990000000000009</double>
                 </property>
                </widget>
               </item>
