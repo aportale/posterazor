@@ -42,21 +42,18 @@ int main (int argc, char **argv)
 
 	MainWindow dialog;
 	PosteRazor posteRazor;
-
-	PosteRazorDialogController *controller = new PosteRazorDialogController;
-	PosteRazorWizardDialogController *wizardController = new PosteRazorWizardDialogController;
+	PosteRazorDialogController controller(&posteRazor, &dialog);
+	PosteRazorWizardDialogController wizardController(&dialog);
 
 	QSettings settings;
-	controller->setPosteRazorAndDialog(&posteRazor, &dialog);
-	controller->readSettings(&settings);
-	wizardController->setPosteRazorWizardDialog(&dialog);
+	controller.readSettings(&settings);
 
 	dialog.show();
 	if (argc == 2)
-		controller->loadInputImage(argv[1]);
+		controller.loadInputImage(argv[1]);
 
 	const int appReturn = a.exec();
-	controller->writeSettings(&settings);
+	controller.writeSettings(&settings);
 
 	return appReturn;
 }
