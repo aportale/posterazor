@@ -255,42 +255,12 @@ void MainWindow::handlePaperFormatTabChanged(int index)
 
 void MainWindow::handlePaperOrientationPortraitSelected()
 {
-//	m_posteRazorController->setPaperOrientation(PaperFormats::ePaperOrientationPortrait);
+	emit paperOrientationChanged(PaperFormats::ePaperOrientationPortrait);
 }
 
 void MainWindow::handlePaperOrientationLandscapeSelected()
 {
-//	m_posteRazorController->setPaperOrientation(PaperFormats::ePaperOrientationLandscape);
-}
-
-void MainWindow::handlePosterHorizontalAlignmentLeftSelected()
-{
-//	m_posteRazorController->setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignmentLeft);
-}
-
-void MainWindow::handlePosterHorizontalAlignmentCenterSelected()
-{
-//	m_posteRazorController->setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignmentCenter);
-}
-
-void MainWindow::handlePosterHorizontalAlignmentRightSelected()
-{
-//	m_posteRazorController->setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignmentRight);
-}
-
-void MainWindow::handlePosterVerticalAlignmentTopSelected()
-{
-//	m_posteRazorController->setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentTop);
-}
-
-void MainWindow::handlePosterVerticalAlignmentMiddleSelected()
-{
-//	m_posteRazorController->setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentMiddle);
-}
-
-void MainWindow::handlePosterVerticalAlignmentBottomSelected()
-{
-//	m_posteRazorController->setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentBottom);
+	emit paperOrientationChanged(PaperFormats::ePaperOrientationLandscape);
 }
 
 void MainWindow::createConnections()

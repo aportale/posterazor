@@ -117,13 +117,6 @@ private slots:
 	void handlePaperOrientationPortraitSelected();
 	void handlePaperOrientationLandscapeSelected();
 
-	void handlePosterHorizontalAlignmentLeftSelected();
-	void handlePosterHorizontalAlignmentCenterSelected();
-	void handlePosterHorizontalAlignmentRightSelected();
-	void handlePosterVerticalAlignmentTopSelected();
-	void handlePosterVerticalAlignmentMiddleSelected();
-	void handlePosterVerticalAlignmentBottomSelected();
-
 	void emitOverlappingPositionChange(int alignmentInt) const;
 	void emitPosterAlignmentChange(int alignmentInt) const;
 
