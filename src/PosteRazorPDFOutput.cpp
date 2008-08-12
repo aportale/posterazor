@@ -110,7 +110,7 @@ public:
 		return err;
 	}
 
-	int saveImage(const char *jpegFileName, int widthPixels, int heightPixels, ColorTypes::eColorTypes colorType)
+	int saveImage(const QString &jpegFileName, int widthPixels, int heightPixels, ColorTypes::eColorTypes colorType)
 	{
 		int err = 0;
 
@@ -118,7 +118,7 @@ public:
 
 		FILE *jpegFile = NULL;
 		if (!err) {
-			jpegFile = fopen(jpegFileName, "rb");
+			jpegFile = fopen(jpegFileName.toAscii(), "rb");
 			if (!jpegFile)
 				err = 2;
 		}
@@ -311,14 +311,14 @@ public:
 		return err;
 	}
 
-	int startSaving(const char* fileName, int pages, double widthCm, double heightCm)
+	int startSaving(const QString &fileName, int pages, double widthCm, double heightCm)
 	{
 		int err = 0;
 
 		m_mediaboxWidth = CM2PT(widthCm);
 		m_mediaboxHeight = CM2PT(heightCm);
 
-		m_outputFile = fopen(fileName, "wb");
+		m_outputFile = fopen(fileName.toAscii(), "wb");
 		if (!m_outputFile)
 			err = 1;
 		if (!err) {

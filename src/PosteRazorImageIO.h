@@ -26,6 +26,7 @@
 #include "UnitsOfLength.h"
 #include "ColorTypes.h"
 #include "ImageIOTypes.h"
+#include <QString>
 
 class PainterInterface;
 
@@ -36,7 +37,7 @@ public:
 
 	static PosteRazorImageIO* createPosteRazorImageIO();
 
-	virtual bool loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize) = 0;
+	virtual bool loadInputImage(const QString &imageFileName, QString &errorMessage) = 0;
 	virtual bool isImageLoaded() const = 0;
 
 	virtual int getWidthPixels() const = 0;
@@ -54,7 +55,7 @@ public:
 	virtual int getBitsPerPixel() const = 0;
 	virtual eColorTypes getColorDataType() const = 0;
 
-	virtual int savePoster(const char *fileName, ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const = 0;
+	virtual int savePoster(const QString &fileName, ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const = 0;
 };
 
 #endif // POSTERAZORIMAGEIO_H

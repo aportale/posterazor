@@ -63,7 +63,7 @@ private:
 	unsigned int m_horizontalDotsPerMeter;
 	unsigned int m_verticalDotsPerMeter;
 
-	char         m_imageFileName[1024];
+	QString      m_imageFileName;
 
 	static bool isSystemLittleEndian()
 	{
@@ -107,13 +107,14 @@ public:
 		}
 	}
 
-	bool loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize)
+	bool loadInputImage(const QString &imageFileName, QString &errorMessage)
 	{
 		bool result = false;
 
 		strcpy(FreeImageErrorMessage, "");
 
-		FIBITMAP* newImage = FreeImage_Load(FreeImage_GetFileType(imageFileName, 0), imageFileName, TIFF_CMYK);
+		const FREE_IMAGE_FORMAT fileType = FreeImage_GetFileType(imageFileName.toAscii(), 0);
+		FIBITMAP* newImage = FreeImage_Load(fileType, imageFileName.toAscii(), TIFF_CMYK);
 
 		if (newImage) {
 			result = true;
@@ -132,7 +133,7 @@ public:
 			if (m_verticalDotsPerMeter == 0)
 				m_verticalDotsPerMeter = 2835;
 
-			strcpy(m_imageFileName, imageFileName);
+			m_imageFileName = imageFileName;
 
 			if ((getColorDataType() == eColorTypeRGB && getBitsPerPixel() == 32) // Sometimes, there are strange .PSD images like this (FreeImage bug?)
 				|| (getColorDataType() == eColorTypeRGBA)) // We can't export alpha channels to PDF, anyway (yet)
@@ -144,8 +145,7 @@ public:
 			}
 		}
 
-		strncpy(errorMessage, FreeImageErrorMessage, errorMessageSize);
-		errorMessage[errorMessageSize-1] = '\0';
+		errorMessage = QString(FreeImageErrorMessage);
 
 		return result;
 	}
@@ -268,8 +268,9 @@ public:
 		return colorDatatype;
 	}
 
-	int savePoster(const char *fileName, ImageIOTypes::eImageFormats /* format */, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const
+	int savePoster(const QString &fileName, ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const
 	{
+		Q_UNUSED(format)
 		int err = 0;
 
 		const unsigned int imageBytesCount = PosteRazorPDFOutput::getImageBytesCount(getWidthPixels(), getHeightPixels(), getBitsPerPixel());
@@ -309,7 +310,7 @@ public:
 		PosteRazorPDFOutput *pdfOutput = PosteRazorPDFOutput::createPosteRazorPDFOutput();
 		err = pdfOutput->startSaving(fileName, pagesCount, widthCm, heightCm);
 		if (!err) {
-			if (FreeImage_GetFileType(m_imageFileName, 0) == FIF_JPEG)
+			if (FreeImage_GetFileType(m_imageFileName.toAscii(), 0) == FIF_JPEG)
 				err = pdfOutput->saveImage(m_imageFileName, getWidthPixels(), getHeightPixels(), getColorDataType());
 			else
 				err = pdfOutput->saveImage(imageData, getWidthPixels(), getHeightPixels(), getBitsPerPixel(), getColorDataType(), rgbPalette, FreeImage_GetColorsUsed(m_bitmap));

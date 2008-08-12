@@ -38,12 +38,12 @@ public:
 	static unsigned int getImageBytesCount(int widthPixels, int heightPixels, int bitPerPixel);
 
 	virtual int saveImage(unsigned char *imageData, int widthPixels, int heightPixels, int bitPerPixel, ColorTypes::eColorTypes colorType, unsigned char *rgbPalette, int paletteEntries) = 0;
-	virtual int saveImage(const char *jpegFileName, int widthPixels, int heightPixels, ColorTypes::eColorTypes colorType) = 0;
+	virtual int saveImage(const QString &jpegFileName, int widthPixels, int heightPixels, ColorTypes::eColorTypes colorType) = 0;
 
 	virtual int startPage() = 0;
 	virtual int finishPage() = 0;
 
-	virtual int startSaving(const char* fileName, int pages, double widthCm, double heightCm) = 0;
+	virtual int startSaving(const QString &fileName, int pages, double widthCm, double heightCm) = 0;
 	virtual int finishSaving() = 0;
 };
 

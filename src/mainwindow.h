@@ -66,9 +66,9 @@ public:
 	void setLaunchPDFApplication(bool launch);
 
 	void updatePreview();
-	void showImageFileName(const char *fileName);
+	void showImageFileName(const QString &fileName);
 	void updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel);
-	void launchPdfApplication(const char *pdfFileName) const;
+	void launchPdfApplication(const QString &pdfFileName) const;
 
 public slots:
 	void setPreviewImage(const unsigned char* rgbData, const QSize &size);

@@ -143,9 +143,9 @@ double PosteRazor::convertCmToDistance(double cm) const
 	return UnitsOfLength::convertBetweenUnitsOfLength(cm, UnitsOfLength::eUnitOfLengthCentimeter, getUnitOfLength());
 }
 
-bool PosteRazor::loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize)
+bool PosteRazor::loadInputImage(const QString &imageFileName, QString &errorMessage)
 {
-	const bool success = m_imageIO->loadInputImage(imageFileName, errorMessage, errorMessageSize);
+	const bool success = m_imageIO->loadInputImage(imageFileName, errorMessage);
 	if (success)
 		createPreviewImage(1024, 768);
 	return success;
@@ -786,7 +786,7 @@ ImageIOTypes::eImageFormats PosteRazor::getPosterOutputFormat() const
 	return m_posterOutputFormat;
 }
 
-int PosteRazor::savePoster(const char *fileName) const
+int PosteRazor::savePoster(const QString &fileName) const
 {
 	const int pagesCount = (int)(ceil(getPosterWidth(PosteRazorEnums::ePosterSizeModePages))) * (int)(ceil(getPosterHeight(PosteRazorEnums::ePosterSizeModePages)));
 	return m_imageIO->savePoster(fileName, getPosterOutputFormat(), this, pagesCount, convertDistanceToCm(getPrintablePaperAreaWidth()), convertDistanceToCm(getPrintablePaperAreaHeight()));

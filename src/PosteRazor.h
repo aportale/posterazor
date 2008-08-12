@@ -53,8 +53,8 @@ public:
 
 	bool readSettings(const QSettings *settings);
 	bool writeSettings(QSettings *settings) const;
-	bool loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize);
-	int savePoster(const char *fileName) const;
+	bool loadInputImage(const QString &imageFileName, QString &errorMessage);
+	int savePoster(const QString &fileName) const;
 
 	int getInputImageWidthPixels() const;
 	int getInputImageHeightPixels() const;

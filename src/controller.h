@@ -64,13 +64,13 @@ public slots:
 	bool writeSettings(QSettings *settings) const;
 	void loadInputImage();
 	bool loadInputImage(const QString &fileName);
-	bool loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize);
-	int savePoster(const char *fileName) const;
+	bool loadInputImage(const QString &fileName, QString &errorMessage);
+	int savePoster(const QString &fileName) const;
 	void savePoster() const;
 
 signals:
 	virtual void previewChanged() const;
-	virtual void imageFileNameChanged(const char *fileName) const;
+	virtual void imageFileNameChanged(const QString &fileName) const;
 	virtual void imageInfoChanged(int imageWidthInPixels, int imageHeightInPixels, double imageWidth,
 		double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi,
 		ColorTypes::eColorTypes colorType, int bitsPerPixel) const;

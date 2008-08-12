@@ -195,7 +195,7 @@ void MainWindow::updatePreview()
 	m_paintCanvas->repaint();
 }
 
-void MainWindow::showImageFileName(const char *fileName)
+void MainWindow::showImageFileName(const QString &fileName)
 {
 	m_inputFileNameLabel->setText(QFileInfo(fileName).fileName());
 }
@@ -220,7 +220,7 @@ void MainWindow::updateImageInfoFields(int imageWidthInPixels, int imageHeightIn
 	emit imageLoaded();
 }
 
-void MainWindow::launchPdfApplication(const char *pdfFileName) const
+void MainWindow::launchPdfApplication(const QString &pdfFileName) const
 {
 	QDesktopServices::openUrl(QUrl(pdfFileName));
 }

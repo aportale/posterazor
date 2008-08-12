@@ -363,30 +363,27 @@ void Controller::loadInputImage()
 
 bool Controller::loadInputImage(const QString &fileName)
 {
-	char errorMessage[1024];
-	const bool successful = loadInputImage(fileName.toAscii(), errorMessage, sizeof(errorMessage));
+	QString loadErrorMessage;
+	const bool successful = loadInputImage(fileName, loadErrorMessage);
 	if (!successful) {
-		QMessageBox::critical(NULL, QCoreApplication::translate("PosteRazorDialog", "Loading Error"), QCoreApplication::translate("PosteRazorDialog", "The Image '%1' could not be loaded.").arg(fileName));
-	} else {
-//		m_paintCanvas->requestImage();
+		const QString errorMessage = QCoreApplication::translate("PosteRazorDialog", "The Image '%1' could not be loaded.\n")
+			.arg(QDir::convertSeparators(fileName));
+		QMessageBox::critical(NULL, QCoreApplication::translate("PosteRazorDialog", "Loading Error"), errorMessage);
 	}
-
 	return successful;
 }
 
-bool Controller::loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize)
+bool Controller::loadInputImage(const QString &imageFileName, QString &errorMessage)
 {
-	const bool result = m_PosteRazor->loadInputImage(imageFileName, errorMessage, errorMessageSize);
-
+	const bool result = m_PosteRazor->loadInputImage(imageFileName, errorMessage);
 	if (result) {
 		updateDialog();
 		m_Dialog->showImageFileName(imageFileName);
 	}
-
 	return result;
 }
 
-int Controller::savePoster(const char *fileName) const
+int Controller::savePoster(const QString &fileName) const
 {
 	const int result = m_PosteRazor->savePoster(fileName);
 	if (result == 0 && m_launchPDFApplication)
