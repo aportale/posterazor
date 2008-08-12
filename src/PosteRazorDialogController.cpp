@@ -54,6 +54,7 @@ PosteRazorDialogController::PosteRazorDialogController(PosteRazor *model, MainWi
 
 	connect(m_Dialog, SIGNAL(posterAlignmentChanged(Qt::Alignment)), SLOT(setPosterAlignment(Qt::Alignment)));
 
+	connect(m_Dialog, SIGNAL(savePosterSignal()), SLOT(savePoster()));
 	connect(m_Dialog, SIGNAL(loadImageSignal()), SLOT(loadInputImage()));
 	connect(m_Dialog, SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), model, SLOT(paintOnCanvas(PaintCanvasInterface*, const QVariant&)));
 	connect(model, SIGNAL(previewImageChanged(const unsigned char*, const QSize&)), dialog, SLOT(setPreviewImage(const unsigned char*, const QSize&)));
