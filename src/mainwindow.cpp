@@ -30,8 +30,26 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
 {
 	setupUi(this);
-	m_steps->setCurrentIndex(0);
 
+	const struct {
+		QAbstractButton *sender;
+		Qt::Alignment alignment;
+	} alignmentMap[] = {
+		{m_posterAlignmentTopLeftButton,     Qt::AlignTop | Qt::AlignLeft        },
+		{m_posterAlignmentTopButton,         Qt::AlignTop | Qt::AlignHCenter     },
+		{m_posterAlignmentTopRightButton,    Qt::AlignTop | Qt::AlignRight       },
+		{m_posterAlignmentLeftButton,        Qt::AlignVCenter | Qt::AlignLeft    },
+		{m_posterAlignmentCenterButton,      Qt::AlignCenter                     },
+		{m_posterAlignmentRightButton,       Qt::AlignVCenter | Qt::AlignRight   },
+		{m_posterAlignmentBottomLeftButton,  Qt::AlignBottom | Qt::AlignLeft     },
+		{m_posterAlignmentBottomButton,      Qt::AlignBottom | Qt::AlignHCenter  },
+		{m_posterAlignmentBottomRightButton, Qt::AlignBottom | Qt::AlignRight    }
+	};
+	const int alignmentMapCount = (int)sizeof(alignmentMap)/sizeof(alignmentMap[0]);
+	for (int i = 0; i < alignmentMapCount; i++)
+		m_alignmentButtons.insert(alignmentMap[i].alignment, alignmentMap[i].sender);
+
+	m_steps->setCurrentIndex(0);
 	createConnections();
 	populateUI();
 
@@ -154,13 +172,7 @@ void MainWindow::setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode)
 
 void MainWindow::setPosterAlignment(Qt::Alignment alignment)
 {
-/*
-	(
-		alignment == PosteRazorEnums::eHorizontalAlignmentLeft?m_posterAlignmentLeftButton
-		:alignment == PosteRazorEnums::eHorizontalAlignmentCenter?m_posterAlignmentCenterButton
-		:m_posterAlignmentRightButton
-	)->setChecked(true);
-*/
+	m_alignmentButtons.value(alignment)->setChecked(true);
 }
 
 void MainWindow::setPosterOutputFormat(ImageIOTypes::eImageFormats /* format */)
@@ -332,25 +344,11 @@ void MainWindow::createConnections()
 	connect(m_posterPagesHeightInput,               SIGNAL(valueEdited(double)),        SIGNAL(posterHeightPagesChanged(double)));
 	connect(m_posterPercentualSizeInput,            SIGNAL(valueEdited(double)),        SIGNAL(posterSizePercentualChanged(double)));
 
-	const struct {
-		QObject *sender;
-		Qt::Alignment alignment;
-	} alignmentMap[] = {
-		{m_posterAlignmentTopLeftButton,     Qt::AlignTop | Qt::AlignLeft        },
-		{m_posterAlignmentTopButton,         Qt::AlignTop | Qt::AlignHCenter     },
-		{m_posterAlignmentTopRightButton,    Qt::AlignTop | Qt::AlignRight       },
-		{m_posterAlignmentLeftButton,        Qt::AlignVCenter | Qt::AlignLeft    },
-		{m_posterAlignmentCenterButton,      Qt::AlignCenter                     },
-		{m_posterAlignmentRightButton,       Qt::AlignVCenter | Qt::AlignRight   },
-		{m_posterAlignmentBottomLeftButton,  Qt::AlignBottom | Qt::AlignLeft     },
-		{m_posterAlignmentBottomButton,      Qt::AlignBottom | Qt::AlignHCenter  },
-		{m_posterAlignmentBottomRightButton, Qt::AlignBottom | Qt::AlignRight    }
-	};
-	const int alignmentMapCount = (int)sizeof(alignmentMap)/sizeof(alignmentMap[0]);
 	QSignalMapper *alignmentMapper = new QSignalMapper(this);
-	for (int i = 0; i < alignmentMapCount; i++) {
-		connect(alignmentMap[i].sender, SIGNAL(clicked()), alignmentMapper, SLOT(map()));
-		alignmentMapper->setMapping(alignmentMap[i].sender, alignmentMap[i].alignment);
+	foreach (const Qt::Alignment alignment, m_alignmentButtons.keys()) {
+		QAbstractButton *sender = m_alignmentButtons.value(alignment);
+		connect(sender, SIGNAL(clicked()), alignmentMapper, SLOT(map()));
+		alignmentMapper->setMapping(sender, alignment);
 	}
 	connect(alignmentMapper, SIGNAL(mapped(int)), SLOT(emitPosterAlignmentChange(int)));
 

@@ -80,6 +80,7 @@ public slots:
 
 private:
 	PosteRazor *m_posteRazor;
+	QHash<Qt::Alignment, QAbstractButton *> m_alignmentButtons;
 
 	void createConnections();
 	void populateUI();
