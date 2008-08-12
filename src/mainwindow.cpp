@@ -171,6 +171,7 @@ void MainWindow::setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode)
 		:mode == PosteRazorEnums::ePosterSizeModePages?m_posterSizeInPagesRadioButton
 		:m_posterSizePercentualRadioButton
 	)->setChecked(true);
+	updatePosterSizeGroupsState();
 }
 
 void MainWindow::setPosterAlignment(Qt::Alignment alignment)
@@ -179,8 +180,9 @@ void MainWindow::setPosterAlignment(Qt::Alignment alignment)
 		m_alignmentButtons.value(alignment)->setChecked(true);
 }
 
-void MainWindow::setPosterOutputFormat(ImageIOTypes::eImageFormats /* format */)
+void MainWindow::setPosterOutputFormat(ImageIOTypes::eImageFormats format)
 {
+	Q_UNUSED(format)
 }
 
 void MainWindow::setLaunchPDFApplication(bool launch)
