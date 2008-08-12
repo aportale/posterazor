@@ -69,12 +69,6 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
 	updatePosterSizeGroupsState();
 }
 
-MainWindow::~MainWindow()
-{
-//	QSettings settings;
-//	m_posteRazorController->writeSettings(&settings);
-}
-
 void MainWindow::setUnitOfLength(UnitsOfLength::eUnitsOfLength unit)
 {
 	Q_UNUSED(unit)

@@ -35,7 +35,6 @@ class MainWindow : public QMainWindow, private Ui::MainWindow
 
 public:
 	MainWindow(QWidget *parent = 0, Qt::WFlags flags = 0);
-	~MainWindow();
 
 	void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
 
