@@ -57,7 +57,8 @@ void PosteRazorDialogController::setPosteRazorAndDialog(PosteRazor *model, MainW
 	connect(m_Dialog, SIGNAL(posterWidthPagesChanged(double)), SLOT(setPosterWidthPages(double)));
 	connect(m_Dialog, SIGNAL(posterHeightPagesChanged(double)), SLOT(setPosterHeightPages(double)));
 	connect(m_Dialog, SIGNAL(posterSizePercentualChanged(double)), SLOT(setPosterSizePercentual(double)));
-	void posterAlignmentChanged(PosteRazorEnums::eHorizontalAlignments, PosteRazorEnums::eVerticalAlignments);
+
+	connect(m_Dialog, SIGNAL(posterAlignmentChanged(Qt::Alignment)), SLOT(setPosterAlignment(Qt::Alignment)));
 
 	connect(m_Dialog, SIGNAL(loadImageSignal()), SLOT(loadInputImage()));
 	connect(m_Dialog, SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), model, SLOT(paintOnCanvas(PaintCanvasInterface*, const QVariant&)));
@@ -212,15 +213,9 @@ void PosteRazorDialogController::setPosterSizeMode(PosteRazorEnums::ePosterSizeM
 	m_PosteRazor->setPosterSizeMode(mode);
 }
 
-void PosteRazorDialogController::setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment)
+void PosteRazorDialogController::setPosterAlignment(Qt::Alignment alignment)
 {
-	m_PosteRazor->setPosterHorizontalAlignment(alignment);
-	updatePreview();
-}
-
-void PosteRazorDialogController::setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment)
-{
-	m_PosteRazor->setPosterVerticalAlignment(alignment);
+	m_PosteRazor->setPosterAlignment(alignment);
 	updatePreview();
 }
 
@@ -248,8 +243,7 @@ void PosteRazorDialogController::setDialogPosterSizeMode()
 void PosteRazorDialogController::setDialogPosterOptions()
 {
 	setDialogPosterDimensions(PosteRazorEnums::ePosterSizeModeNone, true);
-	m_Dialog->setPosterHorizontalAlignment(m_PosteRazor->getPosterHorizontalAlignment());
-	m_Dialog->setPosterVerticalAlignment(m_PosteRazor->getPosterVerticalAlignment());
+	m_Dialog->setPosterAlignment(m_PosteRazor->getPosterAlignment());
 	m_Dialog->setPosterSizeMode(m_PosteRazor->getPosterSizeMode());
 }
 

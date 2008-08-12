@@ -61,8 +61,7 @@ public:
 	void setPosterHeightPages(double height);
 	void setPosterSizePercentual(double percent);
 	void setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode);
-	void setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment);
-	void setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment);
+	void setPosterAlignment(Qt::Alignment alignment);
 
 	void setPosterOutputFormat(ImageIOTypes::eImageFormats format);
 	void setLaunchPDFApplication(bool launch);
@@ -86,29 +85,29 @@ private:
 	void populateUI();
 
 signals:
-	void paperFormatChanged(const QString &format);
-	void paperOrientationChanged(PaperFormats::ePaperOrientations orientation);
-	void paperCustomWidthChanged(double width);
-	void paperCustomHeightChanged(double height);
-	void paperBorderTopChanged(double border);
-	void paperBorderRightChanged(double border);
-	void paperBorderBottomChanged(double border);
-	void paperBorderLeftChanged(double border);
-	void overlappingWidthChanged(double width);
-	void overlappingHeightChanged(double height);
-	void overlappingPositionChanged(PosteRazorEnums::eOverlappingPositions);
-	void posterWidthAbsoluteChanged(double width);
-	void posterHeightAbsoluteChanged(double height);
-	void posterWidthPagesChanged(double width);
-	void posterHeightPagesChanged(double height);
-	void posterSizePercentualChanged(double percent);
-	void posterAlignmentChanged(PosteRazorEnums::eHorizontalAlignments, PosteRazorEnums::eVerticalAlignments);
-	void savePosterSelected();
-	void launchPDFApplicationChanged(bool launch);
-	void nextButtonPressed();
-	void prevButtonPressed();
-	void savePosterSignal();
-	void loadImageSignal();
+	void paperFormatChanged(const QString &format) const;
+	void paperOrientationChanged(PaperFormats::ePaperOrientations orientation) const;
+	void paperCustomWidthChanged(double width) const;
+	void paperCustomHeightChanged(double height) const;
+	void paperBorderTopChanged(double border) const;
+	void paperBorderRightChanged(double border) const;
+	void paperBorderBottomChanged(double border) const;
+	void paperBorderLeftChanged(double border) const;
+	void overlappingWidthChanged(double width) const;
+	void overlappingHeightChanged(double height) const;
+	void overlappingPositionChanged(PosteRazorEnums::eOverlappingPositions) const;
+	void posterWidthAbsoluteChanged(double width) const;
+	void posterHeightAbsoluteChanged(double height) const;
+	void posterWidthPagesChanged(double width) const;
+	void posterHeightPagesChanged(double height) const;
+	void posterSizePercentualChanged(double percent) const;
+	void posterAlignmentChanged(Qt::Alignment alignment) const;
+	void savePosterSelected() const;
+	void launchPDFApplicationChanged(bool launch) const;
+	void nextButtonPressed() const;
+	void prevButtonPressed() const;
+	void savePosterSignal() const;
+	void loadImageSignal() const;
 	void needsPaint(PaintCanvasInterface *paintDevice, const QVariant &options) const;
 	void imageLoaded() const;
 
@@ -128,6 +127,8 @@ private slots:
 	void handlePosterVerticalAlignmentTopSelected();
 	void handlePosterVerticalAlignmentMiddleSelected();
 	void handlePosterVerticalAlignmentBottomSelected();
+
+	void emitPosterAlignmentChange(int alignmentInt) const;
 
 	void updatePosterSizeGroupsState();
 };

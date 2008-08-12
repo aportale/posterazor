@@ -48,18 +48,6 @@ public:
 		ePosterSizeModePages,
 		ePosterSizeModeNone
 	};
-
-	enum eVerticalAlignments {
-		eVerticalAlignmentTop,
-		eVerticalAlignmentMiddle,
-		eVerticalAlignmentBottom
-	};
-
-	enum eHorizontalAlignments {
-		eHorizontalAlignmentLeft,
-		eHorizontalAlignmentCenter,
-		eHorizontalAlignmentRight
-	};
 };
 
 class PosteRazor: public QObject, public PainterInterface
@@ -104,8 +92,7 @@ public:
 	double getPosterWidth(PosteRazorEnums::ePosterSizeModes mode) const;
 	double getPosterHeight(PosteRazorEnums::ePosterSizeModes mode) const;
 	PosteRazorEnums::ePosterSizeModes getPosterSizeMode() const;
-	PosteRazorEnums::eHorizontalAlignments getPosterHorizontalAlignment() const;
-	PosteRazorEnums::eVerticalAlignments getPosterVerticalAlignment() const;
+	Qt::Alignment getPosterAlignment() const;
 	ImageIOTypes::eImageFormats getPosterOutputFormat() const;
 	bool getIsImageLoaded() const;
 
@@ -125,8 +112,7 @@ public:
 	void setPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width);
 	void setPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height);
 	void setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode);
-	void setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment);
-	void setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment);
+	void setPosterAlignment(Qt::Alignment alignment);
 	void setPosterOutputFormat(ImageIOTypes::eImageFormats format);
 
 public slots:
@@ -165,8 +151,7 @@ private:
 	PosteRazorEnums::ePosterSizeModes       m_posterSizeMode;
 	double                                  m_posterDimension;
 	bool                                    m_posterDimensionIsWidth;
-	PosteRazorEnums::eHorizontalAlignments  m_posterHorizontalAlignment;
-	PosteRazorEnums::eVerticalAlignments    m_posterVerticalAlignment;
+	Qt::Alignment                           m_posterAlignment;
 
 	bool                                    m_useCustomPaperSize;
 	QString                                 m_paperFormat;

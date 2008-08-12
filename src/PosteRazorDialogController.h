@@ -59,8 +59,7 @@ public slots:
 	void setPosterHeightPages(double height);
 	void setPosterSizePercentual(double percent);
 	void setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode);
-	void setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment);
-	void setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment);
+	void setPosterAlignment(Qt::Alignment alignment);
 	void setPosterOutputFormat(ImageIOTypes::eImageFormats format);
 	void setLaunchPDFApplication(bool launch);
 	bool readSettings(const QSettings *settings);
@@ -72,10 +71,12 @@ public slots:
 	void savePoster() const;
 
 signals:
-	virtual void previewChanged();
-	virtual void imageFileNameChanged(const char *fileName);
-	virtual void imageInfoChanged(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel);
-	virtual void pddfLaunch(const QString &pdfFileName);
+	virtual void previewChanged() const;
+	virtual void imageFileNameChanged(const char *fileName) const;
+	virtual void imageInfoChanged(int imageWidthInPixels, int imageHeightInPixels, double imageWidth,
+		double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi,
+		ColorTypes::eColorTypes colorType, int bitsPerPixel) const;
+	virtual void pddfLaunch(const QString &pdfFileName) const;
 
 protected:
 	PosteRazor *m_PosteRazor;

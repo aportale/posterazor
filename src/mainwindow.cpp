@@ -21,6 +21,7 @@
 */
 
 #include "mainwindow.h"
+#include <QSignalMapper>
 #include <QUrl>
 #include <QDesktopServices>
 #include <QFileDialog>
@@ -43,8 +44,9 @@ MainWindow::~MainWindow()
 //	m_posteRazorController->writeSettings(&settings);
 }
 
-void MainWindow::setUnitOfLength(UnitsOfLength::eUnitsOfLength /* unit */)
+void MainWindow::setUnitOfLength(UnitsOfLength::eUnitsOfLength unit)
 {
+	Q_UNUSED(unit)
 }
 
 void MainWindow::setPaperFormat(const QString &format)
@@ -150,22 +152,15 @@ void MainWindow::setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode)
 	)->setChecked(true);
 }
 
-void MainWindow::setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment)
+void MainWindow::setPosterAlignment(Qt::Alignment alignment)
 {
+/*
 	(
 		alignment == PosteRazorEnums::eHorizontalAlignmentLeft?m_posterAlignmentLeftButton
 		:alignment == PosteRazorEnums::eHorizontalAlignmentCenter?m_posterAlignmentCenterButton
 		:m_posterAlignmentRightButton
 	)->setChecked(true);
-}
-
-void MainWindow::setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment)
-{
-	(
-		alignment == PosteRazorEnums::eVerticalAlignmentTop?m_posterAlignmentTopButton
-		:alignment == PosteRazorEnums::eVerticalAlignmentMiddle?m_posterAlignmentMiddleButton
-		:m_posterAlignmentBottomButton
-	)->setChecked(true);
+*/
 }
 
 void MainWindow::setPosterOutputFormat(ImageIOTypes::eImageFormats /* format */)
@@ -337,12 +332,27 @@ void MainWindow::createConnections()
 	connect(m_posterPagesHeightInput,               SIGNAL(valueEdited(double)),        SIGNAL(posterHeightPagesChanged(double)));
 	connect(m_posterPercentualSizeInput,            SIGNAL(valueEdited(double)),        SIGNAL(posterSizePercentualChanged(double)));
 
-	connect(m_posterAlignmentTopButton,             SIGNAL(clicked()),                  SLOT(handlePosterVerticalAlignmentTopSelected()));
-	connect(m_posterAlignmentMiddleButton,          SIGNAL(clicked()),                  SLOT(handlePosterVerticalAlignmentMiddleSelected()));
-	connect(m_posterAlignmentBottomButton,          SIGNAL(clicked()),                  SLOT(handlePosterVerticalAlignmentBottomSelected()));
-	connect(m_posterAlignmentLeftButton,            SIGNAL(clicked()),                  SLOT(handlePosterHorizontalAlignmentLeftSelected()));
-	connect(m_posterAlignmentCenterButton,          SIGNAL(clicked()),                  SLOT(handlePosterHorizontalAlignmentCenterSelected()));
-	connect(m_posterAlignmentRightButton,           SIGNAL(clicked()),                  SLOT(handlePosterHorizontalAlignmentRightSelected()));
+	const struct {
+		QObject *sender;
+		Qt::Alignment alignment;
+	} alignmentMap[] = {
+		{m_posterAlignmentTopLeftButton,     Qt::AlignTop | Qt::AlignLeft        },
+		{m_posterAlignmentTopButton,         Qt::AlignTop | Qt::AlignHCenter     },
+		{m_posterAlignmentTopRightButton,    Qt::AlignTop | Qt::AlignRight       },
+		{m_posterAlignmentLeftButton,        Qt::AlignVCenter | Qt::AlignLeft    },
+		{m_posterAlignmentCenterButton,      Qt::AlignCenter                     },
+		{m_posterAlignmentRightButton,       Qt::AlignVCenter | Qt::AlignRight   },
+		{m_posterAlignmentBottomLeftButton,  Qt::AlignBottom | Qt::AlignLeft     },
+		{m_posterAlignmentBottomButton,      Qt::AlignBottom | Qt::AlignHCenter  },
+		{m_posterAlignmentBottomRightButton, Qt::AlignBottom | Qt::AlignRight    }
+	};
+	const int alignmentMapCount = (int)sizeof(alignmentMap)/sizeof(alignmentMap[0]);
+	QSignalMapper *alignmentMapper = new QSignalMapper(this);
+	for (int i = 0; i < alignmentMapCount; i++) {
+		connect(alignmentMap[i].sender, SIGNAL(clicked()), alignmentMapper, SLOT(map()));
+		alignmentMapper->setMapping(alignmentMap[i].sender, alignmentMap[i].alignment);
+	}
+	connect(alignmentMapper, SIGNAL(mapped(int)), SLOT(emitPosterAlignmentChange(int)));
 
 	connect(m_savePosterButton,                     SIGNAL(clicked()),                  SIGNAL(savePosterSignal()));
 	connect(m_launchPDFApplicationCheckBox,         SIGNAL(toggled(bool)),              SIGNAL(launchPDFApplicationChanged(bool)));
@@ -355,6 +365,11 @@ void MainWindow::populateUI()
 	QStringList formats = PaperFormats::paperFormats().keys();
 	formats.sort();
 	m_paperFormatComboBox->addItems(formats);
+}
+
+void MainWindow::emitPosterAlignmentChange(int alignmentInt) const
+{
+	emit posterAlignmentChanged((Qt::Alignment)alignmentInt);
 }
 
 void MainWindow::updatePosterSizeGroupsState()

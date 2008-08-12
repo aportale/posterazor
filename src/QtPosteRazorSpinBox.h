@@ -42,7 +42,7 @@ private slots:
 	void stepBy(int steps);
 
 signals:
-	void valueEdited(double value);
+	void valueEdited(double value) const;
 };
 
 #endif // QTPOSTERAZORSPINBOX_H

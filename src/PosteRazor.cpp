@@ -31,8 +31,7 @@ const QLatin1String defaultValue_PaperFormat("DIN A4");
 const QLatin1String settingsKey_PosterSizeMode("PosterSizeMode");
 const QLatin1String settingsKey_PosterDimension("PosterDimension");
 const QLatin1String settingsKey_PosterDimensionIsWidth("PosterDimensionIsWidth");
-const QLatin1String settingsKey_PosterHorizontalAlignment("PosterHorizontalAlignment");
-const QLatin1String settingsKey_PosterVerticalAlignment("PosterVerticalAlignment");
+const QLatin1String settingsKey_PosterAlignment("PosterAlignment");
 const QLatin1String settingsKey_UseCustomPaperSize("UseCustomPaperSize");
 const QLatin1String settingsKey_PaperFormat("paperFormat");
 const QLatin1String settingsKey_PaperOrientation("PaperOrientation");
@@ -52,8 +51,7 @@ PosteRazor::PosteRazor()
 	: m_posterSizeMode(PosteRazorEnums::ePosterSizeModePages)
 	, m_posterDimension(2.0)
 	, m_posterDimensionIsWidth(true)
-	, m_posterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignmentLeft)
-	, m_posterVerticalAlignment(PosteRazorEnums::eVerticalAlignmentTop)
+	, m_posterAlignment(Qt::AlignCenter)
 
 	, m_useCustomPaperSize(false)
 	, m_paperFormat(defaultValue_PaperFormat)
@@ -88,8 +86,7 @@ bool PosteRazor::readSettings(const QSettings *settings)
 	m_posterSizeMode               = (PosteRazorEnums::ePosterSizeModes)settings->value(settingsKey_PosterSizeMode, (int)m_posterSizeMode).toInt();
 	m_posterDimension              = settings->value(settingsKey_PosterDimension, m_posterDimension).toDouble();
 	m_posterDimensionIsWidth       = settings->value(settingsKey_PosterDimensionIsWidth, m_posterDimensionIsWidth).toBool();
-	m_posterHorizontalAlignment    = (PosteRazorEnums::eHorizontalAlignments)settings->value(settingsKey_PosterHorizontalAlignment, (int)m_posterHorizontalAlignment).toInt();
-	m_posterVerticalAlignment      = (PosteRazorEnums::eVerticalAlignments)settings->value(settingsKey_PosterVerticalAlignment, (int)m_posterVerticalAlignment).toInt();
+	m_posterAlignment              = (Qt::Alignment)settings->value(settingsKey_PosterAlignment, (int)m_posterAlignment).toInt();
 	m_useCustomPaperSize           = settings->value(settingsKey_UseCustomPaperSize, m_useCustomPaperSize).toBool();
 	m_paperFormat                  = settings->value(settingsKey_PaperFormat, m_paperFormat).toString();
 	if (!PaperFormats::paperFormats().contains(m_paperFormat))
@@ -117,8 +114,7 @@ bool PosteRazor::writeSettings(QSettings *settings) const
 	settings->setValue(settingsKey_PosterSizeMode, (int)m_posterSizeMode);
 	settings->setValue(settingsKey_PosterDimension, m_posterDimension);
 	settings->setValue(settingsKey_PosterDimensionIsWidth, m_posterDimensionIsWidth);
-	settings->setValue(settingsKey_PosterHorizontalAlignment, (int)m_posterHorizontalAlignment);
-	settings->setValue(settingsKey_PosterVerticalAlignment, (int)m_posterVerticalAlignment);
+	settings->setValue(settingsKey_PosterAlignment, (int)m_posterAlignment);
 	settings->setValue(settingsKey_UseCustomPaperSize, m_useCustomPaperSize);
 	settings->setValue(settingsKey_PaperFormat, m_paperFormat);
 	settings->setValue(settingsKey_PaperOrientation, (int)m_paperOrientation);
@@ -542,24 +538,14 @@ PosteRazorEnums::ePosterSizeModes PosteRazor::getPosterSizeMode() const
 	return m_posterSizeMode;
 }
 
-void PosteRazor::setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment) 
+void PosteRazor::setPosterAlignment(Qt::Alignment alignment)
 {
-	m_posterHorizontalAlignment = alignment;
+	m_posterAlignment = alignment;
 }
 
-void PosteRazor::setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment)
+Qt::Alignment PosteRazor::getPosterAlignment() const
 {
-	m_posterVerticalAlignment = alignment;
-}
-
-PosteRazorEnums::eHorizontalAlignments PosteRazor::getPosterHorizontalAlignment() const
-{
-	return m_posterHorizontalAlignment;
-}
-
-PosteRazorEnums::eVerticalAlignments PosteRazor::getPosterVerticalAlignment() const
-{
-	return m_posterVerticalAlignment;
+	return m_posterAlignment;
 }
 
 void PosteRazor::getPreviewSize(double imageWidth, double imageHeight, int boxWidth, int boxHeight, int &previewWidth, int &previewHeight, bool enlargeToFit) const
@@ -701,24 +687,21 @@ void PosteRazor::paintPosterOnCanvas(PaintCanvasInterface *paintCanvas) const
 	const double imageWidth = getPosterWidth(PosteRazorEnums::ePosterSizeModeAbsolute) * UnitOfLengthToPixelfactor;
 	const double imageHeight = getPosterHeight(PosteRazorEnums::ePosterSizeModeAbsolute) * UnitOfLengthToPixelfactor;
 
-	const PosteRazorEnums::eVerticalAlignments verticalAlignment = getPosterVerticalAlignment();
-	const PosteRazorEnums::eHorizontalAlignments horizontalAlignment = getPosterHorizontalAlignment();
+	const Qt::Alignment alignment = getPosterAlignment();
 
 	paintCanvas->drawImage(
 		(
-			horizontalAlignment == PosteRazorEnums::eHorizontalAlignmentLeft?borderLeft
-			:horizontalAlignment == PosteRazorEnums::eHorizontalAlignmentCenter?
-				qBound(borderLeft, ((double)boxWidth - imageWidth) / 2, borderLeft + posterPrintableAreaWidth - imageWidth)
+			alignment & Qt::AlignLeft?borderLeft
+			:alignment & Qt::AlignHCenter?qBound(borderLeft, ((double)boxWidth - imageWidth) / 2, borderLeft + posterPrintableAreaWidth - imageWidth)
 			:(borderLeft + posterPrintableAreaWidth - imageWidth)
 		)
 		+ x_offset,
 
 		(
-			verticalAlignment == PosteRazorEnums::eVerticalAlignmentTop?borderTop
-			:verticalAlignment == PosteRazorEnums::eVerticalAlignmentMiddle?
-				qBound(borderTop, ((double)boxHeight - imageHeight) / 2, borderTop + posterPrintableAreaHeight - imageHeight)
+			alignment & Qt::AlignTop?borderTop
+			:alignment & Qt::AlignVCenter?qBound(borderTop, ((double)boxHeight - imageHeight) / 2, borderTop + posterPrintableAreaHeight - imageHeight)
 			:(borderTop + posterPrintableAreaHeight - imageHeight)
-			)
+		)
 		+ y_offset,
 		imageWidth, imageHeight
 	);
@@ -762,15 +745,16 @@ void PosteRazor::paintPosterPageOnCanvas(PaintCanvasInterface *paintCanvas, int 
 	const double borderLeftCm = convertDistanceToCm(getPaperBorderLeft());
 	const double posterTotalWidthCm = printablePosterAreaWidthCm + borderLeftCm + borderRightCm;
 	const double posterTotalHeightCm = printablePosterAreaHeightCm + borderTopCm + borderBottomCm;
+	const Qt::Alignment alignment = getPosterAlignment();
 	double imageOffsetFromLeftPosterBorderCm = (
-		getPosterHorizontalAlignment() == PosteRazorEnums::eHorizontalAlignmentRight?posterTotalWidthCm - posterImageWidthCm - borderLeftCm
-		:getPosterHorizontalAlignment() == PosteRazorEnums::eHorizontalAlignmentCenter?(posterTotalWidthCm - posterImageWidthCm)/2 - borderLeftCm
+		alignment & Qt::AlignRight?posterTotalWidthCm - posterImageWidthCm - borderLeftCm
+		:alignment & Qt::AlignHCenter?(posterTotalWidthCm - posterImageWidthCm)/2 - borderLeftCm
 		:-borderLeftCm
 	);
 	imageOffsetFromLeftPosterBorderCm = qBound(.0, imageOffsetFromLeftPosterBorderCm, posterTotalWidthCm - posterImageWidthCm - borderLeftCm - borderRightCm);
 	double imageOffsetFromTopPosterBorderCm = (
-		getPosterVerticalAlignment() == PosteRazorEnums::eVerticalAlignmentBottom?posterTotalHeightCm - posterImageHeightCm - borderTopCm
-		:getPosterVerticalAlignment() == PosteRazorEnums::eVerticalAlignmentMiddle?(posterTotalHeightCm - posterImageHeightCm)/2 - borderTopCm
+		alignment & Qt::AlignBottom?posterTotalHeightCm - posterImageHeightCm - borderTopCm
+		:alignment & Qt::AlignVCenter?(posterTotalHeightCm - posterImageHeightCm)/2 - borderTopCm
 		:-borderTopCm
 	);
 	imageOffsetFromTopPosterBorderCm = qBound(.0, imageOffsetFromTopPosterBorderCm, posterTotalHeightCm - posterImageHeightCm - borderTopCm - borderBottomCm);
