@@ -24,7 +24,7 @@
 #define QTPAINTCANVAS_H
 
 #include <QWidget>
-#include "PaintCanvasBase.h"
+#include "PaintCanvasInterface.h"
 
 class QImage;
 class QPainter;
