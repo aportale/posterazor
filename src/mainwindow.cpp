@@ -49,6 +49,19 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
 	for (int i = 0; i < alignmentMapCount; i++)
 		m_alignmentButtons.insert(alignmentMap[i].alignment, alignmentMap[i].sender);
 
+	const struct {
+		QAbstractButton *sender;
+		Qt::Alignment alignment;
+	} overlappingMap[] = {
+		{m_overlappingPositionTopLeftButton,     Qt::AlignTop | Qt::AlignLeft     },
+		{m_overlappingPositionTopRightButton,    Qt::AlignTop | Qt::AlignRight    },
+		{m_overlappingPositionBottomLeftButton,  Qt::AlignBottom | Qt::AlignLeft  },
+		{m_overlappingPositionBottomRightButton, Qt::AlignBottom | Qt::AlignRight }
+	};
+	const int overlappingMapCount = (int)sizeof(overlappingMap)/sizeof(overlappingMap[0]);
+	for (int i = 0; i < overlappingMapCount; i++)
+		m_overlappingButtons.insert(overlappingMap[i].alignment, overlappingMap[i].sender);
+
 	m_steps->setCurrentIndex(0);
 	createConnections();
 	populateUI();
@@ -126,14 +139,10 @@ void MainWindow::setOverlappingHeight(double height)
 	m_overlappingHeightInput->setValue(height);
 }
 
-void MainWindow::setOverlappingPosition(PosteRazorEnums::eOverlappingPositions position)
+void MainWindow::setOverlappingPosition(Qt::Alignment position)
 {
-	(
-		position == PosteRazorEnums::eOverlappingPositionTopLeft?m_overlappingPositionTopLeftButton
-		:position == PosteRazorEnums::eOverlappingPositionTopRight?m_overlappingPositionTopRightButton
-		:position == PosteRazorEnums::eOverlappingPositionBottomRight?m_overlappingPositionBottomRightButton
-		:m_overlappingPositionBottomLeftButton
-	)->setChecked(true);
+	if (m_overlappingButtons.contains(position))
+		m_overlappingButtons.value(position)->setChecked(true);
 }
 
 void MainWindow::setPosterWidthAbsolute(double width)
@@ -172,7 +181,8 @@ void MainWindow::setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode)
 
 void MainWindow::setPosterAlignment(Qt::Alignment alignment)
 {
-	m_alignmentButtons.value(alignment)->setChecked(true);
+	if (m_alignmentButtons.contains(alignment))
+		m_alignmentButtons.value(alignment)->setChecked(true);
 }
 
 void MainWindow::setPosterOutputFormat(ImageIOTypes::eImageFormats /* format */)
@@ -259,26 +269,6 @@ void MainWindow::handlePaperOrientationLandscapeSelected()
 //	m_posteRazorController->setPaperOrientation(PaperFormats::ePaperOrientationLandscape);
 }
 
-void MainWindow::handleOverlappingPositionTopLeftSelected()
-{
-//	m_posteRazorController->setOverlappingPosition(PosteRazorEnums::eOverlappingPositionTopLeft);
-}
-
-void MainWindow::handleOverlappingPositionTopRightSelected()
-{
-//	m_posteRazorController->setOverlappingPosition(PosteRazorEnums::eOverlappingPositionTopRight);
-}
-
-void MainWindow::handleOverlappingPositionBottomRightSelected()
-{
-//	m_posteRazorController->setOverlappingPosition(PosteRazorEnums::eOverlappingPositionBottomRight);
-}
-
-void MainWindow::handleOverlappingPositionBottomLeftSelected()
-{
-//	m_posteRazorController->setOverlappingPosition(PosteRazorEnums::eOverlappingPositionBottomLeft);
-}
-
 void MainWindow::handlePosterHorizontalAlignmentLeftSelected()
 {
 //	m_posteRazorController->setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignmentLeft);
@@ -333,10 +323,14 @@ void MainWindow::createConnections()
 
 	connect(m_overlappingWidthInput,                SIGNAL(valueEdited(double)),        SIGNAL(overlappingWidthChanged(double)));
 	connect(m_overlappingHeightInput,               SIGNAL(valueEdited(double)),        SIGNAL(overlappingHeightChanged(double)));
-	connect(m_overlappingPositionTopLeftButton,     SIGNAL(clicked()),                  SLOT(handleOverlappingPositionTopLeftSelected()));
-	connect(m_overlappingPositionTopRightButton,    SIGNAL(clicked()),                  SLOT(handleOverlappingPositionTopRightSelected()));
-	connect(m_overlappingPositionBottomRightButton, SIGNAL(clicked()),                  SLOT(handleOverlappingPositionBottomRightSelected()));
-	connect(m_overlappingPositionBottomLeftButton,  SIGNAL(clicked()),                  SLOT(handleOverlappingPositionBottomLeftSelected()));
+
+	QSignalMapper *overlappingMapper = new QSignalMapper(this);
+	foreach (const Qt::Alignment alignment, m_overlappingButtons.keys()) {
+		QAbstractButton *sender = m_overlappingButtons.value(alignment);
+		connect(sender, SIGNAL(clicked()), overlappingMapper, SLOT(map()));
+		overlappingMapper->setMapping(sender, alignment);
+	}
+	connect(overlappingMapper, SIGNAL(mapped(int)), SLOT(emitOverlappingPositionChange(int)));
 
 	connect(m_posterAbsoluteWidthInput,             SIGNAL(valueEdited(double)),        SIGNAL(posterWidthAbsoluteChanged(double)));
 	connect(m_posterAbsoluteHeightInput,            SIGNAL(valueEdited(double)),        SIGNAL(posterHeightAbsoluteChanged(double)));
@@ -363,6 +357,11 @@ void MainWindow::populateUI()
 	QStringList formats = PaperFormats::paperFormats().keys();
 	formats.sort();
 	m_paperFormatComboBox->addItems(formats);
+}
+
+void MainWindow::emitOverlappingPositionChange(int alignmentInt) const
+{
+	emit overlappingPositionChanged((Qt::Alignment)alignmentInt);
 }
 
 void MainWindow::emitPosterAlignmentChange(int alignmentInt) const

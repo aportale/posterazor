@@ -65,7 +65,7 @@ PosteRazor::PosteRazor()
 
 	, m_overlappingWidth(1.0)
 	, m_overlappingHeight(1.0)
-	, m_overlappingPosition(PosteRazorEnums::eOverlappingPositionBottomRight)
+	, m_overlappingPosition(Qt::AlignBottom | Qt::AlignRight)
 
 	, m_unitOfLength(UnitsOfLength::eUnitOfLengthCentimeter)
 
@@ -100,7 +100,7 @@ bool PosteRazor::readSettings(const QSettings *settings)
 	m_customPaperHeight            = settings->value(settingsKey_CustomPaperHeight, m_customPaperHeight).toDouble();
 	m_overlappingWidth             = settings->value(settingsKey_OverlappingWidth, m_overlappingWidth).toDouble();
 	m_overlappingHeight            = settings->value(settingsKey_OverlappingHeight, m_overlappingHeight).toDouble();
-	m_overlappingPosition          = (PosteRazorEnums::eOverlappingPositions)settings->value(settingsKey_OverlappingPosition, (int)m_overlappingPosition).toInt();
+	m_overlappingPosition          = (Qt::Alignment)settings->value(settingsKey_OverlappingPosition, (int)m_overlappingPosition).toInt();
 	m_unitOfLength                 = (UnitsOfLength::eUnitsOfLength)settings->value(settingsKey_UnitOfLength, (int)m_unitOfLength).toInt();
 	m_posterOutputFormat           = (ImageIOTypes::eImageFormats)settings->value(settingsKey_PosterOutputFormat, (int)m_posterOutputFormat).toInt();
 
@@ -459,12 +459,12 @@ double PosteRazor::getMaximalOverLappingHeight() const
 	return getPaperHeight() - getPaperBorderTop() - getPaperBorderBottom() - convertCmToDistance(1.0);
 }
 
-void PosteRazor::setOverlappingPosition(PosteRazorEnums::eOverlappingPositions position)
+void PosteRazor::setOverlappingPosition(Qt::Alignment position)
 {
 	m_overlappingPosition = position;
 }
 
-PosteRazorEnums::eOverlappingPositions PosteRazor::getOverlappingPosition() const
+Qt::Alignment PosteRazor::getOverlappingPosition() const
 {
 	return m_overlappingPosition;
 }
@@ -642,15 +642,11 @@ void PosteRazor::paintPaperOnCanvas(PaintCanvasInterface *paintCanvas, bool pain
 	if (paintOverlapping) {
 		const double overlappingWidth = getOverlappingWidth() * UnitOfLengthToPixelfactor;
 		const double overlappingHeight = getOverlappingHeight() * UnitOfLengthToPixelfactor;
-		const PosteRazorEnums::eOverlappingPositions overlappingPosition = getOverlappingPosition();
-		const double overlappingTop =
-			(overlappingPosition == PosteRazorEnums::eOverlappingPositionTopLeft || overlappingPosition == PosteRazorEnums::eOverlappingPositionTopRight)?
-			borderTop
-			:boxHeight - borderBottom - overlappingHeight;
-		const double overlappingLeft = 
-			(overlappingPosition == PosteRazorEnums::eOverlappingPositionTopLeft || overlappingPosition == PosteRazorEnums::eOverlappingPositionBottomLeft)?
-			borderLeft
-			:boxWidth - borderRight - overlappingWidth;
+		const Qt::Alignment overlappingPosition = getOverlappingPosition();
+		const double overlappingTop = (overlappingPosition & Qt::AlignTop)?
+			borderTop:boxHeight - borderBottom - overlappingHeight;
+		const double overlappingLeft = (overlappingPosition & Qt::AlignLeft)?
+			borderLeft:boxWidth - borderRight - overlappingWidth;
 		
 		paintCanvas->drawFilledRect(borderLeft + x_offset, overlappingTop + y_offset, printableAreaWidth, overlappingHeight, 255, 128, 128, 255);
 		paintCanvas->drawFilledRect(overlappingLeft + x_offset, borderTop + y_offset, overlappingWidth, printableAreaHeight, 255, 128, 128, 255);

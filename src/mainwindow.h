@@ -53,7 +53,7 @@ public:
 
 	void setOverlappingWidth(double width);
 	void setOverlappingHeight(double height);
-	void setOverlappingPosition(PosteRazorEnums::eOverlappingPositions position);
+	void setOverlappingPosition(Qt::Alignment position);
 
 	void setPosterWidthAbsolute(double width);
 	void setPosterHeightAbsolute(double height);
@@ -80,7 +80,8 @@ public slots:
 
 private:
 	PosteRazor *m_posteRazor;
-	QHash<Qt::Alignment, QAbstractButton *> m_alignmentButtons;
+	QHash<Qt::Alignment, QAbstractButton*> m_overlappingButtons;
+	QHash<Qt::Alignment, QAbstractButton*> m_alignmentButtons;
 
 	void createConnections();
 	void populateUI();
@@ -96,7 +97,7 @@ signals:
 	void paperBorderLeftChanged(double border) const;
 	void overlappingWidthChanged(double width) const;
 	void overlappingHeightChanged(double height) const;
-	void overlappingPositionChanged(PosteRazorEnums::eOverlappingPositions) const;
+	void overlappingPositionChanged(Qt::Alignment position) const;
 	void posterWidthAbsoluteChanged(double width) const;
 	void posterHeightAbsoluteChanged(double height) const;
 	void posterWidthPagesChanged(double width) const;
@@ -117,11 +118,6 @@ private slots:
 	void handlePaperOrientationPortraitSelected();
 	void handlePaperOrientationLandscapeSelected();
 
-	void handleOverlappingPositionTopLeftSelected();
-	void handleOverlappingPositionTopRightSelected();
-	void handleOverlappingPositionBottomRightSelected();
-	void handleOverlappingPositionBottomLeftSelected();
-
 	void handlePosterHorizontalAlignmentLeftSelected();
 	void handlePosterHorizontalAlignmentCenterSelected();
 	void handlePosterHorizontalAlignmentRightSelected();
@@ -129,6 +125,7 @@ private slots:
 	void handlePosterVerticalAlignmentMiddleSelected();
 	void handlePosterVerticalAlignmentBottomSelected();
 
+	void emitOverlappingPositionChange(int alignmentInt) const;
 	void emitPosterAlignmentChange(int alignmentInt) const;
 
 	void updatePosterSizeGroupsState();

@@ -35,13 +35,6 @@ class PosteRazorImageIO;
 class PosteRazorEnums
 {
 public:
-	enum eOverlappingPositions {
-		eOverlappingPositionTopRight,
-		eOverlappingPositionBottomRight,
-		eOverlappingPositionBottomLeft,
-		eOverlappingPositionTopLeft
-	};
-
 	enum ePosterSizeModes {
 		ePosterSizeModeAbsolute,
 		ePosterSizeModePercentual,
@@ -88,7 +81,7 @@ public:
 	double getPrintablePaperAreaHeight() const;
 	double getOverlappingWidth() const;
 	double getOverlappingHeight() const;
-	PosteRazorEnums::eOverlappingPositions getOverlappingPosition() const;
+	Qt::Alignment getOverlappingPosition() const;
 	double getPosterWidth(PosteRazorEnums::ePosterSizeModes mode) const;
 	double getPosterHeight(PosteRazorEnums::ePosterSizeModes mode) const;
 	PosteRazorEnums::ePosterSizeModes getPosterSizeMode() const;
@@ -108,7 +101,7 @@ public:
 	void setUseCustomPaperSize(bool useIt);
 	void setOverlappingWidth(double width);
 	void setOverlappingHeight(double height);
-	void setOverlappingPosition(PosteRazorEnums::eOverlappingPositions position);
+	void setOverlappingPosition(Qt::Alignment position);
 	void setPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width);
 	void setPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height);
 	void setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode);
@@ -165,7 +158,7 @@ private:
 
 	double                                  m_overlappingWidth;
 	double                                  m_overlappingHeight;
-	PosteRazorEnums::eOverlappingPositions  m_overlappingPosition;
+	Qt::Alignment                           m_overlappingPosition;
 
 	UnitsOfLength::eUnitsOfLength           m_unitOfLength;
 

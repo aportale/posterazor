@@ -51,7 +51,7 @@ void PosteRazorDialogController::setPosteRazorAndDialog(PosteRazor *model, MainW
 
 	connect(m_Dialog, SIGNAL(overlappingWidthChanged(double)), SLOT(setOverlappingWidth(double)));
 	connect(m_Dialog, SIGNAL(overlappingHeightChanged(double)), SLOT(setOverlappingHeight(double)));
-	connect(m_Dialog, SIGNAL(overlappingPositionChanged(PosteRazorEnums::eOverlappingPositions)), SLOT(setOverlappingPosition(PosteRazorEnums::eOverlappingPositions)));
+	connect(m_Dialog, SIGNAL(overlappingPositionChanged(Qt::Alignment)), SLOT(setOverlappingPosition(Qt::Alignment)));
 	connect(m_Dialog, SIGNAL(posterWidthAbsoluteChanged(double)), SLOT(setPosterWidthAbsolute(double)));
 	connect(m_Dialog, SIGNAL(posterHeightAbsoluteChanged(double)), SLOT(setPosterHeightAbsolute(double)));
 	connect(m_Dialog, SIGNAL(posterWidthPagesChanged(double)), SLOT(setPosterWidthPages(double)));
@@ -172,7 +172,7 @@ void PosteRazorDialogController::setOverlappingHeight(double height)
 	updatePreview();
 }
 
-void PosteRazorDialogController::setOverlappingPosition(PosteRazorEnums::eOverlappingPositions position)
+void PosteRazorDialogController::setOverlappingPosition(Qt::Alignment position)
 {
 	m_PosteRazor->setOverlappingPosition(position);
 	updatePreview();

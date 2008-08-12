@@ -52,7 +52,7 @@ public slots:
 	void setUseCustomPaperSize(bool useIt);
 	void setOverlappingWidth(double width);
 	void setOverlappingHeight(double height);
-	void setOverlappingPosition(PosteRazorEnums::eOverlappingPositions position);
+	void setOverlappingPosition(Qt::Alignment position);
 	void setPosterWidthAbsolute(double width);
 	void setPosterHeightAbsolute(double height);
 	void setPosterWidthPages(double width);
