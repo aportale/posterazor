@@ -22,21 +22,18 @@
 
 #include "PosteRazorWizardDialogController.h"
 
-PosteRazorWizardDialogController::PosteRazorWizardDialogController()
-	: m_wizardStep(ePosteRazorWizardStepInputImage)
+PosteRazorWizardDialogController::PosteRazorWizardDialogController(QObject *wizardDialog, QObject *parent)
+	: QObject(parent)
+	, m_wizardStep(ePosteRazorWizardStepInputImage)
 	, m_imageWasLoaded(false)
 {
-}
-
-void PosteRazorWizardDialogController::setPosteRazorWizardDialog(QObject *dialog)
-{
-	connect(this, SIGNAL(wizardStepChanged(int)), dialog, SLOT(setWizardStep(int)));
-	connect(this, SIGNAL(prevButtonEnabled(bool)), dialog, SLOT(setPrevButtonEnabled(bool)));
-	connect(this, SIGNAL(nextButtonEnabled(bool)), dialog, SLOT(setNextButtonEnabled(bool)));
-	connect(this, SIGNAL(previewStateChanged(const QString&)), dialog, SLOT(setPreviewState(const QString&)));
-	connect(dialog, SIGNAL(imageLoaded()), SLOT(handleImageLoaded()));
-	connect(dialog, SIGNAL(prevButtonPressed()), SLOT(handlePrevButtonPressed()));
-	connect(dialog, SIGNAL(nextButtonPressed()), SLOT(handleNextButtonPressed()));
+	connect(this, SIGNAL(wizardStepChanged(int)), wizardDialog, SLOT(setWizardStep(int)));
+	connect(this, SIGNAL(prevButtonEnabled(bool)), wizardDialog, SLOT(setPrevButtonEnabled(bool)));
+	connect(this, SIGNAL(nextButtonEnabled(bool)), wizardDialog, SLOT(setNextButtonEnabled(bool)));
+	connect(this, SIGNAL(previewStateChanged(const QString&)), wizardDialog, SLOT(setPreviewState(const QString&)));
+	connect(wizardDialog, SIGNAL(imageLoaded()), SLOT(handleImageLoaded()));
+	connect(wizardDialog, SIGNAL(prevButtonPressed()), SLOT(handlePrevButtonPressed()));
+	connect(wizardDialog, SIGNAL(nextButtonPressed()), SLOT(handleNextButtonPressed()));
 
 	updateDialogWizardStep();
 }

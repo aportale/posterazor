@@ -32,10 +32,8 @@ class PosteRazorDialogController: public QObject
 	Q_OBJECT
 
 public:
-	PosteRazorDialogController();
-	virtual ~PosteRazorDialogController() {}
+	PosteRazorDialogController(PosteRazor *model, MainWindow *dialog, QObject *parent = 0);
 
-	void setPosteRazorAndDialog(PosteRazor *model, MainWindow *dialog);
 	void updateDialog();
 	void updatePreview();
 

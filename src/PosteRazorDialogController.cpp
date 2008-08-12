@@ -28,18 +28,12 @@
 
 const QLatin1String settingsKey_LaunchPDFApplication("launchPDFApplication");
 
-PosteRazorDialogController::PosteRazorDialogController()
-	: m_PosteRazor(0)
-	, m_Dialog(0)
+PosteRazorDialogController::PosteRazorDialogController(PosteRazor *model, MainWindow *dialog, QObject *parent)
+	: QObject(parent)
+	, m_PosteRazor(model)
+	, m_Dialog(dialog)
 	, m_launchPDFApplication(true)
 {
-}
-
-void PosteRazorDialogController::setPosteRazorAndDialog(PosteRazor *model, MainWindow *dialog)
-{
-	m_PosteRazor = model;
-	m_Dialog = dialog;
-
 	connect(m_Dialog, SIGNAL(paperFormatChanged(const QString&)), SLOT(setPaperFormat(const QString&)));
 	connect(m_Dialog, SIGNAL(paperOrientationChanged(PaperFormats::ePaperOrientations)), SLOT(setPaperOrientation(PaperFormats::ePaperOrientations)));
 	connect(m_Dialog, SIGNAL(paperBorderTopChanged(double)), SLOT(setPaperBorderTop(double)));

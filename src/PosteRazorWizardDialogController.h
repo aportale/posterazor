@@ -38,9 +38,7 @@ public:
 		ePosteRazorWizardStepSavePoster
 	};
 
-	PosteRazorWizardDialogController();
-
-	void setPosteRazorWizardDialog(QObject *dialog);
+	PosteRazorWizardDialogController(QObject *wizardDialog, QObject *parent = 0);
 
 private slots:
 	void updateDialogWizardStep();
