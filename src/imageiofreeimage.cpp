@@ -26,6 +26,7 @@
 #include "UnitsOfLength.h"
 #include <stdio.h>
 #include <string.h>
+#include <QStringList>
 
 static QString FreeImageErrorMessage;
 
@@ -48,7 +49,7 @@ public:
         FreeImage_DeInitialise();
     }
 };
-static FreeImageInitializer initializer;
+const static FreeImageInitializer initializer;
 
 class ImageIOFreeImageImplementation: public ImageIOFreeImage
 {
@@ -67,11 +68,9 @@ private:
     // FreeImage_Convert[To|From]RawBits inverted the topdown parameter until v3.10
     static BOOL hasFreeImageVersionCorrectTopDownInConvertBits()
     {
-        const char *version = FreeImage_GetVersion();
-        int majorVersion;
-        int minorVersion;
-        const int readCount = sscanf(version, "%d.%d", &majorVersion, &minorVersion);
-        return readCount == 2 && majorVersion >= 3 && minorVersion >= 10?TRUE:FALSE;
+        const QStringList versionDigits = QString(FreeImage_GetVersion()).split('.');
+        return versionDigits.count() >= 2 && versionDigits.at(0).toInt() >= 3
+            && versionDigits.at(1).toInt() >= 10?TRUE:FALSE;
     }
 
 public:
@@ -158,8 +157,6 @@ public:
     double getWidth(UnitsOfLength::eUnitsOfLength unit) const {return getWidthPixels() / getHorizontalDotsPerUnitOfLength(unit);}
     double getHeight(UnitsOfLength::eUnitsOfLength unit) const {return getHeightPixels() / getVerticalDotsPerUnitOfLength(unit);}
 
-#define MAX(a, b) ((a)>(b)?(a):(b))
-
     bool getImageAsRGB(unsigned char *buffer) const
     {
         return getImageAsRGB(buffer, getWidthPixels(), getHeightPixels());
@@ -168,7 +165,7 @@ public:
     bool getImageAsRGB(unsigned char *buffer, int width, int height) const
     {
         bool success = true;
-    
+
         FIBITMAP* originalImage = m_bitmap;
         FIBITMAP* temp24BPPImage = NULL;
         FIBITMAP* scaledImage = NULL;
@@ -191,9 +188,9 @@ public:
                         const BYTE yellow = cmykBits[cmykColumn + 2];
                         const BYTE black = cmykBits[cmykColumn + 3];
 
-                        const BYTE red = MAX(0, (255 - (unsigned char)((double)yellow/1.5) - (unsigned char)((double)black/1.5)));
-                        const BYTE green = MAX(0, (255 - (unsigned char)((double)magenta/1.5) - (unsigned char)((double)black/1.5)));
-                        const BYTE blue = MAX(0, (255 - (unsigned char)((double)cyan/1.5) - (unsigned char)((double)black/1.5)));
+                        const BYTE red = qMax(0, (255 - (unsigned char)((double)yellow/1.5) - (unsigned char)((double)black/1.5)));
+                        const BYTE green = qMax(0, (255 - (unsigned char)((double)magenta/1.5) - (unsigned char)((double)black/1.5)));
+                        const BYTE blue = qMax(0, (255 - (unsigned char)((double)cyan/1.5) - (unsigned char)((double)black/1.5)));
 
                         rgbBits[rgbColumn] = red;
                         rgbBits[rgbColumn + 1] = green;
