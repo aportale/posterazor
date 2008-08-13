@@ -35,7 +35,7 @@ public:
 		eUnitOfLengthPoints
 	};
 
-	static int getUnitsOfLengthCount(void);
+	static int getUnitsOfLengthCount();
 
 	static double convertBetweenUnitsOfLength(double distance, eUnitsOfLength sourceUnit, eUnitsOfLength targetUnit);
 	static int getUnitOfLengthIndex(eUnitsOfLength unit);

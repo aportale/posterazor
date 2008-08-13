@@ -25,104 +25,104 @@
 
 #include <QMainWindow>
 #include "ui_mainwindow.h"
-#include "PosteRazorWizardDialogController.h"
+#include "UnitsOfLength.h"
+#include "PaperFormats.h"
+#include "PosteRazor.h"
 
-class MainWindow : public QMainWindow, private Ui::MainWindow, public PosteRazorWizardDialogInterface
+class MainWindow : public QMainWindow, private Ui::MainWindow 
 {
 	Q_OBJECT
 
 public:
 	MainWindow(QWidget *parent = 0, Qt::WFlags flags = 0);
-	~MainWindow();
 
-	virtual void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
+	void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
 
-	virtual void setPaperFormat(const QString &format);
-	virtual void setPaperOrientation(PaperFormats::ePaperOrientations orientation);
+	void setPaperFormat(const QString &format);
+	void setPaperOrientation(PaperFormats::ePaperOrientations orientation);
 
-	virtual void setPaperBorderTop(double border);
-	virtual void setPaperBorderRight(double border);
-	virtual void setPaperBorderBottom(double border);
-	virtual void setPaperBorderLeft(double border);
+	void setPaperBorderTop(double border);
+	void setPaperBorderRight(double border);
+	void setPaperBorderBottom(double border);
+	void setPaperBorderLeft(double border);
 
-	virtual void setCustomPaperWidth(double width);
-	virtual void setCustomPaperHeight(double height);
-	virtual void setUseCustomPaperSize(bool useIt);
+	void setCustomPaperWidth(double width);
+	void setCustomPaperHeight(double height);
+	void setUseCustomPaperSize(bool useIt);
 
-	virtual void setOverlappingWidth(double width);
-	virtual void setOverlappingHeight(double height);
-	virtual void setOverlappingPosition(PosteRazorEnums::eOverlappingPositions position);
+	void setOverlappingWidth(double width);
+	void setOverlappingHeight(double height);
+	void setOverlappingPosition(Qt::Alignment position);
 
-	virtual void setPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width);
-	virtual void setPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height);
-	virtual void setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode);
-	virtual void setPosterHorizontalAlignment(PosteRazorEnums::eHorizontalAlignments alignment);
-	virtual void setPosterVerticalAlignment(PosteRazorEnums::eVerticalAlignments alignment);
+	void setPosterWidthAbsolute(double width);
+	void setPosterHeightAbsolute(double height);
+	void setPosterWidthPages(double width);
+	void setPosterHeightPages(double height);
+	void setPosterSizePercentual(double percent);
+	void setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode);
+	void setPosterAlignment(Qt::Alignment alignment);
 
-	virtual void setPosterOutputFormat(ImageIOTypes::eImageFormats format);
-	virtual void setLaunchPDFApplication(bool launch);
+	void setPosterOutputFormat(ImageIOTypes::eImageFormats format);
+	void setLaunchPDFApplication(bool launch);
 
-	virtual void updatePreview(void);
-	virtual void showImageFileName(const char *fileName);
-	virtual void updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel);
-	virtual void launchPdfApplication(const char *pdfFileName) const;
-
-	void setPrevButtonEnabled(bool enabled);
-	void setNextButtonEnabled(bool enabled);
-	void setWizardStep(PosteRazorWizardDialogController::ePosteRazorWizardSteps step);
-	void setPreviewState(const char *state);
+	void updatePreview();
+	void showImageFileName(const QString &fileName);
+	void updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel);
+	void launchPdfApplication(const QString &pdfFileName) const;
 
 public slots:
-	bool loadInputImage(const QString &fileName);
+	void setPreviewImage(const unsigned char* rgbData, const QSize &size);
+	void setPrevButtonEnabled(bool enabled);
+	void setNextButtonEnabled(bool enabled);
+	void setWizardStep(int step);
+	void setPreviewState(const QString &state);
 
 private:
 	PosteRazor *m_posteRazor;
-	PosteRazorWizardDialogController *m_posteRazorController;
+	QHash<Qt::Alignment, QAbstractButton*> m_overlappingButtons;
+	QHash<Qt::Alignment, QAbstractButton*> m_alignmentButtons;
 
-	void createConnections(void);
-	void createPosteRazorDialogController(void);
-	void populateUI(void);
+	void createConnections();
+	void populateUI();
+
+signals:
+	void paperFormatChanged(const QString &format) const;
+	void paperOrientationChanged(PaperFormats::ePaperOrientations orientation) const;
+	void paperCustomWidthChanged(double width) const;
+	void paperCustomHeightChanged(double height) const;
+	void paperBorderTopChanged(double border) const;
+	void paperBorderRightChanged(double border) const;
+	void paperBorderBottomChanged(double border) const;
+	void paperBorderLeftChanged(double border) const;
+	void overlappingWidthChanged(double width) const;
+	void overlappingHeightChanged(double height) const;
+	void overlappingPositionChanged(Qt::Alignment position) const;
+	void posterWidthAbsoluteChanged(double width) const;
+	void posterHeightAbsoluteChanged(double height) const;
+	void posterWidthPagesChanged(double width) const;
+	void posterHeightPagesChanged(double height) const;
+	void posterSizePercentualChanged(double percent) const;
+	void posterAlignmentChanged(Qt::Alignment alignment) const;
+	void savePosterSelected() const;
+	void launchPDFApplicationChanged(bool launch) const;
+	void nextButtonPressed() const;
+	void prevButtonPressed() const;
+	void savePosterSignal() const;
+	void loadImageSignal() const;
+	void needsPaint(PaintCanvasInterface *paintDevice, const QVariant &options) const;
+	void imageLoaded() const;
 
 private slots:
-	void handleNextButtonClicked(void);
-	void handlePrevButtonClicked(void);
-	void handleImageLoadButtonClicked(void);
-
 	void handlePaperFormatTabChanged(int index);
-	void handlePaperFormatComboBoxChanged(const QString &format);
-	void handlePaperOrientationPortraitSelected(void);
-	void handlePaperOrientationLandscapeSelected(void);
-	void handlePaperCustomWidthChanged(double width);
-	void handlePaperCustomHeightChanged(double height);
-	void handlePaperBorderTopChanged(double border);
-	void handlePaperBorderRightChanged(double border);
-	void handlePaperBorderBottomChanged(double border);
-	void handlePaperBorderLeftChanged(double border);
+	void handlePaperOrientationPortraitSelected();
+	void handlePaperOrientationLandscapeSelected();
 
-	void handleOverlappingWidthChanged(double width);
-	void handleOverlappingHeightChanged(double height);
-	void handleOverlappingPositionTopLeftSelected(void);
-	void handleOverlappingPositionTopRightSelected(void);
-	void handleOverlappingPositionBottomRightSelected(void);
-	void handleOverlappingPositionBottomLeftSelected(void);
+	void emitOverlappingPositionChange(int alignmentInt) const;
+	void emitPosterAlignmentChange(int alignmentInt) const;
 
-	void handlePosterWidthAbsoluteChanged(double width);
-	void handlePosterHeightAbsoluteChanged(double height);
-	void handlePosterWidthPagesChanged(double width);
-	void handlePosterHeightPagesChanged(double height);
-	void handlePosterSizePercentualChanged(double percent);
+	void updatePosterSizeGroupsState();
 
-	void handlePosterHorizontalAlignmentLeftSelected(void);
-	void handlePosterHorizontalAlignmentCenterSelected(void);
-	void handlePosterHorizontalAlignmentRightSelected(void);
-	void handlePosterVerticalAlignmentTopSelected(void);
-	void handlePosterVerticalAlignmentMiddleSelected(void);
-	void handlePosterVerticalAlignmentBottomSelected(void);
-
-	void handleSavePosterButtonClicked(void);
-	void handleLaunchPDFApplicationChanged(bool launch);
-
-	void updatePosterSizeGroupsState(void);
+	void showAboutQtDialog() const;
 };
 
 #endif // MAINWINDOW_H

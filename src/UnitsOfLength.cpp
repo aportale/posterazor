@@ -43,7 +43,7 @@ static const UnitsOfLengthStruct g_UnitsOfLength[] =
 
 static const int g_UnitsOfLengthCount = sizeof(g_UnitsOfLength)/sizeof(g_UnitsOfLength[0]);
 
-int UnitsOfLength::getUnitsOfLengthCount(void)
+int UnitsOfLength::getUnitsOfLengthCount()
 {
 	return g_UnitsOfLengthCount;
 }

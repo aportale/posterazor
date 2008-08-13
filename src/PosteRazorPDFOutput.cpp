@@ -59,7 +59,6 @@ private:
 	char m_pageContent[2048];
 	double m_mediaboxWidth;
 	double m_mediaboxHeight;
-	const PainterInterface *m_painter;
 
 public:
 	PosteRazorPDFOutputImplementation()
@@ -70,17 +69,11 @@ public:
 		, m_objectImageID(0)
 		, m_mediaboxWidth(5000.0)
 		, m_mediaboxHeight(5000.0)
-		, m_painter(NULL)
 	{
 		m_pageContent[0] = '\0';
 	}
 
-	void setPainterInterface(const PainterInterface *painter)
-	{
-		m_painter = painter;
-	}
-
-	void AddOffsetToXref(void)
+	void AddOffsetToXref()
 	{
 		char xrefLine[25];
 		m_pdfObjectCount++;
@@ -117,7 +110,7 @@ public:
 		return err;
 	}
 
-	int saveImage(const char *jpegFileName, int widthPixels, int heightPixels, ColorTypes::eColorTypes colorType)
+	int saveImage(const QString &jpegFileName, int widthPixels, int heightPixels, ColorTypes::eColorTypes colorType)
 	{
 		int err = 0;
 
@@ -125,7 +118,7 @@ public:
 
 		FILE *jpegFile = NULL;
 		if (!err) {
-			jpegFile = fopen(jpegFileName, "rb");
+			jpegFile = fopen(jpegFileName.toAscii(), "rb");
 			if (!jpegFile)
 				err = 2;
 		}
@@ -272,7 +265,7 @@ public:
 		return err;
 	}
 
-	int startPage(void)
+	int startPage()
 	{
 		int err = 0;
 		m_pageContent[0] = '\0';
@@ -298,7 +291,7 @@ public:
 		return err;
 	}
 
-	int finishPage(void)
+	int finishPage()
 	{
 		int err = 0;
 	
@@ -318,14 +311,14 @@ public:
 		return err;
 	}
 
-	int startSaving(const char* fileName, int pages, double widthCm, double heightCm)
+	int startSaving(const QString &fileName, int pages, double widthCm, double heightCm)
 	{
 		int err = 0;
 
 		m_mediaboxWidth = CM2PT(widthCm);
 		m_mediaboxHeight = CM2PT(heightCm);
 
-		m_outputFile = fopen(fileName, "wb");
+		m_outputFile = fopen(fileName.toAscii(), "wb");
 		if (!m_outputFile)
 			err = 1;
 		if (!err) {
@@ -418,12 +411,10 @@ public:
 		return err;
 	}
 
-	void setBackgroundColor(unsigned char, unsigned char, unsigned char) {}
 	void drawFilledRect(double, double, double, double, unsigned char, unsigned char, unsigned char, unsigned char) {}
 	void drawRect(double, double, double, double, unsigned char, unsigned char, unsigned char, unsigned char) {}
 	void drawLine(double, double, double, double, unsigned char, unsigned char, unsigned char, unsigned char) {}
 	void getSize(double &, double &) const {}
-	void setImage(const unsigned char*, double, double ) {}
 	void drawImage(double x, double y, double width, double height)
 	{
 		char imageCode[2048]="";
@@ -444,7 +435,7 @@ public:
 	}
 };
 
-PosteRazorPDFOutput* PosteRazorPDFOutput::createPosteRazorPDFOutput(void)
+PosteRazorPDFOutput* PosteRazorPDFOutput::createPosteRazorPDFOutput()
 {
 	return (PosteRazorPDFOutput*) new PosteRazorPDFOutputImplementation();
 }

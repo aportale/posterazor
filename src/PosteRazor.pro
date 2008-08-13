@@ -2,7 +2,6 @@ TEMPLATE = app
 
 SOURCES += \
 	PaperFormats.cpp \
-	PaintCanvasBase.cpp \
 	UnitsOfLength.cpp \
 	ImageIOTypes.cpp \
 	PosteRazor.cpp \
@@ -11,15 +10,15 @@ SOURCES += \
 	mainwindow.cpp \
 	QtPosteRazorSpinBox.cpp \
 	QtPaintCanvas.cpp \
-	PosteRazorDialogController.cpp \
-	PosteRazorWizardDialogController.cpp
+	controller.cpp \
+	PosteRazorWizardDialogController.cpp \
+	main.cpp
 
 HEADERS += \
 	ColorTypes.h \
 	ImageIOTypes.h \
 	UnitsOfLength.h \
 	PaperFormats.h \
-	PaintCanvasBase.h \
 	PaintCanvasInterface.h \
 	PosteRazor.h \
 	PosteRazorImageIO.h \
@@ -27,7 +26,7 @@ HEADERS += \
 	mainwindow.h \
 	QtPosteRazorSpinBox.h \
 	QtPaintCanvas.h \
-	PosteRazorDialogController.h \
+	controller.h \
 	PosteRazorWizardDialogController.h
 
 INCLUDEPATH += \

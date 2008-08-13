@@ -9,12 +9,15 @@
         <file>overlappingTopRight.png</file>
     </qresource>
     <qresource prefix="/PosterAlignmentImages" >
-        <file>alignmentBottom.png</file>
-        <file>alignmentCenter.png</file>
-        <file>alignmentLeft.png</file>
-        <file>alignmentMiddle.png</file>
-        <file>alignmentRight.png</file>
-        <file>alignmentTop.png</file>
+        <file>alignmenttopleft.png</file>
+        <file>alignmenttophcenter.png</file>
+        <file>alignmenttopright.png</file>
+        <file>alignmentvcenterleft.png</file>
+        <file>alignmentcenter.png</file>
+        <file>alignmentvcenterright.png</file>
+        <file>alignmentbottomleft.png</file>
+        <file>alignmentbottomhcenter.png</file>
+        <file>alignmentbottomright.png</file>
     </qresource>
     <qresource prefix="/Translations" >
         <file>de.qm</file>

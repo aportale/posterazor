@@ -38,7 +38,7 @@ public:
 
 	static const QHash<QString, QSizeF> &paperFormats();
 
-	static int getPaperFormatsCount(void);
+	static int getPaperFormatsCount();
 
 	static double getPaperDimension(const QString &format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit, bool width);
 	static double getPaperWidth(const QString &format, ePaperOrientations orientation, UnitsOfLength::eUnitsOfLength unit);

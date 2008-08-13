@@ -24,18 +24,20 @@
 #define QTPAINTCANVAS_H
 
 #include <QWidget>
-#include "PaintCanvasBase.h"
+#include "PaintCanvasInterface.h"
 
 class QImage;
 class QPainter;
+class QPaintDevice;
 
-class QtPaintCanvas: public QWidget, public PaintCanvasBase
+class QtPaintCanvas: public QWidget, public PaintCanvasInterface
 {
 	Q_OBJECT
 
 private:
 	QImage *m_image;
 	unsigned char *m_imageRGBData;
+	QString m_state;
 	QPainter *m_qPainter;
 	
 public:
@@ -48,11 +50,16 @@ public:
 	virtual void drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
 	virtual void getSize(double &width, double &height) const;
 
-	virtual void setImage(const unsigned char* rgbData, double width, double height);
-	virtual void disposeImage(void);
+	virtual void disposeImage();
 	virtual void drawImage(double x, double y, double width, double height);
 
-	virtual void setState(const char *state);
+	virtual void setState(const QString &state);
+
+public slots:
+	void setImage(const unsigned char* rgbData, const QSize &size);
+
+signals:
+	void needsPaint(PaintCanvasInterface *paintDevice, const QVariant &options) const;
 };
 
 #endif // QTPAINTCANVAS_H

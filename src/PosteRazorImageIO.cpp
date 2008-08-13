@@ -27,12 +27,11 @@
 #include <stdio.h>
 #include <string.h>
 
-static char FreeImageErrorMessage[1024];
+static QString FreeImageErrorMessage;
 
-void FreeImageErrorHandler(FREE_IMAGE_FORMAT /* fif */, const char *message)
+void FreeImageErrorHandler(FREE_IMAGE_FORMAT fif, const char *message)
 {
-	strncpy(FreeImageErrorMessage, message, sizeof(FreeImageErrorMessage));
-	FreeImageErrorMessage[sizeof(FreeImageErrorMessage)-1] = '\0';
+	FreeImageErrorMessage = message;
 }
 
 class FreeImageInitializer
@@ -63,18 +62,10 @@ private:
 	unsigned int m_horizontalDotsPerMeter;
 	unsigned int m_verticalDotsPerMeter;
 
-	char         m_imageFileName[1024];
-
-	static bool isSystemLittleEndian(void)
-	{
-		// Endianness detection lines borrowed from: http://en.wikipedia.org/wiki/Endianness
-		const long int i = 1;
-		const char *p = (const char *) &i;
-		return p[0] == 1;  // Lowest address contains the least significant byte
-	}
+	QString      m_imageFileName;
 
 	// FreeImage_Convert[To|From]RawBits inverted the topdown parameter until v3.10
-	static BOOL hasFreeImageVersionCorrectTopDownInConvertBits(void)
+	static BOOL hasFreeImageVersionCorrectTopDownInConvertBits()
 	{
 		const char *version = FreeImage_GetVersion();
 		int majorVersion;
@@ -107,13 +98,14 @@ public:
 		}
 	}
 
-	bool loadInputImage(const char *imageFileName, char *errorMessage, int errorMessageSize)
+	bool loadInputImage(const QString &imageFileName, QString &errorMessage)
 	{
 		bool result = false;
 
-		strcpy(FreeImageErrorMessage, "");
+		FreeImageErrorMessage.clear();
 
-		FIBITMAP* newImage = FreeImage_Load(FreeImage_GetFileType(imageFileName, 0), imageFileName, TIFF_CMYK);
+		const FREE_IMAGE_FORMAT fileType = FreeImage_GetFileType(imageFileName.toAscii(), 0);
+		FIBITMAP* newImage = FreeImage_Load(fileType, imageFileName.toAscii(), TIFF_CMYK);
 
 		if (newImage) {
 			result = true;
@@ -132,7 +124,7 @@ public:
 			if (m_verticalDotsPerMeter == 0)
 				m_verticalDotsPerMeter = 2835;
 
-			strcpy(m_imageFileName, imageFileName);
+			m_imageFileName = imageFileName;
 
 			if ((getColorDataType() == eColorTypeRGB && getBitsPerPixel() == 32) // Sometimes, there are strange .PSD images like this (FreeImage bug?)
 				|| (getColorDataType() == eColorTypeRGBA)) // We can't export alpha channels to PDF, anyway (yet)
@@ -144,15 +136,14 @@ public:
 			}
 		}
 
-		strncpy(errorMessage, FreeImageErrorMessage, errorMessageSize);
-		errorMessage[errorMessageSize-1] = '\0';
+		errorMessage = FreeImageErrorMessage;
 
 		return result;
 	}
-	bool isImageLoaded(void) const {return (m_bitmap != NULL);}
+	bool isImageLoaded() const {return (m_bitmap != NULL);}
 
-	int getWidthPixels(void) const {return m_widthPixels;}
-	int getHeightPixels(void) const {return m_heightPixels;}
+	int getWidthPixels() const {return m_widthPixels;}
+	int getHeightPixels() const {return m_heightPixels;}
 
 	double getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const
 	{
@@ -223,7 +214,7 @@ public:
 		FreeImage_ConvertToRawBits(buffer, originalImage, width*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, hasFreeImageVersionCorrectTopDownInConvertBits());
 
 		// Swapping RGB data if needed (like on Intel)
-		if (isSystemLittleEndian()) {
+		if (QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
 			const unsigned int numberOfPixels = width * height;
 
 			for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
@@ -245,12 +236,12 @@ public:
 		return success;
 	}
 	
-	int getBitsPerPixel(void) const
+	int getBitsPerPixel() const
 	{
 		return FreeImage_GetBPP(m_bitmap);
 	}
 	
-	eColorTypes getColorDataType(void) const
+	eColorTypes getColorDataType() const
 	{
 		eColorTypes colorDatatype = eColorTypeRGB;
 		const FREE_IMAGE_COLOR_TYPE imageColorType = FreeImage_GetColorType(m_bitmap);
@@ -268,8 +259,9 @@ public:
 		return colorDatatype;
 	}
 
-	int savePoster(const char *fileName, ImageIOTypes::eImageFormats /* format */, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const
+	int savePoster(const QString &fileName, ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const
 	{
+		Q_UNUSED(format)
 		int err = 0;
 
 		const unsigned int imageBytesCount = PosteRazorPDFOutput::getImageBytesCount(getWidthPixels(), getHeightPixels(), getBitsPerPixel());
@@ -280,7 +272,7 @@ public:
 		FreeImage_ConvertToRawBits(imageData, m_bitmap, bytesPerLineCount, getBitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, hasFreeImageVersionCorrectTopDownInConvertBits());
 
 		// Swapping RGB data if needed (like on Intel)
-		if (getBitsPerPixel() == 24 && isSystemLittleEndian()) {
+		if (getBitsPerPixel() == 24 && QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
 			const unsigned long numberOfPixels = getWidthPixels() * getHeightPixels();
 			for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
 				unsigned char *pixelPtr = imageData + pixelIndex*3;
@@ -309,7 +301,7 @@ public:
 		PosteRazorPDFOutput *pdfOutput = PosteRazorPDFOutput::createPosteRazorPDFOutput();
 		err = pdfOutput->startSaving(fileName, pagesCount, widthCm, heightCm);
 		if (!err) {
-			if (FreeImage_GetFileType(m_imageFileName, 0) == FIF_JPEG)
+			if (FreeImage_GetFileType(m_imageFileName.toAscii(), 0) == FIF_JPEG)
 				err = pdfOutput->saveImage(m_imageFileName, getWidthPixels(), getHeightPixels(), getColorDataType());
 			else
 				err = pdfOutput->saveImage(imageData, getWidthPixels(), getHeightPixels(), getBitsPerPixel(), getColorDataType(), rgbPalette, FreeImage_GetColorsUsed(m_bitmap));
@@ -335,7 +327,7 @@ public:
 	}
 };
 
-PosteRazorImageIO* PosteRazorImageIO::createPosteRazorImageIO(void)
+PosteRazorImageIO* PosteRazorImageIO::createPosteRazorImageIO()
 {
 	return (PosteRazorImageIO*) new PosteRazorImageIOImplementation();
 }

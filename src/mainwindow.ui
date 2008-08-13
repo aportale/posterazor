@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>465</width>
-    <height>468</height>
+    <width>527</width>
+    <height>478</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -193,7 +193,7 @@
           <enum>QFrame::Sunken</enum>
          </property>
          <property name="currentIndex" >
-          <number>0</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="m_loadInputImageStep" >
           <layout class="QVBoxLayout" >
@@ -1174,7 +1174,7 @@
                  <number>4</number>
                 </property>
                 <property name="maximum" >
-                 <double>999999.000000000000000</double>
+                 <double>999.000000000000000</double>
                 </property>
                </widget>
               </item>
@@ -1193,7 +1193,7 @@
                  <number>4</number>
                 </property>
                 <property name="maximum" >
-                 <double>999999.000000000000000</double>
+                 <double>999.990000000000009</double>
                 </property>
                </widget>
               </item>
@@ -1262,241 +1262,242 @@
              <property name="title" >
               <string>Image alignment</string>
              </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_6" >
+             <layout class="QGridLayout" name="gridLayout" >
               <property name="spacing" >
                <number>0</number>
               </property>
-              <item>
-               <widget class="QWidget" native="1" name="widget_4" >
-                <layout class="QHBoxLayout" name="horizontalLayout_4" >
-                 <property name="margin" >
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="QToolButton" name="m_posterAlignmentTopButton" >
-                   <property name="sizePolicy" >
-                    <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize" >
-                    <size>
-                     <width>0</width>
-                     <height>29</height>
-                    </size>
-                   </property>
-                   <property name="text" >
-                    <string/>
-                   </property>
-                   <property name="icon" >
-                    <iconset resource="QtPosteRazorDialogResources.qrc" >
-                     <normaloff>:/PosterAlignmentImages/alignmentTop.png</normaloff>:/PosterAlignmentImages/alignmentTop.png</iconset>
-                   </property>
-                   <property name="iconSize" >
-                    <size>
-                     <width>22</width>
-                     <height>22</height>
-                    </size>
-                   </property>
-                   <property name="checkable" >
-                    <bool>true</bool>
-                   </property>
-                   <property name="autoExclusive" >
-                    <bool>true</bool>
-                   </property>
-                   <property name="autoRaise" >
-                    <bool>false</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QToolButton" name="m_posterAlignmentMiddleButton" >
-                   <property name="minimumSize" >
-                    <size>
-                     <width>0</width>
-                     <height>29</height>
-                    </size>
-                   </property>
-                   <property name="text" >
-                    <string/>
-                   </property>
-                   <property name="icon" >
-                    <iconset resource="QtPosteRazorDialogResources.qrc" >
-                     <normaloff>:/PosterAlignmentImages/alignmentMiddle.png</normaloff>:/PosterAlignmentImages/alignmentMiddle.png</iconset>
-                   </property>
-                   <property name="iconSize" >
-                    <size>
-                     <width>22</width>
-                     <height>22</height>
-                    </size>
-                   </property>
-                   <property name="checkable" >
-                    <bool>true</bool>
-                   </property>
-                   <property name="autoExclusive" >
-                    <bool>true</bool>
-                   </property>
-                   <property name="autoRaise" >
-                    <bool>false</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QToolButton" name="m_posterAlignmentBottomButton" >
-                   <property name="minimumSize" >
-                    <size>
-                     <width>0</width>
-                     <height>29</height>
-                    </size>
-                   </property>
-                   <property name="text" >
-                    <string/>
-                   </property>
-                   <property name="icon" >
-                    <iconset resource="QtPosteRazorDialogResources.qrc" >
-                     <normaloff>:/PosterAlignmentImages/alignmentBottom.png</normaloff>:/PosterAlignmentImages/alignmentBottom.png</iconset>
-                   </property>
-                   <property name="iconSize" >
-                    <size>
-                     <width>22</width>
-                     <height>22</height>
-                    </size>
-                   </property>
-                   <property name="checkable" >
-                    <bool>true</bool>
-                   </property>
-                   <property name="autoExclusive" >
-                    <bool>true</bool>
-                   </property>
-                   <property name="autoRaise" >
-                    <bool>false</bool>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
+              <item row="0" column="3" >
+               <widget class="QToolButton" name="m_posterAlignmentTopRightButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                  <normaloff>:/PosterAlignmentImages/alignmenttopright.png</normaloff>:/PosterAlignmentImages/alignmenttopright.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>15</width>
+                  <height>16</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
-              <item>
-               <spacer name="spacer" >
+              <item row="0" column="1" >
+               <widget class="QToolButton" name="m_posterAlignmentTopLeftButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                  <normaloff>:/PosterAlignmentImages/alignmenttopleft.png</normaloff>:/PosterAlignmentImages/alignmenttopleft.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>15</width>
+                  <height>16</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2" >
+               <widget class="QToolButton" name="m_posterAlignmentTopButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                  <normaloff>:/PosterAlignmentImages/alignmenttophcenter.png</normaloff>:/PosterAlignmentImages/alignmenttophcenter.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>15</width>
+                  <height>16</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1" >
+               <widget class="QToolButton" name="m_posterAlignmentLeftButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                  <normaloff>:/PosterAlignmentImages/alignmentvcenterleft.png</normaloff>:/PosterAlignmentImages/alignmentvcenterleft.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>15</width>
+                  <height>16</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2" >
+               <widget class="QToolButton" name="m_posterAlignmentCenterButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                  <normaloff>:/PosterAlignmentImages/alignmentcenter.png</normaloff>:/PosterAlignmentImages/alignmentcenter.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>15</width>
+                  <height>16</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3" >
+               <widget class="QToolButton" name="m_posterAlignmentRightButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                  <normaloff>:/PosterAlignmentImages/alignmentvcenterright.png</normaloff>:/PosterAlignmentImages/alignmentvcenterright.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>15</width>
+                  <height>16</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1" >
+               <widget class="QToolButton" name="m_posterAlignmentBottomLeftButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                  <normaloff>:/PosterAlignmentImages/alignmentbottomleft.png</normaloff>:/PosterAlignmentImages/alignmentbottomleft.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>15</width>
+                  <height>16</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2" >
+               <widget class="QToolButton" name="m_posterAlignmentBottomButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                  <normaloff>:/PosterAlignmentImages/alignmentbottomhcenter.png</normaloff>:/PosterAlignmentImages/alignmentbottomhcenter.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>15</width>
+                  <height>16</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3" >
+               <widget class="QToolButton" name="m_posterAlignmentBottomRightButton" >
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="icon" >
+                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                  <normaloff>:/PosterAlignmentImages/alignmentbottomright.png</normaloff>:/PosterAlignmentImages/alignmentbottomright.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>15</width>
+                  <height>16</height>
+                 </size>
+                </property>
+                <property name="checkable" >
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" >
+               <spacer name="horizontalSpacer_2" >
                 <property name="orientation" >
                  <enum>Qt::Horizontal</enum>
                 </property>
-                <property name="sizeType" >
-                 <enum>QSizePolicy::MinimumExpanding</enum>
-                </property>
                 <property name="sizeHint" stdset="0" >
                  <size>
-                  <width>14</width>
-                  <height>30</height>
+                  <width>0</width>
+                  <height>20</height>
                  </size>
                 </property>
                </spacer>
               </item>
-              <item>
-               <widget class="QWidget" native="1" name="widget_5" >
-                <layout class="QHBoxLayout" name="horizontalLayout_5" >
-                 <property name="margin" >
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="QToolButton" name="m_posterAlignmentLeftButton" >
-                   <property name="minimumSize" >
-                    <size>
-                     <width>0</width>
-                     <height>29</height>
-                    </size>
-                   </property>
-                   <property name="text" >
-                    <string/>
-                   </property>
-                   <property name="icon" >
-                    <iconset resource="QtPosteRazorDialogResources.qrc" >
-                     <normaloff>:/PosterAlignmentImages/alignmentLeft.png</normaloff>:/PosterAlignmentImages/alignmentLeft.png</iconset>
-                   </property>
-                   <property name="iconSize" >
-                    <size>
-                     <width>22</width>
-                     <height>22</height>
-                    </size>
-                   </property>
-                   <property name="checkable" >
-                    <bool>true</bool>
-                   </property>
-                   <property name="autoExclusive" >
-                    <bool>true</bool>
-                   </property>
-                   <property name="autoRaise" >
-                    <bool>false</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QToolButton" name="m_posterAlignmentCenterButton" >
-                   <property name="minimumSize" >
-                    <size>
-                     <width>0</width>
-                     <height>29</height>
-                    </size>
-                   </property>
-                   <property name="text" >
-                    <string/>
-                   </property>
-                   <property name="icon" >
-                    <iconset resource="QtPosteRazorDialogResources.qrc" >
-                     <normaloff>:/PosterAlignmentImages/alignmentCenter.png</normaloff>:/PosterAlignmentImages/alignmentCenter.png</iconset>
-                   </property>
-                   <property name="iconSize" >
-                    <size>
-                     <width>22</width>
-                     <height>22</height>
-                    </size>
-                   </property>
-                   <property name="checkable" >
-                    <bool>true</bool>
-                   </property>
-                   <property name="autoExclusive" >
-                    <bool>true</bool>
-                   </property>
-                   <property name="autoRaise" >
-                    <bool>false</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QToolButton" name="m_posterAlignmentRightButton" >
-                   <property name="minimumSize" >
-                    <size>
-                     <width>0</width>
-                     <height>29</height>
-                    </size>
-                   </property>
-                   <property name="text" >
-                    <string/>
-                   </property>
-                   <property name="icon" >
-                    <iconset resource="QtPosteRazorDialogResources.qrc" >
-                     <normaloff>:/PosterAlignmentImages/alignmentRight.png</normaloff>:/PosterAlignmentImages/alignmentRight.png</iconset>
-                   </property>
-                   <property name="iconSize" >
-                    <size>
-                     <width>22</width>
-                     <height>22</height>
-                    </size>
-                   </property>
-                   <property name="checkable" >
-                    <bool>true</bool>
-                   </property>
-                   <property name="autoExclusive" >
-                    <bool>true</bool>
-                   </property>
-                   <property name="autoRaise" >
-                    <bool>false</bool>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
+              <item row="0" column="4" >
+               <spacer name="horizontalSpacer_3" >
+                <property name="orientation" >
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0" >
+                 <size>
+                  <width>0</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
              </layout>
             </widget>
@@ -1641,17 +1642,34 @@
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar" >
+  <widget class="QMenuBar" name="m_menubar" >
    <property name="geometry" >
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>465</width>
+     <width>527</width>
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="m_menu_File" >
+    <property name="title" >
+     <string>&amp;File</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="m_menu_About" >
+    <property name="title" >
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="m_actionAboutQt" />
+   </widget>
+   <addaction name="m_menu_File" />
+   <addaction name="m_menu_About" />
   </widget>
-  <widget class="QStatusBar" name="statusbar" />
+  <action name="m_actionAboutQt" >
+   <property name="text" >
+    <string>About Qt</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
