@@ -1,25 +1,25 @@
 /*
-	PosteRazor - Make your own poster!
-	Copyright (C) 2005-2008 by Alessandro Portale
-	http://posterazor.sourceforge.net/
+    PosteRazor - Make your own poster!
+    Copyright (C) 2005-2008 by Alessandro Portale
+    http://posterazor.sourceforge.net/
 
-	Spanish translation by Hispanico Web http://hispanicoweb.net/
+    Spanish translation by Hispanico Web http://hispanicoweb.net/
 
-	This file is part of PosteRazor
+    This file is part of PosteRazor
 
-	PosteRazor is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-	
-	PosteRazor is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
-	
-	You should have received a copy of the GNU General Public License
-	along with PosteRazor; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+    PosteRazor is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    
+    PosteRazor is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    
+    You should have received a copy of the GNU General Public License
+    along with PosteRazor; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
 #ifndef TranslationSpanish_h
@@ -33,45 +33,45 @@
 class TranslationSpanish: public TranslationInterface
 {
 public:
-	const char* languageName(void) const                    {return "Español";}
+    const char* languageName(void) const                    {return "Español";}
 
-	const char* absoluteSize(void) const                    {return "Tamaño total:";}
-	const char* allImageFormats(void) const                 {return "Todos los formatos de imagen";}
-	const char* back(void) const                            {return "Atrás";}
-	const char* borders(void) const                         {return "Márgenes";}
-	const char* bottom(void) const                          {return "Inferior";}
-	const char* bottomLeft(void) const                      {return "Inferior izquierdo";}
-	const char* bottomRight(void) const                     {return "Inferior derecho";}
-	const char* cancel(void) const                          {return "Cancelar";}
-	const char* colorType(void) const                       {return "Tipo de color:";}
-	const char* custom(void) const                          {return "Personalizado";}
-	const char* fileCouldNotBeLoaded(void) const            {return "No se pudo cargar el archivo \"%s\".";}
-	const char* fileCouldNotBeSaved(void) const             {return "No se pudo guardar el archivo \"%s\".";}
-	const char* format(void) const                          {return "Formato:";}
-	const char* grayscale(void) const                       {return "Escala de grises";}
-	const char* height(void) const                          {return "Altura:";}
-	const char* imageAlignment(void) const                  {return "Alineación de imagen";}
-	const char* imageInformations(void) const               {return "Informaciones de imagen";}
-	const char* imageSize(void) const                       {return "Tamaño de imagen";}
-	const char* inputImage(void) const                      {return "Imagen de entrada";}
-	const char* landscape(void) const                       {return "Horizontal";}
-	const char* language(void) const                        {return "Idioma";}
-	const char* languageExplanation(void) const             {return "Escoja su idioma";}
-	const char* launchPDFApplication(void) const            {return "Ejecutar la aplicación PDF tras guardar el poster";}
-	const char* left(void) const                            {return "Izquierdo";}
-	const char* loadAnInputImage(void) const                {return stepTitle01();}
-	const char* monochrome(void) const                      {return "Monocromo";}
-	const char* next(void) const                            {return "Siguiente";}
-	const char* orientation(void) const                     {return "Orientación:";}
-	const char* overlappingPosition(void) const             {return "Posición de superposición";}
-	const char* overlappingSize(void) const                 {return "Tamaño de superposición";}
-	const char* overwriteFile(void) const                   {return "El archivo '%s' ya existe.\n¿Desea sobrescribirlo?";}
-	const char* pages(void) const                           {return "páginas";}
-	const char* paperFormat(void) const                     {return "Formato de papel";}
-	const char* palette(void) const                         {return "Paleta";}
-	const char* portrait(void) const                        {return "Vertical";}
-	const char* posteRazorHelp(void) const                  {return "Ayuda de PosteRazor";}
-	const char* posteRazorSettings(void) const              {return
+    const char* absoluteSize(void) const                    {return "Tamaño total:";}
+    const char* allImageFormats(void) const                 {return "Todos los formatos de imagen";}
+    const char* back(void) const                            {return "Atrás";}
+    const char* borders(void) const                         {return "Márgenes";}
+    const char* bottom(void) const                          {return "Inferior";}
+    const char* bottomLeft(void) const                      {return "Inferior izquierdo";}
+    const char* bottomRight(void) const                     {return "Inferior derecho";}
+    const char* cancel(void) const                          {return "Cancelar";}
+    const char* colorType(void) const                       {return "Tipo de color:";}
+    const char* custom(void) const                          {return "Personalizado";}
+    const char* fileCouldNotBeLoaded(void) const            {return "No se pudo cargar el archivo \"%s\".";}
+    const char* fileCouldNotBeSaved(void) const             {return "No se pudo guardar el archivo \"%s\".";}
+    const char* format(void) const                          {return "Formato:";}
+    const char* grayscale(void) const                       {return "Escala de grises";}
+    const char* height(void) const                          {return "Altura:";}
+    const char* imageAlignment(void) const                  {return "Alineación de imagen";}
+    const char* imageInformations(void) const               {return "Informaciones de imagen";}
+    const char* imageSize(void) const                       {return "Tamaño de imagen";}
+    const char* inputImage(void) const                      {return "Imagen de entrada";}
+    const char* landscape(void) const                       {return "Horizontal";}
+    const char* language(void) const                        {return "Idioma";}
+    const char* languageExplanation(void) const             {return "Escoja su idioma";}
+    const char* launchPDFApplication(void) const            {return "Ejecutar la aplicación PDF tras guardar el poster";}
+    const char* left(void) const                            {return "Izquierdo";}
+    const char* loadAnInputImage(void) const                {return stepTitle01();}
+    const char* monochrome(void) const                      {return "Monocromo";}
+    const char* next(void) const                            {return "Siguiente";}
+    const char* orientation(void) const                     {return "Orientación:";}
+    const char* overlappingPosition(void) const             {return "Posición de superposición";}
+    const char* overlappingSize(void) const                 {return "Tamaño de superposición";}
+    const char* overwriteFile(void) const                   {return "El archivo '%s' ya existe.\n¿Desea sobrescribirlo?";}
+    const char* pages(void) const                           {return "páginas";}
+    const char* paperFormat(void) const                     {return "Formato de papel";}
+    const char* palette(void) const                         {return "Paleta";}
+    const char* portrait(void) const                        {return "Vertical";}
+    const char* posteRazorHelp(void) const                  {return "Ayuda de PosteRazor";}
+    const char* posteRazorSettings(void) const              {return
 #ifdef __APPLE__
 // This seems to be the only problematic string on OSX. It is used for a window title.
                                                         "Configuraci\x97n de PosteRazor"
@@ -79,28 +79,28 @@ public:
                                                         "Configuración de PosteRazor"
 #endif
                                                       ;}
-	const char* posteRazorWebSiteURL(void) const            {return SPANISH_POSTERAZORWEBSITEURL;}
-	const char* posteRazorWebSite(void) const               {return "Sitio web de PosteRazor";}
-	const char* previewWithOpenGL(void) const               {return "Previsualizar con OpenGL";}
-	const char* previewWithOpenGLExplanation(void) const    {return "OpenGL posibilita una previsualización fácil en los sistemas modernos. En sistemas antiguos puede ralentizar la previsualización.";}
-	const char* resolution(void) const                      {return "Resolución:";}
-	const char* right(void) const                           {return "Derecho";}
-	const char* saveThePoster(void) const                   {return "Guardar el póster";}
-	const char* saveThePosterAs(void) const                 {return "Guardar el póster como";}
-	const char* settings(void) const                        {return "Configuraciones...";}
-	const char* Size(void) const                            {return "Tamaño:";}
-	const char* sizeInPages(void) const                     {return "Tamaño en páginas:";}
-	const char* sizeInPercent(void) const                   {return "Tamaño en porcentaje:";}
-	const char* sizeInPixels(void) const                    {return "Tamaño (en píx.):";}
-	const char* sizeInUnitOfLength(void) const              {return "Tamaño (en %s):";}
-	const char* standard(void) const                        {return "Estándar";}
-	const char* stepXOfY(void) const                        {return "Paso %d de %d";}
-	const char* top(void) const                             {return "Superior";}
-	const char* topLeft(void) const                         {return "Superior izquierdo";}
-	const char* topRight(void) const                        {return "Superior derecho";}
-	const char* unitOfLength(void) const                    {return "Unidad de longitud";}
-	const char* unitOfLengthExplanation(void) const         {return "Escoja la unidad con la que desea trabajar";}
-	const char* width(void) const                           {return "Anchura:";}
+    const char* posteRazorWebSiteURL(void) const            {return SPANISH_POSTERAZORWEBSITEURL;}
+    const char* posteRazorWebSite(void) const               {return "Sitio web de PosteRazor";}
+    const char* previewWithOpenGL(void) const               {return "Previsualizar con OpenGL";}
+    const char* previewWithOpenGLExplanation(void) const    {return "OpenGL posibilita una previsualización fácil en los sistemas modernos. En sistemas antiguos puede ralentizar la previsualización.";}
+    const char* resolution(void) const                      {return "Resolución:";}
+    const char* right(void) const                           {return "Derecho";}
+    const char* saveThePoster(void) const                   {return "Guardar el póster";}
+    const char* saveThePosterAs(void) const                 {return "Guardar el póster como";}
+    const char* settings(void) const                        {return "Configuraciones...";}
+    const char* Size(void) const                            {return "Tamaño:";}
+    const char* sizeInPages(void) const                     {return "Tamaño en páginas:";}
+    const char* sizeInPercent(void) const                   {return "Tamaño en porcentaje:";}
+    const char* sizeInPixels(void) const                    {return "Tamaño (en píx.):";}
+    const char* sizeInUnitOfLength(void) const              {return "Tamaño (en %s):";}
+    const char* standard(void) const                        {return "Estándar";}
+    const char* stepXOfY(void) const                        {return "Paso %d de %d";}
+    const char* top(void) const                             {return "Superior";}
+    const char* topLeft(void) const                         {return "Superior izquierdo";}
+    const char* topRight(void) const                        {return "Superior derecho";}
+    const char* unitOfLength(void) const                    {return "Unidad de longitud";}
+    const char* unitOfLengthExplanation(void) const         {return "Escoja la unidad con la que desea trabajar";}
+    const char* width(void) const                           {return "Anchura:";}
 
 
 #define SPANISH_POSTERAZORHELSTEP                         "Paso"
@@ -121,153 +121,153 @@ public:
 #define SPANISH_POSTERAZORHELPCODEFROMTHIRDPARTIES        "C&oacute;digo de terceros"
 #define SPANISH_POSTERAZORHELPLICENSE                     "Licencia"
 
-	const char* stepTitle01(void) const                     {return SPANISH_POSTERAZORHELPSTEPTITLE01;}
-	const char* stepTitle02(void) const                     {return SPANISH_POSTERAZORHELPSTEPTITLE02;}
-	const char* stepTitle03(void) const                     {return SPANISH_POSTERAZORHELPSTEPTITLENOHTML03;}
-	const char* stepTitle04(void) const                     {return SPANISH_POSTERAZORHELPSTEPTITLENOHTML04;}
-	const char* stepTitle05(void) const                     {return SPANISH_POSTERAZORHELPSTEPTITLENOHTML05;}
-	const char* helpHtml(void) const
-	{
-		return	"<HTML>" POSTERAZORHELPENDLINE \
-				"<BODY>" POSTERAZORHELPENDLINE \
-					"<A name=\"" POSTERAZORHELPANCHORTOP "\"><CENTER><H1>Ayuda de PosteRazor "POSTERAZORVERSION"</H1></CENTER></A>" POSTERAZORHELPENDLINE \
+    const char* stepTitle01(void) const                     {return SPANISH_POSTERAZORHELPSTEPTITLE01;}
+    const char* stepTitle02(void) const                     {return SPANISH_POSTERAZORHELPSTEPTITLE02;}
+    const char* stepTitle03(void) const                     {return SPANISH_POSTERAZORHELPSTEPTITLENOHTML03;}
+    const char* stepTitle04(void) const                     {return SPANISH_POSTERAZORHELPSTEPTITLENOHTML04;}
+    const char* stepTitle05(void) const                     {return SPANISH_POSTERAZORHELPSTEPTITLENOHTML05;}
+    const char* helpHtml(void) const
+    {
+        return    "<HTML>" POSTERAZORHELPENDLINE \
+                "<BODY>" POSTERAZORHELPENDLINE \
+                    "<A name=\"" POSTERAZORHELPANCHORTOP "\"><CENTER><H1>Ayuda de PosteRazor "POSTERAZORVERSION"</H1></CENTER></A>" POSTERAZORHELPENDLINE \
 
-					"<H3>Contenidos</H3>" POSTERAZORHELPENDLINE \
-					"<UL>" POSTERAZORHELPENDLINE \
-						"<LI><B><A href=\"#" POSTERAZORHELPANCHORABOUT "\">" SPANISH_POSTERAZORHELPABOUT "</A></B></LI>" POSTERAZORHELPENDLINE \
-						"<LI><B><A href=\"#" POSTERAZORHELPANCHORMANUAL "\">" SPANISH_POSTERAZORHELPMANUAL "</A></B></LI>" POSTERAZORHELPENDLINE \
-						"<LI><B><A href=\"#" POSTERAZORHELPANCHORSETTINGS "\">" SPANISH_POSTERAZORHELPSETTINGS "</A></B></LI>" POSTERAZORHELPENDLINE \
-						"<UL>" POSTERAZORHELPENDLINE \
-							"<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP01 "\">" SPANISH_POSTERAZORHELSTEP " 1: " SPANISH_POSTERAZORHELPSTEPTITLE01 "</A></LI>" POSTERAZORHELPENDLINE \
-							"<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP02 "\">" SPANISH_POSTERAZORHELSTEP " 2: " SPANISH_POSTERAZORHELPSTEPTITLE02 "</A></LI>" POSTERAZORHELPENDLINE \
-							"<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP03 "\">" SPANISH_POSTERAZORHELSTEP " 3: " SPANISH_POSTERAZORHELPSTEPTITLE03 "</A></LI>" POSTERAZORHELPENDLINE \
-							"<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP04 "\">" SPANISH_POSTERAZORHELSTEP " 4: " SPANISH_POSTERAZORHELPSTEPTITLE04 "</A></LI>" POSTERAZORHELPENDLINE \
-							"<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP05 "\">" SPANISH_POSTERAZORHELSTEP " 5: " SPANISH_POSTERAZORHELPSTEPTITLE05 "</A></LI>" POSTERAZORHELPENDLINE \
-						"</UL>" POSTERAZORHELPENDLINE \
-						"<LI><B><A href=\"#" POSTERAZORHELPANCHORINPUTFILEFORMATS "\">" SPANISH_POSTERAZORHELPINPUTFILEFORMATS "</A></B></LI>" POSTERAZORHELPENDLINE \
-						"<LI><B><A href=\"#" POSTERAZORHELPANCHORWHYPDFOUTPUT "\">" SPANISH_POSTERAZORHELPWHYPDFOUTPUT "</A></B></LI>" POSTERAZORHELPENDLINE \
-						"<LI><B><A href=\"#" POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES "\">" SPANISH_POSTERAZORHELPCODEFROMTHIRDPARTIES "</A></B></LI>" POSTERAZORHELPENDLINE \
-						"<LI><B><A href=\"#" POSTERAZORHELPANCHORLICENSE "\">" SPANISH_POSTERAZORHELPLICENSE "</A></B></LI>" POSTERAZORHELPENDLINE \
-					"</UL><HR>" POSTERAZORHELPENDLINE \
+                    "<H3>Contenidos</H3>" POSTERAZORHELPENDLINE \
+                    "<UL>" POSTERAZORHELPENDLINE \
+                        "<LI><B><A href=\"#" POSTERAZORHELPANCHORABOUT "\">" SPANISH_POSTERAZORHELPABOUT "</A></B></LI>" POSTERAZORHELPENDLINE \
+                        "<LI><B><A href=\"#" POSTERAZORHELPANCHORMANUAL "\">" SPANISH_POSTERAZORHELPMANUAL "</A></B></LI>" POSTERAZORHELPENDLINE \
+                        "<LI><B><A href=\"#" POSTERAZORHELPANCHORSETTINGS "\">" SPANISH_POSTERAZORHELPSETTINGS "</A></B></LI>" POSTERAZORHELPENDLINE \
+                        "<UL>" POSTERAZORHELPENDLINE \
+                            "<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP01 "\">" SPANISH_POSTERAZORHELSTEP " 1: " SPANISH_POSTERAZORHELPSTEPTITLE01 "</A></LI>" POSTERAZORHELPENDLINE \
+                            "<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP02 "\">" SPANISH_POSTERAZORHELSTEP " 2: " SPANISH_POSTERAZORHELPSTEPTITLE02 "</A></LI>" POSTERAZORHELPENDLINE \
+                            "<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP03 "\">" SPANISH_POSTERAZORHELSTEP " 3: " SPANISH_POSTERAZORHELPSTEPTITLE03 "</A></LI>" POSTERAZORHELPENDLINE \
+                            "<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP04 "\">" SPANISH_POSTERAZORHELSTEP " 4: " SPANISH_POSTERAZORHELPSTEPTITLE04 "</A></LI>" POSTERAZORHELPENDLINE \
+                            "<LI><A href=\"#" POSTERAZORHELPANCHORMANUALSTEP05 "\">" SPANISH_POSTERAZORHELSTEP " 5: " SPANISH_POSTERAZORHELPSTEPTITLE05 "</A></LI>" POSTERAZORHELPENDLINE \
+                        "</UL>" POSTERAZORHELPENDLINE \
+                        "<LI><B><A href=\"#" POSTERAZORHELPANCHORINPUTFILEFORMATS "\">" SPANISH_POSTERAZORHELPINPUTFILEFORMATS "</A></B></LI>" POSTERAZORHELPENDLINE \
+                        "<LI><B><A href=\"#" POSTERAZORHELPANCHORWHYPDFOUTPUT "\">" SPANISH_POSTERAZORHELPWHYPDFOUTPUT "</A></B></LI>" POSTERAZORHELPENDLINE \
+                        "<LI><B><A href=\"#" POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES "\">" SPANISH_POSTERAZORHELPCODEFROMTHIRDPARTIES "</A></B></LI>" POSTERAZORHELPENDLINE \
+                        "<LI><B><A href=\"#" POSTERAZORHELPANCHORLICENSE "\">" SPANISH_POSTERAZORHELPLICENSE "</A></B></LI>" POSTERAZORHELPENDLINE \
+                    "</UL><HR>" POSTERAZORHELPENDLINE \
 
-					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORABOUT, SPANISH_POSTERAZORHELPABOUT) \
-					POSTERAZORHELPINDENTATION "PosteRazor corta una imagen r&aacute;ster en partes que puedan ser impresas con una impresora y que se puedan unir para formar un p&oacute;ster. Se puede utilizar como imagen de entrada ficheros r&aacute;ster de <A href=\"#" POSTERAZORHELPANCHORMANUALSTEP01 "\">varios</A> formatos de archivo de imagen. En lugar de imprimir directamente el p&oacute;ster, PosteRazor produce un archivo PDF de varias p&aacute;ginas que contiene el mosaico del p&oacute;ster.<br>" POSTERAZORHELPENDLINE \
-					"Este es un programa de c&oacute;digo abierto que depende de <a href=\"#" POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES "\">otros proyectos de c&oacute;digo abierto</a>. " POSTERAZORHELPENDLINE \
-					"PosteRazor est&aacute; alojado en <b>posterazor.sourceforge.net</b>." POSTERAZORHELPENDLINE \
+                    POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORABOUT, SPANISH_POSTERAZORHELPABOUT) \
+                    POSTERAZORHELPINDENTATION "PosteRazor corta una imagen r&aacute;ster en partes que puedan ser impresas con una impresora y que se puedan unir para formar un p&oacute;ster. Se puede utilizar como imagen de entrada ficheros r&aacute;ster de <A href=\"#" POSTERAZORHELPANCHORMANUALSTEP01 "\">varios</A> formatos de archivo de imagen. En lugar de imprimir directamente el p&oacute;ster, PosteRazor produce un archivo PDF de varias p&aacute;ginas que contiene el mosaico del p&oacute;ster.<br>" POSTERAZORHELPENDLINE \
+                    "Este es un programa de c&oacute;digo abierto que depende de <a href=\"#" POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES "\">otros proyectos de c&oacute;digo abierto</a>. " POSTERAZORHELPENDLINE \
+                    "PosteRazor est&aacute; alojado en <b>posterazor.sourceforge.net</b>." POSTERAZORHELPENDLINE \
 
-					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUAL, SPANISH_POSTERAZORHELPMANUAL) \
-					POSTERAZORHELPINDENTATION "PosteRazor tiene una interf&aacute;z de usuario organizada en un estilo de \"Asistente\". Todos los ajustes para la creaci&oacute;n del p&oacute;ster pueden ser realizados en 5 Pasos. Los botones <b>Atr&aacute;s</b> y <b>Siguiente</b> sirven para navegar a trav&eacute;s de estos pasos.<br>" POSTERAZORHELPENDLINE \
-					"El bot&oacute;n <b>?</b> abre una ventana de ayuda con una explicaci&oacute;n del paso actual.<br>" POSTERAZORHELPENDLINE \
-					POSTERAZORHELPINDENTATION "Todas las entradas y elecciones son recordadas hasta el siguiente uso de PosteRazor." POSTERAZORHELPENDLINE \
+                    POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUAL, SPANISH_POSTERAZORHELPMANUAL) \
+                    POSTERAZORHELPINDENTATION "PosteRazor tiene una interf&aacute;z de usuario organizada en un estilo de \"Asistente\". Todos los ajustes para la creaci&oacute;n del p&oacute;ster pueden ser realizados en 5 Pasos. Los botones <b>Atr&aacute;s</b> y <b>Siguiente</b> sirven para navegar a trav&eacute;s de estos pasos.<br>" POSTERAZORHELPENDLINE \
+                    "El bot&oacute;n <b>?</b> abre una ventana de ayuda con una explicaci&oacute;n del paso actual.<br>" POSTERAZORHELPENDLINE \
+                    POSTERAZORHELPINDENTATION "Todas las entradas y elecciones son recordadas hasta el siguiente uso de PosteRazor." POSTERAZORHELPENDLINE \
 
-					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORSETTINGS, SPANISH_POSTERAZORHELPSETTINGS) \
-					POSTERAZORHELPINDENTATION "Al pulsar el bot&oacute;n <b>Configuraciones...</b> de la parte inferior izquierda del di&aacute;logo principal se abre el di&aacute;logo de opciones de PosteRazor." POSTERAZORHELPENDLINE \
-					"<UL>" POSTERAZORHELPENDLINE \
-					"<LI><b>Unidad de longitud:</b> selecciona la unidad de longitud con la que trabajar. Cuando se cambia de unidad todos los valores predefinidos, y los que usted ya ha definido, son transformados a la nueva unidad.</LI>" POSTERAZORHELPENDLINE \
-					"<LI><b>Idioma:</b> selecciona su idioma. PosteRazor no necesita ser reiniciado cuando se cambia el idioma.</LI>" POSTERAZORHELPENDLINE \
-					"<LI><b>Previsualizar con OpenGL:</b> selecciona si PosteRazor debe usar OpenGL para la previsualizaci&oacute;n de la imagen. Normalmente, en los sistemas modernos OpenGL deber&iacute;a ser m&aacute;s r&aacute;pido y dar una previsualizaci&oacute;n m&aacute;s precisa que en la forma no-OpenGL. Si el programa parece ralentizarse y no responde, verifique si funciona mejor sin el OpenGL.</LI>" POSTERAZORHELPENDLINE \
-					"</UL>" POSTERAZORHELPENDLINE \
+                    POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORSETTINGS, SPANISH_POSTERAZORHELPSETTINGS) \
+                    POSTERAZORHELPINDENTATION "Al pulsar el bot&oacute;n <b>Configuraciones...</b> de la parte inferior izquierda del di&aacute;logo principal se abre el di&aacute;logo de opciones de PosteRazor." POSTERAZORHELPENDLINE \
+                    "<UL>" POSTERAZORHELPENDLINE \
+                    "<LI><b>Unidad de longitud:</b> selecciona la unidad de longitud con la que trabajar. Cuando se cambia de unidad todos los valores predefinidos, y los que usted ya ha definido, son transformados a la nueva unidad.</LI>" POSTERAZORHELPENDLINE \
+                    "<LI><b>Idioma:</b> selecciona su idioma. PosteRazor no necesita ser reiniciado cuando se cambia el idioma.</LI>" POSTERAZORHELPENDLINE \
+                    "<LI><b>Previsualizar con OpenGL:</b> selecciona si PosteRazor debe usar OpenGL para la previsualizaci&oacute;n de la imagen. Normalmente, en los sistemas modernos OpenGL deber&iacute;a ser m&aacute;s r&aacute;pido y dar una previsualizaci&oacute;n m&aacute;s precisa que en la forma no-OpenGL. Si el programa parece ralentizarse y no responde, verifique si funciona mejor sin el OpenGL.</LI>" POSTERAZORHELPENDLINE \
+                    "</UL>" POSTERAZORHELPENDLINE \
 
-					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP01, SPANISH_POSTERAZORHELSTEP " 1: " SPANISH_POSTERAZORHELPSTEPTITLE01) \
-					POSTERAZORHELPINDENTATION "Cargue una imagen haciendo clic sobre el bot&oacute;n del icono de Abrir y seleccione un archivo de imagen, o arrastre y suelte un archivo de imagen dentro de PosteRazor. La funci&oacute;n arrastrar-y-soltar tambi&eacute;n opera en los dem&aacute;s pasos.<br>" POSTERAZORHELPENDLINE \
-					"Se pueden cargar muchos <a href=\"#" POSTERAZORHELPANCHORINPUTFILEFORMATS "\">formatos de archivo y tipos de imagen</a>. Despu&eacute;s de cargar la imagen se presentan las informaciones m&aacute;s relevantes en los campos de <b>Informaciones de imagen</b>." POSTERAZORHELPENDLINE \
+                    POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP01, SPANISH_POSTERAZORHELSTEP " 1: " SPANISH_POSTERAZORHELPSTEPTITLE01) \
+                    POSTERAZORHELPINDENTATION "Cargue una imagen haciendo clic sobre el bot&oacute;n del icono de Abrir y seleccione un archivo de imagen, o arrastre y suelte un archivo de imagen dentro de PosteRazor. La funci&oacute;n arrastrar-y-soltar tambi&eacute;n opera en los dem&aacute;s pasos.<br>" POSTERAZORHELPENDLINE \
+                    "Se pueden cargar muchos <a href=\"#" POSTERAZORHELPANCHORINPUTFILEFORMATS "\">formatos de archivo y tipos de imagen</a>. Despu&eacute;s de cargar la imagen se presentan las informaciones m&aacute;s relevantes en los campos de <b>Informaciones de imagen</b>." POSTERAZORHELPENDLINE \
 
-					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP02, SPANISH_POSTERAZORHELSTEP " 2: " SPANISH_POSTERAZORHELPSTEPTITLE02) \
-					POSTERAZORHELPINDENTATION "Defina el tama&ntilde;o de la hoja de papel que usa su impresora. Puede seleccionar una hoja de papel de tama&ntilde;o est&aacute;ndar desde el seleccionador <b>Formato</b>, as&iacute; como tambi&eacute;n la <b>Orientaci&oacute;n</b> de la hoja de papel. Alternativemente, puede definir un tama&ntilde;o personalizado de papel en la pesta&ntilde;a <b>Personalizado</b>. (Por favor escr&iacute;bame un email si echa de menos en el seleccionador su tama&ntilde;o de papel est&aacute;ndar). " POSTERAZORHELPENDLINE \
-					"Los m&aacute;rgenes del papel son definidos en los campos <b>M&aacute;rgenes</b>. A&uacute;n si su impresora no necesita m&aacute;rgenes de papel, podr&iacute;a ser necesario alg&uacute;n margen para pegar conjuntamente las &uacute;ltimas piezas del p&oacute;ster." POSTERAZORHELPENDLINE \
+                    POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP02, SPANISH_POSTERAZORHELSTEP " 2: " SPANISH_POSTERAZORHELPSTEPTITLE02) \
+                    POSTERAZORHELPINDENTATION "Defina el tama&ntilde;o de la hoja de papel que usa su impresora. Puede seleccionar una hoja de papel de tama&ntilde;o est&aacute;ndar desde el seleccionador <b>Formato</b>, as&iacute; como tambi&eacute;n la <b>Orientaci&oacute;n</b> de la hoja de papel. Alternativemente, puede definir un tama&ntilde;o personalizado de papel en la pesta&ntilde;a <b>Personalizado</b>. (Por favor escr&iacute;bame un email si echa de menos en el seleccionador su tama&ntilde;o de papel est&aacute;ndar). " POSTERAZORHELPENDLINE \
+                    "Los m&aacute;rgenes del papel son definidos en los campos <b>M&aacute;rgenes</b>. A&uacute;n si su impresora no necesita m&aacute;rgenes de papel, podr&iacute;a ser necesario alg&uacute;n margen para pegar conjuntamente las &uacute;ltimas piezas del p&oacute;ster." POSTERAZORHELPENDLINE \
 
-					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP03, SPANISH_POSTERAZORHELSTEP " 3: " SPANISH_POSTERAZORHELPSTEPTITLE03) \
-					POSTERAZORHELPINDENTATION "La superposici&oacute;n del mosaico es necesaria para tener alguna tolerancia para cortar totalmente los bordes innecesarios de un lado. Adem&aacute;s, como en los m&aacute;rgenes del paso anterior, se da m&aacute;s &aacute;rea para pegar conjuntamente las piezas finales del p&oacute;ster. " POSTERAZORHELPENDLINE \
-					POSTERAZORHELPINDENTATION "La <b>Posici&oacute;n de superposici&oacute;n</b> define los m&aacute;rgenes destinados a superponerse con las piezas de alrededor. Los m&aacute;rgenes de los lados opuestos son para ser cortados (excepto en las piezas m&aacute;s exteriores)." POSTERAZORHELPENDLINE \
-					
-					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP04, SPANISH_POSTERAZORHELSTEP " 4: " SPANISH_POSTERAZORHELPSTEPTITLE04) \
-					POSTERAZORHELPINDENTATION "Define el tama&ntilde;o final del p&oacute;ster en uno de los siguientes tres modos que pueden ser seleccionados con los correspondientes botones:<br>" POSTERAZORHELPENDLINE \
-					"<UL>" POSTERAZORHELPENDLINE \
-					"<LI><b>Tama&ntilde;o total de la imagen</b>: usted desea tener un tama&ntilde;o determinado de p&oacute;ster.</LI>" POSTERAZORHELPENDLINE \
-					"<LI><b>Tama&ntilde;o en p&aacute;ginas</b>: usted quiere usar hojas de papel enteras y especificar cu&aacute;ntas de ellas desea usar.</LI>" POSTERAZORHELPENDLINE \
-					"<LI><b>Tama&ntilde;o de imagen en porcentaje</b>: su imagen de entrada tiene un cierto tama&ntilde;o que es definido por el n&uacute;mero de p&iacute;xeles y dpi (puntos por pulgada) y usted quiere aumentar la imagen por un cierto factor.</LI>" POSTERAZORHELPENDLINE \
-					"</UL>" POSTERAZORHELPENDLINE \
-					POSTERAZORHELPINDENTATION "La proporci&oacute;n dimensional de anchura y altura es siempre 1:1 y es autom&aacute;ticamente calculada de nuevo. En el &aacute;rea de previsualizaci&oacute;n se pueden ver las &aacute;reas de superposici&oacute;n en rect&aacute;ngulos de color rojo claro. " POSTERAZORHELPENDLINE \
-					"La <b>Alineaci&oacute;n de imagen</b> establece la alineaci&oacute;n de la imagen en el total del papel del p&oacute;ster. Esto es &uacute;til si desea conservar el papel no usado." POSTERAZORHELPENDLINE \
+                    POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP03, SPANISH_POSTERAZORHELSTEP " 3: " SPANISH_POSTERAZORHELPSTEPTITLE03) \
+                    POSTERAZORHELPINDENTATION "La superposici&oacute;n del mosaico es necesaria para tener alguna tolerancia para cortar totalmente los bordes innecesarios de un lado. Adem&aacute;s, como en los m&aacute;rgenes del paso anterior, se da m&aacute;s &aacute;rea para pegar conjuntamente las piezas finales del p&oacute;ster. " POSTERAZORHELPENDLINE \
+                    POSTERAZORHELPINDENTATION "La <b>Posici&oacute;n de superposici&oacute;n</b> define los m&aacute;rgenes destinados a superponerse con las piezas de alrededor. Los m&aacute;rgenes de los lados opuestos son para ser cortados (excepto en las piezas m&aacute;s exteriores)." POSTERAZORHELPENDLINE \
+                    
+                    POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP04, SPANISH_POSTERAZORHELSTEP " 4: " SPANISH_POSTERAZORHELPSTEPTITLE04) \
+                    POSTERAZORHELPINDENTATION "Define el tama&ntilde;o final del p&oacute;ster en uno de los siguientes tres modos que pueden ser seleccionados con los correspondientes botones:<br>" POSTERAZORHELPENDLINE \
+                    "<UL>" POSTERAZORHELPENDLINE \
+                    "<LI><b>Tama&ntilde;o total de la imagen</b>: usted desea tener un tama&ntilde;o determinado de p&oacute;ster.</LI>" POSTERAZORHELPENDLINE \
+                    "<LI><b>Tama&ntilde;o en p&aacute;ginas</b>: usted quiere usar hojas de papel enteras y especificar cu&aacute;ntas de ellas desea usar.</LI>" POSTERAZORHELPENDLINE \
+                    "<LI><b>Tama&ntilde;o de imagen en porcentaje</b>: su imagen de entrada tiene un cierto tama&ntilde;o que es definido por el n&uacute;mero de p&iacute;xeles y dpi (puntos por pulgada) y usted quiere aumentar la imagen por un cierto factor.</LI>" POSTERAZORHELPENDLINE \
+                    "</UL>" POSTERAZORHELPENDLINE \
+                    POSTERAZORHELPINDENTATION "La proporci&oacute;n dimensional de anchura y altura es siempre 1:1 y es autom&aacute;ticamente calculada de nuevo. En el &aacute;rea de previsualizaci&oacute;n se pueden ver las &aacute;reas de superposici&oacute;n en rect&aacute;ngulos de color rojo claro. " POSTERAZORHELPENDLINE \
+                    "La <b>Alineaci&oacute;n de imagen</b> establece la alineaci&oacute;n de la imagen en el total del papel del p&oacute;ster. Esto es &uacute;til si desea conservar el papel no usado." POSTERAZORHELPENDLINE \
 
-					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP05, SPANISH_POSTERAZORHELSTEP " 5: " SPANISH_POSTERAZORHELPSTEPTITLE05) \
-					POSTERAZORHELPINDENTATION "Guarde el p&oacute;ster pulsando el bot&oacute;n Guardar y especificando un nombre para el archivo resultante. Marque o desmaque la opci&oacute;n <b>Ejecutar la aplicaci&oacute;n PDF tras guardar el poster</b> para, una vez guardado el archivo PDF resultante, iniciar autom&aacute;ticamente la aplicaci&oacute;n predeterminada en su sistema para el manejo de archivos PDF ." POSTERAZORHELPENDLINE \
+                    POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORMANUALSTEP05, SPANISH_POSTERAZORHELSTEP " 5: " SPANISH_POSTERAZORHELPSTEPTITLE05) \
+                    POSTERAZORHELPINDENTATION "Guarde el p&oacute;ster pulsando el bot&oacute;n Guardar y especificando un nombre para el archivo resultante. Marque o desmaque la opci&oacute;n <b>Ejecutar la aplicaci&oacute;n PDF tras guardar el poster</b> para, una vez guardado el archivo PDF resultante, iniciar autom&aacute;ticamente la aplicaci&oacute;n predeterminada en su sistema para el manejo de archivos PDF ." POSTERAZORHELPENDLINE \
 
-					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORINPUTFILEFORMATS, SPANISH_POSTERAZORHELPINPUTFILEFORMATS) \
-					POSTERAZORHELPINDENTATION "La mayor&iacute;a de los formatos de imagen r&aacute;ster soportados por FreeImage tambi&eacute;n son soportados por PosteRazor:<br>" POSTERAZORHELPENDLINE \
-					"<b>BMP, archivos DDS, Dr. Halo, GIF, ICO, IFF, JBIG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM.<br></b>" POSTERAZORHELPENDLINE \
-					"PosteRazor distingue y maneja im&aacute;genes monocromas, de escala de grises, de paleta de 4-bit, de paleta de 8-bit, de 24 bit RGB, y CMYK (s&oacute;lo desde TIF). Las im&aacute;genes RGB con un canal alfa son compuestas autom&aacute;ticamente encima de un fondo blanco." POSTERAZORHELPENDLINE \
+                    POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORINPUTFILEFORMATS, SPANISH_POSTERAZORHELPINPUTFILEFORMATS) \
+                    POSTERAZORHELPINDENTATION "La mayor&iacute;a de los formatos de imagen r&aacute;ster soportados por FreeImage tambi&eacute;n son soportados por PosteRazor:<br>" POSTERAZORHELPENDLINE \
+                    "<b>BMP, archivos DDS, Dr. Halo, GIF, ICO, IFF, JBIG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM.<br></b>" POSTERAZORHELPENDLINE \
+                    "PosteRazor distingue y maneja im&aacute;genes monocromas, de escala de grises, de paleta de 4-bit, de paleta de 8-bit, de 24 bit RGB, y CMYK (s&oacute;lo desde TIF). Las im&aacute;genes RGB con un canal alfa son compuestas autom&aacute;ticamente encima de un fondo blanco." POSTERAZORHELPENDLINE \
 
-					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORWHYPDFOUTPUT, SPANISH_POSTERAZORHELPWHYPDFOUTPUT) \
-					POSTERAZORHELPINDENTATION "&iquest;Por qu&eacute; un PDF resultante y no la impresi&oacute;n directa? Lo primero de todo es que el desarrollador de este programa no conoce (a&uacute;n) como \"enviar im&aacute;genes a la impresora\", en los diferentes sistemas operativos, que es a lo que PosteRazor aspira. Tambi&eacute;n el PDF tiene sentido si se hace un p&oacute;ster en casa con todo el tiempo necesario y al d&iacute;a siguiente se imprime en la impresora laser a color de la oficina (despu&eacute;s de que todo el mundo se haya ido a casa). " POSTERAZORHELPENDLINE \
-					POSTERAZORHELPINDENTATION "&iquest;Por qu&eacute; un PDF y no otros formatos r&aacute;ster? El PDF da la posibilidad de implantar la imagen completa y cortarla virtualmente, y no s&oacute;lo en p&iacute;xeles, sino tambi&eacute;n con fracciones de p&iacute;xeles. Adem&aacute;s, parece m&aacute;s factible imprimir un archivo PDF de varias p&aacute;ginas en vez de m&uacute;ltiples archivos de imagen." POSTERAZORHELPENDLINE \
-					
-					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES, SPANISH_POSTERAZORHELPCODEFROMTHIRDPARTIES) \
-					"<UL>" POSTERAZORHELPENDLINE \
-					"<LI><b>FLTK</b> es usado por la interf&aacute;z de usuario. Es peque&ntilde;o (por tama&ntilde;o), r&aacute;pido, f&aacute;cil y divertido de aprender y muy portable. <a href=\"http://www.fltk.org/\">www.fltk.org</a></LI>" POSTERAZORHELPENDLINE \
-					"<LI><b>FreeImage</b> es usado para cargar y manejar la imagen. Hace que &eacute;stas operaciones sean sencillas de ejecutar y es portable a las platformas en las que PosteRazor funciona. <a href=\"http://freeimage.sourceforge.net/\">Sitio web de FreeImage</a></LI>" POSTERAZORHELPENDLINE \
-					"<LI><b>Fl_Native_File_Chooser</b> es usado para los di&aacute;logos de Abrir y Guardar en la apariencia y percepci&oacute;n del sistema nativo. <a href=\"http://seriss.com/people/erco/fltk/Fl_Native_File_Chooser/\">Sitio web de Fl_Native_File_Chooser</a></LI>" POSTERAZORHELPENDLINE \
-					"</UL>" POSTERAZORHELPENDLINE \
-					
-					POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORLICENSE, SPANISH_POSTERAZORHELPLICENSE) \
-					"PosteRazor - &iexcl;Haz tu propio p&oacute;ster!<br>" POSTERAZORHELPENDLINE \
-					"<a href=\""SPANISH_POSTERAZORWEBSITEURL"\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
-					POSTERAZORCOPYRIGHT \
+                    POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORWHYPDFOUTPUT, SPANISH_POSTERAZORHELPWHYPDFOUTPUT) \
+                    POSTERAZORHELPINDENTATION "&iquest;Por qu&eacute; un PDF resultante y no la impresi&oacute;n directa? Lo primero de todo es que el desarrollador de este programa no conoce (a&uacute;n) como \"enviar im&aacute;genes a la impresora\", en los diferentes sistemas operativos, que es a lo que PosteRazor aspira. Tambi&eacute;n el PDF tiene sentido si se hace un p&oacute;ster en casa con todo el tiempo necesario y al d&iacute;a siguiente se imprime en la impresora laser a color de la oficina (despu&eacute;s de que todo el mundo se haya ido a casa). " POSTERAZORHELPENDLINE \
+                    POSTERAZORHELPINDENTATION "&iquest;Por qu&eacute; un PDF y no otros formatos r&aacute;ster? El PDF da la posibilidad de implantar la imagen completa y cortarla virtualmente, y no s&oacute;lo en p&iacute;xeles, sino tambi&eacute;n con fracciones de p&iacute;xeles. Adem&aacute;s, parece m&aacute;s factible imprimir un archivo PDF de varias p&aacute;ginas en vez de m&uacute;ltiples archivos de imagen." POSTERAZORHELPENDLINE \
+                    
+                    POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORCODEFROMTHIRDPARTIES, SPANISH_POSTERAZORHELPCODEFROMTHIRDPARTIES) \
+                    "<UL>" POSTERAZORHELPENDLINE \
+                    "<LI><b>FLTK</b> es usado por la interf&aacute;z de usuario. Es peque&ntilde;o (por tama&ntilde;o), r&aacute;pido, f&aacute;cil y divertido de aprender y muy portable. <a href=\"http://www.fltk.org/\">www.fltk.org</a></LI>" POSTERAZORHELPENDLINE \
+                    "<LI><b>FreeImage</b> es usado para cargar y manejar la imagen. Hace que &eacute;stas operaciones sean sencillas de ejecutar y es portable a las platformas en las que PosteRazor funciona. <a href=\"http://freeimage.sourceforge.net/\">Sitio web de FreeImage</a></LI>" POSTERAZORHELPENDLINE \
+                    "<LI><b>Fl_Native_File_Chooser</b> es usado para los di&aacute;logos de Abrir y Guardar en la apariencia y percepci&oacute;n del sistema nativo. <a href=\"http://seriss.com/people/erco/fltk/Fl_Native_File_Chooser/\">Sitio web de Fl_Native_File_Chooser</a></LI>" POSTERAZORHELPENDLINE \
+                    "</UL>" POSTERAZORHELPENDLINE \
+                    
+                    POSTERAZORHELPSECTIONHEADER(POSTERAZORHELPANCHORLICENSE, SPANISH_POSTERAZORHELPLICENSE) \
+                    "PosteRazor - &iexcl;Haz tu propio p&oacute;ster!<br>" POSTERAZORHELPENDLINE \
+                    "<a href=\""SPANISH_POSTERAZORWEBSITEURL"\">posterazor.sourceforge.net</a><br>" POSTERAZORHELPENDLINE \
+                    POSTERAZORCOPYRIGHT \
 
-					POSTERAZORTRANSLATIONCREDITSSTART \
-					POSTERAZORTRANSLATIONCREDITSSPANISH \
-					POSTERAZORTRANSLATIONCREDITSDUTCH \
-					POSTERAZORTRANSLATIONCREDITSFRENCH \
-					POSTERAZORTRANSLATIONCREDITSPOLISH \
-					POSTERAZORTRANSLATIONCREDITSITALIAN \
-					POSTERAZORTRANSLATIONCREDITSBRAZILIANPORTUGUESE \
-					POSTERAZORTRANSLATIONCREDITSEND \
+                    POSTERAZORTRANSLATIONCREDITSSTART \
+                    POSTERAZORTRANSLATIONCREDITSSPANISH \
+                    POSTERAZORTRANSLATIONCREDITSDUTCH \
+                    POSTERAZORTRANSLATIONCREDITSFRENCH \
+                    POSTERAZORTRANSLATIONCREDITSPOLISH \
+                    POSTERAZORTRANSLATIONCREDITSITALIAN \
+                    POSTERAZORTRANSLATIONCREDITSBRAZILIANPORTUGUESE \
+                    POSTERAZORTRANSLATIONCREDITSEND \
 
-					"&nbsp;<br>" \
-					POSTERAZORLICENSE \
+                    "&nbsp;<br>" \
+                    POSTERAZORLICENSE \
 
-				"</BODY>" POSTERAZORHELPENDLINE \
-			"</HTML>";
-	}
+                "</BODY>" POSTERAZORHELPENDLINE \
+            "</HTML>";
+    }
 
-	const int flagImageWidth(void) const                    {return 20;}
-	const int flagImageHeight(void) const                   {return 11;}
-	const unsigned char *flagImageRGBData(void) const
-	{
-		static const unsigned char flagRGBData[] =
-		{
-			140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,
-			140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,
-			140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,
-			140,140,140,140,140,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,
-			0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,
-			247,0,0,140,140,140,140,140,140,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,
-			247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,
-			247,0,0,247,0,0,140,140,140,140,140,140,253,226,1,253,226,1,163,96,0,163,96,0,
-			163,96,0,163,96,0,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,
-			253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,140,140,140,140,140,
-			140,253,226,1,0,0,0,253,226,1,117,104,0,117,104,0,253,226,1,0,0,0,253,226,1,253,
-			226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,
-			226,1,253,226,1,140,140,140,140,140,140,253,226,1,254,96,96,174,14,14,174,14,14,
-			254,96,96,254,96,96,254,96,96,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,
-			253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,140,140,140,140,140,
-			140,253,226,1,254,96,96,174,14,14,174,14,14,174,14,14,174,14,14,254,96,96,253,
-			226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,
-			226,1,253,226,1,253,226,1,140,140,140,140,140,140,253,226,1,0,53,225,253,226,1,
-			174,14,14,174,14,14,253,226,1,0,53,225,253,226,1,253,226,1,253,226,1,253,226,1,
-			253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,254,227,1,140,140,
-			140,140,140,140,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,
-			247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,
-			140,140,140,140,140,140,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,
-			247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,
-			247,0,0,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,
-			140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,
-			140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,
-			140,140,140,140,140
-		};
+    const int flagImageWidth(void) const                    {return 20;}
+    const int flagImageHeight(void) const                   {return 11;}
+    const unsigned char *flagImageRGBData(void) const
+    {
+        static const unsigned char flagRGBData[] =
+        {
+            140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,
+            140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,
+            140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,
+            140,140,140,140,140,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,
+            0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,
+            247,0,0,140,140,140,140,140,140,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,
+            247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,
+            247,0,0,247,0,0,140,140,140,140,140,140,253,226,1,253,226,1,163,96,0,163,96,0,
+            163,96,0,163,96,0,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,
+            253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,140,140,140,140,140,
+            140,253,226,1,0,0,0,253,226,1,117,104,0,117,104,0,253,226,1,0,0,0,253,226,1,253,
+            226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,
+            226,1,253,226,1,140,140,140,140,140,140,253,226,1,254,96,96,174,14,14,174,14,14,
+            254,96,96,254,96,96,254,96,96,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,
+            253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,140,140,140,140,140,
+            140,253,226,1,254,96,96,174,14,14,174,14,14,174,14,14,174,14,14,254,96,96,253,
+            226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,
+            226,1,253,226,1,253,226,1,140,140,140,140,140,140,253,226,1,0,53,225,253,226,1,
+            174,14,14,174,14,14,253,226,1,0,53,225,253,226,1,253,226,1,253,226,1,253,226,1,
+            253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,253,226,1,254,227,1,140,140,
+            140,140,140,140,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,
+            247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,
+            140,140,140,140,140,140,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,
+            247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,247,0,0,
+            247,0,0,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,
+            140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,
+            140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,
+            140,140,140,140,140
+        };
 
-		return flagRGBData;
-	}
+        return flagRGBData;
+    }
 };
 
 static TranslationSpanish spanish;

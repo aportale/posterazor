@@ -80,21 +80,21 @@ Name: {#PREFERENCESDIR}; Type: dirifempty
 [Code]
 procedure SetLanguagePreferences;
 var
-	i: Integer;
-	strings: TArrayOfString;
+    i: Integer;
+    strings: TArrayOfString;
 begin
-	LoadStringsFromFile(ExpandConstant('{#PREFERENCESFILE}'), strings);
-	SaveStringToFile(ExpandConstant('{#PREFERENCESFILE}'),
-		'; FLTK preferences file format 1.0' + #13#10 +
-		'; vendor: CasaPortale.de' + #13#10 +
-		'; application: PosteRazor' + #13#10 +
-		'[.]' + #13#10 +
-		'UILanguage:' + CustomMessage('UILanguage') + #13#10,
-		False);
-	for i := 0 to GetArrayLength(strings)-1 do
-		if (length(strings[i]) > 0)
-		  and (strings[i][1] <> '[')
-		  and (strings[i][1] <> ';')
-		  and (Copy(strings[i], 1, 11) <> 'UILanguage:') then
-			SaveStringToFile(ExpandConstant('{#PREFERENCESFILE}'), strings[i] + #13#10, True);
+    LoadStringsFromFile(ExpandConstant('{#PREFERENCESFILE}'), strings);
+    SaveStringToFile(ExpandConstant('{#PREFERENCESFILE}'),
+        '; FLTK preferences file format 1.0' + #13#10 +
+        '; vendor: CasaPortale.de' + #13#10 +
+        '; application: PosteRazor' + #13#10 +
+        '[.]' + #13#10 +
+        'UILanguage:' + CustomMessage('UILanguage') + #13#10,
+        False);
+    for i := 0 to GetArrayLength(strings)-1 do
+        if (length(strings[i]) > 0)
+          and (strings[i][1] <> '[')
+          and (strings[i][1] <> ';')
+          and (Copy(strings[i], 1, 11) <> 'UILanguage:') then
+            SaveStringToFile(ExpandConstant('{#PREFERENCESFILE}'), strings[i] + #13#10, True);
 end;
