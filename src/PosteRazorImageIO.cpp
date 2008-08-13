@@ -27,12 +27,11 @@
 #include <stdio.h>
 #include <string.h>
 
-static char FreeImageErrorMessage[1024];
+static QString FreeImageErrorMessage;
 
-void FreeImageErrorHandler(FREE_IMAGE_FORMAT /* fif */, const char *message)
+void FreeImageErrorHandler(FREE_IMAGE_FORMAT fif, const char *message)
 {
-	strncpy(FreeImageErrorMessage, message, sizeof(FreeImageErrorMessage));
-	FreeImageErrorMessage[sizeof(FreeImageErrorMessage)-1] = '\0';
+	FreeImageErrorMessage = message;
 }
 
 class FreeImageInitializer
@@ -64,14 +63,6 @@ private:
 	unsigned int m_verticalDotsPerMeter;
 
 	QString      m_imageFileName;
-
-	static bool isSystemLittleEndian()
-	{
-		// Endianness detection lines borrowed from: http://en.wikipedia.org/wiki/Endianness
-		const long int i = 1;
-		const char *p = (const char *) &i;
-		return p[0] == 1;  // Lowest address contains the least significant byte
-	}
 
 	// FreeImage_Convert[To|From]RawBits inverted the topdown parameter until v3.10
 	static BOOL hasFreeImageVersionCorrectTopDownInConvertBits()
@@ -111,7 +102,7 @@ public:
 	{
 		bool result = false;
 
-		strcpy(FreeImageErrorMessage, "");
+		FreeImageErrorMessage.clear();
 
 		const FREE_IMAGE_FORMAT fileType = FreeImage_GetFileType(imageFileName.toAscii(), 0);
 		FIBITMAP* newImage = FreeImage_Load(fileType, imageFileName.toAscii(), TIFF_CMYK);
@@ -145,7 +136,7 @@ public:
 			}
 		}
 
-		errorMessage = QString(FreeImageErrorMessage);
+		errorMessage = FreeImageErrorMessage;
 
 		return result;
 	}
@@ -223,7 +214,7 @@ public:
 		FreeImage_ConvertToRawBits(buffer, originalImage, width*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, hasFreeImageVersionCorrectTopDownInConvertBits());
 
 		// Swapping RGB data if needed (like on Intel)
-		if (isSystemLittleEndian()) {
+		if (QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
 			const unsigned int numberOfPixels = width * height;
 
 			for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
@@ -281,7 +272,7 @@ public:
 		FreeImage_ConvertToRawBits(imageData, m_bitmap, bytesPerLineCount, getBitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, hasFreeImageVersionCorrectTopDownInConvertBits());
 
 		// Swapping RGB data if needed (like on Intel)
-		if (getBitsPerPixel() == 24 && isSystemLittleEndian()) {
+		if (getBitsPerPixel() == 24 && QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
 			const unsigned long numberOfPixels = getWidthPixels() * getHeightPixels();
 			for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
 				unsigned char *pixelPtr = imageData + pixelIndex*3;
