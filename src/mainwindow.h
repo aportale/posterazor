@@ -121,6 +121,8 @@ private slots:
 	void emitPosterAlignmentChange(int alignmentInt) const;
 
 	void updatePosterSizeGroupsState();
+
+	void showAboutQtDialog() const;
 };
 
 #endif // MAINWINDOW_H

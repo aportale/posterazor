@@ -31,6 +31,8 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
 {
 	setupUi(this);
 
+	setWindowTitle(QCoreApplication::applicationName() + ' ' + QCoreApplication::applicationVersion());
+
 	const struct {
 		QAbstractButton *sender;
 		Qt::Alignment alignment;
@@ -310,12 +312,14 @@ void MainWindow::createConnections()
 		connect(sender, SIGNAL(clicked()), alignmentMapper, SLOT(map()));
 		alignmentMapper->setMapping(sender, alignment);
 	}
-	connect(alignmentMapper, SIGNAL(mapped(int)), SLOT(emitPosterAlignmentChange(int)));
+	connect(alignmentMapper, SIGNAL(mapped(int)),   SLOT(emitPosterAlignmentChange(int)));
 
 	connect(m_savePosterButton,                     SIGNAL(clicked()),                  SIGNAL(savePosterSignal()));
 	connect(m_launchPDFApplicationCheckBox,         SIGNAL(toggled(bool)),              SIGNAL(launchPDFApplicationChanged(bool)));
 
 	connect(m_paintCanvas,                          SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)));
+
+	connect(m_actionAboutQt,                        SIGNAL(triggered()),                SLOT(showAboutQtDialog()));
 }
 
 void MainWindow::populateUI()
@@ -357,4 +361,9 @@ void MainWindow::updatePosterSizeGroupsState()
 	m_posterPercentualSizeLabel->setEnabled(percentual);
 	m_posterPercentualSizeInput->setEnabled(percentual);
 	m_posterPercentualSizeUnitLabel->setEnabled(percentual);
+}
+
+void MainWindow::showAboutQtDialog() const
+{
+	QApplication::aboutQt();
 }
