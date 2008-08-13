@@ -21,7 +21,7 @@
 */
 
 #include "FreeImage.h"
-#include "PosteRazorImageIO.h"
+#include "imageiofreeimage.h"
 #include "PosteRazorPDFOutput.h"
 #include "UnitsOfLength.h"
 #include <stdio.h>
@@ -50,7 +50,7 @@ public:
 };
 static FreeImageInitializer initializer;
 
-class PosteRazorImageIOImplementation: public PosteRazorImageIO
+class ImageIOFreeImageImplementation: public ImageIOFreeImage
 {
 private:
 
@@ -75,7 +75,7 @@ private:
     }
 
 public:
-    PosteRazorImageIOImplementation()
+    ImageIOFreeImageImplementation()
         : m_bitmap(NULL)
         , m_widthPixels(0)
         , m_heightPixels(0)
@@ -85,7 +85,7 @@ public:
         m_imageFileName[0] = '\0';
     }
 
-    ~PosteRazorImageIOImplementation()
+    ~ImageIOFreeImageImplementation()
     {
         disposeImage();
     }
@@ -327,7 +327,7 @@ public:
     }
 };
 
-PosteRazorImageIO* PosteRazorImageIO::createPosteRazorImageIO()
+ImageIOFreeImage* ImageIOFreeImage::createImageIOFreeImage()
 {
-    return (PosteRazorImageIO*) new PosteRazorImageIOImplementation();
+    return (ImageIOFreeImage*) new ImageIOFreeImageImplementation();
 }

@@ -21,7 +21,7 @@
 */
 
 #include "PosteRazor.h"
-#include "PosteRazorImageIO.h"
+#include "imageiofreeimage.h"
 #include <QSettings>
 #include <QStringList>
 #include <math.h>
@@ -71,7 +71,7 @@ PosteRazor::PosteRazor()
 
     , m_posterOutputFormat(ImageIOTypes::eImageFormatPDF)
 {
-    m_imageIO = PosteRazorImageIO::createPosteRazorImageIO();
+    m_imageIO = ImageIOFreeImage::createImageIOFreeImage();
 }
 
 PosteRazor::~PosteRazor()

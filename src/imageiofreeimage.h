@@ -20,8 +20,8 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef POSTERAZORIMAGEIO_H
-#define POSTERAZORIMAGEIO_H
+#ifndef IMAGEIOFREEIMAGE_H
+#define IMAGEIOFREEIMAGE_H
 
 #include "UnitsOfLength.h"
 #include "ColorTypes.h"
@@ -30,12 +30,12 @@
 
 class PainterInterface;
 
-class PosteRazorImageIO: public ColorTypes
+class ImageIOFreeImage: public ColorTypes
 {
 public:
-    virtual ~PosteRazorImageIO() {}
+    virtual ~ImageIOFreeImage() {}
 
-    static PosteRazorImageIO* createPosteRazorImageIO();
+    static ImageIOFreeImage* createImageIOFreeImage();
 
     virtual bool loadInputImage(const QString &imageFileName, QString &errorMessage) = 0;
     virtual bool isImageLoaded() const = 0;
@@ -58,4 +58,4 @@ public:
     virtual int savePoster(const QString &fileName, ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const = 0;
 };
 
-#endif // POSTERAZORIMAGEIO_H
+#endif // IMAGEIOFREEIMAGE_H

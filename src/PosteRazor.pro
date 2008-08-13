@@ -5,7 +5,7 @@ SOURCES += \
     UnitsOfLength.cpp \
     ImageIOTypes.cpp \
     PosteRazor.cpp \
-    PosteRazorImageIO.cpp \
+    imageiofreeimage.cpp \
     PosteRazorPDFOutput.cpp \
     mainwindow.cpp \
     QtPosteRazorSpinBox.cpp \
@@ -21,7 +21,7 @@ HEADERS += \
     PaperFormats.h \
     PaintCanvasInterface.h \
     PosteRazor.h \
-    PosteRazorImageIO.h \
+    imageiofreeimage.h \
     PosteRazorPDFOutput.h \
     mainwindow.h \
     QtPosteRazorSpinBox.h \
