@@ -13,6 +13,14 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>21</y>
+     <width>527</width>
+     <height>457</height>
+    </rect>
+   </property>
    <layout class="QHBoxLayout" name="horizontalLayout_3" >
     <item>
      <widget class="QFrame" name="m_preview" >
@@ -196,6 +204,14 @@
           <number>3</number>
          </property>
          <widget class="QWidget" name="m_loadInputImageStep" >
+          <property name="geometry" >
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>100</width>
+            <height>30</height>
+           </rect>
+          </property>
           <layout class="QVBoxLayout" >
            <property name="spacing" >
             <number>6</number>
@@ -383,6 +399,14 @@
           </layout>
          </widget>
          <widget class="QWidget" name="m_paperSizeStep" >
+          <property name="geometry" >
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>100</width>
+            <height>30</height>
+           </rect>
+          </property>
           <layout class="QVBoxLayout" name="_4" >
            <property name="spacing" >
             <number>6</number>
@@ -451,6 +475,14 @@
                  <number>0</number>
                 </property>
                 <widget class="QWidget" name="m_paperFormatStandardTab" >
+                 <property name="geometry" >
+                  <rect>
+                   <x>140</x>
+                   <y>234</y>
+                   <width>1252</width>
+                   <height>730</height>
+                  </rect>
+                 </property>
                  <attribute name="title" >
                   <string>Standard</string>
                  </attribute>
@@ -551,6 +583,14 @@
                  </layout>
                 </widget>
                 <widget class="QWidget" name="m_paperFormatCustomTab" >
+                 <property name="geometry" >
+                  <rect>
+                   <x>162</x>
+                   <y>263</y>
+                   <width>1252</width>
+                   <height>730</height>
+                  </rect>
+                 </property>
                  <attribute name="title" >
                   <string>Custom</string>
                  </attribute>
@@ -769,6 +809,14 @@
           </layout>
          </widget>
          <widget class="QWidget" name="m_overlappingStep" >
+          <property name="geometry" >
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>100</width>
+            <height>30</height>
+           </rect>
+          </property>
           <layout class="QVBoxLayout" name="_10" >
            <property name="spacing" >
             <number>6</number>
@@ -1034,6 +1082,14 @@
           </layout>
          </widget>
          <widget class="QWidget" name="m_posterSizeStep" >
+          <property name="geometry" >
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>184</width>
+            <height>384</height>
+           </rect>
+          </property>
           <layout class="QVBoxLayout" name="_13" >
            <property name="spacing" >
             <number>6</number>
@@ -1521,6 +1577,14 @@
           </layout>
          </widget>
          <widget class="QWidget" name="m_savePosterStep" >
+          <property name="geometry" >
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>100</width>
+            <height>30</height>
+           </rect>
+          </property>
           <layout class="QVBoxLayout" name="_15" >
            <property name="spacing" >
             <number>6</number>
@@ -1648,7 +1712,7 @@
      <x>0</x>
      <y>0</y>
      <width>527</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menu_File" >
@@ -1662,12 +1726,89 @@
     </property>
     <addaction name="m_actionAboutQt" />
    </widget>
+   <widget class="QMenu" name="menuSettings" >
+    <property name="title" >
+     <string>Settings</string>
+    </property>
+    <addaction name="m_actionDeutsch" />
+    <addaction name="m_actionEnglish" />
+    <addaction name="m_actionFrancais" />
+    <addaction name="m_actionItaliano" />
+    <addaction name="m_actionNederlands" />
+    <addaction name="m_actionPolski" />
+    <addaction name="m_actionPortuguesDoBrasil" />
+    <addaction name="separator" />
+   </widget>
    <addaction name="m_menu_File" />
+   <addaction name="menuSettings" />
    <addaction name="m_menu_About" />
   </widget>
   <action name="m_actionAboutQt" >
    <property name="text" >
-    <string>About Qt</string>
+    <string>&amp;About Qt</string>
+   </property>
+  </action>
+  <action name="m_actionEnglish" >
+   <property name="icon" >
+    <iconset resource="QtPosteRazorDialogResources.qrc" >
+     <normaloff>:/Translationflags/en.png</normaloff>:/Translationflags/en.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;English</string>
+   </property>
+  </action>
+  <action name="m_actionItaliano" >
+   <property name="icon" >
+    <iconset resource="QtPosteRazorDialogResources.qrc" >
+     <normaloff>:/Translationflags/it.png</normaloff>:/Translationflags/it.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Italiano</string>
+   </property>
+  </action>
+  <action name="m_actionDeutsch" >
+   <property name="icon" >
+    <iconset resource="QtPosteRazorDialogResources.qrc" >
+     <normaloff>:/Translationflags/de.png</normaloff>:/Translationflags/de.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Deutsch</string>
+   </property>
+  </action>
+  <action name="m_actionNederlands" >
+   <property name="icon" >
+    <iconset resource="QtPosteRazorDialogResources.qrc" >
+     <normaloff>:/Translationflags/nl.png</normaloff>:/Translationflags/nl.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Nederlands</string>
+   </property>
+  </action>
+  <action name="m_actionFrancais" >
+   <property name="icon" >
+    <iconset resource="QtPosteRazorDialogResources.qrc" >
+     <normaloff>:/Translationflags/fr.png</normaloff>:/Translationflags/fr.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Français</string>
+   </property>
+  </action>
+  <action name="m_actionPolski" >
+   <property name="icon" >
+    <iconset resource="QtPosteRazorDialogResources.qrc" >
+     <normaloff>:/Translationflags/pl.png</normaloff>:/Translationflags/pl.png</iconset>
+   </property>
+   <property name="text" >
+    <string>P&amp;olski</string>
+   </property>
+  </action>
+  <action name="m_actionPortuguesDoBrasil" >
+   <property name="icon" >
+    <iconset resource="QtPosteRazorDialogResources.qrc" >
+     <normaloff>:/Translationflags/pt_BR.png</normaloff>:/Translationflags/pt_BR.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Po&amp;rtuguês do Brasil</string>
    </property>
   </action>
  </widget>
