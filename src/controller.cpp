@@ -416,7 +416,7 @@ void Controller::savePoster() const
 			fileExistsAskUserForOverwrite = QFileInfo(saveFileName).exists();
 
 			if (!fileExistsAskUserForOverwrite
-				|| QMessageBox::Yes == (QMessageBox::question(NULL, "", QCoreApplication::translate("PosteRazorDialog", "The file '%1' already exists.\nDo you want to overwrite it?").arg(saveFileName), QMessageBox::Yes, QMessageBox::No))
+				|| QMessageBox::Yes == (QMessageBox::question(NULL, "", QCoreApplication::translate("PosteRazorDialog", "The file '%1' already exists.\nDo you want to overwrite it?").arg(QDir::convertSeparators(saveFileName)), QMessageBox::Yes, QMessageBox::No))
 				) {
 				int result = savePoster(saveFileName.toAscii());
 				if (result != 0)
