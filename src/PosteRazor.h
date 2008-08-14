@@ -128,7 +128,6 @@ private:
     double getPosterDimension(PosteRazorEnums::ePosterSizeModes mode, bool width) const;
     void getPreviewSize(double imageWidth, double imageHeight, int boxWidth, int boxHeight, int &previewWidth, int &previewHeight, bool enlargeToFit) const;
     QSize getInputImagePreviewSize(const QSize &boxSize) const;
-    void getPaperPreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight) const;
     void paintImageOnCanvas(PaintCanvasInterface *paintCanvas) const;
     void paintPaperOnCanvas(PaintCanvasInterface *paintCanvas, bool paintOverlapping) const;
     void paintPosterOnCanvas(PaintCanvasInterface *paintCanvas) const;

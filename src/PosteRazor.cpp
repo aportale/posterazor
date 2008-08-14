@@ -572,11 +572,6 @@ QSize PosteRazor::getInputImagePreviewSize(const QSize &boxSize) const
     return QSize(previewWidth, previewHeight);
 }
 
-void PosteRazor::getPaperPreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight) const
-{
-    getPreviewSize(getPaperWidth(), getPaperHeight(), boxWidth, boxHeight, previewWidth, previewHeight, true);
-}
-
 void PosteRazor::createPreviewImage(const QSize &size) const
 {
     QImage previewImage = m_imageIO->getImageAsRGB(getInputImagePreviewSize(size));
