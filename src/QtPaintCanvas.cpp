@@ -26,16 +26,9 @@
 
 QtPaintCanvas::QtPaintCanvas(QWidget *parent)
     : QWidget(parent)
-    , m_image(NULL)
-    , m_imageRGBData(NULL)
     , m_qPainter(NULL)
     , m_state("image")
 {
-}
-
-QtPaintCanvas::~QtPaintCanvas()
-{
-    disposeImage();
 }
 
 void QtPaintCanvas::paintEvent(QPaintEvent *event)
@@ -71,46 +64,17 @@ void QtPaintCanvas::getSize(double &width, double &height) const
     height = (double)(this->height());
 }
 
-void QtPaintCanvas::setImage(const unsigned char* rgbData, const QSize &size)
+void QtPaintCanvas::setImage(const QImage &image)
 {
-    disposeImage();
-    // We have to transfrom the image data from rgb to bgra
-    int pixelsCount = size.width() * size.height();
-    size_t bytesCount = pixelsCount * 4;
-    m_imageRGBData = new unsigned char[bytesCount];
-    memset(m_imageRGBData, 255, bytesCount); // Making sure, that all alpha bytes are opaque
-    const unsigned char* sourcePixel = rgbData;
-    unsigned char* destinationPixel = m_imageRGBData;
-    for (int pixel = 0; pixel < pixelsCount; pixel++) {
-        destinationPixel[0] = sourcePixel[2];
-        destinationPixel[1] = sourcePixel[1];
-        destinationPixel[2] = sourcePixel[0];
-        destinationPixel += 4;
-        sourcePixel += 3;
-    }
-    m_image = new QImage(m_imageRGBData, size.width(), size.height(), QImage::Format_RGB32);
+    m_image = image;
     repaint();
-}
-
-void QtPaintCanvas::disposeImage()
-{
-    if (m_image) {
-        delete(m_image);
-        m_image = NULL;
-    }
-    if (m_imageRGBData) {
-        delete[] m_imageRGBData;
-        m_imageRGBData = NULL;
-    }
 }
 
 void QtPaintCanvas::drawImage(double x, double y, double width, double height)
 {
-    if (m_image) {    
-        double widthResizeFactor = width/(double)m_image->width();
-        m_qPainter->setRenderHint(QPainter::SmoothPixmapTransform, widthResizeFactor < 2.75);
-        m_qPainter->drawImage(QRectF(x, y, width, height), *m_image);
-    }
+    double widthResizeFactor = width/(double)m_image.width();
+    m_qPainter->setRenderHint(QPainter::SmoothPixmapTransform, widthResizeFactor < 2.75);
+    m_qPainter->drawImage(QRectF(x, y, width, height), m_image);
 }
 
 void QtPaintCanvas::setState(const QString &state)

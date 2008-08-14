@@ -35,28 +35,23 @@ class QtPaintCanvas: public QWidget, public PaintCanvasInterface
     Q_OBJECT
 
 private:
-    QImage *m_image;
-    unsigned char *m_imageRGBData;
+    QImage m_image;
     QString m_state;
     QPainter *m_qPainter;
-    
+
 public:
     QtPaintCanvas(QWidget *parent);
-    ~QtPaintCanvas();
 
     virtual void paintEvent(QPaintEvent *event);
     virtual void drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
     virtual void drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
     virtual void drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
     virtual void getSize(double &width, double &height) const;
-
-    virtual void disposeImage();
     virtual void drawImage(double x, double y, double width, double height);
-
     virtual void setState(const QString &state);
 
 public slots:
-    void setImage(const unsigned char* rgbData, const QSize &size);
+    void setImage(const QImage &image);
 
 signals:
     void needsPaint(PaintCanvasInterface *paintDevice, const QVariant &options) const;

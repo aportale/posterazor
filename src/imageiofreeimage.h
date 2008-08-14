@@ -27,6 +27,7 @@
 #include "ColorTypes.h"
 #include "ImageIOTypes.h"
 #include <QString>
+#include <QImage>
 
 class PainterInterface;
 
@@ -49,9 +50,9 @@ public:
     virtual double getWidth(UnitsOfLength::eUnitsOfLength unit) const = 0;
     virtual double getHeight(UnitsOfLength::eUnitsOfLength unit) const = 0;
 
-    virtual bool getImageAsRGB(unsigned char *buffer) const = 0;
-    virtual bool getImageAsRGB(unsigned char *buffer, int width, int height) const = 0;
-    
+    virtual QImage getImageAsRGB() const = 0;
+    virtual QImage getImageAsRGB(const QSize &size) const = 0;
+
     virtual int getBitsPerPixel() const = 0;
     virtual eColorTypes getColorDataType() const = 0;
 

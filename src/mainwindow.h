@@ -71,7 +71,7 @@ public:
     void launchPdfApplication(const QString &pdfFileName) const;
 
 public slots:
-    void setPreviewImage(const unsigned char* rgbData, const QSize &size);
+    void setPreviewImage(const QImage &image);
     void setPrevButtonEnabled(bool enabled);
     void setNextButtonEnabled(bool enabled);
     void setWizardStep(int step);

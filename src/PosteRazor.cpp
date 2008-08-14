@@ -579,14 +579,8 @@ void PosteRazor::createPreviewImage(double maxWidth, double maxHeight) const
     int imageWidth;
     int imageHeight;
     getInputImagePreviewSize((int)maxWidth, (int)maxHeight, imageWidth, imageHeight);
-    const size_t rgbDataBytesCount = imageWidth * imageHeight * 3;
-    unsigned char *rgbData = new unsigned char[rgbDataBytesCount];
-    if (!m_imageIO->getImageAsRGB(rgbData, imageWidth, imageHeight))
-        // If preview fails because of low memory...
-        memset(rgbData, 0x66, rgbDataBytesCount);
-    emit previewImageChanged(rgbData, QSize(imageWidth, imageHeight));
-    //paintCanvas->setImage(rgbData, imageWidth, imageHeight);
-    delete[] rgbData;
+    QImage previewImage = m_imageIO->getImageAsRGB(QSize(imageWidth, imageHeight));
+    emit previewImageChanged(previewImage);
 }
 
 void PosteRazor::paintImageOnCanvas(PaintCanvasInterface *paintCanvas) const
@@ -606,7 +600,7 @@ void PosteRazor::paintImageOnCanvas(PaintCanvasInterface *paintCanvas) const
         if (canvasWidth >= getInputImageWidthPixels() && canvasHeight >= getInputImageHeightPixels()) {
             x_offset = floor(x_offset);
             y_offset = floor(y_offset);
-        }            
+        }
 
         paintCanvas->drawImage(0 + x_offset, 0 + y_offset, boxWidth, boxHeight);
     }

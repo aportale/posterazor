@@ -247,9 +247,9 @@ void MainWindow::setPreviewState(const QString &state)
     m_paintCanvas->setState(state);
 }
 
-void MainWindow::setPreviewImage(const unsigned char* rgbData, const QSize &size)
+void MainWindow::setPreviewImage(const QImage &image)
 {
-    m_paintCanvas->setImage(rgbData, size);
+    m_paintCanvas->setImage(image);
 }
 
 void MainWindow::handlePaperFormatTabChanged(int index)

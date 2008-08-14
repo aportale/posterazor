@@ -135,7 +135,7 @@ private:
     void paintPosterPageOnCanvas(PaintCanvasInterface *paintCanvas, int page) const;
 
 signals:
-    void previewImageChanged(const unsigned char *rgbData, const QSize &size) const;
+    void previewImageChanged(const QImage &image) const;
 
 private:
     ImageIOFreeImage*                       m_imageIO;

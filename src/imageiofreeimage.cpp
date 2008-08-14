@@ -82,7 +82,6 @@ public:
         , m_horizontalDotsPerMeter(0)
         , m_verticalDotsPerMeter(0)
     {
-        m_imageFileName[0] = '\0';
     }
 
     ~ImageIOFreeImageImplementation()
@@ -158,19 +157,22 @@ public:
     double getWidth(UnitsOfLength::eUnitsOfLength unit) const {return getWidthPixels() / getHorizontalDotsPerUnitOfLength(unit);}
     double getHeight(UnitsOfLength::eUnitsOfLength unit) const {return getHeightPixels() / getVerticalDotsPerUnitOfLength(unit);}
 
-    bool getImageAsRGB(unsigned char *buffer) const
+    QImage getImageAsRGB() const
     {
-        return getImageAsRGB(buffer, getWidthPixels(), getHeightPixels());
+        return getImageAsRGB(QSize(getWidthPixels(), getHeightPixels()));
     }
 
-    bool getImageAsRGB(unsigned char *buffer, int width, int height) const
+    QImage getImageAsRGB(const QSize &size) const
     {
-        bool success = true;
+        QImage result(size, QImage::Format_RGB32);
+
+        const int width = size.width();
+        const int height = size.height();
 
         FIBITMAP* originalImage = m_bitmap;
         FIBITMAP* temp24BPPImage = NULL;
         FIBITMAP* scaledImage = NULL;
-        
+
         if (getBitsPerPixel() != 24) {
             if (getColorDataType() == eColorTypeCMYK) {
                 temp24BPPImage = FreeImage_Allocate(getWidthPixels(), getHeightPixels(), 24);
@@ -209,19 +211,12 @@ public:
             originalImage = scaledImage;
         }
 
-        FreeImage_ConvertToRawBits(buffer, originalImage, width*3, 24, FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, hasFreeImageVersionCorrectTopDownInConvertBits());
-
-        // Swapping RGB data if needed (like on Intel)
-        if (QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
-            const unsigned int numberOfPixels = width * height;
-
-            for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
-                unsigned char* pixelPtr = buffer + pixelIndex*3;
-
-                const unsigned char temp = pixelPtr[0];
-                pixelPtr[0] = pixelPtr[2];
-                pixelPtr[2] = temp;
-                pixelPtr+=3;
+        for (int scanline = 0; scanline < height; scanline++) {
+            const BYTE *sourceData = FreeImage_GetScanLine(originalImage, height - scanline - 1);
+            QRgb *targetData = (QRgb*)result.scanLine(scanline);
+            for (int column = 0; column < width; column++) {
+                *targetData++ = qRgb(sourceData[2], sourceData[1], *sourceData);
+                sourceData += 3;
             }
         }
 
@@ -231,7 +226,7 @@ public:
         if (scaledImage)
             FreeImage_Unload(scaledImage);
 
-        return success;
+        return result;
     }
     
     int getBitsPerPixel() const
