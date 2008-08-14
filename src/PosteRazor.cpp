@@ -142,7 +142,7 @@ bool PosteRazor::loadInputImage(const QString &imageFileName, QString &errorMess
 {
     const bool success = m_imageIO->loadInputImage(imageFileName, errorMessage);
     if (success)
-        createPreviewImage(1024, 768);
+        createPreviewImage(QSize(1024, 768));
     return success;
 }
 
@@ -564,9 +564,12 @@ void PosteRazor::getPreviewSize(double imageWidth, double imageHeight, int boxWi
     }
 }
 
-void PosteRazor::getInputImagePreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight) const
+QSize PosteRazor::getInputImagePreviewSize(const QSize &boxSize) const
 {
-    getPreviewSize(getInputImageWidthPixels(), getInputImageHeightPixels(), boxWidth, boxHeight, previewWidth, previewHeight, false);
+    int previewWidth;
+    int previewHeight;
+    getPreviewSize(getInputImageWidthPixels(), getInputImageHeightPixels(), boxSize.width(), boxSize.height(), previewWidth, previewHeight, false);
+    return QSize(previewWidth, previewHeight);
 }
 
 void PosteRazor::getPaperPreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight) const
@@ -574,12 +577,9 @@ void PosteRazor::getPaperPreviewSize(int boxWidth, int boxHeight, int &previewWi
     getPreviewSize(getPaperWidth(), getPaperHeight(), boxWidth, boxHeight, previewWidth, previewHeight, true);
 }
 
-void PosteRazor::createPreviewImage(double maxWidth, double maxHeight) const
+void PosteRazor::createPreviewImage(const QSize &size) const
 {
-    int imageWidth;
-    int imageHeight;
-    getInputImagePreviewSize((int)maxWidth, (int)maxHeight, imageWidth, imageHeight);
-    QImage previewImage = m_imageIO->getImageAsRGB(QSize(imageWidth, imageHeight));
+    QImage previewImage = m_imageIO->getImageAsRGB(getInputImagePreviewSize(size));
     emit previewImageChanged(previewImage);
 }
 

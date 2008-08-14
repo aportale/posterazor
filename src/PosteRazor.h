@@ -113,7 +113,7 @@ public slots:
 private:
     double convertDistanceToCm(double distance) const;
     double convertCmToDistance(double cm) const;
-    void createPreviewImage(double maxWidth, double maxHeight) const;
+    void createPreviewImage(const QSize &boxSize) const;
     double getMaximalVerticalPaperBorder() const;
     double getMaximalHorizontalPaperBorder() const;
     double getCustomMinimalPaperWidth() const;
@@ -127,7 +127,7 @@ private:
     double getMaximalOverLappingHeight() const;
     double getPosterDimension(PosteRazorEnums::ePosterSizeModes mode, bool width) const;
     void getPreviewSize(double imageWidth, double imageHeight, int boxWidth, int boxHeight, int &previewWidth, int &previewHeight, bool enlargeToFit) const;
-    void getInputImagePreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight) const;
+    QSize getInputImagePreviewSize(const QSize &boxSize) const;
     void getPaperPreviewSize(int boxWidth, int boxHeight, int &previewWidth, int &previewHeight) const;
     void paintImageOnCanvas(PaintCanvasInterface *paintCanvas) const;
     void paintPaperOnCanvas(PaintCanvasInterface *paintCanvas, bool paintOverlapping) const;
