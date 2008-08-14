@@ -214,11 +214,6 @@ void Controller::setPosterAlignment(Qt::Alignment alignment)
     updatePreview();
 }
 
-void Controller::setPosterOutputFormat(ImageIOTypes::eImageFormats format)
-{
-    m_PosteRazor->setPosterOutputFormat(format);
-}
-
 void Controller::setLaunchPDFApplication(bool launch)
 {
     m_launchPDFApplication = launch;

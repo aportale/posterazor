@@ -45,7 +45,6 @@ const QLatin1String settingsKey_OverlappingWidth("OverlappingWidth");
 const QLatin1String settingsKey_OverlappingHeight("OverlappingHeight");
 const QLatin1String settingsKey_OverlappingPosition("overlappingPosition");
 const QLatin1String settingsKey_UnitOfLength("unitOfLength");
-const QLatin1String settingsKey_PosterOutputFormat("PosterOutputFormat");
 
 PosteRazor::PosteRazor()
     : m_posterSizeMode(PosteRazorEnums::ePosterSizeModePages)
@@ -68,8 +67,6 @@ PosteRazor::PosteRazor()
     , m_overlappingPosition(Qt::AlignBottom | Qt::AlignRight)
 
     , m_unitOfLength(UnitsOfLength::eUnitOfLengthCentimeter)
-
-    , m_posterOutputFormat(ImageIOTypes::eImageFormatPDF)
 {
     m_imageIO = ImageIOFreeImage::createImageIOFreeImage();
 }
@@ -102,7 +99,6 @@ bool PosteRazor::readSettings(const QSettings *settings)
     m_overlappingHeight            = settings->value(settingsKey_OverlappingHeight, m_overlappingHeight).toDouble();
     m_overlappingPosition          = (Qt::Alignment)settings->value(settingsKey_OverlappingPosition, (int)m_overlappingPosition).toInt();
     m_unitOfLength                 = (UnitsOfLength::eUnitsOfLength)settings->value(settingsKey_UnitOfLength, (int)m_unitOfLength).toInt();
-    m_posterOutputFormat           = (ImageIOTypes::eImageFormats)settings->value(settingsKey_PosterOutputFormat, (int)m_posterOutputFormat).toInt();
 
     return returnValue;
 }
@@ -128,7 +124,6 @@ bool PosteRazor::writeSettings(QSettings *settings) const
     settings->setValue(settingsKey_OverlappingHeight, m_overlappingHeight);
     settings->setValue(settingsKey_OverlappingPosition, (int)m_overlappingPosition);
     settings->setValue(settingsKey_UnitOfLength, (int)m_unitOfLength);
-    settings->setValue(settingsKey_PosterOutputFormat, (int)m_posterOutputFormat);
 
     return returnValue;
 }
@@ -776,18 +771,8 @@ void PosteRazor::paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVariant
     }
 }
 
-void PosteRazor::setPosterOutputFormat(ImageIOTypes::eImageFormats format)
-{
-    m_posterOutputFormat = format;
-}
-
-ImageIOTypes::eImageFormats PosteRazor::getPosterOutputFormat() const
-{
-    return m_posterOutputFormat;
-}
-
 int PosteRazor::savePoster(const QString &fileName) const
 {
     const int pagesCount = (int)(ceil(getPosterWidth(PosteRazorEnums::ePosterSizeModePages))) * (int)(ceil(getPosterHeight(PosteRazorEnums::ePosterSizeModePages)));
-    return m_imageIO->savePoster(fileName, getPosterOutputFormat(), this, pagesCount, convertDistanceToCm(getPrintablePaperAreaWidth()), convertDistanceToCm(getPrintablePaperAreaHeight()));
+    return m_imageIO->savePoster(fileName, this, pagesCount, convertDistanceToCm(getPrintablePaperAreaWidth()), convertDistanceToCm(getPrintablePaperAreaHeight()));
 }

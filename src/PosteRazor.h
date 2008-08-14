@@ -106,7 +106,6 @@ public:
     void setPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height);
     void setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode);
     void setPosterAlignment(Qt::Alignment alignment);
-    void setPosterOutputFormat(ImageIOTypes::eImageFormats format);
 
 public slots:
     void paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVariant &options) const;
@@ -139,7 +138,7 @@ signals:
     void previewImageChanged(const unsigned char *rgbData, const QSize &size) const;
 
 private:
-    ImageIOFreeImage*                      m_imageIO;
+    ImageIOFreeImage*                       m_imageIO;
 
     PosteRazorEnums::ePosterSizeModes       m_posterSizeMode;
     double                                  m_posterDimension;
@@ -161,8 +160,6 @@ private:
     Qt::Alignment                           m_overlappingPosition;
 
     UnitsOfLength::eUnitsOfLength           m_unitOfLength;
-
-    ImageIOTypes::eImageFormats             m_posterOutputFormat;
 };
 
 #endif // POSTERAZOR_H

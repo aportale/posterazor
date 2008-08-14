@@ -32,6 +32,7 @@ static QString FreeImageErrorMessage;
 
 void FreeImageErrorHandler(FREE_IMAGE_FORMAT fif, const char *message)
 {
+    Q_UNUSED(fif)
     FreeImageErrorMessage = message;
 }
 
@@ -256,9 +257,8 @@ public:
         return colorDatatype;
     }
 
-    int savePoster(const QString &fileName, ImageIOTypes::eImageFormats format, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const
+    int savePoster(const QString &fileName, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const
     {
-        Q_UNUSED(format)
         int err = 0;
 
         const unsigned int imageBytesCount = PosteRazorPDFOutput::getImageBytesCount(getWidthPixels(), getHeightPixels(), getBitsPerPixel());

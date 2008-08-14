@@ -58,7 +58,6 @@ public slots:
     void setPosterSizePercentual(double percent);
     void setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode);
     void setPosterAlignment(Qt::Alignment alignment);
-    void setPosterOutputFormat(ImageIOTypes::eImageFormats format);
     void setLaunchPDFApplication(bool launch);
     bool readSettings(const QSettings *settings);
     bool writeSettings(QSettings *settings) const;
