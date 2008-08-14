@@ -543,33 +543,21 @@ Qt::Alignment PosteRazor::getPosterAlignment() const
     return m_posterAlignment;
 }
 
-void PosteRazor::getPreviewSize(double imageWidth, double imageHeight, int boxWidth, int boxHeight, int &previewWidth, int &previewHeight, bool enlargeToFit) const
+QSize PosteRazor::getPreviewSize(const QSizeF &imageSize, const QSize &boxSize, bool enlargeToFit) const
 {
-    const double aspectRatio = imageWidth / imageHeight;
+    QSize result(imageSize.toSize());
 
-    if (enlargeToFit) {
-        const double widthFactor = imageWidth/(double)boxWidth;
-        const double heightFactor = imageHeight/(double)boxHeight;
-        const double factor = widthFactor<heightFactor?widthFactor:heightFactor;
-        imageWidth /= factor;
-        imageHeight /= factor;
-    }
+    QSize boundedBoxSize(boxSize);
+    if (!enlargeToFit)
+        boundedBoxSize = boundedBoxSize.boundedTo(imageSize.toSize());
 
-    previewWidth = qMin((int)imageWidth, boxWidth);
-    previewHeight = (int)((double)previewWidth / aspectRatio);
-
-    if (previewHeight > boxHeight) {
-        previewWidth = (int)((double)boxHeight * aspectRatio);
-        previewHeight = boxHeight;
-    }
+    result.scale(boundedBoxSize, Qt::KeepAspectRatio);
+    return result;
 }
 
 QSize PosteRazor::getInputImagePreviewSize(const QSize &boxSize) const
 {
-    int previewWidth;
-    int previewHeight;
-    getPreviewSize(getInputImageWidthPixels(), getInputImageHeightPixels(), boxSize.width(), boxSize.height(), previewWidth, previewHeight, false);
-    return QSize(previewWidth, previewHeight);
+    return getPreviewSize(QSizeF(getInputImageWidthPixels(), getInputImageHeightPixels()), boxSize, false);
 }
 
 void PosteRazor::createPreviewImage(const QSize &size) const
@@ -583,12 +571,11 @@ void PosteRazor::paintImageOnCanvas(PaintCanvasInterface *paintCanvas) const
     if (getIsImageLoaded()) {
         double canvasWidth = 0, canvasHeight = 0;
         paintCanvas->getSize(canvasWidth, canvasHeight);
-        int boxWidth = 0, boxHeight = 0;
         double x_offset, y_offset;
 
-        getPreviewSize(getInputImageWidthPixels(), getInputImageHeightPixels(), (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, false);
-        x_offset = (canvasWidth - boxWidth) / 2;
-        y_offset = (canvasHeight - boxHeight) / 2;
+        const QSize boxSize = getPreviewSize(QSizeF(getInputImageWidthPixels(), getInputImageHeightPixels()), QSize((int)canvasWidth, (int)canvasHeight), false);
+        x_offset = (canvasWidth - boxSize.width()) / 2;
+        y_offset = (canvasHeight - boxSize.height()) / 2;
         
         // If the image is not downscaled, make sure that the coordinates are integers in order
         // to prevent unneeded blurring (especially in OpenGL)
@@ -597,7 +584,7 @@ void PosteRazor::paintImageOnCanvas(PaintCanvasInterface *paintCanvas) const
             y_offset = floor(y_offset);
         }
 
-        paintCanvas->drawImage(0 + x_offset, 0 + y_offset, boxWidth, boxHeight);
+        paintCanvas->drawImage(0 + x_offset, 0 + y_offset, boxSize.width(), boxSize.height());
     }
 }
 
@@ -605,22 +592,21 @@ void PosteRazor::paintPaperOnCanvas(PaintCanvasInterface *paintCanvas, bool pain
 {
     double canvasWidth = 0, canvasHeight = 0;
     paintCanvas->getSize(canvasWidth, canvasHeight);
-    int boxWidth = 0, boxHeight = 0;
 
     const double paperWidth = getPaperWidth();
     const double paperHeight = getPaperHeight();
-    getPreviewSize(paperWidth, paperHeight, (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, true);
-    const double x_offset = (canvasWidth - (double)boxWidth) / 2.0;
-    const double y_offset = (canvasHeight - (double)boxHeight) / 2.0;
-    const double UnitOfLengthToPixelfactor = (double)boxWidth/paperWidth;
+    const QSize boxSize = getPreviewSize(QSizeF(paperWidth, paperHeight), QSize((int)canvasWidth, (int)canvasHeight), true);
+    const double x_offset = (canvasWidth - (double)boxSize.width()) / 2.0;
+    const double y_offset = (canvasHeight - (double)boxSize.height()) / 2.0;
+    const double UnitOfLengthToPixelfactor = (double)boxSize.width()/paperWidth;
     const double borderTop = getPaperBorderTop() * UnitOfLengthToPixelfactor;
     const double borderRight = getPaperBorderRight() * UnitOfLengthToPixelfactor;
     const double borderBottom = getPaperBorderBottom() * UnitOfLengthToPixelfactor;
     const double borderLeft = getPaperBorderLeft() * UnitOfLengthToPixelfactor;
-    const double printableAreaWidth = boxWidth - borderLeft - borderRight;
-    const double printableAreaHeight = boxHeight - borderTop - borderBottom;
+    const double printableAreaWidth = boxSize.width() - borderLeft - borderRight;
+    const double printableAreaHeight = boxSize.height() - borderTop - borderBottom;
     
-    paintCanvas->drawFilledRect(0 + x_offset, 0 + y_offset, boxWidth, boxHeight, 128, 128, 128, 255);
+    paintCanvas->drawFilledRect(0 + x_offset, 0 + y_offset, boxSize.width(), boxSize.height(), 128, 128, 128, 255);
     paintCanvas->drawFilledRect(0 + borderLeft + x_offset, 0 + borderTop + y_offset, printableAreaWidth, printableAreaHeight, 230, 230, 230, 255);
 
     if (paintOverlapping) {
@@ -628,10 +614,10 @@ void PosteRazor::paintPaperOnCanvas(PaintCanvasInterface *paintCanvas, bool pain
         const double overlappingHeight = getOverlappingHeight() * UnitOfLengthToPixelfactor;
         const Qt::Alignment overlappingPosition = getOverlappingPosition();
         const double overlappingTop = (overlappingPosition & Qt::AlignTop)?
-            borderTop:boxHeight - borderBottom - overlappingHeight;
+            borderTop:boxSize.height() - borderBottom - overlappingHeight;
         const double overlappingLeft = (overlappingPosition & Qt::AlignLeft)?
-            borderLeft:boxWidth - borderRight - overlappingWidth;
-        
+            borderLeft:boxSize.width() - borderRight - overlappingWidth;
+
         paintCanvas->drawFilledRect(borderLeft + x_offset, overlappingTop + y_offset, printableAreaWidth, overlappingHeight, 255, 128, 128, 255);
         paintCanvas->drawFilledRect(overlappingLeft + x_offset, borderTop + y_offset, overlappingWidth, printableAreaHeight, 255, 128, 128, 255);
     }
@@ -641,7 +627,6 @@ void PosteRazor::paintPosterOnCanvas(PaintCanvasInterface *paintCanvas) const
 {
     double canvasWidth = 0, canvasHeight = 0;
     paintCanvas->getSize(canvasWidth, canvasHeight);
-    int boxWidth = 0, boxHeight = 0;
 
     double pagePrintableAreaWidth = getPrintablePaperAreaWidth();
     double pagePrintableAreaHeight = getPrintablePaperAreaHeight();
@@ -649,19 +634,19 @@ void PosteRazor::paintPosterOnCanvas(PaintCanvasInterface *paintCanvas) const
     const int pagesVertical = (int)ceil(getPosterHeight(PosteRazorEnums::ePosterSizeModePages));
     const double posterWidth = pagesHorizontal*pagePrintableAreaWidth - (pagesHorizontal-1)*getOverlappingWidth() + getPaperBorderLeft() + getPaperBorderRight();
     const double posterHeight = pagesVertical*pagePrintableAreaHeight - (pagesVertical-1)*getOverlappingHeight() + getPaperBorderTop() + getPaperBorderBottom();
-    getPreviewSize(posterWidth, posterHeight, (int)canvasWidth, (int)canvasHeight, boxWidth, boxHeight, true);
-    const double x_offset = (canvasWidth - boxWidth) / 2;
-    const double y_offset = (canvasHeight - boxHeight) / 2;
-    const double UnitOfLengthToPixelfactor = (double)boxWidth/posterWidth;
+    const QSize boxSize = getPreviewSize(QSizeF(posterWidth, posterHeight), QSize((int)canvasWidth, (int)canvasHeight), true);
+    const double x_offset = (canvasWidth - boxSize.width()) / 2;
+    const double y_offset = (canvasHeight - boxSize.height()) / 2;
+    const double UnitOfLengthToPixelfactor = (double)boxSize.width()/posterWidth;
 
     const double borderTop = getPaperBorderTop() * UnitOfLengthToPixelfactor;
     const double borderRight = getPaperBorderRight() * UnitOfLengthToPixelfactor;
     const double borderBottom = getPaperBorderBottom() * UnitOfLengthToPixelfactor;
     const double borderLeft = getPaperBorderLeft() * UnitOfLengthToPixelfactor;
-    const double posterPrintableAreaWidth = boxWidth - borderLeft - borderRight;
-    const double posterPrintableAreaHeight = boxHeight - borderTop - borderBottom;
+    const double posterPrintableAreaWidth = boxSize.width() - borderLeft - borderRight;
+    const double posterPrintableAreaHeight = boxSize.height() - borderTop - borderBottom;
 
-    paintCanvas->drawFilledRect(x_offset, y_offset, boxWidth, boxHeight, 128, 128, 128, 255);
+    paintCanvas->drawFilledRect(x_offset, y_offset, boxSize.width(), boxSize.height(), 128, 128, 128, 255);
     paintCanvas->drawFilledRect(borderLeft + x_offset, borderTop + y_offset, posterPrintableAreaWidth, posterPrintableAreaHeight, 230, 230, 230, 255);
 
     const double imageWidth = getPosterWidth(PosteRazorEnums::ePosterSizeModeAbsolute) * UnitOfLengthToPixelfactor;
@@ -672,14 +657,14 @@ void PosteRazor::paintPosterOnCanvas(PaintCanvasInterface *paintCanvas) const
     paintCanvas->drawImage(
         (
             alignment & Qt::AlignLeft?borderLeft
-            :alignment & Qt::AlignHCenter?qBound(borderLeft, ((double)boxWidth - imageWidth) / 2, borderLeft + posterPrintableAreaWidth - imageWidth)
+            :alignment & Qt::AlignHCenter?qBound(borderLeft, ((double)boxSize.width() - imageWidth) / 2, borderLeft + posterPrintableAreaWidth - imageWidth)
             :(borderLeft + posterPrintableAreaWidth - imageWidth)
         )
         + x_offset,
 
         (
             alignment & Qt::AlignTop?borderTop
-            :alignment & Qt::AlignVCenter?qBound(borderTop, ((double)boxHeight - imageHeight) / 2, borderTop + posterPrintableAreaHeight - imageHeight)
+            :alignment & Qt::AlignVCenter?qBound(borderTop, ((double)boxSize.height() - imageHeight) / 2, borderTop + posterPrintableAreaHeight - imageHeight)
             :(borderTop + posterPrintableAreaHeight - imageHeight)
         )
         + y_offset,
@@ -694,13 +679,13 @@ void PosteRazor::paintPosterOnCanvas(PaintCanvasInterface *paintCanvas) const
     double overlappingRectangleYPosition = borderTop;
     for (int pagesRow = 0; pagesRow < pagesVertical - 1; pagesRow++) {
         overlappingRectangleYPosition += pagePrintableAreaHeight - overlappingHeight;
-        paintCanvas->drawFilledRect(x_offset, overlappingRectangleYPosition + y_offset, boxWidth, overlappingHeight, 255, 128, 128, 128);
+        paintCanvas->drawFilledRect(x_offset, overlappingRectangleYPosition + y_offset, boxSize.width(), overlappingHeight, 255, 128, 128, 128);
     }
 
     double overlappingRectangleXPosition = borderLeft;
     for (int pagesColumn = 0; pagesColumn < pagesHorizontal - 1; pagesColumn++) {
         overlappingRectangleXPosition += pagePrintableAreaWidth - overlappingWidth;
-        paintCanvas->drawFilledRect(overlappingRectangleXPosition + x_offset, y_offset, overlappingWidth, boxHeight, 255, 128, 128, 128);
+        paintCanvas->drawFilledRect(overlappingRectangleXPosition + x_offset, y_offset, overlappingWidth, boxSize.height(), 255, 128, 128, 128);
     }
 }
 

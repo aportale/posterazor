@@ -126,7 +126,7 @@ private:
     double getMaximalOverLappingWidth() const;
     double getMaximalOverLappingHeight() const;
     double getPosterDimension(PosteRazorEnums::ePosterSizeModes mode, bool width) const;
-    void getPreviewSize(double imageWidth, double imageHeight, int boxWidth, int boxHeight, int &previewWidth, int &previewHeight, bool enlargeToFit) const;
+    QSize getPreviewSize(const QSizeF &imageSize, const QSize &boxSize, bool enlargeToFit) const;
     QSize getInputImagePreviewSize(const QSize &boxSize) const;
     void paintImageOnCanvas(PaintCanvasInterface *paintCanvas) const;
     void paintPaperOnCanvas(PaintCanvasInterface *paintCanvas, bool paintOverlapping) const;
