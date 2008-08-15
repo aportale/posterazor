@@ -55,6 +55,9 @@ FORMS += \
 RESOURCES += \
     QtPosteRazorDialogResources.qrc
 
+RC_FILE += \
+    PosteRazorUI.rc
+
 TRANSLATIONS += \
     de.ts \
     es.ts \
