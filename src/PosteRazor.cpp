@@ -151,14 +151,9 @@ bool PosteRazor::getIsImageLoaded() const
     return m_imageIO->isImageLoaded();
 }
 
-int PosteRazor::getInputImageWidthPixels() const
+QSize PosteRazor::getInputImageSizePixels() const
 {
-    return m_imageIO->getWidthPixels();
-}
-
-int PosteRazor::getInputImageHeightPixels() const
-{
-    return m_imageIO->getHeightPixels();
+    return QSize(m_imageIO->getWidthPixels(), m_imageIO->getHeightPixels());
 }
 
 double PosteRazor::getInputImageHorizontalDpi() const
@@ -482,7 +477,7 @@ void PosteRazor::setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode)
 double PosteRazor::getPosterDimension(PosteRazorEnums::ePosterSizeModes mode, bool width) const
 {
     double posterDimension = (width==m_posterDimensionIsWidth)?m_posterDimension:calculateOtherPosterDimension();
-    
+
     posterDimension = qMax(
         (mode == PosteRazorEnums::ePosterSizeModeAbsolute)?0.001
         :(mode == PosteRazorEnums::ePosterSizeModePages)?0.001
@@ -557,7 +552,7 @@ QSize PosteRazor::getPreviewSize(const QSizeF &imageSize, const QSize &boxSize, 
 
 QSize PosteRazor::getInputImagePreviewSize(const QSize &boxSize) const
 {
-    return getPreviewSize(QSizeF(getInputImageWidthPixels(), getInputImageHeightPixels()), boxSize, false);
+    return getPreviewSize(getInputImageSizePixels(), boxSize, false);
 }
 
 void PosteRazor::createPreviewImage(const QSize &size) const
@@ -573,13 +568,14 @@ void PosteRazor::paintImageOnCanvas(PaintCanvasInterface *paintCanvas) const
         paintCanvas->getSize(canvasWidth, canvasHeight);
         double x_offset, y_offset;
 
-        const QSize boxSize = getPreviewSize(QSizeF(getInputImageWidthPixels(), getInputImageHeightPixels()), QSize((int)canvasWidth, (int)canvasHeight), false);
+        const QSize inputImageSize = getInputImageSizePixels();
+        const QSize boxSize = getPreviewSize(inputImageSize, QSize((int)canvasWidth, (int)canvasHeight), false);
         x_offset = (canvasWidth - boxSize.width()) / 2;
         y_offset = (canvasHeight - boxSize.height()) / 2;
         
         // If the image is not downscaled, make sure that the coordinates are integers in order
         // to prevent unneeded blurring (especially in OpenGL)
-        if (canvasWidth >= getInputImageWidthPixels() && canvasHeight >= getInputImageHeightPixels()) {
+        if (canvasWidth >= inputImageSize.width() && canvasHeight >= inputImageSize.height()) {
             x_offset = floor(x_offset);
             y_offset = floor(y_offset);
         }

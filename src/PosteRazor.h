@@ -56,8 +56,7 @@ public:
     bool loadInputImage(const QString &imageFileName, QString &errorMessage);
     int savePoster(const QString &fileName) const;
 
-    int getInputImageWidthPixels() const;
-    int getInputImageHeightPixels() const;
+    QSize getInputImageSizePixels() const;
     double getInputImageHorizontalDpi() const;
     double getInputImageVerticalDpi() const;
     double getInputImageWidth() const;

@@ -202,12 +202,12 @@ void MainWindow::showImageFileName(const QString &fileName)
     m_inputFileNameLabel->setText(QFileInfo(fileName).fileName());
 }
 
-void MainWindow::updateImageInfoFields(int imageWidthInPixels, int imageHeightInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel)
+void MainWindow::updateImageInfoFields(const QSize &inputImageSizeInPixels, double imageWidth, double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel)
 {
     Q_UNUSED(horizontalDpi)
     Q_UNUSED(unitOfLength)
 
-    m_imageInformationSizeInPixelsValue->setText(QString("%1 x %2").arg(imageWidthInPixels).arg(imageHeightInPixels));
+    m_imageInformationSizeInPixelsValue->setText(QString("%1 x %2").arg(inputImageSizeInPixels.width()).arg(inputImageSizeInPixels.height()));
     m_imageInformationSizeValue->setText(QString("%1 x %2").arg(imageWidth, 0, 'f', 2).arg(imageHeight, 0, 'f', 2));
     m_imageInformationResolutionValue->setText(QString("%1 dpi").arg(verticalDpi, 0, 'f', 1));
     const QString colorTypeString = (
