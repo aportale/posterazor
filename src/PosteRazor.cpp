@@ -166,14 +166,9 @@ double PosteRazor::getInputImageVerticalDpi() const
     return m_imageIO->getVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitOfLengthInch);
 }
 
-double PosteRazor::getInputImageWidth() const
+QSizeF PosteRazor::getInputImageSize() const
 {
-    return m_imageIO->getSize(m_unitOfLength).width();
-}
-
-double PosteRazor::getInputImageHeight() const
-{
-    return m_imageIO->getSize(m_unitOfLength).height();
+    return m_imageIO->getSize(m_unitOfLength);
 }
 
 int PosteRazor::getInputImageBitsPerPixel() const
@@ -390,8 +385,9 @@ double PosteRazor::calculateOtherPosterDimension() const
     double otherDimension = 0;
 
     if (getPosterSizeMode() != PosteRazorEnums::ePosterSizeModePercentual) {
-        const double sourceReference = m_posterDimensionIsWidth?getInputImageWidth():getInputImageHeight();
-        const double targetReference = m_posterDimensionIsWidth?getInputImageHeight():getInputImageWidth();
+        const QSizeF inputImageSize = getInputImageSize();
+        const double sourceReference = m_posterDimensionIsWidth?inputImageSize.width():inputImageSize.height();
+        const double targetReference = m_posterDimensionIsWidth?inputImageSize.height():inputImageSize.width();
         const double aspectRatio = sourceReference/targetReference;
 
         if (getPosterSizeMode() != PosteRazorEnums::ePosterSizeModePages) {
@@ -488,7 +484,8 @@ double PosteRazor::getPosterDimension(PosteRazorEnums::ePosterSizeModes mode, bo
     // anything to convert?
     if (getPosterSizeMode() != mode){
         // These are needed for conversion from and to ePosterSizeModePercentual
-        const double inputImageDimension = convertDistanceToCm(width?getInputImageWidth():getInputImageHeight());
+        const QSizeF inputImageSize = getInputImageSize();
+        const double inputImageDimension = convertDistanceToCm(width?inputImageSize.width():inputImageSize.width());
 
         // First convert to absolute size mode (cm)
         if (getPosterSizeMode() == PosteRazorEnums::ePosterSizeModePages) {

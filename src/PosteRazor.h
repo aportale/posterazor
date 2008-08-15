@@ -59,8 +59,7 @@ public:
     QSize getInputImageSizePixels() const;
     double getInputImageHorizontalDpi() const;
     double getInputImageVerticalDpi() const;
-    double getInputImageWidth() const;
-    double getInputImageHeight() const;
+    QSizeF getInputImageSize() const;
     int getInputImageBitsPerPixel() const;
     ColorTypes::eColorTypes getInputImageColorType() const;
     UnitsOfLength::eUnitsOfLength getUnitOfLength() const;

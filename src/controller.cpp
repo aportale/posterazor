@@ -280,8 +280,7 @@ void Controller::setDialogImageInfoFields()
     if (m_PosteRazor->getIsImageLoaded()) {
         m_Dialog->updateImageInfoFields (
             m_PosteRazor->getInputImageSizePixels(),
-            m_PosteRazor->getInputImageWidth(),
-            m_PosteRazor->getInputImageHeight(),
+            m_PosteRazor->getInputImageSize(),
             m_PosteRazor->getUnitOfLength(),
             m_PosteRazor->getInputImageVerticalDpi(),
             m_PosteRazor->getInputImageHorizontalDpi(),
