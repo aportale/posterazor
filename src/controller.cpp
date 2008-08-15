@@ -271,8 +271,9 @@ void Controller::setDialogPaperBorders()
 
 void Controller::setDialogCustomPaperDimensions()
 {
-    m_Dialog->setCustomPaperWidth(m_PosteRazor->getCustomPaperWidth());
-    m_Dialog->setCustomPaperHeight(m_PosteRazor->getCustomPaperHeight());
+    const QSizeF size = m_PosteRazor->getCustomPaperSize();
+    m_Dialog->setCustomPaperWidth(size.width());
+    m_Dialog->setCustomPaperHeight(size.height());
 }
 
 void Controller::setDialogImageInfoFields()

@@ -258,12 +258,12 @@ double PosteRazor::getPaperBorderLeft() const
 
 double PosteRazor::getMaximalVerticalPaperBorder() const
 {
-    return getPaperWidth() / 2.0 - convertCmToDistance(1.0);
+    return getPaperSize().width() / 2.0 - convertCmToDistance(1.0);
 }
 
 double PosteRazor::getMaximalHorizontalPaperBorder() const
 {
-    return getPaperHeight() / 2.0 - convertCmToDistance(1.0);
+    return getPaperSize().height() / 2.0 - convertCmToDistance(1.0);
 }
 
 void PosteRazor::setCustomPaperWidth(double width)
@@ -276,14 +276,12 @@ void PosteRazor::setCustomPaperHeight(double height)
     m_customPaperHeight = convertDistanceToCm(height);
 }
 
-double PosteRazor::getCustomPaperWidth() const
+QSizeF PosteRazor::getCustomPaperSize() const
 {
-    return qBound(getCustomMinimalPaperWidth(), convertCmToDistance(m_customPaperWidth), getCustomMaximalPaperWidth());
-}
-
-double PosteRazor::getCustomPaperHeight() const
-{
-    return qBound(getCustomMinimalPaperHeight(), convertCmToDistance(m_customPaperHeight), getCustomMaximalPaperHeight());
+    return QSizeF(
+        qBound(getCustomMinimalPaperWidth(), convertCmToDistance(m_customPaperWidth), getCustomMaximalPaperWidth()),
+        qBound(getCustomMinimalPaperHeight(), convertCmToDistance(m_customPaperHeight), getCustomMaximalPaperHeight())
+    );
 }
 
 double PosteRazor::getCustomMinimalPaperWidth() const
@@ -316,24 +314,22 @@ bool PosteRazor::getUseCustomPaperSize() const
     return m_useCustomPaperSize;
 }
 
-double PosteRazor::getPaperWidth() const
+QSizeF PosteRazor::getPaperSize() const
 {
-    return getUseCustomPaperSize()?getCustomPaperWidth():PaperFormats::getPaperWidth(getPaperFormat(), getPaperOrientation(), m_unitOfLength);
-}
-
-double PosteRazor::getPaperHeight() const
-{
-    return getUseCustomPaperSize()?getCustomPaperHeight():PaperFormats::getPaperHeight(getPaperFormat(), getPaperOrientation(), m_unitOfLength);
+    return QSizeF(
+        getUseCustomPaperSize()?getCustomPaperSize().width():PaperFormats::getPaperWidth(getPaperFormat(), getPaperOrientation(), m_unitOfLength),
+        getUseCustomPaperSize()?getCustomPaperSize().height():PaperFormats::getPaperHeight(getPaperFormat(), getPaperOrientation(), m_unitOfLength)
+    );
 }
 
 double PosteRazor::getPrintablePaperAreaWidth() const
 {
-    return getPaperWidth() - getPaperBorderLeft() - getPaperBorderRight();
+    return getPaperSize().width() - getPaperBorderLeft() - getPaperBorderRight();
 }
 
 double PosteRazor::getPrintablePaperAreaHeight() const
 {
-    return getPaperHeight() - getPaperBorderTop() - getPaperBorderBottom();
+    return getPaperSize().height() - getPaperBorderTop() - getPaperBorderBottom();
 }
 
 double PosteRazor::convertBetweenAbsoluteAndPagesPosterDimension(double dimension, bool pagesToAbsolute, bool width) const
@@ -437,12 +433,12 @@ double PosteRazor::getOverlappingHeight() const
 
 double PosteRazor::getMaximalOverLappingWidth() const
 {
-    return getPaperWidth() - getPaperBorderLeft() - getPaperBorderRight() - convertCmToDistance(1.0);
+    return getPaperSize().width() - getPaperBorderLeft() - getPaperBorderRight() - convertCmToDistance(1.0);
 }
 
 double PosteRazor::getMaximalOverLappingHeight() const
 {
-    return getPaperHeight() - getPaperBorderTop() - getPaperBorderBottom() - convertCmToDistance(1.0);
+    return getPaperSize().height() - getPaperBorderTop() - getPaperBorderBottom() - convertCmToDistance(1.0);
 }
 
 void PosteRazor::setOverlappingPosition(Qt::Alignment position)
@@ -586,12 +582,11 @@ void PosteRazor::paintPaperOnCanvas(PaintCanvasInterface *paintCanvas, bool pain
     double canvasWidth = 0, canvasHeight = 0;
     paintCanvas->getSize(canvasWidth, canvasHeight);
 
-    const double paperWidth = getPaperWidth();
-    const double paperHeight = getPaperHeight();
-    const QSize boxSize = getPreviewSize(QSizeF(paperWidth, paperHeight), QSize((int)canvasWidth, (int)canvasHeight), true);
+    const QSizeF paperSize = getPaperSize();
+    const QSize boxSize = getPreviewSize(paperSize, QSize((int)canvasWidth, (int)canvasHeight), true);
     const double x_offset = (canvasWidth - (double)boxSize.width()) / 2.0;
     const double y_offset = (canvasHeight - (double)boxSize.height()) / 2.0;
-    const double UnitOfLengthToPixelfactor = (double)boxSize.width()/paperWidth;
+    const double UnitOfLengthToPixelfactor = (double)boxSize.width()/paperSize.width();
     const double borderTop = getPaperBorderTop() * UnitOfLengthToPixelfactor;
     const double borderRight = getPaperBorderRight() * UnitOfLengthToPixelfactor;
     const double borderBottom = getPaperBorderBottom() * UnitOfLengthToPixelfactor;

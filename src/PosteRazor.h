@@ -70,11 +70,9 @@ public:
     double getPaperBorderRight() const;
     double getPaperBorderBottom() const;
     double getPaperBorderLeft() const;
-    double getCustomPaperWidth() const;
-    double getCustomPaperHeight() const;
+    QSizeF getCustomPaperSize() const;
     bool getUseCustomPaperSize() const;
-    double getPaperWidth() const;
-    double getPaperHeight() const;
+    QSizeF getPaperSize() const;
     double getPrintablePaperAreaWidth() const;
     double getPrintablePaperAreaHeight() const;
     double getOverlappingWidth() const;
