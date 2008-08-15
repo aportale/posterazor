@@ -41,9 +41,9 @@ unsigned int PosteRazorPDFOutput::getImageBytesPerLineCount(int widthPixels, int
     return (int)(ceil((double)getImageBitsPerLineCount(widthPixels, bitPerPixel)/8.0f));
 }
 
-unsigned int PosteRazorPDFOutput::getImageBytesCount(int widthPixels, int heightPixels, int bitPerPixel)
+unsigned int PosteRazorPDFOutput::getImageBytesCount(const QSize &size, int bitPerPixel)
 {
-    return getImageBytesPerLineCount(widthPixels, bitPerPixel) * heightPixels;
+    return getImageBytesPerLineCount(size.width(), bitPerPixel) * size.height();
 }
 
 class PosteRazorPDFOutputImplementation: public PosteRazorPDFOutput
@@ -191,7 +191,7 @@ public:
         int err = 0;
         err = AddImageResourcesAndXObject();
 
-        const unsigned int imageBytesCount = getImageBytesCount(widthPixels, heightPixels, bitPerPixel);
+        const unsigned int imageBytesCount = getImageBytesCount(QSize(widthPixels, heightPixels), bitPerPixel);
         unsigned int imageBytesCountCompressed = (unsigned int)(ceil((double)imageBytesCount*1.05))+12;
         unsigned char *imageDataCompressed = NULL;
 

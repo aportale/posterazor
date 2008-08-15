@@ -41,14 +41,12 @@ public:
     virtual bool loadInputImage(const QString &imageFileName, QString &errorMessage) = 0;
     virtual bool isImageLoaded() const = 0;
 
-    virtual int getWidthPixels() const = 0;
-    virtual int getHeightPixels() const = 0;
+    virtual QSize getSizePixels() const = 0;
 
     virtual double getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const = 0;
     virtual double getVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const = 0;
 
-    virtual double getWidth(UnitsOfLength::eUnitsOfLength unit) const = 0;
-    virtual double getHeight(UnitsOfLength::eUnitsOfLength unit) const = 0;
+    virtual QSizeF getSize(UnitsOfLength::eUnitsOfLength unit) const = 0;
 
     virtual QImage getImageAsRGB() const = 0;
     virtual QImage getImageAsRGB(const QSize &size) const = 0;

@@ -25,6 +25,7 @@
 
 #include "ColorTypes.h"
 #include "PaintCanvasInterface.h"
+#include <QSize>
 
 class PosteRazorPDFOutput: public PaintCanvasInterface
 {
@@ -35,7 +36,7 @@ public:
 
     static unsigned int getImageBitsPerLineCount(int widthPixels, int bitPerPixel);
     static unsigned int getImageBytesPerLineCount(int widthPixels, int bitPerPixel);
-    static unsigned int getImageBytesCount(int widthPixels, int heightPixels, int bitPerPixel);
+    static unsigned int getImageBytesCount(const QSize &size, int bitPerPixel);
 
     virtual int saveImage(unsigned char *imageData, int widthPixels, int heightPixels, int bitPerPixel, ColorTypes::eColorTypes colorType, unsigned char *rgbPalette, int paletteEntries) = 0;
     virtual int saveImage(const QString &jpegFileName, int widthPixels, int heightPixels, ColorTypes::eColorTypes colorType) = 0;

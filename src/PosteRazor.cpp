@@ -153,7 +153,7 @@ bool PosteRazor::getIsImageLoaded() const
 
 QSize PosteRazor::getInputImageSizePixels() const
 {
-    return QSize(m_imageIO->getWidthPixels(), m_imageIO->getHeightPixels());
+    return m_imageIO->getSizePixels();
 }
 
 double PosteRazor::getInputImageHorizontalDpi() const
@@ -168,12 +168,12 @@ double PosteRazor::getInputImageVerticalDpi() const
 
 double PosteRazor::getInputImageWidth() const
 {
-    return m_imageIO->getWidth(m_unitOfLength);
+    return m_imageIO->getSize(m_unitOfLength).width();
 }
 
 double PosteRazor::getInputImageHeight() const
 {
-    return m_imageIO->getHeight(m_unitOfLength);
+    return m_imageIO->getSize(m_unitOfLength).height();
 }
 
 int PosteRazor::getInputImageBitsPerPixel() const

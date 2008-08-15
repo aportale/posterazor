@@ -141,8 +141,10 @@ public:
     }
     bool isImageLoaded() const {return (m_bitmap != NULL);}
 
-    int getWidthPixels() const {return m_widthPixels;}
-    int getHeightPixels() const {return m_heightPixels;}
+    QSize getSizePixels() const
+    {
+        return QSize(m_widthPixels, m_heightPixels);
+    }
 
     double getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const
     {
@@ -154,12 +156,15 @@ public:
         return m_verticalDotsPerMeter / UnitsOfLength::convertBetweenUnitsOfLength(1, UnitsOfLength::eUnitOfLengthMeter, unit);
     }
 
-    double getWidth(UnitsOfLength::eUnitsOfLength unit) const {return getWidthPixels() / getHorizontalDotsPerUnitOfLength(unit);}
-    double getHeight(UnitsOfLength::eUnitsOfLength unit) const {return getHeightPixels() / getVerticalDotsPerUnitOfLength(unit);}
+    QSizeF getSize(UnitsOfLength::eUnitsOfLength unit) const
+    {
+        const QSize sizePixels(getSizePixels());
+        return QSizeF(sizePixels.width() / getHorizontalDotsPerUnitOfLength(unit), sizePixels.height() / getVerticalDotsPerUnitOfLength(unit));
+    }
 
     QImage getImageAsRGB() const
     {
-        return getImageAsRGB(QSize(getWidthPixels(), getHeightPixels()));
+        return getImageAsRGB(getSizePixels());
     }
 
     QImage getImageAsRGB(const QSize &size) const
@@ -168,6 +173,7 @@ public:
 
         const int width = size.width();
         const int height = size.height();
+        const QSize sizePixels = getSizePixels();
 
         FIBITMAP* originalImage = m_bitmap;
         FIBITMAP* temp24BPPImage = NULL;
@@ -175,9 +181,9 @@ public:
 
         if (getBitsPerPixel() != 24) {
             if (getColorDataType() == eColorTypeCMYK) {
-                temp24BPPImage = FreeImage_Allocate(getWidthPixels(), getHeightPixels(), 24);
-                const unsigned int scanlinesCount = getHeightPixels();
-                const unsigned int columnsCount = getWidthPixels();
+                temp24BPPImage = FreeImage_Allocate(sizePixels.width(), sizePixels.height(), 24);
+                const unsigned int columnsCount = sizePixels.width();
+                const unsigned int scanlinesCount = sizePixels.height();
                 for (unsigned int scanline = 0; scanline < scanlinesCount; scanline++) {
                     const BYTE* const cmykBits = FreeImage_GetScanLine(m_bitmap, scanline);
                     BYTE* const rgbBits = FreeImage_GetScanLine(temp24BPPImage, scanline);
@@ -206,7 +212,7 @@ public:
             originalImage = temp24BPPImage;
         }
 
-        if (getWidthPixels() != width || getHeightPixels() != height) {
+        if (size != sizePixels) {
             scaledImage = FreeImage_Rescale(originalImage, width, height, FILTER_BOX);
             originalImage = scaledImage;
         }
@@ -256,16 +262,17 @@ public:
     {
         int err = 0;
 
-        const unsigned int imageBytesCount = PosteRazorPDFOutput::getImageBytesCount(getWidthPixels(), getHeightPixels(), getBitsPerPixel());
+        const QSize imageSize = getSizePixels();
+        const unsigned int imageBytesCount = PosteRazorPDFOutput::getImageBytesCount(imageSize, getBitsPerPixel());
         unsigned char *imageData = new unsigned char[imageBytesCount];
 
-        const unsigned int bytesPerLineCount = PosteRazorPDFOutput::getImageBytesPerLineCount(getWidthPixels(), getBitsPerPixel());
+        const unsigned int bytesPerLineCount = PosteRazorPDFOutput::getImageBytesPerLineCount(imageSize.width(), getBitsPerPixel());
 
         FreeImage_ConvertToRawBits(imageData, m_bitmap, bytesPerLineCount, getBitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, hasFreeImageVersionCorrectTopDownInConvertBits());
 
         // Swapping RGB data if needed (like on Intel)
         if (getBitsPerPixel() == 24 && QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
-            const unsigned long numberOfPixels = getWidthPixels() * getHeightPixels();
+            const unsigned long numberOfPixels = imageSize.width() * imageSize.height();
             for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
                 unsigned char *pixelPtr = imageData + pixelIndex*3;
 
@@ -294,9 +301,9 @@ public:
         err = pdfOutput->startSaving(fileName, pagesCount, widthCm, heightCm);
         if (!err) {
             if (FreeImage_GetFileType(m_imageFileName.toAscii(), 0) == FIF_JPEG)
-                err = pdfOutput->saveImage(m_imageFileName, getWidthPixels(), getHeightPixels(), getColorDataType());
+                err = pdfOutput->saveImage(m_imageFileName, imageSize.width(), imageSize.height(), getColorDataType());
             else
-                err = pdfOutput->saveImage(imageData, getWidthPixels(), getHeightPixels(), getBitsPerPixel(), getColorDataType(), rgbPalette, FreeImage_GetColorsUsed(m_bitmap));
+                err = pdfOutput->saveImage(imageData, imageSize.width(), imageSize.height(), getBitsPerPixel(), getColorDataType(), rgbPalette, FreeImage_GetColorsUsed(m_bitmap));
         }
 
         if (!err) {
