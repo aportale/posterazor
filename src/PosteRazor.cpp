@@ -133,9 +133,19 @@ double PosteRazor::convertDistanceToCm(double distance) const
     return UnitsOfLength::convertBetweenUnitsOfLength(distance, getUnitOfLength(), UnitsOfLength::eUnitOfLengthCentimeter);
 }
 
+QSizeF PosteRazor::convertSizeToCm(const QSizeF &size) const
+{
+    return QSizeF(convertDistanceToCm(size.width()), convertDistanceToCm(size.height()));
+}
+
 double PosteRazor::convertCmToDistance(double cm) const
 {
     return UnitsOfLength::convertBetweenUnitsOfLength(cm, UnitsOfLength::eUnitOfLengthCentimeter, getUnitOfLength());
+}
+
+QSizeF PosteRazor::convertCmToSize(const QSizeF &sizeInCm) const
+{
+    return QSizeF(convertCmToDistance(sizeInCm.width()), convertCmToDistance(sizeInCm.height()));
 }
 
 bool PosteRazor::loadInputImage(const QString &imageFileName, QString &errorMessage)
@@ -740,5 +750,5 @@ int PosteRazor::savePoster(const QString &fileName) const
 {
     const QSizeF posterSizePages = getPosterSize(PosteRazorEnums::ePosterSizeModePages);
     const int pagesCount = (int)(ceil(posterSizePages.width())) * (int)(ceil(posterSizePages.height()));
-    return m_imageIO->savePoster(fileName, this, pagesCount, convertDistanceToCm(getPrintablePaperAreaSize().width()), convertDistanceToCm(getPrintablePaperAreaSize().height()));
+    return m_imageIO->savePoster(fileName, this, pagesCount, convertSizeToCm(getPrintablePaperAreaSize()));
 }

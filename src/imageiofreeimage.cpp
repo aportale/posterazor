@@ -258,7 +258,7 @@ public:
         return colorDatatype;
     }
 
-    int savePoster(const QString &fileName, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const
+    int savePoster(const QString &fileName, const PainterInterface *painter, int pagesCount, const QSizeF &sizeCm) const
     {
         int err = 0;
 
@@ -298,7 +298,7 @@ public:
         }
 
         PosteRazorPDFOutput *pdfOutput = PosteRazorPDFOutput::createPosteRazorPDFOutput();
-        err = pdfOutput->startSaving(fileName, pagesCount, widthCm, heightCm);
+        err = pdfOutput->startSaving(fileName, pagesCount, sizeCm.width(), sizeCm.height());
         if (!err) {
             if (FreeImage_GetFileType(m_imageFileName.toAscii(), 0) == FIF_JPEG)
                 err = pdfOutput->saveImage(m_imageFileName, imageSize.width(), imageSize.height(), getColorDataType());

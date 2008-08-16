@@ -54,7 +54,7 @@ public:
     virtual int getBitsPerPixel() const = 0;
     virtual eColorTypes getColorDataType() const = 0;
 
-    virtual int savePoster(const QString &fileName, const PainterInterface *painter, int pagesCount, double widthCm, double heightCm) const = 0;
+    virtual int savePoster(const QString &fileName, const PainterInterface *painter, int pagesCount, const QSizeF &sizeCm) const = 0;
 };
 
 #endif // IMAGEIOFREEIMAGE_H

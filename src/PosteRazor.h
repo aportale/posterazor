@@ -106,7 +106,9 @@ public slots:
 
 private:
     double convertDistanceToCm(double distance) const;
+    QSizeF convertSizeToCm(const QSizeF &size) const;
     double convertCmToDistance(double cm) const;
+    QSizeF convertCmToSize(const QSizeF &sizeInCm) const;
     void createPreviewImage(const QSize &boxSize) const;
     double getMaximalVerticalPaperBorder() const;
     double getMaximalHorizontalPaperBorder() const;
