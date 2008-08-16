@@ -55,6 +55,7 @@ Controller::Controller(PosteRazor *model, MainWindow *dialog, QObject *parent)
     connect(m_Dialog, SIGNAL(posterAlignmentChanged(Qt::Alignment)), SLOT(setPosterAlignment(Qt::Alignment)));
 
     connect(m_Dialog, SIGNAL(savePosterSignal()), SLOT(savePoster()));
+    connect(m_Dialog, SIGNAL(launchPDFApplicationChanged(bool)), SLOT(setLaunchPDFApplication(bool)));
     connect(m_Dialog, SIGNAL(loadImageSignal()), SLOT(loadInputImage()));
     connect(m_Dialog, SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), model, SLOT(paintOnCanvas(PaintCanvasInterface*, const QVariant&)));
     connect(model, SIGNAL(previewImageChanged(const QImage&)), dialog, SLOT(setPreviewImage(const QImage&)));
