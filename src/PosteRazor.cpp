@@ -478,7 +478,7 @@ double PosteRazor::getPosterDimension(PosteRazorEnums::ePosterSizeModes mode, bo
     if (getPosterSizeMode() != mode){
         // These are needed for conversion from and to ePosterSizeModePercentual
         const QSizeF inputImageSize = getInputImageSize();
-        const double inputImageDimension = convertDistanceToCm(width?inputImageSize.width():inputImageSize.width());
+        const double inputImageDimension = convertDistanceToCm(width?inputImageSize.width():inputImageSize.height());
 
         // First convert to absolute size mode (cm)
         if (getPosterSizeMode() == PosteRazorEnums::ePosterSizeModePages) {
