@@ -523,26 +523,26 @@ Qt::Alignment PosteRazor::getPosterAlignment() const
     return m_posterAlignment;
 }
 
-QSize PosteRazor::getPreviewSize(const QSizeF &imageSize, const QSize &boxSize, bool enlargeToFit) const
+QSizeF PosteRazor::getPreviewSize(const QSizeF &imageSize, const QSize &boxSize, bool enlargeToFit) const
 {
-    QSize result(imageSize.toSize());
+    QSizeF result(imageSize);
 
-    QSize boundedBoxSize(boxSize);
+    QSizeF boundedBoxSize(boxSize);
     if (!enlargeToFit)
-        boundedBoxSize = boundedBoxSize.boundedTo(imageSize.toSize());
+        boundedBoxSize = boundedBoxSize.boundedTo(imageSize);
 
     result.scale(boundedBoxSize, Qt::KeepAspectRatio);
     return result;
 }
 
-QSize PosteRazor::getInputImagePreviewSize(const QSize &boxSize) const
+QSizeF PosteRazor::getInputImagePreviewSize(const QSize &boxSize) const
 {
     return getPreviewSize(getInputImageSizePixels(), boxSize, false);
 }
 
 void PosteRazor::createPreviewImage(const QSize &size) const
 {
-    QImage previewImage = m_imageIO->getImageAsRGB(getInputImagePreviewSize(size));
+    QImage previewImage = m_imageIO->getImageAsRGB(getInputImagePreviewSize(size).toSize());
     emit previewImageChanged(previewImage);
 }
 
@@ -554,7 +554,7 @@ void PosteRazor::paintImageOnCanvas(PaintCanvasInterface *paintCanvas) const
         double x_offset, y_offset;
 
         const QSize inputImageSize = getInputImageSizePixels();
-        const QSize boxSize = getPreviewSize(inputImageSize, QSize((int)canvasWidth, (int)canvasHeight), false);
+        const QSizeF boxSize = getPreviewSize(inputImageSize, QSize((int)canvasWidth, (int)canvasHeight), false);
         x_offset = (canvasWidth - boxSize.width()) / 2;
         y_offset = (canvasHeight - boxSize.height()) / 2;
         
@@ -575,7 +575,7 @@ void PosteRazor::paintPaperOnCanvas(PaintCanvasInterface *paintCanvas, bool pain
     paintCanvas->getSize(canvasWidth, canvasHeight);
 
     const QSizeF paperSize = getPaperSize();
-    const QSize boxSize = getPreviewSize(paperSize, QSize((int)canvasWidth, (int)canvasHeight), true);
+    const QSizeF boxSize = getPreviewSize(paperSize, QSize((int)canvasWidth, (int)canvasHeight), true);
     const double x_offset = (canvasWidth - (double)boxSize.width()) / 2.0;
     const double y_offset = (canvasHeight - (double)boxSize.height()) / 2.0;
     const double UnitOfLengthToPixelfactor = (double)boxSize.width()/paperSize.width();
@@ -616,7 +616,7 @@ void PosteRazor::paintPosterOnCanvas(PaintCanvasInterface *paintCanvas) const
         pagesHorizontal*pagePrintableAreaSize.width() - (pagesHorizontal-1)*getOverlappingWidth() + getPaperBorderLeft() + getPaperBorderRight(),
         pagesVertical*pagePrintableAreaSize.height() - (pagesVertical-1)*getOverlappingHeight() + getPaperBorderTop() + getPaperBorderBottom()
     );
-    const QSize boxSize = getPreviewSize(posterSize, QSize((int)canvasWidth, (int)canvasHeight), true);
+    const QSizeF boxSize = getPreviewSize(posterSize, QSize((int)canvasWidth, (int)canvasHeight), true);
     const double x_offset = (canvasWidth - boxSize.width()) / 2;
     const double y_offset = (canvasHeight - boxSize.height()) / 2;
     const double UnitOfLengthToPixelfactor = (double)boxSize.width()/posterSize.width();
