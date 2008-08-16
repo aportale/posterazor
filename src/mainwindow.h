@@ -46,8 +46,7 @@ public:
     void setPaperBorderBottom(double border);
     void setPaperBorderLeft(double border);
 
-    void setCustomPaperWidth(double width);
-    void setCustomPaperHeight(double height);
+    void setCustomPaperSize(const QSizeF &size);
     void setUseCustomPaperSize(bool useIt);
 
     void setOverlappingWidth(double width);

@@ -110,14 +110,10 @@ void MainWindow::setPaperBorderLeft(double border)
     m_paperBorderLeftInput->setValue(border);
 }
 
-void MainWindow::setCustomPaperWidth(double width)
+void MainWindow::setCustomPaperSize(const QSizeF &size)
 {
-    m_paperCustomWidthSpinner->setValue(width);
-}
-
-void MainWindow::setCustomPaperHeight(double height)
-{
-    m_paperCustomHeightSpinner->setValue(height);
+    m_paperCustomWidthSpinner->setValue(size.width());
+    m_paperCustomHeightSpinner->setValue(size.height());
 }
 
 void MainWindow::setUseCustomPaperSize(bool useIt)

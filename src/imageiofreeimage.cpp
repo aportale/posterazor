@@ -301,9 +301,9 @@ public:
         err = pdfOutput->startSaving(fileName, pagesCount, sizeCm.width(), sizeCm.height());
         if (!err) {
             if (FreeImage_GetFileType(m_imageFileName.toAscii(), 0) == FIF_JPEG)
-                err = pdfOutput->saveImage(m_imageFileName, imageSize.width(), imageSize.height(), getColorDataType());
+                err = pdfOutput->saveImage(m_imageFileName, imageSize, getColorDataType());
             else
-                err = pdfOutput->saveImage(imageData, imageSize.width(), imageSize.height(), getBitsPerPixel(), getColorDataType(), rgbPalette, FreeImage_GetColorsUsed(m_bitmap));
+                err = pdfOutput->saveImage(imageData, imageSize, getBitsPerPixel(), getColorDataType(), rgbPalette, FreeImage_GetColorsUsed(m_bitmap));
         }
 
         if (!err) {

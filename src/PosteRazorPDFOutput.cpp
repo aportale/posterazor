@@ -110,7 +110,7 @@ public:
         return err;
     }
 
-    int saveImage(const QString &jpegFileName, int widthPixels, int heightPixels, ColorTypes::eColorTypes colorType)
+    int saveImage(const QString &jpegFileName, const QSize &sizePixels, ColorTypes::eColorTypes colorType)
     {
         int err = 0;
 
@@ -149,7 +149,7 @@ public:
                 "stream" LINEFEED,
                 m_pdfObjectCount,
                 colorType==ColorTypes::eColorTypeCMYK?"/DeviceCMYK":"/DeviceRGB ", // Leaving space after RGB for eventual manual patching to CMYK
-                jpegFileSize, widthPixels, heightPixels
+                jpegFileSize, sizePixels.width(), sizePixels.height()
             );
         }
 
@@ -186,12 +186,12 @@ public:
         return err;
     }
 
-    int saveImage(unsigned char *imageData, int widthPixels, int heightPixels, int bitPerPixel, ColorTypes::eColorTypes colorType, unsigned char *rgbPalette, int paletteEntries)
+    int saveImage(unsigned char *imageData, const QSize &sizePixels, int bitPerPixel, ColorTypes::eColorTypes colorType, unsigned char *rgbPalette, int paletteEntries)
     {
         int err = 0;
         err = AddImageResourcesAndXObject();
 
-        const unsigned int imageBytesCount = getImageBytesCount(QSize(widthPixels, heightPixels), bitPerPixel);
+        const unsigned int imageBytesCount = getImageBytesCount(sizePixels, bitPerPixel);
         unsigned int imageBytesCountCompressed = (unsigned int)(ceil((double)imageBytesCount*1.05))+12;
         unsigned char *imageDataCompressed = NULL;
 
@@ -243,7 +243,7 @@ public:
             "/BitsPerComponent %d" LINEFEED\
             ">>" LINEFEED\
             "stream" LINEFEED,
-            m_pdfObjectCount, colorSpaceString, (int)imageBytesCountCompressed, widthPixels, heightPixels,
+            m_pdfObjectCount, colorSpaceString, (int)imageBytesCountCompressed, sizePixels.width(), sizePixels.height(),
             (
                 colorType == ColorTypes::eColorTypePalette?bitPerPixel
                 :colorType == ColorTypes::eColorTypeMonochrome?bitPerPixel
