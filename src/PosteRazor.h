@@ -73,13 +73,11 @@ public:
     QSizeF getCustomPaperSize() const;
     bool getUseCustomPaperSize() const;
     QSizeF getPaperSize() const;
-    double getPrintablePaperAreaWidth() const;
-    double getPrintablePaperAreaHeight() const;
+    QSizeF getPrintablePaperAreaSize() const;
     double getOverlappingWidth() const;
     double getOverlappingHeight() const;
     Qt::Alignment getOverlappingPosition() const;
-    double getPosterWidth(PosteRazorEnums::ePosterSizeModes mode) const;
-    double getPosterHeight(PosteRazorEnums::ePosterSizeModes mode) const;
+    QSizeF getPosterSize(PosteRazorEnums::ePosterSizeModes mode) const;
     PosteRazorEnums::ePosterSizeModes getPosterSizeMode() const;
     Qt::Alignment getPosterAlignment() const;
     ImageIOTypes::eImageFormats getPosterOutputFormat() const;

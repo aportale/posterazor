@@ -100,44 +100,53 @@
 			case 'features':
 ?>
 				<h2><?= text('Features', 'Funktionen') ?></h2>
-				<ul>
-					<li>
-						<strong><?= text('Input image formats', 'Ausgangs-Bildformate') ?>.</strong> <?= text('All image formats that', 'Alle Bildformate, die') ?> <a href="http://freeimage.sourceforge.net/features.html">FreeImage</a> <?= text('can read', 'lesen kann,') ?> <i><?= text('should', 'sollten') ?></i> <?= text('be usable as input for the PosteRazor', 'als Ausgangsmaterial für den PosteRazor geeignet sein') ?>:
+				<dl>
+					<dt><?= text('Input image formats', 'Ausgangs-Bildformate') ?></dt>
+					<dd>
+						<?= text('All image formats that', 'Alle Bildformate, die') ?> <a href="http://freeimage.sourceforge.net/features.html">FreeImage</a> <?= text('can read', 'lesen kann,') ?> <i><?= text('should', 'sollten') ?></i> <?= text('be usable as input for the PosteRazor', 'als Ausgangsmaterial für den PosteRazor geeignet sein') ?>:
 						<div class="fileformats">BMP, DDS, Dr. Halo, GIF, ICO, IFF, JBIG, JPEG/JIF, KOALA, LBM, Kodak PhotoCD, PCX, PBM, PGM, PNG, PPM, PhotoShop PSD, Sun RAS, TARGA, TIFF, WBMP, XBM, XPM</div>
-					</li>
-					<li>
-						<strong><?= text('Image types', 'Farbtypen') ?>.</strong> <?= text('PosteRazor can handle the following image color types', 'Die folgenden Bildfarbtypen werden unterstützt') ?>:
+					</dd>
+					<dt><?= text('Image types', 'Farbtypen') ?></dt>
+					<dd>
+						<?= text('PosteRazor can handle the following image color types', 'Die folgenden Bildfarbtypen werden unterstützt') ?>:
 						<div class="fileformats"><?= text('Monochrome, Grayscale, 4 Bit palette, 8 Bit palette, 24 Bit RGB, 48 Bit RGB ', 'Monochrom, Graustufen, 4-Bit Palette, 8-Bit Palette, 24-Bit RGB, 48-Bit RGB ') ?><small>(<?= text('only via TIFF and PNG', 'nur bei TIFF und PNG') ?>)</small>, <?= text('32 Bit CMYK', '32-Bit CMYK') ?> <small>(<?= text('only via', 'nur bei') ?> TIFF)</small></div>
 						<?= text('32 Bit RGBA images can be loaded, but are transformed to 24 Bit RGB by "merging" them with a white background.', '32-Bit RGBA-Bilder sind lesbar, werden allerdings nach 24-Bit RGB transformiert, indem sie auf einen weißen Hintergrund "flachgerechnet" werden.') ?>
-					</li>
-					<li>
-						<strong><?= text('Dimension Units', 'Längeneinheiten') ?>.</strong> <?= text('Because people around the world invented so many different dimension units, PosteRazor supports quite a few', 'Weil die Menschen rund um den Erdball so viele verschiedene Längeneinheiten erdacht haben, unterstützt der PosteRazor einige von ihnen') ?>:
+					</dd>
+					<dt><?= text('Dimension Units', 'Längeneinheiten') ?></dt>
+					<dd>
+						<?= text('Because people around the world invented so many different dimension units, PosteRazor supports quite a few', 'Weil die Menschen rund um den Erdball so viele verschiedene Längeneinheiten erdacht haben, unterstützt der PosteRazor einige von ihnen') ?>:
 						<div class="fileformats">m, mm, cm, inch, ft, pt<small>(72<?= text('th', '-tel') ?> inch)</small></div>
-					</li>
-					<li>
-						<strong><?= text('Printer page layout', 'Druckerpapier-Maße') ?>.</strong> <?= text('The page size and orientation of the printer where the poster will be printed can be set manually or selected one from the following list of predefined formats', 'Die Seitengröße und -ausrichtung des Druckers, auf dem das Bild gedruckt werden soll, kann manuell eingestellt werden oder aus der folgenden Liste gewählt werden') ?>:
+					</dd>
+					<dt><?= text('Printer page layout', 'Druckerpapier-Maße') ?></dt>
+					<dd>
+						<?= text('The page size and orientation of the printer where the poster will be printed can be set manually or selected one from the following list of predefined formats', 'Die Seitengröße und -ausrichtung des Druckers, auf dem das Bild gedruckt werden soll, kann manuell eingestellt werden oder aus der folgenden Liste gewählt werden') ?>:
 						<div class="fileformats">DIN A4, DIN A3, Legal, Letter, Tabloid</div>
 						<?= text('The size limit for one page is 5 meters (16.4 feet), which is the maximum that PDF allows.', 'Die Größenbegrezung einer einzelnen Seite liegt bei fünf Metern. Dies ist die maximale von PDF unterstützte Größe.') ?>
-					</li>
-					<li>
-						<strong><?= text('Poster size', 'Größe des Posters') ?>.</strong> <?= text('The size of the final poster can be set one of these three ways', 'Die Größe des finalen Posters kann auf eine dieser drei Weisen definiert werden') ?>:
-						<ul>
-							<li><strong><?= text('Absolute image size', 'Absolute Bildmaße') ?></strong>: <?= text('You want to have a specific size of your poster', 'Genaue, spezifische Bildmaße werden angegeben') ?>.</li>
-							<li><strong><?= text('Size in Pages', 'Größe in Seiten') ?></strong>: <?= text('You want to use whole paper sheets and specify how many of them of them you want to use', 'Die Druckbögen sollen komplett genutzt werden, und es wird angegeben, wieviele von ihnen für den Druck genutzt werden') ?>.</li>
-							<li><strong><?= text('Image Size in percent', 'Prozentuelle Bildmaße') ?></strong>: <?= text('Your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to scale the image by a certain factor', 'Das Ausgangsbild hat bestimmte Maße, die durch die Anzahl der Pixel und der Auflösung in dpi ("dots per inch") bestimmt sind. Das Bild soll um einen bestimmten Faktor skaliert werden.') ?>.</li>
-						</ul>
+					</dd>
+					<dt><?= text('Poster size', 'Größe des Posters') ?></dt>
+					<dd>
+						<?= text('The size of the final poster can be set one of these three ways', 'Die Größe des finalen Posters kann auf eine dieser drei Weisen definiert werden') ?>:
+						<dl>
+							<dt><?= text('Absolute image size', 'Absolute Bildmaße') ?></dt>
+							<dd><?= text('You want to have a specific size of your poster', 'Genaue, spezifische Bildmaße werden angegeben') ?>.</dd>
+							<dt><?= text('Size in Pages', 'Größe in Seiten') ?></dt>
+							<dd><?= text('You want to use whole paper sheets and specify how many of them of them you want to use', 'Die Druckbögen sollen komplett genutzt werden, und es wird angegeben, wieviele von ihnen für den Druck genutzt werden') ?>.</dd>
+							<dt><?= text('Image Size in percent', 'Prozentuelle Bildmaße') ?></dt>
+							<dd><?= text('Your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to scale the image by a certain factor', 'Das Ausgangsbild hat bestimmte Maße, die durch die Anzahl der Pixel und der Auflösung in dpi ("dots per inch") bestimmt sind. Das Bild soll um einen bestimmten Faktor skaliert werden.') ?>.</dd>
+						</dl>
 						<p><?= text('The final size of the poster is theoretically unlimited. Let\'s say it this way: it is less limited that the ink of your printer', 'Die finale Größe des Posters ist theoretisch unbegrenzt. Anders gesagt: sie ist weniger begrenzt als die Druckertinte, die man zur Verfügung hat') ?> ;)</p>
 						<p><?= text('It is possible to select the alignment of the image on the total paper. This is useful if you want to keep the unused paper.', 'Es ist möglich, die Ausrichtung des Bildes auf dem gesamten Papier zu definieren. Dies ist nützlich, wenn die äußeren unbedruckten Papierränder nach dem Zusammenkleben nicht abgeschnitten werden sollen.') ?></p>
-					</li>
-					<li>
-						<strong><?= text('Image tile overlapping', 'Überlappung der Bildabschnitte') ?>.</strong> <?= text('For a bigger tolerance when cutting spare paper borders and for easier pasting, an overlapping width and height of an image tile over the next can be set', 'Um eine gewisse Fehlertoleranz beim Schneiden und Zusammenfügen der Bildabschnitte zu haben, kann die Höhe und Breite einer Überlappung eines Bildabschnitt über den nächsten definiert werden.') ?>.
-					</li>
-					<li>
-						<strong><?= text('PDF output', 'PDF-erstellung') ?>.</strong>
+					</dd>
+					<dt><?= text('Image tile overlapping', 'Überlappung der Bildabschnitte') ?></dt>
+					<dd>
+						<?= text('For a bigger tolerance when cutting spare paper borders and for easier pasting, an overlapping width and height of an image tile over the next can be set', 'Um eine gewisse Fehlertoleranz beim Schneiden und Zusammenfügen der Bildabschnitte zu haben, kann die Höhe und Breite einer Überlappung eines Bildabschnitt über den nächsten definiert werden.') ?>.
+					</dd>
+					<dt><?= text('PDF output', 'PDF-erstellung') ?></dt>
+					<dd>
 						<?= text('The PDF output is implemented with the maximum image quality and a good compression in mind. A source image is embedded once in the PDF document and referenced from every tile page. Image color types remain unchanged. As compression method, the PDF "FlateDecode filter" (zip) is used. If a Jpeg image is used as input it gets directly embedded into the document without recompression. The PDF version is 1.4, so any Acrobat Reader version 4 and higher should be able to read the resulting document.',
 						'Der PosteRazor wurde so konzipiert, dass die resultierende PDF-Datei die bestmögliche Bildqualität bei möglichst kleiner Dateigröße hat. Das Bild wird nur einmal in das PDF-Dokument eingebettet und auf den verschiedenen Seiten jeweils referenziert. Als Kompressionsmethode wird der PDF-übliche "FlateDecode-filter" (zip) benutzt. Wenn das Ausgangsformat ein Jpeg-Bild ist, wird es ohne erneute Komprimierung direkt eingebettet. Die PDF-version ist 1.4, sodass jeder Acrobat Reader ab Version 4 in der Lage sein sollte, das Dokument zu öffnen.') ?>
-					</li>
-				</ul>
+					</dd>
+				</dl>
 				<p><strong><?= text('Missing features', 'Fehlende Funktionen') ?>:</strong> <?= text('Cut lines/aids; Support of Jpeg-CMYK images; Support of 16 Bit Grayscale images; Embedding an ICC profile into the PDF if there is one embedded in the input image', 'Schnittlinen -hilfen; Unterstützung von CMYK-Jpeg; Unterstützung von 16-Bit-Graustufen-Bildern; ICC-Profile, die in einem Ausgangsbild eingebettet sein können im PDF einbetten.') ?></p>
 <?
 			break;

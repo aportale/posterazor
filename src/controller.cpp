@@ -239,16 +239,19 @@ void Controller::setDialogPosterOptions()
 
 void Controller::setDialogPosterDimensions(PosteRazorEnums::ePosterSizeModes excludedMode, bool widthExcluded)
 {
+    const QSizeF posterSizeAbsolute = m_PosteRazor->getPosterSize(PosteRazorEnums::ePosterSizeModeAbsolute);
+    const QSizeF posterSizePages = m_PosteRazor->getPosterSize(PosteRazorEnums::ePosterSizeModePages);
+    const QSizeF posterSizePercentual = m_PosteRazor->getPosterSize(PosteRazorEnums::ePosterSizeModePercentual);
     if (excludedMode != PosteRazorEnums::ePosterSizeModeAbsolute || !widthExcluded)
-        m_Dialog->setPosterWidthAbsolute(m_PosteRazor->getPosterWidth(PosteRazorEnums::ePosterSizeModeAbsolute));
+        m_Dialog->setPosterWidthAbsolute(posterSizeAbsolute.width());
     if (excludedMode != PosteRazorEnums::ePosterSizeModeAbsolute || widthExcluded)
-        m_Dialog->setPosterHeightAbsolute(m_PosteRazor->getPosterHeight(PosteRazorEnums::ePosterSizeModeAbsolute));
+        m_Dialog->setPosterHeightAbsolute(posterSizeAbsolute.height());
     if (excludedMode != PosteRazorEnums::ePosterSizeModePages || !widthExcluded)
-        m_Dialog->setPosterWidthPages(m_PosteRazor->getPosterWidth(PosteRazorEnums::ePosterSizeModePages));
+        m_Dialog->setPosterWidthPages(posterSizePages.width());
     if (excludedMode != PosteRazorEnums::ePosterSizeModePages || widthExcluded)
-        m_Dialog->setPosterHeightPages(m_PosteRazor->getPosterHeight(PosteRazorEnums::ePosterSizeModePages));
+        m_Dialog->setPosterHeightPages(posterSizePages.height());
     if (excludedMode != PosteRazorEnums::ePosterSizeModePercentual)
-        m_Dialog->setPosterSizePercentual(m_PosteRazor->getPosterWidth(PosteRazorEnums::ePosterSizeModePercentual));
+        m_Dialog->setPosterSizePercentual(posterSizePercentual.width());
     updatePreview();
 }
 

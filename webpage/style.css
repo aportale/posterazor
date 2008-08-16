@@ -119,6 +119,17 @@ body
 	margin: 0px;
 }
 
+#content dt
+{
+	font-weight: bold;
+	margin: 0 0 8px 0;
+}
+
+#content dd
+{
+	margin: 0 0 15px 20px;
+}
+
 #content li
 {
 	margin: 17px 0px 0px 0px;
