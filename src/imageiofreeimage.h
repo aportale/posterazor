@@ -45,7 +45,6 @@ public:
     double getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const;
     double getVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const;
     QSizeF getSize(UnitsOfLength::eUnitsOfLength unit) const;
-    QImage getImageAsRGB() const;
     QImage getImageAsRGB(const QSize &size) const;
     int getBitsPerPixel() const;
     ColorTypes::eColorTypes getColorDataType() const;

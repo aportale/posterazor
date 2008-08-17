@@ -144,17 +144,13 @@ QSizeF ImageIOFreeImage::getSize(UnitsOfLength::eUnitsOfLength unit) const
     return QSizeF(sizePixels.width() / getHorizontalDotsPerUnitOfLength(unit), sizePixels.height() / getVerticalDotsPerUnitOfLength(unit));
 }
 
-QImage ImageIOFreeImage::getImageAsRGB() const
-{
-    return getImageAsRGB(getSizePixels());
-}
-
 QImage ImageIOFreeImage::getImageAsRGB(const QSize &size) const
 {
-    QImage result(size, QImage::Format_RGB32);
+    const QSize resultSize = size.isValid()?size:getSizePixels();
+    QImage result(resultSize, QImage::Format_RGB32);
 
-    const int width = size.width();
-    const int height = size.height();
+    const int width = resultSize.width();
+    const int height = resultSize.height();
     const QSize sizePixels = getSizePixels();
 
     FIBITMAP* originalImage = m_bitmap;
@@ -194,7 +190,7 @@ QImage ImageIOFreeImage::getImageAsRGB(const QSize &size) const
         originalImage = temp24BPPImage;
     }
 
-    if (size != sizePixels) {
+    if (resultSize != sizePixels) {
         scaledImage = FreeImage_Rescale(originalImage, width, height, FILTER_BOX);
         originalImage = scaledImage;
     }
