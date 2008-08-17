@@ -28,7 +28,7 @@
 class QtPosteRazorSpinBox: public QDoubleSpinBox
 {
     Q_OBJECT
-    
+
 public:
     QtPosteRazorSpinBox(QWidget *parent);
     void setValue(double value);
@@ -38,7 +38,7 @@ protected:
     QAbstractSpinBox::StepEnabled stepEnabled() const;
 
 private slots:
-    void handleLineEditTextEdited(const QString & text);
+    void handleLineEditTextEdited(const QString &text);
     void stepBy(int steps);
 
 signals:

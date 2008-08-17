@@ -39,12 +39,10 @@ class PaintCanvasInterface
 {
 public:
     virtual ~PaintCanvasInterface() {}
-    
-    virtual void drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) = 0;
-    virtual void drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) = 0;
-    virtual void drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) = 0;
-    virtual void getSize(double &width, double &height) const = 0;
-    virtual void drawImage(double x, double y, double width, double height) = 0;
+
+    virtual void drawFilledRect(const QRectF &rect, const QBrush &brush) = 0;
+    virtual QSizeF getSize() const = 0;
+    virtual void drawImage(const QRectF &rect) = 0;
 };
 
 #endif // PAINTCANVASINTERFACE_H

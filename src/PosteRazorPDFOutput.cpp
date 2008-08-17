@@ -27,6 +27,7 @@
 #include "PaintCanvasInterface.h"
 #include "PosteRazorPDFOutput.h"
 #include <time.h>
+#include <QRectF>
 #define LINEFEED "\012"
 #define CM2PT(cm) ((cm) / 2.54 * 72)
 #define JPEGFILECOPYBUFFERSIZE 10000
@@ -411,11 +412,9 @@ public:
         return err;
     }
 
-    void drawFilledRect(double, double, double, double, unsigned char, unsigned char, unsigned char, unsigned char) {}
-    void drawRect(double, double, double, double, unsigned char, unsigned char, unsigned char, unsigned char) {}
-    void drawLine(double, double, double, double, unsigned char, unsigned char, unsigned char, unsigned char) {}
-    void getSize(double &, double &) const {}
-    void drawImage(double x, double y, double width, double height)
+    void drawFilledRect(const QRectF&, const QBrush &brush) {}
+    QSizeF getSize() const {return QSizeF();}
+    void drawImage(const QRectF &rect)
     {
         char imageCode[2048]="";
 
@@ -428,7 +427,7 @@ public:
             "Q "
             ,
             m_mediaboxWidth, m_mediaboxHeight,
-            CM2PT(width), CM2PT(height), CM2PT(x), m_mediaboxHeight-CM2PT(y)-CM2PT(height)
+            CM2PT(rect.width()), CM2PT(rect.height()), CM2PT(rect.x()), m_mediaboxHeight-CM2PT(rect.y())-CM2PT(rect.height())
         );
 
         strcat(m_pageContent, imageCode);

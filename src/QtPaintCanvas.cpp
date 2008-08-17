@@ -41,27 +41,14 @@ void QtPaintCanvas::paintEvent(QPaintEvent *event)
     m_qPainter = NULL;
 }
 
-void QtPaintCanvas::drawFilledRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
+void QtPaintCanvas::drawFilledRect(const QRectF &rect, const QBrush &brush)
 {
-    m_qPainter->fillRect(QRectF(x, y, qMax(width, 1.), qMax(height, 1.)), QColor(red, green, blue, alpha));
+    m_qPainter->fillRect(rect, brush);
 }
 
-void QtPaintCanvas::drawRect(double x, double y, double width, double height, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
+QSizeF QtPaintCanvas::getSize() const
 {
-    m_qPainter->setPen(qRgba(red, green, blue, alpha));
-    m_qPainter->drawRect(QRectF(x, y, width, height));
-}
-
-void QtPaintCanvas::drawLine(double x1, double y1, double x2, double y2, unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha)
-{
-    m_qPainter->setPen(qRgba(red, green, blue, alpha));
-    m_qPainter->drawLine(QLineF(x1, y1, x2, y2));
-}
-
-void QtPaintCanvas::getSize(double &width, double &height) const
-{
-    width = (double)(this->width());
-    height = (double)(this->height());
+    return this->size();
 }
 
 void QtPaintCanvas::setImage(const QImage &image)
@@ -70,11 +57,11 @@ void QtPaintCanvas::setImage(const QImage &image)
     repaint();
 }
 
-void QtPaintCanvas::drawImage(double x, double y, double width, double height)
+void QtPaintCanvas::drawImage(const QRectF &rect)
 {
-    double widthResizeFactor = width/(double)m_image.width();
+    double widthResizeFactor = rect.width()/(double)m_image.width();
     m_qPainter->setRenderHint(QPainter::SmoothPixmapTransform, widthResizeFactor < 2.75);
-    m_qPainter->drawImage(QRectF(x, y, width, height), m_image);
+    m_qPainter->drawImage(rect, m_image);
 }
 
 void QtPaintCanvas::setState(const QString &state)

@@ -24,6 +24,7 @@
 #include "imageiofreeimage.h"
 #include <QSettings>
 #include <QStringList>
+#include <QBrush>
 #include <math.h>
 
 const QLatin1String defaultValue_PaperFormat("DIN A4");
@@ -559,45 +560,37 @@ void PosteRazor::createPreviewImage(const QSize &size) const
 void PosteRazor::paintImageOnCanvas(PaintCanvasInterface *paintCanvas) const
 {
     if (getIsImageLoaded()) {
-        double canvasWidth = 0, canvasHeight = 0;
-        paintCanvas->getSize(canvasWidth, canvasHeight);
-        double x_offset, y_offset;
-
+        const QSizeF canvasSize = paintCanvas->getSize();
         const QSize inputImageSize = getInputImageSizePixels();
-        const QSizeF boxSize = getPreviewSize(inputImageSize, QSize((int)canvasWidth, (int)canvasHeight), false);
-        x_offset = (canvasWidth - boxSize.width()) / 2;
-        y_offset = (canvasHeight - boxSize.height()) / 2;
-        
+        const QSizeF boxSize = getPreviewSize(inputImageSize, canvasSize.toSize(), false);
+        QPointF offset((canvasSize.width() - boxSize.width()) / 2, (canvasSize.height() - boxSize.height()) / 2);
+
         // If the image is not downscaled, make sure that the coordinates are integers in order
-        // to prevent unneeded blurring (especially in OpenGL)
-        if (canvasWidth >= inputImageSize.width() && canvasHeight >= inputImageSize.height()) {
-            x_offset = floor(x_offset);
-            y_offset = floor(y_offset);
+        // to prevent unneeded blurring
+        if (canvasSize.width() >= inputImageSize.width() && canvasSize.height() >= inputImageSize.height()) {
+            offset.setX(floor(offset.x()));
+            offset.setY(floor(offset.y()));
         }
 
-        paintCanvas->drawImage(0 + x_offset, 0 + y_offset, boxSize.width(), boxSize.height());
+        paintCanvas->drawImage(QRectF(offset, boxSize));
     }
 }
 
 void PosteRazor::paintPaperOnCanvas(PaintCanvasInterface *paintCanvas, bool paintOverlapping) const
 {
-    double canvasWidth = 0, canvasHeight = 0;
-    paintCanvas->getSize(canvasWidth, canvasHeight);
-
+    const QSizeF canvasSize = paintCanvas->getSize();
     const QSizeF paperSize = getPaperSize();
-    const QSizeF boxSize = getPreviewSize(paperSize, QSize((int)canvasWidth, (int)canvasHeight), true);
-    const double x_offset = (canvasWidth - (double)boxSize.width()) / 2.0;
-    const double y_offset = (canvasHeight - (double)boxSize.height()) / 2.0;
-    const double UnitOfLengthToPixelfactor = (double)boxSize.width()/paperSize.width();
+    const QSizeF boxSize = getPreviewSize(paperSize, canvasSize.toSize(), true);
+    const QPointF offset((canvasSize.width() - boxSize.width()) / 2.0, (canvasSize.height() - boxSize.height()) / 2.0);
+    const double UnitOfLengthToPixelfactor = boxSize.width()/paperSize.width();
     const double borderTop = getPaperBorderTop() * UnitOfLengthToPixelfactor;
     const double borderRight = getPaperBorderRight() * UnitOfLengthToPixelfactor;
     const double borderBottom = getPaperBorderBottom() * UnitOfLengthToPixelfactor;
     const double borderLeft = getPaperBorderLeft() * UnitOfLengthToPixelfactor;
-    const double printableAreaWidth = boxSize.width() - borderLeft - borderRight;
-    const double printableAreaHeight = boxSize.height() - borderTop - borderBottom;
-    
-    paintCanvas->drawFilledRect(0 + x_offset, 0 + y_offset, boxSize.width(), boxSize.height(), 128, 128, 128, 255);
-    paintCanvas->drawFilledRect(0 + borderLeft + x_offset, 0 + borderTop + y_offset, printableAreaWidth, printableAreaHeight, 230, 230, 230, 255);
+    const QSizeF printableAreaSize(boxSize.width() - borderLeft - borderRight, boxSize.height() - borderTop - borderBottom);
+
+    paintCanvas->drawFilledRect(QRectF(offset, boxSize), QColor(128, 128, 128));
+    paintCanvas->drawFilledRect(QRectF(QPointF(borderLeft, borderTop) + offset, printableAreaSize), QColor(230, 230, 230));
 
     if (paintOverlapping) {
         const double overlappingWidth = getOverlappingWidth() * UnitOfLengthToPixelfactor;
@@ -608,16 +601,15 @@ void PosteRazor::paintPaperOnCanvas(PaintCanvasInterface *paintCanvas, bool pain
         const double overlappingLeft = (overlappingPosition & Qt::AlignLeft)?
             borderLeft:boxSize.width() - borderRight - overlappingWidth;
 
-        paintCanvas->drawFilledRect(borderLeft + x_offset, overlappingTop + y_offset, printableAreaWidth, overlappingHeight, 255, 128, 128, 255);
-        paintCanvas->drawFilledRect(overlappingLeft + x_offset, borderTop + y_offset, overlappingWidth, printableAreaHeight, 255, 128, 128, 255);
+        const QColor overlappingBrush(255, 128, 128);
+        paintCanvas->drawFilledRect(QRectF(QPointF(borderLeft, overlappingTop) + offset, QSizeF(printableAreaSize.width(), overlappingHeight)), overlappingBrush);
+        paintCanvas->drawFilledRect(QRectF(QPointF(overlappingLeft, borderTop) + offset, QSizeF(overlappingWidth, printableAreaSize.height())), overlappingBrush);
     }
 }
 
 void PosteRazor::paintPosterOnCanvas(PaintCanvasInterface *paintCanvas) const
 {
-    double canvasWidth = 0, canvasHeight = 0;
-    paintCanvas->getSize(canvasWidth, canvasHeight);
-
+    const QSizeF canvasSize = paintCanvas->getSize();
     QSizeF pagePrintableAreaSize = getPrintablePaperAreaSize();
     const QSizeF posteraSizePages = getPosterSize(PosteRazorEnums::ePosterSizeModePages);
     const int pagesHorizontal = (int)ceil(posteraSizePages.width());
@@ -626,58 +618,56 @@ void PosteRazor::paintPosterOnCanvas(PaintCanvasInterface *paintCanvas) const
         pagesHorizontal*pagePrintableAreaSize.width() - (pagesHorizontal-1)*getOverlappingWidth() + getPaperBorderLeft() + getPaperBorderRight(),
         pagesVertical*pagePrintableAreaSize.height() - (pagesVertical-1)*getOverlappingHeight() + getPaperBorderTop() + getPaperBorderBottom()
     );
-    const QSizeF boxSize = getPreviewSize(posterSize, QSize((int)canvasWidth, (int)canvasHeight), true);
-    const double x_offset = (canvasWidth - boxSize.width()) / 2;
-    const double y_offset = (canvasHeight - boxSize.height()) / 2;
-    const double UnitOfLengthToPixelfactor = (double)boxSize.width()/posterSize.width();
+    const QSizeF boxSize = getPreviewSize(posterSize, canvasSize.toSize(), true);
+    const QPointF offset((canvasSize.width() - boxSize.width()) / 2, (canvasSize.height() - boxSize.height()) / 2);
+    const double UnitOfLengthToPixelfactor = boxSize.width()/posterSize.width();
 
     const double borderTop = getPaperBorderTop() * UnitOfLengthToPixelfactor;
     const double borderRight = getPaperBorderRight() * UnitOfLengthToPixelfactor;
     const double borderBottom = getPaperBorderBottom() * UnitOfLengthToPixelfactor;
     const double borderLeft = getPaperBorderLeft() * UnitOfLengthToPixelfactor;
-    const double posterPrintableAreaWidth = boxSize.width() - borderLeft - borderRight;
-    const double posterPrintableAreaHeight = boxSize.height() - borderTop - borderBottom;
+    const QSizeF posterPrintableAreaSize(boxSize.width() - borderLeft - borderRight, boxSize.height() - borderTop - borderBottom);
 
-    paintCanvas->drawFilledRect(x_offset, y_offset, boxSize.width(), boxSize.height(), 128, 128, 128, 255);
-    paintCanvas->drawFilledRect(borderLeft + x_offset, borderTop + y_offset, posterPrintableAreaWidth, posterPrintableAreaHeight, 230, 230, 230, 255);
+    paintCanvas->drawFilledRect(QRectF(offset, boxSize), QColor(128, 128, 128));
+    paintCanvas->drawFilledRect(QRectF(QPointF(borderLeft, borderTop) + offset, posterPrintableAreaSize), QColor(230, 230, 230));
 
     const QSizeF posterSizeAbsolute = getPosterSize(PosteRazorEnums::ePosterSizeModeAbsolute);
-    const double imageWidth = posterSizeAbsolute.width() * UnitOfLengthToPixelfactor;
-    const double imageHeight = posterSizeAbsolute.height() * UnitOfLengthToPixelfactor;
-
+    const QSizeF imageSize = posterSizeAbsolute * UnitOfLengthToPixelfactor;
     const Qt::Alignment alignment = getPosterAlignment();
 
     paintCanvas->drawImage(
-        (
-            alignment & Qt::AlignLeft?borderLeft
-            :alignment & Qt::AlignHCenter?qBound(borderLeft, ((double)boxSize.width() - imageWidth) / 2, borderLeft + posterPrintableAreaWidth - imageWidth)
-            :(borderLeft + posterPrintableAreaWidth - imageWidth)
+        QRectF(
+            QPointF(
+                (
+                    alignment & Qt::AlignLeft?borderLeft
+                    :alignment & Qt::AlignHCenter?qBound(borderLeft, (boxSize.width() - imageSize.width()) / 2, borderLeft + posterPrintableAreaSize.width() - imageSize.width())
+                    :(borderLeft + posterPrintableAreaSize.width() - imageSize.width())
+                ) + offset.x(),
+                (
+                    alignment & Qt::AlignTop?borderTop
+                    :alignment & Qt::AlignVCenter?qBound(borderTop, (boxSize.height() - imageSize.height()) / 2, borderTop + posterPrintableAreaSize.height() - imageSize.height())
+                    :(borderTop + posterPrintableAreaSize.height() - imageSize.height())
+                ) + offset.y()
+            ),
+            imageSize
         )
-        + x_offset,
-
-        (
-            alignment & Qt::AlignTop?borderTop
-            :alignment & Qt::AlignVCenter?qBound(borderTop, ((double)boxSize.height() - imageHeight) / 2, borderTop + posterPrintableAreaHeight - imageHeight)
-            :(borderTop + posterPrintableAreaHeight - imageHeight)
-        )
-        + y_offset,
-        imageWidth, imageHeight
     );
 
     const double overlappingHeight = getOverlappingHeight() * UnitOfLengthToPixelfactor;
     const double overlappingWidth = getOverlappingWidth() * UnitOfLengthToPixelfactor;
     pagePrintableAreaSize *= UnitOfLengthToPixelfactor;
 
+    const QColor overLappingColor(255, 128, 128, 128);
     double overlappingRectangleYPosition = borderTop;
     for (int pagesRow = 0; pagesRow < pagesVertical - 1; pagesRow++) {
         overlappingRectangleYPosition += pagePrintableAreaSize.height() - overlappingHeight;
-        paintCanvas->drawFilledRect(x_offset, overlappingRectangleYPosition + y_offset, boxSize.width(), overlappingHeight, 255, 128, 128, 128);
+        paintCanvas->drawFilledRect(QRectF(QPointF(0, overlappingRectangleYPosition) + offset, QSizeF(boxSize.width(), overlappingHeight)), overLappingColor);
     }
 
     double overlappingRectangleXPosition = borderLeft;
     for (int pagesColumn = 0; pagesColumn < pagesHorizontal - 1; pagesColumn++) {
         overlappingRectangleXPosition += pagePrintableAreaSize.width() - overlappingWidth;
-        paintCanvas->drawFilledRect(overlappingRectangleXPosition + x_offset, y_offset, overlappingWidth, boxSize.height(), 255, 128, 128, 128);
+        paintCanvas->drawFilledRect(QRectF(QPointF(overlappingRectangleXPosition, 0) + offset, QSizeF(overlappingWidth, boxSize.height())), overLappingColor);
     }
 }
 
@@ -690,12 +680,8 @@ void PosteRazor::paintPosterPageOnCanvas(PaintCanvasInterface *paintCanvas, int 
     const int row = ((int)(floor((double)page / (double)columsCount)));
 
     const QSizeF posterSizeAbsolute = getPosterSize(PosteRazorEnums::ePosterSizeModeAbsolute);
-    const double posterImageWidthCm = convertDistanceToCm(posterSizeAbsolute.width());
-    const double posterImageHeightCm = convertDistanceToCm(posterSizeAbsolute.height());
-    const QSize printablePaperAreaSizeCm(
-        convertDistanceToCm(getPrintablePaperAreaSize().width()),
-        convertDistanceToCm(getPrintablePaperAreaSize().height())
-    );
+    const QSizeF posterImageSizeCm = convertSizeToCm(posterSizeAbsolute);
+    const QSizeF printablePaperAreaSizeCm = convertSizeToCm(getPrintablePaperAreaSize());
     const double overlappingWidthCm = convertDistanceToCm(getOverlappingWidth());
     const double overlappingHeightCm = convertDistanceToCm(getOverlappingHeight());
     const QSize printablePosterAreaSizeCm(
@@ -712,22 +698,22 @@ void PosteRazor::paintPosterPageOnCanvas(PaintCanvasInterface *paintCanvas, int 
     );
     const Qt::Alignment alignment = getPosterAlignment();
     double imageOffsetFromLeftPosterBorderCm = (
-        alignment & Qt::AlignRight?posterTotalSizeCm.width() - posterImageWidthCm - borderLeftCm
-        :alignment & Qt::AlignHCenter?(posterTotalSizeCm.width() - posterImageWidthCm)/2 - borderLeftCm
+        alignment & Qt::AlignRight?posterTotalSizeCm.width() - posterImageSizeCm.width() - borderLeftCm
+        :alignment & Qt::AlignHCenter?(posterTotalSizeCm.width() - posterImageSizeCm.width())/2 - borderLeftCm
         :-borderLeftCm
     );
-    imageOffsetFromLeftPosterBorderCm = qBound(.0, imageOffsetFromLeftPosterBorderCm, posterTotalSizeCm.width() - posterImageWidthCm - borderLeftCm - borderRightCm);
+    imageOffsetFromLeftPosterBorderCm = qBound(.0, imageOffsetFromLeftPosterBorderCm, posterTotalSizeCm.width() - posterImageSizeCm.width() - borderLeftCm - borderRightCm);
     double imageOffsetFromTopPosterBorderCm = (
-        alignment & Qt::AlignBottom?posterTotalSizeCm.height() - posterImageHeightCm - borderTopCm
-        :alignment & Qt::AlignVCenter?(posterTotalSizeCm.height() - posterImageHeightCm)/2 - borderTopCm
+        alignment & Qt::AlignBottom?posterTotalSizeCm.height() - posterImageSizeCm.height() - borderTopCm
+        :alignment & Qt::AlignVCenter?(posterTotalSizeCm.height() - posterImageSizeCm.height())/2 - borderTopCm
         :-borderTopCm
     );
-    imageOffsetFromTopPosterBorderCm = qBound(.0, imageOffsetFromTopPosterBorderCm, posterTotalSizeCm.height() - posterImageHeightCm - borderTopCm - borderBottomCm);
+    imageOffsetFromTopPosterBorderCm = qBound(.0, imageOffsetFromTopPosterBorderCm, posterTotalSizeCm.height() - posterImageSizeCm.height() - borderTopCm - borderBottomCm);
     const QPointF pageOffsetToImageFromTopLeftCm(
         column * (printablePaperAreaSizeCm.width()- overlappingWidthCm) - imageOffsetFromLeftPosterBorderCm,
         row * (printablePaperAreaSizeCm.height() - overlappingHeightCm) - imageOffsetFromTopPosterBorderCm
     );
-    paintCanvas->drawImage(-pageOffsetToImageFromTopLeftCm.x(), -pageOffsetToImageFromTopLeftCm.y(), posterImageWidthCm, posterImageHeightCm);
+    paintCanvas->drawImage(QRectF(-pageOffsetToImageFromTopLeftCm, posterImageSizeCm));
 }
 
 void PosteRazor::paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVariant &options) const
