@@ -23,16 +23,11 @@
 #ifndef IMAGEIOFREEIMAGE_H
 #define IMAGEIOFREEIMAGE_H
 
-#include "UnitsOfLength.h"
-#include "ColorTypes.h"
-#include "ImageIOTypes.h"
-#include <QObject>
-#include <QImage>
+#include "imageiointerface.h"
 
-class PainterInterface;
 struct FIBITMAP;
 
-class ImageIOFreeImage: public QObject
+class ImageIOFreeImage: public QObject, public ImageIOInterface
 {
 public:
     ImageIOFreeImage(QObject *parent = 0);

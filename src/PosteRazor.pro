@@ -1,11 +1,8 @@
-TEMPLATE = app
-
 SOURCES += \
     PaperFormats.cpp \
     UnitsOfLength.cpp \
     ImageIOTypes.cpp \
     PosteRazor.cpp \
-    imageiofreeimage.cpp \
     PosteRazorPDFOutput.cpp \
     mainwindow.cpp \
     QtPosteRazorSpinBox.cpp \
@@ -16,12 +13,12 @@ SOURCES += \
 
 HEADERS += \
     ColorTypes.h \
+    imageiointerface.h \
     ImageIOTypes.h \
     UnitsOfLength.h \
     PaperFormats.h \
     PaintCanvasInterface.h \
     PosteRazor.h \
-    imageiofreeimage.h \
     PosteRazorPDFOutput.h \
     mainwindow.h \
     QtPosteRazorSpinBox.h \
@@ -29,24 +26,7 @@ HEADERS += \
     controller.h \
     PosteRazorWizardDialogController.h
 
-INCLUDEPATH += \
-    tools \
-    posterazor \
-    posterazor_ui_qt \
-    posterazor_ui_common \
-    thirdparty/FreeImage/Dist
-
-win32:LIBS += \
-    thirdparty/FreeImage/Dist/FreeImage.lib
-
-unix:LIBS += \
-    -L/usr/lib \
-    -lfreeimage
-
-DEFINES += \
-    FREEIMAGE_LIB
-
-DEFINES -= \
+win32:DEFINES -= \
     UNICODE
 
 FORMS += \
@@ -68,3 +48,22 @@ TRANSLATIONS += \
     pl.ts \
     pt_BR.ts \
     zh_CN.ts
+
+DEFINES += FREEIMAGE_LIB
+
+contains (DEFINES, FREEIMAGE_LIB) {
+    SOURCES += \
+        imageiofreeimage.cpp
+
+    HEADERS += \
+        imageiofreeimage.h
+
+    win32:INCLUDEPATH += \
+        thirdparty/FreeImage/Dist
+
+    win32:LIBS += \
+        thirdparty/FreeImage/Dist/FreeImage.lib
+
+    unix:LIBS += \
+        -lfreeimage
+}

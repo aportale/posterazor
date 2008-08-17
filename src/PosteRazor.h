@@ -30,7 +30,7 @@
 #include <QObject>
 
 class QSettings;
-class ImageIOFreeImage;
+class ImageIOInterface;
 
 class PosteRazorEnums
 {
@@ -132,7 +132,7 @@ signals:
     void previewImageChanged(const QImage &image) const;
 
 private:
-    ImageIOFreeImage*                       m_imageIO;
+    ImageIOInterface*                       m_imageIO;
 
     PosteRazorEnums::ePosterSizeModes       m_posterSizeMode;
     double                                  m_posterDimension;

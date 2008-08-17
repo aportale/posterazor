@@ -21,7 +21,11 @@
 */
 
 #include "PosteRazor.h"
-#include "imageiofreeimage.h"
+#if defined (FREEIMAGE_LIB)
+#    include "imageiofreeimage.h"
+#else
+#    include "imageioqt.h"
+#endif
 #include <QSettings>
 #include <QStringList>
 #include <QBrush>
@@ -70,7 +74,12 @@ PosteRazor::PosteRazor(QObject *parent)
 
     , m_unitOfLength(UnitsOfLength::eUnitOfLengthCentimeter)
 {
-    m_imageIO = new ImageIOFreeImage(this);
+    m_imageIO =
+#if defined (FREEIMAGE_LIB)
+        new ImageIOFreeImage(this);
+#else
+        new ImageIOQt(this);
+#endif
 }
 
 bool PosteRazor::readSettings(const QSettings *settings)
