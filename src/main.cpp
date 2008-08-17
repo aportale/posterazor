@@ -31,6 +31,17 @@ int main (int argc, char **argv)
 {
     QApplication a(argc, argv);
 
+#if 0
+    Q_ASSERT(argc == 3);
+    PosteRazor posteRazor;
+    QString loadErrorMessage;
+    if (posteRazor.loadInputImage(argv[1], loadErrorMessage)) {
+        const int err = posteRazor.savePoster(argv[2]);
+        Q_ASSERT(err == 0);
+    }
+    return 0;
+#else
+
     QTranslator myAppTranslator;
     myAppTranslator.load(":/Translations/" + QLocale::system().name());
     a.installTranslator(&myAppTranslator);
@@ -56,4 +67,5 @@ int main (int argc, char **argv)
     controller.writeSettings(&settings);
 
     return appReturn;
+#endif
 }
