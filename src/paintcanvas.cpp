@@ -20,18 +20,18 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "QtPaintCanvas.h"
+#include "paintcanvas.h"
 #include <QImage>
 #include <QPainter>
 
-QtPaintCanvas::QtPaintCanvas(QWidget *parent)
+PaintCanvas::PaintCanvas(QWidget *parent)
     : QWidget(parent)
     , m_qPainter(NULL)
     , m_state("image")
 {
 }
 
-void QtPaintCanvas::paintEvent(QPaintEvent *event)
+void PaintCanvas::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event)
     QPainter painter(this);
@@ -41,30 +41,30 @@ void QtPaintCanvas::paintEvent(QPaintEvent *event)
     m_qPainter = NULL;
 }
 
-void QtPaintCanvas::drawFilledRect(const QRectF &rect, const QBrush &brush)
+void PaintCanvas::drawFilledRect(const QRectF &rect, const QBrush &brush)
 {
     m_qPainter->fillRect(rect, brush);
 }
 
-QSizeF QtPaintCanvas::getSize() const
+QSizeF PaintCanvas::getSize() const
 {
     return this->size();
 }
 
-void QtPaintCanvas::setImage(const QImage &image)
+void PaintCanvas::setImage(const QImage &image)
 {
     m_image = image;
     repaint();
 }
 
-void QtPaintCanvas::drawImage(const QRectF &rect)
+void PaintCanvas::drawImage(const QRectF &rect)
 {
     double widthResizeFactor = rect.width()/(double)m_image.width();
     m_qPainter->setRenderHint(QPainter::SmoothPixmapTransform, widthResizeFactor < 2.75);
     m_qPainter->drawImage(rect, m_image);
 }
 
-void QtPaintCanvas::setState(const QString &state)
+void PaintCanvas::setState(const QString &state)
 {
     m_state = state;
     repaint();

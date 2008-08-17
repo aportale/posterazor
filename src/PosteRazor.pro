@@ -9,7 +9,7 @@ SOURCES += \
     PosteRazorPDFOutput.cpp \
     mainwindow.cpp \
     QtPosteRazorSpinBox.cpp \
-    QtPaintCanvas.cpp \
+    paintcanvas.cpp \
     controller.cpp \
     PosteRazorWizardDialogController.cpp \
     main.cpp
@@ -25,7 +25,7 @@ HEADERS += \
     PosteRazorPDFOutput.h \
     mainwindow.h \
     QtPosteRazorSpinBox.h \
-    QtPaintCanvas.h \
+    paintcanvas.h \
     controller.h \
     PosteRazorWizardDialogController.h
 

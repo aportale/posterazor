@@ -20,17 +20,16 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef QTPAINTCANVAS_H
-#define QTPAINTCANVAS_H
+#ifndef PAINTCANVAS_H
+#define PAINTCANVAS_H
 
 #include <QWidget>
 #include "PaintCanvasInterface.h"
 
 class QImage;
 class QPainter;
-class QPaintDevice;
 
-class QtPaintCanvas: public QWidget, public PaintCanvasInterface
+class PaintCanvas: public QWidget, public PaintCanvasInterface
 {
     Q_OBJECT
 
@@ -40,7 +39,7 @@ private:
     QPainter *m_qPainter;
 
 public:
-    QtPaintCanvas(QWidget *parent);
+    PaintCanvas(QWidget *parent);
 
     virtual void paintEvent(QPaintEvent *event);
     virtual void drawFilledRect(const QRectF &rect, const QBrush &brush);
@@ -55,4 +54,4 @@ signals:
     void needsPaint(PaintCanvasInterface *paintDevice, const QVariant &options) const;
 };
 
-#endif // QTPAINTCANVAS_H
+#endif // PAINTCANVAS_H
