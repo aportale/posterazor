@@ -21,7 +21,8 @@
 */
 
 #include "imageioqt.h"
-#include "PosteRazorPDFOutput.h"
+#include <QImageReader>
+#include <math.h>
 
 ImageIOQt::ImageIOQt(QObject *parent)
     : QObject(parent)
@@ -40,6 +41,17 @@ bool ImageIOQt::loadInputImage(const QString &imageFileName, QString &errorMessa
 bool ImageIOQt::isImageLoaded() const
 {
     return !m_image.isNull();
+}
+
+bool ImageIOQt::isJpeg() const
+{
+    QImageReader reader(m_imageFileName);
+    return reader.format() == "jpg";
+}
+
+QString ImageIOQt::getFileName() const
+{
+    return m_imageFileName;
 }
 
 QSize ImageIOQt::getSizePixels() const
@@ -63,14 +75,14 @@ QSizeF ImageIOQt::getSize(UnitsOfLength::eUnitsOfLength unit) const
     return QSizeF(sizePixels.width() / getHorizontalDotsPerUnitOfLength(unit), sizePixels.height() / getVerticalDotsPerUnitOfLength(unit));
 }
 
-QImage ImageIOQt::getImageAsRGB(const QSize &size) const
+const QImage ImageIOQt::getImageAsRGB(const QSize &size) const
 {
     return m_image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
 }
 
 int ImageIOQt::getBitsPerPixel() const
 {
-    return m_image.depth();
+    return getColorDataType() == ColorTypes::eColorTypeRGB?24:m_image.depth();
 }
 
 ColorTypes::eColorTypes ImageIOQt::getColorDataType() const
@@ -83,35 +95,34 @@ ColorTypes::eColorTypes ImageIOQt::getColorDataType() const
             /*format==QImage::Format_RGB32?*/ColorTypes::eColorTypeRGB;
 }
 
-int ImageIOQt::savePoster(const QString &fileName, const PainterInterface *painter, int pagesCount, const QSizeF &sizeCm) const
+const QByteArray ImageIOQt::getBits() const
 {
-    int err = 0;
+    const int imageWidth = m_image.width();
+    const int imageHeight = m_image.height();
+    const unsigned int bitsPerLine = imageWidth * getBitsPerPixel();
+    const unsigned int bytesPerLine = ceil(bitsPerLine/8.0);
+    const unsigned int imageBytesCount = bytesPerLine * imageHeight;
 
-    const QSize imageSize = getSizePixels();
-    const unsigned int imageBytesCount = PosteRazorPDFOutput::getImageBytesCount(imageSize, getBitsPerPixel());
-    unsigned char *imageData = new unsigned char[imageBytesCount];
+    QByteArray result(imageBytesCount, 0);
+    char *destination = result.data();
 
-    const unsigned int bytesPerLineCount = PosteRazorPDFOutput::getImageBytesPerLineCount(imageSize.width(), getBitsPerPixel());
-
-    PosteRazorPDFOutput pdfOutput;
-    err = pdfOutput.startSaving(fileName, pagesCount, sizeCm.width(), sizeCm.height());
-    if (!err) {
-//        if (FreeImage_GetFileType(m_imageFileName.toAscii(), 0) == FIF_JPEG)
-//            err = pdfOutput.saveImage(m_imageFileName, imageSize, getColorDataType());
-//        else
-            err = pdfOutput.saveImage(imageData, imageSize, getBitsPerPixel(), getColorDataType(), NULL, m_image.numColors());
-    }
-
-    if (!err) {
-        for (int page = 0; page < pagesCount; page++) {
-            char paintOptions[1024];
-            sprintf(paintOptions, "posterpage %d", page);
-            pdfOutput.startPage();
-            painter->paintOnCanvas(&pdfOutput, paintOptions);
-            pdfOutput.finishPage();
+    if (getBitsPerPixel() == 24 && QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
+        const unsigned long numberOfPixels = imageWidth * imageHeight;
+        for (int scanline = 0; scanline < imageHeight; scanline++) {
+            const uchar *sourceScanLine = m_image.scanLine(scanline);
+            for (int column = 0; column < imageWidth; column++) {
+                *destination++ = sourceScanLine[2];
+                *destination++ = sourceScanLine[1];
+                *destination++ = sourceScanLine[0];
+                sourceScanLine += 4;
+            }
         }
-        err = pdfOutput.finishSaving();
     }
 
-    return err;
+    return result;
+}
+
+const QVector<QRgb> ImageIOQt::getColorTable() const
+{
+    return m_image.colorTable();
 }
