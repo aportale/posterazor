@@ -20,7 +20,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-//#include "FreeImage.h"
+#include "FreeImage.h"
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
@@ -31,21 +31,6 @@
 #define LINEFEED "\012"
 #define CM2PT(cm) ((cm) / 2.54 * 72)
 #define JPEGFILECOPYBUFFERSIZE 10000
-
-unsigned int PosteRazorPDFOutput::getImageBitsPerLineCount(int widthPixels, int bitPerPixel)
-{
-    return (widthPixels * bitPerPixel);
-}
-
-unsigned int PosteRazorPDFOutput::getImageBytesPerLineCount(int widthPixels, int bitPerPixel)
-{
-    return (int)(ceil((double)getImageBitsPerLineCount(widthPixels, bitPerPixel)/8.0f));
-}
-
-unsigned int PosteRazorPDFOutput::getImageBytesCount(const QSize &size, int bitPerPixel)
-{
-    return getImageBytesPerLineCount(size.width(), bitPerPixel) * size.height();
-}
 
 PosteRazorPDFOutput::PosteRazorPDFOutput(QObject *parent)
     : QObject(parent)
@@ -173,26 +158,18 @@ int PosteRazorPDFOutput::saveImage(const QString &jpegFileName, const QSize &siz
     return err;
 }
 
-int PosteRazorPDFOutput::saveImage(unsigned char *imageData, const QSize &sizePixels, int bitPerPixel, ColorTypes::eColorTypes colorType, unsigned char *rgbPalette, int paletteEntries)
+#define NOCOMPRESSIONFORNOW
+int PosteRazorPDFOutput::saveImage(const QByteArray &imageData, const QSize &sizePixels, int bitPerPixel, ColorTypes::eColorTypes colorType, const QVector<QRgb> &colorTable)
 {
     int err = 0;
     err = AddImageResourcesAndXObject();
 
-    const unsigned int imageBytesCount = getImageBytesCount(sizePixels, bitPerPixel);
-    unsigned int imageBytesCountCompressed = (unsigned int)(ceil((double)imageBytesCount*1.05))+12;
-    unsigned char *imageDataCompressed = NULL;
-
-    if (!err) {
-        imageDataCompressed = new unsigned char[imageBytesCountCompressed];
-        if (!imageDataCompressed)
-            err = 1;
-    }
-
-    if (!err) {
-//        imageBytesCountCompressed = FreeImage_ZLibCompress(imageDataCompressed, imageBytesCountCompressed, imageData, imageBytesCount);
-        if (!imageBytesCountCompressed)
-            err = 2;
-    }
+    const QByteArray imageDataCompressed =
+#ifdef NOCOMPRESSIONFORNOW
+        imageData;
+#else
+        qCompress(imageData, 9);
+#endif
 
     char colorSpaceString[5000] = "";
     // TODO: convert to switch
@@ -206,11 +183,10 @@ int PosteRazorPDFOutput::saveImage(unsigned char *imageData, const QSize &sizePi
     } */ else if(colorType == ColorTypes::eColorTypeCMYK) {
         strcpy(colorSpaceString, "/DeviceCMYK");
     } else {
-        sprintf(colorSpaceString, "[/Indexed /DeviceRGB %d <", paletteEntries-1); // -1, because PDF wants the highest index, not the number of entries
-        for (int i = 0; i < paletteEntries; i++)
-        {
+        sprintf(colorSpaceString, "[/Indexed /DeviceRGB %d <", colorTable.count()-1); // -1, because PDF wants the highest index, not the number of entries
+        foreach (const QRgb &paletteEntry, colorTable) {
             char rgbHex[20];
-            sprintf(rgbHex, "%.2x%.2x%.2x", rgbPalette[i*3], rgbPalette[i*3 + 1], rgbPalette[i*3 + 2]);
+            sprintf(rgbHex, "%.2x%.2x%.2x", qRed(paletteEntry), qGreen(paletteEntry), qBlue(paletteEntry));
             strcat(colorSpaceString, rgbHex);
         }
         strcat(colorSpaceString, ">]");
@@ -219,18 +195,20 @@ int PosteRazorPDFOutput::saveImage(unsigned char *imageData, const QSize &sizePi
     m_objectImageID = m_pdfObjectCount;
     fprintf (
         m_outputFile,
-        LINEFEED "%d 0 obj" LINEFEED\
-        "<</ColorSpace %s" LINEFEED\
-        "/Subtype /Image" LINEFEED\
-        "/Length %d" LINEFEED\
-        "/Width %d" LINEFEED\
-        "/Type /XObject" LINEFEED\
-        "/Height %d" LINEFEED\
-        "/Filter /FlateDecode" LINEFEED\
-        "/BitsPerComponent %d" LINEFEED\
-        ">>" LINEFEED\
+        LINEFEED "%d 0 obj" LINEFEED
+        "<</ColorSpace %s" LINEFEED
+        "/Subtype /Image" LINEFEED
+        "/Length %d" LINEFEED
+        "/Width %d" LINEFEED
+        "/Type /XObject" LINEFEED
+        "/Height %d" LINEFEED
+#ifndef NOCOMPRESSIONFORNOW
+        "/Filter /FlateDecode" LINEFEED
+#endif
+        "/BitsPerComponent %d" LINEFEED
+        ">>" LINEFEED
         "stream" LINEFEED,
-        m_pdfObjectCount, colorSpaceString, (int)imageBytesCountCompressed, sizePixels.width(), sizePixels.height(),
+        m_pdfObjectCount, colorSpaceString, imageDataCompressed.size(), sizePixels.width(), sizePixels.height(),
         (
             colorType == ColorTypes::eColorTypePalette?bitPerPixel
             :colorType == ColorTypes::eColorTypeMonochrome?bitPerPixel
@@ -239,15 +217,12 @@ int PosteRazorPDFOutput::saveImage(unsigned char *imageData, const QSize &sizePi
             :(bitPerPixel/3)
         )
     );
-    fwrite(imageDataCompressed, (int)imageBytesCountCompressed, 1, m_outputFile);
+    fwrite(imageDataCompressed.constData(), imageDataCompressed.size(), 1, m_outputFile);
     fprintf (
         m_outputFile,
         LINEFEED "endstream" LINEFEED\
         "endobj"
     );
-    
-    if (imageDataCompressed)
-        delete[] imageDataCompressed;
 
     return err;
 }
@@ -400,6 +375,7 @@ int PosteRazorPDFOutput::finishSaving()
 
 void PosteRazorPDFOutput::drawFilledRect(const QRectF&, const QBrush &brush) {}
 QSizeF PosteRazorPDFOutput::getSize() const {return QSizeF();}
+
 void PosteRazorPDFOutput::drawImage(const QRectF &rect)
 {
     char imageCode[2048]="";

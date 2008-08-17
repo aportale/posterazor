@@ -25,6 +25,8 @@
 
 #include "ColorTypes.h"
 #include "PaintCanvasInterface.h"
+#include <QVector>
+#include <QRgb>
 #include <QSize>
 
 class PosteRazorPDFOutput: public QObject, public PaintCanvasInterface
@@ -32,14 +34,10 @@ class PosteRazorPDFOutput: public QObject, public PaintCanvasInterface
 public:
     PosteRazorPDFOutput(QObject *parent = 0);
 
-    static unsigned int getImageBitsPerLineCount(int widthPixels, int bitPerPixel);
-    static unsigned int getImageBytesPerLineCount(int widthPixels, int bitPerPixel);
-    static unsigned int getImageBytesCount(const QSize &size, int bitPerPixel);
-
     void AddOffsetToXref();
     int AddImageResourcesAndXObject();
     int saveImage(const QString &jpegFileName, const QSize &sizePixels, ColorTypes::eColorTypes colorType);
-    int saveImage(unsigned char *imageData, const QSize &sizePixels, int bitPerPixel, ColorTypes::eColorTypes colorType, unsigned char *rgbPalette, int paletteEntries);
+    int saveImage(const QByteArray &imageData, const QSize &sizePixels, int bitPerPixel, ColorTypes::eColorTypes colorType, const QVector<QRgb> &colorTable);
     int startPage();
     int finishPage();
     int startSaving(const QString &fileName, int pages, double widthCm, double heightCm);

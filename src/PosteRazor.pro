@@ -49,7 +49,7 @@ TRANSLATIONS += \
     pt_BR.ts \
     zh_CN.ts
 
-#DEFINES += FREEIMAGE_LIB
+DEFINES += FREEIMAGE_LIB
 
 contains (DEFINES, FREEIMAGE_LIB) {
     SOURCES += \

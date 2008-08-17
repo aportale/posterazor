@@ -26,6 +26,7 @@
 #else
 #    include "imageioqt.h"
 #endif
+#include "PosteRazorPDFOutput.h"
 #include <QSettings>
 #include <QStringList>
 #include <QBrush>
@@ -80,6 +81,21 @@ PosteRazor::PosteRazor(QObject *parent)
 #else
         new ImageIOQt(this);
 #endif
+}
+
+unsigned int PosteRazor::getImageBitsPerLineCount(int widthPixels, int bitPerPixel)
+{
+    return (widthPixels * bitPerPixel);
+}
+
+unsigned int PosteRazor::getImageBytesPerLineCount(int widthPixels, int bitPerPixel)
+{
+    return (int)(ceil((double)getImageBitsPerLineCount(widthPixels, bitPerPixel)/8.0f));
+}
+
+unsigned int PosteRazor::getImageBytesCount(const QSize &size, int bitPerPixel)
+{
+    return getImageBytesPerLineCount(size.width(), bitPerPixel) * size.height();
 }
 
 bool PosteRazor::readSettings(const QSettings *settings)
@@ -558,7 +574,7 @@ QSizeF PosteRazor::getInputImagePreviewSize(const QSize &boxSize) const
 
 void PosteRazor::createPreviewImage(const QSize &size) const
 {
-    QImage previewImage = m_imageIO->getImageAsRGB(getInputImagePreviewSize(size).toSize());
+    const QImage previewImage = m_imageIO->getImageAsRGB(getInputImagePreviewSize(size).toSize());
     emit previewImageChanged(previewImage);
 }
 
@@ -739,7 +755,36 @@ void PosteRazor::paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVariant
 
 int PosteRazor::savePoster(const QString &fileName) const
 {
+    int err = 0;
+
     const QSizeF posterSizePages = getPosterSize(PosteRazorEnums::ePosterSizeModePages);
+    const QSizeF sizeCm = convertSizeToCm(getPrintablePaperAreaSize());
     const int pagesCount = (int)(ceil(posterSizePages.width())) * (int)(ceil(posterSizePages.height()));
-    return m_imageIO->savePoster(fileName, this, pagesCount, convertSizeToCm(getPrintablePaperAreaSize()));
+    const QSize imageSize = m_imageIO->getSizePixels();
+    const unsigned int imageBytesCount = getImageBytesCount(imageSize, m_imageIO->getBitsPerPixel());
+
+    const unsigned int bytesPerLineCount = getImageBytesPerLineCount(imageSize.width(), m_imageIO->getBitsPerPixel());
+    const QByteArray imageData = m_imageIO->getBits();
+
+    PosteRazorPDFOutput pdfOutput;
+    err = pdfOutput.startSaving(fileName, pagesCount, sizeCm.width(), sizeCm.height());
+    if (!err) {
+        if (m_imageIO->isJpeg())
+            err = pdfOutput.saveImage(m_imageIO->getFileName(), imageSize, m_imageIO->getColorDataType());
+        else
+            err = pdfOutput.saveImage(imageData, imageSize, m_imageIO->getBitsPerPixel(), m_imageIO->getColorDataType(), m_imageIO->getColorTable());
+    }
+
+    if (!err) {
+        for (int page = 0; page < pagesCount; page++) {
+            char paintOptions[1024];
+            sprintf(paintOptions, "posterpage %d", page);
+            pdfOutput.startPage();
+            paintOnCanvas(&pdfOutput, paintOptions);
+            pdfOutput.finishPage();
+        }
+        err = pdfOutput.finishSaving();
+    }
+
+    return err;
 }

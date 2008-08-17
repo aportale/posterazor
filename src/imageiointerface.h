@@ -37,14 +37,17 @@ public:
 
     virtual bool loadInputImage(const QString &imageFileName, QString &errorMessage) = 0;
     virtual bool isImageLoaded() const = 0;
+    virtual bool isJpeg() const = 0;
+    virtual QString getFileName() const = 0;
     virtual QSize getSizePixels() const = 0;
     virtual double getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const = 0;
     virtual double getVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const = 0;
     virtual QSizeF getSize(UnitsOfLength::eUnitsOfLength unit) const = 0;
-    virtual QImage getImageAsRGB(const QSize &size) const = 0;
+    virtual const QImage getImageAsRGB(const QSize &size) const = 0;
     virtual int getBitsPerPixel() const = 0;
     virtual ColorTypes::eColorTypes getColorDataType() const = 0;
-    virtual int savePoster(const QString &fileName, const PainterInterface *painter, int pagesCount, const QSizeF &sizeCm) const = 0;
+    virtual const QByteArray getBits() const = 0;
+    virtual const QVector<QRgb> getColorTable() const = 0;
 };
 
 #endif // IMAGEIOINTERFACE_H

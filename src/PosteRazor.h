@@ -50,6 +50,10 @@ class PosteRazor: public QObject, public PainterInterface
 public:
     PosteRazor(QObject *parent = 0);
 
+    static unsigned int getImageBitsPerLineCount(int widthPixels, int bitPerPixel);
+    static unsigned int getImageBytesPerLineCount(int widthPixels, int bitPerPixel);
+    static unsigned int getImageBytesCount(const QSize &size, int bitPerPixel);
+
     bool readSettings(const QSettings *settings);
     bool writeSettings(QSettings *settings) const;
     bool loadInputImage(const QString &imageFileName, QString &errorMessage);

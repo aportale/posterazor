@@ -33,17 +33,19 @@ public:
     ImageIOFreeImage(QObject *parent = 0);
     ~ImageIOFreeImage();
 
-    void disposeImage();
     bool loadInputImage(const QString &imageFileName, QString &errorMessage);
     bool isImageLoaded() const;
+    bool isJpeg() const;
+    QString getFileName() const;
     QSize getSizePixels() const;
     double getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const;
     double getVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const;
     QSizeF getSize(UnitsOfLength::eUnitsOfLength unit) const;
-    QImage getImageAsRGB(const QSize &size) const;
+    const QImage getImageAsRGB(const QSize &size) const;
     int getBitsPerPixel() const;
     ColorTypes::eColorTypes getColorDataType() const;
-    int savePoster(const QString &fileName, const PainterInterface *painter, int pagesCount, const QSizeF &sizeCm) const;
+    const QByteArray getBits() const;
+    const QVector<QRgb> getColorTable() const;
 
 private:
     FIBITMAP*    m_bitmap;
@@ -53,6 +55,7 @@ private:
     unsigned int m_verticalDotsPerMeter;
     QString      m_imageFileName;
 
+    void disposeImage();
     static bool hasFreeImageVersionCorrectTopDownInConvertBits();
 };
 

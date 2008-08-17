@@ -22,10 +22,10 @@
 
 #include "FreeImage.h"
 #include "imageiofreeimage.h"
-#include "PosteRazorPDFOutput.h"
 #include "UnitsOfLength.h"
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 #include <QStringList>
 
 static QString FreeImageErrorMessage;
@@ -123,6 +123,16 @@ bool ImageIOFreeImage::isImageLoaded() const
     return (m_bitmap != NULL);
 }
 
+bool ImageIOFreeImage::isJpeg() const
+{
+    return FreeImage_GetFileType(m_imageFileName.toAscii(), 0) == FIF_JPEG;
+}
+
+QString ImageIOFreeImage::getFileName() const
+{
+    return m_imageFileName;
+}
+
 QSize ImageIOFreeImage::getSizePixels() const
 {
     return QSize(m_widthPixels, m_heightPixels);
@@ -144,7 +154,7 @@ QSizeF ImageIOFreeImage::getSize(UnitsOfLength::eUnitsOfLength unit) const
     return QSizeF(sizePixels.width() / getHorizontalDotsPerUnitOfLength(unit), sizePixels.height() / getVerticalDotsPerUnitOfLength(unit));
 }
 
-QImage ImageIOFreeImage::getImageAsRGB(const QSize &size) const
+const QImage ImageIOFreeImage::getImageAsRGB(const QSize &size) const
 {
     const QSize resultSize = size.isValid()?size:getSizePixels();
     QImage result(resultSize, QImage::Format_RGB32);
@@ -236,69 +246,43 @@ ColorTypes::eColorTypes ImageIOFreeImage::getColorDataType() const
     return colorDatatype;
 }
 
-int ImageIOFreeImage::savePoster(const QString &fileName, const PainterInterface *painter, int pagesCount, const QSizeF &sizeCm) const
+const QByteArray ImageIOFreeImage::getBits() const
 {
-    int err = 0;
+    const unsigned int bitsPerLine = m_widthPixels * getBitsPerPixel();
+    const unsigned int bytesPerLine = ceil(bitsPerLine/8.0);
+    const unsigned int imageBytesCount = bytesPerLine * m_heightPixels;
 
-    const QSize imageSize = getSizePixels();
-    const unsigned int imageBytesCount = PosteRazorPDFOutput::getImageBytesCount(imageSize, getBitsPerPixel());
-    unsigned char *imageData = new unsigned char[imageBytesCount];
+    QByteArray result(imageBytesCount, 0);
+    char *destination = result.data();
+    FreeImage_ConvertToRawBits((BYTE*)destination, m_bitmap, bytesPerLine, getBitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, hasFreeImageVersionCorrectTopDownInConvertBits());
 
-    const unsigned int bytesPerLineCount = PosteRazorPDFOutput::getImageBytesPerLineCount(imageSize.width(), getBitsPerPixel());
-
-    FreeImage_ConvertToRawBits(imageData, m_bitmap, bytesPerLineCount, getBitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, hasFreeImageVersionCorrectTopDownInConvertBits());
-
-    // Swapping RGB data if needed (like on Intel)
     if (getBitsPerPixel() == 24 && QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
-        const unsigned long numberOfPixels = imageSize.width() * imageSize.height();
+        const unsigned long numberOfPixels = m_widthPixels * m_heightPixels;
         for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
-            unsigned char *pixelPtr = imageData + pixelIndex*3;
-
-            const unsigned char temp = pixelPtr[0];
+            char *pixelPtr = destination + pixelIndex*3;
+            const char temp = pixelPtr[0];
             pixelPtr[0] = pixelPtr[2];
             pixelPtr[2] = temp;
             pixelPtr+=3;
         }
     }
 
-    const RGBQUAD* const palette = FreeImage_GetPalette(m_bitmap);
-    unsigned char rgbPalette[768];
+    return result;
+}
 
-    // Compacting the palette
+const QVector<QRgb> ImageIOFreeImage::getColorTable() const
+{
+    QVector<QRgb> result;
+
+    const RGBQUAD* const palette = FreeImage_GetPalette(m_bitmap);
     if (palette) {
         const int count = FreeImage_GetColorsUsed(m_bitmap);
-        for (int i = 0; i < count; i++) {
-            const int offset = i*3;
-            rgbPalette[offset] = palette[i].rgbRed;
-            rgbPalette[offset + 1] = palette[i].rgbGreen;
-            rgbPalette[offset + 2] = palette[i].rgbBlue;
-        }
+        result.resize(count);
+        for (int i = 0; i < count; i++)
+            result.replace(i, qRgb(palette[i].rgbRed, palette[i].rgbGreen, palette[i].rgbBlue));
     }
 
-    PosteRazorPDFOutput pdfOutput;
-    err = pdfOutput.startSaving(fileName, pagesCount, sizeCm.width(), sizeCm.height());
-    if (!err) {
-        if (FreeImage_GetFileType(m_imageFileName.toAscii(), 0) == FIF_JPEG)
-            err = pdfOutput.saveImage(m_imageFileName, imageSize, getColorDataType());
-        else
-            err = pdfOutput.saveImage(imageData, imageSize, getBitsPerPixel(), getColorDataType(), rgbPalette, FreeImage_GetColorsUsed(m_bitmap));
-    }
-
-    if (!err) {
-        for (int page = 0; page < pagesCount; page++) {
-            char paintOptions[1024];
-            sprintf(paintOptions, "posterpage %d", page);
-            pdfOutput.startPage();
-            painter->paintOnCanvas(&pdfOutput, paintOptions);
-            pdfOutput.finishPage();
-        }
-        err = pdfOutput.finishSaving();
-    }
-
-    if (imageData)
-        delete[] imageData;
-
-    return err;
+    return result;
 }
 
 bool ImageIOFreeImage::hasFreeImageVersionCorrectTopDownInConvertBits()
