@@ -50,7 +50,6 @@ public:
         FreeImage_DeInitialise();
     }
 };
-const static FreeImageInitializer initializer;
 
 ImageIOFreeImage::ImageIOFreeImage(QObject *parent)
     : QObject(parent)
@@ -60,6 +59,7 @@ ImageIOFreeImage::ImageIOFreeImage(QObject *parent)
     , m_horizontalDotsPerMeter(0)
     , m_verticalDotsPerMeter(0)
 {
+    const static FreeImageInitializer initializer;
 }
 
 ImageIOFreeImage::~ImageIOFreeImage()
