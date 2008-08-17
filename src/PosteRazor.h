@@ -48,8 +48,7 @@ class PosteRazor: public QObject, public PainterInterface
     Q_OBJECT
 
 public:
-    PosteRazor();
-    ~PosteRazor();
+    PosteRazor(QObject *parent = 0);
 
     bool readSettings(const QSettings *settings);
     bool writeSettings(QSettings *settings) const;

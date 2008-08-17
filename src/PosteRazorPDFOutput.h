@@ -27,25 +27,38 @@
 #include "PaintCanvasInterface.h"
 #include <QSize>
 
-class PosteRazorPDFOutput: public PaintCanvasInterface
+class PosteRazorPDFOutput: public QObject, public PaintCanvasInterface
 {
 public:
-    virtual ~PosteRazorPDFOutput() {}
-
-    static PosteRazorPDFOutput* createPosteRazorPDFOutput();
+    PosteRazorPDFOutput(QObject *parent = 0);
 
     static unsigned int getImageBitsPerLineCount(int widthPixels, int bitPerPixel);
     static unsigned int getImageBytesPerLineCount(int widthPixels, int bitPerPixel);
     static unsigned int getImageBytesCount(const QSize &size, int bitPerPixel);
 
-    virtual int saveImage(unsigned char *imageData, const QSize &sizePixels, int bitPerPixel, ColorTypes::eColorTypes colorType, unsigned char *rgbPalette, int paletteEntries) = 0;
-    virtual int saveImage(const QString &jpegFileName, const QSize &sizePixels, ColorTypes::eColorTypes colorType) = 0;
+    void AddOffsetToXref();
+    int AddImageResourcesAndXObject();
+    int saveImage(const QString &jpegFileName, const QSize &sizePixels, ColorTypes::eColorTypes colorType);
+    int saveImage(unsigned char *imageData, const QSize &sizePixels, int bitPerPixel, ColorTypes::eColorTypes colorType, unsigned char *rgbPalette, int paletteEntries);
+    int startPage();
+    int finishPage();
+    int startSaving(const QString &fileName, int pages, double widthCm, double heightCm);
+    int finishSaving();
+    void drawFilledRect(const QRectF&, const QBrush &brush);
+    QSizeF getSize() const;
+    void drawImage(const QRectF &rect);
 
-    virtual int startPage() = 0;
-    virtual int finishPage() = 0;
-
-    virtual int startSaving(const QString &fileName, int pages, double widthCm, double heightCm) = 0;
-    virtual int finishSaving() = 0;
+private:
+    FILE *m_outputFile;
+    char *m_xref;
+    int m_pdfObjectCount;
+    int m_contentPagesCount;
+    int m_objectPagesID;
+    int m_objectResourcesID;
+    int m_objectImageID;
+    char m_pageContent[2048];
+    double m_mediaboxWidth;
+    double m_mediaboxHeight;
 };
 
 #endif // POSTERAZORPDFOUTPUT_H

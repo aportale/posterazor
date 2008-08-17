@@ -47,8 +47,9 @@ const QLatin1String settingsKey_OverlappingHeight("OverlappingHeight");
 const QLatin1String settingsKey_OverlappingPosition("overlappingPosition");
 const QLatin1String settingsKey_UnitOfLength("unitOfLength");
 
-PosteRazor::PosteRazor()
-    : m_posterSizeMode(PosteRazorEnums::ePosterSizeModePages)
+PosteRazor::PosteRazor(QObject *parent)
+    : QObject(parent)
+    , m_posterSizeMode(PosteRazorEnums::ePosterSizeModePages)
     , m_posterDimension(2.0)
     , m_posterDimensionIsWidth(true)
     , m_posterAlignment(Qt::AlignCenter)
@@ -69,12 +70,7 @@ PosteRazor::PosteRazor()
 
     , m_unitOfLength(UnitsOfLength::eUnitOfLengthCentimeter)
 {
-    m_imageIO = ImageIOFreeImage::createImageIOFreeImage();
-}
-
-PosteRazor::~PosteRazor()
-{
-    delete m_imageIO;
+    m_imageIO = new ImageIOFreeImage(this);
 }
 
 bool PosteRazor::readSettings(const QSettings *settings)
