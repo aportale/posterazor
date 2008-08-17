@@ -20,7 +20,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "FreeImage.h"
+//#include "FreeImage.h"
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
@@ -189,7 +189,7 @@ int PosteRazorPDFOutput::saveImage(unsigned char *imageData, const QSize &sizePi
     }
 
     if (!err) {
-        imageBytesCountCompressed = FreeImage_ZLibCompress(imageDataCompressed, imageBytesCountCompressed, imageData, imageBytesCount);
+//        imageBytesCountCompressed = FreeImage_ZLibCompress(imageDataCompressed, imageBytesCountCompressed, imageData, imageBytesCount);
         if (!imageBytesCountCompressed)
             err = 2;
     }
