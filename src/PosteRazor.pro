@@ -49,7 +49,8 @@ TRANSLATIONS += \
     pt_BR.ts \
     zh_CN.ts
 
-DEFINES += FREEIMAGE_LIB
+# Uncomment the following line in order to build PosteRazor with FreeImage
+#DEFINES += FREEIMAGE_LIB
 
 contains (DEFINES, FREEIMAGE_LIB) {
     SOURCES += \
