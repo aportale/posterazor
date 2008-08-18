@@ -37,6 +37,7 @@ public:
 
     static int getUnitsOfLengthCount();
     static double convertBetweenUnitsOfLength(double distance, eUnitsOfLength sourceUnit, eUnitsOfLength targetUnit);
+    static QSizeF convertBetweenUnitsOfLength(const QSize &size, eUnitsOfLength sourceUnit, eUnitsOfLength targetUnit);
     static int getUnitOfLengthIndex(eUnitsOfLength unit);
     static const char* getUnitOfLengthName(eUnitsOfLength unit);
     static eUnitsOfLength getUnitOfLengthForName(const char* name);
