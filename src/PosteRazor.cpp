@@ -705,7 +705,7 @@ void PosteRazor::paintPosterPageOnCanvas(PaintCanvasInterface *paintCanvas, int 
     const QSizeF printablePaperAreaSizeCm = convertSizeToCm(getPrintablePaperAreaSize());
     const double overlappingWidthCm = convertDistanceToCm(getOverlappingWidth());
     const double overlappingHeightCm = convertDistanceToCm(getOverlappingHeight());
-    const QSize printablePosterAreaSizeCm(
+    const QSizeF printablePosterAreaSizeCm(
         columsCount * printablePaperAreaSizeCm.width() - (columsCount - 1) * overlappingWidthCm,
         rowsCount * printablePaperAreaSizeCm.height() - (rowsCount - 1) * overlappingHeightCm
     );
@@ -761,9 +761,6 @@ int PosteRazor::savePoster(const QString &fileName) const
     const QSizeF sizeCm = convertSizeToCm(getPrintablePaperAreaSize());
     const int pagesCount = (int)(ceil(posterSizePages.width())) * (int)(ceil(posterSizePages.height()));
     const QSize imageSize = m_imageIO->getSizePixels();
-    const unsigned int imageBytesCount = getImageBytesCount(imageSize, m_imageIO->getBitsPerPixel());
-
-    const unsigned int bytesPerLineCount = getImageBytesPerLineCount(imageSize.width(), m_imageIO->getBitsPerPixel());
     const QByteArray imageData = m_imageIO->getBits();
 
     PosteRazorPDFOutput pdfOutput;
