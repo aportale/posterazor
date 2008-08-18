@@ -23,7 +23,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "PaintCanvasInterface.h"
-#include "PosteRazorPDFOutput.h"
+#include "pdfwriter.h"
 #include <time.h>
 #include <QRectF>
 #define LINEFEED "\012"

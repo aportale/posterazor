@@ -26,7 +26,7 @@
 #else
 #    include "imageloaderqt.h"
 #endif
-#include "PosteRazorPDFOutput.h"
+#include "pdfwriter.h"
 #include <QSettings>
 #include <QStringList>
 #include <QBrush>

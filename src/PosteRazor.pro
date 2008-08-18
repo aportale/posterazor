@@ -3,7 +3,7 @@ SOURCES += \
     UnitsOfLength.cpp \
     ImageIOTypes.cpp \
     PosteRazor.cpp \
-    PosteRazorPDFOutput.cpp \
+    pdfwriter.cpp \
     mainwindow.cpp \
     QtPosteRazorSpinBox.cpp \
     paintcanvas.cpp \
@@ -19,7 +19,7 @@ HEADERS += \
     PaperFormats.h \
     PaintCanvasInterface.h \
     PosteRazor.h \
-    PosteRazorPDFOutput.h \
+    pdfwriter.h \
     mainwindow.h \
     QtPosteRazorSpinBox.h \
     paintcanvas.h \
