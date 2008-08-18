@@ -20,8 +20,8 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef POSTERAZOR_H
-#define POSTERAZOR_H
+#ifndef POSTERAZORCORE_H
+#define POSTERAZORCORE_H
 
 #include "PaperFormats.h"
 #include "ColorTypes.h"
@@ -43,12 +43,12 @@ public:
     };
 };
 
-class PosteRazor: public QObject
+class PosteRazorCore: public QObject
 {
     Q_OBJECT
 
 public:
-    PosteRazor(QObject *parent = 0);
+    PosteRazorCore(QObject *parent = 0);
 
     static unsigned int getImageBitsPerLineCount(int widthPixels, int bitPerPixel);
     static unsigned int getImageBytesPerLineCount(int widthPixels, int bitPerPixel);
@@ -159,4 +159,4 @@ private:
     UnitsOfLength::eUnitsOfLength           m_unitOfLength;
 };
 
-#endif // POSTERAZOR_H
+#endif // POSTERAZORCORE_H

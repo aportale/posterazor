@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 
     // This is no real main program, yet. It is just testing the PosteRazor API.
 
-    PosteRazor* prz = PosteRazor::createPosteRazor();
+    PosteRazorCore* prz = PosteRazorCore::createPosteRazor();
     char errorMessage[1024];
     bool loaded = prz->loadInputImage(argv[1], errorMessage, sizeof(errorMessage));
 

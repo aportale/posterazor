@@ -9,12 +9,12 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-    
+
     PosteRazor is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-    
+
     You should have received a copy of the GNU General Public License
     along with PosteRazor; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
@@ -23,7 +23,7 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "PosteRazor.h"
+#include "posterazorcore.h"
 
 class MainWindow;
 
@@ -32,7 +32,7 @@ class Controller: public QObject
     Q_OBJECT
 
 public:
-    Controller(PosteRazor *model, MainWindow *dialog, QObject *parent = 0);
+    Controller(PosteRazorCore *posteRazorCore, MainWindow *mainWindow, QObject *parent = 0);
 
     void updateDialog();
     void updatePreview();
@@ -76,8 +76,8 @@ signals:
     virtual void pddfLaunch(const QString &pdfFileName) const;
 
 protected:
-    PosteRazor *m_PosteRazor;
-    MainWindow *m_Dialog;
+    PosteRazorCore *m_posteRazorCore;
+    MainWindow *m_mainWindow;
     bool m_launchPDFApplication;
 
     void setDialogSaveOptions();

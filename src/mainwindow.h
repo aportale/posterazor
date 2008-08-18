@@ -27,7 +27,7 @@
 #include "ui_mainwindow.h"
 #include "UnitsOfLength.h"
 #include "PaperFormats.h"
-#include "PosteRazor.h"
+#include "posterazorcore.h"
 
 class MainWindow : public QMainWindow, private Ui::MainWindow
 {
@@ -76,7 +76,7 @@ public slots:
     void setPreviewState(const QString &state);
 
 private:
-    PosteRazor *m_posteRazor;
+    PosteRazorCore *m_posteRazor;
     QHash<Qt::Alignment, QAbstractButton*> m_overlappingButtons;
     QHash<Qt::Alignment, QAbstractButton*> m_alignmentButtons;
 

@@ -2,7 +2,7 @@ SOURCES += \
     PaperFormats.cpp \
     UnitsOfLength.cpp \
     ImageIOTypes.cpp \
-    PosteRazor.cpp \
+    posterazorcore.cpp \
     pdfwriter.cpp \
     mainwindow.cpp \
     QtPosteRazorSpinBox.cpp \
@@ -18,7 +18,7 @@ HEADERS += \
     UnitsOfLength.h \
     PaperFormats.h \
     PaintCanvasInterface.h \
-    PosteRazor.h \
+    posterazorcore.h \
     pdfwriter.h \
     mainwindow.h \
     QtPosteRazorSpinBox.h \
