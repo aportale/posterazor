@@ -82,10 +82,10 @@ void MainWindow::setPaperFormat(const QString &format)
     m_paperFormatComboBox->setCurrentIndex(index);
 }
 
-void MainWindow::setPaperOrientation(PaperFormats::ePaperOrientations orientation)
+void MainWindow::setPaperOrientation(QPrinter::Orientation orientation)
 {
     (
-        orientation == PaperFormats::ePaperOrientationLandscape?m_paperOrientationLandscapeRadioButton
+        orientation == QPrinter::Landscape?m_paperOrientationLandscapeRadioButton
         :m_paperOrientationPortraitRadioButton
     )->setChecked(true);
 }
@@ -250,19 +250,18 @@ void MainWindow::handlePaperFormatTabChanged(int index)
 
 void MainWindow::handlePaperOrientationPortraitSelected()
 {
-    emit paperOrientationChanged(PaperFormats::ePaperOrientationPortrait);
+    emit paperOrientationChanged(QPrinter::Portrait);
 }
 
 void MainWindow::handlePaperOrientationLandscapeSelected()
 {
-    emit paperOrientationChanged(PaperFormats::ePaperOrientationLandscape);
+    emit paperOrientationChanged(QPrinter::Landscape);
 }
 
 void MainWindow::createConnections()
 {
     connect(m_nextButton,                           SIGNAL(clicked()),                  SIGNAL(nextButtonPressed()));
     connect(m_prevButton,                           SIGNAL(clicked()),                  SIGNAL(prevButtonPressed()));
-
     connect(m_paperFormatTypeTabs,                  SIGNAL(currentChanged(int)),        SLOT(handlePaperFormatTabChanged(int)));
     connect(m_paperFormatComboBox,                  SIGNAL(activated(const QString &)), SIGNAL(paperFormatChanged(const QString &)));
     connect(m_paperOrientationPortraitRadioButton,  SIGNAL(clicked()),                  SLOT(handlePaperOrientationPortraitSelected()));
@@ -273,16 +272,12 @@ void MainWindow::createConnections()
     connect(m_paperBorderRightInput,                SIGNAL(valueEdited(double)),        SIGNAL(paperBorderRightChanged(double)));
     connect(m_paperBorderBottomInput,               SIGNAL(valueEdited(double)),        SIGNAL(paperBorderBottomChanged(double)));
     connect(m_paperBorderLeftInput,                 SIGNAL(valueEdited(double)),        SIGNAL(paperBorderLeftChanged(double)));
-
     connect(m_imageLoadButton,                      SIGNAL(clicked()),                  SIGNAL(loadImageSignal()));
-
     connect(m_posterSizeAbsoluteRadioButton,        SIGNAL(clicked()),                  SLOT(updatePosterSizeGroupsState()));
     connect(m_posterSizeInPagesRadioButton,         SIGNAL(clicked()),                  SLOT(updatePosterSizeGroupsState()));
     connect(m_posterSizePercentualRadioButton,      SIGNAL(clicked()),                  SLOT(updatePosterSizeGroupsState()));
-
     connect(m_overlappingWidthInput,                SIGNAL(valueEdited(double)),        SIGNAL(overlappingWidthChanged(double)));
     connect(m_overlappingHeightInput,               SIGNAL(valueEdited(double)),        SIGNAL(overlappingHeightChanged(double)));
-
     QSignalMapper *overlappingMapper = new QSignalMapper(this);
     foreach (const Qt::Alignment alignment, m_overlappingButtons.keys()) {
         QAbstractButton *sender = m_overlappingButtons.value(alignment);
@@ -290,13 +285,11 @@ void MainWindow::createConnections()
         overlappingMapper->setMapping(sender, alignment);
     }
     connect(overlappingMapper, SIGNAL(mapped(int)), SLOT(emitOverlappingPositionChange(int)));
-
     connect(m_posterAbsoluteWidthInput,             SIGNAL(valueEdited(double)),        SIGNAL(posterWidthAbsoluteChanged(double)));
     connect(m_posterAbsoluteHeightInput,            SIGNAL(valueEdited(double)),        SIGNAL(posterHeightAbsoluteChanged(double)));
     connect(m_posterPagesWidthInput,                SIGNAL(valueEdited(double)),        SIGNAL(posterWidthPagesChanged(double)));
     connect(m_posterPagesHeightInput,               SIGNAL(valueEdited(double)),        SIGNAL(posterHeightPagesChanged(double)));
     connect(m_posterPercentualSizeInput,            SIGNAL(valueEdited(double)),        SIGNAL(posterSizePercentualChanged(double)));
-
     QSignalMapper *alignmentMapper = new QSignalMapper(this);
     foreach (const Qt::Alignment alignment, m_alignmentButtons.keys()) {
         QAbstractButton *sender = m_alignmentButtons.value(alignment);
@@ -304,12 +297,9 @@ void MainWindow::createConnections()
         alignmentMapper->setMapping(sender, alignment);
     }
     connect(alignmentMapper, SIGNAL(mapped(int)),   SLOT(emitPosterAlignmentChange(int)));
-
     connect(m_savePosterButton,                     SIGNAL(clicked()),                  SIGNAL(savePosterSignal()));
     connect(m_launchPDFApplicationCheckBox,         SIGNAL(toggled(bool)),              SIGNAL(launchPDFApplicationChanged(bool)));
-
     connect(m_paintCanvas,                          SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)));
-
     connect(m_actionAboutQt,                        SIGNAL(triggered()),                SLOT(showAboutQtDialog()));
 }
 

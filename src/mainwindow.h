@@ -39,7 +39,7 @@ public:
     void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
 
     void setPaperFormat(const QString &format);
-    void setPaperOrientation(PaperFormats::ePaperOrientations orientation);
+    void setPaperOrientation(QPrinter::Orientation orientation);
 
     void setPaperBorderTop(double border);
     void setPaperBorderRight(double border);
@@ -85,7 +85,7 @@ private:
 
 signals:
     void paperFormatChanged(const QString &format) const;
-    void paperOrientationChanged(PaperFormats::ePaperOrientations orientation) const;
+    void paperOrientationChanged(QPrinter::Orientation orientation) const;
     void paperCustomWidthChanged(double width) const;
     void paperCustomHeightChanged(double height) const;
     void paperBorderTopChanged(double border) const;

@@ -61,7 +61,7 @@ PosteRazorCore::PosteRazorCore(QObject *parent)
 
     , m_useCustomPaperSize(false)
     , m_paperFormat(defaultValue_PaperFormat)
-    , m_paperOrientation(PaperFormats::ePaperOrientationPortrait)
+    , m_paperOrientation(QPrinter::Portrait)
     , m_paperBorderTop(1.5)
     , m_paperBorderRight(1.5)
     , m_paperBorderBottom(1.5)
@@ -110,7 +110,7 @@ bool PosteRazorCore::readSettings(const QSettings *settings)
     m_paperFormat                  = settings->value(settingsKey_PaperFormat, m_paperFormat).toString();
     if (!PaperFormats::paperFormats().contains(m_paperFormat))
         m_paperFormat = QLatin1String(defaultValue_PaperFormat);
-    m_paperOrientation             = (PaperFormats::ePaperOrientations)settings->value(settingsKey_PaperOrientation, (int)m_paperOrientation).toInt();
+    m_paperOrientation             = (QPrinter::Orientation)settings->value(settingsKey_PaperOrientation, (int)m_paperOrientation).toInt();
     m_paperBorderTop               = settings->value(settingsKey_PaperBorderTop, m_paperBorderTop).toDouble();
     m_paperBorderRight             = settings->value(settingsKey_PaperBorderRight, m_paperBorderRight).toDouble();
     m_paperBorderBottom            = settings->value(settingsKey_PaperBorderBottom, m_paperBorderBottom).toDouble();
@@ -233,7 +233,7 @@ void PosteRazorCore::setPaperFormat(const QString &format)
     m_paperFormat = format;
 }
 
-void PosteRazorCore::setPaperOrientation(PaperFormats::ePaperOrientations orientation)
+void PosteRazorCore::setPaperOrientation(QPrinter::Orientation orientation)
 {
     m_paperOrientation = orientation;
 }
@@ -263,7 +263,7 @@ const QString PosteRazorCore::getPaperFormat() const
     return m_paperFormat;
 }
 
-PaperFormats::ePaperOrientations PosteRazorCore::getPaperOrientation() const
+QPrinter::Orientation PosteRazorCore::getPaperOrientation() const
 {
     return m_paperOrientation;
 }

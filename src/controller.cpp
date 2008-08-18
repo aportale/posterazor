@@ -35,14 +35,13 @@ Controller::Controller(PosteRazorCore *posteRazorCore, MainWindow *mainWindow, Q
     , m_launchPDFApplication(true)
 {
     connect(m_mainWindow, SIGNAL(paperFormatChanged(const QString&)), SLOT(setPaperFormat(const QString&)));
-    connect(m_mainWindow, SIGNAL(paperOrientationChanged(PaperFormats::ePaperOrientations)), SLOT(setPaperOrientation(PaperFormats::ePaperOrientations)));
+    connect(m_mainWindow, SIGNAL(paperOrientationChanged(QPrinter::Orientation)), SLOT(setPaperOrientation(QPrinter::Orientation)));
     connect(m_mainWindow, SIGNAL(paperBorderTopChanged(double)), SLOT(setPaperBorderTop(double)));
     connect(m_mainWindow, SIGNAL(paperBorderRightChanged(double)), SLOT(setPaperBorderRight(double)));
     connect(m_mainWindow, SIGNAL(paperBorderBottomChanged(double)), SLOT(setPaperBorderBottom(double)));
     connect(m_mainWindow, SIGNAL(paperBorderLeftChanged(double)), SLOT(setPaperBorderLeft(double)));
     connect(m_mainWindow, SIGNAL(paperCustomWidthChanged(double)), SLOT(setCustomPaperWidth(double)));
     connect(m_mainWindow, SIGNAL(paperCustomHeightChanged(double)), SLOT(setCustomPaperHeight(double)));
-
     connect(m_mainWindow, SIGNAL(overlappingWidthChanged(double)), SLOT(setOverlappingWidth(double)));
     connect(m_mainWindow, SIGNAL(overlappingHeightChanged(double)), SLOT(setOverlappingHeight(double)));
     connect(m_mainWindow, SIGNAL(overlappingPositionChanged(Qt::Alignment)), SLOT(setOverlappingPosition(Qt::Alignment)));
@@ -51,13 +50,11 @@ Controller::Controller(PosteRazorCore *posteRazorCore, MainWindow *mainWindow, Q
     connect(m_mainWindow, SIGNAL(posterWidthPagesChanged(double)), SLOT(setPosterWidthPages(double)));
     connect(m_mainWindow, SIGNAL(posterHeightPagesChanged(double)), SLOT(setPosterHeightPages(double)));
     connect(m_mainWindow, SIGNAL(posterSizePercentualChanged(double)), SLOT(setPosterSizePercentual(double)));
-
     connect(m_mainWindow, SIGNAL(posterAlignmentChanged(Qt::Alignment)), SLOT(setPosterAlignment(Qt::Alignment)));
-
     connect(m_mainWindow, SIGNAL(savePosterSignal()), SLOT(savePoster()));
     connect(m_mainWindow, SIGNAL(launchPDFApplicationChanged(bool)), SLOT(setLaunchPDFApplication(bool)));
     connect(m_mainWindow, SIGNAL(loadImageSignal()), SLOT(loadInputImage()));
-    connect(m_mainWindow, SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), m_mainWindow, SLOT(paintOnCanvas(PaintCanvasInterface*, const QVariant&)));
+    connect(m_mainWindow, SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), m_posteRazorCore, SLOT(paintOnCanvas(PaintCanvasInterface*, const QVariant&)));
     connect(m_posteRazorCore, SIGNAL(previewImageChanged(const QImage&)), m_mainWindow, SLOT(setPreviewImage(const QImage&)));
 
     updateDialog();
@@ -94,7 +91,7 @@ void Controller::setPaperFormat(const QString &format)
     updatePreview();
 }
 
-void Controller::setPaperOrientation(PaperFormats::ePaperOrientations orientation)
+void Controller::setPaperOrientation(QPrinter::Orientation orientation)
 {
     m_posteRazorCore->setPaperOrientation(orientation);
     setDialogPosterOptions();

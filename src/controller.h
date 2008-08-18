@@ -40,7 +40,7 @@ public:
 public slots:
     void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
     void setPaperFormat(const QString &format);
-    void setPaperOrientation(PaperFormats::ePaperOrientations orientation);
+    void setPaperOrientation(QPrinter::Orientation orientation);
     void setPaperBorderTop(double border);
     void setPaperBorderRight(double border);
     void setPaperBorderBottom(double border);
