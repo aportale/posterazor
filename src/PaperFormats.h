@@ -33,10 +33,7 @@ class PaperFormats
 {
 public:
     static const QHash<QString, QSizeF> &paperFormats();
-
-    static double getPaperDimension(const QString &format, QPrinter::Orientation orientation, UnitsOfLength::eUnitsOfLength unit, bool width);
-    static double getPaperWidth(const QString &format, QPrinter::Orientation orientation, UnitsOfLength::eUnitsOfLength unit);
-    static double getPaperHeight(const QString &format, QPrinter::Orientation orientation, UnitsOfLength::eUnitsOfLength unit);
+    static QSizeF getPaperSize(const QString &format, QPrinter::Orientation orientation, UnitsOfLength::eUnitsOfLength unit);
 };
 
 #endif // PAPERFORMATS_H

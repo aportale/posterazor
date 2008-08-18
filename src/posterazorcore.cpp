@@ -348,10 +348,8 @@ bool PosteRazorCore::getUseCustomPaperSize() const
 
 QSizeF PosteRazorCore::getPaperSize() const
 {
-    return QSizeF(
-        getUseCustomPaperSize()?getCustomPaperSize().width():PaperFormats::getPaperWidth(getPaperFormat(), getPaperOrientation(), m_unitOfLength),
-        getUseCustomPaperSize()?getCustomPaperSize().height():PaperFormats::getPaperHeight(getPaperFormat(), getPaperOrientation(), m_unitOfLength)
-    );
+    return getUseCustomPaperSize()?getCustomPaperSize()
+        :PaperFormats::getPaperSize(getPaperFormat(), getPaperOrientation(), m_unitOfLength);
 }
 
 QSizeF PosteRazorCore::getPrintablePaperAreaSize() const

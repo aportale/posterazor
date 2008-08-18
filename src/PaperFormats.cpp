@@ -44,19 +44,13 @@ const QHash<QString, QSizeF> &PaperFormats::paperFormats()
     return formats;
 }
 
-double PaperFormats::getPaperDimension(const QString &format, QPrinter::Orientation orientation, UnitsOfLength::eUnitsOfLength unit, bool width)
+QSizeF PaperFormats::getPaperSize(const QString &format, QPrinter::Orientation orientation, UnitsOfLength::eUnitsOfLength unit)
 {
-    const QSizeF paperSize = paperFormats().value(format);
-    const double dimension = ((width && orientation == QPrinter::Portrait) || (!width && orientation == QPrinter::Landscape))?paperSize.width():paperSize.height();
-    return UnitsOfLength::convertBetweenUnitsOfLength(dimension, UnitsOfLength::eUnitOfLengthCentimeter, unit);
-}
-
-double PaperFormats::getPaperWidth(const QString &format, QPrinter::Orientation orientation, UnitsOfLength::eUnitsOfLength unit)
-{
-    return getPaperDimension(format, orientation, unit, true);
-}
-
-double PaperFormats::getPaperHeight(const QString &format, QPrinter::Orientation orientation, UnitsOfLength::eUnitsOfLength unit)
-{
-    return getPaperDimension(format, orientation, unit, false);
+    QSizeF result = paperFormats().value(format);
+    if (orientation == QPrinter::Landscape)
+        result.transpose();
+    return QSizeF(
+        UnitsOfLength::convertBetweenUnitsOfLength(result.width(), UnitsOfLength::eUnitOfLengthCentimeter, unit),
+        UnitsOfLength::convertBetweenUnitsOfLength(result.height(), UnitsOfLength::eUnitOfLengthCentimeter, unit)
+    );
 }
