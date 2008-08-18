@@ -20,7 +20,6 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "FreeImage.h"
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
@@ -158,18 +157,19 @@ int PosteRazorPDFOutput::saveImage(const QString &jpegFileName, const QSize &siz
     return err;
 }
 
-#define NOCOMPRESSIONFORNOW
 int PosteRazorPDFOutput::saveImage(const QByteArray &imageData, const QSize &sizePixels, int bitPerPixel, ColorTypes::eColorTypes colorType, const QVector<QRgb> &colorTable)
 {
     int err = 0;
     err = AddImageResourcesAndXObject();
 
-    const QByteArray imageDataCompressed =
-#ifdef NOCOMPRESSIONFORNOW
-        imageData;
-#else
-        qCompress(imageData, 9);
-#endif
+    const QByteArray imageDataCompressed = qCompress(imageData, 9);
+
+    // qCompress adds 4 extra bytes before and after the compressed
+    // results. In the prepended bytes, we have the original size
+    // of the uncompressed data. We need to chop these bytes off
+    // from both ends when inserting into the PDF document...
+    const int compressedByteArrayPrependedBytes = 4;
+    const int compressedByteArrayAppendedBytes = 4;
 
     char colorSpaceString[5000] = "";
     // TODO: convert to switch
@@ -202,13 +202,13 @@ int PosteRazorPDFOutput::saveImage(const QByteArray &imageData, const QSize &siz
         "/Width %d" LINEFEED
         "/Type /XObject" LINEFEED
         "/Height %d" LINEFEED
-#ifndef NOCOMPRESSIONFORNOW
         "/Filter /FlateDecode" LINEFEED
-#endif
         "/BitsPerComponent %d" LINEFEED
         ">>" LINEFEED
         "stream" LINEFEED,
-        m_pdfObjectCount, colorSpaceString, imageDataCompressed.size(), sizePixels.width(), sizePixels.height(),
+        m_pdfObjectCount, colorSpaceString,
+        imageDataCompressed.size() - compressedByteArrayPrependedBytes - compressedByteArrayAppendedBytes,
+        sizePixels.width(), sizePixels.height(),
         (
             colorType == ColorTypes::eColorTypePalette?bitPerPixel
             :colorType == ColorTypes::eColorTypeMonochrome?bitPerPixel
@@ -217,8 +217,13 @@ int PosteRazorPDFOutput::saveImage(const QByteArray &imageData, const QSize &siz
             :(bitPerPixel/3)
         )
     );
-    fwrite(imageDataCompressed.constData(), imageDataCompressed.size(), 1, m_outputFile);
-    fprintf (
+    fwrite(
+        imageDataCompressed.constData() + compressedByteArrayPrependedBytes,
+        sizeof(char),
+        imageDataCompressed.size() - compressedByteArrayPrependedBytes - compressedByteArrayAppendedBytes,
+        m_outputFile
+    );
+    fprintf(
         m_outputFile,
         LINEFEED "endstream" LINEFEED\
         "endobj"
