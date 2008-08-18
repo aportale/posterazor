@@ -9,12 +9,12 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-    
+
     PosteRazor is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-    
+
     You should have received a copy of the GNU General Public License
     along with PosteRazor; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
@@ -23,9 +23,6 @@
 #include "FreeImage.h"
 #include "imageiofreeimage.h"
 #include "UnitsOfLength.h"
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
 #include <QStringList>
 
 static QString FreeImageErrorMessage;
@@ -51,7 +48,7 @@ public:
     }
 };
 
-ImageIOFreeImage::ImageIOFreeImage(QObject *parent)
+ImageLoaderFreeImage::ImageLoaderFreeImage(QObject *parent)
     : QObject(parent)
     , m_bitmap(NULL)
     , m_widthPixels(0)
@@ -62,12 +59,12 @@ ImageIOFreeImage::ImageIOFreeImage(QObject *parent)
     const static FreeImageInitializer initializer;
 }
 
-ImageIOFreeImage::~ImageIOFreeImage()
+ImageLoaderFreeImage::~ImageLoaderFreeImage()
 {
     disposeImage();
 }
 
-void ImageIOFreeImage::disposeImage()
+void ImageLoaderFreeImage::disposeImage()
 {
     if (m_bitmap) {
         FreeImage_Unload(m_bitmap);
@@ -75,7 +72,7 @@ void ImageIOFreeImage::disposeImage()
     }
 }
 
-bool ImageIOFreeImage::loadInputImage(const QString &imageFileName, QString &errorMessage)
+bool ImageLoaderFreeImage::loadInputImage(const QString &imageFileName, QString &errorMessage)
 {
     bool result = false;
 
@@ -118,43 +115,43 @@ bool ImageIOFreeImage::loadInputImage(const QString &imageFileName, QString &err
     return result;
 }
 
-bool ImageIOFreeImage::isImageLoaded() const
+bool ImageLoaderFreeImage::isImageLoaded() const
 {
     return (m_bitmap != NULL);
 }
 
-bool ImageIOFreeImage::isJpeg() const
+bool ImageLoaderFreeImage::isJpeg() const
 {
     return FreeImage_GetFileType(m_imageFileName.toAscii(), 0) == FIF_JPEG;
 }
 
-QString ImageIOFreeImage::getFileName() const
+QString ImageLoaderFreeImage::getFileName() const
 {
     return m_imageFileName;
 }
 
-QSize ImageIOFreeImage::getSizePixels() const
+QSize ImageLoaderFreeImage::getSizePixels() const
 {
     return QSize(m_widthPixels, m_heightPixels);
 }
 
-double ImageIOFreeImage::getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const
+double ImageLoaderFreeImage::getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const
 {
     return m_horizontalDotsPerMeter / UnitsOfLength::convertBetweenUnitsOfLength(1, UnitsOfLength::eUnitOfLengthMeter, unit);
 }
 
-double ImageIOFreeImage::getVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const
+double ImageLoaderFreeImage::getVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const
 {
     return m_verticalDotsPerMeter / UnitsOfLength::convertBetweenUnitsOfLength(1, UnitsOfLength::eUnitOfLengthMeter, unit);
 }
 
-QSizeF ImageIOFreeImage::getSize(UnitsOfLength::eUnitsOfLength unit) const
+QSizeF ImageLoaderFreeImage::getSize(UnitsOfLength::eUnitsOfLength unit) const
 {
     const QSize sizePixels(getSizePixels());
     return QSizeF(sizePixels.width() / getHorizontalDotsPerUnitOfLength(unit), sizePixels.height() / getVerticalDotsPerUnitOfLength(unit));
 }
 
-const QImage ImageIOFreeImage::getImageAsRGB(const QSize &size) const
+const QImage ImageLoaderFreeImage::getImageAsRGB(const QSize &size) const
 {
     const QSize resultSize = size.isValid()?size:getSizePixels();
     QImage result(resultSize, QImage::Format_RGB32);
@@ -223,12 +220,12 @@ const QImage ImageIOFreeImage::getImageAsRGB(const QSize &size) const
     return result;
 }
 
-int ImageIOFreeImage::getBitsPerPixel() const
+int ImageLoaderFreeImage::getBitsPerPixel() const
 {
     return FreeImage_GetBPP(m_bitmap);
 }
 
-ColorTypes::eColorTypes ImageIOFreeImage::getColorDataType() const
+ColorTypes::eColorTypes ImageLoaderFreeImage::getColorDataType() const
 {
     ColorTypes::eColorTypes colorDatatype = ColorTypes::eColorTypeRGB;
     const FREE_IMAGE_COLOR_TYPE imageColorType = FreeImage_GetColorType(m_bitmap);
@@ -246,7 +243,7 @@ ColorTypes::eColorTypes ImageIOFreeImage::getColorDataType() const
     return colorDatatype;
 }
 
-const QByteArray ImageIOFreeImage::getBits() const
+const QByteArray ImageLoaderFreeImage::getBits() const
 {
     const unsigned int bitsPerLine = m_widthPixels * getBitsPerPixel();
     const unsigned int bytesPerLine = ceil(bitsPerLine/8.0);
@@ -270,7 +267,7 @@ const QByteArray ImageIOFreeImage::getBits() const
     return result;
 }
 
-const QVector<QRgb> ImageIOFreeImage::getColorTable() const
+const QVector<QRgb> ImageLoaderFreeImage::getColorTable() const
 {
     QVector<QRgb> result;
 
@@ -285,7 +282,7 @@ const QVector<QRgb> ImageIOFreeImage::getColorTable() const
     return result;
 }
 
-bool ImageIOFreeImage::hasFreeImageVersionCorrectTopDownInConvertBits()
+bool ImageLoaderFreeImage::hasFreeImageVersionCorrectTopDownInConvertBits()
 {
     const QStringList versionDigits = QString(FreeImage_GetVersion()).split('.');
     return versionDigits.count() >= 2

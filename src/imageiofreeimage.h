@@ -9,29 +9,29 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-    
+
     PosteRazor is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-    
+
     You should have received a copy of the GNU General Public License
     along with PosteRazor; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef IMAGEIOFREEIMAGE_H
-#define IMAGEIOFREEIMAGE_H
+#ifndef IMAGELOADERFREEIMAGE_H
+#define IMAGELOADERFREEIMAGE_H
 
 #include "imageiointerface.h"
 
 struct FIBITMAP;
 
-class ImageIOFreeImage: public QObject, public ImageIOInterface
+class ImageLoaderFreeImage: public QObject, public ImageLoaderInterface
 {
 public:
-    ImageIOFreeImage(QObject *parent = 0);
-    ~ImageIOFreeImage();
+    ImageLoaderFreeImage(QObject *parent = 0);
+    ~ImageLoaderFreeImage();
 
     bool loadInputImage(const QString &imageFileName, QString &errorMessage);
     bool isImageLoaded() const;
@@ -59,4 +59,4 @@ private:
     static bool hasFreeImageVersionCorrectTopDownInConvertBits();
 };
 
-#endif // IMAGEIOFREEIMAGE_H
+#endif // IMAGELOADERFREEIMAGE_H

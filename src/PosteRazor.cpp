@@ -9,12 +9,12 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-    
+
     PosteRazor is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-    
+
     You should have received a copy of the GNU General Public License
     along with PosteRazor; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
@@ -75,11 +75,11 @@ PosteRazor::PosteRazor(QObject *parent)
 
     , m_unitOfLength(UnitsOfLength::eUnitOfLengthCentimeter)
 {
-    m_imageIO =
+    m_imageLoader =
 #if defined (FREEIMAGE_LIB)
-        new ImageIOFreeImage(this);
+        new ImageLoaderFreeImage(this);
 #else
-        new ImageIOQt(this);
+        new ImageLoaderQt(this);
 #endif
 }
 
@@ -172,7 +172,7 @@ QSizeF PosteRazor::convertCmToSize(const QSizeF &sizeInCm) const
 
 bool PosteRazor::loadInputImage(const QString &imageFileName, QString &errorMessage)
 {
-    const bool success = m_imageIO->loadInputImage(imageFileName, errorMessage);
+    const bool success = m_imageLoader->loadInputImage(imageFileName, errorMessage);
     if (success)
         createPreviewImage(QSize(1024, 768));
     return success;
@@ -180,37 +180,37 @@ bool PosteRazor::loadInputImage(const QString &imageFileName, QString &errorMess
 
 bool PosteRazor::getIsImageLoaded() const
 {
-    return m_imageIO->isImageLoaded();
+    return m_imageLoader->isImageLoaded();
 }
 
 QSize PosteRazor::getInputImageSizePixels() const
 {
-    return m_imageIO->getSizePixels();
+    return m_imageLoader->getSizePixels();
 }
 
 double PosteRazor::getInputImageHorizontalDpi() const
 {
-    return m_imageIO->getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitOfLengthInch);
+    return m_imageLoader->getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitOfLengthInch);
 }
 
 double PosteRazor::getInputImageVerticalDpi() const
 {
-    return m_imageIO->getVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitOfLengthInch);
+    return m_imageLoader->getVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitOfLengthInch);
 }
 
 QSizeF PosteRazor::getInputImageSize() const
 {
-    return m_imageIO->getSize(m_unitOfLength);
+    return m_imageLoader->getSize(m_unitOfLength);
 }
 
 int PosteRazor::getInputImageBitsPerPixel() const
 {
-    return m_imageIO->getBitsPerPixel();
+    return m_imageLoader->getBitsPerPixel();
 }
 
 ColorTypes::eColorTypes PosteRazor::getInputImageColorType() const
 {
-    return m_imageIO->getColorDataType();
+    return m_imageLoader->getColorDataType();
 }
 
 void PosteRazor::setUnitOfLength(UnitsOfLength::eUnitsOfLength unit)
@@ -574,7 +574,7 @@ QSizeF PosteRazor::getInputImagePreviewSize(const QSize &boxSize) const
 
 void PosteRazor::createPreviewImage(const QSize &size) const
 {
-    const QImage previewImage = m_imageIO->getImageAsRGB(getInputImagePreviewSize(size).toSize());
+    const QImage previewImage = m_imageLoader->getImageAsRGB(getInputImagePreviewSize(size).toSize());
     emit previewImageChanged(previewImage);
 }
 
@@ -740,7 +740,7 @@ void PosteRazor::paintPosterPageOnCanvas(PaintCanvasInterface *paintCanvas, int 
 void PosteRazor::paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVariant &options) const
 {
     const QString state = options.toString();
-    
+
     if (state == QLatin1String("image")) {
         paintImageOnCanvas(paintCanvas);
     } else if (state == QLatin1String("paper") || state == QLatin1String("overlapping")) {
@@ -760,16 +760,16 @@ int PosteRazor::savePoster(const QString &fileName) const
     const QSizeF posterSizePages = getPosterSize(PosteRazorEnums::ePosterSizeModePages);
     const QSizeF sizeCm = convertSizeToCm(getPrintablePaperAreaSize());
     const int pagesCount = (int)(ceil(posterSizePages.width())) * (int)(ceil(posterSizePages.height()));
-    const QSize imageSize = m_imageIO->getSizePixels();
-    const QByteArray imageData = m_imageIO->getBits();
+    const QSize imageSize = m_imageLoader->getSizePixels();
+    const QByteArray imageData = m_imageLoader->getBits();
 
     PosteRazorPDFOutput pdfOutput;
     err = pdfOutput.startSaving(fileName, pagesCount, sizeCm.width(), sizeCm.height());
     if (!err) {
-        if (m_imageIO->isJpeg())
-            err = pdfOutput.saveImage(m_imageIO->getFileName(), imageSize, m_imageIO->getColorDataType());
+        if (m_imageLoader->isJpeg())
+            err = pdfOutput.saveImage(m_imageLoader->getFileName(), imageSize, m_imageLoader->getColorDataType());
         else
-            err = pdfOutput.saveImage(imageData, imageSize, m_imageIO->getBitsPerPixel(), m_imageIO->getColorDataType(), m_imageIO->getColorTable());
+            err = pdfOutput.saveImage(imageData, imageSize, m_imageLoader->getBitsPerPixel(), m_imageLoader->getColorDataType(), m_imageLoader->getColorTable());
     }
 
     if (!err) {
