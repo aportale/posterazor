@@ -20,7 +20,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "imageioqt.h"
+#include "imageloaderqt.h"
 #include <QImageReader>
 #include <math.h>
 

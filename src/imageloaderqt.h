@@ -23,7 +23,7 @@
 #ifndef IMAGELOADERQT_H
 #define IMAGELOADERQT_H
 
-#include "imageiointerface.h"
+#include "imageloaderinterface.h"
 #include <QObject>
 
 class ImageLoaderQt: public QObject, public ImageLoaderInterface

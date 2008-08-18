@@ -13,7 +13,7 @@ SOURCES += \
 
 HEADERS += \
     ColorTypes.h \
-    imageiointerface.h \
+    imageloaderinterface.h \
     ImageIOTypes.h \
     UnitsOfLength.h \
     PaperFormats.h \
@@ -54,10 +54,10 @@ TRANSLATIONS += \
 
 contains (DEFINES, FREEIMAGE_LIB) {
     SOURCES += \
-        imageiofreeimage.cpp
+        imageloaderfreeimage.cpp
 
     HEADERS += \
-        imageiofreeimage.h
+        imageloaderfreeimage.h
 
     win32:INCLUDEPATH += \
         thirdparty/FreeImage/Dist
@@ -69,10 +69,10 @@ contains (DEFINES, FREEIMAGE_LIB) {
         -lfreeimage
 } else {
     SOURCES += \
-        imageioqt.cpp
+        imageloaderqt.cpp
 
     HEADERS += \
-        imageioqt.h
+        imageloaderqt.h
 
     QTPLUGIN += \
         qjpeg \

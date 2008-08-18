@@ -22,9 +22,9 @@
 
 #include "PosteRazor.h"
 #if defined (FREEIMAGE_LIB)
-#    include "imageiofreeimage.h"
+#    include "imageloaderfreeimage.h"
 #else
-#    include "imageioqt.h"
+#    include "imageloaderqt.h"
 #endif
 #include "PosteRazorPDFOutput.h"
 #include <QSettings>
