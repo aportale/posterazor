@@ -20,8 +20,8 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef POSTERAZORPDFOUTPUT_H
-#define POSTERAZORPDFOUTPUT_H
+#ifndef PDFWRITER_H
+#define PDFWRITER_H
 
 #include "ColorTypes.h"
 #include "PaintCanvasInterface.h"
@@ -29,10 +29,10 @@
 #include <QRgb>
 #include <QSize>
 
-class PosteRazorPDFOutput: public QObject, public PaintCanvasInterface
+class PDFWriter: public QObject, public PaintCanvasInterface
 {
 public:
-    PosteRazorPDFOutput(QObject *parent = 0);
+    PDFWriter(QObject *parent = 0);
 
     void addOffsetToXref();
     int addImageResourcesAndXObject();
@@ -59,4 +59,4 @@ private:
     double m_mediaboxHeight;
 };
 
-#endif // POSTERAZORPDFOUTPUT_H
+#endif // PDFWRITER_H

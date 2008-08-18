@@ -763,24 +763,24 @@ int PosteRazor::savePoster(const QString &fileName) const
     const QSize imageSize = m_imageLoader->getSizePixels();
     const QByteArray imageData = m_imageLoader->getBits();
 
-    PosteRazorPDFOutput pdfOutput;
-    err = pdfOutput.startSaving(fileName, pagesCount, sizeCm.width(), sizeCm.height());
+    PDFWriter pdfWriter;
+    err = pdfWriter.startSaving(fileName, pagesCount, sizeCm.width(), sizeCm.height());
     if (!err) {
         if (m_imageLoader->isJpeg())
-            err = pdfOutput.saveImage(m_imageLoader->getFileName(), imageSize, m_imageLoader->getColorDataType());
+            err = pdfWriter.saveImage(m_imageLoader->getFileName(), imageSize, m_imageLoader->getColorDataType());
         else
-            err = pdfOutput.saveImage(imageData, imageSize, m_imageLoader->getBitsPerPixel(), m_imageLoader->getColorDataType(), m_imageLoader->getColorTable());
+            err = pdfWriter.saveImage(imageData, imageSize, m_imageLoader->getBitsPerPixel(), m_imageLoader->getColorDataType(), m_imageLoader->getColorTable());
     }
 
     if (!err) {
         for (int page = 0; page < pagesCount; page++) {
             char paintOptions[1024];
             sprintf(paintOptions, "posterpage %d", page);
-            pdfOutput.startPage();
-            paintOnCanvas(&pdfOutput, paintOptions);
-            pdfOutput.finishPage();
+            pdfWriter.startPage();
+            paintOnCanvas(&pdfWriter, paintOptions);
+            pdfWriter.finishPage();
         }
-        err = pdfOutput.finishSaving();
+        err = pdfWriter.finishSaving();
     }
 
     return err;

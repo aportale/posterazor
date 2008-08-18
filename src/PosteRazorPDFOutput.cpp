@@ -9,12 +9,12 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-    
+
     PosteRazor is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-    
+
     You should have received a copy of the GNU General Public License
     along with PosteRazor; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
@@ -22,7 +22,6 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <math.h>
 #include "PaintCanvasInterface.h"
 #include "PosteRazorPDFOutput.h"
 #include <time.h>
@@ -31,7 +30,7 @@
 #define CM2PT(cm) ((cm) / 2.54 * 72)
 #define JPEGFILECOPYBUFFERSIZE 10000
 
-PosteRazorPDFOutput::PosteRazorPDFOutput(QObject *parent)
+PDFWriter::PDFWriter(QObject *parent)
     : QObject(parent)
     , m_outputFile(NULL)
     , m_pdfObjectCount(0)
@@ -44,7 +43,7 @@ PosteRazorPDFOutput::PosteRazorPDFOutput(QObject *parent)
     m_pageContent[0] = '\0';
 }
 
-void PosteRazorPDFOutput::addOffsetToXref()
+void PDFWriter::addOffsetToXref()
 {
     char xrefLine[25];
     m_pdfObjectCount++;
@@ -52,7 +51,7 @@ void PosteRazorPDFOutput::addOffsetToXref()
     strcat(m_xref, xrefLine);
 }
 
-int PosteRazorPDFOutput::addImageResourcesAndXObject()
+int PDFWriter::addImageResourcesAndXObject()
 {
     int err = 0;
 
@@ -81,7 +80,7 @@ int PosteRazorPDFOutput::addImageResourcesAndXObject()
     return err;
 }
 
-int PosteRazorPDFOutput::saveImage(const QString &jpegFileName, const QSize &sizePixels, ColorTypes::eColorTypes colorType)
+int PDFWriter::saveImage(const QString &jpegFileName, const QSize &sizePixels, ColorTypes::eColorTypes colorType)
 {
     int err = 0;
 
@@ -157,7 +156,7 @@ int PosteRazorPDFOutput::saveImage(const QString &jpegFileName, const QSize &siz
     return err;
 }
 
-int PosteRazorPDFOutput::saveImage(const QByteArray &imageData, const QSize &sizePixels, int bitPerPixel, ColorTypes::eColorTypes colorType, const QVector<QRgb> &colorTable)
+int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, int bitPerPixel, ColorTypes::eColorTypes colorType, const QVector<QRgb> &colorTable)
 {
     int err = 0;
     err = addImageResourcesAndXObject();
@@ -232,7 +231,7 @@ int PosteRazorPDFOutput::saveImage(const QByteArray &imageData, const QSize &siz
     return err;
 }
 
-int PosteRazorPDFOutput::startPage()
+int PDFWriter::startPage()
 {
     int err = 0;
     m_pageContent[0] = '\0';
@@ -258,7 +257,7 @@ int PosteRazorPDFOutput::startPage()
     return err;
 }
 
-int PosteRazorPDFOutput::finishPage()
+int PDFWriter::finishPage()
 {
     int err = 0;
 
@@ -278,7 +277,7 @@ int PosteRazorPDFOutput::finishPage()
     return err;
 }
 
-int PosteRazorPDFOutput::startSaving(const QString &fileName, int pages, double widthCm, double heightCm)
+int PDFWriter::startSaving(const QString &fileName, int pages, double widthCm, double heightCm)
 {
     int err = 0;
 
@@ -352,7 +351,7 @@ int PosteRazorPDFOutput::startSaving(const QString &fileName, int pages, double 
     return err;
 }
 
-int PosteRazorPDFOutput::finishSaving()
+int PDFWriter::finishSaving()
 {
     int err = 0;
 
@@ -378,10 +377,10 @@ int PosteRazorPDFOutput::finishSaving()
     return err;
 }
 
-void PosteRazorPDFOutput::drawFilledRect(const QRectF&, const QBrush &brush) {}
-QSizeF PosteRazorPDFOutput::getSize() const {return QSizeF();}
+void PDFWriter::drawFilledRect(const QRectF&, const QBrush &brush) {}
+QSizeF PDFWriter::getSize() const {return QSizeF();}
 
-void PosteRazorPDFOutput::drawImage(const QRectF &rect)
+void PDFWriter::drawImage(const QRectF &rect)
 {
     char imageCode[2048]="";
 
