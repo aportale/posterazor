@@ -73,4 +73,8 @@ contains (DEFINES, FREEIMAGE_LIB) {
 
     HEADERS += \
         imageioqt.h
+
+    QTPLUGIN += \
+        qjpeg \
+        qtiff
 }

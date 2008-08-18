@@ -9,12 +9,12 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-    
+
     PosteRazor is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-    
+
     You should have received a copy of the GNU General Public License
     along with PosteRazor; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
@@ -176,11 +176,6 @@ void MainWindow::setPosterAlignment(Qt::Alignment alignment)
 {
     if (m_alignmentButtons.contains(alignment))
         m_alignmentButtons.value(alignment)->setChecked(true);
-}
-
-void MainWindow::setPosterOutputFormat(ImageIOTypes::eImageFormats format)
-{
-    Q_UNUSED(format)
 }
 
 void MainWindow::setLaunchPDFApplication(bool launch)

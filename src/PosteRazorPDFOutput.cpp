@@ -44,7 +44,7 @@ PosteRazorPDFOutput::PosteRazorPDFOutput(QObject *parent)
     m_pageContent[0] = '\0';
 }
 
-void PosteRazorPDFOutput::AddOffsetToXref()
+void PosteRazorPDFOutput::addOffsetToXref()
 {
     char xrefLine[25];
     m_pdfObjectCount++;
@@ -52,11 +52,11 @@ void PosteRazorPDFOutput::AddOffsetToXref()
     strcat(m_xref, xrefLine);
 }
 
-int PosteRazorPDFOutput::AddImageResourcesAndXObject()
+int PosteRazorPDFOutput::addImageResourcesAndXObject()
 {
     int err = 0;
 
-    AddOffsetToXref();
+    addOffsetToXref();
     m_objectResourcesID = m_pdfObjectCount;
     fprintf (
         m_outputFile,
@@ -68,7 +68,7 @@ int PosteRazorPDFOutput::AddImageResourcesAndXObject()
         m_pdfObjectCount, m_pdfObjectCount + 1
     );
 
-    AddOffsetToXref();
+    addOffsetToXref();
     fprintf (
         m_outputFile,
         LINEFEED "%d 0 obj" LINEFEED\
@@ -85,7 +85,7 @@ int PosteRazorPDFOutput::saveImage(const QString &jpegFileName, const QSize &siz
 {
     int err = 0;
 
-    err = AddImageResourcesAndXObject();
+    err = addImageResourcesAndXObject();
 
     FILE *jpegFile = NULL;
     if (!err) {
@@ -104,7 +104,7 @@ int PosteRazorPDFOutput::saveImage(const QString &jpegFileName, const QSize &siz
     }
 
     if (!err) {
-        AddOffsetToXref();
+        addOffsetToXref();
         fprintf (
             m_outputFile,
             LINEFEED "%d 0 obj" LINEFEED\
@@ -160,7 +160,7 @@ int PosteRazorPDFOutput::saveImage(const QString &jpegFileName, const QSize &siz
 int PosteRazorPDFOutput::saveImage(const QByteArray &imageData, const QSize &sizePixels, int bitPerPixel, ColorTypes::eColorTypes colorType, const QVector<QRgb> &colorTable)
 {
     int err = 0;
-    err = AddImageResourcesAndXObject();
+    err = addImageResourcesAndXObject();
 
     const QByteArray imageDataCompressed = qCompress(imageData, 9);
 
@@ -191,7 +191,7 @@ int PosteRazorPDFOutput::saveImage(const QByteArray &imageData, const QSize &siz
         }
         strcat(colorSpaceString, ">]");
     }
-    AddOffsetToXref();
+    addOffsetToXref();
     m_objectImageID = m_pdfObjectCount;
     fprintf (
         m_outputFile,
@@ -237,7 +237,7 @@ int PosteRazorPDFOutput::startPage()
     int err = 0;
     m_pageContent[0] = '\0';
 
-    AddOffsetToXref();
+    addOffsetToXref();
     fprintf (
         m_outputFile,
         LINEFEED "%d 0 obj" LINEFEED\
@@ -262,7 +262,7 @@ int PosteRazorPDFOutput::finishPage()
 {
     int err = 0;
 
-    AddOffsetToXref();
+    addOffsetToXref();
     fprintf (
         m_outputFile,
         LINEFEED "%d 0 obj" LINEFEED\
@@ -302,7 +302,7 @@ int PosteRazorPDFOutput::startSaving(const QString &fileName, int pages, double 
         char dateStr[1024];
         sprintf(dateStr, "%.4d%.2d%.2d%.2d%.2d%.2d", timeinfo->tm_year+1900, timeinfo->tm_mon+1, timeinfo->tm_mday, timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
 
-         AddOffsetToXref();
+         addOffsetToXref();
         fprintf (
             m_outputFile,
             LINEFEED "%d 0 obj" LINEFEED\
@@ -315,7 +315,7 @@ int PosteRazorPDFOutput::startSaving(const QString &fileName, int pages, double 
             dateStr
         );
 
-        AddOffsetToXref();
+        addOffsetToXref();
         fprintf (
             m_outputFile,
             LINEFEED "%d 0 obj" LINEFEED\
@@ -326,7 +326,7 @@ int PosteRazorPDFOutput::startSaving(const QString &fileName, int pages, double 
             m_pdfObjectCount, m_pdfObjectCount+1
         );
 
-        AddOffsetToXref();
+        addOffsetToXref();
         m_objectPagesID = m_pdfObjectCount;
         char *kidsStr = new char[pages * 20];
         kidsStr[0] = '\0';

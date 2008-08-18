@@ -26,6 +26,15 @@
 #include <QTranslator>
 #include "controller.h"
 #include "PosteRazorWizardDialogController.h"
+#include <QtDebug>
+
+#if !defined(QT_SHARED) && !defined(QT_DLL)
+#include <QtPlugin>
+
+Q_IMPORT_PLUGIN(qgif)
+Q_IMPORT_PLUGIN(qjpeg)
+Q_IMPORT_PLUGIN(qtiff)
+#endif
 
 int main (int argc, char **argv)
 {

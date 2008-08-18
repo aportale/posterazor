@@ -34,8 +34,8 @@ class PosteRazorPDFOutput: public QObject, public PaintCanvasInterface
 public:
     PosteRazorPDFOutput(QObject *parent = 0);
 
-    void AddOffsetToXref();
-    int AddImageResourcesAndXObject();
+    void addOffsetToXref();
+    int addImageResourcesAndXObject();
     int saveImage(const QString &jpegFileName, const QSize &sizePixels, ColorTypes::eColorTypes colorType);
     int saveImage(const QByteArray &imageData, const QSize &sizePixels, int bitPerPixel, ColorTypes::eColorTypes colorType, const QVector<QRgb> &colorTable);
     int startPage();
