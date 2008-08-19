@@ -26,7 +26,7 @@ const QHash<QString, QSizeF> &PaperFormats::paperFormats()
 {
     static QHash<QString, QSizeF> formats;
     if (formats.empty()) {
-        const struct {
+        static const struct {
             QString name;
             double width;
             double height;
@@ -37,7 +37,7 @@ const QHash<QString, QSizeF> &PaperFormats::paperFormats()
             {QLatin1String("Letter"),    21.6, 27.9},
             {QLatin1String("Tabloid"),   27.9, 43.2}
         };
-        const int paperFormatsCount = (int)sizeof(paperFormats)/sizeof(paperFormats[0]);
+        static const int paperFormatsCount = (int)sizeof(paperFormats)/sizeof(paperFormats[0]);
         for (int i = 0; i < paperFormatsCount; i++)
             formats.insert(paperFormats[i].name, QSizeF(paperFormats[i].width, paperFormats[i].height));
     }
