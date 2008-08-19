@@ -1,7 +1,4 @@
 <RCC>
-    <qresource prefix="/Other" >
-        <file>settingsIcon.png</file>
-    </qresource>
     <qresource prefix="/OverlappingPositionImages" >
         <file>overlappingBottomLeft.png</file>
         <file>overlappingBottomRight.png</file>
