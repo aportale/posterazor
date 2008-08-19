@@ -9,36 +9,36 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-    
+
     PosteRazor is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-    
+
     You should have received a copy of the GNU General Public License
     along with PosteRazor; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef POSTERAZORWIZARDDIALOGCONTROLLER_H
-#define POSTERAZORWIZARDDIALOGCONTROLLER_H
+#ifndef WIZARDCONTROLLER_H
+#define WIZARDCONTROLLER_H
 
 #include <QObject>
 
-class PosteRazorWizardDialogController: public QObject
+class WizardController: public QObject
 {
     Q_OBJECT
 
 public:
-    enum ePosteRazorWizardSteps {
-        ePosteRazorWizardStepInputImage,
-        ePosteRazorWizardStepPaperSize,
-        ePosteRazorWizardStepOverlapping,
-        ePosteRazorWizardStepPosterSize,
-        ePosteRazorWizardStepSavePoster
+    enum WizardSteps {
+        WizardStepInputImage,
+        WizardStepPaperSize,
+        WizardStepOverlapping,
+        WizardStepPosterSize,
+        WizardStepSavePoster
     };
 
-    PosteRazorWizardDialogController(QObject *wizardDialog, QObject *parent = 0);
+    WizardController(QObject *wizardDialog, QObject *parent = 0);
 
 private slots:
     void updateDialogWizardStep();
@@ -53,8 +53,8 @@ signals:
     void nextButtonEnabled(bool enabled) const;
 
 private:
-    ePosteRazorWizardSteps m_wizardStep;
+    WizardSteps m_wizardStep;
     bool m_imageWasLoaded;
 };
 
-#endif
+#endif // WIZARDCONTROLLER_H

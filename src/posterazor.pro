@@ -7,7 +7,7 @@ SOURCES += \
     QtPosteRazorSpinBox.cpp \
     paintcanvas.cpp \
     controller.cpp \
-    PosteRazorWizardDialogController.cpp \
+    wizardcontroller.cpp \
     main.cpp
 
 HEADERS += \
@@ -22,7 +22,7 @@ HEADERS += \
     QtPosteRazorSpinBox.h \
     paintcanvas.h \
     controller.h \
-    PosteRazorWizardDialogController.h
+    wizardcontroller.h
 
 win32:DEFINES -= \
     UNICODE
