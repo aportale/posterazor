@@ -25,12 +25,12 @@
 
 #include <QDoubleSpinBox>
 
-class QtPosteRazorSpinBox: public QDoubleSpinBox
+class SnapSpinBox: public QDoubleSpinBox
 {
     Q_OBJECT
 
 public:
-    QtPosteRazorSpinBox(QWidget *parent);
+    SnapSpinBox(QWidget *parent);
     void setValue(double value);
 
 protected:

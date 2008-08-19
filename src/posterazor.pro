@@ -4,7 +4,7 @@ SOURCES += \
     posterazorcore.cpp \
     pdfwriter.cpp \
     mainwindow.cpp \
-    QtPosteRazorSpinBox.cpp \
+    snapspinbox.cpp \
     paintcanvas.cpp \
     controller.cpp \
     wizardcontroller.cpp \
@@ -15,11 +15,11 @@ HEADERS += \
     imageloaderinterface.h \
     UnitsOfLength.h \
     PaperFormats.h \
-    PaintCanvasInterface.h \
+    paintcanvasinterface.h \
     posterazorcore.h \
     pdfwriter.h \
     mainwindow.h \
-    QtPosteRazorSpinBox.h \
+    snapspinbox.h \
     paintcanvas.h \
     controller.h \
     wizardcontroller.h
@@ -31,10 +31,10 @@ FORMS += \
     mainwindow.ui
 
 RESOURCES += \
-    QtPosteRazorDialogResources.qrc
+    posterazor.qrc
 
 RC_FILE += \
-    PosteRazorUI.rc
+    posterazor.rc
 
 TRANSLATIONS += \
     de.ts \

@@ -636,7 +636,7 @@
                    </widget>
                   </item>
                   <item row="0" column="1" >
-                   <widget class="QtPosteRazorSpinBox" name="m_paperCustomWidthSpinner" >
+                   <widget class="SnapSpinBox" name="m_paperCustomWidthSpinner" >
                     <property name="sizePolicy" >
                      <sizepolicy vsizetype="Fixed" hsizetype="Maximum" >
                       <horstretch>0</horstretch>
@@ -652,7 +652,7 @@
                    </widget>
                   </item>
                   <item row="1" column="1" >
-                   <widget class="QtPosteRazorSpinBox" name="m_paperCustomHeightSpinner" >
+                   <widget class="SnapSpinBox" name="m_paperCustomHeightSpinner" >
                     <property name="sizePolicy" >
                      <sizepolicy vsizetype="Fixed" hsizetype="Maximum" >
                       <horstretch>0</horstretch>
@@ -727,7 +727,7 @@
                </widget>
               </item>
               <item row="1" column="1" >
-               <widget class="QtPosteRazorSpinBox" name="m_paperBorderTopInput" >
+               <widget class="SnapSpinBox" name="m_paperBorderTopInput" >
                 <property name="sizePolicy" >
                  <sizepolicy vsizetype="Fixed" hsizetype="Maximum" >
                   <horstretch>0</horstretch>
@@ -743,7 +743,7 @@
                </widget>
               </item>
               <item row="2" column="2" >
-               <widget class="QtPosteRazorSpinBox" name="m_paperBorderRightInput" >
+               <widget class="SnapSpinBox" name="m_paperBorderRightInput" >
                 <property name="sizePolicy" >
                  <sizepolicy vsizetype="Fixed" hsizetype="Maximum" >
                   <horstretch>0</horstretch>
@@ -759,7 +759,7 @@
                </widget>
               </item>
               <item row="2" column="0" >
-               <widget class="QtPosteRazorSpinBox" name="m_paperBorderLeftInput" >
+               <widget class="SnapSpinBox" name="m_paperBorderLeftInput" >
                 <property name="sizePolicy" >
                  <sizepolicy vsizetype="Fixed" hsizetype="Maximum" >
                   <horstretch>0</horstretch>
@@ -775,7 +775,7 @@
                </widget>
               </item>
               <item row="3" column="1" >
-               <widget class="QtPosteRazorSpinBox" name="m_paperBorderBottomInput" >
+               <widget class="SnapSpinBox" name="m_paperBorderBottomInput" >
                 <property name="sizePolicy" >
                  <sizepolicy vsizetype="Fixed" hsizetype="Maximum" >
                   <horstretch>0</horstretch>
@@ -871,7 +871,7 @@
                </widget>
               </item>
               <item row="0" column="1" >
-               <widget class="QtPosteRazorSpinBox" name="m_overlappingWidthInput" >
+               <widget class="SnapSpinBox" name="m_overlappingWidthInput" >
                 <property name="sizePolicy" >
                  <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
                   <horstretch>0</horstretch>
@@ -890,7 +890,7 @@
                </widget>
               </item>
               <item row="1" column="1" >
-               <widget class="QtPosteRazorSpinBox" name="m_overlappingHeightInput" >
+               <widget class="SnapSpinBox" name="m_overlappingHeightInput" >
                 <property name="sizePolicy" >
                  <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
                   <horstretch>0</horstretch>
@@ -935,7 +935,7 @@
                  <string>Top right</string>
                 </property>
                 <property name="icon" >
-                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                 <iconset resource="posterazor.qrc" >
                   <normaloff>:/OverlappingPositionImages/overlappingTopRight.png</normaloff>:/OverlappingPositionImages/overlappingTopRight.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -970,7 +970,7 @@
                  <string>Top left</string>
                 </property>
                 <property name="icon" >
-                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                 <iconset resource="posterazor.qrc" >
                   <normaloff>:/OverlappingPositionImages/overlappingTopLeft.png</normaloff>:/OverlappingPositionImages/overlappingTopLeft.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1005,7 +1005,7 @@
                  <string>Bottom left</string>
                 </property>
                 <property name="icon" >
-                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                 <iconset resource="posterazor.qrc" >
                   <normaloff>:/OverlappingPositionImages/overlappingBottomLeft.png</normaloff>:/OverlappingPositionImages/overlappingBottomLeft.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1040,7 +1040,7 @@
                  <string>Bottom right</string>
                 </property>
                 <property name="icon" >
-                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                 <iconset resource="posterazor.qrc" >
                   <normaloff>:/OverlappingPositionImages/overlappingBottomRight.png</normaloff>:/OverlappingPositionImages/overlappingBottomRight.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1216,7 +1216,7 @@
                </widget>
               </item>
               <item row="4" column="1" >
-               <widget class="QtPosteRazorSpinBox" name="m_posterPagesWidthInput" >
+               <widget class="SnapSpinBox" name="m_posterPagesWidthInput" >
                 <property name="sizePolicy" >
                  <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
                   <horstretch>0</horstretch>
@@ -1235,7 +1235,7 @@
                </widget>
               </item>
               <item row="5" column="1" >
-               <widget class="QtPosteRazorSpinBox" name="m_posterPagesHeightInput" >
+               <widget class="SnapSpinBox" name="m_posterPagesHeightInput" >
                 <property name="sizePolicy" >
                  <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
                   <horstretch>0</horstretch>
@@ -1254,7 +1254,7 @@
                </widget>
               </item>
               <item row="2" column="1" >
-               <widget class="QtPosteRazorSpinBox" name="m_posterAbsoluteHeightInput" >
+               <widget class="SnapSpinBox" name="m_posterAbsoluteHeightInput" >
                 <property name="sizePolicy" >
                  <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
                   <horstretch>0</horstretch>
@@ -1273,7 +1273,7 @@
                </widget>
               </item>
               <item row="1" column="1" >
-               <widget class="QtPosteRazorSpinBox" name="m_posterAbsoluteWidthInput" >
+               <widget class="SnapSpinBox" name="m_posterAbsoluteWidthInput" >
                 <property name="sizePolicy" >
                  <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
                   <horstretch>0</horstretch>
@@ -1292,7 +1292,7 @@
                </widget>
               </item>
               <item row="7" column="1" >
-               <widget class="QtPosteRazorSpinBox" name="m_posterPercentualSizeInput" >
+               <widget class="SnapSpinBox" name="m_posterPercentualSizeInput" >
                 <property name="sizePolicy" >
                  <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
                   <horstretch>0</horstretch>
@@ -1328,7 +1328,7 @@
                  <string/>
                 </property>
                 <property name="icon" >
-                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                 <iconset resource="posterazor.qrc" >
                   <normaloff>:/PosterAlignmentImages/alignmenttopright.png</normaloff>:/PosterAlignmentImages/alignmenttopright.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1351,7 +1351,7 @@
                  <string/>
                 </property>
                 <property name="icon" >
-                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                 <iconset resource="posterazor.qrc" >
                   <normaloff>:/PosterAlignmentImages/alignmenttopleft.png</normaloff>:/PosterAlignmentImages/alignmenttopleft.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1374,7 +1374,7 @@
                  <string/>
                 </property>
                 <property name="icon" >
-                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                 <iconset resource="posterazor.qrc" >
                   <normaloff>:/PosterAlignmentImages/alignmenttophcenter.png</normaloff>:/PosterAlignmentImages/alignmenttophcenter.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1397,7 +1397,7 @@
                  <string/>
                 </property>
                 <property name="icon" >
-                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                 <iconset resource="posterazor.qrc" >
                   <normaloff>:/PosterAlignmentImages/alignmentvcenterleft.png</normaloff>:/PosterAlignmentImages/alignmentvcenterleft.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1420,7 +1420,7 @@
                  <string/>
                 </property>
                 <property name="icon" >
-                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                 <iconset resource="posterazor.qrc" >
                   <normaloff>:/PosterAlignmentImages/alignmentcenter.png</normaloff>:/PosterAlignmentImages/alignmentcenter.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1443,7 +1443,7 @@
                  <string/>
                 </property>
                 <property name="icon" >
-                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                 <iconset resource="posterazor.qrc" >
                   <normaloff>:/PosterAlignmentImages/alignmentvcenterright.png</normaloff>:/PosterAlignmentImages/alignmentvcenterright.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1466,7 +1466,7 @@
                  <string/>
                 </property>
                 <property name="icon" >
-                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                 <iconset resource="posterazor.qrc" >
                   <normaloff>:/PosterAlignmentImages/alignmentbottomleft.png</normaloff>:/PosterAlignmentImages/alignmentbottomleft.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1489,7 +1489,7 @@
                  <string/>
                 </property>
                 <property name="icon" >
-                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                 <iconset resource="posterazor.qrc" >
                   <normaloff>:/PosterAlignmentImages/alignmentbottomhcenter.png</normaloff>:/PosterAlignmentImages/alignmentbottomhcenter.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1512,7 +1512,7 @@
                  <string/>
                 </property>
                 <property name="icon" >
-                 <iconset resource="QtPosteRazorDialogResources.qrc" >
+                 <iconset resource="posterazor.qrc" >
                   <normaloff>:/PosterAlignmentImages/alignmentbottomright.png</normaloff>:/PosterAlignmentImages/alignmentbottomright.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1750,7 +1750,7 @@
   </action>
   <action name="m_actionEnglish" >
    <property name="icon" >
-    <iconset resource="QtPosteRazorDialogResources.qrc" >
+    <iconset resource="posterazor.qrc" >
      <normaloff>:/Translationflags/en.png</normaloff>:/Translationflags/en.png</iconset>
    </property>
    <property name="text" >
@@ -1759,7 +1759,7 @@
   </action>
   <action name="m_actionItaliano" >
    <property name="icon" >
-    <iconset resource="QtPosteRazorDialogResources.qrc" >
+    <iconset resource="posterazor.qrc" >
      <normaloff>:/Translationflags/it.png</normaloff>:/Translationflags/it.png</iconset>
    </property>
    <property name="text" >
@@ -1768,7 +1768,7 @@
   </action>
   <action name="m_actionDeutsch" >
    <property name="icon" >
-    <iconset resource="QtPosteRazorDialogResources.qrc" >
+    <iconset resource="posterazor.qrc" >
      <normaloff>:/Translationflags/de.png</normaloff>:/Translationflags/de.png</iconset>
    </property>
    <property name="text" >
@@ -1777,7 +1777,7 @@
   </action>
   <action name="m_actionNederlands" >
    <property name="icon" >
-    <iconset resource="QtPosteRazorDialogResources.qrc" >
+    <iconset resource="posterazor.qrc" >
      <normaloff>:/Translationflags/nl.png</normaloff>:/Translationflags/nl.png</iconset>
    </property>
    <property name="text" >
@@ -1786,7 +1786,7 @@
   </action>
   <action name="m_actionFrancais" >
    <property name="icon" >
-    <iconset resource="QtPosteRazorDialogResources.qrc" >
+    <iconset resource="posterazor.qrc" >
      <normaloff>:/Translationflags/fr.png</normaloff>:/Translationflags/fr.png</iconset>
    </property>
    <property name="text" >
@@ -1795,7 +1795,7 @@
   </action>
   <action name="m_actionPolski" >
    <property name="icon" >
-    <iconset resource="QtPosteRazorDialogResources.qrc" >
+    <iconset resource="posterazor.qrc" >
      <normaloff>:/Translationflags/pl.png</normaloff>:/Translationflags/pl.png</iconset>
    </property>
    <property name="text" >
@@ -1804,7 +1804,7 @@
   </action>
   <action name="m_actionPortuguesDoBrasil" >
    <property name="icon" >
-    <iconset resource="QtPosteRazorDialogResources.qrc" >
+    <iconset resource="posterazor.qrc" >
      <normaloff>:/Translationflags/pt_BR.png</normaloff>:/Translationflags/pt_BR.png</iconset>
    </property>
    <property name="text" >
@@ -1819,13 +1819,13 @@
    <header>paintcanvas.h</header>
   </customwidget>
   <customwidget>
-   <class>QtPosteRazorSpinBox</class>
+   <class>SnapSpinBox</class>
    <extends>QDoubleSpinBox</extends>
-   <header>QtPosteRazorSpinBox.h</header>
+   <header>snapspinbox.h</header>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="QtPosteRazorDialogResources.qrc" />
+  <include location="posterazor.qrc" />
  </resources>
  <connections/>
 </ui>

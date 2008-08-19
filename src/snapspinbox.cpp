@@ -20,16 +20,16 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "QtPosteRazorSpinBox.h"
+#include "snapspinbox.h"
 
-QtPosteRazorSpinBox::QtPosteRazorSpinBox(QWidget *parent)
+SnapSpinBox::SnapSpinBox(QWidget *parent)
 :    QDoubleSpinBox(parent)
 ,    m_originalValue(0.0)
 {
     connect((const QObject *)lineEdit(), SIGNAL(textEdited(const QString &)), this, SLOT(handleLineEditTextEdited(const QString &)));
 }
 
-QAbstractSpinBox::StepEnabled QtPosteRazorSpinBox::stepEnabled() const
+QAbstractSpinBox::StepEnabled SnapSpinBox::stepEnabled() const
 {
     QAbstractSpinBox::StepEnabled enabled = QAbstractSpinBox::StepUpEnabled;
     if (value() > 1.0)
@@ -37,20 +37,20 @@ QAbstractSpinBox::StepEnabled QtPosteRazorSpinBox::stepEnabled() const
     return enabled;
 }
 
-void QtPosteRazorSpinBox::setValue(double value)
+void SnapSpinBox::setValue(double value)
 {
     // We intercept setValue() in order to always have the non-rounded value
     m_originalValue = value;
     QDoubleSpinBox::setValue(value);
 }
 
-void QtPosteRazorSpinBox::handleLineEditTextEdited(const QString &text)
+void SnapSpinBox::handleLineEditTextEdited(const QString &text)
 {
     m_originalValue = text.toDouble();
     emit(valueEdited(m_originalValue));
 }
 
-void QtPosteRazorSpinBox::stepBy(int steps)
+void SnapSpinBox::stepBy(int steps)
 {
     double increaseValue = (steps > 0)?(steps-.5):(steps+.49999);
     double oldValue = m_originalValue;
