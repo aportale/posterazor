@@ -282,6 +282,17 @@ const QVector<QRgb> ImageLoaderFreeImage::getColorTable() const
     return result;
 }
 
+const QVector<QPair<QStringList, QString> > &ImageLoaderFreeImage::getImageFormats() const
+{
+    static QVector<QPair<QStringList, QString> > formats;
+    if (formats.empty()) {
+        QStringList extensions;
+        extensions << "Gif";
+        formats.append(QPair<QStringList, QString> (extensions, "Graphics interchange format"));
+    }
+    return formats;
+}
+
 bool ImageLoaderFreeImage::hasFreeImageVersionCorrectTopDownInConvertBits()
 {
     const QStringList versionDigits = QString(FreeImage_GetVersion()).split('.');

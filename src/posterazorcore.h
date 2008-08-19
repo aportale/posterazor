@@ -83,6 +83,7 @@ public:
     PosteRazorEnums::ePosterSizeModes getPosterSizeMode() const;
     Qt::Alignment getPosterAlignment() const;
     bool getIsImageLoaded() const;
+    const QVector<QPair<QStringList, QString> > &getImageFormats() const;
 
     void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
     void setPaperFormat(const QString &format);

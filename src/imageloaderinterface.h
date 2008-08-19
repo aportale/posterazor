@@ -49,6 +49,7 @@ public:
     virtual ColorTypes::eColorTypes getColorDataType() const = 0;
     virtual const QByteArray getBits() const = 0;
     virtual const QVector<QRgb> getColorTable() const = 0;
+    virtual const QVector<QPair<QStringList, QString> > &getImageFormats() const = 0;
 };
 
 #endif // IMAGELOADERINTERFACE_H

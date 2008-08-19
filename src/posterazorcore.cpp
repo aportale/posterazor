@@ -32,25 +32,25 @@
 #include <QBrush>
 #include <math.h>
 
-const QLatin1String defaultValue_PaperFormat("DIN A4");
+const QLatin1String defaultValue_PaperFormat(           "DIN A4");
 
-const QLatin1String settingsKey_PosterSizeMode("PosterSizeMode");
-const QLatin1String settingsKey_PosterDimension("PosterDimension");
-const QLatin1String settingsKey_PosterDimensionIsWidth("PosterDimensionIsWidth");
-const QLatin1String settingsKey_PosterAlignment("PosterAlignment");
-const QLatin1String settingsKey_UseCustomPaperSize("UseCustomPaperSize");
-const QLatin1String settingsKey_PaperFormat("paperFormat");
-const QLatin1String settingsKey_PaperOrientation("PaperOrientation");
-const QLatin1String settingsKey_PaperBorderTop("PaperBorderTop");
-const QLatin1String settingsKey_PaperBorderRight("PaperBorderRight");
-const QLatin1String settingsKey_PaperBorderBottom("PaperBorderBottom");
-const QLatin1String settingsKey_PaperBorderLeft("PaperBorderLeft");
-const QLatin1String settingsKey_CustomPaperWidth("CustomPaperWidth");
-const QLatin1String settingsKey_CustomPaperHeight("CustomPaperHeight");
-const QLatin1String settingsKey_OverlappingWidth("OverlappingWidth");
-const QLatin1String settingsKey_OverlappingHeight("OverlappingHeight");
-const QLatin1String settingsKey_OverlappingPosition("overlappingPosition");
-const QLatin1String settingsKey_UnitOfLength("unitOfLength");
+const QLatin1String settingsKey_PosterSizeMode(         "PosterSizeMode");
+const QLatin1String settingsKey_PosterDimension(        "PosterDimension");
+const QLatin1String settingsKey_PosterDimensionIsWidth( "PosterDimensionIsWidth");
+const QLatin1String settingsKey_PosterAlignment(        "PosterAlignment");
+const QLatin1String settingsKey_PaperFormat(            "PaperFormat");
+const QLatin1String settingsKey_PaperOrientation(       "PaperOrientation");
+const QLatin1String settingsKey_PaperBorderTop(         "PaperBorderTop");
+const QLatin1String settingsKey_PaperBorderRight(       "PaperBorderRight");
+const QLatin1String settingsKey_PaperBorderBottom(      "PaperBorderBottom");
+const QLatin1String settingsKey_PaperBorderLeft(        "PaperBorderLeft");
+const QLatin1String settingsKey_CustomPaperWidth(       "CustomPaperWidth");
+const QLatin1String settingsKey_CustomPaperHeight(      "CustomPaperHeight");
+const QLatin1String settingsKey_UseCustomPaperSize(     "UseCustomPaperSize");
+const QLatin1String settingsKey_OverlappingWidth(       "OverlappingWidth");
+const QLatin1String settingsKey_OverlappingHeight(      "OverlappingHeight");
+const QLatin1String settingsKey_OverlappingPosition(    "OverlappingPosition");
+const QLatin1String settingsKey_UnitOfLength(           "UnitOfLength");
 
 PosteRazorCore::PosteRazorCore(QObject *parent)
     : QObject(parent)
@@ -178,6 +178,11 @@ bool PosteRazorCore::loadInputImage(const QString &imageFileName, QString &error
 bool PosteRazorCore::getIsImageLoaded() const
 {
     return m_imageLoader->isImageLoaded();
+}
+
+const QVector<QPair<QStringList, QString> > &PosteRazorCore::getImageFormats() const
+{
+    return m_imageLoader->getImageFormats();
 }
 
 QSize PosteRazorCore::getInputImageSizePixels() const

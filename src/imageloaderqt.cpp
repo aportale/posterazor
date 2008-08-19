@@ -125,3 +125,14 @@ const QVector<QRgb> ImageLoaderQt::getColorTable() const
 {
     return m_image.colorTable();
 }
+
+const QVector<QPair<QStringList, QString> > &ImageLoaderQt::getImageFormats() const
+{
+    static QVector<QPair<QStringList, QString> > formats;
+    if (formats.empty()) {
+        QStringList extensions;
+        extensions << "Gif";
+        formats.append(QPair<QStringList, QString> (extensions, "Graphics interchange format"));
+    }
+    return formats;
+}

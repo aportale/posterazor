@@ -45,6 +45,7 @@ public:
     int savePoster(const QString &fileName, const PainterInterface *painter, int pagesCount, const QSizeF &sizeCm) const;
     const QByteArray getBits() const;
     const QVector<QRgb> getColorTable() const;
+    const QVector<QPair<QStringList, QString> > &getImageFormats() const;
 
 private:
     QImage m_image;

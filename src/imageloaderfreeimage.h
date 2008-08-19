@@ -46,6 +46,7 @@ public:
     ColorTypes::eColorTypes getColorDataType() const;
     const QByteArray getBits() const;
     const QVector<QRgb> getColorTable() const;
+    const QVector<QPair<QStringList, QString> > &getImageFormats() const;
 
 private:
     FIBITMAP*    m_bitmap;
