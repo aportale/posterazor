@@ -25,7 +25,6 @@
 
 #include "PaperFormats.h"
 #include "ColorTypes.h"
-#include "ImageIOTypes.h"
 #include "PaintCanvasInterface.h"
 #include <QObject>
 

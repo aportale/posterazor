@@ -130,9 +130,34 @@ const QVector<QPair<QStringList, QString> > &ImageLoaderQt::getImageFormats() co
 {
     static QVector<QPair<QStringList, QString> > formats;
     if (formats.empty()) {
-        QStringList extensions;
-        extensions << "Gif";
-        formats.append(QPair<QStringList, QString> (extensions, "Graphics interchange format"));
+        const struct {
+            const QString extensions;
+            const QString description;
+        } extensionList[] = {
+            {QLatin1String("bmp"),      QLatin1String("Windows, OS/2 Bitmap")},
+            {QLatin1String("gif"),      QLatin1String("Graphic Interchange Format")},
+            {QLatin1String("ico"),      QLatin1String("Windows Icon")},
+            {QLatin1String("jpg jpeg"), QLatin1String("Joint Photographic Experts Group")},
+            {QLatin1String("mng"),      QLatin1String("Multiple-image Network Graphics")},
+            {QLatin1String("pbm"),      QLatin1String("Portable Bitmap")},
+            {QLatin1String("pgm"),      QLatin1String("Portable Graymap")},
+            {QLatin1String("png"),      QLatin1String("Portable Network Graphics")},
+            {QLatin1String("ppm"),      QLatin1String("Portable Pixelmap")},
+            {QLatin1String("tif tiff"), QLatin1String("Tagged Image File Format")},
+            {QLatin1String("svg"),      QLatin1String("Scalable Vector Graphics")},
+            {QLatin1String("xbm"),      QLatin1String("X11 Bitmap")},
+            {QLatin1String("xpm"),      QLatin1String("X11 Pixmap")}
+        };
+        const int extensionListCount = (int)sizeof(extensionList)/sizeof(extensionList[0]);
+        const QList<QByteArray> supportedFormats = QImageReader::supportedImageFormats();
+        for (int i = 0; i < extensionListCount; i++) {
+            QStringList extensions = extensionList[i].extensions.split(' ');
+            foreach (const QString &extension, extensions)
+                if (supportedFormats.contains(extension.toAscii())) {
+                    formats.append(QPair<QStringList, QString> (extensions, extensionList[i].description));
+                    break;
+                }
+        }
     }
     return formats;
 }

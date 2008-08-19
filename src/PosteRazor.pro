@@ -1,7 +1,6 @@
 SOURCES += \
     PaperFormats.cpp \
     UnitsOfLength.cpp \
-    ImageIOTypes.cpp \
     posterazorcore.cpp \
     pdfwriter.cpp \
     mainwindow.cpp \
@@ -14,7 +13,6 @@ SOURCES += \
 HEADERS += \
     ColorTypes.h \
     imageloaderinterface.h \
-    ImageIOTypes.h \
     UnitsOfLength.h \
     PaperFormats.h \
     PaintCanvasInterface.h \

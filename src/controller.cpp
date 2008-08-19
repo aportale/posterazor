@@ -321,30 +321,27 @@ bool Controller::writeSettings(QSettings *settings) const
 
 void Controller::loadInputImage()
 {
-    QStringList filters;
-    QStringList allExtensions;
+    QStringList allFilters;
+    QStringList allWildcards;
 
-    for (int formatIndex = 0; formatIndex < ImageIOTypes::getInputImageFormatsCount(); formatIndex++) {
-        int extensionsCount = ImageIOTypes::getFileExtensionsCount(formatIndex);
-
-        QStringList filterExtensions;
-        for (int extensionIndex = 0; extensionIndex < extensionsCount; extensionIndex++) {
-            filterExtensions << "*." + QString(ImageIOTypes::getFileExtensionForFormat(extensionIndex, formatIndex));
-        }
-        allExtensions << filterExtensions;
-
-        filters << QString(ImageIOTypes::getInputImageFormat(formatIndex)) + " (" + filterExtensions.join(" ") + ")";
+    const QVector<QPair<QStringList, QString> > &formats = m_posteRazorCore->getImageFormats();
+    for (int i = 0; i < formats.count(); i++) {
+        QStringList formatWildcards;
+        foreach (const QString &extension, formats.at(i).first)
+            formatWildcards << "*." + extension;
+        allWildcards << formatWildcards;
+        allFilters << formats.at(i).second + " (" +  formatWildcards.join(" ") + ")";
     }
-    filters.prepend(QCoreApplication::translate("PosteRazorDialog", "All image formats") + " (" +  allExtensions.join(" ") + ")");
+    allFilters.prepend(QCoreApplication::translate("PosteRazorDialog", "All image formats") + " (" +  allWildcards.join(" ") + ")");
 
     static const QString loadPathSettingsKey("loadPath");
     QSettings loadPathSettings;
 
     QString loadFileName = QFileDialog::getOpenFileName (
-        NULL,
+        m_mainWindow,
         QCoreApplication::translate("PosteRazorDialog", "Load an input image"),
         loadPathSettings.value(loadPathSettingsKey, ".").toString(),
-        filters.join(";;")
+        allFilters.join(";;")
     );
 
     if (!loadFileName.isEmpty()) {
