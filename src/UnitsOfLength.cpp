@@ -21,97 +21,40 @@
 */
 
 #include "UnitsOfLength.h"
-#include <string.h>
 
-typedef struct
+const QHash<UnitsOfLength::eUnitsOfLength, QPair<QString, double> > &UnitsOfLength::unitsOfLength()
 {
-    UnitsOfLength::eUnitsOfLength unit;
-    char *name;
-    double multipleOfCentimeter;
-} UnitsOfLengthStruct;
-
-// Needs to have the same order as the eUnitsOfLength enum!!!
-static const UnitsOfLengthStruct g_UnitsOfLength[] =
-{
-    {UnitsOfLength::eUnitOfLengthMeter, "m", 100},
-    {UnitsOfLength::eUnitOfLengthMillimeter, "mm", 0.1},
-    {UnitsOfLength::eUnitOfLengthCentimeter, "cm", 1.0},
-    {UnitsOfLength::eUnitOfLengthInch, "in", 2.54},
-    {UnitsOfLength::eUnitOfLengthFeet, "ft", 2.54 * 12.0},
-    {UnitsOfLength::eUnitOfLengthPoints, "pt", 2.54 / 72.0}
-};
-
-static const int g_UnitsOfLengthCount = sizeof(g_UnitsOfLength)/sizeof(g_UnitsOfLength[0]);
-
-int UnitsOfLength::getUnitsOfLengthCount()
-{
-    return g_UnitsOfLengthCount;
-}
-
-UnitsOfLength::eUnitsOfLength UnitsOfLength::getUnitOfLengthForIndex(int index)
-{
-    return g_UnitsOfLength[index].unit;
-}
-
-int UnitsOfLength::getUnitOfLengthIndex(eUnitsOfLength unit)
-{
-    int index = 0;
-
-    for (int i = 0; i < g_UnitsOfLengthCount; i++) {
-        if (unit == g_UnitsOfLength[i].unit) {
-            index = i;
-            break;
-        }
+    static QHash<eUnitsOfLength, QPair<QString, double> > units;
+    if (units.empty()) {
+        static const struct
+        {
+            UnitsOfLength::eUnitsOfLength unit;
+            QString name;
+            double cm;
+        } unitsOfLength[] = {
+            {UnitsOfLength::eUnitOfLengthMeter,      QLatin1String("m"),        100.00},
+            {UnitsOfLength::eUnitOfLengthMillimeter, QLatin1String("mm"),         0.10},
+            {UnitsOfLength::eUnitOfLengthCentimeter, QLatin1String("cm"),         1.00},
+            {UnitsOfLength::eUnitOfLengthInch,       QLatin1String("in"),         2.54},
+            {UnitsOfLength::eUnitOfLengthFeet,       QLatin1String("ft"), 2.54 * 12.00},
+            {UnitsOfLength::eUnitOfLengthPoints,     QLatin1String("pt"), 2.54 / 72.00}
+        };
+        static const int unitsOfLengthCount = sizeof(unitsOfLength)/sizeof(unitsOfLength[0]);
+        for (int i = 0; i < unitsOfLengthCount; i++)
+            units.insert(unitsOfLength[i].unit, QPair<QString, double> (unitsOfLength[i].name, unitsOfLength[i].cm));
     }
-
-    return index;
-}
-
-const char* UnitsOfLength::getUnitOfLengthName(eUnitsOfLength unit)
-{
-    const int UnitOfLengthIndex = getUnitOfLengthIndex(unit);
-
-    return g_UnitsOfLength[UnitOfLengthIndex].name;
-}
-
-UnitsOfLength::eUnitsOfLength UnitsOfLength::getUnitOfLengthForName(const char* name)
-{
-    eUnitsOfLength unitOfLength = eUnitOfLengthCentimeter;
-
-    for (int i = 0; i < g_UnitsOfLengthCount; i++) {
-        if (0 == strcmp(name, g_UnitsOfLength[i].name)) {
-            unitOfLength = g_UnitsOfLength[i].unit;
-            break;
-        }
-    }
-
-    return unitOfLength;
-}
-
-double CentimeterToUnitOfLength(double cm, UnitsOfLength::eUnitsOfLength unit)
-{
-    cm /= g_UnitsOfLength[UnitsOfLength::getUnitOfLengthIndex(unit)].multipleOfCentimeter;
-    return cm;
-}
-
-double UnitOfLengthToCentimeter(double distance, UnitsOfLength::eUnitsOfLength unit)
-{
-    distance *= g_UnitsOfLength[UnitsOfLength::getUnitOfLengthIndex(unit)].multipleOfCentimeter;
-    return distance;
+    return units;
 }
 
 double UnitsOfLength::convertBetweenUnitsOfLength(double distance, eUnitsOfLength sourceUnit, eUnitsOfLength targetUnit)
 {
     double convertedDistance = distance;
-
     if (sourceUnit != targetUnit) {
         if (sourceUnit != eUnitOfLengthCentimeter)
-            convertedDistance = UnitOfLengthToCentimeter(convertedDistance, sourceUnit);
-
+            convertedDistance *= UnitsOfLength::unitsOfLength().value(sourceUnit).second;
         if (targetUnit != eUnitOfLengthCentimeter)
-            convertedDistance = CentimeterToUnitOfLength(convertedDistance, targetUnit);
+            convertedDistance /= UnitsOfLength::unitsOfLength().value(targetUnit).second;
     }
-
     return convertedDistance;
 }
 

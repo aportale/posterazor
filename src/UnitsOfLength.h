@@ -24,6 +24,7 @@
 #define UNITSOFLENGTH_H
 
 #include <QSizeF>
+#include <QHash>
 
 class UnitsOfLength
 {
@@ -37,13 +38,9 @@ public:
         eUnitOfLengthPoints
     };
 
-    static int getUnitsOfLengthCount();
+    static const QHash<eUnitsOfLength, QPair<QString, double> > &unitsOfLength();
     static double convertBetweenUnitsOfLength(double distance, eUnitsOfLength sourceUnit, eUnitsOfLength targetUnit);
     static QSizeF convertBetweenUnitsOfLength(const QSizeF &size, eUnitsOfLength sourceUnit, eUnitsOfLength targetUnit);
-    static int getUnitOfLengthIndex(eUnitsOfLength unit);
-    static const char* getUnitOfLengthName(eUnitsOfLength unit);
-    static eUnitsOfLength getUnitOfLengthForName(const char* name);
-    static eUnitsOfLength getUnitOfLengthForIndex(int index);
 };
 
 #endif // UNITSOFLENGTH_H
