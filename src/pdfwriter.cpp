@@ -59,10 +59,10 @@ int PDFWriter::addImageResourcesAndXObject()
     m_objectResourcesID = m_pdfObjectCount;
     fprintf (
         m_outputFile,
-        LINEFEED "%d 0 obj" LINEFEED\
-        "<</XObject %d 0 R" LINEFEED\
-        "/ProcSet [/PDF /Text /ImageC /ImageI /ImageB]" LINEFEED\
-        ">>" LINEFEED\
+        LINEFEED "%d 0 obj" LINEFEED
+        "<</XObject %d 0 R" LINEFEED
+        "/ProcSet [/PDF /Text /ImageC /ImageI /ImageB]" LINEFEED
+        ">>" LINEFEED
         "endobj",
         m_pdfObjectCount, m_pdfObjectCount + 1
     );
@@ -70,9 +70,9 @@ int PDFWriter::addImageResourcesAndXObject()
     addOffsetToXref();
     fprintf (
         m_outputFile,
-        LINEFEED "%d 0 obj" LINEFEED\
-        "<</Im1 %d 0 R" LINEFEED\
-        ">>" LINEFEED\
+        LINEFEED "%d 0 obj" LINEFEED
+        "<</Im1 %d 0 R" LINEFEED
+        ">>" LINEFEED
         "endobj",
         m_pdfObjectCount, m_pdfObjectCount + 1
     );
@@ -80,7 +80,7 @@ int PDFWriter::addImageResourcesAndXObject()
     return err;
 }
 
-int PDFWriter::saveImage(const QString &jpegFileName, const QSize &sizePixels, ColorTypes::eColorTypes colorType)
+int PDFWriter::saveJpegImage(const QString &jpegFileName, const QSize &sizePixels, ColorTypes::eColorTypes colorType)
 {
     int err = 0;
 
@@ -106,16 +106,16 @@ int PDFWriter::saveImage(const QString &jpegFileName, const QSize &sizePixels, C
         addOffsetToXref();
         fprintf (
             m_outputFile,
-            LINEFEED "%d 0 obj" LINEFEED\
-            "<</ColorSpace %s" LINEFEED\
-            "/Subtype /Image" LINEFEED\
-            "/Length %d" LINEFEED\
-            "/Width %d" LINEFEED\
-            "/Type /XObject" LINEFEED\
-            "/Height %d" LINEFEED\
-            "/BitsPerComponent 8" LINEFEED\
-            "/Filter /DCTDecode" LINEFEED\
-            ">>" LINEFEED\
+            LINEFEED "%d 0 obj" LINEFEED
+            "<</ColorSpace %s" LINEFEED
+            "/Subtype /Image" LINEFEED
+            "/Length %d" LINEFEED
+            "/Width %d" LINEFEED
+            "/Type /XObject" LINEFEED
+            "/Height %d" LINEFEED
+            "/BitsPerComponent 8" LINEFEED
+            "/Filter /DCTDecode" LINEFEED
+            ">>" LINEFEED
             "stream" LINEFEED,
             m_pdfObjectCount,
             colorType==ColorTypes::eColorTypeCMYK?"/DeviceCMYK":"/DeviceRGB ", // Leaving space after RGB for eventual manual patching to CMYK
@@ -143,7 +143,7 @@ int PDFWriter::saveImage(const QString &jpegFileName, const QSize &sizePixels, C
     if (!err) {
         fprintf (
             m_outputFile,
-            LINEFEED "endstream" LINEFEED\
+            LINEFEED "endstream" LINEFEED
             "endobj"
         );
     }
@@ -171,17 +171,17 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
     const int compressedByteArrayAppendedBytes = 4;
 
     char colorSpaceString[5000] = "";
-    // TODO: convert to switch
-    if (colorType == ColorTypes::eColorTypeRGB) {
+    switch (colorType) {
+    case ColorTypes::eColorTypeRGB:
         strcpy(colorSpaceString, "/DeviceRGB");
-    } else if(colorType == ColorTypes::eColorTypeGreyscale) {
+        break;
+    case ColorTypes::eColorTypeGreyscale:
         strcpy(colorSpaceString, "/DeviceGray");
-    } /* else if(colorType == ColorTypes::eColorTypeMonochrome)
-    {
-        sprintf(colorSpaceString, "/DeviceGray" LINEFEED "/BlackIs1 %s", rgbPalette[0]?"false":"true");
-    } */ else if(colorType == ColorTypes::eColorTypeCMYK) {
+        break;
+    case ColorTypes::eColorTypeCMYK:
         strcpy(colorSpaceString, "/DeviceCMYK");
-    } else {
+        break;
+    default:
         sprintf(colorSpaceString, "[/Indexed /DeviceRGB %d <", colorTable.count()-1); // -1, because PDF wants the highest index, not the number of entries
         foreach (const QRgb &paletteEntry, colorTable) {
             char rgbHex[20];
@@ -224,7 +224,7 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
     );
     fprintf(
         m_outputFile,
-        LINEFEED "endstream" LINEFEED\
+        LINEFEED "endstream" LINEFEED
         "endobj"
     );
 
@@ -239,17 +239,17 @@ int PDFWriter::startPage()
     addOffsetToXref();
     fprintf (
         m_outputFile,
-        LINEFEED "%d 0 obj" LINEFEED\
-        "<</Group <</CS /DeviceRGB" LINEFEED\
-        "/I true" LINEFEED\
-        "/S /Transparency" LINEFEED\
-        ">>" LINEFEED\
-        "/Parent %d 0 R" LINEFEED\
-        "/MediaBox [0 0 %f %f]" LINEFEED\
-        "/Resources %d 0 R" LINEFEED\
-        "/Contents %d 0 R" LINEFEED\
-        "/Type /Page" LINEFEED\
-        ">>" LINEFEED\
+        LINEFEED "%d 0 obj" LINEFEED
+        "<</Group <</CS /DeviceRGB" LINEFEED
+        "/I true" LINEFEED
+        "/S /Transparency" LINEFEED
+        ">>" LINEFEED
+        "/Parent %d 0 R" LINEFEED
+        "/MediaBox [0 0 %f %f]" LINEFEED
+        "/Resources %d 0 R" LINEFEED
+        "/Contents %d 0 R" LINEFEED
+        "/Type /Page" LINEFEED
+        ">>" LINEFEED
         "endobj",
         m_pdfObjectCount, m_objectPagesID, m_mediaboxWidth, m_mediaboxHeight, m_objectResourcesID, m_pdfObjectCount+1
     );
@@ -264,12 +264,12 @@ int PDFWriter::finishPage()
     addOffsetToXref();
     fprintf (
         m_outputFile,
-        LINEFEED "%d 0 obj" LINEFEED\
-        "<</Length %d" LINEFEED\
-        ">>" LINEFEED\
-        "stream" LINEFEED\
-        "%s" LINEFEED\
-        "endstream" LINEFEED\
+        LINEFEED "%d 0 obj" LINEFEED
+        "<</Length %d" LINEFEED
+        ">>" LINEFEED
+        "stream" LINEFEED
+        "%s" LINEFEED
+        "endstream" LINEFEED
         "endobj",
         m_pdfObjectCount, (int)strlen(m_pageContent), m_pageContent
     );
@@ -304,11 +304,11 @@ int PDFWriter::startSaving(const QString &fileName, int pages, double widthCm, d
          addOffsetToXref();
         fprintf (
             m_outputFile,
-            LINEFEED "%d 0 obj" LINEFEED\
-            "<</Creator (PosteRazor)" LINEFEED\
-            "/Producer (PosteRazor.SourceForge.net)" LINEFEED\
-            "/CreationDate (D:%s)" LINEFEED\
-            ">>" LINEFEED\
+            LINEFEED "%d 0 obj" LINEFEED
+            "<</Creator (PosteRazor)" LINEFEED
+            "/Producer (PosteRazor.SourceForge.net)" LINEFEED
+            "/CreationDate (D:%s)" LINEFEED
+            ">>" LINEFEED
             "endobj",
             m_pdfObjectCount,
             dateStr
@@ -317,10 +317,10 @@ int PDFWriter::startSaving(const QString &fileName, int pages, double widthCm, d
         addOffsetToXref();
         fprintf (
             m_outputFile,
-            LINEFEED "%d 0 obj" LINEFEED\
-            "<</Pages %d 0 R" LINEFEED\
-            "/Type /Catalog" LINEFEED\
-            ">>" LINEFEED\
+            LINEFEED "%d 0 obj" LINEFEED
+            "<</Pages %d 0 R" LINEFEED
+            "/Type /Catalog" LINEFEED
+            ">>" LINEFEED
             "endobj",
             m_pdfObjectCount, m_pdfObjectCount+1
         );
@@ -336,13 +336,13 @@ int PDFWriter::startSaving(const QString &fileName, int pages, double widthCm, d
         }
         fprintf (
             m_outputFile,
-            LINEFEED "%d 0 obj" LINEFEED\
-            "<</MediaBox [0 0 %f %f]" LINEFEED\
-            "/Resources %d 0 R" LINEFEED\
-            "/Kids [%s]" LINEFEED\
-            "/Count %d" LINEFEED\
-            "/Type /Pages" LINEFEED\
-            ">>" LINEFEED\
+            LINEFEED "%d 0 obj" LINEFEED
+            "<</MediaBox [0 0 %f %f]" LINEFEED
+            "/Resources %d 0 R" LINEFEED
+            "/Kids [%s]" LINEFEED
+            "/Count %d" LINEFEED
+            "/Type /Pages" LINEFEED
+            ">>" LINEFEED
             "endobj",
             m_pdfObjectCount, 50.0, 50.0, m_pdfObjectCount + 1, kidsStr, pages
         );
@@ -360,13 +360,13 @@ int PDFWriter::finishSaving()
 
     fprintf (
         m_outputFile,
-        "trailer" LINEFEED\
-        "<</Info 1 0 R" LINEFEED\
-        "/Root 2 0 R" LINEFEED\
-        "/Size %d" LINEFEED\
-        ">>" LINEFEED\
-        "startxref" LINEFEED\
-        "%d" LINEFEED\
+        "trailer" LINEFEED
+        "<</Info 1 0 R" LINEFEED
+        "/Root 2 0 R" LINEFEED
+        "/Size %d" LINEFEED
+        ">>" LINEFEED
+        "startxref" LINEFEED
+        "%d" LINEFEED
         "%%%%EOF" LINEFEED,
         m_pdfObjectCount + 1, startxref
     );
@@ -386,10 +386,10 @@ void PDFWriter::drawImage(const QRectF &rect)
 
     sprintf (
         imageCode,
-        "0 w" LINEFEED\
-        "q 0 0 %.4f %.4f re W* n" LINEFEED\
-        "q %.4f 0 0 %.4f %.4f %.4f cm" LINEFEED\
-        "  /Im1 Do Q" LINEFEED\
+        "0 w" LINEFEED
+        "q 0 0 %.4f %.4f re W* n" LINEFEED
+        "q %.4f 0 0 %.4f %.4f %.4f cm" LINEFEED
+        "  /Im1 Do Q" LINEFEED
         "Q "
         ,
         m_mediaboxWidth, m_mediaboxHeight,

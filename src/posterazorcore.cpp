@@ -58,7 +58,6 @@ PosteRazorCore::PosteRazorCore(QObject *parent)
     , m_posterDimension(2.0)
     , m_posterDimensionIsWidth(true)
     , m_posterAlignment(Qt::AlignCenter)
-
     , m_useCustomPaperSize(false)
     , m_paperFormat(defaultValue_PaperFormat)
     , m_paperOrientation(QPrinter::Portrait)
@@ -68,11 +67,9 @@ PosteRazorCore::PosteRazorCore(QObject *parent)
     , m_paperBorderLeft(1.5)
     , m_customPaperWidth(20)
     , m_customPaperHeight(20)
-
     , m_overlappingWidth(1.0)
     , m_overlappingHeight(1.0)
     , m_overlappingPosition(Qt::AlignBottom | Qt::AlignRight)
-
     , m_unitOfLength(UnitsOfLength::eUnitOfLengthCentimeter)
 {
     m_imageLoader =
@@ -223,11 +220,6 @@ UnitsOfLength::eUnitsOfLength PosteRazorCore::getUnitOfLength() const
     return m_unitOfLength;
 }
 
-const char* PosteRazorCore::getUnitOfLengthName() const
-{
-    return UnitsOfLength::getUnitOfLengthName(m_unitOfLength);
-}
-
 void PosteRazorCore::setPaperFormat(const QString &format)
 {
     m_paperFormat = format;
@@ -310,30 +302,14 @@ void PosteRazorCore::setCustomPaperHeight(double height)
 
 QSizeF PosteRazorCore::getCustomPaperSize() const
 {
+    const double minimalPaperWidth = 4.0;
+    const double minimalPaperHeight = minimalPaperWidth;
+    const double maximalPaperWidth = 4.0;
+    const double maximalPaperHeight = maximalPaperWidth;
     return QSizeF(
-        qBound(getCustomMinimalPaperWidth(), convertCmToDistance(m_customPaperWidth), getCustomMaximalPaperWidth()),
-        qBound(getCustomMinimalPaperHeight(), convertCmToDistance(m_customPaperHeight), getCustomMaximalPaperHeight())
+        convertCmToDistance(qBound(minimalPaperWidth, m_customPaperWidth, maximalPaperWidth)),
+        convertCmToDistance(qBound(minimalPaperHeight, m_customPaperHeight, maximalPaperHeight))
     );
-}
-
-double PosteRazorCore::getCustomMinimalPaperWidth() const
-{
-    return convertCmToDistance(4.0);
-}
-
-double PosteRazorCore::getCustomMinimalPaperHeight() const
-{
-    return convertCmToDistance(4.0);
-}
-
-double PosteRazorCore::getCustomMaximalPaperWidth() const
-{
-    return convertCmToDistance(500.0); // Maximum of PDF page
-}
-
-double PosteRazorCore::getCustomMaximalPaperHeight() const
-{
-    return convertCmToDistance(500.0);
 }
 
 void PosteRazorCore::setUseCustomPaperSize(bool useIt)
@@ -765,7 +741,7 @@ int PosteRazorCore::savePoster(const QString &fileName) const
     err = pdfWriter.startSaving(fileName, pagesCount, sizeCm.width(), sizeCm.height());
     if (!err) {
         if (m_imageLoader->isJpeg())
-            err = pdfWriter.saveImage(m_imageLoader->getFileName(), imageSize, m_imageLoader->getColorDataType());
+            err = pdfWriter.saveJpegImage(m_imageLoader->getFileName(), imageSize, m_imageLoader->getColorDataType());
         else
             err = pdfWriter.saveImage(imageData, imageSize, m_imageLoader->getBitsPerPixel(), m_imageLoader->getColorDataType(), m_imageLoader->getColorTable());
     }

@@ -46,7 +46,7 @@ bool ImageLoaderQt::isImageLoaded() const
 bool ImageLoaderQt::isJpeg() const
 {
     QImageReader reader(m_imageFileName);
-    return reader.format() == "jpg";
+    return reader.format() == "jpeg";
 }
 
 QString ImageLoaderQt::getFileName() const

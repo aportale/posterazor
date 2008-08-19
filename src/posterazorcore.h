@@ -66,7 +66,6 @@ public:
     int getInputImageBitsPerPixel() const;
     ColorTypes::eColorTypes getInputImageColorType() const;
     UnitsOfLength::eUnitsOfLength getUnitOfLength() const;
-    const char* getUnitOfLengthName() const;
     const QString getPaperFormat() const;
     QPrinter::Orientation getPaperOrientation() const;
     double getPaperBorderTop() const;
@@ -114,10 +113,6 @@ private:
     void createPreviewImage(const QSize &boxSize) const;
     double getMaximalVerticalPaperBorder() const;
     double getMaximalHorizontalPaperBorder() const;
-    double getCustomMinimalPaperWidth() const;
-    double getCustomMinimalPaperHeight() const;
-    double getCustomMaximalPaperWidth() const;
-    double getCustomMaximalPaperHeight() const;
     double convertBetweenAbsoluteAndPagesPosterDimension(double dimension, bool pagesToAbsolute, bool width) const;
     double calculateOtherPosterDimension() const;
     void setPosterDimension(PosteRazorEnums::ePosterSizeModes mode, double dimension, bool dimensionIsWidth);

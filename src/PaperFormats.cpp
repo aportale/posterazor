@@ -49,5 +49,5 @@ QSizeF PaperFormats::getPaperSize(const QString &format, QPrinter::Orientation o
     QSizeF result = paperFormats().value(format);
     if (orientation == QPrinter::Landscape)
         result.transpose();
-    return convertBetweenUnitsOfLength(result, UnitsOfLength::eUnitOfLengthCentimeter, unit);
+    return UnitsOfLength::convertBetweenUnitsOfLength(result, UnitsOfLength::eUnitOfLengthCentimeter, unit);
 }

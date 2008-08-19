@@ -115,7 +115,7 @@ double UnitsOfLength::convertBetweenUnitsOfLength(double distance, eUnitsOfLengt
     return convertedDistance;
 }
 
-QSizeF UnitsOfLength::convertBetweenUnitsOfLength(const QSize &size, eUnitsOfLength sourceUnit, eUnitsOfLength targetUnit)
+QSizeF UnitsOfLength::convertBetweenUnitsOfLength(const QSizeF &size, eUnitsOfLength sourceUnit, eUnitsOfLength targetUnit)
 {
     return QSizeF(
         convertBetweenUnitsOfLength(size.width(), sourceUnit, targetUnit),
