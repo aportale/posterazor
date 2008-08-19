@@ -29,7 +29,7 @@ LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-POSTERAZOR_ICON ICON "PosteRazor.ico"
+POSTERAZOR_ICON ICON "posterazor.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -59,7 +59,7 @@ BEGIN
             VALUE "FileVersion", "1.9"
             VALUE "LegalCopyright", "Copyright (C) 2005-2008 Alessandro Portale"
             VALUE "LegalTrademarks", "Alessandro Portale"
-            VALUE "OriginalFilename", "PosteRazor.exe"
+            VALUE "OriginalFilename", "posterazor.exe"
             VALUE "ProductName", "PosteRazor"
             VALUE "ProductVersion", "1.9"
         END

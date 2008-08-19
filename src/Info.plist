@@ -5,11 +5,11 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>PosteRazor</string>
+	<string>posterazor</string>
 	<key>CFBundleGetInfoString</key>
 	<string>PosteRazor 1.9.0, Copyright 2005-2008 Alessandro Portale, GNU General Public License</string>
 	<key>CFBundleIconFile</key>
-	<string>PosteRazor</string>
+	<string>posterazor</string>
 	<key>CFBundleIdentifier</key>
 	<string>de.casaportale.PosteRazor</string>
 	<key>CFBundleInfoDictionaryVersion</key>
