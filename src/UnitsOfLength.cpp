@@ -51,9 +51,9 @@ double UnitsOfLength::convertBetweenUnitsOfLength(double distance, eUnitsOfLengt
     double convertedDistance = distance;
     if (sourceUnit != targetUnit) {
         if (sourceUnit != eUnitOfLengthCentimeter)
-            convertedDistance *= UnitsOfLength::unitsOfLength().value(sourceUnit).second;
+            convertedDistance *= unitsOfLength().value(sourceUnit).second;
         if (targetUnit != eUnitOfLengthCentimeter)
-            convertedDistance /= UnitsOfLength::unitsOfLength().value(targetUnit).second;
+            convertedDistance /= unitsOfLength().value(targetUnit).second;
     }
     return convertedDistance;
 }
