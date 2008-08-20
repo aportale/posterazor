@@ -26,6 +26,7 @@
 #include "pdfwriter.h"
 #include <time.h>
 #include <QRectF>
+#include <QBrush>
 #define LINEFEED "\012"
 #define CM2PT(cm) ((cm) / 2.54 * 72)
 #define JPEGFILECOPYBUFFERSIZE 10000
