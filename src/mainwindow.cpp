@@ -71,7 +71,7 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
     updatePosterSizeGroupsState();
 }
 
-void MainWindow::setUnitOfLength(UnitsOfLength::eUnitsOfLength unit)
+void MainWindow::setUnitOfLength(Types::UnitsOfLength unit)
 {
     Q_UNUSED(unit)
 }
@@ -162,11 +162,11 @@ void MainWindow::setPosterSizePercentual(double percent)
     m_posterPercentualSizeInput->setValue(percent);
 }
 
-void MainWindow::setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode)
+void MainWindow::setPosterSizeMode(Types::PosterSizeModes mode)
 {
     (
-        mode == PosteRazorEnums::ePosterSizeModeAbsolute?m_posterSizeAbsoluteRadioButton
-        :mode == PosteRazorEnums::ePosterSizeModePages?m_posterSizeInPagesRadioButton
+        mode == Types::PosterSizeModeAbsolute?m_posterSizeAbsoluteRadioButton
+        :mode == Types::PosterSizeModePages?m_posterSizeInPagesRadioButton
         :m_posterSizePercentualRadioButton
     )->setChecked(true);
     updatePosterSizeGroupsState();
@@ -193,7 +193,7 @@ void MainWindow::showImageFileName(const QString &fileName)
     m_inputFileNameLabel->setText(QFileInfo(fileName).fileName());
 }
 
-void MainWindow::updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel)
+void MainWindow::updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, Types::UnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel)
 {
     Q_UNUSED(horizontalDpi)
     Q_UNUSED(unitOfLength)
@@ -202,12 +202,12 @@ void MainWindow::updateImageInfoFields(const QSize &inputImageSizeInPixels, cons
     m_imageInformationSizeValue->setText(QString("%1 x %2").arg(imageSize.width(), 0, 'f', 2).arg(imageSize.height(), 0, 'f', 2));
     m_imageInformationResolutionValue->setText(QString("%1 dpi").arg(verticalDpi, 0, 'f', 1));
     const QString colorTypeString = (
-        colorType==ColorTypes::eColorTypeMonochrome?QCoreApplication::translate("PosteRazorDialog", "Monochrome"):
-        colorType==ColorTypes::eColorTypeGreyscale?QCoreApplication::translate("PosteRazorDialog", "Gray scale"):
-        colorType==ColorTypes::eColorTypePalette?QCoreApplication::translate("PosteRazorDialog", "Palette"):
-        colorType==ColorTypes::eColorTypeRGB?QCoreApplication::translate("PosteRazorDialog", "RGB"):
-        colorType==ColorTypes::eColorTypeRGBA?QCoreApplication::translate("PosteRazorDialog", "RGBA"):
-        /*colorType==eColorTypeCMYK?*/ QCoreApplication::translate("PosteRazorDialog", "CMYK")
+        colorType==Types::ColorTypeMonochrome?QCoreApplication::translate("PosteRazorDialog", "Monochrome"):
+        colorType==Types::ColorTypeGreyscale?QCoreApplication::translate("PosteRazorDialog", "Gray scale"):
+        colorType==Types::ColorTypePalette?QCoreApplication::translate("PosteRazorDialog", "Palette"):
+        colorType==Types::ColorTypeRGB?QCoreApplication::translate("PosteRazorDialog", "RGB"):
+        colorType==Types::ColorTypeRGBA?QCoreApplication::translate("PosteRazorDialog", "RGBA"):
+        /*colorType==ColorTypeCMYK?*/ QCoreApplication::translate("PosteRazorDialog", "CMYK")
     ) + QString(" %1bpp").arg(bitsPerPixel);
     m_imageInformationColorTypeValue->setText(colorTypeString);
     emit imageLoaded();
@@ -305,7 +305,7 @@ void MainWindow::createConnections()
 
 void MainWindow::populateUI()
 {
-    QStringList formats = PaperFormats::paperFormats().keys();
+    QStringList formats = Types::paperFormats().keys();
     formats.sort();
     m_paperFormatComboBox->addItems(formats);
 }

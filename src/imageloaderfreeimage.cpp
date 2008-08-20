@@ -100,8 +100,8 @@ bool ImageLoaderFreeImage::loadInputImage(const QString &imageFileName, QString 
 
         m_imageFileName = imageFileName;
 
-        if ((getColorDataType() == ColorTypes::eColorTypeRGB && getBitsPerPixel() == 32) // Sometimes, there are strange .PSD images like this (FreeImage bug?)
-            || (getColorDataType() == ColorTypes::eColorTypeRGBA)) // We can't export alpha channels to PDF, anyway (yet)
+        if ((getColorDataType() == Types::ColorTypeRGB && getBitsPerPixel() == 32) // Sometimes, there are strange .PSD images like this (FreeImage bug?)
+            || (getColorDataType() == Types::ColorTypeRGBA)) // We can't export alpha channels to PDF, anyway (yet)
         {
             RGBQUAD white = { 255, 255, 255, 0 };
             FIBITMAP *Image24Bit = FreeImage_Composite(m_bitmap, FALSE, &white);
@@ -135,17 +135,17 @@ QSize ImageLoaderFreeImage::getSizePixels() const
     return QSize(m_widthPixels, m_heightPixels);
 }
 
-double ImageLoaderFreeImage::getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const
+double ImageLoaderFreeImage::getHorizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
 {
-    return m_horizontalDotsPerMeter / UnitsOfLength::convertBetweenUnitsOfLength(1, UnitsOfLength::eUnitOfLengthMeter, unit);
+    return m_horizontalDotsPerMeter / Types::convertBetweenUnitsOfLength(1, Types::UnitOfLengthMeter, unit);
 }
 
-double ImageLoaderFreeImage::getVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const
+double ImageLoaderFreeImage::getVerticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
 {
-    return m_verticalDotsPerMeter / UnitsOfLength::convertBetweenUnitsOfLength(1, UnitsOfLength::eUnitOfLengthMeter, unit);
+    return m_verticalDotsPerMeter / Types::convertBetweenUnitsOfLength(1, Types::UnitOfLengthMeter, unit);
 }
 
-QSizeF ImageLoaderFreeImage::getSize(UnitsOfLength::eUnitsOfLength unit) const
+QSizeF ImageLoaderFreeImage::getSize(Types::UnitsOfLength unit) const
 {
     const QSize sizePixels(getSizePixels());
     return QSizeF(sizePixels.width() / getHorizontalDotsPerUnitOfLength(unit), sizePixels.height() / getVerticalDotsPerUnitOfLength(unit));
@@ -165,7 +165,7 @@ const QImage ImageLoaderFreeImage::getImageAsRGB(const QSize &size) const
     FIBITMAP* scaledImage = NULL;
 
     if (getBitsPerPixel() != 24) {
-        if (getColorDataType() == ColorTypes::eColorTypeCMYK) {
+        if (getColorDataType() == Types::ColorTypeCMYK) {
             temp24BPPImage = FreeImage_Allocate(sizePixels.width(), sizePixels.height(), 24);
             const unsigned int columnsCount = sizePixels.width();
             const unsigned int scanlinesCount = sizePixels.height();
@@ -225,19 +225,19 @@ int ImageLoaderFreeImage::getBitsPerPixel() const
     return FreeImage_GetBPP(m_bitmap);
 }
 
-ColorTypes::eColorTypes ImageLoaderFreeImage::getColorDataType() const
+Types::ColorTypes ImageLoaderFreeImage::getColorDataType() const
 {
-    ColorTypes::eColorTypes colorDatatype = ColorTypes::eColorTypeRGB;
+    Types::ColorTypes colorDatatype = Types::ColorTypeRGB;
     const FREE_IMAGE_COLOR_TYPE imageColorType = FreeImage_GetColorType(m_bitmap);
 
     if (imageColorType == FIC_MINISBLACK || imageColorType == FIC_MINISWHITE) {
-        colorDatatype = getBitsPerPixel()==1?ColorTypes::eColorTypeMonochrome:ColorTypes::eColorTypeGreyscale;
+        colorDatatype = getBitsPerPixel()==1?Types::ColorTypeMonochrome:Types::ColorTypeGreyscale;
     } else {
         colorDatatype =
-            imageColorType==FIC_PALETTE?ColorTypes::eColorTypePalette:
-            imageColorType==FIC_RGB?ColorTypes::eColorTypeRGB:
-            imageColorType==FIC_RGBALPHA?ColorTypes::eColorTypeRGBA:
-            /*imageColorType==FIC_CMYK?*/ColorTypes::eColorTypeCMYK;
+            imageColorType==FIC_PALETTE?Types::ColorTypePalette:
+            imageColorType==FIC_RGB?Types::ColorTypeRGB:
+            imageColorType==FIC_RGBALPHA?Types::ColorTypeRGBA:
+            /*imageColorType==FIC_CMYK?*/Types::ColorTypeCMYK;
     }
 
     return colorDatatype;

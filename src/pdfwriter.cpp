@@ -22,7 +22,7 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "PaintCanvasInterface.h"
+#include "paintcanvasinterface.h"
 #include "pdfwriter.h"
 #include <time.h>
 #include <QRectF>
@@ -80,7 +80,7 @@ int PDFWriter::addImageResourcesAndXObject()
     return err;
 }
 
-int PDFWriter::saveJpegImage(const QString &jpegFileName, const QSize &sizePixels, ColorTypes::eColorTypes colorType)
+int PDFWriter::saveJpegImage(const QString &jpegFileName, const QSize &sizePixels, Types::ColorTypes colorType)
 {
     int err = 0;
 
@@ -118,7 +118,7 @@ int PDFWriter::saveJpegImage(const QString &jpegFileName, const QSize &sizePixel
             ">>" LINEFEED
             "stream" LINEFEED,
             m_pdfObjectCount,
-            colorType==ColorTypes::eColorTypeCMYK?"/DeviceCMYK":"/DeviceRGB ", // Leaving space after RGB for eventual manual patching to CMYK
+            colorType==Types::ColorTypeCMYK?"/DeviceCMYK":"/DeviceRGB ", // Leaving space after RGB for eventual manual patching to CMYK
             jpegFileSize, sizePixels.width(), sizePixels.height()
         );
     }
@@ -156,7 +156,7 @@ int PDFWriter::saveJpegImage(const QString &jpegFileName, const QSize &sizePixel
     return err;
 }
 
-int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, int bitPerPixel, ColorTypes::eColorTypes colorType, const QVector<QRgb> &colorTable)
+int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, int bitPerPixel, Types::ColorTypes colorType, const QVector<QRgb> &colorTable)
 {
     int err = 0;
     err = addImageResourcesAndXObject();
@@ -172,13 +172,13 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
 
     char colorSpaceString[5000] = "";
     switch (colorType) {
-    case ColorTypes::eColorTypeRGB:
+    case Types::ColorTypeRGB:
         strcpy(colorSpaceString, "/DeviceRGB");
         break;
-    case ColorTypes::eColorTypeGreyscale:
+    case Types::ColorTypeGreyscale:
         strcpy(colorSpaceString, "/DeviceGray");
         break;
-    case ColorTypes::eColorTypeCMYK:
+    case Types::ColorTypeCMYK:
         strcpy(colorSpaceString, "/DeviceCMYK");
         break;
     default:
@@ -209,10 +209,10 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
         imageDataCompressed.size() - compressedByteArrayPrependedBytes - compressedByteArrayAppendedBytes,
         sizePixels.width(), sizePixels.height(),
         (
-            colorType == ColorTypes::eColorTypePalette?bitPerPixel
-            :colorType == ColorTypes::eColorTypeMonochrome?bitPerPixel
-            :colorType == ColorTypes::eColorTypeGreyscale?bitPerPixel
-            :colorType == ColorTypes::eColorTypeCMYK?(bitPerPixel/4)
+            colorType == Types::ColorTypePalette?bitPerPixel
+            :colorType == Types::ColorTypeMonochrome?bitPerPixel
+            :colorType == Types::ColorTypeGreyscale?bitPerPixel
+            :colorType == Types::ColorTypeCMYK?(bitPerPixel/4)
             :(bitPerPixel/3)
         )
     );

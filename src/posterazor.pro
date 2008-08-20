@@ -1,27 +1,24 @@
 SOURCES += \
-    PaperFormats.cpp \
-    UnitsOfLength.cpp \
-    posterazorcore.cpp \
-    pdfwriter.cpp \
-    mainwindow.cpp \
-    snapspinbox.cpp \
-    paintcanvas.cpp \
     controller.cpp \
+    mainwindow.cpp \
+    paintcanvas.cpp \
+    pdfwriter.cpp \
+    posterazorcore.cpp \
+    snapspinbox.cpp \
+    types.cpp \
     wizardcontroller.cpp \
     main.cpp
 
 HEADERS += \
-    ColorTypes.h \
-    imageloaderinterface.h \
-    UnitsOfLength.h \
-    PaperFormats.h \
-    paintcanvasinterface.h \
-    posterazorcore.h \
-    pdfwriter.h \
-    mainwindow.h \
-    snapspinbox.h \
-    paintcanvas.h \
     controller.h \
+    imageloaderinterface.h \
+    mainwindow.h \
+    paintcanvas.h \
+    paintcanvasinterface.h \
+    pdfwriter.h \
+    posterazorcore.h \
+    snapspinbox.h \
+    types.h \
     wizardcontroller.h
 
 win32:DEFINES -= \

@@ -38,7 +38,7 @@ public:
     void updatePreview();
 
 public slots:
-    void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
+    void setUnitOfLength(Types::UnitsOfLength unit);
     void setPaperFormat(const QString &format);
     void setPaperOrientation(QPrinter::Orientation orientation);
     void setPaperBorderTop(double border);
@@ -56,7 +56,7 @@ public slots:
     void setPosterWidthPages(double width);
     void setPosterHeightPages(double height);
     void setPosterSizePercentual(double percent);
-    void setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode);
+    void setPosterSizeMode(Types::PosterSizeModes mode);
     void setPosterAlignment(Qt::Alignment alignment);
     void setLaunchPDFApplication(bool launch);
     bool readSettings(const QSettings *settings);
@@ -71,8 +71,8 @@ signals:
     virtual void previewChanged() const;
     virtual void imageFileNameChanged(const QString &fileName) const;
     virtual void imageInfoChanged(int imageWidthInPixels, int imageHeightInPixels, double imageWidth,
-        double imageHeight, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi,
-        ColorTypes::eColorTypes colorType, int bitsPerPixel) const;
+        double imageHeight, Types::UnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi,
+        Types::ColorTypes colorType, int bitsPerPixel) const;
     virtual void pddfLaunch(const QString &pdfFileName) const;
 
 protected:
@@ -83,7 +83,7 @@ protected:
     void setDialogSaveOptions();
     void setDialogPosterSizeMode();
     void setDialogPosterOptions();
-    void setDialogPosterDimensions(PosteRazorEnums::ePosterSizeModes excludedMode, bool widthExcluded);
+    void setDialogPosterDimensions(Types::PosterSizeModes excludedMode, bool widthExcluded);
     void setDialogPaperOptions();
     void setDialogPaperBorders();
     void setDialogCustomPaperDimensions();

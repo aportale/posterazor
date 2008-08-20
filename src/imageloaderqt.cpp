@@ -59,17 +59,17 @@ QSize ImageLoaderQt::getSizePixels() const
     return m_image.size();
 }
 
-double ImageLoaderQt::getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const
+double ImageLoaderQt::getHorizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
 {
-    return m_image.logicalDpiX() / UnitsOfLength::convertBetweenUnitsOfLength(1, UnitsOfLength::eUnitOfLengthInch, unit);
+    return m_image.logicalDpiX() / Types::convertBetweenUnitsOfLength(1, Types::UnitOfLengthInch, unit);
 }
 
-double ImageLoaderQt::getVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const
+double ImageLoaderQt::getVerticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
 {
-    return m_image.logicalDpiY() / UnitsOfLength::convertBetweenUnitsOfLength(1, UnitsOfLength::eUnitOfLengthInch, unit);
+    return m_image.logicalDpiY() / Types::convertBetweenUnitsOfLength(1, Types::UnitOfLengthInch, unit);
 }
 
-QSizeF ImageLoaderQt::getSize(UnitsOfLength::eUnitsOfLength unit) const
+QSizeF ImageLoaderQt::getSize(Types::UnitsOfLength unit) const
 {
     const QSize sizePixels(getSizePixels());
     return QSizeF(sizePixels.width() / getHorizontalDotsPerUnitOfLength(unit), sizePixels.height() / getVerticalDotsPerUnitOfLength(unit));
@@ -82,17 +82,17 @@ const QImage ImageLoaderQt::getImageAsRGB(const QSize &size) const
 
 int ImageLoaderQt::getBitsPerPixel() const
 {
-    return getColorDataType() == ColorTypes::eColorTypeRGB?24:m_image.depth();
+    return getColorDataType() == Types::ColorTypeRGB?24:m_image.depth();
 }
 
-ColorTypes::eColorTypes ImageLoaderQt::getColorDataType() const
+Types::ColorTypes ImageLoaderQt::getColorDataType() const
 {
     const QImage::Format format = m_image.format();
 
-    return  format==QImage::Format_Mono?ColorTypes::eColorTypeMonochrome:
-            format==QImage::Format_Indexed8?ColorTypes::eColorTypePalette:
-            format==QImage::Format_ARGB32?ColorTypes::eColorTypeRGBA:
-            /*format==QImage::Format_RGB32?*/ColorTypes::eColorTypeRGB;
+    return  format==QImage::Format_Mono?Types::ColorTypeMonochrome:
+            format==QImage::Format_Indexed8?Types::ColorTypePalette:
+            format==QImage::Format_ARGB32?Types::ColorTypeRGBA:
+            /*format==QImage::Format_RGB32?*/Types::ColorTypeRGB;
 }
 
 const QByteArray ImageLoaderQt::getBits() const

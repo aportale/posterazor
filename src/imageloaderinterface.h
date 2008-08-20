@@ -23,8 +23,7 @@
 #ifndef IMAGELOADERINTERFACE_H
 #define IMAGELOADERINTERFACE_H
 
-#include "UnitsOfLength.h"
-#include "ColorTypes.h"
+#include "types.h"
 #include <QRgb>
 #include <QImage>
 #include <QSize>
@@ -41,12 +40,12 @@ public:
     virtual bool isJpeg() const = 0;
     virtual QString getFileName() const = 0;
     virtual QSize getSizePixels() const = 0;
-    virtual double getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const = 0;
-    virtual double getVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const = 0;
-    virtual QSizeF getSize(UnitsOfLength::eUnitsOfLength unit) const = 0;
+    virtual double getHorizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const = 0;
+    virtual double getVerticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const = 0;
+    virtual QSizeF getSize(Types::UnitsOfLength unit) const = 0;
     virtual const QImage getImageAsRGB(const QSize &size) const = 0;
     virtual int getBitsPerPixel() const = 0;
-    virtual ColorTypes::eColorTypes getColorDataType() const = 0;
+    virtual Types::ColorTypes getColorDataType() const = 0;
     virtual const QByteArray getBits() const = 0;
     virtual const QVector<QRgb> getColorTable() const = 0;
     virtual const QVector<QPair<QStringList, QString> > &getImageFormats() const = 0;

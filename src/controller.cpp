@@ -77,7 +77,7 @@ void Controller::updatePreview()
     m_mainWindow->updatePreview();
 }
 
-void Controller::setUnitOfLength(UnitsOfLength::eUnitsOfLength unit)
+void Controller::setUnitOfLength(Types::UnitsOfLength unit)
 {
     m_posteRazorCore->setUnitOfLength(unit);
     updateDialog();
@@ -173,35 +173,35 @@ void Controller::setOverlappingPosition(Qt::Alignment position)
 
 void Controller::setPosterWidthAbsolute(double width)
 {
-    m_posteRazorCore->setPosterWidth(PosteRazorEnums::ePosterSizeModeAbsolute, width);
-    setDialogPosterDimensions(PosteRazorEnums::ePosterSizeModeAbsolute, true);
+    m_posteRazorCore->setPosterWidth(Types::PosterSizeModeAbsolute, width);
+    setDialogPosterDimensions(Types::PosterSizeModeAbsolute, true);
 }
 
 void Controller::setPosterHeightAbsolute(double height)
 {
-    m_posteRazorCore->setPosterHeight(PosteRazorEnums::ePosterSizeModeAbsolute, height);
-    setDialogPosterDimensions(PosteRazorEnums::ePosterSizeModeAbsolute, false);
+    m_posteRazorCore->setPosterHeight(Types::PosterSizeModeAbsolute, height);
+    setDialogPosterDimensions(Types::PosterSizeModeAbsolute, false);
 }
 
 void Controller::setPosterWidthPages(double width)
 {
-    m_posteRazorCore->setPosterWidth(PosteRazorEnums::ePosterSizeModePages, width);
-    setDialogPosterDimensions(PosteRazorEnums::ePosterSizeModePages, true);
+    m_posteRazorCore->setPosterWidth(Types::PosterSizeModePages, width);
+    setDialogPosterDimensions(Types::PosterSizeModePages, true);
 }
 
 void Controller::setPosterHeightPages(double height)
 {
-    m_posteRazorCore->setPosterHeight(PosteRazorEnums::ePosterSizeModePages, height);
-    setDialogPosterDimensions(PosteRazorEnums::ePosterSizeModePages, false);
+    m_posteRazorCore->setPosterHeight(Types::PosterSizeModePages, height);
+    setDialogPosterDimensions(Types::PosterSizeModePages, false);
 }
 
 void Controller::setPosterSizePercentual(double percent)
 {
-    m_posteRazorCore->setPosterHeight(PosteRazorEnums::ePosterSizeModePercentual, percent);
-    setDialogPosterDimensions(PosteRazorEnums::ePosterSizeModePercentual, false);
+    m_posteRazorCore->setPosterHeight(Types::PosterSizeModePercentual, percent);
+    setDialogPosterDimensions(Types::PosterSizeModePercentual, false);
 }
 
-void Controller::setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode)
+void Controller::setPosterSizeMode(Types::PosterSizeModes mode)
 {
     m_posteRazorCore->setPosterSizeMode(mode);
 }
@@ -230,25 +230,25 @@ void Controller::setDialogPosterSizeMode()
 
 void Controller::setDialogPosterOptions()
 {
-    setDialogPosterDimensions(PosteRazorEnums::ePosterSizeModeNone, true);
+    setDialogPosterDimensions(Types::PosterSizeModeNone, true);
     m_mainWindow->setPosterAlignment(m_posteRazorCore->getPosterAlignment());
     m_mainWindow->setPosterSizeMode(m_posteRazorCore->getPosterSizeMode());
 }
 
-void Controller::setDialogPosterDimensions(PosteRazorEnums::ePosterSizeModes excludedMode, bool widthExcluded)
+void Controller::setDialogPosterDimensions(Types::PosterSizeModes excludedMode, bool widthExcluded)
 {
-    const QSizeF posterSizeAbsolute = m_posteRazorCore->getPosterSize(PosteRazorEnums::ePosterSizeModeAbsolute);
-    const QSizeF posterSizePages = m_posteRazorCore->getPosterSize(PosteRazorEnums::ePosterSizeModePages);
-    const QSizeF posterSizePercentual = m_posteRazorCore->getPosterSize(PosteRazorEnums::ePosterSizeModePercentual);
-    if (excludedMode != PosteRazorEnums::ePosterSizeModeAbsolute || !widthExcluded)
+    const QSizeF posterSizeAbsolute = m_posteRazorCore->getPosterSize(Types::PosterSizeModeAbsolute);
+    const QSizeF posterSizePages = m_posteRazorCore->getPosterSize(Types::PosterSizeModePages);
+    const QSizeF posterSizePercentual = m_posteRazorCore->getPosterSize(Types::PosterSizeModePercentual);
+    if (excludedMode != Types::PosterSizeModeAbsolute || !widthExcluded)
         m_mainWindow->setPosterWidthAbsolute(posterSizeAbsolute.width());
-    if (excludedMode != PosteRazorEnums::ePosterSizeModeAbsolute || widthExcluded)
+    if (excludedMode != Types::PosterSizeModeAbsolute || widthExcluded)
         m_mainWindow->setPosterHeightAbsolute(posterSizeAbsolute.height());
-    if (excludedMode != PosteRazorEnums::ePosterSizeModePages || !widthExcluded)
+    if (excludedMode != Types::PosterSizeModePages || !widthExcluded)
         m_mainWindow->setPosterWidthPages(posterSizePages.width());
-    if (excludedMode != PosteRazorEnums::ePosterSizeModePages || widthExcluded)
+    if (excludedMode != Types::PosterSizeModePages || widthExcluded)
         m_mainWindow->setPosterHeightPages(posterSizePages.height());
-    if (excludedMode != PosteRazorEnums::ePosterSizeModePercentual)
+    if (excludedMode != Types::PosterSizeModePercentual)
         m_mainWindow->setPosterSizePercentual(posterSizePercentual.width());
     updatePreview();
 }
@@ -345,7 +345,7 @@ void Controller::loadInputImage()
     );
 
     if (!loadFileName.isEmpty()) {
-        bool successful = loadInputImage(loadFileName);
+        const bool successful = loadInputImage(loadFileName);
         if (successful)
             loadPathSettings.setValue(loadPathSettingsKey, QFileInfo(loadFileName).absolutePath());
     }
@@ -391,7 +391,7 @@ void Controller::savePoster() const
 
     do {
         saveFileName = QFileDialog::getSaveFileName(
-            NULL,
+            m_mainWindow,
             QCoreApplication::translate("PosteRazorDialog", "Choose a filename to save under"),
             saveFileName,
             QLatin1String("Portable Document format (*.pdf)"),

@@ -25,8 +25,6 @@
 
 #include <QMainWindow>
 #include "ui_mainwindow.h"
-#include "UnitsOfLength.h"
-#include "PaperFormats.h"
 #include "posterazorcore.h"
 
 class MainWindow : public QMainWindow, private Ui::MainWindow
@@ -36,7 +34,7 @@ class MainWindow : public QMainWindow, private Ui::MainWindow
 public:
     MainWindow(QWidget *parent = 0, Qt::WFlags flags = 0);
 
-    void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
+    void setUnitOfLength(Types::UnitsOfLength unit);
 
     void setPaperFormat(const QString &format);
     void setPaperOrientation(QPrinter::Orientation orientation);
@@ -58,14 +56,14 @@ public:
     void setPosterWidthPages(double width);
     void setPosterHeightPages(double height);
     void setPosterSizePercentual(double percent);
-    void setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode);
+    void setPosterSizeMode(Types::PosterSizeModes mode);
     void setPosterAlignment(Qt::Alignment alignment);
 
     void setLaunchPDFApplication(bool launch);
 
     void updatePreview();
     void showImageFileName(const QString &fileName);
-    void updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, UnitsOfLength::eUnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, ColorTypes::eColorTypes colorType, int bitsPerPixel);
+    void updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, Types::UnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel);
     void launchPdfApplication(const QString &pdfFileName) const;
 
 public slots:

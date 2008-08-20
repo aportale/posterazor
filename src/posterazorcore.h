@@ -23,24 +23,12 @@
 #ifndef POSTERAZORCORE_H
 #define POSTERAZORCORE_H
 
-#include "PaperFormats.h"
-#include "ColorTypes.h"
-#include "PaintCanvasInterface.h"
+#include "types.h"
+#include "paintcanvasinterface.h"
 #include <QObject>
 
 class QSettings;
 class ImageLoaderInterface;
-
-class PosteRazorEnums
-{
-public:
-    enum ePosterSizeModes {
-        ePosterSizeModeAbsolute,
-        ePosterSizeModePercentual,
-        ePosterSizeModePages,
-        ePosterSizeModeNone
-    };
-};
 
 class PosteRazorCore: public QObject
 {
@@ -63,8 +51,8 @@ public:
     double getInputImageVerticalDpi() const;
     QSizeF getInputImageSize() const;
     int getInputImageBitsPerPixel() const;
-    ColorTypes::eColorTypes getInputImageColorType() const;
-    UnitsOfLength::eUnitsOfLength getUnitOfLength() const;
+    Types::ColorTypes getInputImageColorType() const;
+    Types::UnitsOfLength getUnitOfLength() const;
     const QString getPaperFormat() const;
     QPrinter::Orientation getPaperOrientation() const;
     double getPaperBorderTop() const;
@@ -78,13 +66,13 @@ public:
     double getOverlappingWidth() const;
     double getOverlappingHeight() const;
     Qt::Alignment getOverlappingPosition() const;
-    QSizeF getPosterSize(PosteRazorEnums::ePosterSizeModes mode) const;
-    PosteRazorEnums::ePosterSizeModes getPosterSizeMode() const;
+    QSizeF getPosterSize(Types::PosterSizeModes mode) const;
+    Types::PosterSizeModes getPosterSizeMode() const;
     Qt::Alignment getPosterAlignment() const;
     bool getIsImageLoaded() const;
     const QVector<QPair<QStringList, QString> > &getImageFormats() const;
 
-    void setUnitOfLength(UnitsOfLength::eUnitsOfLength unit);
+    void setUnitOfLength(Types::UnitsOfLength unit);
     void setPaperFormat(const QString &format);
     void setPaperOrientation(QPrinter::Orientation orientation);
     void setPaperBorderTop(double border);
@@ -97,9 +85,9 @@ public:
     void setOverlappingWidth(double width);
     void setOverlappingHeight(double height);
     void setOverlappingPosition(Qt::Alignment position);
-    void setPosterWidth(PosteRazorEnums::ePosterSizeModes mode, double width);
-    void setPosterHeight(PosteRazorEnums::ePosterSizeModes mode, double height);
-    void setPosterSizeMode(PosteRazorEnums::ePosterSizeModes mode);
+    void setPosterWidth(Types::PosterSizeModes mode, double width);
+    void setPosterHeight(Types::PosterSizeModes mode, double height);
+    void setPosterSizeMode(Types::PosterSizeModes mode);
     void setPosterAlignment(Qt::Alignment alignment);
 
 public slots:
@@ -115,10 +103,10 @@ private:
     double getMaximalHorizontalPaperBorder() const;
     double convertBetweenAbsoluteAndPagesPosterDimension(double dimension, bool pagesToAbsolute, bool width) const;
     double calculateOtherPosterDimension() const;
-    void setPosterDimension(PosteRazorEnums::ePosterSizeModes mode, double dimension, bool dimensionIsWidth);
+    void setPosterDimension(Types::PosterSizeModes mode, double dimension, bool dimensionIsWidth);
     double getMaximalOverLappingWidth() const;
     double getMaximalOverLappingHeight() const;
-    double getPosterDimension(PosteRazorEnums::ePosterSizeModes mode, bool width) const;
+    double getPosterDimension(Types::PosterSizeModes mode, bool width) const;
     QSizeF getPreviewSize(const QSizeF &imageSize, const QSize &boxSize, bool enlargeToFit) const;
     QSizeF getInputImagePreviewSize(const QSize &boxSize) const;
     void paintImageOnCanvas(PaintCanvasInterface *paintCanvas) const;
@@ -130,28 +118,24 @@ signals:
     void previewImageChanged(const QImage &image) const;
 
 private:
-    ImageLoaderInterface*                   m_imageLoader;
-
-    PosteRazorEnums::ePosterSizeModes       m_posterSizeMode;
-    double                                  m_posterDimension;
-    bool                                    m_posterDimensionIsWidth;
-    Qt::Alignment                           m_posterAlignment;
-
-    bool                                    m_useCustomPaperSize;
-    QString                                 m_paperFormat;
-    QPrinter::Orientation                   m_paperOrientation;
-    double                                  m_paperBorderTop;
-    double                                  m_paperBorderRight;
-    double                                  m_paperBorderBottom;
-    double                                  m_paperBorderLeft;
-    double                                  m_customPaperWidth;
-    double                                  m_customPaperHeight;
-
-    double                                  m_overlappingWidth;
-    double                                  m_overlappingHeight;
-    Qt::Alignment                           m_overlappingPosition;
-
-    UnitsOfLength::eUnitsOfLength           m_unitOfLength;
+    ImageLoaderInterface*    m_imageLoader;
+    Types::PosterSizeModes   m_posterSizeMode;
+    double                   m_posterDimension;
+    bool                     m_posterDimensionIsWidth;
+    Qt::Alignment            m_posterAlignment;
+    bool                     m_useCustomPaperSize;
+    QString                  m_paperFormat;
+    QPrinter::Orientation    m_paperOrientation;
+    double                   m_paperBorderTop;
+    double                   m_paperBorderRight;
+    double                   m_paperBorderBottom;
+    double                   m_paperBorderLeft;
+    double                   m_customPaperWidth;
+    double                   m_customPaperHeight;
+    double                   m_overlappingWidth;
+    double                   m_overlappingHeight;
+    Qt::Alignment            m_overlappingPosition;
+    Types::UnitsOfLength     m_unitOfLength;
 };
 
 #endif // POSTERAZORCORE_H

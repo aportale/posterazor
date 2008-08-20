@@ -36,12 +36,12 @@ public:
     bool isJpeg() const;
     QString getFileName() const;
     QSize getSizePixels() const;
-    double getHorizontalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const;
-    double getVerticalDotsPerUnitOfLength(UnitsOfLength::eUnitsOfLength unit) const;
-    QSizeF getSize(UnitsOfLength::eUnitsOfLength unit) const;
+    double getHorizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const;
+    double getVerticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const;
+    QSizeF getSize(Types::UnitsOfLength unit) const;
     const QImage getImageAsRGB(const QSize &size) const;
     int getBitsPerPixel() const;
-    ColorTypes::eColorTypes getColorDataType() const;
+    Types::ColorTypes getColorDataType() const;
     int savePoster(const QString &fileName, const PainterInterface *painter, int pagesCount, const QSizeF &sizeCm) const;
     const QByteArray getBits() const;
     const QVector<QRgb> getColorTable() const;
