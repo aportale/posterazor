@@ -245,7 +245,7 @@ void MainWindow::setPreviewImage(const QImage &image)
 
 void MainWindow::handlePaperFormatTabChanged(int index)
 {
-//    m_posteRazorController->setUseCustomPaperSize(index == 1);
+    emit useCustomPaperSizeChanged(index == 1);
 }
 
 void MainWindow::handlePaperOrientationPortraitSelected()

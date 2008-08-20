@@ -309,7 +309,7 @@ QSizeF PosteRazorCore::getCustomPaperSize() const
 {
     const double minimalPaperWidth = 4.0;
     const double minimalPaperHeight = minimalPaperWidth;
-    const double maximalPaperWidth = 4.0;
+    const double maximalPaperWidth = 500.0; // 5 meter = maximum of a PDF page.
     const double maximalPaperHeight = maximalPaperWidth;
     return QSizeF(
         convertCmToDistance(qBound(minimalPaperWidth, m_customPaperWidth, maximalPaperWidth)),

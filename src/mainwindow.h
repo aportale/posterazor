@@ -35,22 +35,17 @@ public:
     MainWindow(QWidget *parent = 0, Qt::WFlags flags = 0);
 
     void setUnitOfLength(Types::UnitsOfLength unit);
-
     void setPaperFormat(const QString &format);
     void setPaperOrientation(QPrinter::Orientation orientation);
-
     void setPaperBorderTop(double border);
     void setPaperBorderRight(double border);
     void setPaperBorderBottom(double border);
     void setPaperBorderLeft(double border);
-
     void setCustomPaperSize(const QSizeF &size);
     void setUseCustomPaperSize(bool useIt);
-
     void setOverlappingWidth(double width);
     void setOverlappingHeight(double height);
     void setOverlappingPosition(Qt::Alignment position);
-
     void setPosterWidthAbsolute(double width);
     void setPosterHeightAbsolute(double height);
     void setPosterWidthPages(double width);
@@ -58,9 +53,7 @@ public:
     void setPosterSizePercentual(double percent);
     void setPosterSizeMode(Types::PosterSizeModes mode);
     void setPosterAlignment(Qt::Alignment alignment);
-
     void setLaunchPDFApplication(bool launch);
-
     void updatePreview();
     void showImageFileName(const QString &fileName);
     void updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, Types::UnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel);
@@ -83,6 +76,7 @@ private:
 
 signals:
     void paperFormatChanged(const QString &format) const;
+    void useCustomPaperSizeChanged(bool useIt) const;
     void paperOrientationChanged(QPrinter::Orientation orientation) const;
     void paperCustomWidthChanged(double width) const;
     void paperCustomHeightChanged(double height) const;
@@ -112,12 +106,9 @@ private slots:
     void handlePaperFormatTabChanged(int index);
     void handlePaperOrientationPortraitSelected();
     void handlePaperOrientationLandscapeSelected();
-
     void emitOverlappingPositionChange(int alignmentInt) const;
     void emitPosterAlignmentChange(int alignmentInt) const;
-
     void updatePosterSizeGroupsState();
-
     void showAboutQtDialog() const;
 };
 

@@ -40,6 +40,7 @@ Controller::Controller(PosteRazorCore *posteRazorCore, MainWindow *mainWindow, Q
     connect(m_mainWindow, SIGNAL(paperBorderRightChanged(double)), SLOT(setPaperBorderRight(double)));
     connect(m_mainWindow, SIGNAL(paperBorderBottomChanged(double)), SLOT(setPaperBorderBottom(double)));
     connect(m_mainWindow, SIGNAL(paperBorderLeftChanged(double)), SLOT(setPaperBorderLeft(double)));
+    connect(m_mainWindow, SIGNAL(useCustomPaperSizeChanged(bool)), SLOT(setUseCustomPaperSize(bool)));
     connect(m_mainWindow, SIGNAL(paperCustomWidthChanged(double)), SLOT(setCustomPaperWidth(double)));
     connect(m_mainWindow, SIGNAL(paperCustomHeightChanged(double)), SLOT(setCustomPaperHeight(double)));
     connect(m_mainWindow, SIGNAL(overlappingWidthChanged(double)), SLOT(setOverlappingWidth(double)));
