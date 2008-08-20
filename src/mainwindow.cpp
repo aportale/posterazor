@@ -22,8 +22,6 @@
 
 #include "mainwindow.h"
 #include <QSignalMapper>
-#include <QUrl>
-#include <QDesktopServices>
 #include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
@@ -211,11 +209,6 @@ void MainWindow::updateImageInfoFields(const QSize &inputImageSizeInPixels, cons
     ) + QString(" %1bpp").arg(bitsPerPixel);
     m_imageInformationColorTypeValue->setText(colorTypeString);
     emit imageLoaded();
-}
-
-void MainWindow::launchPdfApplication(const QString &pdfFileName) const
-{
-    QDesktopServices::openUrl(QUrl(pdfFileName));
 }
 
 void MainWindow::setPrevButtonEnabled(bool enabled)

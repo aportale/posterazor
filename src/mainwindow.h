@@ -57,7 +57,6 @@ public:
     void updatePreview();
     void showImageFileName(const QString &fileName);
     void updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, Types::UnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel);
-    void launchPdfApplication(const QString &pdfFileName) const;
 
 public slots:
     void setPreviewImage(const QImage &image);

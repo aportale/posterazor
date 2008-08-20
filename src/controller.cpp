@@ -25,6 +25,8 @@
 #include <QSettings>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QUrl>
+#include <QDesktopServices>
 
 const QLatin1String settingsKey_LaunchPDFApplication("launchPDFApplication");
 
@@ -378,7 +380,7 @@ int Controller::savePoster(const QString &fileName) const
 {
     const int result = m_posteRazorCore->savePoster(fileName);
     if (result == 0 && m_launchPDFApplication)
-        m_mainWindow->launchPdfApplication(fileName);
+        QDesktopServices::openUrl(QUrl::fromLocalFile(fileName));
     return result;
 }
 
