@@ -1,9 +1,9 @@
 <RCC>
     <qresource prefix="/OverlappingPositionImages" >
-        <file>overlappingBottomLeft.png</file>
-        <file>overlappingBottomRight.png</file>
-        <file>overlappingTopLeft.png</file>
-        <file>overlappingTopRight.png</file>
+        <file>overlappingbottomleft.png</file>
+        <file>overlappingbottomright.png</file>
+        <file>overlappingtopleft.png</file>
+        <file>overlappingtopright.png</file>
     </qresource>
     <qresource prefix="/PosterAlignmentImages" >
         <file>alignmenttopleft.png</file>

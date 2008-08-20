@@ -292,7 +292,7 @@ int PDFWriter::startSaving(const QString &fileName, int pages, double widthCm, d
         m_xref = new char[(m_contentPagesCount+15) * 50];
         sprintf(m_xref, LINEFEED "xref" LINEFEED "0 %d" LINEFEED "0000000000 65535 f " LINEFEED, 7 + m_contentPagesCount*2);
 
-        fprintf(m_outputFile, "%%PDF-1.3" LINEFEED "%%‚„œ”");
+        fprintf(m_outputFile, "%%PDF-1.3" LINEFEED "%%");
 
         time_t rawtime;
         struct tm * timeinfo;
@@ -377,8 +377,16 @@ int PDFWriter::finishSaving()
     return err;
 }
 
-void PDFWriter::drawFilledRect(const QRectF&, const QBrush &brush) {}
-QSizeF PDFWriter::getSize() const {return QSizeF();}
+void PDFWriter::drawFilledRect(const QRectF& rect, const QBrush &brush)
+{
+    Q_UNUSED(rect)
+    Q_UNUSED(brush)
+}
+
+QSizeF PDFWriter::getSize() const
+{
+    return QSizeF();
+}
 
 void PDFWriter::drawImage(const QRectF &rect)
 {
