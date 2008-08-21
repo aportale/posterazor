@@ -28,9 +28,8 @@
 #include "wizardcontroller.h"
 #include <QtDebug>
 
-#if !defined(QT_SHARED) && !defined(QT_DLL)
+#if !defined(QT_SHARED) && !defined(QT_DLL) && !defined(FREEIMAGE_LIB)
 #include <QtPlugin>
-
 Q_IMPORT_PLUGIN(qgif)
 Q_IMPORT_PLUGIN(qjpeg)
 Q_IMPORT_PLUGIN(qtiff)
