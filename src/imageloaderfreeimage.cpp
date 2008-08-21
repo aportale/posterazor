@@ -21,9 +21,9 @@
 */
 
 #include "FreeImage.h"
-#include "imageiofreeimage.h"
-#include "UnitsOfLength.h"
+#include "imageloaderfreeimage.h"
 #include <QStringList>
+#include <math.h>
 
 static QString FreeImageErrorMessage;
 
@@ -286,9 +286,15 @@ const QVector<QPair<QStringList, QString> > &ImageLoaderFreeImage::getImageForma
 {
     static QVector<QPair<QStringList, QString> > formats;
     if (formats.empty()) {
-        QStringList extensions;
-        extensions << "Gif";
-        formats.append(QPair<QStringList, QString> (extensions, "Graphics interchange format"));
+        const int pluginsCount = FreeImage_GetFIFCount();
+        for (int pluginIndex = 0; pluginIndex < pluginsCount; pluginIndex++) {
+            const FREE_IMAGE_FORMAT fif = (FREE_IMAGE_FORMAT)pluginIndex;
+            if (FreeImage_FIFSupportsReading(fif)) {
+                const QString pluginExtensions = FreeImage_GetFIFExtensionList(fif);
+                const QString pluginDescription = FreeImage_GetFIFDescription(fif);
+                formats.append(QPair<QStringList, QString> (pluginExtensions.split(','), pluginDescription));
+            }
+        }
     }
     return formats;
 }

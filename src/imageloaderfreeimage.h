@@ -23,7 +23,7 @@
 #ifndef IMAGELOADERFREEIMAGE_H
 #define IMAGELOADERFREEIMAGE_H
 
-#include "imageiointerface.h"
+#include "imageloaderinterface.h"
 
 struct FIBITMAP;
 
