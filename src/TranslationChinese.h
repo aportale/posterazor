@@ -31,82 +31,82 @@
 class TranslationEnglish: public TranslationInterface
 {
 public:
-	const char* languageName(void) const                    {return "¼òÌåÖÐÎÄ";}
+	const char* languageName(void) const                    {return "简体中文";}
 
-	const char* absoluteSize(void) const                    {return "¾ø¶Ô´óÐ¡:";}
-	const char* allImageFormats(void) const                 {return "ËùÓÐµÄÍ¼Ïñ¸ñÊ½";}
-	const char* back(void) const                            {return "·µ»Ø";}
-	const char* borders(void) const                         {return "±ß½ç";}
-	const char* bottom(void) const                          {return "¶¥²¿";}
-	const char* bottomLeft(void) const                      {return "×óÏÂ";}
-	const char* bottomRight(void) const                     {return "ÓÒÏÂ";}
-	const char* cancel(void) const                          {return "È¡Ïû";}
-	const char* colorType(void) const                       {return "ÑÕÉ«ÀàÐÍ:";}
-	const char* custom(void) const                          {return "¶¨ÖÆ";}
-	const char* fileCouldNotBeLoaded(void) const            {return "ÎÞ·¨¶ÁÈ¡ÎÄ¼þ \"%s\" ¡£";}
-	const char* fileCouldNotBeSaved(void) const             {return "ÎÞ·¨±£´æÎªÎÄ¼þ \"%s\" ¡£";}
-	const char* format(void) const                          {return "¸ñÊ½:";}
-	const char* grayscale(void) const                       {return "»Ò¶È";}
-	const char* height(void) const                          {return "¸ß¶È:";}
-	const char* imageAlignment(void) const                  {return "Í¼Æ¬µ÷Õû";}
-	const char* imageInformations(void) const               {return "Í¼Æ¬ÐÅÏ¢";}
-	const char* imageSize(void) const                       {return "Í¼Æ¬³ß´ç";}
-	const char* inputImage(void) const                      {return "ÊäÈëÍ¼Æ¬";}
-	const char* landscape(void) const                       {return "»­Ïñ";}
-	const char* language(void) const                        {return "ÓïÑÔ";}
-	const char* languageExplanation(void) const             {return "Ñ¡ÔñÄúµÄÓïÑÔ";}
-	const char* launchPDFApplication(void) const            {return "±£´æºóÓÃÄ¬ÈÏµÄPDF³ÌÐò´ò¿ª";}
-	const char* left(void) const                            {return "×ó±ß";}
+	const char* absoluteSize(void) const                    {return "绝对大小:";}
+	const char* allImageFormats(void) const                 {return "所有的图像格式";}
+	const char* back(void) const                            {return "返回";}
+	const char* borders(void) const                         {return "边界";}
+	const char* bottom(void) const                          {return "顶部";}
+	const char* bottomLeft(void) const                      {return "左下";}
+	const char* bottomRight(void) const                     {return "右下";}
+	const char* cancel(void) const                          {return "取消";}
+	const char* colorType(void) const                       {return "颜色类型:";}
+	const char* custom(void) const                          {return "定制";}
+	const char* fileCouldNotBeLoaded(void) const            {return "无法读取文件 \"%s\" 。";}
+	const char* fileCouldNotBeSaved(void) const             {return "无法保存为文件 \"%s\" 。";}
+	const char* format(void) const                          {return "格式:";}
+	const char* grayscale(void) const                       {return "灰度";}
+	const char* height(void) const                          {return "高度:";}
+	const char* imageAlignment(void) const                  {return "图片调整";}
+	const char* imageInformations(void) const               {return "图片信息";}
+	const char* imageSize(void) const                       {return "图片尺寸";}
+	const char* inputImage(void) const                      {return "输入图片";}
+	const char* landscape(void) const                       {return "画像";}
+	const char* language(void) const                        {return "语言";}
+	const char* languageExplanation(void) const             {return "选择您的语言";}
+	const char* launchPDFApplication(void) const            {return "保存后用默认的PDF程序打开";}
+	const char* left(void) const                            {return "左边";}
 	const char* loadAnInputImage(void) const                {return stepTitle01();}
-	const char* monochrome(void) const                      {return "ºÚ°×";}
-	const char* next(void) const                            {return "Ç°½ø";}
-	const char* orientation(void) const                     {return "Ä£°å:";}
-	const char* overlappingPosition(void) const             {return "Î»ÖÃµ÷Õû";}
-	const char* overlappingSize(void) const                 {return "µ÷Õû´óÐ¡";}
-	const char* overwriteFile(void) const                   {return "ÎÄ¼þ '%s' ÒÑ¾­´æÔÚ¡£\nÒª¸²¸ÇÕâ¸öÎÄ¼þÂð£¿";}
-	const char* pages(void) const                           {return "Ò³Ãæ";}
-	const char* paperFormat(void) const                     {return "Ò³Ãæ¸ñÊ½";}
-	const char* palette(void) const                         {return "·ç¾°»­";}
-	const char* portrait(void) const                        {return "»­Ïñ";}
-	const char* posteRazorHelp(void) const                  {return "PosteRazor °ïÖú";}
-	const char* posteRazorSettings(void) const              {return "PosteRazor ÉèÖÃ";}
+	const char* monochrome(void) const                      {return "黑白";}
+	const char* next(void) const                            {return "前进";}
+	const char* orientation(void) const                     {return "模板:";}
+	const char* overlappingPosition(void) const             {return "位置调整";}
+	const char* overlappingSize(void) const                 {return "调整大小";}
+	const char* overwriteFile(void) const                   {return "文件 '%s' 已经存在。\n要覆盖这个文件吗？";}
+	const char* pages(void) const                           {return "页面";}
+	const char* paperFormat(void) const                     {return "页面格式";}
+	const char* palette(void) const                         {return "风景画";}
+	const char* portrait(void) const                        {return "画像";}
+	const char* posteRazorHelp(void) const                  {return "PosteRazor 帮助";}
+	const char* posteRazorSettings(void) const              {return "PosteRazor 设置";}
 	const char* posteRazorWebSiteURL(void) const            {return ENGLISH_POSTERAZORWEBSITEURL;}
-	const char* posteRazorWebSite(void) const               {return "PosteRazor ÍøÕ¾";}
-	const char* previewWithOpenGL(void) const               {return "²ÉÓÃOpenGLÀ´Ô¤ÀÀ";}
-	const char* previewWithOpenGLExplanation(void) const    {return "ÓÃOpenGL¿ÉÒÔÈÃÖ÷Á÷ÅäÖÃµÄµçÄÔ»ñµÃ¸üºÃµÄÔ¤ÀÀÐ§¹û¡£¾ÍÊÇÔÚÓÐµãÄêÍ·µÄµçÄÔÉÏÔËÐÐËÙ¶ÈÆÄ¿°ÁË¡£";}
-	const char* resolution(void) const                      {return "·Ö±æÂÊ:";}
-	const char* right(void) const                           {return "ÓÒ";}
-	const char* saveThePoster(void) const                   {return "±£´æ";}
-	const char* saveThePosterAs(void) const                 {return "Áí´æÎª";}
-	const char* settings(void) const                        {return "ÉèÖÃ¡­¡­";}
-	const char* Size(void) const                            {return "³ß´ç:";}
-	const char* sizeInPages(void) const                     {return "ÒÔÒ³ÃæÀ´¼ÆÁ¿³ß´ç£º";}
-	const char* sizeInPercent(void) const                   {return "ÒÔ°Ù·Ö±ÈÀ´¼ÆÁ¿³ß´ç£º";}
-	const char* sizeInPixels(void) const                    {return "³ß´ç (ÏñËØ):";}
-	const char* sizeInUnitOfLength(void) const              {return "³ß´ç (in %s):";}
-	const char* standard(void) const                        {return "±ê×¼";}
-	const char* stepXOfY(void) const                        {return "×Ü %d ²½µÄµÚ %d ²½";}
-	const char* top(void) const                             {return "¶¥²¿";}
-	const char* topLeft(void) const                         {return "×óÉÏ";}
-	const char* topRight(void) const                        {return "ÓÒÉÏ";}
-	const char* unitOfLength(void) const                    {return "³¤¶Èµ¥Î»";}
-	const char* unitOfLengthExplanation(void) const         {return "Ñ¡Ôñ³¤¶Èµ¥Î»";}
-	const char* width(void) const                           {return "¿í¶È:";}
+	const char* posteRazorWebSite(void) const               {return "PosteRazor 网站";}
+	const char* previewWithOpenGL(void) const               {return "采用OpenGL来预览";}
+	const char* previewWithOpenGLExplanation(void) const    {return "用OpenGL可以让主流配置的电脑获得更好的预览效果。就是在有点年头的电脑上运行速度颇堪了。";}
+	const char* resolution(void) const                      {return "分辨率:";}
+	const char* right(void) const                           {return "右";}
+	const char* saveThePoster(void) const                   {return "保存";}
+	const char* saveThePosterAs(void) const                 {return "另存为";}
+	const char* settings(void) const                        {return "设置……";}
+	const char* Size(void) const                            {return "尺寸:";}
+	const char* sizeInPages(void) const                     {return "以页面来计量尺寸：";}
+	const char* sizeInPercent(void) const                   {return "以百分比来计量尺寸：";}
+	const char* sizeInPixels(void) const                    {return "尺寸 (像素):";}
+	const char* sizeInUnitOfLength(void) const              {return "尺寸 (in %s):";}
+	const char* standard(void) const                        {return "标准";}
+	const char* stepXOfY(void) const                        {return "总 %d 步的第 %d 步";}
+	const char* top(void) const                             {return "顶部";}
+	const char* topLeft(void) const                         {return "左上";}
+	const char* topRight(void) const                        {return "右上";}
+	const char* unitOfLength(void) const                    {return "长度单位";}
+	const char* unitOfLengthExplanation(void) const         {return "选择长度单位";}
+	const char* width(void) const                           {return "宽度:";}
 
 
-#define ENGLISH_POSTERAZORHELSTEP                     "²½"
+#define ENGLISH_POSTERAZORHELSTEP                     "步"
 
-#define ENGLISH_POSTERAZORHELPABOUT                   "¹ØÓÚPosteRazor"
-#define ENGLISH_POSTERAZORHELPMANUAL                  "ÊÖ²á"
-#define ENGLISH_POSTERAZORHELPSETTINGS                "ÉèÖÃ"
-#define ENGLISH_POSTERAZORHELPSTEPTITLE01             "ÊäÈëÒ»¸öÍ¼Ïñ"
-#define ENGLISH_POSTERAZORHELPSTEPTITLE02             "ÉèÖÃÒ³Ãæ¸ñÊ½"
-#define ENGLISH_POSTERAZORHELPSTEPTITLE03             "ÉèÖÃÍ¼ÏñÏà»¥ÕÛµþµÄ³ß´ç"
-#define ENGLISH_POSTERAZORHELPSTEPTITLE04             "ÉèÖÃ×îÖÕµÄÍ¼Ïñ´óÐ¡"
-#define ENGLISH_POSTERAZORHELPSTEPTITLE05             "±£´æ"
-#define ENGLISH_POSTERAZORHELPINPUTFILEFORMATS        "Ö§³ÖÊäÈëµÄÍ¼Ïñ¸ñÊ½"
-#define ENGLISH_POSTERAZORHELPWHYPDFOUTPUT            "ÎªÊ²Ã´Êä³öÎªPDF£¿"
-#define ENGLISH_POSTERAZORHELPCODEFROMTHIRDPARTIES    "Èý·½²å¼þ"
+#define ENGLISH_POSTERAZORHELPABOUT                   "关于PosteRazor"
+#define ENGLISH_POSTERAZORHELPMANUAL                  "手册"
+#define ENGLISH_POSTERAZORHELPSETTINGS                "设置"
+#define ENGLISH_POSTERAZORHELPSTEPTITLE01             "输入一个图像"
+#define ENGLISH_POSTERAZORHELPSTEPTITLE02             "设置页面格式"
+#define ENGLISH_POSTERAZORHELPSTEPTITLE03             "设置图像相互折叠的尺寸"
+#define ENGLISH_POSTERAZORHELPSTEPTITLE04             "设置最终的图像大小"
+#define ENGLISH_POSTERAZORHELPSTEPTITLE05             "保存"
+#define ENGLISH_POSTERAZORHELPINPUTFILEFORMATS        "支持输入的图像格式"
+#define ENGLISH_POSTERAZORHELPWHYPDFOUTPUT            "为什么输出为PDF？"
+#define ENGLISH_POSTERAZORHELPCODEFROMTHIRDPARTIES    "三方插件"
 #define ENGLISH_POSTERAZORHELPLICENSE                 "License"
 
 	const char* stepTitle01(void) const                     {return ENGLISH_POSTERAZORHELPSTEPTITLE01;}
