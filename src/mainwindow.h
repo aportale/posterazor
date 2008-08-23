@@ -27,6 +27,8 @@
 #include "ui_mainwindow.h"
 #include "posterazorcore.h"
 
+class QActionGroup;
+
 class MainWindow : public QMainWindow, private Ui::MainWindow
 {
     Q_OBJECT
@@ -34,6 +36,8 @@ class MainWindow : public QMainWindow, private Ui::MainWindow
 public:
     MainWindow(QWidget *parent = 0, Qt::WFlags flags = 0);
 
+    void retranslateUi();
+    void changeEvent(QEvent *event);
     void setUnitOfLength(Types::UnitsOfLength unit);
     void setPaperFormat(const QString &format);
     void setPaperOrientation(QPrinter::Orientation orientation);
@@ -57,6 +61,7 @@ public:
     void updatePreview();
     void showImageFileName(const QString &fileName);
     void updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, Types::UnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel);
+    void setCurrentTranslation(const QString &translation); // Only to set the right menu entry to checked
 
 public slots:
     void setPreviewImage(const QImage &image);
@@ -69,6 +74,7 @@ private:
     PosteRazorCore *m_posteRazor;
     QHash<Qt::Alignment, QAbstractButton*> m_overlappingButtons;
     QHash<Qt::Alignment, QAbstractButton*> m_alignmentButtons;
+    QHash<QString, QAction*> m_translationActions;
 
     void createConnections();
     void populateUI();
@@ -100,11 +106,13 @@ signals:
     void loadImageSignal() const;
     void needsPaint(PaintCanvasInterface *paintDevice, const QVariant &options) const;
     void imageLoaded() const;
+    void translationChanged(const QString &localeName) const;
 
 private slots:
     void handlePaperFormatTabChanged(int index);
     void handlePaperOrientationPortraitSelected();
     void handlePaperOrientationLandscapeSelected();
+    void handleTranslationAction(QAction *action) const;
     void emitOverlappingPositionChange(int alignmentInt) const;
     void emitPosterAlignmentChange(int alignmentInt) const;
     void updatePosterSizeGroupsState();

@@ -27,6 +27,7 @@
 #include <QMessageBox>
 #include <QUrl>
 #include <QDesktopServices>
+#include <QTranslator>
 
 const QLatin1String settingsKey_LaunchPDFApplication("launchPDFApplication");
 
@@ -57,11 +58,15 @@ Controller::Controller(PosteRazorCore *posteRazorCore, MainWindow *mainWindow, Q
     connect(m_mainWindow, SIGNAL(savePosterSignal()), SLOT(savePoster()));
     connect(m_mainWindow, SIGNAL(launchPDFApplicationChanged(bool)), SLOT(setLaunchPDFApplication(bool)));
     connect(m_mainWindow, SIGNAL(loadImageSignal()), SLOT(loadInputImage()));
+    connect(m_mainWindow, SIGNAL(translationChanged(const QString&)), SLOT(loadTranslation(const QString&)));
     connect(m_mainWindow, SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), m_posteRazorCore, SLOT(paintOnCanvas(PaintCanvasInterface*, const QVariant&)));
     connect(m_posteRazorCore, SIGNAL(previewImageChanged(const QImage&)), m_mainWindow, SLOT(setPreviewImage(const QImage&)));
 
     updateDialog();
     setDialogPosterSizeMode();
+
+    m_translator = new QTranslator(this);
+    loadTranslation(QLocale::system().name());
 }
 
 void Controller::updateDialog()
@@ -422,4 +427,14 @@ void Controller::savePoster() const
             break;
         }
     } while (fileExistsAskUserForOverwrite);
+}
+
+void Controller::loadTranslation(const QString &localeName)
+{
+    const QString translationFileName(":/Translations/" + localeName);
+    if (m_translator->load(translationFileName)) {
+//        QCoreApplication::removeTranslator(m_translator);
+        QCoreApplication::installTranslator(m_translator);
+        m_mainWindow->setCurrentTranslation(localeName);
+    }
 }

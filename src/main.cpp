@@ -23,7 +23,6 @@
 #include "mainwindow.h"
 #include <QSettings>
 #include <QApplication>
-#include <QTranslator>
 #include "controller.h"
 #include "wizardcontroller.h"
 #include <QtDebug>
@@ -49,10 +48,6 @@ int main (int argc, char **argv)
     }
     return 0;
 #else
-
-    QTranslator myAppTranslator;
-    myAppTranslator.load(":/Translations/" + QLocale::system().name());
-    a.installTranslator(&myAppTranslator);
 
     QCoreApplication::setApplicationName("PosteRazor");
     QCoreApplication::setApplicationVersion("1.9.0-alpha");

@@ -23,13 +23,13 @@
 #include "mainwindow.h"
 #include <QSignalMapper>
 #include <QFileDialog>
+#include <QTranslator>
+#include <QtDebug>
 
 MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
     : QMainWindow(parent, flags)
 {
     setupUi(this);
-
-    setWindowTitle(QCoreApplication::applicationName() + ' ' + QCoreApplication::applicationVersion());
 
     const struct {
         QAbstractButton *sender;
@@ -62,11 +62,72 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
     for (int i = 0; i < overlappingMapCount; i++)
         m_overlappingButtons.insert(overlappingMap[i].alignment, overlappingMap[i].sender);
 
+    setWindowTitle(QCoreApplication::applicationName() + QLatin1Char(' ') + QCoreApplication::applicationVersion());
     m_steps->setCurrentIndex(0);
     createConnections();
     populateUI();
-
     updatePosterSizeGroupsState();
+    retranslateUi();
+}
+
+void MainWindow::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::LanguageChange)
+        retranslateUi();
+    QMainWindow::changeEvent(event);
+}
+
+void MainWindow::retranslateUi()
+{
+    m_actionAboutQt->setText(QCoreApplication::translate("PosteRazorDialog", "&About Qt"));
+    m_imageInfoGroup->setTitle(QCoreApplication::translate("PosteRazorDialog", "Image Informations"));
+    m_imageInfoGroup->setTitle(QCoreApplication::translate("PosteRazorDialog", "Image Informations"));
+    m_imageInformationColorTypeLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Color type:"));
+    m_imageInformationResolutionLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Resolution:"));
+    m_imageInformationSizeInPixelsLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Size (in pixels):"));
+    m_imageInformationSizeLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Size:"));
+    m_inputImageGroup->setTitle(QCoreApplication::translate("PosteRazorDialog", "Input Image"));
+    m_launchPDFApplicationCheckBox->setText(QCoreApplication::translate("PosteRazorDialog", "Open PDF after saving"));
+    m_menuAbout->setTitle(QCoreApplication::translate("PosteRazorDialog", "&Help"));
+    m_menuFile->setTitle(QCoreApplication::translate("PosteRazorDialog", "&File"));
+    m_nextButton->setText(QCoreApplication::translate("PosteRazorDialog", "Next"));
+    m_overlappingHeightLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Height:"));
+    m_overlappingPositionBottomLeftButton->setText(QCoreApplication::translate("PosteRazorDialog", "Bottom left"));
+    m_overlappingPositionBottomRightButton->setText(QCoreApplication::translate("PosteRazorDialog", "Bottom right"));
+    m_overlappingPositionGroup->setTitle(QCoreApplication::translate("PosteRazorDialog", "Overlapping position"));
+    m_overlappingPositionTopLeftButton->setText(QCoreApplication::translate("PosteRazorDialog", "Top left"));
+    m_overlappingPositionTopRightButton->setText(QCoreApplication::translate("PosteRazorDialog", "Top right"));
+    m_overlappingSizeGroup->setTitle(QCoreApplication::translate("PosteRazorDialog", "Overlapping size"));
+    m_overlappingWidthLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Width:"));
+    m_paperBordersBottomLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Bottom"));
+    m_paperBordersGroup->setTitle(QCoreApplication::translate("PosteRazorDialog", "Borders (%1)"));
+    m_paperBordersLeftLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Left"));
+    m_paperBordersRightLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Right"));
+    m_paperBordersTopLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Top"));
+    m_paperCustomHeightLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Height:"));
+    m_paperCustomWidthLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Width:"));
+    m_paperFormatLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Format:"));
+    m_paperFormatTypeTabs->setTabText(m_paperFormatTypeTabs->indexOf(m_paperFormatCustomTab), QCoreApplication::translate("PosteRazorDialog", "Custom"));
+    m_paperFormatTypeTabs->setTabText(m_paperFormatTypeTabs->indexOf(m_paperFormatStandardTab), QCoreApplication::translate("PosteRazorDialog", "Standard"));
+    m_paperOrientationLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Orientation:"));
+    m_paperOrientationLandscapeRadioButton->setText(QCoreApplication::translate("PosteRazorDialog", "Landscape"));
+    m_paperOrientationPortraitRadioButton->setText(QCoreApplication::translate("PosteRazorDialog", "Portrait"));
+    m_paperSizeGroup->setTitle(QCoreApplication::translate("PosteRazorDialog", "Paper size"));
+    m_posterAbsoluteHeightLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Height:"));
+    m_posterAbsoluteWidthLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Width:"));
+    m_posterAlignmentGroup->setTitle(QCoreApplication::translate("PosteRazorDialog", "Image alignment"));
+    m_posterPagesHeightDimensionUnitLabel->setText(QCoreApplication::translate("PosteRazorDialog", "pages"));
+    m_posterPagesHeightLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Height:"));
+    m_posterPagesWidthDimensionUnitLabel->setText(QCoreApplication::translate("PosteRazorDialog", "pages"));
+    m_posterPagesWidthLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Width:"));
+    m_posterPercentualSizeLabel->setText(QCoreApplication::translate("PosteRazorDialog", "Size:"));
+    m_posterSizeAbsoluteRadioButton->setText(QCoreApplication::translate("PosteRazorDialog", "Absolute image size"));
+    m_posterSizeGroup->setTitle(QCoreApplication::translate("PosteRazorDialog", "Poster size"));
+    m_posterSizeInPagesRadioButton->setText(QCoreApplication::translate("PosteRazorDialog", "Size in pages"));
+    m_posterSizePercentualRadioButton->setText(QCoreApplication::translate("PosteRazorDialog", "Image size in percent"));
+    m_prevButton->setText(QCoreApplication::translate("PosteRazorDialog", "Back"));
+    m_savePosterButton->setText(QCoreApplication::translate("PosteRazorDialog", "Save poster"));
+    m_savePosterGroup->setTitle(QCoreApplication::translate("PosteRazorDialog", "Save the poster"));
 }
 
 void MainWindow::setUnitOfLength(Types::UnitsOfLength unit)
@@ -211,6 +272,19 @@ void MainWindow::updateImageInfoFields(const QSize &inputImageSizeInPixels, cons
     emit imageLoaded();
 }
 
+void MainWindow::setCurrentTranslation(const QString &translation)
+{
+    QAction *translationAction = NULL;
+    translationAction = m_translationActions.value(translation);
+    if (!translationAction) {
+        // On a Swiss system 'translation' may be de_CH. So let's fall back to de
+        const QString translationLanguage = translation.split(QLatin1Char('_')).first();
+        translationAction = m_translationActions.value(translationLanguage);
+    }
+    if (translationAction)
+        translationAction->setChecked(true);
+}
+
 void MainWindow::setPrevButtonEnabled(bool enabled)
 {
     m_prevButton->setDisabled(!enabled);
@@ -249,6 +323,11 @@ void MainWindow::handlePaperOrientationPortraitSelected()
 void MainWindow::handlePaperOrientationLandscapeSelected()
 {
     emit paperOrientationChanged(QPrinter::Landscape);
+}
+
+void MainWindow::handleTranslationAction(QAction *action) const
+{
+    emit translationChanged(action->data().toString());
 }
 
 void MainWindow::createConnections()
@@ -298,6 +377,21 @@ void MainWindow::createConnections()
 
 void MainWindow::populateUI()
 {
+    QActionGroup *translationActions = new QActionGroup(m_menuSettings);
+    connect (translationActions, SIGNAL(triggered(QAction*)), SLOT(handleTranslationAction(QAction*)));
+    translationActions->setExclusive(true);
+    QDir translationDir(":/Translations/");
+    foreach (const QString &translation, translationDir.entryList(QDir::Files)) {
+        QTranslator translator;
+        translator.load(translation);
+        QAction *languageAction = translationActions->addAction(translator.translate("PosteRazorDialog", "Language name"));
+        const QString localeString(QFileInfo(translation).baseName());
+        languageAction->setData(localeString);
+        languageAction->setCheckable(true);
+        m_translationActions.insert(localeString, languageAction);
+    }
+    m_menuSettings->addActions(translationActions->actions());
+
     QStringList formats = Types::paperFormats().keys();
     formats.sort();
     m_paperFormatComboBox->addItems(formats);

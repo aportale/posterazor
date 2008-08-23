@@ -23,9 +23,12 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "posterazorcore.h"
+#include <QSettings>
+#include "types.h"
 
+class PosteRazorCore;
 class MainWindow;
+class QTranslator;
 
 class Controller: public QObject
 {
@@ -66,6 +69,7 @@ public slots:
     bool loadInputImage(const QString &fileName, QString &errorMessage);
     int savePoster(const QString &fileName) const;
     void savePoster() const;
+    void loadTranslation(const QString &localeName);
 
 signals:
     virtual void previewChanged() const;
@@ -79,6 +83,7 @@ protected:
     PosteRazorCore *m_posteRazorCore;
     MainWindow *m_mainWindow;
     bool m_launchPDFApplication;
+    QTranslator *m_translator;
 
     void setDialogSaveOptions();
     void setDialogPosterSizeMode();
