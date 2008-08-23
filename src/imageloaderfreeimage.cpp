@@ -246,7 +246,7 @@ Types::ColorTypes ImageLoaderFreeImage::getColorDataType() const
 const QByteArray ImageLoaderFreeImage::getBits() const
 {
     const unsigned int bitsPerLine = m_widthPixels * getBitsPerPixel();
-    const unsigned int bytesPerLine = ceil(bitsPerLine/8.0);
+    const unsigned int bytesPerLine = (unsigned int)ceil(bitsPerLine/8.0);
     const unsigned int imageBytesCount = bytesPerLine * m_heightPixels;
 
     QByteArray result(imageBytesCount, 0);
@@ -290,8 +290,8 @@ const QVector<QPair<QStringList, QString> > &ImageLoaderFreeImage::getImageForma
         for (int pluginIndex = 0; pluginIndex < pluginsCount; pluginIndex++) {
             const FREE_IMAGE_FORMAT fif = (FREE_IMAGE_FORMAT)pluginIndex;
             if (FreeImage_FIFSupportsReading(fif)) {
-                const QString pluginExtensions = FreeImage_GetFIFExtensionList(fif);
-                const QString pluginDescription = FreeImage_GetFIFDescription(fif);
+                const QString pluginExtensions(FreeImage_GetFIFExtensionList(fif));
+                const QString pluginDescription(FreeImage_GetFIFDescription(fif));
                 formats.append(QPair<QStringList, QString> (pluginExtensions.split(','), pluginDescription));
             }
         }
