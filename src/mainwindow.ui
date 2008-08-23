@@ -1648,36 +1648,28 @@
      <x>0</x>
      <y>0</y>
      <width>527</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
-   <widget class="QMenu" name="m_menu_File" >
+   <widget class="QMenu" name="m_menuFile" >
     <property name="title" >
      <string>&amp;File</string>
     </property>
    </widget>
-   <widget class="QMenu" name="m_menu_About" >
+   <widget class="QMenu" name="m_menuAbout" >
     <property name="title" >
      <string>&amp;Help</string>
     </property>
     <addaction name="m_actionAboutQt" />
    </widget>
-   <widget class="QMenu" name="menuSettings" >
+   <widget class="QMenu" name="m_menuSettings" >
     <property name="title" >
      <string>Settings</string>
     </property>
-    <addaction name="m_actionDeutsch" />
-    <addaction name="m_actionEnglish" />
-    <addaction name="m_actionFrancais" />
-    <addaction name="m_actionItaliano" />
-    <addaction name="m_actionNederlands" />
-    <addaction name="m_actionPolski" />
-    <addaction name="m_actionPortuguesDoBrasil" />
-    <addaction name="separator" />
    </widget>
-   <addaction name="m_menu_File" />
-   <addaction name="menuSettings" />
-   <addaction name="m_menu_About" />
+   <addaction name="m_menuFile" />
+   <addaction name="m_menuSettings" />
+   <addaction name="m_menuAbout" />
   </widget>
   <action name="m_actionAboutQt" >
    <property name="text" >
