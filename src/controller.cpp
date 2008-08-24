@@ -363,11 +363,9 @@ bool Controller::loadInputImage(const QString &fileName)
 {
     QString loadErrorMessage;
     const bool successful = loadInputImage(fileName, loadErrorMessage);
-    if (!successful) {
-        const QString errorMessage = QCoreApplication::translate("PosteRazorDialog", "The Image '%1' could not be loaded.\n")
-            .arg(QDir::convertSeparators(fileName));
-        QMessageBox::critical(NULL, QCoreApplication::translate("PosteRazorDialog", "Loading Error"), errorMessage);
-    }
+    if (!successful)
+        QMessageBox::critical(m_mainWindow, "", QCoreApplication::translate("PosteRazorDialog", "The Image '%1' could not be loaded.")
+            .arg(QDir::convertSeparators(fileName)));
     return successful;
 }
 
@@ -400,7 +398,7 @@ void Controller::savePoster() const
     do {
         saveFileName = QFileDialog::getSaveFileName(
             m_mainWindow,
-            QCoreApplication::translate("PosteRazorDialog", "Choose a filename to save under"),
+            QCoreApplication::translate("PosteRazorDialog", "Save the poster"),
             saveFileName,
             QLatin1String("Portable Document format (*.pdf)"),
             NULL,

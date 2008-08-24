@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="fi_FI">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS><TS version="2.0" language="fi">
 <context>
     <name>PosteRazorDialog</name>
     <message>
-        <location filename="mainwindow.cpp" line="81"/>
+        <location filename="mainwindow.cpp" line="82"/>
         <source>&amp;About Qt</source>
         <translation type="unfinished"></translation>
     </message>
@@ -29,7 +28,8 @@
         <translation type="unfinished">Koko (pikseleinä):</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="122"/>
+        <location filename="mainwindow.cpp" line="87"/>
+        <location filename="mainwindow.cpp" line="124"/>
         <source>Size:</source>
         <translation type="unfinished">Koko:</translation>
     </message>
@@ -42,7 +42,7 @@
         <location filename="mainwindow.cpp" line="89"/>
         <source>Open PDF after saving</source>
         <translation type="unfinished">Käynnistä PDF-ohjelma,
-kun juliste on tallennettu.</translation>
+kun juliste on tallennettu</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="90"/>
@@ -60,7 +60,10 @@ kun juliste on tallennettu.</translation>
         <translation type="unfinished">Seuraava</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="119"/>
+        <location filename="mainwindow.cpp" line="93"/>
+        <location filename="mainwindow.cpp" line="106"/>
+        <location filename="mainwindow.cpp" line="117"/>
+        <location filename="mainwindow.cpp" line="121"/>
         <source>Height:</source>
         <translation type="unfinished">Korkeus:</translation>
     </message>
@@ -95,7 +98,10 @@ kun juliste on tallennettu.</translation>
         <translation type="unfinished">Limityskoko</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="121"/>
+        <location filename="mainwindow.cpp" line="100"/>
+        <location filename="mainwindow.cpp" line="107"/>
+        <location filename="mainwindow.cpp" line="118"/>
+        <location filename="mainwindow.cpp" line="123"/>
         <source>Width:</source>
         <translation type="unfinished">Leveys:</translation>
     </message>
@@ -130,150 +136,137 @@ kun juliste on tallennettu.</translation>
         <translation type="unfinished">Muoto:</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="109"/>
+        <location filename="mainwindow.cpp" line="110"/>
         <source>Custom</source>
         <translation type="unfinished">Mukautettu</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="110"/>
+        <location filename="mainwindow.cpp" line="112"/>
         <source>Standard</source>
         <translation type="unfinished">Standardi</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="111"/>
+        <location filename="mainwindow.cpp" line="113"/>
         <source>Orientation:</source>
         <translation type="unfinished">Sopeutuminen:</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="112"/>
+        <location filename="mainwindow.cpp" line="114"/>
         <source>Landscape</source>
         <translation type="unfinished">Vaaka</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="113"/>
+        <location filename="mainwindow.cpp" line="115"/>
         <source>Portrait</source>
         <translation type="unfinished">Muotokuva</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="114"/>
+        <location filename="mainwindow.cpp" line="116"/>
         <source>Paper size</source>
         <translation type="unfinished">Paperimuoto</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="117"/>
+        <location filename="mainwindow.cpp" line="119"/>
         <source>Image alignment</source>
         <translation type="unfinished">Kuvan tasaus</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="120"/>
+        <location filename="mainwindow.cpp" line="122"/>
         <source>pages</source>
         <translation type="unfinished">sivua</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="123"/>
-        <source>Absolute image size</source>
+        <location filename="mainwindow.cpp" line="125"/>
+        <source>Absolute size:</source>
         <translation type="unfinished">Absoluuttinen koko:</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="124"/>
-        <source>Poster size</source>
-        <translation type="unfinished">Koko:</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="125"/>
-        <source>Size in pages</source>
-        <translation type="unfinished">Koko sivuina:</translation>
-    </message>
-    <message>
         <location filename="mainwindow.cpp" line="126"/>
-        <source>Image size in percent</source>
-        <translation type="unfinished">Koko prosentteina:</translation>
+        <source>Image size</source>
+        <translation type="unfinished">Koko</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="127"/>
+        <source>Size in pages:</source>
+        <translation type="unfinished">Koko sivuina:</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="128"/>
+        <source>Size in percent:</source>
+        <translation type="unfinished">Koko prosentteina:</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="129"/>
         <source>Back</source>
         <translation type="unfinished">Takaisin</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="128"/>
-        <source>Save poster</source>
-        <translation type="unfinished">Tallenna juliste</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="129"/>
+        <location filename="controller.cpp" line="401"/>
+        <location filename="mainwindow.cpp" line="130"/>
+        <location filename="mainwindow.cpp" line="131"/>
         <source>Save the poster</source>
         <translation type="unfinished">Tallenna juliste</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="263"/>
+        <location filename="mainwindow.cpp" line="265"/>
         <source>Monochrome</source>
         <translation type="unfinished">Yksivärinen</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="264"/>
+        <location filename="mainwindow.cpp" line="266"/>
         <source>Gray scale</source>
         <translation type="unfinished">Harmaa</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="265"/>
+        <location filename="mainwindow.cpp" line="267"/>
         <source>Palette</source>
         <translation type="unfinished">Paletti</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="266"/>
+        <location filename="mainwindow.cpp" line="268"/>
         <source>RGB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="267"/>
+        <location filename="mainwindow.cpp" line="269"/>
         <source>RGBA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="269"/>
+        <location filename="mainwindow.cpp" line="270"/>
         <source>CMYK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="338"/>
+        <location filename="controller.cpp" line="343"/>
         <source>All image formats</source>
         <translation type="unfinished">Kaikki kuvamuodot</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="345"/>
+        <location filename="controller.cpp" line="350"/>
         <source>Load an input image</source>
         <translation type="unfinished">Lataa sisääntulokuva</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="363"/>
-        <source>The Image &apos;%1&apos; could not be loaded.
-</source>
-        <translation type="unfinished">Tiedostoa %s ei voida ladata.</translation>
+        <location filename="controller.cpp" line="367"/>
+        <source>The Image &apos;%1&apos; could not be loaded.</source>
+        <translation type="unfinished">Tiedostoa &apos;%1&apos; ei voida ladata.</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="398"/>
-        <source>Choose a filename to save under</source>
-        <translation type="unfinished">Tallenna juliste nimellä</translation>
-    </message>
-    <message>
-        <location filename="controller.cpp" line="412"/>
+        <location filename="controller.cpp" line="415"/>
         <source>The file &apos;%1&apos; already exists.
 Do you want to overwrite it?</source>
         <translation type="unfinished">Tiedosto &apos;%1&apos; on jo olemassa.
 Haluatko päällekirjoittaa sen?</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="416"/>
+        <location filename="controller.cpp" line="419"/>
         <source>The File &quot;%1&quot; could not be saved.</source>
         <translation type="unfinished">Tiedostoa &apos;%1&apos; ei voida tallentaa.</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="364"/>
-        <source>Loading Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="366"/>
+        <location filename="mainwindow.cpp" line="388"/>
         <source>Language name</source>
         <translation type="unfinished">Suomi</translation>
     </message>

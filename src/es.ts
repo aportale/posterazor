@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="es_ES">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS><TS version="2.0" language="es">
 <context>
     <name>PosteRazorDialog</name>
     <message>
-        <location filename="mainwindow.cpp" line="81"/>
+        <location filename="mainwindow.cpp" line="82"/>
         <source>&amp;About Qt</source>
         <translation type="unfinished"></translation>
     </message>
@@ -29,7 +28,8 @@
         <translation type="unfinished">Tamaño (en píx.):</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="122"/>
+        <location filename="mainwindow.cpp" line="87"/>
+        <location filename="mainwindow.cpp" line="124"/>
         <source>Size:</source>
         <translation type="unfinished">Tamaño:</translation>
     </message>
@@ -59,7 +59,10 @@
         <translation type="unfinished">Siguiente</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="119"/>
+        <location filename="mainwindow.cpp" line="93"/>
+        <location filename="mainwindow.cpp" line="106"/>
+        <location filename="mainwindow.cpp" line="117"/>
+        <location filename="mainwindow.cpp" line="121"/>
         <source>Height:</source>
         <translation type="unfinished">Altura:</translation>
     </message>
@@ -94,7 +97,10 @@
         <translation type="unfinished">Tamaño de superposición</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="121"/>
+        <location filename="mainwindow.cpp" line="100"/>
+        <location filename="mainwindow.cpp" line="107"/>
+        <location filename="mainwindow.cpp" line="118"/>
+        <location filename="mainwindow.cpp" line="123"/>
         <source>Width:</source>
         <translation type="unfinished">Anchura:</translation>
     </message>
@@ -129,150 +135,137 @@
         <translation type="unfinished">Formato:</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="109"/>
+        <location filename="mainwindow.cpp" line="110"/>
         <source>Custom</source>
         <translation type="unfinished">Personalizado</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="110"/>
+        <location filename="mainwindow.cpp" line="112"/>
         <source>Standard</source>
         <translation type="unfinished">Estándar</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="111"/>
+        <location filename="mainwindow.cpp" line="113"/>
         <source>Orientation:</source>
         <translation type="unfinished">Orientación:</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="112"/>
+        <location filename="mainwindow.cpp" line="114"/>
         <source>Landscape</source>
         <translation type="unfinished">Horizontal</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="113"/>
+        <location filename="mainwindow.cpp" line="115"/>
         <source>Portrait</source>
         <translation type="unfinished">Vertical</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="114"/>
+        <location filename="mainwindow.cpp" line="116"/>
         <source>Paper size</source>
-        <translation type="unfinished">Formato:</translation>
+        <translation type="unfinished">Formato de papel</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="117"/>
+        <location filename="mainwindow.cpp" line="119"/>
         <source>Image alignment</source>
         <translation type="unfinished">Alineación de imagen</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="120"/>
+        <location filename="mainwindow.cpp" line="122"/>
         <source>pages</source>
         <translation type="unfinished">páginas</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="123"/>
-        <source>Absolute image size</source>
+        <location filename="mainwindow.cpp" line="125"/>
+        <source>Absolute size:</source>
         <translation type="unfinished">Tamaño total:</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="124"/>
-        <source>Poster size</source>
-        <translation type="unfinished">Tamaño:</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="125"/>
-        <source>Size in pages</source>
-        <translation type="unfinished">Tamaño en páginas:</translation>
-    </message>
-    <message>
         <location filename="mainwindow.cpp" line="126"/>
-        <source>Image size in percent</source>
-        <translation type="unfinished">Tamaño en porcentaje:</translation>
+        <source>Image size</source>
+        <translation type="unfinished">Tamaño</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="127"/>
+        <source>Size in pages:</source>
+        <translation type="unfinished">Tamaño en páginas:</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="128"/>
+        <source>Size in percent:</source>
+        <translation type="unfinished">Tamaño en porcentaje:</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="129"/>
         <source>Back</source>
         <translation type="unfinished">Atrás</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="128"/>
-        <source>Save poster</source>
-        <translation type="unfinished">Guardar el póster</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="129"/>
+        <location filename="controller.cpp" line="401"/>
+        <location filename="mainwindow.cpp" line="130"/>
+        <location filename="mainwindow.cpp" line="131"/>
         <source>Save the poster</source>
         <translation type="unfinished">Guardar el póster</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="263"/>
+        <location filename="mainwindow.cpp" line="265"/>
         <source>Monochrome</source>
         <translation type="unfinished">Monocromo</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="264"/>
+        <location filename="mainwindow.cpp" line="266"/>
         <source>Gray scale</source>
         <translation type="unfinished">Escala de grises</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="265"/>
+        <location filename="mainwindow.cpp" line="267"/>
         <source>Palette</source>
         <translation type="unfinished">Paleta</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="266"/>
+        <location filename="mainwindow.cpp" line="268"/>
         <source>RGB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="267"/>
+        <location filename="mainwindow.cpp" line="269"/>
         <source>RGBA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="269"/>
+        <location filename="mainwindow.cpp" line="270"/>
         <source>CMYK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="338"/>
+        <location filename="controller.cpp" line="343"/>
         <source>All image formats</source>
         <translation type="unfinished">Todos los formatos de imagen</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="345"/>
+        <location filename="controller.cpp" line="350"/>
         <source>Load an input image</source>
         <translation type="unfinished">Cargar una imagen de entrada</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="363"/>
-        <source>The Image &apos;%1&apos; could not be loaded.
-</source>
-        <translation type="unfinished">No se pudo cargar el archivo %&apos;1&apos;.</translation>
+        <location filename="controller.cpp" line="367"/>
+        <source>The Image &apos;%1&apos; could not be loaded.</source>
+        <translation type="unfinished">No se pudo cargar el archivo &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="398"/>
-        <source>Choose a filename to save under</source>
-        <translation type="unfinished">Guardar el póster como</translation>
-    </message>
-    <message>
-        <location filename="controller.cpp" line="412"/>
+        <location filename="controller.cpp" line="415"/>
         <source>The file &apos;%1&apos; already exists.
 Do you want to overwrite it?</source>
         <translation type="unfinished">El archivo &apos;%1&apos; ya existe.
 ¿Desea sobrescribirlo?</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="416"/>
+        <location filename="controller.cpp" line="419"/>
         <source>The File &quot;%1&quot; could not be saved.</source>
         <translation type="unfinished">No se pudo guardar el archivo &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="364"/>
-        <source>Loading Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="366"/>
+        <location filename="mainwindow.cpp" line="388"/>
         <source>Language name</source>
         <translation type="unfinished">Español</translation>
     </message>
