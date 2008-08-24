@@ -35,6 +35,7 @@ RC_FILE += \
 
 TRANSLATIONS += \
     de.ts \
+    en.ts \
     es.ts \
     fi.ts \
     fr.ts \

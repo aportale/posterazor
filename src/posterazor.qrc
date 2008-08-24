@@ -18,6 +18,7 @@
     </qresource>
     <qresource prefix="/Translations" >
         <file>de.qm</file>
+        <file>en.qm</file>
         <file>es.qm</file>
         <file>fi.qm</file>
         <file>fr.qm</file>
@@ -26,15 +27,5 @@
         <file>pl.qm</file>
         <file>pt_BR.qm</file>
         <file>zh_CN.qm</file>
-    </qresource>
-    <qresource prefix="/Translationflags" >
-        <file>de.png</file>
-        <file>en.png</file>
-        <file>es.png</file>
-        <file>fr.png</file>
-        <file>it.png</file>
-        <file>nl.png</file>
-        <file>pl.png</file>
-        <file>pt_BR.png</file>
     </qresource>
 </RCC>
