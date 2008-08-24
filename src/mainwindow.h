@@ -38,7 +38,6 @@ public:
 
     void retranslateUi();
     void changeEvent(QEvent *event);
-    void setUnitOfLength(Types::UnitsOfLength unit);
     void setPaperFormat(const QString &format);
     void setPaperOrientation(QPrinter::Orientation orientation);
     void setPaperBorderTop(double border);
@@ -60,8 +59,9 @@ public:
     void setLaunchPDFApplication(bool launch);
     void updatePreview();
     void showImageFileName(const QString &fileName);
-    void updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, Types::UnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel);
+    void updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, double verticalDpi, double horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel);
     void setCurrentTranslation(const QString &translation); // Only to set the right menu entry to checked
+    void setCurrentUnitOfLength(const QString &unit);
 
 public slots:
     void setPreviewImage(const QImage &image);
@@ -72,6 +72,8 @@ public slots:
 
 private:
     PosteRazorCore *m_posteRazor;
+    QString m_currentUnitOfLength;
+    QActionGroup *m_unitOfLengthActions;
     QHash<Qt::Alignment, QAbstractButton*> m_overlappingButtons;
     QHash<Qt::Alignment, QAbstractButton*> m_alignmentButtons;
     QHash<QString, QAction*> m_translationActions;
@@ -107,12 +109,14 @@ signals:
     void needsPaint(PaintCanvasInterface *paintDevice, const QVariant &options) const;
     void imageLoaded() const;
     void translationChanged(const QString &localeName) const;
+    void unitOfLengthChanged(const QString &unit) const;
 
 private slots:
     void handlePaperFormatTabChanged(int index);
     void handlePaperOrientationPortraitSelected();
     void handlePaperOrientationLandscapeSelected();
     void handleTranslationAction(QAction *action) const;
+    void handleUnitOfLengthAction(QAction *action) const;
     void emitOverlappingPositionChange(int alignmentInt) const;
     void emitPosterAlignmentChange(int alignmentInt) const;
     void updatePosterSizeGroupsState();

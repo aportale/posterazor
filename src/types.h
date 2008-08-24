@@ -59,6 +59,7 @@ public:
     static const QHash<UnitsOfLength, QPair<QString, double> > &unitsOfLength();
     static double convertBetweenUnitsOfLength(double distance, UnitsOfLength sourceUnit, UnitsOfLength targetUnit);
     static QSizeF convertBetweenUnitsOfLength(const QSizeF &size, UnitsOfLength sourceUnit, UnitsOfLength targetUnit);
+    static UnitsOfLength unitOfLenthFromString(const QString &string);
     static const QHash<QString, QSizeF> &paperFormats();
     static QSizeF getPaperSize(const QString &format, QPrinter::Orientation orientation, UnitsOfLength unit);
 };

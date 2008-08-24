@@ -70,6 +70,7 @@ public slots:
     int savePoster(const QString &fileName) const;
     void savePoster() const;
     void loadTranslation(const QString &localeName);
+    void setUnitOfLength(const QString &unit);
 
 signals:
     virtual void previewChanged() const;

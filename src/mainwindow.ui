@@ -193,7 +193,7 @@
           <enum>QFrame::Sunken</enum>
          </property>
          <property name="currentIndex" >
-          <number>3</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="m_loadInputImageStep" >
           <layout class="QVBoxLayout" >
@@ -448,7 +448,7 @@
                  </palette>
                 </property>
                 <property name="currentIndex" >
-                 <number>0</number>
+                 <number>1</number>
                 </property>
                 <widget class="QWidget" name="m_paperFormatStandardTab" >
                  <attribute name="title" >
@@ -887,7 +887,7 @@
                  <string>Top right</string>
                 </property>
                 <property name="icon" >
-                 <iconset resource="posterazor.qrc" >
+                 <iconset>
                   <normaloff>:/OverlappingPositionImages/overlappingtopright.png</normaloff>:/OverlappingPositionImages/overlappingtopright.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -922,7 +922,7 @@
                  <string>Top left</string>
                 </property>
                 <property name="icon" >
-                 <iconset resource="posterazor.qrc" >
+                 <iconset>
                   <normaloff>:/OverlappingPositionImages/overlappingtopleft.png</normaloff>:/OverlappingPositionImages/overlappingtopleft.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -957,7 +957,7 @@
                  <string>Bottom left</string>
                 </property>
                 <property name="icon" >
-                 <iconset resource="posterazor.qrc" >
+                 <iconset>
                   <normaloff>:/OverlappingPositionImages/overlappingbottomleft.png</normaloff>:/OverlappingPositionImages/overlappingbottomleft.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -992,7 +992,7 @@
                  <string>Bottom right</string>
                 </property>
                 <property name="icon" >
-                 <iconset resource="posterazor.qrc" >
+                 <iconset>
                   <normaloff>:/OverlappingPositionImages/overlappingbottomright.png</normaloff>:/OverlappingPositionImages/overlappingbottomright.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1272,7 +1272,7 @@
                  <string/>
                 </property>
                 <property name="icon" >
-                 <iconset resource="posterazor.qrc" >
+                 <iconset>
                   <normaloff>:/PosterAlignmentImages/alignmenttopright.png</normaloff>:/PosterAlignmentImages/alignmenttopright.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1295,7 +1295,7 @@
                  <string/>
                 </property>
                 <property name="icon" >
-                 <iconset resource="posterazor.qrc" >
+                 <iconset>
                   <normaloff>:/PosterAlignmentImages/alignmenttopleft.png</normaloff>:/PosterAlignmentImages/alignmenttopleft.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1318,7 +1318,7 @@
                  <string/>
                 </property>
                 <property name="icon" >
-                 <iconset resource="posterazor.qrc" >
+                 <iconset>
                   <normaloff>:/PosterAlignmentImages/alignmenttophcenter.png</normaloff>:/PosterAlignmentImages/alignmenttophcenter.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1341,7 +1341,7 @@
                  <string/>
                 </property>
                 <property name="icon" >
-                 <iconset resource="posterazor.qrc" >
+                 <iconset>
                   <normaloff>:/PosterAlignmentImages/alignmentvcenterleft.png</normaloff>:/PosterAlignmentImages/alignmentvcenterleft.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1364,7 +1364,7 @@
                  <string/>
                 </property>
                 <property name="icon" >
-                 <iconset resource="posterazor.qrc" >
+                 <iconset>
                   <normaloff>:/PosterAlignmentImages/alignmentcenter.png</normaloff>:/PosterAlignmentImages/alignmentcenter.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1387,7 +1387,7 @@
                  <string/>
                 </property>
                 <property name="icon" >
-                 <iconset resource="posterazor.qrc" >
+                 <iconset>
                   <normaloff>:/PosterAlignmentImages/alignmentvcenterright.png</normaloff>:/PosterAlignmentImages/alignmentvcenterright.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1410,7 +1410,7 @@
                  <string/>
                 </property>
                 <property name="icon" >
-                 <iconset resource="posterazor.qrc" >
+                 <iconset>
                   <normaloff>:/PosterAlignmentImages/alignmentbottomleft.png</normaloff>:/PosterAlignmentImages/alignmentbottomleft.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1433,7 +1433,7 @@
                  <string/>
                 </property>
                 <property name="icon" >
-                 <iconset resource="posterazor.qrc" >
+                 <iconset>
                   <normaloff>:/PosterAlignmentImages/alignmentbottomhcenter.png</normaloff>:/PosterAlignmentImages/alignmentbottomhcenter.png</iconset>
                 </property>
                 <property name="iconSize" >
@@ -1456,7 +1456,7 @@
                  <string/>
                 </property>
                 <property name="icon" >
-                 <iconset resource="posterazor.qrc" >
+                 <iconset>
                   <normaloff>:/PosterAlignmentImages/alignmentbottomright.png</normaloff>:/PosterAlignmentImages/alignmentbottomright.png</iconset>
                 </property>
                 <property name="iconSize" >

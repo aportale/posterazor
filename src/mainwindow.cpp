@@ -31,6 +31,8 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
 {
     setupUi(this);
 
+    m_unitOfLengthActions = new QActionGroup(m_menuSettings);
+
     const struct {
         QAbstractButton *sender;
         Qt::Alignment alignment;
@@ -84,7 +86,7 @@ void MainWindow::retranslateUi()
     m_imageInformationColorTypeLabel->setText(      QCoreApplication::translate("PosteRazorDialog", "Color type:"));
     m_imageInformationResolutionLabel->setText(     QCoreApplication::translate("PosteRazorDialog", "Resolution:"));
     m_imageInformationSizeInPixelsLabel->setText(   QCoreApplication::translate("PosteRazorDialog", "Size (in pixels):"));
-    m_imageInformationSizeLabel->setText(           QCoreApplication::translate("PosteRazorDialog", "Size (in %1):", "test 01"));
+    m_imageInformationSizeLabel->setText(           QCoreApplication::translate("PosteRazorDialog", "Size (in %1):").arg(m_currentUnitOfLength));
     m_inputImageGroup->setTitle(                    QCoreApplication::translate("PosteRazorDialog", "Input Image"));
     m_launchPDFApplicationCheckBox->setText(        QCoreApplication::translate("PosteRazorDialog", "Open PDF after saving"));
     m_menuFile->setTitle(                           QCoreApplication::translate("PosteRazorDialog", "&File"));
@@ -99,7 +101,7 @@ void MainWindow::retranslateUi()
     m_overlappingSizeGroup->setTitle(               QCoreApplication::translate("PosteRazorDialog", "Overlapping size"));
     m_overlappingWidthLabel->setText(               QCoreApplication::translate("PosteRazorDialog", "Width:"));
     m_paperBordersBottomLabel->setText(             QCoreApplication::translate("PosteRazorDialog", "Bottom"));
-    m_paperBordersGroup->setTitle(                  QCoreApplication::translate("PosteRazorDialog", "Borders (%1)"));
+    m_paperBordersGroup->setTitle(                  QCoreApplication::translate("PosteRazorDialog", "Borders (%1)").arg(m_currentUnitOfLength));
     m_paperBordersLeftLabel->setText(               QCoreApplication::translate("PosteRazorDialog", "Left"));
     m_paperBordersRightLabel->setText(              QCoreApplication::translate("PosteRazorDialog", "Right"));
     m_paperBordersTopLabel->setText(                QCoreApplication::translate("PosteRazorDialog", "Top"));
@@ -129,11 +131,6 @@ void MainWindow::retranslateUi()
     m_prevButton->setText(                          QCoreApplication::translate("PosteRazorDialog", "Back"));
     m_savePosterButton->setText(                    QCoreApplication::translate("PosteRazorDialog", "Save the poster"));
     m_savePosterGroup->setTitle(                    QCoreApplication::translate("PosteRazorDialog", "Save the poster"));
-}
-
-void MainWindow::setUnitOfLength(Types::UnitsOfLength unit)
-{
-    Q_UNUSED(unit)
 }
 
 void MainWindow::setPaperFormat(const QString &format)
@@ -253,10 +250,9 @@ void MainWindow::showImageFileName(const QString &fileName)
     m_inputFileNameLabel->setText(QFileInfo(fileName).fileName());
 }
 
-void MainWindow::updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, Types::UnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel)
+void MainWindow::updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, double verticalDpi, double horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel)
 {
     Q_UNUSED(horizontalDpi)
-    Q_UNUSED(unitOfLength)
 
     m_imageInformationSizeInPixelsValue->setText(QString("%1 x %2").arg(inputImageSizeInPixels.width()).arg(inputImageSizeInPixels.height()));
     m_imageInformationSizeValue->setText(QString("%1 x %2").arg(imageSize.width(), 0, 'f', 2).arg(imageSize.height(), 0, 'f', 2));
@@ -278,12 +274,30 @@ void MainWindow::setCurrentTranslation(const QString &translation)
     QAction *translationAction = NULL;
     translationAction = m_translationActions.value(translation);
     if (!translationAction) {
-        // On a Swiss system 'translation' may be de_CH. So let's fall back to de
+        // On a Swiss system 'translation' may be "de_CH". So let's fall back to "de"
         const QString translationLanguage = translation.split(QLatin1Char('_')).first();
         translationAction = m_translationActions.value(translationLanguage);
     }
     if (translationAction)
         translationAction->setChecked(true);
+}
+
+void MainWindow::setCurrentUnitOfLength(const QString &unit)
+{
+    m_currentUnitOfLength = unit;
+    foreach (QAction *action, m_unitOfLengthActions->actions()) {
+        if (action->text() == unit) {
+            action->setChecked(true);
+            break;
+        }
+    }
+    retranslateUi();
+    m_posterAbsoluteWidthDimensionUnitLabel->setText(unit);
+    m_posterAbsoluteHeightDimensionUnitLabel->setText(unit);
+    m_overlappingWidthDimensionUnitLabel->setText(unit);
+    m_overlappingHeightDimensionUnitLabel->setText(unit);
+    m_paperCustomWidthDimensionUnitLabel->setText(unit);
+    m_paperCustomHeightDimensionUnitLabel->setText(unit);
 }
 
 void MainWindow::setPrevButtonEnabled(bool enabled)
@@ -329,6 +343,11 @@ void MainWindow::handlePaperOrientationLandscapeSelected()
 void MainWindow::handleTranslationAction(QAction *action) const
 {
     emit translationChanged(action->data().toString());
+}
+
+void MainWindow::handleUnitOfLengthAction(QAction *action) const
+{
+    emit unitOfLengthChanged(action->text());
 }
 
 void MainWindow::createConnections()
@@ -378,6 +397,18 @@ void MainWindow::createConnections()
 
 void MainWindow::populateUI()
 {
+    connect (m_unitOfLengthActions, SIGNAL(triggered(QAction*)), SLOT(handleUnitOfLengthAction(QAction*)));
+    m_unitOfLengthActions->setExclusive(true);
+    const int unitsOfLengthCount = Types::unitsOfLength().count();
+    for (int i = 0; i < unitsOfLengthCount; i++) {
+        const QString unitOfLength = Types::unitsOfLength().value((Types::UnitsOfLength)i).first;
+        QAction *unitOfLengthAction = m_unitOfLengthActions->addAction(unitOfLength);
+        unitOfLengthAction->setCheckable(true);
+    }
+    m_menuSettings->addActions(m_unitOfLengthActions->actions());
+
+    m_menuSettings->addSeparator();
+
     QActionGroup *translationActions = new QActionGroup(m_menuSettings);
     connect (translationActions, SIGNAL(triggered(QAction*)), SLOT(handleTranslationAction(QAction*)));
     translationActions->setExclusive(true);

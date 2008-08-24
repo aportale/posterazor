@@ -21,6 +21,7 @@
 */
 
 #include "types.h"
+#include "QtDebug"
 
 const QHash<Types::UnitsOfLength, QPair<QString, double> > &Types::unitsOfLength()
 {
@@ -64,6 +65,17 @@ QSizeF Types::convertBetweenUnitsOfLength(const QSizeF &size, UnitsOfLength sour
         convertBetweenUnitsOfLength(size.width(), sourceUnit, targetUnit),
         convertBetweenUnitsOfLength(size.height(), sourceUnit, targetUnit)
     );
+}
+
+Types::UnitsOfLength Types::unitOfLenthFromString(const QString &string)
+{
+    static QHash<QString, UnitsOfLength> hash;
+    if (hash.isEmpty()) {
+        const QList<UnitsOfLength> units = unitsOfLength().keys();
+        foreach (UnitsOfLength unit, units)
+            hash.insert(unitsOfLength().value(unit).first, unit);
+    }
+    return hash.value(string);
 }
 
 const QHash<QString, QSizeF> &Types::paperFormats()

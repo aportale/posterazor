@@ -59,6 +59,7 @@ Controller::Controller(PosteRazorCore *posteRazorCore, MainWindow *mainWindow, Q
     connect(m_mainWindow, SIGNAL(launchPDFApplicationChanged(bool)), SLOT(setLaunchPDFApplication(bool)));
     connect(m_mainWindow, SIGNAL(loadImageSignal()), SLOT(loadInputImage()));
     connect(m_mainWindow, SIGNAL(translationChanged(const QString&)), SLOT(loadTranslation(const QString&)));
+    connect(m_mainWindow, SIGNAL(unitOfLengthChanged(const QString&)), SLOT(setUnitOfLength(const QString&)));
     connect(m_mainWindow, SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), m_posteRazorCore, SLOT(paintOnCanvas(PaintCanvasInterface*, const QVariant&)));
     connect(m_posteRazorCore, SIGNAL(previewImageChanged(const QImage&)), m_mainWindow, SLOT(setPreviewImage(const QImage&)));
 
@@ -71,12 +72,13 @@ Controller::Controller(PosteRazorCore *posteRazorCore, MainWindow *mainWindow, Q
 
 void Controller::updateDialog()
 {
+    const QString unitOfLength = Types::unitsOfLength().value(m_posteRazorCore->getUnitOfLength()).first;
+    m_mainWindow->setCurrentUnitOfLength(unitOfLength);
     setDialogPaperOptions();
     setDialogPosterOptions();
     setDialogOverlappingOptions();
     setDialogImageInfoFields();
     setDialogSaveOptions();
-    m_mainWindow->setUnitOfLength(m_posteRazorCore->getUnitOfLength());
     updatePreview();
 }
 
@@ -289,7 +291,6 @@ void Controller::setDialogImageInfoFields()
         m_mainWindow->updateImageInfoFields (
             m_posteRazorCore->getInputImageSizePixels(),
             m_posteRazorCore->getInputImageSize(),
-            m_posteRazorCore->getUnitOfLength(),
             m_posteRazorCore->getInputImageVerticalDpi(),
             m_posteRazorCore->getInputImageHorizontalDpi(),
             m_posteRazorCore->getInputImageColorType(),
@@ -431,8 +432,14 @@ void Controller::loadTranslation(const QString &localeName)
 {
     const QString translationFileName(":/Translations/" + localeName);
     if (m_translator->load(translationFileName)) {
-//        QCoreApplication::removeTranslator(m_translator);
+        QCoreApplication::removeTranslator(m_translator);
         QCoreApplication::installTranslator(m_translator);
         m_mainWindow->setCurrentTranslation(localeName);
     }
+}
+
+void Controller::setUnitOfLength(const QString &unit)
+{
+    m_posteRazorCore->setUnitOfLength(Types::unitOfLenthFromString(unit));
+    updateDialog();
 }
