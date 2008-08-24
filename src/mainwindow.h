@@ -37,6 +37,7 @@ public:
     MainWindow(QWidget *parent = 0, Qt::WFlags flags = 0);
 
     void retranslateUi();
+    void retranslateUiWithDimensionUnit();
     void changeEvent(QEvent *event);
     void setPaperFormat(const QString &format);
     void setPaperOrientation(QPrinter::Orientation orientation);

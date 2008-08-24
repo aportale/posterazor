@@ -86,7 +86,6 @@ void MainWindow::retranslateUi()
     m_imageInformationColorTypeLabel->setText(      QCoreApplication::translate("PosteRazorDialog", "Color type:"));
     m_imageInformationResolutionLabel->setText(     QCoreApplication::translate("PosteRazorDialog", "Resolution:"));
     m_imageInformationSizeInPixelsLabel->setText(   QCoreApplication::translate("PosteRazorDialog", "Size (in pixels):"));
-    m_imageInformationSizeLabel->setText(           QCoreApplication::translate("PosteRazorDialog", "Size (in %1):").arg(m_currentUnitOfLength));
     m_inputImageGroup->setTitle(                    QCoreApplication::translate("PosteRazorDialog", "Input Image"));
     m_launchPDFApplicationCheckBox->setText(        QCoreApplication::translate("PosteRazorDialog", "Open PDF after saving"));
     m_menuFile->setTitle(                           QCoreApplication::translate("PosteRazorDialog", "&File"));
@@ -101,7 +100,6 @@ void MainWindow::retranslateUi()
     m_overlappingSizeGroup->setTitle(               QCoreApplication::translate("PosteRazorDialog", "Overlapping size"));
     m_overlappingWidthLabel->setText(               QCoreApplication::translate("PosteRazorDialog", "Width:"));
     m_paperBordersBottomLabel->setText(             QCoreApplication::translate("PosteRazorDialog", "Bottom"));
-    m_paperBordersGroup->setTitle(                  QCoreApplication::translate("PosteRazorDialog", "Borders (%1)").arg(m_currentUnitOfLength));
     m_paperBordersLeftLabel->setText(               QCoreApplication::translate("PosteRazorDialog", "Left"));
     m_paperBordersRightLabel->setText(              QCoreApplication::translate("PosteRazorDialog", "Right"));
     m_paperBordersTopLabel->setText(                QCoreApplication::translate("PosteRazorDialog", "Top"));
@@ -131,6 +129,13 @@ void MainWindow::retranslateUi()
     m_prevButton->setText(                          QCoreApplication::translate("PosteRazorDialog", "Back"));
     m_savePosterButton->setText(                    QCoreApplication::translate("PosteRazorDialog", "Save the poster"));
     m_savePosterGroup->setTitle(                    QCoreApplication::translate("PosteRazorDialog", "Save the poster"));
+    retranslateUiWithDimensionUnit();
+}
+
+void MainWindow::retranslateUiWithDimensionUnit()
+{
+    m_imageInformationSizeLabel->setText(           QCoreApplication::translate("PosteRazorDialog", "Size (in %1):").arg(m_currentUnitOfLength));
+    m_paperBordersGroup->setTitle(                  QCoreApplication::translate("PosteRazorDialog", "Borders (%1)").arg(m_currentUnitOfLength));
 }
 
 void MainWindow::setPaperFormat(const QString &format)
@@ -291,7 +296,7 @@ void MainWindow::setCurrentUnitOfLength(const QString &unit)
             break;
         }
     }
-    retranslateUi();
+    retranslateUiWithDimensionUnit();
     m_posterAbsoluteWidthDimensionUnitLabel->setText(unit);
     m_posterAbsoluteHeightDimensionUnitLabel->setText(unit);
     m_overlappingWidthDimensionUnitLabel->setText(unit);
