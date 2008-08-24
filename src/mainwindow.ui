@@ -1658,7 +1658,7 @@
    </widget>
    <widget class="QMenu" name="m_menuAbout" >
     <property name="title" >
-     <string>&amp;Help</string>
+     <string>&amp;?</string>
     </property>
     <addaction name="m_actionAboutQt" />
    </widget>
@@ -1678,7 +1678,7 @@
   </action>
   <action name="m_actionEnglish" >
    <property name="icon" >
-    <iconset resource="posterazor.qrc" >
+    <iconset>
      <normaloff>:/Translationflags/en.png</normaloff>:/Translationflags/en.png</iconset>
    </property>
    <property name="text" >
@@ -1687,7 +1687,7 @@
   </action>
   <action name="m_actionItaliano" >
    <property name="icon" >
-    <iconset resource="posterazor.qrc" >
+    <iconset>
      <normaloff>:/Translationflags/it.png</normaloff>:/Translationflags/it.png</iconset>
    </property>
    <property name="text" >
@@ -1696,7 +1696,7 @@
   </action>
   <action name="m_actionDeutsch" >
    <property name="icon" >
-    <iconset resource="posterazor.qrc" >
+    <iconset>
      <normaloff>:/Translationflags/de.png</normaloff>:/Translationflags/de.png</iconset>
    </property>
    <property name="text" >
@@ -1705,7 +1705,7 @@
   </action>
   <action name="m_actionNederlands" >
    <property name="icon" >
-    <iconset resource="posterazor.qrc" >
+    <iconset>
      <normaloff>:/Translationflags/nl.png</normaloff>:/Translationflags/nl.png</iconset>
    </property>
    <property name="text" >
@@ -1714,7 +1714,7 @@
   </action>
   <action name="m_actionFrancais" >
    <property name="icon" >
-    <iconset resource="posterazor.qrc" >
+    <iconset>
      <normaloff>:/Translationflags/fr.png</normaloff>:/Translationflags/fr.png</iconset>
    </property>
    <property name="text" >
@@ -1723,7 +1723,7 @@
   </action>
   <action name="m_actionPolski" >
    <property name="icon" >
-    <iconset resource="posterazor.qrc" >
+    <iconset>
      <normaloff>:/Translationflags/pl.png</normaloff>:/Translationflags/pl.png</iconset>
    </property>
    <property name="text" >
@@ -1732,7 +1732,7 @@
   </action>
   <action name="m_actionPortuguesDoBrasil" >
    <property name="icon" >
-    <iconset resource="posterazor.qrc" >
+    <iconset>
      <normaloff>:/Translationflags/pt_BR.png</normaloff>:/Translationflags/pt_BR.png</iconset>
    </property>
    <property name="text" >

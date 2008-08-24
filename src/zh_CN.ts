@@ -28,15 +28,15 @@
         <translation type="unfinished">尺寸 (像素):</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="87"/>
-        <location filename="mainwindow.cpp" line="124"/>
-        <source>Size:</source>
-        <translation type="unfinished">尺寸:</translation>
-    </message>
-    <message>
         <location filename="mainwindow.cpp" line="88"/>
         <source>Input Image</source>
         <translation type="unfinished">输入图片</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="87"/>
+        <source>Size (in %1):</source>
+        <comment>test 01</comment>
+        <translation type="unfinished">尺寸 (%1):</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="89"/>
@@ -45,13 +45,13 @@
     </message>
     <message>
         <location filename="mainwindow.cpp" line="90"/>
-        <source>&amp;Help</source>
+        <source>&amp;File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="91"/>
-        <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <source>&amp;Settings</source>
+        <translation type="unfinished">&amp;设置</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="92"/>
@@ -176,6 +176,11 @@
         <translation type="unfinished">页面</translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="124"/>
+        <source>Size:</source>
+        <translation type="unfinished">尺寸:</translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="125"/>
         <source>Absolute size:</source>
         <translation type="unfinished">绝对大小:</translation>
@@ -188,12 +193,12 @@
     <message>
         <location filename="mainwindow.cpp" line="127"/>
         <source>Size in pages:</source>
-        <translation type="unfinished">以页面来计量尺寸：</translation>
+        <translation type="unfinished">以页面来计量尺寸:</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="128"/>
         <source>Size in percent:</source>
-        <translation type="unfinished">图片尺寸</translation>
+        <translation type="unfinished">以百分比来计量尺寸:</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="129"/>
@@ -250,14 +255,14 @@
     <message>
         <location filename="controller.cpp" line="367"/>
         <source>The Image &apos;%1&apos; could not be loaded.</source>
-        <translation type="unfinished">无法读取文件 %1 。</translation>
+        <translation type="unfinished">无法读取文件 &apos;%1&apos;。</translation>
     </message>
     <message>
         <location filename="controller.cpp" line="415"/>
         <source>The file &apos;%1&apos; already exists.
 Do you want to overwrite it?</source>
         <translation type="unfinished">文件 &apos;%1&apos; 已经存在。
-要覆盖这个文件吗？</translation>
+要覆盖这个文件吗?</translation>
     </message>
     <message>
         <location filename="controller.cpp" line="419"/>

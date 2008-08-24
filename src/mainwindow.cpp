@@ -84,11 +84,11 @@ void MainWindow::retranslateUi()
     m_imageInformationColorTypeLabel->setText(      QCoreApplication::translate("PosteRazorDialog", "Color type:"));
     m_imageInformationResolutionLabel->setText(     QCoreApplication::translate("PosteRazorDialog", "Resolution:"));
     m_imageInformationSizeInPixelsLabel->setText(   QCoreApplication::translate("PosteRazorDialog", "Size (in pixels):"));
-    m_imageInformationSizeLabel->setText(           QCoreApplication::translate("PosteRazorDialog", "Size:"));
+    m_imageInformationSizeLabel->setText(           QCoreApplication::translate("PosteRazorDialog", "Size (in %1):", "test 01"));
     m_inputImageGroup->setTitle(                    QCoreApplication::translate("PosteRazorDialog", "Input Image"));
     m_launchPDFApplicationCheckBox->setText(        QCoreApplication::translate("PosteRazorDialog", "Open PDF after saving"));
-    m_menuAbout->setTitle(                          QCoreApplication::translate("PosteRazorDialog", "&Help"));
     m_menuFile->setTitle(                           QCoreApplication::translate("PosteRazorDialog", "&File"));
+    m_menuSettings->setTitle(                       QCoreApplication::translate("PosteRazorDialog", "&Settings"));
     m_nextButton->setText(                          QCoreApplication::translate("PosteRazorDialog", "Next"));
     m_overlappingHeightLabel->setText(              QCoreApplication::translate("PosteRazorDialog", "Height:"));
     m_overlappingPositionBottomLeftButton->setText( QCoreApplication::translate("PosteRazorDialog", "Bottom left"));

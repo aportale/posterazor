@@ -28,15 +28,15 @@
         <translation type="unfinished">Tamaño (en píx.):</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="87"/>
-        <location filename="mainwindow.cpp" line="124"/>
-        <source>Size:</source>
-        <translation type="unfinished">Tamaño:</translation>
-    </message>
-    <message>
         <location filename="mainwindow.cpp" line="88"/>
         <source>Input Image</source>
         <translation type="unfinished">Imagen de entrada</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="87"/>
+        <source>Size (in %1):</source>
+        <comment>test 01</comment>
+        <translation type="unfinished">Tamaño (en %1):</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="89"/>
@@ -45,13 +45,13 @@
     </message>
     <message>
         <location filename="mainwindow.cpp" line="90"/>
-        <source>&amp;Help</source>
+        <source>&amp;File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="91"/>
-        <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <source>&amp;Settings</source>
+        <translation type="unfinished">&amp;Configuraciones</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="92"/>
@@ -174,6 +174,11 @@
         <location filename="mainwindow.cpp" line="122"/>
         <source>pages</source>
         <translation type="unfinished">páginas</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="124"/>
+        <source>Size:</source>
+        <translation type="unfinished">Tamaño:</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="125"/>

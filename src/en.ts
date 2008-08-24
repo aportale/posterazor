@@ -62,8 +62,8 @@ Do you want to overwrite it?</source>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="87"/>
-        <location filename="mainwindow.cpp" line="124"/>
-        <source>Size:</source>
+        <source>Size (in %1):</source>
+        <comment>test 01</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -78,12 +78,12 @@ Do you want to overwrite it?</source>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="90"/>
-        <source>&amp;Help</source>
+        <source>&amp;File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="91"/>
-        <source>&amp;File</source>
+        <source>&amp;Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -209,6 +209,11 @@ Do you want to overwrite it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="124"/>
+        <source>Size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="125"/>
         <source>Absolute size:</source>
         <translation type="unfinished"></translation>
@@ -266,7 +271,7 @@ Do you want to overwrite it?</source>
     <message>
         <location filename="mainwindow.cpp" line="388"/>
         <source>Language name</source>
-        <translation type="unfinished">English</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
