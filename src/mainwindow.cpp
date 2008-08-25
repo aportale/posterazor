@@ -94,7 +94,7 @@ void MainWindow::retranslateUi()
     m_launchPDFApplicationCheckBox->setText(        QCoreApplication::translate("PosteRazorDialog", "Open PDF after saving"));
     m_menuFile->setTitle(                           QCoreApplication::translate("PosteRazorDialog", "&File"));
     m_menuSettings->setTitle(                       QCoreApplication::translate("PosteRazorDialog", "&Settings"));
-    m_nextButton->setText(                          QCoreApplication::translate("PosteRazorDialog", "Next"));
+    m_stepNextButton->setText(                      QCoreApplication::translate("PosteRazorDialog", "Next"));
     m_overlappingHeightLabel->setText(              QCoreApplication::translate("PosteRazorDialog", "Height:"));
     m_overlappingPositionBottomLeftButton->setText( QCoreApplication::translate("PosteRazorDialog", "Bottom left"));
     m_overlappingPositionBottomRightButton->setText(QCoreApplication::translate("PosteRazorDialog", "Bottom right"));
@@ -130,7 +130,7 @@ void MainWindow::retranslateUi()
     m_posterSizeGroup->setTitle(                    QCoreApplication::translate("PosteRazorDialog", "Image size"));
     m_posterSizeInPagesRadioButton->setText(        QCoreApplication::translate("PosteRazorDialog", "Size in pages:"));
     m_posterSizePercentualRadioButton->setText(     QCoreApplication::translate("PosteRazorDialog", "Size in percent:"));
-    m_prevButton->setText(                          QCoreApplication::translate("PosteRazorDialog", "Back"));
+    m_stepPrevButton->setText(                      QCoreApplication::translate("PosteRazorDialog", "Back"));
     m_savePosterButton->setText(                    QCoreApplication::translate("PosteRazorDialog", "Save the poster"));
     m_savePosterGroup->setTitle(                    QCoreApplication::translate("PosteRazorDialog", "Save the poster"));
     retranslateUiWithDimensionUnit();
@@ -311,12 +311,12 @@ void MainWindow::setCurrentUnitOfLength(const QString &unit)
 
 void MainWindow::setPrevButtonEnabled(bool enabled)
 {
-    m_prevButton->setDisabled(!enabled);
+    m_stepPrevButton->setDisabled(!enabled);
 }
 
 void MainWindow::setNextButtonEnabled(bool enabled)
 {
-    m_nextButton->setDisabled(!enabled);
+    m_stepNextButton->setDisabled(!enabled);
 }
 
 void MainWindow::setWizardStep(int step)
@@ -361,8 +361,8 @@ void MainWindow::handleUnitOfLengthAction(QAction *action) const
 
 void MainWindow::createConnections()
 {
-    connect(m_nextButton,                           SIGNAL(clicked()),                  SIGNAL(nextButtonPressed()));
-    connect(m_prevButton,                           SIGNAL(clicked()),                  SIGNAL(prevButtonPressed()));
+    connect(m_stepNextButton,                           SIGNAL(clicked()),                  SIGNAL(nextButtonPressed()));
+    connect(m_stepPrevButton,                           SIGNAL(clicked()),                  SIGNAL(prevButtonPressed()));
     connect(m_paperFormatTypeTabs,                  SIGNAL(currentChanged(int)),        SLOT(handlePaperFormatTabChanged(int)));
     connect(m_paperFormatComboBox,                  SIGNAL(activated(const QString &)), SIGNAL(paperFormatChanged(const QString &)));
     connect(m_paperOrientationPortraitRadioButton,  SIGNAL(clicked()),                  SLOT(handlePaperOrientationPortraitSelected()));
@@ -459,7 +459,7 @@ void MainWindow::updatePosterSizeGroupsState()
     m_posterAbsoluteHeightDimensionUnitLabel->setEnabled(absolute);
 
     const bool inPages = m_posterSizeInPagesRadioButton->isChecked();
-    m_posterPagesHeightLabel->setEnabled(inPages);
+    m_posterPagesWidthLabel->setEnabled(inPages);
     m_posterPagesWidthInput->setEnabled(inPages);
     m_posterPagesWidthDimensionUnitLabel->setEnabled(inPages);
     m_posterPagesHeightLabel->setEnabled(inPages);
