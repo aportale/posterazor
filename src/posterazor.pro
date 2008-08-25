@@ -70,7 +70,7 @@ contains (DEFINES, FREEIMAGE_LIB) {
     HEADERS += \
         imageloaderqt.h
 
-    QTPLUGIN += \
+    !unix:QTPLUGIN += \
         qjpeg \
         qtiff
 }
