@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="en">
+<!DOCTYPE TS><TS version="1.1" language="en">
+<defaultcodec></defaultcodec>
 <context>
     <name>PosteRazorDialog</name>
     <message>
@@ -18,8 +19,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="401"/>
-        <location filename="mainwindow.cpp" line="130"/>
         <location filename="mainwindow.cpp" line="131"/>
         <source>Save the poster</source>
         <translation type="unfinished"></translation>
@@ -92,9 +91,6 @@ Do you want to overwrite it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="93"/>
-        <location filename="mainwindow.cpp" line="106"/>
-        <location filename="mainwindow.cpp" line="117"/>
         <location filename="mainwindow.cpp" line="121"/>
         <source>Height:</source>
         <translation type="unfinished"></translation>
@@ -130,9 +126,6 @@ Do you want to overwrite it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="100"/>
-        <location filename="mainwindow.cpp" line="107"/>
-        <location filename="mainwindow.cpp" line="118"/>
         <location filename="mainwindow.cpp" line="123"/>
         <source>Width:</source>
         <translation type="unfinished"></translation>
@@ -203,7 +196,6 @@ Do you want to overwrite it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="120"/>
         <location filename="mainwindow.cpp" line="122"/>
         <source>pages</source>
         <translation type="unfinished"></translation>
@@ -271,7 +263,7 @@ Do you want to overwrite it?</source>
     <message>
         <location filename="mainwindow.cpp" line="388"/>
         <source>Language name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">English</translation>
     </message>
 </context>
 </TS>
