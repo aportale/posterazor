@@ -50,7 +50,9 @@ int main (int argc, char **argv)
 #else
 
     QCoreApplication::setApplicationName("PosteRazor");
+#if QT_VERSION >= 0x040400
     QCoreApplication::setApplicationVersion("1.9.0-alpha");
+#endif
     QCoreApplication::setOrganizationName("CasaPortale");
     QCoreApplication::setOrganizationDomain("de.casaportale");
 

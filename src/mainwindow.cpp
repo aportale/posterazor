@@ -64,7 +64,11 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
     for (int i = 0; i < overlappingMapCount; i++)
         m_overlappingButtons.insert(overlappingMap[i].alignment, overlappingMap[i].sender);
 
-    setWindowTitle(QCoreApplication::applicationName() + QLatin1Char(' ') + QCoreApplication::applicationVersion());
+    setWindowTitle(QCoreApplication::applicationName()
+#if QT_VERSION >= 0x040400
+        + QLatin1Char(' ') + QCoreApplication::applicationVersion()
+#endif
+    );
     m_steps->setCurrentIndex(0);
     createConnections();
     populateUI();
