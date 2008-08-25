@@ -324,6 +324,12 @@ void MainWindow::setWizardStep(int step)
     m_steps->setCurrentIndex(step);
 }
 
+void MainWindow::setWizardStepDescription(const QString &number, const QString &description)
+{
+    m_stepNumberLabel->setText(number);
+    m_stepDescriptionLabel->setText(description);
+}
+
 void MainWindow::setPreviewState(const QString &state)
 {
     m_paintCanvas->setState(state);

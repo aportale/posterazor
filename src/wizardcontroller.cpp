@@ -21,6 +21,7 @@
 */
 
 #include "wizardcontroller.h"
+#include <QCoreApplication>
 
 WizardController::WizardController(QObject *wizardDialog, QObject *parent)
     : QObject(parent)
@@ -28,12 +29,14 @@ WizardController::WizardController(QObject *wizardDialog, QObject *parent)
     , m_imageWasLoaded(false)
 {
     connect(this, SIGNAL(wizardStepChanged(int)), wizardDialog, SLOT(setWizardStep(int)));
+    connect(this, SIGNAL(wizardStepDescriptionChanged(const QString&, const QString&)), wizardDialog, SLOT(setWizardStepDescription(const QString&, const QString&)));
     connect(this, SIGNAL(prevButtonEnabled(bool)), wizardDialog, SLOT(setPrevButtonEnabled(bool)));
     connect(this, SIGNAL(nextButtonEnabled(bool)), wizardDialog, SLOT(setNextButtonEnabled(bool)));
     connect(this, SIGNAL(previewStateChanged(const QString&)), wizardDialog, SLOT(setPreviewState(const QString&)));
     connect(wizardDialog, SIGNAL(imageLoaded()), SLOT(handleImageLoaded()));
     connect(wizardDialog, SIGNAL(prevButtonPressed()), SLOT(handlePrevButtonPressed()));
     connect(wizardDialog, SIGNAL(nextButtonPressed()), SLOT(handleNextButtonPressed()));
+    connect(wizardDialog, SIGNAL(translationChanged()), SLOT(updateDialogWizardStepDescription()), Qt::QueuedConnection);
 
     updateDialogWizardStep();
 }
@@ -80,5 +83,18 @@ void WizardController::updateDialogWizardStep()
     emit nextButtonEnabled(
         m_wizardStep != WizardStepSavePoster
         && m_imageWasLoaded
+    );
+    updateDialogWizardStepDescription();
+}
+
+void WizardController::updateDialogWizardStepDescription()
+{
+    emit wizardStepDescriptionChanged(
+        QCoreApplication::translate("PosteRazorDialog", "Step %1 of %2:").arg((int)m_wizardStep + 1).arg((int)m_wizardStepsCount),
+        m_wizardStep == WizardStepInputImage?  QCoreApplication::translate("PosteRazorDialog", "Load an input image")
+        :m_wizardStep == WizardStepOverlapping?QCoreApplication::translate("PosteRazorDialog", "Define the printer paper format")
+        :m_wizardStep == WizardStepPaperSize?  QCoreApplication::translate("PosteRazorDialog", "Define the image tile overlapping")
+        :m_wizardStep == WizardStepPosterSize? QCoreApplication::translate("PosteRazorDialog", "Define the final poster size")
+        :                                      QCoreApplication::translate("PosteRazorDialog", "Save the Poster")
     );
 }

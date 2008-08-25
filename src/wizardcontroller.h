@@ -42,12 +42,14 @@ public:
 
 private slots:
     void updateDialogWizardStep();
+    void updateDialogWizardStepDescription();
     void handlePrevButtonPressed();
     void handleNextButtonPressed();
     void handleImageLoaded();
 
 signals:
     void wizardStepChanged(int step) const;
+    void wizardStepDescriptionChanged(const QString &number, const QString &description) const;
     void previewStateChanged(const QString &state) const;
     void prevButtonEnabled(bool enabled) const;
     void nextButtonEnabled(bool enabled) const;
@@ -55,6 +57,7 @@ signals:
 private:
     WizardSteps m_wizardStep;
     bool m_imageWasLoaded;
+    static const int m_wizardStepsCount = (int)WizardStepSavePoster + 1;
 };
 
 #endif // WIZARDCONTROLLER_H

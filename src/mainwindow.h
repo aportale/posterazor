@@ -69,6 +69,7 @@ public slots:
     void setPrevButtonEnabled(bool enabled);
     void setNextButtonEnabled(bool enabled);
     void setWizardStep(int step);
+    void setWizardStepDescription(const QString &number, const QString &description);
     void setPreviewState(const QString &state);
 
 private:
@@ -109,7 +110,7 @@ signals:
     void loadImageSignal() const;
     void needsPaint(PaintCanvasInterface *paintDevice, const QVariant &options) const;
     void imageLoaded() const;
-    void translationChanged(const QString &localeName) const;
+    void translationChanged(const QString &localeName = QString()) const;
     void unitOfLengthChanged(const QString &unit) const;
 
 private slots:
