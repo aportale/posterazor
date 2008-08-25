@@ -216,7 +216,7 @@ sauvé le poster</translation>
     <message>
         <location filename="mainwindow.cpp" line="265"/>
         <source>Monochrome</source>
-        <translation type="unfinished">monochrome</translation>
+        <translation type="unfinished">Monochrome</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="266"/>

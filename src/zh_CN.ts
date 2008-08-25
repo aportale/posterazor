@@ -267,7 +267,7 @@ Do you want to overwrite it?</source>
     <message>
         <location filename="controller.cpp" line="419"/>
         <source>The File &quot;%1&quot; could not be saved.</source>
-        <translation type="unfinished">无法保存为文件 %1 。</translation>
+        <translation type="unfinished">无法保存为文件 &apos;%1&apos;。</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="388"/>

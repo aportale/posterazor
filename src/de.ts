@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="2.0" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>PosteRazorDialog</name>
     <message>
@@ -59,9 +60,6 @@
         <translation type="unfinished">Weiter</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="93"/>
-        <location filename="mainwindow.cpp" line="106"/>
-        <location filename="mainwindow.cpp" line="117"/>
         <location filename="mainwindow.cpp" line="121"/>
         <source>Height:</source>
         <translation type="unfinished">Höhe:</translation>
@@ -97,9 +95,6 @@
         <translation type="unfinished">Maße der Überlappung</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="100"/>
-        <location filename="mainwindow.cpp" line="107"/>
-        <location filename="mainwindow.cpp" line="118"/>
         <location filename="mainwindow.cpp" line="123"/>
         <source>Width:</source>
         <translation type="unfinished">Breite:</translation>
@@ -170,7 +165,6 @@
         <translation type="unfinished">Ausrichtung des Bildes</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="120"/>
         <location filename="mainwindow.cpp" line="122"/>
         <source>pages</source>
         <translation type="unfinished">Seiten</translation>
@@ -206,8 +200,6 @@
         <translation type="unfinished">Zurück</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="401"/>
-        <location filename="mainwindow.cpp" line="130"/>
         <location filename="mainwindow.cpp" line="131"/>
         <source>Save the poster</source>
         <translation type="unfinished">Das Poster speichern</translation>
@@ -255,7 +247,7 @@
     <message>
         <location filename="controller.cpp" line="367"/>
         <source>The Image &apos;%1&apos; could not be loaded.</source>
-        <translation type="unfinished">Die Datei %1 konnte nicht geladen werden.
+        <translation type="unfinished">Die Datei &apos;%1&apos; konnte nicht geladen werden.
 </translation>
     </message>
     <message>
