@@ -249,6 +249,7 @@ sauvé le poster</translation>
     </message>
     <message>
         <location filename="controller.cpp" line="351"/>
+        <location filename="wizardcontroller.cpp" line="94"/>
         <source>Load an input image</source>
         <translation type="unfinished">Ouvrir une image</translation>
     </message>
@@ -273,6 +274,31 @@ Voulez-vous le remplacer ?</translation>
         <location filename="mainwindow.cpp" line="434"/>
         <source>Language name</source>
         <translation type="unfinished">Français</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="93"/>
+        <source>Step %1 of %2:</source>
+        <translation type="unfinished">Étape %1 de %2:</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="95"/>
+        <source>Define the printer paper format</source>
+        <translation type="unfinished">Format du papier</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="96"/>
+        <source>Define the image tile overlapping</source>
+        <translation type="unfinished">Recouvrements de l&apos;image</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="97"/>
+        <source>Define the final poster size</source>
+        <translation type="unfinished">Taille final du poster</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="98"/>
+        <source>Save the Poster</source>
+        <translation type="unfinished">Enregistrer le Poster</translation>
     </message>
 </context>
 </TS>

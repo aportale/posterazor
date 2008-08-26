@@ -248,6 +248,7 @@
     </message>
     <message>
         <location filename="controller.cpp" line="351"/>
+        <location filename="wizardcontroller.cpp" line="94"/>
         <source>Load an input image</source>
         <translation type="unfinished">Cargar una imagen de entrada</translation>
     </message>
@@ -272,6 +273,31 @@ Do you want to overwrite it?</source>
         <location filename="mainwindow.cpp" line="434"/>
         <source>Language name</source>
         <translation type="unfinished">Español</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="93"/>
+        <source>Step %1 of %2:</source>
+        <translation type="unfinished">Paso %1 de %2:</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="95"/>
+        <source>Define the printer paper format</source>
+        <translation type="unfinished">Definir el formato del papel de impresora</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="96"/>
+        <source>Define the image tile overlapping</source>
+        <translation type="unfinished">Definir la superposición del mosaico de imagen</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="97"/>
+        <source>Define the final poster size</source>
+        <translation type="unfinished">Definir el tamaño final del póster</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="98"/>
+        <source>Save the Poster</source>
+        <translation type="unfinished">Guardar el póster</translation>
     </message>
 </context>
 </TS>

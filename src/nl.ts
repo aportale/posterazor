@@ -249,6 +249,7 @@ nadat de poster is opgeslagen</translation>
     </message>
     <message>
         <location filename="controller.cpp" line="351"/>
+        <location filename="wizardcontroller.cpp" line="94"/>
         <source>Load an input image</source>
         <translation type="unfinished">Kies een afbeelding</translation>
     </message>
@@ -273,6 +274,31 @@ Moet dit worden overschreven?</translation>
         <location filename="mainwindow.cpp" line="434"/>
         <source>Language name</source>
         <translation type="unfinished">Nederlands</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="93"/>
+        <source>Step %1 of %2:</source>
+        <translation type="unfinished">Stap %1 van %2:</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="95"/>
+        <source>Define the printer paper format</source>
+        <translation type="unfinished">Papierafmeting definiëren</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="96"/>
+        <source>Define the image tile overlapping</source>
+        <translation type="unfinished">Overlapping definiëren</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="97"/>
+        <source>Define the final poster size</source>
+        <translation type="unfinished">Postergrootte definiëren</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="98"/>
+        <source>Save the Poster</source>
+        <translation type="unfinished">Poster opslaan</translation>
     </message>
 </context>
 </TS>

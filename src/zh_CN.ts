@@ -248,6 +248,7 @@
     </message>
     <message>
         <location filename="controller.cpp" line="351"/>
+        <location filename="wizardcontroller.cpp" line="94"/>
         <source>Load an input image</source>
         <translation type="unfinished">输入一个图像</translation>
     </message>
@@ -272,6 +273,31 @@ Do you want to overwrite it?</source>
         <location filename="mainwindow.cpp" line="434"/>
         <source>Language name</source>
         <translation type="unfinished">简体中文</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="93"/>
+        <source>Step %1 of %2:</source>
+        <translation type="unfinished">总 %2 步的第 %1 步:</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="95"/>
+        <source>Define the printer paper format</source>
+        <translation type="unfinished">设置页面格式</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="96"/>
+        <source>Define the image tile overlapping</source>
+        <translation type="unfinished">设置图像相互折叠的尺寸</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="97"/>
+        <source>Define the final poster size</source>
+        <translation type="unfinished">设置最终的图像大小</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="98"/>
+        <source>Save the Poster</source>
+        <translation type="unfinished">保存</translation>
     </message>
 </context>
 </TS>
