@@ -95,10 +95,8 @@ unsigned int PosteRazorCore::getImageBytesCount(const QSize &size, int bitPerPix
     return getImageBytesPerLineCount(size.width(), bitPerPixel) * size.height();
 }
 
-bool PosteRazorCore::readSettings(const QSettings *settings)
+void PosteRazorCore::readSettings(const QSettings *settings)
 {
-    bool returnValue = true;
-
     m_posterSizeMode               = (Types::PosterSizeModes)settings->value(settingsKey_PosterSizeMode, (int)m_posterSizeMode).toInt();
     m_posterDimension              = settings->value(settingsKey_PosterDimension, m_posterDimension).toDouble();
     m_posterDimensionIsWidth       = settings->value(settingsKey_PosterDimensionIsWidth, m_posterDimensionIsWidth).toBool();
@@ -118,14 +116,10 @@ bool PosteRazorCore::readSettings(const QSettings *settings)
     m_overlappingHeight            = settings->value(settingsKey_OverlappingHeight, m_overlappingHeight).toDouble();
     m_overlappingPosition          = (Qt::Alignment)settings->value(settingsKey_OverlappingPosition, (int)m_overlappingPosition).toInt();
     m_unitOfLength                 = (Types::UnitsOfLength)settings->value(settingsKey_UnitOfLength, (int)m_unitOfLength).toInt();
-
-    return returnValue;
 }
 
-bool PosteRazorCore::writeSettings(QSettings *settings) const
+void PosteRazorCore::writeSettings(QSettings *settings) const
 {
-    bool returnValue = true;
-
     settings->setValue(settingsKey_PosterSizeMode, (int)m_posterSizeMode);
     settings->setValue(settingsKey_PosterDimension, m_posterDimension);
     settings->setValue(settingsKey_PosterDimensionIsWidth, m_posterDimensionIsWidth);
@@ -143,8 +137,6 @@ bool PosteRazorCore::writeSettings(QSettings *settings) const
     settings->setValue(settingsKey_OverlappingHeight, m_overlappingHeight);
     settings->setValue(settingsKey_OverlappingPosition, (int)m_overlappingPosition);
     settings->setValue(settingsKey_UnitOfLength, (int)m_unitOfLength);
-
-    return returnValue;
 }
 
 double PosteRazorCore::convertDistanceToCm(double distance) const

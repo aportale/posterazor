@@ -41,8 +41,8 @@ public:
     static unsigned int getImageBytesPerLineCount(int widthPixels, int bitPerPixel);
     static unsigned int getImageBytesCount(const QSize &size, int bitPerPixel);
 
-    bool readSettings(const QSettings *settings);
-    bool writeSettings(QSettings *settings) const;
+    void readSettings(const QSettings *settings);
+    void writeSettings(QSettings *settings) const;
     bool loadInputImage(const QString &imageFileName, QString &errorMessage);
     int savePoster(const QString &fileName) const;
 

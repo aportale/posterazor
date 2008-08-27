@@ -311,21 +311,17 @@ void Controller::setDialogOverlappingOptions()
     m_mainWindow->setOverlappingPosition(m_posteRazorCore->getOverlappingPosition());
 }
 
-bool Controller::readSettings(const QSettings *settings)
+void Controller::readSettings(const QSettings *settings)
 {
-    const bool result = m_posteRazorCore->readSettings(settings);
+    m_posteRazorCore->readSettings(settings);
     m_launchPDFApplication = settings->value(settingsKey_LaunchPDFApplication, m_launchPDFApplication).toBool();
-
-    if (result)
-        updateDialog();
-
-    return result;
+    updateDialog();
 }
 
-bool Controller::writeSettings(QSettings *settings) const
+void Controller::writeSettings(QSettings *settings) const
 {
     settings->setValue(settingsKey_LaunchPDFApplication, m_launchPDFApplication);
-    return m_posteRazorCore->writeSettings(settings);
+    m_posteRazorCore->writeSettings(settings);
 }
 
 void Controller::loadInputImage()

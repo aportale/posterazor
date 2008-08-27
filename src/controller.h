@@ -62,8 +62,8 @@ public slots:
     void setPosterSizeMode(Types::PosterSizeModes mode);
     void setPosterAlignment(Qt::Alignment alignment);
     void setLaunchPDFApplication(bool launch);
-    bool readSettings(const QSettings *settings);
-    bool writeSettings(QSettings *settings) const;
+    void readSettings(const QSettings *settings);
+    void writeSettings(QSettings *settings) const;
     void loadInputImage();
     bool loadInputImage(const QString &fileName);
     bool loadInputImage(const QString &fileName, QString &errorMessage);
