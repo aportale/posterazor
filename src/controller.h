@@ -85,6 +85,7 @@ protected:
     MainWindow *m_mainWindow;
     bool m_launchPDFApplication;
     QTranslator *m_translator;
+    QString m_translationName;
 
     void setDialogSaveOptions();
     void setDialogPosterSizeMode();

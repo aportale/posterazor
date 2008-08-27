@@ -29,7 +29,8 @@
 #include <QDesktopServices>
 #include <QTranslator>
 
-const QLatin1String settingsKey_LaunchPDFApplication("launchPDFApplication");
+const QLatin1String settingsKey_LaunchPDFApplication("LaunchPDFApplication");
+const QLatin1String settingsKey_TranslationName("TranslationName");
 
 Controller::Controller(PosteRazorCore *posteRazorCore, MainWindow *mainWindow, QObject *parent)
     : QObject(parent)
@@ -67,7 +68,7 @@ Controller::Controller(PosteRazorCore *posteRazorCore, MainWindow *mainWindow, Q
     setDialogPosterSizeMode();
 
     m_translator = new QTranslator(this);
-    loadTranslation(QLocale::system().name());
+    loadTranslation(QString());
 }
 
 void Controller::updateDialog()
@@ -315,12 +316,16 @@ void Controller::readSettings(const QSettings *settings)
 {
     m_posteRazorCore->readSettings(settings);
     m_launchPDFApplication = settings->value(settingsKey_LaunchPDFApplication, m_launchPDFApplication).toBool();
+    m_translationName = settings->value(settingsKey_TranslationName, m_translationName).toString();
+    loadTranslation(m_translationName);
     updateDialog();
 }
 
 void Controller::writeSettings(QSettings *settings) const
 {
     settings->setValue(settingsKey_LaunchPDFApplication, m_launchPDFApplication);
+    if (!m_translationName.isEmpty())
+        settings->setValue(settingsKey_TranslationName, m_translationName);
     m_posteRazorCore->writeSettings(settings);
 }
 
@@ -426,11 +431,14 @@ void Controller::savePoster() const
 
 void Controller::loadTranslation(const QString &localeName)
 {
-    const QString translationFileName(":/Translations/" + localeName);
+    const QString saneLocaleName = localeName.isEmpty()?QLocale::system().name():localeName;
+    const QString translationFileName(":/Translations/" + saneLocaleName);
     if (m_translator->load(translationFileName)) {
         QCoreApplication::removeTranslator(m_translator);
         QCoreApplication::installTranslator(m_translator);
-        m_mainWindow->setCurrentTranslation(localeName);
+        m_mainWindow->setCurrentTranslation(saneLocaleName);
+        if (!localeName.isEmpty())
+            m_translationName = localeName;
     }
 }
 
