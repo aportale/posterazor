@@ -31,6 +31,8 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
 {
     setupUi(this);
 
+    m_imageInfoGroup->setVisible(false);
+
     m_unitOfLengthActions = new QActionGroup(m_menuSettings);
 
     const struct {
@@ -275,6 +277,7 @@ void MainWindow::updateImageInfoFields(const QSize &inputImageSizeInPixels, cons
         /*colorType==ColorTypeCMYK?*/ QCoreApplication::translate("PosteRazorDialog", "CMYK")
     ) + QString(" %1bpp").arg(bitsPerPixel);
     m_imageInformationColorTypeValue->setText(colorTypeString);
+    m_imageInfoGroup->setVisible(true);
     emit imageLoaded();
 }
 
