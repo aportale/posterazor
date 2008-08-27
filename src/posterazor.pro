@@ -23,6 +23,12 @@ HEADERS += \
 
 win32:DEFINES -= \
     UNICODE
+    
+macx:QMAKE_INFO_PLIST = \
+    Info.plist
+
+macx:ICON = \
+    posterazor.icns
 
 FORMS += \
     mainwindow.ui
