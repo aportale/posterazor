@@ -37,7 +37,7 @@ public:
 	const char* allImageFormats(void) const                 {return "所有的图像格式";}
 	const char* back(void) const                            {return "返回";}
 	const char* borders(void) const                         {return "边界";}
-	const char* bottom(void) const                          {return "顶部";}
+	const char* bottom(void) const                          {return "底部";}
 	const char* bottomLeft(void) const                      {return "左下";}
 	const char* bottomRight(void) const                     {return "右下";}
 	const char* cancel(void) const                          {return "取消";}
@@ -52,22 +52,22 @@ public:
 	const char* imageInformations(void) const               {return "图片信息";}
 	const char* imageSize(void) const                       {return "图片尺寸";}
 	const char* inputImage(void) const                      {return "输入图片";}
-	const char* landscape(void) const                       {return "画像";}
+	const char* landscape(void) const                       {return "水平";}
 	const char* language(void) const                        {return "语言";}
 	const char* languageExplanation(void) const             {return "选择您的语言";}
 	const char* launchPDFApplication(void) const            {return "保存后用默认的PDF程序打开";}
-	const char* left(void) const                            {return "左边";}
+	const char* left(void) const                            {return "左";}
 	const char* loadAnInputImage(void) const                {return stepTitle01();}
 	const char* monochrome(void) const                      {return "黑白";}
 	const char* next(void) const                            {return "前进";}
-	const char* orientation(void) const                     {return "模板:";}
+	const char* orientation(void) const                     {return "方向:";}
 	const char* overlappingPosition(void) const             {return "位置调整";}
 	const char* overlappingSize(void) const                 {return "调整大小";}
 	const char* overwriteFile(void) const                   {return "文件 '%s' 已经存在。\n要覆盖这个文件吗？";}
 	const char* pages(void) const                           {return "页面";}
 	const char* paperFormat(void) const                     {return "页面格式";}
-	const char* palette(void) const                         {return "风景画";}
-	const char* portrait(void) const                        {return "画像";}
+	const char* palette(void) const                         {return "palette";}
+	const char* portrait(void) const                        {return "垂直";}
 	const char* posteRazorHelp(void) const                  {return "PosteRazor 帮助";}
 	const char* posteRazorSettings(void) const              {return "PosteRazor 设置";}
 	const char* posteRazorWebSiteURL(void) const            {return ENGLISH_POSTERAZORWEBSITEURL;}
@@ -80,7 +80,7 @@ public:
 	const char* saveThePosterAs(void) const                 {return "另存为";}
 	const char* settings(void) const                        {return "设置……";}
 	const char* Size(void) const                            {return "尺寸:";}
-	const char* sizeInPages(void) const                     {return "以页面来计量尺寸：";}
+	const char* sizeInPages(void) const                     {return "以分割的页面数量来计量：";}
 	const char* sizeInPercent(void) const                   {return "以百分比来计量尺寸：";}
 	const char* sizeInPixels(void) const                    {return "尺寸 (像素):";}
 	const char* sizeInUnitOfLength(void) const              {return "尺寸 (in %s):";}
