@@ -1579,9 +1579,6 @@
            </widget>
           </item>
          </layout>
-         <zorder>m_stepHelpButton</zorder>
-         <zorder>m_stepDescriptionLabel</zorder>
-         <zorder>m_stepNumberLabel</zorder>
         </widget>
        </item>
        <item>
@@ -1644,7 +1641,7 @@
      <x>0</x>
      <y>0</y>
      <width>527</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile" >
@@ -1656,6 +1653,10 @@
     <property name="title" >
      <string>&amp;?</string>
     </property>
+    <addaction name="m_actionPosteRazorManual" />
+    <addaction name="m_actionPosteRazorWebsSite" />
+    <addaction name="separator" />
+    <addaction name="m_actionAboutPosteRazor" />
     <addaction name="m_actionAboutQt" />
    </widget>
    <widget class="QMenu" name="m_menuSettings" >
@@ -1733,6 +1734,21 @@
    </property>
    <property name="text" >
     <string>Po&amp;rtuguês do Brasil</string>
+   </property>
+  </action>
+  <action name="m_actionAboutPosteRazor" >
+   <property name="text" >
+    <string>About PosteRazor</string>
+   </property>
+  </action>
+  <action name="m_actionPosteRazorManual" >
+   <property name="text" >
+    <string>PosteRazor manual</string>
+   </property>
+  </action>
+  <action name="m_actionPosteRazorWebsSite" >
+   <property name="text" >
+    <string>PosteRazor web site</string>
    </property>
   </action>
  </widget>

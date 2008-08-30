@@ -87,7 +87,11 @@ void MainWindow::changeEvent(QEvent *event)
 
 void MainWindow::retranslateUi()
 {
-    m_actionAboutQt->setText(                       QCoreApplication::translate("PosteRazorDialog", "&About Qt"));
+    m_actionPosteRazorManual->setText(              QCoreApplication::translate("PosteRazorHelp", "&Manual"));
+    m_actionPosteRazorWebsSite->setText(            QCoreApplication::translate("PosteRazorHelp", "PosteRazor &website"));
+    m_actionAboutPosteRazor->setText(               QCoreApplication::translate("PosteRazorHelp", "&About PosteRazor"));
+    m_actionAboutQt->setText(                       QCoreApplication::translate("PosteRazorHelp", "About &Qt"));
+
     m_imageInfoGroup->setTitle(                     QCoreApplication::translate("PosteRazorDialog", "Image Informations"));
     m_imageInformationColorTypeLabel->setText(      QCoreApplication::translate("PosteRazorDialog", "Color type:"));
     m_imageInformationResolutionLabel->setText(     QCoreApplication::translate("PosteRazorDialog", "Resolution:"));
