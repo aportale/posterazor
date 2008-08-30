@@ -91,7 +91,7 @@
     <message>
         <location filename="mainwindow.cpp" line="112"/>
         <source>Bottom</source>
-        <translation type="unfinished">顶部</translation>
+        <translation type="unfinished">底部</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="147"/>
@@ -106,7 +106,7 @@
     <message>
         <location filename="mainwindow.cpp" line="113"/>
         <source>Left</source>
-        <translation type="unfinished">左边</translation>
+        <translation type="unfinished">左</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="114"/>
@@ -136,17 +136,17 @@
     <message>
         <location filename="mainwindow.cpp" line="123"/>
         <source>Orientation:</source>
-        <translation type="unfinished">模板:</translation>
+        <translation type="unfinished">方向:</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="124"/>
         <source>Landscape</source>
-        <translation type="unfinished">画像</translation>
+        <translation type="unfinished">水平</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="125"/>
         <source>Portrait</source>
-        <translation type="unfinished">画像</translation>
+        <translation type="unfinished">垂直</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="126"/>
@@ -181,7 +181,7 @@
     <message>
         <location filename="mainwindow.cpp" line="137"/>
         <source>Size in pages:</source>
-        <translation type="unfinished">以页面来计量尺寸:</translation>
+        <translation type="unfinished">以分割的页面数量来计量:</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="138"/>
@@ -211,7 +211,7 @@
     <message>
         <location filename="mainwindow.cpp" line="278"/>
         <source>Palette</source>
-        <translation type="unfinished">风景画</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="279"/>
