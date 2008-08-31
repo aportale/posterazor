@@ -40,6 +40,9 @@ public:
 
     WizardController(QObject *wizardDialog, QObject *parent = 0);
 
+public slots:
+    void showManual();
+    void showHelpForCurrentStep();
     void updateDialogWizardStepDescription();
 
 private slots:
@@ -59,6 +62,9 @@ private:
     WizardSteps m_wizardStep;
     bool m_imageWasLoaded;
     static const int m_wizardStepsCount = (int)WizardStepSavePoster + 1;
+
+    static QString stepTitle(WizardSteps step);
+    static QString stepHelp(WizardSteps step);
 };
 
 #endif // WIZARDCONTROLLER_H

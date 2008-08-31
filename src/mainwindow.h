@@ -106,6 +106,7 @@ signals:
     void launchPDFApplicationChanged(bool launch) const;
     void nextButtonPressed() const;
     void prevButtonPressed() const;
+    void wizardStepHelpSignal() const;
     void savePosterSignal() const;
     void loadImageSignal() const;
     void needsPaint(PaintCanvasInterface *paintDevice, const QVariant &options) const;

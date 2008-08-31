@@ -22,6 +22,33 @@
 
 #include "wizardcontroller.h"
 #include <QCoreApplication>
+#include <QDialog>
+#include <QLabel>
+#include <QVBoxLayout>
+
+class HelpDialog : public QDialog
+{
+private:
+    HelpDialog(const QString &title, const QString &text, QWidget *parent = 0);
+
+public:
+    static void showHelp(const QString &title, const QString &text, QWidget *parent = 0);
+};
+
+HelpDialog::HelpDialog(const QString &title, const QString &text, QWidget *parent)
+    : QDialog(parent)
+{
+    setModal(true);
+    setAttribute(Qt::WA_DeleteOnClose, true);
+    setLayout(new QVBoxLayout);
+    layout()->addWidget(new QLabel(text));
+}
+
+void HelpDialog::showHelp(const QString &title, const QString &text, QWidget *parent)
+{
+    HelpDialog *dialog = new HelpDialog(title, text, parent);
+    dialog->show();
+}
 
 WizardController::WizardController(QObject *wizardDialog, QObject *parent)
     : QObject(parent)
@@ -36,6 +63,7 @@ WizardController::WizardController(QObject *wizardDialog, QObject *parent)
     connect(wizardDialog, SIGNAL(imageLoaded()), SLOT(handleImageLoaded()));
     connect(wizardDialog, SIGNAL(prevButtonPressed()), SLOT(handlePrevButtonPressed()));
     connect(wizardDialog, SIGNAL(nextButtonPressed()), SLOT(handleNextButtonPressed()));
+    connect(wizardDialog, SIGNAL(wizardStepHelpSignal()), SLOT(showHelpForCurrentStep()));
 
     updateDialogWizardStep();
 }
@@ -44,6 +72,15 @@ void WizardController::handleImageLoaded()
 {
     m_imageWasLoaded = true;
     updateDialogWizardStep();
+}
+
+void WizardController::showManual()
+{
+}
+
+void WizardController::showHelpForCurrentStep()
+{
+    HelpDialog::showHelp(stepTitle(m_wizardStep), stepHelp(m_wizardStep), NULL);
 }
 
 void WizardController::handlePrevButtonPressed()
@@ -90,10 +127,57 @@ void WizardController::updateDialogWizardStepDescription()
 {
     emit wizardStepDescriptionChanged(
         QCoreApplication::translate("Help", "Step %1 of %2:").arg((int)m_wizardStep + 1).arg((int)m_wizardStepsCount),
-        m_wizardStep == WizardStepInputImage?  QCoreApplication::translate("Help", "Load an input image")
-        :m_wizardStep == WizardStepPaperSize?  QCoreApplication::translate("Help", "Printer paper format")
-        :m_wizardStep == WizardStepOverlapping?QCoreApplication::translate("Help", "Image tile overlapping")
-        :m_wizardStep == WizardStepPosterSize? QCoreApplication::translate("Help", "Final poster size")
-        :                                      QCoreApplication::translate("Help", "Save the Poster")
+        stepTitle(m_wizardStep)
     );
+}
+
+QString WizardController::stepTitle(WizardSteps step)
+{
+    return
+        step == WizardStepInputImage?  QCoreApplication::translate("Help", "Load an input image")
+        :step == WizardStepPaperSize?  QCoreApplication::translate("Help", "Printer paper format")
+        :step == WizardStepOverlapping?QCoreApplication::translate("Help", "Image tile overlapping")
+        :step == WizardStepPosterSize? QCoreApplication::translate("Help", "Final poster size")
+        :                              QCoreApplication::translate("Help", "Save the Poster");
+}
+
+QString WizardController::stepHelp(WizardSteps step)
+{
+    return
+        step == WizardStepInputImage?  QCoreApplication::translate("Help",
+            "Load an image by clicking the button with the open icon and selecting an image file, or by drag & dropping an image file on the PosteRazor. The drag & drop also works during the other steps.\n"
+            "After loading the image, the most important informations are listed in the '%1' fields.",
+            "Wizard step 1. Place holders: %1 = 'Image informations' (will be automatically inserted)")
+            .arg(QCoreApplication::translate("Main window", "Image Informations"))
+        :step == WizardStepPaperSize?  QCoreApplication::translate("Help",
+            "Define the paper sheet size that you use in your printer.\n"
+            "A standard paper sheet size can be selected from the '%1' chooser, along with the desired paper sheet orientation.\n"
+            "Alternatively, a custom paper sheet size can be defined in the '%2' tab.\n"
+            "Paper borders are defined in the '%3' fields. Even if your printer does need no (or small) paper borders, some border might be needed to have enough area for gluing the final poster tiles together.",
+            "Wizard step 2. Place holders: %1 = 'Format:', %2 = 'Custom', %3 = 'Borders (%1)' (will be automatically inserted)")
+            .arg(QCoreApplication::translate("Main window", "Format:"))
+            .arg(QCoreApplication::translate("Main window", "Custom"))
+            .arg(QCoreApplication::translate("Main window", "Borders (%1)").arg("xyz")) // TODO: Provide current dimension unit instead of "xyz"
+        :step == WizardStepOverlapping?QCoreApplication::translate("Help",
+            "Image tile overlapping is needed to have some tolerance for cutting off the unneeded borders from one side. Additionally, like the borders from the previous step, it gives more area for gluing together the final poster tiles.\n"
+            "The '%1' defines the borders that are intended to be overlapped by the neighbor tiles. The borders on the opposite sides are intended to be cut (except on the outermost tiles).",
+            "Wizard step 3. Place holders: %1 = 'Overlapping position' (will be automatically inserted)")
+            .arg(QCoreApplication::translate("Main window", "Overlapping position"))
+        :step == WizardStepPosterSize? QCoreApplication::translate("Help",
+            "Define the final poster size, in one of the following three modes which can be selected by the corresponding radio buttons:\n"
+            "'%1' You want to have a specific size of your poster.\n"
+            "'%2' You want to use whole paper sheets and specify how many of them of them you want to use.\n"
+            "'%3' Your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to enlarge the image by a certain factor.\n"
+            "The aspect ratio of width and height is always 1:1 and is automatically recalculated. In the preview area, you can see the overlapping areas which are surrounded by light red rectangles.\n"
+            "'%4' sets the alignment of the image on the total paper area of the poster. This is useful if you want to keep the unused paper.",
+            "Wizard step 4. Place holders: %1 = 'Absolute size:', %2 = 'Size in pages:', %3 = 'Size in percent:', %4 = 'Image alignment' (will be automatically inserted)")
+            .arg(QCoreApplication::translate("Main window", "Absolute size:"))
+            .arg(QCoreApplication::translate("Main window", "Size in pages:"))
+            .arg(QCoreApplication::translate("Main window", "Size in percent:"))
+            .arg(QCoreApplication::translate("Main window", "Image alignment"))
+        :                              QCoreApplication::translate("Help",
+            "Save the poster by clicking the save button and specifying a destination file name.\n"
+            "Check or uncheck the '%1', if the standard PDF handling application that is set in your operating system should be automatically started after the PDF file is saved.",
+            "Wizard step 5. Place holders: %1 = 'Open PDF after saving' (will be automatically inserted)")
+            .arg(QCoreApplication::translate("Main window", "Open PDF after saving"));
 }
