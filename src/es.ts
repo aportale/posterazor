@@ -266,18 +266,18 @@ Do you want to overwrite it?</source>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="96"/>
-        <source>Define the printer paper format</source>
-        <translation type="unfinished">Definir el formato del papel de impresora</translation>
+        <source>Printer paper format</source>
+        <translation type="unfinished">Formato del papel de impresora</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="97"/>
-        <source>Define the image tile overlapping</source>
-        <translation type="unfinished">Definir la superposición del mosaico de imagen</translation>
+        <source>Image tile overlapping</source>
+        <translation type="unfinished">Superposición del mosaico de imagen</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="98"/>
-        <source>Define the final poster size</source>
-        <translation type="unfinished">Definir el tamaño final del póster</translation>
+        <source>Final poster size</source>
+        <translation type="unfinished">Tamaño final del póster</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="99"/>

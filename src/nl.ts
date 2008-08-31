@@ -267,18 +267,18 @@ Moet dit worden overschreven?</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="96"/>
-        <source>Define the printer paper format</source>
-        <translation type="unfinished">Papierafmeting definiëren</translation>
+        <source>Printer paper format</source>
+        <translation type="unfinished">Papierafmeting</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="97"/>
-        <source>Define the image tile overlapping</source>
-        <translation type="unfinished">Overlapping definiëren</translation>
+        <source>Image tile overlapping</source>
+        <translation type="unfinished">Overlapping</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="98"/>
-        <source>Define the final poster size</source>
-        <translation type="unfinished">Postergrootte definiëren</translation>
+        <source>Final poster size</source>
+        <translation type="unfinished">Postergrootte</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="99"/>

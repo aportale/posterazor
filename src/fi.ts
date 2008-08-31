@@ -267,18 +267,18 @@ Haluatko päällekirjoittaa sen?</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="96"/>
-        <source>Define the printer paper format</source>
-        <translation type="unfinished">Määritä tulostimen paperimuoto</translation>
+        <source>Printer paper format</source>
+        <translation type="unfinished">Tulostimen paperimuoto</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="97"/>
-        <source>Define the image tile overlapping</source>
-        <translation type="unfinished">Määritä kuvan tiililimitys</translation>
+        <source>Image tile overlapping</source>
+        <translation type="unfinished">Kuvan tiililimitys</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="98"/>
-        <source>Define the final poster size</source>
-        <translation type="unfinished">Määritä valmiin julisteen koko</translation>
+        <source>Final poster size</source>
+        <translation type="unfinished">Valmiin julisteen koko</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="99"/>

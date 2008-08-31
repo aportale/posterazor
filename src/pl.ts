@@ -267,18 +267,18 @@ Czy chcesz go nadpisać?</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="96"/>
-        <source>Define the printer paper format</source>
-        <translation type="unfinished">Ustawienie formatu papieru drukarki</translation>
+        <source>Printer paper format</source>
+        <translation type="unfinished">Formatu papieru drukarki</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="97"/>
-        <source>Define the image tile overlapping</source>
+        <source>Image tile overlapping</source>
         <translation type="unfinished">Definiowanie zazębiania się</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="98"/>
-        <source>Define the final poster size</source>
-        <translation type="unfinished">Ustawienie końcowego rozmiaru plakatu</translation>
+        <source>Final poster size</source>
+        <translation type="unfinished">Końcowego rozmiaru plakatu</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="99"/>

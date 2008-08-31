@@ -265,17 +265,17 @@ Do you want to overwrite it?</source>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="96"/>
-        <source>Define the printer paper format</source>
+        <source>Printer paper format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="97"/>
-        <source>Define the image tile overlapping</source>
+        <source>Image tile overlapping</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="98"/>
-        <source>Define the final poster size</source>
+        <source>Final poster size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de_DE">
-<defaultcodec></defaultcodec>
 <context>
     <name>PosteRazorDialog</name>
     <message>
@@ -268,18 +267,18 @@ Soll sie überschrieben werden?</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="96"/>
-        <source>Define the printer paper format</source>
-        <translation type="unfinished">Druckerpapier-Maße definieren</translation>
+        <source>Printer paper format</source>
+        <translation type="unfinished">Druckerpapier-Maße</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="97"/>
-        <source>Define the image tile overlapping</source>
-        <translation type="unfinished">Überlappung der Bildabschnitte definieren</translation>
+        <source>Image tile overlapping</source>
+        <translation type="unfinished">Überlappung der Bildabschnitte</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="98"/>
-        <source>Define the final poster size</source>
-        <translation type="unfinished">Die finale Postergröße definieren</translation>
+        <source>Final poster size</source>
+        <translation type="unfinished">Die finale Postergröße</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="99"/>

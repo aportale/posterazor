@@ -271,18 +271,18 @@ Vuoi sovrascriverlo?</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="96"/>
-        <source>Define the printer paper format</source>
-        <translation type="unfinished">Definisci il formato pagina della stampante</translation>
+        <source>Printer paper format</source>
+        <translation type="unfinished">Formato pagina della stampante</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="97"/>
-        <source>Define the image tile overlapping</source>
-        <translation type="unfinished">Definisci le suddivisioni dell&apos;immagine</translation>
+        <source>Image tile overlapping</source>
+        <translation type="unfinished">Suddivisioni dell&apos;immagine</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="98"/>
-        <source>Define the final poster size</source>
-        <translation type="unfinished">Definisci le dimensioni finali del poster</translation>
+        <source>Final poster size</source>
+        <translation type="unfinished">Dimensioni finali del poster</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="99"/>
