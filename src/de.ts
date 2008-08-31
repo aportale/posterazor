@@ -229,7 +229,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="345"/>
+        <location filename="controller.cpp" line="346"/>
         <source>All image formats</source>
         <translation type="unfinished">Alle Bildformate</translation>
     </message>
@@ -239,25 +239,25 @@
         <translation type="unfinished">Ein Ausgangsbild laden</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="370"/>
+        <location filename="controller.cpp" line="371"/>
         <source>The Image &apos;%1&apos; could not be loaded.</source>
         <translation type="unfinished">Die Datei &apos;%1&apos; konnte nicht geladen werden.
 </translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="417"/>
+        <location filename="controller.cpp" line="418"/>
         <source>The file &apos;%1&apos; already exists.
 Do you want to overwrite it?</source>
         <translation type="unfinished">Die Datei &apos;%1&apos; extistiert bereits.
 Soll sie überschrieben werden?</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="421"/>
+        <location filename="controller.cpp" line="422"/>
         <source>The File &quot;%1&quot; could not be saved.</source>
         <translation type="unfinished">Die Datei &apos;%1&apos; konnte nicht gespeichert werden.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="441"/>
+        <location filename="mainwindow.cpp" line="442"/>
         <source>Language name</source>
         <translation type="unfinished">Deutsch</translation>
     </message>
@@ -308,6 +308,12 @@ Soll sie überschrieben werden?</translation>
         <location filename="mainwindow.cpp" line="93"/>
         <source>About &amp;Qt</source>
         <translation type="unfinished">Über &amp;Qt</translation>
+    </message>
+    <message>
+        <location filename="controller.cpp" line="454"/>
+        <source>http://posterazor.sourceforge.net/</source>
+        <comment>Only translate, if the website has this language.</comment>
+        <translation type="unfinished">http://posterazor.sourceforge.net/?lang=german</translation>
     </message>
 </context>
 </TS>

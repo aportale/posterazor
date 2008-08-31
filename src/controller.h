@@ -71,6 +71,7 @@ public slots:
     void savePoster() const;
     void loadTranslation(const QString &localeName);
     void setUnitOfLength(const QString &unit);
+    void openPosteRazorWebsite();
 
 signals:
     virtual void previewChanged() const;

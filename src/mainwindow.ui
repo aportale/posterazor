@@ -1654,7 +1654,7 @@
      <string>&amp;?</string>
     </property>
     <addaction name="m_actionPosteRazorManual" />
-    <addaction name="m_actionPosteRazorWebsSite" />
+    <addaction name="m_actionPosteRazorWebSite" />
     <addaction name="separator" />
     <addaction name="m_actionAboutPosteRazor" />
     <addaction name="m_actionAboutQt" />
@@ -1746,7 +1746,7 @@
     <string>PosteRazor manual</string>
    </property>
   </action>
-  <action name="m_actionPosteRazorWebsSite" >
+  <action name="m_actionPosteRazorWebSite" >
    <property name="text" >
     <string>PosteRazor web site</string>
    </property>

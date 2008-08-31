@@ -88,7 +88,7 @@ void MainWindow::changeEvent(QEvent *event)
 void MainWindow::retranslateUi()
 {
     m_actionPosteRazorManual->setText(              QCoreApplication::translate("PosteRazorHelp", "&Manual"));
-    m_actionPosteRazorWebsSite->setText(            QCoreApplication::translate("PosteRazorHelp", "PosteRazor &website"));
+    m_actionPosteRazorWebSite->setText(             QCoreApplication::translate("PosteRazorHelp", "PosteRazor &website"));
     m_actionAboutPosteRazor->setText(               QCoreApplication::translate("PosteRazorHelp", "&About PosteRazor"));
     m_actionAboutQt->setText(                       QCoreApplication::translate("PosteRazorHelp", "About &Qt"));
 
@@ -374,8 +374,8 @@ void MainWindow::handleUnitOfLengthAction(QAction *action) const
 
 void MainWindow::createConnections()
 {
-    connect(m_stepNextButton,                           SIGNAL(clicked()),                  SIGNAL(nextButtonPressed()));
-    connect(m_stepPrevButton,                           SIGNAL(clicked()),                  SIGNAL(prevButtonPressed()));
+    connect(m_stepNextButton,                       SIGNAL(clicked()),                  SIGNAL(nextButtonPressed()));
+    connect(m_stepPrevButton,                       SIGNAL(clicked()),                  SIGNAL(prevButtonPressed()));
     connect(m_paperFormatTypeTabs,                  SIGNAL(currentChanged(int)),        SLOT(handlePaperFormatTabChanged(int)));
     connect(m_paperFormatComboBox,                  SIGNAL(activated(const QString &)), SIGNAL(paperFormatChanged(const QString &)));
     connect(m_paperOrientationPortraitRadioButton,  SIGNAL(clicked()),                  SLOT(handlePaperOrientationPortraitSelected()));
@@ -414,6 +414,7 @@ void MainWindow::createConnections()
     connect(m_savePosterButton,                     SIGNAL(clicked()),                  SIGNAL(savePosterSignal()));
     connect(m_launchPDFApplicationCheckBox,         SIGNAL(toggled(bool)),              SIGNAL(launchPDFApplicationChanged(bool)));
     connect(m_paintCanvas,                          SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)));
+    connect(m_actionPosteRazorWebSite,              SIGNAL(triggered()),                SIGNAL(openPosteRazorWebsiteSignal()));
     connect(m_actionAboutQt,                        SIGNAL(triggered()),                SLOT(showAboutQtDialog()));
 }
 

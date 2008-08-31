@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="fi">
-<defaultcodec></defaultcodec>
 <context>
     <name>PosteRazorDialog</name>
     <message>
@@ -230,7 +229,7 @@ kun juliste on tallennettu</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="345"/>
+        <location filename="controller.cpp" line="346"/>
         <source>All image formats</source>
         <translation type="unfinished">Kaikki kuvamuodot</translation>
     </message>
@@ -240,24 +239,24 @@ kun juliste on tallennettu</translation>
         <translation type="unfinished">Lataa sisääntulokuva</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="370"/>
+        <location filename="controller.cpp" line="371"/>
         <source>The Image &apos;%1&apos; could not be loaded.</source>
         <translation type="unfinished">Tiedostoa &apos;%1&apos; ei voida ladata.</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="417"/>
+        <location filename="controller.cpp" line="418"/>
         <source>The file &apos;%1&apos; already exists.
 Do you want to overwrite it?</source>
         <translation type="unfinished">Tiedosto &apos;%1&apos; on jo olemassa.
 Haluatko päällekirjoittaa sen?</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="421"/>
+        <location filename="controller.cpp" line="422"/>
         <source>The File &quot;%1&quot; could not be saved.</source>
         <translation type="unfinished">Tiedostoa &apos;%1&apos; ei voida tallentaa.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="441"/>
+        <location filename="mainwindow.cpp" line="442"/>
         <source>Language name</source>
         <translation type="unfinished">Suomi</translation>
     </message>
@@ -308,6 +307,12 @@ Haluatko päällekirjoittaa sen?</translation>
         <location filename="mainwindow.cpp" line="91"/>
         <source>PosteRazor &amp;website</source>
         <translation type="unfinished">PosteRazor -&amp;nettisivu</translation>
+    </message>
+    <message>
+        <location filename="controller.cpp" line="454"/>
+        <source>http://posterazor.sourceforge.net/</source>
+        <comment>Only translate, if the website has this language.</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

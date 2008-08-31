@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="it">
-<defaultcodec></defaultcodec>
 <context>
     <name>PosteRazorDialog</name>
     <message>
@@ -234,7 +233,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="345"/>
+        <location filename="controller.cpp" line="346"/>
         <source>All image formats</source>
         <translation type="unfinished">Tutti i formati immagine</translation>
     </message>
@@ -244,24 +243,24 @@
         <translation type="unfinished">Carica in immagine</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="370"/>
+        <location filename="controller.cpp" line="371"/>
         <source>The Image &apos;%1&apos; could not be loaded.</source>
         <translation type="unfinished">Il file &apos;%1&apos; non può essere caricato.</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="417"/>
+        <location filename="controller.cpp" line="418"/>
         <source>The file &apos;%1&apos; already exists.
 Do you want to overwrite it?</source>
         <translation type="unfinished">Il file &apos;%1&apos; esiste già.
 Vuoi sovrascriverlo?</translation>
     </message>
     <message>
-        <location filename="controller.cpp" line="421"/>
+        <location filename="controller.cpp" line="422"/>
         <source>The File &quot;%1&quot; could not be saved.</source>
         <translation type="unfinished">Il file &apos;%1&apos; non può essere salvato.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="441"/>
+        <location filename="mainwindow.cpp" line="442"/>
         <source>Language name</source>
         <translation type="unfinished">Italiano</translation>
     </message>
@@ -312,6 +311,12 @@ Vuoi sovrascriverlo?</translation>
         <location filename="mainwindow.cpp" line="91"/>
         <source>PosteRazor &amp;website</source>
         <translation type="unfinished">&amp;Sito Web PosteRazor</translation>
+    </message>
+    <message>
+        <location filename="controller.cpp" line="454"/>
+        <source>http://posterazor.sourceforge.net/</source>
+        <comment>Only translate, if the website has this language.</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

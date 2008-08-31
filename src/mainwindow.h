@@ -112,6 +112,7 @@ signals:
     void imageLoaded() const;
     void translationChanged(const QString &localeName = QString()) const;
     void unitOfLengthChanged(const QString &unit) const;
+    void openPosteRazorWebsiteSignal() const;
 
 private slots:
     void handlePaperFormatTabChanged(int index);

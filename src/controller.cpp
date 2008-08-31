@@ -61,6 +61,7 @@ Controller::Controller(PosteRazorCore *posteRazorCore, MainWindow *mainWindow, Q
     connect(m_mainWindow, SIGNAL(loadImageSignal()), SLOT(loadInputImage()));
     connect(m_mainWindow, SIGNAL(translationChanged(const QString&)), SLOT(loadTranslation(const QString&)));
     connect(m_mainWindow, SIGNAL(unitOfLengthChanged(const QString&)), SLOT(setUnitOfLength(const QString&)));
+    connect(m_mainWindow, SIGNAL(openPosteRazorWebsiteSignal()), SLOT(openPosteRazorWebsite()));
     connect(m_mainWindow, SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), m_posteRazorCore, SLOT(paintOnCanvas(PaintCanvasInterface*, const QVariant&)));
     connect(m_posteRazorCore, SIGNAL(previewImageChanged(const QImage&)), m_mainWindow, SLOT(setPreviewImage(const QImage&)));
 
@@ -447,3 +448,9 @@ void Controller::setUnitOfLength(const QString &unit)
     m_posteRazorCore->setUnitOfLength(Types::unitOfLenthFromString(unit));
     updateDialog();
 }
+
+void Controller::openPosteRazorWebsite()
+{
+    QDesktopServices::openUrl(QCoreApplication::translate("PosteRazorHelp", "http://posterazor.sourceforge.net/", "Only translate, if the website has this language."));
+}
+
