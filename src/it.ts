@@ -3,11 +3,6 @@
 <context>
     <name>PosteRazorDialog</name>
     <message>
-        <location filename="mainwindow.cpp" line="90"/>
-        <source>&amp;About Qt</source>
-        <translation type="obsolete">&amp;Su Qt</translation>
-    </message>
-    <message>
         <location filename="mainwindow.cpp" line="95"/>
         <source>Image Informations</source>
         <translation type="unfinished">Informazioni immagine</translation>
@@ -238,7 +233,7 @@
         <translation type="unfinished">Tutti i formati immagine</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="95"/>
+        <location filename="controller.cpp" line="353"/>
         <source>Load an input image</source>
         <translation type="unfinished">Carica in immagine</translation>
     </message>
@@ -264,34 +259,14 @@ Vuoi sovrascriverlo?</translation>
         <source>Language name</source>
         <translation type="unfinished">Italiano</translation>
     </message>
+</context>
+<context>
+    <name>PosteRazorHelp</name>
     <message>
         <location filename="wizardcontroller.cpp" line="93"/>
         <source>Step %1 of %2:</source>
         <translation type="unfinished">Passaggio %1 di %2:</translation>
     </message>
-    <message>
-        <location filename="wizardcontroller.cpp" line="96"/>
-        <source>Printer paper format</source>
-        <translation type="unfinished">Formato pagina della stampante</translation>
-    </message>
-    <message>
-        <location filename="wizardcontroller.cpp" line="97"/>
-        <source>Image tile overlapping</source>
-        <translation type="unfinished">Suddivisioni dell&apos;immagine</translation>
-    </message>
-    <message>
-        <location filename="wizardcontroller.cpp" line="98"/>
-        <source>Final poster size</source>
-        <translation type="unfinished">Dimensioni finali del poster</translation>
-    </message>
-    <message>
-        <location filename="wizardcontroller.cpp" line="99"/>
-        <source>Save the Poster</source>
-        <translation type="unfinished">Salva il Poster</translation>
-    </message>
-</context>
-<context>
-    <name>PosteRazorHelp</name>
     <message>
         <location filename="mainwindow.cpp" line="90"/>
         <source>&amp;Manual</source>
@@ -317,6 +292,31 @@ Vuoi sovrascriverlo?</translation>
         <source>http://posterazor.sourceforge.net/</source>
         <comment>Only translate, if the website has this language.</comment>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="95"/>
+        <source>Load an input image</source>
+        <translation type="unfinished">Carica in immagine</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="96"/>
+        <source>Printer paper format</source>
+        <translation type="unfinished">Formato pagina della stampante</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="97"/>
+        <source>Image tile overlapping</source>
+        <translation type="unfinished">Suddivisioni dell&apos;immagine</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="98"/>
+        <source>Final poster size</source>
+        <translation type="unfinished">Dimensioni finali del poster</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="99"/>
+        <source>Save the Poster</source>
+        <translation type="unfinished">Salva il Poster</translation>
     </message>
 </context>
 </TS>

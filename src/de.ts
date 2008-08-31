@@ -233,7 +233,7 @@
         <translation type="unfinished">Alle Bildformate</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="95"/>
+        <location filename="controller.cpp" line="353"/>
         <source>Load an input image</source>
         <translation type="unfinished">Ein Ausgangsbild laden</translation>
     </message>
@@ -260,34 +260,14 @@ Soll sie überschrieben werden?</translation>
         <source>Language name</source>
         <translation type="unfinished">Deutsch</translation>
     </message>
+</context>
+<context>
+    <name>PosteRazorHelp</name>
     <message>
         <location filename="wizardcontroller.cpp" line="93"/>
         <source>Step %1 of %2:</source>
         <translation type="unfinished">Schritt %1 von %2:</translation>
     </message>
-    <message>
-        <location filename="wizardcontroller.cpp" line="96"/>
-        <source>Printer paper format</source>
-        <translation type="unfinished">Druckerpapier-Maße</translation>
-    </message>
-    <message>
-        <location filename="wizardcontroller.cpp" line="97"/>
-        <source>Image tile overlapping</source>
-        <translation type="unfinished">Überlappung der Bildabschnitte</translation>
-    </message>
-    <message>
-        <location filename="wizardcontroller.cpp" line="98"/>
-        <source>Final poster size</source>
-        <translation type="unfinished">Die finale Postergröße</translation>
-    </message>
-    <message>
-        <location filename="wizardcontroller.cpp" line="99"/>
-        <source>Save the Poster</source>
-        <translation type="unfinished">Das Poster speichern</translation>
-    </message>
-</context>
-<context>
-    <name>PosteRazorHelp</name>
     <message>
         <location filename="mainwindow.cpp" line="90"/>
         <source>&amp;Manual</source>
@@ -313,6 +293,31 @@ Soll sie überschrieben werden?</translation>
         <source>http://posterazor.sourceforge.net/</source>
         <comment>Only translate, if the website has this language.</comment>
         <translation type="unfinished">http://posterazor.sourceforge.net/?lang=german</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="95"/>
+        <source>Load an input image</source>
+        <translation type="unfinished">Ein Ausgangsbild laden</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="96"/>
+        <source>Printer paper format</source>
+        <translation type="unfinished">Druckerpapier-Maße</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="97"/>
+        <source>Image tile overlapping</source>
+        <translation type="unfinished">Überlappung der Bildabschnitte</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="98"/>
+        <source>Final poster size</source>
+        <translation type="unfinished">Die finale Postergröße</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="99"/>
+        <source>Save the Poster</source>
+        <translation type="unfinished">Das Poster speichern</translation>
     </message>
 </context>
 </TS>

@@ -234,7 +234,7 @@ po zapisaniu plakatu</translation>
         <translation type="unfinished">Wszystkie formaty</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="95"/>
+        <location filename="controller.cpp" line="353"/>
         <source>Load an input image</source>
         <translation type="unfinished">Załaduj obraz</translation>
     </message>
@@ -260,34 +260,14 @@ Czy chcesz go nadpisać?</translation>
         <source>Language name</source>
         <translation type="unfinished">Polski</translation>
     </message>
+</context>
+<context>
+    <name>PosteRazorHelp</name>
     <message>
         <location filename="wizardcontroller.cpp" line="93"/>
         <source>Step %1 of %2:</source>
         <translation type="unfinished">Krok %1 z %2:</translation>
     </message>
-    <message>
-        <location filename="wizardcontroller.cpp" line="96"/>
-        <source>Printer paper format</source>
-        <translation type="unfinished">Formatu papieru drukarki</translation>
-    </message>
-    <message>
-        <location filename="wizardcontroller.cpp" line="97"/>
-        <source>Image tile overlapping</source>
-        <translation type="unfinished">Definiowanie zazębiania się</translation>
-    </message>
-    <message>
-        <location filename="wizardcontroller.cpp" line="98"/>
-        <source>Final poster size</source>
-        <translation type="unfinished">Końcowego rozmiaru plakatu</translation>
-    </message>
-    <message>
-        <location filename="wizardcontroller.cpp" line="99"/>
-        <source>Save the Poster</source>
-        <translation type="unfinished">Zapisz plakat</translation>
-    </message>
-</context>
-<context>
-    <name>PosteRazorHelp</name>
     <message>
         <location filename="mainwindow.cpp" line="90"/>
         <source>&amp;Manual</source>
@@ -313,6 +293,31 @@ Czy chcesz go nadpisać?</translation>
         <source>http://posterazor.sourceforge.net/</source>
         <comment>Only translate, if the website has this language.</comment>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="95"/>
+        <source>Load an input image</source>
+        <translation type="unfinished">Załaduj obraz</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="96"/>
+        <source>Printer paper format</source>
+        <translation type="unfinished">Formatu papieru drukarki</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="97"/>
+        <source>Image tile overlapping</source>
+        <translation type="unfinished">Definiowanie zazębiania się</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="98"/>
+        <source>Final poster size</source>
+        <translation type="unfinished">Końcowego rozmiaru plakatu</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="99"/>
+        <source>Save the Poster</source>
+        <translation type="unfinished">Zapisz plakat</translation>
     </message>
 </context>
 </TS>

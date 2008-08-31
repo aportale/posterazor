@@ -234,7 +234,7 @@ kun juliste on tallennettu</translation>
         <translation type="unfinished">Kaikki kuvamuodot</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="95"/>
+        <location filename="controller.cpp" line="353"/>
         <source>Load an input image</source>
         <translation type="unfinished">Lataa sisääntulokuva</translation>
     </message>
@@ -260,34 +260,14 @@ Haluatko päällekirjoittaa sen?</translation>
         <source>Language name</source>
         <translation type="unfinished">Suomi</translation>
     </message>
+</context>
+<context>
+    <name>PosteRazorHelp</name>
     <message>
         <location filename="wizardcontroller.cpp" line="93"/>
         <source>Step %1 of %2:</source>
         <translation type="unfinished">Vaihe %1/%2:</translation>
     </message>
-    <message>
-        <location filename="wizardcontroller.cpp" line="96"/>
-        <source>Printer paper format</source>
-        <translation type="unfinished">Tulostimen paperimuoto</translation>
-    </message>
-    <message>
-        <location filename="wizardcontroller.cpp" line="97"/>
-        <source>Image tile overlapping</source>
-        <translation type="unfinished">Kuvan tiililimitys</translation>
-    </message>
-    <message>
-        <location filename="wizardcontroller.cpp" line="98"/>
-        <source>Final poster size</source>
-        <translation type="unfinished">Valmiin julisteen koko</translation>
-    </message>
-    <message>
-        <location filename="wizardcontroller.cpp" line="99"/>
-        <source>Save the Poster</source>
-        <translation type="unfinished">Tallenna juliste</translation>
-    </message>
-</context>
-<context>
-    <name>PosteRazorHelp</name>
     <message>
         <location filename="mainwindow.cpp" line="90"/>
         <source>&amp;Manual</source>
@@ -313,6 +293,31 @@ Haluatko päällekirjoittaa sen?</translation>
         <source>http://posterazor.sourceforge.net/</source>
         <comment>Only translate, if the website has this language.</comment>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="95"/>
+        <source>Load an input image</source>
+        <translation type="unfinished">Lataa sisääntulokuva</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="96"/>
+        <source>Printer paper format</source>
+        <translation type="unfinished">Tulostimen paperimuoto</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="97"/>
+        <source>Image tile overlapping</source>
+        <translation type="unfinished">Kuvan tiililimitys</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="98"/>
+        <source>Final poster size</source>
+        <translation type="unfinished">Valmiin julisteen koko</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="99"/>
+        <source>Save the Poster</source>
+        <translation type="unfinished">Tallenna juliste</translation>
     </message>
 </context>
 </TS>

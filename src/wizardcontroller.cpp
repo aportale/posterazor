@@ -90,11 +90,11 @@ void WizardController::updateDialogWizardStep()
 void WizardController::updateDialogWizardStepDescription()
 {
     emit wizardStepDescriptionChanged(
-        QCoreApplication::translate("PosteRazorDialog", "Step %1 of %2:").arg((int)m_wizardStep + 1).arg((int)m_wizardStepsCount),
-        m_wizardStep == WizardStepInputImage?  QCoreApplication::translate("PosteRazorDialog", "Load an input image")
-        :m_wizardStep == WizardStepPaperSize?  QCoreApplication::translate("PosteRazorDialog", "Printer paper format")
-        :m_wizardStep == WizardStepOverlapping?QCoreApplication::translate("PosteRazorDialog", "Image tile overlapping")
-        :m_wizardStep == WizardStepPosterSize? QCoreApplication::translate("PosteRazorDialog", "Final poster size")
-        :                                      QCoreApplication::translate("PosteRazorDialog", "Save the Poster")
+        QCoreApplication::translate("PosteRazorHelp", "Step %1 of %2:").arg((int)m_wizardStep + 1).arg((int)m_wizardStepsCount),
+        m_wizardStep == WizardStepInputImage?  QCoreApplication::translate("PosteRazorHelp", "Load an input image")
+        :m_wizardStep == WizardStepPaperSize?  QCoreApplication::translate("PosteRazorHelp", "Printer paper format")
+        :m_wizardStep == WizardStepOverlapping?QCoreApplication::translate("PosteRazorHelp", "Image tile overlapping")
+        :m_wizardStep == WizardStepPosterSize? QCoreApplication::translate("PosteRazorHelp", "Final poster size")
+        :                                      QCoreApplication::translate("PosteRazorHelp", "Save the Poster")
     );
 }
