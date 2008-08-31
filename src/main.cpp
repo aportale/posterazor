@@ -21,10 +21,9 @@
 */
 
 #include "mainwindow.h"
+#include "controller.h"
 #include <QSettings>
 #include <QApplication>
-#include "controller.h"
-#include "wizardcontroller.h"
 #include <QtDebug>
 
 #if !defined(QT_SHARED) && !defined(QT_DLL) && !defined(FREEIMAGE_LIB)
@@ -59,7 +58,6 @@ int main (int argc, char **argv)
     MainWindow dialog;
     PosteRazorCore posteRazorCore;
     Controller controller(&posteRazorCore, &dialog);
-    WizardController wizardController(&dialog);
 
     QSettings settings;
     controller.readSettings(&settings);

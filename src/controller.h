@@ -28,6 +28,7 @@
 
 class PosteRazorCore;
 class MainWindow;
+class WizardController;
 class QTranslator;
 
 class Controller: public QObject
@@ -85,6 +86,7 @@ protected:
     PosteRazorCore *m_posteRazorCore;
     MainWindow *m_mainWindow;
     bool m_launchPDFApplication;
+    WizardController *m_wizardController;
     QTranslator *m_translator;
     QString m_translationName;
 

@@ -22,6 +22,7 @@
 
 #include "controller.h"
 #include "mainwindow.h"
+#include "wizardcontroller.h"
 #include <QSettings>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -64,6 +65,8 @@ Controller::Controller(PosteRazorCore *posteRazorCore, MainWindow *mainWindow, Q
     connect(m_mainWindow, SIGNAL(openPosteRazorWebsiteSignal()), SLOT(openPosteRazorWebsite()));
     connect(m_mainWindow, SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), m_posteRazorCore, SLOT(paintOnCanvas(PaintCanvasInterface*, const QVariant&)));
     connect(m_posteRazorCore, SIGNAL(previewImageChanged(const QImage&)), m_mainWindow, SLOT(setPreviewImage(const QImage&)));
+
+    m_wizardController = new WizardController(m_mainWindow, this);
 
     updateDialog();
     setDialogPosterSizeMode();
@@ -440,6 +443,7 @@ void Controller::loadTranslation(const QString &localeName)
         m_mainWindow->setCurrentTranslation(saneLocaleName);
         if (!localeName.isEmpty())
             m_translationName = localeName;
+        m_wizardController->updateDialogWizardStepDescription();
     }
 }
 

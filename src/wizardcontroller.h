@@ -40,9 +40,10 @@ public:
 
     WizardController(QObject *wizardDialog, QObject *parent = 0);
 
+    void updateDialogWizardStepDescription();
+
 private slots:
     void updateDialogWizardStep();
-    void updateDialogWizardStepDescription();
     void handlePrevButtonPressed();
     void handleNextButtonPressed();
     void handleImageLoaded();

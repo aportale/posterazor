@@ -36,7 +36,6 @@ WizardController::WizardController(QObject *wizardDialog, QObject *parent)
     connect(wizardDialog, SIGNAL(imageLoaded()), SLOT(handleImageLoaded()));
     connect(wizardDialog, SIGNAL(prevButtonPressed()), SLOT(handlePrevButtonPressed()));
     connect(wizardDialog, SIGNAL(nextButtonPressed()), SLOT(handleNextButtonPressed()));
-    connect(wizardDialog, SIGNAL(translationChanged()), SLOT(updateDialogWizardStepDescription()), Qt::QueuedConnection);
 
     updateDialogWizardStep();
 }
