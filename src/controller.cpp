@@ -346,14 +346,14 @@ void Controller::loadInputImage()
         allWildcards << formatWildcards;
         allFilters << formats.at(i).second + " (" +  formatWildcards.join(" ") + ")";
     }
-    allFilters.prepend(QCoreApplication::translate("PosteRazorDialog", "All image formats") + " (" +  allWildcards.join(" ") + ")");
+    allFilters.prepend(QCoreApplication::translate("Main window", "All image formats") + " (" +  allWildcards.join(" ") + ")");
 
     static const QString loadPathSettingsKey("loadPath");
     QSettings loadPathSettings;
 
     QString loadFileName = QFileDialog::getOpenFileName (
         m_mainWindow,
-        QCoreApplication::translate("PosteRazorDialog", "Load an input image"),
+        QCoreApplication::translate("Main window", "Load an input image"),
         loadPathSettings.value(loadPathSettingsKey, ".").toString(),
         allFilters.join(";;")
     );
@@ -370,7 +370,7 @@ bool Controller::loadInputImage(const QString &fileName)
     QString loadErrorMessage;
     const bool successful = loadInputImage(fileName, loadErrorMessage);
     if (!successful)
-        QMessageBox::critical(m_mainWindow, "", QCoreApplication::translate("PosteRazorDialog", "The Image '%1' could not be loaded.")
+        QMessageBox::critical(m_mainWindow, "", QCoreApplication::translate("Main window", "The Image '%1' could not be loaded.")
             .arg(QDir::convertSeparators(fileName)));
     return successful;
 }
@@ -404,7 +404,7 @@ void Controller::savePoster() const
     do {
         saveFileName = QFileDialog::getSaveFileName(
             m_mainWindow,
-            QCoreApplication::translate("PosteRazorDialog", "Save the poster"),
+            QCoreApplication::translate("Main window", "Save the poster"),
             saveFileName,
             QLatin1String("Portable Document format (*.pdf)"),
             NULL,
@@ -418,11 +418,11 @@ void Controller::savePoster() const
             fileExistsAskUserForOverwrite = QFileInfo(saveFileName).exists();
 
             if (!fileExistsAskUserForOverwrite
-                || QMessageBox::Yes == (QMessageBox::question(NULL, "", QCoreApplication::translate("PosteRazorDialog", "The file '%1' already exists.\nDo you want to overwrite it?").arg(QDir::convertSeparators(saveFileName)), QMessageBox::Yes, QMessageBox::No))
+                || QMessageBox::Yes == (QMessageBox::question(NULL, "", QCoreApplication::translate("Main window", "The file '%1' already exists.\nDo you want to overwrite it?").arg(QDir::convertSeparators(saveFileName)), QMessageBox::Yes, QMessageBox::No))
                 ) {
                 int result = savePoster(saveFileName.toAscii());
                 if (result != 0)
-                    QMessageBox::critical(NULL, "", QCoreApplication::translate("PosteRazorDialog", "The File \"%1\" could not be saved.").arg(saveFileName), QMessageBox::Ok, QMessageBox::NoButton);
+                    QMessageBox::critical(NULL, "", QCoreApplication::translate("Main window", "The File \"%1\" could not be saved.").arg(saveFileName), QMessageBox::Ok, QMessageBox::NoButton);
                 else
                     savePathSettings.setValue(savePathSettingsKey, QFileInfo(saveFileName).absolutePath());
                 fileExistsAskUserForOverwrite = false;
@@ -455,6 +455,6 @@ void Controller::setUnitOfLength(const QString &unit)
 
 void Controller::openPosteRazorWebsite()
 {
-    QDesktopServices::openUrl(QCoreApplication::translate("PosteRazorHelp", "http://posterazor.sourceforge.net/", "Only translate, if the website has this language."));
+    QDesktopServices::openUrl(QCoreApplication::translate("Help", "http://posterazor.sourceforge.net/", "Only translate, if the website has this language."));
 }
 
