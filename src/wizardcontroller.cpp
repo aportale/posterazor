@@ -143,13 +143,17 @@ QString WizardController::stepTitle(WizardSteps step)
 
 QString WizardController::stepHelp(WizardSteps step)
 {
-    return
-        step == WizardStepInputImage?  QCoreApplication::translate("Help",
+    QString result;
+    switch (step) {
+    case WizardStepInputImage:
+        result = QCoreApplication::translate("Help",
             "Load an image by clicking the button with the open icon and selecting an image file, or by drag & dropping an image file on the PosteRazor. The drag & drop also works during the other steps.\n"
             "After loading the image, the most important informations are listed in the '%1' fields.",
             "Wizard step 1. Place holders: %1 = 'Image informations' (will be automatically inserted)")
-            .arg(QCoreApplication::translate("Main window", "Image Informations"))
-        :step == WizardStepPaperSize?  QCoreApplication::translate("Help",
+            .arg(QCoreApplication::translate("Main window", "Image Informations"));
+        break;
+    case WizardStepPaperSize:
+        result = QCoreApplication::translate("Help",
             "Define the paper sheet size that you use in your printer.\n"
             "A standard paper sheet size can be selected from the '%1' chooser, along with the desired paper sheet orientation.\n"
             "Alternatively, a custom paper sheet size can be defined in the '%2' tab.\n"
@@ -157,13 +161,17 @@ QString WizardController::stepHelp(WizardSteps step)
             "Wizard step 2. Place holders: %1 = 'Format:', %2 = 'Custom', %3 = 'Borders (%1)' (will be automatically inserted)")
             .arg(QCoreApplication::translate("Main window", "Format:"))
             .arg(QCoreApplication::translate("Main window", "Custom"))
-            .arg(QCoreApplication::translate("Main window", "Borders (%1)").arg("xyz")) // TODO: Provide current dimension unit instead of "xyz"
-        :step == WizardStepOverlapping?QCoreApplication::translate("Help",
+            .arg(QCoreApplication::translate("Main window", "Borders (%1)").arg("xyz")); // TODO: Provide current dimension unit instead of "xyz"
+        break;
+    case WizardStepOverlapping:
+        result = QCoreApplication::translate("Help",
             "Image tile overlapping is needed to have some tolerance for cutting off the unneeded borders from one side. Additionally, like the borders from the previous step, it gives more area for gluing together the final poster tiles.\n"
             "The '%1' defines the borders that are intended to be overlapped by the neighbor tiles. The borders on the opposite sides are intended to be cut (except on the outermost tiles).",
             "Wizard step 3. Place holders: %1 = 'Overlapping position' (will be automatically inserted)")
-            .arg(QCoreApplication::translate("Main window", "Overlapping position"))
-        :step == WizardStepPosterSize? QCoreApplication::translate("Help",
+            .arg(QCoreApplication::translate("Main window", "Overlapping position"));
+        break;
+    case WizardStepPosterSize:
+        result = QCoreApplication::translate("Help",
             "Define the final poster size, in one of the following three modes which can be selected by the corresponding radio buttons:\n"
             "'%1' You want to have a specific size of your poster.\n"
             "'%2' You want to use whole paper sheets and specify how many of them of them you want to use.\n"
@@ -174,10 +182,14 @@ QString WizardController::stepHelp(WizardSteps step)
             .arg(QCoreApplication::translate("Main window", "Absolute size:"))
             .arg(QCoreApplication::translate("Main window", "Size in pages:"))
             .arg(QCoreApplication::translate("Main window", "Size in percent:"))
-            .arg(QCoreApplication::translate("Main window", "Image alignment"))
-        :                              QCoreApplication::translate("Help",
+            .arg(QCoreApplication::translate("Main window", "Image alignment"));
+        break;
+    default:
+        result = QCoreApplication::translate("Help",
             "Save the poster by clicking the save button and specifying a destination file name.\n"
             "Check or uncheck the '%1', if the standard PDF handling application that is set in your operating system should be automatically started after the PDF file is saved.",
             "Wizard step 5. Place holders: %1 = 'Open PDF after saving' (will be automatically inserted)")
             .arg(QCoreApplication::translate("Main window", "Open PDF after saving"));
+    }
+    return result;
 }
