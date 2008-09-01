@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="it">
+<defaultcodec></defaultcodec>
 <context>
     <name>Help</name>
     <message>
-        <location filename="wizardcontroller.cpp" line="121"/>
+        <location filename="wizardcontroller.cpp" line="129"/>
         <source>Step %1 of %2:</source>
         <translation type="unfinished">Passaggio %1 di %2:</translation>
     </message>
@@ -34,55 +35,60 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="130"/>
+        <location filename="wizardcontroller.cpp" line="138"/>
         <source>Load an input image</source>
         <translation type="unfinished">Carica in immagine</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="131"/>
+        <location filename="wizardcontroller.cpp" line="139"/>
         <source>Printer paper format</source>
         <translation type="unfinished">Formato pagina della stampante</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="132"/>
+        <location filename="wizardcontroller.cpp" line="140"/>
         <source>Image tile overlapping</source>
         <translation type="unfinished">Suddivisioni dell&apos;immagine</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="133"/>
+        <location filename="wizardcontroller.cpp" line="141"/>
         <source>Final poster size</source>
         <translation type="unfinished">Dimensioni finali del poster</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="133"/>
+        <location filename="wizardcontroller.cpp" line="141"/>
         <source>Save the Poster</source>
         <translation type="unfinished">Salva il Poster</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="143"/>
+        <location filename="wizardcontroller.cpp" line="153"/>
         <source>Load an image by clicking the button with the open icon and selecting an image file, or by drag &amp; dropping an image file on the PosteRazor. The drag &amp; drop also works during the other steps.
 After loading the image, the most important informations are listed in the &apos;%1&apos; fields.</source>
         <comment>Wizard step 1. Place holders: %1 = &apos;Image informations&apos; (will be automatically inserted)</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Carica l&apos;immagine premendo il bottone con l&apos;icona a forma di cartella e seleziona l&apos;immagine di origine. L&apos;immagine può essere anche trascinata all&apos;interno della finestra tramite drag &amp; drop. La procedura di drag &amp; drop funziona anche nei successivi passaggi.
+Dopo il caricamento dell&apos;immagine, le informazioni di dettaglio sono elencate nella casella &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="150"/>
+        <location filename="wizardcontroller.cpp" line="162"/>
         <source>Define the paper sheet size that you use in your printer.
 A standard paper sheet size can be selected from the &apos;%1&apos; chooser, along with the desired paper sheet orientation.
 Alternatively, a custom paper sheet size can be defined in the &apos;%2&apos; tab.
 Paper borders are defined in the &apos;%3&apos; fields. Even if your printer does need no (or small) paper borders, some border might be needed to have enough area for gluing the final poster tiles together.</source>
         <comment>Wizard step 2. Place holders: %1 = &apos;Format:&apos;, %2 = &apos;Custom&apos;, %3 = &apos;Borders (%1)&apos; (will be automatically inserted)</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Definisce la dimensione del foglio di stampa che viene utilizzato dalla tua stampante.
+I principali formati standard per stampante possono essere selezionati dalla casella di scelta &apos;%1&apos;, così come per l&apos;Orientamento.
+In alternativa, può essere definito un foglio di stampa personalizzato selezionando la scheda &apos;%2&apos;.
+I bordi del foglio sono definiti nella casella &apos;%3&apos;. Sebbene la vostra stampante possa specificatamente stampare senza margini vi consigliamo di lasciare un piccolo bordo per facilitare la successiva incollatura dei pezzi per comporre il poster finale.</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="157"/>
+        <location filename="wizardcontroller.cpp" line="171"/>
         <source>Image tile overlapping is needed to have some tolerance for cutting off the unneeded borders from one side. Additionally, like the borders from the previous step, it gives more area for gluing together the final poster tiles.
 The &apos;%1&apos; defines the borders that are intended to be overlapped by the neighbor tiles. The borders on the opposite sides are intended to be cut (except on the outermost tiles).</source>
         <comment>Wizard step 3. Place holders: %1 = &apos;Overlapping position&apos; (will be automatically inserted)</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">La sovrapposizione delle sezioni dell&apos;immagine è utile per avere un intervallo di tolleranza per tagliare i bordi non necessari sui lati. In aggiunta, come specificato per i bordi nel passo precedente, può permettere un&apos;area più ampia per l&apos;incollatura finale del poster.
+La &apos;%1&apos; difinisce i bordi che saranno sovrapposti dalle singole sezioni contigue dell&apos;immagine. I bordi sui lati opposti sono quelli che si intendono tagliare per l&apos;incollatura (ad eccezione delle sezioni di margine esterno).</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="166"/>
+        <location filename="wizardcontroller.cpp" line="182"/>
         <source>Define the final poster size, in one of the following three modes which can be selected by the corresponding radio buttons:
 &apos;%1&apos; You want to have a specific size of your poster.
 &apos;%2&apos; You want to use whole paper sheets and specify how many of them of them you want to use.
@@ -90,14 +96,19 @@ The &apos;%1&apos; defines the borders that are intended to be overlapped by the
 The aspect ratio of width and height is always 1:1 and is automatically recalculated. In the preview area, you can see the overlapping areas which are surrounded by light red rectangles.
 &apos;%4&apos; sets the alignment of the image on the total paper area of the poster. This is useful if you want to keep the unused paper.</source>
         <comment>Wizard step 4. Place holders: %1 = &apos;Absolute size:&apos;, %2 = &apos;Size in pages:&apos;, %3 = &apos;Size in percent:&apos;, %4 = &apos;Image alignment&apos; (will be automatically inserted)</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Definisci la dimensione finale del poster, in uno dei seguenti tre metodi che possono essere selezionati marcando i corrispondenti tasti di scelta:
+&apos;%1&apos; imposta una dimensione specifica per il tuo poster.
+&apos;%2&apos; imposta in quante pagine totali verrà ripartita l&apos;immagine da stampare.
+&apos;%3&apos; in percentuale: l&apos;immagine sorgente selezionata avrà una specifica dimensione in pixel e in dpi (punti per pollice). Selezionando questa opzione l&apos;immagine sarà ingrandita in base al fattore percentuale inserito.
+La proporzione tra la larghezza e l&apos;altezza è sempre 1:1 ed è automaticamente ricalcolata. Nell&apos;area di Anteprima, puoi vedere le aree di sovrapposizionamento che sono marcate da triangoli di color rosso chiaro.
+&apos;%4&apos; imposta l&apos;allineamento dell&apos;immagine nell&apos;area totale di stampa del poster. Ciò è utile se vuoi mantenere parti di pagina non utilizzate.</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="174"/>
+        <location filename="wizardcontroller.cpp" line="192"/>
         <source>Save the poster by clicking the save button and specifying a destination file name.
 Check or uncheck the &apos;%1&apos;, if the standard PDF handling application that is set in your operating system should be automatically started after the PDF file is saved.</source>
         <comment>Wizard step 5. Place holders: %1 = &apos;Open PDF after saving&apos; (will be automatically inserted)</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Salva il poster premendo il bottone con l&apos;icona a forma di floppy e specifica un nome file di destinazione. Marca o smarca il segno di spunta &apos;%1&apos;, e l&apos;applicazione impostata come predefinita per il formato PDF verrà avviata automaticamente dopo il salvataggio del file.</translation>
     </message>
 </context>
 <context>

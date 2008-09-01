@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="nl">
+<defaultcodec></defaultcodec>
 <context>
     <name>Help</name>
     <message>
-        <location filename="wizardcontroller.cpp" line="121"/>
+        <location filename="wizardcontroller.cpp" line="129"/>
         <source>Step %1 of %2:</source>
         <translation type="unfinished">Stap %1 van %2:</translation>
     </message>
@@ -34,55 +35,60 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="130"/>
+        <location filename="wizardcontroller.cpp" line="138"/>
         <source>Load an input image</source>
         <translation type="unfinished">Kies een afbeelding</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="131"/>
+        <location filename="wizardcontroller.cpp" line="139"/>
         <source>Printer paper format</source>
         <translation type="unfinished">Papierafmeting</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="132"/>
+        <location filename="wizardcontroller.cpp" line="140"/>
         <source>Image tile overlapping</source>
         <translation type="unfinished">Overlapping</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="133"/>
+        <location filename="wizardcontroller.cpp" line="141"/>
         <source>Final poster size</source>
         <translation type="unfinished">Postergrootte</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="133"/>
+        <location filename="wizardcontroller.cpp" line="141"/>
         <source>Save the Poster</source>
         <translation type="unfinished">Poster opslaan</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="143"/>
+        <location filename="wizardcontroller.cpp" line="153"/>
         <source>Load an image by clicking the button with the open icon and selecting an image file, or by drag &amp; dropping an image file on the PosteRazor. The drag &amp; drop also works during the other steps.
 After loading the image, the most important informations are listed in the &apos;%1&apos; fields.</source>
         <comment>Wizard step 1. Place holders: %1 = &apos;Image informations&apos; (will be automatically inserted)</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kies een afbeelding door op het icoon van de open map te klikken en te zoeken naar de plaats van de afbeelding, of maak gebruik van &quot;Drag and Drop&quot;. Sleep dan het afbeeldingbestand naar de PosteRazor. Dit &quot;Drag and Drop&quot; principe werkt ook bij de andere functies binnen PosteRazor.
+Veel bestands- en grafische formaten kunnen worden gebruikt. Na het kiezen van het invoerbestand worden de belangrijkste gegevens getoond in het &apos;%1&apos; venster.</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="150"/>
+        <location filename="wizardcontroller.cpp" line="162"/>
         <source>Define the paper sheet size that you use in your printer.
 A standard paper sheet size can be selected from the &apos;%1&apos; chooser, along with the desired paper sheet orientation.
 Alternatively, a custom paper sheet size can be defined in the &apos;%2&apos; tab.
 Paper borders are defined in the &apos;%3&apos; fields. Even if your printer does need no (or small) paper borders, some border might be needed to have enough area for gluing the final poster tiles together.</source>
         <comment>Wizard step 2. Place holders: %1 = &apos;Format:&apos;, %2 = &apos;Custom&apos;, %3 = &apos;Borders (%1)&apos; (will be automatically inserted)</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kies het papierformaat dat gebruikt wordt in de printer.
+Standaardafmetingen kunnen bij voorbaat al aangeklikt worden in het &apos;%1&apos; venster, evenals de Oriëntatie in de lengte of breedte.
+Eventueel kan een afwijkend formaat gebruikt worden bij de keuze &apos;%2&apos;.
+Papiermarges worden vastgelegd in de optie &apos;%3&apos;. Ook al heeft een printer geen -of een heel kleine- papiermarge, een redelijke ruimte is toch altijd nog nodig om de vellen aan elkaar te lijmen.</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="157"/>
+        <location filename="wizardcontroller.cpp" line="171"/>
         <source>Image tile overlapping is needed to have some tolerance for cutting off the unneeded borders from one side. Additionally, like the borders from the previous step, it gives more area for gluing together the final poster tiles.
 The &apos;%1&apos; defines the borders that are intended to be overlapped by the neighbor tiles. The borders on the opposite sides are intended to be cut (except on the outermost tiles).</source>
         <comment>Wizard step 3. Place holders: %1 = &apos;Overlapping position&apos; (will be automatically inserted)</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gedeeltelijke overlapping is nodig om ruimte te krijgen aan een papierkanzijde. Dit geeft ruimte om de verschillende vellen te verlijmen.
+De &apos;%1&apos; geven de hoeken aan die door het naastliggende vel papier bedekt worden. De tegenoverliggende randen van de opvolgende vellen dienen te worden afgesneden of -geknipt (zonder de buitenmarge dus).</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="166"/>
+        <location filename="wizardcontroller.cpp" line="182"/>
         <source>Define the final poster size, in one of the following three modes which can be selected by the corresponding radio buttons:
 &apos;%1&apos; You want to have a specific size of your poster.
 &apos;%2&apos; You want to use whole paper sheets and specify how many of them of them you want to use.
@@ -90,14 +96,20 @@ The &apos;%1&apos; defines the borders that are intended to be overlapped by the
 The aspect ratio of width and height is always 1:1 and is automatically recalculated. In the preview area, you can see the overlapping areas which are surrounded by light red rectangles.
 &apos;%4&apos; sets the alignment of the image on the total paper area of the poster. This is useful if you want to keep the unused paper.</source>
         <comment>Wizard step 4. Place holders: %1 = &apos;Absolute size:&apos;, %2 = &apos;Size in pages:&apos;, %3 = &apos;Size in percent:&apos;, %4 = &apos;Image alignment&apos; (will be automatically inserted)</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bepaal de uiteindelijke grootte van de poster met gebruikmaking van de volgende instellingen, die via de knoppen gekozen kunnen worden:
+&apos;%1&apos; bepaal de maximale grootte van de poster.
+&apos;%2&apos; maak gebruik van hele vellen papier en bepaal hoeveel er gebruikt moeten worden.
+&apos;%3&apos; een afbeelding heeft een zekere grootte, afhankelijk van de hoeveelheid pixels en DPI (dots per Inch). Dit kan vergroot worden met een zekere factor.
+De breedte-hoogte verhouding is altijd 1:1 en wordt automatisch herberekend. In het schermvoorbeeld venster worden de overlappende zijden helderrood gemarkeerd.
+&apos;%4&apos; bepaalt de positie van de poster ten opzichte van het totale oppervlak van alle vellen. Dit kan handig zijn voor papierbesparing van het overgebleven papier.</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="174"/>
+        <location filename="wizardcontroller.cpp" line="192"/>
         <source>Save the poster by clicking the save button and specifying a destination file name.
 Check or uncheck the &apos;%1&apos;, if the standard PDF handling application that is set in your operating system should be automatically started after the PDF file is saved.</source>
         <comment>Wizard step 5. Place holders: %1 = &apos;Open PDF after saving&apos; (will be automatically inserted)</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sla de poster op door te klikken op de brede knop en het ingeven van een nieuwe, voor opslag geschikte bestandsnaam.
+Vink &apos;%1&apos; aan als de opgeslagen poster in de voor het besturingssysteem tot standaard gemaakte PDF-applicatie moet worden opgestart.</translation>
     </message>
 </context>
 <context>
