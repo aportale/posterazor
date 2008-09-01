@@ -417,6 +417,7 @@ void MainWindow::createConnections()
     connect(m_paintCanvas,                          SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)));
     connect(m_actionPosteRazorWebSite,              SIGNAL(triggered()),                SIGNAL(openPosteRazorWebsiteSignal()));
     connect(m_actionAboutQt,                        SIGNAL(triggered()),                SLOT(showAboutQtDialog()));
+    connect(m_actionPosteRazorManual,               SIGNAL(triggered()),                SIGNAL(manualSignal()));
 }
 
 void MainWindow::populateUI()

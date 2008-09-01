@@ -28,6 +28,7 @@
 class WizardController: public QObject
 {
     Q_OBJECT
+    Q_ENUMS(WizardSteps)
 
 public:
     enum WizardSteps {
@@ -61,7 +62,7 @@ signals:
 private:
     WizardSteps m_wizardStep;
     bool m_imageWasLoaded;
-    static const int m_wizardStepsCount = (int)WizardStepSavePoster + 1;
+    static const int m_wizardStepsCount;
 
     static QString stepTitle(WizardSteps step);
     static QString stepHelp(WizardSteps step);

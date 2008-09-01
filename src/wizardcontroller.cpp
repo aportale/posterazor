@@ -22,6 +22,8 @@
 
 #include "wizardcontroller.h"
 #include <QCoreApplication>
+#include <QMetaObject>
+#include <QMetaEnum>
 #include <QDialog>
 #include <QLabel>
 #include <QVBoxLayout>
@@ -41,7 +43,9 @@ HelpDialog::HelpDialog(const QString &title, const QString &text, QWidget *paren
     setModal(true);
     setAttribute(Qt::WA_DeleteOnClose, true);
     setLayout(new QVBoxLayout);
-    layout()->addWidget(new QLabel(text));
+    QLabel *label = new QLabel(text);
+    label->setWordWrap(true);
+    layout()->addWidget(label);
 }
 
 void HelpDialog::showHelp(const QString &title, const QString &text, QWidget *parent)
@@ -49,6 +53,11 @@ void HelpDialog::showHelp(const QString &title, const QString &text, QWidget *pa
     HelpDialog *dialog = new HelpDialog(title, text, parent);
     dialog->show();
 }
+
+static const QMetaEnum wizardStepsEnum =
+    WizardController::staticMetaObject.enumerator(WizardController::staticMetaObject.indexOfEnumerator("WizardSteps"));
+
+const int WizardController::m_wizardStepsCount = wizardStepsEnum.keyCount();
 
 WizardController::WizardController(QObject *wizardDialog, QObject *parent)
     : QObject(parent)
@@ -63,6 +72,7 @@ WizardController::WizardController(QObject *wizardDialog, QObject *parent)
     connect(wizardDialog, SIGNAL(imageLoaded()), SLOT(handleImageLoaded()));
     connect(wizardDialog, SIGNAL(prevButtonPressed()), SLOT(handlePrevButtonPressed()));
     connect(wizardDialog, SIGNAL(nextButtonPressed()), SLOT(handleNextButtonPressed()));
+    connect(wizardDialog, SIGNAL(manualSignal()), SLOT(showManual()));
     connect(wizardDialog, SIGNAL(wizardStepHelpSignal()), SLOT(showHelpForCurrentStep()));
 
     updateDialogWizardStep();
@@ -76,6 +86,21 @@ void WizardController::handleImageLoaded()
 
 void WizardController::showManual()
 {
+    QString manual;
+    manual.append(QCoreApplication::translate("Help",
+        "PosteRazor has its user interface organized in a 'Wizard' fashion. All settings for the poster creation can be done in %1 steps.\n"
+        "The <b>%2</b> and <b>%3</b> buttons navigate through these steps. The <b>?</b> button opens a help window with an explanation of the current step.\n"
+        "All entries and choices are remembered until the next usage of the PosteRazor.",
+        "Manual preface. Place holders: %1 = Number of wizard steps, %2 = 'Back', %3 = 'Next' (will be automatically inserted)")
+        .arg(m_wizardStepsCount)
+        .arg(QCoreApplication::translate("Main window", "Back"))
+        .arg(QCoreApplication::translate("Main window", "Next")));
+    for (int i = 0; i < wizardStepsEnum.keyCount(); i++) {
+        const WizardSteps step = (WizardSteps)wizardStepsEnum.value(i);
+        manual.append(stepTitle(step));
+        manual.append(stepHelp(step));
+    }
+    HelpDialog::showHelp(QCoreApplication::translate("Help", "&Manual"), manual, NULL);
 }
 
 void WizardController::showHelpForCurrentStep()
