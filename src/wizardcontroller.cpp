@@ -27,6 +27,7 @@
 #include <QDialog>
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QDialogButtonBox>
 
 class HelpDialog : public QDialog
 {
@@ -50,6 +51,10 @@ HelpDialog::HelpDialog(const QString &title, const QString &text, QWidget *paren
     label->setWordWrap(true);
     label->setTextFormat(Qt::RichText);
     layout()->addWidget(label);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox;
+    buttonBox->setStandardButtons(QDialogButtonBox::Ok);
+    connect(buttonBox, SIGNAL(accepted ()), SLOT(accept()));
+    layout()->addWidget(buttonBox);
 }
 
 void HelpDialog::showHelp(const QString &title, const QString &text, QWidget *parent)
