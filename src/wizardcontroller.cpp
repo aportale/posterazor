@@ -111,10 +111,17 @@ void WizardController::showManual()
 
 void WizardController::showHelpForCurrentStep()
 {
-    const QString helpText = QString("<h2>%1</h2>").arg(stepTitle(m_wizardStep)) + stepHelp(m_wizardStep);
+    QString helpText = QString("<h2>%1</h2>").arg(stepTitle(m_wizardStep)) + stepHelp(m_wizardStep);
     QMessageBox box;
     box.setWindowTitle(cleanString(stepXofYString(m_wizardStep)));
+#if defined(Q_WS_MAC)
+    // Hack. Since QMessageBoxPrivate sets the whole font to bold on Q_WS_MAC (no matter which style),
+    // we put emphasis on the key words by setting them to italic and into single quotes.
+    helpText.replace("<b>", "<i>'");
+    helpText.replace("</b>", "'</i>");
+#endif
     box.setText(helpText);
+	box.setTextFormat(Qt::RichText);
     box.addButton(QMessageBox::Ok);
     box.exec();
 }
