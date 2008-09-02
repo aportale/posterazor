@@ -3,7 +3,7 @@
 <context>
     <name>Help</name>
     <message>
-        <location filename="wizardcontroller.cpp" line="121"/>
+        <location filename="wizardcontroller.cpp" line="171"/>
         <source>Step %1 of %2:</source>
         <translation type="unfinished">总 %2 步的第 %1 步:</translation>
     </message>
@@ -34,69 +34,97 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="130"/>
+        <location filename="wizardcontroller.cpp" line="180"/>
         <source>Load an input image</source>
         <translation type="unfinished">输入一个图像</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="131"/>
+        <location filename="wizardcontroller.cpp" line="181"/>
         <source>Printer paper format</source>
         <translation type="unfinished">设置页面格式</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="132"/>
+        <location filename="wizardcontroller.cpp" line="182"/>
         <source>Image tile overlapping</source>
         <translation type="unfinished">设置图像相互折叠的尺寸</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="133"/>
+        <location filename="wizardcontroller.cpp" line="183"/>
         <source>Final poster size</source>
         <translation type="unfinished">设置最终的图像大小</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="133"/>
+        <location filename="wizardcontroller.cpp" line="183"/>
         <source>Save the Poster</source>
         <translation type="unfinished">保存</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="143"/>
+        <location filename="wizardcontroller.cpp" line="195"/>
         <source>Load an image by clicking the button with the open icon and selecting an image file, or by drag &amp; dropping an image file on the PosteRazor. The drag &amp; drop also works during the other steps.
-After loading the image, the most important informations are listed in the &apos;%1&apos; fields.</source>
+After loading the image, the most important informations are listed in the &lt;b&gt;%1&lt;/b&gt; fields.</source>
         <comment>Wizard step 1. Place holders: %1 = &apos;Image informations&apos; (will be automatically inserted)</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="150"/>
+        <location filename="wizardcontroller.cpp" line="204"/>
         <source>Define the paper sheet size that you use in your printer.
-A standard paper sheet size can be selected from the &apos;%1&apos; chooser, along with the desired paper sheet orientation.
-Alternatively, a custom paper sheet size can be defined in the &apos;%2&apos; tab.
-Paper borders are defined in the &apos;%3&apos; fields. Even if your printer does need no (or small) paper borders, some border might be needed to have enough area for gluing the final poster tiles together.</source>
+A standard paper sheet size can be selected from the &lt;b&gt;%1&lt;/b&gt; chooser, along with the desired paper sheet orientation.
+Alternatively, a custom paper sheet size can be defined in the &lt;b&gt;%2&lt;/b&gt; tab.
+Paper borders are defined in the &lt;b&gt;%3&lt;/b&gt; fields. Even if your printer does need no (or small) paper borders, some border might be needed to have enough area for gluing the final poster tiles together.</source>
         <comment>Wizard step 2. Place holders: %1 = &apos;Format:&apos;, %2 = &apos;Custom&apos;, %3 = &apos;Borders (%1)&apos; (will be automatically inserted)</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="157"/>
+        <location filename="wizardcontroller.cpp" line="213"/>
         <source>Image tile overlapping is needed to have some tolerance for cutting off the unneeded borders from one side. Additionally, like the borders from the previous step, it gives more area for gluing together the final poster tiles.
-The &apos;%1&apos; defines the borders that are intended to be overlapped by the neighbor tiles. The borders on the opposite sides are intended to be cut (except on the outermost tiles).</source>
+The &lt;b&gt;%1&lt;/b&gt; defines the borders that are intended to be overlapped by the neighbor tiles. The borders on the opposite sides are intended to be cut (except on the outermost tiles).</source>
         <comment>Wizard step 3. Place holders: %1 = &apos;Overlapping position&apos; (will be automatically inserted)</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="166"/>
-        <source>Define the final poster size, in one of the following three modes which can be selected by the corresponding radio buttons:
-&apos;%1&apos; You want to have a specific size of your poster.
-&apos;%2&apos; You want to use whole paper sheets and specify how many of them of them you want to use.
-&apos;%3&apos; Your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to enlarge the image by a certain factor.
-The aspect ratio of width and height is always 1:1 and is automatically recalculated. In the preview area, you can see the overlapping areas which are surrounded by light red rectangles.
-&apos;%4&apos; sets the alignment of the image on the total paper area of the poster. This is useful if you want to keep the unused paper.</source>
-        <comment>Wizard step 4. Place holders: %1 = &apos;Absolute size:&apos;, %2 = &apos;Size in pages:&apos;, %3 = &apos;Size in percent:&apos;, %4 = &apos;Image alignment&apos; (will be automatically inserted)</comment>
+        <location filename="wizardcontroller.cpp" line="220"/>
+        <source>Define the final poster size, in one of the following three modes which can be selected by the corresponding radio buttons:</source>
+        <comment>Wizard step 4. Start of the description.</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="174"/>
+        <location filename="wizardcontroller.cpp" line="226"/>
+        <source>You want to have a specific size of your poster.</source>
+        <comment>Wizard step 4. Description for &apos;absolute size&apos;</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="231"/>
+        <source>You want to use whole paper sheets and specify how many of them of them you want to use.</source>
+        <comment>Wizard step 4. Description for &apos;size in pages&apos;</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="236"/>
+        <source>Your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to enlarge the image by a certain factor.</source>
+        <comment>Wizard step 4. Description for &apos;size in percent&apos;</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="242"/>
+        <source>The aspect ratio of width and height is always 1:1 and is automatically recalculated. In the preview area, you can see the overlapping areas which are surrounded by light red rectangles.
+&lt;b&gt;%1&lt;/b&gt; sets the alignment of the image on the total paper area of the poster. This is useful if you want to keep the unused paper.</source>
+        <comment>Wizard step 4. End of the description. Place holders: %1 = &apos;Image alignment&apos; (will be automatically inserted)</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="250"/>
         <source>Save the poster by clicking the save button and specifying a destination file name.
-Check or uncheck the &apos;%1&apos;, if the standard PDF handling application that is set in your operating system should be automatically started after the PDF file is saved.</source>
+Check or uncheck the &lt;b&gt;%1&lt;/b&gt;, if the standard PDF handling application that is set in your operating system should be automatically started after the PDF file is saved.</source>
         <comment>Wizard step 5. Place holders: %1 = &apos;Open PDF after saving&apos; (will be automatically inserted)</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="112"/>
+        <source>PosteRazor has its user interface organized in a &apos;Wizard&apos; fashion. All settings for the poster creation can be done in %1 steps.
+The &lt;b&gt;%2&lt;/b&gt; and &lt;b&gt;%3&lt;/b&gt; buttons navigate through these steps. The &lt;b&gt;?&lt;/b&gt; button opens a help window with an explanation of the current step.
+All entries and choices are remembered until the next usage of the PosteRazor.</source>
+        <comment>Manual preface. Place holders: %1 = Number of wizard steps, %2 = &apos;Back&apos;, %3 = &apos;Next&apos; (will be automatically inserted)</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -355,7 +383,7 @@ Do you want to overwrite it?</source>
         <translation type="unfinished">无法保存为文件 &apos;%1&apos;。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="443"/>
+        <location filename="mainwindow.cpp" line="444"/>
         <source>Language name</source>
         <translation type="unfinished">简体中文</translation>
     </message>

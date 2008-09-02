@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="nl">
-<defaultcodec></defaultcodec>
 <context>
     <name>Help</name>
     <message>
-        <location filename="wizardcontroller.cpp" line="129"/>
+        <location filename="wizardcontroller.cpp" line="171"/>
         <source>Step %1 of %2:</source>
         <translation type="unfinished">Stap %1 van %2:</translation>
     </message>
@@ -35,81 +34,105 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="138"/>
+        <location filename="wizardcontroller.cpp" line="180"/>
         <source>Load an input image</source>
         <translation type="unfinished">Kies een afbeelding</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="139"/>
+        <location filename="wizardcontroller.cpp" line="181"/>
         <source>Printer paper format</source>
         <translation type="unfinished">Papierafmeting</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="140"/>
+        <location filename="wizardcontroller.cpp" line="182"/>
         <source>Image tile overlapping</source>
         <translation type="unfinished">Overlapping</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="141"/>
+        <location filename="wizardcontroller.cpp" line="183"/>
         <source>Final poster size</source>
         <translation type="unfinished">Postergrootte</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="141"/>
+        <location filename="wizardcontroller.cpp" line="183"/>
         <source>Save the Poster</source>
         <translation type="unfinished">Poster opslaan</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="153"/>
+        <location filename="wizardcontroller.cpp" line="195"/>
         <source>Load an image by clicking the button with the open icon and selecting an image file, or by drag &amp; dropping an image file on the PosteRazor. The drag &amp; drop also works during the other steps.
-After loading the image, the most important informations are listed in the &apos;%1&apos; fields.</source>
+After loading the image, the most important informations are listed in the &lt;b&gt;%1&lt;/b&gt; fields.</source>
         <comment>Wizard step 1. Place holders: %1 = &apos;Image informations&apos; (will be automatically inserted)</comment>
         <translation type="unfinished">Kies een afbeelding door op het icoon van de open map te klikken en te zoeken naar de plaats van de afbeelding, of maak gebruik van &quot;Drag and Drop&quot;. Sleep dan het afbeeldingbestand naar de PosteRazor. Dit &quot;Drag and Drop&quot; principe werkt ook bij de andere functies binnen PosteRazor.
-Veel bestands- en grafische formaten kunnen worden gebruikt. Na het kiezen van het invoerbestand worden de belangrijkste gegevens getoond in het &apos;%1&apos; venster.</translation>
+Veel bestands- en grafische formaten kunnen worden gebruikt. Na het kiezen van het invoerbestand worden de belangrijkste gegevens getoond in het &lt;b&gt;%1&lt;/b&gt; venster.</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="162"/>
+        <location filename="wizardcontroller.cpp" line="204"/>
         <source>Define the paper sheet size that you use in your printer.
-A standard paper sheet size can be selected from the &apos;%1&apos; chooser, along with the desired paper sheet orientation.
-Alternatively, a custom paper sheet size can be defined in the &apos;%2&apos; tab.
-Paper borders are defined in the &apos;%3&apos; fields. Even if your printer does need no (or small) paper borders, some border might be needed to have enough area for gluing the final poster tiles together.</source>
+A standard paper sheet size can be selected from the &lt;b&gt;%1&lt;/b&gt; chooser, along with the desired paper sheet orientation.
+Alternatively, a custom paper sheet size can be defined in the &lt;b&gt;%2&lt;/b&gt; tab.
+Paper borders are defined in the &lt;b&gt;%3&lt;/b&gt; fields. Even if your printer does need no (or small) paper borders, some border might be needed to have enough area for gluing the final poster tiles together.</source>
         <comment>Wizard step 2. Place holders: %1 = &apos;Format:&apos;, %2 = &apos;Custom&apos;, %3 = &apos;Borders (%1)&apos; (will be automatically inserted)</comment>
         <translation type="unfinished">Kies het papierformaat dat gebruikt wordt in de printer.
-Standaardafmetingen kunnen bij voorbaat al aangeklikt worden in het &apos;%1&apos; venster, evenals de Oriëntatie in de lengte of breedte.
-Eventueel kan een afwijkend formaat gebruikt worden bij de keuze &apos;%2&apos;.
-Papiermarges worden vastgelegd in de optie &apos;%3&apos;. Ook al heeft een printer geen -of een heel kleine- papiermarge, een redelijke ruimte is toch altijd nog nodig om de vellen aan elkaar te lijmen.</translation>
+Standaardafmetingen kunnen bij voorbaat al aangeklikt worden in het &lt;b&gt;%1&lt;/b&gt; venster, evenals de Oriëntatie in de lengte of breedte.
+Eventueel kan een afwijkend formaat gebruikt worden bij de keuze &lt;b&gt;%2&lt;/b&gt;.
+Papiermarges worden vastgelegd in de optie &lt;b&gt;%3&lt;/b&gt;. Ook al heeft een printer geen -of een heel kleine- papiermarge, een redelijke ruimte is toch altijd nog nodig om de vellen aan elkaar te lijmen.</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="171"/>
+        <location filename="wizardcontroller.cpp" line="213"/>
         <source>Image tile overlapping is needed to have some tolerance for cutting off the unneeded borders from one side. Additionally, like the borders from the previous step, it gives more area for gluing together the final poster tiles.
-The &apos;%1&apos; defines the borders that are intended to be overlapped by the neighbor tiles. The borders on the opposite sides are intended to be cut (except on the outermost tiles).</source>
+The &lt;b&gt;%1&lt;/b&gt; defines the borders that are intended to be overlapped by the neighbor tiles. The borders on the opposite sides are intended to be cut (except on the outermost tiles).</source>
         <comment>Wizard step 3. Place holders: %1 = &apos;Overlapping position&apos; (will be automatically inserted)</comment>
         <translation type="unfinished">Gedeeltelijke overlapping is nodig om ruimte te krijgen aan een papierkanzijde. Dit geeft ruimte om de verschillende vellen te verlijmen.
-De &apos;%1&apos; geven de hoeken aan die door het naastliggende vel papier bedekt worden. De tegenoverliggende randen van de opvolgende vellen dienen te worden afgesneden of -geknipt (zonder de buitenmarge dus).</translation>
+De &lt;b&gt;%1&lt;/b&gt; geven de hoeken aan die door het naastliggende vel papier bedekt worden. De tegenoverliggende randen van de opvolgende vellen dienen te worden afgesneden of -geknipt (zonder de buitenmarge dus).</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="182"/>
-        <source>Define the final poster size, in one of the following three modes which can be selected by the corresponding radio buttons:
-&apos;%1&apos; You want to have a specific size of your poster.
-&apos;%2&apos; You want to use whole paper sheets and specify how many of them of them you want to use.
-&apos;%3&apos; Your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to enlarge the image by a certain factor.
-The aspect ratio of width and height is always 1:1 and is automatically recalculated. In the preview area, you can see the overlapping areas which are surrounded by light red rectangles.
-&apos;%4&apos; sets the alignment of the image on the total paper area of the poster. This is useful if you want to keep the unused paper.</source>
-        <comment>Wizard step 4. Place holders: %1 = &apos;Absolute size:&apos;, %2 = &apos;Size in pages:&apos;, %3 = &apos;Size in percent:&apos;, %4 = &apos;Image alignment&apos; (will be automatically inserted)</comment>
-        <translation type="unfinished">Bepaal de uiteindelijke grootte van de poster met gebruikmaking van de volgende instellingen, die via de knoppen gekozen kunnen worden:
-&apos;%1&apos; bepaal de maximale grootte van de poster.
-&apos;%2&apos; maak gebruik van hele vellen papier en bepaal hoeveel er gebruikt moeten worden.
-&apos;%3&apos; een afbeelding heeft een zekere grootte, afhankelijk van de hoeveelheid pixels en DPI (dots per Inch). Dit kan vergroot worden met een zekere factor.
-De breedte-hoogte verhouding is altijd 1:1 en wordt automatisch herberekend. In het schermvoorbeeld venster worden de overlappende zijden helderrood gemarkeerd.
-&apos;%4&apos; bepaalt de positie van de poster ten opzichte van het totale oppervlak van alle vellen. Dit kan handig zijn voor papierbesparing van het overgebleven papier.</translation>
+        <location filename="wizardcontroller.cpp" line="220"/>
+        <source>Define the final poster size, in one of the following three modes which can be selected by the corresponding radio buttons:</source>
+        <comment>Wizard step 4. Start of the description.</comment>
+        <translation type="unfinished">Bepaal de uiteindelijke grootte van de poster met gebruikmaking van de volgende instellingen, die via de knoppen gekozen kunnen worden:</translation>
     </message>
     <message>
-        <location filename="wizardcontroller.cpp" line="192"/>
+        <location filename="wizardcontroller.cpp" line="226"/>
+        <source>You want to have a specific size of your poster.</source>
+        <comment>Wizard step 4. Description for &apos;absolute size&apos;</comment>
+        <translation type="unfinished">Bepaal de maximale grootte van de poster.</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="231"/>
+        <source>You want to use whole paper sheets and specify how many of them of them you want to use.</source>
+        <comment>Wizard step 4. Description for &apos;size in pages&apos;</comment>
+        <translation type="unfinished">Maak gebruik van hele vellen papier en bepaal hoeveel er gebruikt moeten worden.</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="236"/>
+        <source>Your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to enlarge the image by a certain factor.</source>
+        <comment>Wizard step 4. Description for &apos;size in percent&apos;</comment>
+        <translation type="unfinished">Een afbeelding heeft een zekere grootte, afhankelijk van de hoeveelheid pixels en DPI (dots per Inch). Dit kan vergroot worden met een zekere factor.</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="242"/>
+        <source>The aspect ratio of width and height is always 1:1 and is automatically recalculated. In the preview area, you can see the overlapping areas which are surrounded by light red rectangles.
+&lt;b&gt;%1&lt;/b&gt; sets the alignment of the image on the total paper area of the poster. This is useful if you want to keep the unused paper.</source>
+        <comment>Wizard step 4. End of the description. Place holders: %1 = &apos;Image alignment&apos; (will be automatically inserted)</comment>
+        <translation type="unfinished">De breedte-hoogte verhouding is altijd 1:1 en wordt automatisch herberekend. In het schermvoorbeeld venster worden de overlappende zijden helderrood gemarkeerd.
+&lt;b&gt;%1&lt;/b&gt; bepaalt de positie van de poster ten opzichte van het totale oppervlak van alle vellen. Dit kan handig zijn voor papierbesparing van het overgebleven papier.</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="250"/>
         <source>Save the poster by clicking the save button and specifying a destination file name.
-Check or uncheck the &apos;%1&apos;, if the standard PDF handling application that is set in your operating system should be automatically started after the PDF file is saved.</source>
+Check or uncheck the &lt;b&gt;%1&lt;/b&gt;, if the standard PDF handling application that is set in your operating system should be automatically started after the PDF file is saved.</source>
         <comment>Wizard step 5. Place holders: %1 = &apos;Open PDF after saving&apos; (will be automatically inserted)</comment>
         <translation type="unfinished">Sla de poster op door te klikken op de brede knop en het ingeven van een nieuwe, voor opslag geschikte bestandsnaam.
-Vink &apos;%1&apos; aan als de opgeslagen poster in de voor het besturingssysteem tot standaard gemaakte PDF-applicatie moet worden opgestart.</translation>
+Vink &lt;b&gt;%1&lt;/b&gt; aan als de opgeslagen poster in de voor het besturingssysteem tot standaard gemaakte PDF-applicatie moet worden opgestart.</translation>
+    </message>
+    <message>
+        <location filename="wizardcontroller.cpp" line="112"/>
+        <source>PosteRazor has its user interface organized in a &apos;Wizard&apos; fashion. All settings for the poster creation can be done in %1 steps.
+The &lt;b&gt;%2&lt;/b&gt; and &lt;b&gt;%3&lt;/b&gt; buttons navigate through these steps. The &lt;b&gt;?&lt;/b&gt; button opens a help window with an explanation of the current step.
+All entries and choices are remembered until the next usage of the PosteRazor.</source>
+        <comment>Manual preface. Place holders: %1 = Number of wizard steps, %2 = &apos;Back&apos;, %3 = &apos;Next&apos; (will be automatically inserted)</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -368,7 +391,7 @@ Moet dit worden overschreven?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="443"/>
+        <location filename="mainwindow.cpp" line="444"/>
         <source>Language name</source>
         <translation type="unfinished">Nederlands</translation>
     </message>

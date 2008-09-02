@@ -41,10 +41,12 @@ HelpDialog::HelpDialog(const QString &title, const QString &text, QWidget *paren
     : QDialog(parent)
 {
     setModal(true);
+    setWindowTitle(title);
     setAttribute(Qt::WA_DeleteOnClose, true);
     setLayout(new QVBoxLayout);
     QLabel *label = new QLabel(text);
     label->setWordWrap(true);
+    label->setTextFormat(Qt::RichText);
     layout()->addWidget(label);
 }
 
@@ -58,6 +60,21 @@ static const QMetaEnum wizardStepsEnum =
     WizardController::staticMetaObject.enumerator(WizardController::staticMetaObject.indexOfEnumerator("WizardSteps"));
 
 const int WizardController::m_wizardStepsCount = wizardStepsEnum.keyCount();
+
+static QString cleanString(const QString &dirtyString)
+{
+    QString result = dirtyString;
+    result.replace(QRegExp("[:&]"), "");
+    result.replace('\n', ' ');
+    return result.trimmed();
+}
+
+static QString nl2br(const QString &nlText)
+{
+    QString result = nlText;
+    result.replace('\n', "<br/>");
+    return result;
+}
 
 WizardController::WizardController(QObject *wizardDialog, QObject *parent)
     : QObject(parent)
@@ -97,10 +114,10 @@ void WizardController::showManual()
         .arg(QCoreApplication::translate("Main window", "Next")));
     for (int i = 0; i < wizardStepsEnum.keyCount(); i++) {
         const WizardSteps step = (WizardSteps)wizardStepsEnum.value(i);
-        manual.append(stepTitle(step));
+        manual.append(QString("<h2>%1</h2>").arg(stepTitle(step)));
         manual.append(stepHelp(step));
     }
-    HelpDialog::showHelp(QCoreApplication::translate("Help", "&Manual"), manual, NULL);
+    HelpDialog::showHelp(cleanString(QCoreApplication::translate("Help", "&Manual")), manual, NULL);
 }
 
 void WizardController::showHelpForCurrentStep()
@@ -173,48 +190,64 @@ QString WizardController::stepHelp(WizardSteps step)
     case WizardStepInputImage:
         result = QCoreApplication::translate("Help",
             "Load an image by clicking the button with the open icon and selecting an image file, or by drag & dropping an image file on the PosteRazor. The drag & drop also works during the other steps.\n"
-            "After loading the image, the most important informations are listed in the '%1' fields.",
+            "After loading the image, the most important informations are listed in the <b>%1</b> fields.",
             "Wizard step 1. Place holders: %1 = 'Image informations' (will be automatically inserted)")
-            .arg(QCoreApplication::translate("Main window", "Image Informations"));
+            .arg(cleanString(QCoreApplication::translate("Main window", "Image Informations")));
         break;
     case WizardStepPaperSize:
         result = QCoreApplication::translate("Help",
             "Define the paper sheet size that you use in your printer.\n"
-            "A standard paper sheet size can be selected from the '%1' chooser, along with the desired paper sheet orientation.\n"
-            "Alternatively, a custom paper sheet size can be defined in the '%2' tab.\n"
-            "Paper borders are defined in the '%3' fields. Even if your printer does need no (or small) paper borders, some border might be needed to have enough area for gluing the final poster tiles together.",
+            "A standard paper sheet size can be selected from the <b>%1</b> chooser, along with the desired paper sheet orientation.\n"
+            "Alternatively, a custom paper sheet size can be defined in the <b>%2</b> tab.\n"
+            "Paper borders are defined in the <b>%3</b> fields. Even if your printer does need no (or small) paper borders, some border might be needed to have enough area for gluing the final poster tiles together.",
             "Wizard step 2. Place holders: %1 = 'Format:', %2 = 'Custom', %3 = 'Borders (%1)' (will be automatically inserted)")
-            .arg(QCoreApplication::translate("Main window", "Format:"))
-            .arg(QCoreApplication::translate("Main window", "Custom"))
-            .arg(QCoreApplication::translate("Main window", "Borders (%1)").arg("xyz")); // TODO: Provide current dimension unit instead of "xyz"
+            .arg(cleanString(QCoreApplication::translate("Main window", "Format:")))
+            .arg(cleanString(QCoreApplication::translate("Main window", "Custom")))
+            .arg(cleanString(QCoreApplication::translate("Main window", "Borders (%1)").arg("xyz"))); // TODO: Provide current dimension unit instead of "xyz"
         break;
     case WizardStepOverlapping:
         result = QCoreApplication::translate("Help",
             "Image tile overlapping is needed to have some tolerance for cutting off the unneeded borders from one side. Additionally, like the borders from the previous step, it gives more area for gluing together the final poster tiles.\n"
-            "The '%1' defines the borders that are intended to be overlapped by the neighbor tiles. The borders on the opposite sides are intended to be cut (except on the outermost tiles).",
+            "The <b>%1</b> defines the borders that are intended to be overlapped by the neighbor tiles. The borders on the opposite sides are intended to be cut (except on the outermost tiles).",
             "Wizard step 3. Place holders: %1 = 'Overlapping position' (will be automatically inserted)")
-            .arg(QCoreApplication::translate("Main window", "Overlapping position"));
+            .arg(cleanString(QCoreApplication::translate("Main window", "Overlapping position")));
         break;
     case WizardStepPosterSize:
+    {
+        const QString definitionTemplate(QLatin1String("<dt><b>%1</b></dt><dd>%2</dd>"));
         result = QCoreApplication::translate("Help",
-            "Define the final poster size, in one of the following three modes which can be selected by the corresponding radio buttons:\n"
-            "'%1' You want to have a specific size of your poster.\n"
-            "'%2' You want to use whole paper sheets and specify how many of them of them you want to use.\n"
-            "'%3' Your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to enlarge the image by a certain factor.\n"
+            "Define the final poster size, in one of the following three modes which can be selected by the corresponding radio buttons:",
+            "Wizard step 4. Start of the description.");
+        result.append("<dl>");
+        result.append(definitionTemplate
+            .arg(cleanString(QCoreApplication::translate("Main window", "Absolute size:")))
+            .arg(QCoreApplication::translate("Help",
+                "You want to have a specific size of your poster.",
+                "Wizard step 4. Description for 'absolute size'")));
+        result.append(definitionTemplate
+            .arg(cleanString(QCoreApplication::translate("Main window", "Size in pages:")))
+            .arg(QCoreApplication::translate("Help",
+                "You want to use whole paper sheets and specify how many of them of them you want to use.",
+                "Wizard step 4. Description for 'size in pages'")));
+        result.append(definitionTemplate
+            .arg(cleanString(QCoreApplication::translate("Main window", "Size in percent:")))
+            .arg(QCoreApplication::translate("Help",
+                "Your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to enlarge the image by a certain factor.",
+                "Wizard step 4. Description for 'size in percent'")));
+        result.append("</dl>");
+        result.append(QCoreApplication::translate("Help",
             "The aspect ratio of width and height is always 1:1 and is automatically recalculated. In the preview area, you can see the overlapping areas which are surrounded by light red rectangles.\n"
-            "'%4' sets the alignment of the image on the total paper area of the poster. This is useful if you want to keep the unused paper.",
-            "Wizard step 4. Place holders: %1 = 'Absolute size:', %2 = 'Size in pages:', %3 = 'Size in percent:', %4 = 'Image alignment' (will be automatically inserted)")
-            .arg(QCoreApplication::translate("Main window", "Absolute size:"))
-            .arg(QCoreApplication::translate("Main window", "Size in pages:"))
-            .arg(QCoreApplication::translate("Main window", "Size in percent:"))
-            .arg(QCoreApplication::translate("Main window", "Image alignment"));
+            "<b>%1</b> sets the alignment of the image on the total paper area of the poster. This is useful if you want to keep the unused paper.",
+            "Wizard step 4. End of the description. Place holders: %1 = 'Image alignment' (will be automatically inserted)")
+            .arg(cleanString(QCoreApplication::translate("Main window", "Image alignment"))));
         break;
+    }
     default:
         result = QCoreApplication::translate("Help",
             "Save the poster by clicking the save button and specifying a destination file name.\n"
-            "Check or uncheck the '%1', if the standard PDF handling application that is set in your operating system should be automatically started after the PDF file is saved.",
+            "Check or uncheck the <b>%1</b>, if the standard PDF handling application that is set in your operating system should be automatically started after the PDF file is saved.",
             "Wizard step 5. Place holders: %1 = 'Open PDF after saving' (will be automatically inserted)")
-            .arg(QCoreApplication::translate("Main window", "Open PDF after saving"));
+            .arg(cleanString(QCoreApplication::translate("Main window", "Open PDF after saving")));
     }
-    return result;
+    return nl2br(result);
 }
