@@ -28,40 +28,7 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QDialogButtonBox>
-
-class HelpDialog : public QDialog
-{
-private:
-    HelpDialog(const QString &title, const QString &text, QWidget *parent = 0);
-
-public:
-    static void showHelp(const QString &title, const QString &text, QWidget *parent = 0);
-};
-
-HelpDialog::HelpDialog(const QString &title, const QString &text, QWidget *parent)
-    : QDialog(parent)
-{
-    setModal(true);
-    setWindowTitle(title);
-    setAttribute(Qt::WA_DeleteOnClose, true);
-    setWindowFlags(windowFlags() ^ Qt::WindowContextHelpButtonHint | Qt::MSWindowsFixedSizeDialogHint);
-    setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    setLayout(new QVBoxLayout);
-    QLabel *label = new QLabel(text);
-    label->setWordWrap(true);
-    label->setTextFormat(Qt::RichText);
-    layout()->addWidget(label);
-    QDialogButtonBox *buttonBox = new QDialogButtonBox;
-    buttonBox->setStandardButtons(QDialogButtonBox::Ok);
-    connect(buttonBox, SIGNAL(accepted ()), SLOT(accept()));
-    layout()->addWidget(buttonBox);
-}
-
-void HelpDialog::showHelp(const QString &title, const QString &text, QWidget *parent)
-{
-    HelpDialog *dialog = new HelpDialog(title, text, parent);
-    dialog->show();
-}
+#include <QTextBrowser>
 
 static const QMetaEnum wizardStepsEnum =
     WizardController::staticMetaObject.enumerator(WizardController::staticMetaObject.indexOfEnumerator("WizardSteps"));
@@ -125,15 +92,42 @@ void WizardController::showManual()
         manual.append(QString(QLatin1String("<h2>%1</h2>")).arg(stepTitle(step)));
         manual.append(stepHelp(step));
     }
-    HelpDialog::showHelp(title, manual, NULL);
+    QDialog *dialog = new QDialog;
+    dialog->setModal(true);
+    dialog->setWindowTitle(title);
+    dialog->setAttribute(Qt::WA_DeleteOnClose, true);
+    dialog->setWindowFlags(dialog->windowFlags() ^ Qt::WindowContextHelpButtonHint);
+    dialog->resize(500, 400);
+    dialog->setLayout(new QVBoxLayout);
+    QTextBrowser *browser = new QTextBrowser;
+    browser->setHtml(manual);
+    dialog->layout()->addWidget(browser);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox;
+    buttonBox->setStandardButtons(QDialogButtonBox::Ok);
+    connect(buttonBox, SIGNAL(accepted ()), dialog, SLOT(accept()));
+    dialog->layout()->addWidget(buttonBox);
+    dialog->show();
 }
 
 void WizardController::showHelpForCurrentStep()
 {
-    QString help;
-    help.append(QString("<h2>%1</h2>").arg(stepTitle(m_wizardStep)));
-    help.append(stepHelp(m_wizardStep));
-    HelpDialog::showHelp(cleanString(stepXofYString(m_wizardStep)), help, NULL);
+    QDialog *dialog = new QDialog;
+    dialog->setModal(true);
+    dialog->setWindowTitle(cleanString(stepXofYString(m_wizardStep)));
+    dialog->setAttribute(Qt::WA_DeleteOnClose, true);
+    dialog->setWindowFlags(dialog->windowFlags() ^ Qt::WindowContextHelpButtonHint | Qt::MSWindowsFixedSizeDialogHint);
+    dialog->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    dialog->setLayout(new QVBoxLayout);
+    const QString helpText = QString("<h2>%1</h2>").arg(stepTitle(m_wizardStep)) + stepHelp(m_wizardStep);
+    QLabel *label = new QLabel(helpText);
+    label->setWordWrap(true);
+    label->setTextFormat(Qt::RichText);
+    dialog->layout()->addWidget(label);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox;
+    buttonBox->setStandardButtons(QDialogButtonBox::Ok);
+    connect(buttonBox, SIGNAL(accepted ()), dialog, SLOT(accept()));
+    dialog->layout()->addWidget(buttonBox);
+    dialog->show();
 }
 
 void WizardController::handlePrevButtonPressed()
