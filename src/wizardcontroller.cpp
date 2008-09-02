@@ -25,7 +25,7 @@
 #include <QMetaObject>
 #include <QMetaEnum>
 #include <QDialog>
-#include <QLabel>
+#include <QMessageBox>
 #include <QVBoxLayout>
 #include <QDialogButtonBox>
 #include <QTextBrowser>
@@ -111,23 +111,12 @@ void WizardController::showManual()
 
 void WizardController::showHelpForCurrentStep()
 {
-    QDialog *dialog = new QDialog;
-    dialog->setModal(true);
-    dialog->setWindowTitle(cleanString(stepXofYString(m_wizardStep)));
-    dialog->setAttribute(Qt::WA_DeleteOnClose, true);
-    dialog->setWindowFlags(dialog->windowFlags() ^ Qt::WindowContextHelpButtonHint | Qt::MSWindowsFixedSizeDialogHint);
-    dialog->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    dialog->setLayout(new QVBoxLayout);
     const QString helpText = QString("<h2>%1</h2>").arg(stepTitle(m_wizardStep)) + stepHelp(m_wizardStep);
-    QLabel *label = new QLabel(helpText);
-    label->setWordWrap(true);
-    label->setTextFormat(Qt::RichText);
-    dialog->layout()->addWidget(label);
-    QDialogButtonBox *buttonBox = new QDialogButtonBox;
-    buttonBox->setStandardButtons(QDialogButtonBox::Ok);
-    connect(buttonBox, SIGNAL(accepted ()), dialog, SLOT(accept()));
-    dialog->layout()->addWidget(buttonBox);
-    dialog->show();
+    QMessageBox box;
+    box.setWindowTitle(cleanString(stepXofYString(m_wizardStep)));
+    box.setText(helpText);
+    box.addButton(QMessageBox::Ok);
+    box.exec();
 }
 
 void WizardController::handlePrevButtonPressed()
