@@ -370,7 +370,7 @@ bool Controller::loadInputImage(const QString &fileName)
     QString loadErrorMessage;
     const bool successful = loadInputImage(fileName, loadErrorMessage);
     if (!successful)
-        QMessageBox::critical(m_mainWindow, "", QCoreApplication::translate("Main window", "The Image '%1' could not be loaded.")
+        QMessageBox::critical(m_mainWindow, "", QCoreApplication::translate("Main window", "The image '%1' could not be loaded.")
             .arg(QDir::convertSeparators(fileName)));
     return successful;
 }
@@ -422,7 +422,7 @@ void Controller::savePoster() const
                 ) {
                 int result = savePoster(saveFileName.toAscii());
                 if (result != 0)
-                    QMessageBox::critical(NULL, "", QCoreApplication::translate("Main window", "The File \"%1\" could not be saved.").arg(saveFileName), QMessageBox::Ok, QMessageBox::NoButton);
+                    QMessageBox::critical(NULL, "", QCoreApplication::translate("Main window", "The file '%1' could not be saved.").arg(saveFileName), QMessageBox::Ok, QMessageBox::NoButton);
                 else
                     savePathSettings.setValue(savePathSettingsKey, QFileInfo(saveFileName).absolutePath());
                 fileExistsAskUserForOverwrite = false;

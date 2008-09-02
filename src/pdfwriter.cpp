@@ -31,6 +31,8 @@
 #define CM2PT(cm) ((cm) / 2.54 * 72)
 #define JPEGFILECOPYBUFFERSIZE 10000
 
+// TODO: Qt-ification. No C file I/O, etc.
+
 PDFWriter::PDFWriter(QObject *parent)
     : QObject(parent)
     , m_outputFile(NULL)

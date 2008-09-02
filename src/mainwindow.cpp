@@ -442,6 +442,7 @@ void MainWindow::populateUI()
         QTranslator translator;
         translator.load(translation);
         QAction *languageAction = translationActions->addAction(translator.translate("Main window", "Language name"));
+        // TODO: Find out why the menu entris are empty on Mac (and maybe on Linux?)
         const QString localeString(QFileInfo(translation).baseName());
         languageAction->setData(localeString);
         languageAction->setCheckable(true);

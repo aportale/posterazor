@@ -76,6 +76,7 @@ private:
     PosteRazorCore *m_posteRazor;
     QString m_currentUnitOfLength;
     QActionGroup *m_unitOfLengthActions;
+    // TODO: Find out if QButtonGroup is better than the following two hashes
     QHash<Qt::Alignment, QAbstractButton*> m_overlappingButtons;
     QHash<Qt::Alignment, QAbstractButton*> m_alignmentButtons;
     QHash<QString, QAction*> m_translationActions;
