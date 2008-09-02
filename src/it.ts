@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="it">
+<defaultcodec></defaultcodec>
 <context>
     <name>Help</name>
     <message>
@@ -123,7 +124,8 @@ La &lt;b&gt;%1&lt;/b&gt; difinisce i bordi che saranno sovrapposti dalle singole
         <source>Save the poster by clicking the save button and specifying a destination file name.
 Check or uncheck the &lt;b&gt;%1&lt;/b&gt;, if the standard PDF handling application that is set in your operating system should be automatically started after the PDF file is saved.</source>
         <comment>Wizard step 5. Place holders: %1 = &apos;Open PDF after saving&apos; (will be automatically inserted)</comment>
-        <translation type="unfinished">Salva il poster premendo il bottone con l&apos;icona a forma di floppy e specifica un nome file di destinazione. Marca o smarca il segno di spunta &lt;b&gt;%1&lt;/b&gt;, e l&apos;applicazione impostata come predefinita per il formato PDF verrà avviata automaticamente dopo il salvataggio del file.</translation>
+        <translation type="unfinished">Salva il poster premendo il bottone con l&apos;icona a forma di floppy e specifica un nome file di destinazione.
+Marca o smarca il segno di spunta &lt;b&gt;%1&lt;/b&gt;, e l&apos;applicazione impostata come predefinita per il formato PDF verrà avviata automaticamente dopo il salvataggio del file.</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="112"/>

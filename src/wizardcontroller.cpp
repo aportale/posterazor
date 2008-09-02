@@ -43,6 +43,8 @@ HelpDialog::HelpDialog(const QString &title, const QString &text, QWidget *paren
     setModal(true);
     setWindowTitle(title);
     setAttribute(Qt::WA_DeleteOnClose, true);
+    setWindowFlags(windowFlags() ^ Qt::WindowContextHelpButtonHint | Qt::MSWindowsFixedSizeDialogHint);
+    setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     setLayout(new QVBoxLayout);
     QLabel *label = new QLabel(text);
     label->setWordWrap(true);
@@ -69,11 +71,11 @@ static QString cleanString(const QString &dirtyString)
     return result.trimmed();
 }
 
-static QString nl2br(const QString &nlText)
+static QString newlineToParagraph(const QString &nlText)
 {
     QString result = nlText;
-    result.replace('\n', "<br/>");
-    return result;
+    result.replace('\n', "</p><p>");
+    return "<p>" + result + "</p>";
 }
 
 WizardController::WizardController(QObject *wizardDialog, QObject *parent)
@@ -103,26 +105,30 @@ void WizardController::handleImageLoaded()
 
 void WizardController::showManual()
 {
-    QString manual;
-    manual.append(QCoreApplication::translate("Help",
+    const QString title = cleanString(QCoreApplication::translate("Help", "&Manual"));
+    QString manual = QString(QLatin1String("<h1>%1</h1>")).arg(title);
+    manual.append(newlineToParagraph(QCoreApplication::translate("Help",
         "PosteRazor has its user interface organized in a 'Wizard' fashion. All settings for the poster creation can be done in %1 steps.\n"
         "The <b>%2</b> and <b>%3</b> buttons navigate through these steps. The <b>?</b> button opens a help window with an explanation of the current step.\n"
         "All entries and choices are remembered until the next usage of the PosteRazor.",
         "Manual preface. Place holders: %1 = Number of wizard steps, %2 = 'Back', %3 = 'Next' (will be automatically inserted)")
         .arg(m_wizardStepsCount)
         .arg(QCoreApplication::translate("Main window", "Back"))
-        .arg(QCoreApplication::translate("Main window", "Next")));
+        .arg(QCoreApplication::translate("Main window", "Next"))));
     for (int i = 0; i < wizardStepsEnum.keyCount(); i++) {
         const WizardSteps step = (WizardSteps)wizardStepsEnum.value(i);
-        manual.append(QString("<h2>%1</h2>").arg(stepTitle(step)));
+        manual.append(QString(QLatin1String("<h2>%1</h2>")).arg(stepTitle(step)));
         manual.append(stepHelp(step));
     }
-    HelpDialog::showHelp(cleanString(QCoreApplication::translate("Help", "&Manual")), manual, NULL);
+    HelpDialog::showHelp(title, manual, NULL);
 }
 
 void WizardController::showHelpForCurrentStep()
 {
-    HelpDialog::showHelp(stepTitle(m_wizardStep), stepHelp(m_wizardStep), NULL);
+    QString help;
+    help.append(QString("<h2>%1</h2>").arg(stepTitle(m_wizardStep)));
+    help.append(stepHelp(m_wizardStep));
+    HelpDialog::showHelp(cleanString(stepXofYString(m_wizardStep)), help, NULL);
 }
 
 void WizardController::handlePrevButtonPressed()
@@ -167,20 +173,24 @@ void WizardController::updateDialogWizardStep()
 
 void WizardController::updateDialogWizardStepDescription()
 {
-    emit wizardStepDescriptionChanged(
-        QCoreApplication::translate("Help", "Step %1 of %2:").arg((int)m_wizardStep + 1).arg((int)m_wizardStepsCount),
-        stepTitle(m_wizardStep)
-    );
+    emit wizardStepDescriptionChanged(stepXofYString(m_wizardStep), stepTitle(m_wizardStep));
+}
+
+QString WizardController::stepXofYString(WizardSteps step)
+{
+    return QCoreApplication::translate("Help", "Step %1 of %2:").arg((int)step + 1).arg((int)m_wizardStepsCount);
 }
 
 QString WizardController::stepTitle(WizardSteps step)
 {
-    return
+    QString title;
+    title.append(
         step == WizardStepInputImage?  QCoreApplication::translate("Help", "Load an input image")
         :step == WizardStepPaperSize?  QCoreApplication::translate("Help", "Printer paper format")
         :step == WizardStepOverlapping?QCoreApplication::translate("Help", "Image tile overlapping")
         :step == WizardStepPosterSize? QCoreApplication::translate("Help", "Final poster size")
-        :                              QCoreApplication::translate("Help", "Save the Poster");
+        :                              QCoreApplication::translate("Help", "Save the Poster"));
+    return title;
 }
 
 QString WizardController::stepHelp(WizardSteps step)
@@ -249,5 +259,5 @@ QString WizardController::stepHelp(WizardSteps step)
             "Wizard step 5. Place holders: %1 = 'Open PDF after saving' (will be automatically inserted)")
             .arg(cleanString(QCoreApplication::translate("Main window", "Open PDF after saving")));
     }
-    return nl2br(result);
+    return newlineToParagraph(result);
 }
