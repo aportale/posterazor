@@ -21,7 +21,8 @@
 */
 
 #include "types.h"
-#include "QtDebug"
+#include <QtDebug>
+#include <QRegExp>
 
 const QHash<Types::UnitsOfLength, QPair<QString, double> > &Types::unitsOfLength()
 {
@@ -106,4 +107,19 @@ QSizeF Types::getPaperSize(const QString &format, QPrinter::Orientation orientat
     if (orientation == QPrinter::Landscape)
         result.transpose();
     return convertBetweenUnitsOfLength(result, UnitOfLengthCentimeter, unit);
+}
+
+QString Types::cleanString(const QString &dirtyString)
+{
+    QString result = dirtyString;
+    result.replace(QRegExp("[:&]"), "");
+    result.replace('\n', ' ');
+    return result.trimmed();
+}
+
+QString Types::newlineToParagraph(const QString &nlText)
+{
+    QString result = nlText;
+    result.replace('\n', "</p><p>");
+    return "<p>" + result + "</p>";
 }

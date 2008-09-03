@@ -62,6 +62,10 @@ public:
     static UnitsOfLength unitOfLenthFromString(const QString &string);
     static const QHash<QString, QSizeF> &paperFormats();
     static QSizeF getPaperSize(const QString &format, QPrinter::Orientation orientation, UnitsOfLength unit);
+
+    // These two functions help to format help text. I know, they do not belong, here.
+    static QString cleanString(const QString &dirtyString);
+    static QString newlineToParagraph(const QString &nlText);
 };
 
 #endif // TYPES_H

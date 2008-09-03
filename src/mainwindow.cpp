@@ -385,6 +385,13 @@ void MainWindow::showManual(const QString &title, const QString &text)
     dialog->resize(500, 400);
     dialog->setLayout(new QVBoxLayout);
     QTextBrowser *browser = new QTextBrowser;
+    browser->setOpenExternalLinks(true);
+    browser->document()->setDefaultStyleSheet(
+        "dt {font-weight: bold;}"
+        "dd {margin-left: 15px;}"
+        "p {text-indent: 7px;}"
+        "p, dd {margin-top: 0px; margin-bottom: 6px;}"
+        "h2 {margin-top: 18px; margin-bottom: 6px;}");
     browser->setHtml(text);
     dialog->layout()->addWidget(browser);
     QDialogButtonBox *buttonBox = new QDialogButtonBox;
@@ -544,6 +551,43 @@ void MainWindow::showAboutQtDialog() const
 
 void MainWindow::showAboutPosteRazorDialog()
 {
-    showManual("huhu", "haha");
+    const QString title = Types::cleanString(QCoreApplication::translate("Help", "&About PosteRazor"));
+    const QString webpageAnchor = QString(QLatin1String("<a href=\"%1\">posterazor.sourceforge.net</a>"))
+        .arg(QCoreApplication::translate("Help", "http://posterazor.sourceforge.net/", "Only translate, if the website has this language."));
+    const QString aboutText =
+        QLatin1String("<h1>") + title + QLatin1String("</h1>") +
+        Types::newlineToParagraph(QCoreApplication::translate("Help",
+            "The PosteRazor cuts a raster image into pieces which can be printed on a printer and be put together to a poster.\n"
+            "As an input image, raster files of various image file formats are supported. Instead of directly printing the poster, the PosteRazor produces a multi page PDF file which contains the poster tiles.\n"
+            "It is an open source program which depends on other open source projects. The PosteRazor is hosted on %1.\n")
+            .arg(webpageAnchor)) +
+        QLatin1String("<h2>Code from third parties</h2>"
+            "<dl>"
+            "<dt>Qt</dt>"
+            "<dd>Extensive use of <a href=\"http://www.trolltech.com/\">Trolltech</a>s amazing cross-platform application framework</dd>"
+            "<dt>FreeImage</dt>"
+            "<dd>Easy and powerful image format support. See the <a href=\"http://freeimage.sourceforge.net/\">FreeImage website</a></dd>"
+            "</dl>") +
+        QLatin1String("<h2>Translations</h2>"
+            "<p>In order of appearance</p>"
+            "<dl>"
+            "<dt>English</dt><dd>Alessandro Portale (author)</dd>"
+            "<dt>German</dt><dd>Alessandro Portale (author)</dd>"
+            "<dt>Polish</dt><dd>Grzegorz Wacikowski</dd>"
+            "<dt>French</dt><dd>Martin Loyer</dd>"
+            "<dt>Italian</dt><dd>Stefano Nosei</dd>"
+            "<dt>Dutch/Belgian</dt><dd>Erik Wijkamp</dd>"
+            "<dt>Spanish</dt><dd><a href=\"http://hispanicoweb.net/\">Hispánico Web</a></dd>"
+            "<dt>Brazilian Portuguese</dt><dd>Éderson Gomes dos Santos</dd>"
+            "<dt>Simplified Chinese</dt><dd>Sun Li</dd>"
+            "<dt>Finnish</dt><dd>Olli</dd>"
+            "</dl>") +
+        QLatin1String("<h2>License</h2>"
+            "<p>PosteRazor - Make your own poster!<br/>"
+            "posterazor.sourceforge.net<br/>"
+            "Copyright (C) 2005-2008 by Alessandro Portale</p>"
+            "<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>"
+            "<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>"
+            "<p>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.</p>");
+    showManual(title, aboutText);
 }
-
