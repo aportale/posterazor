@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de_DE">
+<defaultcodec></defaultcodec>
 <context>
     <name>Help</name>
     <message>
@@ -132,7 +133,9 @@ Aktivieren oder deaktivieren Sie &lt;b&gt;%1&lt;/b&gt;, je nach dem, ob das Post
 The &lt;b&gt;%2&lt;/b&gt; and &lt;b&gt;%3&lt;/b&gt; buttons navigate through these steps. The &lt;b&gt;?&lt;/b&gt; button opens a help window with an explanation of the current step.
 All entries and choices are remembered until the next usage of the PosteRazor.</source>
         <comment>Manual preface. Place holders: %1 = Number of wizard steps, %2 = &apos;Back&apos;, %3 = &apos;Next&apos; (will be automatically inserted)</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Der PosteRazor hat eine Benutzerführung im &quot;Assistenten&quot;-Stil. Alle Einstellungen für die Postererstellung werden in %1 Schritten erledigt.
+Die &lt;b&gt;%2&lt;/b&gt; und &lt;b&gt;%3&lt;/b&gt;-Knöpfe blättern durch diese Schritte. Der &lt;b&gt;?&lt;/b&gt;-Knopf öffnet ein Hilfefenster mit der Beschreibung des aktuellen Schrittes.
+Der PosteRazor merkt sich jede Eingabe und Auswahl bis zur nächsten Benutzung des Programms.</translation>
     </message>
 </context>
 <context>

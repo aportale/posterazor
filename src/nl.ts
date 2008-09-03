@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="nl">
+<defaultcodec></defaultcodec>
 <context>
     <name>Help</name>
     <message>
@@ -132,7 +133,9 @@ Vink &lt;b&gt;%1&lt;/b&gt; aan als de opgeslagen poster in de voor het besturing
 The &lt;b&gt;%2&lt;/b&gt; and &lt;b&gt;%3&lt;/b&gt; buttons navigate through these steps. The &lt;b&gt;?&lt;/b&gt; button opens a help window with an explanation of the current step.
 All entries and choices are remembered until the next usage of the PosteRazor.</source>
         <comment>Manual preface. Place holders: %1 = Number of wizard steps, %2 = &apos;Back&apos;, %3 = &apos;Next&apos; (will be automatically inserted)</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PosteRazor heeft een gebruikersinterface in de &quot;Wizard&quot;-stijl. Alle instellingen voor een poster worden in %1 stappen uitgevoerd.
+De &lt;b&gt;%2&lt;/b&gt; en &lt;b&gt;%3&lt;/b&gt; knoppen leiden de gebruiker door het programma. De &lt;b&gt;?&lt;/b&gt;-knop opent het helpvenster met een omschrijving van de op dat moment gebruikte functie.
+PosteRazor houdt elke instelling en selectie vast en onthoudt ze tot een volgend gebruik van het programma.</translation>
     </message>
 </context>
 <context>

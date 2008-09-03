@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="pl">
+<defaultcodec></defaultcodec>
 <context>
     <name>Help</name>
     <message>
@@ -132,7 +133,7 @@ Sprawdź lub nie &lt;b&gt;%1&lt;/b&gt;, czy standardowa aplikacja PDF zainstalow
 The &lt;b&gt;%2&lt;/b&gt; and &lt;b&gt;%3&lt;/b&gt; buttons navigate through these steps. The &lt;b&gt;?&lt;/b&gt; button opens a help window with an explanation of the current step.
 All entries and choices are remembered until the next usage of the PosteRazor.</source>
         <comment>Manual preface. Place holders: %1 = Number of wizard steps, %2 = &apos;Back&apos;, %3 = &apos;Next&apos; (will be automatically inserted)</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PosteRazor posiada interfejs użytkownika zbudowanu w oparciu o Wizard. Wszelkie ustawienia plakatu tworzone są w %1 krokach.Przyciski &lt;b&gt;%2&lt;/b&gt; i &lt;b&gt;%3&lt;/b&gt; prowadzą przez wizarda. Przycisk &lt;b&gt;?&lt;/b&gt; otwiera okno pomocy z wyjaśnieniem danego kroku.Wszystkie wejścia i wybory są pamiętane do następnego użycia PosteRazor.</translation>
     </message>
 </context>
 <context>

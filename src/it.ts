@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="it">
+<defaultcodec></defaultcodec>
 <context>
     <name>Help</name>
     <message>
@@ -132,7 +133,9 @@ Marca o smarca il segno di spunta &lt;b&gt;%1&lt;/b&gt;, e l&apos;applicazione i
 The &lt;b&gt;%2&lt;/b&gt; and &lt;b&gt;%3&lt;/b&gt; buttons navigate through these steps. The &lt;b&gt;?&lt;/b&gt; button opens a help window with an explanation of the current step.
 All entries and choices are remembered until the next usage of the PosteRazor.</source>
         <comment>Manual preface. Place holders: %1 = Number of wizard steps, %2 = &apos;Back&apos;, %3 = &apos;Next&apos; (will be automatically inserted)</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PosteRazor ha la un interfaccia utente organizzata in facili procedure guidate (&quot;Wizard&quot;). Le procedure per creare il poster possono essere effettuate in %1 passaggi.
+I tasti &lt;b&gt;%2&lt;/b&gt; and &lt;b&gt;%3&lt;/b&gt; permettono di navigare attraverso i passaggi. Il tasto &lt;b&gt;?&lt;/b&gt; apre una finestra di aiuto con una spiegazione sulle operazioni del passaggio corrente.
+Tutte le impostazioni e le scelte effettuate dall&apos;utente sono registrate dal programma e rimarranno tali nelle successive riaperture di PosteRazor.</translation>
     </message>
 </context>
 <context>

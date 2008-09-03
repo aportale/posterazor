@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="fr">
+<defaultcodec></defaultcodec>
 <context>
     <name>Help</name>
     <message>
@@ -132,7 +133,9 @@ Si vous cochez l&apos;option &lt;b&gt;%1&lt;/b&gt;, le poster sera automatiqueme
 The &lt;b&gt;%2&lt;/b&gt; and &lt;b&gt;%3&lt;/b&gt; buttons navigate through these steps. The &lt;b&gt;?&lt;/b&gt; button opens a help window with an explanation of the current step.
 All entries and choices are remembered until the next usage of the PosteRazor.</source>
         <comment>Manual preface. Place holders: %1 = Number of wizard steps, %2 = &apos;Back&apos;, %3 = &apos;Next&apos; (will be automatically inserted)</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PosteRazor est organisé à la manière d&apos;un assistant. La création d&apos;un poster se fait en %1 étapes.
+Les boutons &lt;b&gt;%2&lt;/b&gt; et &lt;b&gt;%3&lt;/b&gt; permettent de naviguer facilement entre ces différentes étapes. Le bouton &lt;b&gt;?&lt;/b&gt; ouvre une fenêtre d&apos;aide, qui explique l&apos;étape en cours.
+Toutes les valeurs et choix sont conservés au prochain lancement de l&apos;application.</translation>
     </message>
 </context>
 <context>

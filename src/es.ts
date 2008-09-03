@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="es">
+<defaultcodec></defaultcodec>
 <context>
     <name>Help</name>
     <message>
@@ -132,7 +133,9 @@ Marque o desmaque la opción &lt;b&gt;%1&lt;/b&gt; para, una vez guardado el arc
 The &lt;b&gt;%2&lt;/b&gt; and &lt;b&gt;%3&lt;/b&gt; buttons navigate through these steps. The &lt;b&gt;?&lt;/b&gt; button opens a help window with an explanation of the current step.
 All entries and choices are remembered until the next usage of the PosteRazor.</source>
         <comment>Manual preface. Place holders: %1 = Number of wizard steps, %2 = &apos;Back&apos;, %3 = &apos;Next&apos; (will be automatically inserted)</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PosteRazor tiene una interfáz de usuario organizada en un estilo de &quot;Asistente&quot;. Todos los ajustes para la creación del póster pueden ser realizados en %1 Pasos.
+Los botones &lt;b&gt;%2&lt;/b&gt; y &lt;b&gt;%3&lt;/b&gt; sirven para navegar a través de estos pasos. El botón &lt;b&gt;?&lt;/b&gt; abre una ventana de ayuda con una explicación del paso actual.
+Todas las entradas y elecciones son recordadas hasta el siguiente uso de PosteRazor.</translation>
     </message>
 </context>
 <context>
