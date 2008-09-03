@@ -35,6 +35,10 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
 
     m_unitOfLengthActions = new QActionGroup(m_menuSettings);
 
+    m_imageLoadButton->setIcon(QApplication::style()->standardPixmap(QStyle::SP_DirOpenIcon)); // SP_DialogOpenButton looks ugly
+    m_stepHelpButton->setMinimumSize(m_imageLoadButton->sizeHint()); // Same size. Looks better
+    m_savePosterButton->setIcon(QApplication::style()->standardPixmap(QStyle::SP_DialogSaveButton));
+
     const struct {
         QAbstractButton *sender;
         Qt::Alignment alignment;
@@ -137,7 +141,6 @@ void MainWindow::retranslateUi()
     m_posterSizeInPagesRadioButton->setText(        QCoreApplication::translate("Main window", "Size in pages:"));
     m_posterSizePercentualRadioButton->setText(     QCoreApplication::translate("Main window", "Size in percent:"));
     m_stepPrevButton->setText(                      QCoreApplication::translate("Main window", "Back"));
-    m_savePosterButton->setText(                    QCoreApplication::translate("Main window", "Save the poster"));
     m_savePosterGroup->setTitle(                    QCoreApplication::translate("Main window", "Save the poster"));
     retranslateUiWithDimensionUnit();
 }
