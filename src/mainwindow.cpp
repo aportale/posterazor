@@ -559,7 +559,7 @@ void MainWindow::showAboutPosteRazorDialog()
         Types::newlineToParagraph(QCoreApplication::translate("Help",
             "The PosteRazor cuts a raster image into pieces which can be printed on a printer and be put together to a poster.\n"
             "As an input image, raster files of various image file formats are supported. Instead of directly printing the poster, the PosteRazor produces a multi page PDF file which contains the poster tiles.\n"
-            "It is an open source program which depends on other open source projects. The PosteRazor is hosted on %1.\n")
+            "It is an open source program which depends on other open source projects. The PosteRazor is hosted on %1.")
             .arg(webpageAnchor)) +
         QLatin1String("<h2>Code from third parties</h2>"
             "<dl>"
