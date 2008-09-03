@@ -464,6 +464,7 @@ void MainWindow::createConnections()
     connect(m_paintCanvas,                          SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)));
     connect(m_actionPosteRazorWebSite,              SIGNAL(triggered()),                SIGNAL(openPosteRazorWebsiteSignal()));
     connect(m_actionAboutQt,                        SIGNAL(triggered()),                SLOT(showAboutQtDialog()));
+    connect(m_actionAboutPosteRazor,                SIGNAL(triggered()),                SLOT(showAboutPosteRazorDialog()));
     connect(m_actionPosteRazorManual,               SIGNAL(triggered()),                SIGNAL(manualSignal()));
 }
 
@@ -485,12 +486,12 @@ void MainWindow::populateUI()
     connect (translationActions, SIGNAL(triggered(QAction*)), SLOT(handleTranslationAction(QAction*)));
     translationActions->setExclusive(true);
     QDir translationDir(":/Translations/");
-    foreach (const QString &translation, translationDir.entryList(QDir::Files)) {
+    foreach (const QFileInfo &translation, translationDir.entryInfoList(QDir::Files)) {
         QTranslator translator;
-        translator.load(translation);
+        translator.load(translation.absoluteFilePath());
         QAction *languageAction = translationActions->addAction(translator.translate("Main window", "Language name"));
-        // TODO: Find out why the menu entris are empty on Mac (and maybe on Linux?)
-        const QString localeString(QFileInfo(translation).baseName());
+        // TODO: Find out why the menu entries are empty on Mac (and maybe on Linux?)
+        const QString localeString(translation.baseName());
         languageAction->setData(localeString);
         languageAction->setCheckable(true);
         m_translationActions.insert(localeString, languageAction);
@@ -540,3 +541,9 @@ void MainWindow::showAboutQtDialog() const
 {
     QApplication::aboutQt();
 }
+
+void MainWindow::showAboutPosteRazorDialog()
+{
+    showManual("huhu", "haha");
+}
+
