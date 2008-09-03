@@ -117,7 +117,7 @@ The &lt;b&gt;%1&lt;/b&gt; defines the borders that are intended to be overlapped
 &lt;b&gt;%1&lt;/b&gt; sets the alignment of the image on the total paper area of the poster. This is useful if you want to keep the unused paper.</source>
         <comment>Wizard step 4. End of the description. Place holders: %1 = &apos;Image alignment&apos; (will be automatically inserted)</comment>
         <translation type="unfinished">O tamanho da largura e altura é sempre 1:1 e é automaticamente recalculado. Na área de previsualização, você pode ver as áreas de sobreposição que serão marcadas por retângulos vermelhos.
-&lt;b&gt;%1&lt;/br&gt; estabelece o alinhamento da imagem na área total do papel do poster. Isto é util se você quer guardar o papel não utilizado.</translation>
+&lt;b&gt;%1&lt;/b&gt; estabelece o alinhamento da imagem na área total do papel do poster. Isto é util se você quer guardar o papel não utilizado.</translation>
     </message>
     <message>
         <location filename="wizardcontroller.cpp" line="214"/>
