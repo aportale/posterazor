@@ -42,6 +42,9 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
     m_imageLoadButton->setIcon(QApplication::style()->standardPixmap(QStyle::SP_DirOpenIcon)); // SP_DialogOpenButton looks ugly
     m_stepHelpButton->setMinimumSize(m_imageLoadButton->sizeHint()); // Same size. Looks better
     m_savePosterButton->setIcon(QApplication::style()->standardPixmap(QStyle::SP_DialogSaveButton));
+    m_actionLoadInputImage->setIcon(m_imageLoadButton->icon());
+    m_actionSavePoster->setIcon(m_savePosterButton->icon());
+    m_actionSavePoster->setEnabled(false);
 
     setWindowIcon(QIcon(":/Icons/posterazor.ico"));
 
@@ -97,6 +100,9 @@ void MainWindow::changeEvent(QEvent *event)
 
 void MainWindow::retranslateUi()
 {
+    // TODO: Add shortcut and trailing "..." for load and save action. Enhance cleanString and use it in WizardController
+    m_actionLoadInputImage->setText(                QCoreApplication::translate("Help", "Load an input image"));
+    m_actionSavePoster->setText(                    QCoreApplication::translate("Help", "Save the Poster"));
     m_actionPosteRazorManual->setText(              QCoreApplication::translate("Help", "&Manual"));
     m_actionPosteRazorWebSite->setText(             QCoreApplication::translate("Help", "PosteRazor &website"));
     m_actionAboutPosteRazor->setText(               QCoreApplication::translate("Help", "&About PosteRazor"));
@@ -292,6 +298,7 @@ void MainWindow::updateImageInfoFields(const QSize &inputImageSizeInPixels, cons
     ) + QString(" %1bpp").arg(bitsPerPixel);
     m_imageInformationColorTypeValue->setText(colorTypeString);
     m_imageInfoGroup->setVisible(true);
+    m_actionSavePoster->setEnabled(true);
     emit imageLoaded();
 }
 
@@ -428,6 +435,7 @@ void MainWindow::handleUnitOfLengthAction(QAction *action) const
 
 void MainWindow::createConnections()
 {
+    connect(m_actionExit,                           SIGNAL(triggered()),                SLOT(close()));
     connect(m_stepNextButton,                       SIGNAL(clicked()),                  SIGNAL(nextButtonPressed()));
     connect(m_stepPrevButton,                       SIGNAL(clicked()),                  SIGNAL(prevButtonPressed()));
     connect(m_stepHelpButton,                       SIGNAL(clicked()),                  SIGNAL(wizardStepHelpSignal()));
@@ -441,6 +449,7 @@ void MainWindow::createConnections()
     connect(m_paperBorderRightInput,                SIGNAL(valueEdited(double)),        SIGNAL(paperBorderRightChanged(double)));
     connect(m_paperBorderBottomInput,               SIGNAL(valueEdited(double)),        SIGNAL(paperBorderBottomChanged(double)));
     connect(m_paperBorderLeftInput,                 SIGNAL(valueEdited(double)),        SIGNAL(paperBorderLeftChanged(double)));
+    connect(m_actionLoadInputImage,                 SIGNAL(triggered()),                SIGNAL(loadImageSignal()));
     connect(m_imageLoadButton,                      SIGNAL(clicked()),                  SIGNAL(loadImageSignal()));
     connect(m_posterSizeAbsoluteRadioButton,        SIGNAL(clicked()),                  SLOT(updatePosterSizeGroupsState()));
     connect(m_posterSizeInPagesRadioButton,         SIGNAL(clicked()),                  SLOT(updatePosterSizeGroupsState()));
@@ -466,6 +475,7 @@ void MainWindow::createConnections()
         alignmentMapper->setMapping(sender, alignment);
     }
     connect(alignmentMapper, SIGNAL(mapped(int)),   SLOT(emitPosterAlignmentChange(int)));
+    connect(m_actionSavePoster,                     SIGNAL(triggered()),                SIGNAL(savePosterSignal()));
     connect(m_savePosterButton,                     SIGNAL(clicked()),                  SIGNAL(savePosterSignal()));
     connect(m_launchPDFApplicationCheckBox,         SIGNAL(toggled(bool)),              SIGNAL(launchPDFApplicationChanged(bool)));
     connect(m_paintCanvas,                          SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)));

@@ -1647,13 +1647,17 @@
      <x>0</x>
      <y>0</y>
      <width>527</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile" >
     <property name="title" >
      <string>&amp;File</string>
     </property>
+    <addaction name="m_actionLoadInputImage" />
+    <addaction name="m_actionSavePoster" />
+    <addaction name="separator" />
+    <addaction name="m_actionExit" />
    </widget>
    <widget class="QMenu" name="m_menuAbout" >
     <property name="title" >
@@ -1755,6 +1759,21 @@
   <action name="m_actionPosteRazorWebSite" >
    <property name="text" >
     <string>PosteRazor web site</string>
+   </property>
+  </action>
+  <action name="m_actionLoadInputImage" >
+   <property name="text" >
+    <string>Load input image</string>
+   </property>
+  </action>
+  <action name="m_actionSavePoster" >
+   <property name="text" >
+    <string>Save poster</string>
+   </property>
+  </action>
+  <action name="m_actionExit" >
+   <property name="text" >
+    <string>E&amp;xit</string>
    </property>
   </action>
  </widget>
