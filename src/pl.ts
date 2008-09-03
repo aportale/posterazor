@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="pl">
-<defaultcodec></defaultcodec>
 <context>
     <name>Help</name>
     <message>
@@ -73,7 +72,7 @@ Po załadowaniu obrazu, najważniejsze informacje są wypisane w polu &lt;b&gt;%
 A standard paper sheet size can be selected from the &lt;b&gt;%1&lt;/b&gt; chooser, along with the desired paper sheet orientation.
 Alternatively, a custom paper sheet size can be defined in the &lt;b&gt;%2&lt;/b&gt; tab.
 Paper borders are defined in the &lt;b&gt;%3&lt;/b&gt; fields. Even if your printer does need no (or small) paper borders, some border might be needed to have enough area for gluing the final poster tiles together.</source>
-        <comment>Wizard step 2. Place holders: %1 = &apos;Format:&apos;, %2 = &apos;Custom&apos;, %3 = &apos;Borders (%1)&apos; (will be automatically inserted)</comment>
+        <comment>Wizard step 2. Place holders: %1 = &apos;Format:&apos;, %2 = &apos;Custom&apos;, %3 = &apos;Borders&apos; (will be automatically inserted)</comment>
         <translation type="unfinished">Zdefiniuj rozmiar papieru, którego używasz w swojej drukarce.
 Standardowy rozmiar papieru może być wybrany z opcji &lt;b&gt;%1&lt;/b&gt;, wraz z pożądaną  Orientacja papieru.
 Można także zdefiniować własny rozmiar papieru w zakładce &lt;b&gt;%2&lt;/b&gt;.
@@ -230,14 +229,14 @@ po zapisaniu plakatu</translation>
         <translation type="unfinished">Dół</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="147"/>
+        <location filename="mainwindow.cpp" line="148"/>
         <source>Size (in %1):</source>
         <translation type="unfinished">Rozmiar (w %1):</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="148"/>
-        <source>Borders (%1)</source>
-        <translation type="unfinished">Marginesy (%1)</translation>
+        <location filename="mainwindow.cpp" line="149"/>
+        <source>Borders</source>
+        <translation type="unfinished">Marginesy</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="113"/>
@@ -335,32 +334,32 @@ po zapisaniu plakatu</translation>
         <translation type="unfinished">Zapisz plakat</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="276"/>
+        <location filename="mainwindow.cpp" line="277"/>
         <source>Monochrome</source>
         <translation type="unfinished">Monochromatyczny</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="277"/>
+        <location filename="mainwindow.cpp" line="278"/>
         <source>Gray scale</source>
         <translation type="unfinished">Skala szarości</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="278"/>
+        <location filename="mainwindow.cpp" line="279"/>
         <source>Palette</source>
         <translation type="unfinished">Paleta</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="279"/>
+        <location filename="mainwindow.cpp" line="280"/>
         <source>RGB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="280"/>
+        <location filename="mainwindow.cpp" line="281"/>
         <source>RGBA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="282"/>
+        <location filename="mainwindow.cpp" line="283"/>
         <source>CMYK</source>
         <translation type="unfinished"></translation>
     </message>
@@ -392,7 +391,7 @@ Czy chcesz go nadpisać?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="444"/>
+        <location filename="mainwindow.cpp" line="445"/>
         <source>Language name</source>
         <translation type="unfinished">Polski</translation>
     </message>

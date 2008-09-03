@@ -205,10 +205,10 @@ QString WizardController::stepHelp(WizardSteps step)
             "A standard paper sheet size can be selected from the <b>%1</b> chooser, along with the desired paper sheet orientation.\n"
             "Alternatively, a custom paper sheet size can be defined in the <b>%2</b> tab.\n"
             "Paper borders are defined in the <b>%3</b> fields. Even if your printer does need no (or small) paper borders, some border might be needed to have enough area for gluing the final poster tiles together.",
-            "Wizard step 2. Place holders: %1 = 'Format:', %2 = 'Custom', %3 = 'Borders (%1)' (will be automatically inserted)")
+            "Wizard step 2. Place holders: %1 = 'Format:', %2 = 'Custom', %3 = 'Borders' (will be automatically inserted)")
             .arg(cleanString(QCoreApplication::translate("Main window", "Format:")))
             .arg(cleanString(QCoreApplication::translate("Main window", "Custom")))
-            .arg(cleanString(QCoreApplication::translate("Main window", "Borders (%1)").arg("xyz"))); // TODO: Provide current dimension unit instead of "xyz"
+            .arg(cleanString(QCoreApplication::translate("Main window", "Borders")));
         break;
     case WizardStepOverlapping:
         result = QCoreApplication::translate("Help",

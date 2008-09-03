@@ -72,7 +72,7 @@ Después de cargar la imagen se presentan las informaciones más relevantes en l
 A standard paper sheet size can be selected from the &lt;b&gt;%1&lt;/b&gt; chooser, along with the desired paper sheet orientation.
 Alternatively, a custom paper sheet size can be defined in the &lt;b&gt;%2&lt;/b&gt; tab.
 Paper borders are defined in the &lt;b&gt;%3&lt;/b&gt; fields. Even if your printer does need no (or small) paper borders, some border might be needed to have enough area for gluing the final poster tiles together.</source>
-        <comment>Wizard step 2. Place holders: %1 = &apos;Format:&apos;, %2 = &apos;Custom&apos;, %3 = &apos;Borders (%1)&apos; (will be automatically inserted)</comment>
+        <comment>Wizard step 2. Place holders: %1 = &apos;Format:&apos;, %2 = &apos;Custom&apos;, %3 = &apos;Borders&apos; (will be automatically inserted)</comment>
         <translation type="unfinished">Defina el tamaño de la hoja de papel que usa su impresora.
 Puede seleccionar una hoja de papel de tamaño estándar desde el seleccionador &lt;b&gt;%1&lt;/b&gt;, así como también la Orientación de la hoja de papel.
 Alternativemente, puede definir un tamaño personalizado de papel en la pestaña &lt;b&gt;%2&lt;/b&gt;.
@@ -228,14 +228,14 @@ All entries and choices are remembered until the next usage of the PosteRazor.</
         <translation type="unfinished">Inferior</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="147"/>
+        <location filename="mainwindow.cpp" line="148"/>
         <source>Size (in %1):</source>
         <translation type="unfinished">Tamaño (en %1):</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="148"/>
-        <source>Borders (%1)</source>
-        <translation type="unfinished">Márgenes (%1)</translation>
+        <location filename="mainwindow.cpp" line="149"/>
+        <source>Borders</source>
+        <translation type="unfinished">Márgenes</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="113"/>
@@ -333,32 +333,32 @@ All entries and choices are remembered until the next usage of the PosteRazor.</
         <translation type="unfinished">Guardar el póster</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="276"/>
+        <location filename="mainwindow.cpp" line="277"/>
         <source>Monochrome</source>
         <translation type="unfinished">Monocromo</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="277"/>
+        <location filename="mainwindow.cpp" line="278"/>
         <source>Gray scale</source>
         <translation type="unfinished">Escala de grises</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="278"/>
+        <location filename="mainwindow.cpp" line="279"/>
         <source>Palette</source>
         <translation type="unfinished">Paleta</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="279"/>
+        <location filename="mainwindow.cpp" line="280"/>
         <source>RGB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="280"/>
+        <location filename="mainwindow.cpp" line="281"/>
         <source>RGBA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="282"/>
+        <location filename="mainwindow.cpp" line="283"/>
         <source>CMYK</source>
         <translation type="unfinished"></translation>
     </message>
@@ -390,7 +390,7 @@ Do you want to overwrite it?</source>
         <translation type="unfinished">No se pudo guardar el archivo &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="444"/>
+        <location filename="mainwindow.cpp" line="445"/>
         <source>Language name</source>
         <translation type="unfinished">Español</translation>
     </message>

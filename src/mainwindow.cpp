@@ -144,8 +144,9 @@ void MainWindow::retranslateUi()
 
 void MainWindow::retranslateUiWithDimensionUnit()
 {
+    const QString unitOfLength = QString(QLatin1String(" (%1)")).arg(m_currentUnitOfLength);
     m_imageInformationSizeLabel->setText(           QCoreApplication::translate("Main window", "Size (in %1):").arg(m_currentUnitOfLength));
-    m_paperBordersGroup->setTitle(                  QCoreApplication::translate("Main window", "Borders (%1)").arg(m_currentUnitOfLength));
+    m_paperBordersGroup->setTitle(                  QCoreApplication::translate("Main window", "Borders") + unitOfLength);
 }
 
 void MainWindow::setPaperFormat(const QString &format)

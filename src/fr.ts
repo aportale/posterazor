@@ -72,7 +72,7 @@ Après avoir chargé l&apos;image, les informations pratiques (taille, couleur, 
 A standard paper sheet size can be selected from the &lt;b&gt;%1&lt;/b&gt; chooser, along with the desired paper sheet orientation.
 Alternatively, a custom paper sheet size can be defined in the &lt;b&gt;%2&lt;/b&gt; tab.
 Paper borders are defined in the &lt;b&gt;%3&lt;/b&gt; fields. Even if your printer does need no (or small) paper borders, some border might be needed to have enough area for gluing the final poster tiles together.</source>
-        <comment>Wizard step 2. Place holders: %1 = &apos;Format:&apos;, %2 = &apos;Custom&apos;, %3 = &apos;Borders (%1)&apos; (will be automatically inserted)</comment>
+        <comment>Wizard step 2. Place holders: %1 = &apos;Format:&apos;, %2 = &apos;Custom&apos;, %3 = &apos;Borders&apos; (will be automatically inserted)</comment>
         <translation type="unfinished">Dans cette étape, vous allez régler le type de papier que vous utiliserez pour imprimer.
 Les formats de papier courants ainsi que l&apos;orientation (paysage/portrait) sont disponibles dans la catégorie &lt;b&gt;%1&lt;/b&gt;.
 Cependant, si vous souhaitez définir vous-même la taille du papier, vous pouvez utiliser la catégorie &lt;b&gt;%2&lt;/b&gt;
@@ -229,14 +229,14 @@ sauvé le poster</translation>
         <translation type="unfinished">Bas</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="147"/>
+        <location filename="mainwindow.cpp" line="148"/>
         <source>Size (in %1):</source>
         <translation type="unfinished">Taille (en %1) :</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="148"/>
-        <source>Borders (%1)</source>
-        <translation type="unfinished">Bordures (%1)</translation>
+        <location filename="mainwindow.cpp" line="149"/>
+        <source>Borders</source>
+        <translation type="unfinished">Bordures</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="113"/>
@@ -334,32 +334,32 @@ sauvé le poster</translation>
         <translation type="unfinished">Enregistrer le poster</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="276"/>
+        <location filename="mainwindow.cpp" line="277"/>
         <source>Monochrome</source>
         <translation type="unfinished">Monochrome</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="277"/>
+        <location filename="mainwindow.cpp" line="278"/>
         <source>Gray scale</source>
         <translation type="unfinished">Niveau de gris</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="278"/>
+        <location filename="mainwindow.cpp" line="279"/>
         <source>Palette</source>
         <translation type="unfinished">Palette</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="279"/>
+        <location filename="mainwindow.cpp" line="280"/>
         <source>RGB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="280"/>
+        <location filename="mainwindow.cpp" line="281"/>
         <source>RGBA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="282"/>
+        <location filename="mainwindow.cpp" line="283"/>
         <source>CMYK</source>
         <translation type="unfinished"></translation>
     </message>
@@ -391,7 +391,7 @@ Voulez-vous le remplacer ?</translation>
         <translation type="unfinished">Le fichier &apos;%1&apos; ne peut pas être enregistré.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="444"/>
+        <location filename="mainwindow.cpp" line="445"/>
         <source>Language name</source>
         <translation type="unfinished">Français</translation>
     </message>
