@@ -25,6 +25,10 @@
 #include <QFileDialog>
 #include <QTranslator>
 #include <QtDebug>
+#include <QVBoxLayout>
+#include <QDialogButtonBox>
+#include <QTextBrowser>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
     : QMainWindow(parent, flags)
@@ -38,6 +42,8 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
     m_imageLoadButton->setIcon(QApplication::style()->standardPixmap(QStyle::SP_DirOpenIcon)); // SP_DialogOpenButton looks ugly
     m_stepHelpButton->setMinimumSize(m_imageLoadButton->sizeHint()); // Same size. Looks better
     m_savePosterButton->setIcon(QApplication::style()->standardPixmap(QStyle::SP_DialogSaveButton));
+
+    setWindowIcon(QIcon(":/Icons/posterazor.ico"));
 
     const struct {
         QAbstractButton *sender;
@@ -346,9 +352,46 @@ void MainWindow::setPreviewState(const QString &state)
     m_paintCanvas->setState(state);
 }
 
+
 void MainWindow::setPreviewImage(const QImage &image)
 {
     m_paintCanvas->setImage(image);
+}
+
+void MainWindow::showWizardStepHelp(const QString &title, const QString &text)
+{
+    QMessageBox box(this);
+    box.setWindowTitle(title);
+    QString helpText = text;
+#if defined(Q_WS_MAC)
+    // Hack. Since QMessageBoxPrivate sets the whole font to bold on Q_WS_MAC (no matter which style),
+    // we put emphasis on the key words by setting them to italic and into single quotes.
+    helpText.replace("<b>", "<i>'");
+    helpText.replace("</b>", "'</i>");
+#endif
+    box.setText(helpText);
+    box.setTextFormat(Qt::RichText);
+    box.addButton(QMessageBox::Ok);
+    box.exec();
+}
+
+void MainWindow::showManual(const QString &title, const QString &text)
+{
+    QDialog *dialog = new QDialog(this);
+    dialog->setModal(true);
+    dialog->setWindowTitle(title);
+    dialog->setAttribute(Qt::WA_DeleteOnClose, true);
+    dialog->setWindowFlags(dialog->windowFlags() ^ Qt::WindowContextHelpButtonHint);
+    dialog->resize(500, 400);
+    dialog->setLayout(new QVBoxLayout);
+    QTextBrowser *browser = new QTextBrowser;
+    browser->setHtml(text);
+    dialog->layout()->addWidget(browser);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox;
+    buttonBox->setStandardButtons(QDialogButtonBox::Ok);
+    connect(buttonBox, SIGNAL(accepted ()), dialog, SLOT(accept()));
+    dialog->layout()->addWidget(buttonBox);
+    dialog->show();
 }
 
 void MainWindow::handlePaperFormatTabChanged(int index)

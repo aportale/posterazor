@@ -71,6 +71,8 @@ public slots:
     void setWizardStep(int step);
     void setWizardStepDescription(const QString &number, const QString &description);
     void setPreviewState(const QString &state);
+    void showWizardStepHelp(const QString &title, const QString &text);
+    void showManual(const QString &title, const QString &text);
 
 private:
     PosteRazorCore *m_posteRazor;

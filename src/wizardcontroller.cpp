@@ -24,11 +24,7 @@
 #include <QCoreApplication>
 #include <QMetaObject>
 #include <QMetaEnum>
-#include <QDialog>
-#include <QMessageBox>
-#include <QVBoxLayout>
-#include <QDialogButtonBox>
-#include <QTextBrowser>
+#include <QRegExp>
 
 static const QMetaEnum wizardStepsEnum =
     WizardController::staticMetaObject.enumerator(WizardController::staticMetaObject.indexOfEnumerator("WizardSteps"));
@@ -60,6 +56,8 @@ WizardController::WizardController(QObject *wizardDialog, QObject *parent)
     connect(this, SIGNAL(prevButtonEnabled(bool)), wizardDialog, SLOT(setPrevButtonEnabled(bool)));
     connect(this, SIGNAL(nextButtonEnabled(bool)), wizardDialog, SLOT(setNextButtonEnabled(bool)));
     connect(this, SIGNAL(previewStateChanged(const QString&)), wizardDialog, SLOT(setPreviewState(const QString&)));
+    connect(this, SIGNAL(showManualSignal(const QString&, const QString&)), wizardDialog, SLOT(showManual(const QString&, const QString&)));
+    connect(this, SIGNAL(showWizardStepHelpSignal(const QString&, const QString&)), wizardDialog, SLOT(showWizardStepHelp(const QString&, const QString&)));
     connect(wizardDialog, SIGNAL(imageLoaded()), SLOT(handleImageLoaded()));
     connect(wizardDialog, SIGNAL(prevButtonPressed()), SLOT(handlePrevButtonPressed()));
     connect(wizardDialog, SIGNAL(nextButtonPressed()), SLOT(handleNextButtonPressed()));
@@ -92,38 +90,14 @@ void WizardController::showManual()
         manual.append(QString(QLatin1String("<h2>%1</h2>")).arg(stepTitle(step)));
         manual.append(stepHelp(step));
     }
-    QDialog *dialog = new QDialog;
-    dialog->setModal(true);
-    dialog->setWindowTitle(title);
-    dialog->setAttribute(Qt::WA_DeleteOnClose, true);
-    dialog->setWindowFlags(dialog->windowFlags() ^ Qt::WindowContextHelpButtonHint);
-    dialog->resize(500, 400);
-    dialog->setLayout(new QVBoxLayout);
-    QTextBrowser *browser = new QTextBrowser;
-    browser->setHtml(manual);
-    dialog->layout()->addWidget(browser);
-    QDialogButtonBox *buttonBox = new QDialogButtonBox;
-    buttonBox->setStandardButtons(QDialogButtonBox::Ok);
-    connect(buttonBox, SIGNAL(accepted ()), dialog, SLOT(accept()));
-    dialog->layout()->addWidget(buttonBox);
-    dialog->show();
+
+    emit showManualSignal(title, manual);
 }
 
 void WizardController::showHelpForCurrentStep()
 {
     QString helpText = QString("<h2>%1</h2>").arg(stepTitle(m_wizardStep)) + stepHelp(m_wizardStep);
-    QMessageBox box;
-    box.setWindowTitle(cleanString(stepXofYString(m_wizardStep)));
-#if defined(Q_WS_MAC)
-    // Hack. Since QMessageBoxPrivate sets the whole font to bold on Q_WS_MAC (no matter which style),
-    // we put emphasis on the key words by setting them to italic and into single quotes.
-    helpText.replace("<b>", "<i>'");
-    helpText.replace("</b>", "'</i>");
-#endif
-    box.setText(helpText);
-	box.setTextFormat(Qt::RichText);
-    box.addButton(QMessageBox::Ok);
-    box.exec();
+    emit showWizardStepHelpSignal(cleanString(stepXofYString(m_wizardStep)), helpText);
 }
 
 void WizardController::handlePrevButtonPressed()

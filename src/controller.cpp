@@ -418,11 +418,11 @@ void Controller::savePoster() const
             fileExistsAskUserForOverwrite = QFileInfo(saveFileName).exists();
 
             if (!fileExistsAskUserForOverwrite
-                || QMessageBox::Yes == (QMessageBox::question(NULL, "", QCoreApplication::translate("Main window", "The file '%1' already exists.\nDo you want to overwrite it?").arg(QDir::convertSeparators(saveFileName)), QMessageBox::Yes, QMessageBox::No))
+                || QMessageBox::Yes == (QMessageBox::question(m_mainWindow, "", QCoreApplication::translate("Main window", "The file '%1' already exists.\nDo you want to overwrite it?").arg(QDir::convertSeparators(saveFileName)), QMessageBox::Yes, QMessageBox::No))
                 ) {
                 int result = savePoster(saveFileName.toAscii());
                 if (result != 0)
-                    QMessageBox::critical(NULL, "", QCoreApplication::translate("Main window", "The file '%1' could not be saved.").arg(saveFileName), QMessageBox::Ok, QMessageBox::NoButton);
+                    QMessageBox::critical(m_mainWindow, "", QCoreApplication::translate("Main window", "The file '%1' could not be saved.").arg(saveFileName), QMessageBox::Ok, QMessageBox::NoButton);
                 else
                     savePathSettings.setValue(savePathSettingsKey, QFileInfo(saveFileName).absolutePath());
                 fileExistsAskUserForOverwrite = false;

@@ -58,6 +58,8 @@ signals:
     void previewStateChanged(const QString &state) const;
     void prevButtonEnabled(bool enabled) const;
     void nextButtonEnabled(bool enabled) const;
+    void showManualSignal(const QString &title, const QString &manual) const;
+    void showWizardStepHelpSignal(const QString &title, const QString &manual) const;
 
 private:
     WizardSteps m_wizardStep;
