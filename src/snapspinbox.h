@@ -20,8 +20,8 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef QTPOSTERAZORSPINBOX_H
-#define QTPOSTERAZORSPINBOX_H
+#ifndef SNAPSPINBOX_H
+#define SNAPSPINBOX_H
 
 #include <QDoubleSpinBox>
 
@@ -50,4 +50,4 @@ signals:
     void valueEdited(double value) const;
 };
 
-#endif // QTPOSTERAZORSPINBOX_H
+#endif // SNAPSPINBOX_H
