@@ -333,6 +333,11 @@ void MainWindow::setCurrentUnitOfLength(const QString &unit)
     m_paperCustomHeightDimensionUnitLabel->setText(unit);
 }
 
+void MainWindow::addAboutDialogAction(QAction *action)
+{   
+    m_menuAbout->addAction(action);
+}
+
 void MainWindow::setPrevButtonEnabled(bool enabled)
 {
     m_stepPrevButton->setDisabled(!enabled);

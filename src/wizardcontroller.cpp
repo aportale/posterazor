@@ -26,10 +26,16 @@
 #include <QMetaObject>
 #include <QMetaEnum>
 
-static const QMetaEnum wizardStepsEnum =
-    WizardController::staticMetaObject.enumerator(WizardController::staticMetaObject.indexOfEnumerator("WizardSteps"));
+static const QMetaEnum wizardStepsEnum()
+{
+    static QMetaEnum result = WizardController::staticMetaObject.enumerator(WizardController::staticMetaObject.indexOfEnumerator("WizardSteps"));
+    return result;
+}
 
-const int WizardController::m_wizardStepsCount = wizardStepsEnum.keyCount();
+static int wizardStepsCount()
+{
+    return wizardStepsEnum().keyCount();
+}
 
 WizardController::WizardController(QObject *wizardDialog, QObject *parent)
     : QObject(parent)
@@ -67,11 +73,11 @@ void WizardController::showManual()
         "The <b>%2</b> and <b>%3</b> buttons navigate through these steps. The <b>?</b> button opens a help window with an explanation of the current step.\n"
         "All entries and choices are remembered until the next usage of the PosteRazor.",
         "Manual preface. Place holders: %1 = Number of wizard steps, %2 = 'Back', %3 = 'Next' (will be automatically inserted)")
-        .arg(m_wizardStepsCount)
+        .arg(wizardStepsCount())
         .arg(QCoreApplication::translate("Main window", "Back"))
         .arg(QCoreApplication::translate("Main window", "Next"))));
-    for (int i = 0; i < wizardStepsEnum.keyCount(); i++) {
-        const WizardSteps step = (WizardSteps)wizardStepsEnum.value(i);
+    for (int i = 0; i < wizardStepsEnum().keyCount(); i++) {
+        const WizardSteps step = (WizardSteps)wizardStepsEnum().value(i);
         manual.append(QString(QLatin1String("<h2>%1</h2>")).arg(stepTitle(step)));
         manual.append(stepHelp(step));
     }
@@ -132,7 +138,7 @@ void WizardController::updateDialogWizardStepDescription()
 
 QString WizardController::stepXofYString(WizardSteps step)
 {
-    return QCoreApplication::translate("Help", "Step %1 of %2:").arg((int)step + 1).arg((int)m_wizardStepsCount);
+    return QCoreApplication::translate("Help", "Step %1 of %2:").arg((int)step + 1).arg(wizardStepsCount());
 }
 
 QString WizardController::stepTitle(WizardSteps step)

@@ -63,6 +63,7 @@ public:
     void updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, double verticalDpi, double horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel);
     void setCurrentTranslation(const QString &translation); // Only to set the right menu entry to checked
     void setCurrentUnitOfLength(const QString &unit);
+    void addAboutDialogAction(QAction *action);
 
 public slots:
     void setPreviewImage(const QImage &image);

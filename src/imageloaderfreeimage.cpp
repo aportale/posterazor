@@ -306,3 +306,13 @@ bool ImageLoaderFreeImage::hasFreeImageVersionCorrectTopDownInConvertBits()
         && versionDigits.at(0).toInt() >= 3
         && versionDigits.at(1).toInt() >= 10;
 }
+QString ImageLoaderFreeImage::getLibraryName() const
+{
+    return QLatin1String("FreeImage");
+}
+
+QString ImageLoaderFreeImage::getLibraryAboutText() const
+{
+    static const QString copyrightMessage(FreeImage_GetCopyrightMessage());
+    return copyrightMessage;
+}

@@ -68,6 +68,13 @@ Controller::Controller(PosteRazorCore *posteRazorCore, MainWindow *mainWindow, Q
 
     m_wizardController = new WizardController(m_mainWindow, this);
 
+    if (!m_posteRazorCore->getImageIOLibraryAboutText().isEmpty()) {
+        QAction *aboutAction = new QAction(m_mainWindow);
+        aboutAction->setText(QLatin1String("A&bout ") + m_posteRazorCore->getImageIOLibraryName());
+        connect (aboutAction, SIGNAL(triggered()), SLOT(showExtraAboutDialog()));
+        m_mainWindow->addAboutDialogAction(aboutAction);
+    }
+
     updateDialog();
     setDialogPosterSizeMode();
 
@@ -458,3 +465,13 @@ void Controller::openPosteRazorWebsite()
     QDesktopServices::openUrl(QCoreApplication::translate("Help", "http://posterazor.sourceforge.net/", "Only translate, if the website has this language."));
 }
 
+void Controller::showExtraAboutDialog()
+{
+    const QString title = QLatin1String("About ") + m_posteRazorCore->getImageIOLibraryName();
+    QMessageBox::about(
+        m_mainWindow, title,
+        QString(QLatin1String("<h3>%1</h3>%2")) // QMessageBox::aboutQt() also uses <h3>
+            .arg(title)
+            .arg(Types::newlineToParagraph(m_posteRazorCore->getImageIOLibraryAboutText()))
+    );
+}

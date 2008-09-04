@@ -82,6 +82,9 @@ signals:
         Types::ColorTypes colorType, int bitsPerPixel) const;
     virtual void pddfLaunch(const QString &pdfFileName) const;
 
+private slots:
+    void showExtraAboutDialog();
+
 protected:
     PosteRazorCore *m_posteRazorCore;
     MainWindow *m_mainWindow;

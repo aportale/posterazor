@@ -64,7 +64,6 @@ signals:
 private:
     WizardSteps m_wizardStep;
     bool m_imageWasLoaded;
-    static const int m_wizardStepsCount;
 
     static QString stepXofYString(WizardSteps step);
     static QString stepTitle(WizardSteps step);

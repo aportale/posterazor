@@ -177,6 +177,16 @@ const QVector<QPair<QStringList, QString> > &PosteRazorCore::getImageFormats() c
     return m_imageLoader->getImageFormats();
 }
 
+const QString PosteRazorCore::getImageIOLibraryName() const
+{
+    return m_imageLoader->getLibraryName();
+}
+
+const QString PosteRazorCore::getImageIOLibraryAboutText() const
+{
+    return m_imageLoader->getLibraryAboutText();
+}
+
 QSize PosteRazorCore::getInputImageSizePixels() const
 {
     return m_imageLoader->getSizePixels();

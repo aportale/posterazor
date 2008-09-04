@@ -161,3 +161,15 @@ const QVector<QPair<QStringList, QString> > &ImageLoaderQt::getImageFormats() co
     }
     return formats;
 }
+
+QString ImageLoaderQt::getLibraryName() const
+{
+    return QLatin1String("Qt");
+}
+
+QString ImageLoaderQt::getLibraryAboutText() const
+{
+    // Returning an empty string means that this image IO library does not want to be mentioned.
+    // Assuming that the host application provides a state-of-the-art "About Qt" message box.
+    return QString();
+}

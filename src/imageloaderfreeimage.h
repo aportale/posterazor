@@ -47,6 +47,8 @@ public:
     const QByteArray getBits() const;
     const QVector<QRgb> getColorTable() const;
     const QVector<QPair<QStringList, QString> > &getImageFormats() const;
+    QString getLibraryName() const;
+    QString getLibraryAboutText() const;
 
 private:
     FIBITMAP*    m_bitmap;

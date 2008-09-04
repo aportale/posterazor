@@ -71,6 +71,8 @@ public:
     Qt::Alignment getPosterAlignment() const;
     bool getIsImageLoaded() const;
     const QVector<QPair<QStringList, QString> > &getImageFormats() const;
+    const QString getImageIOLibraryName() const;
+    const QString getImageIOLibraryAboutText() const;
 
     void setUnitOfLength(Types::UnitsOfLength unit);
     void setPaperFormat(const QString &format);
