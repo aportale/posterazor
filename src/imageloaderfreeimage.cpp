@@ -100,8 +100,8 @@ bool ImageLoaderFreeImage::loadInputImage(const QString &imageFileName, QString 
 
         m_imageFileName = imageFileName;
 
-        if ((getColorDataType() == Types::ColorTypeRGB && getBitsPerPixel() == 32) // Sometimes, there are strange .PSD images like this (FreeImage bug?)
-            || (getColorDataType() == Types::ColorTypeRGBA)) // We can't export alpha channels to PDF, anyway (yet)
+        if ((colorDataType() == Types::ColorTypeRGB && bitsPerPixel() == 32) // Sometimes, there are strange .PSD images like this (FreeImage bug?)
+            || (colorDataType() == Types::ColorTypeRGBA)) // We can't export alpha channels to PDF, anyway (yet)
         {
             RGBQUAD white = { 255, 255, 255, 0 };
             FIBITMAP *Image24Bit = FreeImage_Composite(m_bitmap, FALSE, &white);
@@ -125,47 +125,47 @@ bool ImageLoaderFreeImage::isJpeg() const
     return FreeImage_GetFileType(m_imageFileName.toAscii(), 0) == FIF_JPEG;
 }
 
-QString ImageLoaderFreeImage::getFileName() const
+QString ImageLoaderFreeImage::fileName() const
 {
     return m_imageFileName;
 }
 
-QSize ImageLoaderFreeImage::getSizePixels() const
+QSize ImageLoaderFreeImage::sizePixels() const
 {
     return QSize(m_widthPixels, m_heightPixels);
 }
 
-double ImageLoaderFreeImage::getHorizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
+double ImageLoaderFreeImage::horizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
 {
     return m_horizontalDotsPerMeter / Types::convertBetweenUnitsOfLength(1, Types::UnitOfLengthMeter, unit);
 }
 
-double ImageLoaderFreeImage::getVerticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
+double ImageLoaderFreeImage::verticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
 {
     return m_verticalDotsPerMeter / Types::convertBetweenUnitsOfLength(1, Types::UnitOfLengthMeter, unit);
 }
 
-QSizeF ImageLoaderFreeImage::getSize(Types::UnitsOfLength unit) const
+QSizeF ImageLoaderFreeImage::size(Types::UnitsOfLength unit) const
 {
-    const QSize sizePixels(getSizePixels());
-    return QSizeF(sizePixels.width() / getHorizontalDotsPerUnitOfLength(unit), sizePixels.height() / getVerticalDotsPerUnitOfLength(unit));
+    const QSize sizePixels(sizePixels());
+    return QSizeF(sizePixels.width() / horizontalDotsPerUnitOfLength(unit), sizePixels.height() / verticalDotsPerUnitOfLength(unit));
 }
 
-const QImage ImageLoaderFreeImage::getImageAsRGB(const QSize &size) const
+const QImage ImageLoaderFreeImage::imageAsRGB(const QSize &size) const
 {
-    const QSize resultSize = size.isValid()?size:getSizePixels();
+    const QSize resultSize = size.isValid()?size:sizePixels();
     QImage result(resultSize, QImage::Format_RGB32);
 
     const int width = resultSize.width();
     const int height = resultSize.height();
-    const QSize sizePixels = getSizePixels();
+    const QSize sizePixels = this->sizePixels();
 
     FIBITMAP* originalImage = m_bitmap;
     FIBITMAP* temp24BPPImage = NULL;
     FIBITMAP* scaledImage = NULL;
 
-    if (getBitsPerPixel() != 24) {
-        if (getColorDataType() == Types::ColorTypeCMYK) {
+    if (bitsPerPixel() != 24) {
+        if (colorDataType() == Types::ColorTypeCMYK) {
             temp24BPPImage = FreeImage_Allocate(sizePixels.width(), sizePixels.height(), 24);
             const unsigned int columnsCount = sizePixels.width();
             const unsigned int scanlinesCount = sizePixels.height();
@@ -220,18 +220,18 @@ const QImage ImageLoaderFreeImage::getImageAsRGB(const QSize &size) const
     return result;
 }
 
-int ImageLoaderFreeImage::getBitsPerPixel() const
+int ImageLoaderFreeImage::bitsPerPixel() const
 {
     return FreeImage_GetBPP(m_bitmap);
 }
 
-Types::ColorTypes ImageLoaderFreeImage::getColorDataType() const
+Types::ColorTypes ImageLoaderFreeImage::colorDataType() const
 {
     Types::ColorTypes colorDatatype = Types::ColorTypeRGB;
     const FREE_IMAGE_COLOR_TYPE imageColorType = FreeImage_GetColorType(m_bitmap);
 
     if (imageColorType == FIC_MINISBLACK || imageColorType == FIC_MINISWHITE) {
-        colorDatatype = getBitsPerPixel()==1?Types::ColorTypeMonochrome:Types::ColorTypeGreyscale;
+        colorDatatype = bitsPerPixel()==1?Types::ColorTypeMonochrome:Types::ColorTypeGreyscale;
     } else {
         colorDatatype =
             imageColorType==FIC_PALETTE?Types::ColorTypePalette:
@@ -243,17 +243,17 @@ Types::ColorTypes ImageLoaderFreeImage::getColorDataType() const
     return colorDatatype;
 }
 
-const QByteArray ImageLoaderFreeImage::getBits() const
+const QByteArray ImageLoaderFreeImage::bits() const
 {
-    const unsigned int bitsPerLine = m_widthPixels * getBitsPerPixel();
+    const unsigned int bitsPerLine = m_widthPixels * bitsPerPixel();
     const unsigned int bytesPerLine = (unsigned int)ceil(bitsPerLine/8.0);
     const unsigned int imageBytesCount = bytesPerLine * m_heightPixels;
 
     QByteArray result(imageBytesCount, 0);
     char *destination = result.data();
-    FreeImage_ConvertToRawBits((BYTE*)destination, m_bitmap, bytesPerLine, getBitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, hasFreeImageVersionCorrectTopDownInConvertBits());
+    FreeImage_ConvertToRawBits((BYTE*)destination, m_bitmap, bytesPerLine, bitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, hasFreeImageVersionCorrectTopDownInConvertBits());
 
-    if (getBitsPerPixel() == 24 && QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
+    if (bitsPerPixel() == 24 && QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
         const unsigned long numberOfPixels = m_widthPixels * m_heightPixels;
         for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
             char *pixelPtr = destination + pixelIndex*3;
@@ -267,7 +267,7 @@ const QByteArray ImageLoaderFreeImage::getBits() const
     return result;
 }
 
-const QVector<QRgb> ImageLoaderFreeImage::getColorTable() const
+const QVector<QRgb> ImageLoaderFreeImage::colorTable() const
 {
     QVector<QRgb> result;
 
@@ -282,7 +282,7 @@ const QVector<QRgb> ImageLoaderFreeImage::getColorTable() const
     return result;
 }
 
-const QVector<QPair<QStringList, QString> > &ImageLoaderFreeImage::getImageFormats() const
+const QVector<QPair<QStringList, QString> > &ImageLoaderFreeImage::imageFormats() const
 {
     static QVector<QPair<QStringList, QString> > formats;
     if (formats.empty()) {
@@ -306,12 +306,12 @@ bool ImageLoaderFreeImage::hasFreeImageVersionCorrectTopDownInConvertBits()
         && versionDigits.at(0).toInt() >= 3
         && versionDigits.at(1).toInt() >= 10;
 }
-QString ImageLoaderFreeImage::getLibraryName() const
+QString ImageLoaderFreeImage::libraryName() const
 {
     return QLatin1String("FreeImage");
 }
 
-QString ImageLoaderFreeImage::getLibraryAboutText() const
+QString ImageLoaderFreeImage::libraryAboutText() const
 {
     static const QString copyrightMessage(FreeImage_GetCopyrightMessage());
     return copyrightMessage;

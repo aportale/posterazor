@@ -43,7 +43,7 @@ public:
     int startSaving(const QString &fileName, int pages, double widthCm, double heightCm);
     int finishSaving();
     void drawFilledRect(const QRectF&, const QBrush &brush);
-    QSizeF getSize() const;
+    QSizeF size() const;
     void drawImage(const QRectF &rect);
 
 private:

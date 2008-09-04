@@ -68,9 +68,9 @@ Controller::Controller(PosteRazorCore *posteRazorCore, MainWindow *mainWindow, Q
 
     m_wizardController = new WizardController(m_mainWindow, this);
 
-    if (!m_posteRazorCore->getImageIOLibraryAboutText().isEmpty()) {
+    if (!m_posteRazorCore->imageIOLibraryAboutText().isEmpty()) {
         QAction *aboutAction = new QAction(m_mainWindow);
-        aboutAction->setText(QLatin1String("A&bout ") + m_posteRazorCore->getImageIOLibraryName());
+        aboutAction->setText(QLatin1String("A&bout ") + m_posteRazorCore->imageIOLibraryName());
         connect (aboutAction, SIGNAL(triggered()), SLOT(showExtraAboutDialog()));
         m_mainWindow->addAboutDialogAction(aboutAction);
     }
@@ -84,7 +84,7 @@ Controller::Controller(PosteRazorCore *posteRazorCore, MainWindow *mainWindow, Q
 
 void Controller::updateDialog()
 {
-    const QString unitOfLength = Types::unitsOfLength().value(m_posteRazorCore->getUnitOfLength()).first;
+    const QString unitOfLength = Types::unitsOfLength().value(m_posteRazorCore->unitOfLength()).first;
     m_mainWindow->setCurrentUnitOfLength(unitOfLength);
     setDialogPaperOptions();
     setDialogPosterOptions();
@@ -247,21 +247,21 @@ void Controller::setDialogSaveOptions()
 
 void Controller::setDialogPosterSizeMode()
 {
-    m_mainWindow->setPosterSizeMode(m_posteRazorCore->getPosterSizeMode());
+    m_mainWindow->setPosterSizeMode(m_posteRazorCore->posterSizeMode());
 }
 
 void Controller::setDialogPosterOptions()
 {
     setDialogPosterDimensions(Types::PosterSizeModeNone, true);
-    m_mainWindow->setPosterAlignment(m_posteRazorCore->getPosterAlignment());
-    m_mainWindow->setPosterSizeMode(m_posteRazorCore->getPosterSizeMode());
+    m_mainWindow->setPosterAlignment(m_posteRazorCore->posterAlignment());
+    m_mainWindow->setPosterSizeMode(m_posteRazorCore->posterSizeMode());
 }
 
 void Controller::setDialogPosterDimensions(Types::PosterSizeModes excludedMode, bool widthExcluded)
 {
-    const QSizeF posterSizeAbsolute = m_posteRazorCore->getPosterSize(Types::PosterSizeModeAbsolute);
-    const QSizeF posterSizePages = m_posteRazorCore->getPosterSize(Types::PosterSizeModePages);
-    const QSizeF posterSizePercentual = m_posteRazorCore->getPosterSize(Types::PosterSizeModePercentual);
+    const QSizeF posterSizeAbsolute = m_posteRazorCore->posterSize(Types::PosterSizeModeAbsolute);
+    const QSizeF posterSizePages = m_posteRazorCore->posterSize(Types::PosterSizeModePages);
+    const QSizeF posterSizePercentual = m_posteRazorCore->posterSize(Types::PosterSizeModePercentual);
     if (excludedMode != Types::PosterSizeModeAbsolute || !widthExcluded)
         m_mainWindow->setPosterWidthAbsolute(posterSizeAbsolute.width());
     if (excludedMode != Types::PosterSizeModeAbsolute || widthExcluded)
@@ -279,48 +279,48 @@ void Controller::setDialogPaperOptions()
 {
     setDialogPaperBorders();
     setDialogCustomPaperDimensions();
-    m_mainWindow->setUseCustomPaperSize(m_posteRazorCore->getUseCustomPaperSize());
-    m_mainWindow->setPaperFormat(m_posteRazorCore->getPaperFormat());
-    m_mainWindow->setPaperOrientation(m_posteRazorCore->getPaperOrientation());
+    m_mainWindow->setUseCustomPaperSize(m_posteRazorCore->usesCustomPaperSize());
+    m_mainWindow->setPaperFormat(m_posteRazorCore->paperFormat());
+    m_mainWindow->setPaperOrientation(m_posteRazorCore->paperOrientation());
 }
 
 void Controller::setDialogPaperBorders()
 {
-    m_mainWindow->setPaperBorderTop(m_posteRazorCore->getPaperBorderTop());
-    m_mainWindow->setPaperBorderRight(m_posteRazorCore->getPaperBorderRight());
-    m_mainWindow->setPaperBorderBottom(m_posteRazorCore->getPaperBorderBottom());
-    m_mainWindow->setPaperBorderLeft(m_posteRazorCore->getPaperBorderLeft());
+    m_mainWindow->setPaperBorderTop(m_posteRazorCore->paperBorderTop());
+    m_mainWindow->setPaperBorderRight(m_posteRazorCore->paperBorderRight());
+    m_mainWindow->setPaperBorderBottom(m_posteRazorCore->paperBorderBottom());
+    m_mainWindow->setPaperBorderLeft(m_posteRazorCore->paperBorderLeft());
 }
 
 void Controller::setDialogCustomPaperDimensions()
 {
-    m_mainWindow->setCustomPaperSize(m_posteRazorCore->getCustomPaperSize());
+    m_mainWindow->setCustomPaperSize(m_posteRazorCore->customPaperSize());
 }
 
 void Controller::setDialogImageInfoFields()
 {
-    if (m_posteRazorCore->getIsImageLoaded()) {
+    if (m_posteRazorCore->isImageLoaded()) {
         m_mainWindow->updateImageInfoFields (
-            m_posteRazorCore->getInputImageSizePixels(),
-            m_posteRazorCore->getInputImageSize(),
-            m_posteRazorCore->getInputImageVerticalDpi(),
-            m_posteRazorCore->getInputImageHorizontalDpi(),
-            m_posteRazorCore->getInputImageColorType(),
-            m_posteRazorCore->getInputImageBitsPerPixel()
+            m_posteRazorCore->inputImageSizePixels(),
+            m_posteRazorCore->inputImageSize(),
+            m_posteRazorCore->inputImageVerticalDpi(),
+            m_posteRazorCore->inputImageHorizontalDpi(),
+            m_posteRazorCore->inputImageColorType(),
+            m_posteRazorCore->inputImageBitsPerPixel()
         );
     }
 }
 
 void Controller::setDialogOverlappingDimensions()
 {
-    m_mainWindow->setOverlappingWidth(m_posteRazorCore->getOverlappingWidth());
-    m_mainWindow->setOverlappingHeight(m_posteRazorCore->getOverlappingHeight());
+    m_mainWindow->setOverlappingWidth(m_posteRazorCore->overlappingWidth());
+    m_mainWindow->setOverlappingHeight(m_posteRazorCore->overlappingHeight());
 }
 
 void Controller::setDialogOverlappingOptions()
 {
     setDialogOverlappingDimensions();
-    m_mainWindow->setOverlappingPosition(m_posteRazorCore->getOverlappingPosition());
+    m_mainWindow->setOverlappingPosition(m_posteRazorCore->overlappingPosition());
 }
 
 void Controller::readSettings(const QSettings *settings)
@@ -345,7 +345,7 @@ void Controller::loadInputImage()
     QStringList allFilters;
     QStringList allWildcards;
 
-    const QVector<QPair<QStringList, QString> > &formats = m_posteRazorCore->getImageFormats();
+    const QVector<QPair<QStringList, QString> > &formats = m_posteRazorCore->imageFormats();
     for (int i = 0; i < formats.count(); i++) {
         QStringList formatWildcards;
         foreach (const QString &extension, formats.at(i).first)
@@ -467,11 +467,11 @@ void Controller::openPosteRazorWebsite()
 
 void Controller::showExtraAboutDialog()
 {
-    const QString title = QLatin1String("About ") + m_posteRazorCore->getImageIOLibraryName();
+    const QString title = QLatin1String("About ") + m_posteRazorCore->imageIOLibraryName();
     QMessageBox::about(
         m_mainWindow, title,
         QString(QLatin1String("<h3>%1</h3>%2")) // QMessageBox::aboutQt() also uses <h3>
             .arg(title)
-            .arg(Types::newlineToParagraph(m_posteRazorCore->getImageIOLibraryAboutText()))
+            .arg(Types::newlineToParagraph(m_posteRazorCore->imageIOLibraryAboutText()))
     );
 }

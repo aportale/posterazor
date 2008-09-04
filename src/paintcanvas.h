@@ -43,7 +43,7 @@ public:
 
     virtual void paintEvent(QPaintEvent *event);
     virtual void drawFilledRect(const QRectF &rect, const QBrush &brush);
-    virtual QSizeF getSize() const;
+    virtual QSizeF size() const;
     virtual void drawImage(const QRectF &rect);
     virtual void setState(const QString &state);
 

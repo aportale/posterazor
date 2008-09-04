@@ -38,19 +38,19 @@ public:
     virtual bool loadInputImage(const QString &imageFileName, QString &errorMessage) = 0;
     virtual bool isImageLoaded() const = 0;
     virtual bool isJpeg() const = 0;
-    virtual QString getFileName() const = 0;
-    virtual QSize getSizePixels() const = 0;
-    virtual double getHorizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const = 0;
-    virtual double getVerticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const = 0;
-    virtual QSizeF getSize(Types::UnitsOfLength unit) const = 0;
-    virtual const QImage getImageAsRGB(const QSize &size) const = 0;
-    virtual int getBitsPerPixel() const = 0;
-    virtual Types::ColorTypes getColorDataType() const = 0;
-    virtual const QByteArray getBits() const = 0;
-    virtual const QVector<QRgb> getColorTable() const = 0;
-    virtual const QVector<QPair<QStringList, QString> > &getImageFormats() const = 0;
-    virtual QString getLibraryName() const = 0;
-    virtual QString getLibraryAboutText() const = 0;
+    virtual QString fileName() const = 0;
+    virtual QSize sizePixels() const = 0;
+    virtual double horizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const = 0;
+    virtual double verticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const = 0;
+    virtual QSizeF size(Types::UnitsOfLength unit) const = 0;
+    virtual const QImage imageAsRGB(const QSize &size) const = 0;
+    virtual int bitsPerPixel() const = 0;
+    virtual Types::ColorTypes colorDataType() const = 0;
+    virtual const QByteArray bits() const = 0;
+    virtual const QVector<QRgb> colorTable() const = 0;
+    virtual const QVector<QPair<QStringList, QString> > &imageFormats() const = 0;
+    virtual QString libraryName() const = 0;
+    virtual QString libraryAboutText() const = 0;
 };
 
 #endif // IMAGELOADERINTERFACE_H

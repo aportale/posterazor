@@ -386,7 +386,7 @@ void PDFWriter::drawFilledRect(const QRectF& rect, const QBrush &brush)
     Q_UNUSED(brush)
 }
 
-QSizeF PDFWriter::getSize() const
+QSizeF PDFWriter::size() const
 {
     return QSizeF();
 }

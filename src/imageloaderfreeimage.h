@@ -36,19 +36,19 @@ public:
     bool loadInputImage(const QString &imageFileName, QString &errorMessage);
     bool isImageLoaded() const;
     bool isJpeg() const;
-    QString getFileName() const;
-    QSize getSizePixels() const;
-    double getHorizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const;
-    double getVerticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const;
-    QSizeF getSize(Types::UnitsOfLength unit) const;
-    const QImage getImageAsRGB(const QSize &size) const;
-    int getBitsPerPixel() const;
-    Types::ColorTypes getColorDataType() const;
-    const QByteArray getBits() const;
-    const QVector<QRgb> getColorTable() const;
-    const QVector<QPair<QStringList, QString> > &getImageFormats() const;
-    QString getLibraryName() const;
-    QString getLibraryAboutText() const;
+    QString fileName() const;
+    QSize sizePixels() const;
+    double horizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const;
+    double verticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const;
+    QSizeF size(Types::UnitsOfLength unit) const;
+    const QImage imageAsRGB(const QSize &size) const;
+    int bitsPerPixel() const;
+    Types::ColorTypes colorDataType() const;
+    const QByteArray bits() const;
+    const QVector<QRgb> colorTable() const;
+    const QVector<QPair<QStringList, QString> > &imageFormats() const;
+    QString libraryName() const;
+    QString libraryAboutText() const;
 
 private:
     FIBITMAP*    m_bitmap;

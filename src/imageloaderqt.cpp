@@ -49,43 +49,43 @@ bool ImageLoaderQt::isJpeg() const
     return reader.format() == "jpeg";
 }
 
-QString ImageLoaderQt::getFileName() const
+QString ImageLoaderQt::fileName() const
 {
     return m_imageFileName;
 }
 
-QSize ImageLoaderQt::getSizePixels() const
+QSize ImageLoaderQt::sizePixels() const
 {
     return m_image.size();
 }
 
-double ImageLoaderQt::getHorizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
+double ImageLoaderQt::horizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
 {
     return m_image.logicalDpiX() / Types::convertBetweenUnitsOfLength(1, Types::UnitOfLengthInch, unit);
 }
 
-double ImageLoaderQt::getVerticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
+double ImageLoaderQt::verticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
 {
     return m_image.logicalDpiY() / Types::convertBetweenUnitsOfLength(1, Types::UnitOfLengthInch, unit);
 }
 
-QSizeF ImageLoaderQt::getSize(Types::UnitsOfLength unit) const
+QSizeF ImageLoaderQt::size(Types::UnitsOfLength unit) const
 {
-    const QSize sizePixels(getSizePixels());
-    return QSizeF(sizePixels.width() / getHorizontalDotsPerUnitOfLength(unit), sizePixels.height() / getVerticalDotsPerUnitOfLength(unit));
+    const QSize sizePixels = this->sizePixels();
+    return QSizeF(sizePixels.width() / horizontalDotsPerUnitOfLength(unit), sizePixels.height() / verticalDotsPerUnitOfLength(unit));
 }
 
-const QImage ImageLoaderQt::getImageAsRGB(const QSize &size) const
+const QImage ImageLoaderQt::imageAsRGB(const QSize &size) const
 {
     return m_image.scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
 }
 
-int ImageLoaderQt::getBitsPerPixel() const
+int ImageLoaderQt::bitsPerPixel() const
 {
-    return getColorDataType() == Types::ColorTypeRGB?24:m_image.depth();
+    return colorDataType() == Types::ColorTypeRGB?24:m_image.depth();
 }
 
-Types::ColorTypes ImageLoaderQt::getColorDataType() const
+Types::ColorTypes ImageLoaderQt::colorDataType() const
 {
     const QImage::Format format = m_image.format();
 
@@ -95,18 +95,18 @@ Types::ColorTypes ImageLoaderQt::getColorDataType() const
             /*format==QImage::Format_RGB32?*/Types::ColorTypeRGB;
 }
 
-const QByteArray ImageLoaderQt::getBits() const
+const QByteArray ImageLoaderQt::bits() const
 {
     const int imageWidth = m_image.width();
     const int imageHeight = m_image.height();
-    const unsigned int bitsPerLine = imageWidth * getBitsPerPixel();
+    const unsigned int bitsPerLine = imageWidth * bitsPerPixel();
     const unsigned int bytesPerLine = (unsigned int)ceil(bitsPerLine/8.0);
     const unsigned int imageBytesCount = bytesPerLine * imageHeight;
 
     QByteArray result(imageBytesCount, 0);
     char *destination = result.data();
 
-    if (getBitsPerPixel() == 24 && QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
+    if (bitsPerPixel() == 24 && QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
         for (int scanline = 0; scanline < imageHeight; scanline++) {
             const uchar *sourceScanLine = m_image.scanLine(scanline);
             for (int column = 0; column < imageWidth; column++) {
@@ -121,12 +121,12 @@ const QByteArray ImageLoaderQt::getBits() const
     return result;
 }
 
-const QVector<QRgb> ImageLoaderQt::getColorTable() const
+const QVector<QRgb> ImageLoaderQt::colorTable() const
 {
     return m_image.colorTable();
 }
 
-const QVector<QPair<QStringList, QString> > &ImageLoaderQt::getImageFormats() const
+const QVector<QPair<QStringList, QString> > &ImageLoaderQt::imageFormats() const
 {
     static QVector<QPair<QStringList, QString> > formats;
     if (formats.empty()) {
@@ -162,12 +162,12 @@ const QVector<QPair<QStringList, QString> > &ImageLoaderQt::getImageFormats() co
     return formats;
 }
 
-QString ImageLoaderQt::getLibraryName() const
+QString ImageLoaderQt::libraryName() const
 {
     return QLatin1String("Qt");
 }
 
-QString ImageLoaderQt::getLibraryAboutText() const
+QString ImageLoaderQt::libraryAboutText() const
 {
     // Returning an empty string means that this image IO library does not want to be mentioned.
     // Assuming that the host application provides a state-of-the-art "About Qt" message box.

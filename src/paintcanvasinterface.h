@@ -31,7 +31,7 @@ public:
     virtual ~PaintCanvasInterface() {};
 
     virtual void drawFilledRect(const QRectF &rect, const QBrush &brush) = 0;
-    virtual QSizeF getSize() const = 0;
+    virtual QSizeF size() const = 0;
     virtual void drawImage(const QRectF &rect) = 0;
 };
 
