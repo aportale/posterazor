@@ -80,3 +80,5 @@ contains (DEFINES, FREEIMAGE_LIB) {
         qjpeg \
         qtiff
 }
+
+!contains(CONFIG, build_pass) system(lrelease posterazor.pro)
