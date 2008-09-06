@@ -121,7 +121,8 @@ int PDFWriter::saveJpegImage(const QString &jpegFileName, const QSize &sizePixel
             ">>" LINEFEED
             "stream" LINEFEED,
             m_pdfObjectCount,
-            colorType==Types::ColorTypeCMYK?"/DeviceCMYK":"/DeviceRGB ", // Leaving space after RGB for eventual manual patching to CMYK
+            colorType==Types::ColorTypeCMYK?"/DeviceCMYK"
+            :colorType==Types::ColorTypeRGB?"/DeviceRGB ":"/DeviceGray ", // Leaving space after RGB for eventual manual patching to CMYK
             jpegFileSize, sizePixels.width(), sizePixels.height()
         );
     }
