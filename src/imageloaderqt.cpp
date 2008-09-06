@@ -126,6 +126,12 @@ const QByteArray ImageLoaderQt::bits() const
                 sourceScanLine += 4;
             }
         }
+    } else {
+        for (int scanline = 0; scanline < imageHeight; scanline++) {
+            const uchar *sourceScanLine = m_image.scanLine(scanline);
+            memcpy(destination, sourceScanLine, bytesPerLine);
+            destination += bytesPerLine;
+        }
     }
 
     return result;
