@@ -20,18 +20,17 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include <stdio.h>
-#include <string.h>
 #include "paintcanvasinterface.h"
 #include "pdfwriter.h"
-#include <time.h>
 #include <QRectF>
 #include <QBrush>
-#define LINEFEED "\012"
+#include <QFile>
+#include <QFileInfo>
+#include <QDateTime>
+#define LINEFEED "\x0A"
 #define CM2PT(cm) ((cm) / 2.54 * 72)
-#define JPEGFILECOPYBUFFERSIZE 10000
 
-// TODO: Qt-ification. No C file I/O, etc.
+// TODO: Qt-ify also the jpeg case.
 
 PDFWriter::PDFWriter(QObject *parent)
     : QObject(parent)
@@ -43,15 +42,15 @@ PDFWriter::PDFWriter(QObject *parent)
     , m_mediaboxWidth(5000.0)
     , m_mediaboxHeight(5000.0)
 {
-    m_pageContent[0] = '\0';
 }
 
 void PDFWriter::addOffsetToXref()
 {
     char xrefLine[25];
     m_pdfObjectCount++;
-    sprintf(xrefLine, "%.10d %.5d n " LINEFEED, (int)ftell(m_outputFile), 0);
-    strcat(m_xref, xrefLine);
+    m_outStream.flush();
+    sprintf(xrefLine, "%.10d %.5d n " LINEFEED, (int)m_outStream.device()->size(), 0);
+    m_xref.append(xrefLine);
 }
 
 int PDFWriter::addImageResourcesAndXObject()
@@ -60,25 +59,23 @@ int PDFWriter::addImageResourcesAndXObject()
 
     addOffsetToXref();
     m_objectResourcesID = m_pdfObjectCount;
-    fprintf (
-        m_outputFile,
-        LINEFEED "%d 0 obj" LINEFEED
-        "<</XObject %d 0 R" LINEFEED
+    m_outStream << QString(
+        LINEFEED "%1 0 obj" LINEFEED
+        "<</XObject %2 0 R" LINEFEED
         "/ProcSet [/PDF /Text /ImageC /ImageI /ImageB]" LINEFEED
         ">>" LINEFEED
-        "endobj",
-        m_pdfObjectCount, m_pdfObjectCount + 1
-    );
+        "endobj")
+        .arg(m_pdfObjectCount)
+        .arg(m_pdfObjectCount + 1);
 
     addOffsetToXref();
-    fprintf (
-        m_outputFile,
-        LINEFEED "%d 0 obj" LINEFEED
-        "<</Im1 %d 0 R" LINEFEED
+    m_outStream << QString(
+        LINEFEED "%1 0 obj" LINEFEED
+        "<</Im1 %2 0 R" LINEFEED
         ">>" LINEFEED
-        "endobj",
-        m_pdfObjectCount, m_pdfObjectCount + 1
-    );
+        "endobj")
+        .arg(m_pdfObjectCount)
+        .arg(m_pdfObjectCount + 1);
 
     return err;
 }
@@ -86,7 +83,7 @@ int PDFWriter::addImageResourcesAndXObject()
 int PDFWriter::saveJpegImage(const QString &jpegFileName, const QSize &sizePixels, Types::ColorTypes colorType)
 {
     int err = 0;
-
+/*
     err = addImageResourcesAndXObject();
 
     FILE *jpegFile = NULL;
@@ -156,7 +153,7 @@ int PDFWriter::saveJpegImage(const QString &jpegFileName, const QSize &sizePixel
         delete[] buffer;
 
     fclose(jpegFile);
-
+*/
     return err;
 }
 
@@ -174,63 +171,65 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
     const int compressedByteArrayPrependedBytes = 4;
     const int compressedByteArrayAppendedBytes = 4;
 
-    char colorSpaceString[5000] = "";
+    QString colorSpaceString;
     switch (colorType) {
     case Types::ColorTypeRGB:
-        strcpy(colorSpaceString, "/DeviceRGB");
+        colorSpaceString = "/DeviceRGB";
         break;
     case Types::ColorTypeGreyscale:
-        strcpy(colorSpaceString, "/DeviceGray");
+        colorSpaceString = "/DeviceGray";
         break;
     case Types::ColorTypeCMYK:
-        strcpy(colorSpaceString, "/DeviceCMYK");
+        colorSpaceString = "/DeviceCMYK";
         break;
     default:
-        sprintf(colorSpaceString, "[/Indexed /DeviceRGB %d <", colorTable.count()-1); // -1, because PDF wants the highest index, not the number of entries
+        colorSpaceString = QString("[/Indexed /DeviceRGB %1 <").arg(colorTable.count()-1); // -1, because PDF wants the highest index, not the number of entries
         foreach (const QRgb &paletteEntry, colorTable) {
-            char rgbHex[20];
-            sprintf(rgbHex, "%.2x%.2x%.2x", qRed(paletteEntry), qGreen(paletteEntry), qBlue(paletteEntry));
-            strcat(colorSpaceString, rgbHex);
+            QString rgbHex = QString("%1%2%3")
+                .arg(qRed(paletteEntry), 2, 16)
+                .arg(qGreen(paletteEntry), 2, 16)
+                .arg(qBlue(paletteEntry), 2, 16);
+            colorSpaceString.append(rgbHex);
         }
-        strcat(colorSpaceString, ">]");
+        colorSpaceString.append(">]");
     }
+
+    const int bitsPerComponent =
+        colorType == Types::ColorTypePalette?bitPerPixel
+        :colorType == Types::ColorTypeMonochrome?bitPerPixel
+        :colorType == Types::ColorTypeGreyscale?bitPerPixel
+        :colorType == Types::ColorTypeCMYK?(bitPerPixel/4)
+        :(bitPerPixel/3);
     addOffsetToXref();
     m_objectImageID = m_pdfObjectCount;
-    fprintf (
-        m_outputFile,
-        LINEFEED "%d 0 obj" LINEFEED
-        "<</ColorSpace %s" LINEFEED
+    m_outStream << QString(
+        LINEFEED "%1 0 obj" LINEFEED
+        "<</ColorSpace %2" LINEFEED
         "/Subtype /Image" LINEFEED
-        "/Length %d" LINEFEED
-        "/Width %d" LINEFEED
+        "/Length %3" LINEFEED
+        "/Width %4" LINEFEED
         "/Type /XObject" LINEFEED
-        "/Height %d" LINEFEED
+        "/Height %5" LINEFEED
         "/Filter /FlateDecode" LINEFEED
-        "/BitsPerComponent %d" LINEFEED
+        "/BitsPerComponent %6" LINEFEED
         ">>" LINEFEED
-        "stream" LINEFEED,
-        m_pdfObjectCount, colorSpaceString,
-        imageDataCompressed.size() - compressedByteArrayPrependedBytes - compressedByteArrayAppendedBytes,
-        sizePixels.width(), sizePixels.height(),
-        (
-            colorType == Types::ColorTypePalette?bitPerPixel
-            :colorType == Types::ColorTypeMonochrome?bitPerPixel
-            :colorType == Types::ColorTypeGreyscale?bitPerPixel
-            :colorType == Types::ColorTypeCMYK?(bitPerPixel/4)
-            :(bitPerPixel/3)
-        )
-    );
-    fwrite(
+        "stream" LINEFEED)
+        .arg(m_pdfObjectCount)
+        .arg(colorSpaceString)
+        .arg(imageDataCompressed.size() - compressedByteArrayPrependedBytes - compressedByteArrayAppendedBytes)
+        .arg(sizePixels.width())
+        .arg(sizePixels.height())
+        .arg(bitsPerComponent);
+
+    m_outStream.flush(); // Important to flush stream before writing to device
+
+    m_outStream.device()->write(
         imageDataCompressed.constData() + compressedByteArrayPrependedBytes,
-        sizeof(char),
-        imageDataCompressed.size() - compressedByteArrayPrependedBytes - compressedByteArrayAppendedBytes,
-        m_outputFile
-    );
-    fprintf(
-        m_outputFile,
+        imageDataCompressed.size() - compressedByteArrayPrependedBytes - compressedByteArrayAppendedBytes);
+
+    m_outStream <<
         LINEFEED "endstream" LINEFEED
-        "endobj"
-    );
+        "endobj";
 
     return err;
 }
@@ -238,25 +237,28 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
 int PDFWriter::startPage()
 {
     int err = 0;
-    m_pageContent[0] = '\0';
 
+    m_pageContent.clear();
     addOffsetToXref();
-    fprintf (
-        m_outputFile,
-        LINEFEED "%d 0 obj" LINEFEED
+    m_outStream << QString(
+        LINEFEED "%1 0 obj" LINEFEED
         "<</Group <</CS /DeviceRGB" LINEFEED
         "/I true" LINEFEED
         "/S /Transparency" LINEFEED
         ">>" LINEFEED
-        "/Parent %d 0 R" LINEFEED
-        "/MediaBox [0 0 %f %f]" LINEFEED
-        "/Resources %d 0 R" LINEFEED
-        "/Contents %d 0 R" LINEFEED
+        "/Parent %2 0 R" LINEFEED
+        "/MediaBox [0 0 %3 %4]" LINEFEED
+        "/Resources %5 0 R" LINEFEED
+        "/Contents %6 0 R" LINEFEED
         "/Type /Page" LINEFEED
         ">>" LINEFEED
-        "endobj",
-        m_pdfObjectCount, m_objectPagesID, m_mediaboxWidth, m_mediaboxHeight, m_objectResourcesID, m_pdfObjectCount+1
-    );
+        "endobj")
+        .arg(m_pdfObjectCount)
+        .arg(m_objectPagesID)
+        .arg(m_mediaboxWidth, 0, 'f', 6)
+        .arg(m_mediaboxHeight, 0, 'f', 6)
+        .arg(m_objectResourcesID)
+        .arg(m_pdfObjectCount+1);
 
     return err;
 }
@@ -266,17 +268,17 @@ int PDFWriter::finishPage()
     int err = 0;
 
     addOffsetToXref();
-    fprintf (
-        m_outputFile,
-        LINEFEED "%d 0 obj" LINEFEED
-        "<</Length %d" LINEFEED
+    m_outStream << QString(
+        LINEFEED "%1 0 obj" LINEFEED
+        "<</Length %2" LINEFEED
         ">>" LINEFEED
         "stream" LINEFEED
-        "%s" LINEFEED
+        "%3" LINEFEED
         "endstream" LINEFEED
-        "endobj",
-        m_pdfObjectCount, (int)strlen(m_pageContent), m_pageContent
-    );
+        "endobj")
+        .arg(m_pdfObjectCount)
+        .arg(m_pageContent.length())
+        .arg(m_pageContent);
 
     return err;
 }
@@ -288,70 +290,59 @@ int PDFWriter::startSaving(const QString &fileName, int pages, double widthCm, d
     m_mediaboxWidth = CM2PT(widthCm);
     m_mediaboxHeight = CM2PT(heightCm);
 
-    m_outputFile = fopen(fileName.toAscii(), "wb");
-    if (!m_outputFile)
-        err = 1;
-    if (!err) {
-        m_contentPagesCount = pages;
-        m_xref = new char[(m_contentPagesCount+15) * 50];
-        sprintf(m_xref, LINEFEED "xref" LINEFEED "0 %d" LINEFEED "0000000000 65535 f " LINEFEED, 7 + m_contentPagesCount*2);
-
-        fprintf(m_outputFile, "%%PDF-1.3" LINEFEED "%%");
-
-        time_t rawtime;
-        struct tm * timeinfo;
-        time(&rawtime);
-        timeinfo = gmtime(&rawtime);
-        char dateStr[1024];
-        sprintf(dateStr, "%.4d%.2d%.2d%.2d%.2d%.2d", timeinfo->tm_year+1900, timeinfo->tm_mon+1, timeinfo->tm_mday, timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
-
-         addOffsetToXref();
-        fprintf (
-            m_outputFile,
-            LINEFEED "%d 0 obj" LINEFEED
-            "<</Creator (PosteRazor)" LINEFEED
-            "/Producer (PosteRazor.SourceForge.net)" LINEFEED
-            "/CreationDate (D:%s)" LINEFEED
-            ">>" LINEFEED
-            "endobj",
-            m_pdfObjectCount,
-            dateStr
-        );
-
-        addOffsetToXref();
-        fprintf (
-            m_outputFile,
-            LINEFEED "%d 0 obj" LINEFEED
-            "<</Pages %d 0 R" LINEFEED
-            "/Type /Catalog" LINEFEED
-            ">>" LINEFEED
-            "endobj",
-            m_pdfObjectCount, m_pdfObjectCount+1
-        );
-
-        addOffsetToXref();
-        m_objectPagesID = m_pdfObjectCount;
-        char *kidsStr = new char[pages * 20];
-        kidsStr[0] = '\0';
-        for (int i = 0; i < pages; i++) {
-            char kidStr[10];
-            sprintf(kidStr, "%s%d 0 R", i != 0?" ":"", i*2 + (m_pdfObjectCount) + 4);
-            strcat(kidsStr, kidStr);
-        }
-        fprintf (
-            m_outputFile,
-            LINEFEED "%d 0 obj" LINEFEED
-            "<</MediaBox [0 0 %f %f]" LINEFEED
-            "/Resources %d 0 R" LINEFEED
-            "/Kids [%s]" LINEFEED
-            "/Count %d" LINEFEED
-            "/Type /Pages" LINEFEED
-            ">>" LINEFEED
-            "endobj",
-            m_pdfObjectCount, 50.0, 50.0, m_pdfObjectCount + 1, kidsStr, pages
-        );
-        delete[] kidsStr;
+    if (m_outputFile) {
+        m_outputFile->close();
+        delete m_outputFile;
     }
+    m_outputFile = new QFile(fileName, this);
+    if (!m_outputFile->open(QIODevice::WriteOnly))
+        return 1;
+
+    m_outStream.setDevice(m_outputFile);
+    m_outStream << "%PDF-1.3" LINEFEED "%";
+
+    addOffsetToXref();
+    m_outStream << QString(
+        LINEFEED "%1 0 obj" LINEFEED
+        "<</Creator (PosteRazor)" LINEFEED
+        "/Producer (PosteRazor.SourceForge.net)" LINEFEED
+        "/CreationDate (D:%2)" LINEFEED
+        ">>" LINEFEED
+        "endobj")
+        .arg(m_pdfObjectCount)
+        .arg(QDateTime::currentDateTime().toString("yyyyMMddHHmmss"));
+
+    addOffsetToXref();
+    m_outStream << QString(
+        LINEFEED "%1 0 obj" LINEFEED
+        "<</Pages %2 0 R" LINEFEED
+        "/Type /Catalog" LINEFEED
+        ">>" LINEFEED
+        "endobj")
+        .arg(m_pdfObjectCount)
+        .arg(m_pdfObjectCount+1);
+
+    addOffsetToXref();
+    m_objectPagesID = m_pdfObjectCount;
+    QString kids;
+    for (int i = 0; i < pages; i++)
+        kids.append(QString("%1%2 0 R").arg(i != 0?" ":"").arg(i*2 + (m_pdfObjectCount) + 4));
+    m_outStream << QString(
+        LINEFEED "%1 0 obj" LINEFEED
+        "<</MediaBox [0 0 %2 %3]" LINEFEED
+        "/Resources %4 0 R" LINEFEED
+        "/Kids [%5]" LINEFEED
+        "/Count %6" LINEFEED
+        "/Type /Pages" LINEFEED
+        ">>" LINEFEED
+        "endobj")
+        .arg(m_pdfObjectCount)
+        .arg(50.0, 0, 'f')
+        .arg(50.0, 0, 'f')
+        .arg(m_pdfObjectCount + 1)
+        .arg(kids)
+        .arg(pages);
+
     return err;
 }
 
@@ -359,25 +350,21 @@ int PDFWriter::finishSaving()
 {
     int err = 0;
 
-    const unsigned int startxref = ftell(m_outputFile);
-    fprintf(m_outputFile, m_xref);
-
-    fprintf (
-        m_outputFile,
+    m_outStream.flush();
+    const qint64 startxref = m_outStream.device()->size();
+    m_outStream << m_xref << QString(
         "trailer" LINEFEED
         "<</Info 1 0 R" LINEFEED
         "/Root 2 0 R" LINEFEED
-        "/Size %d" LINEFEED
+        "/Size %1" LINEFEED
         ">>" LINEFEED
         "startxref" LINEFEED
-        "%d" LINEFEED
-        "%%%%EOF" LINEFEED,
-        m_pdfObjectCount + 1, startxref
-    );
+        "%2" LINEFEED
+        "%%EOF" LINEFEED)
+        .arg(m_pdfObjectCount + 1)
+        .arg(startxref);
 
-    if (m_xref)
-        delete[] m_xref;
-    fclose(m_outputFile);
+    m_xref.clear();
     return err;
 }
 
@@ -394,19 +381,18 @@ QSizeF PDFWriter::size() const
 
 void PDFWriter::drawImage(const QRectF &rect)
 {
-    char imageCode[2048]="";
-
-    sprintf (
-        imageCode,
+    const QString imageCode = QString(
         "0 w" LINEFEED
-        "q 0 0 %.4f %.4f re W* n" LINEFEED
-        "q %.4f 0 0 %.4f %.4f %.4f cm" LINEFEED
+        "q 0 0 %1 %2 re W* n" LINEFEED
+        "q %3 0 0 %4 %5 %6 cm" LINEFEED
         "  /Im1 Do Q" LINEFEED
-        "Q "
-        ,
-        m_mediaboxWidth, m_mediaboxHeight,
-        CM2PT(rect.width()), CM2PT(rect.height()), CM2PT(rect.x()), m_mediaboxHeight-CM2PT(rect.y())-CM2PT(rect.height())
-    );
+        "Q ")
+        .arg(m_mediaboxWidth, 0, 'f', 4)
+        .arg(m_mediaboxHeight, 0, 'f', 4)
+        .arg(CM2PT(rect.width()), 0, 'f', 4)
+        .arg(CM2PT(rect.height()), 0, 'f', 4)
+        .arg(CM2PT(rect.x()), 0, 'f', 4)
+        .arg(m_mediaboxHeight-CM2PT(rect.y())-CM2PT(rect.height()), 0, 'f', 4);
 
-    strcat(m_pageContent, imageCode);
+    m_pageContent.append(imageCode);
 }

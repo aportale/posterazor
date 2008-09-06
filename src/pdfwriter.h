@@ -28,6 +28,9 @@
 #include <QVector>
 #include <QRgb>
 #include <QSize>
+#include <QTextStream>
+
+class QFile;
 
 class PDFWriter: public QObject, public PaintCanvasInterface
 {
@@ -47,16 +50,17 @@ public:
     void drawImage(const QRectF &rect);
 
 private:
-    FILE *m_outputFile;
-    char *m_xref;
+    QFile *m_outputFile;
+    QString m_xref;
     int m_pdfObjectCount;
     int m_contentPagesCount;
     int m_objectPagesID;
     int m_objectResourcesID;
     int m_objectImageID;
-    char m_pageContent[2048];
+    QString m_pageContent;
     double m_mediaboxWidth;
     double m_mediaboxHeight;
+    QTextStream m_outStream;
 };
 
 #endif // PDFWRITER_H
