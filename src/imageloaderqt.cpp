@@ -87,12 +87,22 @@ int ImageLoaderQt::bitsPerPixel() const
 
 Types::ColorTypes ImageLoaderQt::colorDataType() const
 {
-    const QImage::Format format = m_image.format();
-
-    return  format==QImage::Format_Mono?Types::ColorTypeMonochrome:
-            format==QImage::Format_Indexed8?Types::ColorTypePalette:
-            format==QImage::Format_ARGB32?Types::ColorTypeRGBA:
-            /*format==QImage::Format_RGB32?*/Types::ColorTypeRGB;
+    Types::ColorTypes result = Types::ColorTypeRGB;
+    switch (m_image.format())
+    {
+    case QImage::Format_Mono:
+        result = Types::ColorTypeMonochrome;
+        break;
+    case QImage::Format_Indexed8:
+        result = m_image.isGrayscale()?Types::ColorTypeGreyscale:Types::ColorTypePalette;
+        break;
+    case QImage::Format_ARGB32:
+        result = Types::ColorTypeRGBA;
+        break;
+    default:
+        result = Types::ColorTypeRGB;
+    }
+    return result;
 }
 
 const QByteArray ImageLoaderQt::bits() const
