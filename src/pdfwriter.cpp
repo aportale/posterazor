@@ -46,11 +46,12 @@ PDFWriter::PDFWriter(QObject *parent)
 
 void PDFWriter::addOffsetToXref()
 {
-    char xrefLine[25];
     m_pdfObjectCount++;
     m_outStream.flush();
-    sprintf(xrefLine, "%.10d %.5d n " LINEFEED, (int)m_outStream.device()->size(), 0);
-    m_xref.append(xrefLine);
+    m_xref.append(
+        QString("%1 %2 n " LINEFEED)
+        .arg((int)m_outStream.device()->size(), 10, 10, QLatin1Char('0'))
+        .arg(0, 5, 10, QLatin1Char('0')));
 }
 
 int PDFWriter::addImageResourcesAndXObject()
@@ -299,6 +300,9 @@ int PDFWriter::startSaving(const QString &fileName, int pages, double widthCm, d
         return 1;
 
     m_outStream.setDevice(m_outputFile);
+    m_contentPagesCount = pages;
+    m_xref = QString(LINEFEED "xref" LINEFEED "0 %1" LINEFEED "0000000000 65535 f " LINEFEED)
+        .arg(7 + m_contentPagesCount*2);
     m_outStream << "%PDF-1.3" LINEFEED "%";
 
     addOffsetToXref();
