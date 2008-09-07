@@ -1,3 +1,7 @@
+TARGET = PosteRazor
+
+DESTDIR = $$PWD
+
 SOURCES += \
     controller.cpp \
     mainwindow.cpp \
@@ -77,6 +81,7 @@ contains (DEFINES, FREEIMAGE_LIB) {
         imageloaderqt.h
 
     !unix:QTPLUGIN += \
+        qgif \
         qjpeg \
         qtiff
 }
