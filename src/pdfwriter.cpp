@@ -28,9 +28,13 @@
 #include <QFileInfo>
 #include <QDateTime>
 #define LINEFEED "\x0A"
-#define CM2PT(cm) ((cm) / 2.54 * 72)
 
-// TODO: Qt-ify also the jpeg case.
+const int valuePrecision = 4;
+
+static double cm2Pt(double cm)
+{
+    return Types::convertBetweenUnitsOfLength(cm, Types::UnitOfLengthCentimeter, Types::UnitOfLengthPoints);
+}
 
 PDFWriter::PDFWriter(QObject *parent)
     : QObject(parent)
@@ -84,77 +88,48 @@ int PDFWriter::addImageResourcesAndXObject()
 int PDFWriter::saveJpegImage(const QString &jpegFileName, const QSize &sizePixels, Types::ColorTypes colorType)
 {
     int err = 0;
-/*
+
     err = addImageResourcesAndXObject();
+    QFile jpegFile(jpegFileName);
+    if (!jpegFile.open(QIODevice::ReadOnly))
+        return 2;
 
-    FILE *jpegFile = NULL;
-    if (!err) {
-        jpegFile = fopen(jpegFileName.toAscii(), "rb");
-        if (!jpegFile)
-            err = 2;
-    }
+    const int jpegFileSize = jpegFile.size();
+    if (jpegFileSize == 0)
+        return 3;
 
-    int jpegFileSize = 0;
-    if (!err) {
-        fseek(jpegFile, 0, SEEK_END);
-        jpegFileSize = ftell(jpegFile);
-        fseek(jpegFile, 0, SEEK_SET);
-        if (jpegFileSize == 0)
-            err = 6;
-    }
+    const QString colorSpace =
+        colorType==Types::ColorTypeCMYK?"/DeviceCMYK"
+        :colorType==Types::ColorTypeRGB?"/DeviceRGB"
+        :"/DeviceGray";
 
-    if (!err) {
-        addOffsetToXref();
-        fprintf (
-            m_outputFile,
-            LINEFEED "%d 0 obj" LINEFEED
-            "<</ColorSpace %s" LINEFEED
-            "/Subtype /Image" LINEFEED
-            "/Length %d" LINEFEED
-            "/Width %d" LINEFEED
-            "/Type /XObject" LINEFEED
-            "/Height %d" LINEFEED
-            "/BitsPerComponent 8" LINEFEED
-            "/Filter /DCTDecode" LINEFEED
-            ">>" LINEFEED
-            "stream" LINEFEED,
-            m_pdfObjectCount,
-            colorType==Types::ColorTypeCMYK?"/DeviceCMYK"
-            :colorType==Types::ColorTypeRGB?"/DeviceRGB ":"/DeviceGray ", // Leaving space after RGB for eventual manual patching to CMYK
-            jpegFileSize, sizePixels.width(), sizePixels.height()
-        );
-    }
+    addOffsetToXref();
+    m_outStream << QString(
+        LINEFEED "%1 0 obj" LINEFEED
+        "<</ColorSpace %2" LINEFEED
+        "/Subtype /Image" LINEFEED
+        "/Length %3" LINEFEED
+        "/Width %4" LINEFEED
+        "/Type /XObject" LINEFEED
+        "/Height %5" LINEFEED
+        "/BitsPerComponent 8" LINEFEED
+        "/Filter /DCTDecode" LINEFEED
+        ">>" LINEFEED
+        "stream" LINEFEED)
+        .arg(m_pdfObjectCount)
+        .arg(colorSpace)
+        .arg(jpegFileSize)
+        .arg(sizePixels.width())
+        .arg(sizePixels.height());
 
-    unsigned char* buffer = NULL;
-    if (!err)
-        buffer = new unsigned char[JPEGFILECOPYBUFFERSIZE];
-    if (!buffer)
-        err = 3;
+    m_outStream.flush();
+    while (!jpegFile.atEnd())
+        m_outStream.device()->write(jpegFile.read(200000));
 
-    while(!err && !feof(jpegFile)) {
-        size_t readBytes = fread(buffer, 1, JPEGFILECOPYBUFFERSIZE, jpegFile);
-        if (!ferror(jpegFile)) {
-            fwrite(buffer, 1, readBytes, m_outputFile);
-            if (ferror(m_outputFile))
-                err = 4;
-        } else {
-            err = 5;
-        }
-    }
+    m_outStream <<
+        LINEFEED "endstream" LINEFEED
+        "endobj";
 
-    if (!err) {
-        fprintf (
-            m_outputFile,
-            LINEFEED "endstream" LINEFEED
-            "endobj"
-        );
-    }
-
-    if (buffer)
-        delete[] buffer;
-
-    fclose(jpegFile);
-*/
     return err;
 }
 
@@ -256,8 +231,8 @@ int PDFWriter::startPage()
         "endobj")
         .arg(m_pdfObjectCount)
         .arg(m_objectPagesID)
-        .arg(m_mediaboxWidth, 0, 'f', 6)
-        .arg(m_mediaboxHeight, 0, 'f', 6)
+        .arg(m_mediaboxWidth, 0, 'f', valuePrecision)
+        .arg(m_mediaboxHeight, 0, 'f', valuePrecision)
         .arg(m_objectResourcesID)
         .arg(m_pdfObjectCount+1);
 
@@ -288,8 +263,8 @@ int PDFWriter::startSaving(const QString &fileName, int pages, double widthCm, d
 {
     int err = 0;
 
-    m_mediaboxWidth = CM2PT(widthCm);
-    m_mediaboxHeight = CM2PT(heightCm);
+    m_mediaboxWidth = cm2Pt(widthCm);
+    m_mediaboxHeight = cm2Pt(heightCm);
 
     if (m_outputFile) {
         m_outputFile->close();
@@ -341,8 +316,8 @@ int PDFWriter::startSaving(const QString &fileName, int pages, double widthCm, d
         ">>" LINEFEED
         "endobj")
         .arg(m_pdfObjectCount)
-        .arg(50.0, 0, 'f')
-        .arg(50.0, 0, 'f')
+        .arg(m_mediaboxWidth, 0, 'f', valuePrecision)
+        .arg(m_mediaboxHeight, 0, 'f', valuePrecision)
         .arg(m_pdfObjectCount + 1)
         .arg(kids)
         .arg(pages);
@@ -391,12 +366,12 @@ void PDFWriter::drawImage(const QRectF &rect)
         "q %3 0 0 %4 %5 %6 cm" LINEFEED
         "  /Im1 Do Q" LINEFEED
         "Q ")
-        .arg(m_mediaboxWidth, 0, 'f', 4)
-        .arg(m_mediaboxHeight, 0, 'f', 4)
-        .arg(CM2PT(rect.width()), 0, 'f', 4)
-        .arg(CM2PT(rect.height()), 0, 'f', 4)
-        .arg(CM2PT(rect.x()), 0, 'f', 4)
-        .arg(m_mediaboxHeight-CM2PT(rect.y())-CM2PT(rect.height()), 0, 'f', 4);
+        .arg(m_mediaboxWidth, 0, 'f', valuePrecision)
+        .arg(m_mediaboxHeight, 0, 'f', valuePrecision)
+        .arg(cm2Pt(rect.width()), 0, 'f', valuePrecision)
+        .arg(cm2Pt(rect.height()), 0, 'f', valuePrecision)
+        .arg(cm2Pt(rect.x()), 0, 'f', valuePrecision)
+        .arg(m_mediaboxHeight-cm2Pt(rect.y())-cm2Pt(rect.height()), 0, 'f', valuePrecision);
 
     m_pageContent.append(imageCode);
 }
