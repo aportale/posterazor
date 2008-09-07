@@ -41,7 +41,9 @@ int main (int argc, char **argv)
     Q_ASSERT(argc == 3);
     PosteRazorCore posteRazorCore;
     QString loadErrorMessage;
-    if (posteRazorCore.loadInputImage(argv[1], loadErrorMessage)) {
+    const bool loaded = posteRazorCore.loadInputImage(argv[1], loadErrorMessage);
+    Q_ASSERT(loaded);
+    if (loaded) {
         const int err = posteRazorCore.savePoster(argv[2]);
         Q_ASSERT(err == 0);
     }
