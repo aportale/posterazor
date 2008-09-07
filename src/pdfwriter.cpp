@@ -187,9 +187,9 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
         colorSpaceString = QString("[/Indexed /DeviceRGB %1 <").arg(colorTable.count()-1); // -1, because PDF wants the highest index, not the number of entries
         foreach (const QRgb &paletteEntry, colorTable) {
             QString rgbHex = QString("%1%2%3")
-                .arg(qRed(paletteEntry), 2, 16)
-                .arg(qGreen(paletteEntry), 2, 16)
-                .arg(qBlue(paletteEntry), 2, 16);
+                .arg(qRed(paletteEntry), 2, 16, QLatin1Char('0'))
+                .arg(qGreen(paletteEntry), 2, 16, QLatin1Char('0'))
+                .arg(qBlue(paletteEntry), 2, 16, QLatin1Char('0'));
             colorSpaceString.append(rgbHex);
         }
         colorSpaceString.append(">]");
