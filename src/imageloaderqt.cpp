@@ -116,10 +116,13 @@ const QByteArray ImageLoaderQt::bits() const
     QByteArray result(imageBytesCount, 0);
     char *destination = result.data();
 
-    if (bitsPerPixel() == 24 && QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
+    const bool has32Bpp = bitsPerPixel() == 32;
+    if ((bitsPerPixel() == 24 || has32Bpp) && QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
         for (int scanline = 0; scanline < imageHeight; scanline++) {
             const uchar *sourceScanLine = m_image.scanLine(scanline);
             for (int column = 0; column < imageWidth; column++) {
+                if (has32Bpp)
+                    *destination++ = sourceScanLine[3];
                 *destination++ = sourceScanLine[2];
                 *destination++ = sourceScanLine[1];
                 *destination++ = sourceScanLine[0];
