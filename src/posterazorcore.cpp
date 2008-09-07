@@ -755,10 +755,8 @@ int PosteRazorCore::savePoster(const QString &fileName) const
 
     if (!err) {
         for (int page = 0; page < pagesCount; page++) {
-            char paintOptions[1024];
-            sprintf(paintOptions, "posterpage %d", page);
             pdfWriter.startPage();
-            paintOnCanvas(&pdfWriter, paintOptions);
+            paintOnCanvas(&pdfWriter, QString(QLatin1String("posterpage %1")).arg(page));
             pdfWriter.finishPage();
         }
         err = pdfWriter.finishSaving();
