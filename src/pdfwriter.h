@@ -55,11 +55,12 @@ private:
     int m_pdfObjectCount;
     int m_contentPagesCount;
     int m_objectPagesID;
+    int m_firstPageID;
     int m_objectResourcesID;
     int m_objectImageID;
-    QString m_pageContent;
     double m_mediaboxWidth;
     double m_mediaboxHeight;
+    QString m_pageContent;
     QTextStream m_outStream;
 };
 

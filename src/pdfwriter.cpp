@@ -41,6 +41,7 @@ PDFWriter::PDFWriter(QObject *parent)
     , m_outputFile(NULL)
     , m_pdfObjectCount(0)
     , m_objectPagesID(0)
+    , m_firstPageID(5) // will be ++ed if the image has a SMask
     , m_objectResourcesID(0)
     , m_objectImageID(0)
     , m_mediaboxWidth(5000.0)
@@ -137,18 +138,42 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
 {
     int err = 0;
     err = addImageResourcesAndXObject();
+    const bool hasSoftMask = colorType == Types::ColorTypeRGBA;
+    const Types::ColorTypes actualColorType = hasSoftMask?Types::ColorTypeRGB:colorType;
+    const int actualBitsPerPixel = hasSoftMask?(bitPerPixel/4)*3:bitPerPixel;
 
-    const QByteArray imageDataCompressed = qCompress(imageData, 9);
+    QString sMaskString;
+    QByteArray softMask;
+    QByteArray actualImageData;
+    // Extract the alpha channel into "softMask"
+    if (hasSoftMask) {
+        const unsigned int pixelCount = sizePixels.height() * sizePixels.width();
+        actualImageData.resize(imageData.size() - pixelCount);
+        softMask.resize(pixelCount);
+        const char *source = imageData.data();
+        char *destinationRgb = actualImageData.data();
+        char *destinationAlpha = softMask.data();
+        for (unsigned int pixel = 0; pixel < pixelCount; pixel++){
+            *destinationAlpha++ = *source++;
+            *destinationRgb++ = *source++;
+            *destinationRgb++ = *source++;
+            *destinationRgb++ = *source++;
+        }
+        sMaskString = QString("/SMask %1 0 R" LINEFEED).arg(m_pdfObjectCount + 2);
+    } else {
+        actualImageData = imageData;
+    }
 
+    const int compressedByteArrayPrependedBytes = 4;
+    const int compressedByteArrayAppendedBytes = 4;
+    const QByteArray imageDataCompressed = qCompress(actualImageData, 9);
     // qCompress adds 4 extra bytes before and after the compressed
     // results. In the prepended bytes, we have the original size
     // of the uncompressed data. We need to chop these bytes off
     // from both ends when inserting into the PDF document...
-    const int compressedByteArrayPrependedBytes = 4;
-    const int compressedByteArrayAppendedBytes = 4;
 
     QString colorSpaceString;
-    switch (colorType) {
+    switch (actualColorType) {
     case Types::ColorTypeRGB:
         colorSpaceString = "/DeviceRGB";
         break;
@@ -171,11 +196,11 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
     }
 
     const int bitsPerComponent =
-        colorType == Types::ColorTypePalette?bitPerPixel
-        :colorType == Types::ColorTypeMonochrome?bitPerPixel
-        :colorType == Types::ColorTypeGreyscale?bitPerPixel
-        :colorType == Types::ColorTypeCMYK?(bitPerPixel/4)
-        :(bitPerPixel/3);
+        actualColorType == Types::ColorTypePalette?actualBitsPerPixel
+        :actualColorType == Types::ColorTypeMonochrome?actualBitsPerPixel
+        :actualColorType == Types::ColorTypeGreyscale?actualBitsPerPixel
+        :actualColorType == Types::ColorTypeCMYK?(actualBitsPerPixel/4)
+        :(actualBitsPerPixel/3);
     addOffsetToXref();
     m_objectImageID = m_pdfObjectCount;
     m_outStream << QString(
@@ -188,6 +213,7 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
         "/Height %5" LINEFEED
         "/Filter /FlateDecode" LINEFEED
         "/BitsPerComponent %6" LINEFEED
+        "%7"
         ">>" LINEFEED
         "stream" LINEFEED)
         .arg(m_pdfObjectCount)
@@ -195,17 +221,46 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
         .arg(imageDataCompressed.size() - compressedByteArrayPrependedBytes - compressedByteArrayAppendedBytes)
         .arg(sizePixels.width())
         .arg(sizePixels.height())
-        .arg(bitsPerComponent);
+        .arg(bitsPerComponent)
+        .arg(sMaskString);
 
     m_outStream.flush(); // Important to flush stream before writing to device
-
     m_outStream.device()->write(
         imageDataCompressed.constData() + compressedByteArrayPrependedBytes,
         imageDataCompressed.size() - compressedByteArrayPrependedBytes - compressedByteArrayAppendedBytes);
-
     m_outStream <<
         LINEFEED "endstream" LINEFEED
         "endobj";
+
+    if (hasSoftMask) {
+        const QByteArray softMaskDataCompressed = qCompress(softMask, 9);
+        addOffsetToXref();
+        m_outStream << QString(
+            LINEFEED "%1 0 obj" LINEFEED
+            "<</ColorSpace /DeviceGray" LINEFEED
+            "/Subtype /Image" LINEFEED
+            "/Length %2" LINEFEED
+            "/Width %3" LINEFEED
+            "/Type /XObject" LINEFEED
+            "/Height %4" LINEFEED
+            "/Filter /FlateDecode" LINEFEED
+            "/BitsPerComponent 8" LINEFEED
+            "/Decode [ 0 1 ]" LINEFEED
+            ">>" LINEFEED
+            "stream" LINEFEED)
+            .arg(m_pdfObjectCount)
+            .arg(softMaskDataCompressed.size() - compressedByteArrayPrependedBytes - compressedByteArrayAppendedBytes)
+            .arg(sizePixels.width())
+            .arg(sizePixels.height());
+        m_outStream.flush(); // Important to flush stream before writing to device
+        m_outStream.device()->write(
+            softMaskDataCompressed.constData() + compressedByteArrayPrependedBytes,
+            softMaskDataCompressed.size() - compressedByteArrayPrependedBytes - compressedByteArrayAppendedBytes);
+        m_outStream <<
+            LINEFEED "endstream" LINEFEED
+            "endobj";
+        m_firstPageID++;
+    }
 
     return err;
 }
@@ -230,7 +285,7 @@ int PDFWriter::startPage()
         ">>" LINEFEED
         "endobj")
         .arg(m_pdfObjectCount)
-        .arg(m_objectPagesID)
+        .arg(m_firstPageID + m_contentPagesCount*2)
         .arg(m_mediaboxWidth, 0, 'f', valuePrecision)
         .arg(m_mediaboxHeight, 0, 'f', valuePrecision)
         .arg(m_objectResourcesID)
@@ -276,9 +331,9 @@ int PDFWriter::startSaving(const QString &fileName, int pages, double widthCm, d
 
     m_outStream.setDevice(m_outputFile);
     m_contentPagesCount = pages;
-    m_xref = QString(LINEFEED "xref" LINEFEED "0 %1" LINEFEED "0000000000 65535 f " LINEFEED)
-        .arg(7 + m_contentPagesCount*2);
-    m_outStream << "%PDF-1.3" LINEFEED "%";
+    m_xref.clear();
+    m_outStream << "%PDF-1.3" LINEFEED
+        "%\xe2\xe3\xcf\xd3" ;
 
     addOffsetToXref();
     m_outStream << QString(
@@ -291,21 +346,18 @@ int PDFWriter::startSaving(const QString &fileName, int pages, double widthCm, d
         .arg(m_pdfObjectCount)
         .arg(QDateTime::currentDateTime().toString("yyyyMMddHHmmss"));
 
-    addOffsetToXref();
-    m_outStream << QString(
-        LINEFEED "%1 0 obj" LINEFEED
-        "<</Pages %2 0 R" LINEFEED
-        "/Type /Catalog" LINEFEED
-        ">>" LINEFEED
-        "endobj")
-        .arg(m_pdfObjectCount)
-        .arg(m_pdfObjectCount+1);
+    return err;
+}
+
+int PDFWriter::finishSaving()
+{
+    int err = 0;
 
     addOffsetToXref();
     m_objectPagesID = m_pdfObjectCount;
     QString kids;
-    for (int i = 0; i < pages; i++)
-        kids.append(QString("%1%2 0 R").arg(i != 0?" ":"").arg(i*2 + (m_pdfObjectCount) + 4));
+    for (int i = 0; i < m_contentPagesCount; i++)
+        kids.append(QString("%1%2 0 R").arg(i != 0?" ":"").arg(i*2 + m_firstPageID));
     m_outStream << QString(
         LINEFEED "%1 0 obj" LINEFEED
         "<</MediaBox [0 0 %2 %3]" LINEFEED
@@ -318,28 +370,37 @@ int PDFWriter::startSaving(const QString &fileName, int pages, double widthCm, d
         .arg(m_pdfObjectCount)
         .arg(m_mediaboxWidth, 0, 'f', valuePrecision)
         .arg(m_mediaboxHeight, 0, 'f', valuePrecision)
-        .arg(m_pdfObjectCount + 1)
+        .arg(m_objectResourcesID)
         .arg(kids)
-        .arg(pages);
+        .arg(m_contentPagesCount);
 
-    return err;
-}
-
-int PDFWriter::finishSaving()
-{
-    int err = 0;
+    addOffsetToXref();
+    m_outStream << QString(
+        LINEFEED "%1 0 obj" LINEFEED
+        "<</Pages %2 0 R" LINEFEED
+        "/Type /Catalog" LINEFEED
+        ">>" LINEFEED
+        "endobj")
+        .arg(m_pdfObjectCount)
+        .arg(m_pdfObjectCount - 1);
 
     m_outStream.flush();
     const qint64 startxref = m_outStream.device()->size();
-    m_outStream << m_xref << QString(
+    m_outStream
+        << QString(LINEFEED "xref" LINEFEED "0 %1" LINEFEED "0000000000 65535 f " LINEFEED)
+        .arg(m_pdfObjectCount)
+        << m_xref
+        << QString(
         "trailer" LINEFEED
-        "<</Info 1 0 R" LINEFEED
-        "/Root 2 0 R" LINEFEED
-        "/Size %1" LINEFEED
+        "<</Info %1 0 R" LINEFEED
+        "/Root %2 0 R" LINEFEED
+        "/Size %3" LINEFEED
         ">>" LINEFEED
         "startxref" LINEFEED
-        "%2" LINEFEED
+        "%4" LINEFEED
         "%%EOF" LINEFEED)
+        .arg(1)
+        .arg(m_pdfObjectCount)
         .arg(m_pdfObjectCount + 1)
         .arg(startxref);
 
