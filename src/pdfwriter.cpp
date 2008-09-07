@@ -388,7 +388,7 @@ int PDFWriter::finishSaving()
     const qint64 startxref = m_outStream.device()->size();
     m_outStream
         << QString(LINEFEED "xref" LINEFEED "0 %1" LINEFEED "0000000000 65535 f " LINEFEED)
-        .arg(m_pdfObjectCount)
+        .arg(m_pdfObjectCount + 1)
         << m_xref
         << QString(
         "trailer" LINEFEED
