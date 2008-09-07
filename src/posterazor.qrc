@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/Icons" >
-        <file>posterazor.ico</file>
+        <file>posterazor.png</file>
     </qresource>
     <qresource prefix="/OverlappingPositionImages" >
         <file>overlappingbottomleft.png</file>

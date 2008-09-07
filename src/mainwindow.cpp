@@ -46,7 +46,7 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
     m_actionSavePoster->setIcon(m_savePosterButton->icon());
     m_actionSavePoster->setEnabled(false);
 
-    setWindowIcon(QIcon(":/Icons/posterazor.ico"));
+    setWindowIcon(QIcon(":/Icons/posterazor.png"));
 
     const struct {
         QAbstractButton *sender;
