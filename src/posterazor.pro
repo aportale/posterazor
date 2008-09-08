@@ -34,6 +34,12 @@ macx:QMAKE_INFO_PLIST = \
 macx:ICON = \
     posterazor.icns
 
+macx:CONFIG += \
+    x86 ppc
+
+macx:QMAKE_MAC_SDK = \
+    /Developer/SDKs/MacOSX10.4u.sdk
+
 FORMS += \
     mainwindow.ui
 
