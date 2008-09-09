@@ -65,7 +65,7 @@ TRANSLATIONS += \
     zh_CN.ts
 
 # Uncomment the following line in order to build PosteRazor with FreeImage
-#DEFINES += FREEIMAGE_LIB
+DEFINES += FREEIMAGE_LIB
 
 contains (DEFINES, FREEIMAGE_LIB) {
     SOURCES += \
@@ -79,6 +79,9 @@ contains (DEFINES, FREEIMAGE_LIB) {
 
     win32:LIBS += \
         thirdparty/FreeImage/Dist/FreeImage.lib
+
+    macx: INCLUDEPATH += \
+        /usr/local/include
 
     unix:LIBS += \
         -lfreeimage
