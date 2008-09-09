@@ -313,6 +313,45 @@
 				</ul>
 <?
 			break;
+			case 'translations':
+?>
+				<h2><?= text('Translations', 'Übersetzungen') ?></h2>
+				<?= text('<p>PosteRazor comes with a lot of translations. Except English and German, all translations are contributions by PosteRazor users. '.
+					'You are welcome to translate Posterazor into Your language, or to correct and complete existing translations.</p>'.
+					'<p>With <a href="http://trolltech.com/products/qt/features/tools/linguist">Qts Linguist</a> (soon also downloadable, here), the xml based .ts files can be conveniently edited. '.
+					'In order to create a new translation, just download the "en.ts" file, rename it, fill it and mail it to me. '.
+					'I will add it, and mention you in the credits on this website and in the PosteRazors "About" dialog.</p>',
+
+					'<p>PosteRazor kommt mit einer Reihe von Übersetzungen. Außer Englisch und Deutsch, sind alle Übersetzungen beiträge von PosteRazor-benutzern. '.
+					'Sie sind willkommen, den PosteRazor in Ihre Sprache zu übersetzen, oder bestehende Übersetzunge zu korrigieren und vervollständigen.</p>'.
+					'<p>Mit <a href="http://trolltech.com/products/qt/features/tools/linguist">Qts Linguist</a> (demnächst auch hier herunterladbar) können die Xml basierten .ts-dateien bequem bearbeitet werden. '.
+					'Um eine neue Übersetzung zu erstellen, laden Sei einfach die Datei "en.ts" herunter, beenennen diese um, füllen Sie sie und schicken Sie sie mir zu. '.
+					'Ich werde sie hinzufügen und Ihren Namen in den Danksagungen auf diesen Seiten und im "Über"-Dialog des PosteRazors erwähnen.</p>')
+				?>
+				<dl>
+					<dt><a href="http://posterazor.svn.sourceforge.net/viewvc/posterazor/trunk/src/de.ts">de.ts (German)</a></dt>
+					<dd>Alessandro Portale</dd>
+					<dt><a href="http://posterazor.svn.sourceforge.net/viewvc/posterazor/trunk/src/en.ts">en.ts (English)</a></dt>
+					<dd>Alessandro Portale</dd>
+					<dt><a href="http://posterazor.svn.sourceforge.net/viewvc/posterazor/trunk/src/es.ts">es.ts (Spanish)</a></dt>
+					<dd><a href="http://hispanicoweb.net/">Hispánico Web</a></dd>
+					<dt><a href="http://posterazor.svn.sourceforge.net/viewvc/posterazor/trunk/src/fi.ts">fi.ts (Finnish)</a></dt>
+					<dd>Olli</dd>
+					<dt><a href="http://posterazor.svn.sourceforge.net/viewvc/posterazor/trunk/src/fr.ts">fr.ts (French)</a></dt>
+					<dd>Martin Loyer</dd>
+					<dt><a href="http://posterazor.svn.sourceforge.net/viewvc/posterazor/trunk/src/it.ts">it.ts (Italian)</a></dt>
+					<dd>Stefano Nosei</dd>
+					<dt><a href="http://posterazor.svn.sourceforge.net/viewvc/posterazor/trunk/src/nl.ts">nl.ts (Dutch/Belgian)</a></dt>
+					<dd>Erik Wijkamp</dd>
+					<dt><a href="http://posterazor.svn.sourceforge.net/viewvc/posterazor/trunk/src/pl.ts">pl.ts (Polish)</a></dt>
+					<dd>Grzegorz Wacikowski</dd>
+					<dt><a href="http://posterazor.svn.sourceforge.net/viewvc/posterazor/trunk/src/pt_BR.ts">pt_BR.ts (Brazilian Portuguese)</a></dt>
+					<dd>Éderson Gomes dos Santos</dd>
+					<dt><a href="http://posterazor.svn.sourceforge.net/viewvc/posterazor/trunk/src/zh_CN.ts">zh_CN.ts (Simplified Chinese)</a></dt>
+					<dd>Sun Li</dd>
+				</dl>
+<?
+			break;
 			default:
 ?>
 				<h2><?= text('About', 'Über') ?></h2>
@@ -379,7 +418,17 @@
 				<a href="<?=linkParameters("","english")?>"><img src="flagEnglish<?= text('_selected', '') ?>.png" width="26" height="17" alt="English" /></a><a href="<?=linkParameters("","german")?>"><img src="flagGerman<?= text('', '_selected') ?>.png" width="26" height="17" alt="Deutsch" /></a>
 			</div>
 			<div id="navigation">
-				<ul id="navigationlist"><li><a href="<?=linkParameters("news","")?>"<?=conditionalSelectedClass("news")?>><?= text('News', 'Neuigkeiten') ?></a></li><li><a href="<?=linkParameters("about","")?>"<?=conditionalSelectedClass("about")?>><?= text('About', 'Über') ?></a></li><li><a href="<?=linkParameters("features","")?>"<?=conditionalSelectedClass("features")?>><?= text('Features', 'Funktionen') ?></a></li><li><a href="<?=linkParameters("screenshots","")?>"<?=conditionalSelectedClass("screenshots")?>><?= text('Screenshots', 'Bildschirmfotos') ?></a></li><li><a href="<?=linkParameters("download","")?>"<?=conditionalSelectedClass("download")?>><?= text('Download', 'Herunterladen') ?></a></li><li><a href="<?=linkParameters("thirdparty","")?>"<?=conditionalSelectedClass("thirdparty")?>><?= text('Third&nbsp;party&nbsp;code', 'Code&nbsp;von&nbsp;Dritten') ?></a></li><li><a href="<?=linkParameters("license","")?>"<?=conditionalSelectedClass("license")?>><?= text('License', 'Lizenz') ?></a></li><li><a href="<?=linkParameters("marketing","")?>"<?=conditionalSelectedClass("marketing")?>><?= text('Marketing', 'Marketing') ?></a></li></ul>
+				<ul id="navigationlist">
+					<li><a href="<?=linkParameters("news","")?>"<?=conditionalSelectedClass("news")?>><?= text('News', 'Neuigkeiten') ?></a></li>
+					<li><a href="<?=linkParameters("about","")?>"<?=conditionalSelectedClass("about")?>><?= text('About', 'Über') ?></a></li>
+					<li><a href="<?=linkParameters("features","")?>"<?=conditionalSelectedClass("features")?>><?= text('Features', 'Funktionen') ?></a></li>
+					<li><a href="<?=linkParameters("screenshots","")?>"<?=conditionalSelectedClass("screenshots")?>><?= text('Screenshots', 'Bildschirmfotos') ?></a></li>
+					<li><a href="<?=linkParameters("download","")?>"<?=conditionalSelectedClass("download")?>><?= text('Download', 'Herunterladen') ?></a></li>
+					<li><a href="<?=linkParameters("translations","")?>"<?=conditionalSelectedClass("translations")?>><?= text('Translations', 'Übersetzungen') ?></a></li>
+					<li><a href="<?=linkParameters("thirdparty","")?>"<?=conditionalSelectedClass("thirdparty")?>><?= text('Third&nbsp;party&nbsp;code', 'Code&nbsp;von&nbsp;Dritten') ?></a></li>
+					<li><a href="<?=linkParameters("license","")?>"<?=conditionalSelectedClass("license")?>><?= text('License', 'Lizenz') ?></a></li>
+					<li><a href="<?=linkParameters("marketing","")?>"<?=conditionalSelectedClass("marketing")?>><?= text('Marketing', 'Marketing') ?></a></li>
+				</ul>
 				<a href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=141842&amp;type=1" width="88" height="31" alt="SF.net Logo" /></a>
 				<a href="http://sourceforge.net/projects/posterazor/"><?= text('SF project page', 'SF Projekt-Seite') ?></a>
 			</div>
