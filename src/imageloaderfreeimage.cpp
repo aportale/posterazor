@@ -100,9 +100,8 @@ bool ImageLoaderFreeImage::loadInputImage(const QString &imageFileName, QString 
 
         m_imageFileName = imageFileName;
 
-        if ((colorDataType() == Types::ColorTypeRGB && bitsPerPixel() == 32) // Sometimes, there are strange .PSD images like this (FreeImage bug?)
-            || (colorDataType() == Types::ColorTypeRGBA)) // We can't export alpha channels to PDF, anyway (yet)
-        {
+        if (colorDataType() == Types::ColorTypeRGB && bitsPerPixel() == 32) {
+            // Sometimes, there are strange .PSD images like this (FreeImage bug?)
             RGBQUAD white = { 255, 255, 255, 0 };
             FIBITMAP *Image24Bit = FreeImage_Composite(m_bitmap, FALSE, &white);
             FreeImage_Unload(m_bitmap);
@@ -154,7 +153,9 @@ QSizeF ImageLoaderFreeImage::size(Types::UnitsOfLength unit) const
 const QImage ImageLoaderFreeImage::imageAsRGB(const QSize &size) const
 {
     const QSize resultSize = size.isValid()?size:sizePixels();
-    QImage result(resultSize, QImage::Format_RGB32);
+    const bool isRGB24 = colorDataType() == Types::ColorTypeRGB && bitsPerPixel() == 24;
+    const bool isARGB32 = colorDataType() == Types::ColorTypeRGBA && bitsPerPixel() == 32;
+    QImage result(resultSize, isARGB32?QImage::Format_ARGB32:QImage::Format_RGB32);
 
     const int width = resultSize.width();
     const int height = resultSize.height();
@@ -164,7 +165,7 @@ const QImage ImageLoaderFreeImage::imageAsRGB(const QSize &size) const
     FIBITMAP* temp24BPPImage = NULL;
     FIBITMAP* scaledImage = NULL;
 
-    if (bitsPerPixel() != 24) {
+    if (!(isRGB24 || isARGB32)) {
         if (colorDataType() == Types::ColorTypeCMYK) {
             temp24BPPImage = FreeImage_Allocate(sizePixels.width(), sizePixels.height(), 24);
             const unsigned int columnsCount = sizePixels.width();
@@ -205,9 +206,16 @@ const QImage ImageLoaderFreeImage::imageAsRGB(const QSize &size) const
     for (int scanline = 0; scanline < height; scanline++) {
         const BYTE *sourceData = FreeImage_GetScanLine(originalImage, height - scanline - 1);
         QRgb *targetData = (QRgb*)result.scanLine(scanline);
-        for (int column = 0; column < width; column++) {
-            *targetData++ = qRgb(sourceData[2], sourceData[1], *sourceData);
-            sourceData += 3;
+        if (isARGB32) {
+            for (int column = 0; column < width; column++) {
+                *targetData++ = qRgba(sourceData[2], sourceData[1], *sourceData, sourceData[3]);
+                sourceData += 4;
+            }
+        } else {
+            for (int column = 0; column < width; column++) {
+                *targetData++ = qRgb(sourceData[2], sourceData[1], *sourceData);
+                sourceData += 3;
+            }
         }
     }
 
@@ -253,14 +261,26 @@ const QByteArray ImageLoaderFreeImage::bits() const
     char *destination = result.data();
     FreeImage_ConvertToRawBits((BYTE*)destination, m_bitmap, bytesPerLine, bitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, hasFreeImageVersionCorrectTopDownInConvertBits());
 
-    if (bitsPerPixel() == 24 && QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
+    if (QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
         const unsigned long numberOfPixels = m_widthPixels * m_heightPixels;
-        for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
-            char *pixelPtr = destination + pixelIndex*3;
-            const char temp = pixelPtr[0];
-            pixelPtr[0] = pixelPtr[2];
-            pixelPtr[2] = temp;
-            pixelPtr+=3;
+        if (colorDataType() == Types::ColorTypeRGB && bitsPerPixel() == 24) {
+            for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
+                char *pixelPtr = destination + pixelIndex*3;
+                const char temp = pixelPtr[0];
+                pixelPtr[0] = pixelPtr[2];
+                pixelPtr[2] = temp;
+                pixelPtr+=3;
+            }
+        } else if (colorDataType() == Types::ColorTypeRGBA && bitsPerPixel() == 32) {
+            unsigned int* argbDestination = (unsigned int*)destination;
+            for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
+                const unsigned int argbValue = *argbDestination;
+                *argbDestination++ =
+                      ((argbValue & 0xff000000) >> 24)
+                      |((argbValue & 0x00ff0000) >> 8)
+                      |((argbValue & 0x0000ff00) << 8)
+                      |((argbValue & 0x000000ff) << 24);
+            }
         }
     }
 
