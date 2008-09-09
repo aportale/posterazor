@@ -147,7 +147,7 @@ double ImageLoaderFreeImage::verticalDotsPerUnitOfLength(Types::UnitsOfLength un
 
 QSizeF ImageLoaderFreeImage::size(Types::UnitsOfLength unit) const
 {
-    const QSize sizePixels(sizePixels());
+    const QSize sizePixels = this->sizePixels();
     return QSizeF(sizePixels.width() / horizontalDotsPerUnitOfLength(unit), sizePixels.height() / verticalDotsPerUnitOfLength(unit));
 }
 
