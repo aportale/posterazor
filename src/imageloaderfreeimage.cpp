@@ -23,6 +23,7 @@
 #include "FreeImage.h"
 #include "imageloaderfreeimage.h"
 #include <QStringList>
+#include <QColor>
 #include <math.h>
 
 static QString FreeImageErrorMessage;
@@ -79,7 +80,7 @@ bool ImageLoaderFreeImage::loadInputImage(const QString &imageFileName, QString 
     FreeImageErrorMessage.clear();
 
     const FREE_IMAGE_FORMAT fileType = FreeImage_GetFileType(imageFileName.toAscii(), 0);
-    FIBITMAP* newImage = FreeImage_Load(fileType, imageFileName.toAscii(), TIFF_CMYK);
+    FIBITMAP* newImage = FreeImage_Load(fileType, imageFileName.toAscii(), TIFF_CMYK|JPEG_CMYK);
 
     if (newImage) {
         result = true;
@@ -167,6 +168,7 @@ const QImage ImageLoaderFreeImage::imageAsRGB(const QSize &size) const
 
     if (!(isRGB24 || isARGB32)) {
         if (colorDataType() == Types::ColorTypeCMYK) {
+            const bool isCmykJpeg = isJpeg(); // Value range inverted
             temp24BPPImage = FreeImage_Allocate(sizePixels.width(), sizePixels.height(), 24);
             const unsigned int columnsCount = sizePixels.width();
             const unsigned int scanlinesCount = sizePixels.height();
@@ -178,18 +180,13 @@ const QImage ImageLoaderFreeImage::imageAsRGB(const QSize &size) const
                     const unsigned int cmykColumn = column * 4;
                     const unsigned int rgbColumn = column * 3;
 
-                    const BYTE cyan = cmykBits[cmykColumn];
-                    const BYTE magenta = cmykBits[cmykColumn + 1];
-                    const BYTE yellow = cmykBits[cmykColumn + 2];
-                    const BYTE black = cmykBits[cmykColumn + 3];
+                    const QColor rgbColor = isCmykJpeg?
+                        QColor::fromCmyk(255 - cmykBits[cmykColumn], 255 - cmykBits[cmykColumn + 1], 255 - cmykBits[cmykColumn + 2], 255 - cmykBits[cmykColumn + 3])
+                        :QColor::fromCmyk(cmykBits[cmykColumn], cmykBits[cmykColumn + 1], cmykBits[cmykColumn + 2], cmykBits[cmykColumn + 3]);
 
-                    const BYTE red = qMax(0, (255 - (unsigned char)((double)yellow/1.5) - (unsigned char)((double)black/1.5)));
-                    const BYTE green = qMax(0, (255 - (unsigned char)((double)magenta/1.5) - (unsigned char)((double)black/1.5)));
-                    const BYTE blue = qMax(0, (255 - (unsigned char)((double)cyan/1.5) - (unsigned char)((double)black/1.5)));
-
-                    rgbBits[rgbColumn] = red;
-                    rgbBits[rgbColumn + 1] = green;
-                    rgbBits[rgbColumn + 2] = blue;
+                    rgbBits[rgbColumn + 2] = (BYTE)rgbColor.red();
+                    rgbBits[rgbColumn + 1] = (BYTE)rgbColor.green();
+                    rgbBits[rgbColumn] = (BYTE)rgbColor.blue();
                 }
             }
         } else {
@@ -321,10 +318,7 @@ const QVector<QPair<QStringList, QString> > &ImageLoaderFreeImage::imageFormats(
 
 bool ImageLoaderFreeImage::hasFreeImageVersionCorrectTopDownInConvertBits()
 {
-    const QStringList versionDigits = QString(FreeImage_GetVersion()).split('.');
-    return versionDigits.count() >= 2
-        && versionDigits.at(0).toInt() >= 3
-        && versionDigits.at(1).toInt() >= 10;
+    return FREEIMAGE_MAJOR_VERSION >= 3 && FREEIMAGE_MINOR_VERSION >= 10;
 }
 QString ImageLoaderFreeImage::libraryName() const
 {

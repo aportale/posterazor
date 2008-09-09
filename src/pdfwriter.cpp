@@ -104,6 +104,11 @@ int PDFWriter::saveJpegImage(const QString &jpegFileName, const QSize &sizePixel
         :colorType==Types::ColorTypeRGB?"/DeviceRGB"
         :"/DeviceGray";
 
+    // Yes. Cmyk jpegs in PDFs need reverse decoding, somehow
+    const QString decodeArray =
+        colorType==Types::ColorTypeCMYK?"/Decode [1.0 0.0 1.0 0.0 1.0 0.0 1.0 0.0]" LINEFEED
+        :"";
+
     addOffsetToXref();
     m_outStream << QString(
         LINEFEED "%1 0 obj" LINEFEED
@@ -115,13 +120,15 @@ int PDFWriter::saveJpegImage(const QString &jpegFileName, const QSize &sizePixel
         "/Height %5" LINEFEED
         "/BitsPerComponent 8" LINEFEED
         "/Filter /DCTDecode" LINEFEED
+        "%6"
         ">>" LINEFEED
         "stream" LINEFEED)
         .arg(m_pdfObjectCount)
         .arg(colorSpace)
         .arg(jpegFileSize)
         .arg(sizePixels.width())
-        .arg(sizePixels.height());
+        .arg(sizePixels.height())
+        .arg(decodeArray);
 
     m_outStream.flush();
     while (!jpegFile.atEnd())
