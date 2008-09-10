@@ -201,17 +201,18 @@ const QImage ImageLoaderFreeImage::imageAsRGB(const QSize &size) const
     }
 
     for (int scanline = 0; scanline < height; scanline++) {
-        const BYTE *sourceData = FreeImage_GetScanLine(originalImage, height - scanline - 1);
         QRgb *targetData = (QRgb*)result.scanLine(scanline);
         if (isARGB32) {
+            const tagRGBQUAD *sourceRgba = (tagRGBQUAD*)FreeImage_GetScanLine(originalImage, height - scanline - 1);
             for (int column = 0; column < width; column++) {
-                *targetData++ = qRgba(sourceData[2], sourceData[1], *sourceData, sourceData[3]);
-                sourceData += 4;
+                *targetData++ = qRgba(sourceRgba->rgbRed, sourceRgba->rgbGreen, sourceRgba->rgbBlue, sourceRgba->rgbReserved);
+                sourceRgba++;
             }
         } else {
+            const tagRGBTRIPLE *sourceRgb = (tagRGBTRIPLE*)FreeImage_GetScanLine(originalImage, height - scanline - 1);
             for (int column = 0; column < width; column++) {
-                *targetData++ = qRgb(sourceData[2], sourceData[1], *sourceData);
-                sourceData += 3;
+                *targetData++ = qRgb(sourceRgb->rgbtRed, sourceRgb->rgbtGreen, sourceRgb->rgbtBlue);
+                sourceRgb++;
             }
         }
     }
