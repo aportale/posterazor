@@ -22,6 +22,7 @@
 
 #include "FreeImage.h"
 #include "imageloaderfreeimage.h"
+#include <qendian.h>
 #include <QStringList>
 #include <QColor>
 #include <math.h>
@@ -270,14 +271,8 @@ const QByteArray ImageLoaderFreeImage::bits() const
         }
     } else if (colorDataType() == Types::ColorTypeRGBA && bitsPerPixel() == 32) {
         unsigned int* argbDestination = (unsigned int*)destination;
-        for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
-            const unsigned int argbValue = *argbDestination;
-            *argbDestination++ =
-                  ((argbValue & 0xff000000) >> 24)
-                  |((argbValue & 0x00ff0000) >> 8)
-                  |((argbValue & 0x0000ff00) << 8)
-                  |((argbValue & 0x000000ff) << 24);
-        }
+        for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++)
+            *argbDestination++ = qToBigEndian(*argbDestination);
     }
 #endif // FREEIMAGE_COLORORDER == FREEIMAGE_COLORORDER_BGR
 
