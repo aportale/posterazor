@@ -174,19 +174,18 @@ const QImage ImageLoaderFreeImage::imageAsRGB(const QSize &size) const
             const unsigned int scanlinesCount = sizePixels.height();
             for (unsigned int scanline = 0; scanline < scanlinesCount; scanline++) {
                 const BYTE* const cmykBits = FreeImage_GetScanLine(m_bitmap, scanline);
-                BYTE* const rgbBits = FreeImage_GetScanLine(temp24BPPImage, scanline);
+                tagRGBTRIPLE* const rgbBits = (tagRGBTRIPLE *)FreeImage_GetScanLine(temp24BPPImage, scanline);
 
                 for (unsigned int column = 0; column < columnsCount; column++) {
                     const unsigned int cmykColumn = column * 4;
-                    const unsigned int rgbColumn = column * 3;
 
                     const QColor rgbColor = isCmykJpeg?
                         QColor::fromCmyk(255 - cmykBits[cmykColumn], 255 - cmykBits[cmykColumn + 1], 255 - cmykBits[cmykColumn + 2], 255 - cmykBits[cmykColumn + 3])
                         :QColor::fromCmyk(cmykBits[cmykColumn], cmykBits[cmykColumn + 1], cmykBits[cmykColumn + 2], cmykBits[cmykColumn + 3]);
 
-                    rgbBits[rgbColumn + 2] = (BYTE)rgbColor.red();
-                    rgbBits[rgbColumn + 1] = (BYTE)rgbColor.green();
-                    rgbBits[rgbColumn] = (BYTE)rgbColor.blue();
+                    rgbBits[column].rgbtRed = (BYTE)rgbColor.red();
+                    rgbBits[column].rgbtGreen = (BYTE)rgbColor.green();
+                    rgbBits[column].rgbtBlue = (BYTE)rgbColor.blue();
                 }
             }
         } else {
