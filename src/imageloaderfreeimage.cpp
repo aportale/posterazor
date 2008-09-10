@@ -258,28 +258,28 @@ const QByteArray ImageLoaderFreeImage::bits() const
     char *destination = result.data();
     FreeImage_ConvertToRawBits((BYTE*)destination, m_bitmap, bytesPerLine, bitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, hasFreeImageVersionCorrectTopDownInConvertBits());
 
-    if (QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
-        const unsigned long numberOfPixels = m_widthPixels * m_heightPixels;
-        if (colorDataType() == Types::ColorTypeRGB && bitsPerPixel() == 24) {
-            for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
-                char *pixelPtr = destination + pixelIndex*3;
-                const char temp = pixelPtr[0];
-                pixelPtr[0] = pixelPtr[2];
-                pixelPtr[2] = temp;
-                pixelPtr+=3;
-            }
-        } else if (colorDataType() == Types::ColorTypeRGBA && bitsPerPixel() == 32) {
-            unsigned int* argbDestination = (unsigned int*)destination;
-            for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
-                const unsigned int argbValue = *argbDestination;
-                *argbDestination++ =
-                      ((argbValue & 0xff000000) >> 24)
-                      |((argbValue & 0x00ff0000) >> 8)
-                      |((argbValue & 0x0000ff00) << 8)
-                      |((argbValue & 0x000000ff) << 24);
-            }
+#if FREEIMAGE_COLORORDER == FREEIMAGE_COLORORDER_BGR
+    const unsigned long numberOfPixels = m_widthPixels * m_heightPixels;
+    if (colorDataType() == Types::ColorTypeRGB && bitsPerPixel() == 24) {
+        for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
+            char *pixelPtr = destination + pixelIndex*3;
+            const char temp = pixelPtr[0];
+            pixelPtr[0] = pixelPtr[2];
+            pixelPtr[2] = temp;
+            pixelPtr+=3;
+        }
+    } else if (colorDataType() == Types::ColorTypeRGBA && bitsPerPixel() == 32) {
+        unsigned int* argbDestination = (unsigned int*)destination;
+        for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
+            const unsigned int argbValue = *argbDestination;
+            *argbDestination++ =
+                  ((argbValue & 0xff000000) >> 24)
+                  |((argbValue & 0x00ff0000) >> 8)
+                  |((argbValue & 0x0000ff00) << 8)
+                  |((argbValue & 0x000000ff) << 24);
         }
     }
+#endif // FREEIMAGE_COLORORDER == FREEIMAGE_COLORORDER_BGR
 
     return result;
 }
