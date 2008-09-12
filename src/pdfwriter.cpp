@@ -31,6 +31,8 @@
 
 const int valuePrecision = 4;
 
+#define COMPRESSEDPDF
+
 static double cm2Pt(double cm)
 {
     return Types::convertBetweenUnitsOfLength(cm, Types::UnitOfLengthCentimeter, Types::UnitOfLengthPoints);
@@ -171,6 +173,7 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
         actualImageData = imageData;
     }
 
+#ifdef COMPRESSEDPDF
     const int compressedByteArrayPrependedBytes = 4;
     const int compressedByteArrayAppendedBytes = 4;
     const QByteArray imageDataCompressed = qCompress(actualImageData, 9);
@@ -178,6 +181,7 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
     // results. In the prepended bytes, we have the original size
     // of the uncompressed data. We need to chop these bytes off
     // from both ends when inserting into the PDF document...
+#endif
 
     QString colorSpaceString;
     switch (actualColorType) {
@@ -218,14 +222,20 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
         "/Width %4" LINEFEED
         "/Type /XObject" LINEFEED
         "/Height %5" LINEFEED
+#ifdef COMPRESSEDPDF
         "/Filter /FlateDecode" LINEFEED
+#endif
         "/BitsPerComponent %6" LINEFEED
         "%7"
         ">>" LINEFEED
         "stream" LINEFEED)
         .arg(m_pdfObjectCount)
         .arg(colorSpaceString)
+#ifdef COMPRESSEDPDF
         .arg(imageDataCompressed.size() - compressedByteArrayPrependedBytes - compressedByteArrayAppendedBytes)
+#else
+        .arg(imageData.size())
+#endif
         .arg(sizePixels.width())
         .arg(sizePixels.height())
         .arg(bitsPerComponent)
@@ -233,14 +243,21 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
 
     m_outStream.flush(); // Important to flush stream before writing to device
     m_outStream.device()->write(
+#ifdef COMPRESSEDPDF
         imageDataCompressed.constData() + compressedByteArrayPrependedBytes,
-        imageDataCompressed.size() - compressedByteArrayPrependedBytes - compressedByteArrayAppendedBytes);
+        imageDataCompressed.size() - compressedByteArrayPrependedBytes - compressedByteArrayAppendedBytes
+#else
+        imageData.constData(), imageData.size()
+#endif
+    );
     m_outStream <<
         LINEFEED "endstream" LINEFEED
         "endobj";
 
     if (hasSoftMask) {
+#ifdef COMPRESSEDPDF
         const QByteArray softMaskDataCompressed = qCompress(softMask, 9);
+#endif
         addOffsetToXref();
         m_outStream << QString(
             LINEFEED "%1 0 obj" LINEFEED
@@ -250,19 +267,30 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
             "/Width %3" LINEFEED
             "/Type /XObject" LINEFEED
             "/Height %4" LINEFEED
+#ifdef COMPRESSEDPDF
             "/Filter /FlateDecode" LINEFEED
+#endif
             "/BitsPerComponent 8" LINEFEED
             "/Decode [ 0 1 ]" LINEFEED
             ">>" LINEFEED
             "stream" LINEFEED)
             .arg(m_pdfObjectCount)
+#ifdef COMPRESSEDPDF
             .arg(softMaskDataCompressed.size() - compressedByteArrayPrependedBytes - compressedByteArrayAppendedBytes)
+#else
+            .arg(softMask.size())
+#endif
             .arg(sizePixels.width())
             .arg(sizePixels.height());
         m_outStream.flush(); // Important to flush stream before writing to device
         m_outStream.device()->write(
+#ifdef COMPRESSEDPDF
             softMaskDataCompressed.constData() + compressedByteArrayPrependedBytes,
-            softMaskDataCompressed.size() - compressedByteArrayPrependedBytes - compressedByteArrayAppendedBytes);
+            softMaskDataCompressed.size() - compressedByteArrayPrependedBytes - compressedByteArrayAppendedBytes
+#else
+            softMask.constData(), softMask.size()
+#endif
+        );
         m_outStream <<
             LINEFEED "endstream" LINEFEED
             "endobj";
