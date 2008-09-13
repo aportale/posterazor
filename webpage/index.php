@@ -317,16 +317,16 @@
 ?>
 				<h2><?= text('Translations', 'Übersetzungen') ?></h2>
 				<?= text('<p>PosteRazor comes with a lot of translations. Except English and German, all translations are contributions by PosteRazor users. '.
-					'You are welcome to translate Posterazor into Your language, or to correct and complete existing translations.</p>'.
-					'<p>With <a href="http://trolltech.com/products/qt/features/tools/linguist">Qts Linguist</a> (soon also downloadable, here), the xml based .ts files can be conveniently edited. '.
-					'In order to create a new translation, just download the "en.ts" file, rename it, fill it and mail it to me. '.
-					'I will add it, and mention you in the credits on this website and in the PosteRazors "About" dialog.</p>',
+					'You are welcome to translate PosteRazor into Your language, and also to correct and complete existing translations.</p>'.
+					'<p>The future versions of the program will are translated with the tool <em>Qt Linguist</em>. You can download it <a href="http://code.google.com/p/qtlinguistdownload">here, for Windows</a> (OSX version follows, soon). '.
+					'In order to create a new translation, just download the "en.ts" file below, rename it, fill it and mail it to me. In order to correct or complete existing translations, just edit one of the other .ts files. '.
+					'I will add the translations, and mention you in the credits on this website and in the PosteRazor "About" dialog.</p>',
 
 					'<p>PosteRazor kommt mit einer Reihe von Übersetzungen. Außer Englisch und Deutsch, sind alle Übersetzungen beiträge von PosteRazor-benutzern. '.
 					'Sie sind willkommen, den PosteRazor in Ihre Sprache zu übersetzen, oder bestehende Übersetzunge zu korrigieren und vervollständigen.</p>'.
-					'<p>Mit <a href="http://trolltech.com/products/qt/features/tools/linguist">Qts Linguist</a> (demnächst auch hier herunterladbar) können die Xml basierten .ts-dateien bequem bearbeitet werden. '.
-					'Um eine neue Übersetzung zu erstellen, laden Sei einfach die Datei "en.ts" herunter, beenennen diese um, füllen Sie sie und schicken Sie sie mir zu. '.
-					'Ich werde sie hinzufügen und Ihren Namen in den Danksagungen auf diesen Seiten und im "Über"-Dialog des PosteRazors erwähnen.</p>')
+					'<p>Die zukünftigen Versionen des Programms werden mit dem Tool <em>Qt Linguist</em> übersetzt. Es ist <a href="http://code.google.com/p/qtlinguistdownload">für Windows erhältlich</a> (demnächst auch für OSX). '.
+					'Um eine neue Übersetzung zu erstellen, laden Sie einfach die Datei "en.ts" herunter, benennen Sie diese um, füllen Sie sie und schicken Sie sie mir zu. Um eine bestehende Üersetzung zu korrigieren oder zu vervollständigen, editieren Sie einfach eine der anderen .ts-Dateien. '.
+					'Ich werde die Übersetzungen hinzufügen und Ihren Namen in den Danksagungen auf diesen Seiten und im "Über"-Dialog des PosteRazors erwähnen.</p>')
 				?>
 				<dl>
 					<dt><a href="http://posterazor.svn.sourceforge.net/viewvc/posterazor/trunk/src/de.ts">de.ts (German)</a></dt>
