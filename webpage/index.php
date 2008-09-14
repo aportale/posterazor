@@ -318,13 +318,13 @@
 				<h2><?= text('Translations', 'Übersetzungen') ?></h2>
 				<?= text('<p>PosteRazor comes with a lot of translations. Except English and German, all translations are contributions by PosteRazor users. '.
 					'You are welcome to translate PosteRazor into Your language, and also to correct and complete existing translations.</p>'.
-					'<p>The future versions of the program are translated with the tool <em>Qt Linguist</em>. You can download it <a href="http://code.google.com/p/qtlinguistdownload">here, for Windows</a> (OSX version follows, soon). '.
+					'<p>The future versions of the program are translated with the tool <em>Qt Linguist</em>. You can download it <a href="http://code.google.com/p/qtlinguistdownload">here, for Windows and OSX</a> (Linux users should find it in the distribution). '.
 					'In order to create a new translation, just download the <em>en.ts</em> file below, rename it, fill it and mail it to me. In order to correct or complete existing translations, just edit one of the other <em>.ts</em> files. '.
 					'I will add the translations, and mention you in the credits on this website and in the PosteRazor "About" dialog.</p>',
 
 					'<p>PosteRazor kommt mit einer Reihe von Übersetzungen. Außer Englisch und Deutsch, sind alle Übersetzungen Beiträge von PosteRazor-benutzern. '.
 					'Sie sind willkommen, den PosteRazor in Ihre Sprache zu übersetzen, oder bestehende Übersetzunge zu korrigieren und vervollständigen.</p>'.
-					'<p>Die zukünftigen Versionen des Programms werden mit dem Tool <em>Qt Linguist</em> übersetzt. Es ist <a href="http://code.google.com/p/qtlinguistdownload">für Windows erhältlich</a> (demnächst auch für OSX). '.
+					'<p>Die zukünftigen Versionen des Programms werden mit dem Tool <em>Qt Linguist</em> übersetzt. Es ist <a href="http://code.google.com/p/qtlinguistdownload">für Windows und OSX erhältlich</a> (Linuxnutzer sollten es in der Distribution finden). '.
 					'Um eine neue Übersetzung zu erstellen, laden Sie einfach die Datei <em>en.ts</em> herunter, benennen Sie diese um, füllen Sie sie und schicken Sie sie mir zu. Um eine bestehende Üersetzung zu korrigieren oder zu vervollständigen, editieren Sie einfach eine der anderen <em>.ts</em>-Dateien. '.
 					'Ich werde die Übersetzungen hinzufügen und Ihren Namen in den Danksagungen auf diesen Seiten und im "Über"-Dialog des PosteRazors erwähnen.</p>')
 				?>
@@ -375,7 +375,7 @@
 					<li><?= text('Brazilian Portuguese:', 'Brasilianisch-portugisisch:') ?> Éderson Gomes dos Santos</li>
 					<li><?= text('Simplified Chinese (Next PosteRazor version):', 'Vereinfacht-Chinesisch (Nächste PosteRazor-version):') ?> Sun Li</li>
 					<li><?= text('Finnish (Next PosteRazor version):', 'Finnisch (Nächste PosteRazor-version):') ?> Olli</li>
-					<li><em>...<?= text('to add your translation, click ', 'um Ihre Übersetzung hinzuzufügen, klicken Sie ')?><a href="<?=linkParameters('translations','')?>"><?=text('here', 'hier')?></a> :)</em></li>
+					<li><em>...<?= text('to add your translation, ', 'um Ihre Übersetzung hinzuzufügen, ')?><a href="<?=linkParameters('translations','')?>"><?=text('click here', 'klicken Sie hier')?></a> :)</em></li>
 				</ul>
 				<h3><?= text('Packagers', 'Pakete-ersteller') ?>:</h3>
 				<ul>
