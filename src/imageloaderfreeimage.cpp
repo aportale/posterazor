@@ -83,6 +83,19 @@ bool ImageLoaderFreeImage::loadInputImage(const QString &imageFileName, QString 
     const FREE_IMAGE_FORMAT fileType = FreeImage_GetFileType(imageFileName.toAscii(), 0);
     FIBITMAP* newImage = FreeImage_Load(fileType, imageFileName.toAscii(), TIFF_CMYK|JPEG_CMYK);
 
+    // Filter out images which FreeImage can load but not convert to Rgb24
+    // And images which we simply don't handle
+    if (newImage) {
+        const FREE_IMAGE_TYPE type = FreeImage_GetImageType(newImage);
+        if (type != FIT_BITMAP   // 1pbb Monochrome, 1-8bpp Palette, 8bpp Greyscale,
+                                 // 24bpp Rgb, 32bpp Argb, 32bpp Cmyk
+            && type != FIT_RGB16 // 16bpp Greyscale, 48bpp Rgb
+            ) {
+            FreeImage_Unload(newImage);
+            newImage = NULL;
+        }
+    }
+
     if (newImage) {
         result = true;
         disposeImage();
