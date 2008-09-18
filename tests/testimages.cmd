@@ -5,7 +5,7 @@ convert -size 3x1 xc:white -depth 16 ^
     rgb_48bpp.png
 
 convert -size 1x1 xc:white -depth 16 ^
-    -fill "#ff000000ff00" -draw "point 0,0" ^
+    -fill "#AABBCCDDEEFF" -draw "point 0,0" ^
     rgb_48bpp_failing.png
 
 convert rgb_48bpp.png -depth 8 rgb_24bpp.png
