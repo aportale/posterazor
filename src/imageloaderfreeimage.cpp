@@ -273,6 +273,11 @@ const QByteArray ImageLoaderFreeImage::bits() const
         unsigned int* argbDestination = (unsigned int*)destination;
         for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++)
             *argbDestination++ = qToBigEndian(*argbDestination);
+    } else if (colorDataType() == Types::ColorTypeRGB && bitsPerPixel() == 48) {
+        unsigned short* rgb48Destination = (unsigned short*)destination;
+        const unsigned long numberOfSwaps = numberOfPixels * 3; // Words are swapped
+        for (unsigned int pixelIndex = 0; pixelIndex < numberOfSwaps; pixelIndex++)
+            *rgb48Destination++ = qToBigEndian(*rgb48Destination);
     }
 #endif // FREEIMAGE_COLORORDER == FREEIMAGE_COLORORDER_BGR
 
