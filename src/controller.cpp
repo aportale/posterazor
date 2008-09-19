@@ -378,7 +378,7 @@ bool Controller::loadInputImage(const QString &fileName)
     const bool successful = loadInputImage(fileName, loadErrorMessage);
     if (!successful)
         QMessageBox::critical(m_mainWindow, "", QCoreApplication::translate("Main window", "The image '%1' could not be loaded.")
-            .arg(QDir::convertSeparators(fileName)));
+            .arg(QFileInfo(fileName).fileName()));
     return successful;
 }
 
@@ -419,17 +419,18 @@ void Controller::savePoster() const
         );
 
         if (!saveFileName.isEmpty()) {
-            if (QFileInfo(saveFileName).suffix().toLower() != QLatin1String("pdf"))
+            const QFileInfo saveFileInfo(saveFileName);
+            if (saveFileInfo.suffix().toLower() != QLatin1String("pdf"))
                 saveFileName.append(".pdf");
 
             fileExistsAskUserForOverwrite = QFileInfo(saveFileName).exists();
 
             if (!fileExistsAskUserForOverwrite
-                || QMessageBox::Yes == (QMessageBox::question(m_mainWindow, "", QCoreApplication::translate("Main window", "The file '%1' already exists.\nDo you want to overwrite it?").arg(QDir::convertSeparators(saveFileName)), QMessageBox::Yes, QMessageBox::No))
+                || QMessageBox::Yes == (QMessageBox::question(m_mainWindow, "", QCoreApplication::translate("Main window", "The file '%1' already exists.\nDo you want to overwrite it?").arg(saveFileInfo.fileName()), QMessageBox::Yes, QMessageBox::No))
                 ) {
                 int result = savePoster(saveFileName.toAscii());
                 if (result != 0)
-                    QMessageBox::critical(m_mainWindow, "", QCoreApplication::translate("Main window", "The file '%1' could not be saved.").arg(saveFileName), QMessageBox::Ok, QMessageBox::NoButton);
+                    QMessageBox::critical(m_mainWindow, "", QCoreApplication::translate("Main window", "The file '%1' could not be saved.").arg(saveFileInfo.fileName()), QMessageBox::Ok, QMessageBox::NoButton);
                 else
                     savePathSettings.setValue(savePathSettingsKey, QFileInfo(saveFileName).absolutePath());
                 fileExistsAskUserForOverwrite = false;
