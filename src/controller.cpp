@@ -351,7 +351,11 @@ void Controller::loadInputImage()
         foreach (const QString &extension, formats.at(i).first)
             formatWildcards << "*." + extension;
         allWildcards << formatWildcards;
-        allFilters << formats.at(i).second + " (" +  formatWildcards.join(" ") + ")";
+        QString formatName = formats.at(i).second;
+        // Some Open File dialogs (at least OSX) ar irritated if there are brackes in the file type name
+        formatName.replace('(', '[');
+        formatName.replace(')', ']');
+        allFilters << formatName + " (" +  formatWildcards.join(" ") + ")";
     }
     allFilters.prepend(QCoreApplication::translate("Main window", "All image formats") + " (" +  allWildcards.join(" ") + ")");
 
