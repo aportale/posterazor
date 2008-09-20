@@ -1,6 +1,5 @@
 #define APPLICATIONTITLE "PosteRazor"
-#define VERSIONNUMBER "1.9.0"
-#define VERSION VERSIONNUMBER + "-alpha"
+#define VERSION "1.9.5"
 #define COPYRIGHT "2005-2008 Alessandro Portale"
 #define PREFERENCESDIR "{userappdata}\CasaPortale.de"
 #define PREFERENCESFILE PREFERENCESDIR + "\PosteRazor.prefs"
@@ -10,7 +9,7 @@
 InternalCompressLevel=ultra
 OutputBaseFilename={#APPLICATIONTITLE}-{#VERSION}-Win32-Installer
 SolidCompression=true
-VersionInfoVersion={#VERSIONNUMBER}
+VersionInfoVersion={#VERSION}
 VersionInfoCompany=CasaPortale.de
 VersionInfoDescription=Make your own poster!
 VersionInfoTextVersion={#APPLICATIONTITLE} {#VERSION}

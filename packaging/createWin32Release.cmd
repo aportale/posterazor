@@ -7,6 +7,6 @@ upx --best PosteRazor.exe || pause
 popd
 ISCC.exe iss\posterazor.iss || pause
 
-SET ARCHIVEFILENAME=PosteRazor-1.9.0-alpha-Win32.zip
+SET ARCHIVEFILENAME=PosteRazor-1.9.5-Win32.zip
 del %ARCHIVEFILENAME%
 7z a -tzip %ARCHIVEFILENAME% ..\src\PosteRazor.exe ..\CHANGES ..\LICENSE ..\README || pause

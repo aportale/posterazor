@@ -30,6 +30,16 @@
 #include <QTextBrowser>
 #include <QMessageBox>
 
+static QString applicationNameWithVersion()
+{
+    return
+        QCoreApplication::applicationName()
+#if QT_VERSION >= 0x040400
+        + QLatin1Char(' ') + QCoreApplication::applicationVersion()
+#endif
+    ;
+}
+
 MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
     : QMainWindow(parent, flags)
 {
@@ -79,11 +89,7 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
     for (int i = 0; i < overlappingMapCount; i++)
         m_overlappingButtons.insert(overlappingMap[i].alignment, overlappingMap[i].sender);
 
-    setWindowTitle(QCoreApplication::applicationName()
-#if QT_VERSION >= 0x040400
-        + QLatin1Char(' ') + QCoreApplication::applicationVersion()
-#endif
-    );
+    setWindowTitle(applicationNameWithVersion());
     m_steps->setCurrentIndex(0);
     createConnections();
     populateUI();
@@ -570,7 +576,8 @@ void MainWindow::showAboutPosteRazorDialog()
     const QString webpageAnchor = QString(QLatin1String("<a href=\"%1\">posterazor.sourceforge.net</a>"))
         .arg(QCoreApplication::translate("Help", "http://posterazor.sourceforge.net/", "Only translate, if the website has this language."));
     const QString aboutText =
-        QLatin1String("<h1>") + title + QLatin1String("</h1>") +
+        QLatin1String("<h1>") + applicationNameWithVersion() +
+        QLatin1String("</h1>") +
         Types::newlineToParagraph(QCoreApplication::translate("Help",
             "The PosteRazor cuts a raster image into pieces which can be printed on a printer and be put together to a poster.\n"
             "As an input image, raster files of various image file formats are supported. Instead of directly printing the poster, the PosteRazor produces a multi page PDF file which contains the poster tiles.\n"
