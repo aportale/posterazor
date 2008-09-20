@@ -32,6 +32,8 @@
 
 const QLatin1String settingsKey_LaunchPDFApplication("LaunchPDFApplication");
 const QLatin1String settingsKey_TranslationName("TranslationName");
+const QLatin1String settingsKey_ImageLoadPath("ImageLoadPath");
+const QLatin1String settingsKey_PosterSavePath("PosterSavePath");
 
 Controller::Controller(PosteRazorCore *posteRazorCore, MainWindow *mainWindow, QObject *parent)
     : QObject(parent)
@@ -353,26 +355,26 @@ void Controller::loadInputImage()
         allWildcards << formatWildcards;
         QString formatName = formats.at(i).second;
         // Some Open File dialogs (at least OSX) ar irritated if there are brackes in the file type name
-        formatName.replace('(', '[');
-        formatName.replace(')', ']');
+        formatName.remove('(');
+        formatName.remove(')');
         allFilters << formatName + " (" +  formatWildcards.join(" ") + ")";
     }
     allFilters.prepend(QCoreApplication::translate("Main window", "All image formats") + " (" +  allWildcards.join(" ") + ")");
 
-    static const QString loadPathSettingsKey("loadPath");
     QSettings loadPathSettings;
 
     QString loadFileName = QFileDialog::getOpenFileName (
         m_mainWindow,
         QCoreApplication::translate("Main window", "Load an input image"),
-        loadPathSettings.value(loadPathSettingsKey, ".").toString(),
+        loadPathSettings.value(settingsKey_ImageLoadPath, ".").toString(),
         allFilters.join(";;")
     );
 
     if (!loadFileName.isEmpty()) {
         const bool successful = loadInputImage(loadFileName);
         if (successful)
-            loadPathSettings.setValue(loadPathSettingsKey, QFileInfo(loadFileName).absolutePath());
+            loadPathSettings.setValue(settingsKey_ImageLoadPath,
+                QDir::toNativeSeparators(QFileInfo(loadFileName).absolutePath()));
     }
 }
 
@@ -406,10 +408,9 @@ int Controller::savePoster(const QString &fileName) const
 
 void Controller::savePoster() const
 {
-    static const QLatin1String savePathSettingsKey("savePath");
     QSettings savePathSettings;
 
-    QString saveFileName = savePathSettings.value(savePathSettingsKey, ".").toString();
+    QString saveFileName = savePathSettings.value(settingsKey_PosterSavePath, ".").toString();
     bool fileExistsAskUserForOverwrite = false;
 
     do {
@@ -436,7 +437,8 @@ void Controller::savePoster() const
                 if (result != 0)
                     QMessageBox::critical(m_mainWindow, "", QCoreApplication::translate("Main window", "The file '%1' could not be saved.").arg(saveFileInfo.fileName()), QMessageBox::Ok, QMessageBox::NoButton);
                 else
-                    savePathSettings.setValue(savePathSettingsKey, QFileInfo(saveFileName).absolutePath());
+                    savePathSettings.setValue(settingsKey_PosterSavePath,
+                        QDir::toNativeSeparators(QFileInfo(saveFileName).absolutePath()));
                 fileExistsAskUserForOverwrite = false;
             }
         } else {
