@@ -1683,69 +1683,6 @@
     <string>&amp;About Qt</string>
    </property>
   </action>
-  <action name="m_actionEnglish" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>:/Translationflags/en.png</normaloff>:/Translationflags/en.png</iconset>
-   </property>
-   <property name="text" >
-    <string>&amp;English</string>
-   </property>
-  </action>
-  <action name="m_actionItaliano" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>:/Translationflags/it.png</normaloff>:/Translationflags/it.png</iconset>
-   </property>
-   <property name="text" >
-    <string>&amp;Italiano</string>
-   </property>
-  </action>
-  <action name="m_actionDeutsch" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>:/Translationflags/de.png</normaloff>:/Translationflags/de.png</iconset>
-   </property>
-   <property name="text" >
-    <string>&amp;Deutsch</string>
-   </property>
-  </action>
-  <action name="m_actionNederlands" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>:/Translationflags/nl.png</normaloff>:/Translationflags/nl.png</iconset>
-   </property>
-   <property name="text" >
-    <string>&amp;Nederlands</string>
-   </property>
-  </action>
-  <action name="m_actionFrancais" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>:/Translationflags/fr.png</normaloff>:/Translationflags/fr.png</iconset>
-   </property>
-   <property name="text" >
-    <string>&amp;Français</string>
-   </property>
-  </action>
-  <action name="m_actionPolski" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>:/Translationflags/pl.png</normaloff>:/Translationflags/pl.png</iconset>
-   </property>
-   <property name="text" >
-    <string>P&amp;olski</string>
-   </property>
-  </action>
-  <action name="m_actionPortuguesDoBrasil" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>:/Translationflags/pt_BR.png</normaloff>:/Translationflags/pt_BR.png</iconset>
-   </property>
-   <property name="text" >
-    <string>Po&amp;rtuguês do Brasil</string>
-   </property>
-  </action>
   <action name="m_actionAboutPosteRazor" >
    <property name="text" >
     <string>About PosteRazor</string>

@@ -113,6 +113,7 @@ void MainWindow::retranslateUi()
     m_actionPosteRazorWebSite->setText(             QCoreApplication::translate("Help", "PosteRazor &website"));
     m_actionAboutPosteRazor->setText(               QCoreApplication::translate("Help", "&About PosteRazor"));
     m_actionAboutQt->setText(                       QCoreApplication::translate("Help", "About &Qt"));
+    m_actionExit->setText(                          QCoreApplication::translate("Main window", "E&xit"));
 
     m_imageInfoGroup->setTitle(                     QCoreApplication::translate("Main window", "Image Informations"));
     m_imageInformationColorTypeLabel->setText(      QCoreApplication::translate("Main window", "Color type:"));

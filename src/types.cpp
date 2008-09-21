@@ -113,6 +113,7 @@ QString Types::cleanString(const QString &dirtyString)
 {
     QString result = dirtyString;
     result.replace(QRegExp("[:&]"), "");
+    result.replace(QRegExp("\\(.*\\)"), "");
     result.replace('\n', ' ');
     return result.trimmed();
 }
