@@ -272,8 +272,8 @@ const QByteArray ImageLoaderFreeImage::bits() const
     char *destination = result.data();
     FreeImage_ConvertToRawBits((BYTE*)destination, m_bitmap, bytesPerLine, bitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, hasFreeImageVersionCorrectTopDownInConvertBits());
 
-#if FREEIMAGE_COLORORDER == FREEIMAGE_COLORORDER_BGR
     const unsigned long numberOfPixels = m_widthPixels * m_heightPixels;
+#if FREEIMAGE_COLORORDER == FREEIMAGE_COLORORDER_BGR
     if (colorDataType() == Types::ColorTypeRGB && bitsPerPixel() == 24) {
         for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
             char *pixelPtr = destination + pixelIndex*3;
@@ -286,13 +286,16 @@ const QByteArray ImageLoaderFreeImage::bits() const
         unsigned int* argbDestination = (unsigned int*)destination;
         for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++)
             *argbDestination++ = qToBigEndian(*argbDestination);
-    } else if (colorDataType() == Types::ColorTypeRGB && bitsPerPixel() == 48) {
+    } else
+#endif // FREEIMAGE_COLORORDER == FREEIMAGE_COLORORDER_BGR
+    if (colorDataType() == Types::ColorTypeRGB && bitsPerPixel() == 48) {
+    	// Apparently, the 48 bit data has to be reordered on Windows and ppc/i386 OSX
+    	// TODO: So maybe this swap belongs into the PDFwriter. Investigate.
         unsigned short* rgb48Destination = (unsigned short*)destination;
         const unsigned long numberOfSwaps = numberOfPixels * 3; // Words are swapped
         for (unsigned int pixelIndex = 0; pixelIndex < numberOfSwaps; pixelIndex++)
             *rgb48Destination++ = qToBigEndian(*rgb48Destination);
     }
-#endif // FREEIMAGE_COLORORDER == FREEIMAGE_COLORORDER_BGR
 
     return result;
 }
