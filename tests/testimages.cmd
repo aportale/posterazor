@@ -25,7 +25,7 @@ convert -size 3x2 xc:none -depth 16 ^
     -fill "#0000000012344321" -draw "point 2,1" ^
     rgba_64bpp.png
 
-convert -size 3x2 xc:none -depth 16 ^
+convert -size 3x2 xc:none -depth 8 ^
     -fill "#ab0000ba" -draw "point 0,0" ^
     -fill "#00ab00ba" -draw "point 1,0" ^
     -fill "#0000abba" -draw "point 2,0" ^
