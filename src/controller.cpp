@@ -366,7 +366,7 @@ void Controller::loadInputImage()
     QString loadFileName = QFileDialog::getOpenFileName (
         m_mainWindow,
         QCoreApplication::translate("Main window", "Load an input image"),
-        loadPathSettings.value(settingsKey_ImageLoadPath, ".").toString(),
+        loadPathSettings.value(settingsKey_ImageLoadPath, QDesktopServices::storageLocation(QDesktopServices::PicturesLocation)).toString(),
         allFilters.join(";;")
     );
 
@@ -410,7 +410,7 @@ void Controller::savePoster() const
 {
     QSettings savePathSettings;
 
-    QString saveFileName = savePathSettings.value(settingsKey_PosterSavePath, ".").toString();
+    QString saveFileName = savePathSettings.value(settingsKey_PosterSavePath, QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation)).toString();
     bool fileExistsAskUserForOverwrite = false;
 
     do {
