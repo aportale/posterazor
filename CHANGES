@@ -1,3 +1,16 @@
+PosteRazor 1.9.5
+================
+(Preview version for the upcoming Qt-based PosteRazor 2)
+-   Added: Simplified Chinese translation by Sun Li
+-   Added: Finnish translation by Olli
+-   Added: Real ARGB support for PDF export
+-   Fixed: Grayscale/CMYK JPEG correctly exported to PDF
+- Changed: Using Trolltech Qt 4.4.2 (Instead of FLTK)
+- Changed: The OpenGL preview option is not needed, anymore
+           Smooth preview also for Linux.
+- Changed: Polish translation also on OSX and Linux
+- Changed: Upgraded FreeImage to version 3.11
+
 PosteRazor 1.5.2
 ================
 -   Fixed: Crash on Windows when loading a GIF file.
