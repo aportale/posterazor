@@ -289,8 +289,8 @@ const QByteArray ImageLoaderFreeImage::bits() const
     } else
 #endif // FREEIMAGE_COLORORDER == FREEIMAGE_COLORORDER_BGR
     if (colorDataType() == Types::ColorTypeRGB && bitsPerPixel() == 48) {
-    	// Apparently, the 48 bit data has to be reordered on Windows and ppc/i386 OSX
-    	// TODO: So maybe this swap belongs into the PDFwriter. Investigate.
+        // Apparently, the 48 bit data has to be reordered on Windows and ppc/i386 OSX
+        // TODO: So maybe this swap belongs into the PDFwriter. Investigate.
         unsigned short* rgb48Destination = (unsigned short*)destination;
         const unsigned long numberOfSwaps = numberOfPixels * 3; // Words are swapped
         for (unsigned int pixelIndex = 0; pixelIndex < numberOfSwaps; pixelIndex++)
