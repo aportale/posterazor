@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>posterazor</string>
+	<string>PosteRazor</string>
 	<key>CFBundleGetInfoString</key>
 	<string>PosteRazor 1.9.5, Copyright 2005-2008 Alessandro Portale, GNU General Public License</string>
 	<key>CFBundleIconFile</key>
