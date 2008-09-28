@@ -80,7 +80,7 @@ contains (DEFINES, FREEIMAGE_LIB) {
     win32:LIBS += \
         thirdparty/FreeImage/Dist/FreeImage.lib
 
-    macx: INCLUDEPATH += \
+    macx:INCLUDEPATH += \
         /usr/local/include
 
     unix:LIBS += \
@@ -92,7 +92,7 @@ contains (DEFINES, FREEIMAGE_LIB) {
     HEADERS += \
         imageloaderqt.h
 
-    QTPLUGIN += \
+    macx|win32:QTPLUGIN += \
         qgif \
         qjpeg \
         qtiff
