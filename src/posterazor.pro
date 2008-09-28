@@ -92,7 +92,7 @@ contains (DEFINES, FREEIMAGE_LIB) {
     HEADERS += \
         imageloaderqt.h
 
-    QTPLUGIN += \
+    macx|win32:QTPLUGIN += \
         qgif \
         qjpeg \
         qtiff
