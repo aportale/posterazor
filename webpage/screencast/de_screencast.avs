@@ -8,36 +8,54 @@ clipheight = 360
 #  intro = AudioDub(introVideo, ConvertToMono(introAudio.ResampleAudio(44100).Amplify(1.5)))
 
 # 01  Wir besuchen die Internetseite des PosteRazors
-#  a01 = WAVSource("01.wav") + tone(4.0, 440, 44100, 1, "silence")
-# 02  Dort klicken wir auf den "herunterladen"-link und wählen den passenden Download für unser Betriebssystem aus
-#  a02 = WAVSource("02.wav") + tone(5.0, 440, 44100, 1, "silence")
-  downloadPosterazorVideo = AVISource("de_posterazor_download_screencast.avi", false)
-#  downloadPosterazorAudio = a01 + a02
-  downloadPosterazor = downloadPosterazorVideo # AudioDub(createProjectVideo, createProjectAudio)
+  a01 = tone(4.0, 440, 44100, 1, "silence") + WAVSource("01.wav") + tone(5.0, 440, 44100, 1, "silence")
 
-# 03  Nach der Installation starten wir das Programm direkt
-#  a03 = WAVSource("03.wav") + tone(0, 440, 44100, 1, "silence")
+# 02  Dort klicken wir auf den "Download"-link und wählen die passende Version für unser Betriebssystem aus
+  a02 = WAVSource("02.wav") + tone(5.0, 440, 44100, 1, "silence")
+  downloadPosterazorVideo = AVISource("de_posterazor_download_screencast.avi", false).trim(45, 630)
+  downloadPosterazorAudio = a01 + a02
+  downloadPosterazor = AudioDub(downloadPosterazorVideo, downloadPosterazorAudio)
+
+
+# 03  Nach der Installation starten wir das Programm
+  a03 = WAVSource("03.wav") + tone(2.5, 440, 44100, 1, "silence")
+
 # 04  Wir laden das bild, das wir vergrössern wollen ... und gehen weiter
-#  a04 = WAVSource("04.wav") + tone(2.0, 440, 44100, 1, "silence")
-# 05  Da der Drucker A4-Seiten bedruckt, können wir im zweiten Schritt alles so lassen, wie es ist
-#  a05 = WAVSource("05.wav") + tone(1.0, 440, 44100, 1, "silence")
-# 06  Im Schritt drei vergrössern wir die Überlappung auf 2 Zentimeter, um später die Posterteile besser zusammenkleben zu können
-#  a06 = WAVSource("06.wav") + tone(1.0, 440, 44100, 1, "silence")
-# 07  Das finale Poster hat gerade eine brete von zwei A4-Seiten. Wir möchten aber eine Breite von 32 Zentimetern haben.
-#  a07 = WAVSource("07.wav") + tone(1.0, 440, 44100, 1, "silence")
-# 08  Der letze Schritt speichert das Poster
-#  a08 = WAVSource("08.wav") + tone(4.0, 440, 44100, 1, "silence")
-# 09  Die PDF-datei wird automatisch geöffnet ... Sie enthält alle vier A4-Seiten, ... die wir nun ausdrucken.
-#  a09 = WAVSource("09.wav") + tone(4.0, 440, 44100, 1, "silence")
-  pausePosition = 630
-  usePosteRazorVideo_StartTo05Pause = AVISource("de_posterazor_screencast.avi", false).Trim(100, pausePosition)
-  usePosteRazorVideo_05Pause = AVISource("de_posterazor_screencast.avi", false).Trim(pausePosition, pausePosition).Loop(130)
-  usePosteRazorVideo_05PauseToEnd = AVISource("de_posterazor_screencast.avi", false).Trim(pausePosition, 941)
-  usePosteRazorVideo = usePosteRazorVideo_StartTo05Pause + usePosteRazorVideo_05Pause + usePosteRazorVideo_05PauseToEnd
-#  usePosteRazorAudio = a03 + a04 + a05 + a06 + a07 + a08 + a09
-  usePosteRazor = usePosteRazorVideo # AudioDub(usePosteRazorVideo, usePosteRazorAudio)
+  a04 = WAVSource("04.wav") + tone(1.5, 440, 44100, 1, "silence")
 
-screencastvideo = Dissolve(downloadPosterazor, usePosteRazor, 6)
+# 05  Da unser Drucker A4-Seiten bedruckt, können wir im zweiten Schritt alles so lassen, wie es ist
+  a05 = WAVSource("05.wav") + tone(1.0, 440, 44100, 1, "silence")
+
+# 06  Im Schritt drei vergrössern wir die Überlappung der Posterteile auf 2 Zentimeter, um später das Poster besser zusammenkleben zu können
+  a06 = WAVSource("06.wav") + tone(2.0, 440, 44100, 1, "silence")
+
+# 07  Das finale Poster hat gerade eine breite von zwei DIN A4-Seiten. Wir möchten aber eine Breite von 32 Zentimetern haben.
+  a07 = WAVSource("07.wav") + tone(4.0, 440, 44100, 1, "silence")
+
+# 08  Der letze Schritt speichert das Poster
+  a08 = WAVSource("08.wav") + tone(9.0, 440, 44100, 1, "silence")
+
+# 09  Die PDF-datei wird automatisch geöffnet ... Sie enthält alle vier DIN A4-Seiten, ... die wir nun ausdrucken.
+  a09 = WAVSource("09.wav")
+
+  usePosteRazorPause05Frame = 250
+  usePosteRazorVideoStartToPause05 = AVISource("de_posterazor_screencast.avi", false).trim(20, usePosteRazorPause05Frame)
+  usePosteRazorPause05Loop = AVISource("de_posterazor_screencast.avi", false).trim(usePosteRazorPause05Frame, 1).loop(160)
+ 
+  usePosteRazorPause06Frame = 280
+  usePosteRazorVideoPause05ToPause06 = AVISource("de_posterazor_screencast.avi", false).trim(usePosteRazorPause05Frame, usePosteRazorPause06Frame)
+  usePosteRazorPause06Loop = AVISource("de_posterazor_screencast.avi", false).trim(usePosteRazorPause06Frame, 1).loop(90)
+
+  usePosteRazorPause07Frame = 435
+  usePosteRazorVideoPause06ToPause07 = AVISource("de_posterazor_screencast.avi", false).trim(usePosteRazorPause06Frame, usePosteRazorPause07Frame)
+  usePosteRazorPause07Loop = AVISource("de_posterazor_screencast.avi", false).trim(usePosteRazorPause07Frame, 1).loop(50)
+  usePosteRazorVideoPause07ToEnd = AVISource("de_posterazor_screencast.avi", false).trim(usePosteRazorPause07Frame, 1180)
+
+  usePosteRazorVideo = usePosteRazorVideoStartToPause05 + usePosteRazorPause05Loop + usePosteRazorVideoPause05ToPause06 + usePosteRazorPause06Loop + usePosteRazorVideoPause06ToPause07 + usePosteRazorPause07Loop + usePosteRazorVideoPause07ToEnd
+  usePosteRazorAudio = a03 + a04 + a05 + a06 + a07 + a08 + a09
+  usePosteRazor = AudioDub(usePosteRazorVideo, usePosteRazorAudio)
+
+screencastvideo = downloadPosterazor.FadeOut(10) + usePosteRazor.FadeIn(10)
 
 screencastvideo
 
