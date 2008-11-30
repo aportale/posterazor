@@ -347,6 +347,8 @@
 					<dd>Grzegorz Wacikowski</dd>
 					<dt><a href="http://posterazor.svn.sourceforge.net/viewvc/posterazor/trunk/src/pt_BR.ts">pt_BR.ts (Brazilian Portuguese)</a></dt>
 					<dd>Éderson Gomes dos Santos</dd>
+					<dt><a href="http://posterazor.svn.sourceforge.net/viewvc/posterazor/trunk/src/pt_PT.ts">pt_PT.ts (European Portuguese)</a></dt>
+					<dd>Helder Correia</dd>
 					<dt><a href="http://posterazor.svn.sourceforge.net/viewvc/posterazor/trunk/src/zh_CN.ts">zh_CN.ts (Simplified Chinese)</a></dt>
 					<dd>Sun Li</dd>
 				</dl>

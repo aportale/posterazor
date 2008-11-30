@@ -608,6 +608,7 @@ void MainWindow::showAboutPosteRazorDialog()
             "<dt>Dutch/Belgian</dt><dd>Erik Wijkamp</dd>"
             "<dt>Spanish</dt><dd><a href=\"http://hispanicoweb.net/\">Hispánico Web</a></dd>"
             "<dt>Brazilian Portuguese</dt><dd>Éderson Gomes dos Santos</dd>"
+            "<dt>European Portuguese</dt><dd>Helder Correia</dd>"
             "<dt>Simplified Chinese</dt><dd>Sun Li</dd>"
             "<dt>Finnish</dt><dd>Olli</dd>"
             "</dl>") +

@@ -405,7 +405,7 @@ Quer sobrescrevê-lo?</translation>
     <message>
         <location filename="mainwindow.cpp" line="521"/>
         <source>Language name</source>
-        <translation type="unfinished">Português do Brasil</translation>
+        <translation type="unfinished">Português (do Brasil)</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="116"/>
