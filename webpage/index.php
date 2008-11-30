@@ -374,9 +374,10 @@
 					<li><?= text('Italian:', 'Italienisch:') ?> Stefano Nosei</li>
 					<li><?= text('Dutch/Belgian:', 'Holländisch/Belgisch:') ?> Erik Wijkamp</li>
 					<li><?= text('Spanish:', 'Spanische:') ?> <a href="http://hispanicoweb.net/">Hispánico Web</a></li>
-					<li><?= text('Brazilian Portuguese:', 'Brasilianisch-portugisisch:') ?> Éderson Gomes dos Santos</li>
-					<li><?= text('Simplified Chinese (Next PosteRazor version):', 'Vereinfacht-Chinesisch (Nächste PosteRazor-version):') ?> Sun Li</li>
-					<li><?= text('Finnish (Next PosteRazor version):', 'Finnisch (Nächste PosteRazor-version):') ?> Olli</li>
+					<li><?= text('Brazilian Portuguese:', 'Brasilianisch-Portugisisch:') ?> Éderson Gomes dos Santos</li>
+					<li><?= text('European Portuguese (Next version):', 'Europäisch-Portugisisch (Nächste version):') ?> Helder Correia</li>
+					<li><?= text('Simplified Chinese (Next version):', 'Vereinfacht-Chinesisch (Nächste version):') ?> Sun Li</li>
+					<li><?= text('Finnish (Next version):', 'Finnisch (Nächste version):') ?> Olli</li>
 					<li><em>...<?= text('to add your translation, ', 'um Ihre Übersetzung hinzuzufügen, ')?><a href="<?=linkParameters('translations','')?>"><?=text('click here', 'klicken Sie hier')?></a> :)</em></li>
 				</ul>
 				<h3><?= text('Packagers', 'Pakete-ersteller') ?>:</h3>
