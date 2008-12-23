@@ -50,9 +50,9 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
     m_unitOfLengthActions = new QActionGroup(m_menuSettings);
 
     m_actionLoadInputImage->setShortcuts(
-        QList<QKeySequence>() << (Qt::ControlModifier | Qt::Key_L) << (Qt::ControlModifier | Qt::Key_O));
-    m_actionSavePoster->setShortcut(Qt::ControlModifier | Qt::Key_S);
-    m_actionExit->setShortcut(Qt::ControlModifier | Qt::Key_Q);
+        QList<QKeySequence>() << (Qt::CTRL + Qt::Key_L) << (Qt::CTRL + Qt::Key_O));
+    m_actionSavePoster->setShortcut(Qt::CTRL + Qt::Key_S);
+    m_actionExit->setShortcut(Qt::CTRL + Qt::Key_Q);
     m_actionPosteRazorManual->setShortcut(Qt::Key_F1);
 
     m_imageLoadButton->setIcon(QApplication::style()->standardPixmap(QStyle::SP_DirOpenIcon)); // SP_DialogOpenButton looks ugly
