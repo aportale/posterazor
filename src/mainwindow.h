@@ -64,6 +64,8 @@ public:
     void setCurrentTranslation(const QString &translation); // Only to set the right menu entry to checked
     void setCurrentUnitOfLength(const QString &unit);
     void addAboutDialogAction(QAction *action);
+    void readSettings(const QSettings *settings);
+    void writeSettings(QSettings *settings) const;
 
 public slots:
     void setPreviewImage(const QImage &image);

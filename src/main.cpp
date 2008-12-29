@@ -67,6 +67,7 @@ int main (int argc, char **argv)
     QSettings::setDefaultFormat(QSettings::IniFormat);
 #endif
     QSettings settings;
+    dialog.readSettings(&settings);
     controller.readSettings(&settings);
 
     dialog.show();
@@ -74,6 +75,7 @@ int main (int argc, char **argv)
         controller.loadInputImage(argv[1]);
 
     const int appReturn = a.exec();
+    dialog.writeSettings(&settings);
     controller.writeSettings(&settings);
 
     return appReturn;
