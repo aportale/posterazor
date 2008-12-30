@@ -1,3 +1,33 @@
+function trimAudio(clip audioClip, float startSecond, float endSecond)
+{
+    fps = 1000
+    dummyVideoFrames = Round((endSecond - startSecond) * fps)
+    dummyVideo = BlankClip(Round(endSecond * fps), width = 1, height = 1, fps = fps)
+    dummyClip = AudioDub(dummyVideo, audioClip)
+    trimmedClip = dummyClip.trim(Round(startSecond * dummyClip.Framerate), 0)
+    trimmedAudio = GetChannel(trimmedClip, 1).killvideo
+    return trimmedAudio
+}
+
+function audioNoise(float lengthSeconds)
+{
+    uncutAudio = WAVSource("de_audio_uncut.wav")
+    noiseStart = 2299401 / 44100.0
+    noiseEnd   = 2311009 / 44100.0
+    noiseSample = trimAudio(uncutAudio, noiseStart, noiseEnd)
+    noiseSampleReverse = noiseSample.reverse()
+    noiseSample = noiseSample + noiseSample.reverse()
+    noiseSampleLength = (noiseEnd - noiseStart) * 2 # '* 2' because it has the reversed noise appended
+    noiseAudio = noiseSample.loop(ceil(lengthSeconds / noiseSampleLength))
+    return noiseAudio.trimAudio(0, lengthSeconds)
+}
+
+function audioClip(float startSecond, float endSecond, float appendedSilenceSeconds)
+{
+    uncutAudio = WAVSource("de_audio_uncut.wav")
+    return uncutAudio.trimAudio(startSecond, endSecond) + audioNoise(appendedSilenceSeconds)
+}
+
 clipwidth = 480
 clipheight = 360
 
@@ -8,56 +38,54 @@ clipheight = 360
 #  intro = AudioDub(introVideo, ConvertToMono(introAudio.ResampleAudio(44100).Amplify(1.5)))
 
 # 01  Wir besuchen die Internetseite des PosteRazors
-  a01 = tone(4.0, 440, 44100, 1, "silence") + WAVSource("01.wav") + tone(5.0, 440, 44100, 1, "silence")
+  a01 = audioClip(0.2, 4, 2)
 
-# 02  Dort klicken wir auf den "Download"-link und wählen die passende Version für unser Betriebssystem aus
-  a02 = WAVSource("02.wav") + tone(5.0, 440, 44100, 1, "silence")
-  downloadPosterazorVideo = AVISource("de_posterazor_download_screencast.avi", false).trim(45, 630)
+# 02  Dort klicken wir auf den link "Herunterladen" und wählen die passende Version für unser Betriebssystem aus
+  a02 = audioClip(4, 8, 1)
+  downloadPosterazorVideo = AVISource("de_download.avi", false).trim(45, 630)
   downloadPosterazorAudio = a01 + a02
-  downloadPosterazor = AudioDub(downloadPosterazorVideo, downloadPosterazorAudio)
+  downloadPosterazor = AudioDub(downloadPosterazorVideo, audioNoise(10))
 
+downloadPosterazor
+__END__
 
 # 03  Nach der Installation starten wir das Programm
-  a03 = WAVSource("03.wav") + tone(2.5, 440, 44100, 1, "silence")
+  a03 = audioClip(0, 2, 1)
 
-# 04  Wir laden das bild, das wir vergrössern wollen ... und gehen weiter
-  a04 = WAVSource("04.wav") + tone(1.5, 440, 44100, 1, "silence")
+# 04  Wir laden das Bild, das wir vergrössern wollen...
+  a04 = audioClip(0, 4, 1)
+  
+# 05  ...und gehen weiter
+  a05 = audioClip(0, 2, 0)
 
-# 05  Da unser Drucker A4-Seiten bedruckt, können wir im zweiten Schritt alles so lassen, wie es ist
-  a05 = WAVSource("05.wav") + tone(1.0, 440, 44100, 1, "silence")
+# 06  Da unser Drucker A4-Seiten bedruckt, können wir im zweiten Schritt alles so lassen, wie es ist
+  a06 = audioClip(0, 2, 0)
 
-# 06  Im Schritt drei vergrössern wir die Überlappung der Posterteile auf 2 Zentimeter, um später das Poster besser zusammenkleben zu können
-  a06 = WAVSource("06.wav") + tone(2.0, 440, 44100, 1, "silence")
+# 07  Im Schritt drei vergrössern wir die Überlappung der Posterteile auf 2 Zentimeter, um später das Poster besser zusammenkleben zu können
+  a07 = audioClip(0, 2, 0)
 
-# 07  Das finale Poster hat gerade eine breite von zwei DIN A4-Seiten. Wir möchten aber eine Breite von 32 Zentimetern haben.
-  a07 = WAVSource("07.wav") + tone(4.0, 440, 44100, 1, "silence")
+# 08  Das finale Poster hat gerade eine breite von zwei DIN A4-Seiten. Wir möchten aber eine Breite von 32 Zentimetern haben.
+  a08 = audioClip(0, 2, 0)
 
-# 08  Der letze Schritt speichert das Poster
-  a08 = WAVSource("08.wav") + tone(9.0, 440, 44100, 1, "silence")
+# 09  Der letze Schritt speichert das Poster
+  a09 = audioClip(0, 2, 0)
 
-# 09  Die PDF-datei wird automatisch geöffnet ... Sie enthält alle vier DIN A4-Seiten, ... die wir nun ausdrucken.
-  a09 = WAVSource("09.wav")
+# 10  Die PDF-datei wird automatisch geöffnet...
+  a10 = audioClip(0, 2, 0)
 
-  usePosteRazorPause05Frame = 250
-  usePosteRazorVideoStartToPause05 = AVISource("de_posterazor_screencast.avi", false).trim(20, usePosteRazorPause05Frame)
-  usePosteRazorPause05Loop = AVISource("de_posterazor_screencast.avi", false).trim(usePosteRazorPause05Frame, 1).loop(160)
- 
-  usePosteRazorPause06Frame = 280
-  usePosteRazorVideoPause05ToPause06 = AVISource("de_posterazor_screencast.avi", false).trim(usePosteRazorPause05Frame, usePosteRazorPause06Frame)
-  usePosteRazorPause06Loop = AVISource("de_posterazor_screencast.avi", false).trim(usePosteRazorPause06Frame, 1).loop(90)
+# 11  ...Sie enthält alle vier DIN A4-Seiten,...
+  a11 = audioClip(0, 2, 0)
 
-  usePosteRazorPause07Frame = 435
-  usePosteRazorVideoPause06ToPause07 = AVISource("de_posterazor_screencast.avi", false).trim(usePosteRazorPause06Frame, usePosteRazorPause07Frame)
-  usePosteRazorPause07Loop = AVISource("de_posterazor_screencast.avi", false).trim(usePosteRazorPause07Frame, 1).loop(50)
-  usePosteRazorVideoPause07ToEnd = AVISource("de_posterazor_screencast.avi", false).trim(usePosteRazorPause07Frame, 1180)
+# 12  ...die wir nun ausdrucken.
+  a12 = audioClip(0, 2, 0)
 
-  usePosteRazorVideo = usePosteRazorVideoStartToPause05 + usePosteRazorPause05Loop + usePosteRazorVideoPause05ToPause06 + usePosteRazorPause06Loop + usePosteRazorVideoPause06ToPause07 + usePosteRazorPause07Loop + usePosteRazorVideoPause07ToEnd
+  usePosteRazorVideo = AVISource("de_posterazor.avi", false).trim(20, 1000)
   usePosteRazorAudio = a03 + a04 + a05 + a06 + a07 + a08 + a09
   usePosteRazor = AudioDub(usePosteRazorVideo, usePosteRazorAudio)
 
 screencastvideo = downloadPosterazor.FadeOut(10) + usePosteRazor.FadeIn(10)
 
-screencastvideo
+#screencastvideo
 
 #qtlogo = ImageReader("../qt-logo.png", 0, 0, 30, pixel_type="rgb32").Spline64Resize(45, 45)
 #qtlogomask = qtlogo.showalpha()
