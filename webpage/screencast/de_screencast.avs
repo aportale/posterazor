@@ -31,23 +31,26 @@ function audioClip(float startSecond, float endSecond, float appendedSilenceSeco
 clipwidth = 480
 clipheight = 360
 
-# Let's create our first Qt Gui project, what about a classic "Hello World" dialog. We will also take a look at the basic structure of a Qt Gui project.
-#  introVideo = AVISource("intro.avi").Trim(10, 320).ConvertToYUY2.Tweak(bright = 15, cont = 1.1).ConvertToRGB32
-#  introAudio = introVideo.killVideo
-#  introVideo = introVideo.killAudio
-#  intro = AudioDub(introVideo, ConvertToMono(introAudio.ResampleAudio(44100).Amplify(1.5)))
-
 # 01  Wir besuchen die Internetseite des PosteRazors
-  a01 = audioClip(0.2, 4, 2)
+  a01 = audioNoise(3) + audioClip(0.52, 3.705, 3)
 
 # 02  Dort klicken wir auf den link "Herunterladen" und wählen die passende Version für unser Betriebssystem aus
-  a02 = audioClip(4, 8, 1)
-  downloadPosterazorVideo = AVISource("de_download.avi", false).trim(45, 630)
-  downloadPosterazorAudio = a01 + a02
-  downloadPosterazor = AudioDub(downloadPosterazorVideo, audioNoise(10))
+  a02 = audioClip(3.789, 10.215, 1)
 
-downloadPosterazor
-__END__
+downloadPosterazorAudio = a01 + a02
+
+downloadScreencastStart = 50
+downloadLoadPageFrameRemovalStart = 240
+downloadLoadPageRemovalEnd = 296
+downloadScreencastEnd = 519
+
+downloadPosterazorVideo =
+    \   DirectShowSource("de_download.avi").trim(downloadScreencastStart, downloadLoadPageFrameRemovalStart)
+    \ + DirectShowSource("de_download.avi").trim(downloadLoadPageRemovalEnd, downloadScreencastEnd)
+
+downloadPosterazor = AudioDub(downloadPosterazorVideo, downloadPosterazorAudio)
+
+
 
 # 03  Nach der Installation starten wir das Programm
   a03 = audioClip(0, 2, 1)
@@ -79,9 +82,17 @@ __END__
 # 12  ...die wir nun ausdrucken.
   a12 = audioClip(0, 2, 0)
 
-  usePosteRazorVideo = AVISource("de_posterazor.avi", false).trim(20, 1000)
-  usePosteRazorAudio = a03 + a04 + a05 + a06 + a07 + a08 + a09
-  usePosteRazor = AudioDub(usePosteRazorVideo, usePosteRazorAudio)
+usePosteRazorAudio = a03 + a04 + a05 + a06 + a07 + a08 + a09 + a10 + a11 + a12
+
+useScreencastStart = 50
+useLoadPageFrameRemovalStart = 240
+useLoadPageRemovalEnd = 296
+useScreencastEnd = 519
+
+usePosteRazorVideo =
+    \   DirectShowSource("de_posterazor.avi", false).trim(useScreencastStart, useScreencastEnd)
+
+usePosteRazor = AudioDub(usePosteRazorVideo, usePosteRazorAudio)
 
 screencastvideo = downloadPosterazor.FadeOut(10) + usePosteRazor.FadeIn(10)
 
