@@ -45,24 +45,23 @@ downloadLoadPageRemovalEnd = 296
 downloadScreencastEnd = 519
 
 downloadPosterazorVideo =
-    \   DirectShowSource("de_download.avi").trim(downloadScreencastStart, downloadLoadPageFrameRemovalStart)
-    \ + DirectShowSource("de_download.avi").trim(downloadLoadPageRemovalEnd, downloadScreencastEnd)
+    \   AviSource("de_download.avi").trim(downloadScreencastStart, downloadLoadPageFrameRemovalStart)
+    \ + AviSource("de_download.avi").trim(downloadLoadPageRemovalEnd, downloadScreencastEnd)
 
 downloadPosterazor = AudioDub(downloadPosterazorVideo, downloadPosterazorAudio)
 
 
-
 # 03  Nach der Installation starten wir das Programm
-  a03 = audioClip(0, 2, 1)
+  a03 = audioClip(10.194, 13.042, 0)
 
 # 04  Wir laden das Bild, das wir vergrössern wollen...
-  a04 = audioClip(0, 4, 1)
+  a04 = audioClip(13.308, 17.466, 1)
   
 # 05  ...und gehen weiter
-  a05 = audioClip(0, 2, 0)
+  a05 = audioClip(17.669, 23.060, 1)
 
 # 06  Da unser Drucker A4-Seiten bedruckt, können wir im zweiten Schritt alles so lassen, wie es ist
-  a06 = audioClip(0, 2, 0)
+  a06 = audioClip(23.288, 32.576, 1)
 
 # 07  Im Schritt drei vergrössern wir die Überlappung der Posterteile auf 2 Zentimeter, um später das Poster besser zusammenkleben zu können
   a07 = audioClip(0, 2, 0)
@@ -84,15 +83,27 @@ downloadPosterazor = AudioDub(downloadPosterazorVideo, downloadPosterazorAudio)
 
 usePosteRazorAudio = a03 + a04 + a05 + a06 + a07 + a08 + a09 + a10 + a11 + a12
 
-useScreencastStart = 50
-useLoadPageFrameRemovalStart = 240
-useLoadPageRemovalEnd = 296
-useScreencastEnd = 519
+useScreencastStart = 28
+use03FrameStretchFrame = 29
+use03FrameStretchLength = 30
+use06FrameStretchFrame = 210
+use06FrameStretchLength = 80
+use07FrameStretchFrame = 275
+use07FrameStretchLength = 70
+useScreencastEnd = 1190
 
 usePosteRazorVideo =
-    \   DirectShowSource("de_posterazor.avi", false).trim(useScreencastStart, useScreencastEnd)
+    \   AviSource("de_posterazor.avi").trim(useScreencastStart, use03FrameStretchFrame)
+    \ + AviSource("de_posterazor.avi").trim(use03FrameStretchFrame, use03FrameStretchFrame).loop(use03FrameStretchLength)
+    \ + AviSource("de_posterazor.avi").trim(use03FrameStretchFrame, use06FrameStretchFrame)
+    \ + AviSource("de_posterazor.avi").trim(use06FrameStretchFrame, use06FrameStretchFrame).loop(use06FrameStretchLength)
+    \ + AviSource("de_posterazor.avi").trim(use06FrameStretchFrame, use07FrameStretchFrame)
+    \ + AviSource("de_posterazor.avi").trim(use07FrameStretchFrame, use07FrameStretchFrame).loop(use07FrameStretchLength)
+    \ + AviSource("de_posterazor.avi").trim(use07FrameStretchFrame, useScreencastEnd)
 
 usePosteRazor = AudioDub(usePosteRazorVideo, usePosteRazorAudio)
+usePosteRazor
+__end__
 
 screencastvideo = downloadPosterazor.FadeOut(10) + usePosteRazor.FadeIn(10)
 
