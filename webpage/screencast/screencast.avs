@@ -37,8 +37,10 @@ function audioDownloadPosteRazor()
 function videoDownloadPosteRazor()
 {
     en_ScreencastStart = 0
+    en_01FrameStretchFrame = en_ScreencastStart + 1
+    en_01FrameStretchLength = 20
     en_02FrameStretchFrame = 370
-    en_02FrameStretchLength = 60
+    en_02FrameStretchLength = 22
     en_ScreencastEnd = en_02FrameStretchFrame
 
     de_ScreencastStart = 50
@@ -46,9 +48,11 @@ function videoDownloadPosteRazor()
     de_LoadPageRemovalEnd = 296
     de_ScreencastEnd = 519
 
-    videoSource = AviSource(gEnglishLanguage ? "en_download.avi" : "de_download.avi").ShowFrameNumber(scroll = true)
+    videoSource = AviSource(gEnglishLanguage ? "en_download.avi" : "de_download.avi").ShowFrameNumber
     return gEnglishLanguage ?
-        \   videoSource.trim(en_ScreencastStart, en_02FrameStretchFrame)
+        \   videoSource.trim(en_ScreencastStart, en_01FrameStretchFrame)
+        \ + videoSource.trim(en_01FrameStretchFrame, en_01FrameStretchFrame).loop(en_01FrameStretchLength)
+        \ + videoSource.trim(en_01FrameStretchFrame, en_02FrameStretchFrame)
         \ + videoSource.trim(en_02FrameStretchFrame, en_02FrameStretchFrame).loop(en_02FrameStretchLength)
         \ + videoSource.trim(en_02FrameStretchFrame, en_ScreencastEnd)
         \ :
@@ -128,6 +132,21 @@ function audioUsePosteRazor()
 
 function videoUsePosteRazor()
 {
+    en_ScreencastStart = 130
+    en_03FrameStretchFrame = en_ScreencastStart + 1
+    en_03FrameStretchLength = 28
+    en_06FrameStretchFrame = 340
+    en_06FrameStretchLength = 109
+    en_07FrameStretchFrame = 343
+    en_07FrameStretchLength = 101
+    en_08FrameStretchFrame = 511
+    en_08FrameStretchLength = 100
+    en_09aFrameStretchFrame = 707
+    en_09aFrameStretchLength = 37
+    en_09bFrameStretchFrame = 720
+    en_09bFrameStretchLength = 41
+    en_ScreencastEnd = 1085
+
     de_ScreencastStart = 28
     de_03FrameStretchFrame = 29
     de_03FrameStretchLength = 30
@@ -141,9 +160,21 @@ function videoUsePosteRazor()
     de_12FrameStretchLength = 60
     de_ScreencastEnd = de_08FrameStretchFrame + de_08FrameStretchLength
 
-    videoSource = AviSource(gEnglishLanguage ? "en_posterazor.avi" : "de_posterazor.avi").ShowFrameNumber(scroll = true)
+    videoSource = AviSource(gEnglishLanguage ? "en_posterazor.avi" : "de_posterazor.avi").ShowFrameNumber
     return gEnglishLanguage ?
-        \   videoSource
+        \   videoSource.trim(en_ScreencastStart,     en_03FrameStretchFrame)
+        \ + videoSource.trim(en_03FrameStretchFrame, en_03FrameStretchFrame).loop(en_03FrameStretchLength)
+        \ + videoSource.trim(en_03FrameStretchFrame, en_06FrameStretchFrame)
+        \ + videoSource.trim(en_06FrameStretchFrame, en_06FrameStretchFrame).loop(en_06FrameStretchLength)
+        \ + videoSource.trim(en_06FrameStretchFrame, en_07FrameStretchFrame)
+        \ + videoSource.trim(en_07FrameStretchFrame, en_07FrameStretchFrame).loop(en_07FrameStretchLength)
+        \ + videoSource.trim(en_07FrameStretchFrame, en_08FrameStretchFrame)
+        \ + videoSource.trim(en_08FrameStretchFrame, en_08FrameStretchFrame).loop(en_08FrameStretchLength)
+        \ + videoSource.trim(en_08FrameStretchFrame, en_09aFrameStretchFrame)
+        \ + videoSource.trim(en_09aFrameStretchFrame, en_09aFrameStretchFrame).loop(en_09aFrameStretchLength)
+        \ + videoSource.trim(en_09aFrameStretchFrame, en_09bFrameStretchFrame)
+        \ + videoSource.trim(en_09bFrameStretchFrame, en_09bFrameStretchFrame).loop(en_09bFrameStretchLength)
+        \ + videoSource.trim(en_09bFrameStretchFrame, en_ScreencastEnd)
         \ :
         \   videoSource.trim(de_ScreencastStart,     de_03FrameStretchFrame)
         \ + videoSource.trim(de_03FrameStretchFrame, de_03FrameStretchFrame).loop(de_03FrameStretchLength)
@@ -175,4 +206,4 @@ en_screencast = screenCastClip()
 global gEnglishLanguage = false
 de_screencast = screenCastClip()
 
-StackHorizontal(en_screencast, de_screencast)
+StackVertical(en_screencast, de_screencast)
