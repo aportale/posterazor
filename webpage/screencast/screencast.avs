@@ -7,9 +7,9 @@ global gAudioNoiseEnd = 0
 
 function setupScreencastAudioGlobals()
 {
-    global gAudioClip = WAVSource(gEnglishLanguage ? "de_screencastaudio.wav" : "de_screencastaudio.wav")
-    global gAudioNoiseStart = gEnglishLanguage ? (2299401 / 44100.0) : (2299401 / 44100.0)
-    global gAudioNoiseEnd = gEnglishLanguage ? (2311009 / 44100.0) : (2311009 / 44100.0)
+    global gAudioClip = WAVSource(gEnglishLanguage ? "en_screencastaudio.wav" : "de_screencastaudio.wav")
+    global gAudioNoiseStart = (gEnglishLanguage ? 2017804 : 2299401) / 44100.0
+    global gAudioNoiseEnd = (gEnglishLanguage ? 2029098 : 2311009) / 44100.0
 }
 
 function audioDownloadPosteRazor()
@@ -18,13 +18,13 @@ function audioDownloadPosteRazor()
 
     # 01
     #  We visit the PosteRazor web site
-      en_a01 = audioNoise(3) + audioClip(0.52, 3.705, 3)
+      en_a01 = audioNoise(3) + audioClip(0.430, 2.912, 3.5)
     #  Wir besuchen die Internetseite des PosteRazors
-      de_a01 = audioNoise(3) + audioClip(0.52, 3.705, 3)
+      de_a01 = audioNoise(3) + audioClip(0.520, 3.705, 3)
 
     # 02
     #  There, we click on the "Download" link and choose the version that is suited for our Operating System
-      en_a02 = audioClip(3.789, 10.215, 1)
+      en_a02 = audioClip(3.124, 8.803, 3)
     #  Dort klicken wir auf den link "Herunterladen" und wählen die passende Version für unser Betriebssystem aus
       de_a02 = audioClip(3.789, 10.215, 1)
 
@@ -48,7 +48,7 @@ function videoDownloadPosteRazor()
     de_LoadPageRemovalEnd = 296
     de_ScreencastEnd = 519
 
-    videoSource = AviSource(gEnglishLanguage ? "en_download.avi" : "de_download.avi").ShowFrameNumber
+    videoSource = AviSource(gEnglishLanguage ? "en_download.avi" : "de_download.avi") #.ShowFrameNumber
     return gEnglishLanguage ?
         \   videoSource.trim(en_ScreencastStart, en_01FrameStretchFrame)
         \ + videoSource.trim(en_01FrameStretchFrame, en_01FrameStretchFrame).loop(en_01FrameStretchLength)
@@ -66,61 +66,61 @@ function audioUsePosteRazor()
 
     # 03
     #  After the installation we launch the Program
-      en_a03 = audioClip(10.194, 13.042, 0)
+      en_a03 = audioClip(12.300, 15.374, 0)
     #  Nach der Installation starten wir das Programm
       de_a03 = audioClip(10.194, 13.042, 0)
 
     # 04
     #  We load the image which we want to enlarge...
-      en_a04 = audioClip(13.308, 15.971, 1)
+      en_a04 = audioClip(15.623, 18.367, 1)
     #  Wir laden das Bild, das wir vergrössern wollen...
       de_a04 = audioClip(13.308, 15.971, 1)
 
     # 05
     #  ...and proceed
-      en_a05 = audioClip(16.000, 17.300, 1)
+      en_a05 = audioClip(18.813, 19.647, 1)
     #  ...und gehen weiter
       de_a05 = audioClip(16.000, 17.300, 1)
 
     # 06
     #  Since our printer uses A4 sheets, we can leave everything in step two as it is.
-      en_a06 = audioClip(17.669, 23.060, 1)
+      en_a06 = audioClip(20.050, 25.575, 1)
     #  Da unser Drucker A4-Seiten bedruckt, können wir im zweiten Schritt alles so lassen, wie es ist.
       de_a06 = audioClip(17.669, 23.060, 1)
 
     # 07
     #  In step three, we increase the overlapping of the poster tiles to 2 centimeters, in order to assemble the poster more easily later on
-      en_a07 = audioClip(23.288, 32.576, 2)
+      en_a07 = audioClip(26.043, 35.585, 2)
     #  Im Schritt drei vergrössern wir die Überlappung der Posterteile auf 2 Zentimeter, um später das Poster besser zusammenkleben zu können
       de_a07 = audioClip(23.288, 32.576, 2)
 
     # 08
     #  The final poster, currently has a width of two A4 sheets. However, we want to give it a width of 32 centimeters.
-      en_a08 = audioClip(32.887, 40.801, 6)
+      en_a08 = audioClip(37.771, 45.566, 6)
     #  Das finale Poster hat gerade eine breite von zwei DIN A4-Seiten. Wir möchten aber eine Breite von 32 Zentimetern haben.
       de_a08 = audioClip(32.887, 40.801, 6)
 
     # 09
     #  The last step saves the poster.
-      en_a09 = audioClip(41.471, 44.011, 3)
+      en_a09 = audioClip(48.047, 50.579, 3)
     #  Der letze Schritt speichert das Poster.
       de_a09 = audioClip(41.471, 44.011, 3)
 
     # 10
     #  The PDF document is opened automatically...
-      en_a10 = audioClip(44.274, 47.245, 0)
+      en_a10 = audioClip(51.062, 53.982, 0.5)
     #  Die PDF-datei wird automatisch geöffnet...
       de_a10 = audioClip(44.274, 47.245, 0)
 
     # 11
     #  ...it contains all the four pages...
-      en_a11 = audioClip(47.293, 50.126, 0)
+      en_a11 = audioClip(57.706, 59.894, 0.5)
     #  ...Sie enthält alle vier DIN A4-Seiten,...
       de_a11 = audioClip(47.293, 50.126, 0)
 
     # 12
     #  ...which we now print out.
-      en_a12 = audioClip(50.126, 51.650, 0) + audioNoise(4)
+      en_a12 = audioClip(61.716, 63.092, 0) + audioNoise(4)
     #  ...die wir nun ausdrucken.
       de_a12 = audioClip(50.126, 51.650, 0) + audioNoise(4)
 
@@ -160,7 +160,7 @@ function videoUsePosteRazor()
     de_12FrameStretchLength = 60
     de_ScreencastEnd = de_08FrameStretchFrame + de_08FrameStretchLength
 
-    videoSource = AviSource(gEnglishLanguage ? "en_posterazor.avi" : "de_posterazor.avi").ShowFrameNumber
+    videoSource = AviSource(gEnglishLanguage ? "en_posterazor.avi" : "de_posterazor.avi") #.ShowFrameNumber
     return gEnglishLanguage ?
         \   videoSource.trim(en_ScreencastStart,     en_03FrameStretchFrame)
         \ + videoSource.trim(en_03FrameStretchFrame, en_03FrameStretchFrame).loop(en_03FrameStretchLength)
@@ -206,4 +206,5 @@ en_screencast = screenCastClip()
 global gEnglishLanguage = false
 de_screencast = screenCastClip()
 
-StackVertical(en_screencast, de_screencast)
+en_screencast
+#StackVertical(en_screencast, de_screencast)
