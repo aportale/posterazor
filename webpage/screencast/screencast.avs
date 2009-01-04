@@ -1,6 +1,6 @@
 Import("tools.avsi")
 
-global gEnglishLanguage = true
+global gEnglishLanguage = false
 global gAudioClip = 0
 global gAudioNoiseStart = 0
 global gAudioNoiseEnd = 0
@@ -10,6 +10,30 @@ function setupScreencastAudioGlobals()
     global gAudioClip = WAVSource(gEnglishLanguage ? "en_screencastaudio.wav" : "de_screencastaudio.wav")
     global gAudioNoiseStart = (gEnglishLanguage ? 2017804 : 2299401) / 44100.0
     global gAudioNoiseEnd = (gEnglishLanguage ? 2029098 : 2311009) / 44100.0
+}
+
+function introClip()
+{
+    return gEnglishLanguage ?
+        \  AviSource("de_intro.avi")
+        \ .ConvertToYUY2()
+        \ .FieldDeinterlace()
+        \ .trim(125, 600)
+        \ .Crop(10, 7, -10, -7)
+        \ .TemporalSoften(6,6,12)
+        \ .LanczosResize(640, 480)
+        \ .Crop(0, 20, 0, -100)
+        \ .DelayAudio(-0.62)
+        \ :
+        \  AviSource("en_intro.avi")
+        \ .ConvertToYUY2()
+        \ .FieldDeinterlace()
+        \ .trim(36, 551)
+        \ .Crop(10, 7, -10, -7)
+        \ .TemporalSoften(6,6,12)
+        \ .LanczosResize(640, 480)
+        \ .Crop(0, 20, 0, -100)
+        \ .DelayAudio(-0.65)
 }
 
 function audioDownloadPosteRazor()
@@ -201,10 +225,4 @@ function screenCastClip()
     return downloadPosterazor.FadeOut(10) + usePosteRazor.FadeIn(10)
 }
 
-global gEnglishLanguage = true
-en_screencast = screenCastClip()
-global gEnglishLanguage = false
-de_screencast = screenCastClip()
-
-en_screencast
-#StackVertical(en_screencast, de_screencast)
+ScreenCastClip()
