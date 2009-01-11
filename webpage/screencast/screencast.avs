@@ -6,6 +6,9 @@ global gAudioClip = 0
 global gAudioNoiseStart = 0
 global gAudioNoiseEnd = 0
 
+global gOldStyleGradient = ImageReader("oldstylegradient.png", 0, 0, 25, pixel_type="rgb32")
+global gOldStyleGradientAlpha = gOldStyleGradient.showalpha()
+
 function setupScreencastAudioGlobals()
 {
     global gAudioClip = WAVSource(gEnglishLanguage ? "en_screencastaudio.wav" : "de_screencastaudio.wav")
@@ -92,7 +95,9 @@ function ImageSourceFiles3D()
 
 function videoDownloadPosteRazor_3D()
 {
-    return ImageSource(ImageSourceFiles3D() , start = 1, end = 414, fps = 25)
+    return
+        \  ImageSource(ImageSourceFiles3D() , start = 1, end = 414, fps = 25)
+        \ .Overlay(gOldStyleGradient, mask = gOldStyleGradientAlpha)
 }
 
 function audioUsePosteRazor()
@@ -225,7 +230,9 @@ function videoUsePosteRazor_2D()
 
 function videoUsePosteRazor_3D()
 {
-    return ImageSource(ImageSourceFiles3D(), start = 417, end = 1792, fps = 25)
+    return
+        \  ImageSource(ImageSourceFiles3D(), start = 417, end = 1792, fps = 25)
+        \ .Overlay(gOldStyleGradient, mask = gOldStyleGradientAlpha)
 }
 
 function completeClip()

@@ -29,11 +29,15 @@
          offset="0"
          id="stop3167" />
       <stop
-         style="stop-color:#000000;stop-opacity:0.03921569;"
-         offset="0.66852719"
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="0.4654268"
          id="stop3177" />
       <stop
-         style="stop-color:#000000;stop-opacity:0.08035714;"
+         id="stop3155"
+         offset="0.7947849"
+         style="stop-color:#000000;stop-opacity:0.07843138;" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0.15686275;"
          offset="1"
          id="stop3169" />
     </linearGradient>
@@ -67,8 +71,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="291.14988"
-     inkscape:cy="366.40336"
+     inkscape:cx="347.96413"
+     inkscape:cy="252.11765"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -98,6 +102,8 @@
        width="640"
        height="480"
        x="0"
-       y="0" />
+       y="0"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
   </g>
 </svg>
