@@ -5,6 +5,7 @@ global gScreenCast3D = true
 global gAudioClip = 0
 global gAudioNoiseStart = 0
 global gAudioNoiseEnd = 0
+global gClipHeight = 480
 
 global gOldStyleGradient = ImageReader("oldstylegradient.png", 0, 0, 25, pixel_type="rgb32")
 global gOldStyleGradientAlpha = gOldStyleGradient.showalpha()
@@ -18,26 +19,23 @@ function setupScreencastAudioGlobals()
 
 function introClip()
 {
-    return gEnglishLanguage ?
+    introClip = gEnglishLanguage ?
         \  AviSource("en_intro.avi")
-        \ .ConvertToYUY2()
-        \ .FieldDeinterlace()
         \ .DelayAudio(-0.65)
         \ .trim(36, 551)
-        \ .Crop(10, 7, -10, -7)
-        \ .TemporalSoften(6,6,12)
-        \ .LanczosResize(640, 480)
-        \ .Crop(0, 20, 0, -100)
         \ :
         \  AviSource("de_intro.avi")
-        \ .ConvertToYUY2()
-        \ .FieldDeinterlace()
         \ .DelayAudio(-0.62)
         \ .trim(125, 600)
+    introClip = introClip
+        \ .ConvertToYUY2()
+        \ .FieldDeinterlace()
         \ .Crop(10, 7, -10, -7)
         \ .TemporalSoften(6,6,12)
         \ .LanczosResize(640, 480)
         \ .Crop(0, 20, 0, -100)
+        \ .AddBorders(0, (gClipHeight - 360) / 2, 0, (gClipHeight - 360) / 2, $000000)
+    return AudioDub(introClip, GetChannel(introClip, 1).SSRC(44100, false).ConvertAudioTo16bit())
 }
 
 function audioDownloadPosteRazor()
@@ -97,7 +95,6 @@ function videoDownloadPosteRazor_3D()
 {
     return
         \  ImageSource(ImageSourceFiles3D() , start = 1, end = 414, fps = 25)
-        \ .Overlay(gOldStyleGradient, mask = gOldStyleGradientAlpha)
 }
 
 function audioUsePosteRazor()
@@ -232,21 +229,26 @@ function videoUsePosteRazor_3D()
 {
     return
         \  ImageSource(ImageSourceFiles3D(), start = 417, end = 1792, fps = 25)
-        \ .Overlay(gOldStyleGradient, mask = gOldStyleGradientAlpha)
 }
 
 function completeClip()
 {
-    downloadPosteRazor = AudioDub(gScreenCast3D ? videoDownloadPosteRazor_3D() :videoDownloadPosteRazor_2D(), audioDownloadPosteRazor())
-    usePosteRazor = AudioDub(gScreenCast3D ? videoUsePosteRazor_3D() : videoUsePosteRazor_2D(), audioUsePosteRazor())
+    downloadPosteRazor =
+        \ AudioDub(gScreenCast3D ? videoDownloadPosteRazor_3D() :videoDownloadPosteRazor_2D(), audioDownloadPosteRazor())
+        \ .ConvertToYUY2()
+    usePosteRazor =
+        \ AudioDub(gScreenCast3D ? videoUsePosteRazor_3D() : videoUsePosteRazor_2D(), audioUsePosteRazor())
+        \ .ConvertToYUY2()
     return Dissolve(
-        \ textClip(downloadPosterazor, gEnglishLanguage ? "Make Your Own Poster!" : "Mach' Dein Eigenes Poster!")
+        \   textClip(downloadPosterazor, gEnglishLanguage ? "Make Your Own Poster!" : "Mach' Dein Eigenes Poster!")
+        \ , introClip()
         \ , textClip(downloadPosterazor, gEnglishLanguage ? "Downloading PosteRazor" : "PosteRazor herunterladen")
         \ , downloadPosteRazor
         \ , textClip(downloadPosterazor, gEnglishLanguage ? "Using PosteRazor" : "PosteRazors Benutzung")
         \ , usePosteRazor
         \ , textClip(downloadPosterazor, gEnglishLanguage ? "Assembling the poster" : "Das Poster zusammenfügen")
         \ ,6)
+        \ .Overlay(gOldStyleGradient, mask = gOldStyleGradientAlpha)
 }
 
-videoDownloadPosteRazor_3D() + videoUsePosteRazor_3D()
+completeClip().info
