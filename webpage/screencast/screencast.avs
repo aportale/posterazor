@@ -1,6 +1,7 @@
 Import("tools.avsi")
 
 global gEnglishLanguage = false
+global gScreenCast3D = true
 global gAudioClip = 0
 global gAudioNoiseStart = 0
 global gAudioNoiseEnd = 0
@@ -15,25 +16,25 @@ function setupScreencastAudioGlobals()
 function introClip()
 {
     return gEnglishLanguage ?
-        \  AviSource("de_intro.avi")
-        \ .ConvertToYUY2()
-        \ .FieldDeinterlace()
-        \ .trim(125, 600)
-        \ .Crop(10, 7, -10, -7)
-        \ .TemporalSoften(6,6,12)
-        \ .LanczosResize(640, 480)
-        \ .Crop(0, 20, 0, -100)
-        \ .DelayAudio(-0.62)
-        \ :
         \  AviSource("en_intro.avi")
         \ .ConvertToYUY2()
         \ .FieldDeinterlace()
+        \ .DelayAudio(-0.65)
         \ .trim(36, 551)
         \ .Crop(10, 7, -10, -7)
         \ .TemporalSoften(6,6,12)
         \ .LanczosResize(640, 480)
         \ .Crop(0, 20, 0, -100)
-        \ .DelayAudio(-0.65)
+        \ :
+        \  AviSource("de_intro.avi")
+        \ .ConvertToYUY2()
+        \ .FieldDeinterlace()
+        \ .DelayAudio(-0.62)
+        \ .trim(125, 600)
+        \ .Crop(10, 7, -10, -7)
+        \ .TemporalSoften(6,6,12)
+        \ .LanczosResize(640, 480)
+        \ .Crop(0, 20, 0, -100)
 }
 
 function audioDownloadPosteRazor()
@@ -58,7 +59,7 @@ function audioDownloadPosteRazor()
         \ de_a01 + de_a02
 }
 
-function videoDownloadPosteRazor()
+function videoDownloadPosteRazor_2D()
 {
     en_ScreencastStart = 0
     en_01FrameStretchFrame = en_ScreencastStart + 1
@@ -82,6 +83,16 @@ function videoDownloadPosteRazor()
         \ :
         \   videoSource.trim(de_ScreencastStart, de_LoadPageFrameRemovalStart)
         \ + videoSource.trim(de_LoadPageRemovalEnd, de_ScreencastEnd)
+}
+
+function ImageSourceFiles3D()
+{
+    return gEnglishLanguage ? "en_screencast_3d/%04d.png" : "de_screencast_3d/%04d.png"
+}
+
+function videoDownloadPosteRazor_3D()
+{
+    return ImageSource(ImageSourceFiles3D() , start = 1, end = 414, fps = 25)
 }
 
 function audioUsePosteRazor()
@@ -154,7 +165,7 @@ function audioUsePosteRazor()
         \ de_a03 + de_a04 + de_a05 + de_a06 + de_a07 + de_a08 + de_a09 + de_a10 + de_a11 + de_a12
 }
 
-function videoUsePosteRazor()
+function videoUsePosteRazor_2D()
 {
     en_ScreencastStart = 130
     en_03FrameStretchFrame = en_ScreencastStart + 1
@@ -212,17 +223,23 @@ function videoUsePosteRazor()
         \ + videoSource.trim(de_12FrameStretchFrame, de_12FrameStretchFrame).loop(de_12FrameStretchLength)
 }
 
-function screenCastClip()
+function videoUsePosteRazor_3D()
 {
-    downloadPosterazorAudio = audioDownloadPosteRazor()
-    downloadPosterazorVideo = videoDownloadPosteRazor()
-    downloadPosterazor = AudioDub(downloadPosterazorVideo, downloadPosterazorAudio)
-
-    usePosteRazorAudio = audioUsePosteRazor()
-    usePosteRazorVideo = videoUsePosteRazor()
-    usePosteRazor = AudioDub(usePosteRazorVideo, usePosteRazorAudio)
-
-    return downloadPosterazor.FadeOut(10) + usePosteRazor.FadeIn(10)
+    return ImageSource(ImageSourceFiles3D(), start = 417, end = 1792, fps = 25)
 }
 
-ScreenCastClip()
+function completeClip()
+{
+    downloadPosteRazor = AudioDub(gScreenCast3D ? videoDownloadPosteRazor_3D() :videoDownloadPosteRazor_2D(), audioDownloadPosteRazor())
+    usePosteRazor = AudioDub(gScreenCast3D ? videoUsePosteRazor_3D() : videoUsePosteRazor_2D(), audioUsePosteRazor())
+    return Dissolve(
+        \ textClip(downloadPosterazor, gEnglishLanguage ? "Make Your Own Poster!" : "Mach' Dein Eigenes Poster!")
+        \ , textClip(downloadPosterazor, gEnglishLanguage ? "Downloading PosteRazor" : "PosteRazor herunterladen")
+        \ , downloadPosteRazor
+        \ , textClip(downloadPosterazor, gEnglishLanguage ? "Using PosteRazor" : "PosteRazors Benutzung")
+        \ , usePosteRazor
+        \ , textClip(downloadPosterazor, gEnglishLanguage ? "Assembling the poster" : "Das Poster zusammenfügen")
+        \ ,6)
+}
+
+videoDownloadPosteRazor_3D() + videoUsePosteRazor_3D()

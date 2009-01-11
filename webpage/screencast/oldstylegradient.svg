@@ -16,7 +16,10 @@
    inkscape:version="0.46"
    version="1.0"
    sodipodi:docname="oldstylegradient.svg"
-   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-filename="C:\ownprojects\posterazor\trunk\webpage\screencast\oldstylegradient.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4">
     <linearGradient
@@ -26,7 +29,7 @@
          offset="0"
          id="stop3167" />
       <stop
-         style="stop-color:#000000;stop-opacity:0.01960784;"
+         style="stop-color:#000000;stop-opacity:0.03921569;"
          offset="0.66852719"
          id="stop3177" />
       <stop
@@ -63,9 +66,9 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="327.66997"
-     inkscape:cy="353.43692"
+     inkscape:zoom="0.7"
+     inkscape:cx="291.14988"
+     inkscape:cy="366.40336"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
