@@ -33,3 +33,9 @@ function textClip(clip templateClip, string text)
         \ .Subtitle(text, align = 5, text_color = textColor, halo_color = backgroundColor, size = 40)
         \ .ConvertToYUY2()
 }
+
+function frame(clip sourceClip, int frame)
+{
+    length = 34
+    return sourceClip.trim(frame, frame).loop(length)
+}

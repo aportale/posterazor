@@ -31,7 +31,7 @@ function introClip()
         \ .ConvertToYUY2()
         \ .FieldDeinterlace()
         \ .Crop(10, 7, -10, -7)
-        \ .TemporalSoften(6,6,12)
+        \ .TemporalSoften(4,4,8)
         \ .LanczosResize(640, 480)
         \ .Crop(0, 20, 0, -100)
         \ .AddBorders(0, (gClipHeight - 360) / 2, 0, (gClipHeight - 360) / 2, $000000)
@@ -231,6 +231,55 @@ function videoUsePosteRazor_3D()
         \  ImageSource(ImageSourceFiles3D(), start = 417, end = 1792, fps = 25)
 }
 
+function videoAssemblingPoster()
+{
+    aClip =
+        \  AviSource("assembling.avi")
+        \ .ConvertToYUY2()
+        \ .FieldDeinterlace()
+        \ .Crop(10, 7, -10, -7)
+        \ .TemporalSoften(4,4,8)
+        \ .LanczosResize(640, 480)
+    dissolveLength = 6
+    sheetOnTable = Dissolve(
+        \   aClip.frame(   88), aClip.frame(  116), aClip.frame(  159), aClip.frame(  187)
+        \ , aClip.frame(  225)
+        \ , dissolveLength)
+    toolsOnTable = Dissolve(
+        \   aClip.frame(  319), aClip.frame(  360), aClip.frame(  415), aClip.frame(  434)
+        \ , dissolveLength)
+    cutBorders = Dissolve(
+        \   aClip.frame(  862), aClip.frame(  906), aClip.frame(  941), aClip.frame( 1044)
+        \ , aClip.frame( 1093), aClip.frame( 1125), aClip.frame( 1281), aClip.frame( 1494)
+        \ , aClip.frame( 1570)
+        \ , dissolveLength)
+    overlapping = Dissolve(
+        \   aClip.frame( 3056), aClip.frame( 3069), aClip.frame( 3101), aClip.frame( 3540)
+        \ , aClip.frame( 3546), aClip.frame( 3636), aClip.frame( 3843), aClip.frame( 4171)
+        \ , dissolveLength)
+    glueing = Dissolve(
+        \   aClip.frame( 2149), aClip.frame( 2212), aClip.frame( 2234), aClip.frame( 2260)
+        \ , overlapping
+        \ , aClip.frame( 5951), aClip.frame( 6001), aClip.frame( 6106), aClip.frame( 6177)
+        \ , aClip.frame( 6714), aClip.frame( 7661), aClip.frame( 7916)
+        \ , dissolveLength)
+    reinforcingSides = Dissolve(
+        \   aClip.frame( 8468), aClip.frame( 8555), aClip.frame( 8943), aClip.frame( 9472)
+        \ , aClip.frame( 9556), aClip.frame( 9830)
+        \ , dissolveLength)
+    reinforcingCorners = Dissolve(
+        \   aClip.frame(11203), aClip.frame(11393), aClip.frame(11424), aClip.frame(11450)
+        \ , aClip.frame(11490), aClip.frame(11508), aClip.frame(11570)
+        \ , dissolveLength)
+    voila = Dissolve(
+        \   aClip.frame(12341), aClip.frame(12338), aClip.frame(12416), aClip.frame(12447)
+        \ , aClip.frame(12447), aClip.frame(12447)
+        \ , dissolveLength)
+    return Dissolve(
+        \   sheetOnTable, toolsOnTable, cutBorders, glueing, reinforcingSides, reinforcingCorners, voila
+        \ , dissolveLength)
+}
+
 function completeClip()
 {
     downloadPosteRazor =
@@ -247,8 +296,10 @@ function completeClip()
         \ , textClip(downloadPosterazor, gEnglishLanguage ? "Using PosteRazor" : "PosteRazors Benutzung")
         \ , usePosteRazor
         \ , textClip(downloadPosterazor, gEnglishLanguage ? "Assembling the poster" : "Das Poster zusammenfügen")
-        \ ,6)
+        \ , AudioDub(videoAssemblingPoster(), audioDownloadPosteRazor())
+        \ , textClip(downloadPosterazor, "http://posterazor.sourceforge.net/")
+        \ , 6)
         \ .Overlay(gOldStyleGradient, mask = gOldStyleGradientAlpha)
 }
 
-completeClip().info
+completeClip()
