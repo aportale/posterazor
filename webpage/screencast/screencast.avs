@@ -231,6 +231,66 @@ function videoUsePosteRazor_3D()
         \  ImageSource(ImageSourceFiles3D(), start = 417, end = 1792, fps = 25)
 }
 
+function setupAssemblingAudioGlobals()
+{
+    global gAudioClip = WAVSource(gEnglishLanguage ? "en_assemblingaudio.wav" : "de_assemblingaudio.wav")
+    global gAudioNoiseStart = (gEnglishLanguage ? 2017804 : 2299401) / 44100.0
+    global gAudioNoiseEnd = (gEnglishLanguage ? 2029098 : 2311009) / 44100.0
+}
+
+function audioAssemblingPoster()
+{
+    setupAssemblingAudioGlobals()
+
+    # 01
+    #  Here are the four printed sheets, scissors, glue stick and adhesive tape.
+      en_a01 = audioClip(12.300, 15.374, 0)
+    #  Hier sind vier ausgedruckten Seiten, Schere, Klebestift und Klebeband.
+      de_a01 = audioClip(10.194, 13.042, 0)
+
+    # 02
+    #  First we cut off the top and left borders which will be glued to another page.
+      en_a02 = audioClip(15.623, 18.367, 1)
+    #  Zuerst scheiden wir die obene und lenken Ränder ab, die an eine andere Seite geklebt werden.
+      de_a02 = audioClip(13.308, 15.971, 1)
+
+    # 03
+    #  Then we apply glue on an untrimmed border.
+      en_a03 = audioClip(18.813, 19.647, 1)
+    #  Dann tragen wir Klebe auf einen unbeschittenen Rand auf.
+      de_a03 = audioClip(16.000, 17.300, 1)
+
+    # 04
+    #  Now we stick the neighboring page on it. Thanks to the overlapping, we will have no white gaps.
+      en_a04 = audioClip(20.050, 25.575, 1)
+    #  Den angrenzenden Bogen kleben wir nun an. Durch die Überlappung entstehen keine weissen Lücken.
+      de_a04 = audioClip(17.669, 23.060, 1)
+
+    # 05
+    #  Afterwards, we take the adhesive tape and reinforce the middle and the sides.
+      en_a05 = audioClip(26.043, 35.585, 2)
+    #  Danach nehmen wir das Klebeband und stabilisieren die Mitte und die Seiten.
+      de_a05 = audioClip(23.288, 32.576, 2)
+
+    # 06
+    #  Also the corners can be reinforced to prevent them from easily ripping.
+      en_a06 = audioClip(37.771, 45.566, 6)
+    #  Auch die Ecken können verstärkt werden, damit sie nicht leicht einreissen.
+      de_a06 = audioClip(32.887, 40.801, 6)
+
+    # 07
+    #  It is done! Thanks for watching and have fun making posters.
+      en_a07 = audioClip(48.047, 50.579, 3)
+    #  Es ist vollbracht! Danke fürs Zuschauen und viel Spass beim Poster machen.
+      de_a07 = audioClip(41.471, 44.011, 3)
+
+
+    return gEnglishLanguage ?
+        \ en_a01 + en_a02 + en_a03 + en_a04 + en_a05 + en_a06 + en_a07
+        \ :
+        \ de_a01 + de_a02 + de_a03 + de_a04 + de_a05 + de_a06 + de_a07
+}
+
 function videoAssemblingPoster()
 {
     aClip =
