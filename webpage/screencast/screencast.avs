@@ -1,5 +1,6 @@
 Import("tools.avsi")
 
+global gStillFrameLength = 30
 global gEnglishLanguage = false
 global gScreenCast3D = true
 global gAudioClip = 0
@@ -234,8 +235,8 @@ function videoUsePosteRazor_3D()
 function setupAssemblingAudioGlobals()
 {
     global gAudioClip = WAVSource(gEnglishLanguage ? "en_assemblingaudio.wav" : "de_assemblingaudio.wav")
-    global gAudioNoiseStart = (gEnglishLanguage ? 2017804 : 2299401) / 44100.0
-    global gAudioNoiseEnd = (gEnglishLanguage ? 2029098 : 2311009) / 44100.0
+    global gAudioNoiseStart = (gEnglishLanguage ? 2017804 : 720583) / 44100.0
+    global gAudioNoiseEnd = (gEnglishLanguage ? 2029098 : 736080) / 44100.0
 }
 
 function audioAssemblingPoster()
@@ -246,55 +247,61 @@ function audioAssemblingPoster()
     #  Here are the four printed sheets, a pair of scissors, a glue stick and an adhesive tape.
       en_a01 = audioClip(12.300, 15.374, 0)
     #  Hier sind vier ausgedruckten Seiten, eine Schere, ein Klebestift und ein Klebeband.
-      de_a01 = audioClip(10.194, 13.042, 0)
+      de_a01 = audioClip( 0.634,  5.877, 0)
 
     # 02
     #  First we cut off the top and left borders which will be glued to another page.
       en_a02 = audioClip(15.623, 18.367, 1)
-    #  Zuerst scheiden wir die obene und lenken Ränder ab, die an eine andere Seite geklebt werden.
-      de_a02 = audioClip(13.308, 15.971, 1)
+    #  Zuerst scheiden wir die oberen und linken Ränder ab, die an eine andere Seite geklebt werden.
+      de_a02 = audioClip( 5.924, 11.398, 1)
 
     # 03
     #  The cutting does not need very precise since we have 2 centimeters of overlapping.
       en_a03 = audioClip(15.623, 18.367, 1)
     #  Das Schneiden muss nicht allzu präzise sein, da wir 2 Zentimeter Überlappung haben.
-      de_a03 = audioClip(13.308, 15.971, 1)
+      de_a03 = audioClip(11.597, 16.583, 1)
 
     # 04
     #  Then we apply glue on an untrimmed border.
       en_a04 = audioClip(18.813, 19.647, 1)
     #  Dann tragen wir Klebe auf einen unbeschittenen Rand auf.
-      de_a04 = audioClip(16.000, 17.300, 1)
+      de_a04 = audioClip(16.767, 20.206, 1)
 
     # 05
-    #  Now we stick the neighboring page on it. Thanks to the overlapping, we will have no white gaps.
+    #  Now we stick the neighboring page on it.
       en_a05 = audioClip(20.050, 25.575, 1)
-    #  Den angrenzenden Bogen kleben wir nun an. Durch die Überlappung entstehen keine weissen Lücken.
-      de_a05 = audioClip(17.669, 23.060, 1)
+    #  Den angrenzenden Bogen kleben wir nun an.
+      de_a05 = audioClip(24.359, 26.886, 1)
 
     # 06
-    #  Afterwards, we take the adhesive tape and reinforce the middle and the sides.
-      en_a06 = audioClip(26.043, 35.585, 2)
-    #  Danach nehmen wir das Klebeband und stabilisieren die Mitte und die Seiten.
-      de_a06 = audioClip(23.288, 32.576, 2)
+    #  Thanks to the overlapping, we will have no white gaps.
+      en_a06 = audioClip(20.050, 25.575, 1)
+    #  Durch die Überlappung entstehen keine weissen Lücken.
+      de_a06 = audioClip(26.886, 29.707, 1)
 
     # 07
-    #  Also the corners can be reinforced to prevent them from easily ripping.
-      en_a07 = audioClip(37.771, 45.566, 6)
-    #  Auch die Ecken können verstärkt werden, damit sie nicht leicht einreissen.
-      de_a07 = audioClip(32.887, 40.801, 6)
+    #  Afterwards, we take the adhesive tape and reinforce the middle and the sides.
+      en_a07 = audioClip(26.043, 35.585, 2)
+    #  Danach nehmen wir das Klebeband und stabilisieren die Mitte und die Seiten.
+      de_a07 = audioClip(31.126, 34.939, 2)
 
     # 08
+    #  Also the corners can be reinforced to prevent them from easily ripping.
+      en_a08 = audioClip(37.771, 45.566, 6)
+    #  Auch die Ecken können verstärkt werden, damit sie nicht leicht einreissen.
+      de_a08 = audioClip(35.243, 39.459, 6)
+
+    # 09
     #  It is done! Thanks for watching and have fun making posters.
-      en_a08 = audioClip(48.047, 50.579, 3)
+      en_a09 = audioClip(48.047, 50.579, 3)
     #  Es ist vollbracht! Danke fürs Zuschauen und viel Spass beim Poster machen.
-      de_a08 = audioClip(41.471, 44.011, 3)
+      de_a09 = audioClip(39.721, 44.849, 3)
 
 
     return gEnglishLanguage ?
-        \ en_a01 + en_a02 + en_a03 + en_a04 + en_a05 + en_a06 + en_a07
+        \ en_a01 + en_a02 + en_a03 + en_a04 + en_a05 + en_a06 + en_a07 + en_a08 + en_a09
         \ :
-        \ de_a01 + de_a02 + de_a03 + de_a04 + de_a05 + de_a06 + de_a07
+        \ de_a01 + de_a02 + de_a03 + de_a04 + de_a05 + de_a06 + de_a07 + en_a08 + en_a09
 }
 
 function videoAssemblingPoster()
@@ -315,10 +322,10 @@ function videoAssemblingPoster()
         \   aClip.frame(  319), aClip.frame(  360), aClip.frame(  415), aClip.frame(  434)
         \ , dissolveLength)
     bordersToCut = Dissolve(
-        \   ImageSource("borderstocut1.png", end=34, fps=25).ConvertToYUY2()
-        \ , ImageSource("borderstocut2.png", end=34, fps=25).ConvertToYUY2()
-        \ , ImageSource("borderstocut3.png", end=34, fps=25).ConvertToYUY2()
-        \ , ImageSource("borderstocut4.png", end=34, fps=25).ConvertToYUY2()
+        \   ImageSource("borderstocut1.png", end=gStillFrameLength, fps=25).ConvertToYUY2()
+        \ , ImageSource("borderstocut2.png", end=gStillFrameLength, fps=25).ConvertToYUY2()
+        \ , ImageSource("borderstocut3.png", end=gStillFrameLength, fps=25).ConvertToYUY2()
+        \ , ImageSource("borderstocut4.png", end=gStillFrameLength, fps=25).ConvertToYUY2()
         \ , dissolveLength)
     cutBorders = Dissolve(
         \   aClip.frame(  862), aClip.frame(  906), aClip.frame(  941), aClip.frame( 1044)
@@ -368,7 +375,7 @@ function completeClip()
         \ , textClip(downloadPosterazor, gEnglishLanguage ? "Using PosteRazor" : "PosteRazors Benutzung")
         \ , usePosteRazor
         \ , textClip(downloadPosterazor, gEnglishLanguage ? "Assembling the poster" : "Das Poster zusammenfügen")
-        \ , AudioDub(videoAssemblingPoster(), audioDownloadPosteRazor())
+        \ , AudioDub(videoAssemblingPoster(), audioAssemblingPoster())
         \ , textClip(downloadPosterazor, "http://posterazor.sourceforge.net/")
         \ , 6)
         \ .Overlay(gOldStyleGradient, mask = gOldStyleGradientAlpha)

@@ -1,3 +1,5 @@
+global gStillFrameLength = 30
+
 function trimAudio(clip audioClip, float startSecond, float endSecond)
 {
     fps = 1000
@@ -36,6 +38,5 @@ function textClip(clip templateClip, string text)
 
 function frame(clip sourceClip, int frame)
 {
-    length = 34
-    return sourceClip.trim(frame, frame).loop(length)
+    return sourceClip.trim(frame, frame).loop(gStillFrameLength)
 }
