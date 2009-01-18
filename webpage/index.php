@@ -355,11 +355,19 @@
 <?
 			break;
 			default:
+				$youtubeId = text('ydyk8lo-emo', 'OFmao4BW3H8');
 ?>
 				<h2><?= text('About', 'Über') ?></h2>
 				<p>
 					<?= text('The PosteRazor cuts a raster image into pieces which can afterwards be printed out and assembled to a poster.', 'Der PosteRazor schneidet eine Rasterbild-datei in Stücke, die anschließend ausgedruckt und zu einem Poster zusammengefügt werden können.') ?>
-					<span class="centeredimage"><img src="workflow.png" width="376" height="107" alt="PosteRazor workflow"/></span>
+
+					<!-- <span class="centeredimage"><img src="workflow.png" width="376" height="107" alt="PosteRazor workflow"/></span> -->
+					<object width="480" height="385">
+						<param name="movie" value="http://www.youtube.com/v/<?=$youtubeId?>&hl=de&fs=1&fmt=18"/>
+						<param name="allowFullScreen" value="true"/>
+						<param name="allowscriptaccess" value="always"/>
+						<embed src="http://www.youtube.com/v/<?=$youtubeId?>&hl=de&fs=1&fmt=18" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385"/>
+					</object>
 					<?= text('As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps. PosteRazor is available as a Windows, an OSX and a Linux version.', 'Als Ausgangsmaterial nimmt der PosteRazor eine Rasterbild-datei. Das Endprodukt ist ein Poster in Form eines mehrseitigen PDF-Dokuments. Eine einfach zu bedienende Benutzerschnittstelle im Assistenten-Stil begleitet durch fünf Schritte. Der PosteRazor ist als Windows-, als OSX- und als Linux-Version erhältlich.') ?>
 					<?= text('It is an open source, ', 'Er ist ein quelloffenes, ') ?><a href="<?=linkParameters("license","")?>"><?= text('GNU licensed', 'GNU-lizensiertes') ?></a> <?= text('project which is hosted on SourceForge.net.', 'Projekt, das auf SourceForge hinterlegt ist.') ?>
 				</p>
@@ -367,7 +375,7 @@
 					<?= text('For bug reports and feature requests please use the', 'Für Fehlerberichte und Erweiterungswünsche nutzen Sie bitte den ') ?> <a href="http://sourceforge.net/tracker/?group_id=141842"><?= text('PosteRazor tracker', 'PosteRazor-Tracker') ?></a>.
 					<?= text('For questions and feedback, please use the', 'Für Fragen und Feedback nutzen Sie bitte das ') ?> <a href="http://sourceforge.net/forum/?group_id=141842"><?= text('PosteRazor forum', 'PosteRazor-Forum') ?></a>.
 				</p>
-				<h3><?= text('Translators', 'Mitwirkende') ?>:</h3>
+				<!-- <h3><?= text('Translators', 'Mitwirkende') ?>:</h3>
 				<ul>
 					<li><?= text('Polish:', 'Polnisch:') ?> Grzegorz Wacikowski</li>
 					<li><?= text('French:', 'Französisch:') ?> Martin Loyer</li>
@@ -384,7 +392,7 @@
 				<ul>
 					<li><a href="http://packages.ubuntu.com/intrepid/universe/posterazor">Ubuntu</a>: <a href="https://launchpad.net/~drebellion">Simrun Basuita</a></li>
 					<li><a href="http://bugs.gentoo.org/show_bug.cgi?id=234125">Gentoo</a>: <a href="http://www.opengov.org/">Seth McClain</a></li>
-				</ul>
+				</ul> -->
 <?
 		};
 	}
