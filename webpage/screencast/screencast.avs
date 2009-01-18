@@ -1,6 +1,5 @@
 Import("tools.avsi")
 
-global gStillFrameLength = 30
 global gEnglishLanguage = false
 global gScreenCast3D = true
 global gAudioClip = 0
@@ -28,14 +27,16 @@ function introClip()
         \  AviSource("de_intro.avi")
         \ .DelayAudio(-0.62)
         \ .trim(125, 600)
+    firtFrameForSubtitle = gEnglishLanguage ? 372 : 302
     introClip = introClip
-        \ .ConvertToYUY2()
+        \ .ConvertToYV12()
         \ .FieldDeinterlace()
-        \ .Crop(10, 7, -10, -7)
+        \ .Crop(10, 6, -10, -8)
         \ .TemporalSoften(4,4,8)
         \ .LanczosResize(640, 480)
         \ .Crop(0, 20, 0, -100)
         \ .AddBorders(0, (gClipHeight - 360) / 2, 0, (gClipHeight - 360) / 2, $000000)
+        \ .Subtitle("PosteRazor", first_frame=firtFrameForSubtitle, align=2, text_color=$ffffff, halo_color=$000000, size = 57)
     return AudioDub(introClip, GetChannel(introClip, 1).SSRC(44100, false).ConvertAudioTo16bit())
 }
 
@@ -235,8 +236,8 @@ function videoUsePosteRazor_3D()
 function setupAssemblingAudioGlobals()
 {
     global gAudioClip = WAVSource(gEnglishLanguage ? "en_assemblingaudio.wav" : "de_assemblingaudio.wav")
-    global gAudioNoiseStart = (gEnglishLanguage ? 2017804 : 720583) / 44100.0
-    global gAudioNoiseEnd = (gEnglishLanguage ? 2029098 : 736080) / 44100.0
+    global gAudioNoiseStart = (gEnglishLanguage ? 62748 : 1541762) / 44100.0
+    global gAudioNoiseEnd =   (gEnglishLanguage ? 73905 : 1547546) / 44100.0
 }
 
 function audioAssemblingPoster()
@@ -245,55 +246,55 @@ function audioAssemblingPoster()
 
     # 01
     #  Here are the four printed sheets, a pair of scissors, a glue stick and an adhesive tape.
-      en_a01 = audioClip(12.300, 15.374, 0)
+      en_a01 = audioNoise(1)   + audioClip( 1.975,  7.852, 0)
     #  Hier sind vier ausgedruckten Seiten, eine Schere, ein Klebestift und ein Klebeband.
-      de_a01 = audioClip( 0.634,  5.877, 0)
+      de_a01 = audioNoise(1.5) + audioClip( 0.634,  5.877, 0)
 
     # 02
     #  First we cut off the top and left borders which will be glued to another page.
-      en_a02 = audioClip(15.623, 18.367, 1)
+      en_a02 = audioClip( 8.095, 13.324, 0.5)
     #  Zuerst scheiden wir die oberen und linken Ränder ab, die an eine andere Seite geklebt werden.
-      de_a02 = audioClip( 5.924, 11.398, 1)
+      de_a02 = audioClip( 5.924, 11.398, 0.5)
 
     # 03
     #  The cutting does not need very precise since we have 2 centimeters of overlapping.
-      en_a03 = audioClip(15.623, 18.367, 1)
+      en_a03 = audioClip(13.518, 18.910, 0.5)
     #  Das Schneiden muss nicht allzu präzise sein, da wir 2 Zentimeter Überlappung haben.
-      de_a03 = audioClip(11.597, 16.583, 1)
+      de_a03 = audioClip(11.597, 16.583, 0.5)
 
     # 04
     #  Then we apply glue on an untrimmed border.
-      en_a04 = audioClip(18.813, 19.647, 1)
+      en_a04 = audioClip(19.250, 22.682, 0.5)
     #  Dann tragen wir Klebe auf einen unbeschittenen Rand auf.
-      de_a04 = audioClip(16.767, 20.206, 1)
+      de_a04 = audioClip(16.767, 20.206, 0.5)
 
     # 05
     #  Now we stick the neighboring page on it.
-      en_a05 = audioClip(20.050, 25.575, 1)
+      en_a05 = audioClip(33.465, 36.007, 0.3)
     #  Den angrenzenden Bogen kleben wir nun an.
-      de_a05 = audioClip(24.359, 26.886, 1)
+      de_a05 = audioClip(24.359, 26.886, 0.3)
 
     # 06
     #  Thanks to the overlapping, we will have no white gaps.
-      en_a06 = audioClip(20.050, 25.575, 1)
+      en_a06 = audioClip(36.088, 40.054, 1)
     #  Durch die Überlappung entstehen keine weissen Lücken.
-      de_a06 = audioClip(26.886, 29.707, 1)
+      de_a06 = audioClip(26.886, 29.707, 5)
 
     # 07
     #  Afterwards, we take the adhesive tape and reinforce the middle and the sides.
-      en_a07 = audioClip(26.043, 35.585, 2)
+      en_a07 = audioClip(40.573, 46.401, 0.8)
     #  Danach nehmen wir das Klebeband und stabilisieren die Mitte und die Seiten.
-      de_a07 = audioClip(31.126, 34.939, 2)
+      de_a07 = audioClip(29.882, 34.939, 0.8)
 
     # 08
     #  Also the corners can be reinforced to prevent them from easily ripping.
-      en_a08 = audioClip(37.771, 45.566, 6)
+      en_a08 = audioClip(59.370, 64.243, 0.5)
     #  Auch die Ecken können verstärkt werden, damit sie nicht leicht einreissen.
-      de_a08 = audioClip(35.243, 39.459, 6)
+      de_a08 = audioClip(35.233, 39.459, 0.5)
 
     # 09
     #  It is done! Thanks for watching and have fun making posters.
-      en_a09 = audioClip(48.047, 50.579, 3)
+      en_a09 = audioClip(64.971, 69.391, 3)
     #  Es ist vollbracht! Danke fürs Zuschauen und viel Spass beim Poster machen.
       de_a09 = audioClip(39.721, 44.849, 3)
 
@@ -301,32 +302,36 @@ function audioAssemblingPoster()
     return gEnglishLanguage ?
         \ en_a01 + en_a02 + en_a03 + en_a04 + en_a05 + en_a06 + en_a07 + en_a08 + en_a09
         \ :
-        \ de_a01 + de_a02 + de_a03 + de_a04 + de_a05 + de_a06 + de_a07 + en_a08 + en_a09
+        \ de_a01 + de_a02 + de_a03 + de_a04 + de_a05 + de_a06 + de_a07 + de_a08 + de_a09
 }
 
 function videoAssemblingPoster()
 {
     aClip =
         \  AviSource("assembling.avi")
-        \ .ConvertToYUY2()
+        \ .ConvertToYV12()
         \ .FieldDeinterlace()
-        \ .Crop(10, 7, -10, -7)
+        \ .Crop(10, 6, -10, -8)
         \ .TemporalSoften(4,4,8)
         \ .LanczosResize(640, 480)
     dissolveLength = 6
+    global gStillFrameLength = 25
     sheetOnTable = Dissolve(
         \   aClip.frame(   88), aClip.frame(  116), aClip.frame(  159), aClip.frame(  187)
         \ , aClip.frame(  225)
         \ , dissolveLength)
     toolsOnTable = Dissolve(
-        \   aClip.frame(  319), aClip.frame(  360), aClip.frame(  415), aClip.frame(  434)
+        \   aClip.frame(  319), aClip.frame(  360), aClip.frame(  415)
         \ , dissolveLength)
+    global gStillFrameLength = 30
     bordersToCut = Dissolve(
-        \   ImageSource("borderstocut1.png", end=gStillFrameLength, fps=25).ConvertToYUY2()
-        \ , ImageSource("borderstocut2.png", end=gStillFrameLength, fps=25).ConvertToYUY2()
-        \ , ImageSource("borderstocut3.png", end=gStillFrameLength, fps=25).ConvertToYUY2()
-        \ , ImageSource("borderstocut4.png", end=gStillFrameLength, fps=25).ConvertToYUY2()
+        \   aClip.frame(  434).ConvertToYV12()
+        \ , ImageSource("borderstocut1.png", end=gStillFrameLength, fps=25).ConvertToYV12()
+        \ , ImageSource("borderstocut2.png", end=gStillFrameLength, fps=25).ConvertToYV12()
+        \ , ImageSource("borderstocut3.png", end=gStillFrameLength, fps=25).ConvertToYV12()
+        \ , ImageSource("borderstocut4.png", end=gStillFrameLength*2, fps=25).ConvertToYV12()
         \ , dissolveLength)
+    global gStillFrameLength = 25
     cutBorders = Dissolve(
         \   aClip.frame(  862), aClip.frame(  906), aClip.frame(  941), aClip.frame( 1044)
         \ , aClip.frame( 1093), aClip.frame( 1125), aClip.frame( 1281), aClip.frame( 1494)
@@ -336,11 +341,13 @@ function videoAssemblingPoster()
         \   aClip.frame( 3056), aClip.frame( 3069), aClip.frame( 3101), aClip.frame( 3540)
         \ , aClip.frame( 3546), aClip.frame( 3636), aClip.frame( 3843), aClip.frame( 4171)
         \ , dissolveLength)
-    glueing = Dissolve(
+    glueingFirstPage = Dissolve(
         \   aClip.frame( 2149), aClip.frame( 2212), aClip.frame( 2234), aClip.frame( 2260)
         \ , overlapping
-        \ , aClip.frame( 5951), aClip.frame( 6001), aClip.frame( 6106), aClip.frame( 6177)
-        \ , aClip.frame( 6714), aClip.frame( 7661), aClip.frame( 7916)
+        \ , dissolveLength)
+    glueingOtherPages = Dissolve(
+        \   aClip.frame( 5951), aClip.frame( 6001), aClip.frame( 6106), aClip.frame( 6177)
+        \ , aClip.frame( 7661), aClip.frame( 7916)
         \ , dissolveLength)
     reinforcingSides = Dissolve(
         \   aClip.frame( 8468), aClip.frame( 8555), aClip.frame( 8943), aClip.frame( 9472)
@@ -352,10 +359,11 @@ function videoAssemblingPoster()
         \ , dissolveLength)
     voila = Dissolve(
         \   aClip.frame(12341), aClip.frame(12338), aClip.frame(12416), aClip.frame(12447)
-        \ , aClip.frame(12447), aClip.frame(12447)
+        \ , ImageSource("posteronwall.jpg", end=gStillFrameLength*3, fps=25).ConvertToYV12().LanczosResize(640, 480)
         \ , dissolveLength)
     return Dissolve(
-        \   sheetOnTable, toolsOnTable, bordersToCut, cutBorders, glueing, reinforcingSides, reinforcingCorners, voila
+        \   sheetOnTable, toolsOnTable, bordersToCut, cutBorders, glueingFirstPage
+        \ , glueingOtherPages, reinforcingSides, reinforcingCorners, voila
         \ , dissolveLength)
 }
 
@@ -363,11 +371,13 @@ function completeClip()
 {
     downloadPosteRazor =
         \ AudioDub(gScreenCast3D ? videoDownloadPosteRazor_3D() :videoDownloadPosteRazor_2D(), audioDownloadPosteRazor())
-        \ .ConvertToYUY2()
+        \ .ConvertToYV12()
     usePosteRazor =
         \ AudioDub(gScreenCast3D ? videoUsePosteRazor_3D() : videoUsePosteRazor_2D(), audioUsePosteRazor())
-        \ .ConvertToYUY2()
-    return Dissolve(
+        \ .ConvertToYV12()
+    posteRazorLogo = ImageReader("logo.png", 0, 0, 25, pixel_type="rgb32")
+    posteRazorLogoMask = posteRazorLogo.showalpha()
+    result = Dissolve(
         \   textClip(downloadPosterazor, gEnglishLanguage ? "Make Your Own Poster!" : "Mach' Dein Eigenes Poster!")
         \ , introClip()
         \ , textClip(downloadPosterazor, gEnglishLanguage ? "Downloading PosteRazor" : "PosteRazor herunterladen")
@@ -379,6 +389,9 @@ function completeClip()
         \ , textClip(downloadPosterazor, "http://posterazor.sourceforge.net/")
         \ , 6)
         \ .Overlay(gOldStyleGradient, mask = gOldStyleGradientAlpha)
+    return 
+        \  result.MergeChannels(GetChannel(result, 1))
+        \ .ConvertAudioTo16bit()
 }
 
 completeClip()
