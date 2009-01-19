@@ -247,8 +247,8 @@ function audioAssemblingPoster()
     setupAssemblingAudioGlobals()
 
     # 01
-    #  Here are the four printed sheets, a pair of scissors, a glue stick and an adhesive tape.
-      en_a01 = audioNoise(1)   + audioClip( 1.975,  7.852, 0)
+    #  Here are the four printed sheets, scissors, a glue stick and an adhesive tape.
+      en_a01 = audioNoise(1.7) + audioClip(70.586, 75.216, 0)
     #  Hier sind vier ausgedruckten Seiten, eine Schere, ein Klebestift und ein Klebeband.
       de_a01 = audioNoise(1.5) + audioClip( 0.634,  5.877, 0)
 

@@ -355,7 +355,7 @@
 <?
 			break;
 			default:
-				$youtubeId = text('MPdIBxSnEJE', 'wS8ANwdFdvA');
+				$youtubeId = text('U4C6tN_knYg', 'wS8ANwdFdvA');
 ?>
 				<h2><?= text('About', 'Über') ?></h2>
 				<p>
