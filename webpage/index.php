@@ -355,7 +355,7 @@
 <?
 			break;
 			default:
-				$youtubeId = text('ydyk8lo-emo', 'OFmao4BW3H8');
+				$youtubeId = text('MPdIBxSnEJE', 'wS8ANwdFdvA');
 ?>
 				<h2><?= text('About', 'Über') ?></h2>
 				<p>
@@ -363,10 +363,10 @@
 
 					<!-- <span class="centeredimage"><img src="workflow.png" width="376" height="107" alt="PosteRazor workflow"/></span> -->
 					<object width="480" height="385">
-						<param name="movie" value="http://www.youtube.com/v/<?=$youtubeId?>&hl=de&fs=1&fmt=18"/>
+						<param name="movie" value="http://www.youtube.com/v/<?=$youtubeId?>&amp;hl=de&amp;fs=1&amp;ap=%2526fmt%3D18"/>
 						<param name="allowFullScreen" value="true"/>
 						<param name="allowscriptaccess" value="always"/>
-						<embed src="http://www.youtube.com/v/<?=$youtubeId?>&hl=de&fs=1&fmt=18" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385"/>
+						<embed src="http://www.youtube.com/v/<?=$youtubeId?>&amp;hl=de&amp;fs=1&amp;ap=%2526fmt%3D18" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385"/>
 					</object>
 					<?= text('As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps. PosteRazor is available as a Windows, an OSX and a Linux version.', 'Als Ausgangsmaterial nimmt der PosteRazor eine Rasterbild-datei. Das Endprodukt ist ein Poster in Form eines mehrseitigen PDF-Dokuments. Eine einfach zu bedienende Benutzerschnittstelle im Assistenten-Stil begleitet durch fünf Schritte. Der PosteRazor ist als Windows-, als OSX- und als Linux-Version erhältlich.') ?>
 					<?= text('It is an open source, ', 'Er ist ein quelloffenes, ') ?><a href="<?=linkParameters("license","")?>"><?= text('GNU licensed', 'GNU-lizensiertes') ?></a> <?= text('project which is hosted on SourceForge.net.', 'Projekt, das auf SourceForge hinterlegt ist.') ?>
