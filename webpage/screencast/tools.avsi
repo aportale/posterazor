@@ -32,8 +32,8 @@ function textClip(clip templateClip, string text)
     textColor = $333333
     return
         \  BlankClip(clip = templateClip, length = StrLen(text) * 4, color = backgroundColor)
-        \ .Subtitle(text, align = 5, text_color = textColor, halo_color = backgroundColor, size = 40)
-        \ .ConvertToYV12()
+        \ .Subtitle(text, align = 5, text_color = textColor, halo_color = backgroundColor, size = 30)
+        \ .ConvertToYUY2()
 }
 
 function frame(clip sourceClip, int frame)

@@ -5,9 +5,9 @@ global gScreenCast3D = true
 global gAudioClip = 0
 global gAudioNoiseStart = 0
 global gAudioNoiseEnd = 0
-global gClipHeight = 480
+global gClipHeight = 360
 
-global gOldStyleGradient = ImageReader("oldstylegradient.png", 0, 0, 25, pixel_type="rgb32")
+global gOldStyleGradient = ImageReader("oldstylegradient_480x360.png", 0, 0, 25, pixel_type="rgb32")
 global gOldStyleGradientAlpha = gOldStyleGradient.showalpha()
 
 function setupScreencastAudioGlobals()
@@ -29,14 +29,14 @@ function introClip()
         \ .trim(125, 600)
     firtFrameForSubtitle = gEnglishLanguage ? 372 : 302
     introClip = introClip
-        \ .ConvertToYV12()
+        \ .ConvertToYUY2()
         \ .FieldDeinterlace()
         \ .Crop(10, 6, -10, -8)
         \ .TemporalSoften(4,4,8)
-        \ .LanczosResize(640, 480)
-        \ .Crop(0, 20, 0, -100)
-        \ .AddBorders(0, (gClipHeight - 360) / 2, 0, (gClipHeight - 360) / 2, $000000)
-        \ .Subtitle("PosteRazor", first_frame=firtFrameForSubtitle, align=2, text_color=$ffffff, halo_color=$000000, size = 57)
+        \ .LanczosResize(480, 360)
+        \ .Crop(0, 20, 0, -80)
+        \ .AddBorders(0, 50, 0, 50, $000000)
+        \ .Subtitle("PosteRazor", first_frame=firtFrameForSubtitle, align=2, text_color=$eeeeee, halo_color=$000000, size = 46)
     return AudioDub(introClip, GetChannel(introClip, 1).SSRC(44100, false).ConvertAudioTo16bit().Amplify(1.5))
 }
 
@@ -60,7 +60,7 @@ function audioDownloadPosteRazor()
         \ en_a01 + en_a02
         \ :
         \ de_a01 + de_a02
-    return result.Amplify(2)
+    return result.Amplify(1.5)
 }
 
 function videoDownloadPosteRazor_2D()
@@ -91,7 +91,7 @@ function videoDownloadPosteRazor_2D()
 
 function ImageSourceFiles3D()
 {
-    return gEnglishLanguage ? "en_screencast_3d/%04d.png" : "de_screencast_3d/%04d.png"
+    return gEnglishLanguage ? "en_screencast_3d_480x360/%04d.png" : "de_screencast_3d_480x360/%04d.png"
 }
 
 function videoDownloadPosteRazor_3D()
@@ -168,7 +168,7 @@ function audioUsePosteRazor()
         \ en_a03 + en_a04 + en_a05 + en_a06 + en_a07 + en_a08 + en_a09 + en_a10 + en_a11 + en_a12
         \ :
         \ de_a03 + de_a04 + de_a05 + de_a06 + de_a07 + de_a08 + de_a09 + de_a10 + de_a11 + de_a12
-    return result.Amplify(2)
+    return result.Amplify(1.5)
 }
 
 function videoUsePosteRazor_2D()
@@ -305,18 +305,18 @@ function audioAssemblingPoster()
         \ en_a01 + en_a02 + en_a03 + en_a04 + en_a05 + en_a06 + en_a07 + en_a08 + en_a09
         \ :
         \ de_a01 + de_a02 + de_a03 + de_a04 + de_a05 + de_a06 + de_a07 + de_a08 + de_a09
-    return result.Amplify(2)
+    return result.Amplify(1.5)
 }
 
 function videoAssemblingPoster()
 {
     aClip =
         \  AviSource("assembling.avi")
-        \ .ConvertToYV12()
+        \ .ConvertToYUY2()
         \ .FieldDeinterlace()
         \ .Crop(10, 6, -10, -8)
         \ .TemporalSoften(4,4,8)
-        \ .LanczosResize(640, 480)
+        \ .LanczosResize(480, 360)
     dissolveLength = 6
     global gStillFrameLength = 25
     sheetOnTable = Dissolve(
@@ -324,15 +324,14 @@ function videoAssemblingPoster()
         \ , aClip.frame(  225)
         \ , dissolveLength)
     toolsOnTable = Dissolve(
-        \   aClip.frame(  319), aClip.frame(  360), aClip.frame(  415)
+        \   aClip.frame(  319), aClip.frame(  360), aClip.frame(  415), aClip.frame(  434)
         \ , dissolveLength)
     global gStillFrameLength = 30
     bordersToCut = Dissolve(
-        \   aClip.frame(  434).ConvertToYV12()
-        \ , ImageSource("borderstocut1.png", end=gStillFrameLength, fps=25).ConvertToYV12()
-        \ , ImageSource("borderstocut2.png", end=gStillFrameLength, fps=25).ConvertToYV12()
-        \ , ImageSource("borderstocut3.png", end=gStillFrameLength, fps=25).ConvertToYV12()
-        \ , ImageSource("borderstocut4.png", end=gStillFrameLength, fps=25).ConvertToYV12()
+        \   ImageSource("borderstocut_480x360_1.png", end=gStillFrameLength, fps=25).ConvertToYUY2()
+        \ , ImageSource("borderstocut_480x360_2.png", end=gStillFrameLength, fps=25).ConvertToYUY2()
+        \ , ImageSource("borderstocut_480x360_3.png", end=gStillFrameLength, fps=25).ConvertToYUY2()
+        \ , ImageSource("borderstocut_480x360_4.png", end=gStillFrameLength, fps=25).ConvertToYUY2()
         \ , dissolveLength)
     global gStillFrameLength = 25
     cutBorders = Dissolve(
@@ -362,7 +361,7 @@ function videoAssemblingPoster()
         \ , dissolveLength)
     voila = Dissolve(
         \   aClip.frame(12341), aClip.frame(12338), aClip.frame(12447)
-        \ , ImageSource("posteronwall.jpg", end=gStillFrameLength*3, fps=25).ConvertToYV12().LanczosResize(640, 480)
+        \ , ImageSource("posteronwall.jpg", end=gStillFrameLength*3, fps=25).ConvertToYUY2().LanczosResize(480, 360)
         \ , dissolveLength)
     return Dissolve(
         \   sheetOnTable, toolsOnTable, bordersToCut, cutBorders, glueingFirstPage
@@ -374,10 +373,10 @@ function completeClip()
 {
     downloadPosteRazor =
         \ AudioDub(gScreenCast3D ? videoDownloadPosteRazor_3D() :videoDownloadPosteRazor_2D(), audioDownloadPosteRazor())
-        \ .ConvertToYV12()
+        \ .ConvertToYUY2()
     usePosteRazor =
         \ AudioDub(gScreenCast3D ? videoUsePosteRazor_3D() : videoUsePosteRazor_2D(), audioUsePosteRazor())
-        \ .ConvertToYV12()
+        \ .ConvertToYUY2()
     posteRazorLogo = ImageReader("logo.png", 0, 0, 25, pixel_type="rgb32")
     posteRazorLogoMask = posteRazorLogo.showalpha()
     result = Dissolve(
@@ -398,3 +397,4 @@ function completeClip()
 }
 
 completeClip()
+#ConvertToRGB()
