@@ -49,7 +49,7 @@
 						<ul>
 							<li><?= text('PosteRazor does not crash anymore when loading a GIF file', 'PosteRazor stürzt beim Laden eines GIF-Bildes nicht mehr ab.') ?></li>
 						</ul>
-						<p><a href="http://posterazor.svn.sourceforge.net/viewvc/*checkout*/posterazor/tags/PosteRazor_1_5_2/CHANGES"><?= text('Full list of changements', 'Vollständige Liste der Änderungen (auf englisch)') ?></a></p>
+						<p><a href="http://posterazor.svn.sourceforge.net/viewvc/*checkout*/posterazor/tags/PosteRazor_1_5_2/CHANGES"><?= text('Full list of changes', 'Vollständige Liste der Änderungen (auf englisch)') ?></a></p>
 					</li>
 					<li>
 						<h3><?= text('May 17th 2008', '17. Mai 2008') ?>: Version 1.5</h3>
