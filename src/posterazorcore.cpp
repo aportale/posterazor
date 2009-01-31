@@ -629,9 +629,11 @@ void PosteRazorCore::paintPosterOnCanvas(PaintCanvasInterface *paintCanvas) cons
     const double borderBottom = paperBorderBottom() * UnitOfLengthToPixelfactor;
     const double borderLeft = paperBorderLeft() * UnitOfLengthToPixelfactor;
     const QSizeF posterPrintableAreaSize(boxSize.width() - borderLeft - borderRight, boxSize.height() - borderTop - borderBottom);
+    const QPointF posterPrintableAreaOrigin = QPointF(borderLeft, borderTop) + offset;
+    const QRectF posterPrintableArea(posterPrintableAreaOrigin, posterPrintableAreaSize);
 
     paintCanvas->drawFilledRect(QRectF(offset, boxSize), QColor(128, 128, 128));
-    paintCanvas->drawFilledRect(QRectF(QPointF(borderLeft, borderTop) + offset, posterPrintableAreaSize), QColor(230, 230, 230));
+    paintCanvas->drawFilledRect(posterPrintableArea, QColor(230, 230, 230));
 
     const QSizeF posterSizeAbsolute = this->posterSize(Types::PosterSizeModeAbsolute);
     const QSizeF imageSize = posterSizeAbsolute * UnitOfLengthToPixelfactor;
@@ -642,15 +644,15 @@ void PosteRazorCore::paintPosterOnCanvas(PaintCanvasInterface *paintCanvas) cons
             QPointF(
                 (
                     alignment & Qt::AlignLeft?borderLeft
-                    :alignment & Qt::AlignHCenter?qBound(borderLeft, (boxSize.width() - imageSize.width()) / 2, borderLeft + posterPrintableAreaSize.width() - imageSize.width())
-                    :(borderLeft + posterPrintableAreaSize.width() - imageSize.width())
-                ) + offset.x(),
+                    :alignment & Qt::AlignHCenter?qBound(borderLeft, (boxSize.width() - imageSize.width()) / 2, posterPrintableArea.right() - imageSize.width())
+                    :(posterPrintableArea.right() - imageSize.width())
+                ),
                 (
                     alignment & Qt::AlignTop?borderTop
-                    :alignment & Qt::AlignVCenter?qBound(borderTop, (boxSize.height() - imageSize.height()) / 2, borderTop + posterPrintableAreaSize.height() - imageSize.height())
-                    :(borderTop + posterPrintableAreaSize.height() - imageSize.height())
-                ) + offset.y()
-            ),
+                    :alignment & Qt::AlignVCenter?qBound(borderTop, (boxSize.height() - imageSize.height()) / 2, posterPrintableArea.bottom() - imageSize.height())
+                    :(posterPrintableArea.bottom() - imageSize.height())
+                )
+            ) + offset,
             imageSize
         )
     );
