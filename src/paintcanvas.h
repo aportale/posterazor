@@ -41,11 +41,12 @@ private:
 public:
     PaintCanvas(QWidget *parent);
 
-    virtual void paintEvent(QPaintEvent *event);
-    virtual void drawFilledRect(const QRectF &rect, const QBrush &brush);
-    virtual QSizeF size() const;
-    virtual void drawImage(const QRectF &rect);
-    virtual void setState(const QString &state);
+    void paintEvent(QPaintEvent *event);
+    void drawFilledRect(const QRectF &rect, const QBrush &brush);
+    QSizeF size() const;
+    void drawImage(const QRectF &rect);
+    void setState(const QString &state);
+    void drawOverlayText(const QPointF &position, int flags, int size, const QString &text);
 
 public slots:
     void setImage(const QImage &image);

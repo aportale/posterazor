@@ -48,6 +48,7 @@ public:
     void drawFilledRect(const QRectF&, const QBrush &brush);
     QSizeF size() const;
     void drawImage(const QRectF &rect);
+    void drawOverlayText(const QPointF &position, int flags, int size, const QString &text);
 
 private:
     QFile *m_outputFile;

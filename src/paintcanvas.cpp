@@ -27,7 +27,7 @@
 PaintCanvas::PaintCanvas(QWidget *parent)
     : QWidget(parent)
     , m_qPainter(NULL)
-    , m_state("image")
+    , m_state(QLatin1String("image"))
 {
 }
 
@@ -68,4 +68,29 @@ void PaintCanvas::setState(const QString &state)
 {
     m_state = state;
     repaint();
+}
+
+void PaintCanvas::drawOverlayText(const QPointF &position, int flags, int size, const QString &text)
+{
+    if (size < 8)
+        return;
+    QFont font;
+    font.setPixelSize(size);
+    m_qPainter->save();
+    m_qPainter->setOpacity(0.5);
+    m_qPainter->setPen(0x333333);
+    QFontMetricsF fontMetrics(font);
+    const qreal textWidth = fontMetrics.width(text);
+    const QPointF fontOffset(QPointF(-textWidth / 2, fontMetrics.xHeight() * 1.5));
+    if (size > 45) {
+        QPainterPath textPath;
+        textPath.addText(position + fontOffset, font, text);
+        m_qPainter->setBrush(QBrush(0xcccccc));
+        m_qPainter->drawPath(textPath);
+    } else {
+        m_qPainter->setRenderHint(QPainter::TextAntialiasing);
+        m_qPainter->setFont(font);
+        m_qPainter->drawText(position + fontOffset, text);
+    }
+    m_qPainter->restore();
 }

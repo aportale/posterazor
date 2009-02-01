@@ -28,11 +28,12 @@
 class PaintCanvasInterface
 {
 public:
-    virtual ~PaintCanvasInterface() {};
+    virtual ~PaintCanvasInterface() {}
 
     virtual void drawFilledRect(const QRectF &rect, const QBrush &brush) = 0;
     virtual QSizeF size() const = 0;
     virtual void drawImage(const QRectF &rect) = 0;
+    virtual void drawOverlayText(const QPointF &position, int flags, int size, const QString &text) = 0;
 };
 
 #endif // PAINTCANVASINTERFACE_H
