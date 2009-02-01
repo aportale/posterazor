@@ -661,17 +661,35 @@ void PosteRazorCore::paintPosterOnCanvas(PaintCanvasInterface *paintCanvas) cons
     const double overlappingWidth = this->overlappingWidth() * UnitOfLengthToPixelfactor;
     pagePrintableAreaSize *= UnitOfLengthToPixelfactor;
 
-    const QColor overLappingColor(255, 128, 128, 128);
+    const QColor overlappingColor(255, 128, 128, 128);
     double overlappingRectangleYPosition = borderTop;
     for (int pagesRow = 0; pagesRow < pagesVertical - 1; pagesRow++) {
         overlappingRectangleYPosition += pagePrintableAreaSize.height() - overlappingHeight;
-        paintCanvas->drawFilledRect(QRectF(QPointF(0, overlappingRectangleYPosition) + offset, QSizeF(boxSize.width(), overlappingHeight)), overLappingColor);
+        paintCanvas->drawFilledRect(QRectF(QPointF(0, overlappingRectangleYPosition) + offset, QSizeF(boxSize.width(), overlappingHeight)), overlappingColor);
     }
 
     double overlappingRectangleXPosition = borderLeft;
     for (int pagesColumn = 0; pagesColumn < pagesHorizontal - 1; pagesColumn++) {
         overlappingRectangleXPosition += pagePrintableAreaSize.width() - overlappingWidth;
-        paintCanvas->drawFilledRect(QRectF(QPointF(overlappingRectangleXPosition, 0) + offset, QSizeF(overlappingWidth, boxSize.height())), overLappingColor);
+        paintCanvas->drawFilledRect(QRectF(QPointF(overlappingRectangleXPosition, 0) + offset, QSizeF(overlappingWidth, boxSize.height())), overlappingColor);
+    }
+
+    const int fontSize = int(qMin(pagePrintableAreaSize.width() / 2.5, pagePrintableAreaSize.height() / 1.5));
+    for (int pagesRow = 0; pagesRow < pagesVertical; ++pagesRow) {
+        for (int pagesColumn = 0; pagesColumn < pagesHorizontal; ++pagesColumn) {
+            const QPointF pagePrintableAreaOrigin = posterPrintableAreaOrigin + QPointF(
+                pagesColumn * (pagePrintableAreaSize.width() - overlappingWidth),
+                pagesRow * (pagePrintableAreaSize.height() - overlappingHeight)
+            );
+            const QRectF pageNumberArea = QRectF(pagePrintableAreaOrigin, pagePrintableAreaSize).adjusted(
+                pagesColumn == 0 ? 0 : overlappingWidth,
+                pagesRow == 0 ? 0 : overlappingHeight,
+                pagesColumn == pagesHorizontal - 1 ? 0 : -overlappingWidth,
+                pagesRow == pagesVertical - 1 ? 0 : -overlappingHeight
+            );
+            const int pageNumber = pagesRow * pagesHorizontal + pagesColumn + 1;
+            paintCanvas->drawOverlayText(pageNumberArea.center(), Qt::AlignCenter, fontSize, QString::number(pageNumber));
+        }
     }
 }
 
@@ -681,7 +699,7 @@ void PosteRazorCore::paintPosterPageOnCanvas(PaintCanvasInterface *paintCanvas, 
     const int columsCount = (int)(ceil(posterSizePages.width()));
     const int rowsCount = (int)(ceil(posterSizePages.height()));
     const int column = page % columsCount;
-    const int row = ((int)(floor((double)page / (double)columsCount)));
+    const int row = page / columsCount;
 
     const QSizeF posterSizeAbsolute = posterSize(Types::PosterSizeModeAbsolute);
     const QSizeF posterImageSizeCm = convertSizeToCm(posterSizeAbsolute);
@@ -733,6 +751,8 @@ void PosteRazorCore::paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVar
     } else if (state.startsWith(QLatin1String("posterpage"))) {
         const int page = state.split(' ').last().toInt();
         paintPosterPageOnCanvas(paintCanvas, page);
+    } else {
+        qFatal("Unimplemented state in PosteRazorCore::paintOnCanvas().");
     }
 }
 
