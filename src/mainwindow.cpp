@@ -350,7 +350,7 @@ void MainWindow::setCurrentUnitOfLength(const QString &unit)
 }
 
 void MainWindow::addAboutDialogAction(QAction *action)
-{   
+{
     m_menuAbout->addAction(action);
 }
 
