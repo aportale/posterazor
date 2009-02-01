@@ -80,7 +80,6 @@ signals:
     virtual void imageInfoChanged(int imageWidthInPixels, int imageHeightInPixels, double imageWidth,
         double imageHeight, Types::UnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi,
         Types::ColorTypes colorType, int bitsPerPixel) const;
-    virtual void pddfLaunch(const QString &pdfFileName) const;
 
 private slots:
     void showExtraAboutDialog();
