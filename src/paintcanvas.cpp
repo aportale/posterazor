@@ -77,17 +77,19 @@ void PaintCanvas::drawOverlayText(const QPointF &position, int flags, int size, 
     QFont font;
     font.setPixelSize(size);
     m_qPainter->save();
-    m_qPainter->setOpacity(0.5);
-    m_qPainter->setPen(0x333333);
+    m_qPainter->setOpacity(0.70);
+    const QColor fontColor(0xeeeeee);
     QFontMetricsF fontMetrics(font);
     const qreal textWidth = fontMetrics.width(text);
     const QPointF fontOffset(QPointF(-textWidth / 2, fontMetrics.xHeight() * 1.5));
-    if (size > 45) {
+    if (size > 35) {
+        m_qPainter->setPen(0x656565);
+        m_qPainter->setBrush(fontColor);
         QPainterPath textPath;
         textPath.addText(position + fontOffset, font, text);
-        m_qPainter->setBrush(QBrush(0xcccccc));
         m_qPainter->drawPath(textPath);
     } else {
+        m_qPainter->setPen(fontColor);
         m_qPainter->setRenderHint(QPainter::TextAntialiasing);
         m_qPainter->setFont(font);
         m_qPainter->drawText(position + fontOffset, text);

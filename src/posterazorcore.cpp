@@ -644,15 +644,15 @@ void PosteRazorCore::paintPosterOnCanvas(PaintCanvasInterface *paintCanvas) cons
             QPointF(
                 (
                     alignment & Qt::AlignLeft?borderLeft
-                    :alignment & Qt::AlignHCenter?qBound(borderLeft, (boxSize.width() - imageSize.width()) / 2, posterPrintableArea.right() - imageSize.width())
-                    :(posterPrintableArea.right() - imageSize.width())
-                ),
+                    :alignment & Qt::AlignHCenter?qBound(borderLeft, (boxSize.width() - imageSize.width()) / 2, borderLeft + posterPrintableAreaSize.width() - imageSize.width())
+                    :(borderLeft + posterPrintableAreaSize.width() - imageSize.width())
+                ) + offset.x(),
                 (
                     alignment & Qt::AlignTop?borderTop
-                    :alignment & Qt::AlignVCenter?qBound(borderTop, (boxSize.height() - imageSize.height()) / 2, posterPrintableArea.bottom() - imageSize.height())
-                    :(posterPrintableArea.bottom() - imageSize.height())
-                )
-            ) + offset,
+                    :alignment & Qt::AlignVCenter?qBound(borderTop, (boxSize.height() - imageSize.height()) / 2, borderTop + posterPrintableAreaSize.height() - imageSize.height())
+                    :(borderTop + posterPrintableAreaSize.height() - imageSize.height())
+                ) + offset.y()
+            ),
             imageSize
         )
     );
