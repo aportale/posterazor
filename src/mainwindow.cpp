@@ -1,6 +1,6 @@
 /*
     PosteRazor - Make your own poster!
-    Copyright (C) 2005-2008 by Alessandro Portale
+    Copyright (C) 2005-2009 by Alessandro Portale
     http://posterazor.sourceforge.net/
 
     This file is part of PosteRazor
@@ -618,7 +618,7 @@ void MainWindow::showAboutPosteRazorDialog()
         QLatin1String("<h2>License</h2>"
             "<p>PosteRazor - Make your own poster!<br/>"
             "posterazor.sourceforge.net<br/>"
-            "Copyright (C) 2005-2008 by Alessandro Portale</p>"
+            "Copyright (C) 2005-2009 by Alessandro Portale</p>"
             "<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>"
             "<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>"
             "<p>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.</p>");
