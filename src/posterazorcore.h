@@ -113,7 +113,9 @@ private:
     QSizeF inputImagePreviewSize(const QSize &boxSize) const;
     void paintImageOnCanvas(PaintCanvasInterface *paintCanvas) const;
     void paintPaperOnCanvas(PaintCanvasInterface *paintCanvas, bool paintOverlapping) const;
-    void paintPosterOnCanvas(PaintCanvasInterface *paintCanvas) const;
+    void paintPosterOnCanvasOverlapped(PaintCanvasInterface *paintCanvas) const;
+    void paintPosterOnCanvasDivided(PaintCanvasInterface *paintCanvas) const;
+    void paintPosterOnCanvasPageWise(PaintCanvasInterface *paintCanvas, int page) const;
     void paintPosterPageOnCanvas(PaintCanvasInterface *paintCanvas, int page) const;
 
 signals:

@@ -377,7 +377,11 @@ void MainWindow::setWizardStepDescription(const QString &number, const QString &
 
 void MainWindow::setPreviewState(const QString &state)
 {
-    m_paintCanvas->setState(state);
+    QString actualState = state;
+    if (actualState == QLatin1String("poster")) {
+        actualState.append(" overlapped");
+    }
+    m_paintCanvas->setState(actualState);
 }
 
 

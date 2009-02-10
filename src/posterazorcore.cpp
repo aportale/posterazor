@@ -609,7 +609,7 @@ void PosteRazorCore::paintPaperOnCanvas(PaintCanvasInterface *paintCanvas, bool 
     }
 }
 
-void PosteRazorCore::paintPosterOnCanvas(PaintCanvasInterface *paintCanvas) const
+void PosteRazorCore::paintPosterOnCanvasOverlapped(PaintCanvasInterface *paintCanvas) const
 {
     const QSizeF canvasSize = paintCanvas->size();
     QSizeF pagePrintableAreaSize = printablePaperAreaSize();
@@ -693,6 +693,14 @@ void PosteRazorCore::paintPosterOnCanvas(PaintCanvasInterface *paintCanvas) cons
     }
 }
 
+void PosteRazorCore::paintPosterOnCanvasDivided(PaintCanvasInterface *paintCanvas) const
+{
+}
+
+void PosteRazorCore::paintPosterOnCanvasPageWise(PaintCanvasInterface *paintCanvas, int page) const
+{
+}
+
 void PosteRazorCore::paintPosterPageOnCanvas(PaintCanvasInterface *paintCanvas, int page) const
 {
     const QSizeF posterSizePages = posterSize(Types::PosterSizeModePages);
@@ -746,8 +754,18 @@ void PosteRazorCore::paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVar
         paintImageOnCanvas(paintCanvas);
     } else if (state == QLatin1String("paper") || state == QLatin1String("overlapping")) {
         paintPaperOnCanvas(paintCanvas, state == QLatin1String("overlapping"));
-    } else if (state == QLatin1String("poster")) {
-        paintPosterOnCanvas(paintCanvas);
+    } else if (state.startsWith(QLatin1String("poster"))) {
+        const QStringList options = state.split(QLatin1Char(' '));
+        if (options.at(1) == QLatin1String("overlapped")) {
+            paintPosterOnCanvasOverlapped(paintCanvas);
+        } else if (options.at(1) == QLatin1String("divided")) {
+            paintPosterOnCanvasDivided(paintCanvas);
+        } else if (options.at(1) == QLatin1String("pagewise")) {
+            const int page = options.at(2).toInt();
+            paintPosterOnCanvasPageWise(paintCanvas, page);
+        } else {
+            qFatal("Unimplemented poster mode in PosteRazorCore::paintOnCanvas().");
+        }
     } else if (state.startsWith(QLatin1String("posterpage"))) {
         const int page = state.split(' ').last().toInt();
         paintPosterPageOnCanvas(paintCanvas, page);
