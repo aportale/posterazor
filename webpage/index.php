@@ -355,19 +355,17 @@
 <?
 			break;
 			default:
-				$youtubeId = text('U4C6tN_knYg', 'wS8ANwdFdvA');
+				$youtubeId = text('p7XsFZ4Leo8', 'SK3MWc7UG5c');
 ?>
 				<h2><?= text('About', 'Über') ?></h2>
 				<p>
 					<?= text('The PosteRazor cuts a raster image into pieces which can afterwards be printed out and assembled to a poster.', 'Der PosteRazor schneidet eine Rasterbild-datei in Stücke, die anschließend ausgedruckt und zu einem Poster zusammengefügt werden können.') ?>
-
-					<!-- <span class="centeredimage"><img src="workflow.png" width="376" height="107" alt="PosteRazor workflow"/></span> -->
-					<object width="480" height="385">
-						<param name="movie" value="http://www.youtube.com/v/<?=$youtubeId?>&amp;hl=de&amp;fs=1&amp;ap=%2526fmt%3D18"/>
-						<param name="allowFullScreen" value="true"/>
-						<param name="allowscriptaccess" value="always"/>
-						<embed src="http://www.youtube.com/v/<?=$youtubeId?>&amp;hl=de&amp;fs=1&amp;ap=%2526fmt%3D18" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385"/>
+				</p>
+					<object type="application/x-shockwave-flash" data="http://www.youtube.com/v/<?=$youtubeId?>&amp;hl=en&amp;rel=0" width="480" height="385">
+						<param name="movie" value="http://www.youtube.com/v/<?=$youtubeId?>&amp;hl=en&amp;rel=0" />
+						<param name="wmode" value="transparent" />
 					</object>
+				<p>
 					<?= text('As input, the PosteRazor takes a raster image. The resulting poster is saved as a multipage PDF document. An easy to use, wizard like user interface guides through 5 steps. PosteRazor is available as a Windows, an OSX and a Linux version.', 'Als Ausgangsmaterial nimmt der PosteRazor eine Rasterbild-datei. Das Endprodukt ist ein Poster in Form eines mehrseitigen PDF-Dokuments. Eine einfach zu bedienende Benutzerschnittstelle im Assistenten-Stil begleitet durch fünf Schritte. Der PosteRazor ist als Windows-, als OSX- und als Linux-Version erhältlich.') ?>
 					<?= text('It is an open source, ', 'Er ist ein quelloffenes, ') ?><a href="<?=linkParameters("license","")?>"><?= text('GNU licensed', 'GNU-lizensiertes') ?></a> <?= text('project which is hosted on SourceForge.net.', 'Projekt, das auf SourceForge hinterlegt ist.') ?>
 				</p>
@@ -375,28 +373,9 @@
 					<?= text('For bug reports and feature requests please use the', 'Für Fehlerberichte und Erweiterungswünsche nutzen Sie bitte den ') ?> <a href="http://sourceforge.net/tracker/?group_id=141842"><?= text('PosteRazor tracker', 'PosteRazor-Tracker') ?></a>.
 					<?= text('For questions and feedback, please use the', 'Für Fragen und Feedback nutzen Sie bitte das ') ?> <a href="http://sourceforge.net/forum/?group_id=141842"><?= text('PosteRazor forum', 'PosteRazor-Forum') ?></a>.
 				</p>
-				<!-- <h3><?= text('Translators', 'Mitwirkende') ?>:</h3>
-				<ul>
-					<li><?= text('Polish:', 'Polnisch:') ?> Grzegorz Wacikowski</li>
-					<li><?= text('French:', 'Französisch:') ?> Martin Loyer</li>
-					<li><?= text('Italian:', 'Italienisch:') ?> Stefano Nosei</li>
-					<li><?= text('Dutch/Belgian:', 'Holländisch/Belgisch:') ?> Erik Wijkamp</li>
-					<li><?= text('Spanish:', 'Spanische:') ?> <a href="http://hispanicoweb.net/">Hispánico Web</a></li>
-					<li><?= text('Brazilian Portuguese:', 'Brasilianisch-Portugisisch:') ?> Éderson Gomes dos Santos</li>
-					<li><?= text('European Portuguese (Next version):', 'Europäisch-Portugisisch (Nächste version):') ?> Helder Correia</li>
-					<li><?= text('Simplified Chinese (Next version):', 'Vereinfacht-Chinesisch (Nächste version):') ?> Sun Li</li>
-					<li><?= text('Finnish (Next version):', 'Finnisch (Nächste version):') ?> Olli</li>
-					<li><em>...<?= text('to add your translation, ', 'um Ihre Übersetzung hinzuzufügen, ')?><a href="<?=linkParameters('translations','')?>"><?=text('click here', 'klicken Sie hier')?></a> :)</em></li>
-				</ul>
-				<h3><?= text('Packagers', 'Pakete-ersteller') ?>:</h3>
-				<ul>
-					<li><a href="http://packages.ubuntu.com/intrepid/universe/posterazor">Ubuntu</a>: <a href="https://launchpad.net/~drebellion">Simrun Basuita</a></li>
-					<li><a href="http://bugs.gentoo.org/show_bug.cgi?id=234125">Gentoo</a>: <a href="http://www.opengov.org/">Seth McClain</a></li>
-				</ul> -->
 <?
 		};
 	}
-	
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
