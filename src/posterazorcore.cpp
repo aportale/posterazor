@@ -754,6 +754,9 @@ void PosteRazorCore::paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVar
         paintImageOnCanvas(paintCanvas);
     } else if (state == QLatin1String("paper") || state == QLatin1String("overlapping")) {
         paintPaperOnCanvas(paintCanvas, state == QLatin1String("overlapping"));
+    } else if (state.startsWith(QLatin1String("posterpage"))) {
+        const int page = state.split(' ').last().toInt();
+        paintPosterPageOnCanvas(paintCanvas, page);
     } else if (state.startsWith(QLatin1String("poster"))) {
         const QStringList options = state.split(QLatin1Char(' '));
         if (options.at(1) == QLatin1String("overlapped")) {
@@ -766,9 +769,6 @@ void PosteRazorCore::paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVar
         } else {
             qFatal("Unimplemented poster mode in PosteRazorCore::paintOnCanvas().");
         }
-    } else if (state.startsWith(QLatin1String("posterpage"))) {
-        const int page = state.split(' ').last().toInt();
-        paintPosterPageOnCanvas(paintCanvas, page);
     } else {
         qFatal("Unimplemented state in PosteRazorCore::paintOnCanvas().");
     }
