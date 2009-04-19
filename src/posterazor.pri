@@ -5,6 +5,7 @@ INCLUDEPATH += \
 SOURCES += \
     controller.cpp \
     mainwindow.cpp \
+    wizard.cpp \
     paintcanvas.cpp \
     pdfwriter.cpp \
     posterazorcore.cpp \
@@ -17,6 +18,7 @@ HEADERS += \
     controller.h \
     imageloaderinterface.h \
     mainwindow.h \
+    wizard.h \
     paintcanvas.h \
     paintcanvasinterface.h \
     pdfwriter.h \
@@ -26,7 +28,8 @@ HEADERS += \
     wizardcontroller.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    wizard.ui
 
 RESOURCES += \
     posterazor.qrc

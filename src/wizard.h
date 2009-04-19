@@ -20,25 +20,22 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef WIZARD_H
+#define WIZARD_H
 
-#include <QMainWindow>
-#include "ui_mainwindow.h"
+#include <QWidget>
+#include "ui_wizard.h"
 #include "posterazorcore.h"
 
-class QActionGroup;
-
-class MainWindow : public QMainWindow, private Ui::MainWindow
+class Wizard : public QWidget, private Ui::Wizard
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = 0, Qt::WFlags flags = 0);
+    Wizard(QWidget *parent = 0);
 
     void retranslateUi();
     void retranslateUiWithDimensionUnit();
-    void changeEvent(QEvent *event);
     void setPaperFormat(const QString &format);
     void setPaperOrientation(QPrinter::Orientation orientation);
     void setPaperBorderTop(double border);
@@ -61,11 +58,7 @@ public:
     void updatePreview();
     void showImageFileName(const QString &fileName);
     void updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, double verticalDpi, double horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel);
-    void setCurrentTranslation(const QString &translation); // Only to set the right menu entry to checked
     void setCurrentUnitOfLength(const QString &unit);
-    void addAboutDialogAction(QAction *action);
-    void readSettings(const QSettings *settings);
-    void writeSettings(QSettings *settings) const;
 
 public slots:
     void setPreviewImage(const QImage &image);
@@ -74,14 +67,12 @@ public slots:
     void setWizardStep(int step);
     void setWizardStepDescription(const QString &number, const QString &description);
     void setPreviewState(const QString &state);
-    void showWizardStepHelp(const QString &title, const QString &text);
-    void showManual(const QString &title, const QString &text);
 
 private:
-    PosteRazorCore *m_posteRazor;
     QString m_currentUnitOfLength;
-    QActionGroup *m_unitOfLengthActions;
-    QHash<QString, QAction*> m_translationActions;
+    // TODO: Find out if QButtonGroup is better than the following two hashes
+    QHash<Qt::Alignment, QAbstractButton*> m_overlappingButtons;
+    QHash<Qt::Alignment, QAbstractButton*> m_alignmentButtons;
 
     void createConnections();
     void populateUI();
@@ -115,15 +106,14 @@ signals:
     void loadImageSignal() const;
     void needsPaint(PaintCanvasInterface *paintDevice, const QVariant &options) const;
     void imageLoaded() const;
-    void translationChanged(const QString &localeName = QString()) const;
-    void unitOfLengthChanged(const QString &unit) const;
-    void openPosteRazorWebsiteSignal() const;
 
 private slots:
-    void handleTranslationAction(QAction *action) const;
-    void handleUnitOfLengthAction(QAction *action) const;
-    void showAboutQtDialog() const;
-    void showAboutPosteRazorDialog();
+    void handlePaperFormatTabChanged(int index);
+    void handlePaperOrientationPortraitSelected();
+    void handlePaperOrientationLandscapeSelected();
+    void emitOverlappingPositionChange(int alignmentInt) const;
+    void emitPosterAlignmentChange(int alignmentInt) const;
+    void updatePosterSizeGroupsState();
 };
 
-#endif // MAINWINDOW_H
+#endif // WIZARD_H

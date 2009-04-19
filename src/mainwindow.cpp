@@ -48,8 +48,6 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
 {
     setupUi(this);
 
-    m_imageInfoGroup->setVisible(false);
-
     m_unitOfLengthActions = new QActionGroup(m_menuSettings);
 
     m_actionLoadInputImage->setShortcuts(
@@ -57,52 +55,15 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
     m_actionSavePoster->setShortcut(Qt::CTRL + Qt::Key_S);
     m_actionExit->setShortcut(Qt::CTRL + Qt::Key_Q);
     m_actionPosteRazorManual->setShortcut(Qt::Key_F1);
-
-    m_imageLoadButton->setIcon(QApplication::style()->standardPixmap(QStyle::SP_DirOpenIcon)); // SP_DialogOpenButton looks ugly
-    m_stepHelpButton->setMinimumSize(m_imageLoadButton->sizeHint()); // Same size. Looks better
-    m_savePosterButton->setIcon(QApplication::style()->standardPixmap(QStyle::SP_DialogSaveButton));
-    m_actionLoadInputImage->setIcon(m_imageLoadButton->icon());
-    m_actionSavePoster->setIcon(m_savePosterButton->icon());
+    m_actionLoadInputImage->setIcon(QApplication::style()->standardPixmap(QStyle::SP_DirOpenIcon));
+    m_actionSavePoster->setIcon(QApplication::style()->standardPixmap(QStyle::SP_DialogSaveButton));
     m_actionSavePoster->setEnabled(false);
 
     setWindowIcon(QIcon(":/Icons/posterazor.png"));
 
-    const struct {
-        QAbstractButton *sender;
-        Qt::Alignment alignment;
-    } alignmentMap[] = {
-        {m_posterAlignmentTopLeftButton,     Qt::AlignTop | Qt::AlignLeft        },
-        {m_posterAlignmentTopButton,         Qt::AlignTop | Qt::AlignHCenter     },
-        {m_posterAlignmentTopRightButton,    Qt::AlignTop | Qt::AlignRight       },
-        {m_posterAlignmentLeftButton,        Qt::AlignVCenter | Qt::AlignLeft    },
-        {m_posterAlignmentCenterButton,      Qt::AlignCenter                     },
-        {m_posterAlignmentRightButton,       Qt::AlignVCenter | Qt::AlignRight   },
-        {m_posterAlignmentBottomLeftButton,  Qt::AlignBottom | Qt::AlignLeft     },
-        {m_posterAlignmentBottomButton,      Qt::AlignBottom | Qt::AlignHCenter  },
-        {m_posterAlignmentBottomRightButton, Qt::AlignBottom | Qt::AlignRight    }
-    };
-    const int alignmentMapCount = (int)sizeof(alignmentMap)/sizeof(alignmentMap[0]);
-    for (int i = 0; i < alignmentMapCount; i++)
-        m_alignmentButtons.insert(alignmentMap[i].alignment, alignmentMap[i].sender);
-
-    const struct {
-        QAbstractButton *sender;
-        Qt::Alignment alignment;
-    } overlappingMap[] = {
-        {m_overlappingPositionTopLeftButton,     Qt::AlignTop | Qt::AlignLeft     },
-        {m_overlappingPositionTopRightButton,    Qt::AlignTop | Qt::AlignRight    },
-        {m_overlappingPositionBottomLeftButton,  Qt::AlignBottom | Qt::AlignLeft  },
-        {m_overlappingPositionBottomRightButton, Qt::AlignBottom | Qt::AlignRight }
-    };
-    const int overlappingMapCount = (int)sizeof(overlappingMap)/sizeof(overlappingMap[0]);
-    for (int i = 0; i < overlappingMapCount; i++)
-        m_overlappingButtons.insert(overlappingMap[i].alignment, overlappingMap[i].sender);
-
     setWindowTitle(applicationNameWithVersion());
-    m_steps->setCurrentIndex(0);
     createConnections();
     populateUI();
-    updatePosterSizeGroupsState();
     retranslateUi();
 }
 
@@ -123,199 +84,118 @@ void MainWindow::retranslateUi()
     m_actionAboutPosteRazor->setText(               QCoreApplication::translate("Help", "&About PosteRazor"));
     m_actionAboutQt->setText(                       QCoreApplication::translate("Help", "About &Qt"));
     m_actionExit->setText(                          QCoreApplication::translate("Main window", "E&xit"));
-
-    m_imageInfoGroup->setTitle(                     QCoreApplication::translate("Main window", "Image Informations"));
-    m_imageInformationColorTypeLabel->setText(      QCoreApplication::translate("Main window", "Color type:"));
-    m_imageInformationResolutionLabel->setText(     QCoreApplication::translate("Main window", "Resolution:"));
-    m_imageInformationSizeInPixelsLabel->setText(   QCoreApplication::translate("Main window", "Size (in pixels):"));
-    m_inputImageGroup->setTitle(                    QCoreApplication::translate("Main window", "Input Image"));
-    m_launchPDFApplicationCheckBox->setText(        QCoreApplication::translate("Main window", "Open PDF after saving"));
     m_menuFile->setTitle(                           QCoreApplication::translate("Main window", "&File"));
     m_menuSettings->setTitle(                       QCoreApplication::translate("Main window", "&Settings"));
-    m_stepNextButton->setText(                      QCoreApplication::translate("Main window", "Next"));
-    m_overlappingHeightLabel->setText(              QCoreApplication::translate("Main window", "Height:"));
-    m_overlappingPositionBottomLeftButton->setText( QCoreApplication::translate("Main window", "Bottom left"));
-    m_overlappingPositionBottomRightButton->setText(QCoreApplication::translate("Main window", "Bottom right"));
-    m_overlappingPositionGroup->setTitle(           QCoreApplication::translate("Main window", "Overlapping position"));
-    m_overlappingPositionTopLeftButton->setText(    QCoreApplication::translate("Main window", "Top left"));
-    m_overlappingPositionTopRightButton->setText(   QCoreApplication::translate("Main window", "Top right"));
-    m_overlappingSizeGroup->setTitle(               QCoreApplication::translate("Main window", "Overlapping size"));
-    m_overlappingWidthLabel->setText(               QCoreApplication::translate("Main window", "Width:"));
-    m_paperBordersBottomLabel->setText(             QCoreApplication::translate("Main window", "Bottom"));
-    m_paperBordersLeftLabel->setText(               QCoreApplication::translate("Main window", "Left"));
-    m_paperBordersRightLabel->setText(              QCoreApplication::translate("Main window", "Right"));
-    m_paperBordersTopLabel->setText(                QCoreApplication::translate("Main window", "Top"));
-    m_paperCustomHeightLabel->setText(              QCoreApplication::translate("Main window", "Height:"));
-    m_paperCustomWidthLabel->setText(               QCoreApplication::translate("Main window", "Width:"));
-    m_paperFormatLabel->setText(                    QCoreApplication::translate("Main window", "Format:"));
-    m_paperFormatTypeTabs->setTabText(m_paperFormatTypeTabs->indexOf(m_paperFormatCustomTab),
-                                                    QCoreApplication::translate("Main window", "Custom"));
-    m_paperFormatTypeTabs->setTabText(m_paperFormatTypeTabs->indexOf(m_paperFormatStandardTab),
-                                                    QCoreApplication::translate("Main window", "Standard"));
-    m_paperOrientationLabel->setText(               QCoreApplication::translate("Main window", "Orientation:"));
-    m_paperOrientationLandscapeRadioButton->setText(QCoreApplication::translate("Main window", "Landscape"));
-    m_paperOrientationPortraitRadioButton->setText( QCoreApplication::translate("Main window", "Portrait"));
-    m_paperSizeGroup->setTitle(                     QCoreApplication::translate("Main window", "Paper size"));
-    m_posterAbsoluteHeightLabel->setText(           QCoreApplication::translate("Main window", "Height:"));
-    m_posterAbsoluteWidthLabel->setText(            QCoreApplication::translate("Main window", "Width:"));
-    m_posterAlignmentGroup->setTitle(               QCoreApplication::translate("Main window", "Image alignment"));
-    m_posterPagesHeightDimensionUnitLabel->setText( QCoreApplication::translate("Main window", "pages"));
-    m_posterPagesHeightLabel->setText(              QCoreApplication::translate("Main window", "Height:"));
-    m_posterPagesWidthDimensionUnitLabel->setText(  QCoreApplication::translate("Main window", "pages"));
-    m_posterPagesWidthLabel->setText(               QCoreApplication::translate("Main window", "Width:"));
-    m_posterPercentualSizeLabel->setText(           QCoreApplication::translate("Main window", "Size:"));
-    m_posterSizeAbsoluteRadioButton->setText(       QCoreApplication::translate("Main window", "Absolute size:"));
-    m_posterSizeGroup->setTitle(                    QCoreApplication::translate("Main window", "Image size"));
-    m_posterSizeInPagesRadioButton->setText(        QCoreApplication::translate("Main window", "Size in pages:"));
-    m_posterSizePercentualRadioButton->setText(     QCoreApplication::translate("Main window", "Size in percent:"));
-    m_stepPrevButton->setText(                      QCoreApplication::translate("Main window", "Back"));
-    m_savePosterGroup->setTitle(                    QCoreApplication::translate("Main window", "Save the poster"));
-    retranslateUiWithDimensionUnit();
-}
-
-void MainWindow::retranslateUiWithDimensionUnit()
-{
-    const QString unitOfLength = QString(QLatin1String(" (%1)")).arg(m_currentUnitOfLength);
-    m_imageInformationSizeLabel->setText(           QCoreApplication::translate("Main window", "Size (in %1):").arg(m_currentUnitOfLength));
-    m_paperBordersGroup->setTitle(                  QCoreApplication::translate("Main window", "Borders") + unitOfLength);
 }
 
 void MainWindow::setPaperFormat(const QString &format)
 {
-    const int index = m_paperFormatComboBox->findData(format, Qt::DisplayRole);
-    m_paperFormatComboBox->setCurrentIndex(index);
+    centralwidget->setPaperFormat(format);
 }
 
 void MainWindow::setPaperOrientation(QPrinter::Orientation orientation)
 {
-    (
-        orientation == QPrinter::Landscape?m_paperOrientationLandscapeRadioButton
-        :m_paperOrientationPortraitRadioButton
-    )->setChecked(true);
+    centralwidget->setPaperOrientation(orientation);
 }
 
 void MainWindow::setPaperBorderTop(double border)
 {
-    m_paperBorderTopInput->setValue(border);
+    centralwidget->setPaperBorderTop(border);
 }
 
 void MainWindow::setPaperBorderRight(double border)
 {
-    m_paperBorderRightInput->setValue(border);
+    centralwidget->setPaperBorderRight(border);
 }
 
 void MainWindow::setPaperBorderBottom(double border)
 {
-    m_paperBorderBottomInput->setValue(border);
+    centralwidget->setPaperBorderBottom(border);
 }
 
 void MainWindow::setPaperBorderLeft(double border)
 {
-    m_paperBorderLeftInput->setValue(border);
+    centralwidget->setPaperBorderLeft(border);
 }
 
 void MainWindow::setCustomPaperSize(const QSizeF &size)
 {
-    m_paperCustomWidthSpinner->setValue(size.width());
-    m_paperCustomHeightSpinner->setValue(size.height());
+    centralwidget->setCustomPaperSize(size);
 }
 
 void MainWindow::setUseCustomPaperSize(bool useIt)
 {
-    m_paperFormatTypeTabs->setCurrentWidget(useIt?m_paperFormatCustomTab:m_paperFormatStandardTab);
+    centralwidget->setUseCustomPaperSize(useIt);
 }
 
 void MainWindow::setOverlappingWidth(double width)
 {
-    m_overlappingWidthInput->setValue(width);
+    centralwidget->setOverlappingWidth(width);
 }
 
 void MainWindow::setOverlappingHeight(double height)
 {
-    m_overlappingHeightInput->setValue(height);
+    centralwidget->setOverlappingHeight(height);
 }
 
 void MainWindow::setOverlappingPosition(Qt::Alignment position)
 {
-    if (m_overlappingButtons.contains(position))
-        m_overlappingButtons.value(position)->setChecked(true);
+    centralwidget->setOverlappingPosition(position);
 }
 
 void MainWindow::setPosterWidthAbsolute(double width)
 {
-    m_posterAbsoluteWidthInput->setValue(width);
+    centralwidget->setPosterWidthAbsolute(width);
 }
 
 void MainWindow::setPosterHeightAbsolute(double height)
 {
-    m_posterAbsoluteHeightInput->setValue(height);
+    centralwidget->setPosterHeightAbsolute(height);
 }
 
 void MainWindow::setPosterWidthPages(double width)
 {
-    m_posterPagesWidthInput->setValue(width);
+    centralwidget->setPosterWidthPages(width);
 }
 
 void MainWindow::setPosterHeightPages(double height)
 {
-    m_posterPagesHeightInput->setValue(height);
+    centralwidget->setPosterHeightPages(height);
 }
 
 void MainWindow::setPosterSizePercentual(double percent)
 {
-    m_posterPercentualSizeInput->setValue(percent);
+    centralwidget->setPosterSizePercentual(percent);
 }
 
 void MainWindow::setPosterSizeMode(Types::PosterSizeModes mode)
 {
-    (
-        mode == Types::PosterSizeModeAbsolute?m_posterSizeAbsoluteRadioButton
-        :mode == Types::PosterSizeModePages?m_posterSizeInPagesRadioButton
-        :m_posterSizePercentualRadioButton
-    )->setChecked(true);
-    updatePosterSizeGroupsState();
+    centralwidget->setPosterSizeMode(mode);
 }
 
 void MainWindow::setPosterAlignment(Qt::Alignment alignment)
 {
-    if (m_alignmentButtons.contains(alignment))
-        m_alignmentButtons.value(alignment)->setChecked(true);
+    centralwidget->setPosterAlignment(alignment);
 }
 
 void MainWindow::setLaunchPDFApplication(bool launch)
 {
-    m_launchPDFApplicationCheckBox->setCheckState(launch?Qt::Checked:Qt::Unchecked);
+    centralwidget->setLaunchPDFApplication(launch);
 }
 
 void MainWindow::updatePreview()
 {
-    m_paintCanvas->repaint();
+    centralwidget->updatePreview();
 }
 
 void MainWindow::showImageFileName(const QString &fileName)
 {
-    m_inputFileNameLabel->setText(QFileInfo(fileName).fileName());
+    centralwidget->showImageFileName(fileName);
 }
 
 void MainWindow::updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, double verticalDpi, double horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel)
 {
-    Q_UNUSED(horizontalDpi)
-
-    m_imageInformationSizeInPixelsValue->setText(QString("%1 x %2").arg(inputImageSizeInPixels.width()).arg(inputImageSizeInPixels.height()));
-    m_imageInformationSizeValue->setText(QString("%1 x %2").arg(imageSize.width(), 0, 'f', 2).arg(imageSize.height(), 0, 'f', 2));
-    m_imageInformationResolutionValue->setText(QString("%1 dpi").arg(verticalDpi, 0, 'f', 1));
-    const QString colorTypeString = (
-        colorType==Types::ColorTypeMonochrome?QCoreApplication::translate("Main window", "Monochrome"):
-        colorType==Types::ColorTypeGreyscale?QCoreApplication::translate("Main window", "Gray scale"):
-        colorType==Types::ColorTypePalette?QCoreApplication::translate("Main window", "Palette"):
-        colorType==Types::ColorTypeRGB?QCoreApplication::translate("Main window", "RGB"):
-        colorType==Types::ColorTypeRGBA?QCoreApplication::translate("Main window", "RGBA"):
-        /*colorType==ColorTypeCMYK?*/ QCoreApplication::translate("Main window", "CMYK")
-    ) + QString(" %1bpp").arg(bitsPerPixel);
-    m_imageInformationColorTypeValue->setText(colorTypeString);
-    m_imageInfoGroup->setVisible(true);
-    m_actionSavePoster->setEnabled(true);
-    emit imageLoaded();
+    centralwidget->updateImageInfoFields(inputImageSizeInPixels, imageSize, verticalDpi, horizontalDpi, colorType, bitsPerPixel);
 }
 
 void MainWindow::setCurrentTranslation(const QString &translation)
@@ -333,20 +213,13 @@ void MainWindow::setCurrentTranslation(const QString &translation)
 
 void MainWindow::setCurrentUnitOfLength(const QString &unit)
 {
-    m_currentUnitOfLength = unit;
     foreach (QAction *action, m_unitOfLengthActions->actions()) {
         if (action->text() == unit) {
             action->setChecked(true);
             break;
         }
     }
-    retranslateUiWithDimensionUnit();
-    m_posterAbsoluteWidthDimensionUnitLabel->setText(unit);
-    m_posterAbsoluteHeightDimensionUnitLabel->setText(unit);
-    m_overlappingWidthDimensionUnitLabel->setText(unit);
-    m_overlappingHeightDimensionUnitLabel->setText(unit);
-    m_paperCustomWidthDimensionUnitLabel->setText(unit);
-    m_paperCustomHeightDimensionUnitLabel->setText(unit);
+    centralwidget->setCurrentUnitOfLength(unit);
 }
 
 void MainWindow::addAboutDialogAction(QAction *action)
@@ -356,38 +229,32 @@ void MainWindow::addAboutDialogAction(QAction *action)
 
 void MainWindow::setPrevButtonEnabled(bool enabled)
 {
-    m_stepPrevButton->setDisabled(!enabled);
+    centralwidget->setPrevButtonEnabled(enabled);
 }
 
 void MainWindow::setNextButtonEnabled(bool enabled)
 {
-    m_stepNextButton->setDisabled(!enabled);
+    centralwidget->setNextButtonEnabled(enabled);
 }
 
 void MainWindow::setWizardStep(int step)
 {
-    m_steps->setCurrentIndex(step);
+    centralwidget->setWizardStep(step);
 }
 
 void MainWindow::setWizardStepDescription(const QString &number, const QString &description)
 {
-    m_stepNumberLabel->setText(number);
-    m_stepDescriptionLabel->setText(description);
+    centralwidget->setWizardStepDescription(number, description);
 }
 
 void MainWindow::setPreviewState(const QString &state)
 {
-    QString actualState = state;
-    if (actualState == QLatin1String("poster")) {
-        actualState.append(" overlapped");
-    }
-    m_paintCanvas->setState(actualState);
+    centralwidget->setPreviewState(state);
 }
-
 
 void MainWindow::setPreviewImage(const QImage &image)
 {
-    m_paintCanvas->setImage(image);
+    centralwidget->setPreviewImage(image);
 }
 
 void MainWindow::showWizardStepHelp(const QString &title, const QString &text)
@@ -433,21 +300,6 @@ void MainWindow::showManual(const QString &title, const QString &text)
     dialog->show();
 }
 
-void MainWindow::handlePaperFormatTabChanged(int index)
-{
-    emit useCustomPaperSizeChanged(index == 1);
-}
-
-void MainWindow::handlePaperOrientationPortraitSelected()
-{
-    emit paperOrientationChanged(QPrinter::Portrait);
-}
-
-void MainWindow::handlePaperOrientationLandscapeSelected()
-{
-    emit paperOrientationChanged(QPrinter::Landscape);
-}
-
 void MainWindow::handleTranslationAction(QAction *action) const
 {
     emit translationChanged(action->data().toString());
@@ -461,49 +313,8 @@ void MainWindow::handleUnitOfLengthAction(QAction *action) const
 void MainWindow::createConnections()
 {
     connect(m_actionExit,                           SIGNAL(triggered()),                SLOT(close()));
-    connect(m_stepNextButton,                       SIGNAL(clicked()),                  SIGNAL(nextButtonPressed()));
-    connect(m_stepPrevButton,                       SIGNAL(clicked()),                  SIGNAL(prevButtonPressed()));
-    connect(m_stepHelpButton,                       SIGNAL(clicked()),                  SIGNAL(wizardStepHelpSignal()));
-    connect(m_paperFormatTypeTabs,                  SIGNAL(currentChanged(int)),        SLOT(handlePaperFormatTabChanged(int)));
-    connect(m_paperFormatComboBox,                  SIGNAL(activated(const QString &)), SIGNAL(paperFormatChanged(const QString &)));
-    connect(m_paperOrientationPortraitRadioButton,  SIGNAL(clicked()),                  SLOT(handlePaperOrientationPortraitSelected()));
-    connect(m_paperOrientationLandscapeRadioButton, SIGNAL(clicked()),                  SLOT(handlePaperOrientationLandscapeSelected()));
-    connect(m_paperCustomWidthSpinner,              SIGNAL(valueEdited(double)),        SIGNAL(paperCustomWidthChanged(double)));
-    connect(m_paperCustomHeightSpinner,             SIGNAL(valueEdited(double)),        SIGNAL(paperCustomHeightChanged(double)));
-    connect(m_paperBorderTopInput,                  SIGNAL(valueEdited(double)),        SIGNAL(paperBorderTopChanged(double)));
-    connect(m_paperBorderRightInput,                SIGNAL(valueEdited(double)),        SIGNAL(paperBorderRightChanged(double)));
-    connect(m_paperBorderBottomInput,               SIGNAL(valueEdited(double)),        SIGNAL(paperBorderBottomChanged(double)));
-    connect(m_paperBorderLeftInput,                 SIGNAL(valueEdited(double)),        SIGNAL(paperBorderLeftChanged(double)));
     connect(m_actionLoadInputImage,                 SIGNAL(triggered()),                SIGNAL(loadImageSignal()));
-    connect(m_imageLoadButton,                      SIGNAL(clicked()),                  SIGNAL(loadImageSignal()));
-    connect(m_posterSizeAbsoluteRadioButton,        SIGNAL(clicked()),                  SLOT(updatePosterSizeGroupsState()));
-    connect(m_posterSizeInPagesRadioButton,         SIGNAL(clicked()),                  SLOT(updatePosterSizeGroupsState()));
-    connect(m_posterSizePercentualRadioButton,      SIGNAL(clicked()),                  SLOT(updatePosterSizeGroupsState()));
-    connect(m_overlappingWidthInput,                SIGNAL(valueEdited(double)),        SIGNAL(overlappingWidthChanged(double)));
-    connect(m_overlappingHeightInput,               SIGNAL(valueEdited(double)),        SIGNAL(overlappingHeightChanged(double)));
-    QSignalMapper *overlappingMapper = new QSignalMapper(this);
-    foreach (const Qt::Alignment alignment, m_overlappingButtons.keys()) {
-        QAbstractButton *sender = m_overlappingButtons.value(alignment);
-        connect(sender, SIGNAL(clicked()), overlappingMapper, SLOT(map()));
-        overlappingMapper->setMapping(sender, alignment);
-    }
-    connect(overlappingMapper, SIGNAL(mapped(int)), SLOT(emitOverlappingPositionChange(int)));
-    connect(m_posterAbsoluteWidthInput,             SIGNAL(valueEdited(double)),        SIGNAL(posterWidthAbsoluteChanged(double)));
-    connect(m_posterAbsoluteHeightInput,            SIGNAL(valueEdited(double)),        SIGNAL(posterHeightAbsoluteChanged(double)));
-    connect(m_posterPagesWidthInput,                SIGNAL(valueEdited(double)),        SIGNAL(posterWidthPagesChanged(double)));
-    connect(m_posterPagesHeightInput,               SIGNAL(valueEdited(double)),        SIGNAL(posterHeightPagesChanged(double)));
-    connect(m_posterPercentualSizeInput,            SIGNAL(valueEdited(double)),        SIGNAL(posterSizePercentualChanged(double)));
-    QSignalMapper *alignmentMapper = new QSignalMapper(this);
-    foreach (const Qt::Alignment alignment, m_alignmentButtons.keys()) {
-        QAbstractButton *sender = m_alignmentButtons.value(alignment);
-        connect(sender, SIGNAL(clicked()), alignmentMapper, SLOT(map()));
-        alignmentMapper->setMapping(sender, alignment);
-    }
-    connect(alignmentMapper, SIGNAL(mapped(int)),   SLOT(emitPosterAlignmentChange(int)));
     connect(m_actionSavePoster,                     SIGNAL(triggered()),                SIGNAL(savePosterSignal()));
-    connect(m_savePosterButton,                     SIGNAL(clicked()),                  SIGNAL(savePosterSignal()));
-    connect(m_launchPDFApplicationCheckBox,         SIGNAL(toggled(bool)),              SIGNAL(launchPDFApplicationChanged(bool)));
-    connect(m_paintCanvas,                          SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)));
     connect(m_actionPosteRazorWebSite,              SIGNAL(triggered()),                SIGNAL(openPosteRazorWebsiteSignal()));
     connect(m_actionAboutQt,                        SIGNAL(triggered()),                SLOT(showAboutQtDialog()));
     connect(m_actionAboutPosteRazor,                SIGNAL(triggered()),                SLOT(showAboutPosteRazorDialog()));
@@ -539,44 +350,6 @@ void MainWindow::populateUI()
         m_translationActions.insert(localeString, languageAction);
     }
     m_menuSettings->addActions(translationActions->actions());
-
-    QStringList formats = Types::paperFormats().keys();
-    formats.sort();
-    m_paperFormatComboBox->addItems(formats);
-}
-
-void MainWindow::emitOverlappingPositionChange(int alignmentInt) const
-{
-    emit overlappingPositionChanged((Qt::Alignment)alignmentInt);
-}
-
-void MainWindow::emitPosterAlignmentChange(int alignmentInt) const
-{
-    emit posterAlignmentChanged((Qt::Alignment)alignmentInt);
-}
-
-void MainWindow::updatePosterSizeGroupsState()
-{
-    const bool absolute = m_posterSizeAbsoluteRadioButton->isChecked();
-    m_posterAbsoluteWidthLabel->setEnabled(absolute);
-    m_posterAbsoluteWidthInput->setEnabled(absolute);
-    m_posterAbsoluteWidthDimensionUnitLabel->setEnabled(absolute);
-    m_posterAbsoluteHeightLabel->setEnabled(absolute);
-    m_posterAbsoluteHeightInput->setEnabled(absolute);
-    m_posterAbsoluteHeightDimensionUnitLabel->setEnabled(absolute);
-
-    const bool inPages = m_posterSizeInPagesRadioButton->isChecked();
-    m_posterPagesWidthLabel->setEnabled(inPages);
-    m_posterPagesWidthInput->setEnabled(inPages);
-    m_posterPagesWidthDimensionUnitLabel->setEnabled(inPages);
-    m_posterPagesHeightLabel->setEnabled(inPages);
-    m_posterPagesHeightInput->setEnabled(inPages);
-    m_posterPagesHeightDimensionUnitLabel->setEnabled(inPages);
-
-    const bool percentual = m_posterSizePercentualRadioButton->isChecked();
-    m_posterPercentualSizeLabel->setEnabled(percentual);
-    m_posterPercentualSizeInput->setEnabled(percentual);
-    m_posterPercentualSizeUnitLabel->setEnabled(percentual);
 }
 
 void MainWindow::showAboutQtDialog() const
