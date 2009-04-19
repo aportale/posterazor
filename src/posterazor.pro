@@ -2,32 +2,9 @@ TARGET = PosteRazor
 
 DESTDIR = $$PWD
 
-SOURCES += \
-    controller.cpp \
-    mainwindow.cpp \
-    paintcanvas.cpp \
-    pdfwriter.cpp \
-    posterazorcore.cpp \
-    snapspinbox.cpp \
-    types.cpp \
-    wizardcontroller.cpp \
-    main.cpp
-
-HEADERS += \
-    controller.h \
-    imageloaderinterface.h \
-    mainwindow.h \
-    paintcanvas.h \
-    paintcanvasinterface.h \
-    pdfwriter.h \
-    posterazorcore.h \
-    snapspinbox.h \
-    types.h \
-    wizardcontroller.h
-
 win32:DEFINES -= \
     UNICODE
-    
+
 macx:QMAKE_INFO_PLIST = \
     Info.plist
 
@@ -43,27 +20,8 @@ macx:QMAKE_MAC_SDK = \
 macx:QMAKE_MACOSX_DEPLOYMENT_TARGET = \
     10.3
 
-FORMS += \
-    mainwindow.ui
-
-RESOURCES += \
-    posterazor.qrc
-
 RC_FILE += \
     posterazor.rc
-
-TRANSLATIONS += \
-    de.ts \
-    en.ts \
-    es.ts \
-    fi.ts \
-    fr.ts \
-    it.ts \
-    nl.ts \
-    pl.ts \
-    pt_BR.ts \
-    pt_PT.ts \
-    zh_CN.ts
 
 # Uncomment the following line in order to build PosteRazor with FreeImage
 #DEFINES += FREEIMAGE_LIB
@@ -93,10 +51,15 @@ contains (DEFINES, FREEIMAGE_LIB) {
     HEADERS += \
         imageloaderqt.h
 
-    macx|win32:QTPLUGIN += \
-        qgif \
-        qjpeg \
-        qtiff
+    contains(CONFIG, static) {
+        QTPLUGIN += \
+            qgif \
+            qjpeg \
+            qsvg \
+            qtiff
+    }
 }
+
+include (posterazor.pri)
 
 !contains(CONFIG, build_pass) system(lrelease posterazor.pro)
