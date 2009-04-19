@@ -21,12 +21,12 @@
 */
 
 #include "posterazorcore.h"
+#include "pdfwriter.h"
 #if defined (FREEIMAGE_LIB)
 #    include "imageloaderfreeimage.h"
 #else
 #    include "imageloaderqt.h"
 #endif
-#include "pdfwriter.h"
 #include <QSettings>
 #include <QStringList>
 #include <QBrush>
@@ -52,8 +52,9 @@ const QLatin1String settingsKey_OverlappingHeight(      "OverlappingHeight");
 const QLatin1String settingsKey_OverlappingPosition(    "OverlappingPosition");
 const QLatin1String settingsKey_UnitOfLength(           "UnitOfLength");
 
-PosteRazorCore::PosteRazorCore(QObject *parent)
+PosteRazorCore::PosteRazorCore(ImageLoaderInterface *imageLoader, QObject *parent)
     : QObject(parent)
+    , m_imageLoader(imageLoader)
     , m_posterSizeMode(Types::PosterSizeModePages)
     , m_posterDimension(2.0)
     , m_posterDimensionIsWidth(true)
@@ -72,12 +73,7 @@ PosteRazorCore::PosteRazorCore(QObject *parent)
     , m_overlappingPosition(Qt::AlignBottom | Qt::AlignRight)
     , m_unitOfLength(Types::UnitOfLengthCentimeter)
 {
-    m_imageLoader =
-#if defined (FREEIMAGE_LIB)
-        new ImageLoaderFreeImage(this);
-#else
-        new ImageLoaderQt(this);
-#endif
+    Q_ASSERT(m_imageLoader);
 }
 
 unsigned int PosteRazorCore::imageBitsPerLineCount(int widthPixels, int bitPerPixel)

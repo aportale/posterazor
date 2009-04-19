@@ -22,6 +22,12 @@
 
 #include "mainwindow.h"
 #include "controller.h"
+#if defined (FREEIMAGE_LIB)
+#   include "imageloaderfreeimage.h"
+#else
+#   include "imageloaderqt.h"
+#endif
+
 #include <QSettings>
 #include <QApplication>
 #include <QtDebug>
@@ -58,7 +64,13 @@ int main (int argc, char **argv)
     QCoreApplication::setOrganizationDomain("de.casaportale");
 
     MainWindow dialog;
-    PosteRazorCore posteRazorCore;
+#if defined (FREEIMAGE_LIB)
+    ImageLoaderFreeImage
+#else
+    ImageLoaderQt
+#endif
+        imageLoader;
+    PosteRazorCore posteRazorCore(&imageLoader);
     Controller controller(&posteRazorCore, &dialog);
 
 #ifdef Q_OS_WIN
