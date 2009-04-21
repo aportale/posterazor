@@ -90,112 +90,112 @@ void MainWindow::retranslateUi()
 
 void MainWindow::setPaperFormat(const QString &format)
 {
-    centralwidget->setPaperFormat(format);
+    m_wizard->setPaperFormat(format);
 }
 
 void MainWindow::setPaperOrientation(QPrinter::Orientation orientation)
 {
-    centralwidget->setPaperOrientation(orientation);
+    m_wizard->setPaperOrientation(orientation);
 }
 
 void MainWindow::setPaperBorderTop(double border)
 {
-    centralwidget->setPaperBorderTop(border);
+    m_wizard->setPaperBorderTop(border);
 }
 
 void MainWindow::setPaperBorderRight(double border)
 {
-    centralwidget->setPaperBorderRight(border);
+    m_wizard->setPaperBorderRight(border);
 }
 
 void MainWindow::setPaperBorderBottom(double border)
 {
-    centralwidget->setPaperBorderBottom(border);
+    m_wizard->setPaperBorderBottom(border);
 }
 
 void MainWindow::setPaperBorderLeft(double border)
 {
-    centralwidget->setPaperBorderLeft(border);
+    m_wizard->setPaperBorderLeft(border);
 }
 
 void MainWindow::setCustomPaperSize(const QSizeF &size)
 {
-    centralwidget->setCustomPaperSize(size);
+    m_wizard->setCustomPaperSize(size);
 }
 
 void MainWindow::setUseCustomPaperSize(bool useIt)
 {
-    centralwidget->setUseCustomPaperSize(useIt);
+    m_wizard->setUseCustomPaperSize(useIt);
 }
 
 void MainWindow::setOverlappingWidth(double width)
 {
-    centralwidget->setOverlappingWidth(width);
+    m_wizard->setOverlappingWidth(width);
 }
 
 void MainWindow::setOverlappingHeight(double height)
 {
-    centralwidget->setOverlappingHeight(height);
+    m_wizard->setOverlappingHeight(height);
 }
 
 void MainWindow::setOverlappingPosition(Qt::Alignment position)
 {
-    centralwidget->setOverlappingPosition(position);
+    m_wizard->setOverlappingPosition(position);
 }
 
 void MainWindow::setPosterWidthAbsolute(double width)
 {
-    centralwidget->setPosterWidthAbsolute(width);
+    m_wizard->setPosterWidthAbsolute(width);
 }
 
 void MainWindow::setPosterHeightAbsolute(double height)
 {
-    centralwidget->setPosterHeightAbsolute(height);
+    m_wizard->setPosterHeightAbsolute(height);
 }
 
 void MainWindow::setPosterWidthPages(double width)
 {
-    centralwidget->setPosterWidthPages(width);
+    m_wizard->setPosterWidthPages(width);
 }
 
 void MainWindow::setPosterHeightPages(double height)
 {
-    centralwidget->setPosterHeightPages(height);
+    m_wizard->setPosterHeightPages(height);
 }
 
 void MainWindow::setPosterSizePercentual(double percent)
 {
-    centralwidget->setPosterSizePercentual(percent);
+    m_wizard->setPosterSizePercentual(percent);
 }
 
 void MainWindow::setPosterSizeMode(Types::PosterSizeModes mode)
 {
-    centralwidget->setPosterSizeMode(mode);
+    m_wizard->setPosterSizeMode(mode);
 }
 
 void MainWindow::setPosterAlignment(Qt::Alignment alignment)
 {
-    centralwidget->setPosterAlignment(alignment);
+    m_wizard->setPosterAlignment(alignment);
 }
 
 void MainWindow::setLaunchPDFApplication(bool launch)
 {
-    centralwidget->setLaunchPDFApplication(launch);
+    m_wizard->setLaunchPDFApplication(launch);
 }
 
 void MainWindow::updatePreview()
 {
-    centralwidget->updatePreview();
+    m_wizard->updatePreview();
 }
 
 void MainWindow::showImageFileName(const QString &fileName)
 {
-    centralwidget->showImageFileName(fileName);
+    m_wizard->showImageFileName(fileName);
 }
 
 void MainWindow::updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, double verticalDpi, double horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel)
 {
-    centralwidget->updateImageInfoFields(inputImageSizeInPixels, imageSize, verticalDpi, horizontalDpi, colorType, bitsPerPixel);
+    m_wizard->updateImageInfoFields(inputImageSizeInPixels, imageSize, verticalDpi, horizontalDpi, colorType, bitsPerPixel);
 }
 
 void MainWindow::setCurrentTranslation(const QString &translation)
@@ -219,7 +219,7 @@ void MainWindow::setCurrentUnitOfLength(const QString &unit)
             break;
         }
     }
-    centralwidget->setCurrentUnitOfLength(unit);
+    m_wizard->setCurrentUnitOfLength(unit);
 }
 
 void MainWindow::addAboutDialogAction(QAction *action)
@@ -229,32 +229,32 @@ void MainWindow::addAboutDialogAction(QAction *action)
 
 void MainWindow::setPrevButtonEnabled(bool enabled)
 {
-    centralwidget->setPrevButtonEnabled(enabled);
+    m_wizard->setPrevButtonEnabled(enabled);
 }
 
 void MainWindow::setNextButtonEnabled(bool enabled)
 {
-    centralwidget->setNextButtonEnabled(enabled);
+    m_wizard->setNextButtonEnabled(enabled);
 }
 
 void MainWindow::setWizardStep(int step)
 {
-    centralwidget->setWizardStep(step);
+    m_wizard->setWizardStep(step);
 }
 
 void MainWindow::setWizardStepDescription(const QString &number, const QString &description)
 {
-    centralwidget->setWizardStepDescription(number, description);
+    m_wizard->setWizardStepDescription(number, description);
 }
 
 void MainWindow::setPreviewState(const QString &state)
 {
-    centralwidget->setPreviewState(state);
+    m_wizard->setPreviewState(state);
 }
 
 void MainWindow::setPreviewImage(const QImage &image)
 {
-    centralwidget->setPreviewImage(image);
+    m_wizard->setPreviewImage(image);
 }
 
 void MainWindow::showWizardStepHelp(const QString &title, const QString &text)
@@ -319,6 +319,34 @@ void MainWindow::createConnections()
     connect(m_actionAboutQt,                        SIGNAL(triggered()),                SLOT(showAboutQtDialog()));
     connect(m_actionAboutPosteRazor,                SIGNAL(triggered()),                SLOT(showAboutPosteRazorDialog()));
     connect(m_actionPosteRazorManual,               SIGNAL(triggered()),                SIGNAL(manualSignal()));
+
+    connect(m_wizard,                               SIGNAL(paperFormatChanged(const QString&)),                 SIGNAL(paperFormatChanged(const QString&)));
+    connect(m_wizard,                               SIGNAL(useCustomPaperSizeChanged(bool)),                    SIGNAL(useCustomPaperSizeChanged(bool)));
+    connect(m_wizard,                               SIGNAL(paperOrientationChanged(QPrinter::Orientation)),     SIGNAL(paperOrientationChanged(QPrinter::Orientation)));
+    connect(m_wizard,                               SIGNAL(paperCustomWidthChanged(double)),                    SIGNAL(paperCustomWidthChanged(double)));
+    connect(m_wizard,                               SIGNAL(paperCustomHeightChanged(double)),                   SIGNAL(paperCustomHeightChanged(double)));
+    connect(m_wizard,                               SIGNAL(paperBorderTopChanged(double)),                      SIGNAL(paperBorderTopChanged(double)));
+    connect(m_wizard,                               SIGNAL(paperBorderRightChanged(double)),                    SIGNAL(paperBorderRightChanged(double)));
+    connect(m_wizard,                               SIGNAL(paperBorderBottomChanged(double)),                   SIGNAL(paperBorderBottomChanged(double)));
+    connect(m_wizard,                               SIGNAL(paperBorderLeftChanged(double)),                     SIGNAL(paperBorderLeftChanged(double)));
+    connect(m_wizard,                               SIGNAL(overlappingWidthChanged(double)),                    SIGNAL(overlappingWidthChanged(double)));
+    connect(m_wizard,                               SIGNAL(overlappingHeightChanged(double)),                   SIGNAL(overlappingHeightChanged(double)));
+    connect(m_wizard,                               SIGNAL(overlappingPositionChanged(Qt::Alignment)),          SIGNAL(overlappingPositionChanged(Qt::Alignment)));
+    connect(m_wizard,                               SIGNAL(posterWidthAbsoluteChanged(double)),                 SIGNAL(posterWidthAbsoluteChanged(double)));
+    connect(m_wizard,                               SIGNAL(posterHeightAbsoluteChanged(double)),                SIGNAL(posterHeightAbsoluteChanged(double)));
+    connect(m_wizard,                               SIGNAL(posterWidthPagesChanged(double)),                    SIGNAL(posterWidthPagesChanged(double)));
+    connect(m_wizard,                               SIGNAL(posterHeightPagesChanged(double)),                   SIGNAL(posterHeightPagesChanged(double)));
+    connect(m_wizard,                               SIGNAL(posterSizePercentualChanged(double)),                SIGNAL(posterSizePercentualChanged(double)));
+    connect(m_wizard,                               SIGNAL(posterAlignmentChanged(Qt::Alignment)),              SIGNAL(posterAlignmentChanged(Qt::Alignment)));
+    connect(m_wizard,                               SIGNAL(savePosterSelected()),                               SIGNAL(savePosterSelected()));
+    connect(m_wizard,                               SIGNAL(launchPDFApplicationChanged(bool)),                  SIGNAL(launchPDFApplicationChanged(bool)));
+    connect(m_wizard,                               SIGNAL(nextButtonPressed()),                                SIGNAL(nextButtonPressed()));
+    connect(m_wizard,                               SIGNAL(prevButtonPressed()),                                SIGNAL(prevButtonPressed()));
+    connect(m_wizard,                               SIGNAL(wizardStepHelpSignal()),                             SIGNAL(wizardStepHelpSignal()));
+    connect(m_wizard,                               SIGNAL(savePosterSignal()),                                 SIGNAL(savePosterSignal()));
+    connect(m_wizard,                               SIGNAL(loadImageSignal()),                                  SIGNAL(loadImageSignal()));
+    connect(m_wizard,                               SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)));
+    connect(m_wizard,                               SIGNAL(imageLoaded()),                                      SIGNAL(imageLoaded()));
 }
 
 void MainWindow::populateUI()

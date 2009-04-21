@@ -13,8 +13,12 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="Wizard" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_3"/>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <item>
+     <widget class="Wizard" name="m_wizard" native="true"/>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="m_menubar">
    <property name="geometry">
