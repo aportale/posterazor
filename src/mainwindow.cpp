@@ -320,33 +320,38 @@ void MainWindow::createConnections()
     connect(m_actionAboutPosteRazor,                SIGNAL(triggered()),                SLOT(showAboutPosteRazorDialog()));
     connect(m_actionPosteRazorManual,               SIGNAL(triggered()),                SIGNAL(manualSignal()));
 
-    connect(m_wizard,                               SIGNAL(paperFormatChanged(const QString&)),                 SIGNAL(paperFormatChanged(const QString&)));
-    connect(m_wizard,                               SIGNAL(useCustomPaperSizeChanged(bool)),                    SIGNAL(useCustomPaperSizeChanged(bool)));
-    connect(m_wizard,                               SIGNAL(paperOrientationChanged(QPrinter::Orientation)),     SIGNAL(paperOrientationChanged(QPrinter::Orientation)));
-    connect(m_wizard,                               SIGNAL(paperCustomWidthChanged(double)),                    SIGNAL(paperCustomWidthChanged(double)));
-    connect(m_wizard,                               SIGNAL(paperCustomHeightChanged(double)),                   SIGNAL(paperCustomHeightChanged(double)));
-    connect(m_wizard,                               SIGNAL(paperBorderTopChanged(double)),                      SIGNAL(paperBorderTopChanged(double)));
-    connect(m_wizard,                               SIGNAL(paperBorderRightChanged(double)),                    SIGNAL(paperBorderRightChanged(double)));
-    connect(m_wizard,                               SIGNAL(paperBorderBottomChanged(double)),                   SIGNAL(paperBorderBottomChanged(double)));
-    connect(m_wizard,                               SIGNAL(paperBorderLeftChanged(double)),                     SIGNAL(paperBorderLeftChanged(double)));
-    connect(m_wizard,                               SIGNAL(overlappingWidthChanged(double)),                    SIGNAL(overlappingWidthChanged(double)));
-    connect(m_wizard,                               SIGNAL(overlappingHeightChanged(double)),                   SIGNAL(overlappingHeightChanged(double)));
-    connect(m_wizard,                               SIGNAL(overlappingPositionChanged(Qt::Alignment)),          SIGNAL(overlappingPositionChanged(Qt::Alignment)));
-    connect(m_wizard,                               SIGNAL(posterWidthAbsoluteChanged(double)),                 SIGNAL(posterWidthAbsoluteChanged(double)));
-    connect(m_wizard,                               SIGNAL(posterHeightAbsoluteChanged(double)),                SIGNAL(posterHeightAbsoluteChanged(double)));
-    connect(m_wizard,                               SIGNAL(posterWidthPagesChanged(double)),                    SIGNAL(posterWidthPagesChanged(double)));
-    connect(m_wizard,                               SIGNAL(posterHeightPagesChanged(double)),                   SIGNAL(posterHeightPagesChanged(double)));
-    connect(m_wizard,                               SIGNAL(posterSizePercentualChanged(double)),                SIGNAL(posterSizePercentualChanged(double)));
-    connect(m_wizard,                               SIGNAL(posterAlignmentChanged(Qt::Alignment)),              SIGNAL(posterAlignmentChanged(Qt::Alignment)));
-    connect(m_wizard,                               SIGNAL(savePosterSelected()),                               SIGNAL(savePosterSelected()));
-    connect(m_wizard,                               SIGNAL(launchPDFApplicationChanged(bool)),                  SIGNAL(launchPDFApplicationChanged(bool)));
-    connect(m_wizard,                               SIGNAL(nextButtonPressed()),                                SIGNAL(nextButtonPressed()));
-    connect(m_wizard,                               SIGNAL(prevButtonPressed()),                                SIGNAL(prevButtonPressed()));
-    connect(m_wizard,                               SIGNAL(wizardStepHelpSignal()),                             SIGNAL(wizardStepHelpSignal()));
-    connect(m_wizard,                               SIGNAL(savePosterSignal()),                                 SIGNAL(savePosterSignal()));
-    connect(m_wizard,                               SIGNAL(loadImageSignal()),                                  SIGNAL(loadImageSignal()));
-    connect(m_wizard,                               SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)));
-    connect(m_wizard,                               SIGNAL(imageLoaded()),                                      SIGNAL(imageLoaded()));
+    static const char* const relayedSignals[] = {
+        SIGNAL(paperFormatChanged(const QString&)),
+        SIGNAL(useCustomPaperSizeChanged(bool)),
+        SIGNAL(paperOrientationChanged(QPrinter::Orientation)),
+        SIGNAL(paperCustomWidthChanged(double)),
+        SIGNAL(paperCustomHeightChanged(double)),
+        SIGNAL(paperBorderTopChanged(double)),
+        SIGNAL(paperBorderRightChanged(double)),
+        SIGNAL(paperBorderBottomChanged(double)),
+        SIGNAL(paperBorderLeftChanged(double)),
+        SIGNAL(overlappingWidthChanged(double)),
+        SIGNAL(overlappingHeightChanged(double)),
+        SIGNAL(overlappingPositionChanged(Qt::Alignment)),
+        SIGNAL(posterWidthAbsoluteChanged(double)),
+        SIGNAL(posterHeightAbsoluteChanged(double)),
+        SIGNAL(posterWidthPagesChanged(double)),
+        SIGNAL(posterHeightPagesChanged(double)),
+        SIGNAL(posterSizePercentualChanged(double)),
+        SIGNAL(posterAlignmentChanged(Qt::Alignment)),
+        SIGNAL(savePosterSelected()),
+        SIGNAL(launchPDFApplicationChanged(bool)),
+        SIGNAL(nextButtonPressed()),
+        SIGNAL(prevButtonPressed()),
+        SIGNAL(wizardStepHelpSignal()),
+        SIGNAL(savePosterSignal()),
+        SIGNAL(loadImageSignal()),
+        SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)),
+        SIGNAL(imageLoaded()),
+    };
+    static const int relayedSignalsCount = sizeof(relayedSignals) / sizeof(relayedSignals[0]);
+    for (int i = 0; i < relayedSignalsCount; ++i)
+        connect(m_wizard, relayedSignals[i], relayedSignals[i]);
 }
 
 void MainWindow::populateUI()
