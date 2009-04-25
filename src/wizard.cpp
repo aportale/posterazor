@@ -78,6 +78,13 @@ Wizard::Wizard(QWidget *parent)
     retranslateUi();
 }
 
+void Wizard::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::LanguageChange)
+        retranslateUi();
+    QWidget::changeEvent(event);
+}
+
 void Wizard::retranslateUi()
 {
     m_imageInfoGroup->setTitle(                     QCoreApplication::translate("Main window", "Image Informations"));
@@ -316,6 +323,23 @@ void Wizard::setPreviewState(const QString &state)
         actualState.append(" overlapped");
     }
     m_paintCanvas->setState(actualState);
+}
+
+void Wizard::showWizardStepHelp(const QString &title, const QString &text)
+{
+    QMessageBox box(this);
+    box.setWindowTitle(title);
+    QString helpText = text;
+#if defined(Q_WS_MAC)
+    // Hack. Since QMessageBoxPrivate sets the whole font to bold on Q_WS_MAC (no matter which style),
+    // we put emphasis on the key words by setting them to italic and into single quotes.
+    helpText.replace("<b>", "<i>'");
+    helpText.replace("</b>", "'</i>");
+#endif
+    box.setText(helpText);
+    box.setTextFormat(Qt::RichText);
+    box.addButton(QMessageBox::Ok);
+    box.exec();
 }
 
 void Wizard::setPreviewImage(const QImage &image)

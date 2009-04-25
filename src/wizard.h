@@ -34,6 +34,9 @@ class Wizard : public QWidget, private Ui::Wizard
 public:
     Wizard(QWidget *parent = 0);
 
+    void changeEvent(QEvent *event);
+
+public slots:
     void retranslateUi();
     void retranslateUiWithDimensionUnit();
     void setPaperFormat(const QString &format);
@@ -59,8 +62,6 @@ public:
     void showImageFileName(const QString &fileName);
     void updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, double verticalDpi, double horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel);
     void setCurrentUnitOfLength(const QString &unit);
-
-public slots:
     void setPreviewImage(const QImage &image);
     void setPrevButtonEnabled(bool enabled);
     void setNextButtonEnabled(bool enabled);
@@ -68,6 +69,7 @@ public slots:
     void setWizardStep(int step);
     void setWizardStepDescription(const QString &number, const QString &description);
     void setPreviewState(const QString &state);
+    void showWizardStepHelp(const QString &title, const QString &text);
 
 private:
     QString m_currentUnitOfLength;
