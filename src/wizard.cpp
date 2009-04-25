@@ -285,12 +285,17 @@ void Wizard::setCurrentUnitOfLength(const QString &unit)
 
 void Wizard::setPrevButtonEnabled(bool enabled)
 {
-    m_stepPrevButton->setDisabled(!enabled);
+    m_stepPrevButton->setEnabled(enabled);
 }
 
 void Wizard::setNextButtonEnabled(bool enabled)
 {
-    m_stepNextButton->setDisabled(!enabled);
+    m_stepNextButton->setEnabled(enabled);
+}
+
+void Wizard::setPosterSavingEnabled(bool enabled)
+{
+    m_savePosterButton->setEnabled(enabled);
 }
 
 void Wizard::setWizardStep(int step)

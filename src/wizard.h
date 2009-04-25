@@ -64,6 +64,7 @@ public slots:
     void setPreviewImage(const QImage &image);
     void setPrevButtonEnabled(bool enabled);
     void setNextButtonEnabled(bool enabled);
+    void setPosterSavingEnabled(bool enabled);
     void setWizardStep(int step);
     void setWizardStepDescription(const QString &number, const QString &description);
     void setPreviewState(const QString &state);
