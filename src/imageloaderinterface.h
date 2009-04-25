@@ -33,7 +33,7 @@ class PainterInterface;
 class ImageLoaderInterface
 {
 public:
-    virtual ~ImageLoaderInterface() {};
+    virtual ~ImageLoaderInterface() {}
 
     virtual bool loadInputImage(const QString &imageFileName, QString &errorMessage) = 0;
     virtual bool isImageLoaded() const = 0;
