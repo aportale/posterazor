@@ -121,6 +121,11 @@ Controller::Controller(PosteRazorCore *posteRazorCore, QWidget *view, QObject *p
     updateDialog();
     setDialogPosterSizeMode();
 
+    if (m_posteRazorCore->isImageLoaded()) {
+        m_posteRazorCore->createPreviewImage();
+        m_wizardController->handleImageLoaded();
+    }
+
     m_translator = new QTranslator(this);
     loadTranslation(QString());
 }
