@@ -87,8 +87,6 @@ void MainWindow::retranslateUi()
     m_actionExit->setText(                          QCoreApplication::translate("Main window", "E&xit"));
     m_menuFile->setTitle(                           QCoreApplication::translate("Main window", "&File"));
     m_menuSettings->setTitle(                       QCoreApplication::translate("Main window", "&Settings"));
-
-    m_wizard->retranslateUi();
 }
 
 void MainWindow::setPaperFormat(const QString &format)
