@@ -39,6 +39,8 @@ public:
     void retranslateUi();
     void retranslateUiWithDimensionUnit();
     void changeEvent(QEvent *event);
+
+public slots:
     void setPaperFormat(const QString &format);
     void setPaperOrientation(QPrinter::Orientation orientation);
     void setPaperBorderTop(double border);
@@ -66,11 +68,10 @@ public:
     void addAboutDialogAction(QAction *action);
     void readSettings(const QSettings *settings);
     void writeSettings(QSettings *settings) const;
-
-public slots:
     void setPreviewImage(const QImage &image);
     void setPrevButtonEnabled(bool enabled);
     void setNextButtonEnabled(bool enabled);
+    void setPosterSavingEnabled(bool enabled);
     void setWizardStep(int step);
     void setWizardStepDescription(const QString &number, const QString &description);
     void setPreviewState(const QString &state);

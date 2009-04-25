@@ -24,10 +24,10 @@
 #define CONTROLLER_H
 
 #include <QSettings>
+#include <QAction>
 #include "types.h"
 
 class PosteRazorCore;
-class MainWindow;
 class WizardController;
 class QTranslator;
 
@@ -36,7 +36,7 @@ class Controller: public QObject
     Q_OBJECT
 
 public:
-    Controller(PosteRazorCore *posteRazorCore, MainWindow *mainWindow, QObject *parent = 0);
+    Controller(PosteRazorCore *posteRazorCore, QWidget *view, QObject *parent = 0);
 
     void updateDialog();
     void updatePreview();
@@ -81,12 +81,42 @@ signals:
         double imageHeight, Types::UnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi,
         Types::ColorTypes colorType, int bitsPerPixel) const;
 
+    /* Privately used signals */
+    void setPaperFormatSignal(const QString &format);
+    void setPaperOrientationSignal(QPrinter::Orientation orientation);
+    void setPaperBorderTopSignal(double border);
+    void setPaperBorderRightSignal(double border);
+    void setPaperBorderBottomSignal(double border);
+    void setPaperBorderLeftSignal(double border);
+    void setCustomPaperSizeSignal(const QSizeF &size);
+    void setUseCustomPaperSizeSignal(bool useIt);
+    void setOverlappingWidthSignal(double width);
+    void setOverlappingHeightSignal(double height);
+    void setOverlappingPositionSignal(Qt::Alignment position);
+    void setPosterWidthAbsoluteSignal(double width);
+    void setPosterHeightAbsoluteSignal(double height);
+    void setPosterWidthPagesSignal(double width);
+    void setPosterHeightPagesSignal(double height);
+    void setPosterSizePercentualSignal(double percent);
+    void setPosterSizeModeSignal(Types::PosterSizeModes mode);
+    void setPosterAlignmentSignal(Qt::Alignment alignment);
+    void setLaunchPDFApplicationSignal(bool launch);
+    void updatePreviewSignal();
+    void showImageFileNameSignal(const QString &fileName);
+    void updateImageInfoFieldsSignal(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, double verticalDpi, double horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel);
+    void setCurrentTranslationSignal(const QString &translation);
+    void addAboutDialogActionSignal(QAction *action);
+    void readSettingsSignal(const QSettings *settings);
+    void writeSettingsSignal(QSettings *settings) const;
+    void setCurrentUnitOfLengthSignal(const QString &unit);
+    void setPosterSavingEnabledSignal(bool enabled);
+
 private slots:
     void showExtraAboutDialog();
 
 protected:
     PosteRazorCore *m_posteRazorCore;
-    MainWindow *m_mainWindow;
+    QWidget *m_view;
     bool m_launchPDFApplication;
     WizardController *m_wizardController;
     QTranslator *m_translator;

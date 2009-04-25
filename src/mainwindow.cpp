@@ -30,6 +30,7 @@
 #include <QTextBrowser>
 #include <QMessageBox>
 #include <QSettings>
+#include <QMetaMethod>
 
 const QLatin1String settingsKey_MainWindowGeometry("MainWindowGeometry");
 
@@ -86,6 +87,8 @@ void MainWindow::retranslateUi()
     m_actionExit->setText(                          QCoreApplication::translate("Main window", "E&xit"));
     m_menuFile->setTitle(                           QCoreApplication::translate("Main window", "&File"));
     m_menuSettings->setTitle(                       QCoreApplication::translate("Main window", "&Settings"));
+
+    m_wizard->retranslateUi();
 }
 
 void MainWindow::setPaperFormat(const QString &format)
@@ -235,6 +238,12 @@ void MainWindow::setPrevButtonEnabled(bool enabled)
 void MainWindow::setNextButtonEnabled(bool enabled)
 {
     m_wizard->setNextButtonEnabled(enabled);
+}
+
+void MainWindow::setPosterSavingEnabled(bool enabled)
+{
+    m_actionSavePoster->setEnabled(enabled);
+    m_wizard->setPosterSavingEnabled(enabled);
 }
 
 void MainWindow::setWizardStep(int step)
