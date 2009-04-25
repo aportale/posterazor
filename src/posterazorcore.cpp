@@ -159,7 +159,7 @@ bool PosteRazorCore::loadInputImage(const QString &imageFileName, QString &error
 {
     const bool success = m_imageLoader->loadInputImage(imageFileName, errorMessage);
     if (success)
-        createPreviewImage(QSize(1024, 768));
+        createPreviewImage();
     return success;
 }
 
@@ -525,6 +525,11 @@ Types::PosterSizeModes PosteRazorCore::posterSizeMode() const
 void PosteRazorCore::setPosterAlignment(Qt::Alignment alignment)
 {
     m_posterAlignment = alignment;
+}
+
+void PosteRazorCore::createPreviewImage()
+{
+    createPreviewImage(QSize(1024, 768));
 }
 
 Qt::Alignment PosteRazorCore::posterAlignment() const

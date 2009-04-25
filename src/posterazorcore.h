@@ -91,6 +91,7 @@ public:
     void setPosterHeight(Types::PosterSizeModes mode, double height);
     void setPosterSizeMode(Types::PosterSizeModes mode);
     void setPosterAlignment(Qt::Alignment alignment);
+    void createPreviewImage();
 
 public slots:
     void paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVariant &options) const;
