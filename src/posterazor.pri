@@ -11,8 +11,7 @@ SOURCES += \
     posterazorcore.cpp \
     snapspinbox.cpp \
     types.cpp \
-    wizardcontroller.cpp \
-    main.cpp
+    wizardcontroller.cpp
 
 HEADERS += \
     controller.h \
@@ -26,6 +25,14 @@ HEADERS += \
     snapspinbox.h \
     types.h \
     wizardcontroller.h
+
+!contains (DEFINES, FREEIMAGE_LIB) {
+    SOURCES += \
+        imageloaderqt.cpp
+
+    HEADERS += \
+        imageloaderqt.h
+}
 
 FORMS += \
     mainwindow.ui \

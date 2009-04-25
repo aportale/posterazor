@@ -26,6 +26,9 @@ RC_FILE += \
 # Uncomment the following line in order to build PosteRazor with FreeImage
 #DEFINES += FREEIMAGE_LIB
 
+SOURCES += \
+    main.cpp
+
 contains (DEFINES, FREEIMAGE_LIB) {
     SOURCES += \
         imageloaderfreeimage.cpp
@@ -45,12 +48,6 @@ contains (DEFINES, FREEIMAGE_LIB) {
     unix:LIBS += \
         -lfreeimage
 } else {
-    SOURCES += \
-        imageloaderqt.cpp
-
-    HEADERS += \
-        imageloaderqt.h
-
     contains(CONFIG, static) {
         QTPLUGIN += \
             qgif \
