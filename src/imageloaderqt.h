@@ -49,6 +49,8 @@ public:
     QString libraryName() const;
     QString libraryAboutText() const;
 
+    void setQImage(const QImage &image);
+
 private:
     QImage m_image;
     QString m_imageFileName;

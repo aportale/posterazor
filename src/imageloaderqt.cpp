@@ -192,3 +192,8 @@ QString ImageLoaderQt::libraryAboutText() const
     // Assuming that the host application provides a state-of-the-art "About Qt" message box.
     return QString();
 }
+
+void ImageLoaderQt::setQImage(const QImage &image)
+{
+    m_image = image;
+}
