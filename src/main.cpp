@@ -28,12 +28,9 @@
 #   include "imageloaderqt.h"
 #endif
 
-#include <QSettings>
-#include <QApplication>
-#include <QtDebug>
+#include <QtGui>
 
 #if !defined(QT_SHARED) && !defined(QT_DLL) && !defined(FREEIMAGE_LIB)
-#include <QtPlugin>
 Q_IMPORT_PLUGIN(qgif)
 Q_IMPORT_PLUGIN(qjpeg)
 Q_IMPORT_PLUGIN(qtiff)
@@ -54,6 +51,24 @@ int main (int argc, char **argv)
         Q_ASSERT(err == 0);
     }
     return 0;
+#elif 0
+    QImage image(512, 512, QImage::Format_ARGB32);
+    image.fill(Qt::white);
+    QRadialGradient gradient(image.rect().center(), image.width());
+    gradient.setColorAt(0, Qt::black);
+    gradient.setColorAt(1, Qt::red);
+    QPainter p(&image);
+    p.fillRect(image.rect(), gradient);
+
+    ImageLoaderQt imageLoader;
+    imageLoader.setQImage(image);
+    PosteRazorCore posteRazorCore(&imageLoader);
+    Wizard wizard;
+
+    Controller controller(&posteRazorCore, &wizard);
+    controller.setImageLoadingAvailable(false);
+    wizard.show();
+    return a.exec();
 #else
 
     QCoreApplication::setApplicationName("PosteRazor");
