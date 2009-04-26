@@ -58,6 +58,42 @@ WizardController::WizardController(QObject *wizardDialog, QObject *parent)
     updateDialogWizardStep();
 }
 
+void WizardController::setStepAvailable(WizardSteps step, bool available)
+{
+    m_unavaliableSteps.removeAll(step);
+    if (!available) {
+        m_unavaliableSteps.append(step);
+        if (m_wizardStep == step) {
+            m_wizardStep = nextAvailableStep();
+            if (m_wizardStep == step)
+                m_wizardStep = previousAvailableStep();
+        }
+        updateDialogWizardStep();
+    }
+}
+
+WizardController::WizardSteps WizardController::previousAvailableStep()
+{
+    for (int i = m_wizardStep; i > WizardStepInputImage; i--){
+        const WizardSteps newStep = WizardSteps(i - 1);
+        if (!m_unavaliableSteps.contains(newStep))
+            return newStep;
+    }
+
+    return m_wizardStep;
+}
+
+WizardController::WizardSteps WizardController::nextAvailableStep()
+{
+    for (int i = m_wizardStep; i < WizardStepSavePoster; ++i){
+        const WizardSteps newStep = WizardSteps(i + 1);
+        if (!m_unavaliableSteps.contains(newStep))
+            return newStep;
+    }
+
+    return m_wizardStep;
+}
+
 void WizardController::handleImageLoaded()
 {
     m_imageWasLoaded = true;
@@ -73,13 +109,15 @@ void WizardController::showManual()
         "The <b>%2</b> and <b>%3</b> buttons navigate through these steps. The <b>?</b> button opens a help window with an explanation of the current step.\n"
         "All entries and choices are remembered until the next usage of the PosteRazor.",
         "Manual preface. Place holders: %1 = Number of wizard steps, %2 = 'Back', %3 = 'Next' (will be automatically inserted)")
-        .arg(wizardStepsCount())
+        .arg(wizardStepsCount() - m_unavaliableSteps.count())
         .arg(QCoreApplication::translate("Main window", "Back"))
         .arg(QCoreApplication::translate("Main window", "Next"))));
     for (int i = 0; i < wizardStepsEnum().keyCount(); i++) {
         const WizardSteps step = (WizardSteps)wizardStepsEnum().value(i);
-        manual.append(QString(QLatin1String("<h2>%1</h2>")).arg(stepTitle(step)));
-        manual.append(stepHelp(step));
+        if (!m_unavaliableSteps.contains(step)){
+            manual.append(QString(QLatin1String("<h2>%1</h2>")).arg(stepTitle(step)));
+            manual.append(stepHelp(step));
+        }
     }
 
     emit showManualSignal(title, manual);
@@ -93,23 +131,13 @@ void WizardController::showHelpForCurrentStep()
 
 void WizardController::handlePrevButtonPressed()
 {
-    m_wizardStep =
-        m_wizardStep == WizardStepSavePoster?WizardStepPosterSize
-        :m_wizardStep == WizardStepPosterSize?WizardStepOverlapping
-        :m_wizardStep == WizardStepOverlapping?WizardStepPaperSize
-        :/* m_wizardStep == WizardStepPaperSize? */WizardStepInputImage;
-
+    m_wizardStep = previousAvailableStep();
     updateDialogWizardStep();
 }
 
 void WizardController::handleNextButtonPressed()
 {
-    m_wizardStep =
-        m_wizardStep == WizardStepInputImage?WizardStepPaperSize
-        :m_wizardStep == WizardStepPaperSize?WizardStepOverlapping
-        :m_wizardStep == WizardStepOverlapping?WizardStepPosterSize
-        :/* m_wizardStep == WizardStepPosterSize? */WizardStepSavePoster;
-
+    m_wizardStep = nextAvailableStep();
     updateDialogWizardStep();
 }
 
@@ -123,9 +151,9 @@ void WizardController::updateDialogWizardStep()
         :m_wizardStep == WizardStepPosterSize?QLatin1String("poster")
         :QLatin1String("poster")
     );
-    emit prevButtonEnabled(m_wizardStep != WizardStepInputImage);
+    emit prevButtonEnabled(m_wizardStep != previousAvailableStep());
     emit nextButtonEnabled(
-        m_wizardStep != WizardStepSavePoster
+        m_wizardStep != nextAvailableStep()
         && m_imageWasLoaded
     );
     updateDialogWizardStepDescription();
@@ -136,9 +164,16 @@ void WizardController::updateDialogWizardStepDescription()
     emit wizardStepDescriptionChanged(stepXofYString(m_wizardStep), stepTitle(m_wizardStep));
 }
 
-QString WizardController::stepXofYString(WizardSteps step)
+QString WizardController::stepXofYString(WizardSteps step) const
 {
-    return QCoreApplication::translate("Help", "Step %1 of %2:").arg((int)step + 1).arg(wizardStepsCount());
+    int effectiveStep = step;
+    for (int i = 0; i < step; ++i)
+        if (m_unavaliableSteps.contains(WizardSteps(i)))
+            effectiveStep--;
+    return
+        QCoreApplication::translate("Help", "Step %1 of %2:")
+        .arg(effectiveStep + 1)
+        .arg(wizardStepsCount() - m_unavaliableSteps.count());
 }
 
 QString WizardController::stepTitle(WizardSteps step)

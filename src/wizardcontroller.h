@@ -41,16 +41,20 @@ public:
 
     WizardController(QObject *wizardDialog, QObject *parent = 0);
 
+    void setStepAvailable(WizardSteps step, bool available);
+    WizardSteps previousAvailableStep();
+    WizardSteps nextAvailableStep();
+
 public slots:
     void showManual();
     void showHelpForCurrentStep();
     void updateDialogWizardStepDescription();
+    void handleImageLoaded();
 
 private slots:
     void updateDialogWizardStep();
     void handlePrevButtonPressed();
     void handleNextButtonPressed();
-    void handleImageLoaded();
 
 signals:
     void wizardStepChanged(int step) const;
@@ -64,8 +68,9 @@ signals:
 private:
     WizardSteps m_wizardStep;
     bool m_imageWasLoaded;
+    QList<WizardSteps> m_unavaliableSteps;
 
-    static QString stepXofYString(WizardSteps step);
+    QString stepXofYString(WizardSteps step) const;
     static QString stepTitle(WizardSteps step);
     static QString stepHelp(WizardSteps step);
 };
