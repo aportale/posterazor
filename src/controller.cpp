@@ -531,6 +531,11 @@ void Controller::openPosteRazorWebsite()
     QDesktopServices::openUrl(QCoreApplication::translate("Help", "http://posterazor.sourceforge.net/", "Only translate, if the website has this language."));
 }
 
+void Controller::setImageLoadingAvailable(bool available)
+{
+    m_wizardController->setStepAvailable(WizardController::WizardStepInputImage, available);
+}
+
 void Controller::showExtraAboutDialog()
 {
     const QString title = QLatin1String("About ") + m_posteRazorCore->imageIOLibraryName();

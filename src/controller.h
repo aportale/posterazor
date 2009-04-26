@@ -73,6 +73,7 @@ public slots:
     void loadTranslation(const QString &localeName);
     void setUnitOfLength(const QString &unit);
     void openPosteRazorWebsite();
+    void setImageLoadingAvailable(bool available);
 
 signals:
     virtual void previewChanged() const;
