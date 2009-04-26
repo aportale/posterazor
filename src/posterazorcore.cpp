@@ -614,9 +614,9 @@ void PosteRazorCore::paintPosterOnCanvasOverlapped(PaintCanvasInterface *paintCa
 {
     const QSizeF canvasSize = paintCanvas->size();
     QSizeF pagePrintableAreaSize = printablePaperAreaSize();
-    const QSizeF posteraSizePages = posterSize(Types::PosterSizeModePages);
-    const int pagesHorizontal = (int)ceil(posteraSizePages.width());
-    const int pagesVertical = (int)ceil(posteraSizePages.height());
+    const QSizeF posterSizePages = posterSize(Types::PosterSizeModePages);
+    const int pagesHorizontal = (int)ceil(posterSizePages.width());
+    const int pagesVertical = (int)ceil(posterSizePages.height());
     const QSizeF posterSize(
         pagesHorizontal*pagePrintableAreaSize.width() - (pagesHorizontal-1)*overlappingWidth() + paperBorderLeft() + paperBorderRight(),
         pagesVertical*pagePrintableAreaSize.height() - (pagesVertical-1)*overlappingHeight() + paperBorderTop() + paperBorderBottom()
