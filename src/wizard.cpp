@@ -237,6 +237,32 @@ void Wizard::setPosterSizeMode(Types::PosterSizeModes mode)
     updatePosterSizeGroupsState();
 }
 
+void Wizard::setPosterSizeModeAvailable(Types::PosterSizeModes mode, bool available)
+{
+    QList<QWidget *> widgets;
+    switch (mode) {
+        case Types::PosterSizeModeAbsolute:
+            widgets << m_posterSizeAbsoluteRadioButton
+                    << m_posterAbsoluteWidthInput << m_posterAbsoluteHeightInput
+                    << m_posterAbsoluteWidthLabel << m_posterAbsoluteHeightLabel
+                    << m_posterAbsoluteWidthDimensionUnitLabel << m_posterAbsoluteHeightDimensionUnitLabel;
+        break;
+        case Types::PosterSizeModePages:
+            widgets << m_posterSizeInPagesRadioButton
+                    << m_posterPagesWidthInput << m_posterPagesHeightInput
+                    << m_posterPagesWidthLabel << m_posterPagesHeightLabel
+                    << m_posterPagesWidthDimensionUnitLabel << m_posterPagesHeightDimensionUnitLabel;
+        break;
+        case Types::PosterSizeModePercentual:
+        default:
+            widgets << m_posterSizePercentualRadioButton << m_posterPercentualSizeInput
+                    << m_posterPercentualSizeLabel << m_posterPercentualSizeUnitLabel;
+        break;
+    }
+    foreach (QWidget *widget, widgets)
+        widget->setVisible(available);
+}
+
 void Wizard::setPosterAlignment(Qt::Alignment alignment)
 {
     if (m_alignmentButtons.contains(alignment))
