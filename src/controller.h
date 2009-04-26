@@ -74,6 +74,7 @@ public slots:
     void setUnitOfLength(const QString &unit);
     void openPosteRazorWebsite();
     void setImageLoadingAvailable(bool available);
+    void setPosterSizeModeAvailable(Types::PosterSizeModes mode, bool available);
 
 signals:
     virtual void previewChanged() const;
@@ -111,6 +112,7 @@ signals:
     void writeSettingsSignal(QSettings *settings) const;
     void setCurrentUnitOfLengthSignal(const QString &unit);
     void setPosterSavingEnabledSignal(bool enabled);
+    void setPosterSizeModeAvailableSignal(Types::PosterSizeModes mode, bool available);
 
 private slots:
     void showExtraAboutDialog();

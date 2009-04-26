@@ -101,7 +101,9 @@ Controller::Controller(PosteRazorCore *posteRazorCore, QWidget *view, QObject *p
         {SIGNAL(readSettingsSignal(const QSettings*)),              SLOT(readSettings(const QSettings*))},
         {SIGNAL(writeSettingsSignal(QSettings*)),                   SLOT(writeSettings(QSettings*))},
         {SIGNAL(setCurrentUnitOfLengthSignal(const QString&)),      SLOT(setCurrentUnitOfLength(const QString&))},
-        {SIGNAL(setPosterSavingEnabledSignal(bool)),                SLOT(setPosterSavingEnabled(bool))}
+        {SIGNAL(setPosterSavingEnabledSignal(bool)),                SLOT(setPosterSavingEnabled(bool))},
+        {SIGNAL(setPosterSizeModeAvailableSignal(Types::PosterSizeModes, bool)),
+                                                                    SLOT(setPosterSizeModeAvailable(Types::PosterSizeModes, bool))}
     };
     static const int signalsToViewSlotsConnectionsCount =
         int(sizeof(signalsToViewSlotsConnections)/sizeof(signalsToViewSlotsConnections[0]));
@@ -145,6 +147,11 @@ void Controller::updateDialog()
 void Controller::updatePreview()
 {
     emit updatePreviewSignal();
+}
+
+void Controller::setPosterSizeModeAvailable(Types::PosterSizeModes mode, bool available)
+{
+    emit setPosterSizeModeAvailableSignal(mode, available);
 }
 
 void Controller::setUnitOfLength(Types::UnitsOfLength unit)
