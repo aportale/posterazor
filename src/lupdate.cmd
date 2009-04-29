@@ -1,1 +1,1 @@
-for %%i in (*.ts) do lupdate.exe -no-obsolete controller.cpp wizardcontroller.cpp mainwindow.cpp -ts %%i
+for %%i in (*.ts) do lupdate.exe -no-obsolete -locations none controller.cpp wizardcontroller.cpp mainwindow.cpp wizard.cpp -ts %%i
