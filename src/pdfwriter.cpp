@@ -474,8 +474,8 @@ void PDFWriter::drawImage(const QRectF &rect)
 
 void PDFWriter::drawOverlayText(const QPointF &position, int flags, int size, const QString &text)
 {
-    Q_UNUSED(position);
-    Q_UNUSED(flags);
-    Q_UNUSED(size);
-    Q_UNUSED(text);
+    Q_UNUSED(position)
+    Q_UNUSED(flags)
+    Q_UNUSED(size)
+    Q_UNUSED(text)
 }
