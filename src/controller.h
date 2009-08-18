@@ -116,6 +116,7 @@ signals:
 
 private slots:
     void showExtraAboutDialog();
+    void imageSuffixSupported(const QString &suffix, bool &outIsSupported) const;
 
 protected:
     PosteRazorCore *m_posteRazorCore;

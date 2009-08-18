@@ -39,6 +39,8 @@ public:
     void retranslateUi();
     void retranslateUiWithDimensionUnit();
     void changeEvent(QEvent *event);
+    void dragEnterEvent(QDragEnterEvent *event);
+    void dropEvent(QDropEvent *event);
 
 public slots:
     void setPaperFormat(const QString &format);
@@ -114,11 +116,13 @@ signals:
     void manualSignal() const;
     void savePosterSignal() const;
     void loadImageSignal() const;
+    void loadImageSignal(const QString &fileName) const;
     void needsPaint(PaintCanvasInterface *paintDevice, const QVariant &options) const;
     void imageLoaded() const;
     void translationChanged(const QString &localeName = QString()) const;
     void unitOfLengthChanged(const QString &unit) const;
     void openPosteRazorWebsiteSignal() const;
+    void imageSuffixSupportedSignal(const QString &suffix, bool &outIsSupported) const;
 
 private slots:
     void handleTranslationAction(QAction *action) const;

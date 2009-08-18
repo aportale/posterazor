@@ -31,6 +31,8 @@
 #include <QMessageBox>
 #include <QSettings>
 #include <QMetaMethod>
+#include <QDragEnterEvent>
+#include <QDropEvent>
 
 const QLatin1String settingsKey_MainWindowGeometry("MainWindowGeometry");
 
@@ -66,6 +68,8 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
     createConnections();
     populateUI();
     retranslateUi();
+
+    setAcceptDrops(true);
 }
 
 void MainWindow::changeEvent(QEvent *event)
@@ -73,6 +77,25 @@ void MainWindow::changeEvent(QEvent *event)
     if (event->type() == QEvent::LanguageChange)
         retranslateUi();
     QMainWindow::changeEvent(event);
+}
+
+void MainWindow::dragEnterEvent(QDragEnterEvent *event)
+{
+    const QMimeData *mimeData = event->mimeData();
+    if (mimeData->hasUrls()) {
+        const QUrl url = mimeData->urls().first();
+        const QString localFile = url.toLocalFile();
+        const QString fileSuffix = QFileInfo(localFile).suffix();
+        bool suffixIsSupported = false;
+        emit imageSuffixSupportedSignal(fileSuffix, suffixIsSupported);
+        if (suffixIsSupported)
+            event->acceptProposedAction();
+    }
+}
+
+void MainWindow::dropEvent(QDropEvent *event)
+{
+    emit loadImageSignal(event->mimeData()->urls().first().toLocalFile());
 }
 
 void MainWindow::retranslateUi()

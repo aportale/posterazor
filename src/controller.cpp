@@ -62,10 +62,12 @@ Controller::Controller(PosteRazorCore *posteRazorCore, QWidget *view, QObject *p
     connect(m_view, SIGNAL(savePosterSignal()), SLOT(savePoster()));
     connect(m_view, SIGNAL(launchPDFApplicationChanged(bool)), SLOT(setLaunchPDFApplication(bool)));
     connect(m_view, SIGNAL(loadImageSignal()), SLOT(loadInputImage()));
+    connect(m_view, SIGNAL(loadImageSignal(const QString&)), SLOT(loadInputImage(const QString&)));
     connect(m_view, SIGNAL(translationChanged(const QString&)), SLOT(loadTranslation(const QString&)));
     connect(m_view, SIGNAL(unitOfLengthChanged(const QString&)), SLOT(setUnitOfLength(const QString&)));
     connect(m_view, SIGNAL(openPosteRazorWebsiteSignal()), SLOT(openPosteRazorWebsite()));
     connect(m_view, SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), m_posteRazorCore, SLOT(paintOnCanvas(PaintCanvasInterface*, const QVariant&)));
+    connect(m_view, SIGNAL(imageSuffixSupportedSignal(const QString &, bool &)), SLOT(imageSuffixSupported(const QString &, bool &)));
     connect(m_posteRazorCore, SIGNAL(previewImageChanged(const QImage&)), m_view, SLOT(setPreviewImage(const QImage&)));
 
     static const struct {
@@ -552,4 +554,16 @@ void Controller::showExtraAboutDialog()
             .arg(title)
             .arg(Types::newlineToParagraph(m_posteRazorCore->imageIOLibraryAboutText()))
     );
+}
+
+void Controller::imageSuffixSupported(const QString &suffix, bool &outIsSupported) const
+{
+    outIsSupported = false;
+    const QVector<QPair<QStringList, QString> > &formats = m_posteRazorCore->imageFormats();
+    for (int i = 0; i < formats.count(); i++) {
+        if (formats.at(i).first.contains(suffix, Qt::CaseInsensitive)) {
+            outIsSupported = true;
+            break;
+        }
+    }
 }
