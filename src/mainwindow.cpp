@@ -401,7 +401,7 @@ void MainWindow::populateUI()
     QActionGroup *translationActions = new QActionGroup(m_menuSettings);
     connect (translationActions, SIGNAL(triggered(QAction*)), SLOT(handleTranslationAction(QAction*)));
     translationActions->setExclusive(true);
-    QDir translationDir(":/Translations/");
+    const QDir translationDir(":/Translations/");
     foreach (const QFileInfo &translation, translationDir.entryInfoList(QDir::Files)) {
         QTranslator translator;
         translator.load(translation.absoluteFilePath());
