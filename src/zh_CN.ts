@@ -266,7 +266,7 @@ It is an open source program which depends on other open source projects. The Po
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished">边界</translation>
+        <translation type="unfinished">返回</translation>
     </message>
     <message>
         <source>Save the poster</source>
