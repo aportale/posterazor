@@ -24,9 +24,7 @@
 #define IMAGELOADERINTERFACE_H
 
 #include "types.h"
-#include <QRgb>
 #include <QImage>
-#include <QSize>
 
 class PainterInterface;
 

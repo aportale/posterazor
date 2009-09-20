@@ -23,9 +23,8 @@
 #ifndef WIZARD_H
 #define WIZARD_H
 
-#include <QWidget>
 #include "ui_wizard.h"
-#include "posterazorcore.h"
+#include "types.h"
 
 class Wizard : public QWidget, private Ui::Wizard
 {

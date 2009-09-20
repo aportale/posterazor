@@ -23,11 +23,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
 #include "ui_mainwindow.h"
-#include "posterazorcore.h"
 
-class QActionGroup;
+class QSettings;
+class PosteRazorCore;
 
 class MainWindow : public QMainWindow, private Ui::MainWindow
 {

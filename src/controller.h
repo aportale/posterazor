@@ -23,12 +23,13 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include <QSettings>
-#include <QAction>
 #include "types.h"
+#include <QObject>
 
 class PosteRazorCore;
 class WizardController;
+class QAction;
+class QSettings;
 class QTranslator;
 
 class Controller: public QObject

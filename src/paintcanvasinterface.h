@@ -23,7 +23,9 @@
 #ifndef PAINTCANVASINTERFACE_H
 #define PAINTCANVASINTERFACE_H
 
-#include <QVariant>
+#include <QBrush>
+#include <QSizeF>
+#include <QRectF>
 
 class PaintCanvasInterface
 {

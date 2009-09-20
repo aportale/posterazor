@@ -23,9 +23,7 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-#include <QSizeF>
-#include <QHash>
-#include <QString>
+#include <QPair>
 #include <QPrinter>
 
 class Types

@@ -21,8 +21,11 @@
 */
 
 #include "controller.h"
-#include "mainwindow.h"
+#include "posterazorcore.h"
 #include "wizardcontroller.h"
+#include <QAction>
+#include <QCoreApplication>
+#include <QLocale>
 #include <QSettings>
 #include <QFileDialog>
 #include <QMessageBox>
