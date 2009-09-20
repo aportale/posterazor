@@ -112,9 +112,13 @@ Controller::Controller(PosteRazorCore *posteRazorCore, QWidget *view, QObject *p
     };
     static const int signalsToViewSlotsConnectionsCount =
         int(sizeof(signalsToViewSlotsConnections)/sizeof(signalsToViewSlotsConnections[0]));
-    for (int i = 0; i < signalsToViewSlotsConnectionsCount; ++i)
-//        if (m_view->metaObject()->indexOfSlot(signalsToViewSlotsConnections[i].slot) != -1)
+    for (int i = 0; i < signalsToViewSlotsConnectionsCount; ++i) {
+        const QByteArray slot(
+                QMetaObject::normalizedSignature(signalsToViewSlotsConnections[i].slot + 1));
+                // + 1: Remove slot flag '1'
+        if (m_view->metaObject()->indexOfSlot(slot) != -1)
             connect(this, signalsToViewSlotsConnections[i].signal, m_view, signalsToViewSlotsConnections[i].slot);
+    }
 
     m_wizardController = new WizardController(m_view, this);
 
