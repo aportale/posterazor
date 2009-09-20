@@ -23,6 +23,7 @@
 #include "paintcanvas.h"
 #include <QImage>
 #include <QPainter>
+#include <QVariant>
 
 PaintCanvas::PaintCanvas(QWidget *parent)
     : QWidget(parent)
@@ -59,7 +60,7 @@ void PaintCanvas::setImage(const QImage &image)
 
 void PaintCanvas::drawImage(const QRectF &rect)
 {
-    double widthResizeFactor = rect.width()/(double)m_image.width();
+    const double widthResizeFactor = rect.width() / (double)m_image.width();
     m_qPainter->setRenderHint(QPainter::SmoothPixmapTransform, widthResizeFactor < 2.75);
     m_qPainter->drawImage(rect, m_image);
 }
@@ -80,7 +81,7 @@ void PaintCanvas::drawOverlayText(const QPointF &position, int flags, int size, 
     m_qPainter->save();
     m_qPainter->setOpacity(0.70);
     const QColor fontColor(0xeeeeee);
-    QFontMetricsF fontMetrics(font);
+    const QFontMetricsF fontMetrics(font);
     const qreal textWidth = fontMetrics.width(text);
     const QPointF fontOffset(QPointF(-textWidth / 2, fontMetrics.xHeight() * 1.5));
     if (size > 35) {

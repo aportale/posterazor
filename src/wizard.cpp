@@ -22,12 +22,10 @@
 
 #include "wizard.h"
 #include <QSignalMapper>
-#include <QFileDialog>
-#include <QTranslator>
+#include <QFileInfo>
 #include <QtDebug>
 #include <QVBoxLayout>
 #include <QDialogButtonBox>
-#include <QTextBrowser>
 #include <QMessageBox>
 
 Wizard::Wizard(QWidget *parent)

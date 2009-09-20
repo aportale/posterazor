@@ -22,6 +22,7 @@
 
 #include "mainwindow.h"
 #include "controller.h"
+#include "posterazorcore.h"
 #if defined (FREEIMAGE_LIB)
 #   include "imageloaderfreeimage.h"
 #else
