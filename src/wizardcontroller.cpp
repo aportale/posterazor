@@ -178,14 +178,12 @@ QString WizardController::stepXofYString(WizardSteps step) const
 
 QString WizardController::stepTitle(WizardSteps step)
 {
-    QString title;
-    title.append(
+    return
         step == WizardStepInputImage?  QCoreApplication::translate("Help", "Load an input image")
         :step == WizardStepPaperSize?  QCoreApplication::translate("Help", "Printer paper format")
         :step == WizardStepOverlapping?QCoreApplication::translate("Help", "Image tile overlapping")
         :step == WizardStepPosterSize? QCoreApplication::translate("Help", "Final poster size")
-        :                              QCoreApplication::translate("Help", "Save the Poster"));
-    return title;
+        :                              QCoreApplication::translate("Help", "Save the Poster");
 }
 
 QString WizardController::stepHelp(WizardSteps step)

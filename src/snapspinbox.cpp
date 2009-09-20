@@ -23,10 +23,10 @@
 #include "snapspinbox.h"
 
 SnapSpinBox::SnapSpinBox(QWidget *parent)
-:    QDoubleSpinBox(parent)
-,    m_originalValue(0.0)
+    : QDoubleSpinBox(parent)
+    , m_originalValue(.0)
 {
-    connect((const QObject *)lineEdit(), SIGNAL(textEdited(const QString &)), this, SLOT(handleLineEditTextEdited(const QString &)));
+    connect((const QObject *)lineEdit(), SIGNAL(textEdited(const QString &)), SLOT(handleLineEditTextEdited(const QString &)));
 }
 
 QAbstractSpinBox::StepEnabled SnapSpinBox::stepEnabled() const
@@ -52,9 +52,9 @@ void SnapSpinBox::handleLineEditTextEdited(const QString &text)
 
 void SnapSpinBox::stepBy(int steps)
 {
-    qreal increaseValue = (steps > 0)?(steps-.5):(steps+.49999);
-    qreal oldValue = m_originalValue;
-    qreal newValue = qRound(oldValue + increaseValue);
+    const qreal increaseValue = (steps > 0) ? (steps - .5) : (steps + .49999);
+    const qreal oldValue = m_originalValue;
+    const qreal newValue = qRound(oldValue + increaseValue);
 
     if (newValue < 1)
         return;
