@@ -28,18 +28,17 @@ const QHash<Types::UnitsOfLength, QPair<QString, qreal> > &Types::unitsOfLength(
 {
     static QHash<UnitsOfLength, QPair<QString, qreal> > units;
     if (units.empty()) {
-        static const struct
-        {
-            Types::UnitsOfLength unit;
+        static const struct {
+            UnitsOfLength unit;
             QString name;
             qreal cm;
         } unitsOfLength[] = {
-            {Types::UnitOfLengthMeter,      QLatin1String("m"),        100.00},
-            {Types::UnitOfLengthMillimeter, QLatin1String("mm"),         0.10},
-            {Types::UnitOfLengthCentimeter, QLatin1String("cm"),         1.00},
-            {Types::UnitOfLengthInch,       QLatin1String("in"),         2.54},
-            {Types::UnitOfLengthFeet,       QLatin1String("ft"), 2.54 * 12.00},
-            {Types::UnitOfLengthPoints,     QLatin1String("pt"), 2.54 / 72.00}
+            {UnitOfLengthMeter,      QLatin1String("m"),        100.00},
+            {UnitOfLengthMillimeter, QLatin1String("mm"),         0.10},
+            {UnitOfLengthCentimeter, QLatin1String("cm"),         1.00},
+            {UnitOfLengthInch,       QLatin1String("in"),         2.54},
+            {UnitOfLengthFeet,       QLatin1String("ft"), 2.54 * 12.00},
+            {UnitOfLengthPoints,     QLatin1String("pt"), 2.54 / 72.00}
         };
         static const int unitsOfLengthCount = sizeof(unitsOfLength)/sizeof(unitsOfLength[0]);
         for (int i = 0; i < unitsOfLengthCount; i++)
