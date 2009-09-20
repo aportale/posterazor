@@ -46,21 +46,21 @@ public slots:
     void setUnitOfLength(Types::UnitsOfLength unit);
     void setPaperFormat(const QString &format);
     void setPaperOrientation(QPrinter::Orientation orientation);
-    void setPaperBorderTop(double border);
-    void setPaperBorderRight(double border);
-    void setPaperBorderBottom(double border);
-    void setPaperBorderLeft(double border);
-    void setCustomPaperWidth(double width);
-    void setCustomPaperHeight(double height);
+    void setPaperBorderTop(qreal border);
+    void setPaperBorderRight(qreal border);
+    void setPaperBorderBottom(qreal border);
+    void setPaperBorderLeft(qreal border);
+    void setCustomPaperWidth(qreal width);
+    void setCustomPaperHeight(qreal height);
     void setUseCustomPaperSize(bool useIt);
-    void setOverlappingWidth(double width);
-    void setOverlappingHeight(double height);
+    void setOverlappingWidth(qreal width);
+    void setOverlappingHeight(qreal height);
     void setOverlappingPosition(Qt::Alignment position);
-    void setPosterWidthAbsolute(double width);
-    void setPosterHeightAbsolute(double height);
-    void setPosterWidthPages(double width);
-    void setPosterHeightPages(double height);
-    void setPosterSizePercentual(double percent);
+    void setPosterWidthAbsolute(qreal width);
+    void setPosterHeightAbsolute(qreal height);
+    void setPosterWidthPages(qreal width);
+    void setPosterHeightPages(qreal height);
+    void setPosterSizePercentual(qreal percent);
     void setPosterSizeMode(Types::PosterSizeModes mode);
     void setPosterAlignment(Qt::Alignment alignment);
     void setLaunchPDFApplication(bool launch);
@@ -80,33 +80,33 @@ public slots:
 signals:
     void previewChanged() const;
     void imageFileNameChanged(const QString &fileName) const;
-    void imageInfoChanged(int imageWidthInPixels, int imageHeightInPixels, double imageWidth,
-        double imageHeight, Types::UnitsOfLength unitOfLength, double verticalDpi, double horizontalDpi,
+    void imageInfoChanged(int imageWidthInPixels, int imageHeightInPixels, qreal imageWidth,
+        qreal imageHeight, Types::UnitsOfLength unitOfLength, qreal verticalDpi, qreal horizontalDpi,
         Types::ColorTypes colorType, int bitsPerPixel) const;
 
     /* Privately used signals */
     void setPaperFormatSignal(const QString &format);
     void setPaperOrientationSignal(QPrinter::Orientation orientation);
-    void setPaperBorderTopSignal(double border);
-    void setPaperBorderRightSignal(double border);
-    void setPaperBorderBottomSignal(double border);
-    void setPaperBorderLeftSignal(double border);
+    void setPaperBorderTopSignal(qreal border);
+    void setPaperBorderRightSignal(qreal border);
+    void setPaperBorderBottomSignal(qreal border);
+    void setPaperBorderLeftSignal(qreal border);
     void setCustomPaperSizeSignal(const QSizeF &size);
     void setUseCustomPaperSizeSignal(bool useIt);
-    void setOverlappingWidthSignal(double width);
-    void setOverlappingHeightSignal(double height);
+    void setOverlappingWidthSignal(qreal width);
+    void setOverlappingHeightSignal(qreal height);
     void setOverlappingPositionSignal(Qt::Alignment position);
-    void setPosterWidthAbsoluteSignal(double width);
-    void setPosterHeightAbsoluteSignal(double height);
-    void setPosterWidthPagesSignal(double width);
-    void setPosterHeightPagesSignal(double height);
-    void setPosterSizePercentualSignal(double percent);
+    void setPosterWidthAbsoluteSignal(qreal width);
+    void setPosterHeightAbsoluteSignal(qreal height);
+    void setPosterWidthPagesSignal(qreal width);
+    void setPosterHeightPagesSignal(qreal height);
+    void setPosterSizePercentualSignal(qreal percent);
     void setPosterSizeModeSignal(Types::PosterSizeModes mode);
     void setPosterAlignmentSignal(Qt::Alignment alignment);
     void setLaunchPDFApplicationSignal(bool launch);
     void updatePreviewSignal();
     void showImageFileNameSignal(const QString &fileName);
-    void updateImageInfoFieldsSignal(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, double verticalDpi, double horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel);
+    void updateImageInfoFieldsSignal(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, qreal verticalDpi, qreal horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel);
     void setCurrentTranslationSignal(const QString &translation);
     void addAboutDialogActionSignal(QAction *action);
     void readSettingsSignal(const QSettings *settings);

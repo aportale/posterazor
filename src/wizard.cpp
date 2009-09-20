@@ -153,22 +153,22 @@ void Wizard::setPaperOrientation(QPrinter::Orientation orientation)
     )->setChecked(true);
 }
 
-void Wizard::setPaperBorderTop(double border)
+void Wizard::setPaperBorderTop(qreal border)
 {
     m_paperBorderTopInput->setValue(border);
 }
 
-void Wizard::setPaperBorderRight(double border)
+void Wizard::setPaperBorderRight(qreal border)
 {
     m_paperBorderRightInput->setValue(border);
 }
 
-void Wizard::setPaperBorderBottom(double border)
+void Wizard::setPaperBorderBottom(qreal border)
 {
     m_paperBorderBottomInput->setValue(border);
 }
 
-void Wizard::setPaperBorderLeft(double border)
+void Wizard::setPaperBorderLeft(qreal border)
 {
     m_paperBorderLeftInput->setValue(border);
 }
@@ -184,12 +184,12 @@ void Wizard::setUseCustomPaperSize(bool useIt)
     m_paperFormatTypeTabs->setCurrentWidget(useIt?m_paperFormatCustomTab:m_paperFormatStandardTab);
 }
 
-void Wizard::setOverlappingWidth(double width)
+void Wizard::setOverlappingWidth(qreal width)
 {
     m_overlappingWidthInput->setValue(width);
 }
 
-void Wizard::setOverlappingHeight(double height)
+void Wizard::setOverlappingHeight(qreal height)
 {
     m_overlappingHeightInput->setValue(height);
 }
@@ -200,27 +200,27 @@ void Wizard::setOverlappingPosition(Qt::Alignment position)
         m_overlappingButtons.value(position)->setChecked(true);
 }
 
-void Wizard::setPosterWidthAbsolute(double width)
+void Wizard::setPosterWidthAbsolute(qreal width)
 {
     m_posterAbsoluteWidthInput->setValue(width);
 }
 
-void Wizard::setPosterHeightAbsolute(double height)
+void Wizard::setPosterHeightAbsolute(qreal height)
 {
     m_posterAbsoluteHeightInput->setValue(height);
 }
 
-void Wizard::setPosterWidthPages(double width)
+void Wizard::setPosterWidthPages(qreal width)
 {
     m_posterPagesWidthInput->setValue(width);
 }
 
-void Wizard::setPosterHeightPages(double height)
+void Wizard::setPosterHeightPages(qreal height)
 {
     m_posterPagesHeightInput->setValue(height);
 }
 
-void Wizard::setPosterSizePercentual(double percent)
+void Wizard::setPosterSizePercentual(qreal percent)
 {
     m_posterPercentualSizeInput->setValue(percent);
 }
@@ -282,7 +282,7 @@ void Wizard::showImageFileName(const QString &fileName)
     m_inputFileNameLabel->setText(QFileInfo(fileName).fileName());
 }
 
-void Wizard::updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, double verticalDpi, double horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel)
+void Wizard::updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, qreal verticalDpi, qreal horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel)
 {
     Q_UNUSED(horizontalDpi)
 
@@ -395,18 +395,18 @@ void Wizard::createConnections()
     connect(m_paperFormatComboBox,                  SIGNAL(activated(const QString &)), SIGNAL(paperFormatChanged(const QString &)));
     connect(m_paperOrientationPortraitRadioButton,  SIGNAL(clicked()),                  SLOT(handlePaperOrientationPortraitSelected()));
     connect(m_paperOrientationLandscapeRadioButton, SIGNAL(clicked()),                  SLOT(handlePaperOrientationLandscapeSelected()));
-    connect(m_paperCustomWidthSpinner,              SIGNAL(valueEdited(double)),        SIGNAL(paperCustomWidthChanged(double)));
-    connect(m_paperCustomHeightSpinner,             SIGNAL(valueEdited(double)),        SIGNAL(paperCustomHeightChanged(double)));
-    connect(m_paperBorderTopInput,                  SIGNAL(valueEdited(double)),        SIGNAL(paperBorderTopChanged(double)));
-    connect(m_paperBorderRightInput,                SIGNAL(valueEdited(double)),        SIGNAL(paperBorderRightChanged(double)));
-    connect(m_paperBorderBottomInput,               SIGNAL(valueEdited(double)),        SIGNAL(paperBorderBottomChanged(double)));
-    connect(m_paperBorderLeftInput,                 SIGNAL(valueEdited(double)),        SIGNAL(paperBorderLeftChanged(double)));
+    connect(m_paperCustomWidthSpinner,              SIGNAL(valueEdited(qreal)),        SIGNAL(paperCustomWidthChanged(qreal)));
+    connect(m_paperCustomHeightSpinner,             SIGNAL(valueEdited(qreal)),        SIGNAL(paperCustomHeightChanged(qreal)));
+    connect(m_paperBorderTopInput,                  SIGNAL(valueEdited(qreal)),        SIGNAL(paperBorderTopChanged(qreal)));
+    connect(m_paperBorderRightInput,                SIGNAL(valueEdited(qreal)),        SIGNAL(paperBorderRightChanged(qreal)));
+    connect(m_paperBorderBottomInput,               SIGNAL(valueEdited(qreal)),        SIGNAL(paperBorderBottomChanged(qreal)));
+    connect(m_paperBorderLeftInput,                 SIGNAL(valueEdited(qreal)),        SIGNAL(paperBorderLeftChanged(qreal)));
     connect(m_imageLoadButton,                      SIGNAL(clicked()),                  SIGNAL(loadImageSignal()));
     connect(m_posterSizeAbsoluteRadioButton,        SIGNAL(clicked()),                  SLOT(updatePosterSizeGroupsState()));
     connect(m_posterSizeInPagesRadioButton,         SIGNAL(clicked()),                  SLOT(updatePosterSizeGroupsState()));
     connect(m_posterSizePercentualRadioButton,      SIGNAL(clicked()),                  SLOT(updatePosterSizeGroupsState()));
-    connect(m_overlappingWidthInput,                SIGNAL(valueEdited(double)),        SIGNAL(overlappingWidthChanged(double)));
-    connect(m_overlappingHeightInput,               SIGNAL(valueEdited(double)),        SIGNAL(overlappingHeightChanged(double)));
+    connect(m_overlappingWidthInput,                SIGNAL(valueEdited(qreal)),        SIGNAL(overlappingWidthChanged(qreal)));
+    connect(m_overlappingHeightInput,               SIGNAL(valueEdited(qreal)),        SIGNAL(overlappingHeightChanged(qreal)));
     QSignalMapper *overlappingMapper = new QSignalMapper(this);
     foreach (const Qt::Alignment alignment, m_overlappingButtons.keys()) {
         QAbstractButton *sender = m_overlappingButtons.value(alignment);
@@ -414,11 +414,11 @@ void Wizard::createConnections()
         overlappingMapper->setMapping(sender, alignment);
     }
     connect(overlappingMapper, SIGNAL(mapped(int)), SLOT(emitOverlappingPositionChange(int)));
-    connect(m_posterAbsoluteWidthInput,             SIGNAL(valueEdited(double)),        SIGNAL(posterWidthAbsoluteChanged(double)));
-    connect(m_posterAbsoluteHeightInput,            SIGNAL(valueEdited(double)),        SIGNAL(posterHeightAbsoluteChanged(double)));
-    connect(m_posterPagesWidthInput,                SIGNAL(valueEdited(double)),        SIGNAL(posterWidthPagesChanged(double)));
-    connect(m_posterPagesHeightInput,               SIGNAL(valueEdited(double)),        SIGNAL(posterHeightPagesChanged(double)));
-    connect(m_posterPercentualSizeInput,            SIGNAL(valueEdited(double)),        SIGNAL(posterSizePercentualChanged(double)));
+    connect(m_posterAbsoluteWidthInput,             SIGNAL(valueEdited(qreal)),        SIGNAL(posterWidthAbsoluteChanged(qreal)));
+    connect(m_posterAbsoluteHeightInput,            SIGNAL(valueEdited(qreal)),        SIGNAL(posterHeightAbsoluteChanged(qreal)));
+    connect(m_posterPagesWidthInput,                SIGNAL(valueEdited(qreal)),        SIGNAL(posterWidthPagesChanged(qreal)));
+    connect(m_posterPagesHeightInput,               SIGNAL(valueEdited(qreal)),        SIGNAL(posterHeightPagesChanged(qreal)));
+    connect(m_posterPercentualSizeInput,            SIGNAL(valueEdited(qreal)),        SIGNAL(posterSizePercentualChanged(qreal)));
     QSignalMapper *alignmentMapper = new QSignalMapper(this);
     foreach (const Qt::Alignment alignment, m_alignmentButtons.keys()) {
         QAbstractButton *sender = m_alignmentButtons.value(alignment);

@@ -59,12 +59,12 @@ QSize ImageLoaderQt::sizePixels() const
     return m_image.size();
 }
 
-double ImageLoaderQt::horizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
+qreal ImageLoaderQt::horizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
 {
     return m_image.logicalDpiX() / Types::convertBetweenUnitsOfLength(1, Types::UnitOfLengthInch, unit);
 }
 
-double ImageLoaderQt::verticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
+qreal ImageLoaderQt::verticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
 {
     return m_image.logicalDpiY() / Types::convertBetweenUnitsOfLength(1, Types::UnitOfLengthInch, unit);
 }

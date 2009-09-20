@@ -149,12 +149,12 @@ QSize ImageLoaderFreeImage::sizePixels() const
     return QSize(m_widthPixels, m_heightPixels);
 }
 
-double ImageLoaderFreeImage::horizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
+qreal ImageLoaderFreeImage::horizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
 {
     return m_horizontalDotsPerMeter / Types::convertBetweenUnitsOfLength(1, Types::UnitOfLengthMeter, unit);
 }
 
-double ImageLoaderFreeImage::verticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
+qreal ImageLoaderFreeImage::verticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const
 {
     return m_verticalDotsPerMeter / Types::convertBetweenUnitsOfLength(1, Types::UnitOfLengthMeter, unit);
 }

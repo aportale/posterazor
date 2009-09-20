@@ -83,7 +83,7 @@ unsigned int PosteRazorCore::imageBitsPerLineCount(int widthPixels, int bitPerPi
 
 unsigned int PosteRazorCore::imageBytesPerLineCount(int widthPixels, int bitPerPixel)
 {
-    return (int)(ceil((double)imageBitsPerLineCount(widthPixels, bitPerPixel)/8.0f));
+    return (int)(ceil((qreal)imageBitsPerLineCount(widthPixels, bitPerPixel) / (qreal)8));
 }
 
 unsigned int PosteRazorCore::imageBytesCount(const QSize &size, int bitPerPixel)
@@ -135,7 +135,7 @@ void PosteRazorCore::writeSettings(QSettings *settings) const
     settings->setValue(settingsKey_UnitOfLength, (int)m_unitOfLength);
 }
 
-double PosteRazorCore::convertDistanceToCm(double distance) const
+qreal PosteRazorCore::convertDistanceToCm(qreal distance) const
 {
     return Types::convertBetweenUnitsOfLength(distance, unitOfLength(), Types::UnitOfLengthCentimeter);
 }
@@ -145,7 +145,7 @@ QSizeF PosteRazorCore::convertSizeToCm(const QSizeF &size) const
     return QSizeF(convertDistanceToCm(size.width()), convertDistanceToCm(size.height()));
 }
 
-double PosteRazorCore::convertCmToDistance(double cm) const
+qreal PosteRazorCore::convertCmToDistance(qreal cm) const
 {
     return Types::convertBetweenUnitsOfLength(cm, Types::UnitOfLengthCentimeter, unitOfLength());
 }
@@ -188,12 +188,12 @@ QSize PosteRazorCore::inputImageSizePixels() const
     return m_imageLoader->sizePixels();
 }
 
-double PosteRazorCore::inputImageHorizontalDpi() const
+qreal PosteRazorCore::inputImageHorizontalDpi() const
 {
     return m_imageLoader->horizontalDotsPerUnitOfLength(Types::UnitOfLengthInch);
 }
 
-double PosteRazorCore::inputImageVerticalDpi() const
+qreal PosteRazorCore::inputImageVerticalDpi() const
 {
     return m_imageLoader->verticalDotsPerUnitOfLength(Types::UnitOfLengthInch);
 }
@@ -233,22 +233,22 @@ void PosteRazorCore::setPaperOrientation(QPrinter::Orientation orientation)
     m_paperOrientation = orientation;
 }
 
-void PosteRazorCore::setPaperBorderTop(double border)
+void PosteRazorCore::setPaperBorderTop(qreal border)
 {
     m_paperBorderTop = convertDistanceToCm(border);
 }
 
-void PosteRazorCore::setPaperBorderRight(double border)
+void PosteRazorCore::setPaperBorderRight(qreal border)
 {
     m_paperBorderRight = convertDistanceToCm(border);
 }
 
-void PosteRazorCore::setPaperBorderBottom(double border)
+void PosteRazorCore::setPaperBorderBottom(qreal border)
 {
     m_paperBorderBottom = convertDistanceToCm(border);
 }
 
-void PosteRazorCore::setPaperBorderLeft(double border)
+void PosteRazorCore::setPaperBorderLeft(qreal border)
 {
     m_paperBorderLeft = convertDistanceToCm(border);
 }
@@ -263,52 +263,52 @@ QPrinter::Orientation PosteRazorCore::paperOrientation() const
     return m_paperOrientation;
 }
 
-double PosteRazorCore::paperBorderTop() const
+qreal PosteRazorCore::paperBorderTop() const
 {
     return qBound(.0, convertCmToDistance(m_paperBorderTop), maximalHorizontalPaperBorder());
 }
 
-double PosteRazorCore::paperBorderRight() const
+qreal PosteRazorCore::paperBorderRight() const
 {
     return qBound(.0, convertCmToDistance(m_paperBorderRight), maximalVerticalPaperBorder());
 }
 
-double PosteRazorCore::paperBorderBottom() const
+qreal PosteRazorCore::paperBorderBottom() const
 {
     return qBound(.0, convertCmToDistance(m_paperBorderBottom), maximalHorizontalPaperBorder());
 }
 
-double PosteRazorCore::paperBorderLeft() const
+qreal PosteRazorCore::paperBorderLeft() const
 {
     return qBound(.0, convertCmToDistance(m_paperBorderLeft), maximalVerticalPaperBorder());
 }
 
-double PosteRazorCore::maximalVerticalPaperBorder() const
+qreal PosteRazorCore::maximalVerticalPaperBorder() const
 {
     return paperSize().width() / 2.0 - convertCmToDistance(1.0);
 }
 
-double PosteRazorCore::maximalHorizontalPaperBorder() const
+qreal PosteRazorCore::maximalHorizontalPaperBorder() const
 {
     return paperSize().height() / 2.0 - convertCmToDistance(1.0);
 }
 
-void PosteRazorCore::setCustomPaperWidth(double width)
+void PosteRazorCore::setCustomPaperWidth(qreal width)
 {
     m_customPaperWidth = convertDistanceToCm(width);
 }
 
-void PosteRazorCore::setCustomPaperHeight(double height)
+void PosteRazorCore::setCustomPaperHeight(qreal height)
 {
     m_customPaperHeight = convertDistanceToCm(height);
 }
 
 QSizeF PosteRazorCore::customPaperSize() const
 {
-    const double minimalPaperWidth = 4.0;
-    const double minimalPaperHeight = minimalPaperWidth;
-    const double maximalPaperWidth = 500.0; // 5 meter = maximum of a PDF page.
-    const double maximalPaperHeight = maximalPaperWidth;
+    const qreal minimalPaperWidth = 4.0;
+    const qreal minimalPaperHeight = minimalPaperWidth;
+    const qreal maximalPaperWidth = 500.0; // 5 meter = maximum of a PDF page.
+    const qreal maximalPaperHeight = maximalPaperWidth;
     return QSizeF(
         convertCmToDistance(qBound(minimalPaperWidth, m_customPaperWidth, maximalPaperWidth)),
         convertCmToDistance(qBound(minimalPaperHeight, m_customPaperHeight, maximalPaperHeight))
@@ -339,16 +339,16 @@ QSizeF PosteRazorCore::printablePaperAreaSize() const
     );
 }
 
-double PosteRazorCore::convertBetweenAbsoluteAndPagesPosterDimension(double dimension, bool pagesToAbsolute, bool width) const
+qreal PosteRazorCore::convertBetweenAbsoluteAndPagesPosterDimension(qreal dimension, bool pagesToAbsolute, bool width) const
 {
-    double posterDimension = dimension;
+    qreal posterDimension = dimension;
 
     const QSizeF printablePaperAreaSize = this->printablePaperAreaSize();
-    const double printablePaperAreaDimension = convertDistanceToCm(width?printablePaperAreaSize.width():printablePaperAreaSize.height());
-    const double overlappingDimension = convertDistanceToCm(width?overlappingWidth():overlappingHeight());
+    const qreal printablePaperAreaDimension = convertDistanceToCm(width?printablePaperAreaSize.width():printablePaperAreaSize.height());
+    const qreal overlappingDimension = convertDistanceToCm(width?overlappingWidth():overlappingHeight());
 
     if (pagesToAbsolute) {
-        double posterDimensionAbsolute = 0;
+        qreal posterDimensionAbsolute = 0;
         if (posterDimension >= 1.0) {
             posterDimension -= 1.0;
             posterDimensionAbsolute += printablePaperAreaDimension;
@@ -362,7 +362,7 @@ double PosteRazorCore::convertBetweenAbsoluteAndPagesPosterDimension(double dime
 
         posterDimension = posterDimensionAbsolute;
     } else {
-        double posterDimensionPages = 0;
+        qreal posterDimensionPages = 0;
         if (posterDimension >= printablePaperAreaDimension) {
             posterDimension -= printablePaperAreaDimension;
             posterDimensionPages += 1.0;
@@ -382,21 +382,21 @@ double PosteRazorCore::convertBetweenAbsoluteAndPagesPosterDimension(double dime
 
 // Since m_posterDimension holds only height or width of the poster,
 // here we calculate the other dimension considering the aspect ratio.
-double PosteRazorCore::calculateOtherPosterDimension() const
+qreal PosteRazorCore::calculateOtherPosterDimension() const
 {
-    double otherDimension = 0;
+    qreal otherDimension = 0;
 
     if (posterSizeMode() != Types::PosterSizeModePercentual) {
         const QSizeF inputImageSize = this->inputImageSize();
-        const double sourceReference = m_posterDimensionIsWidth?inputImageSize.width():inputImageSize.height();
-        const double targetReference = m_posterDimensionIsWidth?inputImageSize.height():inputImageSize.width();
-        const double aspectRatio = sourceReference/targetReference;
+        const qreal sourceReference = m_posterDimensionIsWidth?inputImageSize.width():inputImageSize.height();
+        const qreal targetReference = m_posterDimensionIsWidth?inputImageSize.height():inputImageSize.width();
+        const qreal aspectRatio = sourceReference/targetReference;
 
         if (posterSizeMode() != Types::PosterSizeModePages) {
             otherDimension = m_posterDimension / aspectRatio;
         } else {
-            const double sourceAbsolute = convertBetweenAbsoluteAndPagesPosterDimension(m_posterDimension, true, m_posterDimensionIsWidth);
-            const double targetAbsolute = sourceAbsolute/aspectRatio;
+            const qreal sourceAbsolute = convertBetweenAbsoluteAndPagesPosterDimension(m_posterDimension, true, m_posterDimensionIsWidth);
+            const qreal targetAbsolute = sourceAbsolute/aspectRatio;
             otherDimension = convertBetweenAbsoluteAndPagesPosterDimension(targetAbsolute, false, !m_posterDimensionIsWidth);
         }
     }
@@ -406,7 +406,7 @@ double PosteRazorCore::calculateOtherPosterDimension() const
     return otherDimension;
 }
 
-void PosteRazorCore::setPosterDimension(Types::PosterSizeModes mode, double dimension, bool dimensionIsWidth)
+void PosteRazorCore::setPosterDimension(Types::PosterSizeModes mode, qreal dimension, bool dimensionIsWidth)
 {
     setPosterSizeMode(mode);
 
@@ -417,32 +417,32 @@ void PosteRazorCore::setPosterDimension(Types::PosterSizeModes mode, double dime
     m_posterDimensionIsWidth = dimensionIsWidth;
 }
 
-void PosteRazorCore::setOverlappingWidth(double width)
+void PosteRazorCore::setOverlappingWidth(qreal width)
 {
     m_overlappingWidth = convertDistanceToCm(width);
 }
 
-void PosteRazorCore::setOverlappingHeight(double height)
+void PosteRazorCore::setOverlappingHeight(qreal height)
 {
     m_overlappingHeight = convertDistanceToCm(height);
 }
 
-double PosteRazorCore::overlappingWidth() const
+qreal PosteRazorCore::overlappingWidth() const
 {
     return qBound(.0, convertCmToDistance(m_overlappingWidth), maximalOverLappingWidth());
 }
 
-double PosteRazorCore::overlappingHeight() const
+qreal PosteRazorCore::overlappingHeight() const
 {
     return qBound(.0, convertCmToDistance(m_overlappingHeight), maximalOverLappingHeight());
 }
 
-double PosteRazorCore::maximalOverLappingWidth() const
+qreal PosteRazorCore::maximalOverLappingWidth() const
 {
     return paperSize().width() - paperBorderLeft() - paperBorderRight() - convertCmToDistance(1.0);
 }
 
-double PosteRazorCore::maximalOverLappingHeight() const
+qreal PosteRazorCore::maximalOverLappingHeight() const
 {
     return paperSize().height() - paperBorderTop() - paperBorderBottom() - convertCmToDistance(1.0);
 }
@@ -457,12 +457,12 @@ Qt::Alignment PosteRazorCore::overlappingPosition() const
     return m_overlappingPosition;
 }
 
-void PosteRazorCore::setPosterWidth(Types::PosterSizeModes mode, double width)
+void PosteRazorCore::setPosterWidth(Types::PosterSizeModes mode, qreal width)
 {
     setPosterDimension(mode, width, true);
 }
 
-void PosteRazorCore::setPosterHeight(Types::PosterSizeModes mode, double height)
+void PosteRazorCore::setPosterHeight(Types::PosterSizeModes mode, qreal height)
 {
     setPosterDimension(mode, height, false);
 }
@@ -472,9 +472,9 @@ void PosteRazorCore::setPosterSizeMode(Types::PosterSizeModes mode)
     m_posterSizeMode = mode;
 }
 
-double PosteRazorCore::posterDimension(Types::PosterSizeModes mode, bool width) const
+qreal PosteRazorCore::posterDimension(Types::PosterSizeModes mode, bool width) const
 {
-    double posterDimension = (width==m_posterDimensionIsWidth)?m_posterDimension:calculateOtherPosterDimension();
+    qreal posterDimension = (width==m_posterDimensionIsWidth)?m_posterDimension:calculateOtherPosterDimension();
 
     posterDimension = qMax(
         (mode == Types::PosterSizeModeAbsolute)?0.001
@@ -487,7 +487,7 @@ double PosteRazorCore::posterDimension(Types::PosterSizeModes mode, bool width) 
     if (posterSizeMode() != mode){
         // These are needed for conversion from and to PosterSizeModePercentual
         const QSizeF inputImageSize = this->inputImageSize();
-        const double inputImageDimension = convertDistanceToCm(width?inputImageSize.width():inputImageSize.height());
+        const qreal inputImageDimension = convertDistanceToCm(width?inputImageSize.width():inputImageSize.height());
 
         // First convert to absolute size mode (cm)
         if (posterSizeMode() == Types::PosterSizeModePages) {
@@ -585,23 +585,23 @@ void PosteRazorCore::paintPaperOnCanvas(PaintCanvasInterface *paintCanvas, bool 
     const QSizeF paperSize = this->paperSize();
     const QSizeF boxSize = previewSize(paperSize, canvasSize.toSize(), true);
     const QPointF offset((canvasSize.width() - boxSize.width()) / 2.0, (canvasSize.height() - boxSize.height()) / 2.0);
-    const double UnitOfLengthToPixelfactor = boxSize.width()/paperSize.width();
-    const double borderTop = paperBorderTop() * UnitOfLengthToPixelfactor;
-    const double borderRight = paperBorderRight() * UnitOfLengthToPixelfactor;
-    const double borderBottom = paperBorderBottom() * UnitOfLengthToPixelfactor;
-    const double borderLeft = paperBorderLeft() * UnitOfLengthToPixelfactor;
+    const qreal UnitOfLengthToPixelfactor = boxSize.width()/paperSize.width();
+    const qreal borderTop = paperBorderTop() * UnitOfLengthToPixelfactor;
+    const qreal borderRight = paperBorderRight() * UnitOfLengthToPixelfactor;
+    const qreal borderBottom = paperBorderBottom() * UnitOfLengthToPixelfactor;
+    const qreal borderLeft = paperBorderLeft() * UnitOfLengthToPixelfactor;
     const QSizeF printableAreaSize(boxSize.width() - borderLeft - borderRight, boxSize.height() - borderTop - borderBottom);
 
     paintCanvas->drawFilledRect(QRectF(offset, boxSize), QColor(128, 128, 128));
     paintCanvas->drawFilledRect(QRectF(QPointF(borderLeft, borderTop) + offset, printableAreaSize), QColor(230, 230, 230));
 
     if (paintOverlapping) {
-        const double overlappingWidth = this->overlappingWidth() * UnitOfLengthToPixelfactor;
-        const double overlappingHeight = this->overlappingHeight() * UnitOfLengthToPixelfactor;
+        const qreal overlappingWidth = this->overlappingWidth() * UnitOfLengthToPixelfactor;
+        const qreal overlappingHeight = this->overlappingHeight() * UnitOfLengthToPixelfactor;
         const Qt::Alignment overlappingPosition = this->overlappingPosition();
-        const double overlappingTop = (overlappingPosition & Qt::AlignTop)?
+        const qreal overlappingTop = (overlappingPosition & Qt::AlignTop)?
             borderTop:boxSize.height() - borderBottom - overlappingHeight;
-        const double overlappingLeft = (overlappingPosition & Qt::AlignLeft)?
+        const qreal overlappingLeft = (overlappingPosition & Qt::AlignLeft)?
             borderLeft:boxSize.width() - borderRight - overlappingWidth;
 
         const QColor overlappingBrush(255, 128, 128);
@@ -623,12 +623,12 @@ void PosteRazorCore::paintPosterOnCanvasOverlapped(PaintCanvasInterface *paintCa
     );
     const QSizeF boxSize = previewSize(posterSize, canvasSize.toSize(), true);
     const QPointF offset((canvasSize.width() - boxSize.width()) / 2, (canvasSize.height() - boxSize.height()) / 2);
-    const double UnitOfLengthToPixelfactor = boxSize.width()/posterSize.width();
+    const qreal UnitOfLengthToPixelfactor = boxSize.width()/posterSize.width();
 
-    const double borderTop = paperBorderTop() * UnitOfLengthToPixelfactor;
-    const double borderRight = paperBorderRight() * UnitOfLengthToPixelfactor;
-    const double borderBottom = paperBorderBottom() * UnitOfLengthToPixelfactor;
-    const double borderLeft = paperBorderLeft() * UnitOfLengthToPixelfactor;
+    const qreal borderTop = paperBorderTop() * UnitOfLengthToPixelfactor;
+    const qreal borderRight = paperBorderRight() * UnitOfLengthToPixelfactor;
+    const qreal borderBottom = paperBorderBottom() * UnitOfLengthToPixelfactor;
+    const qreal borderLeft = paperBorderLeft() * UnitOfLengthToPixelfactor;
     const QSizeF posterPrintableAreaSize(boxSize.width() - borderLeft - borderRight, boxSize.height() - borderTop - borderBottom);
     const QPointF posterPrintableAreaOrigin = QPointF(borderLeft, borderTop) + offset;
     const QRectF posterPrintableArea(posterPrintableAreaOrigin, posterPrintableAreaSize);
@@ -658,18 +658,18 @@ void PosteRazorCore::paintPosterOnCanvasOverlapped(PaintCanvasInterface *paintCa
         )
     );
 
-    const double overlappingHeight = this->overlappingHeight() * UnitOfLengthToPixelfactor;
-    const double overlappingWidth = this->overlappingWidth() * UnitOfLengthToPixelfactor;
+    const qreal overlappingHeight = this->overlappingHeight() * UnitOfLengthToPixelfactor;
+    const qreal overlappingWidth = this->overlappingWidth() * UnitOfLengthToPixelfactor;
     pagePrintableAreaSize *= UnitOfLengthToPixelfactor;
 
     const QColor overlappingColor(255, 128, 128, 128);
-    double overlappingRectangleYPosition = borderTop;
+    qreal overlappingRectangleYPosition = borderTop;
     for (int pagesRow = 0; pagesRow < pagesVertical - 1; pagesRow++) {
         overlappingRectangleYPosition += pagePrintableAreaSize.height() - overlappingHeight;
         paintCanvas->drawFilledRect(QRectF(QPointF(0, overlappingRectangleYPosition) + offset, QSizeF(boxSize.width(), overlappingHeight)), overlappingColor);
     }
 
-    double overlappingRectangleXPosition = borderLeft;
+    qreal overlappingRectangleXPosition = borderLeft;
     for (int pagesColumn = 0; pagesColumn < pagesHorizontal - 1; pagesColumn++) {
         overlappingRectangleXPosition += pagePrintableAreaSize.width() - overlappingWidth;
         paintCanvas->drawFilledRect(QRectF(QPointF(overlappingRectangleXPosition, 0) + offset, QSizeF(overlappingWidth, boxSize.height())), overlappingColor);
@@ -716,28 +716,28 @@ void PosteRazorCore::paintPosterPageOnCanvas(PaintCanvasInterface *paintCanvas, 
     const QSizeF posterSizeAbsolute = posterSize(Types::PosterSizeModeAbsolute);
     const QSizeF posterImageSizeCm = convertSizeToCm(posterSizeAbsolute);
     const QSizeF printablePaperAreaSizeCm = convertSizeToCm(printablePaperAreaSize());
-    const double overlappingWidthCm = convertDistanceToCm(overlappingWidth());
-    const double overlappingHeightCm = convertDistanceToCm(overlappingHeight());
+    const qreal overlappingWidthCm = convertDistanceToCm(overlappingWidth());
+    const qreal overlappingHeightCm = convertDistanceToCm(overlappingHeight());
     const QSizeF printablePosterAreaSizeCm(
         columsCount * printablePaperAreaSizeCm.width() - (columsCount - 1) * overlappingWidthCm,
         rowsCount * printablePaperAreaSizeCm.height() - (rowsCount - 1) * overlappingHeightCm
     );
-    const double borderTopCm = convertDistanceToCm(paperBorderTop());
-    const double borderRightCm = convertDistanceToCm(paperBorderRight());
-    const double borderBottomCm = convertDistanceToCm(paperBorderBottom());
-    const double borderLeftCm = convertDistanceToCm(paperBorderLeft());
+    const qreal borderTopCm = convertDistanceToCm(paperBorderTop());
+    const qreal borderRightCm = convertDistanceToCm(paperBorderRight());
+    const qreal borderBottomCm = convertDistanceToCm(paperBorderBottom());
+    const qreal borderLeftCm = convertDistanceToCm(paperBorderLeft());
     const QSizeF posterTotalSizeCm(
         printablePosterAreaSizeCm.width() + borderLeftCm + borderRightCm,
         printablePosterAreaSizeCm.height() + borderTopCm + borderBottomCm
     );
     const Qt::Alignment alignment = posterAlignment();
-    double imageOffsetFromLeftPosterBorderCm = (
+    qreal imageOffsetFromLeftPosterBorderCm = (
         alignment & Qt::AlignRight?posterTotalSizeCm.width() - posterImageSizeCm.width() - borderLeftCm
         :alignment & Qt::AlignHCenter?(posterTotalSizeCm.width() - posterImageSizeCm.width())/2 - borderLeftCm
         :-borderLeftCm
     );
     imageOffsetFromLeftPosterBorderCm = qBound(.0, imageOffsetFromLeftPosterBorderCm, posterTotalSizeCm.width() - posterImageSizeCm.width() - borderLeftCm - borderRightCm);
-    double imageOffsetFromTopPosterBorderCm = (
+    qreal imageOffsetFromTopPosterBorderCm = (
         alignment & Qt::AlignBottom?posterTotalSizeCm.height() - posterImageSizeCm.height() - borderTopCm
         :alignment & Qt::AlignVCenter?(posterTotalSizeCm.height() - posterImageSizeCm.height())/2 - borderTopCm
         :-borderTopCm

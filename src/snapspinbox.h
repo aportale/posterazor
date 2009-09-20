@@ -36,10 +36,10 @@ class SnapSpinBox: public QDoubleSpinBox
 
 public:
     SnapSpinBox(QWidget *parent);
-    void setValue(double value);
+    void setValue(qreal value);
 
 protected:
-    double m_originalValue; // This is not rounded
+    qreal m_originalValue; // This is not rounded
     QAbstractSpinBox::StepEnabled stepEnabled() const;
 
 private slots:
@@ -47,7 +47,7 @@ private slots:
     void stepBy(int steps);
 
 signals:
-    void valueEdited(double value) const;
+    void valueEdited(qreal value) const;
 };
 
 #endif // SNAPSPINBOX_H
