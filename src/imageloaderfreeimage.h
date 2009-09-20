@@ -38,8 +38,8 @@ public:
     bool isJpeg() const;
     QString fileName() const;
     QSize sizePixels() const;
-    double horizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const;
-    double verticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const;
+    qreal horizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const;
+    qreal verticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const;
     QSizeF size(Types::UnitsOfLength unit) const;
     const QImage imageAsRGB(const QSize &size) const;
     int bitsPerPixel() const;

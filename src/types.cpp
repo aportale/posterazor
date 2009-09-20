@@ -24,15 +24,15 @@
 #include <QtDebug>
 #include <QRegExp>
 
-const QHash<Types::UnitsOfLength, QPair<QString, double> > &Types::unitsOfLength()
+const QHash<Types::UnitsOfLength, QPair<QString, qreal> > &Types::unitsOfLength()
 {
-    static QHash<UnitsOfLength, QPair<QString, double> > units;
+    static QHash<UnitsOfLength, QPair<QString, qreal> > units;
     if (units.empty()) {
         static const struct
         {
             Types::UnitsOfLength unit;
             QString name;
-            double cm;
+            qreal cm;
         } unitsOfLength[] = {
             {Types::UnitOfLengthMeter,      QLatin1String("m"),        100.00},
             {Types::UnitOfLengthMillimeter, QLatin1String("mm"),         0.10},
@@ -43,14 +43,14 @@ const QHash<Types::UnitsOfLength, QPair<QString, double> > &Types::unitsOfLength
         };
         static const int unitsOfLengthCount = sizeof(unitsOfLength)/sizeof(unitsOfLength[0]);
         for (int i = 0; i < unitsOfLengthCount; i++)
-            units.insert(unitsOfLength[i].unit, QPair<QString, double> (unitsOfLength[i].name, unitsOfLength[i].cm));
+            units.insert(unitsOfLength[i].unit, QPair<QString, qreal> (unitsOfLength[i].name, unitsOfLength[i].cm));
     }
     return units;
 }
 
-double Types::convertBetweenUnitsOfLength(double distance, UnitsOfLength sourceUnit, UnitsOfLength targetUnit)
+qreal Types::convertBetweenUnitsOfLength(qreal distance, UnitsOfLength sourceUnit, UnitsOfLength targetUnit)
 {
-    double convertedDistance = distance;
+    qreal convertedDistance = distance;
     if (sourceUnit != targetUnit) {
         if (sourceUnit != UnitOfLengthCentimeter)
             convertedDistance *= unitsOfLength().value(sourceUnit).second;
@@ -85,8 +85,8 @@ const QHash<QString, QSizeF> &Types::paperFormats()
     if (formats.empty()) {
         static const struct {
             QString name;
-            double width;
-            double height;
+            qreal width;
+            qreal height;
         } paperFormats[] = {
             {QLatin1String("DIN A4"),    21.0, 29.7},
             {QLatin1String("DIN A3"),    29.7, 42.0},

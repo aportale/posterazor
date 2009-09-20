@@ -60,7 +60,7 @@ void PaintCanvas::setImage(const QImage &image)
 
 void PaintCanvas::drawImage(const QRectF &rect)
 {
-    const double widthResizeFactor = rect.width() / (double)m_image.width();
+    const qreal widthResizeFactor = rect.width() / (qreal)m_image.width();
     m_qPainter->setRenderHint(QPainter::SmoothPixmapTransform, widthResizeFactor < 2.75);
     m_qPainter->drawImage(rect, m_image);
 }

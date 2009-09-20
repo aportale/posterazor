@@ -37,7 +37,7 @@ QAbstractSpinBox::StepEnabled SnapSpinBox::stepEnabled() const
     return enabled;
 }
 
-void SnapSpinBox::setValue(double value)
+void SnapSpinBox::setValue(qreal value)
 {
     // We intercept setValue() in order to always have the non-rounded value
     m_originalValue = value;
@@ -52,9 +52,9 @@ void SnapSpinBox::handleLineEditTextEdited(const QString &text)
 
 void SnapSpinBox::stepBy(int steps)
 {
-    double increaseValue = (steps > 0)?(steps-.5):(steps+.49999);
-    double oldValue = m_originalValue;
-    double newValue = qRound(oldValue + increaseValue);
+    qreal increaseValue = (steps > 0)?(steps-.5):(steps+.49999);
+    qreal oldValue = m_originalValue;
+    qreal newValue = qRound(oldValue + increaseValue);
 
     if (newValue < 1)
         return;

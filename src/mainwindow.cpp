@@ -122,22 +122,22 @@ void MainWindow::setPaperOrientation(QPrinter::Orientation orientation)
     m_wizard->setPaperOrientation(orientation);
 }
 
-void MainWindow::setPaperBorderTop(double border)
+void MainWindow::setPaperBorderTop(qreal border)
 {
     m_wizard->setPaperBorderTop(border);
 }
 
-void MainWindow::setPaperBorderRight(double border)
+void MainWindow::setPaperBorderRight(qreal border)
 {
     m_wizard->setPaperBorderRight(border);
 }
 
-void MainWindow::setPaperBorderBottom(double border)
+void MainWindow::setPaperBorderBottom(qreal border)
 {
     m_wizard->setPaperBorderBottom(border);
 }
 
-void MainWindow::setPaperBorderLeft(double border)
+void MainWindow::setPaperBorderLeft(qreal border)
 {
     m_wizard->setPaperBorderLeft(border);
 }
@@ -152,12 +152,12 @@ void MainWindow::setUseCustomPaperSize(bool useIt)
     m_wizard->setUseCustomPaperSize(useIt);
 }
 
-void MainWindow::setOverlappingWidth(double width)
+void MainWindow::setOverlappingWidth(qreal width)
 {
     m_wizard->setOverlappingWidth(width);
 }
 
-void MainWindow::setOverlappingHeight(double height)
+void MainWindow::setOverlappingHeight(qreal height)
 {
     m_wizard->setOverlappingHeight(height);
 }
@@ -167,27 +167,27 @@ void MainWindow::setOverlappingPosition(Qt::Alignment position)
     m_wizard->setOverlappingPosition(position);
 }
 
-void MainWindow::setPosterWidthAbsolute(double width)
+void MainWindow::setPosterWidthAbsolute(qreal width)
 {
     m_wizard->setPosterWidthAbsolute(width);
 }
 
-void MainWindow::setPosterHeightAbsolute(double height)
+void MainWindow::setPosterHeightAbsolute(qreal height)
 {
     m_wizard->setPosterHeightAbsolute(height);
 }
 
-void MainWindow::setPosterWidthPages(double width)
+void MainWindow::setPosterWidthPages(qreal width)
 {
     m_wizard->setPosterWidthPages(width);
 }
 
-void MainWindow::setPosterHeightPages(double height)
+void MainWindow::setPosterHeightPages(qreal height)
 {
     m_wizard->setPosterHeightPages(height);
 }
 
-void MainWindow::setPosterSizePercentual(double percent)
+void MainWindow::setPosterSizePercentual(qreal percent)
 {
     m_wizard->setPosterSizePercentual(percent);
 }
@@ -217,7 +217,7 @@ void MainWindow::showImageFileName(const QString &fileName)
     m_wizard->showImageFileName(fileName);
 }
 
-void MainWindow::updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, double verticalDpi, double horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel)
+void MainWindow::updateImageInfoFields(const QSize &inputImageSizeInPixels, const QSizeF &imageSize, qreal verticalDpi, qreal horizontalDpi, Types::ColorTypes colorType, int bitsPerPixel)
 {
     m_wizard->updateImageInfoFields(inputImageSizeInPixels, imageSize, verticalDpi, horizontalDpi, colorType, bitsPerPixel);
 }
@@ -354,20 +354,20 @@ void MainWindow::createConnections()
         SIGNAL(paperFormatChanged(const QString&)),
         SIGNAL(useCustomPaperSizeChanged(bool)),
         SIGNAL(paperOrientationChanged(QPrinter::Orientation)),
-        SIGNAL(paperCustomWidthChanged(double)),
-        SIGNAL(paperCustomHeightChanged(double)),
-        SIGNAL(paperBorderTopChanged(double)),
-        SIGNAL(paperBorderRightChanged(double)),
-        SIGNAL(paperBorderBottomChanged(double)),
-        SIGNAL(paperBorderLeftChanged(double)),
-        SIGNAL(overlappingWidthChanged(double)),
-        SIGNAL(overlappingHeightChanged(double)),
+        SIGNAL(paperCustomWidthChanged(qreal)),
+        SIGNAL(paperCustomHeightChanged(qreal)),
+        SIGNAL(paperBorderTopChanged(qreal)),
+        SIGNAL(paperBorderRightChanged(qreal)),
+        SIGNAL(paperBorderBottomChanged(qreal)),
+        SIGNAL(paperBorderLeftChanged(qreal)),
+        SIGNAL(overlappingWidthChanged(qreal)),
+        SIGNAL(overlappingHeightChanged(qreal)),
         SIGNAL(overlappingPositionChanged(Qt::Alignment)),
-        SIGNAL(posterWidthAbsoluteChanged(double)),
-        SIGNAL(posterHeightAbsoluteChanged(double)),
-        SIGNAL(posterWidthPagesChanged(double)),
-        SIGNAL(posterHeightPagesChanged(double)),
-        SIGNAL(posterSizePercentualChanged(double)),
+        SIGNAL(posterWidthAbsoluteChanged(qreal)),
+        SIGNAL(posterHeightAbsoluteChanged(qreal)),
+        SIGNAL(posterWidthPagesChanged(qreal)),
+        SIGNAL(posterHeightPagesChanged(qreal)),
+        SIGNAL(posterSizePercentualChanged(qreal)),
         SIGNAL(posterAlignmentChanged(Qt::Alignment)),
         SIGNAL(savePosterSelected()),
         SIGNAL(launchPDFApplicationChanged(bool)),

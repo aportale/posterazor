@@ -41,7 +41,7 @@ public:
     int saveImage(const QByteArray &imageData, const QSize &sizePixels, int bitPerPixel, Types::ColorTypes colorType, const QVector<QRgb> &colorTable);
     int startPage();
     int finishPage();
-    int startSaving(const QString &fileName, int pages, double widthCm, double heightCm);
+    int startSaving(const QString &fileName, int pages, qreal widthCm, qreal heightCm);
     int finishSaving();
     void drawFilledRect(const QRectF&, const QBrush &brush);
     QSizeF size() const;
@@ -57,8 +57,8 @@ private:
     int m_firstPageID;
     int m_objectResourcesID;
     int m_objectImageID;
-    double m_mediaboxWidth;
-    double m_mediaboxHeight;
+    qreal m_mediaboxWidth;
+    qreal m_mediaboxHeight;
     QString m_pageContent;
     QTextStream m_outStream;
 };

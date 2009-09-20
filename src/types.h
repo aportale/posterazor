@@ -54,8 +54,8 @@ public:
         UnitOfLengthPoints
     };
 
-    static const QHash<UnitsOfLength, QPair<QString, double> > &unitsOfLength();
-    static double convertBetweenUnitsOfLength(double distance, UnitsOfLength sourceUnit, UnitsOfLength targetUnit);
+    static const QHash<UnitsOfLength, QPair<QString, qreal> > &unitsOfLength();
+    static qreal convertBetweenUnitsOfLength(qreal distance, UnitsOfLength sourceUnit, UnitsOfLength targetUnit);
     static QSizeF convertBetweenUnitsOfLength(const QSizeF &size, UnitsOfLength sourceUnit, UnitsOfLength targetUnit);
     static UnitsOfLength unitOfLenthFromString(const QString &string);
     static const QHash<QString, QSizeF> &paperFormats();

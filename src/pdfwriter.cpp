@@ -33,7 +33,7 @@ const int valuePrecision = 4;
 
 #define COMPRESSEDPDF
 
-static double cm2Pt(double cm)
+static qreal cm2Pt(qreal cm)
 {
     return Types::convertBetweenUnitsOfLength(cm, Types::UnitOfLengthCentimeter, Types::UnitOfLengthPoints);
 }
@@ -349,7 +349,7 @@ int PDFWriter::finishPage()
     return err;
 }
 
-int PDFWriter::startSaving(const QString &fileName, int pages, double widthCm, double heightCm)
+int PDFWriter::startSaving(const QString &fileName, int pages, qreal widthCm, qreal heightCm)
 {
     int err = 0;
 
