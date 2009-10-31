@@ -379,7 +379,7 @@ void MainWindow::createConnections()
         SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)),
         SIGNAL(imageLoaded()),
     };
-    static const int relayedSignalsCount = sizeof(relayedSignals) / sizeof(relayedSignals[0]);
+    static const int relayedSignalsCount = int(sizeof relayedSignals / sizeof relayedSignals[0]);
     for (int i = 0; i < relayedSignalsCount; ++i)
         connect(m_wizard, relayedSignals[i], relayedSignals[i]);
 }

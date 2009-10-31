@@ -111,7 +111,7 @@ Controller::Controller(PosteRazorCore *posteRazorCore, QWidget *view, QObject *p
                                                                     SLOT(setPosterSizeModeAvailable(Types::PosterSizeModes, bool))}
     };
     static const int signalsToViewSlotsConnectionsCount =
-        int(sizeof(signalsToViewSlotsConnections)/sizeof(signalsToViewSlotsConnections[0]));
+        int(sizeof signalsToViewSlotsConnections / sizeof signalsToViewSlotsConnections[0]);
     for (int i = 0; i < signalsToViewSlotsConnectionsCount; ++i) {
         const QByteArray slot(
                 QMetaObject::normalizedSignature(signalsToViewSlotsConnections[i].slot + 1));

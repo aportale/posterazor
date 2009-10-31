@@ -52,7 +52,7 @@ Wizard::Wizard(QWidget *parent)
         {m_posterAlignmentBottomButton,      Qt::AlignBottom | Qt::AlignHCenter  },
         {m_posterAlignmentBottomRightButton, Qt::AlignBottom | Qt::AlignRight    }
     };
-    const int alignmentMapCount = (int)sizeof(alignmentMap)/sizeof(alignmentMap[0]);
+    static const int alignmentMapCount = int(sizeof alignmentMap / sizeof alignmentMap[0]);
     for (int i = 0; i < alignmentMapCount; i++)
         m_alignmentButtons.insert(alignmentMap[i].alignment, alignmentMap[i].sender);
 
@@ -65,7 +65,7 @@ Wizard::Wizard(QWidget *parent)
         {m_overlappingPositionBottomLeftButton,  Qt::AlignBottom | Qt::AlignLeft  },
         {m_overlappingPositionBottomRightButton, Qt::AlignBottom | Qt::AlignRight }
     };
-    const int overlappingMapCount = (int)sizeof(overlappingMap)/sizeof(overlappingMap[0]);
+    static const int overlappingMapCount = int(sizeof overlappingMap / sizeof overlappingMap[0]);
     for (int i = 0; i < overlappingMapCount; i++)
         m_overlappingButtons.insert(overlappingMap[i].alignment, overlappingMap[i].sender);
 
