@@ -72,6 +72,7 @@ void PosteRazorTests::screenShotterize()
     background.setAutoFillBackground(true);
     background.showFullScreen();
     QTest::qWaitForWindowShown(&background);
+    const QRect backgroundRect(QApplication::desktop()->availableGeometry());
 
     foreach (const QFileInfo &translation, translationDir.entryInfoList(QDir::Files)) {
         const QString localeString(translation.baseName());
@@ -89,8 +90,10 @@ void PosteRazorTests::screenShotterize()
         QTest::qWait(500); // Wait for fancy effects to finish
 
         const QImage screenShot =
-                QPixmap::grabWindow(QApplication::desktop()->screen()->winId())
-                .toImage()
+                QPixmap::grabWindow(QApplication::desktop()->screen()->winId(),
+                        backgroundRect.x(), backgroundRect.y(),
+                        backgroundRect.width(), backgroundRect.height()
+                ).toImage()
                 .convertToFormat(QImage::Format_ARGB32);
 
         const QRect crop = PosteRazorTests::cropRect(screenShot, backgroundColor);
