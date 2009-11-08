@@ -47,8 +47,14 @@ private slots:
     void screenShotterize();
 
 public:
+    static void takeShot(const QString &fileName);
     static QRect cropRect(const QImage &image, const QColor &color);
+
+private:
+    static const QColor m_screenShotBackground;
 };
+
+const QColor PosteRazorTests::m_screenShotBackground = Qt::white;
 
 void PosteRazorTests::initTestCase()
 {
@@ -63,16 +69,14 @@ void PosteRazorTests::initTestCase()
 void PosteRazorTests::screenShotterize()
 {
     const QDir translationDir(":/Translations/");
-    const QColor backgroundColor(Qt::white);
 
     QLabel background;
     QPalette palette = background.palette();
-    palette.setColor(QPalette::Window, backgroundColor);
+    palette.setColor(QPalette::Window, m_screenShotBackground);
     background.setPalette(palette);
     background.setAutoFillBackground(true);
     background.showFullScreen();
     QTest::qWaitForWindowShown(&background);
-    const QRect backgroundRect(QApplication::desktop()->availableGeometry());
 
     foreach (const QFileInfo &translation, translationDir.entryInfoList(QDir::Files)) {
         const QString localeString(translation.baseName());
@@ -82,22 +86,42 @@ void PosteRazorTests::screenShotterize()
         Controller controller(&posteRazorCore, &window);
         controller.loadInputImage("../packaging/iss/wizimage.bmp");
         controller.loadTranslation(localeString);
-        window.resize(QSize());
+        window.resize(640, 480);
         window.show();
-        const QString screenShotFileName =
-                QString::fromLatin1("ScreenShot-%1.png").arg(localeString);
         QTest::qWaitForWindowShown(&window);
         QTest::qWait(500); // Wait for fancy effects to finish
 
-        const QImage screenShot =
-                QPixmap::grabWindow(QApplication::desktop()->screen()->winId(),
-                        backgroundRect.x(), backgroundRect.y(),
-                        backgroundRect.width(), backgroundRect.height()
-                ).toImage()
-                .convertToFormat(QImage::Format_ARGB32);
+        QPushButton *nextButton = window.findChild<QPushButton*>(QString::fromLatin1("m_stepNextButton"));
+        QTabWidget *paperFormatCustomTabs = window.findChild<QTabWidget*>(QString::fromLatin1("m_paperFormatTypeTabs"));
+        QWidget *paperFormatStandardTab = window.findChild<QWidget*>(QString::fromLatin1("m_paperFormatStandardTab"));
+        QWidget *paperFormatCustomTab = window.findChild<QWidget*>(QString::fromLatin1("m_paperFormatCustomTab"));
 
-        const QRect crop = PosteRazorTests::cropRect(screenShot, backgroundColor);
-        screenShot.copy(crop).save(screenShotFileName);
+        const QString screenShotFileNameTemplate =
+                QString::fromLatin1("ScreenShot-%1-%2-%3.png")
+                        .arg(QLatin1String(
+#if defined (Q_OS_WIN)
+                                "Win32"
+#elif defined (Q_OS_LINUX)
+                                "Linux"
+#elif defined (Q_OS_OSX)
+                                "OSX"
+#else
+                                ""
+#endif
+                        )).arg(localeString);
+
+        takeShot(screenShotFileNameTemplate.arg(QLatin1String("LoadImage")));
+        QTest::mouseClick(nextButton, Qt::LeftButton);
+        paperFormatCustomTabs->setCurrentWidget(paperFormatCustomTab);
+        takeShot(screenShotFileNameTemplate.arg(QLatin1String("PaperSizeCustom")));
+        paperFormatCustomTabs->setCurrentWidget(paperFormatStandardTab);
+        takeShot(screenShotFileNameTemplate.arg(QLatin1String("PaperSizeStandard")));
+        QTest::mouseClick(nextButton, Qt::LeftButton);
+        takeShot(screenShotFileNameTemplate.arg(QLatin1String("Overlapping")));
+        QTest::mouseClick(nextButton, Qt::LeftButton);
+        takeShot(screenShotFileNameTemplate.arg(QLatin1String("PosterSize")));
+        QTest::mouseClick(nextButton, Qt::LeftButton);
+        takeShot(screenShotFileNameTemplate.arg(QLatin1String("SavePoster")));
     }
 }
 
@@ -121,6 +145,20 @@ static inline bool imageColumnHasUniqueColor(const QImage &image, int column, co
         bits += image.width();
     }
     return true;
+}
+
+void PosteRazorTests::takeShot(const QString &fileName)
+{
+    const QRect backgroundRect(QApplication::desktop()->availableGeometry());
+    const QImage screenShot =
+            QPixmap::grabWindow(QApplication::desktop()->screen()->winId(),
+                    backgroundRect.x(), backgroundRect.y(),
+                    backgroundRect.width(), backgroundRect.height()
+            ).toImage()
+            .convertToFormat(QImage::Format_ARGB32);
+
+    const QRect crop = PosteRazorTests::cropRect(screenShot, m_screenShotBackground);
+    screenShot.copy(crop).save(fileName);
 }
 
 QRect PosteRazorTests::cropRect(const QImage &image, const QColor &color)
