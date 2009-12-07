@@ -455,6 +455,7 @@ void MainWindow::showAboutPosteRazorDialog()
             "<dt>Simplified Chinese</dt><dd>Sun Li</dd>"
             "<dt>Finnish</dt><dd>Olli</dd>"
             "<dt>Traditional Chinese</dt><dd>Chung-Yu Hsu</dd>"
+            "<dt>Russian</dt><dd>Artem Semendyaev</dd>"
             "</dl>") +
         QLatin1String("<h2>License</h2>"
             "<p>PosteRazor - Make your own poster!<br/>"

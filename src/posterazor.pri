@@ -52,5 +52,6 @@ TRANSLATIONS += \
     pl.ts \
     pt_BR.ts \
     pt_PT.ts \
+    ru_RU.ts \
     zh_CN.ts \
     zh_TW.ts
