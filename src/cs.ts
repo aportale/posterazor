@@ -117,14 +117,14 @@ Zaškrtněte &lt;b&gt;%1&lt;/b&gt; pokud chcete soubor po uložení otevřít.</
         <source>The PosteRazor cuts a raster image into pieces which can be printed on a printer and be put together to a poster.
 As an input image, raster files of various image file formats are supported. Instead of directly printing the poster, the PosteRazor produces a multi page PDF file which contains the poster tiles.
 It is an open source program which depends on other open source projects. The PosteRazor is hosted on %1.</source>
-        <translation type="unfinished">Posterazor rozřezá rastrový obrázek na části, které můžou být vytištěny běžnou tiskárnou a poté složeny dohromady.</translation>
+        <translation type="unfinished">Posterazor rozřezá rastrový obrázek na části, které můžou být vytištěny běžnou tiskárnou a poté složeny dohromady. %1</translation>
     </message>
 </context>
 <context>
     <name>Main window</name>
     <message>
         <source>Language name</source>
-        <translation type="unfinished">Czech</translation>
+        <translation type="unfinished">Čeština</translation>
     </message>
     <message>
         <source>All image formats</source>
