@@ -42,6 +42,7 @@ RESOURCES += \
     posterazor.qrc
 
 TRANSLATIONS += \
+    cs.ts \
     de.ts \
     en.ts \
     es.ts \

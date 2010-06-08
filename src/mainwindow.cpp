@@ -440,7 +440,7 @@ void MainWindow::showAboutPosteRazorDialog()
             "<dt>FreeImage</dt>"
             "<dd>Easy and powerful image format support. See the <a href=\"http://freeimage.sourceforge.net/\">FreeImage website</a></dd>"
             "</dl>") +
-        QLatin1String("<h2>Translations</h2>"
+        QString::fromUtf8("<h2>Translations</h2>"
             "<p>In order of appearance</p>"
             "<dl>"
             "<dt>English</dt><dd>Alessandro Portale (author)</dd>"
@@ -449,13 +449,17 @@ void MainWindow::showAboutPosteRazorDialog()
             "<dt>French</dt><dd>Martin Loyer</dd>"
             "<dt>Italian</dt><dd>Stefano Nosei</dd>"
             "<dt>Dutch/Belgian</dt><dd>Erik Wijkamp</dd>"
-            "<dt>Spanish</dt><dd><a href=\"http://hispanicoweb.net/\">Hisp·nico Web</a></dd>"
-            "<dt>Brazilian Portuguese</dt><dd>…derson Gomes dos Santos</dd>"
+            "<dt>Spanish</dt><dd><a href=\"http://hispanicoweb.net/\">Hisp""\xc3\xa1""nico Web</a></dd>"
+            "<dt>Brazilian Portuguese</dt><dd>""\xc3\x89""derson Gomes dos Santos</dd>"
             "<dt>European Portuguese</dt><dd>Helder Correia</dd>"
             "<dt>Simplified Chinese</dt><dd>Sun Li</dd>"
             "<dt>Finnish</dt><dd>Olli</dd>"
             "<dt>Traditional Chinese</dt><dd>Chung-Yu Hsu</dd>"
+<<<<<<< HEAD
             "<dt>Russian</dt><dd>Artem Semendyaev</dd>"
+=======
+            "<dt>Czech</dt><dd>Filip Pivar""\xc4\x8d""i</dd>"
+>>>>>>> Added Czech translation by Filip Pivarƒçi
             "</dl>") +
         QLatin1String("<h2>License</h2>"
             "<p>PosteRazor - Make your own poster!<br/>"

@@ -20,6 +20,7 @@
         <file>alignmentbottomright.png</file>
     </qresource>
     <qresource prefix="/Translations">
+        <file>cs.qm</file>
         <file>de.qm</file>
         <file>en.qm</file>
         <file>es.qm</file>
