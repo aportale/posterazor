@@ -26,7 +26,7 @@
 class UnitsOfLength
 {
 public:
-	enum eUnitsOfLength	{
+	enum eUnitsOfLength {
 		eUnitOfLengthMeter,
 		eUnitOfLengthMillimeter,
 		eUnitOfLengthCentimeter,

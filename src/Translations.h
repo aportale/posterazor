@@ -31,10 +31,9 @@ protected:
 	Translations() {}
 
 public:
-	virtual ~Translations(void) {};
+	virtual ~Translations(void) {}
 
-	enum eLanguages
-	{
+	enum eLanguages {
 		eLanguageUndefined
 		,eLanguageEnglish
 		,eLanguageGerman

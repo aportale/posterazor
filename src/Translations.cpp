@@ -37,7 +37,6 @@
 #elif defined (__APPLE__)
 #include <CoreFoundation/CoreFoundation.h>
 #endif
-#include <stdio.h> // for NULL
 
 static const struct {
 	const TranslationInterface &translation;
@@ -225,7 +224,7 @@ Translations::eLanguages Translations::getLanguageForIndex(int index)
 
 const TranslationInterface& Translations::getTranslationOfLanguage(eLanguages language)
 {
-	const TranslationInterface* foundTranslation = NULL;
+	const TranslationInterface* foundTranslation = 0;
 	for (int i = 0; i < TranslationsMapItemsCount; i++) {
 		if(TranslationsMap[i].language == language)	{
 			foundTranslation = &TranslationsMap[i].translation;

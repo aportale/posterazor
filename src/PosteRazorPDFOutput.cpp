@@ -397,7 +397,7 @@ public:
 		int err = 0;
 
 		const unsigned int startxref = ftell(m_outputFile);
-		fprintf(m_outputFile, m_xref);
+		fprintf(m_outputFile, "%s", m_xref);
 
 		fprintf (
 			m_outputFile,

@@ -26,7 +26,7 @@
 typedef struct
 {
 	PaperFormats::ePaperFormats format;
-	char *name;
+	const char *name;
 	double width;
 	double height;
 } paperFormats;

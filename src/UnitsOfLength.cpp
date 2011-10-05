@@ -26,7 +26,7 @@
 typedef struct
 {
 	UnitsOfLength::eUnitsOfLength unit;
-	char *name;
+	const char *name;
 	double multipleOfCentimeter;
 } UnitsOfLengthStruct;
 

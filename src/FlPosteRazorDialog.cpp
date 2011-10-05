@@ -45,7 +45,7 @@
 
 #if !defined (WIN32) && !defined(__APPLE__)
   #include <X11/xpm.h>
-  #include "PosteRazor.xpm"	
+  #include "PosteRazor.xpm"
 #endif
 
 const char PreferencesVendor[] = "CasaPortale.de";
@@ -432,7 +432,7 @@ void FlPosteRazorDialog::loadInputImage(const char *fileName)
 		loaded = m_posteRazorController->loadInputImage(loadFileName, errorMessage, sizeof(errorMessage));
 		if (!loaded) {
 			if (strlen(errorMessage) > 0)
-				fl_message(errorMessage);
+				fl_message("%s", errorMessage);
 			else
 				fl_message(Translations::instance().fileCouldNotBeLoaded(), fl_filename_name(loadFileName));
 		}
@@ -603,7 +603,7 @@ void FlPosteRazorDialog::savePoster(void)
 			fileExistsAskUserForOverwrite = my_file_exists(saveFileName);
 			char overwriteQuestion[1024] = "";
 			sprintf(overwriteQuestion, Translations::instance().overwriteFile(), fl_filename_name(saveFileName));
-			if (!fileExistsAskUserForOverwrite || fl_ask(overwriteQuestion)) {
+			if (!fileExistsAskUserForOverwrite || fl_choice("%s", fl_no, fl_yes, 0, overwriteQuestion) == 1) {
 				int err = m_posteRazorController->savePoster(saveFileName);
 				if (err)
 					fl_message(Translations::instance().fileCouldNotBeSaved(), fl_filename_name(saveFileName));
@@ -830,7 +830,7 @@ int main (int argc, char **argv)
 	XpmAttributes icon_attributes;
 	Pixmap icon, icon_mask;
 	icon_attributes.valuemask = XpmSize | XpmReturnPixels;
-	XWMHints *hints;	
+	XWMHints *hints;
 	XpmCreatePixmapFromData(fl_display, DefaultRootWindow(fl_display), posteRazorXpm, &icon, &icon_mask, &icon_attributes);
 	hints = XGetWMHints(fl_display, fl_xid(&dialog));
 	hints->icon_pixmap = icon;
