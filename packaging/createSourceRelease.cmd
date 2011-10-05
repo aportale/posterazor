@@ -1,5 +1,5 @@
 SET LISTFILENAME=files.txt
-SET ARCHIVEFILENAME=PosteRazor-1.5.2-Source.zip
+SET ARCHIVEFILENAME=PosteRazor-1.5.3-Source.zip
 del %LISTFILENAME%
 del %ARCHIVEFILENAME%
 FOR /F %%i IN ('svn list -R ../') DO call :addtolistfile %%i

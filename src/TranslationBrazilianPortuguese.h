@@ -1,6 +1,6 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005-2008 by Alessandro Portale
+	Copyright (C) 2005-2011 by Alessandro Portale
 	http://posterazor.sourceforge.net/
 
 	Brazilian Portuguese translation by Ederson Gomes dos Santos

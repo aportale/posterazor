@@ -1,6 +1,6 @@
 /*
 	PosteRazor - Make your own poster!
-	Copyright (C) 2005-2008 by Alessandro Portale
+	Copyright (C) 2005-2011 by Alessandro Portale
 	http://posterazor.sourceforge.net/
 
 	French translation by Martin Loyer - traduction et loyer dot name
