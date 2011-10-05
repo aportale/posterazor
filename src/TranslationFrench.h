@@ -33,6 +33,8 @@
 class TranslationFrench: public TranslationInterface
 {
 public:
+	TranslationFrench() {}
+
 	const char* languageName(void) const                    {return "Français";}
 
 	const char* absoluteSize(void) const                    {return "Taille réelle :";}

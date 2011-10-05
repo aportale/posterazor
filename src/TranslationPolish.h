@@ -78,6 +78,8 @@
 class TranslationPolish: public TranslationInterface
 {
 public:
+	TranslationPolish() {}
+
 	const char* languageName(void) const                    {return "Polski";}
 
 	const char* absoluteSize(void) const                    {return "Rozmiar ca"CHAR_laccent"kowity:";}
