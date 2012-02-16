@@ -58,5 +58,3 @@ contains (DEFINES, FREEIMAGE_LIB) {
 }
 
 include (posterazor.pri)
-
-!contains(CONFIG, build_pass) system(lrelease posterazor.pro)
