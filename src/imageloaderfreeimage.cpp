@@ -284,8 +284,10 @@ const QByteArray ImageLoaderFreeImage::bits() const
         }
     } else if (colorDataType() == Types::ColorTypeRGBA && bitsPerPixel() == 32) {
         unsigned int* argbDestination = (unsigned int*)destination;
-        for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++)
-            *argbDestination++ = qToBigEndian(*argbDestination);
+        for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
+            *argbDestination = qToBigEndian(*argbDestination);
+            argbDestination++;
+        }
     } else
 #endif // FREEIMAGE_COLORORDER == FREEIMAGE_COLORORDER_BGR
     if (colorDataType() == Types::ColorTypeRGB && bitsPerPixel() == 48) {
@@ -293,8 +295,10 @@ const QByteArray ImageLoaderFreeImage::bits() const
         // TODO: So maybe this swap belongs into the PDFwriter. Investigate.
         unsigned short* rgb48Destination = (unsigned short*)destination;
         const unsigned long numberOfSwaps = numberOfPixels * 3; // Words are swapped
-        for (unsigned int pixelIndex = 0; pixelIndex < numberOfSwaps; pixelIndex++)
-            *rgb48Destination++ = qToBigEndian(*rgb48Destination);
+        for (unsigned int pixelIndex = 0; pixelIndex < numberOfSwaps; pixelIndex++) {
+            *rgb48Destination = qToBigEndian(*rgb48Destination);
+            rgb48Destination++;
+        }
     }
 
     return result;
