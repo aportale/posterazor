@@ -28,7 +28,9 @@
 #include <QRgb>
 #include <QTextStream>
 
+QT_BEGIN_NAMESPACE
 class QFile;
+QT_END_NAMESPACE
 
 class PDFWriter: public QObject, public PaintCanvasInterface
 {
