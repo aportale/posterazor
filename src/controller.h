@@ -26,11 +26,14 @@
 #include "types.h"
 #include <QObject>
 
-class PosteRazorCore;
-class WizardController;
+QT_BEGIN_NAMESPACE
 class QAction;
 class QSettings;
 class QTranslator;
+QT_END_NAMESPACE
+
+class PosteRazorCore;
+class WizardController;
 
 class Controller: public QObject
 {

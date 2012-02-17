@@ -25,7 +25,10 @@
 
 #include "ui_mainwindow.h"
 
+QT_BEGIN_NAMESPACE
 class QSettings;
+QT_END_NAMESPACE
+
 class PosteRazorCore;
 
 class MainWindow : public QMainWindow, private Ui::MainWindow

@@ -27,7 +27,10 @@
 #include "paintcanvasinterface.h"
 #include <QObject>
 
+QT_BEGIN_NAMESPACE
 class QSettings;
+QT_END_NAMESPACE
+
 class ImageLoaderInterface;
 
 class PosteRazorCore: public QObject

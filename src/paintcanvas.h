@@ -26,8 +26,10 @@
 #include <QWidget>
 #include "paintcanvasinterface.h"
 
+QT_BEGIN_NAMESPACE
 class QImage;
 class QPainter;
+QT_END_NAMESPACE
 
 class PaintCanvas: public QWidget, public PaintCanvasInterface
 {
