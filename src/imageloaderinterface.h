@@ -26,7 +26,9 @@
 #include "types.h"
 #include <QImage>
 
+QT_BEGIN_NAMESPACE
 class PainterInterface;
+QT_END_NAMESPACE
 
 class ImageLoaderInterface
 {
