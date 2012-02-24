@@ -43,6 +43,7 @@ RESOURCES += \
 
 TRANSLATIONS += \
     cs.ts \
+    da.ts \
     de.ts \
     en.ts \
     es.ts \
