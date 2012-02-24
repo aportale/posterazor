@@ -134,7 +134,7 @@ void Wizard::retranslateUi()
 
 void Wizard::retranslateUiWithDimensionUnit()
 {
-    const QString unitOfLength = QString(QLatin1String(" (%1)")).arg(m_currentUnitOfLength);
+    const QString unitOfLength = QString::fromLatin1(" (%1)").arg(m_currentUnitOfLength);
     m_imageInformationSizeLabel->setText(           QCoreApplication::translate("Main window", "Size (in %1):").arg(m_currentUnitOfLength));
     m_paperBordersGroup->setTitle(                  QCoreApplication::translate("Main window", "Borders") + unitOfLength);
 }
@@ -286,9 +286,9 @@ void Wizard::updateImageInfoFields(const QSize &inputImageSizeInPixels, const QS
 {
     Q_UNUSED(horizontalDpi)
 
-    m_imageInformationSizeInPixelsValue->setText(QString("%1 x %2").arg(inputImageSizeInPixels.width()).arg(inputImageSizeInPixels.height()));
-    m_imageInformationSizeValue->setText(QString("%1 x %2").arg(imageSize.width(), 0, 'f', 2).arg(imageSize.height(), 0, 'f', 2));
-    m_imageInformationResolutionValue->setText(QString("%1 dpi").arg(verticalDpi, 0, 'f', 1));
+    m_imageInformationSizeInPixelsValue->setText(QString::fromLatin1("%1 x %2").arg(inputImageSizeInPixels.width()).arg(inputImageSizeInPixels.height()));
+    m_imageInformationSizeValue->setText(QString::fromLatin1("%1 x %2").arg(imageSize.width(), 0, 'f', 2).arg(imageSize.height(), 0, 'f', 2));
+    m_imageInformationResolutionValue->setText(QString::fromLatin1("%1 dpi").arg(verticalDpi, 0, 'f', 1));
     const QString colorTypeString = (
         colorType==Types::ColorTypeMonochrome?QCoreApplication::translate("Main window", "Monochrome"):
         colorType==Types::ColorTypeGreyscale?QCoreApplication::translate("Main window", "Gray scale"):
@@ -296,7 +296,7 @@ void Wizard::updateImageInfoFields(const QSize &inputImageSizeInPixels, const QS
         colorType==Types::ColorTypeRGB?QCoreApplication::translate("Main window", "RGB"):
         colorType==Types::ColorTypeRGBA?QCoreApplication::translate("Main window", "RGBA"):
         /*colorType==ColorTypeCMYK?*/ QCoreApplication::translate("Main window", "CMYK")
-    ) + QString(" %1bpp").arg(bitsPerPixel);
+    ) + QString::fromLatin1(" %1bpp").arg(bitsPerPixel);
     m_imageInformationColorTypeValue->setText(colorTypeString);
     m_imageInfoGroup->setVisible(true);
     emit imageLoaded();
@@ -344,7 +344,7 @@ void Wizard::setPreviewState(const QString &state)
 {
     QString actualState = state;
     if (actualState == QLatin1String("poster")) {
-        actualState.append(" overlapped");
+        actualState.append(QLatin1String(" overlapped"));
     }
     m_paintCanvas->setState(actualState);
 }

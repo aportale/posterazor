@@ -103,7 +103,7 @@ void WizardController::handleImageLoaded()
 void WizardController::showManual()
 {
     const QString title = Types::cleanString(QCoreApplication::translate("Help", "&Manual"));
-    QString manual = QString(QLatin1String("<h1>%1</h1>")).arg(title);
+    QString manual = QString::fromLatin1("<h1>%1</h1>").arg(title);
     manual.append(Types::newlineToParagraph(QCoreApplication::translate("Help",
         "PosteRazor has its user interface organized in a 'Wizard' fashion. All settings for the poster creation can be done in %1 steps.\n"
         "The <b>%2</b> and <b>%3</b> buttons navigate through these steps. The <b>?</b> button opens a help window with an explanation of the current step.\n"
@@ -115,7 +115,7 @@ void WizardController::showManual()
     for (int i = 0; i < wizardStepsEnum().keyCount(); i++) {
         const WizardSteps step = (WizardSteps)wizardStepsEnum().value(i);
         if (!m_unavaliableSteps.contains(step)){
-            manual.append(QString(QLatin1String("<h2>%1</h2>")).arg(stepTitle(step)));
+            manual.append(QString::fromLatin1("<h2>%1</h2>").arg(stepTitle(step)));
             manual.append(stepHelp(step));
         }
     }
@@ -125,7 +125,7 @@ void WizardController::showManual()
 
 void WizardController::showHelpForCurrentStep()
 {
-    QString helpText = QString("<h2>%1</h2>").arg(stepTitle(m_wizardStep)) + stepHelp(m_wizardStep);
+    QString helpText = QString::fromLatin1("<h2>%1</h2>").arg(stepTitle(m_wizardStep)) + stepHelp(m_wizardStep);
     emit showWizardStepHelpSignal(Types::cleanString(stepXofYString(m_wizardStep)), helpText);
 }
 
@@ -221,7 +221,7 @@ QString WizardController::stepHelp(WizardSteps step)
         result = QCoreApplication::translate("Help",
             "Define the final poster size, in one of the following three modes which can be selected by the corresponding radio buttons:",
             "Wizard step 4. Start of the description.");
-        result.append("<dl>");
+        result.append(QLatin1String("<dl>"));
         result.append(definitionTemplate
             .arg(Types::cleanString(QCoreApplication::translate("Main window", "Absolute size:")))
             .arg(QCoreApplication::translate("Help",
@@ -237,7 +237,7 @@ QString WizardController::stepHelp(WizardSteps step)
             .arg(QCoreApplication::translate("Help",
                 "Your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to enlarge the image by a certain factor.",
                 "Wizard step 4. Description for 'size in percent'")));
-        result.append("</dl>");
+        result.append(QLatin1String("</dl>"));
         result.append(QCoreApplication::translate("Help",
             "The aspect ratio of width and height is always 1:1 and is automatically recalculated. In the preview area, you can see the overlapping areas which are surrounded by light red rectangles.\n"
             "<b>%1</b> sets the alignment of the image on the total paper area of the poster. This is useful if you want to keep the unused paper.",

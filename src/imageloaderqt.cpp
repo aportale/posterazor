@@ -170,7 +170,7 @@ const QVector<QPair<QStringList, QString> > &ImageLoaderQt::imageFormats() const
         const int extensionListCount = int(sizeof extensionList / sizeof extensionList[0]);
         const QList<QByteArray> supportedFormats = QImageReader::supportedImageFormats();
         for (int i = 0; i < extensionListCount; i++) {
-            QStringList extensions = extensionList[i].extensions.split(' ');
+            QStringList extensions = extensionList[i].extensions.split(QLatin1Char(' '));
             foreach (const QString &extension, extensions)
                 if (supportedFormats.contains(extension.toAscii())) {
                     formats.append(QPair<QStringList, QString> (extensions, extensionList[i].description));

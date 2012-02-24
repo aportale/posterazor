@@ -62,7 +62,7 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
     m_actionSavePoster->setIcon(QApplication::style()->standardPixmap(QStyle::SP_DialogSaveButton));
     m_actionSavePoster->setEnabled(false);
 
-    setWindowIcon(QIcon(":/Icons/posterazor.png"));
+    setWindowIcon(QIcon(QLatin1String(":/Icons/posterazor.png")));
 
     setWindowTitle(applicationNameWithVersion());
     createConnections();
@@ -315,12 +315,12 @@ void MainWindow::showManual(const QString &title, const QString &text)
     dialog->setLayout(new QVBoxLayout);
     QTextBrowser *browser = new QTextBrowser;
     browser->setOpenExternalLinks(true);
-    browser->document()->setDefaultStyleSheet(
+    browser->document()->setDefaultStyleSheet(QLatin1String(
         "dt {font-weight: bold;}"
         "dd {margin-left: 15px;}"
         "p {text-indent: 7px;}"
         "p, dd {margin-top: 0px; margin-bottom: 6px;}"
-        "h2 {margin-top: 18px; margin-bottom: 6px;}");
+        "h2 {margin-top: 18px; margin-bottom: 6px;}"));
     browser->setHtml(text);
     dialog->layout()->addWidget(browser);
     QDialogButtonBox *buttonBox = new QDialogButtonBox;
@@ -401,7 +401,7 @@ void MainWindow::populateUI()
     QActionGroup *translationActions = new QActionGroup(m_menuSettings);
     connect (translationActions, SIGNAL(triggered(QAction*)), SLOT(handleTranslationAction(QAction*)));
     translationActions->setExclusive(true);
-    const QDir translationDir(":/Translations/");
+    const QDir translationDir(QLatin1String(":/Translations/"));
     foreach (const QFileInfo &translation, translationDir.entryInfoList(QDir::Files)) {
         QTranslator translator;
         translator.load(translation.absoluteFilePath());
@@ -423,7 +423,7 @@ void MainWindow::showAboutQtDialog() const
 void MainWindow::showAboutPosteRazorDialog()
 {
     const QString title = Types::cleanString(QCoreApplication::translate("Help", "&About PosteRazor"));
-    const QString webpageAnchor = QString(QLatin1String("<a href=\"%1\">posterazor.sourceforge.net</a>"))
+    const QString webpageAnchor = QString::fromLatin1("<a href=\"%1\">posterazor.sourceforge.net</a>")
         .arg(QCoreApplication::translate("Help", "http://posterazor.sourceforge.net/", "Only translate, if the website has this language."));
     const QString aboutText =
         QLatin1String("<h1>") + applicationNameWithVersion() +

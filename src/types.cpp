@@ -111,15 +111,15 @@ QSizeF Types::paperSize(const QString &format, QPrinter::Orientation orientation
 QString Types::cleanString(const QString &dirtyString)
 {
     QString result = dirtyString;
-    result.replace(QRegExp("[:&]"), "");
-    result.replace(QRegExp("\\(.*\\)"), "");
-    result.replace('\n', ' ');
+    result.replace(QRegExp(QLatin1String("[:&]")), QString());
+    result.replace(QRegExp(QLatin1String("\\(.*\\)")), QString());
+    result.replace(QLatin1Char('\n'), QLatin1Char(' '));
     return result.trimmed();
 }
 
 QString Types::newlineToParagraph(const QString &nlText)
 {
     QString result = nlText;
-    result.replace('\n', "</p><p>");
-    return "<p>" + result + "</p>";
+    result.replace(QLatin1Char('\n'), QLatin1String("</p><p>"));
+    return QLatin1String("<p>") + result + QLatin1String("</p>");
 }

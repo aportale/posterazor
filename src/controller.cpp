@@ -413,15 +413,15 @@ void Controller::loadInputImage()
     for (int i = 0; i < formats.count(); i++) {
         QStringList formatWildcards;
         foreach (const QString &extension, formats.at(i).first)
-            formatWildcards << "*." + extension;
+            formatWildcards << QLatin1String("*.") + extension;
         allWildcards << formatWildcards;
         QString formatName = formats.at(i).second;
         // Some Open File dialogs (at least OSX) ar irritated if there are brackes in the file type name
-        formatName.remove('(');
-        formatName.remove(')');
-        allFilters << formatName + " (" +  formatWildcards.join(" ") + ")";
+        formatName.remove(QLatin1Char('('));
+        formatName.remove(QLatin1Char(')'));
+        allFilters << formatName + QLatin1String(" (") +  formatWildcards.join(QLatin1String(" ")) + QLatin1Char(')');
     }
-    allFilters.prepend(QCoreApplication::translate("Main window", "All image formats") + " (" +  allWildcards.join(" ") + ")");
+    allFilters.prepend(QCoreApplication::translate("Main window", "All image formats") + QLatin1String(" (") +  allWildcards.join(QLatin1String(" ")) + QLatin1Char(')'));
 
     QSettings loadPathSettings;
 
@@ -432,10 +432,10 @@ void Controller::loadInputImage()
 #if QT_VERSION >= 0x040400
             QDesktopServices::storageLocation(QDesktopServices::PicturesLocation)
 #else
-            "."
+            QLatin1String(".")
 #endif
             ).toString(),
-        allFilters.join(";;")
+        allFilters.join(QLatin1String(";;"))
     );
 
     if (!loadFileName.isEmpty()) {
@@ -451,7 +451,7 @@ bool Controller::loadInputImage(const QString &fileName)
     QString loadErrorMessage;
     const bool successful = loadInputImage(fileName, loadErrorMessage);
     if (!successful)
-        QMessageBox::critical(m_view, "", QCoreApplication::translate("Main window", "The image '%1' could not be loaded.")
+        QMessageBox::critical(m_view, QString(), QCoreApplication::translate("Main window", "The image '%1' could not be loaded.")
             .arg(QFileInfo(fileName).fileName()));
     return successful;
 }
@@ -501,16 +501,16 @@ void Controller::savePoster() const
         if (!saveFileName.isEmpty()) {
             const QFileInfo saveFileInfo(saveFileName);
             if (saveFileInfo.suffix().toLower() != QLatin1String("pdf"))
-                saveFileName.append(".pdf");
+                saveFileName.append(QLatin1String(".pdf"));
 
             fileExistsAskUserForOverwrite = QFileInfo(saveFileName).exists();
 
             if (!fileExistsAskUserForOverwrite
-                || QMessageBox::Yes == (QMessageBox::question(m_view, "", QCoreApplication::translate("Main window", "The file '%1' already exists.\nDo you want to overwrite it?").arg(saveFileInfo.fileName()), QMessageBox::Yes, QMessageBox::No))
+                    || QMessageBox::Yes == (QMessageBox::question(m_view, QString(), QCoreApplication::translate("Main window", "The file '%1' already exists.\nDo you want to overwrite it?").arg(saveFileInfo.fileName()), QMessageBox::Yes, QMessageBox::No))
                 ) {
-                int result = savePoster(saveFileName.toAscii());
+                int result = savePoster(saveFileName);
                 if (result != 0)
-                    QMessageBox::critical(m_view, "", QCoreApplication::translate("Main window", "The file '%1' could not be saved.").arg(saveFileInfo.fileName()), QMessageBox::Ok, QMessageBox::NoButton);
+                    QMessageBox::critical(m_view, QString(), QCoreApplication::translate("Main window", "The file '%1' could not be saved.").arg(saveFileInfo.fileName()), QMessageBox::Ok, QMessageBox::NoButton);
                 else
                     savePathSettings.setValue(settingsKey_PosterSavePath,
                         QDir::toNativeSeparators(QFileInfo(saveFileName).absolutePath()));
@@ -525,7 +525,7 @@ void Controller::savePoster() const
 void Controller::loadTranslation(const QString &localeName)
 {
     const QString saneLocaleName = localeName.isEmpty()?QLocale::system().name():localeName;
-    const QString translationFileName(":/Translations/" + saneLocaleName);
+    const QString translationFileName(QLatin1String(":/Translations/") + saneLocaleName);
     if (m_translator->load(translationFileName)) {
         QCoreApplication::removeTranslator(m_translator);
         QCoreApplication::installTranslator(m_translator);
@@ -557,7 +557,7 @@ void Controller::showExtraAboutDialog()
     const QString title = QLatin1String("About ") + m_posteRazorCore->imageIOLibraryName();
     QMessageBox::about(
         m_view, title,
-        QString(QLatin1String("<h3>%1</h3>%2")) // QMessageBox::aboutQt() also uses <h3>
+        QString::fromLatin1("<h3>%1</h3>%2") // QMessageBox::aboutQt() also uses <h3>
             .arg(title)
             .arg(Types::newlineToParagraph(m_posteRazorCore->imageIOLibraryAboutText()))
     );

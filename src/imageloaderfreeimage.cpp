@@ -32,7 +32,7 @@ static QString FreeImageErrorMessage;
 void FreeImageErrorHandler(FREE_IMAGE_FORMAT fif, const char *message)
 {
     Q_UNUSED(fif)
-    FreeImageErrorMessage = message;
+    FreeImageErrorMessage = QLatin1String(message);
 }
 
 class FreeImageInitializer
@@ -327,9 +327,9 @@ const QVector<QPair<QStringList, QString> > &ImageLoaderFreeImage::imageFormats(
         for (int pluginIndex = 0; pluginIndex < pluginsCount; pluginIndex++) {
             const FREE_IMAGE_FORMAT fif = (FREE_IMAGE_FORMAT)pluginIndex;
             if (FreeImage_FIFSupportsReading(fif)) {
-                const QString pluginExtensions(FreeImage_GetFIFExtensionList(fif));
-                const QString pluginDescription(FreeImage_GetFIFDescription(fif));
-                formats.append(QPair<QStringList, QString> (pluginExtensions.split(','), pluginDescription));
+                const QString pluginExtensions(QLatin1String(FreeImage_GetFIFExtensionList(fif)));
+                const QString pluginDescription(QLatin1String(FreeImage_GetFIFDescription(fif)));
+                formats.append(QPair<QStringList, QString> (pluginExtensions.split(QLatin1Char(',')), pluginDescription));
             }
         }
     }
@@ -347,6 +347,5 @@ QString ImageLoaderFreeImage::libraryName() const
 
 QString ImageLoaderFreeImage::libraryAboutText() const
 {
-    static const QString copyrightMessage(FreeImage_GetCopyrightMessage());
-    return copyrightMessage;
+    return QLatin1String(FreeImage_GetCopyrightMessage());
 }

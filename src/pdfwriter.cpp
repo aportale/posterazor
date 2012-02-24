@@ -56,7 +56,7 @@ void PDFWriter::addOffsetToXref()
     m_pdfObjectCount++;
     m_outStream.flush();
     m_xref.append(
-        QString("%1 %2 n " LINEFEED)
+        QString::fromLatin1("%1 %2 n " LINEFEED)
         .arg((int)m_outStream.device()->size(), 10, 10, QLatin1Char('0'))
         .arg(0, 5, 10, QLatin1Char('0')));
 }
@@ -67,7 +67,7 @@ int PDFWriter::addImageResourcesAndXObject()
 
     addOffsetToXref();
     m_objectResourcesID = m_pdfObjectCount;
-    m_outStream << QString(
+    m_outStream << QString::fromLatin1(
         LINEFEED "%1 0 obj" LINEFEED
         "<</XObject %2 0 R" LINEFEED
         "/ProcSet [/PDF /Text /ImageC /ImageI /ImageB]" LINEFEED
@@ -77,7 +77,7 @@ int PDFWriter::addImageResourcesAndXObject()
         .arg(m_pdfObjectCount + 1);
 
     addOffsetToXref();
-    m_outStream << QString(
+    m_outStream << QString::fromLatin1(
         LINEFEED "%1 0 obj" LINEFEED
         "<</Im1 %2 0 R" LINEFEED
         ">>" LINEFEED
@@ -102,17 +102,17 @@ int PDFWriter::saveJpegImage(const QString &jpegFileName, const QSize &sizePixel
         return 3;
 
     const QString colorSpace =
-        colorType==Types::ColorTypeCMYK?"/DeviceCMYK"
-        :colorType==Types::ColorTypeRGB?"/DeviceRGB"
-        :"/DeviceGray";
+        colorType == Types::ColorTypeCMYK ? QLatin1String("/DeviceCMYK")
+        : colorType == Types::ColorTypeRGB ? QLatin1String("/DeviceRGB")
+        : QLatin1String("/DeviceGray");
 
     // Yes. Cmyk jpegs in PDFs need reverse decoding, somehow
     const QString decodeArray =
-        colorType==Types::ColorTypeCMYK?"/Decode [1.0 0.0 1.0 0.0 1.0 0.0 1.0 0.0]" LINEFEED
-        :"";
+        colorType == Types::ColorTypeCMYK ? QLatin1String("/Decode [1.0 0.0 1.0 0.0 1.0 0.0 1.0 0.0]" LINEFEED)
+                                          : QString();
 
     addOffsetToXref();
-    m_outStream << QString(
+    m_outStream << QString::fromLatin1(
         LINEFEED "%1 0 obj" LINEFEED
         "<</ColorSpace %2" LINEFEED
         "/Subtype /Image" LINEFEED
@@ -168,7 +168,7 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
             *destinationRgb++ = *source++;
             *destinationRgb++ = *source++;
         }
-        sMaskString = QString("/SMask %1 0 R" LINEFEED).arg(m_pdfObjectCount + 2);
+        sMaskString = QString::fromLatin1("/SMask %1 0 R" LINEFEED).arg(m_pdfObjectCount + 2);
     } else {
         actualImageData = imageData;
     }
@@ -186,24 +186,24 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
     QString colorSpaceString;
     switch (actualColorType) {
     case Types::ColorTypeRGB:
-        colorSpaceString = "/DeviceRGB";
+        colorSpaceString = QLatin1String("/DeviceRGB");
         break;
     case Types::ColorTypeGreyscale:
-        colorSpaceString = "/DeviceGray";
+        colorSpaceString = QLatin1String("/DeviceGray");
         break;
     case Types::ColorTypeCMYK:
-        colorSpaceString = "/DeviceCMYK";
+        colorSpaceString = QLatin1String("/DeviceCMYK");
         break;
     default:
-        colorSpaceString = QString("[/Indexed /DeviceRGB %1 <").arg(colorTable.count()-1); // -1, because PDF wants the highest index, not the number of entries
+        colorSpaceString = QString::fromLatin1("[/Indexed /DeviceRGB %1 <").arg(colorTable.count()-1); // -1, because PDF wants the highest index, not the number of entries
         foreach (const QRgb &paletteEntry, colorTable) {
-            QString rgbHex = QString("%1%2%3")
+            QString rgbHex = QString::fromLatin1("%1%2%3")
                 .arg(qRed(paletteEntry), 2, 16, QLatin1Char('0'))
                 .arg(qGreen(paletteEntry), 2, 16, QLatin1Char('0'))
                 .arg(qBlue(paletteEntry), 2, 16, QLatin1Char('0'));
             colorSpaceString.append(rgbHex);
         }
-        colorSpaceString.append(">]");
+        colorSpaceString.append(QLatin1String(">]"));
     }
 
     const int bitsPerComponent =
@@ -214,7 +214,7 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
         :(actualBitsPerPixel/3);
     addOffsetToXref();
     m_objectImageID = m_pdfObjectCount;
-    m_outStream << QString(
+    m_outStream << QString::fromLatin1(
         LINEFEED "%1 0 obj" LINEFEED
         "<</ColorSpace %2" LINEFEED
         "/Subtype /Image" LINEFEED
@@ -259,7 +259,7 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
         const QByteArray softMaskDataCompressed = qCompress(softMask, 9);
 #endif
         addOffsetToXref();
-        m_outStream << QString(
+        m_outStream << QString::fromLatin1(
             LINEFEED "%1 0 obj" LINEFEED
             "<</ColorSpace /DeviceGray" LINEFEED
             "/Subtype /Image" LINEFEED
@@ -306,7 +306,7 @@ int PDFWriter::startPage()
 
     m_pageContent.clear();
     addOffsetToXref();
-    m_outStream << QString(
+    m_outStream << QString::fromLatin1(
         LINEFEED "%1 0 obj" LINEFEED
         "<</Group <</CS /DeviceRGB" LINEFEED
         "/I true" LINEFEED
@@ -334,7 +334,7 @@ int PDFWriter::finishPage()
     int err = 0;
 
     addOffsetToXref();
-    m_outStream << QString(
+    m_outStream << QString::fromLatin1(
         LINEFEED "%1 0 obj" LINEFEED
         "<</Length %2" LINEFEED
         ">>" LINEFEED
@@ -371,7 +371,7 @@ int PDFWriter::startSaving(const QString &fileName, int pages, qreal widthCm, qr
         "%\xe2\xe3\xcf\xd3" ;
 
     addOffsetToXref();
-    m_outStream << QString(
+    m_outStream << QString::fromLatin1(
         LINEFEED "%1 0 obj" LINEFEED
         "<</Creator (PosteRazor)" LINEFEED
         "/Producer (PosteRazor.SourceForge.net)" LINEFEED
@@ -379,7 +379,7 @@ int PDFWriter::startSaving(const QString &fileName, int pages, qreal widthCm, qr
         ">>" LINEFEED
         "endobj")
         .arg(m_pdfObjectCount)
-        .arg(QDateTime::currentDateTime().toString("yyyyMMddHHmmss"));
+        .arg(QDateTime::currentDateTime().toString(QLatin1String("yyyyMMddHHmmss")));
 
     return err;
 }
@@ -392,8 +392,8 @@ int PDFWriter::finishSaving()
     m_objectPagesID = m_pdfObjectCount;
     QString kids;
     for (int i = 0; i < m_contentPagesCount; i++)
-        kids.append(QString("%1%2 0 R").arg(i != 0?" ":"").arg(i*2 + m_firstPageID));
-    m_outStream << QString(
+        kids.append(QString::fromLatin1("%1%2 0 R").arg(i != 0 ? QLatin1String(" ") : QString()).arg(i * 2 + m_firstPageID));
+    m_outStream << QString::fromLatin1(
         LINEFEED "%1 0 obj" LINEFEED
         "<</MediaBox [0 0 %2 %3]" LINEFEED
         "/Resources %4 0 R" LINEFEED
@@ -410,7 +410,7 @@ int PDFWriter::finishSaving()
         .arg(m_contentPagesCount);
 
     addOffsetToXref();
-    m_outStream << QString(
+    m_outStream << QString::fromLatin1(
         LINEFEED "%1 0 obj" LINEFEED
         "<</Pages %2 0 R" LINEFEED
         "/Type /Catalog" LINEFEED
@@ -422,10 +422,10 @@ int PDFWriter::finishSaving()
     m_outStream.flush();
     const qint64 startxref = m_outStream.device()->size();
     m_outStream
-        << QString(LINEFEED "xref" LINEFEED "0 %1" LINEFEED "0000000000 65535 f " LINEFEED)
+        << QString::fromLatin1(LINEFEED "xref" LINEFEED "0 %1" LINEFEED "0000000000 65535 f " LINEFEED)
         .arg(m_pdfObjectCount + 1)
         << m_xref
-        << QString(
+        << QString::fromLatin1(
         "trailer" LINEFEED
         "<</Info %1 0 R" LINEFEED
         "/Root %2 0 R" LINEFEED
@@ -456,7 +456,7 @@ QSizeF PDFWriter::size() const
 
 void PDFWriter::drawImage(const QRectF &rect)
 {
-    const QString imageCode = QString(
+    const QString imageCode = QString::fromLatin1(
         "0 w" LINEFEED
         "q 0 0 %1 %2 re W* n" LINEFEED
         "q %3 0 0 %4 %5 %6 cm" LINEFEED

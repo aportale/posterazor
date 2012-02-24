@@ -26,6 +26,8 @@ RC_FILE += \
 # Uncomment the following line in order to build PosteRazor with FreeImage
 #DEFINES += FREEIMAGE_LIB
 
+DEFINES += QT_NO_CAST_FROM_ASCII
+
 SOURCES += \
     main.cpp
 

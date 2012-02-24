@@ -759,7 +759,7 @@ void PosteRazorCore::paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVar
     } else if (state == QLatin1String("paper") || state == QLatin1String("overlapping")) {
         paintPaperOnCanvas(paintCanvas, state == QLatin1String("overlapping"));
     } else if (state.startsWith(QLatin1String("posterpage"))) {
-        const int page = state.split(' ').last().toInt();
+        const int page = state.split(QLatin1Char(' ')).last().toInt();
         paintPosterPageOnCanvas(paintCanvas, page);
     } else if (state.startsWith(QLatin1String("poster"))) {
         const QStringList options = state.split(QLatin1Char(' '));
@@ -800,7 +800,7 @@ int PosteRazorCore::savePoster(const QString &fileName) const
     if (!err) {
         for (int page = 0; page < pagesCount; page++) {
             pdfWriter.startPage();
-            paintOnCanvas(&pdfWriter, QString(QLatin1String("posterpage %1")).arg(page));
+            paintOnCanvas(&pdfWriter, QString::fromLatin1("posterpage %1").arg(page));
             pdfWriter.finishPage();
         }
         err = pdfWriter.finishSaving();

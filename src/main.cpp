@@ -72,12 +72,12 @@ int main (int argc, char **argv)
     return a.exec();
 #else
 
-    QCoreApplication::setApplicationName("PosteRazor");
+    QCoreApplication::setApplicationName(QLatin1String("PosteRazor"));
 #if QT_VERSION >= 0x040400
-    QCoreApplication::setApplicationVersion("1.9.5");
+    QCoreApplication::setApplicationVersion(QLatin1String("1.9.5"));
 #endif
-    QCoreApplication::setOrganizationName("CasaPortale");
-    QCoreApplication::setOrganizationDomain("de.casaportale");
+    QCoreApplication::setOrganizationName(QLatin1String("CasaPortale"));
+    QCoreApplication::setOrganizationDomain(QLatin1String("de.casaportale"));
 
     MainWindow dialog;
 #if defined (FREEIMAGE_LIB)
@@ -100,7 +100,7 @@ int main (int argc, char **argv)
 
     dialog.show();
     if (argc == 2)
-        controller.loadInputImage(argv[1]);
+        controller.loadInputImage(QString::fromLocal8Bit(argv[1]));
 
     const int appReturn = a.exec();
     dialog.writeSettings(&settings);
