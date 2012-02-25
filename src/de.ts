@@ -84,7 +84,7 @@ Die Angabe &lt;b&gt;%1&lt;/b&gt; beschreibt, welche Seitenränder von den anlieg
         <translation type="unfinished">Sie wollen, dass das Poster ganz bestimmte Maße hat.</translation>
     </message>
     <message>
-        <source>You want to use whole paper sheets and specify how many of them of them you want to use.</source>
+        <source>You want to use whole paper sheets and specify how many of them you want to use.</source>
         <comment>Wizard step 4. Description for &apos;size in pages&apos;</comment>
         <translation type="unfinished">Sie wollen die Druckbögen komplett nutzen und spezifizieren die Anzahl der Bögen.</translation>
     </message>

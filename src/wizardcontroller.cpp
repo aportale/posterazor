@@ -230,7 +230,7 @@ QString WizardController::stepHelp(WizardSteps step)
         result.append(definitionTemplate
             .arg(Types::cleanString(QCoreApplication::translate("Main window", "Size in pages:")))
             .arg(QCoreApplication::translate("Help",
-                "You want to use whole paper sheets and specify how many of them of them you want to use.",
+                "You want to use whole paper sheets and specify how many of them you want to use.",
                 "Wizard step 4. Description for 'size in pages'")));
         result.append(definitionTemplate
             .arg(Types::cleanString(QCoreApplication::translate("Main window", "Size in percent:")))

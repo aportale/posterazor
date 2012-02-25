@@ -84,7 +84,7 @@ La &lt;b&gt;%1&lt;/b&gt; define los márgenes destinados a superponerse con las 
         <translation type="unfinished">Usted desea tener un tamaño determinado de póster.</translation>
     </message>
     <message>
-        <source>You want to use whole paper sheets and specify how many of them of them you want to use.</source>
+        <source>You want to use whole paper sheets and specify how many of them you want to use.</source>
         <comment>Wizard step 4. Description for &apos;size in pages&apos;</comment>
         <translation type="unfinished">Usted quiere usar hojas de papel enteras y especificar cuántas de ellas desea usar.</translation>
     </message>

@@ -84,7 +84,7 @@ La &lt;b&gt;%1&lt;/b&gt; difinisce i bordi che saranno sovrapposti dalle singole
         <translation>Imposta una dimensione specifica per il tuo poster.</translation>
     </message>
     <message>
-        <source>You want to use whole paper sheets and specify how many of them of them you want to use.</source>
+        <source>You want to use whole paper sheets and specify how many of them you want to use.</source>
         <comment>Wizard step 4. Description for &apos;size in pages&apos;</comment>
         <translation>Imposta in quante pagine totali verrà ripartita l&apos;immagine da stampare.</translation>
     </message>

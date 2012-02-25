@@ -84,7 +84,7 @@ The &lt;b&gt;%1&lt;/b&gt; defines the borders that are intended to be overlapped
         <translation>Deseja um tamanho específico para o seu poster.</translation>
     </message>
     <message>
-        <source>You want to use whole paper sheets and specify how many of them of them you want to use.</source>
+        <source>You want to use whole paper sheets and specify how many of them you want to use.</source>
         <comment>Wizard step 4. Description for &apos;size in pages&apos;</comment>
         <translation>Pretende usar folhas de papel inteiras e especificar quantas quer utilizar.</translation>
     </message>
