@@ -148,8 +148,8 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
     int err = 0;
     err = addImageResourcesAndXObject();
     const bool hasSoftMask = colorType == Types::ColorTypeRGBA;
-    const Types::ColorTypes actualColorType = hasSoftMask?Types::ColorTypeRGB:colorType;
-    const int actualBitsPerPixel = hasSoftMask?(bitPerPixel/4)*3:bitPerPixel;
+    const Types::ColorTypes actualColorType = hasSoftMask ? Types::ColorTypeRGB : colorType;
+    const int actualBitsPerPixel = hasSoftMask ? (bitPerPixel / 4) * 3 : bitPerPixel;
 
     QString sMaskString;
     QByteArray softMask;
@@ -207,11 +207,11 @@ int PDFWriter::saveImage(const QByteArray &imageData, const QSize &sizePixels, i
     }
 
     const int bitsPerComponent =
-        actualColorType == Types::ColorTypePalette?actualBitsPerPixel
-        :actualColorType == Types::ColorTypeMonochrome?actualBitsPerPixel
-        :actualColorType == Types::ColorTypeGreyscale?actualBitsPerPixel
-        :actualColorType == Types::ColorTypeCMYK?(actualBitsPerPixel/4)
-        :(actualBitsPerPixel/3);
+        actualColorType == Types::ColorTypePalette ? actualBitsPerPixel
+        : actualColorType == Types::ColorTypeMonochrome ? actualBitsPerPixel
+        : actualColorType == Types::ColorTypeGreyscale ? actualBitsPerPixel
+        : actualColorType == Types::ColorTypeCMYK ? (actualBitsPerPixel / 4)
+        : (actualBitsPerPixel / 3);
     addOffsetToXref();
     m_objectImageID = m_pdfObjectCount;
     m_outStream << QString::fromLatin1(

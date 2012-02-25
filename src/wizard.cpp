@@ -148,8 +148,8 @@ void Wizard::setPaperFormat(const QString &format)
 void Wizard::setPaperOrientation(QPrinter::Orientation orientation)
 {
     (
-        orientation == QPrinter::Landscape?m_paperOrientationLandscapeRadioButton
-        :m_paperOrientationPortraitRadioButton
+        orientation == QPrinter::Landscape ? m_paperOrientationLandscapeRadioButton
+        : m_paperOrientationPortraitRadioButton
     )->setChecked(true);
 }
 
@@ -181,7 +181,7 @@ void Wizard::setCustomPaperSize(const QSizeF &size)
 
 void Wizard::setUseCustomPaperSize(bool useIt)
 {
-    m_paperFormatTypeTabs->setCurrentWidget(useIt?m_paperFormatCustomTab:m_paperFormatStandardTab);
+    m_paperFormatTypeTabs->setCurrentWidget(useIt ? m_paperFormatCustomTab : m_paperFormatStandardTab);
 }
 
 void Wizard::setOverlappingWidth(qreal width)
@@ -228,9 +228,9 @@ void Wizard::setPosterSizePercentual(qreal percent)
 void Wizard::setPosterSizeMode(Types::PosterSizeModes mode)
 {
     (
-        mode == Types::PosterSizeModeAbsolute?m_posterSizeAbsoluteRadioButton
-        :mode == Types::PosterSizeModePages?m_posterSizeInPagesRadioButton
-        :m_posterSizePercentualRadioButton
+        mode == Types::PosterSizeModeAbsolute ? m_posterSizeAbsoluteRadioButton
+        : mode == Types::PosterSizeModePages ? m_posterSizeInPagesRadioButton
+        : m_posterSizePercentualRadioButton
     )->setChecked(true);
     updatePosterSizeGroupsState();
 }
@@ -269,7 +269,7 @@ void Wizard::setPosterAlignment(Qt::Alignment alignment)
 
 void Wizard::setLaunchPDFApplication(bool launch)
 {
-    m_launchPDFApplicationCheckBox->setCheckState(launch?Qt::Checked:Qt::Unchecked);
+    m_launchPDFApplicationCheckBox->setCheckState(launch ? Qt::Checked : Qt::Unchecked);
 }
 
 void Wizard::updatePreview()
@@ -290,12 +290,12 @@ void Wizard::updateImageInfoFields(const QSize &inputImageSizeInPixels, const QS
     m_imageInformationSizeValue->setText(QString::fromLatin1("%1 x %2").arg(imageSize.width(), 0, 'f', 2).arg(imageSize.height(), 0, 'f', 2));
     m_imageInformationResolutionValue->setText(QString::fromLatin1("%1 dpi").arg(verticalDpi, 0, 'f', 1));
     const QString colorTypeString = (
-        colorType==Types::ColorTypeMonochrome?QCoreApplication::translate("Main window", "Monochrome"):
-        colorType==Types::ColorTypeGreyscale?QCoreApplication::translate("Main window", "Gray scale"):
-        colorType==Types::ColorTypePalette?QCoreApplication::translate("Main window", "Palette"):
-        colorType==Types::ColorTypeRGB?QCoreApplication::translate("Main window", "RGB"):
-        colorType==Types::ColorTypeRGBA?QCoreApplication::translate("Main window", "RGBA"):
-        /*colorType==ColorTypeCMYK?*/ QCoreApplication::translate("Main window", "CMYK")
+        colorType == Types::ColorTypeMonochrome ? QCoreApplication::translate("Main window", "Monochrome")
+        : colorType == Types::ColorTypeGreyscale ? QCoreApplication::translate("Main window", "Gray scale")
+        : colorType == Types::ColorTypePalette ? QCoreApplication::translate("Main window", "Palette")
+        : colorType == Types::ColorTypeRGB ? QCoreApplication::translate("Main window", "RGB")
+        : colorType == Types::ColorTypeRGBA ? QCoreApplication::translate("Main window", "RGBA")
+        : /*colorType == ColorTypeCMYK?*/ QCoreApplication::translate("Main window", "CMYK")
     ) + QString::fromLatin1(" %1bpp").arg(bitsPerPixel);
     m_imageInformationColorTypeValue->setText(colorTypeString);
     m_imageInfoGroup->setVisible(true);

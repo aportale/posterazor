@@ -524,7 +524,7 @@ void Controller::savePoster() const
 
 void Controller::loadTranslation(const QString &localeName)
 {
-    const QString saneLocaleName = localeName.isEmpty()?QLocale::system().name():localeName;
+    const QString saneLocaleName = localeName.isEmpty() ? QLocale::system().name() : localeName;
     const QString translationFileName(QLatin1String(":/Translations/") + saneLocaleName);
     if (m_translator->load(translationFileName)) {
         QCoreApplication::removeTranslator(m_translator);

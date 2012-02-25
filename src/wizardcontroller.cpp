@@ -144,13 +144,13 @@ void WizardController::handleNextButtonPressed()
 void WizardController::updateDialogWizardStep()
 {
     emit wizardStepChanged(m_wizardStep);
-    emit previewStateChanged(
-        m_wizardStep == WizardStepInputImage?QLatin1String("image")
-        :m_wizardStep == WizardStepOverlapping?QLatin1String("overlapping")
-        :m_wizardStep == WizardStepPaperSize?QLatin1String("paper")
-        :m_wizardStep == WizardStepPosterSize?QLatin1String("poster")
-        :QLatin1String("poster")
-    );
+    emit previewStateChanged(QLatin1String(
+        m_wizardStep == WizardStepInputImage ?  "image"
+        : m_wizardStep == WizardStepOverlapping ? "overlapping"
+        : m_wizardStep == WizardStepPaperSize ? "paper"
+        : m_wizardStep == WizardStepPosterSize ? "poster"
+        : "poster"
+    ));
     emit prevButtonEnabled(m_wizardStep != previousAvailableStep());
     emit nextButtonEnabled(
         m_wizardStep != nextAvailableStep()
@@ -179,11 +179,11 @@ QString WizardController::stepXofYString(WizardSteps step) const
 QString WizardController::stepTitle(WizardSteps step)
 {
     return
-        step == WizardStepInputImage?  QCoreApplication::translate("Help", "Load an input image")
-        :step == WizardStepPaperSize?  QCoreApplication::translate("Help", "Printer paper format")
-        :step == WizardStepOverlapping?QCoreApplication::translate("Help", "Image tile overlapping")
-        :step == WizardStepPosterSize? QCoreApplication::translate("Help", "Final poster size")
-        :                              QCoreApplication::translate("Help", "Save the Poster");
+        step == WizardStepInputImage ? QCoreApplication::translate("Help", "Load an input image")
+        : step == WizardStepPaperSize ? QCoreApplication::translate("Help", "Printer paper format")
+        : step == WizardStepOverlapping ? QCoreApplication::translate("Help", "Image tile overlapping")
+        : step == WizardStepPosterSize ? QCoreApplication::translate("Help", "Final poster size")
+        : /* step == WizardStepSavePoster ? */ QCoreApplication::translate("Help", "Save the Poster");
 }
 
 QString WizardController::stepHelp(WizardSteps step)

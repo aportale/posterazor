@@ -82,7 +82,7 @@ const QImage ImageLoaderQt::imageAsRGB(const QSize &size) const
 
 int ImageLoaderQt::bitsPerPixel() const
 {
-    return colorDataType() == Types::ColorTypeRGB?24:m_image.depth();
+    return colorDataType() == Types::ColorTypeRGB ? 24 : m_image.depth();
 }
 
 Types::ColorTypes ImageLoaderQt::colorDataType() const
@@ -94,7 +94,7 @@ Types::ColorTypes ImageLoaderQt::colorDataType() const
         result = Types::ColorTypeMonochrome;
         break;
     case QImage::Format_Indexed8:
-        result = m_image.isGrayscale()?Types::ColorTypeGreyscale:Types::ColorTypePalette;
+        result = m_image.isGrayscale() ? Types::ColorTypeGreyscale : Types::ColorTypePalette;
         break;
     case QImage::Format_ARGB32:
         result = Types::ColorTypeRGBA;

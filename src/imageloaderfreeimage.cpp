@@ -167,10 +167,10 @@ QSizeF ImageLoaderFreeImage::size(Types::UnitsOfLength unit) const
 
 const QImage ImageLoaderFreeImage::imageAsRGB(const QSize &size) const
 {
-    const QSize resultSize = size.isValid()?size:sizePixels();
+    const QSize resultSize = size.isValid() ? size : sizePixels();
     const bool isRGB24 = colorDataType() == Types::ColorTypeRGB && bitsPerPixel() == 24;
     const bool isARGB32 = colorDataType() == Types::ColorTypeRGBA && bitsPerPixel() == 32;
-    QImage result(resultSize, isARGB32?QImage::Format_ARGB32:QImage::Format_RGB32);
+    QImage result(resultSize, isARGB32 ? QImage::Format_ARGB32 : QImage::Format_RGB32);
 
     const int width = resultSize.width();
     const int height = resultSize.height();
@@ -193,9 +193,9 @@ const QImage ImageLoaderFreeImage::imageAsRGB(const QSize &size) const
                 for (unsigned int column = 0; column < columnsCount; column++) {
                     const unsigned int cmykColumn = column * 4;
 
-                    const QColor rgbColor = isCmykJpeg?
+                    const QColor rgbColor = isCmykJpeg ?
                         QColor::fromCmyk(255 - cmykBits[cmykColumn], 255 - cmykBits[cmykColumn + 1], 255 - cmykBits[cmykColumn + 2], 255 - cmykBits[cmykColumn + 3])
-                        :QColor::fromCmyk(cmykBits[cmykColumn], cmykBits[cmykColumn + 1], cmykBits[cmykColumn + 2], cmykBits[cmykColumn + 3]);
+                        : QColor::fromCmyk(cmykBits[cmykColumn], cmykBits[cmykColumn + 1], cmykBits[cmykColumn + 2], cmykBits[cmykColumn + 3]);
 
                     rgbBits[column].rgbtRed = (BYTE)rgbColor.red();
                     rgbBits[column].rgbtGreen = (BYTE)rgbColor.green();
@@ -250,13 +250,13 @@ Types::ColorTypes ImageLoaderFreeImage::colorDataType() const
     const FREE_IMAGE_COLOR_TYPE imageColorType = FreeImage_GetColorType(m_bitmap);
 
     if (imageColorType == FIC_MINISBLACK || imageColorType == FIC_MINISWHITE) {
-        colorDatatype = bitsPerPixel()==1?Types::ColorTypeMonochrome:Types::ColorTypeGreyscale;
+        colorDatatype = bitsPerPixel() == 1 ? Types::ColorTypeMonochrome : Types::ColorTypeGreyscale;
     } else {
         colorDatatype =
-            imageColorType==FIC_PALETTE?Types::ColorTypePalette:
-            imageColorType==FIC_RGB?Types::ColorTypeRGB:
-            imageColorType==FIC_RGBALPHA?Types::ColorTypeRGBA:
-            /*imageColorType==FIC_CMYK?*/Types::ColorTypeCMYK;
+            imageColorType == FIC_PALETTE ? Types::ColorTypePalette
+            : imageColorType == FIC_RGB ? Types::ColorTypeRGB
+            : imageColorType == FIC_RGBALPHA ? Types::ColorTypeRGBA
+            : /* imageColorType == FIC_CMYK ? */ Types::ColorTypeCMYK;
     }
 
     return colorDatatype;
