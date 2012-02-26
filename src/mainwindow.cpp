@@ -33,6 +33,7 @@
 #include <QMetaMethod>
 #include <QDragEnterEvent>
 #include <QDropEvent>
+#include <QMimeData>
 
 const QLatin1String settingsKey_MainWindowGeometry("MainWindowGeometry");
 
