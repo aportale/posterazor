@@ -1,5 +1,8 @@
 TARGET = PosteRazor
 
+# Build against Qt 5:
+#QT += widgets printsupport
+
 DESTDIR = $$PWD
 
 win32:DEFINES -= \
