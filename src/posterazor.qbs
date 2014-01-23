@@ -1,10 +1,13 @@
-import qbs.base 1.0
+import qbs 1.0
 
 Project {
     Application {
         name: "PosteRazor"
 
-        Depends { name: "Qt.gui" }
+        Depends {
+            name: "Qt"
+            submodules: ["gui"]
+        }
         Depends { name: 'cpp' }
 
         cpp.includePaths: ['.', buildDirectory]
