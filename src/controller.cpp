@@ -429,7 +429,9 @@ void Controller::loadInputImage()
         m_view,
         QCoreApplication::translate("Main window", "Load an input image"),
         loadPathSettings.value(settingsKey_ImageLoadPath,
-#if QT_VERSION >= 0x040400
+#if QT_VERSION >= 0x050000
+            QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).first()
+#elif QT_VERSION >= 0x040400
             QDesktopServices::storageLocation(QDesktopServices::PicturesLocation)
 #else
             QLatin1String(".")
@@ -480,7 +482,9 @@ void Controller::savePoster() const
     QSettings savePathSettings;
 
     QString saveFileName = savePathSettings.value(settingsKey_PosterSavePath,
-#if QT_VERSION >= 0x040400
+#if QT_VERSION >= 0x050000
+        QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)
+#elif QT_VERSION >= 0x040400
         QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation)
 #else
         "."
