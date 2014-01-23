@@ -1,7 +1,6 @@
 TARGET = PosteRazor
 
-# Build against Qt 5:
-#QT += widgets printsupport
+isEqual(QT_MAJOR_VERSION, 5):QT += widgets printsupport
 
 DESTDIR = $$PWD
 
