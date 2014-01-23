@@ -6,7 +6,7 @@ Project {
 
         Depends {
             name: "Qt"
-            submodules: ["gui"]
+            submodules: ["gui", "printsupport"]
         }
         Depends { name: 'cpp' }
 
