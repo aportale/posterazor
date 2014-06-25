@@ -22,6 +22,9 @@
 
 #include "imageloaderqt.h"
 #include <QImageReader>
+#ifdef POPPLER_QT5_LIB
+#include <poppler-qt5.h>
+#endif
 #include <math.h>
 
 ImageLoaderQt::ImageLoaderQt(QObject *parent)
@@ -29,9 +32,48 @@ ImageLoaderQt::ImageLoaderQt(QObject *parent)
 {
 }
 
+#ifdef POPPLER_QT5_LIB
+bool ImageLoaderQt::loadPdf(const QString &imageFileName, QString &errorMessage)
+{
+    Q_UNUSED(errorMessage)
+    Poppler::Document* document = Poppler::Document::load(imageFileName);
+
+    // FIXME: Set errorMessage on failure (i.e. if returning false).
+
+    if (!document || document->isLocked()) {
+      delete document;
+      return false;
+    }
+
+    // Paranoid safety check
+    if (document == 0)
+      return false;
+
+    // FIXME: Allow user to select page (currrently hard-wired to first page).
+    Poppler::Page* pdfPage = document->page(0); // Document starts at page 0
+    if (pdfPage == 0)
+      return false;
+
+    // FIXME: Don't hard-wire the resolution, and display correct resolution!
+    m_image = pdfPage->renderToImage(300.0, 300.0);
+    if (m_image.isNull())
+      return false;
+
+    delete pdfPage;
+    delete document;
+
+    m_imageFileName = imageFileName;
+    return true;
+}
+#endif // POPPLER_QT5_LIB
+
 bool ImageLoaderQt::loadInputImage(const QString &imageFileName, QString &errorMessage)
 {
     Q_UNUSED(errorMessage)
+#ifdef POPPLER_QT5_LIB
+    if(imageFileName.endsWith(QStringLiteral(".pdf"), Qt::CaseInsensitive))
+      return loadPdf(imageFileName, errorMessage);
+#endif
     bool result = m_image.load(imageFileName);
     if (result)
         m_imageFileName = imageFileName;
@@ -159,6 +201,9 @@ const QVector<QPair<QStringList, QString> > &ImageLoaderQt::imageFormats() const
             {QLatin1String("jpg jpeg"), QLatin1String("Joint Photographic Experts Group")},
             {QLatin1String("mng"),      QLatin1String("Multiple-image Network Graphics")},
             {QLatin1String("pbm"),      QLatin1String("Portable Bitmap")},
+#ifdef POPPLER_QT5_LIB
+            {QLatin1String("pdf"),      QLatin1String("Portable Document Format")},
+#endif
             {QLatin1String("pgm"),      QLatin1String("Portable Graymap")},
             {QLatin1String("png"),      QLatin1String("Portable Network Graphics")},
             {QLatin1String("ppm"),      QLatin1String("Portable Pixelmap")},
@@ -172,7 +217,11 @@ const QVector<QPair<QStringList, QString> > &ImageLoaderQt::imageFormats() const
         for (int i = 0; i < extensionListCount; i++) {
             QStringList extensions = extensionList[i].extensions.split(QLatin1Char(' '));
             foreach (const QString &extension, extensions)
-                if (supportedFormats.contains(extension.toLatin1())) {
+                if (supportedFormats.contains(extension.toLatin1())
+#ifdef POPPLER_QT5_LIB
+                    || (extension.toLatin1() == "pdf")
+#endif
+                    ) {
                     formats.append(QPair<QStringList, QString> (extensions, extensionList[i].description));
                     break;
                 }

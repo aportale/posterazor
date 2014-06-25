@@ -52,6 +52,10 @@ public:
     void setQImage(const QImage &image);
 
 private:
+#ifdef POPPLER_QT5_LIB
+    bool loadPdf(const QString &imageFileName, QString &errorMessage);
+#endif
+
     QImage m_image;
     QString m_imageFileName;
 };
