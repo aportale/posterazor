@@ -163,6 +163,11 @@ bool PosteRazorCore::loadInputImage(const QString &imageFileName, QString &error
     return success;
 }
 
+QString PosteRazorCore::fileName() const
+{
+    return m_imageLoader->fileName();
+}
+
 bool PosteRazorCore::isImageLoaded() const
 {
     return m_imageLoader->isImageLoaded();

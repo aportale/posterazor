@@ -72,6 +72,7 @@ public:
     QSizeF posterSize(Types::PosterSizeModes mode) const;
     Types::PosterSizeModes posterSizeMode() const;
     Qt::Alignment posterAlignment() const;
+    QString fileName() const;
     bool isImageLoaded() const;
     const QVector<QPair<QStringList, QString> > &imageFormats() const;
     const QString imageIOLibraryName() const;

@@ -489,7 +489,11 @@ void Controller::savePoster() const
 #else
         "."
 #endif
-        ).toString();
+        ).toString() + QDir::separator()
+                     + QFileInfo(m_posteRazorCore->fileName()).baseName()
+                     + QLatin1String("-")
+                     + QCoreApplication::translate("Main window", "poster")
+                     + QLatin1String(".pdf");
     bool fileExistsAskUserForOverwrite = false;
 
     do {
