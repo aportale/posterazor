@@ -28,10 +28,24 @@ RC_FILE += \
 # Uncomment the following line in order to build PosteRazor with FreeImage
 #DEFINES += FREEIMAGE_LIB
 
+# Poppler-Qt5 is the library we require to be able to process PDF files as input
+# Comment the following line in order to build PosteRazor without Poppler-Qt5
+exists( /usr/include/poppler/qt5/poppler-qt5.h ) {
+    DEFINES += POPPLER_QT5_LIB
+}
+
 DEFINES += QT_NO_CAST_FROM_ASCII
 
 SOURCES += \
     main.cpp
+
+contains (DEFINES, POPPLER_QT5_LIB) {
+    unix:INCLUDEPATH += \
+        /usr/include/poppler/qt5
+
+    unix:LIBS += \
+        -lpoppler-qt5
+}
 
 contains (DEFINES, FREEIMAGE_LIB) {
     SOURCES += \
