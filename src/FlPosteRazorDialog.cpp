@@ -39,6 +39,7 @@
   #define CASESENSITIVESTRNCMP strnicmp
 #else
   #include <iostream>
+  #include <unistd.h>
   #define CASESENSITIVESTRCMP strcasecmp
   #define CASESENSITIVESTRNCMP strncasecmp
 #endif
