@@ -44,10 +44,10 @@ public:
     int finishPage();
     int startSaving(const QString &fileName, int pages, qreal widthCm, qreal heightCm);
     int finishSaving();
-    void drawFilledRect(const QRectF&, const QBrush &brush);
-    QSizeF size() const;
-    void drawImage(const QRectF &rect);
-    void drawOverlayText(const QPointF &position, int flags, int size, const QString &text);
+    void drawFilledRect(const QRectF&, const QBrush &brush) override;
+    QSizeF size() const override;
+    void drawImage(const QRectF &rect) override;
+    void drawOverlayText(const QPointF &position, int flags, int size, const QString &text) override;
 
 private:
     QFile *m_outputFile;

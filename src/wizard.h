@@ -32,7 +32,7 @@ class Wizard : public QWidget, private Ui::Wizard
 public:
     Wizard(QWidget *parent = 0);
 
-    void changeEvent(QEvent *event);
+    void changeEvent(QEvent *event) override;
 
 public slots:
     void retranslateUi();

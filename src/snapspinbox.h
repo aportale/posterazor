@@ -39,11 +39,11 @@ public:
 
 protected:
     qreal m_originalValue; // This is not rounded
-    QAbstractSpinBox::StepEnabled stepEnabled() const;
+    QAbstractSpinBox::StepEnabled stepEnabled() const override;
 
 private slots:
     void handleLineEditTextEdited(const QString &text);
-    void stepBy(int steps);
+    void stepBy(int steps) override;
 
 signals:
     void valueEdited(qreal value) const;

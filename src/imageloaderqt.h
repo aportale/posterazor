@@ -30,23 +30,23 @@ class ImageLoaderQt: public QObject, public ImageLoaderInterface
 public:
     ImageLoaderQt(QObject *parent = 0);
 
-    bool loadInputImage(const QString &imageFileName, QString &errorMessage);
-    bool isImageLoaded() const;
-    bool isJpeg() const;
-    QString fileName() const;
-    QSize sizePixels() const;
-    qreal horizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const;
-    qreal verticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const;
-    QSizeF size(Types::UnitsOfLength unit) const;
-    const QImage imageAsRGB(const QSize &size) const;
-    int bitsPerPixel() const;
-    Types::ColorTypes colorDataType() const;
+    bool loadInputImage(const QString &imageFileName, QString &errorMessage) override;
+    bool isImageLoaded() const override;
+    bool isJpeg() const override;
+    QString fileName() const override;
+    QSize sizePixels() const override;
+    qreal horizontalDotsPerUnitOfLength(Types::UnitsOfLength unit) const override;
+    qreal verticalDotsPerUnitOfLength(Types::UnitsOfLength unit) const override;
+    QSizeF size(Types::UnitsOfLength unit) const override;
+    const QImage imageAsRGB(const QSize &size) const override;
+    int bitsPerPixel() const override;
+    Types::ColorTypes colorDataType() const override;
     int savePoster(const QString &fileName, const PainterInterface *painter, int pagesCount, const QSizeF &sizeCm) const;
-    const QByteArray bits() const;
-    const QVector<QRgb> colorTable() const;
-    const QVector<QPair<QStringList, QString> > &imageFormats() const;
-    QString libraryName() const;
-    QString libraryAboutText() const;
+    const QByteArray bits() const override;
+    const QVector<QRgb> colorTable() const override;
+    const QVector<QPair<QStringList, QString> > &imageFormats() const override;
+    QString libraryName() const override;
+    QString libraryAboutText() const override;
 
     void setQImage(const QImage &image);
 

@@ -39,9 +39,9 @@ public:
 
     void retranslateUi();
     void retranslateUiWithDimensionUnit();
-    void changeEvent(QEvent *event);
-    void dragEnterEvent(QDragEnterEvent *event);
-    void dropEvent(QDropEvent *event);
+    void changeEvent(QEvent *event) override;
+    void dragEnterEvent(QDragEnterEvent *event) override;
+    void dropEvent(QDropEvent *event) override;
 
 public slots:
     void setPaperFormat(const QString &format);
