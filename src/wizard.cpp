@@ -407,7 +407,7 @@ void Wizard::createConnections()
     connect(m_posterSizePercentualRadioButton,      SIGNAL(clicked()),                  SLOT(updatePosterSizeGroupsState()));
     connect(m_overlappingWidthInput,                SIGNAL(valueEdited(qreal)),        SIGNAL(overlappingWidthChanged(qreal)));
     connect(m_overlappingHeightInput,               SIGNAL(valueEdited(qreal)),        SIGNAL(overlappingHeightChanged(qreal)));
-    QSignalMapper *overlappingMapper = new QSignalMapper(this);
+    auto overlappingMapper = new QSignalMapper(this);
     foreach (const Qt::Alignment alignment, m_overlappingButtons.keys()) {
         QAbstractButton *sender = m_overlappingButtons.value(alignment);
         connect(sender, SIGNAL(clicked()), overlappingMapper, SLOT(map()));
@@ -419,7 +419,7 @@ void Wizard::createConnections()
     connect(m_posterPagesWidthInput,                SIGNAL(valueEdited(qreal)),        SIGNAL(posterWidthPagesChanged(qreal)));
     connect(m_posterPagesHeightInput,               SIGNAL(valueEdited(qreal)),        SIGNAL(posterHeightPagesChanged(qreal)));
     connect(m_posterPercentualSizeInput,            SIGNAL(valueEdited(qreal)),        SIGNAL(posterSizePercentualChanged(qreal)));
-    QSignalMapper *alignmentMapper = new QSignalMapper(this);
+    auto alignmentMapper = new QSignalMapper(this);
     foreach (const Qt::Alignment alignment, m_alignmentButtons.keys()) {
         QAbstractButton *sender = m_alignmentButtons.value(alignment);
         connect(sender, SIGNAL(clicked()), alignmentMapper, SLOT(map()));

@@ -75,7 +75,7 @@ void WizardController::setStepAvailable(WizardSteps step, bool available)
 WizardController::WizardSteps WizardController::previousAvailableStep()
 {
     for (int i = m_wizardStep; i > WizardStepInputImage; i--){
-        const WizardSteps newStep = WizardSteps(i - 1);
+        const auto newStep = WizardSteps(i - 1);
         if (!m_unavaliableSteps.contains(newStep))
             return newStep;
     }
@@ -86,7 +86,7 @@ WizardController::WizardSteps WizardController::previousAvailableStep()
 WizardController::WizardSteps WizardController::nextAvailableStep()
 {
     for (int i = m_wizardStep; i < WizardStepSavePoster; ++i){
-        const WizardSteps newStep = WizardSteps(i + 1);
+        const auto newStep = WizardSteps(i + 1);
         if (!m_unavaliableSteps.contains(newStep))
             return newStep;
     }

@@ -123,7 +123,7 @@ Controller::Controller(PosteRazorCore *posteRazorCore, QWidget *view, QObject *p
     m_wizardController = new WizardController(m_view, this);
 
     if (!m_posteRazorCore->imageIOLibraryAboutText().isEmpty()) {
-        QAction *aboutAction = new QAction(m_view);
+        auto aboutAction = new QAction(m_view);
         aboutAction->setText(QLatin1String("A&bout ") + m_posteRazorCore->imageIOLibraryName());
         connect (aboutAction, SIGNAL(triggered()), SLOT(showExtraAboutDialog()));
         emit addAboutDialogActionSignal(aboutAction);

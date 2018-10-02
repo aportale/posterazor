@@ -212,7 +212,7 @@ const QVector<QPair<QStringList, QString> > &ImageLoaderQt::imageFormats() const
             {QLatin1String("xbm"),      QLatin1String("X11 Bitmap")},
             {QLatin1String("xpm"),      QLatin1String("X11 Pixmap")}
         };
-        const int extensionListCount = int(sizeof extensionList / sizeof extensionList[0]);
+        const auto extensionListCount = int(sizeof extensionList / sizeof extensionList[0]);
         const QList<QByteArray> supportedFormats = QImageReader::supportedImageFormats();
         for (int i = 0; i < extensionListCount; i++) {
             QStringList extensions = extensionList[i].extensions.split(QLatin1Char(' '));

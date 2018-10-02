@@ -314,7 +314,7 @@ void MainWindow::showManual(const QString &title, const QString &text)
     dialog->setWindowFlags(dialog->windowFlags() ^ Qt::WindowContextHelpButtonHint);
     dialog->resize(500, 400);
     dialog->setLayout(new QVBoxLayout);
-    QTextBrowser *browser = new QTextBrowser;
+    auto browser = new QTextBrowser;
     browser->setOpenExternalLinks(true);
     browser->document()->setDefaultStyleSheet(QLatin1String(
         "dt {font-weight: bold;}"
@@ -324,7 +324,7 @@ void MainWindow::showManual(const QString &title, const QString &text)
         "h2 {margin-top: 18px; margin-bottom: 6px;}"));
     browser->setHtml(text);
     dialog->layout()->addWidget(browser);
-    QDialogButtonBox *buttonBox = new QDialogButtonBox;
+    auto buttonBox = new QDialogButtonBox;
     buttonBox->setStandardButtons(QDialogButtonBox::Ok);
     connect(buttonBox, SIGNAL(accepted ()), dialog, SLOT(accept()));
     dialog->layout()->addWidget(buttonBox);
@@ -399,7 +399,7 @@ void MainWindow::populateUI()
 
     m_menuSettings->addSeparator();
 
-    QActionGroup *translationActions = new QActionGroup(m_menuSettings);
+    auto translationActions = new QActionGroup(m_menuSettings);
     connect (translationActions, SIGNAL(triggered(QAction*)), SLOT(handleTranslationAction(QAction*)));
     translationActions->setExclusive(true);
     const QDir translationDir(QLatin1String(":/Translations/"));
