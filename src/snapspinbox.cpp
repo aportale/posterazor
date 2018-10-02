@@ -1,6 +1,6 @@
 /*
     PosteRazor - Make your own poster!
-    Copyright (C) 2005-2009 by Alessandro Portale
+    Copyright (C) 2005-2018 by Alessandro Portale
     http://posterazor.sourceforge.net/
 
     This file is part of PosteRazor
