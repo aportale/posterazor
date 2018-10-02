@@ -29,7 +29,7 @@
 class PaintCanvasInterface
 {
 public:
-    virtual ~PaintCanvasInterface() {}
+    virtual ~PaintCanvasInterface() = default;
 
     virtual void drawFilledRect(const QRectF &rect, const QBrush &brush) = 0;
     virtual QSizeF size() const = 0;
