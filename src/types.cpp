@@ -21,8 +21,9 @@
 */
 
 #include "types.h"
-#include <QtDebug>
+
 #include <QRegExp>
+#include <QtDebug>
 
 const QHash<Types::UnitsOfLength, QPair<QString, qreal> > &Types::unitsOfLength()
 {

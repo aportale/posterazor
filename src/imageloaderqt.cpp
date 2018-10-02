@@ -21,6 +21,7 @@
 */
 
 #include "imageloaderqt.h"
+
 #include <QImageReader>
 #ifdef POPPLER_QT5_LIB
 #include <poppler-qt5.h>

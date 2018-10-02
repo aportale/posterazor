@@ -22,11 +22,13 @@
 
 #include "paintcanvasinterface.h"
 #include "pdfwriter.h"
-#include <QRectF>
+
 #include <QBrush>
+#include <QDateTime>
 #include <QFile>
 #include <QFileInfo>
-#include <QDateTime>
+#include <QRectF>
+
 #define LINEFEED "\x0A"
 
 const int valuePrecision = 4;

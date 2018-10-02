@@ -20,16 +20,18 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "posterazorcore.h"
 #include "pdfwriter.h"
+#include "posterazorcore.h"
 #if defined (FREEIMAGE_LIB)
 #    include "imageloaderfreeimage.h"
 #else
 #    include "imageloaderqt.h"
 #endif
+
+#include <QBrush>
 #include <QSettings>
 #include <QStringList>
-#include <QBrush>
+
 #include <math.h>
 
 const QLatin1String defaultValue_PaperFormat(           "DIN A4");

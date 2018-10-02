@@ -21,6 +21,7 @@
 */
 
 #include "paintcanvas.h"
+
 #include <QImage>
 #include <QPainter>
 #include <QVariant>

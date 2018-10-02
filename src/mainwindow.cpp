@@ -21,19 +21,20 @@
 */
 
 #include "mainwindow.h"
-#include <QSignalMapper>
-#include <QFileDialog>
-#include <QTranslator>
-#include <QtDebug>
-#include <QVBoxLayout>
+
 #include <QDialogButtonBox>
-#include <QTextBrowser>
-#include <QMessageBox>
-#include <QSettings>
-#include <QMetaMethod>
 #include <QDragEnterEvent>
 #include <QDropEvent>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QMetaMethod>
 #include <QMimeData>
+#include <QSettings>
+#include <QSignalMapper>
+#include <QTextBrowser>
+#include <QTranslator>
+#include <QVBoxLayout>
+#include <QtDebug>
 
 const QLatin1String settingsKey_MainWindowGeometry("MainWindowGeometry");
 

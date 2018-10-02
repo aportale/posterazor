@@ -20,11 +20,12 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#include "wizardcontroller.h"
 #include "types.h"
+#include "wizardcontroller.h"
+
 #include <QCoreApplication>
-#include <QMetaObject>
 #include <QMetaEnum>
+#include <QMetaObject>
 
 static const QMetaEnum wizardStepsEnum()
 {

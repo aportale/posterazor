@@ -22,9 +22,11 @@
 
 #include "FreeImage.h"
 #include "imageloaderfreeimage.h"
-#include <qendian.h>
-#include <QStringList>
+
 #include <QColor>
+#include <QStringList>
+#include <qendian.h>
+
 #include <math.h>
 
 static QString FreeImageErrorMessage;

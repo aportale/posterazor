@@ -21,12 +21,13 @@
 */
 
 #include "wizard.h"
-#include <QSignalMapper>
-#include <QFileInfo>
-#include <QtDebug>
-#include <QVBoxLayout>
+
 #include <QDialogButtonBox>
+#include <QFileInfo>
 #include <QMessageBox>
+#include <QSignalMapper>
+#include <QVBoxLayout>
+#include <QtDebug>
 
 Wizard::Wizard(QWidget *parent)
     : QWidget(parent)
