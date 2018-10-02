@@ -31,6 +31,7 @@
 
 #include <QtTest>
 #include <QtGui>
+#include <QtWidgets>
 
 #if !defined(QT_SHARED) && !defined(QT_DLL) && !defined(FREEIMAGE_LIB)
 Q_IMPORT_PLUGIN(qgif)
@@ -76,7 +77,7 @@ void PosteRazorTests::screenShotterize()
     background.setPalette(palette);
     background.setAutoFillBackground(true);
     background.showFullScreen();
-    QTest::qWaitForWindowShown(&background);
+    QTest::qWaitForWindowExposed(&background);
 
     foreach (const QFileInfo &translation, translationDir.entryInfoList(QDir::Files)) {
         const QString localeString(translation.baseName());
@@ -88,7 +89,7 @@ void PosteRazorTests::screenShotterize()
         controller.loadTranslation(localeString);
         window.resize(640, 480);
         window.show();
-        QTest::qWaitForWindowShown(&window);
+        QTest::qWaitForWindowExposed(&window);
         QTest::qWait(500); // Wait for fancy effects to finish
 
         QPushButton *nextButton = window.findChild<QPushButton*>(QString::fromLatin1("m_stepNextButton"));
@@ -151,10 +152,8 @@ void PosteRazorTests::takeShot(const QString &fileName)
 {
     const QRect backgroundRect(QApplication::desktop()->availableGeometry());
     const QImage screenShot =
-            QPixmap::grabWindow(QApplication::desktop()->screen()->winId(),
-                    backgroundRect.x(), backgroundRect.y(),
-                    backgroundRect.width(), backgroundRect.height()
-            ).toImage()
+            QGuiApplication::focusWindow()->screen()->grabWindow(
+                QApplication::desktop()->screen()->winId()).toImage()
             .convertToFormat(QImage::Format_ARGB32);
 
     const QRect crop = PosteRazorTests::cropRect(screenShot, m_screenShotBackground);

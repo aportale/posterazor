@@ -1,4 +1,4 @@
-CONFIG += qtestlib
+QT += testlib widgets printsupport
 
 # Uncomment the following line in order to build PosteRazor with FreeImage
 #DEFINES += FREEIMAGE_LIB
