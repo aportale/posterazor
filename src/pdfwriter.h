@@ -34,7 +34,7 @@ QT_END_NAMESPACE
 class PDFWriter: public QObject, public PaintCanvasInterface
 {
 public:
-    PDFWriter(QObject *parent = 0);
+    PDFWriter(QObject *parent = nullptr);
 
     void addOffsetToXref();
     int addImageResourcesAndXObject();

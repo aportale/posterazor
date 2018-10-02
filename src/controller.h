@@ -39,7 +39,7 @@ class Controller: public QObject
     Q_OBJECT
 
 public:
-    Controller(PosteRazorCore *posteRazorCore, QWidget *view, QObject *parent = 0);
+    Controller(PosteRazorCore *posteRazorCore, QWidget *view, QObject *parent = nullptr);
 
     void updateDialog();
     void updatePreview();

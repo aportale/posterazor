@@ -52,7 +52,7 @@ public:
 
 ImageLoaderFreeImage::ImageLoaderFreeImage(QObject *parent)
     : QObject(parent)
-    , m_bitmap(NULL)
+    , m_bitmap(nullptr)
     , m_widthPixels(0)
     , m_heightPixels(0)
     , m_horizontalDotsPerMeter(0)
@@ -70,7 +70,7 @@ void ImageLoaderFreeImage::disposeImage()
 {
     if (m_bitmap) {
         FreeImage_Unload(m_bitmap);
-        m_bitmap = NULL;
+        m_bitmap = nullptr;
     }
 }
 
@@ -92,7 +92,7 @@ bool ImageLoaderFreeImage::loadInputImage(const QString &imageFileName, QString 
             && type != FIT_RGB16 // 16bpp Greyscale, 48bpp Rgb
             ) {
             FreeImage_Unload(newImage);
-            newImage = NULL;
+            newImage = nullptr;
         }
     }
 
@@ -131,7 +131,7 @@ bool ImageLoaderFreeImage::loadInputImage(const QString &imageFileName, QString 
 
 bool ImageLoaderFreeImage::isImageLoaded() const
 {
-    return (m_bitmap != NULL);
+    return (m_bitmap != nullptr);
 }
 
 bool ImageLoaderFreeImage::isJpeg() const
@@ -177,8 +177,8 @@ const QImage ImageLoaderFreeImage::imageAsRGB(const QSize &size) const
     const QSize sizePixels = this->sizePixels();
 
     FIBITMAP* originalImage = m_bitmap;
-    FIBITMAP* temp24BPPImage = NULL;
-    FIBITMAP* scaledImage = NULL;
+    FIBITMAP* temp24BPPImage = nullptr;
+    FIBITMAP* scaledImage = nullptr;
 
     if (!(isRGB24 || isARGB32)) {
         if (colorDataType() == Types::ColorTypeCMYK) {

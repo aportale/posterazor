@@ -51,7 +51,7 @@ bool ImageLoaderQt::loadPdf(const QString &imageFileName, QString &errorMessage)
 
     // FIXME: Allow user to select page (currrently hard-wired to first page).
     Poppler::Page* pdfPage = document->page(0); // Document starts at page 0
-    if (pdfPage == 0)
+    if (pdfPage == nullptr)
       return false;
 
     // FIXME: Don't hard-wire the resolution, and display correct resolution!

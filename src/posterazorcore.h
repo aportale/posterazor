@@ -37,7 +37,7 @@ class PosteRazorCore: public QObject
     Q_OBJECT
 
 public:
-    PosteRazorCore(ImageLoaderInterface *imageLoader, QObject *parent = 0);
+    PosteRazorCore(ImageLoaderInterface *imageLoader, QObject *parent = nullptr);
 
     static unsigned int imageBitsPerLineCount(int widthPixels, int bitPerPixel);
     static unsigned int imageBytesPerLineCount(int widthPixels, int bitPerPixel);

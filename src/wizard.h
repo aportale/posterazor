@@ -30,7 +30,7 @@ class Wizard : public QWidget, private Ui::Wizard
     Q_OBJECT
 
 public:
-    Wizard(QWidget *parent = 0);
+    Wizard(QWidget *parent = nullptr);
 
     void changeEvent(QEvent *event) override;
 

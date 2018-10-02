@@ -27,7 +27,7 @@
 
 PaintCanvas::PaintCanvas(QWidget *parent)
     : QWidget(parent)
-    , m_qPainter(NULL)
+    , m_qPainter(nullptr)
     , m_state(QLatin1String("image"))
 {
 }
@@ -39,7 +39,7 @@ void PaintCanvas::paintEvent(QPaintEvent *event)
     m_qPainter = &painter;
     m_qPainter->setRenderHint(QPainter::Antialiasing);
     emit needsPaint(this, m_state);
-    m_qPainter = NULL;
+    m_qPainter = nullptr;
 }
 
 void PaintCanvas::drawFilledRect(const QRectF &rect, const QBrush &brush)

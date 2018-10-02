@@ -225,7 +225,7 @@ void MainWindow::updateImageInfoFields(const QSize &inputImageSizeInPixels, cons
 
 void MainWindow::setCurrentTranslation(const QString &translation)
 {
-    QAction *translationAction = NULL;
+    QAction *translationAction = nullptr;
     translationAction = m_translationActions.value(translation);
     if (!translationAction) {
         // On a Swiss system 'translation' may be "de_CH". So let's fall back to "de"

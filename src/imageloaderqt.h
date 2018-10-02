@@ -28,7 +28,7 @@
 class ImageLoaderQt: public QObject, public ImageLoaderInterface
 {
 public:
-    ImageLoaderQt(QObject *parent = 0);
+    ImageLoaderQt(QObject *parent = nullptr);
 
     bool loadInputImage(const QString &imageFileName, QString &errorMessage) override;
     bool isImageLoaded() const override;

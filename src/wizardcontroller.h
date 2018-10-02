@@ -38,7 +38,7 @@ public:
         WizardStepSavePoster
     };
 
-    WizardController(QObject *wizardDialog, QObject *parent = 0);
+    WizardController(QObject *wizardDialog, QObject *parent = nullptr);
 
     void setStepAvailable(WizardSteps step, bool available);
     WizardSteps previousAvailableStep();

@@ -29,7 +29,7 @@ struct FIBITMAP;
 class ImageLoaderFreeImage: public QObject, public ImageLoaderInterface
 {
 public:
-    ImageLoaderFreeImage(QObject *parent = 0);
+    ImageLoaderFreeImage(QObject *parent = nullptr);
     ~ImageLoaderFreeImage() override;
 
     bool loadInputImage(const QString &imageFileName, QString &errorMessage) override;

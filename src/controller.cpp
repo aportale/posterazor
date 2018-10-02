@@ -502,7 +502,7 @@ void Controller::savePoster() const
             QCoreApplication::translate("Main window", "Save the poster"),
             saveFileName,
             QLatin1String("Portable Document format (*.pdf)"),
-            NULL,
+            nullptr,
             QFileDialog::DontConfirmOverwrite
         );
 
