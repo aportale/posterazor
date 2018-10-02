@@ -20,8 +20,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
 #include "ui_mainwindow.h"
 
@@ -132,5 +131,3 @@ private slots:
     void showAboutQtDialog() const;
     void showAboutPosteRazorDialog();
 };
-
-#endif // MAINWINDOW_H

@@ -20,8 +20,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef PAINTCANVASINTERFACE_H
-#define PAINTCANVASINTERFACE_H
+#pragma once
 
 #include <QBrush>
 #include <QSizeF>
@@ -37,5 +36,3 @@ public:
     virtual void drawImage(const QRectF &rect) = 0;
     virtual void drawOverlayText(const QPointF &position, int flags, int size, const QString &text) = 0;
 };
-
-#endif // PAINTCANVASINTERFACE_H

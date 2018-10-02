@@ -20,8 +20,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef IMAGELOADERINTERFACE_H
-#define IMAGELOADERINTERFACE_H
+#pragma once
 
 #include "types.h"
 #include <QImage>
@@ -52,5 +51,3 @@ public:
     virtual QString libraryName() const = 0;
     virtual QString libraryAboutText() const = 0;
 };
-
-#endif // IMAGELOADERINTERFACE_H

@@ -20,8 +20,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef PDFWRITER_H
-#define PDFWRITER_H
+#pragma once
 
 #include "types.h"
 #include "paintcanvasinterface.h"
@@ -64,5 +63,3 @@ private:
     QString m_pageContent;
     QTextStream m_outStream;
 };
-
-#endif // PDFWRITER_H

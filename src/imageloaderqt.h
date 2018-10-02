@@ -20,8 +20,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef IMAGELOADERQT_H
-#define IMAGELOADERQT_H
+#pragma once
 
 #include "imageloaderinterface.h"
 #include <QObject>
@@ -59,5 +58,3 @@ private:
     QImage m_image;
     QString m_imageFileName;
 };
-
-#endif // IMAGELOADERQT_H

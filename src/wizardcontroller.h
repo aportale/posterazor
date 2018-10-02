@@ -20,8 +20,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef WIZARDCONTROLLER_H
-#define WIZARDCONTROLLER_H
+#pragma once
 
 #include <QObject>
 
@@ -74,5 +73,3 @@ private:
     static QString stepTitle(WizardSteps step);
     static QString stepHelp(WizardSteps step);
 };
-
-#endif // WIZARDCONTROLLER_H

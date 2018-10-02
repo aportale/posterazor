@@ -20,8 +20,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef IMAGELOADERFREEIMAGE_H
-#define IMAGELOADERFREEIMAGE_H
+#pragma once
 
 #include "imageloaderinterface.h"
 
@@ -61,5 +60,3 @@ private:
     void disposeImage();
     static bool hasFreeImageVersionCorrectTopDownInConvertBits();
 };
-
-#endif // IMAGELOADERFREEIMAGE_H

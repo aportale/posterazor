@@ -20,8 +20,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef PAINTCANVAS_H
-#define PAINTCANVAS_H
+#pragma once
 
 #include <QWidget>
 #include "paintcanvasinterface.h"
@@ -56,5 +55,3 @@ public slots:
 signals:
     void needsPaint(PaintCanvasInterface *paintDevice, const QVariant &options) const;
 };
-
-#endif // PAINTCANVAS_H

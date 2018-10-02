@@ -20,8 +20,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef WIZARD_H
-#define WIZARD_H
+#pragma once
 
 #include "ui_wizard.h"
 #include "types.h"
@@ -117,5 +116,3 @@ private slots:
     void emitPosterAlignmentChange(int alignmentInt) const;
     void updatePosterSizeGroupsState();
 };
-
-#endif // WIZARD_H

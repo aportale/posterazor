@@ -20,8 +20,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef TYPES_H
-#define TYPES_H
+#pragma once
 
 #include <QPair>
 #include <QPrinter>
@@ -65,5 +64,3 @@ public:
     static QString cleanString(const QString &dirtyString);
     static QString newlineToParagraph(const QString &nlText);
 };
-
-#endif // TYPES_H

@@ -20,8 +20,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef CONTROLLER_H
-#define CONTROLLER_H
+#pragma once
 
 #include "types.h"
 #include <QObject>
@@ -141,5 +140,3 @@ protected:
     void setDialogOverlappingDimensions();
     void setDialogOverlappingOptions();
 };
-
-#endif // CONTROLLER_H

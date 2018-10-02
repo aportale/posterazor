@@ -20,8 +20,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef POSTERAZORCORE_H
-#define POSTERAZORCORE_H
+#pragma once
 
 #include "types.h"
 #include "paintcanvasinterface.h"
@@ -146,5 +145,3 @@ private:
     Qt::Alignment            m_overlappingPosition;
     Types::UnitsOfLength     m_unitOfLength;
 };
-
-#endif // POSTERAZORCORE_H
