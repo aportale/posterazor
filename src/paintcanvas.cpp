@@ -27,7 +27,6 @@
 
 PaintCanvas::PaintCanvas(QWidget *parent)
     : QWidget(parent)
-    , m_qPainter(nullptr)
     , m_state(QLatin1String("image"))
 {
 }

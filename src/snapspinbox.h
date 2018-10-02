@@ -38,7 +38,7 @@ public:
     void setValue(qreal value);
 
 protected:
-    qreal m_originalValue; // This is not rounded
+    qreal m_originalValue = 0.0; // This is not rounded
     QAbstractSpinBox::StepEnabled stepEnabled() const override;
 
 private slots:

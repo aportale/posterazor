@@ -36,7 +36,7 @@ class PaintCanvas: public QWidget, public PaintCanvasInterface
 
 private:
     QImage m_image;
-    QPainter *m_qPainter;
+    QPainter *m_qPainter = nullptr;
     QString m_state;
 
 public:

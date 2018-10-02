@@ -42,7 +42,6 @@ Controller::Controller(PosteRazorCore *posteRazorCore, QWidget *view, QObject *p
     : QObject(parent)
     , m_posteRazorCore(posteRazorCore)
     , m_view(view)
-    , m_launchPDFApplication(true)
 {
     connect(m_view, SIGNAL(paperFormatChanged(const QString&)), SLOT(setPaperFormat(const QString&)));
     connect(m_view, SIGNAL(paperOrientationChanged(QPrinter::Orientation)), SLOT(setPaperOrientation(QPrinter::Orientation)));

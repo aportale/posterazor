@@ -24,7 +24,6 @@
 
 SnapSpinBox::SnapSpinBox(QWidget *parent)
     : QDoubleSpinBox(parent)
-    , m_originalValue(.0)
 {
     connect((const QObject *)lineEdit(), SIGNAL(textEdited(const QString &)), SLOT(handleLineEditTextEdited(const QString &)));
 }

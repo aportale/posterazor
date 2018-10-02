@@ -122,11 +122,11 @@ private slots:
     void imageSuffixSupported(const QString &suffix, bool &outIsSupported) const;
 
 protected:
-    PosteRazorCore *m_posteRazorCore;
-    QWidget *m_view;
-    bool m_launchPDFApplication;
-    WizardController *m_wizardController;
-    QTranslator *m_translator;
+    PosteRazorCore *m_posteRazorCore = nullptr;
+    QWidget *m_view = nullptr;
+    bool m_launchPDFApplication = true;
+    WizardController *m_wizardController = nullptr;
+    QTranslator *m_translator = nullptr;
     QString m_translationName;
 
     void setDialogSaveOptions();

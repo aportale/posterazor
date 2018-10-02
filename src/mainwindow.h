@@ -82,9 +82,9 @@ public slots:
     void showManual(const QString &title, const QString &text);
 
 private:
-    PosteRazorCore *m_posteRazor;
+    PosteRazorCore *m_posteRazor = nullptr;
     QString m_currentUnitOfLength;
-    QActionGroup *m_unitOfLengthActions;
+    QActionGroup *m_unitOfLengthActions = nullptr;
     QHash<QString, QAction*> m_translationActions;
 
     void createConnections();

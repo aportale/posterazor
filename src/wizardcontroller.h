@@ -65,8 +65,8 @@ signals:
     void showWizardStepHelpSignal(const QString &title, const QString &manual) const;
 
 private:
-    WizardSteps m_wizardStep;
-    bool m_imageWasLoaded;
+    WizardSteps m_wizardStep = WizardStepInputImage;
+    bool m_imageWasLoaded = false;
     QList<WizardSteps> m_unavaliableSteps;
 
     QString stepXofYString(WizardSteps step) const;

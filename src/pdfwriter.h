@@ -50,16 +50,16 @@ public:
     void drawOverlayText(const QPointF &position, int flags, int size, const QString &text) override;
 
 private:
-    QFile *m_outputFile;
+    QFile *m_outputFile = nullptr;
     QString m_xref;
-    int m_pdfObjectCount;
-    int m_contentPagesCount;
-    int m_objectPagesID;
-    int m_firstPageID;
-    int m_objectResourcesID;
-    int m_objectImageID;
-    qreal m_mediaboxWidth;
-    qreal m_mediaboxHeight;
+    int m_pdfObjectCount = 0;
+    int m_contentPagesCount = 0;
+    int m_objectPagesID = 0;
+    int m_firstPageID = 5; // will be ++ed if the image has a SMask
+    int m_objectResourcesID = 0;
+    int m_objectImageID = 0;
+    qreal m_mediaboxWidth = 5000.0;
+    qreal m_mediaboxHeight = 5000.0;
     QString m_pageContent;
     QTextStream m_outStream;
 };

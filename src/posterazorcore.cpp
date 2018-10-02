@@ -55,23 +55,7 @@ const QLatin1String settingsKey_UnitOfLength(           "UnitOfLength");
 PosteRazorCore::PosteRazorCore(ImageLoaderInterface *imageLoader, QObject *parent)
     : QObject(parent)
     , m_imageLoader(imageLoader)
-    , m_posterSizeMode(Types::PosterSizeModePages)
-    , m_posterDimension(2.0)
-    , m_posterDimensionIsWidth(true)
-    , m_posterAlignment(Qt::AlignCenter)
-    , m_usesCustomPaperSize(false)
     , m_paperFormat(defaultValue_PaperFormat)
-    , m_paperOrientation(QPrinter::Portrait)
-    , m_paperBorderTop(1.5)
-    , m_paperBorderRight(1.5)
-    , m_paperBorderBottom(1.5)
-    , m_paperBorderLeft(1.5)
-    , m_customPaperWidth(20)
-    , m_customPaperHeight(20)
-    , m_overlappingWidth(1.0)
-    , m_overlappingHeight(1.0)
-    , m_overlappingPosition(Qt::AlignBottom | Qt::AlignRight)
-    , m_unitOfLength(Types::UnitOfLengthCentimeter)
 {
     Q_ASSERT(m_imageLoader);
 }

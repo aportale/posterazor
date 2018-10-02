@@ -50,12 +50,12 @@ public:
     QString libraryAboutText() const override;
 
 private:
-    FIBITMAP*    m_bitmap;
-    int          m_widthPixels;
-    int          m_heightPixels;
-    unsigned int m_horizontalDotsPerMeter;
-    unsigned int m_verticalDotsPerMeter;
-    QString      m_imageFileName;
+    FIBITMAP* m_bitmap = nullptr;
+    int m_widthPixels = 0;
+    int m_heightPixels = 0;
+    unsigned int m_horizontalDotsPerMeter = 0;
+    unsigned int m_verticalDotsPerMeter = 0;
+    QString m_imageFileName;
 
     void disposeImage();
     static bool hasFreeImageVersionCorrectTopDownInConvertBits();

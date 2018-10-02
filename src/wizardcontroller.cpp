@@ -39,8 +39,6 @@ static int wizardStepsCount()
 
 WizardController::WizardController(QObject *wizardDialog, QObject *parent)
     : QObject(parent)
-    , m_wizardStep(WizardStepInputImage)
-    , m_imageWasLoaded(false)
 {
     connect(this, SIGNAL(wizardStepChanged(int)), wizardDialog, SLOT(setWizardStep(int)));
     connect(this, SIGNAL(wizardStepDescriptionChanged(const QString&, const QString&)), wizardDialog, SLOT(setWizardStepDescription(const QString&, const QString&)));
