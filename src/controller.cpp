@@ -110,14 +110,12 @@ Controller::Controller(PosteRazorCore *posteRazorCore, QWidget *view, QObject *p
         {SIGNAL(setPosterSizeModeAvailableSignal(Types::PosterSizeModes, bool)),
                                                                     SLOT(setPosterSizeModeAvailable(Types::PosterSizeModes, bool))}
     };
-    static const int signalsToViewSlotsConnectionsCount =
-        int(sizeof signalsToViewSlotsConnections / sizeof signalsToViewSlotsConnections[0]);
-    for (int i = 0; i < signalsToViewSlotsConnectionsCount; ++i) {
+    for (auto connection : signalsToViewSlotsConnections) {
         const QByteArray slot(
-                QMetaObject::normalizedSignature(signalsToViewSlotsConnections[i].slot + 1));
+                QMetaObject::normalizedSignature(connection.slot + 1));
                 // + 1: Remove slot flag '1'
         if (m_view->metaObject()->indexOfSlot(slot) != -1)
-            connect(this, signalsToViewSlotsConnections[i].signal, m_view, signalsToViewSlotsConnections[i].slot);
+            connect(this, connection.signal, m_view, connection.slot);
     }
 
     m_wizardController = new WizardController(m_view, this);

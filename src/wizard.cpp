@@ -53,9 +53,8 @@ Wizard::Wizard(QWidget *parent)
         {m_posterAlignmentBottomButton,      Qt::AlignBottom | Qt::AlignHCenter  },
         {m_posterAlignmentBottomRightButton, Qt::AlignBottom | Qt::AlignRight    }
     };
-    static const int alignmentMapCount = int(sizeof alignmentMap / sizeof alignmentMap[0]);
-    for (int i = 0; i < alignmentMapCount; i++)
-        m_alignmentButtons.insert(alignmentMap[i].alignment, alignmentMap[i].sender);
+    for (auto alignment : alignmentMap)
+        m_alignmentButtons.insert(alignment.alignment, alignment.sender);
 
     const struct {
         QAbstractButton *sender;
@@ -66,9 +65,8 @@ Wizard::Wizard(QWidget *parent)
         {m_overlappingPositionBottomLeftButton,  Qt::AlignBottom | Qt::AlignLeft  },
         {m_overlappingPositionBottomRightButton, Qt::AlignBottom | Qt::AlignRight }
     };
-    static const int overlappingMapCount = int(sizeof overlappingMap / sizeof overlappingMap[0]);
-    for (int i = 0; i < overlappingMapCount; i++)
-        m_overlappingButtons.insert(overlappingMap[i].alignment, overlappingMap[i].sender);
+    for (auto overlapping : overlappingMap)
+        m_overlappingButtons.insert(overlapping.alignment, overlapping.sender);
 
     m_steps->setCurrentIndex(0);
     createConnections();
@@ -409,10 +407,10 @@ void Wizard::createConnections()
     connect(m_overlappingWidthInput,                SIGNAL(valueEdited(qreal)),        SIGNAL(overlappingWidthChanged(qreal)));
     connect(m_overlappingHeightInput,               SIGNAL(valueEdited(qreal)),        SIGNAL(overlappingHeightChanged(qreal)));
     auto overlappingMapper = new QSignalMapper(this);
-    foreach (const Qt::Alignment alignment, m_overlappingButtons.keys()) {
-        QAbstractButton *sender = m_overlappingButtons.value(alignment);
+    for (auto it = m_overlappingButtons.cbegin(), end = m_overlappingButtons.cend(); it != end; ++it) {
+        QAbstractButton *sender = it.value();
         connect(sender, SIGNAL(clicked()), overlappingMapper, SLOT(map()));
-        overlappingMapper->setMapping(sender, alignment);
+        overlappingMapper->setMapping(sender, it.key());
     }
     connect(overlappingMapper, SIGNAL(mapped(int)), SLOT(emitOverlappingPositionChange(int)));
     connect(m_posterAbsoluteWidthInput,             SIGNAL(valueEdited(qreal)),        SIGNAL(posterWidthAbsoluteChanged(qreal)));
@@ -421,10 +419,10 @@ void Wizard::createConnections()
     connect(m_posterPagesHeightInput,               SIGNAL(valueEdited(qreal)),        SIGNAL(posterHeightPagesChanged(qreal)));
     connect(m_posterPercentualSizeInput,            SIGNAL(valueEdited(qreal)),        SIGNAL(posterSizePercentualChanged(qreal)));
     auto alignmentMapper = new QSignalMapper(this);
-    foreach (const Qt::Alignment alignment, m_alignmentButtons.keys()) {
-        QAbstractButton *sender = m_alignmentButtons.value(alignment);
+    for (auto it = m_alignmentButtons.cbegin(), end = m_alignmentButtons.cend(); it != end; ++it) {
+        QAbstractButton *sender = it.value();
         connect(sender, SIGNAL(clicked()), alignmentMapper, SLOT(map()));
-        alignmentMapper->setMapping(sender, alignment);
+        alignmentMapper->setMapping(sender, it.key());
     }
     connect(alignmentMapper, SIGNAL(mapped(int)),   SLOT(emitPosterAlignmentChange(int)));
     connect(m_savePosterButton,                     SIGNAL(clicked()),                  SIGNAL(savePosterSignal()));

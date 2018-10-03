@@ -213,17 +213,16 @@ const QVector<QPair<QStringList, QString> > &ImageLoaderQt::imageFormats() const
             {QLatin1String("xbm"),      QLatin1String("X11 Bitmap")},
             {QLatin1String("xpm"),      QLatin1String("X11 Pixmap")}
         };
-        const auto extensionListCount = int(sizeof extensionList / sizeof extensionList[0]);
         const QList<QByteArray> supportedFormats = QImageReader::supportedImageFormats();
-        for (int i = 0; i < extensionListCount; i++) {
-            QStringList extensions = extensionList[i].extensions.split(QLatin1Char(' '));
+        for (auto format : extensionList) {
+            QStringList extensions = format.extensions.split(QLatin1Char(' '));
             foreach (const QString &extension, extensions)
                 if (supportedFormats.contains(extension.toLatin1())
 #ifdef POPPLER_QT5_LIB
                     || (extension.toLatin1() == "pdf")
 #endif
                     ) {
-                    formats.append(QPair<QStringList, QString> (extensions, extensionList[i].description));
+                    formats.append({extensions, format.description});
                     break;
                 }
         }

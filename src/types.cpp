@@ -41,9 +41,8 @@ const QHash<Types::UnitsOfLength, QPair<QString, qreal> > &Types::unitsOfLength(
             {UnitOfLengthFeet,       QLatin1String("ft"), 2.54 * 12.00},
             {UnitOfLengthPoints,     QLatin1String("pt"), 2.54 / 72.00}
         };
-        static const int unitsOfLengthCount = int(sizeof unitsOfLength / sizeof unitsOfLength[0]);
-        for (int i = 0; i < unitsOfLengthCount; i++)
-            units.insert(unitsOfLength[i].unit, QPair<QString, qreal> (unitsOfLength[i].name, unitsOfLength[i].cm));
+        for (auto unit : unitsOfLength)
+            units.insert(unit.unit, {unit.name, unit.cm});
     }
     return units;
 }
@@ -94,9 +93,8 @@ const QHash<QString, QSizeF> &Types::paperFormats()
             {QLatin1String("Letter"),    21.6, 27.9},
             {QLatin1String("Tabloid"),   27.9, 43.2}
         };
-        static const int paperFormatsCount = int(sizeof paperFormats / sizeof paperFormats[0]);
-        for (int i = 0; i < paperFormatsCount; i++)
-            formats.insert(paperFormats[i].name, QSizeF(paperFormats[i].width, paperFormats[i].height));
+        for (auto format : paperFormats)
+            formats.insert(format.name, {format.width, format.height});
     }
     return formats;
 }
