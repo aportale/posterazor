@@ -27,7 +27,7 @@
 #include <QStringList>
 #include <qendian.h>
 
-#include <math.h>
+#include <cmath>
 
 static QString FreeImageErrorMessage;
 

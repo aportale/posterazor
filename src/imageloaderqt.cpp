@@ -26,7 +26,7 @@
 #ifdef POPPLER_QT5_LIB
 #include <poppler-qt5.h>
 #endif
-#include <math.h>
+#include <cmath>
 
 ImageLoaderQt::ImageLoaderQt(QObject *parent)
     : QObject(parent)

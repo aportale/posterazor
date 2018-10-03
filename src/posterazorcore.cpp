@@ -32,7 +32,7 @@
 #include <QSettings>
 #include <QStringList>
 
-#include <math.h>
+#include <cmath>
 
 const QLatin1String defaultValue_PaperFormat(           "DIN A4");
 
