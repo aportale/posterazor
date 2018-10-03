@@ -115,7 +115,10 @@ qreal ImageLoaderQt::verticalDotsPerUnitOfLength(Types::UnitsOfLength unit) cons
 QSizeF ImageLoaderQt::size(Types::UnitsOfLength unit) const
 {
     const QSize sizePixels = this->sizePixels();
-    return QSizeF(sizePixels.width() / horizontalDotsPerUnitOfLength(unit), sizePixels.height() / verticalDotsPerUnitOfLength(unit));
+    return {
+        sizePixels.width() / horizontalDotsPerUnitOfLength(unit),
+        sizePixels.height() / verticalDotsPerUnitOfLength(unit)
+    };
 }
 
 const QImage ImageLoaderQt::imageAsRGB(const QSize &size) const

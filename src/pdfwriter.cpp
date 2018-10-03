@@ -445,7 +445,7 @@ void PDFWriter::drawFilledRect(const QRectF& rect, const QBrush &brush)
 
 QSizeF PDFWriter::size() const
 {
-    return QSizeF();
+    return {};
 }
 
 void PDFWriter::drawImage(const QRectF &rect)

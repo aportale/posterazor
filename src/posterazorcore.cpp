@@ -128,7 +128,7 @@ qreal PosteRazorCore::convertDistanceToCm(qreal distance) const
 
 QSizeF PosteRazorCore::convertSizeToCm(const QSizeF &size) const
 {
-    return QSizeF(convertDistanceToCm(size.width()), convertDistanceToCm(size.height()));
+    return {convertDistanceToCm(size.width()), convertDistanceToCm(size.height())};
 }
 
 qreal PosteRazorCore::convertCmToDistance(qreal cm) const
@@ -138,7 +138,7 @@ qreal PosteRazorCore::convertCmToDistance(qreal cm) const
 
 QSizeF PosteRazorCore::convertCmToSize(const QSizeF &sizeInCm) const
 {
-    return QSizeF(convertCmToDistance(sizeInCm.width()), convertCmToDistance(sizeInCm.height()));
+    return {convertCmToDistance(sizeInCm.width()), convertCmToDistance(sizeInCm.height())};
 }
 
 bool PosteRazorCore::loadInputImage(const QString &imageFileName, QString &errorMessage)
@@ -300,10 +300,10 @@ QSizeF PosteRazorCore::customPaperSize() const
     const qreal minimalPaperHeight = minimalPaperWidth;
     const qreal maximalPaperWidth = 500.0; // 5 meter = maximum of a PDF page.
     const qreal maximalPaperHeight = maximalPaperWidth;
-    return QSizeF(
+    return {
         convertCmToDistance(qBound(minimalPaperWidth, m_customPaperWidth, maximalPaperWidth)),
         convertCmToDistance(qBound(minimalPaperHeight, m_customPaperHeight, maximalPaperHeight))
-    );
+    };
 }
 
 void PosteRazorCore::setUseCustomPaperSize(bool useIt)
@@ -324,10 +324,10 @@ QSizeF PosteRazorCore::paperSize() const
 
 QSizeF PosteRazorCore::printablePaperAreaSize() const
 {
-    return QSizeF(
+    return {
         paperSize().width() - paperBorderLeft() - paperBorderRight(),
         paperSize().height() - paperBorderTop() - paperBorderBottom()
-    );
+    };
 }
 
 qreal PosteRazorCore::convertBetweenAbsoluteAndPagesPosterDimension(qreal dimension, bool pagesToAbsolute, bool width) const
@@ -505,7 +505,7 @@ qreal PosteRazorCore::posterDimension(Types::PosterSizeModes mode, bool width) c
 
 QSizeF PosteRazorCore::posterSize(Types::PosterSizeModes mode) const
 {
-    return QSizeF(posterDimension(mode, true), posterDimension(mode, false));
+    return {posterDimension(mode, true), posterDimension(mode, false)};
 }
 
 Types::PosterSizeModes PosteRazorCore::posterSizeMode() const

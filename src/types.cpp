@@ -61,10 +61,10 @@ qreal Types::convertBetweenUnitsOfLength(qreal distance, UnitsOfLength sourceUni
 
 QSizeF Types::convertBetweenUnitsOfLength(const QSizeF &size, UnitsOfLength sourceUnit, UnitsOfLength targetUnit)
 {
-    return QSizeF(
+    return {
         convertBetweenUnitsOfLength(size.width(), sourceUnit, targetUnit),
         convertBetweenUnitsOfLength(size.height(), sourceUnit, targetUnit)
-    );
+    };
 }
 
 Types::UnitsOfLength Types::unitOfLenthFromString(const QString &string)
