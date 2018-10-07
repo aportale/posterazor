@@ -73,7 +73,7 @@ int main (int argc, char **argv)
 #else
 
     QCoreApplication::setApplicationName(QLatin1String("PosteRazor"));
-    QCoreApplication::setApplicationVersion(QLatin1String("1.9.5"));
+    QCoreApplication::setApplicationVersion(QLatin1String("1.9.7"));
     QCoreApplication::setOrganizationName(QLatin1String("CasaPortale"));
     QCoreApplication::setOrganizationDomain(QLatin1String("de.casaportale"));
 

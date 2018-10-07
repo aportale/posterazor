@@ -60,7 +60,7 @@ const QColor PosteRazorTests::m_screenShotBackground = Qt::white;
 void PosteRazorTests::initTestCase()
 {
     QCoreApplication::setApplicationName("PosteRazor");
-    QCoreApplication::setApplicationVersion("1.9.5");
+    QCoreApplication::setApplicationVersion("1.9.7");
     QCoreApplication::setOrganizationName("CasaPortale");
     QCoreApplication::setOrganizationDomain("de.casaportale");
 }
