@@ -92,10 +92,10 @@ void PosteRazorTests::screenShotterize()
         QTest::qWaitForWindowExposed(&window);
         QTest::qWait(500); // Wait for fancy effects to finish
 
-        QPushButton *nextButton = window.findChild<QPushButton*>(QString::fromLatin1("m_stepNextButton"));
-        QTabWidget *paperFormatCustomTabs = window.findChild<QTabWidget*>(QString::fromLatin1("m_paperFormatTypeTabs"));
-        QWidget *paperFormatStandardTab = window.findChild<QWidget*>(QString::fromLatin1("m_paperFormatStandardTab"));
-        QWidget *paperFormatCustomTab = window.findChild<QWidget*>(QString::fromLatin1("m_paperFormatCustomTab"));
+        auto nextButton = window.findChild<QPushButton*>(QString::fromLatin1("m_stepNextButton"));
+        auto paperFormatCustomTabs = window.findChild<QTabWidget*>(QString::fromLatin1("m_paperFormatTypeTabs"));
+        auto paperFormatStandardTab = window.findChild<QWidget*>(QString::fromLatin1("m_paperFormatStandardTab"));
+        auto paperFormatCustomTab = window.findChild<QWidget*>(QString::fromLatin1("m_paperFormatCustomTab"));
 
         const QString screenShotFileNameTemplate =
                 QString::fromLatin1("ScreenShot-%1-%2-%3.png")
@@ -128,7 +128,7 @@ void PosteRazorTests::screenShotterize()
 
 static inline bool imageRowHasUniqueColor(const QImage &image, int row, const QColor &color)
 {
-    const QRgb *rowData = reinterpret_cast<const QRgb*>(image.scanLine(row));
+    auto rowData = reinterpret_cast<const QRgb*>(image.scanLine(row));
     const QRgb colorRgba = color.rgba();
     for (int i = 0; i < image.width(); ++i)
         if (*(rowData++) != colorRgba)
