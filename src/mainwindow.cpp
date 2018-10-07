@@ -85,7 +85,7 @@ void MainWindow::dragEnterEvent(QDragEnterEvent *event)
 {
     const QMimeData *mimeData = event->mimeData();
     if (mimeData->hasUrls()) {
-        const QUrl url = mimeData->urls().first();
+        const QUrl url = mimeData->urls().constFirst();
         const QString localFile = url.toLocalFile();
         const QString fileSuffix = QFileInfo(localFile).suffix();
         bool suffixIsSupported = false;
@@ -226,8 +226,7 @@ void MainWindow::updateImageInfoFields(const QSize &inputImageSizeInPixels, cons
 
 void MainWindow::setCurrentTranslation(const QString &translation)
 {
-    QAction *translationAction = nullptr;
-    translationAction = m_translationActions.value(translation);
+    QAction *translationAction = m_translationActions.value(translation);
     if (!translationAction) {
         // On a Swiss system 'translation' may be "de_CH". So let's fall back to "de"
         const QString translationLanguage = translation.split(QLatin1Char('_')).first();

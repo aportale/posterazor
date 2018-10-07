@@ -357,7 +357,7 @@ qreal PosteRazorCore::convertBetweenAbsoluteAndPagesPosterDimension(qreal dimens
         if (posterDimension >= printablePaperAreaDimension) {
             posterDimension -= printablePaperAreaDimension;
             posterDimensionPages += 1.0;
-        } else if (posterDimension < printablePaperAreaDimension) {
+        } else {
             posterDimensionPages = posterDimension / printablePaperAreaDimension;
             posterDimension = 0;
         }
@@ -467,12 +467,7 @@ qreal PosteRazorCore::posterDimension(Types::PosterSizeModes mode, bool width) c
 {
     qreal posterDimension = (width == m_posterDimensionIsWidth) ? m_posterDimension : calculateOtherPosterDimension();
 
-    posterDimension = qMax(
-        (mode == Types::PosterSizeModeAbsolute) ? 0.001
-        : (mode == Types::PosterSizeModePages) ? 0.001
-        : 0.001
-        , posterDimension
-    );
+    posterDimension = qMax(0.001 , posterDimension);
 
     // anything to convert?
     if (posterSizeMode() != mode){
@@ -635,13 +630,13 @@ void PosteRazorCore::paintPosterOnCanvasOverlapped(PaintCanvasInterface *paintCa
         QRectF(
             QPointF(
                 (
-                    alignment & Qt::AlignLeft ? borderLeft
-                    : alignment & Qt::AlignHCenter ? qBound(borderLeft, (boxSize.width() - imageSize.width()) / 2, borderLeft + posterPrintableAreaSize.width() - imageSize.width())
+                    (alignment & Qt::AlignLeft) ? borderLeft
+                    : (alignment & Qt::AlignHCenter) ? qBound(borderLeft, (boxSize.width() - imageSize.width()) / 2, borderLeft + posterPrintableAreaSize.width() - imageSize.width())
                     : (borderLeft + posterPrintableAreaSize.width() - imageSize.width())
                 ) + offset.x(),
                 (
-                    alignment & Qt::AlignTop ? borderTop
-                    : alignment & Qt::AlignVCenter ? qBound(borderTop, (boxSize.height() - imageSize.height()) / 2, borderTop + posterPrintableAreaSize.height() - imageSize.height())
+                    (alignment & Qt::AlignTop) ? borderTop
+                    : (alignment & Qt::AlignVCenter) ? qBound(borderTop, (boxSize.height() - imageSize.height()) / 2, borderTop + posterPrintableAreaSize.height() - imageSize.height())
                     : (borderTop + posterPrintableAreaSize.height() - imageSize.height())
                 ) + offset.y()
             ),
@@ -723,14 +718,14 @@ void PosteRazorCore::paintPosterPageOnCanvas(PaintCanvasInterface *paintCanvas, 
     );
     const Qt::Alignment alignment = posterAlignment();
     qreal imageOffsetFromLeftPosterBorderCm = (
-        alignment & Qt::AlignRight ? posterTotalSizeCm.width() - posterImageSizeCm.width() - borderLeftCm
-        : alignment & Qt::AlignHCenter ? (posterTotalSizeCm.width() - posterImageSizeCm.width()) / 2 - borderLeftCm
+        (alignment & Qt::AlignRight) ? posterTotalSizeCm.width() - posterImageSizeCm.width() - borderLeftCm
+        : (alignment & Qt::AlignHCenter) ? (posterTotalSizeCm.width() - posterImageSizeCm.width()) / 2 - borderLeftCm
         : -borderLeftCm
     );
     imageOffsetFromLeftPosterBorderCm = qBound(.0, imageOffsetFromLeftPosterBorderCm, posterTotalSizeCm.width() - posterImageSizeCm.width() - borderLeftCm - borderRightCm);
     qreal imageOffsetFromTopPosterBorderCm = (
-        alignment & Qt::AlignBottom ? posterTotalSizeCm.height() - posterImageSizeCm.height() - borderTopCm
-        : alignment & Qt::AlignVCenter ? (posterTotalSizeCm.height() - posterImageSizeCm.height()) / 2 - borderTopCm
+        (alignment & Qt::AlignBottom) ? posterTotalSizeCm.height() - posterImageSizeCm.height() - borderTopCm
+        : (alignment & Qt::AlignVCenter) ? (posterTotalSizeCm.height() - posterImageSizeCm.height()) / 2 - borderTopCm
         : -borderTopCm
     );
     imageOffsetFromTopPosterBorderCm = qBound(.0, imageOffsetFromTopPosterBorderCm, posterTotalSizeCm.height() - posterImageSizeCm.height() - borderTopCm - borderBottomCm);

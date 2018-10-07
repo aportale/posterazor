@@ -109,8 +109,8 @@ void WizardController::showManual()
         "All entries and choices are remembered until the next usage of the PosteRazor.",
         "Manual preface. Place holders: %1 = Number of wizard steps, %2 = 'Back', %3 = 'Next' (will be automatically inserted)")
         .arg(wizardStepsCount() - m_unavaliableSteps.count())
-        .arg(QCoreApplication::translate("Main window", "Back"))
-        .arg(QCoreApplication::translate("Main window", "Next"))));
+        .arg(QCoreApplication::translate("Main window", "Back"),
+             QCoreApplication::translate("Main window", "Next"))));
     for (int i = 0; i < wizardStepsEnum().keyCount(); i++) {
         const WizardSteps step = (WizardSteps)wizardStepsEnum().value(i);
         if (!m_unavaliableSteps.contains(step)){
@@ -147,8 +147,7 @@ void WizardController::updateDialogWizardStep()
         m_wizardStep == WizardStepInputImage ?  "image"
         : m_wizardStep == WizardStepOverlapping ? "overlapping"
         : m_wizardStep == WizardStepPaperSize ? "paper"
-        : m_wizardStep == WizardStepPosterSize ? "poster"
-        : "poster"
+        : "poster" // WizardStepPosterSize, WizardStepSavePoster
     ));
     emit prevButtonEnabled(m_wizardStep != previousAvailableStep());
     emit nextButtonEnabled(
@@ -203,9 +202,9 @@ QString WizardController::stepHelp(WizardSteps step)
             "Alternatively, a custom paper sheet size can be defined in the <b>%2</b> tab.\n"
             "Paper borders are defined in the <b>%3</b> fields. Even if your printer does need no (or small) paper borders, some border might be needed to have enough area for gluing the final poster tiles together.",
             "Wizard step 2. Place holders: %1 = 'Format:', %2 = 'Custom', %3 = 'Borders' (will be automatically inserted)")
-            .arg(Types::cleanString(QCoreApplication::translate("Main window", "Format:")))
-            .arg(Types::cleanString(QCoreApplication::translate("Main window", "Custom")))
-            .arg(Types::cleanString(QCoreApplication::translate("Main window", "Borders")));
+            .arg(Types::cleanString(QCoreApplication::translate("Main window", "Format:")),
+                 Types::cleanString(QCoreApplication::translate("Main window", "Custom")),
+                 Types::cleanString(QCoreApplication::translate("Main window", "Borders")));
         break;
     case WizardStepOverlapping:
         result = QCoreApplication::translate("Help",
@@ -222,20 +221,20 @@ QString WizardController::stepHelp(WizardSteps step)
             "Wizard step 4. Start of the description.");
         result.append(QLatin1String("<dl>"));
         result.append(definitionTemplate
-            .arg(Types::cleanString(QCoreApplication::translate("Main window", "Absolute size:")))
-            .arg(QCoreApplication::translate("Help",
-                "You want to have a specific size of your poster.",
-                "Wizard step 4. Description for 'absolute size'")));
+                      .arg(Types::cleanString(QCoreApplication::translate("Main window", "Absolute size:")),
+                           QCoreApplication::translate("Help",
+                                                       "You want to have a specific size of your poster.",
+                                                       "Wizard step 4. Description for 'absolute size'")));
         result.append(definitionTemplate
-            .arg(Types::cleanString(QCoreApplication::translate("Main window", "Size in pages:")))
-            .arg(QCoreApplication::translate("Help",
-                "You want to use whole paper sheets and specify how many of them you want to use.",
-                "Wizard step 4. Description for 'size in pages'")));
+                      .arg(Types::cleanString(QCoreApplication::translate("Main window", "Size in pages:")),
+                           QCoreApplication::translate("Help",
+                                                       "You want to use whole paper sheets and specify how many of them you want to use.",
+                                                       "Wizard step 4. Description for 'size in pages'")));
         result.append(definitionTemplate
-            .arg(Types::cleanString(QCoreApplication::translate("Main window", "Size in percent:")))
-            .arg(QCoreApplication::translate("Help",
-                "Your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to enlarge the image by a certain factor.",
-                "Wizard step 4. Description for 'size in percent'")));
+                      .arg(Types::cleanString(QCoreApplication::translate("Main window", "Size in percent:")),
+                           QCoreApplication::translate("Help",
+                                                       "Your input image has a certain size which is defined by the number of pixels and dpi (dots per Inch) and your want to enlarge the image by a certain factor.",
+                                                       "Wizard step 4. Description for 'size in percent'")));
         result.append(QLatin1String("</dl>"));
         result.append(QCoreApplication::translate("Help",
             "The aspect ratio of width and height is always 1:1 and is automatically recalculated. In the preview area, you can see the overlapping areas which are surrounded by light red rectangles.\n"

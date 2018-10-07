@@ -122,7 +122,7 @@ Controller::Controller(PosteRazorCore *posteRazorCore, QWidget *view, QObject *p
 
     if (!m_posteRazorCore->imageIOLibraryAboutText().isEmpty()) {
         auto aboutAction = new QAction(m_view);
-        aboutAction->setText(QLatin1String("A&bout ") + m_posteRazorCore->imageIOLibraryName());
+        aboutAction->setText(QStringLiteral("A&bout ") + m_posteRazorCore->imageIOLibraryName());
         connect (aboutAction, SIGNAL(triggered()), SLOT(showExtraAboutDialog()));
         emit addAboutDialogActionSignal(aboutAction);
     }
@@ -411,7 +411,7 @@ void Controller::loadInputImage()
     for (int i = 0; i < formats.count(); i++) {
         QStringList formatWildcards;
         foreach (const QString &extension, formats.at(i).first)
-            formatWildcards << QLatin1String("*.") + extension;
+            formatWildcards << QStringLiteral("*.") + extension;
         allWildcards << formatWildcards;
         QString formatName = formats.at(i).second;
         // Some Open File dialogs (at least OSX) ar irritated if there are brackes in the file type name
@@ -428,7 +428,7 @@ void Controller::loadInputImage()
         QCoreApplication::translate("Main window", "Load an input image"),
         loadPathSettings.value(settingsKey_ImageLoadPath,
 #if QT_VERSION >= 0x050000
-            QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).first()
+            QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).constFirst()
 #elif QT_VERSION >= 0x040400
             QDesktopServices::storageLocation(QDesktopServices::PicturesLocation)
 #else
@@ -509,7 +509,7 @@ void Controller::savePoster() const
             if (saveFileInfo.suffix().toLower() != QLatin1String("pdf"))
                 saveFileName.append(QLatin1String(".pdf"));
 
-            fileExistsAskUserForOverwrite = QFileInfo(saveFileName).exists();
+            fileExistsAskUserForOverwrite = QFileInfo::exists(saveFileName);
 
             if (!fileExistsAskUserForOverwrite
                     || QMessageBox::Yes == (QMessageBox::question(m_view, QString(), QCoreApplication::translate("Main window", "The file '%1' already exists.\nDo you want to overwrite it?").arg(saveFileInfo.fileName()), QMessageBox::Yes, QMessageBox::No))
@@ -562,10 +562,8 @@ void Controller::showExtraAboutDialog()
 {
     const QString title = QLatin1String("About ") + m_posteRazorCore->imageIOLibraryName();
     QMessageBox::about(
-        m_view, title,
-        QString::fromLatin1("<h3>%1</h3>%2") // QMessageBox::aboutQt() also uses <h3>
-            .arg(title)
-            .arg(Types::newlineToParagraph(m_posteRazorCore->imageIOLibraryAboutText()))
+        m_view, title, QStringLiteral("<h3>%1</h3>%2")
+                .arg(title, Types::newlineToParagraph(m_posteRazorCore->imageIOLibraryAboutText()))
     );
 }
 

@@ -269,7 +269,7 @@ const QByteArray ImageLoaderFreeImage::bits() const
     char *destination = result.data();
     FreeImage_ConvertToRawBits((BYTE*)destination, m_bitmap, bytesPerLine, bitsPerPixel(), FI_RGBA_RED_MASK, FI_RGBA_GREEN_MASK, FI_RGBA_BLUE_MASK, hasFreeImageVersionCorrectTopDownInConvertBits());
 
-    const unsigned long numberOfPixels = m_widthPixels * m_heightPixels;
+    const unsigned int numberOfPixels = m_widthPixels * m_heightPixels;
 #if FREEIMAGE_COLORORDER == FREEIMAGE_COLORORDER_BGR
     if (colorDataType() == Types::ColorTypeRGB && bitsPerPixel() == 24) {
         for (unsigned int pixelIndex = 0; pixelIndex < numberOfPixels; pixelIndex++) {
