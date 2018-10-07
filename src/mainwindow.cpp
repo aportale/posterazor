@@ -42,10 +42,7 @@ static QString applicationNameWithVersion()
 {
     return
         QCoreApplication::applicationName()
-#if QT_VERSION >= 0x040400
-        + QLatin1Char(' ') + QCoreApplication::applicationVersion()
-#endif
-    ;
+        + QLatin1Char(' ') + QCoreApplication::applicationVersion() ;
 }
 
 MainWindow::MainWindow(QWidget *parent)

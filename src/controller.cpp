@@ -423,20 +423,13 @@ void Controller::loadInputImage()
 
     QSettings loadPathSettings;
 
-    QString loadFileName = QFileDialog::getOpenFileName (
-        m_view,
-        QCoreApplication::translate("Main window", "Load an input image"),
-        loadPathSettings.value(settingsKey_ImageLoadPath,
-#if QT_VERSION >= 0x050000
-            QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).constFirst()
-#elif QT_VERSION >= 0x040400
-            QDesktopServices::storageLocation(QDesktopServices::PicturesLocation)
-#else
-            QLatin1String(".")
-#endif
-            ).toString(),
-        allFilters.join(QLatin1String(";;"))
-    );
+    const QString loadPathDefault =
+            QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).constFirst();
+    const QString loadFileName =
+            QFileDialog::getOpenFileName(m_view,
+                                         QCoreApplication::translate("Main window", "Load an input image"),
+                                         loadPathSettings.value(settingsKey_ImageLoadPath, loadPathDefault).toString(),
+                                         allFilters.join(QLatin1String(";;")));
 
     if (!loadFileName.isEmpty()) {
         const bool successful = loadInputImage(loadFileName);
@@ -480,18 +473,12 @@ void Controller::savePoster() const
     QSettings savePathSettings;
 
     QString saveFileName = savePathSettings.value(settingsKey_PosterSavePath,
-#if QT_VERSION >= 0x050000
-        QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)
-#elif QT_VERSION >= 0x040400
-        QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation)
-#else
-        "."
-#endif
-        ).toString() + QDir::separator()
-                     + QFileInfo(m_posteRazorCore->fileName()).baseName()
-                     + QLatin1String("-")
-                     + QCoreApplication::translate("Main window", "poster")
-                     + QLatin1String(".pdf");
+        QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)).toString()
+            + QDir::separator()
+            + QFileInfo(m_posteRazorCore->fileName()).baseName()
+            + QLatin1String("-")
+            + QCoreApplication::translate("Main window", "poster")
+            + QLatin1String(".pdf");
     bool fileExistsAskUserForOverwrite = false;
 
     do {

@@ -1,6 +1,6 @@
 TARGET = PosteRazor
 
-isEqual(QT_MAJOR_VERSION, 5):QT += widgets printsupport
+QT += widgets printsupport
 
 DESTDIR = $$PWD
 
