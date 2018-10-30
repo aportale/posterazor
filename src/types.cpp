@@ -27,23 +27,14 @@
 
 const QHash<Types::UnitsOfLength, QPair<QString, qreal> > &Types::unitsOfLength()
 {
-    static QHash<UnitsOfLength, QPair<QString, qreal> > units;
-    if (units.empty()) {
-        static const struct {
-            UnitsOfLength unit;
-            QString name;
-            qreal cm;
-        } unitsOfLength[] = {
-            {UnitOfLengthMeter,      QLatin1String("m"),        100.00},
-            {UnitOfLengthMillimeter, QLatin1String("mm"),         0.10},
-            {UnitOfLengthCentimeter, QLatin1String("cm"),         1.00},
-            {UnitOfLengthInch,       QLatin1String("in"),         2.54},
-            {UnitOfLengthFeet,       QLatin1String("ft"), 2.54 * 12.00},
-            {UnitOfLengthPoints,     QLatin1String("pt"), 2.54 / 72.00}
-        };
-        for (auto unit : unitsOfLength)
-            units.insert(unit.unit, {unit.name, unit.cm});
-    }
+    const static QHash<UnitsOfLength, QPair<QString, qreal> > units = {
+        {UnitOfLengthMeter,         {QLatin1String("m"),        100.00}},
+        {UnitOfLengthMillimeter,    {QLatin1String("mm"),         0.10}},
+        {UnitOfLengthCentimeter,    {QLatin1String("cm"),         1.00}},
+        {UnitOfLengthInch,          {QLatin1String("in"),         2.54}},
+        {UnitOfLengthFeet,          {QLatin1String("ft"), 2.54 * 12.00}},
+        {UnitOfLengthPoints,        {QLatin1String("pt"), 2.54 / 72.00}}
+    };
     return units;
 }
 
@@ -80,22 +71,14 @@ Types::UnitsOfLength Types::unitOfLenthFromString(const QString &string)
 
 const QHash<QString, QSizeF> &Types::paperFormats()
 {
-    static QHash<QString, QSizeF> formats;
-    if (formats.empty()) {
-        static const struct {
-            QString name;
-            qreal width;
-            qreal height;
-        } paperFormats[] = {
-            {QLatin1String("DIN A4"),    21.0, 29.7},
-            {QLatin1String("DIN A3"),    29.7, 42.0},
-            {QLatin1String("Legal"),     21.6, 35.6},
-            {QLatin1String("Letter"),    21.6, 27.9},
-            {QLatin1String("Tabloid"),   27.9, 43.2}
-        };
-        for (auto format : paperFormats)
-            formats.insert(format.name, {format.width, format.height});
-    }
+    const static QHash<QString, QSizeF> formats =
+    {
+        {QLatin1String("DIN A4"),   {21.0, 29.7}},
+        {QLatin1String("DIN A3"),   {29.7, 42.0}},
+        {QLatin1String("Legal"),    {21.6, 35.6}},
+        {QLatin1String("Letter"),   {21.6, 27.9}},
+        {QLatin1String("Tabloid"),  {27.9, 43.2}}
+    };
     return formats;
 }
 

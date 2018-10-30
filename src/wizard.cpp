@@ -39,34 +39,24 @@ Wizard::Wizard(QWidget *parent)
     m_stepHelpButton->setMinimumSize(m_imageLoadButton->sizeHint());
     m_savePosterButton->setIcon(QApplication::style()->standardPixmap(QStyle::SP_DialogSaveButton));
 
-    const struct {
-        QAbstractButton *sender;
-        Qt::Alignment alignment;
-    } alignmentMap[] = {
-        {m_posterAlignmentTopLeftButton,     Qt::AlignTop | Qt::AlignLeft        },
-        {m_posterAlignmentTopButton,         Qt::AlignTop | Qt::AlignHCenter     },
-        {m_posterAlignmentTopRightButton,    Qt::AlignTop | Qt::AlignRight       },
-        {m_posterAlignmentLeftButton,        Qt::AlignVCenter | Qt::AlignLeft    },
-        {m_posterAlignmentCenterButton,      Qt::AlignCenter                     },
-        {m_posterAlignmentRightButton,       Qt::AlignVCenter | Qt::AlignRight   },
-        {m_posterAlignmentBottomLeftButton,  Qt::AlignBottom | Qt::AlignLeft     },
-        {m_posterAlignmentBottomButton,      Qt::AlignBottom | Qt::AlignHCenter  },
-        {m_posterAlignmentBottomRightButton, Qt::AlignBottom | Qt::AlignRight    }
+    m_overlappingButtons = {
+        {Qt::AlignTop | Qt::AlignLeft,          m_overlappingPositionTopLeftButton      },
+        {Qt::AlignTop | Qt::AlignRight,         m_overlappingPositionTopRightButton     },
+        {Qt::AlignBottom | Qt::AlignLeft,       m_overlappingPositionBottomLeftButton   },
+        {Qt::AlignBottom | Qt::AlignRight,      m_overlappingPositionBottomRightButton  }
     };
-    for (auto alignment : alignmentMap)
-        m_alignmentButtons.insert(alignment.alignment, alignment.sender);
 
-    const struct {
-        QAbstractButton *sender;
-        Qt::Alignment alignment;
-    } overlappingMap[] = {
-        {m_overlappingPositionTopLeftButton,     Qt::AlignTop | Qt::AlignLeft     },
-        {m_overlappingPositionTopRightButton,    Qt::AlignTop | Qt::AlignRight    },
-        {m_overlappingPositionBottomLeftButton,  Qt::AlignBottom | Qt::AlignLeft  },
-        {m_overlappingPositionBottomRightButton, Qt::AlignBottom | Qt::AlignRight }
+    m_alignmentButtons = {
+        {Qt::AlignTop | Qt::AlignLeft,          m_posterAlignmentTopLeftButton          },
+        {Qt::AlignTop | Qt::AlignHCenter,       m_posterAlignmentTopButton              },
+        {Qt::AlignTop | Qt::AlignRight,         m_posterAlignmentTopRightButton         },
+        {Qt::AlignVCenter | Qt::AlignLeft,      m_posterAlignmentLeftButton             },
+        {Qt::AlignCenter,                       m_posterAlignmentCenterButton           },
+        {Qt::AlignVCenter | Qt::AlignRight,     m_posterAlignmentRightButton            },
+        {Qt::AlignBottom | Qt::AlignLeft,       m_posterAlignmentBottomLeftButton       },
+        {Qt::AlignBottom | Qt::AlignHCenter,    m_posterAlignmentBottomButton           },
+        {Qt::AlignBottom | Qt::AlignRight,      m_posterAlignmentBottomRightButton      }
     };
-    for (auto overlapping : overlappingMap)
-        m_overlappingButtons.insert(overlapping.alignment, overlapping.sender);
 
     m_steps->setCurrentIndex(0);
     createConnections();
