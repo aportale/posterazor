@@ -110,7 +110,7 @@ Controller::Controller(PosteRazorCore *posteRazorCore, QWidget *view, QObject *p
         {SIGNAL(setPosterSizeModeAvailableSignal(Types::PosterSizeModes, bool)),
                                                                     SLOT(setPosterSizeModeAvailable(Types::PosterSizeModes, bool))}
     };
-    for (auto connection : signalsToViewSlotsConnections) {
+    for (auto &connection : signalsToViewSlotsConnections) {
         const QByteArray slot(
                 QMetaObject::normalizedSignature(connection.slot + 1));
                 // + 1: Remove slot flag '1'

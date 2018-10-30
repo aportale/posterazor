@@ -217,7 +217,7 @@ const QVector<QPair<QStringList, QString> > &ImageLoaderQt::imageFormats() const
             {QLatin1String("xpm"),      QLatin1String("X11 Pixmap")}
         };
         const QList<QByteArray> supportedFormats = QImageReader::supportedImageFormats();
-        for (auto format : extensionList) {
+        for (auto &format : extensionList) {
             QStringList extensions = format.extensions.split(QLatin1Char(' '));
             foreach (const QString &extension, extensions)
                 if (supportedFormats.contains(extension.toLatin1())
