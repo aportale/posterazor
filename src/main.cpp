@@ -31,12 +31,6 @@
 
 #include <QtGui>
 
-#if !defined(QT_SHARED) && !defined(QT_DLL) && !defined(FREEIMAGE_LIB)
-Q_IMPORT_PLUGIN(qgif)
-Q_IMPORT_PLUGIN(qjpeg)
-Q_IMPORT_PLUGIN(qtiff)
-#endif
-
 int main (int argc, char **argv)
 {
     QApplication a(argc, argv);
@@ -103,6 +97,8 @@ int main (int argc, char **argv)
     const int appReturn = a.exec();
     dialog.writeSettings(&settings);
     controller.writeSettings(&settings);
+
+    qDebug() << "supportedImageFormats" << QImageWriter::supportedImageFormats();
 
     return appReturn;
 #endif
