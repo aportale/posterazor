@@ -29,6 +29,7 @@
 #endif
 
 #include <QBrush>
+#include <QFile>
 #include <QSettings>
 #include <QStringList>
 
@@ -775,7 +776,11 @@ int PosteRazorCore::savePoster(const QString &fileName) const
     const QByteArray imageData = m_imageLoader->bits();
 
     PDFWriter pdfWriter;
-    err = pdfWriter.startSaving(fileName, pagesCount, sizeCm.width(), sizeCm.height());
+    QFile outFile(fileName);
+    if (!outFile.open((QIODevice::WriteOnly)))
+        return -1;
+
+    err = pdfWriter.startSaving(&outFile, pagesCount, sizeCm.width(), sizeCm.height());
     if (!err) {
         if (m_imageLoader->isJpeg())
             err = pdfWriter.saveJpegImage(m_imageLoader->fileName(), imageSize, m_imageLoader->colorDataType());

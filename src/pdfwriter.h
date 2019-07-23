@@ -27,10 +27,6 @@
 #include <QRgb>
 #include <QTextStream>
 
-QT_BEGIN_NAMESPACE
-class QFile;
-QT_END_NAMESPACE
-
 class PDFWriter: public QObject, public PaintCanvasInterface
 {
 public:
@@ -42,7 +38,7 @@ public:
     int saveImage(const QByteArray &imageData, const QSize &sizePixels, int bitPerPixel, Types::ColorTypes colorType, const QVector<QRgb> &colorTable);
     int startPage();
     int finishPage();
-    int startSaving(const QString &fileName, int pages, qreal widthCm, qreal heightCm);
+    int startSaving(QIODevice *outputDevice, int pages, qreal widthCm, qreal heightCm);
     int finishSaving();
     void drawFilledRect(const QRectF&, const QBrush &brush) override;
     QSizeF size() const override;
@@ -50,7 +46,6 @@ public:
     void drawOverlayText(const QPointF &position, int flags, int size, const QString &text) override;
 
 private:
-    QFile *m_outputFile = nullptr;
     QString m_xref;
     int m_pdfObjectCount = 0;
     int m_contentPagesCount = 0;

@@ -343,22 +343,17 @@ int PDFWriter::finishPage()
     return err;
 }
 
-int PDFWriter::startSaving(const QString &fileName, int pages, qreal widthCm, qreal heightCm)
+int PDFWriter::startSaving(QIODevice *outputDevice, int pages, qreal widthCm, qreal heightCm)
 {
     int err = 0;
 
     m_mediaboxWidth = cm2Pt(widthCm);
     m_mediaboxHeight = cm2Pt(heightCm);
 
-    if (m_outputFile) {
-        m_outputFile->close();
-        delete m_outputFile;
-    }
-    m_outputFile = new QFile(fileName, this);
-    if (!m_outputFile->open(QIODevice::WriteOnly))
-        return 1;
+    if (m_outStream.device())
+        m_outStream.device()->close();
 
-    m_outStream.setDevice(m_outputFile);
+    m_outStream.setDevice(outputDevice);
     m_contentPagesCount = pages;
     m_xref.clear();
     m_outStream << "%PDF-1.3" LINEFEED
