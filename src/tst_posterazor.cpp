@@ -33,12 +33,6 @@
 #include <QtGui>
 #include <QtWidgets>
 
-#if !defined(QT_SHARED) && !defined(QT_DLL) && !defined(FREEIMAGE_LIB)
-Q_IMPORT_PLUGIN(qgif)
-Q_IMPORT_PLUGIN(qjpeg)
-Q_IMPORT_PLUGIN(qtiff)
-#endif
-
 class PosteRazorTests: public QObject
 {
     Q_OBJECT

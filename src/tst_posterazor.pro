@@ -24,16 +24,6 @@ contains (DEFINES, FREEIMAGE_LIB) {
 
     unix:LIBS += \
         -lfreeimage
-} else {
-    contains(CONFIG, static) {
-        QTPLUGIN += \
-            qgif \
-            qjpeg \
-            qsvg \
-            qtiff
-    }
 }
 
 include (posterazor.pri)
-
-!contains(CONFIG, build_pass) system(lrelease posterazor.pro)
