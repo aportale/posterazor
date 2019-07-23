@@ -425,18 +425,32 @@ void Controller::loadInputImage()
 
     const QString loadPathDefault =
             QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).constFirst();
+#ifdef Q_OS_WASM
+    QFileDialog::getOpenFileContent(allFilters.join(QLatin1String(";;")),
+                                    [this](const QString &fileName, const QByteArray &fileContent) {
+        const QString previousFileName = m_posteRazorCore->fileName();
+        const QString copyFileName = QLatin1String("/home/web_user/") + QFileInfo(fileName).fileName();
+
+        QFile imageFile(copyFileName);
+        if (imageFile.open(QIODevice::WriteOnly)) {
+            imageFile.write(fileContent);
+            imageFile.close();
+        }
+
+        if (handleInputImageSelected(copyFileName))
+            QFile::remove(previousFileName);
+        else
+            QFile::remove(copyFileName);
+    });
+#else
     const QString loadFileName =
             QFileDialog::getOpenFileName(m_view,
                                          QCoreApplication::translate("Main window", "Load an input image"),
                                          loadPathSettings.value(settingsKey_ImageLoadPath, loadPathDefault).toString(),
                                          allFilters.join(QLatin1String(";;")));
 
-    if (!loadFileName.isEmpty()) {
-        const bool successful = loadInputImage(loadFileName);
-        if (successful)
-            loadPathSettings.setValue(settingsKey_ImageLoadPath,
-                QDir::toNativeSeparators(QFileInfo(loadFileName).absolutePath()));
-    }
+    handleInputImageSelected(loadFileName);
+#endif // QT_OS_WASM
 }
 
 bool Controller::loadInputImage(const QString &fileName)
@@ -564,4 +578,20 @@ void Controller::imageSuffixSupported(const QString &suffix, bool &outIsSupporte
             break;
         }
     }
+}
+
+bool Controller::handleInputImageSelected(const QString &fileName)
+{
+    bool successful = false;
+
+    if (!fileName.isEmpty()) {
+        successful = loadInputImage(fileName);
+        if (successful) {
+            QSettings loadPathSettings;
+            loadPathSettings.setValue(settingsKey_ImageLoadPath,
+                QDir::toNativeSeparators(QFileInfo(fileName).absolutePath()));
+        }
+    }
+
+    return successful;
 }

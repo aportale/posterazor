@@ -139,4 +139,5 @@ protected:
     void setDialogImageInfoFields();
     void setDialogOverlappingDimensions();
     void setDialogOverlappingOptions();
+    bool handleInputImageSelected(const QString &fileName);
 };
