@@ -765,7 +765,7 @@ void PosteRazorCore::paintOnCanvas(PaintCanvasInterface *paintCanvas, const QVar
     }
 }
 
-int PosteRazorCore::savePoster(const QString &fileName) const
+int PosteRazorCore::savePoster(QIODevice *outputDevice) const
 {
     int err = 0;
 
@@ -776,11 +776,7 @@ int PosteRazorCore::savePoster(const QString &fileName) const
     const QByteArray imageData = m_imageLoader->bits();
 
     PDFWriter pdfWriter;
-    QFile outFile(fileName);
-    if (!outFile.open((QIODevice::WriteOnly)))
-        return -1;
-
-    err = pdfWriter.startSaving(&outFile, pagesCount, sizeCm.width(), sizeCm.height());
+    err = pdfWriter.startSaving(outputDevice, pagesCount, sizeCm.width(), sizeCm.height());
     if (!err) {
         if (m_imageLoader->isJpeg())
             err = pdfWriter.saveJpegImage(m_imageLoader->fileName(), imageSize, m_imageLoader->colorDataType());

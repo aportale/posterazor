@@ -46,7 +46,7 @@ public:
     void readSettings(const QSettings *settings);
     void writeSettings(QSettings *settings) const;
     bool loadInputImage(const QString &imageFileName, QString &errorMessage);
-    int savePoster(const QString &fileName) const;
+    int savePoster(QIODevice *outputDevice) const;
 
     QSize inputImageSizePixels() const;
     qreal inputImageHorizontalDpi() const;

@@ -476,9 +476,15 @@ bool Controller::loadInputImage(const QString &imageFileName, QString &errorMess
 
 int Controller::savePoster(const QString &fileName) const
 {
-    const int result = m_posteRazorCore->savePoster(fileName);
+    QFile outFile(fileName);
+    if (!outFile.open((QIODevice::WriteOnly)))
+        return -1;
+
+    const int result = m_posteRazorCore->savePoster(&outFile);
+
     if (result == 0 && m_launchPDFApplication)
         QDesktopServices::openUrl(QUrl::fromLocalFile(fileName));
+
     return result;
 }
 
