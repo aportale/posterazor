@@ -63,6 +63,10 @@ Wizard::Wizard(QWidget *parent)
     populateUI();
     updatePosterSizeGroupsState();
     retranslateUi();
+
+#ifdef Q_OS_WASM
+    m_launchPDFApplicationCheckBox->hide();
+#endif // Q_OS_WASM
 }
 
 void Wizard::changeEvent(QEvent *event)

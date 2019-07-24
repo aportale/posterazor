@@ -34,6 +34,12 @@
 #include <QTranslator>
 #include <QUrl>
 
+#ifdef Q_OS_WASM
+#include <emscripten.h>
+#include <emscripten/html5.h>
+#include <QBuffer>
+#endif // Q_OS_WASM
+
 const QLatin1String settingsKey_LaunchPDFApplication("LaunchPDFApplication");
 const QLatin1String settingsKey_TranslationName("TranslationName");
 const QLatin1String settingsKey_ImageLoadPath("ImageLoadPath");
@@ -476,20 +482,55 @@ bool Controller::loadInputImage(const QString &imageFileName, QString &errorMess
 
 int Controller::savePoster(const QString &fileName) const
 {
-    QFile outFile(fileName);
-    if (!outFile.open((QIODevice::WriteOnly)))
+#ifdef Q_OS_WASM
+    QByteArray posterData;
+    QBuffer outIODevice(&posterData);
+    outIODevice.open(QIODevice::WriteOnly);
+#else
+    QFile outIODevice(fileName);
+    if (!outIODevice.open((QIODevice::WriteOnly)))
         return -1;
+#endif // Q_OS_WASM
 
-    const int result = m_posteRazorCore->savePoster(&outFile);
+    const int result = m_posteRazorCore->savePoster(&outIODevice);
 
+#ifdef Q_OS_WASM
+    outIODevice.close();
+    // Snippet borrowed from my dear colleague Morten:
+    // https://codereview.qt-project.org/c/qt/qtbase/+/228599
+    EM_ASM_({
+        // Make the file contents and file name hint accessible to Javascript: convert
+        // the char * to a JavaScript string and create a subarray view into the C heap.
+        const contentPointer = $0;
+        const contentLength = $1;
+        const fileNameHint = UTF8ToString($2);
+        const fileContent = Module.HEAPU8.subarray(contentPointer, contentPointer + contentLength);
+
+        // Create a hidden download link and click it programatically
+        const fileblob = new Blob([fileContent], { type : "application/octet-stream" } );
+        var link = document.createElement("a");
+        document.body.appendChild(link);
+        link.download = fileNameHint;
+        link.href = window.URL.createObjectURL(fileblob);
+        link.style = "display:none";
+        link.click();
+        document.body.removeChild(link);
+    }, posterData.constData(), posterData.length(), fileName.toUtf8().constData());
+#else
     if (result == 0 && m_launchPDFApplication)
         QDesktopServices::openUrl(QUrl::fromLocalFile(fileName));
+#endif // Q_OS_WASM
 
     return result;
 }
 
 void Controller::savePoster() const
 {
+#ifdef Q_OS_WASM
+    savePoster(QFileInfo(m_posteRazorCore->fileName()).baseName() + QLatin1String(".pdf"));
+    return;
+#endif // Q_OS_WASM
+
     QSettings savePathSettings;
 
     QString saveFileName = savePathSettings.value(settingsKey_PosterSavePath,
