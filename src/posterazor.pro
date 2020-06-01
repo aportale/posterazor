@@ -14,13 +14,16 @@ macx:ICON = \
     posterazor.icns
 
 macx:CONFIG += \
-    x86 ppc
+    x86
+#    x86 ppc
 
 macx:QMAKE_MAC_SDK = \
-    /Developer/SDKs/MacOSX10.4u.sdk
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk
+#    /Developer/SDKs/MacOSX10.4u.sdk
 
 macx:QMAKE_MACOSX_DEPLOYMENT_TARGET = \
-    10.3
+    10.7
+#    10.3
 
 RC_FILE += \
     posterazor.rc
