@@ -25,6 +25,7 @@
 #include <QImage>
 #include <QPainter>
 #include <QVariant>
+#include <QPainterPath>
 
 PaintCanvas::PaintCanvas(QWidget *parent)
     : QWidget(parent)
