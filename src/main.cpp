@@ -98,8 +98,6 @@ int main (int argc, char **argv)
     dialog.writeSettings(&settings);
     controller.writeSettings(&settings);
 
-    qDebug() << "supportedImageFormats" << QImageWriter::supportedImageFormats();
-
     return appReturn;
 #endif
 }
