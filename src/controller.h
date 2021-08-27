@@ -47,7 +47,7 @@ public:
 public slots:
     void setUnitOfLength(Types::UnitsOfLength unit);
     void setPaperFormat(const QString &format);
-    void setPaperOrientation(QPrinter::Orientation orientation);
+    void setPaperOrientation(QPageLayout::Orientation orientation);
     void setPaperBorderTop(qreal border);
     void setPaperBorderRight(qreal border);
     void setPaperBorderBottom(qreal border);
@@ -88,7 +88,7 @@ signals:
 
     /* Privately used signals */
     void setPaperFormatSignal(const QString &format);
-    void setPaperOrientationSignal(QPrinter::Orientation orientation);
+    void setPaperOrientationSignal(QPageLayout::Orientation orientation);
     void setPaperBorderTopSignal(qreal border);
     void setPaperBorderRightSignal(qreal border);
     void setPaperBorderBottomSignal(qreal border);

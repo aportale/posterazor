@@ -138,10 +138,10 @@ void Wizard::setPaperFormat(const QString &format)
     m_paperFormatComboBox->setCurrentIndex(index);
 }
 
-void Wizard::setPaperOrientation(QPrinter::Orientation orientation)
+void Wizard::setPaperOrientation(QPageLayout::Orientation orientation)
 {
     (
-        orientation == QPrinter::Landscape ? m_paperOrientationLandscapeRadioButton
+        orientation == QPageLayout::Landscape ? m_paperOrientationLandscapeRadioButton
         : m_paperOrientationPortraitRadioButton
     )->setChecked(true);
 }
@@ -371,12 +371,12 @@ void Wizard::handlePaperFormatTabChanged(int index)
 
 void Wizard::handlePaperOrientationPortraitSelected()
 {
-    emit paperOrientationChanged(QPrinter::Portrait);
+    emit paperOrientationChanged(QPageLayout::Portrait);
 }
 
 void Wizard::handlePaperOrientationLandscapeSelected()
 {
-    emit paperOrientationChanged(QPrinter::Landscape);
+    emit paperOrientationChanged(QPageLayout::Landscape);
 }
 
 void Wizard::createConnections()
@@ -385,7 +385,7 @@ void Wizard::createConnections()
     connect(m_stepPrevButton,                       SIGNAL(clicked()),                  SIGNAL(prevButtonPressed()));
     connect(m_stepHelpButton,                       SIGNAL(clicked()),                  SIGNAL(wizardStepHelpSignal()));
     connect(m_paperFormatTypeTabs,                  SIGNAL(currentChanged(int)),        SLOT(handlePaperFormatTabChanged(int)));
-    connect(m_paperFormatComboBox,                  SIGNAL(activated(const QString &)), SIGNAL(paperFormatChanged(const QString &)));
+    connect(m_paperFormatComboBox,                  SIGNAL(textActivated(const QString &)), SIGNAL(paperFormatChanged(const QString &)));
     connect(m_paperOrientationPortraitRadioButton,  SIGNAL(clicked()),                  SLOT(handlePaperOrientationPortraitSelected()));
     connect(m_paperOrientationLandscapeRadioButton, SIGNAL(clicked()),                  SLOT(handlePaperOrientationLandscapeSelected()));
     connect(m_paperCustomWidthSpinner,              SIGNAL(valueEdited(qreal)),        SIGNAL(paperCustomWidthChanged(qreal)));
@@ -406,7 +406,7 @@ void Wizard::createConnections()
         connect(sender, SIGNAL(clicked()), overlappingMapper, SLOT(map()));
         overlappingMapper->setMapping(sender, it.key());
     }
-    connect(overlappingMapper, SIGNAL(mapped(int)), SLOT(emitOverlappingPositionChange(int)));
+    connect(overlappingMapper, SIGNAL(mappedInt(int)), SLOT(emitOverlappingPositionChange(int)));
     connect(m_posterAbsoluteWidthInput,             SIGNAL(valueEdited(qreal)),        SIGNAL(posterWidthAbsoluteChanged(qreal)));
     connect(m_posterAbsoluteHeightInput,            SIGNAL(valueEdited(qreal)),        SIGNAL(posterHeightAbsoluteChanged(qreal)));
     connect(m_posterPagesWidthInput,                SIGNAL(valueEdited(qreal)),        SIGNAL(posterWidthPagesChanged(qreal)));
@@ -418,7 +418,7 @@ void Wizard::createConnections()
         connect(sender, SIGNAL(clicked()), alignmentMapper, SLOT(map()));
         alignmentMapper->setMapping(sender, it.key());
     }
-    connect(alignmentMapper, SIGNAL(mapped(int)),   SLOT(emitPosterAlignmentChange(int)));
+    connect(alignmentMapper, SIGNAL(mappedInt(int)), SLOT(emitPosterAlignmentChange(int)));
     connect(m_savePosterButton,                     SIGNAL(clicked()),                  SIGNAL(savePosterSignal()));
     connect(m_launchPDFApplicationCheckBox,         SIGNAL(toggled(bool)),              SIGNAL(launchPDFApplicationChanged(bool)));
     connect(m_paintCanvas,                          SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)), SIGNAL(needsPaint(PaintCanvasInterface*, const QVariant&)));

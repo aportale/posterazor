@@ -1,8 +1,6 @@
 TARGET = PosteRazor
 
-QT += widgets printsupport
-
-DESTDIR = $$PWD
+QT += widgets
 
 win32:DEFINES -= \
     UNICODE

@@ -22,6 +22,7 @@
 
 #include "mainwindow.h"
 
+#include <QActionGroup>
 #include <QDialogButtonBox>
 #include <QDragEnterEvent>
 #include <QDropEvent>
@@ -53,9 +54,9 @@ MainWindow::MainWindow(QWidget *parent)
     m_unitOfLengthActions = new QActionGroup(m_menuSettings);
 
     m_actionLoadInputImage->setShortcuts(
-        QList<QKeySequence>() << (Qt::CTRL + Qt::Key_L) << (Qt::CTRL + Qt::Key_O));
-    m_actionSavePoster->setShortcut(Qt::CTRL + Qt::Key_S);
-    m_actionExit->setShortcut(Qt::CTRL + Qt::Key_Q);
+        QList<QKeySequence>() << (Qt::CTRL | Qt::Key_L) << (Qt::CTRL | Qt::Key_O));
+    m_actionSavePoster->setShortcut(Qt::CTRL | Qt::Key_S);
+    m_actionExit->setShortcut(Qt::CTRL | Qt::Key_Q);
     m_actionPosteRazorManual->setShortcut(Qt::Key_F1);
     m_actionLoadInputImage->setIcon(QApplication::style()->standardPixmap(QStyle::SP_DirOpenIcon));
     m_actionSavePoster->setIcon(QApplication::style()->standardPixmap(QStyle::SP_DialogSaveButton));
@@ -116,7 +117,7 @@ void MainWindow::setPaperFormat(const QString &format)
     m_wizard->setPaperFormat(format);
 }
 
-void MainWindow::setPaperOrientation(QPrinter::Orientation orientation)
+void MainWindow::setPaperOrientation(QPageLayout::Orientation orientation)
 {
     m_wizard->setPaperOrientation(orientation);
 }
@@ -351,7 +352,7 @@ void MainWindow::createConnections()
     static const char* const relayedSignals[] = {
         SIGNAL(paperFormatChanged(const QString&)),
         SIGNAL(useCustomPaperSizeChanged(bool)),
-        SIGNAL(paperOrientationChanged(QPrinter::Orientation)),
+        SIGNAL(paperOrientationChanged(QPageLayout::Orientation)),
         SIGNAL(paperCustomWidthChanged(qreal)),
         SIGNAL(paperCustomHeightChanged(qreal)),
         SIGNAL(paperBorderTopChanged(qreal)),

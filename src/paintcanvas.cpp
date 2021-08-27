@@ -24,6 +24,7 @@
 
 #include <QImage>
 #include <QPainter>
+#include <QPainterPath>
 #include <QVariant>
 
 PaintCanvas::PaintCanvas(QWidget *parent)
@@ -82,7 +83,7 @@ void PaintCanvas::drawOverlayText(const QPointF &position, int flags, int size, 
     m_qPainter->setOpacity(0.70);
     const QColor fontColor(0xeeeeee);
     const QFontMetricsF fontMetrics(font);
-    const qreal textWidth = fontMetrics.width(text);
+    const qreal textWidth = fontMetrics.boundingRect(text).width();
     const QPointF fontOffset(QPointF(-textWidth / 2, fontMetrics.xHeight() * 1.5));
     if (size > 35) {
         m_qPainter->setPen(0x656565);

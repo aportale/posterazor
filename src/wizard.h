@@ -38,7 +38,7 @@ public slots:
     void retranslateUi();
     void retranslateUiWithDimensionUnit();
     void setPaperFormat(const QString &format);
-    void setPaperOrientation(QPrinter::Orientation orientation);
+    void setPaperOrientation(QPageLayout::Orientation orientation);
     void setPaperBorderTop(qreal border);
     void setPaperBorderRight(qreal border);
     void setPaperBorderBottom(qreal border);
@@ -82,7 +82,7 @@ private:
 signals:
     void paperFormatChanged(const QString &format) const;
     void useCustomPaperSizeChanged(bool useIt) const;
-    void paperOrientationChanged(QPrinter::Orientation orientation) const;
+    void paperOrientationChanged(QPageLayout::Orientation orientation) const;
     void paperCustomWidthChanged(qreal width) const;
     void paperCustomHeightChanged(qreal height) const;
     void paperBorderTopChanged(qreal border) const;

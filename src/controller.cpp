@@ -31,6 +31,7 @@
 #include <QLocale>
 #include <QMessageBox>
 #include <QSettings>
+#include <QStandardPaths>
 #include <QTranslator>
 #include <QUrl>
 
@@ -51,7 +52,7 @@ Controller::Controller(PosteRazorCore *posteRazorCore, QWidget *view, QObject *p
     , m_view(view)
 {
     connect(m_view, SIGNAL(paperFormatChanged(const QString&)), SLOT(setPaperFormat(const QString&)));
-    connect(m_view, SIGNAL(paperOrientationChanged(QPrinter::Orientation)), SLOT(setPaperOrientation(QPrinter::Orientation)));
+    connect(m_view, SIGNAL(paperOrientationChanged(QPageLayout::Orientation)), SLOT(setPaperOrientation(QPageLayout::Orientation)));
     connect(m_view, SIGNAL(paperBorderTopChanged(qreal)), SLOT(setPaperBorderTop(qreal)));
     connect(m_view, SIGNAL(paperBorderRightChanged(qreal)), SLOT(setPaperBorderRight(qreal)));
     connect(m_view, SIGNAL(paperBorderBottomChanged(qreal)), SLOT(setPaperBorderBottom(qreal)));
@@ -85,7 +86,7 @@ Controller::Controller(PosteRazorCore *posteRazorCore, QWidget *view, QObject *p
     } signalsToViewSlotsConnections[] = {
         {SIGNAL(setPaperFormatSignal(const QString&)),              SLOT(setPaperFormat(const QString&))},
         {SIGNAL(setPaperFormatSignal(const QString&)),              SLOT(setPaperFormat(const QString&))},
-        {SIGNAL(setPaperOrientationSignal(QPrinter::Orientation)),  SLOT(setPaperOrientation(QPrinter::Orientation))},
+        {SIGNAL(setPaperOrientationSignal(QPageLayout::Orientation)), SLOT(setPaperOrientation(QPageLayout::Orientation))},
         {SIGNAL(setPaperBorderTopSignal(qreal)),                    SLOT(setPaperBorderTop(qreal))},
         {SIGNAL(setPaperBorderRightSignal(qreal)),                  SLOT(setPaperBorderRight(qreal))},
         {SIGNAL(setPaperBorderBottomSignal(qreal)),                 SLOT(setPaperBorderBottom(qreal))},
@@ -181,7 +182,7 @@ void Controller::setPaperFormat(const QString &format)
     updatePreview();
 }
 
-void Controller::setPaperOrientation(QPrinter::Orientation orientation)
+void Controller::setPaperOrientation(QPageLayout::Orientation orientation)
 {
     m_posteRazorCore->setPaperOrientation(orientation);
     setDialogPosterOptions();

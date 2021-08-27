@@ -56,7 +56,7 @@ public:
     Types::ColorTypes inputImageColorType() const;
     Types::UnitsOfLength unitOfLength() const;
     const QString paperFormat() const;
-    QPrinter::Orientation paperOrientation() const;
+    QPageLayout::Orientation paperOrientation() const;
     qreal paperBorderTop() const;
     qreal paperBorderRight() const;
     qreal paperBorderBottom() const;
@@ -79,7 +79,7 @@ public:
 
     void setUnitOfLength(Types::UnitsOfLength unit);
     void setPaperFormat(const QString &format);
-    void setPaperOrientation(QPrinter::Orientation orientation);
+    void setPaperOrientation(QPageLayout::Orientation orientation);
     void setPaperBorderTop(qreal border);
     void setPaperBorderRight(qreal border);
     void setPaperBorderBottom(qreal border);
@@ -133,7 +133,7 @@ private:
     Qt::Alignment m_posterAlignment = Qt::AlignCenter;
     bool m_usesCustomPaperSize = false;
     QString m_paperFormat;
-    QPrinter::Orientation m_paperOrientation = QPrinter::Portrait;
+    QPageLayout::Orientation m_paperOrientation = QPageLayout::Portrait;
     qreal m_paperBorderTop = 1.5;
     qreal m_paperBorderRight = 1.5;
     qreal m_paperBorderBottom = 1.5;

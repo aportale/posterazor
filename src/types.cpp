@@ -22,7 +22,8 @@
 
 #include "types.h"
 
-#include <QRegExp>
+#include <QRegularExpression>
+#include <QSizeF>
 #include <QtDebug>
 
 const QHash<Types::UnitsOfLength, QPair<QString, qreal> > &Types::unitsOfLength()
@@ -82,10 +83,10 @@ const QHash<QString, QSizeF> &Types::paperFormats()
     return formats;
 }
 
-QSizeF Types::paperSize(const QString &format, QPrinter::Orientation orientation, UnitsOfLength unit)
+QSizeF Types::paperSize(const QString &format, QPageLayout::Orientation orientation, UnitsOfLength unit)
 {
     QSizeF result = paperFormats().value(format);
-    if (orientation == QPrinter::Landscape)
+    if (orientation == QPageLayout::Landscape)
         result.transpose();
     return convertBetweenUnitsOfLength(result, UnitOfLengthCentimeter, unit);
 }
@@ -93,8 +94,8 @@ QSizeF Types::paperSize(const QString &format, QPrinter::Orientation orientation
 QString Types::cleanString(const QString &dirtyString)
 {
     QString result = dirtyString;
-    result.replace(QRegExp(QLatin1String("[:&]")), QString());
-    result.replace(QRegExp(QLatin1String("\\(.*\\)")), QString());
+    result.replace(QRegularExpression(QLatin1String("[:&]")), QString());
+    result.replace(QRegularExpression(QLatin1String("\\(.*\\)")), QString());
     result.replace(QLatin1Char('\n'), QLatin1Char(' '));
     return result.trimmed();
 }
