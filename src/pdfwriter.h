@@ -24,6 +24,8 @@
 
 #include "types.h"
 #include "paintcanvasinterface.h"
+
+#include <QObject>
 #include <QRgb>
 #include <QTextStream>
 
