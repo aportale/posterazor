@@ -78,7 +78,8 @@ const QHash<QString, QSizeF> &Types::paperFormats()
         {QLatin1String("DIN A3"),   {29.7, 42.0}},
         {QLatin1String("Legal"),    {21.6, 35.6}},
         {QLatin1String("Letter"),   {21.6, 27.9}},
-        {QLatin1String("Tabloid"),  {27.9, 43.2}}
+        {QLatin1String("Tabloid"),  {27.9, 43.2}},
+        {QLatin1String("A3+"),      {32.9, 48.3}}
     };
     return formats;
 }
