@@ -1,6 +1,6 @@
 #define APPLICATIONTITLE "PosteRazor"
-#define VERSION "1.9.5"
-#define COPYRIGHT "2005-2008 Alessandro Portale"
+#define VERSION "1.9.7"
+#define COPYRIGHT "2005-2020 Alessandro Portale"
 #define PREFERENCESDIR "{userappdata}\CasaPortale"
 #define PREFERENCESFILE PREFERENCESDIR + "\PosteRazor.ini"
 #define WEBSITE "http://posterazor.sourceforge.net/"

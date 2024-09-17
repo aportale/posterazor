@@ -1,3 +1,10 @@
+PosteRazor 1.9.7
+================
+(Preview version for the upcoming Qt-based PosteRazor 2)
+- Changed: Various small fixes
+-   Added: Danish translation by Henrik Troels-Hansen
+-   Added: Czech translation by Filip Pivarči
+
 PosteRazor 1.9.6
 ================
 (Preview version for the upcoming Qt-based PosteRazor 2)
