@@ -1,0 +1,72 @@
+# Qt build artifacts
+Makefile
+*.pro.user
+*.pro.user.*
+*.qmake.stash
+*.qmake.cache
+
+# Compiled Object files
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.a
+*.lib
+
+# Qt MOC generated files
+moc_*.cpp
+moc_*.h
+moc_predefs.h
+
+# Qt UIC generated files
+ui_*.h
+
+# Qt RCC generated files
+qrc_*.cpp
+
+# Qt Designer files
+*.ui.bak
+
+# Executables
+PosteRazor
+PosteRazor.exe
+
+# macOS app bundles (build output)
+*.app/
+PosteRazor.app/
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Release files
+Release/
+Debug/
+
+# Build directories
+build/
+Build/
+.build/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+

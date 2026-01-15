@@ -22,55 +22,18 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="palette">
-      <palette>
-       <active>
-        <colorrole role="Window">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>192</red>
-           <green>192</green>
-           <blue>192</blue>
-          </color>
-         </brush>
-        </colorrole>
-       </active>
-       <inactive>
-        <colorrole role="Window">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>192</red>
-           <green>192</green>
-           <blue>192</blue>
-          </color>
-         </brush>
-        </colorrole>
-       </inactive>
-       <disabled>
-        <colorrole role="Window">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>192</red>
-           <green>192</green>
-           <blue>192</blue>
-          </color>
-         </brush>
-        </colorrole>
-       </disabled>
-      </palette>
-     </property>
      <property name="autoFillBackground">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
      <layout class="QVBoxLayout" name="_17">
       <property name="spacing">
-       <number>6</number>
+       <number>12</number>
       </property>
       <property name="margin">
-       <number>9</number>
+       <number>20</number>
       </property>
       <item>
        <widget class="PaintCanvas" name="m_paintCanvas" native="true">
@@ -123,7 +86,7 @@
         <widget class="QWidget" name="m_loadInputImageStep">
          <layout class="QVBoxLayout">
           <property name="spacing">
-           <number>6</number>
+           <number>12</number>
           </property>
           <property name="margin">
            <number>0</number>
@@ -142,45 +105,8 @@
              </property>
              <item>
               <widget class="QLabel" name="m_inputFileNameLabel">
-               <property name="palette">
-                <palette>
-                 <active>
-                  <colorrole role="Window">
-                   <brush brushstyle="SolidPattern">
-                    <color alpha="255">
-                     <red>240</red>
-                     <green>240</green>
-                     <blue>240</blue>
-                    </color>
-                   </brush>
-                  </colorrole>
-                 </active>
-                 <inactive>
-                  <colorrole role="Window">
-                   <brush brushstyle="SolidPattern">
-                    <color alpha="255">
-                     <red>240</red>
-                     <green>240</green>
-                     <blue>240</blue>
-                    </color>
-                   </brush>
-                  </colorrole>
-                 </inactive>
-                 <disabled>
-                  <colorrole role="Window">
-                   <brush brushstyle="SolidPattern">
-                    <color alpha="255">
-                     <red>240</red>
-                     <green>240</green>
-                     <blue>240</blue>
-                    </color>
-                   </brush>
-                  </colorrole>
-                 </disabled>
-                </palette>
-               </property>
                <property name="autoFillBackground">
-                <bool>true</bool>
+                <bool>false</bool>
                </property>
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
@@ -219,10 +145,10 @@
             </property>
             <layout class="QGridLayout" name="_3">
              <property name="margin">
-              <number>9</number>
+              <number>20</number>
              </property>
              <property name="spacing">
-              <number>6</number>
+              <number>12</number>
              </property>
              <item row="0" column="1">
               <widget class="QLabel" name="m_imageInformationSizeInPixelsValue">
@@ -316,7 +242,7 @@
         <widget class="QWidget" name="m_paperSizeStep">
          <layout class="QVBoxLayout" name="_4">
           <property name="spacing">
-           <number>6</number>
+           <number>12</number>
           </property>
           <property name="margin">
            <number>0</number>
@@ -328,10 +254,10 @@
             </property>
             <layout class="QGridLayout" name="_5">
              <property name="margin">
-              <number>9</number>
+              <number>20</number>
              </property>
              <property name="spacing">
-              <number>6</number>
+              <number>12</number>
              </property>
              <item row="0" column="0">
               <widget class="QTabWidget" name="m_paperFormatTypeTabs">
@@ -340,43 +266,6 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
-               </property>
-               <property name="palette">
-                <palette>
-                 <active>
-                  <colorrole role="Window">
-                   <brush brushstyle="SolidPattern">
-                    <color alpha="255">
-                     <red>192</red>
-                     <green>192</green>
-                     <blue>192</blue>
-                    </color>
-                   </brush>
-                  </colorrole>
-                 </active>
-                 <inactive>
-                  <colorrole role="Window">
-                   <brush brushstyle="SolidPattern">
-                    <color alpha="255">
-                     <red>192</red>
-                     <green>192</green>
-                     <blue>192</blue>
-                    </color>
-                   </brush>
-                  </colorrole>
-                 </inactive>
-                 <disabled>
-                  <colorrole role="Window">
-                   <brush brushstyle="SolidPattern">
-                    <color alpha="255">
-                     <red>192</red>
-                     <green>192</green>
-                     <blue>192</blue>
-                    </color>
-                   </brush>
-                  </colorrole>
-                 </disabled>
-                </palette>
                </property>
                <property name="currentIndex">
                 <number>1</number>
@@ -487,10 +376,10 @@
                 </attribute>
                 <layout class="QGridLayout" name="_8">
                  <property name="margin">
-                  <number>9</number>
+                  <number>20</number>
                  </property>
                  <property name="spacing">
-                  <number>6</number>
+                  <number>12</number>
                  </property>
                  <item row="1" column="2">
                   <widget class="QLabel" name="m_paperCustomHeightDimensionUnitLabel">
@@ -572,10 +461,10 @@
             </property>
             <layout class="QGridLayout" name="_9">
              <property name="margin">
-              <number>9</number>
+              <number>20</number>
              </property>
              <property name="spacing">
-              <number>6</number>
+              <number>12</number>
              </property>
              <item row="0" column="1">
               <widget class="QLabel" name="m_paperBordersTopLabel">
@@ -702,7 +591,7 @@
         <widget class="QWidget" name="m_overlappingStep">
          <layout class="QVBoxLayout" name="_10">
           <property name="spacing">
-           <number>6</number>
+           <number>12</number>
           </property>
           <property name="margin">
            <number>0</number>
@@ -714,10 +603,10 @@
             </property>
             <layout class="QGridLayout" name="_11">
              <property name="margin">
-              <number>9</number>
+              <number>20</number>
              </property>
              <property name="spacing">
-              <number>6</number>
+              <number>12</number>
              </property>
              <item row="1" column="2">
               <widget class="QLabel" name="m_overlappingHeightDimensionUnitLabel">
@@ -801,10 +690,10 @@
             </property>
             <layout class="QGridLayout" name="_12">
              <property name="margin">
-              <number>9</number>
+              <number>20</number>
              </property>
              <property name="spacing">
-              <number>6</number>
+              <number>12</number>
              </property>
              <item row="0" column="1">
               <widget class="QToolButton" name="m_overlappingPositionTopRightButton">
@@ -967,7 +856,7 @@
         <widget class="QWidget" name="m_posterSizeStep">
          <layout class="QVBoxLayout" name="_13">
           <property name="spacing">
-           <number>6</number>
+           <number>12</number>
           </property>
           <property name="margin">
            <number>0</number>
@@ -979,10 +868,10 @@
             </property>
             <layout class="QGridLayout" name="_14">
              <property name="margin">
-              <number>9</number>
+              <number>20</number>
              </property>
              <property name="spacing">
-              <number>6</number>
+              <number>12</number>
              </property>
              <item row="4" column="2">
               <widget class="QLabel" name="m_posterPagesWidthDimensionUnitLabel">
@@ -1454,7 +1343,7 @@
         <widget class="QWidget" name="m_savePosterStep">
          <layout class="QVBoxLayout" name="_15">
           <property name="spacing">
-           <number>6</number>
+           <number>12</number>
           </property>
           <property name="margin">
            <number>0</number>
@@ -1515,10 +1404,10 @@
        <widget class="QWidget" name="widget_2" native="true">
         <layout class="QGridLayout" name="gridLayout_2">
          <property name="horizontalSpacing">
-          <number>0</number>
+          <number>12</number>
          </property>
          <property name="verticalSpacing">
-          <number>1</number>
+          <number>12</number>
          </property>
          <property name="margin">
           <number>0</number>
@@ -1532,45 +1421,8 @@
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="m_stepDescriptionLabel">
-           <property name="palette">
-            <palette>
-             <active>
-              <colorrole role="Window">
-               <brush brushstyle="SolidPattern">
-                <color alpha="255">
-                 <red>240</red>
-                 <green>240</green>
-                 <blue>240</blue>
-                </color>
-               </brush>
-              </colorrole>
-             </active>
-             <inactive>
-              <colorrole role="Window">
-               <brush brushstyle="SolidPattern">
-                <color alpha="255">
-                 <red>240</red>
-                 <green>240</green>
-                 <blue>240</blue>
-                </color>
-               </brush>
-              </colorrole>
-             </inactive>
-             <disabled>
-              <colorrole role="Window">
-               <brush brushstyle="SolidPattern">
-                <color alpha="255">
-                 <red>240</red>
-                 <green>240</green>
-                 <blue>240</blue>
-                </color>
-               </brush>
-              </colorrole>
-             </disabled>
-            </palette>
-           </property>
            <property name="autoFillBackground">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>

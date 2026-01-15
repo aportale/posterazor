@@ -78,6 +78,9 @@ private:
 
     void createConnections();
     void populateUI();
+#ifdef Q_OS_MACOS
+    void applyMacOSStyling();
+#endif
 
 signals:
     void paperFormatChanged(const QString &format) const;

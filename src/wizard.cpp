@@ -28,6 +28,17 @@
 #include <QSignalMapper>
 #include <QVBoxLayout>
 #include <QtDebug>
+#ifdef Q_OS_MACOS
+#include <QStyleFactory>
+#include <QPalette>
+#include <QPushButton>
+#include <QToolButton>
+#include <QGroupBox>
+#include <QFrame>
+#include <QWidget>
+#include <QLabel>
+#include <QStackedWidget>
+#endif
 
 Wizard::Wizard(QWidget *parent)
     : QWidget(parent)
@@ -67,12 +78,22 @@ Wizard::Wizard(QWidget *parent)
 #ifdef Q_OS_WASM
     m_launchPDFApplicationCheckBox->hide();
 #endif // Q_OS_WASM
+
+#ifdef Q_OS_MACOS
+    applyMacOSStyling();
+#endif
 }
 
 void Wizard::changeEvent(QEvent *event)
 {
     if (event->type() == QEvent::LanguageChange)
         retranslateUi();
+#ifdef Q_OS_MACOS
+    else if (event->type() == QEvent::PaletteChange) {
+        // Reapply styling when system appearance changes (light/dark mode)
+        applyMacOSStyling();
+    }
+#endif
     QWidget::changeEvent(event);
 }
 
@@ -288,7 +309,7 @@ void Wizard::updateImageInfoFields(const QSize &inputImageSizeInPixels, const QS
         : colorType == Types::ColorTypePalette ? QCoreApplication::translate("Main window", "Palette")
         : colorType == Types::ColorTypeRGB ? QCoreApplication::translate("Main window", "RGB")
         : colorType == Types::ColorTypeRGBA ? QCoreApplication::translate("Main window", "RGBA")
-        : /*colorType == ColorTypeCMYK?*/ QCoreApplication::translate("Main window", "CMYK")
+        : QCoreApplication::translate("Main window", "CMYK")
     ) + QString::fromLatin1(" %1bpp").arg(bitsPerPixel);
     m_imageInformationColorTypeValue->setText(colorTypeString);
     m_imageInfoGroup->setVisible(true);
@@ -348,8 +369,7 @@ void Wizard::showWizardStepHelp(const QString &title, const QString &text)
     box.setWindowTitle(title);
     QString helpText = text;
 #if defined(Q_WS_MAC)
-    // Hack. Since QMessageBoxPrivate sets the whole font to bold on Q_WS_MAC (no matter which style),
-    // we put emphasis on the key words by setting them to italic and into single quotes.
+
     helpText.replace("<b>", "<i>'");
     helpText.replace("</b>", "'</i>");
 #endif
@@ -464,3 +484,195 @@ void Wizard::updatePosterSizeGroupsState()
     m_posterPercentualSizeInput->setEnabled(percentual);
     m_posterPercentualSizeUnitLabel->setEnabled(percentual);
 }
+
+#ifdef Q_OS_MACOS
+void Wizard::applyMacOSStyling()
+{
+    QPalette palette = QApplication::palette();
+    QApplication::setPalette(palette);
+    
+    // Get system colors for styling
+    QColor windowColor = palette.color(QPalette::Window);
+    QColor baseColor = palette.color(QPalette::Base);
+    QColor buttonColor = palette.color(QPalette::Button);
+    QColor buttonTextColor = palette.color(QPalette::ButtonText);
+    QColor highlightColor = palette.color(QPalette::Highlight);
+    QColor textColor = palette.color(QPalette::WindowText);
+    
+    bool isDarkMode = windowColor.lightness() < 128;
+    
+    QColor panelBgColor = isDarkMode 
+        ? QColor(30, 30, 30, 230) 
+        : QColor(255, 255, 255, 240);
+    QColor groupBoxBgColor = isDarkMode 
+        ? QColor(40, 40, 40, 200) 
+        : QColor(250, 250, 250, 220);
+    
+    if (m_preview) {
+        m_preview->setAutoFillBackground(false);
+        QString previewStyle = QLatin1String(
+            "QFrame#m_preview {"
+            "    background-color: %1;"
+            "    border-radius: 12px;"
+            "    border: 1px solid %2;"
+            "}"
+        ).arg(panelBgColor.name(QColor::HexArgb))
+         .arg(isDarkMode ? QColor(60, 60, 60).name() : QColor(220, 220, 220).name());
+        m_preview->setStyleSheet(previewStyle);
+    }
+    
+    if (m_inputFileNameLabel) {
+        m_inputFileNameLabel->setAutoFillBackground(false);
+        QString labelStyle = QLatin1String(
+            "QLabel#m_inputFileNameLabel {"
+            "    background-color: %1;"
+            "    border: 1px solid %2;"
+            "    border-radius: 8px;"
+            "    padding: 8px 12px;"
+            "    color: %3;"
+            "}"
+        ).arg(baseColor.name())
+         .arg(isDarkMode ? QColor(60, 60, 60).name() : QColor(200, 200, 200).name())
+         .arg(textColor.name());
+        m_inputFileNameLabel->setStyleSheet(labelStyle);
+    }
+    
+    if (m_stepDescriptionLabel) {
+        m_stepDescriptionLabel->setAutoFillBackground(false);
+        QString stepLabelStyle = QLatin1String(
+            "QLabel#m_stepDescriptionLabel {"
+            "    background-color: %1;"
+            "    border: 1px solid %2;"
+            "    border-radius: 8px;"
+            "    padding: 10px 14px;"
+            "    color: %3;"
+            "    font-weight: 500;"
+            "}"
+        ).arg(groupBoxBgColor.name(QColor::HexArgb))
+         .arg(isDarkMode ? QColor(60, 60, 60).name() : QColor(200, 200, 200).name())
+         .arg(textColor.name());
+        m_stepDescriptionLabel->setStyleSheet(stepLabelStyle);
+    }
+    
+    QList<QGroupBox*> groupBoxes = findChildren<QGroupBox*>();
+    for (QGroupBox *groupBox : groupBoxes) {
+        groupBox->setAutoFillBackground(false);
+        
+        QString groupBoxStyle = QLatin1String(
+            "QGroupBox {"
+            "    background-color: %1;"
+            "    border: 1px solid %2;"
+            "    border-radius: 10px;"
+            "    margin-top: 12px;"
+            "    padding-top: 16px;"
+            "    font-weight: 600;"
+            "    color: %3;"
+            "}"
+            "QGroupBox::title {"
+            "    subcontrol-origin: margin;"
+            "    subcontrol-position: top left;"
+            "    left: 12px;"
+            "    padding: 0px 8px 0px 8px;"
+            "    background-color: %4;"
+            "    border-radius: 4px;"
+            "}"
+        ).arg(groupBoxBgColor.name(QColor::HexArgb))
+         .arg(isDarkMode ? QColor(70, 70, 70).name() : QColor(210, 210, 210).name())
+         .arg(textColor.name())
+         .arg(groupBoxBgColor.name(QColor::HexArgb));
+        
+        groupBox->setStyleSheet(groupBoxStyle);
+    }
+    
+    QList<QPushButton*> pushButtons = findChildren<QPushButton*>();
+    for (QPushButton *button : pushButtons) {
+        QSize size = button->sizeHint();
+        if (size.height() < 30) {
+            button->setMinimumHeight(30);
+        }
+        
+        QString buttonStyle = QLatin1String(
+            "QPushButton {"
+            "    background-color: %1;"
+            "    color: %2;"
+            "    border: 1px solid %3;"
+            "    border-radius: 6px;"
+            "    padding: 6px 16px;"
+            "    font-size: 13px;"
+            "    min-height: 30px;"
+            "}"
+            "QPushButton:hover {"
+            "    background-color: %4;"
+            "    border-color: %5;"
+            "}"
+            "QPushButton:pressed {"
+            "    background-color: %6;"
+            "}"
+            "QPushButton:disabled {"
+            "    background-color: %7;"
+            "    color: %8;"
+            "    border-color: %9;"
+            "}"
+        ).arg(buttonColor.name())
+         .arg(buttonTextColor.name())
+         .arg(isDarkMode ? QColor(60, 60, 60).name() : QColor(180, 180, 180).name())
+         .arg(isDarkMode ? QColor(buttonColor.lighter(110)).name() : QColor(buttonColor.darker(105)).name())
+         .arg(isDarkMode ? QColor(80, 80, 80).name() : QColor(150, 150, 150).name())
+         .arg(isDarkMode ? QColor(buttonColor.darker(120)).name() : QColor(buttonColor.lighter(110)).name())
+         .arg(isDarkMode ? QColor(40, 40, 40).name() : QColor(240, 240, 240).name())
+         .arg(isDarkMode ? QColor(100, 100, 100).name() : QColor(180, 180, 180).name())
+         .arg(isDarkMode ? QColor(50, 50, 50).name() : QColor(200, 200, 200).name());
+        
+        button->setStyleSheet(buttonStyle);
+    }
+    
+    QList<QToolButton*> toolButtons = findChildren<QToolButton*>();
+    for (QToolButton *button : toolButtons) {
+        if (button->minimumHeight() < 24) {
+            button->setMinimumHeight(24);
+        }
+        
+        QString toolButtonStyle = QLatin1String(
+            "QToolButton {"
+            "    background-color: transparent;"
+            "    border: 1px solid transparent;"
+            "    border-radius: 6px;"
+            "    padding: 4px 8px;"
+            "    min-height: 24px;"
+            "}"
+            "QToolButton:hover {"
+            "    background-color: %1;"
+            "}"
+            "QToolButton:pressed {"
+            "    background-color: %2;"
+            "}"
+            "QToolButton:checked {"
+            "    background-color: %3;"
+            "    border-color: %4;"
+            "}"
+        ).arg(isDarkMode ? QColor(60, 60, 60, 150).name(QColor::HexArgb) : QColor(220, 220, 220, 150).name(QColor::HexArgb))
+         .arg(isDarkMode ? QColor(80, 80, 80, 200).name(QColor::HexArgb) : QColor(200, 200, 200, 200).name(QColor::HexArgb))
+         .arg(highlightColor.name())
+         .arg(highlightColor.darker(120).name());
+        
+        button->setStyleSheet(toolButtonStyle);
+    }
+    
+    if (m_steps) {
+        QString stackedWidgetStyle = QLatin1String(
+            "QStackedWidget#m_steps {"
+            "    background-color: transparent;"
+            "    border: none;"
+            "}"
+        );
+        m_steps->setStyleSheet(stackedWidgetStyle);
+    }
+    
+    QList<QWidget*> allWidgets = findChildren<QWidget*>();
+    for (QWidget *widget : allWidgets) {
+        if (widget->autoFillBackground()) {
+            widget->setAutoFillBackground(false);
+        }
+    }
+}
+#endif

@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>PosteRazor</string>
 	<key>CFBundleGetInfoString</key>
-	<string>PosteRazor 1.9.5, Copyright 2005-2008 Alessandro Portale, GNU General Public License</string>
+	<string>PosteRazor 1.9.8, Copyright 2005-2025 Alessandro Portale, GNU General Public License</string>
 	<key>CFBundleIconFile</key>
 	<string>posterazor</string>
 	<key>CFBundleIdentifier</key>
@@ -17,21 +17,52 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.9.5</string>
+	<string>1.9.8</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.9.5</string>
+	<string>1.9.8</string>
 	<key>CSResourcesFileMapped</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright 2005-2008 http://posterazor.sourceforge.net/</string>
+	<string>Copyright 2005-2018 http://posterazor.sourceforge.net/</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSRequiresAquaSystemAppearance</key>
+	<false/>
+	<key>NSSupportsAutomaticGraphicsSwitching</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<false/>
+	</dict>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.15</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>*</string>
+				<string>jpg</string>
+				<string>jpeg</string>
+				<string>png</string>
+				<string>bmp</string>
+				<string>gif</string>
+				<string>tif</string>
+				<string>tiff</string>
+				<string>pdf</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>posterazor</string>
+			<key>CFBundleTypeName</key>
+			<string>Image Document</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.image</string>
+				<string>com.adobe.pdf</string>
 			</array>
 		</dict>
 	</array>

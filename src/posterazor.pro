@@ -12,15 +12,12 @@ macx:ICON = \
     posterazor.icns
 
 macx:CONFIG += \
-    x86 ppc
-
-macx:QMAKE_MAC_SDK = \
-    /Developer/SDKs/MacOSX10.4u.sdk
+    app_bundle
 
 macx:QMAKE_MACOSX_DEPLOYMENT_TARGET = \
-    10.3
+    10.15
 
-RC_FILE += \
+win32:RC_FILE += \
     posterazor.rc
 
 # Uncomment the following line in order to build PosteRazor with FreeImage
@@ -58,8 +55,15 @@ contains (DEFINES, FREEIMAGE_LIB) {
     win32:LIBS += \
         thirdparty/FreeImage/Dist/FreeImage.lib
 
-    macx: INCLUDEPATH += \
-        /usr/local/include
+    # Support both Homebrew locations (Intel: /usr/local, Apple Silicon: /opt/homebrew)
+    macx:exists(/opt/homebrew/include) {
+        INCLUDEPATH += /opt/homebrew/include
+        LIBS += -L/opt/homebrew/lib
+    }
+    macx:!exists(/opt/homebrew/include) {
+        INCLUDEPATH += /usr/local/include
+        LIBS += -L/usr/local/lib
+    }
 
     unix:LIBS += \
         -lfreeimage

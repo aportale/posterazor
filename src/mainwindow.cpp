@@ -36,6 +36,15 @@
 #include <QTranslator>
 #include <QVBoxLayout>
 #include <QtDebug>
+#ifdef Q_OS_MACOS
+#include <QStyleFactory>
+#include <QPalette>
+#include <QPushButton>
+#include <QToolButton>
+#include <QGroupBox>
+#include <QFrame>
+#include <QWidget>
+#endif
 
 const QLatin1String settingsKey_MainWindowGeometry("MainWindowGeometry");
 
@@ -70,12 +79,22 @@ MainWindow::MainWindow(QWidget *parent)
     retranslateUi();
 
     setAcceptDrops(true);
+
+#ifdef Q_OS_MACOS
+    applyMacOSStyling();
+#endif
 }
 
 void MainWindow::changeEvent(QEvent *event)
 {
     if (event->type() == QEvent::LanguageChange)
         retranslateUi();
+#ifdef Q_OS_MACOS
+    else if (event->type() == QEvent::PaletteChange) {
+        // Reapply styling when system appearance changes (light/dark mode)
+        applyMacOSStyling();
+    }
+#endif
     QMainWindow::changeEvent(event);
 }
 
@@ -476,3 +495,120 @@ void MainWindow::writeSettings(QSettings *settings) const
 {
     settings->setValue(settingsKey_MainWindowGeometry, saveGeometry());
 }
+
+#ifdef Q_OS_MACOS
+void MainWindow::applyMacOSStyling()
+{
+    // Use native macOS style if available
+    QStyle *nativeStyle = QStyleFactory::create(QLatin1String("macOS"));
+    if (!nativeStyle) {
+        nativeStyle = QStyleFactory::create(QLatin1String("Macintosh"));
+    }
+    if (nativeStyle) {
+        QApplication::setStyle(nativeStyle);
+    }
+
+    // Apply system colors for proper light/dark mode support
+    QPalette palette = QApplication::palette();
+    QApplication::setPalette(palette);
+    
+    // Get system colors for styling
+    QColor windowColor = palette.color(QPalette::Window);
+    QColor buttonColor = palette.color(QPalette::Button);
+    QColor buttonTextColor = palette.color(QPalette::ButtonText);
+    QColor highlightColor = palette.color(QPalette::Highlight);
+    
+    // Determine if we're in dark mode
+    bool isDarkMode = windowColor.lightness() < 128;
+    
+    // Modernize push buttons with rounded corners and hover effects
+    QList<QPushButton*> pushButtons = findChildren<QPushButton*>();
+    for (QPushButton *button : pushButtons) {
+        // Ensure minimum height for macOS standards (30px)
+        QSize size = button->sizeHint();
+        if (size.height() < 30) {
+            button->setMinimumHeight(30);
+        }
+        
+        // Apply modern button styling with rounded corners
+        QString buttonStyle = QLatin1String(
+            "QPushButton {"
+            "    background-color: %1;"
+            "    color: %2;"
+            "    border: 1px solid %3;"
+            "    border-radius: 6px;"
+            "    padding: 6px 16px;"
+            "    font-size: 13px;"
+            "    min-height: 30px;"
+            "}"
+            "QPushButton:hover {"
+            "    background-color: %4;"
+            "    border-color: %5;"
+            "}"
+            "QPushButton:pressed {"
+            "    background-color: %6;"
+            "}"
+            "QPushButton:disabled {"
+            "    background-color: %7;"
+            "    color: %8;"
+            "    border-color: %9;"
+            "}"
+        ).arg(buttonColor.name())
+         .arg(buttonTextColor.name())
+         .arg(isDarkMode ? QColor(60, 60, 60).name() : QColor(180, 180, 180).name())
+         .arg(isDarkMode ? QColor(buttonColor.lighter(110)).name() : QColor(buttonColor.darker(105)).name())
+         .arg(isDarkMode ? QColor(80, 80, 80).name() : QColor(150, 150, 150).name())
+         .arg(isDarkMode ? QColor(buttonColor.darker(120)).name() : QColor(buttonColor.lighter(110)).name())
+         .arg(isDarkMode ? QColor(40, 40, 40).name() : QColor(240, 240, 240).name())
+         .arg(isDarkMode ? QColor(100, 100, 100).name() : QColor(180, 180, 180).name())
+         .arg(isDarkMode ? QColor(50, 50, 50).name() : QColor(200, 200, 200).name());
+        
+        button->setStyleSheet(buttonStyle);
+    }
+    
+    // Modernize tool buttons
+    QList<QToolButton*> toolButtons = findChildren<QToolButton*>();
+    for (QToolButton *button : toolButtons) {
+        // Ensure proper sizing for tool buttons
+        if (button->minimumHeight() < 24) {
+            button->setMinimumHeight(24);
+        }
+        
+        // Apply rounded corners and hover effects
+        QString toolButtonStyle = QLatin1String(
+            "QToolButton {"
+            "    background-color: transparent;"
+            "    border: 1px solid transparent;"
+            "    border-radius: 6px;"
+            "    padding: 4px 8px;"
+            "    min-height: 24px;"
+            "}"
+            "QToolButton:hover {"
+            "    background-color: %1;"
+            "}"
+            "QToolButton:pressed {"
+            "    background-color: %2;"
+            "}"
+            "QToolButton:checked {"
+            "    background-color: %3;"
+            "    border-color: %4;"
+            "}"
+        ).arg(isDarkMode ? QColor(60, 60, 60, 150).name(QColor::HexArgb) : QColor(220, 220, 220, 150).name(QColor::HexArgb))
+         .arg(isDarkMode ? QColor(80, 80, 80, 200).name(QColor::HexArgb) : QColor(200, 200, 200, 200).name(QColor::HexArgb))
+         .arg(highlightColor.name())
+         .arg(highlightColor.darker(120).name());
+        
+        button->setStyleSheet(toolButtonStyle);
+    }
+    
+    // Apply modern styling to central widget with blur effect background
+    if (centralWidget()) {
+        QString centralWidgetStyle = QLatin1String(
+            "QWidget#centralwidget {"
+            "    background-color: %1;"
+            "}"
+        ).arg(windowColor.name());
+        centralWidget()->setStyleSheet(centralWidgetStyle);
+    }
+}
+#endif

@@ -13,6 +13,9 @@ SOURCES += \
     types.cpp \
     wizardcontroller.cpp
 
+macx:SOURCES += \
+    macosstylehelpers.cpp
+
 HEADERS += \
     controller.h \
     imageloaderinterface.h \
@@ -25,6 +28,9 @@ HEADERS += \
     snapspinbox.h \
     types.h \
     wizardcontroller.h
+
+macx:HEADERS += \
+    macosstylehelpers.h
 
 !contains (DEFINES, FREEIMAGE_LIB) {
     SOURCES += \
